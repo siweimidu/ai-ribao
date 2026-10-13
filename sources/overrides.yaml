@@ -1,0 +1,137 @@
+# 人工修正层
+#
+# 用途：在不改动 sources/registry.yaml 的前提下，覆盖 enabled / priority /
+# polling_interval / category / timeout_s / fetch_method / adapter / notes。
+#
+# 三条硬规则（由 src/aidaily/registry.py 强制，违反会直接报错）：
+#   1. 只能覆盖上面列出的字段。`source_id` / `url` / `found_in` 是**证据**，不可编辑
+#      —— 改写 `url` 等于把源悄悄指向了别的内容，改写 `found_in` 等于伪造溯源。
+#   2. 引用不存在的 source_id 会报错，而不是静默忽略。否则"我明明禁用了那个噪音源"
+#      会变成一句空话。
+#   3. 禁用任何源**必须写 reason**。下一个人要能分清这是深思熟虑还是手滑。
+#
+# 禁用 ≠ 删除：被禁用的源始终留在 registry.yaml 里，随时可以重新启用。
+
+overrides:
+
+  # ── 探测确认失效，且有在册替代品 ──────────────────────────────────────────
+  "api:git-trending-justlikemaki-vip-topone":
+    enabled: false
+    reason: >-
+      2026-10-13 探测返回 TLS 握手失败（SSL: UNEXPECTED_EOF_WHILE_READING），
+      且该服务为个人维护的第三方中转。替代方案已在册：
+      scrape:github-com-trending（直连 github.com/trending）。保留配置待其恢复。
+
+  # ── 适配器指派：把源接到真正实现了的采集器上 ──────────────────────────────
+  # registry 是按 source_type 批量指派适配器的（scrape -> HtmlFetcher）。对于有专用
+  # 实现的源，必须在这里指名，否则会被当成"适配器未实现"而跳过。
+  "scrape:github-com-trending":
+    adapter: GitHubTrendingFetcher
+    reason: "有专用实现（GitHubTrendingFetcher）；通用 HtmlFetcher 未实现"
+
+  # ── Reddit：匿名访问已被关闭，需要 OAuth 凭证 ──────────────────────────────
+  # 探测证据（2026-10-13 实测，两步）：
+  #   1) reddit.com/r/*/top.json  -> 12/12 返回 403 Blocked
+  #   2) old.reddit.com/r/*/     -> 返回 200，但 302 跳到 /login/?reason=lor2，
+  #      内容是一个 330KB 的登录页，dom.thing 选择器命中 0 个。
+  # 第 2 点曾被我自己的探测脚本误判为"健康"（只看了 HTTP 200 + 体积 > 2000 字节），
+  # 现已改为检查 DOM 结构。结论：Reddit 目前**无法匿名采集**，需要官方 OAuth
+  # （REDDIT_CLIENT_ID / REDDIT_CLIENT_SECRET，dailydawn 的 .env 里就留了这两个位置）。
+  # 因此这 15 个源不进入本次运行，但配置完整保留，补上凭证后把 needs_credential
+  # 置空即可启用。
+  "api:reddit-com-programming-top":
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: "匿名访问已关闭（JSON 403 / HTML 登录墙），需 OAuth"
+  "api:reddit-com-machinelearning-top":
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: "同上"
+  "api:reddit-com-localllama-top":
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: "同上"
+  "api:reddit-com-startups-top":
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: "同上"
+  "api:reddit-com-webdev-top":
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: "同上"
+  "api:reddit-com-saas-top":
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: "同上"
+  "api:reddit-com-opensource-top":
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: "同上"
+  "api:reddit-com-devops-top":
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: "同上"
+  "api:reddit-com-rust-top":
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: "同上"
+  "api:reddit-com-selfhosted-top":
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: "同上"
+  "api:reddit-com-indiehackers-top":
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: "同上"
+  "api:reddit-com-sideproject-top":
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: "同上"
+  "scrape:old-reddit-com-artificial-hot":
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: "同上（Horizon 使用的 HTML 入口，同样被登录墙拦截）"
+  "scrape:old-reddit-com-localllama-hot":
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: "同上"
+  "scrape:old-reddit-com-machinelearning-hot":
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: "同上"
+
+  # ── 需要专用采集器（当前未实现，明确跳过而不是静默零条）─────────────────────
+  "api:hacker-news-firebaseio-com-v0-topstories":
+    adapter: HackerNewsFirebaseFetcher
+    reason: >-
+      Firebase 端点只返回 ID 列表，需要 N 次额外请求才能取回内容。
+      HN 覆盖已由 api:hn-algolia-com-search 提供（单次请求返回完整字段），
+      待需要更完整的 HN 数据时再实现。
+  "api:trends-google-com-trends-explore":
+    adapter: PyTrendsFetcher
+    reason: "该 URL 是公开网页，pytrends 走的是内部接口；需专用采集器"
+
+  # ── 来源独立性：把承载同一内容的 feed 归为一组 ─────────────────────────────
+  # hn-algolia 与 hnrss-frontpage 呈现的是同一批 HN 首页内容（L2 实测：当日 6 组合并
+  # 全部来自这一对）。如果把它们算作"两个来源"，一条只有单一来源的新闻就会被标成
+  # "多源交叉验证"——那是虚假的可信度。归组后 independent_source_count 才说真话。
+  "api:hn-algolia-com-search":
+    dedup_group: hackernews
+    reason: "与 rss:hnrss-org-frontpage 承载同一批 HN 内容，不得计为两个独立来源"
+  "rss:hnrss-org-frontpage":
+    dedup_group: hackernews
+    reason: "与 api:hn-algolia-com-search 承载同一批 HN 内容，不得计为两个独立来源"
+
+  # ── 优先级修正（按读者价值，而非按发现顺序）────────────────────────────────
+  "rss:daily-juya-uk":
+    priority: 1
+    reason: "被 3 个仓库同时收录的最重要中文源，且是关键源（run.critical_sources）"
+  "rss:openai-com-news":
+    priority: 1
+    reason: "厂商一手官方公告，权威性最高"
+  "rss:deepmind-google-blog":
+    priority: 1
+    reason: "厂商一手官方公告"
+  "rss:raw-githubusercontent-com-ai-rss-feeds-anthropic-news":
+    priority: 1
+    reason: "厂商一手官方公告"

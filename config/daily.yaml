@@ -1,0 +1,88 @@
+# 运行配置（非敏感，可入库）
+#
+# Secrets live ONLY in environment variables / GitHub Secrets -- never here, never in
+# sources/registry.yaml, never in generated output. See docs/ARCHITECTURE.md §9.
+#
+# 生成时间说明：北京时间 10:00 晚于 juya(09:48)、dailydawn(08:00)、
+# ai-daily-sources(08:02)，因此一次采集即可拿到全部源的"当日"版本。
+
+timezone: Asia/Shanghai
+
+run:
+  at: "10:00"
+  window_hours: 26              # 24h + 余量，对抗定时延迟
+  critical_wait_minutes: 20     # 关键源当日版缺失时最多等待
+  critical_sources:             # 缺了它们就必须等待或明确标注，而不是静默带上旧内容
+    - "rss:daily-juya-uk"
+    - "rss:ainewslog-com"
+    - "jsonfeed:dailydawn-dev"
+    - "rss:hex2077-dev-rss-zh-cn"
+
+output:
+  brief:                        # → QQ 邮件 + Telegram
+    enabled: true
+    max_items: 15
+    languages: [zh]
+  deep:                         # → GitHub Pages + RSS + n8n + 归档
+    enabled: true
+    max_items: 60
+    languages: [zh]
+    english_on_demand: false    # 免费额度约束：深度版默认纯中文
+
+dedup:
+  l2:                           # 同一篇文章的重复抓取/转载
+    simhash_distance: 3
+    title_similarity_merge: 0.85
+    title_similarity_ambiguous: 0.92
+    publish_window_hours: 72
+    ambiguous_window_hours: 24
+  l3:                           # 多篇不同文章报道同一事件（语义）
+    candidate_limit: 150        # 先用规则把当日条目压到这个规模，再动用 LLM
+    max_clusters: 60            # 最多把多少个候选簇交给模型判定（每个一次调用）
+    judge_concurrency: 4
+    entity_overlap_min: 2
+    time_bucket_hours: 6
+    confidence_threshold: 0.75
+    cross_day_window_days: 7    # 文件方案的语义去重窗口上限
+    enabled: true
+
+quality:
+  min_content_chars: 200
+  source_weights:
+    lab-official: 1.5
+    zh-media: 1.2
+    lab-blog: 1.2
+    media: 1.1
+    digest: 1.1
+    paper: 1.0
+    community: 0.9
+    preset: 0.6
+    example: 0.3
+
+delivery:
+  email: true
+  telegram: true
+  rss: true
+  n8n: true
+  pages: true
+
+storage:
+  cold: r2                      # 可选冷存；R2 凭证缺失时自动降级为本地
+  r2_optional: true
+  content_retention_days: 30    # 正文全文只留 30 天，更早只留指纹与链接
+  monthly_shard_compression: zstd
+
+llm:
+  # 三层供应商：官方免费优先 → 官方付费(默认关) → 第三方中转兜底
+  tiers: [official-free, relay]
+  max_calls_per_run: 400
+  max_tokens_per_run: 2000000
+  relay_max_calls_per_run: 20   # 中转站不可信，硬限制调用量
+  request_timeout_s: 120
+  batch_size:
+    summarize: 8                # daybrief 实测：8 条一批可省数倍调用
+    cluster_judge: 10
+
+budget:
+  # 运行期熔断；超限则降级为规则摘要并在 digest.warnings 中声明
+  on_exceed: degrade_to_rules

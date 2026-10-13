@@ -1,0 +1,102 @@
+{
+ "window": {
+  "items_in": 3882,
+  "items_kept": 243,
+  "dropped_by_bucket": {
+   "older": 3556,
+   "outside_window": 70,
+   "unknown": 13
+  },
+  "sources_with_items": 17,
+  "undated_examples": [
+   "rss:decemberpei-cyou-rssbox-wechat-aiqianxian: 17 年谷歌老兵揭秘Gemini 研发内幕：鼓励团队说出坏消息，产品不好..",
+   "rss:decemberpei-cyou-rssbox-wechat-aiqianxian: 苹果筑起的权限高墙，被 MetaAI助手“借道”绕过",
+   "rss:decemberpei-cyou-rssbox-wechat-liangziwei: 9大赛道，23份企业真实考卷！上海具身智能大考广发英雄帖，邀千..",
+   "rss:decemberpei-cyou-rssbox-wechat-liangziwei: Opus5.5逆向《使命召唤》！动视暴雪坐不住了",
+   "rss:decemberpei-cyou-rssbox-wechat-liangziwei: AI从「造图」卷到「造世界」，这次真有点科幻了。。。"
+  ]
+ },
+ "dedup": {
+  "items_after_window": 243,
+  "groups": 237,
+  "merged_away": 6,
+  "merge_rate": 0.0247,
+  "multi_source_groups": 6,
+  "ambiguous_pairs": 0
+ },
+ "top_merges": [
+  {
+   "group": "d432b0e98e51402c",
+   "title": "CFTC Staff Were Told to Retract Analysis of Suspicious Oil Trades",
+   "members": 2,
+   "sources": [
+    "api:hn-algolia-com-search",
+    "rss:hnrss-org-frontpage"
+   ],
+   "matched_by": [
+    "url"
+   ]
+  },
+  {
+   "group": "d80f267e80ebabb1",
+   "title": "A Dynamic and Distributed Virtual GPU Cloud Built on Idle Apple Silicon Devices",
+   "members": 2,
+   "sources": [
+    "api:hn-algolia-com-search",
+    "rss:hnrss-org-frontpage"
+   ],
+   "matched_by": [
+    "url"
+   ]
+  },
+  {
+   "group": "d8dde99d5371b4fd",
+   "title": "We turned EmbeddingGemma 2 into a speech-to-text model",
+   "members": 2,
+   "sources": [
+    "api:hn-algolia-com-search",
+    "rss:hnrss-org-frontpage"
+   ],
+   "matched_by": [
+    "url"
+   ]
+  },
+  {
+   "group": "d9f3e528ac5963cc",
+   "title": "Mozilla Introduces Firefox Enterprise",
+   "members": 2,
+   "sources": [
+    "api:hn-algolia-com-search",
+    "rss:hnrss-org-frontpage"
+   ],
+   "matched_by": [
+    "url"
+   ]
+  },
+  {
+   "group": "db05f80727a875cc",
+   "title": "11 year old unsoundness bugs found in Rust borrow checker",
+   "members": 2,
+   "sources": [
+    "api:hn-algolia-com-search",
+    "rss:hnrss-org-frontpage"
+   ],
+   "matched_by": [
+    "url"
+   ]
+  },
+  {
+   "group": "dbaa6ce3e9e17a4e",
+   "title": "Apple HomeView",
+   "members": 2,
+   "sources": [
+    "api:hn-algolia-com-search",
+    "rss:hnrss-org-frontpage"
+   ],
+   "matched_by": [
+    "url"
+   ]
+  }
+ ],
+ "ambiguous_samples": []
+}

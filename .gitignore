@@ -1,0 +1,47 @@
+# --- cloned upstream repositories (audit inputs, never part of this project) -------
+# These are other people's code under other licences. Committing them would drag
+# GPL-3.0 and unlicensed code into an MIT repository.
+_audit/
+
+# --- runtime data that must not be committed --------------------------------------
+# Feed bodies contain whatever the sources contain: real people's email addresses,
+# quoted newsletters, and megabytes of text per day. It is an artefact, not source.
+data/raw/
+data/state/*.sqlite
+data/state/dup_groups.jsonl
+data/state/delivery.jsonl
+# NOTE: data/state/runs.jsonl IS committed on purpose -- it is the idempotency ledger,
+# and the gate cannot work across triggers without it. Same for health.jsonl.
+
+# --- secrets ----------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+keys.json
+freellmapi-keys.json
+secrets.json
+
+# --- python -----------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# --- editors / os -----------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini

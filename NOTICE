@@ -1,0 +1,65 @@
+# NOTICE — 第三方归属与许可证边界
+
+本项目以 **MIT** 许可证发布。它是在审计六个既有仓库之后**重新实现**的，而不是把它们的代码
+拼接起来。下面说明什么被吸收、什么被刻意排除，以及为什么。
+
+---
+
+## 一、被吸收的上游项目（MIT，兼容）
+
+### Horizon — https://github.com/Thysrael/Horizon
+- **许可证**：MIT，Copyright (c) 2026 Thysrael
+- **吸收方式**：设计参考与选择性代码改造。特别是多源采集的适配器分层、跨源重复合并
+  （保留双方正文而非取其一）、profile 评分思路、以及多厂商 AI 客户端的降级链思想。
+- **义务**：保留原版权与许可声明。本项目的 `src/aidaily/fetchers/` 与
+  `src/aidaily/llm/` 在结构上源自其设计，已在模块 docstring 中逐处注明。
+- **说明**：本项目是独立实现，不是 Horizon 的 fork，也不与其保持同步。
+
+### daily-briefing — https://github.com/tballochi/daily-briefing
+- **许可证**：MIT，Copyright (c) 2026 Timoté Ballochi
+- **吸收方式**：借鉴两处已验证的机制——供应商 `mark_down`（遇到"每日额度耗尽"
+  直接拉黑本次运行，绝不空等）与"多触发点 + 一次性幂等守卫"的调度策略。
+- **义务**：保留原版权与许可声明。
+
+### ai-rss-feeds — https://github.com/alan-turing-institute/ai-rss-feeds
+- **关系**：**只是数据源，没有使用其代码**。本项目把它的 9 个 XML feed 地址作为信息源收录，
+  URL 清单属于事实性数据。这些源目前贡献了注册表中最多的高质量条目。
+
+---
+
+## 二、被刻意排除的项目（**没有复制任何代码**）
+
+### CloudFlare-AI-Insight-Daily — https://github.com/justlovemaki/CloudFlare-AI-Insight-Daily
+- **许可证**：**GPL-3.0**（copyleft）
+- **为什么不吸收**：GPL-3.0 具有传染性。复制其任何源码都会要求本项目整体以 GPL-3.0 发布，
+  这与本项目选择 MIT 的决定冲突。
+- **实际做法**：只读取了它暴露的**信息源清单**（Folo 的 4 个 list ID、第三方
+  GitHub Trending API 地址），URL 与 API 端点属于事实，不受版权保护。相关功能全部重新实现。
+- **额外说明**：审计确认该仓库中用户的改动**只有 README 与生成产物，共 0 行源码**，
+  因此排除源码在事实上也没有损失任何本项目的贡献。
+
+### dailydawn — https://github.com/TangSY/dailydawn
+- **许可证**：**无 LICENSE 文件**。按伯尔尼公约默认**保留所有权利**，即使仓库公开也不得复制。
+- **为什么不吸收**：没有授权就不能复制。其 `scripts/fetchers/` 与 `scripts/pipeline/`
+  因此只被用于**理解采集哪些源、以及时间分档的动机**，代码全部重写。
+  `GitHubTrendingFetcher` 是其中一个具体例子：选择器与 URL 是可以观察到的事实，实现是自己写的。
+- **用户自有部分**：审计确认 `scripts/{build_feed,build_site,notify_push}.py` 是用户自己新增的
+  文件（共 499 行）。这部分版权属于用户本人，但本项目仍未直接复制，而是按相同目标重新实现。
+
+---
+
+## 三、依赖许可证
+
+运行时依赖全部为宽松许可，已在 `THIRD_PARTY_LICENSES.md` 中列出。CI 中不包含强制扫描，
+但新增 GPL 依赖前应重新评估——它会与本项目的 MIT 许可冲突。
+
+---
+
+## 四、数据与内容
+
+- **信息源内容**：本项目聚合第三方站点的标题、摘要与链接，**不复制全文入库**（正文全文只保留
+  30 天滚动窗口，且仅用于当次分析）。日报中每个条目都回链到原始来源，符合引用惯例。
+- **生成内容**：由大模型生成的摘要属于衍生内容，日报页面明确标注"内容由 AI 辅助整理，
+  请以原始来源为准"。
+- **用户输入**：模型 API 密钥、SMTP 凭证等**只通过 GitHub Secrets 注入**，不写入仓库、
+  不写入日志、不写入产物。CI 中有三道守卫强制这一点。

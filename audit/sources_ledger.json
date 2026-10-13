@@ -1,0 +1,4033 @@
+{
+ "generated_from": "six-repo static audit",
+ "stats": {
+  "raw_records": 107,
+  "normalized_duplicate_records": 7,
+  "unique_sources": 100,
+  "cross_repo_shared": 4,
+  "disabled_or_unwired": 11,
+  "needs_credentials": 13,
+  "by_repo": {
+   "Horizon": 47,
+   "daybrief": 5,
+   "ai-daily-sources": 4,
+   "dailydawn": 39,
+   "CloudFlare-AI-Insight-Daily": 11,
+   "daily-briefing": 1
+  },
+  "by_type": {
+   "rss": 48,
+   "api": 52,
+   "scrape": 5,
+   "jsonfeed": 2
+  },
+  "by_domain_top": [
+   [
+    "trends.google.com",
+    21
+   ],
+   [
+    "reddit.com",
+    12
+   ],
+   [
+    "raw.githubusercontent.com",
+    9
+   ],
+   [
+    "huggingface.co",
+    4
+   ],
+   [
+    "wechat2rss.xlab.app",
+    4
+   ],
+   [
+    "api.follow.is",
+    4
+   ],
+   [
+    "daily.juya.uk",
+    3
+   ],
+   [
+    "decemberpei.cyou",
+    3
+   ],
+   [
+    "old.reddit.com",
+    3
+   ],
+   [
+    "simonwillison.net",
+    3
+   ],
+   [
+    "lwn.net",
+    2
+   ],
+   [
+    "ainewslog.com",
+    2
+   ]
+  ]
+ },
+ "unique_sources": [
+  {
+   "source_key": "U001",
+   "normalized_url": "https://daily.juya.uk/rss.xml",
+   "domain": "daily.juya.uk",
+   "name": "AI日报 juya",
+   "type": "rss",
+   "categories": [
+    "zh-media",
+    "mixed"
+   ],
+   "languages": [
+    "zh"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]",
+    "daybrief:config.yaml#sources.rss[]",
+    "ai-daily-sources:scripts/collect.py#SOURCES[0]"
+   ],
+   "repo_count": 3,
+   "dup_count": 3,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "profile=tech-news",
+    "max_items=3,window=48h"
+   ]
+  },
+  {
+   "source_key": "U002",
+   "normalized_url": "https://aihot.news/feed/all.xml",
+   "domain": "aihot.news",
+   "name": "AIHOT 全站",
+   "type": "rss",
+   "categories": [
+    "zh-media"
+   ],
+   "languages": [
+    "zh"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "profile=tech-news"
+   ]
+  },
+  {
+   "source_key": "U003",
+   "normalized_url": "https://openai.com/news/rss.xml",
+   "domain": "openai.com",
+   "name": "OpenAI News",
+   "type": "rss",
+   "categories": [
+    "lab-official"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "profile=tech-news"
+   ]
+  },
+  {
+   "source_key": "U004",
+   "normalized_url": "https://deepmind.google/blog/rss.xml",
+   "domain": "deepmind.google",
+   "name": "Google DeepMind",
+   "type": "rss",
+   "categories": [
+    "lab-official"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "profile=tech-blog, extractor=trafilatura"
+   ]
+  },
+  {
+   "source_key": "U005",
+   "normalized_url": "https://huggingface.co/blog/feed.xml",
+   "domain": "huggingface.co",
+   "name": "Hugging Face Blog",
+   "type": "rss",
+   "categories": [
+    "lab-blog"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "extractor=trafilatura"
+   ]
+  },
+  {
+   "source_key": "U006",
+   "normalized_url": "https://bair.berkeley.edu/blog/feed.xml",
+   "domain": "bair.berkeley.edu",
+   "name": "BAIR Blog",
+   "type": "rss",
+   "categories": [
+    "lab-blog"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "extractor=trafilatura"
+   ]
+  },
+  {
+   "source_key": "U007",
+   "normalized_url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/anthropic-news.xml",
+   "domain": "raw.githubusercontent.com",
+   "name": "Anthropic News",
+   "type": "rss",
+   "categories": [
+    "lab-official"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "profile=tech-news"
+   ]
+  },
+  {
+   "source_key": "U008",
+   "normalized_url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/anthropic-research.xml",
+   "domain": "raw.githubusercontent.com",
+   "name": "Anthropic Research",
+   "type": "rss",
+   "categories": [
+    "lab-official"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "profile=tech-news"
+   ]
+  },
+  {
+   "source_key": "U009",
+   "normalized_url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/claude-news.xml",
+   "domain": "raw.githubusercontent.com",
+   "name": "Claude News",
+   "type": "rss",
+   "categories": [
+    "lab-official"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "profile=tech-news"
+   ]
+  },
+  {
+   "source_key": "U010",
+   "normalized_url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/tldr-ai.xml",
+   "domain": "raw.githubusercontent.com",
+   "name": "TLDR AI",
+   "type": "rss",
+   "categories": [
+    "digest"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "profile=tech-news"
+   ]
+  },
+  {
+   "source_key": "U011",
+   "normalized_url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/mistral-news.xml",
+   "domain": "raw.githubusercontent.com",
+   "name": "Mistral News",
+   "type": "rss",
+   "categories": [
+    "lab-official"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "profile=tech-news"
+   ]
+  },
+  {
+   "source_key": "U012",
+   "normalized_url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/cohere-blog.xml",
+   "domain": "raw.githubusercontent.com",
+   "name": "Cohere Blog",
+   "type": "rss",
+   "categories": [
+    "lab-blog"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "profile=tech-blog"
+   ]
+  },
+  {
+   "source_key": "U013",
+   "normalized_url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/allenai-news.xml",
+   "domain": "raw.githubusercontent.com",
+   "name": "Ai2 News",
+   "type": "rss",
+   "categories": [
+    "lab-official"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "profile=tech-news"
+   ]
+  },
+  {
+   "source_key": "U014",
+   "normalized_url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/ai-rss-feeds-news.xml",
+   "domain": "raw.githubusercontent.com",
+   "name": "AI RSS Feeds News",
+   "type": "rss",
+   "categories": [
+    "digest"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "profile=tech-news"
+   ]
+  },
+  {
+   "source_key": "U015",
+   "normalized_url": "https://news.mit.edu/topic/mitartificial-intelligence2-rss.xml",
+   "domain": "news.mit.edu",
+   "name": "MIT News AI",
+   "type": "rss",
+   "categories": [
+    "lab-blog"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "profile=tech-blog"
+   ]
+  },
+  {
+   "source_key": "U016",
+   "normalized_url": "https://rss.beehiiv.com/feeds/2R3C6Bt5wj.xml",
+   "domain": "rss.beehiiv.com",
+   "name": "The Rundown AI",
+   "type": "rss",
+   "categories": [
+    "digest"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "profile=tech-news"
+   ]
+  },
+  {
+   "source_key": "U017",
+   "normalized_url": "https://theverge.com/rss/ai-artificial-intelligence/index.xml",
+   "domain": "theverge.com",
+   "name": "The Verge AI",
+   "type": "rss",
+   "categories": [
+    "media"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "profile=tech-news"
+   ]
+  },
+  {
+   "source_key": "U018",
+   "normalized_url": "https://raw.githubusercontent.com/huangboming/huggingface-daily-paper-feed/refs/heads/main/feed.xml",
+   "domain": "raw.githubusercontent.com",
+   "name": "HF Daily Papers",
+   "type": "rss",
+   "categories": [
+    "paper"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "profile=tech-blog"
+   ]
+  },
+  {
+   "source_key": "U019",
+   "normalized_url": "https://wechat2rss.xlab.app/feed/51e92aad2728acdd1fda7314be32b16639353001.xml",
+   "domain": "wechat2rss.xlab.app",
+   "name": "机器之心",
+   "type": "rss",
+   "categories": [
+    "zh-media"
+   ],
+   "languages": [
+    "zh"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "profile=tech-news"
+   ]
+  },
+  {
+   "source_key": "U020",
+   "normalized_url": "https://wechat2rss.xlab.app/feed/ede30346413ea70dbef5d485ea5cbb95cca446e7.xml",
+   "domain": "wechat2rss.xlab.app",
+   "name": "新智元",
+   "type": "rss",
+   "categories": [
+    "zh-media",
+    "preset"
+   ],
+   "languages": [
+    "zh",
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]",
+    "Horizon:data/presets.json#presets.<profile>.sources.rss"
+   ],
+   "repo_count": 1,
+   "dup_count": 2,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "profile=tech-news",
+    "未在 config.github.json 启用（预设）"
+   ]
+  },
+  {
+   "source_key": "U021",
+   "normalized_url": "https://decemberpei.cyou/rssbox/wechat-liangziwei.xml",
+   "domain": "decemberpei.cyou",
+   "name": "量子位",
+   "type": "rss",
+   "categories": [
+    "zh-media"
+   ],
+   "languages": [
+    "zh"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "profile=tech-news"
+   ]
+  },
+  {
+   "source_key": "U022",
+   "normalized_url": "https://decemberpei.cyou/rssbox/wechat-paperweekly.xml",
+   "domain": "decemberpei.cyou",
+   "name": "PaperWeekly",
+   "type": "rss",
+   "categories": [
+    "paper"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "profile=tech-blog"
+   ]
+  },
+  {
+   "source_key": "U023",
+   "normalized_url": "https://decemberpei.cyou/rssbox/wechat-aiqianxian.xml",
+   "domain": "decemberpei.cyou",
+   "name": "AI前线",
+   "type": "rss",
+   "categories": [
+    "zh-media"
+   ],
+   "languages": [
+    "zh"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "profile=tech-news"
+   ]
+  },
+  {
+   "source_key": "U024",
+   "normalized_url": "https://hacker-news.firebaseio.com/v0/topstories.json",
+   "domain": "hacker-news.firebaseio.com",
+   "name": "Hacker News Top Stories (Firebase API)",
+   "type": "api",
+   "categories": [
+    "community"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.hackernews"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "min_score=100, fetch_top_stories=12"
+   ]
+  },
+  {
+   "source_key": "U025",
+   "normalized_url": "https://old.reddit.com/r/MachineLearning/hot",
+   "domain": "old.reddit.com",
+   "name": "r/MachineLearning",
+   "type": "scrape",
+   "categories": [
+    "community"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.reddit.subreddits[0]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "min_score=80, time_filter=day"
+   ]
+  },
+  {
+   "source_key": "U026",
+   "normalized_url": "https://old.reddit.com/r/LocalLLaMA/hot",
+   "domain": "old.reddit.com",
+   "name": "r/LocalLLaMA",
+   "type": "scrape",
+   "categories": [
+    "community"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.reddit.subreddits[1]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "min_score=80"
+   ]
+  },
+  {
+   "source_key": "U027",
+   "normalized_url": "https://old.reddit.com/r/artificial/hot",
+   "domain": "old.reddit.com",
+   "name": "r/artificial",
+   "type": "scrape",
+   "categories": [
+    "community"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.reddit.subreddits[2]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "min_score=80"
+   ]
+  },
+  {
+   "source_key": "U028",
+   "normalized_url": "https://news.google.com/rss/search?ceid=CN:zh-Hans&gl=CN&hl=zh-CN&q=AI%20OR%20LLM%20OR%20%E5%A4%A7%E6%A8%A1%E5%9E%8B%20when:1d",
+   "domain": "news.google.com",
+   "name": "Google News 查询: AI OR LLM OR 大模型 when:1d",
+   "type": "api",
+   "categories": [
+    "media"
+   ],
+   "languages": [
+    "zh"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.google_news"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "query 可配置, max_results=12"
+   ]
+  },
+  {
+   "source_key": "U029",
+   "normalized_url": "https://t.me/s/zaihuapd",
+   "domain": "t.me",
+   "name": "Telegram @zaihuapd",
+   "type": "scrape",
+   "categories": [
+    "zh-media"
+   ],
+   "languages": [
+    "zh"
+   ],
+   "found_in": [
+    "Horizon:data/config.github.json#sources.telegram.channels[0]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "fetch_limit=8"
+   ]
+  },
+  {
+   "source_key": "U030",
+   "normalized_url": "https://simonwillison.net/atom/everything",
+   "domain": "simonwillison.net",
+   "name": "Simon Willison",
+   "type": "rss",
+   "categories": [
+    "preset",
+    "example",
+    "mixed"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/presets.json#presets.<profile>.sources.rss",
+    "Horizon:data/config.example.json#sources.rss[]",
+    "daybrief:config.yaml#sources.rss[]"
+   ],
+   "repo_count": 2,
+   "dup_count": 3,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "未在 config.github.json 启用（预设）",
+    "仅示例配置"
+   ]
+  },
+  {
+   "source_key": "U031",
+   "normalized_url": "https://wechat2rss.xlab.app/feed/7131b577c61365cb47e81000738c10d872685908.xml",
+   "domain": "wechat2rss.xlab.app",
+   "name": "机器之心(wechat2rss 7131b577)",
+   "type": "rss",
+   "categories": [
+    "preset"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/presets.json#presets.<profile>.sources.rss"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": false,
+   "needs_cred": false,
+   "notes": [
+    "未在 config.github.json 启用（预设）"
+   ]
+  },
+  {
+   "source_key": "U032",
+   "normalized_url": "https://lwn.net/headlines/rss",
+   "domain": "lwn.net",
+   "name": "LWN.net headlines",
+   "type": "rss",
+   "categories": [
+    "preset"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/presets.json#presets.<profile>.sources.rss"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": false,
+   "needs_cred": false,
+   "notes": [
+    "未在 config.github.json 启用（预设）"
+   ]
+  },
+  {
+   "source_key": "U033",
+   "normalized_url": "https://brendangregg.com/blog/rss.xml",
+   "domain": "brendangregg.com",
+   "name": "Brendan Gregg",
+   "type": "rss",
+   "categories": [
+    "preset"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/presets.json#presets.<profile>.sources.rss"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": false,
+   "needs_cred": false,
+   "notes": [
+    "未在 config.github.json 启用（预设）"
+   ]
+  },
+  {
+   "source_key": "U034",
+   "normalized_url": "https://krebsonsecurity.com/feed",
+   "domain": "krebsonsecurity.com",
+   "name": "Krebs on Security",
+   "type": "rss",
+   "categories": [
+    "preset"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/presets.json#presets.<profile>.sources.rss"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": false,
+   "needs_cred": false,
+   "notes": [
+    "未在 config.github.json 启用（预设）"
+   ]
+  },
+  {
+   "source_key": "U035",
+   "normalized_url": "https://schneier.com/feed/atom",
+   "domain": "schneier.com",
+   "name": "Schneier on Security",
+   "type": "rss",
+   "categories": [
+    "preset"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/presets.json#presets.<profile>.sources.rss"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": false,
+   "needs_cred": false,
+   "notes": [
+    "未在 config.github.json 启用（预设）"
+   ]
+  },
+  {
+   "source_key": "U036",
+   "normalized_url": "https://css-tricks.com/feed",
+   "domain": "css-tricks.com",
+   "name": "CSS-Tricks",
+   "type": "rss",
+   "categories": [
+    "preset"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/presets.json#presets.<profile>.sources.rss"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": false,
+   "needs_cred": false,
+   "notes": [
+    "未在 config.github.json 启用（预设）"
+   ]
+  },
+  {
+   "source_key": "U037",
+   "normalized_url": "https://hackaday.com/feed",
+   "domain": "hackaday.com",
+   "name": "Hackaday",
+   "type": "rss",
+   "categories": [
+    "preset"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/presets.json#presets.<profile>.sources.rss"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": false,
+   "needs_cred": false,
+   "notes": [
+    "未在 config.github.json 启用（预设）"
+   ]
+  },
+  {
+   "source_key": "U038",
+   "normalized_url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml",
+   "domain": "mshibanami.github.io",
+   "name": "GitHub Trending RSS (mshibanami)",
+   "type": "rss",
+   "categories": [
+    "preset"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/presets.json#presets.<profile>.sources.rss"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": false,
+   "needs_cred": false,
+   "notes": [
+    "未在 config.github.json 启用（预设）"
+   ]
+  },
+  {
+   "source_key": "U039",
+   "normalized_url": "https://nature.com/nature.rss",
+   "domain": "nature.com",
+   "name": "Nature",
+   "type": "rss",
+   "categories": [
+    "preset"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/presets.json#presets.<profile>.sources.rss"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": false,
+   "needs_cred": false,
+   "notes": [
+    "未在 config.github.json 启用（预设）"
+   ]
+  },
+  {
+   "source_key": "U040",
+   "normalized_url": "https://api.quantamagazine.org/feed",
+   "domain": "api.quantamagazine.org",
+   "name": "Quanta Magazine",
+   "type": "rss",
+   "categories": [
+    "preset"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/presets.json#presets.<profile>.sources.rss"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": false,
+   "needs_cred": false,
+   "notes": [
+    "未在 config.github.json 启用（预设）"
+   ]
+  },
+  {
+   "source_key": "U041",
+   "normalized_url": "https://vllm.ai/blog/rss.xml",
+   "domain": "vllm.ai",
+   "name": "vLLM Blog",
+   "type": "rss",
+   "categories": [
+    "example"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.example.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": false,
+   "needs_cred": false,
+   "notes": [
+    "仅示例配置"
+   ]
+  },
+  {
+   "source_key": "U042",
+   "normalized_url": "https://seangoedecke.com/rss.xml",
+   "domain": "seangoedecke.com",
+   "name": "Sean Goedecke",
+   "type": "rss",
+   "categories": [
+    "example"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.example.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": false,
+   "needs_cred": false,
+   "notes": [
+    "仅示例配置"
+   ]
+  },
+  {
+   "source_key": "U043",
+   "normalized_url": "https://search.cnbc.com/rs/search/combinedcms/view.xml?id=10000664&partnerId=wrss01",
+   "domain": "search.cnbc.com",
+   "name": "CNBC combined search",
+   "type": "rss",
+   "categories": [
+    "example"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.example.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": false,
+   "needs_cred": false,
+   "notes": [
+    "仅示例配置"
+   ]
+  },
+  {
+   "source_key": "U044",
+   "normalized_url": "https://developer.nvidia.com/blog/tag/cuda/feed",
+   "domain": "developer.nvidia.com",
+   "name": "NVIDIA Developer CUDA blog",
+   "type": "rss",
+   "categories": [
+    "example"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.example.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": false,
+   "needs_cred": false,
+   "notes": [
+    "仅示例配置"
+   ]
+  },
+  {
+   "source_key": "U045",
+   "normalized_url": "https://lwn.net/headlines/full_text?key=${LWN_KEY}",
+   "domain": "lwn.net",
+   "name": "LWN full text",
+   "type": "rss",
+   "categories": [
+    "example"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "Horizon:data/config.example.json#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": false,
+   "needs_cred": true,
+   "notes": [
+    "仅示例配置"
+   ]
+  },
+  {
+   "source_key": "U046",
+   "normalized_url": "https://ainewslog.com/rss.xml",
+   "domain": "ainewslog.com",
+   "name": "AI Daily (ainewslog)",
+   "type": "rss",
+   "categories": [
+    "mixed",
+    "zh-media"
+   ],
+   "languages": [
+    "en",
+    "zh"
+   ],
+   "found_in": [
+    "daybrief:config.yaml#sources.rss[]",
+    "ai-daily-sources:scripts/collect.py#SOURCES[1]"
+   ],
+   "repo_count": 2,
+   "dup_count": 2,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "title_include=CJK, fulltext=True"
+   ]
+  },
+  {
+   "source_key": "U047",
+   "normalized_url": "https://dailydawn.dev/zh.json",
+   "domain": "dailydawn.dev",
+   "name": "DailyDawn 中文",
+   "type": "jsonfeed",
+   "categories": [
+    "mixed",
+    "zh-media"
+   ],
+   "languages": [
+    "zh"
+   ],
+   "found_in": [
+    "daybrief:config.yaml#sources.rss[]",
+    "ai-daily-sources:scripts/collect.py#SOURCES[3]"
+   ],
+   "repo_count": 2,
+   "dup_count": 2,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "og_image 模板"
+   ]
+  },
+  {
+   "source_key": "U048",
+   "normalized_url": "https://hnrss.org/frontpage",
+   "domain": "hnrss.org",
+   "name": "Hacker News Front Page",
+   "type": "rss",
+   "categories": [
+    "mixed"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "daybrief:config.yaml#sources.rss[]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U049",
+   "normalized_url": "https://hex2077.dev/rss-zh-CN.xml",
+   "domain": "hex2077.dev",
+   "name": "何夕2077 AI 深度信号",
+   "type": "rss",
+   "categories": [
+    "zh-media"
+   ],
+   "languages": [
+    "zh"
+   ],
+   "found_in": [
+    "ai-daily-sources:scripts/collect.py#SOURCES[2]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "window=216h（周更）"
+   ]
+  },
+  {
+   "source_key": "U050",
+   "normalized_url": "https://hn.algolia.com/api/v1/search",
+   "domain": "hn.algolia.com",
+   "name": "HackerNews (Algolia)",
+   "type": "api",
+   "categories": [
+    "community"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/hackernews.py#HackerNewsFetcher"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "points>20, 48h 窗口, 60 条"
+   ]
+  },
+  {
+   "source_key": "U051",
+   "normalized_url": "https://github.com/trending?since=daily",
+   "domain": "github.com",
+   "name": "GitHub Trending",
+   "type": "scrape",
+   "categories": [
+    "dev"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/github_trending.py#GitHubTrendingFetcher"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "top 25"
+   ]
+  },
+  {
+   "source_key": "U052",
+   "normalized_url": "https://api.producthunt.com/v2/api/graphql",
+   "domain": "api.producthunt.com",
+   "name": "Product Hunt GraphQL",
+   "type": "api",
+   "categories": [
+    "product"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/product_hunt.py#ProductHuntFetcher"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": true,
+   "notes": [
+    "需要 PRODUCT_HUNT_TOKEN，无则跳过"
+   ]
+  },
+  {
+   "source_key": "U053",
+   "normalized_url": "https://huggingface.co/api/models?direction=-1&limit=20&sort=likes7d",
+   "domain": "huggingface.co",
+   "name": "HuggingFace Models",
+   "type": "api",
+   "categories": [
+    "model"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/huggingface.py#/api/models"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U054",
+   "normalized_url": "https://huggingface.co/api/datasets?direction=-1&limit=10&sort=likes7d",
+   "domain": "huggingface.co",
+   "name": "HuggingFace Datasets",
+   "type": "api",
+   "categories": [
+    "dataset"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/huggingface.py#/api/datasets"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U055",
+   "normalized_url": "https://v2ex.com/api/topics/hot.json",
+   "domain": "v2ex.com",
+   "name": "V2EX 热门主题",
+   "type": "api",
+   "categories": [
+    "community"
+   ],
+   "languages": [
+    "zh"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/v2ex.py#V2EXFetcher"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "top 20"
+   ]
+  },
+  {
+   "source_key": "U056",
+   "normalized_url": "https://trends.google.com/trends/explore",
+   "domain": "trends.google.com",
+   "name": "Google Trends (20 个种子关键词)",
+   "type": "api",
+   "categories": [
+    "trend"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/pytrends_growth.py#PyTrendsGrowthFetcher"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "pytrends, 7 日涨幅 >20% 才入库"
+   ]
+  },
+  {
+   "source_key": "U057",
+   "normalized_url": "https://reddit.com/r/programming/top.json?limit=15&t=day",
+   "domain": "reddit.com",
+   "name": "reddit r/programming",
+   "type": "api",
+   "categories": [
+    "community"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[programming]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "ups>=20；REDDIT_CLIENT_ID 可选"
+   ]
+  },
+  {
+   "source_key": "U058",
+   "normalized_url": "https://reddit.com/r/startups/top.json?limit=15&t=day",
+   "domain": "reddit.com",
+   "name": "reddit r/startups",
+   "type": "api",
+   "categories": [
+    "community"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[startups]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "ups>=20；REDDIT_CLIENT_ID 可选"
+   ]
+  },
+  {
+   "source_key": "U059",
+   "normalized_url": "https://reddit.com/r/LocalLLaMA/top.json?limit=15&t=day",
+   "domain": "reddit.com",
+   "name": "reddit r/LocalLLaMA",
+   "type": "api",
+   "categories": [
+    "community"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[LocalLLaMA]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "ups>=20；REDDIT_CLIENT_ID 可选"
+   ]
+  },
+  {
+   "source_key": "U060",
+   "normalized_url": "https://reddit.com/r/MachineLearning/top.json?limit=15&t=day",
+   "domain": "reddit.com",
+   "name": "reddit r/MachineLearning",
+   "type": "api",
+   "categories": [
+    "community"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[MachineLearning]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "ups>=20；REDDIT_CLIENT_ID 可选"
+   ]
+  },
+  {
+   "source_key": "U061",
+   "normalized_url": "https://reddit.com/r/webdev/top.json?limit=15&t=day",
+   "domain": "reddit.com",
+   "name": "reddit r/webdev",
+   "type": "api",
+   "categories": [
+    "community"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[webdev]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "ups>=20；REDDIT_CLIENT_ID 可选"
+   ]
+  },
+  {
+   "source_key": "U062",
+   "normalized_url": "https://reddit.com/r/SaaS/top.json?limit=15&t=day",
+   "domain": "reddit.com",
+   "name": "reddit r/SaaS",
+   "type": "api",
+   "categories": [
+    "community"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[SaaS]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "ups>=20；REDDIT_CLIENT_ID 可选"
+   ]
+  },
+  {
+   "source_key": "U063",
+   "normalized_url": "https://reddit.com/r/opensource/top.json?limit=15&t=day",
+   "domain": "reddit.com",
+   "name": "reddit r/opensource",
+   "type": "api",
+   "categories": [
+    "community"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[opensource]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "ups>=20；REDDIT_CLIENT_ID 可选"
+   ]
+  },
+  {
+   "source_key": "U064",
+   "normalized_url": "https://reddit.com/r/devops/top.json?limit=15&t=day",
+   "domain": "reddit.com",
+   "name": "reddit r/devops",
+   "type": "api",
+   "categories": [
+    "community"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[devops]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "ups>=20；REDDIT_CLIENT_ID 可选"
+   ]
+  },
+  {
+   "source_key": "U065",
+   "normalized_url": "https://reddit.com/r/rust/top.json?limit=15&t=day",
+   "domain": "reddit.com",
+   "name": "reddit r/rust",
+   "type": "api",
+   "categories": [
+    "community"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[rust]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "ups>=20；REDDIT_CLIENT_ID 可选"
+   ]
+  },
+  {
+   "source_key": "U066",
+   "normalized_url": "https://reddit.com/r/selfhosted/top.json?limit=15&t=day",
+   "domain": "reddit.com",
+   "name": "reddit r/selfhosted",
+   "type": "api",
+   "categories": [
+    "community"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[selfhosted]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "ups>=20；REDDIT_CLIENT_ID 可选"
+   ]
+  },
+  {
+   "source_key": "U067",
+   "normalized_url": "https://reddit.com/r/indiehackers/top.json?limit=15&t=day",
+   "domain": "reddit.com",
+   "name": "reddit r/indiehackers",
+   "type": "api",
+   "categories": [
+    "community"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[indiehackers]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "ups>=20；REDDIT_CLIENT_ID 可选"
+   ]
+  },
+  {
+   "source_key": "U068",
+   "normalized_url": "https://reddit.com/r/SideProject/top.json?limit=15&t=day",
+   "domain": "reddit.com",
+   "name": "reddit r/SideProject",
+   "type": "api",
+   "categories": [
+    "community"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[SideProject]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": [
+    "ups>=20；REDDIT_CLIENT_ID 可选"
+   ]
+  },
+  {
+   "source_key": "U069",
+   "normalized_url": "https://trends.google.com/trends/explore?q=ai%20agent",
+   "domain": "trends.google.com",
+   "name": "Google Trends: ai agent",
+   "type": "api",
+   "categories": [
+    "trend_keyword"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/pytrends_growth.py#SEED_KEYWORDS[ai agent]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U070",
+   "normalized_url": "https://trends.google.com/trends/explore?q=claude%20code",
+   "domain": "trends.google.com",
+   "name": "Google Trends: claude code",
+   "type": "api",
+   "categories": [
+    "trend_keyword"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/pytrends_growth.py#SEED_KEYWORDS[claude code]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U071",
+   "normalized_url": "https://trends.google.com/trends/explore?q=llm%20local",
+   "domain": "trends.google.com",
+   "name": "Google Trends: llm local",
+   "type": "api",
+   "categories": [
+    "trend_keyword"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/pytrends_growth.py#SEED_KEYWORDS[llm local]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U072",
+   "normalized_url": "https://trends.google.com/trends/explore?q=vibe%20coding",
+   "domain": "trends.google.com",
+   "name": "Google Trends: vibe coding",
+   "type": "api",
+   "categories": [
+    "trend_keyword"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/pytrends_growth.py#SEED_KEYWORDS[vibe coding]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U073",
+   "normalized_url": "https://trends.google.com/trends/explore?q=indie%20hackers",
+   "domain": "trends.google.com",
+   "name": "Google Trends: indie hackers",
+   "type": "api",
+   "categories": [
+    "trend_keyword"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/pytrends_growth.py#SEED_KEYWORDS[indie hackers]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U074",
+   "normalized_url": "https://trends.google.com/trends/explore?q=saas%20boilerplate",
+   "domain": "trends.google.com",
+   "name": "Google Trends: saas boilerplate",
+   "type": "api",
+   "categories": [
+    "trend_keyword"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/pytrends_growth.py#SEED_KEYWORDS[saas boilerplate]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U075",
+   "normalized_url": "https://trends.google.com/trends/explore?q=vector%20database",
+   "domain": "trends.google.com",
+   "name": "Google Trends: vector database",
+   "type": "api",
+   "categories": [
+    "trend_keyword"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/pytrends_growth.py#SEED_KEYWORDS[vector database]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U076",
+   "normalized_url": "https://trends.google.com/trends/explore?q=agent%20memory",
+   "domain": "trends.google.com",
+   "name": "Google Trends: agent memory",
+   "type": "api",
+   "categories": [
+    "trend_keyword"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/pytrends_growth.py#SEED_KEYWORDS[agent memory]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U077",
+   "normalized_url": "https://trends.google.com/trends/explore?q=prompt%20engineering",
+   "domain": "trends.google.com",
+   "name": "Google Trends: prompt engineering",
+   "type": "api",
+   "categories": [
+    "trend_keyword"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/pytrends_growth.py#SEED_KEYWORDS[prompt engineering]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U078",
+   "normalized_url": "https://trends.google.com/trends/explore?q=open%20source%20llm",
+   "domain": "trends.google.com",
+   "name": "Google Trends: open source llm",
+   "type": "api",
+   "categories": [
+    "trend_keyword"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/pytrends_growth.py#SEED_KEYWORDS[open source llm]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U079",
+   "normalized_url": "https://trends.google.com/trends/explore?q=llm%20fine%20tuning",
+   "domain": "trends.google.com",
+   "name": "Google Trends: llm fine tuning",
+   "type": "api",
+   "categories": [
+    "trend_keyword"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/pytrends_growth.py#SEED_KEYWORDS[llm fine tuning]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U080",
+   "normalized_url": "https://trends.google.com/trends/explore?q=cloudflare%20workers",
+   "domain": "trends.google.com",
+   "name": "Google Trends: cloudflare workers",
+   "type": "api",
+   "categories": [
+    "trend_keyword"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/pytrends_growth.py#SEED_KEYWORDS[cloudflare workers]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U081",
+   "normalized_url": "https://trends.google.com/trends/explore?q=vercel%20ai",
+   "domain": "trends.google.com",
+   "name": "Google Trends: vercel ai",
+   "type": "api",
+   "categories": [
+    "trend_keyword"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/pytrends_growth.py#SEED_KEYWORDS[vercel ai]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U082",
+   "normalized_url": "https://trends.google.com/trends/explore?q=hugging%20face",
+   "domain": "trends.google.com",
+   "name": "Google Trends: hugging face",
+   "type": "api",
+   "categories": [
+    "trend_keyword"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/pytrends_growth.py#SEED_KEYWORDS[hugging face]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U083",
+   "normalized_url": "https://trends.google.com/trends/explore?q=ollama",
+   "domain": "trends.google.com",
+   "name": "Google Trends: ollama",
+   "type": "api",
+   "categories": [
+    "trend_keyword"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/pytrends_growth.py#SEED_KEYWORDS[ollama]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U084",
+   "normalized_url": "https://trends.google.com/trends/explore?q=langchain%20alternative",
+   "domain": "trends.google.com",
+   "name": "Google Trends: langchain alternative",
+   "type": "api",
+   "categories": [
+    "trend_keyword"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/pytrends_growth.py#SEED_KEYWORDS[langchain alternative]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U085",
+   "normalized_url": "https://trends.google.com/trends/explore?q=rag",
+   "domain": "trends.google.com",
+   "name": "Google Trends: rag",
+   "type": "api",
+   "categories": [
+    "trend_keyword"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/pytrends_growth.py#SEED_KEYWORDS[rag]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U086",
+   "normalized_url": "https://trends.google.com/trends/explore?q=agentic%20workflow",
+   "domain": "trends.google.com",
+   "name": "Google Trends: agentic workflow",
+   "type": "api",
+   "categories": [
+    "trend_keyword"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/pytrends_growth.py#SEED_KEYWORDS[agentic workflow]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U087",
+   "normalized_url": "https://trends.google.com/trends/explore?q=mcp",
+   "domain": "trends.google.com",
+   "name": "Google Trends: mcp",
+   "type": "api",
+   "categories": [
+    "trend_keyword"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/pytrends_growth.py#SEED_KEYWORDS[mcp]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U088",
+   "normalized_url": "https://trends.google.com/trends/explore?q=a2a%20protocol",
+   "domain": "trends.google.com",
+   "name": "Google Trends: a2a protocol",
+   "type": "api",
+   "categories": [
+    "trend_keyword"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "dailydawn:scripts/fetchers/pytrends_growth.py#SEED_KEYWORDS[a2a protocol]"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U089",
+   "normalized_url": "https://api.follow.is/entries?listId=158437828119024640",
+   "domain": "api.follow.is",
+   "name": "Folo 列表: 新闻聚合 (158437828119024640)",
+   "type": "api",
+   "categories": [
+    "news"
+   ],
+   "languages": [
+    "mixed"
+   ],
+   "found_in": [
+    "CloudFlare-AI-Insight-Daily:wrangler.toml#NEWS_AGGREGATOR_LIST_ID"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": true,
+   "notes": [
+    "需要 FOLO_COOKIE；真实源清单在 Folo 账号内，仓库不可见"
+   ]
+  },
+  {
+   "source_key": "U090",
+   "normalized_url": "https://api.follow.is/entries?listId=158437917409783808",
+   "domain": "api.follow.is",
+   "name": "Folo 列表: HuggingFace Papers (158437917409783808)",
+   "type": "api",
+   "categories": [
+    "paper"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "CloudFlare-AI-Insight-Daily:wrangler.toml#HGPAPERS_LIST_ID"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": true,
+   "notes": [
+    "同上"
+   ]
+  },
+  {
+   "source_key": "U091",
+   "normalized_url": "https://api.follow.is/entries?listId=153028784690326528",
+   "domain": "api.follow.is",
+   "name": "Folo 列表: Twitter (153028784690326528)",
+   "type": "api",
+   "categories": [
+    "social"
+   ],
+   "languages": [
+    "mixed"
+   ],
+   "found_in": [
+    "CloudFlare-AI-Insight-Daily:wrangler.toml#TWITTER_LIST_ID"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": true,
+   "notes": [
+    "同上"
+   ]
+  },
+  {
+   "source_key": "U092",
+   "normalized_url": "https://api.follow.is/entries?listId=167576006499975168",
+   "domain": "api.follow.is",
+   "name": "Folo 列表: Reddit (167576006499975168)",
+   "type": "api",
+   "categories": [
+    "community"
+   ],
+   "languages": [
+    "mixed"
+   ],
+   "found_in": [
+    "CloudFlare-AI-Insight-Daily:wrangler.toml#REDDIT_LIST_ID"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": true,
+   "notes": [
+    "同上"
+   ]
+  },
+  {
+   "source_key": "U093",
+   "normalized_url": "https://git-trending.justlikemaki.vip/topone?since=daily",
+   "domain": "git-trending.justlikemaki.vip",
+   "name": "git-trending.justlikemaki.vip (GitHub Trending 第三方 API)",
+   "type": "api",
+   "categories": [
+    "dev"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "CloudFlare-AI-Insight-Daily:wrangler.toml#PROJECTS_API_URL"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": false,
+   "notes": []
+  },
+  {
+   "source_key": "U094",
+   "normalized_url": "https://aibase.com",
+   "domain": "aibase.com",
+   "name": "AIBase (通过 Folo 列表)",
+   "type": "api",
+   "categories": [
+    "zh-media"
+   ],
+   "languages": [
+    "zh"
+   ],
+   "found_in": [
+    "CloudFlare-AI-Insight-Daily:src/dataSources/aibase.js#列表项"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": false,
+   "needs_cred": true,
+   "notes": [
+    "示例适配器，未注册进 dataFetchers.js"
+   ]
+  },
+  {
+   "source_key": "U095",
+   "normalized_url": "https://jiqizhixin.ai",
+   "domain": "jiqizhixin.ai",
+   "name": "机器之心 (通过 Folo 列表)",
+   "type": "api",
+   "categories": [
+    "zh-media"
+   ],
+   "languages": [
+    "zh"
+   ],
+   "found_in": [
+    "CloudFlare-AI-Insight-Daily:src/dataSources/jiqizhixin.js#列表项"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": false,
+   "needs_cred": true,
+   "notes": [
+    "示例适配器，未注册"
+   ]
+  },
+  {
+   "source_key": "U096",
+   "normalized_url": "https://xinzhiyuan.ai",
+   "domain": "xinzhiyuan.ai",
+   "name": "新智元 (通过 Folo 列表)",
+   "type": "api",
+   "categories": [
+    "zh-media"
+   ],
+   "languages": [
+    "zh"
+   ],
+   "found_in": [
+    "CloudFlare-AI-Insight-Daily:src/dataSources/xinzhiyuan.js#列表项"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": false,
+   "needs_cred": true,
+   "notes": [
+    "示例适配器，未注册"
+   ]
+  },
+  {
+   "source_key": "U097",
+   "normalized_url": "https://xiaohu.ai",
+   "domain": "xiaohu.ai",
+   "name": "小胡 AI (通过 Folo 列表)",
+   "type": "api",
+   "categories": [
+    "zh-media"
+   ],
+   "languages": [
+    "zh"
+   ],
+   "found_in": [
+    "CloudFlare-AI-Insight-Daily:src/dataSources/xiaohu.js#列表项"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": false,
+   "needs_cred": true,
+   "notes": [
+    "示例适配器，未注册"
+   ]
+  },
+  {
+   "source_key": "U098",
+   "normalized_url": "https://qbit.ai",
+   "domain": "qbit.ai",
+   "name": "QbitAI 量子位 (通过 Folo 列表)",
+   "type": "api",
+   "categories": [
+    "zh-media"
+   ],
+   "languages": [
+    "zh"
+   ],
+   "found_in": [
+    "CloudFlare-AI-Insight-Daily:src/dataSources/qbit.js#列表项"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": false,
+   "needs_cred": true,
+   "notes": [
+    "示例适配器，未注册"
+   ]
+  },
+  {
+   "source_key": "U099",
+   "normalized_url": "https://huggingface.co/papers",
+   "domain": "huggingface.co",
+   "name": "HuggingFace Papers (通过 Folo 列表)",
+   "type": "api",
+   "categories": [
+    "paper"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "CloudFlare-AI-Insight-Daily:src/dataSources/huggingface-papers.js#列表项"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": false,
+   "needs_cred": true,
+   "notes": [
+    "示例适配器，未注册"
+   ]
+  },
+  {
+   "source_key": "U100",
+   "normalized_url": "https://api.tavily.com/search",
+   "domain": "api.tavily.com",
+   "name": "Tavily 检索（运行时动态查询，无静态源表）",
+   "type": "api",
+   "categories": [
+    "search"
+   ],
+   "languages": [
+    "en"
+   ],
+   "found_in": [
+    "daily-briefing:agent.py#search_news()"
+   ],
+   "repo_count": 1,
+   "dup_count": 1,
+   "enabled": true,
+   "needs_cred": true,
+   "notes": [
+    "MAX_SEARCHES=6；查询由 LLM 自主决定 + focus.priority_query"
+   ]
+  }
+ ],
+ "raw_records": [
+  {
+   "rid": "S001",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "AI日报 juya",
+   "url": "https://daily.juya.uk/rss.xml",
+   "type": "rss",
+   "category": "zh-media",
+   "lang": "zh",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "profile=tech-news",
+   "normalized_url": "https://daily.juya.uk/rss.xml",
+   "domain": "daily.juya.uk"
+  },
+  {
+   "rid": "S002",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "AIHOT 全站",
+   "url": "https://aihot.news/feed/all.xml",
+   "type": "rss",
+   "category": "zh-media",
+   "lang": "zh",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "profile=tech-news",
+   "normalized_url": "https://aihot.news/feed/all.xml",
+   "domain": "aihot.news"
+  },
+  {
+   "rid": "S003",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "OpenAI News",
+   "url": "https://openai.com/news/rss.xml",
+   "type": "rss",
+   "category": "lab-official",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "profile=tech-news",
+   "normalized_url": "https://openai.com/news/rss.xml",
+   "domain": "openai.com"
+  },
+  {
+   "rid": "S004",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "Google DeepMind",
+   "url": "https://deepmind.google/blog/rss.xml",
+   "type": "rss",
+   "category": "lab-official",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "profile=tech-blog, extractor=trafilatura",
+   "normalized_url": "https://deepmind.google/blog/rss.xml",
+   "domain": "deepmind.google"
+  },
+  {
+   "rid": "S005",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "Hugging Face Blog",
+   "url": "https://huggingface.co/blog/feed.xml",
+   "type": "rss",
+   "category": "lab-blog",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "extractor=trafilatura",
+   "normalized_url": "https://huggingface.co/blog/feed.xml",
+   "domain": "huggingface.co"
+  },
+  {
+   "rid": "S006",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "BAIR Blog",
+   "url": "https://bair.berkeley.edu/blog/feed.xml",
+   "type": "rss",
+   "category": "lab-blog",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "extractor=trafilatura",
+   "normalized_url": "https://bair.berkeley.edu/blog/feed.xml",
+   "domain": "bair.berkeley.edu"
+  },
+  {
+   "rid": "S007",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "Anthropic News",
+   "url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/anthropic-news.xml",
+   "type": "rss",
+   "category": "lab-official",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "profile=tech-news",
+   "normalized_url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/anthropic-news.xml",
+   "domain": "raw.githubusercontent.com"
+  },
+  {
+   "rid": "S008",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "Anthropic Research",
+   "url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/anthropic-research.xml",
+   "type": "rss",
+   "category": "lab-official",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "profile=tech-news",
+   "normalized_url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/anthropic-research.xml",
+   "domain": "raw.githubusercontent.com"
+  },
+  {
+   "rid": "S009",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "Claude News",
+   "url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/claude-news.xml",
+   "type": "rss",
+   "category": "lab-official",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "profile=tech-news",
+   "normalized_url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/claude-news.xml",
+   "domain": "raw.githubusercontent.com"
+  },
+  {
+   "rid": "S010",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "TLDR AI",
+   "url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/tldr-ai.xml",
+   "type": "rss",
+   "category": "digest",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "profile=tech-news",
+   "normalized_url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/tldr-ai.xml",
+   "domain": "raw.githubusercontent.com"
+  },
+  {
+   "rid": "S011",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "Mistral News",
+   "url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/mistral-news.xml",
+   "type": "rss",
+   "category": "lab-official",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "profile=tech-news",
+   "normalized_url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/mistral-news.xml",
+   "domain": "raw.githubusercontent.com"
+  },
+  {
+   "rid": "S012",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "Cohere Blog",
+   "url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/cohere-blog.xml",
+   "type": "rss",
+   "category": "lab-blog",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "profile=tech-blog",
+   "normalized_url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/cohere-blog.xml",
+   "domain": "raw.githubusercontent.com"
+  },
+  {
+   "rid": "S013",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "Ai2 News",
+   "url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/allenai-news.xml",
+   "type": "rss",
+   "category": "lab-official",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "profile=tech-news",
+   "normalized_url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/allenai-news.xml",
+   "domain": "raw.githubusercontent.com"
+  },
+  {
+   "rid": "S014",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "AI RSS Feeds News",
+   "url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/ai-rss-feeds-news.xml",
+   "type": "rss",
+   "category": "digest",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "profile=tech-news",
+   "normalized_url": "https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/ai-rss-feeds-news.xml",
+   "domain": "raw.githubusercontent.com"
+  },
+  {
+   "rid": "S015",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "MIT News AI",
+   "url": "https://news.mit.edu/topic/mitartificial-intelligence2-rss.xml",
+   "type": "rss",
+   "category": "lab-blog",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "profile=tech-blog",
+   "normalized_url": "https://news.mit.edu/topic/mitartificial-intelligence2-rss.xml",
+   "domain": "news.mit.edu"
+  },
+  {
+   "rid": "S016",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "The Rundown AI",
+   "url": "https://rss.beehiiv.com/feeds/2R3C6Bt5wj.xml",
+   "type": "rss",
+   "category": "digest",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "profile=tech-news",
+   "normalized_url": "https://rss.beehiiv.com/feeds/2R3C6Bt5wj.xml",
+   "domain": "rss.beehiiv.com"
+  },
+  {
+   "rid": "S017",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "The Verge AI",
+   "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
+   "type": "rss",
+   "category": "media",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "profile=tech-news",
+   "normalized_url": "https://theverge.com/rss/ai-artificial-intelligence/index.xml",
+   "domain": "theverge.com"
+  },
+  {
+   "rid": "S018",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "HF Daily Papers",
+   "url": "https://raw.githubusercontent.com/huangboming/huggingface-daily-paper-feed/refs/heads/main/feed.xml",
+   "type": "rss",
+   "category": "paper",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "profile=tech-blog",
+   "normalized_url": "https://raw.githubusercontent.com/huangboming/huggingface-daily-paper-feed/refs/heads/main/feed.xml",
+   "domain": "raw.githubusercontent.com"
+  },
+  {
+   "rid": "S019",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "机器之心",
+   "url": "https://wechat2rss.xlab.app/feed/51e92aad2728acdd1fda7314be32b16639353001.xml",
+   "type": "rss",
+   "category": "zh-media",
+   "lang": "zh",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "profile=tech-news",
+   "normalized_url": "https://wechat2rss.xlab.app/feed/51e92aad2728acdd1fda7314be32b16639353001.xml",
+   "domain": "wechat2rss.xlab.app"
+  },
+  {
+   "rid": "S020",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "新智元",
+   "url": "https://wechat2rss.xlab.app/feed/ede30346413ea70dbef5d485ea5cbb95cca446e7.xml",
+   "type": "rss",
+   "category": "zh-media",
+   "lang": "zh",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "profile=tech-news",
+   "normalized_url": "https://wechat2rss.xlab.app/feed/ede30346413ea70dbef5d485ea5cbb95cca446e7.xml",
+   "domain": "wechat2rss.xlab.app"
+  },
+  {
+   "rid": "S021",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "量子位",
+   "url": "https://decemberpei.cyou/rssbox/wechat-liangziwei.xml",
+   "type": "rss",
+   "category": "zh-media",
+   "lang": "zh",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "profile=tech-news",
+   "normalized_url": "https://decemberpei.cyou/rssbox/wechat-liangziwei.xml",
+   "domain": "decemberpei.cyou"
+  },
+  {
+   "rid": "S022",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "PaperWeekly",
+   "url": "https://decemberpei.cyou/rssbox/wechat-paperweekly.xml",
+   "type": "rss",
+   "category": "paper",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "profile=tech-blog",
+   "normalized_url": "https://decemberpei.cyou/rssbox/wechat-paperweekly.xml",
+   "domain": "decemberpei.cyou"
+  },
+  {
+   "rid": "S023",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.rss[]",
+   "name": "AI前线",
+   "url": "https://decemberpei.cyou/rssbox/wechat-aiqianxian.xml",
+   "type": "rss",
+   "category": "zh-media",
+   "lang": "zh",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "profile=tech-news",
+   "normalized_url": "https://decemberpei.cyou/rssbox/wechat-aiqianxian.xml",
+   "domain": "decemberpei.cyou"
+  },
+  {
+   "rid": "S024",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.hackernews",
+   "name": "Hacker News Top Stories (Firebase API)",
+   "url": "https://hacker-news.firebaseio.com/v0/topstories.json",
+   "type": "api",
+   "category": "community",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "min_score=100, fetch_top_stories=12",
+   "normalized_url": "https://hacker-news.firebaseio.com/v0/topstories.json",
+   "domain": "hacker-news.firebaseio.com"
+  },
+  {
+   "rid": "S025",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.reddit.subreddits[0]",
+   "name": "r/MachineLearning",
+   "url": "https://old.reddit.com/r/MachineLearning/hot/",
+   "type": "scrape",
+   "category": "community",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "min_score=80, time_filter=day",
+   "normalized_url": "https://old.reddit.com/r/MachineLearning/hot",
+   "domain": "old.reddit.com"
+  },
+  {
+   "rid": "S026",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.reddit.subreddits[1]",
+   "name": "r/LocalLLaMA",
+   "url": "https://old.reddit.com/r/LocalLLaMA/hot/",
+   "type": "scrape",
+   "category": "community",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "min_score=80",
+   "normalized_url": "https://old.reddit.com/r/LocalLLaMA/hot",
+   "domain": "old.reddit.com"
+  },
+  {
+   "rid": "S027",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.reddit.subreddits[2]",
+   "name": "r/artificial",
+   "url": "https://old.reddit.com/r/artificial/hot/",
+   "type": "scrape",
+   "category": "community",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "min_score=80",
+   "normalized_url": "https://old.reddit.com/r/artificial/hot",
+   "domain": "old.reddit.com"
+  },
+  {
+   "rid": "S028",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.google_news",
+   "name": "Google News 查询: AI OR LLM OR 大模型 when:1d",
+   "url": "https://news.google.com/rss/search?q=AI+OR+LLM+OR+%E5%A4%A7%E6%A8%A1%E5%9E%8B+when:1d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+   "type": "api",
+   "category": "media",
+   "lang": "zh",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "query 可配置, max_results=12",
+   "normalized_url": "https://news.google.com/rss/search?ceid=CN:zh-Hans&gl=CN&hl=zh-CN&q=AI%20OR%20LLM%20OR%20%E5%A4%A7%E6%A8%A1%E5%9E%8B%20when:1d",
+   "domain": "news.google.com"
+  },
+  {
+   "rid": "S029",
+   "repo": "Horizon",
+   "file": "data/config.github.json",
+   "key": "sources.telegram.channels[0]",
+   "name": "Telegram @zaihuapd",
+   "url": "https://t.me/s/zaihuapd",
+   "type": "scrape",
+   "category": "zh-media",
+   "lang": "zh",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "fetch_limit=8",
+   "normalized_url": "https://t.me/s/zaihuapd",
+   "domain": "t.me"
+  },
+  {
+   "rid": "S030",
+   "repo": "Horizon",
+   "file": "data/presets.json",
+   "key": "presets.<profile>.sources.rss",
+   "name": "Simon Willison",
+   "url": "https://simonwillison.net/atom/everything/",
+   "type": "rss",
+   "category": "preset",
+   "lang": "en",
+   "enabled": false,
+   "needs_cred": false,
+   "note": "Horizon 预设：未在 config.github.json 中启用（仅作为可选项存在）",
+   "normalized_url": "https://simonwillison.net/atom/everything",
+   "domain": "simonwillison.net"
+  },
+  {
+   "rid": "S031",
+   "repo": "Horizon",
+   "file": "data/presets.json",
+   "key": "presets.<profile>.sources.rss",
+   "name": "机器之心(wechat2rss 7131b577)",
+   "url": "https://wechat2rss.xlab.app/feed/7131b577c61365cb47e81000738c10d872685908.xml",
+   "type": "rss",
+   "category": "preset",
+   "lang": "en",
+   "enabled": false,
+   "needs_cred": false,
+   "note": "Horizon 预设：未在 config.github.json 中启用（仅作为可选项存在）",
+   "normalized_url": "https://wechat2rss.xlab.app/feed/7131b577c61365cb47e81000738c10d872685908.xml",
+   "domain": "wechat2rss.xlab.app"
+  },
+  {
+   "rid": "S032",
+   "repo": "Horizon",
+   "file": "data/presets.json",
+   "key": "presets.<profile>.sources.rss",
+   "name": "新智元(wechat2rss ede30346)",
+   "url": "https://wechat2rss.xlab.app/feed/ede30346413ea70dbef5d485ea5cbb95cca446e7.xml",
+   "type": "rss",
+   "category": "preset",
+   "lang": "en",
+   "enabled": false,
+   "needs_cred": false,
+   "note": "Horizon 预设：未在 config.github.json 中启用（仅作为可选项存在）",
+   "normalized_url": "https://wechat2rss.xlab.app/feed/ede30346413ea70dbef5d485ea5cbb95cca446e7.xml",
+   "domain": "wechat2rss.xlab.app"
+  },
+  {
+   "rid": "S033",
+   "repo": "Horizon",
+   "file": "data/presets.json",
+   "key": "presets.<profile>.sources.rss",
+   "name": "LWN.net headlines",
+   "url": "https://lwn.net/headlines/rss",
+   "type": "rss",
+   "category": "preset",
+   "lang": "en",
+   "enabled": false,
+   "needs_cred": false,
+   "note": "Horizon 预设：未在 config.github.json 中启用（仅作为可选项存在）",
+   "normalized_url": "https://lwn.net/headlines/rss",
+   "domain": "lwn.net"
+  },
+  {
+   "rid": "S034",
+   "repo": "Horizon",
+   "file": "data/presets.json",
+   "key": "presets.<profile>.sources.rss",
+   "name": "Brendan Gregg",
+   "url": "https://www.brendangregg.com/blog/rss.xml",
+   "type": "rss",
+   "category": "preset",
+   "lang": "en",
+   "enabled": false,
+   "needs_cred": false,
+   "note": "Horizon 预设：未在 config.github.json 中启用（仅作为可选项存在）",
+   "normalized_url": "https://brendangregg.com/blog/rss.xml",
+   "domain": "brendangregg.com"
+  },
+  {
+   "rid": "S035",
+   "repo": "Horizon",
+   "file": "data/presets.json",
+   "key": "presets.<profile>.sources.rss",
+   "name": "Krebs on Security",
+   "url": "https://krebsonsecurity.com/feed/",
+   "type": "rss",
+   "category": "preset",
+   "lang": "en",
+   "enabled": false,
+   "needs_cred": false,
+   "note": "Horizon 预设：未在 config.github.json 中启用（仅作为可选项存在）",
+   "normalized_url": "https://krebsonsecurity.com/feed",
+   "domain": "krebsonsecurity.com"
+  },
+  {
+   "rid": "S036",
+   "repo": "Horizon",
+   "file": "data/presets.json",
+   "key": "presets.<profile>.sources.rss",
+   "name": "Schneier on Security",
+   "url": "https://www.schneier.com/feed/atom/",
+   "type": "rss",
+   "category": "preset",
+   "lang": "en",
+   "enabled": false,
+   "needs_cred": false,
+   "note": "Horizon 预设：未在 config.github.json 中启用（仅作为可选项存在）",
+   "normalized_url": "https://schneier.com/feed/atom",
+   "domain": "schneier.com"
+  },
+  {
+   "rid": "S037",
+   "repo": "Horizon",
+   "file": "data/presets.json",
+   "key": "presets.<profile>.sources.rss",
+   "name": "CSS-Tricks",
+   "url": "https://css-tricks.com/feed/",
+   "type": "rss",
+   "category": "preset",
+   "lang": "en",
+   "enabled": false,
+   "needs_cred": false,
+   "note": "Horizon 预设：未在 config.github.json 中启用（仅作为可选项存在）",
+   "normalized_url": "https://css-tricks.com/feed",
+   "domain": "css-tricks.com"
+  },
+  {
+   "rid": "S038",
+   "repo": "Horizon",
+   "file": "data/presets.json",
+   "key": "presets.<profile>.sources.rss",
+   "name": "Hackaday",
+   "url": "https://hackaday.com/feed/",
+   "type": "rss",
+   "category": "preset",
+   "lang": "en",
+   "enabled": false,
+   "needs_cred": false,
+   "note": "Horizon 预设：未在 config.github.json 中启用（仅作为可选项存在）",
+   "normalized_url": "https://hackaday.com/feed",
+   "domain": "hackaday.com"
+  },
+  {
+   "rid": "S039",
+   "repo": "Horizon",
+   "file": "data/presets.json",
+   "key": "presets.<profile>.sources.rss",
+   "name": "GitHub Trending RSS (mshibanami)",
+   "url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml",
+   "type": "rss",
+   "category": "preset",
+   "lang": "en",
+   "enabled": false,
+   "needs_cred": false,
+   "note": "Horizon 预设：未在 config.github.json 中启用（仅作为可选项存在）",
+   "normalized_url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml",
+   "domain": "mshibanami.github.io"
+  },
+  {
+   "rid": "S040",
+   "repo": "Horizon",
+   "file": "data/presets.json",
+   "key": "presets.<profile>.sources.rss",
+   "name": "Nature",
+   "url": "https://www.nature.com/nature.rss",
+   "type": "rss",
+   "category": "preset",
+   "lang": "en",
+   "enabled": false,
+   "needs_cred": false,
+   "note": "Horizon 预设：未在 config.github.json 中启用（仅作为可选项存在）",
+   "normalized_url": "https://nature.com/nature.rss",
+   "domain": "nature.com"
+  },
+  {
+   "rid": "S041",
+   "repo": "Horizon",
+   "file": "data/presets.json",
+   "key": "presets.<profile>.sources.rss",
+   "name": "Quanta Magazine",
+   "url": "https://api.quantamagazine.org/feed/",
+   "type": "rss",
+   "category": "preset",
+   "lang": "en",
+   "enabled": false,
+   "needs_cred": false,
+   "note": "Horizon 预设：未在 config.github.json 中启用（仅作为可选项存在）",
+   "normalized_url": "https://api.quantamagazine.org/feed",
+   "domain": "api.quantamagazine.org"
+  },
+  {
+   "rid": "S042",
+   "repo": "Horizon",
+   "file": "data/config.example.json",
+   "key": "sources.rss[]",
+   "name": "Simon Willison (example)",
+   "url": "https://simonwillison.net/atom/everything/",
+   "type": "rss",
+   "category": "example",
+   "lang": "en",
+   "enabled": false,
+   "needs_cred": false,
+   "note": "仅示例配置",
+   "normalized_url": "https://simonwillison.net/atom/everything",
+   "domain": "simonwillison.net"
+  },
+  {
+   "rid": "S043",
+   "repo": "Horizon",
+   "file": "data/config.example.json",
+   "key": "sources.rss[]",
+   "name": "vLLM Blog",
+   "url": "https://vllm.ai/blog/rss.xml",
+   "type": "rss",
+   "category": "example",
+   "lang": "en",
+   "enabled": false,
+   "needs_cred": false,
+   "note": "仅示例配置",
+   "normalized_url": "https://vllm.ai/blog/rss.xml",
+   "domain": "vllm.ai"
+  },
+  {
+   "rid": "S044",
+   "repo": "Horizon",
+   "file": "data/config.example.json",
+   "key": "sources.rss[]",
+   "name": "Sean Goedecke",
+   "url": "https://www.seangoedecke.com/rss.xml",
+   "type": "rss",
+   "category": "example",
+   "lang": "en",
+   "enabled": false,
+   "needs_cred": false,
+   "note": "仅示例配置",
+   "normalized_url": "https://seangoedecke.com/rss.xml",
+   "domain": "seangoedecke.com"
+  },
+  {
+   "rid": "S045",
+   "repo": "Horizon",
+   "file": "data/config.example.json",
+   "key": "sources.rss[]",
+   "name": "CNBC combined search",
+   "url": "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=10000664",
+   "type": "rss",
+   "category": "example",
+   "lang": "en",
+   "enabled": false,
+   "needs_cred": false,
+   "note": "仅示例配置",
+   "normalized_url": "https://search.cnbc.com/rs/search/combinedcms/view.xml?id=10000664&partnerId=wrss01",
+   "domain": "search.cnbc.com"
+  },
+  {
+   "rid": "S046",
+   "repo": "Horizon",
+   "file": "data/config.example.json",
+   "key": "sources.rss[]",
+   "name": "NVIDIA Developer CUDA blog",
+   "url": "https://developer.nvidia.com/blog/tag/cuda/feed/",
+   "type": "rss",
+   "category": "example",
+   "lang": "en",
+   "enabled": false,
+   "needs_cred": false,
+   "note": "仅示例配置",
+   "normalized_url": "https://developer.nvidia.com/blog/tag/cuda/feed",
+   "domain": "developer.nvidia.com"
+  },
+  {
+   "rid": "S047",
+   "repo": "Horizon",
+   "file": "data/config.example.json",
+   "key": "sources.rss[]",
+   "name": "LWN full text",
+   "url": "https://lwn.net/headlines/full_text?key=${LWN_KEY}",
+   "type": "rss",
+   "category": "example",
+   "lang": "en",
+   "enabled": false,
+   "needs_cred": true,
+   "note": "仅示例配置",
+   "normalized_url": "https://lwn.net/headlines/full_text?key=${LWN_KEY}",
+   "domain": "lwn.net"
+  },
+  {
+   "rid": "S048",
+   "repo": "daybrief",
+   "file": "config.yaml",
+   "key": "sources.rss[]",
+   "name": "橘鸦AI早报",
+   "url": "https://daily.juya.uk/rss.xml",
+   "type": "rss",
+   "category": "mixed",
+   "lang": "zh",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://daily.juya.uk/rss.xml",
+   "domain": "daily.juya.uk"
+  },
+  {
+   "rid": "S049",
+   "repo": "daybrief",
+   "file": "config.yaml",
+   "key": "sources.rss[]",
+   "name": "AI Daily (ainewslog)",
+   "url": "https://www.ainewslog.com/rss.xml",
+   "type": "rss",
+   "category": "mixed",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://ainewslog.com/rss.xml",
+   "domain": "ainewslog.com"
+  },
+  {
+   "rid": "S050",
+   "repo": "daybrief",
+   "file": "config.yaml",
+   "key": "sources.rss[]",
+   "name": "DailyDawn 中文",
+   "url": "https://dailydawn.dev/zh.json",
+   "type": "jsonfeed",
+   "category": "mixed",
+   "lang": "zh",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://dailydawn.dev/zh.json",
+   "domain": "dailydawn.dev"
+  },
+  {
+   "rid": "S051",
+   "repo": "daybrief",
+   "file": "config.yaml",
+   "key": "sources.rss[]",
+   "name": "Simon Willison",
+   "url": "https://simonwillison.net/atom/everything/",
+   "type": "rss",
+   "category": "mixed",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://simonwillison.net/atom/everything",
+   "domain": "simonwillison.net"
+  },
+  {
+   "rid": "S052",
+   "repo": "daybrief",
+   "file": "config.yaml",
+   "key": "sources.rss[]",
+   "name": "Hacker News Front Page",
+   "url": "https://hnrss.org/frontpage",
+   "type": "rss",
+   "category": "mixed",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://hnrss.org/frontpage",
+   "domain": "hnrss.org"
+  },
+  {
+   "rid": "S053",
+   "repo": "ai-daily-sources",
+   "file": "scripts/collect.py",
+   "key": "SOURCES[0]",
+   "name": "Juya AI 早报",
+   "url": "https://daily.juya.uk/rss.xml",
+   "type": "rss",
+   "category": "zh-media",
+   "lang": "zh",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "max_items=3,window=48h",
+   "normalized_url": "https://daily.juya.uk/rss.xml",
+   "domain": "daily.juya.uk"
+  },
+  {
+   "rid": "S054",
+   "repo": "ai-daily-sources",
+   "file": "scripts/collect.py",
+   "key": "SOURCES[1]",
+   "name": "AI News Log",
+   "url": "https://www.ainewslog.com/rss.xml",
+   "type": "rss",
+   "category": "zh-media",
+   "lang": "zh",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "title_include=CJK, fulltext=True",
+   "normalized_url": "https://ainewslog.com/rss.xml",
+   "domain": "ainewslog.com"
+  },
+  {
+   "rid": "S055",
+   "repo": "ai-daily-sources",
+   "file": "scripts/collect.py",
+   "key": "SOURCES[2]",
+   "name": "何夕2077 AI 深度信号",
+   "url": "https://hex2077.dev/rss-zh-CN.xml",
+   "type": "rss",
+   "category": "zh-media",
+   "lang": "zh",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "window=216h（周更）",
+   "normalized_url": "https://hex2077.dev/rss-zh-CN.xml",
+   "domain": "hex2077.dev"
+  },
+  {
+   "rid": "S056",
+   "repo": "ai-daily-sources",
+   "file": "scripts/collect.py",
+   "key": "SOURCES[3]",
+   "name": "DailyDawn",
+   "url": "https://dailydawn.dev/zh.json",
+   "type": "jsonfeed",
+   "category": "zh-media",
+   "lang": "zh",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "og_image 模板",
+   "normalized_url": "https://dailydawn.dev/zh.json",
+   "domain": "dailydawn.dev"
+  },
+  {
+   "rid": "S057",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/hackernews.py",
+   "key": "HackerNewsFetcher",
+   "name": "HackerNews (Algolia)",
+   "url": "https://hn.algolia.com/api/v1/search",
+   "type": "api",
+   "category": "community",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "points>20, 48h 窗口, 60 条",
+   "normalized_url": "https://hn.algolia.com/api/v1/search",
+   "domain": "hn.algolia.com"
+  },
+  {
+   "rid": "S058",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/github_trending.py",
+   "key": "GitHubTrendingFetcher",
+   "name": "GitHub Trending",
+   "url": "https://github.com/trending?since=daily",
+   "type": "scrape",
+   "category": "dev",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "top 25",
+   "normalized_url": "https://github.com/trending?since=daily",
+   "domain": "github.com"
+  },
+  {
+   "rid": "S059",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/product_hunt.py",
+   "key": "ProductHuntFetcher",
+   "name": "Product Hunt GraphQL",
+   "url": "https://api.producthunt.com/v2/api/graphql",
+   "type": "api",
+   "category": "product",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": true,
+   "note": "需要 PRODUCT_HUNT_TOKEN，无则跳过",
+   "normalized_url": "https://api.producthunt.com/v2/api/graphql",
+   "domain": "api.producthunt.com"
+  },
+  {
+   "rid": "S060",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/huggingface.py",
+   "key": "/api/models",
+   "name": "HuggingFace Models",
+   "url": "https://huggingface.co/api/models?sort=likes7d&direction=-1&limit=20",
+   "type": "api",
+   "category": "model",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://huggingface.co/api/models?direction=-1&limit=20&sort=likes7d",
+   "domain": "huggingface.co"
+  },
+  {
+   "rid": "S061",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/huggingface.py",
+   "key": "/api/datasets",
+   "name": "HuggingFace Datasets",
+   "url": "https://huggingface.co/api/datasets?sort=likes7d&direction=-1&limit=10",
+   "type": "api",
+   "category": "dataset",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://huggingface.co/api/datasets?direction=-1&limit=10&sort=likes7d",
+   "domain": "huggingface.co"
+  },
+  {
+   "rid": "S062",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/v2ex.py",
+   "key": "V2EXFetcher",
+   "name": "V2EX 热门主题",
+   "url": "https://www.v2ex.com/api/topics/hot.json",
+   "type": "api",
+   "category": "community",
+   "lang": "zh",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "top 20",
+   "normalized_url": "https://v2ex.com/api/topics/hot.json",
+   "domain": "v2ex.com"
+  },
+  {
+   "rid": "S063",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/pytrends_growth.py",
+   "key": "PyTrendsGrowthFetcher",
+   "name": "Google Trends (20 个种子关键词)",
+   "url": "https://trends.google.com/trends/explore",
+   "type": "api",
+   "category": "trend",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "pytrends, 7 日涨幅 >20% 才入库",
+   "normalized_url": "https://trends.google.com/trends/explore",
+   "domain": "trends.google.com"
+  },
+  {
+   "rid": "S064",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/reddit.py",
+   "key": "SUBREDDITS[programming]",
+   "name": "reddit r/programming",
+   "url": "https://www.reddit.com/r/programming/top.json?t=day&limit=15",
+   "type": "api",
+   "category": "community",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "ups>=20；REDDIT_CLIENT_ID 可选",
+   "normalized_url": "https://reddit.com/r/programming/top.json?limit=15&t=day",
+   "domain": "reddit.com"
+  },
+  {
+   "rid": "S065",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/reddit.py",
+   "key": "SUBREDDITS[startups]",
+   "name": "reddit r/startups",
+   "url": "https://www.reddit.com/r/startups/top.json?t=day&limit=15",
+   "type": "api",
+   "category": "community",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "ups>=20；REDDIT_CLIENT_ID 可选",
+   "normalized_url": "https://reddit.com/r/startups/top.json?limit=15&t=day",
+   "domain": "reddit.com"
+  },
+  {
+   "rid": "S066",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/reddit.py",
+   "key": "SUBREDDITS[LocalLLaMA]",
+   "name": "reddit r/LocalLLaMA",
+   "url": "https://www.reddit.com/r/LocalLLaMA/top.json?t=day&limit=15",
+   "type": "api",
+   "category": "community",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "ups>=20；REDDIT_CLIENT_ID 可选",
+   "normalized_url": "https://reddit.com/r/LocalLLaMA/top.json?limit=15&t=day",
+   "domain": "reddit.com"
+  },
+  {
+   "rid": "S067",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/reddit.py",
+   "key": "SUBREDDITS[MachineLearning]",
+   "name": "reddit r/MachineLearning",
+   "url": "https://www.reddit.com/r/MachineLearning/top.json?t=day&limit=15",
+   "type": "api",
+   "category": "community",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "ups>=20；REDDIT_CLIENT_ID 可选",
+   "normalized_url": "https://reddit.com/r/MachineLearning/top.json?limit=15&t=day",
+   "domain": "reddit.com"
+  },
+  {
+   "rid": "S068",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/reddit.py",
+   "key": "SUBREDDITS[webdev]",
+   "name": "reddit r/webdev",
+   "url": "https://www.reddit.com/r/webdev/top.json?t=day&limit=15",
+   "type": "api",
+   "category": "community",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "ups>=20；REDDIT_CLIENT_ID 可选",
+   "normalized_url": "https://reddit.com/r/webdev/top.json?limit=15&t=day",
+   "domain": "reddit.com"
+  },
+  {
+   "rid": "S069",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/reddit.py",
+   "key": "SUBREDDITS[SaaS]",
+   "name": "reddit r/SaaS",
+   "url": "https://www.reddit.com/r/SaaS/top.json?t=day&limit=15",
+   "type": "api",
+   "category": "community",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "ups>=20；REDDIT_CLIENT_ID 可选",
+   "normalized_url": "https://reddit.com/r/SaaS/top.json?limit=15&t=day",
+   "domain": "reddit.com"
+  },
+  {
+   "rid": "S070",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/reddit.py",
+   "key": "SUBREDDITS[opensource]",
+   "name": "reddit r/opensource",
+   "url": "https://www.reddit.com/r/opensource/top.json?t=day&limit=15",
+   "type": "api",
+   "category": "community",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "ups>=20；REDDIT_CLIENT_ID 可选",
+   "normalized_url": "https://reddit.com/r/opensource/top.json?limit=15&t=day",
+   "domain": "reddit.com"
+  },
+  {
+   "rid": "S071",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/reddit.py",
+   "key": "SUBREDDITS[devops]",
+   "name": "reddit r/devops",
+   "url": "https://www.reddit.com/r/devops/top.json?t=day&limit=15",
+   "type": "api",
+   "category": "community",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "ups>=20；REDDIT_CLIENT_ID 可选",
+   "normalized_url": "https://reddit.com/r/devops/top.json?limit=15&t=day",
+   "domain": "reddit.com"
+  },
+  {
+   "rid": "S072",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/reddit.py",
+   "key": "SUBREDDITS[rust]",
+   "name": "reddit r/rust",
+   "url": "https://www.reddit.com/r/rust/top.json?t=day&limit=15",
+   "type": "api",
+   "category": "community",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "ups>=20；REDDIT_CLIENT_ID 可选",
+   "normalized_url": "https://reddit.com/r/rust/top.json?limit=15&t=day",
+   "domain": "reddit.com"
+  },
+  {
+   "rid": "S073",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/reddit.py",
+   "key": "SUBREDDITS[selfhosted]",
+   "name": "reddit r/selfhosted",
+   "url": "https://www.reddit.com/r/selfhosted/top.json?t=day&limit=15",
+   "type": "api",
+   "category": "community",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "ups>=20；REDDIT_CLIENT_ID 可选",
+   "normalized_url": "https://reddit.com/r/selfhosted/top.json?limit=15&t=day",
+   "domain": "reddit.com"
+  },
+  {
+   "rid": "S074",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/reddit.py",
+   "key": "SUBREDDITS[indiehackers]",
+   "name": "reddit r/indiehackers",
+   "url": "https://www.reddit.com/r/indiehackers/top.json?t=day&limit=15",
+   "type": "api",
+   "category": "community",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "ups>=20；REDDIT_CLIENT_ID 可选",
+   "normalized_url": "https://reddit.com/r/indiehackers/top.json?limit=15&t=day",
+   "domain": "reddit.com"
+  },
+  {
+   "rid": "S075",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/reddit.py",
+   "key": "SUBREDDITS[SideProject]",
+   "name": "reddit r/SideProject",
+   "url": "https://www.reddit.com/r/SideProject/top.json?t=day&limit=15",
+   "type": "api",
+   "category": "community",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "note": "ups>=20；REDDIT_CLIENT_ID 可选",
+   "normalized_url": "https://reddit.com/r/SideProject/top.json?limit=15&t=day",
+   "domain": "reddit.com"
+  },
+  {
+   "rid": "S076",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/pytrends_growth.py",
+   "key": "SEED_KEYWORDS[ai agent]",
+   "name": "Google Trends: ai agent",
+   "url": "https://trends.google.com/trends/explore?q=ai+agent",
+   "type": "api",
+   "category": "trend_keyword",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://trends.google.com/trends/explore?q=ai%20agent",
+   "domain": "trends.google.com"
+  },
+  {
+   "rid": "S077",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/pytrends_growth.py",
+   "key": "SEED_KEYWORDS[claude code]",
+   "name": "Google Trends: claude code",
+   "url": "https://trends.google.com/trends/explore?q=claude+code",
+   "type": "api",
+   "category": "trend_keyword",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://trends.google.com/trends/explore?q=claude%20code",
+   "domain": "trends.google.com"
+  },
+  {
+   "rid": "S078",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/pytrends_growth.py",
+   "key": "SEED_KEYWORDS[llm local]",
+   "name": "Google Trends: llm local",
+   "url": "https://trends.google.com/trends/explore?q=llm+local",
+   "type": "api",
+   "category": "trend_keyword",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://trends.google.com/trends/explore?q=llm%20local",
+   "domain": "trends.google.com"
+  },
+  {
+   "rid": "S079",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/pytrends_growth.py",
+   "key": "SEED_KEYWORDS[vibe coding]",
+   "name": "Google Trends: vibe coding",
+   "url": "https://trends.google.com/trends/explore?q=vibe+coding",
+   "type": "api",
+   "category": "trend_keyword",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://trends.google.com/trends/explore?q=vibe%20coding",
+   "domain": "trends.google.com"
+  },
+  {
+   "rid": "S080",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/pytrends_growth.py",
+   "key": "SEED_KEYWORDS[indie hackers]",
+   "name": "Google Trends: indie hackers",
+   "url": "https://trends.google.com/trends/explore?q=indie+hackers",
+   "type": "api",
+   "category": "trend_keyword",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://trends.google.com/trends/explore?q=indie%20hackers",
+   "domain": "trends.google.com"
+  },
+  {
+   "rid": "S081",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/pytrends_growth.py",
+   "key": "SEED_KEYWORDS[saas boilerplate]",
+   "name": "Google Trends: saas boilerplate",
+   "url": "https://trends.google.com/trends/explore?q=saas+boilerplate",
+   "type": "api",
+   "category": "trend_keyword",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://trends.google.com/trends/explore?q=saas%20boilerplate",
+   "domain": "trends.google.com"
+  },
+  {
+   "rid": "S082",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/pytrends_growth.py",
+   "key": "SEED_KEYWORDS[vector database]",
+   "name": "Google Trends: vector database",
+   "url": "https://trends.google.com/trends/explore?q=vector+database",
+   "type": "api",
+   "category": "trend_keyword",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://trends.google.com/trends/explore?q=vector%20database",
+   "domain": "trends.google.com"
+  },
+  {
+   "rid": "S083",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/pytrends_growth.py",
+   "key": "SEED_KEYWORDS[agent memory]",
+   "name": "Google Trends: agent memory",
+   "url": "https://trends.google.com/trends/explore?q=agent+memory",
+   "type": "api",
+   "category": "trend_keyword",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://trends.google.com/trends/explore?q=agent%20memory",
+   "domain": "trends.google.com"
+  },
+  {
+   "rid": "S084",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/pytrends_growth.py",
+   "key": "SEED_KEYWORDS[prompt engineering]",
+   "name": "Google Trends: prompt engineering",
+   "url": "https://trends.google.com/trends/explore?q=prompt+engineering",
+   "type": "api",
+   "category": "trend_keyword",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://trends.google.com/trends/explore?q=prompt%20engineering",
+   "domain": "trends.google.com"
+  },
+  {
+   "rid": "S085",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/pytrends_growth.py",
+   "key": "SEED_KEYWORDS[open source llm]",
+   "name": "Google Trends: open source llm",
+   "url": "https://trends.google.com/trends/explore?q=open+source+llm",
+   "type": "api",
+   "category": "trend_keyword",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://trends.google.com/trends/explore?q=open%20source%20llm",
+   "domain": "trends.google.com"
+  },
+  {
+   "rid": "S086",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/pytrends_growth.py",
+   "key": "SEED_KEYWORDS[llm fine tuning]",
+   "name": "Google Trends: llm fine tuning",
+   "url": "https://trends.google.com/trends/explore?q=llm+fine+tuning",
+   "type": "api",
+   "category": "trend_keyword",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://trends.google.com/trends/explore?q=llm%20fine%20tuning",
+   "domain": "trends.google.com"
+  },
+  {
+   "rid": "S087",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/pytrends_growth.py",
+   "key": "SEED_KEYWORDS[cloudflare workers]",
+   "name": "Google Trends: cloudflare workers",
+   "url": "https://trends.google.com/trends/explore?q=cloudflare+workers",
+   "type": "api",
+   "category": "trend_keyword",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://trends.google.com/trends/explore?q=cloudflare%20workers",
+   "domain": "trends.google.com"
+  },
+  {
+   "rid": "S088",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/pytrends_growth.py",
+   "key": "SEED_KEYWORDS[vercel ai]",
+   "name": "Google Trends: vercel ai",
+   "url": "https://trends.google.com/trends/explore?q=vercel+ai",
+   "type": "api",
+   "category": "trend_keyword",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://trends.google.com/trends/explore?q=vercel%20ai",
+   "domain": "trends.google.com"
+  },
+  {
+   "rid": "S089",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/pytrends_growth.py",
+   "key": "SEED_KEYWORDS[hugging face]",
+   "name": "Google Trends: hugging face",
+   "url": "https://trends.google.com/trends/explore?q=hugging+face",
+   "type": "api",
+   "category": "trend_keyword",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://trends.google.com/trends/explore?q=hugging%20face",
+   "domain": "trends.google.com"
+  },
+  {
+   "rid": "S090",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/pytrends_growth.py",
+   "key": "SEED_KEYWORDS[ollama]",
+   "name": "Google Trends: ollama",
+   "url": "https://trends.google.com/trends/explore?q=ollama",
+   "type": "api",
+   "category": "trend_keyword",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://trends.google.com/trends/explore?q=ollama",
+   "domain": "trends.google.com"
+  },
+  {
+   "rid": "S091",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/pytrends_growth.py",
+   "key": "SEED_KEYWORDS[langchain alternative]",
+   "name": "Google Trends: langchain alternative",
+   "url": "https://trends.google.com/trends/explore?q=langchain+alternative",
+   "type": "api",
+   "category": "trend_keyword",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://trends.google.com/trends/explore?q=langchain%20alternative",
+   "domain": "trends.google.com"
+  },
+  {
+   "rid": "S092",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/pytrends_growth.py",
+   "key": "SEED_KEYWORDS[rag]",
+   "name": "Google Trends: rag",
+   "url": "https://trends.google.com/trends/explore?q=rag",
+   "type": "api",
+   "category": "trend_keyword",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://trends.google.com/trends/explore?q=rag",
+   "domain": "trends.google.com"
+  },
+  {
+   "rid": "S093",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/pytrends_growth.py",
+   "key": "SEED_KEYWORDS[agentic workflow]",
+   "name": "Google Trends: agentic workflow",
+   "url": "https://trends.google.com/trends/explore?q=agentic+workflow",
+   "type": "api",
+   "category": "trend_keyword",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://trends.google.com/trends/explore?q=agentic%20workflow",
+   "domain": "trends.google.com"
+  },
+  {
+   "rid": "S094",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/pytrends_growth.py",
+   "key": "SEED_KEYWORDS[mcp]",
+   "name": "Google Trends: mcp",
+   "url": "https://trends.google.com/trends/explore?q=mcp",
+   "type": "api",
+   "category": "trend_keyword",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://trends.google.com/trends/explore?q=mcp",
+   "domain": "trends.google.com"
+  },
+  {
+   "rid": "S095",
+   "repo": "dailydawn",
+   "file": "scripts/fetchers/pytrends_growth.py",
+   "key": "SEED_KEYWORDS[a2a protocol]",
+   "name": "Google Trends: a2a protocol",
+   "url": "https://trends.google.com/trends/explore?q=a2a+protocol",
+   "type": "api",
+   "category": "trend_keyword",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://trends.google.com/trends/explore?q=a2a%20protocol",
+   "domain": "trends.google.com"
+  },
+  {
+   "rid": "S096",
+   "repo": "CloudFlare-AI-Insight-Daily",
+   "file": "wrangler.toml",
+   "key": "NEWS_AGGREGATOR_LIST_ID",
+   "name": "Folo 列表: 新闻聚合 (158437828119024640)",
+   "url": "https://api.follow.is/entries?listId=158437828119024640",
+   "type": "api",
+   "category": "news",
+   "lang": "mixed",
+   "enabled": true,
+   "needs_cred": true,
+   "note": "需要 FOLO_COOKIE；真实源清单在 Folo 账号内，仓库不可见",
+   "normalized_url": "https://api.follow.is/entries?listId=158437828119024640",
+   "domain": "api.follow.is"
+  },
+  {
+   "rid": "S097",
+   "repo": "CloudFlare-AI-Insight-Daily",
+   "file": "wrangler.toml",
+   "key": "HGPAPERS_LIST_ID",
+   "name": "Folo 列表: HuggingFace Papers (158437917409783808)",
+   "url": "https://api.follow.is/entries?listId=158437917409783808",
+   "type": "api",
+   "category": "paper",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": true,
+   "note": "同上",
+   "normalized_url": "https://api.follow.is/entries?listId=158437917409783808",
+   "domain": "api.follow.is"
+  },
+  {
+   "rid": "S098",
+   "repo": "CloudFlare-AI-Insight-Daily",
+   "file": "wrangler.toml",
+   "key": "TWITTER_LIST_ID",
+   "name": "Folo 列表: Twitter (153028784690326528)",
+   "url": "https://api.follow.is/entries?listId=153028784690326528",
+   "type": "api",
+   "category": "social",
+   "lang": "mixed",
+   "enabled": true,
+   "needs_cred": true,
+   "note": "同上",
+   "normalized_url": "https://api.follow.is/entries?listId=153028784690326528",
+   "domain": "api.follow.is"
+  },
+  {
+   "rid": "S099",
+   "repo": "CloudFlare-AI-Insight-Daily",
+   "file": "wrangler.toml",
+   "key": "REDDIT_LIST_ID",
+   "name": "Folo 列表: Reddit (167576006499975168)",
+   "url": "https://api.follow.is/entries?listId=167576006499975168",
+   "type": "api",
+   "category": "community",
+   "lang": "mixed",
+   "enabled": true,
+   "needs_cred": true,
+   "note": "同上",
+   "normalized_url": "https://api.follow.is/entries?listId=167576006499975168",
+   "domain": "api.follow.is"
+  },
+  {
+   "rid": "S100",
+   "repo": "CloudFlare-AI-Insight-Daily",
+   "file": "wrangler.toml",
+   "key": "PROJECTS_API_URL",
+   "name": "git-trending.justlikemaki.vip (GitHub Trending 第三方 API)",
+   "url": "https://git-trending.justlikemaki.vip/topone/?since=daily",
+   "type": "api",
+   "category": "dev",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": false,
+   "normalized_url": "https://git-trending.justlikemaki.vip/topone?since=daily",
+   "domain": "git-trending.justlikemaki.vip"
+  },
+  {
+   "rid": "S101",
+   "repo": "CloudFlare-AI-Insight-Daily",
+   "file": "src/dataSources/aibase.js",
+   "key": "列表项",
+   "name": "AIBase (通过 Folo 列表)",
+   "url": "https://www.aibase.com/",
+   "type": "api",
+   "category": "zh-media",
+   "lang": "zh",
+   "enabled": false,
+   "needs_cred": true,
+   "note": "示例适配器，未注册进 dataFetchers.js",
+   "normalized_url": "https://aibase.com",
+   "domain": "aibase.com"
+  },
+  {
+   "rid": "S102",
+   "repo": "CloudFlare-AI-Insight-Daily",
+   "file": "src/dataSources/jiqizhixin.js",
+   "key": "列表项",
+   "name": "机器之心 (通过 Folo 列表)",
+   "url": "https://www.jiqizhixin.ai",
+   "type": "api",
+   "category": "zh-media",
+   "lang": "zh",
+   "enabled": false,
+   "needs_cred": true,
+   "note": "示例适配器，未注册",
+   "normalized_url": "https://jiqizhixin.ai",
+   "domain": "jiqizhixin.ai"
+  },
+  {
+   "rid": "S103",
+   "repo": "CloudFlare-AI-Insight-Daily",
+   "file": "src/dataSources/xinzhiyuan.js",
+   "key": "列表项",
+   "name": "新智元 (通过 Folo 列表)",
+   "url": "https://www.xinzhiyuan.ai",
+   "type": "api",
+   "category": "zh-media",
+   "lang": "zh",
+   "enabled": false,
+   "needs_cred": true,
+   "note": "示例适配器，未注册",
+   "normalized_url": "https://xinzhiyuan.ai",
+   "domain": "xinzhiyuan.ai"
+  },
+  {
+   "rid": "S104",
+   "repo": "CloudFlare-AI-Insight-Daily",
+   "file": "src/dataSources/xiaohu.js",
+   "key": "列表项",
+   "name": "小胡 AI (通过 Folo 列表)",
+   "url": "https://www.xiaohu.ai",
+   "type": "api",
+   "category": "zh-media",
+   "lang": "zh",
+   "enabled": false,
+   "needs_cred": true,
+   "note": "示例适配器，未注册",
+   "normalized_url": "https://xiaohu.ai",
+   "domain": "xiaohu.ai"
+  },
+  {
+   "rid": "S105",
+   "repo": "CloudFlare-AI-Insight-Daily",
+   "file": "src/dataSources/qbit.js",
+   "key": "列表项",
+   "name": "QbitAI 量子位 (通过 Folo 列表)",
+   "url": "https://www.qbit.ai",
+   "type": "api",
+   "category": "zh-media",
+   "lang": "zh",
+   "enabled": false,
+   "needs_cred": true,
+   "note": "示例适配器，未注册",
+   "normalized_url": "https://qbit.ai",
+   "domain": "qbit.ai"
+  },
+  {
+   "rid": "S106",
+   "repo": "CloudFlare-AI-Insight-Daily",
+   "file": "src/dataSources/huggingface-papers.js",
+   "key": "列表项",
+   "name": "HuggingFace Papers (通过 Folo 列表)",
+   "url": "https://huggingface.co/papers",
+   "type": "api",
+   "category": "paper",
+   "lang": "en",
+   "enabled": false,
+   "needs_cred": true,
+   "note": "示例适配器，未注册",
+   "normalized_url": "https://huggingface.co/papers",
+   "domain": "huggingface.co"
+  },
+  {
+   "rid": "S107",
+   "repo": "daily-briefing",
+   "file": "agent.py",
+   "key": "search_news()",
+   "name": "Tavily 检索（运行时动态查询，无静态源表）",
+   "url": "https://api.tavily.com/search",
+   "type": "api",
+   "category": "search",
+   "lang": "en",
+   "enabled": true,
+   "needs_cred": true,
+   "note": "MAX_SEARCHES=6；查询由 LLM 自主决定 + focus.priority_query",
+   "normalized_url": "https://api.tavily.com/search",
+   "domain": "api.tavily.com"
+  }
+ ]
+}

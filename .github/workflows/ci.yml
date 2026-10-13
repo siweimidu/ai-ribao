@@ -1,0 +1,130 @@
+name: CI
+
+# Runs on every push and pull request. Nothing here touches the network or a model API:
+# the tests mock every transport, so a fork can run them with no secrets configured.
+#
+# Three of these steps are guards rather than tests, and they exist because the project
+# makes promises that are easy to break by accident:
+#   * source provenance -- merging must never drop an audited source
+#   * secret scanning    -- keys must never reach the repository
+#   * PII check          -- no personal email or chat id in a public repo
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Unit, contract and offline integration tests
+        run: pytest -q
+
+      - name: Source provenance guard
+        # The registry must still cover all 107 audited source locations, and the
+        # registry shape must not drift silently.
+        run: pytest -q tests/contract/test_source_coverage.py -v
+
+      - name: Registry is reproducible
+        # Regenerating from the audit ledger must produce the same source ids; ids are
+        # referenced by sources/overrides.yaml and config/daily.yaml.
+        run: |
+          cp sources/registry.yaml /tmp/registry.before.yaml
+          python scripts/build_registry.py
+          python - <<'PY'
+          import sys, yaml
+          before = yaml.safe_load(open('/tmp/registry.before.yaml', encoding='utf-8'))
+          after = yaml.safe_load(open('sources/registry.yaml', encoding='utf-8'))
+          a = [s['source_id'] for s in before['sources']]
+          b = [s['source_id'] for s in after['sources']]
+          if a != b:
+              print('source_id drift detected:')
+              for x, y in zip(a, b):
+                  if x != y:
+                      print(f'  {x} -> {y}')
+              sys.exit(1)
+          print(f'{len(a)} source ids stable')
+          PY
+
+  guards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: No secrets in the repository
+        run: |
+          set -e
+          # Two things make this pattern work, and both were learned by getting it wrong:
+          #
+          #  1. `(?<![A-Za-z0-9])` -- without it, `sk-[A-Za-z0-9_-]{20,}` also matched the
+          #     middle of ordinary English ("ri[sk-for-teens]-after-parental-alerts").
+          #  2. `(?:[A-Za-z0-9]{1,12}-){0,3}[A-Za-z0-9]{16,}` -- a trailing run of 16+
+          #     characters with no hyphen. Real keys end in a long opaque blob; hyphenated
+          #     English ("sk-for-teens-after-parental-alerts-failed") does not. This is
+          #     what stops a digest that happens to start a sentence with "sk-" from
+          #     failing the build.
+          #
+          # A guard that cries wolf gets switched off, which is worse than not having one.
+          PATTERNS='(?<![A-Za-z0-9])(sk-(?:[A-Za-z0-9]{1,12}-){0,3}[A-Za-z0-9]{16,}|gsk_[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{36}|github_pat_[A-Za-z0-9_]{20,}|cfat_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|nvapi-[A-Za-z0-9_-]{20,})'
+          if git grep -nIE "$PATTERNS" -- . ':!*.lock'; then
+            echo "::error::possible credential committed"
+            exit 1
+          fi
+          echo "no credential patterns found"
+
+      - name: No PII in tracked files
+        run: |
+          set -e
+          # A personal address and a Telegram chat id were committed in one of the
+          # audited repositories. Here that must fail the build.
+          #
+          # Placeholders (`xxx@qq.com`, `your_gmail@gmail.com`) are documentation, not a
+          # person. The audit report is excluded because it necessarily quotes what it
+          # found -- and the address it quotes is already redacted.
+          PATTERNS='[A-Za-z0-9._%+-]+@(qq|gmail|163|outlook)\.com'
+          ALLOW='(xxx@|your_|your-|example@|noreply@|user@)'
+          if git grep -nIE "$PATTERNS" -- . ':!*.lock' ':!audit/' | grep -vE "$ALLOW"; then
+            echo "::error::personal email address in a tracked file"
+            exit 1
+          fi
+          echo "no personal addresses found"
+
+      - name: Registry and overrides contain no credentials
+        run: |
+          set -e
+          if grep -nE '(api_key|apikey|token|password|cookie)\s*[:=]\s*["\x27]?[A-Za-z0-9_-]{16,}' \
+               sources/registry.yaml sources/overrides.yaml config/daily.yaml; then
+            echo "::error::credential-looking value in a config file"
+            exit 1
+          fi
+          echo "config files are clean"

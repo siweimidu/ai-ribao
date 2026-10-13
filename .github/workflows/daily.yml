@@ -1,0 +1,279 @@
+name: AI Daily
+
+# Beijing 10:00 target. Measuring the sources first is what set this time:
+#   juya publishes at 09:48 Beijing, dailydawn at 08:00, ai-daily-sources at 08:02.
+# A 07:00 run would have systematically shipped the previous day's editions of the three
+# most-shared Chinese sources.
+#
+# Four triggers, sixteen minutes apart, none on the hour:
+#   * GitHub's schedule event is delayed under load, and the docs say queued jobs may be
+#     *dropped* -- so one trigger is not enough;
+#   * the start of every hour is the documented peak, hence :53/:07/:23/:41;
+#   * the idempotency gate makes the first successful publish win and the rest no-ops.
+#
+# The timezone key is used instead of hand-converted UTC so the schedule cannot drift.
+
+on:
+  schedule:
+    - cron: "53 9 * * *"
+      timezone: "Asia/Shanghai"
+    - cron: "7 10 * * *"
+      timezone: "Asia/Shanghai"
+    - cron: "23 10 * * *"
+      timezone: "Asia/Shanghai"
+    - cron: "41 10 * * *"
+      timezone: "Asia/Shanghai"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Ignore the run ledger and publish again today"
+        type: boolean
+        default: false
+      skip_collect:
+        description: "Reuse the latest collected items artefact instead of re-fetching"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+# One writer at a time. cancel-in-progress is false on purpose: cancelling a run that has
+# already delivered an email cannot un-deliver it, and the ledger would be left partial.
+concurrency:
+  group: ai-daily
+  cancel-in-progress: false
+
+env:
+  PYTHONUNBUFFERED: "1"
+  AIDAILY_RUN__CRITICAL_WAIT_MINUTES: "20"
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # 1. The cheapest possible check, first. A trigger that has nothing to do costs
+  #    seconds and zero API calls.
+  # ---------------------------------------------------------------------------
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      run: ${{ steps.decide.outputs.run }}
+      date: ${{ steps.decide.outputs.date }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e .
+      - name: Decide whether today still needs publishing
+        id: decide
+        env:
+          FORCE: ${{ inputs.force }}
+        run: |
+          set +e
+          if [ "$FORCE" = "true" ]; then
+            python -m aidaily gate --force | tee gate.json
+            code=0
+          else
+            python -m aidaily gate | tee gate.json
+            code=$?
+          fi
+          date=$(python -c "import json;print(json.load(open('gate.json'))['date'])")
+          echo "date=$date" >> "$GITHUB_OUTPUT"
+          case "$code" in
+            0)  echo "run=true"  >> "$GITHUB_OUTPUT" ;;
+            10) echo "run=false" >> "$GITHUB_OUTPUT" ;;
+            *)  echo "::error::gate failed with exit $code"; exit "$code" ;;
+          esac
+      - name: Report
+        run: |
+          echo "### Gate" >> "$GITHUB_STEP_SUMMARY"
+          echo '```json' >> "$GITHUB_STEP_SUMMARY"
+          cat gate.json >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+  # ---------------------------------------------------------------------------
+  # 2. Collect. One job rather than a matrix: 34 live sources finish in under a minute,
+  #    so sharding would add moving parts without buying anything. Sharding becomes
+  #    worthwhile past roughly 150 sources.
+  # ---------------------------------------------------------------------------
+  collect:
+    needs: gate
+    if: needs.gate.outputs.run == 'true' && inputs.skip_collect != true
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[fetchers]"
+
+      - name: Collect all enabled sources
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_API_TOKEN }}
+          PRODUCT_HUNT_TOKEN: ${{ secrets.PRODUCT_HUNT_TOKEN }}
+        # --wait-critical re-checks the sources whose current-day edition is a scheduling
+        # risk (juya publishes at 09:48). On timeout the run continues and the digest
+        # states which source fell back to yesterday.
+        run: |
+          python -m aidaily collect \
+            --concurrency 10 \
+            --wait-critical 20 \
+            --show-failures \
+            --out data/raw/items.jsonl | tee collect.log
+
+      - name: Run summary
+        run: |
+          {
+            echo "### Collection"
+            echo '```'
+            tail -n 40 collect.log
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v7
+        # Upload even when the step above failed: a partial collection is still the most
+        # useful input for a retry, and re-fetching would produce different data.
+        if: always()
+        with:
+          name: raw-items
+          path: |
+            data/raw/items.jsonl
+            data/state/collect.jsonl
+            collect.log
+          retention-days: 7
+
+  # ---------------------------------------------------------------------------
+  # 3. Analyse, render and deliver. Reading the artefact means a retry here never
+  #    re-fetches, so the digest for a given day is built from one consistent snapshot.
+  # ---------------------------------------------------------------------------
+  publish:
+    needs: [gate, collect]
+    if: needs.gate.outputs.run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[fetchers,llm]"
+
+      - uses: actions/download-artifact@v8
+        if: inputs.skip_collect != true
+        with:
+          name: raw-items
+          path: .
+
+      - name: Publish
+        id: publish
+        env:
+          # Model keys: official tiers first, relays only as a fallback.
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-flash-lite-latest' }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GROQ_MODEL: ${{ vars.GROQ_MODEL || 'openai/gpt-oss-20b' }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          SAMBANOVA_API_KEY: ${{ secrets.SAMBANOVA_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          HUGGINGFACE_API_KEY: ${{ secrets.HUGGINGFACE_API_KEY }}
+          MODELSCOPE_API_KEY: ${{ secrets.MODELSCOPE_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          RELAY_KEYS_JSON: ${{ secrets.RELAY_KEYS_JSON }}
+          # Delivery
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          MAIL_FROM_EMAIL: ${{ secrets.MAIL_FROM_EMAIL }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          N8N_WEBHOOK_URL: ${{ secrets.N8N_WEBHOOK_URL }}
+          SITE_URL: ${{ vars.SITE_URL || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
+        run: |
+          set +e
+          python -m aidaily run \
+            --from-items data/raw/items.jsonl \
+            --site-url "$SITE_URL" \
+            --analyze-limit 40 | tee publish.log
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          # 10 = the gate inside `run` decided today was already delivered.
+          if [ "$code" = "10" ]; then exit 0; fi
+          exit "$code"
+
+      - name: Run summary
+        if: always()
+        run: |
+          {
+            echo "### Publish"
+            echo '```'
+            tail -n 60 publish.log 2>/dev/null || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit state and digests
+        if: always()
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ sources/ 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "nothing to commit"
+            exit 0
+          fi
+          git commit -m "chore(daily): $(TZ=Asia/Shanghai date +%F) digest"
+          for attempt in 1 2 3 4 5; do
+            if git push; then
+              echo "pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "push rejected; rebasing onto origin/${GITHUB_REF_NAME}"
+            git fetch origin "$GITHUB_REF_NAME"
+            git rebase "origin/${GITHUB_REF_NAME}" || { git rebase --abort; exit 1; }
+            sleep 3
+          done
+          echo "::error::failed to push after 5 attempts"
+          exit 1
+
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: digest
+          path: |
+            data/digests/
+            publish.log
+          retention-days: 14
+
+      - uses: actions/upload-pages-artifact@v5
+        if: always()
+        with:
+          path: data/digests/site
+
+  # ---------------------------------------------------------------------------
+  # 4. Deploy the archive to GitHub Pages.
+  # ---------------------------------------------------------------------------
+  deploy:
+    needs: publish
+    if: needs.gate.outputs.run == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
