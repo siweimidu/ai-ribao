@@ -111,6 +111,34 @@ async def collect(
     return report
 
 
+def wait_window(cfg: AppConfig, now: datetime) -> tuple[bool, str]:
+    """Whether the freshness gate is meaningful at `now`.
+
+    The gate exists to cover a source that is a few minutes late for the 10:00 run: juya
+    publishes at 09:48 and a twelve-minute margin is a coincidence, not a schedule.
+
+    Outside a window around the scheduled time it does nothing but burn twenty minutes:
+    a manual trigger at 02:00 Beijing is waiting for an edition that will not exist for
+    another eight hours. The first real GitHub run hit exactly that -- `collect` sat
+    waiting for the full 20-minute timeout -- so the gate is now bounded to the period
+    where a late source is actually plausible.
+    """
+    tz_start = datetime.combine(
+        now.astimezone(ZoneInfo(cfg.timezone)).date(),
+        cfg.run.at_time(),
+        tzinfo=ZoneInfo(cfg.timezone),
+    )
+    start = tz_start - timedelta(minutes=30)      # covers the 09:53 trigger
+    end = tz_start + timedelta(hours=3)           # covers the 10:41 trigger and its delay
+    local = now.astimezone(ZoneInfo(cfg.timezone))
+    if start <= local <= end:
+        return True, ""
+    return False, (
+        f"当前 {local:%H:%M} 不在调度窗口 {start:%H:%M}-{end:%H:%M}（{cfg.timezone}）内，"
+        "跳过关键源等待"
+    )
+
+
 async def wait_for_critical(
     specs: list[SourceSpec],
     report: CollectReport,
@@ -135,6 +163,11 @@ async def wait_for_critical(
 
     tz = ZoneInfo(cfg.timezone)
     now = now or datetime.now(tz)
+    in_window, why = wait_window(cfg, now)
+    if not in_window:
+        print(f"note: {why}")
+        return _missing_critical(specs, report, cfg, tz)
+
     deadline = now + timedelta(minutes=cfg.run.critical_wait_minutes)
     by_id = {s.source_id: s for s in specs}
     results_by_id = {r.source_id: r for r in report.results}
@@ -178,6 +211,29 @@ async def wait_for_critical(
                 report.items = [i for i in report.items if i.source_id != source_id]
                 for raw in result.items:
                     report.items.append(normalize_raw(raw, spec, datetime.now(timezone.utc)))
+
+
+def _missing_critical(
+    specs: list[SourceSpec], report: CollectReport, cfg: AppConfig, tz: ZoneInfo
+) -> list[str]:
+    """Which critical sources currently lack a current-day edition (no waiting)."""
+    results_by_id = {r.source_id: r for r in report.results}
+    today = datetime.now(tz).strftime("%Y-%m-%d")
+    out: list[str] = []
+    for spec in specs:
+        if spec.source_id not in set(cfg.run.critical_sources):
+            continue
+        result = results_by_id.get(spec.source_id)
+        if result is None:
+            out.append(spec.source_id)
+            continue
+        if not any(
+            item.published_at is not None
+            and item.published_at.astimezone(tz).strftime("%Y-%m-%d") == today
+            for item in result.items
+        ):
+            out.append(spec.source_id)
+    return out
 
 
 def write_items_jsonl(path: Path | str, items: list[NormalizedItem]) -> Path:

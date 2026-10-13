@@ -190,3 +190,42 @@ def test_items_without_a_url_are_excluded(make_item) -> None:
     assert [i.item_id for i in result.kept] == ["i2"]
     assert result.dropped_by_bucket["no_url"] == 1
     assert result.no_url_samples
+
+
+# =============================== critical-source wait gate =======================
+def test_wait_window_covers_the_scheduled_triggers() -> None:
+    """09:53 / 10:07 / 10:23 / 10:41 Beijing must all arm the freshness gate."""
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+
+    from aidaily.collect import wait_window
+
+    cfg = _cfg()
+    tz = ZoneInfo("Asia/Shanghai")
+    for hhmm in ("09:53", "10:00", "10:07", "10:23", "10:41", "11:30", "12:59"):
+        h, m = (int(x) for x in hhmm.split(":"))
+        when = datetime(2026, 10, 14, h, m, tzinfo=tz)
+        armed, why = wait_window(cfg, when)
+        assert armed, f"{hhmm} should arm the gate ({why})"
+
+
+def test_wait_window_is_disarmed_outside_the_schedule() -> None:
+    """Regression from the first real GitHub run.
+
+    A manual trigger at 02:00 Beijing waited the full 20-minute timeout for juya's
+    edition -- which does not exist until 09:48. The gate has to know when a late source
+    is even plausible, otherwise it just burns the job's time budget.
+    """
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+
+    from aidaily.collect import wait_window
+
+    cfg = _cfg()
+    tz = ZoneInfo("Asia/Shanghai")
+    for hhmm in ("02:00", "07:00", "09:00", "14:00", "23:30"):
+        h, m = (int(x) for x in hhmm.split(":"))
+        when = datetime(2026, 10, 14, h, m, tzinfo=tz)
+        armed, why = wait_window(cfg, when)
+        assert not armed, f"{hhmm} should not wait"
+        assert "调度窗口" in why
