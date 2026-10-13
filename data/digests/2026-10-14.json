@@ -2,9 +2,9 @@
  "digest": {
   "date": "2026-10-14",
   "kind": "deep",
-  "generated_at": "2026-10-13T17:33:19.158326Z",
-  "window_start": "2026-10-12T15:33:19.158326Z",
-  "window_end": "2026-10-13T17:33:19.158326Z",
+  "generated_at": "2026-10-13T17:38:09.929414Z",
+  "window_start": "2026-10-12T15:38:09.929414Z",
+  "window_end": "2026-10-13T17:38:09.929414Z",
   "headline": "PixVerse 开放提示词与参考素材",
   "top_events": [
    {
@@ -1526,13 +1526,13 @@
    "事件聚类未经过模型判定（候选簇为空或未启用模型）"
   ],
   "counts": {
-   "events": 228,
+   "events": 227,
    "multi_source_events": 0,
-   "items_after_window": 236,
+   "items_after_window": 235,
    "items_merged_away": 8,
    "dropped_older": 3546,
    "dropped_future_dated": 4,
-   "dropped_outside_window": 72,
+   "dropped_outside_window": 73,
    "dropped_unknown": 13,
    "dropped_no_url": 11
   }
@@ -1567,8 +1567,7 @@
    "e2b451e48deb01b",
    "e07d111a313ce11",
    "eb93797cf8711d2",
-   "efc6f597c1326d5",
-   "e54256530a9a7aa"
+   "efc6f597c1326d5"
   ],
   "dev": [
    "e02dd5c06e99c81",
@@ -2349,8 +2348,8 @@
  },
  "factcheck": {
   "ok": true,
-  "checked_events": 228,
-  "checked_urls": 229,
+  "checked_events": 227,
+  "checked_urls": 228,
   "violations": 0,
   "by_kind": {}
  }

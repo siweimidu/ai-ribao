@@ -42,10 +42,20 @@ def extract_patterns(step_marker: str) -> list[str]:
 def secret_re() -> re.Pattern[str]:
     patterns = extract_patterns("No secrets in the repository")
     assert patterns, "secret pattern not found in ci.yml"
-    # `git grep -E` uses POSIX ERE, which has no lookarounds. The workflow's own comment
-    # says the lookbehind is load-bearing, so this test would fail loudly if someone
-    # dropped it -- which is exactly the intent.
-    return re.compile(patterns[0])
+    pattern = patterns[0]
+    # The guard runs in three regex engines: `git grep -E` (POSIX ERE) in CI, GNU grep in
+    # scripts/ci_guards.sh, and Python here. POSIX ERE supports neither lookaround nor
+    # non-capturing groups, and either one makes `git grep` exit 2 with "Invalid preceding
+    # regular expression" -- which inside `if cmd` reads as "no match", so the guard
+    # printed "clean" while checking nothing at all. Both were tried for real.
+    assert "(?<" not in pattern, (
+        "lookaround is not POSIX ERE; `git grep -E` cannot parse it and would silently "
+        "match nothing. Write the boundary as (^|[^A-Za-z0-9])."
+    )
+    assert "(?:" not in pattern, (
+        "non-capturing groups are not POSIX ERE either; use a plain (...)."
+    )
+    return re.compile(pattern)
 
 
 @pytest.fixture(scope="module")
@@ -79,20 +89,31 @@ def test_guard_does_not_fire_on_ordinary_english(secret_re, text: str) -> None:
     assert not secret_re.search(text), f"false positive on legitimate text: {text!r}"
 
 
-@pytest.mark.parametrize(
-    "text",
-    [
-        "sk-proj-" + "A" * 40,
-        "gsk_" + "a" * 40,
-        "ghp_" + "A" * 36,
-        "github_pat_" + "A" * 30,
-        "cfat_" + "A" * 30,
-        "AKIAIOSFODNN7EXAMPLE",
-        "nvapi-" + "A" * 30,
-        "key = sk-" + "x9" * 20,
-        "token:gsk_" + "Z" * 32,
-    ],
-)
+#: Key-shaped strings the guard must catch, assembled at runtime.
+#:
+#: None of these may appear literally in this file. The guard scans the whole tree, so a
+#: literal fixture is indistinguishable from a real leak -- it flagged `AKIA`+`IOSFODNN7
+#: EXAMPLE` (AWS's own published example) the first time the guard actually ran. Building
+#: the strings here keeps the fixture expressive and the repository genuinely clean.
+def _key(*parts: str) -> str:
+    return "".join(parts)
+
+
+SECRET_SHAPED_STRINGS = [
+    _key("sk-proj-", "A" * 40),
+    _key("sk-", "x9" * 20),
+    _key("gsk_", "a" * 40),
+    _key("ghp_", "A" * 36),
+    _key("github_pat_", "A" * 30),
+    _key("cfat_", "A" * 30),
+    _key("AKIA", "IOSFODNN7EXAMPLE"),
+    _key("nvapi-", "A" * 30),
+    _key("key = sk-", "z8" * 20),
+    _key("token:gsk_", "Z" * 32),
+]
+
+
+@pytest.mark.parametrize("text", SECRET_SHAPED_STRINGS)
 def test_guard_still_fires_on_real_looking_keys(secret_re, text: str) -> None:
     assert secret_re.search(text), f"real-looking credential not detected: {text!r}"
 
@@ -115,18 +136,42 @@ def test_guard_is_not_scoped_away_from_whole_directories() -> None:
     assert ":!*.lock" in block, "lockfiles must stay excluded; they contain hashes, not keys"
 
 
+def test_guard_cannot_pass_by_accident() -> None:
+    """The failure mode that actually happened: a grep syntax error reads as "no match".
+
+    `if git grep ...; then fail; fi` treats *any* non-zero exit -- including a regex
+    syntax error, exit 2 -- as "nothing found". The guard must capture the exit status
+    and the output separately, so an error and a clean result cannot be confused.
+    """
+    text = ci_text()
+    start = text.find("No secrets in the repository")
+    block = text[start:start + 3000]
+    assert "found=$(git grep" in block, "guard must capture git grep's output"
+    assert "status=$?" in block, "guard must capture git grep's exit status"
+    assert '"$status" -gt 1' in block, "exit 2 means the pattern itself was invalid"
+    assert 'if [ -n "$found" ]' in block
+
+
 # =============================== PII =============================================
-@pytest.mark.parametrize(
-    "text",
-    ["real.person@gmail.com", "2166075979@qq.com", "someone@163.com", "x@outlook.com"],
-)
+#: Addresses the PII guard must catch. Built by concatenation so that no literal address
+#: exists in this file -- otherwise the guard flags its own test fixture, which is exactly
+#: what happened on the first CI run (and the address it flagged was a real person's).
+LOOKALIKE_ADDRESSES = [
+    "real.person" + "@gmail.com",
+    "1234567890" + "@qq.com",
+    "someone" + "@163.com",
+    "x" + "@outlook.com",
+]
+
+
+@pytest.mark.parametrize("text", LOOKALIKE_ADDRESSES)
 def test_pii_guard_fires_on_personal_addresses(pii_re, text: str) -> None:
     assert pii_re.search(text)
 
 
 @pytest.mark.parametrize(
     "text",
-    ["xxx@qq.com", "your_gmail@gmail.com", "example@163.com"],
+    ["xxx" + "@qq.com", "your_gmail" + "@gmail.com", "example" + "@163.com"],
 )
 def test_pii_guard_has_documented_placeholders(pii_re, text: str) -> None:
     """Placeholders are documentation. The workflow filters them separately."""

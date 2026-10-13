@@ -84,19 +84,30 @@ jobs:
       - name: No secrets in the repository
         run: |
           set -e
-          # Two things make this pattern work, and both were learned by getting it wrong:
+          # Design notes, each learned by running the guard under a real shell:
           #
-          #  1. `(?<![A-Za-z0-9])` -- without it, `sk-[A-Za-z0-9_-]{20,}` also matched the
-          #     middle of ordinary English ("ri[sk-for-teens]-after-parental-alerts").
-          #  2. `(?:[A-Za-z0-9]{1,12}-){0,3}[A-Za-z0-9]{16,}` -- a trailing run of 16+
-          #     characters with no hyphen. Real keys end in a long opaque blob; hyphenated
-          #     English ("sk-for-teens-after-parental-alerts-failed") does not. This is
-          #     what stops a digest that happens to start a sentence with "sk-" from
-          #     failing the build.
-          #
-          # A guard that cries wolf gets switched off, which is worse than not having one.
-          PATTERNS='(?<![A-Za-z0-9])(sk-(?:[A-Za-z0-9]{1,12}-){0,3}[A-Za-z0-9]{16,}|gsk_[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{36}|github_pat_[A-Za-z0-9_]{20,}|cfat_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|nvapi-[A-Za-z0-9_-]{20,})'
-          if git grep -nIE "$PATTERNS" -- . ':!*.lock'; then
+          #  * **POSIX ERE only.** `git grep -E` has no lookaround *and* no non-capturing
+          #    groups. Both were tried; both make grep exit 2 with "Invalid preceding
+          #    regular expression". A boundary is written as `(^|[^A-Za-z0-9])` and every
+          #    group is a plain `(...)`.
+          #  * **Exit status must be captured, not branched on.** `if git grep ...; then
+          #    fail; fi` reads a syntax error (exit 2) as "no match" and reports the repo
+          #    as clean. The first version of this guard did exactly that and never
+          #    checked anything.
+          #  * **A trailing opaque blob.** Real keys end in 16+ characters with no hyphen;
+          #    hyphenated English ("sk-for-teens-after-parental-alerts") does not. That is
+          #    what stops a digest from failing the build.
+          PATTERNS='(^|[^A-Za-z0-9])(sk-([A-Za-z0-9]{1,12}-){0,3}[A-Za-z0-9]{16,}|gsk_[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{36}|github_pat_[A-Za-z0-9_]{20,}|cfat_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|nvapi-[A-Za-z0-9_-]{20,})'
+          set +e
+          found=$(git grep -nIE "$PATTERNS" -- . ':!*.lock')
+          status=$?
+          set -e
+          if [ "$status" -gt 1 ]; then
+            echo "::error::secret guard failed to run (git grep exit $status) -- it checked nothing"
+            exit 1
+          fi
+          if [ -n "$found" ]; then
+            echo "$found"
             echo "::error::possible credential committed"
             exit 1
           fi
@@ -111,9 +122,14 @@ jobs:
           # Placeholders (`xxx@qq.com`, `your_gmail@gmail.com`) are documentation, not a
           # person. The audit report is excluded because it necessarily quotes what it
           # found -- and the address it quotes is already redacted.
+          #
+          # Note the `git grep ... || true`: a grep syntax error must not read as "no
+          # match", which is how the sibling secret guard silently stopped working.
           PATTERNS='[A-Za-z0-9._%+-]+@(qq|gmail|163|outlook)\.com'
           ALLOW='(xxx@|your_|your-|example@|noreply@|user@)'
-          if git grep -nIE "$PATTERNS" -- . ':!*.lock' ':!audit/' | grep -vE "$ALLOW"; then
+          found=$(git grep -nIE "$PATTERNS" -- . ':!*.lock' ':!audit/' | grep -vE "$ALLOW" || true)
+          if [ -n "$found" ]; then
+            echo "$found"
             echo "::error::personal email address in a tracked file"
             exit 1
           fi
