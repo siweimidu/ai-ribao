@@ -126,14 +126,45 @@ CI 会拒绝**没有 reason 的禁用**，也会拒绝**引用不存在的 sourc
 |---|---|
 | 每天 | 无需人工干预。失败会体现在 Actions 状态和日报的 `warnings` 里 |
 | 每周 | 看 `health.yml` 开的死源 Issue；必要时在 overrides 里禁用并写原因 |
-| 每月 | 检查仓库体积；`data/digests/` 会持续增长，必要时归档旧年份 |
+| 每月 | 检查仓库体积（见下）；`data/state/*.jsonl` 是追加式历史 |
 | 每季 | 复核模型名是否退役（`scripts/probe_llm_channels.py`，0 token）；复核免费额度政策 |
 | 按需 | 重跑 `scripts/probe_sources.py` 刷新 `docs/HEALTH_REPORT.md` |
 
-### 保活
+---
+
+## 五之二、仓库体积（实测）
+
+每天提交的产物**实测 196 KB**：
+
+| 文件 | 字节 | 能否精简 |
+|---|---|---|
+| `feed/zh.json` | 53,370 | n8n 的机器可读输出，含每条的全部来源链接——这是它的用途 |
+| `feed/zh.xml` | 33,157 | RSS 2.0，同上 |
+| `{date}.json` | 70,140 | 归档查询用 |
+| `{date}.deep.md` | 17,222 | Pages 正文 |
+| `site/{date}.html` | 17,619 | Pages 页面 |
+| `{date}.brief.md` | 3,644 | 邮件/Telegram 正文 |
+| `site/index.html` | 356 | 归档索引 |
+
+**约 68 MB/年**（纯文本，git 压缩后实际增长更低）。已做过一次真实的体积优化：
+`digest.json` 原本把 229 个事件存了两遍（`top_events` 与 `sections` 引用同一批对象），
+**253 KB → 70 KB**，一年省下 64 MB 的 git 历史。
+
+**如果将来要压缩**，按性价比排序：
+1. 把 `feed/*.json|xml` 只保留最近 90 天（RSS 阅读器很少回看更久）
+2. 把 `data/state/*.jsonl` 按年归档成 `archive/2026.tar.zst`
+3. 不要动 `{date}.deep.md`——那是 Pages 的内容本体，也是这个项目存在的理由
+
+---
+
+## 五之三、保活
 
 GitHub 会在仓库 60 天无活动后停用定时工作流。本项目的日报**每天都提交**，
 天然保活，无需额外机制。
+
+如果有一天日报连续多日没提交（比如所有触发点都被丢弃），定时工作流本身也会被停用——
+所以「连续 N 天没有提交」应该被当成**最高优先级告警**来处理。
+
 
 ---
 

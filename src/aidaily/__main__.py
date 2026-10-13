@@ -215,9 +215,16 @@ def cmd_run(args: argparse.Namespace) -> int:
     deep_path.write_text(deep, encoding="utf-8")
     json_path.write_text(
         json.dumps(
-            {"digest": digest.model_dump(mode="json"),
-             "insights": {k: vars(v) for k, v in insights.items()},
-             "factcheck": check.summary()},
+            {
+                # `sections` holds the same Event objects that `top_events` already
+                # carries, so serialising both doubled the archived file for no
+                # information gain (253 KB/day, ~132 MB of git history per year). The
+                # section *layout* is kept; the event bodies are not repeated.
+                "digest": digest.model_dump(mode="json", exclude={"sections"}),
+                "sections": {k: [e.event_id for e in v] for k, v in digest.sections.items()},
+                "insights": {k: vars(v) for k, v in insights.items()},
+                "factcheck": check.summary(),
+            },
             ensure_ascii=False, indent=1,
         ),
         encoding="utf-8",
