@@ -17,6 +17,7 @@ instead of pretending the analysis ran.
 from __future__ import annotations
 
 import asyncio
+import re
 from dataclasses import dataclass, field
 from typing import Iterable
 
@@ -73,29 +74,55 @@ class EventInsight:
     rule_based: bool = False
 
 
-#: Latin-script ratio above which a headline is treated as "not Chinese yet".
-#: Deliberately conservative: real titles mix scripts constantly ("OpenAI 发布 GPT-6"),
-#: and a strict "no Latin characters" rule would flag all of them. What this catches is a
-#: title that is *entirely* a foreign sentence.
-_LATIN_RATIO = 0.55
+#: English function words. Their presence is the signal that a string is an English
+#: *sentence* rather than a Chinese headline carrying Latin proper nouns.
+_EN_FUNCTION_WORDS = frozenset({
+    "the", "a", "an", "and", "or", "but", "for", "with", "without", "at", "on", "in",
+    "of", "to", "from", "by", "as", "is", "are", "was", "were", "be", "been", "being",
+    "will", "would", "has", "have", "had", "its", "it", "this", "that", "these", "those",
+    "his", "her", "their", "our", "your", "new", "how", "why", "what", "when", "where",
+    "can", "could", "should", "may", "might", "into", "over", "after", "before", "up",
+    "out", "about", "more", "than", "not", "no", "yes", "you", "we", "they", "he", "she",
+})
+
+_WORD = re.compile(r"[A-Za-z]+")
 
 
 def needs_translation(text: str) -> bool:
-    """True when a headline is essentially a foreign sentence rather than Chinese prose.
+    """True when a headline is a foreign sentence rather than Chinese prose.
 
     Used to decide whether the degraded path should say something about it. The digest's
     contract is that everything a reader sees is Chinese; when there is no model available
     to translate, the honest move is to keep the original title **and say so**, not to
     render an English sentence as if it were the digest's own writing.
+
+    The test is **English sentence structure**, not a Latin-character ratio. The ratio was
+    the first attempt and it was wrong: proper nouns are Latin by definition, and the
+    instruction is precisely to keep them ("OpenAI 发布 GPT-6" scored 0.82 Latin and was
+    flagged as foreign although it is a Chinese headline). Function words are what actually
+    distinguish a sentence from a headline.
     """
-    stripped = "".join(ch for ch in text if not ch.isspace())
+    stripped = text.strip()
     if not stripped:
         return False
-    cjk = sum(1 for ch in stripped if "\u4e00" <= ch <= "\u9fff")
-    latin = sum(1 for ch in stripped if ch.isascii() and ch.isalpha())
-    if cjk == 0:
+
+    # No CJK at all: nothing Chinese about it.
+    if not any("\u4e00" <= ch <= "\u9fff" for ch in stripped):
         return True
-    return latin / (cjk + latin) > _LATIN_RATIO
+
+    words = [w.lower() for w in _WORD.findall(stripped)]
+    if not words:
+        return False
+
+    function_words = sum(1 for w in words if w in _EN_FUNCTION_WORDS)
+    # One "of" or "the" can appear inside a product name; two or more in a row is a sentence.
+    if function_words >= 2:
+        return True
+    # A single long run of Latin words with no Chinese between them is also a sentence
+    # fragment, e.g. "Redesigning source control".
+    if function_words >= 1 and len(words) >= 4:
+        return True
+    return False
 
 
 def fallback_insight(event: Event, members: list[NormalizedItem]) -> EventInsight:
@@ -189,16 +216,23 @@ async def analyze_events(
     by_id: dict[str, NormalizedItem],
     router: Router | None,
     *,
-    limit: int = 40,
+    limit: int | None = None,
     concurrency: int = 3,
 ) -> tuple[dict[str, EventInsight], list[str]]:
-    """Analyse the top `limit` events. Returns (insights, warnings).
+    """Analyse events, newest-ranked first. Returns (insights, warnings).
 
-    Only the top events get model attention: analysing all ~250 would burn the budget to
-    polish entries nobody scrolls to, and the brief only needs the head of the list.
+    `limit=None` means "everything given". The caller decides what to hand over -- and it
+    passes exactly the events that will be published, because analysing a different set is
+    how the digest ended up with untranslated English headlines: the items past the cut had
+    no insight to render, so they fell back to the source's own words.
+
+    An earlier version defaulted to 40 and sliced here, which also made `limit=None` a
+    `TypeError` at `len(events) > limit`. The cap belongs at the call site, where it can be
+    compared against the published count and warned about.
     """
     warnings: list[str] = []
-    targets = [e for e in events][:limit]
+    events = list(events)
+    targets = events[:limit] if limit else events
     insights: dict[str, EventInsight] = {}
 
     def members_of(event: Event) -> list[NormalizedItem]:
@@ -228,6 +262,4 @@ async def analyze_events(
 
     if degraded:
         warnings.append(f"{degraded}/{len(targets)} 个事件降级为规则摘录")
-    if len(list(events)) > limit:
-        warnings.append(f"仅分析前 {limit} 个事件，其余未做模型处理")
     return insights, warnings
