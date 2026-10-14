@@ -252,12 +252,21 @@ def cmd_run(args: argparse.Namespace) -> int:
         _record_run(digest, {}, "published", "delivery disabled")
         return 0
 
-    should, reason, already = gate(digest.date)
+    should, reason, already = gate(
+        digest.date,
+        # The gate compares this against what was last published. A same-day re-trigger
+        # produces a different digest as new items arrive (219 events became 223), and
+        # skipping delivery then left the live page describing 219 while its own archived
+        # JSON said 223 -- the site contradicted its own data.
+        digest_id=f"{digest.date}-{digest.counts.get('events', 0)}",
+    )
     if not should:
         print(f"幂等闸门：{reason} —— 跳过分发")
         return EXIT_ALREADY_PUBLISHED
     if already:
         print(f"幂等闸门：{reason}（已完成通道：{', '.join(sorted(already))}）")
+    else:
+        print(f"幂等闸门：{reason}")
 
     delivery = asyncio.run(
         deliver_all(

@@ -83,17 +83,31 @@ def append_record(record: RunRecord, path: Path | str | None = None) -> Path:
     return p
 
 
-def gate(date: str, path: Path | str | None = None) -> tuple[bool, str, dict[str, str]]:
+def gate(date: str, path: Path | str | None = None, *, digest_id: str | None = None) -> tuple[bool, str, dict[str, str]]:
     """Decide whether this trigger should publish.
 
     Returns (should_publish, reason, channels_already_done). A previous *partial* run
     returns True with the already-succeeded channels listed, so the caller can resume.
+
+    `digest_id` guards a real inconsistency that shipped. The ledger records "published"
+    per *date*, but a later trigger on the same day builds a **different** digest -- new
+    items arrived and 219 events became 223. Skipping every channel then left the published
+    page describing 219 events while its own archived JSON said 223: the site contradicted
+    its own data, and nothing in the pipeline noticed.
+
+    So a differing `digest_id` re-publishes. This is not "ignore the gate": a repeat of the
+    *same* content is still a no-op, which is what the gate exists for.
     """
     records = [r for r in read_ledger(path) if r.date == date]
     if not records:
         return True, f"{date} 尚未发布", {}
     latest = records[-1]
     if latest.status == "published":
+        if digest_id and latest.digest_id and latest.digest_id != digest_id:
+            return True, (
+                f"{date} 已发布，但本次内容不同"
+                f"（{latest.digest_id} → {digest_id}），重新分发"
+            ), {}
         return False, f"{date} 已发布（{latest.at}）", dict(latest.channels)
     if latest.status == "partial":
         done = {k: v for k, v in latest.channels.items() if v == "ok"}
