@@ -29,8 +29,8 @@
     {
       "id": "2026-10-14-ef82b85eedd06ee",
       "url": "https://aihot.news/items/znq5591d0ans7l79658wn4dys",
-      "title": "Anthropic 用自研 Scion 取代 Git",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Anthropic 的代码合并量从 2026 年 5 月的日均约 2,500 次增至 9 月的超过 30,000 次。</li><li>Anthropic 用 7 人团队、5 个月时间完成了从 Git 到自研系统 Scion 的迁移。</li></ul><p><strong>推断</strong></p><ul><li>Anthropic 迁移到自研系统 Scion 是为了应对代码合并量的大幅增长。</li></ul><p><strong>不确定</strong></p><ul><li>材料未说明 2026 年各类模型的具体内部可用日期。</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/znq5591d0ans7l79658wn4dys\">aihot.news</a></li><li><a href=\"https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/\">simonwillison.net</a></li></ul>",
+      "title": "Anthropic 迁移至自研源码控制系统 Scion",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Anthropic 的代码合并量从 2026 年 5 月的日均约 2,500 次增加到 9 月的超过 30,000 次。</li><li>Anthropic 用 7 人团队在 5 个月内完成了从 Git 到自研系统 Scion 的迁移。</li><li>Simon Willison 转述了 Anthropic 关于重建源码控制系统的文章。</li></ul><p><strong>推断</strong></p><ul><li>Anthropic 迁移源码控制系统可能是因为代码合并量的戏剧性增长带来的需求。</li></ul><p><strong>不确定</strong></p><ul><li>Scion 系统的具体技术细节和架构是什么。</li><li>模型公开雷同发布日期与内部可用日期的具体差异是多少。</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/znq5591d0ans7l79658wn4dys\">aihot.news</a></li><li><a href=\"https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/\">simonwillison.net</a></li></ul>",
       "date_published": "2026-10-13T23:00:06+00:00",
       "tags": [
         "rss:aihot-news",
@@ -48,27 +48,6 @@
         ],
         "evidence_level": "multi_source",
         "confidence": 0.9
-      }
-    },
-    {
-      "id": "2026-10-14-e8536989a16c400",
-      "url": "https://daily.juya.uk/issues/2026-10-14/",
-      "title": "2026-10-14",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://daily.juya.uk/issues/2026-10-14/\">daily.juya.uk</a></li></ul>",
-      "date_published": "2026-10-14T01:33:20+00:00",
-      "tags": [
-        "rss:daily-juya-uk"
-      ],
-      "_ai_daily": {
-        "event_id": "e8536989a16c400",
-        "source_ids": [
-          "rss:daily-juya-uk"
-        ],
-        "all_urls": [
-          "https://daily.juya.uk/issues/2026-10-14/"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
       }
     },
     {
@@ -93,10 +72,73 @@
       }
     },
     {
+      "id": "2026-10-14-ea2035490dc7767",
+      "url": "https://aihot.news/items/ztibf3wgcvr415zkgdaubnz3c",
+      "title": "广电总局“AI 魔改”视频治理：9 月清理违规视频近 1.3 万条、处置账号 30 余个",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/ztibf3wgcvr415zkgdaubnz3c\">aihot.news</a></li></ul>",
+      "date_published": "2026-10-14T02:12:34+00:00",
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "_ai_daily": {
+        "event_id": "ea2035490dc7767",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/ztibf3wgcvr415zkgdaubnz3c"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-ed58b5de01f057e",
+      "url": "https://aihot.news/items/r6nn05zme1z711ory2cl7hmo8",
+      "title": "Anthropic 用 5 个月将内部 monorepo 从 Git 迁移到自研版本控制系统 Scion",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/r6nn05zme1z711ory2cl7hmo8\">aihot.news</a></li></ul>",
+      "date_published": "2026-10-14T01:49:01+00:00",
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "_ai_daily": {
+        "event_id": "ed58b5de01f057e",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/r6nn05zme1z711ory2cl7hmo8"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e5aa373e79c8494",
+      "url": "https://aihot.news/items/ozs5y80l5cpy45igqa71uohns",
+      "title": "豆包手机助手宣布陆续放开第三方应用屏幕自动化操作权限，阿里、腾讯系等 App 明确拒绝",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/ozs5y80l5cpy45igqa71uohns\">aihot.news</a></li></ul>",
+      "date_published": "2026-10-14T02:22:35+00:00",
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "_ai_daily": {
+        "event_id": "e5aa373e79c8494",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/ozs5y80l5cpy45igqa71uohns"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
       "id": "2026-10-14-eca713df852b07e",
       "url": "https://deepmind.google/blog/gemini-4-argon-for-robotics/",
       "title": "Gemini 4 Argon for Robotics 相关动态发布",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Gemini 4 Argon for Robotics 在 2026-10-13 16:01 UTC 被发布在 rss:deepmind-google-blog 上。</li><li>Gemini 4 Argon for Robotics 在 2026-10-13 16:55 UTC 被收录于 api:hn-algolia-com-search。</li></ul><p><strong>推断</strong></p><ul><li>由于两则材料均以“Gemini 4 Argon for Robotics”为标题和内容，该事件可能是一项新发布的机器人相关技术或产品。</li></ul><p><strong>不确定</strong></p><ul><li>材料未提供关于 Gemini 4 Argon for Robotics 的具体功能介绍。</li><li>材料未说明该技术或产品的具体应用场景。</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://deepmind.google/blog/gemini-4-argon-for-robotics/\">deepmind.google</a></li><li><a href=\"https://developers.googleblog.com/gemini-4-argon-for-robotics/\">developers.googleblog.com</a></li></ul>",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Gemini 4 Argon for Robotics 在 2026-10-13 被提及。</li></ul><p><strong>推断</strong></p><ul><li>Gemini 4 Argon for Robotics 可能是一个新发布的模型或产品。</li></ul><p><strong>不确定</strong></p><ul><li>Gemini 4 Argon for Robotics 的具体功能和用途是什么。</li><li>该事件的具体背景和发布主体是什么。</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://deepmind.google/blog/gemini-4-argon-for-robotics/\">deepmind.google</a></li><li><a href=\"https://developers.googleblog.com/gemini-4-argon-for-robotics/\">developers.googleblog.com</a></li></ul>",
       "date_published": "2026-10-13T16:55:47+00:00",
       "tags": [
         "api:hn-algolia-com-search",
@@ -117,6 +159,27 @@
       }
     },
     {
+      "id": "2026-10-14-eb4d06d6d67d8ae",
+      "url": "https://aihot.news/items/evw4hug7sw1r9wznyj7cnrxrb",
+      "title": "Anthropic 红队研究：小型 AI 模型或可在无数据中心情况下于 IoT 设备间自我复制",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/evw4hug7sw1r9wznyj7cnrxrb\">aihot.news</a></li></ul>",
+      "date_published": "2026-10-14T02:27:42+00:00",
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "_ai_daily": {
+        "event_id": "eb4d06d6d67d8ae",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/evw4hug7sw1r9wznyj7cnrxrb"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
       "id": "2026-10-14-eee64482a5f99c2",
       "url": "https://aihot.news/items/d0ftvqryq1dyy0088esy4cznd",
       "title": "千问办公将推电商运营版，阿里基因再落电商场景",
@@ -132,6 +195,27 @@
         ],
         "all_urls": [
           "https://aihot.news/items/d0ftvqryq1dyy0088esy4cznd"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-ee7ece706ba5055",
+      "url": "https://aihot.news/items/l9cjmvhviaewdb2l3t0mmyg8j",
+      "title": "斯坦福 CS 312「Deep Learning Alchemy」秋季新课发布，作业与测验全部公开",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/l9cjmvhviaewdb2l3t0mmyg8j\">aihot.news</a></li></ul>",
+      "date_published": "2026-10-14T01:55:07+00:00",
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "_ai_daily": {
+        "event_id": "ee7ece706ba5055",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/l9cjmvhviaewdb2l3t0mmyg8j"
         ],
         "evidence_level": "single_source",
         "confidence": 1.0
@@ -174,90 +258,6 @@
         ],
         "all_urls": [
           "https://aihot.news/items/mki7thwz4szvly5njmczvwh81"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e06ed0e1b58a2b8",
-      "url": "https://aihot.news/items/nk3m65c4hyx63cbqcbpxo9qe2",
-      "title": "新研究：AI 支出仍\"很难找到实际、可量化的财务影响\"",
-      "content_html": "<p><strong>事实</strong></p><ul><li>一项新研究显示，AI 支出至今仍&quot;很难找到实际、可量化的财务影响&quot;，大规模提升员工生产率和国家 GDP 的证据为零。The Information 的 Laura Bratton 在邮件通讯中报告了这一研究，并指出可记录的 ROI 极低与数万亿美元投入之间的反差依然反常。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/nk3m65c4hyx63cbqcbpxo9qe2\">aihot.news</a></li></ul>",
-      "date_published": "2026-10-14T01:29:11+00:00",
-      "tags": [
-        "rss:aihot-news"
-      ],
-      "_ai_daily": {
-        "event_id": "e06ed0e1b58a2b8",
-        "source_ids": [
-          "rss:aihot-news"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/nk3m65c4hyx63cbqcbpxo9qe2"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e5766667dc27cdb",
-      "url": "https://aihot.news/items/vopvb869l8pcmph7qho0jnxy7",
-      "title": "卡拉克第一定律与 LeCun 唱衰大语言模型",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/vopvb869l8pcmph7qho0jnxy7\">aihot.news</a></li></ul>",
-      "date_published": "2026-10-14T00:44:39+00:00",
-      "tags": [
-        "rss:aihot-news"
-      ],
-      "_ai_daily": {
-        "event_id": "e5766667dc27cdb",
-        "source_ids": [
-          "rss:aihot-news"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/vopvb869l8pcmph7qho0jnxy7"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e979574bb15d0e4",
-      "url": "https://aihot.news/items/rg2iyvu663n5fpn2mzrnxx0mz",
-      "title": "黄仁勋宣布英伟达拟追加 20 亿美元投资欧洲 AI，并注资法国四家初创企业",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/rg2iyvu663n5fpn2mzrnxx0mz\">aihot.news</a></li></ul>",
-      "date_published": "2026-10-14T00:30:26+00:00",
-      "tags": [
-        "rss:aihot-news"
-      ],
-      "_ai_daily": {
-        "event_id": "e979574bb15d0e4",
-        "source_ids": [
-          "rss:aihot-news"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/rg2iyvu663n5fpn2mzrnxx0mz"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-ec003ee380c1a9a",
-      "url": "https://aihot.news/items/v661w34vaagelkbp0kh6yyoxs",
-      "title": "Context.dev 开源 Rust 编写的本地语义代码搜索 CLI「sgrep」",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/v661w34vaagelkbp0kh6yyoxs\">aihot.news</a></li></ul>",
-      "date_published": "2026-10-14T01:30:29+00:00",
-      "tags": [
-        "rss:aihot-news"
-      ],
-      "_ai_daily": {
-        "event_id": "ec003ee380c1a9a",
-        "source_ids": [
-          "rss:aihot-news"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/v661w34vaagelkbp0kh6yyoxs"
         ],
         "evidence_level": "single_source",
         "confidence": 1.0
@@ -327,21 +327,231 @@
       }
     },
     {
-      "id": "2026-10-14-e216b66e8c3e822",
-      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFA5R1dRSXVab1hrVkZJZzQ2T1BodHd4c2Q3WUk1aG1tRmpWMGJnX0k2TEJ1RnNRdmNSWHhHcE9hZktUUVpTRFpmYjFtODdsZ1M0RlVXOWliUzQ0LVZBSGc?oc=5",
-      "title": "无问芯穹联合创始人戴国浩博士确认出席 QCon 上海，分享 Agentic Infra 技术探索与实践 - InfoQ-CN",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTFA5R1dRSXVab1hrVkZJZzQ2T1BodHd4c2Q3WUk1aG1tRmpWMGJnX0k2TEJ1RnNRdmNSWHhHcE9hZktUUVpTRFpmYjFtODdsZ1M0RlVXOWliUzQ0LVZBSGc?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-14T02:00:52+00:00",
+      "id": "2026-10-14-e715c8dc2d81a28",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPLXVJV0ZILVhCdDR3a0FsQkZjNmlDNTFaQUtkTy00bXllQ09QQnJLSVh2bUR4NDA2eDJCS3hUZC11YTI5T2xUTElsbzdnRzkweUd4bzVMZFd2RWhRbHIxQWQyWEZaenVMc2xJckVSR3dmbXp3MnZrVFRreGtYWGROcmtxY0xmbnM2?oc=5",
+      "title": "一个垂域大模型如何改写钢铁生产线？｜山东人工智能垂域大模型系列报道 - 搜狐",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiiAFBVV95cUxPLXVJV0ZILVhCdDR3a0FsQkZjNmlDNTFaQUtkTy00bXllQ09QQnJLSVh2bUR4NDA2eDJCS3hUZC11YTI5T2xUTElsbzdnRzkweUd4bzVMZFd2RWhRbHIxQWQyWEZaenVMc2xJckVSR3dmbXp3MnZrVFRreGtYWGROcmtxY0xmbnM2?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T02:44:08+00:00",
       "tags": [
         "api:news-google-com-search"
       ],
       "_ai_daily": {
-        "event_id": "e216b66e8c3e822",
+        "event_id": "e715c8dc2d81a28",
         "source_ids": [
           "api:news-google-com-search"
         ],
         "all_urls": [
-          "https://news.google.com/rss/articles/CBMiXkFVX3lxTFA5R1dRSXVab1hrVkZJZzQ2T1BodHd4c2Q3WUk1aG1tRmpWMGJnX0k2TEJ1RnNRdmNSWHhHcE9hZktUUVpTRFpmYjFtODdsZ1M0RlVXOWliUzQ0LVZBSGc?oc=5"
+          "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPLXVJV0ZILVhCdDR3a0FsQkZjNmlDNTFaQUtkTy00bXllQ09QQnJLSVh2bUR4NDA2eDJCS3hUZC11YTI5T2xUTElsbzdnRzkweUd4bzVMZFd2RWhRbHIxQWQyWEZaenVMc2xJckVSR3dmbXp3MnZrVFRreGtYWGROcmtxY0xmbnM2?oc=5"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-eb55ff50817a6da",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1NZXgzS1dMNFJvVkQ2TVJMNnFnR0x6Z1pQZkZvX0NEZTNqblBCUHd2dE1acEJvNm1vcDItdzdOdWx3cXVCdS1KaFVRTFktNmxsYVRld0RPLUVJV0lpVTFF?oc=5",
+      "title": "AI改代码时，到底该让它一次性重写整个文件，还是像人类程序员一样一小段一小段地打补丁？ - 科技行者",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiX0FVX3lxTE1NZXgzS1dMNFJvVkQ2TVJMNnFnR0x6Z1pQZkZvX0NEZTNqblBCUHd2dE1acEJvNm1vcDItdzdOdWx3cXVCdS1KaFVRTFktNmxsYVRld0RPLUVJV0lpVTFF?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T02:34:00+00:00",
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "_ai_daily": {
+        "event_id": "eb55ff50817a6da",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1NZXgzS1dMNFJvVkQ2TVJMNnFnR0x6Z1pQZkZvX0NEZTNqblBCUHd2dE1acEJvNm1vcDItdzdOdWx3cXVCdS1KaFVRTFktNmxsYVRld0RPLUVJV0lpVTFF?oc=5"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e7e117e1da8ef65",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFB6Mm5xWE16M2F4OW1wVGVVamFWTklqRmJmdDJCLVo4bFczeHpVdG0zNUpOa21JS3dJb3VHcEhTdmpsWHZJQXp5V3BTQU95cThlQ2pPQ0p2ZUUxZ3dsSTBVUQ?oc=5",
+      "title": "苹果(AAPL.US)才是AI投资“版本答案”? 半导体暴跌之际再触5万亿美元，折叠iPhone与AI家居点燃增长想象 - 证券之星",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiYEFVX3lxTFB6Mm5xWE16M2F4OW1wVGVVamFWTklqRmJmdDJCLVo4bFczeHpVdG0zNUpOa21JS3dJb3VHcEhTdmpsWHZJQXp5V3BTQU95cThlQ2pPQ0p2ZUUxZ3dsSTBVUQ?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T02:19:52+00:00",
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "_ai_daily": {
+        "event_id": "e7e117e1da8ef65",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMiYEFVX3lxTFB6Mm5xWE16M2F4OW1wVGVVamFWTklqRmJmdDJCLVo4bFczeHpVdG0zNUpOa21JS3dJb3VHcEhTdmpsWHZJQXp5V3BTQU95cThlQ2pPQ0p2ZUUxZ3dsSTBVUQ?oc=5"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e429fd86616f8cb",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9NUm1SWmh2ZS10YUNEby1YOWZYVWlwSmh5c29nNkdvdE1MOURnUFZIYjlYYUlVdEtoTFh4S2JCYXQxakYzSmVvYkR3ZnNacHZXd3VzYVZheC0?oc=5",
+      "title": "计算机与人工智能学院举办“智绘AI工坊”物联网创新展演活动 - 西南民族大学",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiWEFVX3lxTE9NUm1SWmh2ZS10YUNEby1YOWZYVWlwSmh5c29nNkdvdE1MOURnUFZIYjlYYUlVdEtoTFh4S2JCYXQxakYzSmVvYkR3ZnNacHZXd3VzYVZheC0?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T02:39:23+00:00",
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "_ai_daily": {
+        "event_id": "e429fd86616f8cb",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9NUm1SWmh2ZS10YUNEby1YOWZYVWlwSmh5c29nNkdvdE1MOURnUFZIYjlYYUlVdEtoTFh4S2JCYXQxakYzSmVvYkR3ZnNacHZXd3VzYVZheC0?oc=5"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-ecc6aeb90ba9de4",
+      "url": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTFBLaGU2NnZSYm40dEpDQUFHdmZEbjZTOTdpQ2N4NDVaclRNcXZOdUlFdnU2NUdFWXh1ejlIc0JydkFGZ0E?oc=5",
+      "title": "企业微信和 WorkBuddy 组了个「王炸局」，AI 终于不用人伺候了 - 爱范儿",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiQ0FVX3lxTFBLaGU2NnZSYm40dEpDQUFHdmZEbjZTOTdpQ2N4NDVaclRNcXZOdUlFdnU2NUdFWXh1ejlIc0JydkFGZ0E?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T02:30:24+00:00",
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "_ai_daily": {
+        "event_id": "ecc6aeb90ba9de4",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMiQ0FVX3lxTFBLaGU2NnZSYm40dEpDQUFHdmZEbjZTOTdpQ2N4NDVaclRNcXZOdUlFdnU2NUdFWXh1ejlIc0JydkFGZ0E?oc=5"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-ef808a76d16055e",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFB6TmJ0UmZ2U3VpYWNKM0JUb1NCT1V0ZUxodEQwanJZeXRQUzFtcEJFdXozRUlDYWphYmFrVTlPY0J5SVVIeUVGbWFoU2g4MkNmY19fMWZVMFNKZ24xalpWYndvUFNadW_SAWxBVV95cUxQMlNCT3ZnWDVucDNtRE4zZ1hiZkh2SmltREswRHYyRVZVSXRLQmplTEZYcTAwQ3BLX1JSSGYyYmQyMlEwbTJmQk50SjFERU11c0ZEOW9KYTBrR0Q5ZlV5TUhVRWZPeTM4eS1waUM?oc=5",
+      "title": "AI翻译：还有多久会完全取代人类？ - BBC",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiZ0FVX3lxTFB6TmJ0UmZ2U3VpYWNKM0JUb1NCT1V0ZUxodEQwanJZeXRQUzFtcEJFdXozRUlDYWphYmFrVTlPY0J5SVVIeUVGbWFoU2g4MkNmY19fMWZVMFNKZ24xalpWYndvUFNadW_SAWxBVV95cUxQMlNCT3ZnWDVucDNtRE4zZ1hiZkh2SmltREswRHYyRVZVSXRLQmplTEZYcTAwQ3BLX1JSSGYyYmQyMlEwbTJmQk50SjFERU11c0ZEOW9KYTBrR0Q5ZlV5TUhVRWZPeTM4eS1waUM?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T02:43:41+00:00",
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "_ai_daily": {
+        "event_id": "ef808a76d16055e",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFB6TmJ0UmZ2U3VpYWNKM0JUb1NCT1V0ZUxodEQwanJZeXRQUzFtcEJFdXozRUlDYWphYmFrVTlPY0J5SVVIeUVGbWFoU2g4MkNmY19fMWZVMFNKZ24xalpWYndvUFNadW_SAWxBVV95cUxQMlNCT3ZnWDVucDNtRE4zZ1hiZkh2SmltREswRHYyRVZVSXRLQmplTEZYcTAwQ3BLX1JSSGYyYmQyMlEwbTJmQk50SjFERU11c0ZEOW9KYTBrR0Q5ZlV5TUhVRWZPeTM4eS1waUM?oc=5"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e5c6616012ac69c",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOWmNkQjBOZ3I1cUhGMjM1WHM0cUNLaEVYT3hwUERkWXBRZmdaMDJyUFk0ZEhKRnNwTmF1b0szQXUtNHptQjFkUDBBVHVtbVBreHBxc180Y3JwbDFyd3U2bTV6RkN5ZmQ0SzhmaGlodHdONUZyWFRsSXYycVVBWDc2NEtOWFpvVFo2Qkw3Q2RB?oc=5",
+      "title": "2026本土知名企业文化咨询公司：AI大模型驱动的文化咨询新范式 - 新浪网",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMijgFBVV95cUxOWmNkQjBOZ3I1cUhGMjM1WHM0cUNLaEVYT3hwUERkWXBRZmdaMDJyUFk0ZEhKRnNwTmF1b0szQXUtNHptQjFkUDBBVHVtbVBreHBxc180Y3JwbDFyd3U2bTV6RkN5ZmQ0SzhmaGlodHdONUZyWFRsSXYycVVBWDc2NEtOWFpvVFo2Qkw3Q2RB?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T02:30:38+00:00",
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "_ai_daily": {
+        "event_id": "e5c6616012ac69c",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMijgFBVV95cUxOWmNkQjBOZ3I1cUhGMjM1WHM0cUNLaEVYT3hwUERkWXBRZmdaMDJyUFk0ZEhKRnNwTmF1b0szQXUtNHptQjFkUDBBVHVtbVBreHBxc180Y3JwbDFyd3U2bTV6RkN5ZmQ0SzhmaGlodHdONUZyWFRsSXYycVVBWDc2NEtOWFpvVFo2Qkw3Q2RB?oc=5"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e81c8dcb2a1bec6",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBvSV9vSU16aU04ekEya3ktSHJwdm9BSTFuaEQ0cThIX3JPMTJwdjB3MGFXRTJSU3NNd2E4UEo1b0JPWnJ0UVRUbmp1RGVlME14ZkZfRzBqVUE3b0xoZGxBRUhGNjh1c1MwMHRB?oc=5",
+      "title": "当海外买家先问AI再找供应商：光伏储能出海需要一条可回款的GEO闭环 - 新华报业网",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMia0FVX3lxTFBvSV9vSU16aU04ekEya3ktSHJwdm9BSTFuaEQ0cThIX3JPMTJwdjB3MGFXRTJSU3NNd2E4UEo1b0JPWnJ0UVRUbmp1RGVlME14ZkZfRzBqVUE3b0xoZGxBRUhGNjh1c1MwMHRB?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T02:26:00+00:00",
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "_ai_daily": {
+        "event_id": "e81c8dcb2a1bec6",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMia0FVX3lxTFBvSV9vSU16aU04ekEya3ktSHJwdm9BSTFuaEQ0cThIX3JPMTJwdjB3MGFXRTJSU3NNd2E4UEo1b0JPWnJ0UVRUbmp1RGVlME14ZkZfRzBqVUE3b0xoZGxBRUhGNjh1c1MwMHRB?oc=5"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-eee41f0eaceb2f5",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5SSGFnMHhLckZ3WGVuNDVhaGpFdGZwMi1tckdCSHZGYnBuaXRjUldpVXRjVFZhdVpFZmJ4QVBjSGNWRTJiNGRCaTBIcFJrTWhYenliMnNRa3pzckNzeGRuRnBzNA?oc=5",
+      "title": "这世界好颠…AI女爱豆宣布“因怀孕暂停活动”，创作者称遭网暴：只是自娱自乐，没有盈利 - 观察者网",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiY0FVX3lxTE5SSGFnMHhLckZ3WGVuNDVhaGpFdGZwMi1tckdCSHZGYnBuaXRjUldpVXRjVFZhdVpFZmJ4QVBjSGNWRTJiNGRCaTBIcFJrTWhYenliMnNRa3pzckNzeGRuRnBzNA?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T02:18:00+00:00",
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "_ai_daily": {
+        "event_id": "eee41f0eaceb2f5",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5SSGFnMHhLckZ3WGVuNDVhaGpFdGZwMi1tckdCSHZGYnBuaXRjUldpVXRjVFZhdVpFZmJ4QVBjSGNWRTJiNGRCaTBIcFJrTWhYenliMnNRa3pzckNzeGRuRnBzNA?oc=5"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-ebf609879f0ca21",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE00SXp4SzNBc3JuTWMxWGlrWFgtdU13R3F0OXVKX3RDOGpyaUxraVJlbW5ycUdLS3Y0Z2VQRm4yY29rM1ZOMm42MmJOd3Y4czlTamhnTl91bzVBWFBMUldyNg?oc=5",
+      "title": "面壁智能发布新一代MiniCPM-V 4.7：35B 开源大模型首次无损流畅跑上手机_公司新闻_财经 - 证券之星",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiYEFVX3lxTE00SXp4SzNBc3JuTWMxWGlrWFgtdU13R3F0OXVKX3RDOGpyaUxraVJlbW5ycUdLS3Y0Z2VQRm4yY29rM1ZOMm42MmJOd3Y4czlTamhnTl91bzVBWFBMUldyNg?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T02:09:38+00:00",
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "_ai_daily": {
+        "event_id": "ebf609879f0ca21",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMiYEFVX3lxTE00SXp4SzNBc3JuTWMxWGlrWFgtdU13R3F0OXVKX3RDOGpyaUxraVJlbW5ycUdLS3Y0Z2VQRm4yY29rM1ZOMm42MmJOd3Y4czlTamhnTl91bzVBWFBMUldyNg?oc=5"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-ee0c73a16ddaa1c",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9xZ3FEQUFDelNyak9vR0lDNU9xcEczVnYwVUFEaFRpSWgzbVl3TEdWdkhLSl9DeXp4bTVOa1RoYlp3VU9WWm52d0R2T1lfOUl6UzZQQkxNeVFlSFZHNUtQRUQ4SUh0enNRaDFvaWRPWTdEdw?oc=5",
+      "title": "全国首个“词元贷”构建授信新逻辑 ——“AI落地新实践”系列报道之二 - 西藏自治区科学技术厅",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMickFVX3lxTE9xZ3FEQUFDelNyak9vR0lDNU9xcEczVnYwVUFEaFRpSWgzbVl3TEdWdkhLSl9DeXp4bTVOa1RoYlp3VU9WWm52d0R2T1lfOUl6UzZQQkxNeVFlSFZHNUtQRUQ4SUh0enNRaDFvaWRPWTdEdw?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T02:13:30+00:00",
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "_ai_daily": {
+        "event_id": "ee0c73a16ddaa1c",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMickFVX3lxTE9xZ3FEQUFDelNyak9vR0lDNU9xcEczVnYwVUFEaFRpSWgzbVl3TEdWdkhLSl9DeXp4bTVOa1RoYlp3VU9WWm52d0R2T1lfOUl6UzZQQkxNeVFlSFZHNUtQRUQ4SUh0enNRaDFvaWRPWTdEdw?oc=5"
         ],
         "evidence_level": "single_source",
         "confidence": 1.0
@@ -369,232 +579,21 @@
       }
     },
     {
-      "id": "2026-10-14-eb08465afd937b0",
-      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9xVFkyalBpRkV4bHE0ODg4VTFqbkM2cGdlcGdOa3FVZ2F1MkQ4UWw1UElFdHdJd1dXMTdMWFVBQmVjbWNyVUpRNFJRUzhSb25ldjFkNnNkWFhMTFhrRnp6d24yOA?oc=5",
-      "title": "广西AI下南洋丨活力中国调研行 - http://www.jingjiribao.cn/",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiY0FVX3lxTE9xVFkyalBpRkV4bHE0ODg4VTFqbkM2cGdlcGdOa3FVZ2F1MkQ4UWw1UElFdHdJd1dXMTdMWFVBQmVjbWNyVUpRNFJRUzhSb25ldjFkNnNkWFhMTFhrRnp6d24yOA?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-14T02:08:29+00:00",
+      "id": "2026-10-14-ed7d7a0fe83ed74",
+      "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTFBNZEhVY0tTVy03OWhMY01FUUg3Vk1rOUtpc1g0bERnOE5MWnBiM2YtUm1VbkFuMlQwOWp6V2gwUjFUYnNPeXZhb05B?oc=5",
+      "title": "让AI触手可及 赣州词元超市正式上线 - 凤凰网",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiSkFVX3lxTFBNZEhVY0tTVy03OWhMY01FUUg3Vk1rOUtpc1g0bERnOE5MWnBiM2YtUm1VbkFuMlQwOWp6V2gwUjFUYnNPeXZhb05B?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T02:28:01+00:00",
       "tags": [
         "api:news-google-com-search"
       ],
       "_ai_daily": {
-        "event_id": "eb08465afd937b0",
+        "event_id": "ed7d7a0fe83ed74",
         "source_ids": [
           "api:news-google-com-search"
         ],
         "all_urls": [
-          "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9xVFkyalBpRkV4bHE0ODg4VTFqbkM2cGdlcGdOa3FVZ2F1MkQ4UWw1UElFdHdJd1dXMTdMWFVBQmVjbWNyVUpRNFJRUzhSb25ldjFkNnNkWFhMTFhrRnp6d24yOA?oc=5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-ef95ed5696e1d36",
-      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBZTFBvSkxIM29WNG9hWDVvaV96RjVJbnU4RS02ZVVlaEJwNEhvdDJVcnhYeDh2NmR2cUY2MGNQSll0SWhRSW5NV3hKTGFsclJFeE5YUTF4MTk1SFp2SmFoTm53?oc=5",
-      "title": "阶跃终端发布大模型原生智能体手机STEPX Neo 定价3999元 - 观点网",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiYkFVX3lxTFBZTFBvSkxIM29WNG9hWDVvaV96RjVJbnU4RS02ZVVlaEJwNEhvdDJVcnhYeDh2NmR2cUY2MGNQSll0SWhRSW5NV3hKTGFsclJFeE5YUTF4MTk1SFp2SmFoTm53?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-14T02:07:48+00:00",
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "ef95ed5696e1d36",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBZTFBvSkxIM29WNG9hWDVvaV96RjVJbnU4RS02ZVVlaEJwNEhvdDJVcnhYeDh2NmR2cUY2MGNQSll0SWhRSW5NV3hKTGFsclJFeE5YUTF4MTk1SFp2SmFoTm53?oc=5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-ea6c61b2d6c2d91",
-      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9CUE1lVzBQV2w0UHA1R3ZlVnZlY3lqeUpYc2ZyT3BrQVhZN2gxY0MxVGxYemhUVkl0SDkwZVRMSjE4ZzUtcV9EVnI0SjZfaDE0azlobDRJRjRPUURyc1lTRjd6T0pSMVRjMVE0aGhQclc3MGtKcnJZ?oc=5",
-      "title": "日本企业重返AI牌桌的信心来自何处？——从川崎重工的“机器人化”转型，看物理AI如何进入工厂、医院与基础设施 - 客观日本",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMid0FVX3lxTE9CUE1lVzBQV2w0UHA1R3ZlVnZlY3lqeUpYc2ZyT3BrQVhZN2gxY0MxVGxYemhUVkl0SDkwZVRMSjE4ZzUtcV9EVnI0SjZfaDE0azlobDRJRjRPUURyc1lTRjd6T0pSMVRjMVE0aGhQclc3MGtKcnJZ?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-14T01:46:13+00:00",
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "ea6c61b2d6c2d91",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMid0FVX3lxTE9CUE1lVzBQV2w0UHA1R3ZlVnZlY3lqeUpYc2ZyT3BrQVhZN2gxY0MxVGxYemhUVkl0SDkwZVRMSjE4ZzUtcV9EVnI0SjZfaDE0azlobDRJRjRPUURyc1lTRjd6T0pSMVRjMVE0aGhQclc3MGtKcnJZ?oc=5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e12f295b10c1cc5",
-      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQdF85cGR3Ti1FU1JPeXdNMEtROEpoVkM1dVJJUmt3c0lndmJycnJsT0JTZ0l2VWwzVExnTk9KenVXWFdFVG5nUG4xVF9UNGVsWm5iNjNHOUNQMGlKVktSang3b1RFU3VQSEY3QUFGdDFWV0VWamIyME1ZbVJPbmJYdUVSbXhDWDRoS25hMDJ3?oc=5",
-      "title": "垂域大模型看山东｜山东“人工智能服务军团”以普惠AI赋能产业升级 - 新浪网",
-      "content_html": "<p><strong>事实</strong></p><ul><li>垂域大模型看山东｜山东“人工智能服务军团”以普惠AI赋能产业升级 新浪网</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMijgFBVV95cUxQdF85cGR3Ti1FU1JPeXdNMEtROEpoVkM1dVJJUmt3c0lndmJycnJsT0JTZ0l2VWwzVExnTk9KenVXWFdFVG5nUG4xVF9UNGVsWm5iNjNHOUNQMGlKVktSang3b1RFU3VQSEY3QUFGdDFWV0VWamIyME1ZbVJPbmJYdUVSbXhDWDRoS25hMDJ3?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-14T01:57:00+00:00",
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "e12f295b10c1cc5",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMijgFBVV95cUxQdF85cGR3Ti1FU1JPeXdNMEtROEpoVkM1dVJJUmt3c0lndmJycnJsT0JTZ0l2VWwzVExnTk9KenVXWFdFVG5nUG4xVF9UNGVsWm5iNjNHOUNQMGlKVktSang3b1RFU3VQSEY3QUFGdDFWV0VWamIyME1ZbVJPbmJYdUVSbXhDWDRoS25hMDJ3?oc=5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e6c0c266ec13f85",
-      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBRMU1nV3U3eEFmYUhWb29PZGhtVTlIVFU5UDIwU3U1NTdDd3hHNHA0Qk9RSkN0R3RrNHZDVG81UlRqSzlySWQtZE9jcHk2enhwN3ZBaDNQQzU?oc=5",
-      "title": "又一华中首店来了！“千问AI眼镜”落子武商梦时代- 湖北日报新闻客户端 - 湖北日报传媒集团",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiWEFVX3lxTFBRMU1nV3U3eEFmYUhWb29PZGhtVTlIVFU5UDIwU3U1NTdDd3hHNHA0Qk9RSkN0R3RrNHZDVG81UlRqSzlySWQtZE9jcHk2enhwN3ZBaDNQQzU?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-14T01:49:27+00:00",
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "e6c0c266ec13f85",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBRMU1nV3U3eEFmYUhWb29PZGhtVTlIVFU5UDIwU3U1NTdDd3hHNHA0Qk9RSkN0R3RrNHZDVG81UlRqSzlySWQtZE9jcHk2enhwN3ZBaDNQQzU?oc=5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-ec871e743c1e6bc",
-      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE40cHkzLXJZNE9BRDlCbTIyLUpMaldVWDE3V3ROTnUxUVJDaVN5OXFSdUk5UWhzdjZSRDdNakN0bm9JMEFtTF9JdlJKaTNzd0lWY3M0V3pGZjk1MHZCVUE?oc=5",
-      "title": "9月清理“AI魔改”违规视频近1.3万条 处置违规账号30余个 - 中国新闻网",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTE40cHkzLXJZNE9BRDlCbTIyLUpMaldVWDE3V3ROTnUxUVJDaVN5OXFSdUk5UWhzdjZSRDdNakN0bm9JMEFtTF9JdlJKaTNzd0lWY3M0V3pGZjk1MHZCVUE?oc=5\">news.google.com</a></li><li><a href=\"https://news.google.com/rss/articles/CBMiaEFVX3lxTE5IaXBSdW0zTm1LbVZvMlhxWFpMSmZkS05JTGhDVFhLTnBuOWNCQXp2UXQ2YWFkam9aMHV3eGVPMm9xTk5YczFPZEFFczFpb1RSVU5Ta3JSdEJyZk1IWGZHbl85dmR4Vkxi?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-14T01:54:36+00:00",
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "ec871e743c1e6bc",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMiXkFVX3lxTE40cHkzLXJZNE9BRDlCbTIyLUpMaldVWDE3V3ROTnUxUVJDaVN5OXFSdUk5UWhzdjZSRDdNakN0bm9JMEFtTF9JdlJKaTNzd0lWY3M0V3pGZjk1MHZCVUE?oc=5",
-          "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5IaXBSdW0zTm1LbVZvMlhxWFpMSmZkS05JTGhDVFhLTnBuOWNCQXp2UXQ2YWFkam9aMHV3eGVPMm9xTk5YczFPZEFFczFpb1RSVU5Ta3JSdEJyZk1IWGZHbl85dmR4Vkxi?oc=5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 0.9
-      }
-    },
-    {
-      "id": "2026-10-14-e3937c803ec3a43",
-      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFAxbklUY0RSWUZKeHB3V3RYQWRjZU1VRHFBM3lmUjd0Vkc4UFNXWWFBZEZhajNjb2wyYnpaN2w5Z3AwRHN4SE1iNVVhZFhPU0dQR3lLNTBqYXIweWhsTXdQSlpWYUI?oc=5",
-      "title": "STEPX首款大模型原生智能体手机STEPX Neo正式发布_滚动新闻 - 证券之星",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiZEFVX3lxTFAxbklUY0RSWUZKeHB3V3RYQWRjZU1VRHFBM3lmUjd0Vkc4UFNXWWFBZEZhajNjb2wyYnpaN2w5Z3AwRHN4SE1iNVVhZFhPU0dQR3lLNTBqYXIweWhsTXdQSlpWYUI?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-14T01:51:39+00:00",
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "e3937c803ec3a43",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMiZEFVX3lxTFAxbklUY0RSWUZKeHB3V3RYQWRjZU1VRHFBM3lmUjd0Vkc4UFNXWWFBZEZhajNjb2wyYnpaN2w5Z3AwRHN4SE1iNVVhZFhPU0dQR3lLNTBqYXIweWhsTXdQSlpWYUI?oc=5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-ebd4fb3d3ef02ff",
-      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9USkJ0R0hoUHc4cy13WkhabW9YZ0t1NUZQNkMwMm9PdURPRTJudlNES2xWUWE0dEFJb2NYVkJTQ3plZTJxc1k4NDFiX290ZzhQcFo4T0ZnNzc?oc=5",
-      "title": "千问AI眼镜想让更多用户真正用起来 - Jiemian.com",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiWEFVX3lxTE9USkJ0R0hoUHc4cy13WkhabW9YZ0t1NUZQNkMwMm9PdURPRTJudlNES2xWUWE0dEFJb2NYVkJTQ3plZTJxc1k4NDFiX290ZzhQcFo4T0ZnNzc?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-14T01:58:52+00:00",
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "ebd4fb3d3ef02ff",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9USkJ0R0hoUHc4cy13WkhabW9YZ0t1NUZQNkMwMm9PdURPRTJudlNES2xWUWE0dEFJb2NYVkJTQ3plZTJxc1k4NDFiX290ZzhQcFo4T0ZnNzc?oc=5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e8ef5fda8fb1eeb",
-      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBlN29GcWpReHpSMHZhYkt1MlcyNDZNVzF0cUNoSXE0dVRGREZfb3AzbUtpT1RsWksyT0xqTEFFOFh0cXFUOTltNWxmMnl4X3M5Vm1IMzhxcVh0aWFXUkt6Y3hn?oc=5",
-      "title": "文化传媒及AI视频板块盘初调整：广电网络龙版传媒双双跌停 - 观点网",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiYkFVX3lxTFBlN29GcWpReHpSMHZhYkt1MlcyNDZNVzF0cUNoSXE0dVRGREZfb3AzbUtpT1RsWksyT0xqTEFFOFh0cXFUOTltNWxmMnl4X3M5Vm1IMzhxcVh0aWFXUkt6Y3hn?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-14T01:52:41+00:00",
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "e8ef5fda8fb1eeb",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBlN29GcWpReHpSMHZhYkt1MlcyNDZNVzF0cUNoSXE0dVRGREZfb3AzbUtpT1RsWksyT0xqTEFFOFh0cXFUOTltNWxmMnl4X3M5Vm1IMzhxcVh0aWFXUkt6Y3hn?oc=5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-eba2748808ac8aa",
-      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1KajNtZTRkUUtjektHMl8xN01zd1dCcUNRWThWckpnUFJSai1YXzVBeC1LVDViWlNrbUFaZl85UWpEMkF6TS1ISVE4RzdOX2M5Q0xONFIxLXdzYzg4b1czSzcyZXhCejlEN0xIUUhpS0xjTDR1TVNoMGRPY3JtQQ?oc=5",
-      "title": "院士专家齐聚武汉共话AI前沿 - 新浪网",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMifkFVX3lxTE1KajNtZTRkUUtjektHMl8xN01zd1dCcUNRWThWckpnUFJSai1YXzVBeC1LVDViWlNrbUFaZl85UWpEMkF6TS1ISVE4RzdOX2M5Q0xONFIxLXdzYzg4b1czSzcyZXhCejlEN0xIUUhpS0xjTDR1TVNoMGRPY3JtQQ?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-14T01:59:00+00:00",
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "eba2748808ac8aa",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMifkFVX3lxTE1KajNtZTRkUUtjektHMl8xN01zd1dCcUNRWThWckpnUFJSai1YXzVBeC1LVDViWlNrbUFaZl85UWpEMkF6TS1ISVE4RzdOX2M5Q0xONFIxLXdzYzg4b1czSzcyZXhCejlEN0xIUUhpS0xjTDR1TVNoMGRPY3JtQQ?oc=5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e226600210728f6",
-      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPeGp0dzZyQnR0TlhYMkxybFFfTGxSRzY3SktVLUN6SFJvaXF5M2FDbVdKSW81UmgtRVlYWm9TMGE2VDZUaU9pMkJFbFJnMUFXWGpTdmFaX2E3QlZnOEo3SWs4cHdWcVA5M2JOX3VVa0VoamRRclpLNXdxbWJfcG8tV3lTM3VteEwzZTFib3ZNdHBCUQ?oc=5",
-      "title": "上汽集团新能源“全明星阵容”亮相2026工博会_国企动态 - 上海市国有资产监督管理委员会",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMikgFBVV95cUxPeGp0dzZyQnR0TlhYMkxybFFfTGxSRzY3SktVLUN6SFJvaXF5M2FDbVdKSW81UmgtRVlYWm9TMGE2VDZUaU9pMkJFbFJnMUFXWGpTdmFaX2E3QlZnOEo3SWs4cHdWcVA5M2JOX3VVa0VoamRRclpLNXdxbWJfcG8tV3lTM3VteEwzZTFib3ZNdHBCUQ?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-14T01:39:01+00:00",
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "e226600210728f6",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMikgFBVV95cUxPeGp0dzZyQnR0TlhYMkxybFFfTGxSRzY3SktVLUN6SFJvaXF5M2FDbVdKSW81UmgtRVlYWm9TMGE2VDZUaU9pMkJFbFJnMUFXWGpTdmFaX2E3QlZnOEo3SWs4cHdWcVA5M2JOX3VVa0VoamRRclpLNXdxbWJfcG8tV3lTM3VteEwzZTFib3ZNdHBCUQ?oc=5"
+          "https://news.google.com/rss/articles/CBMiSkFVX3lxTFBNZEhVY0tTVy03OWhMY01FUUg3Vk1rOUtpc1g0bERnOE5MWnBiM2YtUm1VbkFuMlQwOWp6V2gwUjFUYnNPeXZhb05B?oc=5"
         ],
         "evidence_level": "single_source",
         "confidence": 1.0
@@ -624,8 +623,8 @@
     {
       "id": "2026-10-14-e80aa90e1b32737",
       "url": "https://guitoro.com/",
-      "title": "Show HN: Guitoro, a virtual guitar you strum with your keyboard",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Guitoro is a free browser guitar using recordings of real instruments. You can strum with your keyboard, mouse, or touchscreen, choose acoustic, classical, electric guitar or bass, and see chord fingering and each stroke. Song practice can be slowed to 20%, and there are free chord tools and tuners.</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://guitoro.com/\">guitoro.com</a></li></ul>",
+      "title": "Guitoro：一款可通过键盘弹奏的免费虚拟吉他",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Guitoro 是一款免费的浏览器吉他应用。</li><li>该应用使用真实乐器的录音。</li><li>用户可以使用键盘、鼠标或触控屏进行弹奏。</li><li>应用提供原声吉他、古典吉他、电吉他和贝斯选项。</li><li>应用可显示和弦指法和每一次拨弦。</li><li>歌曲练习速度可放慢至 20%。</li><li>应用提供免费的和弦工具和调音器。</li><li>使用该应用无需注册或下载。</li></ul><p><strong>推断</strong></p><ul><li>由于作者寻求反馈，该应用可能处于测试或推广阶段。</li></ul><p><strong>不确定</strong></p><ul><li>Guitoro 的具体开发者是谁无法从材料中确认。</li><li>视频演示的具体内容和链接地址没有在材料正文中展示。</li><li>评论区用户的具体反馈意见无法从材料中确认。</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://guitoro.com/\">guitoro.com</a></li></ul>",
       "date_published": "2026-10-13T19:11:48+00:00",
       "tags": [
         "api:hn-algolia-com-search",
@@ -708,6 +707,27 @@
       }
     },
     {
+      "id": "2026-10-14-ec0c109918ab4ce",
+      "url": "https://www.v2ex.com/t/1248569",
+      "title": "昨天把家里 Wi-Fi 2.4G 和 5G 分开了，你们呢？",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.v2ex.com/t/1248569\">v2ex.com</a></li></ul>",
+      "date_published": "2026-10-14T00:46:23+00:00",
+      "tags": [
+        "api:v2ex-com-topics-hot"
+      ],
+      "_ai_daily": {
+        "event_id": "ec0c109918ab4ce",
+        "source_ids": [
+          "api:v2ex-com-topics-hot"
+        ],
+        "all_urls": [
+          "https://www.v2ex.com/t/1248569"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
       "id": "2026-10-14-e47caeb21a62fee",
       "url": "https://www.theverge.com/ai-artificial-intelligence/1010277/mia-goth-instagram-ai-shirt-deepfake-divorce",
       "title": "It’s ‘incomprehensible’ that Instagram allowed an AI image of Mia Goth to spread, say her reps",
@@ -723,6 +743,27 @@
         ],
         "all_urls": [
           "https://www.theverge.com/ai-artificial-intelligence/1010277/mia-goth-instagram-ai-shirt-deepfake-divorce"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e441f6c9e7dd6fb",
+      "url": "https://www.v2ex.com/t/1248577",
+      "title": "现在修电视都这么贵的吗？",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.v2ex.com/t/1248577\">v2ex.com</a></li></ul>",
+      "date_published": "2026-10-14T01:11:06+00:00",
+      "tags": [
+        "api:v2ex-com-topics-hot"
+      ],
+      "_ai_daily": {
+        "event_id": "e441f6c9e7dd6fb",
+        "source_ids": [
+          "api:v2ex-com-topics-hot"
+        ],
+        "all_urls": [
+          "https://www.v2ex.com/t/1248577"
         ],
         "evidence_level": "single_source",
         "confidence": 1.0
@@ -901,7 +942,7 @@
       "url": "https://github.com/debpalash/VoiceStudio",
       "title": "debpalash/VoiceStudio",
       "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/debpalash/VoiceStudio\">github.com</a></li></ul>",
-      "date_published": "2026-10-14T02:38:08.354745+00:00",
+      "date_published": "2026-10-14T03:10:58.629982+00:00",
       "tags": [
         "scrape:github-com-trending"
       ],
@@ -922,7 +963,7 @@
       "url": "https://github.com/mksglu/context-mode",
       "title": "mksglu/context-mode",
       "content_html": "<p><strong>事实</strong></p><ul><li>Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and enforces routing across 17 platforms via MCP + hooks.</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://github.com/mksglu/context-mode\">github.com</a></li></ul>",
-      "date_published": "2026-10-14T02:38:08.354745+00:00",
+      "date_published": "2026-10-14T03:10:58.629982+00:00",
       "tags": [
         "scrape:github-com-trending"
       ],
@@ -943,7 +984,7 @@
       "url": "https://github.com/cathrynlavery/diagram-design",
       "title": "cathrynlavery/diagram-design",
       "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/cathrynlavery/diagram-design\">github.com</a></li></ul>",
-      "date_published": "2026-10-14T02:38:08.354745+00:00",
+      "date_published": "2026-10-14T03:10:58.629982+00:00",
       "tags": [
         "scrape:github-com-trending"
       ],
@@ -954,6 +995,48 @@
         ],
         "all_urls": [
           "https://github.com/cathrynlavery/diagram-design"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e24f518fe0cc746",
+      "url": "https://github.com/bilawalsidhu/gods-eye-view",
+      "title": "bilawalsidhu/gods-eye-view",
+      "content_html": "<p><strong>事实</strong></p><ul><li>A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe.</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://github.com/bilawalsidhu/gods-eye-view\">github.com</a></li></ul>",
+      "date_published": "2026-10-14T03:10:58.629982+00:00",
+      "tags": [
+        "scrape:github-com-trending"
+      ],
+      "_ai_daily": {
+        "event_id": "e24f518fe0cc746",
+        "source_ids": [
+          "scrape:github-com-trending"
+        ],
+        "all_urls": [
+          "https://github.com/bilawalsidhu/gods-eye-view"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e35f5c2fb46e1d1",
+      "url": "https://github.com/xtool-org/xtool",
+      "title": "xtool-org/xtool",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/xtool-org/xtool\">github.com</a></li></ul>",
+      "date_published": "2026-10-14T03:10:58.629982+00:00",
+      "tags": [
+        "scrape:github-com-trending"
+      ],
+      "_ai_daily": {
+        "event_id": "e35f5c2fb46e1d1",
+        "source_ids": [
+          "scrape:github-com-trending"
+        ],
+        "all_urls": [
+          "https://github.com/xtool-org/xtool"
         ],
         "evidence_level": "single_source",
         "confidence": 1.0
@@ -981,53 +1064,11 @@
       }
     },
     {
-      "id": "2026-10-14-e24f518fe0cc746",
-      "url": "https://github.com/bilawalsidhu/gods-eye-view",
-      "title": "bilawalsidhu/gods-eye-view",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/bilawalsidhu/gods-eye-view\">github.com</a></li></ul>",
-      "date_published": "2026-10-14T02:38:08.354745+00:00",
-      "tags": [
-        "scrape:github-com-trending"
-      ],
-      "_ai_daily": {
-        "event_id": "e24f518fe0cc746",
-        "source_ids": [
-          "scrape:github-com-trending"
-        ],
-        "all_urls": [
-          "https://github.com/bilawalsidhu/gods-eye-view"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e35f5c2fb46e1d1",
-      "url": "https://github.com/xtool-org/xtool",
-      "title": "xtool-org/xtool",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/xtool-org/xtool\">github.com</a></li></ul>",
-      "date_published": "2026-10-14T02:38:08.354745+00:00",
-      "tags": [
-        "scrape:github-com-trending"
-      ],
-      "_ai_daily": {
-        "event_id": "e35f5c2fb46e1d1",
-        "source_ids": [
-          "scrape:github-com-trending"
-        ],
-        "all_urls": [
-          "https://github.com/xtool-org/xtool"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
       "id": "2026-10-14-e5b5e0a893baf98",
       "url": "https://github.com/storytold/artcraft",
       "title": "storytold/artcraft",
       "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/storytold/artcraft\">github.com</a></li></ul>",
-      "date_published": "2026-10-14T02:38:08.354745+00:00",
+      "date_published": "2026-10-14T03:10:58.629982+00:00",
       "tags": [
         "scrape:github-com-trending"
       ],
@@ -1048,7 +1089,7 @@
       "url": "https://github.com/morluto/rea",
       "title": "morluto/rea",
       "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/morluto/rea\">github.com</a></li></ul>",
-      "date_published": "2026-10-14T02:38:08.354745+00:00",
+      "date_published": "2026-10-14T03:10:58.629982+00:00",
       "tags": [
         "scrape:github-com-trending"
       ],
@@ -1065,32 +1106,11 @@
       }
     },
     {
-      "id": "2026-10-14-e86569ef914ddac",
-      "url": "https://www.v2ex.com/t/1248405",
-      "title": "关于长辈抽烟的问题，有好的解决办法么？",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.v2ex.com/t/1248405\">v2ex.com</a></li></ul>",
-      "date_published": "2026-10-13T07:13:06+00:00",
-      "tags": [
-        "api:v2ex-com-topics-hot"
-      ],
-      "_ai_daily": {
-        "event_id": "e86569ef914ddac",
-        "source_ids": [
-          "api:v2ex-com-topics-hot"
-        ],
-        "all_urls": [
-          "https://www.v2ex.com/t/1248405"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
       "id": "2026-10-14-eda90031ffce733",
       "url": "https://github.com/lyogavin/airllm",
       "title": "lyogavin/airllm",
       "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/lyogavin/airllm\">github.com</a></li></ul>",
-      "date_published": "2026-10-14T02:38:08.354745+00:00",
+      "date_published": "2026-10-14T03:10:58.629982+00:00",
       "tags": [
         "scrape:github-com-trending"
       ],
@@ -1107,31 +1127,10 @@
       }
     },
     {
-      "id": "2026-10-14-eb26e2f34774c61",
-      "url": "https://github.com/vercel-labs/skills",
-      "title": "vercel-labs/skills",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/vercel-labs/skills\">github.com</a></li></ul>",
-      "date_published": "2026-10-14T02:38:08.354745+00:00",
-      "tags": [
-        "scrape:github-com-trending"
-      ],
-      "_ai_daily": {
-        "event_id": "eb26e2f34774c61",
-        "source_ids": [
-          "scrape:github-com-trending"
-        ],
-        "all_urls": [
-          "https://github.com/vercel-labs/skills"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
       "id": "2026-10-14-e29024d77069a0c",
       "url": "https://aihot.news/items/cn2zpsopcfepfo7sjij0n30f4",
       "title": "Google DeepMind 用 Gemma 构建端侧反诈骗检测",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/cn2zpsopcfepfo7sjij0n30f4\">aihot.news</a></li></ul>",
+      "content_html": "<p><strong>事实</strong></p><ul><li>新加坡超过一半的报案犯罪都使用了复杂的社交工程手段。\n我们与 @GovTechSG 合作，利用我们的开放模型 Gemma 构建端侧欺诈检测。\n通过针对本地诈骗手法进行微调，它能够实时识别威胁，同时不损害个人隐私 →</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/cn2zpsopcfepfo7sjij0n30f4\">aihot.news</a></li></ul>",
       "date_published": "2026-10-14T02:05:00+00:00",
       "tags": [
         "rss:aihot-news"
@@ -1143,27 +1142,6 @@
         ],
         "all_urls": [
           "https://aihot.news/items/cn2zpsopcfepfo7sjij0n30f4"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e68063170a5557f",
-      "url": "https://aihot.news/items/mmsgsagw75tonh458uyhcsqhv",
-      "title": "用 Grok Bot 每日汇总推友推文到 Notion",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/mmsgsagw75tonh458uyhcsqhv\">aihot.news</a></li></ul>",
-      "date_published": "2026-10-14T00:58:59+00:00",
-      "tags": [
-        "rss:aihot-news"
-      ],
-      "_ai_daily": {
-        "event_id": "e68063170a5557f",
-        "source_ids": [
-          "rss:aihot-news"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/mmsgsagw75tonh458uyhcsqhv"
         ],
         "evidence_level": "single_source",
         "confidence": 1.0
@@ -1191,21 +1169,21 @@
       }
     },
     {
-      "id": "2026-10-14-e1964896e997499",
-      "url": "https://daily.juya.uk/issues/2026-10-13/",
-      "title": "2026-10-13",
-      "content_html": "<p><strong>事实</strong></p><ul><li>AI 早报 2026 10 13 视频版 ：YouTube ｜ 哔哩哔哩 概览 要闻 Meta 发布 Muse Wonder 模型系列 ↗ 1 The X Subscription 推出：整合Grok、Cursor 和 X Premium ↗ 2 Codex 第 8 天安排：重置用量额度 ↗ 3 模型发布 智谱推出法律模型 GLM Legal，开放测试申请 ↗ 4 OpenBMB 发布 MiniCPM V 4.7 系列两款模型 ↗ 5 开发生态 OpenCode Go 提供 80 美元 V4.1 Flash 额度 ↗ 6 阶跃 Step 5 Preview 上线 WorkBuddy，独家限免两</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://daily.juya.uk/issues/2026-10-13/\">daily.juya.uk</a></li></ul>",
-      "date_published": "2026-10-13T01:48:17+00:00",
+      "id": "2026-10-14-e8536989a16c400",
+      "url": "https://daily.juya.uk/issues/2026-10-14/",
+      "title": "2026-10-14",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://daily.juya.uk/issues/2026-10-14/\">daily.juya.uk</a></li></ul>",
+      "date_published": "2026-10-14T01:33:20+00:00",
       "tags": [
         "rss:daily-juya-uk"
       ],
       "_ai_daily": {
-        "event_id": "e1964896e997499",
+        "event_id": "e8536989a16c400",
         "source_ids": [
           "rss:daily-juya-uk"
         ],
         "all_urls": [
-          "https://daily.juya.uk/issues/2026-10-13/"
+          "https://daily.juya.uk/issues/2026-10-14/"
         ],
         "evidence_level": "single_source",
         "confidence": 1.0
@@ -1233,21 +1211,21 @@
       }
     },
     {
-      "id": "2026-10-14-e214e80e435ca29",
-      "url": "https://aihot.news/items/upjqhgi2dlxlrzo0gygvqtbmk",
-      "title": "Grok Bot 漏洞报告邮箱",
-      "content_html": "<p><strong>事实</strong></p><ul><li>如果你想提交 bug 报告，让你的 bot 发邮件到 tibo@mail.grokbot.com！</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/upjqhgi2dlxlrzo0gygvqtbmk\">aihot.news</a></li></ul>",
-      "date_published": "2026-10-14T02:16:02+00:00",
+      "id": "2026-10-14-eecc7e8106a018b",
+      "url": "https://aihot.news/items/xardfzy6zj0cp97wgubmeerwq",
+      "title": "Google DeepMind 与新加坡政府合作推出端侧 AI 诈骗检测模型",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/xardfzy6zj0cp97wgubmeerwq\">aihot.news</a></li></ul>",
+      "date_published": "2026-10-14T02:00:14+00:00",
       "tags": [
         "rss:aihot-news"
       ],
       "_ai_daily": {
-        "event_id": "e214e80e435ca29",
+        "event_id": "eecc7e8106a018b",
         "source_ids": [
           "rss:aihot-news"
         ],
         "all_urls": [
-          "https://aihot.news/items/upjqhgi2dlxlrzo0gygvqtbmk"
+          "https://aihot.news/items/xardfzy6zj0cp97wgubmeerwq"
         ],
         "evidence_level": "single_source",
         "confidence": 1.0
@@ -1269,6 +1247,27 @@
         ],
         "all_urls": [
           "https://www.theverge.com/ai-artificial-intelligence/1009862/google-releases-gemini-4-argon"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e1964896e997499",
+      "url": "https://daily.juya.uk/issues/2026-10-13/",
+      "title": "2026-10-13",
+      "content_html": "<p><strong>事实</strong></p><ul><li>AI 早报 2026 10 13 视频版 ：YouTube ｜ 哔哩哔哩 概览 要闻 Meta 发布 Muse Wonder 模型系列 ↗ 1 The X Subscription 推出：整合Grok、Cursor 和 X Premium ↗ 2 Codex 第 8 天安排：重置用量额度 ↗ 3 模型发布 智谱推出法律模型 GLM Legal，开放测试申请 ↗ 4 OpenBMB 发布 MiniCPM V 4.7 系列两款模型 ↗ 5 开发生态 OpenCode Go 提供 80 美元 V4.1 Flash 额度 ↗ 6 阶跃 Step 5 Preview 上线 WorkBuddy，独家限免两</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://daily.juya.uk/issues/2026-10-13/\">daily.juya.uk</a></li></ul>",
+      "date_published": "2026-10-13T01:48:17+00:00",
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "_ai_daily": {
+        "event_id": "e1964896e997499",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://daily.juya.uk/issues/2026-10-13/"
         ],
         "evidence_level": "single_source",
         "confidence": 1.0
