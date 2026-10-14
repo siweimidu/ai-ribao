@@ -603,13 +603,17 @@
 @media (min-width: 1400px) {
   .toc {
     display: block;
+    /* `sticky` also establishes the containing block for the absolutely positioned resize
+       grip, so no `position: relative` is needed here -- and adding one would override
+       `sticky` and break the rail. */
     position: sticky;
     top: 0;
     align-self: start;
     max-height: 100vh;
     overflow-y: auto;
     overscroll-behavior: contain;
-    scrollbar-width: thin;
+    /* Scrollbar styling lives in tokens.css, next to the dark-mode treatment, so the two
+       rails cannot drift apart. */
     padding-block: calc(var(--unit) * 10);
     font-size: var(--fs-small);
   }

@@ -186,3 +186,11 @@ jobs:
         # It exists because the same grid was judged wrong three times in a row -- each time
         # the *measurement* was wrong, not the calendar.
         run: python scripts/test_calendars.py
+
+      - name: Rails resize and stay scrollable
+        # Both features are invisible to a static parse and both can "look fine" while doing
+        # nothing: a grip renders whether or not its pointer handler fires, and a scrollbar
+        # can be styled to *hidden* rather than *quiet*, removing the only cue that the rail
+        # scrolls. This drives a real pointer drag and then asserts the rail is still
+        # scrollable.
+        run: python scripts/test_rails.py

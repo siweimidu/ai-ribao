@@ -185,6 +185,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 /* --- 左侧栏 ---------------------------------------------------------------------- */
 .rail {
   padding-block: calc(var(--unit) * 8);
+  /* Positioning context for the resize grip, which sits on the rail's inner edge. */
+  position: relative;
 }
 
 @media (min-width: 1080px) {
@@ -195,8 +197,160 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
     max-height: 100vh;
     overflow-y: auto;
     overscroll-behavior: contain;
-    scrollbar-width: thin;
   }
+}
+
+/* ============================================================================
+   滚动条
+   ----------------------------------------------------------------------------
+   侧栏与目录各有一个滚动条（内容比视口高时必须能滚）。默认样式在深色模式下
+   是一条亮轨，在本来就安静的侧栏里非常刺眼 —— 它是结构，不是内容。
+
+   做法分两层：
+   · `scrollbar-width: thin` + `scrollbar-color` 给 Firefox 与新 Chrome；
+   · `::-webkit-scrollbar` 给 WebKit/Safari。
+
+   **不是隐藏滚动能力**，只是让它不再抢注意力：可滚动性仍然要能被看见，
+   否则读者不知道下面还有内容。所以滑块保留，轨道透明、默认低对比度，
+   指针进入该区域时才提亮。
+   ========================================================================= */
+.rail,
+.toc {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--muted-fg) 30%, transparent) transparent;
+}
+
+.rail:hover,
+.toc:hover {
+  scrollbar-color: color-mix(in srgb, var(--muted-fg) 55%, transparent) transparent;
+}
+
+.rail::-webkit-scrollbar,
+.toc::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.rail::-webkit-scrollbar-track,
+.toc::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.rail::-webkit-scrollbar-thumb,
+.toc::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--muted-fg) 26%, transparent);
+  border-radius: 999px;
+  /* 边框用底色"吃掉"边缘，让滑块看起来更细，且不占额外宽度。 */
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.rail:hover::-webkit-scrollbar-thumb,
+.toc:hover::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--muted-fg) 55%, transparent);
+}
+
+/* 深色模式下再压一档：亮色滑块在暗底上的对比度天然更高，
+   同一组 alpha 值在暗色下会比亮色显眼得多。 */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .rail,
+  :root:not([data-theme="light"]) .toc {
+    scrollbar-color: color-mix(in srgb, var(--fg) 12%, transparent) transparent;
+  }
+  :root:not([data-theme="light"]) .rail::-webkit-scrollbar-thumb,
+  :root:not([data-theme="light"]) .toc::-webkit-scrollbar-thumb {
+    background-color: color-mix(in srgb, var(--fg) 12%, transparent);
+  }
+  :root:not([data-theme="light"]) .rail:hover::-webkit-scrollbar-thumb,
+  :root:not([data-theme="light"]) .toc:hover::-webkit-scrollbar-thumb {
+    background-color: color-mix(in srgb, var(--fg) 26%, transparent);
+  }
+}
+
+:root[data-theme="dark"] .rail,
+:root[data-theme="dark"] .toc {
+  scrollbar-color: color-mix(in srgb, var(--fg) 12%, transparent) transparent;
+}
+:root[data-theme="dark"] .rail::-webkit-scrollbar-thumb,
+:root[data-theme="dark"] .toc::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--fg) 12%, transparent);
+}
+:root[data-theme="dark"] .rail:hover::-webkit-scrollbar-thumb,
+:root[data-theme="dark"] .toc:hover::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--fg) 26%, transparent);
+}
+
+/* --- 拖拽调宽 -------------------------------------------------------------------- */
+/* 手柄贴在轨道**内侧**边缘，是一条 6px 的命中区，视觉上只在悬停时显现。
+
+   注意 `right: 0` / `left: 0` 而不是负值：轨道是 `overflow-y: auto`，
+   负偏移会被滚动容器裁掉，手柄虽然存在于 DOM、`getBoundingClientRect()` 也返回位置，
+   但那个位置上真正的元素是 `.shell` —— 指针事件永远到不了它。
+   （实测：`elementFromPoint` 返回 `shell`，`pointerdown` 一次都没触发。）
+
+   宽度可调是读者的排版偏好，所以存 localStorage —— 和主题同类，不是内容。 */
+.rail__grip,
+.toc__grip {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  cursor: col-resize;
+  z-index: 5;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  touch-action: none;
+}
+
+.rail__grip { right: 0; }
+.toc__grip { left: 0; }
+
+/* 只有在能真正拖拽的视口里才显示手柄 —— 窄屏下轨道是抽屉或不存在。 */
+@media (max-width: 1079px) {
+  .rail__grip { display: none; }
+}
+@media (max-width: 1399px) {
+  .toc__grip { display: none; }
+}
+
+.rail__grip::after,
+.toc__grip::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-out-circ);
+}
+
+.rail__grip:hover::after,
+.rail__grip:focus-visible::after,
+.toc__grip:hover::after,
+.toc__grip:focus-visible::after,
+.rail__grip[data-active="true"]::after,
+.toc__grip[data-active="true"]::after {
+  opacity: 0.55;
+}
+
+/* 拖拽期间：禁用文本选择与过渡，否则会选中文字、且列宽动画跟不上指针。 */
+body[data-resizing="true"] {
+  cursor: col-resize;
+  user-select: none;
+}
+body[data-resizing="true"] .shell,
+body[data-resizing="true"] .rail {
+  transition: none;
+}
+
+/* 触屏设备没有 hover，手柄做宽一点并常显细分隔线，否则不知道可以拖。 */
+@media (hover: none) {
+  .rail__grip, .toc__grip { width: 14px; }
+  .rail__grip::after, .toc__grip::after { opacity: 0.22; }
 }
 
 /* 移动端：侧栏变成顶部抽屉，由按钮展开。*/

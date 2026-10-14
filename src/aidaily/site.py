@@ -132,6 +132,8 @@ def render_rail(ctx: SiteContext, digest: Digest) -> str:
     )
 
     return f"""      <aside class="rail" aria-label="站点导航">
+        <button class="rail__grip" type="button" data-resize="rail"
+                aria-label="拖动调整左栏宽度" title="拖动调整宽度（双击恢复默认）"></button>
         <div class="rail__head">
           <a class="rail__brand" href="index.html">
             <span class="rail__mark" aria-hidden="true">AI</span>
@@ -255,6 +257,8 @@ def render_toc(sections: list[tuple[str, str, list[Event]]]) -> str:
     if not rows:
         return ""
     return f"""      <nav class="toc" aria-label="目录">
+        <button class="toc__grip" type="button" data-resize="toc"
+                aria-label="拖动调整目录宽度" title="拖动调整宽度（双击恢复默认）"></button>
         <p class="toc__title">目录</p>
         <div class="toc__nav">
 {chr(10).join('          ' + r for r in rows)}
@@ -816,6 +820,8 @@ def render_tibo(ctx: SiteContext, monitor: dict | None = None) -> str:
 <a class="skip" href="#main">跳到正文</a>
 <div class="shell">
   <aside class="rail" aria-label="站点导航">
+    <button class="rail__grip" type="button" data-resize="rail"
+            aria-label="拖动调整左栏宽度" title="拖动调整宽度（双击恢复默认）"></button>
     <a class="rail__brand" href="index.html"><span class="rail__mark" aria-hidden="true">AI</span><span>AI 日报</span></a>
     <hr class="rail__sep">
     <div class="rail__group">

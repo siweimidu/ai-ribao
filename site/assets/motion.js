@@ -511,7 +511,172 @@
   }
 
   /* ============================================================================
-     七、唯一的入场：标题 + 统计
+     七、拖拽调整左右两栏宽度
+     ----------------------------------------------------------------------------
+     宽度是读者的排版偏好，与主题同类：存在 localStorage，不进内容。
+
+     实现要点：
+
+     · **指针事件而不是鼠标事件** —— 触屏与手写笔同样可用，
+       而且 `setPointerCapture` 让指针移出手柄甚至移出窗口时仍然收得到事件，
+       这正是一次拖拽的常见轨迹（拖到一半松手、或拖出边缘）。
+
+     · **拖拽期间写 CSS 变量**，不直接改元素的 style。轨道宽度由
+       `--rail-w` / `--toc-w` 两个变量驱动，网格列跟着变，不用重排两处。
+
+     · **上下限随视口计算** —— 固定像素上下限在小屏上会让内容列被压成一条线。
+       上限取"视口宽度减去内容列的最小可读宽度"，下限保证导航项不换行。
+
+     · **双击复位**，因为拖到一个刚好不合适的位置时，读者需要一个确定的退路。
+     ========================================================================= */
+  const RAIL_KEY = 'aidaily-rail-w';
+  const TOC_KEY = 'aidaily-toc-w';
+
+  // Minimum content-column width. The rails may not squeeze the reading column below this:
+  // a layout where the navigation is comfortable and the article is a 120px ribbon is worse
+  // than one where the navigation is cramped. Matches `--fs-body`'s measure assumptions.
+  const MIN_CONTENT = 420;
+
+  /** The widest a rail may get, given the other rail's current width. */
+  const maxRailWidth = (spec, otherVar) => {
+    const other = parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue(otherVar)
+    ) || 0;
+    // Viewport minus the other rail, minus the gutter between tracks, minus the content
+    // floor, minus the shell's own horizontal padding.
+    const gutters = 96;
+    const padding = 64;
+    return Math.max(
+      spec.min,
+      window.innerWidth - other - gutters - padding - MIN_CONTENT
+    );
+  };
+
+  const resizeSpecs = [
+    {
+      el: document.querySelector('.rail'),
+      key: RAIL_KEY,
+      cssVar: '--rail-w',
+      // The rail sits on the left, so dragging right makes it wider.
+      direction: 1,
+      min: 190,
+      // The TOC is the constraint on the rail, and vice versa.
+      otherVar: '--toc-w',
+      fallback: 240,
+    },
+    {
+      el: document.querySelector('.toc'),
+      key: TOC_KEY,
+      cssVar: '--toc-w',
+      // The TOC sits on the right, so dragging left makes it wider.
+      direction: -1,
+      min: 180,
+      otherVar: '--rail-w',
+      fallback: 240,
+    },
+  ].map((spec) => ({ ...spec, max: () => maxRailWidth(spec, spec.otherVar) }));
+
+  const store = {
+    get(key) {
+      try {
+        const raw = window.localStorage.getItem(key);
+        const value = raw === null ? NaN : Number(raw);
+        return Number.isFinite(value) ? value : null;
+      } catch { return null; }
+    },
+    set(key, value) {
+      try { window.localStorage.setItem(key, String(Math.round(value))); } catch { /* 隐私模式 */ }
+    },
+  };
+
+  const clampWidth = (spec, value) =>
+    Math.max(spec.min, Math.min(value, spec.max()));
+
+  const applyWidth = (spec, value) => {
+    document.documentElement.style.setProperty(spec.cssVar, `${Math.round(value)}px`);
+  };
+
+  // Restore saved widths before measuring anything, so the first paint is already right
+  // and the layout does not visibly reflow once the reader's preference is applied.
+  for (const spec of resizeSpecs) {
+    if (!spec.el) continue;
+    const saved = store.get(spec.key);
+    if (saved !== null) applyWidth(spec, clampWidth(spec, saved));
+  }
+
+  for (const spec of resizeSpecs) {
+    if (!spec.el) continue;
+    const grip = spec.el.querySelector('[data-resize]');
+    if (!grip) continue;
+
+    let startX = 0;
+    let startWidth = 0;
+    let active = false;
+
+    const width = () => spec.el.getBoundingClientRect().width;
+
+    grip.addEventListener('pointerdown', (event) => {
+      active = true;
+      startX = event.clientX;
+      startWidth = width();
+      grip.dataset.active = 'true';
+      document.body.dataset.resizing = 'true';
+      // Capture so the drag keeps tracking outside the grip and outside the window.
+      grip.setPointerCapture(event.pointerId);
+      event.preventDefault();
+    });
+
+    grip.addEventListener('pointermove', (event) => {
+      if (!active) return;
+      const delta = (event.clientX - startX) * spec.direction;
+      applyWidth(spec, clampWidth(spec, startWidth + delta));
+    });
+
+    const finish = (event) => {
+      if (!active) return;
+      active = false;
+      grip.dataset.active = 'false';
+      delete document.body.dataset.resizing;
+      if (grip.hasPointerCapture?.(event.pointerId)) {
+        grip.releasePointerCapture(event.pointerId);
+      }
+      store.set(spec.key, width());
+    };
+
+    grip.addEventListener('pointerup', finish);
+    grip.addEventListener('pointercancel', finish);
+
+    // Double-click resets. Dragging to a position that turns out to be wrong needs a
+    // defined way back; "drag it approximately back" is not one.
+    grip.addEventListener('dblclick', () => {
+      applyWidth(spec, spec.fallback);
+      store.set(spec.key, spec.fallback);
+    });
+
+    // Keyboard: the grip is a real button, so it must be operable without a pointer.
+    grip.addEventListener('keydown', (event) => {
+      const step = event.shiftKey ? 40 : 10;
+      let next = null;
+      if (event.key === 'ArrowLeft') next = width() - step * spec.direction;
+      else if (event.key === 'ArrowRight') next = width() + step * spec.direction;
+      else if (event.key === 'Home') next = spec.fallback;
+      if (next === null) return;
+      event.preventDefault();
+      applyWidth(spec, clampWidth(spec, next));
+      store.set(spec.key, width());
+    });
+
+    // A saved width can exceed the limit after the window shrinks; re-clamp on resize so
+    // the content column never collapses to nothing.
+    window.addEventListener('resize', () => {
+      const current = width();
+      const clamped = clampWidth(spec, current);
+      if (Math.abs(clamped - current) > 1) applyWidth(spec, clamped);
+    }, { passive: true });
+  }
+
+  /* ============================================================================
+     八、唯一的入场：标题 + 统计
      ========================================================================= */
   if (!reduced.matches) {
     document.documentElement.classList.add('js-motion');
