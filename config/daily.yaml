@@ -58,6 +58,31 @@ quality:
     community: 0.9
     preset: 0.6
     example: 0.3
+    model: 1.1
+    dev: 1.0
+    product: 0.9
+    search: 0.8
+    other: 0.8
+  # ── 排序（见 src/aidaily/rank.py）────────────────────────────────────────
+  # 旧实现是 (-独立来源数, -时间)，当天独立来源数全为 0 时退化成纯按时间排，
+  # 结果头 10 条里 7 条是同一话题的不同角度、且全部来自同一个源。
+  recency_half_life_hours: 12      # 12 小时后新近度减半
+  recency_floor: 0.25              # 旧条目的分数下限：不然衰减本身又会变回纯按时间排
+  corroboration: 0.35              # 每多一个独立来源的加成
+  content_substance: 0.45          # 有正文的加成（只有标题的条目产不出事实）
+  engagement: 0.20                 # 点数/点赞，次要信号
+  max_per_source: 2                # 单一源在头条最多占几条
+  max_per_group: 3                 # 同一 dedup_group 最多占几条
+  topic_similarity_penalty: 0.35   # 与已选标题高度相似时的分数折扣
+  topic_similarity_threshold: 0.55
+  topic_overlap_min: 2             # 共享几个实体算同一话题（1 个通常只是「Google」）
+  topic_overlap_penalty: 0.45      # 同一话题再来一条的折扣
+  duplicate_url_penalty: 0.10      # 不仅同话题、还共享 URL：那是同一篇文章（L2 漏网的），
+                                   # 应重罚而不是当第二个来源
+                                   # 实测：字符串相似度抓不到「Gemini 4 Argon: Built to
+                                   # solve...」与「Gemini 4 Argon for Robotics」（仅 0.557，
+                                   # 卡在阈值上），跨语言更是完全失效（0.31）——实体重叠
+                                   # 把头条里的同话题条目从 9 条降到 1 条
 
 delivery:
   email: true

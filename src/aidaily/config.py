@@ -97,6 +97,35 @@ class QualityConfig(BaseModel):
     min_content_chars: int = 200
     source_weights: dict[str, float] = Field(default_factory=dict)
 
+    # --- ranking (see src/aidaily/rank.py for why each one exists) -----------------
+    #: hours after which an entry's recency term halves
+    recency_half_life_hours: float = 12.0
+    #: an old entry keeps this fraction of its score. Without a floor, decay alone
+    #: re-creates the pure-recency ranking that put one source's seven angles on one
+    #: topic at the top of the digest.
+    recency_floor: float = 0.25
+    #: how much each extra independent source is worth
+    corroboration: float = 0.35
+    #: how much a real body of text is worth; an entry that is only a headline cannot
+    #: produce facts ("Title: New Apple TV 4K" / "Points: 153")
+    content_substance: float = 0.45
+    #: secondary signal: points, upvotes, likes
+    engagement: float = 0.20
+    #: diversity caps -- ranking alone cannot fix homogeneity when a few prolific feeds
+    #: supply most of the candidates
+    max_per_source: int = 2
+    max_per_group: int = 3
+    #: multiply the score of an entry whose title closely matches one already selected
+    topic_similarity_penalty: float = 0.35
+    topic_similarity_threshold: float = 0.55
+    #: shared entities that count as "the same topic". Two is the smallest number that
+    #: means something: one shared entity is usually just "Google".
+    topic_overlap_min: int = 2
+    topic_overlap_penalty: float = 0.45
+    #: heavier penalty when the shared topic also shares a URL -- the same article, not a
+    #: second source reporting it
+    duplicate_url_penalty: float = 0.10
+
 
 class DeliveryConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")

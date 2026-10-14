@@ -166,6 +166,9 @@ class Event(BaseModel):
     confidence: float = 1.0
     evidence_level: EvidenceLevel = "single_source"
     needs_review: bool = False
+    #: ranking result, kept so a placement can be explained after the fact
+    rank_score: float = 0.0
+    rank_components: dict[str, float] = Field(default_factory=dict)
 
 
 class SourceCoverage(BaseModel):

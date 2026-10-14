@@ -17,6 +17,7 @@ from zoneinfo import ZoneInfo
 from .config import AppConfig
 from .dedup import DedupConfig, DedupResult, cluster
 from .models import Digest, Event, NormalizedItem, SourceCoverage, SourceSpec
+from .rank import RankWeights, diversity_report, rank_events, select_diverse
 from .select import WindowResult, select_window
 
 if TYPE_CHECKING:  # pragma: no cover - typing only
@@ -156,17 +157,50 @@ def build_digest(
 
     multi = [e for e in events if e.independent_source_count > 1]
 
-    # Ranking for the digest head: independent corroboration first, then recency. Sorting
-    # purely by source count let one duplicated feed pair (HN Algolia + hnrss) fill the
-    # entire top of the brief with stories that had no real corroboration at all.
-    def rank_key(event: Event) -> tuple:
-        when = event.published_range[0] if event.published_range else datetime.min.replace(tzinfo=timezone.utc)
-        return (-event.independent_source_count, -when.timestamp(), event.event_id)
+    # Ranking replaces what used to be `(-independent_source_count, -timestamp)`, which
+    # degenerated to pure recency whenever nothing had corroboration -- and filled the
+    # head with whatever source publishes most often. See src/aidaily/rank.py.
+    ranked = rank_events(
+        events,
+        stage.window.kept,
+        sources,
+        weights=cfg.quality.source_weights,
+        rank=RankWeights(
+            recency_half_life_hours=cfg.quality.recency_half_life_hours,
+            recency_floor=cfg.quality.recency_floor,
+            content_substance=cfg.quality.content_substance,
+            corroboration=cfg.quality.corroboration,
+            engagement=cfg.quality.engagement,
+            max_per_source=cfg.quality.max_per_source,
+            max_per_group=cfg.quality.max_per_group,
+        ),
+        now=now,
+    )
+    chosen = select_diverse(
+        ranked,
+        cfg.output.deep.max_items,
+        sources,
+        rank=RankWeights(
+            max_per_source=cfg.quality.max_per_source,
+            max_per_group=cfg.quality.max_per_group,
+            topic_similarity_penalty=cfg.quality.topic_similarity_penalty,
+            topic_similarity_threshold=cfg.quality.topic_similarity_threshold,
+            topic_overlap_min=cfg.quality.topic_overlap_min,
+            topic_overlap_penalty=cfg.quality.topic_overlap_penalty,
+            duplicate_url_penalty=cfg.quality.duplicate_url_penalty,
+        ),
+    )
+    # Copied *after* selection: `select_diverse` adds `topic_penalty` and `final_score` to
+    # the same dict, and Pydantic snapshots the mapping on assignment. Doing this before
+    # selection archived a penalty of 1.0 for every entry -- the audit trail disagreed
+    # with the ranking that actually ran.
+    for row in ranked:
+        row.event.rank_score = row.score
+        row.event.rank_components = dict(row.components)
+    ordered = [row.event for row in chosen]
+    rank_report = diversity_report(chosen, sources)
 
-    ordered = sorted(events, key=rank_key)
-
-    # The headline is taken from the top-ranked event, not from whichever event happened
-    # to be first in the dictionary.
+    # The headline comes from the top-ranked event that actually has an insight.
     headline = ""
     for event in ordered:
         insight = (insights or {}).get(event.event_id)
@@ -187,8 +221,8 @@ def build_digest(
         window_start=now - timedelta(hours=cfg.run.window_hours),
         window_end=now,
         headline=headline,
-        top_events=ordered[: cfg.output.deep.max_items],
-        sections={k: sorted(v, key=rank_key) for k, v in sorted(sections.items())},
+        top_events=ordered,
+        sections={k: sorted(v, key=lambda e: -e.rank_score) for k, v in sorted(sections.items())},
         source_coverage=coverage,
         llm_usage=llm_usage or {},
         warnings=list(warnings or []),
@@ -197,6 +231,8 @@ def build_digest(
             "multi_source_events": len(multi),
             "items_after_window": len(stage.window.kept),
             "items_merged_away": sum(len(g.member_item_ids) - 1 for g in stage.result.groups),
+            "distinct_sources_in_head": int(rank_report["distinct_sources"]),
+            "head_max_source_share": int(float(rank_report["max_share"]) * 100),
             # What was excluded, and why, belongs in the published record -- not only in
             # a console log nobody keeps. A digest that silently discards 3.5k items
             # should be able to say so.

@@ -29,81 +29,15 @@ from dataclasses import dataclass, field
 from datetime import datetime, timedelta, timezone
 
 from .dedup import ArticleUnit
+from .entities import KNOWN_ENTITIES, extract_entities
 from .llm import LLMError, LLMUnavailable, Router
 from .models import Event, NormalizedItem
 
+#: Re-exported so existing callers keep working; the implementation moved to entities.py
+#: when ranking also needed it (ranking a list should not import the clustering module).
+__all__ = ["KNOWN_ENTITIES", "extract_entities"]
+
 # --- entity extraction ------------------------------------------------------------
-#: Organisations and products that matter for AI news. Kept small and explicit: a huge
-#: list would add noise, and a model-based extractor would cost money for a job that a
-#: dictionary does well enough to feed the LLM judge.
-KNOWN_ENTITIES = (
-    "openai", "anthropic", "google", "deepmind", "meta", "microsoft", "nvidia", "amd",
-    "intel", "apple", "amazon", "aws", "tesla", "xai", "mistral", "cohere", "stability",
-    "huggingface", "hugging face", "github", "cloudflare", "vercel", "databricks",
-    "deepseek", "qwen", "alibaba", "baidu", "tencent", "bytedance", "moonshot", "zhipu",
-    "minimax", "stepfun", "sensetime", "iflytek", "sakana", "figure", "waymo",
-    "gpt", "claude", "gemini", "llama", "grok", "qwen", "kimi", "glm", "minicpm",
-    "openbmb", "stablediffusion", "midjourney", "sora", "whisper", "phi", "o1", "o3",
-    "智谱", "月之暗面", "商汤", "科大讯飞", "百度", "腾讯", "字节", "阿里", "蚂蚁",
-    "华为", "小米", "深度求索", "百川", "零一万物", "面壁", "阶跃", "英伟达", "微软",
-    "谷歌", "苹果", "OpenAI", "三星", "联想",
-)
-
-_LATIN_CAP = re.compile(r"\b([A-Z][A-Za-z0-9]{2,}(?:[-.][A-Za-z0-9]+)*)\b")
-_CJK_RUN = re.compile(r"[\u4e00-\u9fff]{2,8}")
-
-#: Words that look like entities but carry no clustering signal. Two items sharing
-#: "Best" are not about the same event, and letting such tokens through creates false
-#: candidate clusters that cost a model call each to reject.
-_STOP_CAPS = {
-    # title-case English words common in headlines
-    "the", "this", "that", "how", "why", "what", "when", "where", "who", "which",
-    "new", "and", "for", "with", "from", "you", "your", "our", "its", "his", "her",
-    "show", "ask", "best", "top", "first", "more", "most", "less", "all", "any",
-    "introducing", "announcing", "announcement", "update", "updates", "release",
-    "released", "launch", "launched", "week", "day", "year", "month", "today",
-    "now", "here", "there", "then", "than", "into", "over", "under", "after",
-    "before", "about", "just", "only", "also", "can", "will", "would", "could",
-    "should", "may", "might", "must", "not", "but", "are", "was", "were", "has",
-    "have", "had", "does", "did", "doing", "get", "got", "make", "made", "use",
-    "used", "using", "one", "two", "three", "build", "building", "built", "thing",
-    "things", "way", "ways", "time", "times", "part", "parts", "need", "needs",
-    "want", "wants", "like", "said", "says", "report", "reports", "study", "data",
-    "open", "source", "free", "full", "real", "next", "last", "back", "down",
-    "openai's", "ai", "llm", "llms", "gpt", "model", "models",
-}
-
-
-def extract_entities(text: str, extra_lexicon: set[str] | None = None) -> set[str]:
-    """Cheap entity bag: known names + capitalised latin tokens + CJK n-grams."""
-    if not text:
-        return set()
-    low = text.lower()
-    found: set[str] = set()
-
-    for entity in KNOWN_ENTITIES:
-        if entity.lower() in low:
-            found.add(entity.lower())
-
-    for match in _LATIN_CAP.finditer(text):
-        token = match.group(1)
-        # Stopwords are stored lowercase; compare case-insensitively or the filter
-        # silently does nothing.
-        if len(token) > 2 and token.lower() not in _STOP_CAPS:
-            found.add(token.lower())
-
-    for run in _CJK_RUN.findall(text):
-        # Sliding 2-grams keep Chinese usable without a segmenter.
-        for idx in range(len(run) - 1):
-            found.add(run[idx:idx + 2])
-
-    if extra_lexicon:
-        for entity in extra_lexicon:
-            if entity and entity.lower() in low:
-                found.add(entity.lower())
-    return found
-
-
 # --- coarse clustering ------------------------------------------------------------
 @dataclass
 class CandidateCluster:
