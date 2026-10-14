@@ -593,6 +593,79 @@ def render_index(ctx: SiteContext, latest: Digest | None) -> str:
 """
 
 
+def render_event_calendar(events: list[dict]) -> str:
+    """A month calendar of reset events, with the selected day's detail beside it.
+
+    Same visual language as the navigation calendar in the rail, but a different job: that
+    one answers "which day do I want to read", this one answers "what happened that day".
+    So the cells are larger, carry per-event markers, and sit next to a detail panel.
+
+    The grid is rendered on the client from inlined JSON. Dates and events are server data,
+    but the month being shown is a viewing state -- rendering twelve months of markup for a
+    page that shows one would be waste.
+    """
+    by_day: dict[str, list[dict]] = {}
+    for event in events:
+        day = (event.get("created_at") or "")[:10]
+        if day:
+            by_day.setdefault(day, []).append(event)
+
+    if not by_day:
+        return (
+            '<div class="ecal__card"><p class="ecal__empty">还没有可显示的记录。</p></div>'
+        )
+
+    # Newest first so the page opens on the most recent activity rather than on an empty
+    # current month.
+    days = sorted(by_day, reverse=True)
+    latest = days[0]
+
+    return f"""      <div class="ecal" id="event-calendar">
+        <div class="ecal__card">
+          <div class="ecal__head">
+            <span class="ecal__month" data-ecal-month>—</span>
+            <span class="ecal__nav">
+              <button type="button" data-ecal-nav="prev" aria-label="上个月">‹</button>
+              <button type="button" data-ecal-nav="next" aria-label="下个月">›</button>
+            </span>
+          </div>
+          <div class="ecal__grid" data-ecal-grid role="grid">
+            <span class="ecal__dow">日</span><span class="ecal__dow">一</span>
+            <span class="ecal__dow">二</span><span class="ecal__dow">三</span>
+            <span class="ecal__dow">四</span><span class="ecal__dow">五</span>
+            <span class="ecal__dow">六</span>
+          </div>
+          <div class="ecal__legend">
+            <span><i data-kind="direct_reset"></i>额度重置</span>
+            <span><i data-kind="reset_credit"></i>重置卡</span>
+            <span><i data-kind="today"></i>今天</span>
+          </div>
+        </div>
+        <div class="ecal__panel" data-ecal-panel aria-live="polite">
+          <div class="ecal__empty">选择一个有记录的日期。</div>
+        </div>
+      </div>"""
+
+
+def _ecal_event(event: dict) -> dict:
+    """The shape the calendar needs, trimmed so the inlined JSON stays small."""
+    return {
+        "d": (event.get("created_at") or "")[:10],
+        "t": event.get("title") or "",
+        "l": event.get("label") or "",
+        "k": event.get("kind") or "",
+        "s": event.get("status") or "",
+        "sc": event.get("scope") or "",
+        "sch": event.get("schedule_label") or "",
+        "at": (event.get("created_at") or "")[11:16],
+        "posts": [
+            {"stage": p.get("stage") or "", "text": p.get("text") or "",
+             "orig": p.get("original") or "", "url": p.get("url") or ""}
+            for p in (event.get("posts") or [])[:3]
+        ],
+    }
+
+
 def render_tibo(ctx: SiteContext, monitor: dict | None = None) -> str:
     """Codex quota-reset monitor.
 
@@ -620,6 +693,11 @@ def render_tibo(ctx: SiteContext, monitor: dict | None = None) -> str:
         "current": None,
         "today": datetime.now(timezone.utc).astimezone().date().isoformat(),
     }
+
+    event_calendar = render_event_calendar(events) if events else ""
+    event_payload = json.dumps(
+        [_ecal_event(e) for e in events] if events else [], ensure_ascii=False
+    )
 
     def number(value, suffix: str = "") -> str:
         if value is None:
@@ -755,6 +833,10 @@ def render_tibo(ctx: SiteContext, monitor: dict | None = None) -> str:
     {summary}
     {attribution_block}
     <section class="section" id="sec-events">
+      <h2 class="section__title">重置日历<span class="section__count">{len(events)} 条记录</span></h2>
+      {event_calendar}
+    </section>
+    <section class="section" id="sec-list">
       <h2 class="section__title">重置记录<span class="section__count">{len(events)} 条</span></h2>
       {event_list}
     </section>
@@ -763,6 +845,7 @@ def render_tibo(ctx: SiteContext, monitor: dict | None = None) -> str:
   </main>
 </div>
 <script type="application/json" id="calendar-data">{json.dumps(calendar_data, ensure_ascii=False)}</script>
+<script type="application/json" id="tibo-events">{event_payload}</script>
 <script src="assets/motion.js" defer></script>
 </body>
 </html>

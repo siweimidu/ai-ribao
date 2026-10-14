@@ -239,6 +239,189 @@
 .cal__legend i[data-k="has"] { background: var(--muted); }
 
 /* ============================================================================
+   事件日历卡片（Tibo 重置监控）
+   ----------------------------------------------------------------------------
+   与左侧栏的小日历同一套视觉语言，但是内容主体而不是导航：
+   月份网格 + 右侧当日详情。有记录的日期可点，点开在右边看当天发生了什么。
+
+   与导航日历的区别是有意为之：那个是"去哪一天"，这个是"那天发生了什么"，
+   所以格子更大、带事件标记、右侧有详情面板。
+   ========================================================================= */
+.ecal {
+  display: grid;
+  gap: calc(var(--unit) * 8);
+}
+
+@media (min-width: 900px) {
+  .ecal { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: start; }
+}
+
+.ecal__card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: calc(var(--unit) * 6);
+}
+
+.ecal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--unit) * 3);
+  margin-bottom: calc(var(--unit) * 4);
+}
+
+.ecal__month { font-size: 1.125rem; font-weight: 640; letter-spacing: -0.01em; }
+
+.ecal__nav { display: flex; gap: calc(var(--unit) * 1); }
+.ecal__nav button {
+  width: 28px; height: 28px;
+  display: grid; place-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--muted-fg);
+  font: inherit;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-circ);
+}
+.ecal__nav button:hover { background: var(--muted); color: var(--fg); }
+.ecal__nav button:disabled { opacity: 0.3; cursor: default; }
+
+.ecal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: calc(var(--unit) * 1.5);
+}
+
+.ecal__dow {
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  text-align: center;
+  padding-bottom: calc(var(--unit) * 1.5);
+}
+
+.ecal__day {
+  position: relative;
+  min-height: 3.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2px;
+  padding: calc(var(--unit) * 1.5) 2px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--muted-fg);
+  font: inherit;
+  font-size: var(--fs-small);
+  font-variant-numeric: tabular-nums;
+  cursor: default;
+}
+
+/* 有记录的日期：可点，浅底 */
+.ecal__day[data-count] {
+  background: var(--muted);
+  color: var(--fg);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-circ),
+              transform var(--dur-fast) var(--spring-bouncy);
+}
+.ecal__day[data-count]:hover { background: var(--accent-soft); color: var(--accent); }
+.ecal__day[data-count]:active { transform: scale(0.94); }
+
+/* 选中：强调色描边，不用实心 —— 实心留给"今天" */
+.ecal__day[aria-selected="true"] {
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 640;
+}
+
+/* 今天：实心强调色圆，与左侧导航日历一致 */
+.ecal__day[data-today="true"] .ecal__num {
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  width: 1.6em; height: 1.6em;
+  display: grid; place-items: center;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.ecal__day--pad { background: transparent; }
+
+/* 事件标记：每个事件一个小点，颜色区分类型 */
+.ecal__marks { display: flex; gap: 2px; flex-wrap: wrap; justify-content: center; }
+.ecal__marks i {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--muted-fg);
+}
+.ecal__marks i[data-kind="direct_reset"] { background: var(--accent); }
+.ecal__marks i[data-kind="reset_credit"] { background: #d97706; }
+
+/* 右侧详情面板 */
+.ecal__panel { min-width: 0; }
+
+.ecal__panel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: calc(var(--unit) * 3);
+  padding-bottom: calc(var(--unit) * 3);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: calc(var(--unit) * 4);
+}
+
+.ecal__panel-date { font-size: 1.0625rem; font-weight: 640; }
+.ecal__panel-sub { font-size: var(--fs-small); color: var(--muted-fg); }
+
+.ecal__entries { list-style: none; margin: 0; padding: 0; display: grid; gap: calc(var(--unit) * 5); }
+
+.ecal__entry {
+  padding-left: calc(var(--unit) * 4);
+  border-left: 2px solid var(--accent);
+}
+.ecal__entry[data-kind="reset_credit"] { border-left-color: #d97706; }
+
+.ecal__entry-title { font-weight: 620; line-height: 1.5; }
+.ecal__entry-meta {
+  display: flex; flex-wrap: wrap; gap: calc(var(--unit) * 2);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  margin-top: calc(var(--unit) * 1);
+}
+
+.ecal__quote {
+  margin-top: calc(var(--unit) * 2.5);
+  padding-left: calc(var(--unit) * 3);
+  border-left: 2px solid var(--border);
+  font-size: var(--fs-small);
+  line-height: 1.7;
+}
+.ecal__quote em { display: block; color: var(--muted-fg); font-style: normal; font-size: var(--fs-micro); }
+
+.ecal__empty {
+  padding: calc(var(--unit) * 8) calc(var(--unit) * 4);
+  text-align: center;
+  color: var(--muted-fg);
+  font-size: var(--fs-small);
+}
+
+.ecal__legend {
+  display: flex; flex-wrap: wrap; gap: calc(var(--unit) * 4);
+  margin-top: calc(var(--unit) * 4);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+.ecal__legend span { display: flex; align-items: center; gap: calc(var(--unit) * 1.5); }
+.ecal__legend i { width: 6px; height: 6px; border-radius: 50%; background: var(--muted-fg); flex: none; }
+.ecal__legend i[data-kind="direct_reset"] { background: var(--accent); }
+.ecal__legend i[data-kind="reset_credit"] { background: #d97706; }
+.ecal__legend i[data-kind="today"] { background: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent); }
+
+/* ============================================================================
    内容列
    ========================================================================= */
 .content { padding-block: calc(var(--unit) * 10) calc(var(--unit) * 16); min-width: 0; }

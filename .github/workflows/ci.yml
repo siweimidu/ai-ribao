@@ -176,3 +176,13 @@ jobs:
           pip install playwright
           python -m playwright install --with-deps chromium
           python scripts/test_site_interactions.py
+
+      - name: Calendars are aligned
+        # Both month grids are drawn on the client, so a static parse only sees the weekday
+        # header. This measures real rects against the calendar module: the leading blanks
+        # must equal the weekday index of the 1st, and every date must land in the column of
+        # its own weekday.
+        #
+        # It exists because the same grid was judged wrong three times in a row -- each time
+        # the *measurement* was wrong, not the calendar.
+        run: python scripts/test_calendars.py

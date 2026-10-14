@@ -289,22 +289,28 @@
   }
 
   /* ============================================================================
-     五、右侧目录：滚动高亮
-     ----------------------------------------------------------------------------
-     这是页面上唯一「活」的东西，也是整页唯一的冒险点。
-     用 IntersectionObserver 而不是 scroll 事件：滚动处理函数在长页面上会掉帧，
-     而且 60 个条目 + 8 个章节逐帧算位置是浪费。
+     五、右侧目录：点击跳转 + 滚动高亮
+
+     两个行为，之前都坏着：
+
+     **点击不跳转**：目录项是锚点 `<a href="#...">`，但 `scroll-behavior: smooth`
+     只对用户手势生效于部分浏览器，而页面用 `preventDefault` 之外的方式介入时会失效。
+     现在显式处理：写入历史、滚动到目标、并把高亮立刻移过去。
+
+     **高亮不动**：目录里既有章节也有条目，而章节**包含**自己的条目。
+     按文档顺序取"第一个可见的"，章节永远先命中，条目一次都轮不到 ——
+     点击跳到某一条，高亮却停在章节上。
+     改成取**离视口顶部最近**的那个，两者公平竞争。
+
+     用 rAF 节流的 scroll 处理而不是 IntersectionObserver：观察器只报告"是否相交"，
+     而这里需要的正是"哪个最近"，那是个几何问题，观察器算不了。
      ========================================================================= */
   const tocLinks = [...document.querySelectorAll('.toc__nav a')];
-  const targets = tocLinks
+  const tocTargets = tocLinks
     .map((a) => ({ a, el: document.getElementById(decodeURIComponent(a.hash.slice(1))) }))
     .filter((x) => x.el);
 
-  if (targets.length && 'IntersectionObserver' in window) {
-    // Track which targets are currently inside the reading band, then highlight the
-    // topmost one. Taking "the last thing that entered" instead makes the highlight jump
-    // around during a fast scroll.
-    const visible = new Map();
+  if (tocTargets.length) {
     const setCurrent = (id) => {
       tocLinks.forEach((a) => {
         if (a.hash.slice(1) === id) a.setAttribute('aria-current', 'true');
@@ -312,32 +318,200 @@
       });
     };
 
-    const io = new IntersectionObserver((entries) => {
-      for (const e of entries) visible.set(e.target.id, e.isIntersecting);
-      const firstOn = targets.find((t) => visible.get(t.el.id));
-      // At the very top nothing may be inside the band yet, and clearing the highlight
-      // leaves the TOC looking broken. Fall back to the first section.
-      setCurrent(firstOn ? firstOn.a.hash.slice(1) : targets[0].a.hash.slice(1));
-    }, {
-      // The band starts below the sticky offset and does not reach the bottom of the
-      // viewport, so the highlight tracks what is being *read* rather than what has just
-      // scrolled past.
-      rootMargin: '-88px 0px -55% 0px',
-      threshold: 0,
-    });
+    // The reading line: a target is "current" when its top has passed this offset but the
+    // next target has not. 88px clears the sticky rail's height.
+    const READING_LINE = 88;
+    let ticking = false;
 
-    targets.forEach((t) => io.observe(t.el));
-    setCurrent(targets[0].a.hash.slice(1));
+    const pick = () => {
+      ticking = false;
+      const line = READING_LINE;
+      let best = tocTargets[0];
+      let bestTop = -Infinity;
+      for (const t of tocTargets) {
+        const top = t.el.getBoundingClientRect().top;
+        // The last target whose top is above the reading line is the one being read.
+        if (top <= line && top > bestTop) {
+          bestTop = top;
+          best = t;
+        }
+      }
+      // Above the first target nothing qualifies, and an empty highlight reads as broken.
+      if (bestTop === -Infinity) best = tocTargets[0];
+      setCurrent(best.a.hash.slice(1));
+    };
 
-    // Clicking a TOC link: move the highlight immediately, otherwise it lags behind the
-    // smooth scroll and briefly marks the wrong section.
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(pick);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+
+    // A click must move the highlight immediately. Waiting for the scroll event means the
+    // wrong entry stays lit for the whole smooth-scroll, which looks like the click failed.
     tocLinks.forEach((a) => {
-      a.addEventListener('click', () => setCurrent(a.hash.slice(1)));
+      a.addEventListener('click', (event) => {
+        const id = a.hash.slice(1);
+        const target = document.getElementById(decodeURIComponent(id));
+        if (!target) return;
+        event.preventDefault();
+        // Smooth scrolling is a nicety; `prefers-reduced-motion` turns it off and the
+        // jump is instant, which is the documented behaviour for that setting.
+        const behaviour = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          ? 'auto' : 'smooth';
+        target.scrollIntoView({ behavior: behaviour, block: 'start' });
+        setCurrent(id);
+        if (history.replaceState) history.replaceState(null, '', `#${id}`);
+      });
     });
+
+    pick();
   }
 
   /* ============================================================================
-     六、唯一的入场：标题 + 统计
+     六、事件日历（Tibo 重置监控）
+     ----------------------------------------------------------------------------
+     与左侧导航日历同一套语言，但职责不同：那个回答"我要读哪一天"，
+     这个回答"那天发生了什么"。所以格子更大、带事件标记、旁边有详情面板。
+
+     日期与事件是服务端数据，**当前显示的月份是浏览状态**，所以网格在客户端渲染：
+     为一页只显示一个月的界面渲染十二个月的标记是浪费。
+     ========================================================================= */
+  const ecal = document.getElementById('event-calendar');
+  const ecalData = document.getElementById('tibo-events');
+  if (ecal && ecalData) {
+    let events = [];
+    try {
+      events = JSON.parse(ecalData.textContent || '[]');
+    } catch { events = []; }
+
+    const byDay = new Map();
+    for (const e of events) {
+      if (!e.d) continue;
+      if (!byDay.has(e.d)) byDay.set(e.d, []);
+      byDay.get(e.d).push(e);
+    }
+
+    const grid = ecal.querySelector('[data-ecal-grid]');
+    const label = ecal.querySelector('[data-ecal-month]');
+    const panel = ecal.querySelector('[data-ecal-panel]');
+    const prev = ecal.querySelector('[data-ecal-nav="prev"]');
+    const next = ecal.querySelector('[data-ecal-nav="next"]');
+
+    const pad = (n) => String(n).padStart(2, '0');
+    const iso = (y, m, d) => `${y}-${pad(m)}-${pad(d)}`;
+    const today = new Date();
+    const todayIso = iso(today.getFullYear(), today.getMonth() + 1, today.getDate());
+
+    // Open on the newest month that actually has events, not on the current month: a page
+    // that opens empty looks broken even when the data is fine.
+    const newest = [...byDay.keys()].sort().pop() || todayIso;
+    let [yy, mm] = newest.split('-').map(Number);
+    let selected = newest;
+
+    const esc = (s) => String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+
+    const showPanel = (day) => {
+      const rows = byDay.get(day) || [];
+      if (!rows.length) {
+        panel.innerHTML = `<div class="ecal__empty">${esc(day)} 没有记录。</div>`;
+        return;
+      }
+      const entries = rows.map((e) => {
+        const posts = (e.posts || []).map((p) => `
+          <div class="ecal__quote">
+            ${p.stage ? `<em>${esc(p.stage)}</em>` : ''}
+            <div>${esc(p.text)}</div>
+            ${p.orig ? `<div style="color:var(--muted-fg)">${esc(p.orig)}</div>` : ''}
+            ${p.url ? `<a href="${esc(p.url)}" rel="noopener noreferrer" style="font-size:var(--fs-micro);color:var(--muted-fg)">在原站查看 ↗</a>` : ''}
+          </div>`).join('');
+        return `<li class="ecal__entry" data-kind="${esc(e.k)}">
+          <div class="ecal__entry-title">${esc(e.t)}</div>
+          <div class="ecal__entry-meta">
+            <span>${esc(e.at)}</span>
+            <span>${esc(e.l)}</span>
+            ${e.s ? `<span>${esc(e.s)}</span>` : ''}
+          </div>
+          ${e.sch ? `<div class="ecal__entry-meta"><span>${esc(e.sch)}</span></div>` : ''}
+          ${posts}
+        </li>`;
+      }).join('');
+      panel.innerHTML = `
+        <div class="ecal__panel-head">
+          <span class="ecal__panel-date">${esc(day)}</span>
+          <span class="ecal__panel-sub">${rows.length} 条记录${day === todayIso ? ' · 今天' : ''}</span>
+        </div>
+        <ul class="ecal__entries">${entries}</ul>`;
+    };
+
+    const render = () => {
+      label.textContent = `${yy} 年 ${mm} 月`;
+      grid.querySelectorAll('.ecal__day').forEach((el) => el.remove());
+
+      const first = new Date(yy, mm - 1, 1);
+      const days = new Date(yy, mm, 0).getDate();
+      for (let i = 0; i < first.getDay(); i++) {
+        const padCell = document.createElement('span');
+        padCell.className = 'ecal__day ecal__day--pad';
+        padCell.setAttribute('aria-hidden', 'true');
+        grid.appendChild(padCell);
+      }
+      for (let d = 1; d <= days; d++) {
+        const key = iso(yy, mm, d);
+        const rows = byDay.get(key);
+        const cell = document.createElement(rows ? 'button' : 'span');
+        cell.className = 'ecal__day';
+        cell.dataset.day = key;
+        if (rows) {
+          cell.type = 'button';
+          cell.dataset.count = String(rows.length);
+          cell.setAttribute('aria-label', `${key}，${rows.length} 条记录`);
+          cell.innerHTML = `<span class="ecal__num">${d}</span>
+            <span class="ecal__marks">${rows.map((e) => `<i data-kind="${esc(e.k)}"></i>`).join('')}</span>`;
+          cell.addEventListener('click', () => select(key));
+        } else {
+          cell.setAttribute('aria-disabled', 'true');
+          cell.innerHTML = `<span class="ecal__num">${d}</span>`;
+        }
+        if (key === todayIso) cell.dataset.today = 'true';
+        if (key === selected) cell.setAttribute('aria-selected', 'true');
+        grid.appendChild(cell);
+      }
+
+      const months = [...new Set([...byDay.keys()].map((k) => k.slice(0, 7)))].sort();
+      const here = `${yy}-${pad(mm)}`;
+      prev.disabled = !months.length || here <= months[0];
+      next.disabled = !months.length || here >= months[months.length - 1];
+    };
+
+    const select = (day) => {
+      selected = day;
+      grid.querySelectorAll('.ecal__day[aria-selected]').forEach((el) => el.removeAttribute('aria-selected'));
+      const cell = grid.querySelector(`.ecal__day[data-day="${day}"]`);
+      if (cell) cell.setAttribute('aria-selected', 'true');
+      showPanel(day);
+    };
+
+    const shift = (delta) => {
+      mm += delta;
+      if (mm < 1) { mm = 12; yy -= 1; }
+      if (mm > 12) { mm = 1; yy += 1; }
+      render();
+    };
+
+    prev.addEventListener('click', () => shift(-1));
+    next.addEventListener('click', () => shift(1));
+    render();
+    showPanel(selected);
+  }
+
+  /* ============================================================================
+     七、唯一的入场：标题 + 统计
      ========================================================================= */
   if (!reduced.matches) {
     document.documentElement.classList.add('js-motion');
