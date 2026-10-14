@@ -276,6 +276,9 @@ def cmd_run(args: argparse.Namespace) -> int:
             # The site needs the three-bucket breakdown and the source bodies; both
             # already exist here, so they are passed rather than re-derived.
             insights=insights, items_by_id=by_id,
+            # And the source registry, for the "信息源" page. Passed as plain dicts so the
+            # site layer does not depend on the registry's model.
+            sources=[s.model_dump() for s in sources],
         )
     )
     print("\n分发：" + json.dumps(delivery.summary(), ensure_ascii=False))
@@ -350,11 +353,27 @@ async def _analyze_async(stage, sources, cfg, router, http, args):
         # -- two different sets that overlapped by 8 of 40. Every other model call was paid
         # for and discarded, and the published items mostly fell back to a source excerpt.
         selected, _ = select_for_digest(events, stage, sources, cfg)
+
+        # The limit must cover everything that will be published, not just "the first N".
+        # When it did not, the items past the cut fell back to the source's own headline --
+        # and for an English feed that put English sentences on a Chinese page. Defaulting
+        # to the full selected set means the digest's language rule holds by construction
+        # rather than by luck.
         analyse = selected[: args.analyze_limit] if args.analyze_limit else selected
+
+        if len(analyse) < len(selected):
+            analyse_note = (
+                f"分析上限 {len(analyse)} 少于发布条数 {len(selected)}，"
+                f"后 {len(selected) - len(analyse)} 条将回落为来源原文（可能为外文）"
+            )
+        else:
+            analyse_note = None
 
         insights, analyze_warnings = await analyze_events(
             analyse, by_id, router, limit=None
         )
+        if analyse_note:
+            analyze_warnings = [*analyze_warnings, analyse_note]
         return events, cluster_result, insights, analyze_warnings
     finally:
         if http is not None:
@@ -433,7 +452,11 @@ def build_parser() -> argparse.ArgumentParser:
     r.add_argument("--out-dir", help="日报输出目录（默认 data/digests）")
     r.add_argument("--concurrency", type=int, default=10)
     r.add_argument("--limit", type=int, help="采集阶段只跑前 N 个源")
-    r.add_argument("--analyze-limit", type=int, default=40, help="最多用模型分析多少个事件")
+    # Defaults to 0 = "no cap", i.e. analyse everything that will be published. A cap below
+    # the published count is what put English source headlines on a Chinese page: the items
+    # past the cut had no translation to fall back on.
+    r.add_argument("--analyze-limit", type=int, default=0,
+                   help="最多用模型分析多少个事件（0 = 全部，即覆盖所有发布条目）")
     r.add_argument("--relay-keys", help="第三方中转 key 的 JSON 文件（只读入内存，不落仓库）")
     r.add_argument("--no-llm", action="store_true", help="完全跳过模型调用，产出规则降级版")
     r.add_argument("--no-deliver", action="store_true", help="只生成产物，不分发")

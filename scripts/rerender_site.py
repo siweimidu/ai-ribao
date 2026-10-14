@@ -50,6 +50,23 @@ def load(path: Path) -> tuple[Digest, dict[str, EventInsight], dict[str, Normali
     return digest, insights, {}
 
 
+def load_sources() -> list[dict]:
+    """The registry as plain dicts, for the 信息源 page.
+
+    Read from the registry the collector actually uses, so the page cannot describe a
+    different set of sources than the pipeline reads. A failure here degrades to an empty
+    list rather than aborting: the page then says it has no data, which is honest.
+    """
+    try:
+        from aidaily.registry import apply_overrides, load_overrides, load_registry
+
+        sources, _ = apply_overrides(load_registry(), load_overrides())
+        return [s.model_dump() for s in sources]
+    except Exception as exc:  # noqa: BLE001
+        print(f"  （信息源清单读取失败：{type(exc).__name__}: {exc}）")
+        return []
+
+
 def load_tibo() -> dict:
     """Fetch the Codex reset monitor for the page, tolerating total failure.
 
@@ -99,6 +116,7 @@ def main() -> int:
     site = write_site(
         digest, deep, out_dir,
         site_url=site_url, insights=insights, items_by_id=items, tibo=tibo,
+        sources=load_sources(),
     )
 
     # Keep the downloads the sidebar links next to the pages that link them: the deploy

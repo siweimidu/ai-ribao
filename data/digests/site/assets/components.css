@@ -630,10 +630,13 @@
 
 .toc__nav a {
   display: block;
-  padding: calc(var(--unit) * 1.25) calc(var(--unit) * 3);
+  /* Roomier than it looks like it needs to be: the TOC is scanned, not read, and a tight
+     list of 60 near-identical lines is hard to pick from. The vertical padding is what
+     separates one target from the next. */
+  padding: calc(var(--unit) * 2.5) calc(var(--unit) * 3);
   border-left: 2px solid transparent;
   color: var(--muted-fg);
-  line-height: 1.5;
+  line-height: 1.55;
   transition: color var(--dur-fast) var(--ease-out-circ),
               border-color var(--dur-fast) var(--ease-out-circ);
 }
@@ -723,6 +726,141 @@
 .search__results b { display: block; font-weight: 620; margin-bottom: calc(var(--unit) * 0.5); }
 .search__results small { color: var(--muted-fg); }
 .search__empty { padding: calc(var(--unit) * 6); text-align: center; color: var(--muted-fg); }
+
+/* --- 归档列表 ------------------------------------------------------------------- */
+/* Each issue is a row with its own columns. The previous markup was two inline spans inside
+   one link -- `2026-10-14224 条` -- because `section__count` is a heading ornament, not a
+   layout primitive. A grid gives the date a fixed start and the count a fixed end, so the
+   numbers line up down the list. */
+.issue-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: calc(var(--unit) * 1);
+}
+
+.issue-row {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: baseline;
+  gap: calc(var(--unit) * 3);
+  padding: calc(var(--unit) * 3) calc(var(--unit) * 4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  transition: background var(--dur-fast) var(--ease-out-circ),
+              border-color var(--dur-fast) var(--ease-out-circ);
+}
+
+.issue-row:hover { background: var(--muted); border-color: var(--border); }
+
+.issue-row__date {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+.issue-row__week { font-size: var(--fs-micro); color: var(--muted-fg); }
+
+.issue-row__badge {
+  justify-self: start;
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: var(--radius-sm);
+  padding: 1px calc(var(--unit) * 2);
+}
+
+.issue-row__count {
+  justify-self: end;
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* On a narrow screen the badge column has nowhere to go; stack the row rather than
+   squeezing the date and count back into contact. */
+@media (max-width: 560px) {
+  .issue-row { grid-template-columns: auto 1fr auto; row-gap: calc(var(--unit) * 0.5); }
+  .issue-row__badge { grid-column: 2; }
+}
+
+/* --- 信息源页面 ------------------------------------------------------------------ */
+.source-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.source-list li { background: var(--bg); }
+
+.source-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: calc(var(--unit) * 2) calc(var(--unit) * 4);
+  padding: calc(var(--unit) * 3.5) calc(var(--unit) * 5);
+  align-items: baseline;
+}
+
+.source-row:hover { background: var(--muted); }
+
+.source-row__name { font-weight: 620; }
+
+.source-row__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--unit) * 1.5) calc(var(--unit) * 3);
+  margin-top: calc(var(--unit) * 1);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+
+.source-row__url {
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  word-break: break-all;
+  margin-top: calc(var(--unit) * 1);
+}
+
+.source-row__state {
+  justify-self: end;
+  display: flex;
+  align-items: baseline;
+  gap: calc(var(--unit) * 2);
+  font-size: var(--fs-micro);
+  white-space: nowrap;
+  padding: 1px calc(var(--unit) * 2);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  color: var(--muted-fg);
+}
+
+/* The item count inside a state badge is secondary to the state itself. */
+.source-row__items { opacity: 0.75; }
+
+.source-row__state[data-state="ok"] { border-color: var(--accent); color: var(--accent); }
+.source-row__state[data-state="failed"] { border-color: #b45309; color: #b45309; }
+.source-row__state[data-state="credential"] { border-style: dashed; }
+.source-row__state[data-state="disabled"] { opacity: 0.6; }
+
+@media (max-width: 620px) {
+  .source-row { grid-template-columns: minmax(0, 1fr); }
+  .source-row__state { justify-self: start; }
+}
+
+/* --- 复制按钮的反馈 -------------------------------------------------------------- */
+/* A copy button that gives no feedback is indistinguishable from a broken one. The label
+   swaps for a moment and the button takes the accent colour. */
+.rail__sub button[data-copy] { position: relative; }
+.rail__sub button[data-copy][data-copied="true"] { color: var(--accent); font-weight: 600; }
 
 /* --- 页脚 ------------------------------------------------------------------------ */
 .foot {

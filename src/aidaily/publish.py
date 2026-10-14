@@ -189,6 +189,7 @@ def write_site(
     insights: dict[str, object] | None = None,
     items_by_id: dict[str, object] | None = None,
     tibo: dict | None = None,
+    sources: list[dict] | None = None,
 ) -> DeliveryResult:
     """Render the designed site (see aidaily/site.py), keeping the markdown alongside.
 
@@ -208,6 +209,7 @@ def write_site(
         site_url=site_url,
         assets_dir=assets,
         tibo=tibo,
+        sources=sources,
     )
 
     site = out_dir / "site"
@@ -264,6 +266,7 @@ async def deliver_all(
     insights: dict[str, object] | None = None,
     items_by_id: dict[str, object] | None = None,
     tibo: dict | None = None,
+    sources: list[dict] | None = None,
 ) -> DeliveryReport:
     """Attempt every enabled channel, independently."""
     done = set((already_done or {}).keys())
@@ -284,7 +287,7 @@ async def deliver_all(
             record(
                 write_site(
                     digest, deep_md, out_dir, site_url=site_url,
-                    insights=insights, items_by_id=items_by_id, tibo=tibo,
+                    insights=insights, items_by_id=items_by_id, tibo=tibo, sources=sources,
                 )
             )
         except Exception as exc:  # noqa: BLE001

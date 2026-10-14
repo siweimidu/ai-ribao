@@ -206,7 +206,7 @@ jobs:
           python -m aidaily run \
             --from-items data/raw/items.jsonl \
             --site-url "$SITE_URL" \
-            --analyze-limit 40 | tee publish.log
+            --analyze-limit 0 | tee publish.log
           code=$?
           echo "code=$code" >> "$GITHUB_OUTPUT"
           # 10 = the gate inside `run` decided today was already delivered.

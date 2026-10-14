@@ -24,13 +24,14 @@ from __future__ import annotations
 
 import html
 import json
+import re
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 
 from .analyze import EventInsight
 from .models import Digest, Event, NormalizedItem
-from .render import _label
+from .render import CATEGORY_LABELS, _label
 
 #: Section order. "mixed" first because a multi-source story is the most corroborated
 #: thing in the issue; the rest follow how a reader scans (official -> paper -> media ->
@@ -206,10 +207,18 @@ def render_rail(ctx: SiteContext, digest: Digest) -> str:
           <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
             <details class="rail__fold">
               <summary class="rail__item">{icon("rss")}<span>订阅 RSS</span></summary>
-              <div class="rail__sub">
-                <a role="menuitem" href="feed/zh.xml">RSS 2.0</a>
-                <a role="menuitem" href="feed/zh.json">JSON Feed</a>
-                <a role="menuitem" href="feed/zh.xml" download>下载当前 feed</a>
+              <div class="rail__sub" role="menu">
+                <!-- Copy rather than navigate. Clicking a feed URL opens a wall of XML in
+                     the browser, which is not what someone subscribing wants; what they
+                     need is the address, in the clipboard, to paste into a reader. -->
+                <button type="button" data-copy="{esc(ctx.site_url.rstrip('/'))}/feed/zh.xml">
+                  复制 RSS 地址
+                </button>
+                <button type="button" data-copy="{esc(ctx.site_url.rstrip('/'))}/feed/zh.json">
+                  复制 JSON Feed 地址
+                </button>
+                <a role="menuitem" href="feed/zh.xml">在浏览器中查看 RSS</a>
+                <a role="menuitem" href="feed/zh.json">在浏览器中查看 JSON</a>
               </div>
             </details>
           </div>
@@ -236,6 +245,7 @@ def render_rail(ctx: SiteContext, digest: Digest) -> str:
           <hr class="rail__sep">
 
           <div class="rail__group">
+            <a class="rail__item" href="sources.html">{icon("rss")}<span>信息源</span></a>
             <a class="rail__item" href="https://github.com/siweimidu/ai-ribao" rel="noopener noreferrer">
               {icon("github")}<span>源码与说明</span>
             </a>
@@ -508,7 +518,6 @@ def render_day(
 
 <dialog class="search" id="search-dialog" aria-label="搜索往期内容">
   <div class="search__form">
-    {icon("search", 18)}
     <input type="search" placeholder="搜索往期内容…" aria-label="搜索关键词" autocomplete="off">
     <kbd>Esc</kbd>
   </div>
@@ -524,22 +533,51 @@ def render_day(
 
 
 # ============================== other pages =====================================
+def _archive_row(date: str, count: int, *, latest: bool = False) -> str:
+    """One issue in the archive list.
+
+    The date and the count are separate elements with their own alignment rather than two
+    inline spans, which is what made them collide: `2026-10-14224 条` on one line. The date
+    is a fixed-width column so a list of issues reads as a table, and the count is right
+    aligned so the numbers line up down the column.
+    """
+    weekday = ""
+    try:
+        d = datetime.strptime(date, "%Y-%m-%d").date()
+        # Monday is 0 in Python; the label string starts at 日, so shift by one and wrap.
+        weekday = "日一二三四五六"[(d.weekday() + 1) % 7]
+    except ValueError:
+        weekday = ""
+
+    badge = '<span class="issue-row__badge">最新</span>' if latest else ""
+    return (
+        f'<li><a class="issue-row" href="{esc(date)}.html">'
+        f'<span class="issue-row__date">{esc(date)}</span>'
+        f'<span class="issue-row__week">周{esc(weekday)}</span>'
+        f"{badge}"
+        f'<span class="issue-row__count">{count} 条</span>'
+        f"</a></li>"
+    )
+
+
 def render_index(ctx: SiteContext, latest: Digest | None) -> str:
     """Archive list, grouped by month so that a year of issues stays scannable."""
     by_month: dict[str, list[tuple[str, int]]] = {}
     for date, count in ctx.archive:
         by_month.setdefault(date[:7], []).append((date, count))
 
+    newest = max(ctx.archive, key=lambda x: x[0])[0] if ctx.archive else None
+
     groups = []
     for month in sorted(by_month, reverse=True):
         rows = "".join(
-            f'<li><a href="{esc(d)}.html"><span>{esc(d)}</span><span class="section__count">{c} 条</span></a></li>'
+            _archive_row(d, c, latest=(d == newest))
             for d, c in sorted(by_month[month], reverse=True)
         )
         groups.append(
             f'<section class="section"><h2 class="section__title">{esc(month)}'
             f'<span class="section__count">{len(by_month[month])} 期</span></h2>'
-            f'<ol class="stream">{rows}</ol></section>'
+            f'<ol class="issue-list">{rows}</ol></section>'
         )
 
     calendar_data = {
@@ -583,7 +621,6 @@ def render_index(ctx: SiteContext, latest: Digest | None) -> str:
 </div>
 <dialog class="search" id="search-dialog" aria-label="搜索往期内容">
   <div class="search__form">
-    {icon("search", 18)}
     <input type="search" placeholder="搜索往期内容…" aria-label="搜索关键词" autocomplete="off">
     <kbd>Esc</kbd>
   </div>
@@ -858,6 +895,267 @@ def render_tibo(ctx: SiteContext, monitor: dict | None = None) -> str:
 """
 
 
+def load_health(state_dir: Path) -> dict[str, dict]:
+    """The last collection verdict per source, from `data/state/collect.jsonl`.
+
+    The registry's own `health_status` field is written by the build script and is always
+    `unverified` -- it is a schema placeholder, not a measurement. The page showed
+    "本轮采集成功 0" because it read that field. The actual result of the last run lives in
+    the append-only collect log, so the page reads the newest row per source from there.
+
+    Returns {} when the log is missing, and the page then says so rather than claiming a
+    status it does not have.
+    """
+    path = state_dir / "collect.jsonl"
+    if not path.exists():
+        return {}
+    newest: dict[str, dict] = {}
+    try:
+        for line in path.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            sid = row.get("source_id")
+            if not sid:
+                continue
+            # Rows are appended in run order, so the last one wins.
+            newest[sid] = row
+    except OSError:
+        return {}
+    return newest
+
+
+def state_html(label: str) -> str:
+    """Render a source state as a badge, splitting an item count into its own element.
+
+    `state_of` returns `"正常|277"` for a source that collected 277 items. The two facts get
+    separate elements rather than one string joined by a middle dot, which this project's
+    own design rule bans as template chrome.
+    """
+    name, _, count = label.partition("|")
+    state = {
+        "正常": "ok", "采集失败": "failed", "待凭证": "credential",
+        "未启用": "disabled",
+    }.get(name, "unknown")
+    tail = f'<span class="source-row__items">{esc(count)} 条</span>' if count else ""
+    return (
+        f'<span class="source-row__state" data-state="{state}">'
+        f"<span>{esc(name)}</span>{tail}</span>"
+    )
+
+
+def render_sources(
+    ctx: SiteContext,
+    sources: list[dict],
+    digest: Digest | None = None,
+    health: dict[str, dict] | None = None,
+) -> str:
+    """Where the information comes from.
+
+    The user asked for a page showing the sources, so this is the registry rendered for a
+    reader rather than for a maintainer: grouped by what kind of source it is, with the
+    live state of each one.
+
+    Three things it deliberately does not do:
+
+    * **It does not hide broken sources.** The project's rule is that a source is never
+      deleted, and a page listing only the working ones would misrepresent the pipeline's
+      actual coverage -- including the ones waiting on credentials.
+    * **It does not invent a count.** The headline numbers come from the same registry the
+      collector reads.
+    * **It does not show credentials.** A source needing a key shows the *name* of the
+      environment variable, never a value.
+    """
+    # Order groups the way a reader thinks about provenance, not alphabetically.
+    group_order = [
+        ("lab-official", "官方一手"),
+        ("lab-blog", "实验室与团队博客"),
+        ("paper", "论文与研究"),
+        ("media", "科技媒体"),
+        ("zh-media", "中文媒体"),
+        ("news", "新闻聚合"),
+        ("social", "社交媒体"),
+        ("community", "社区讨论"),
+        ("dev", "开发者动态"),
+        ("digest", "编辑精选与简报"),
+        ("product", "产品发布"),
+        ("model", "模型与数据集"),
+        ("dataset", "数据集"),
+        ("mixed", "综合来源"),
+        ("search", "检索聚合"),
+        ("trend", "趋势信号"),
+        ("preset", "预设源"),
+        ("example", "示例源"),
+        ("other", "其它"),
+    ]
+    known = {key for key, _ in group_order}
+
+    by_group: dict[str, list[dict]] = {}
+    for spec in sources:
+        by_group.setdefault(spec.get("category") or "other", []).append(spec)
+
+    # Any category not in the list still gets rendered, under its own name. A fixed
+    # grouping table silently dropped 11 of 81 sources the first time -- exactly the
+    # "sources are never deleted" rule this project runs on, applied to its own UI.
+    for category in sorted(set(by_group) - known):
+        group_order.insert(-1, (category, CATEGORY_LABELS.get(category, category)))
+
+    def state_of(spec: dict) -> tuple[str, str]:
+        """(label, machine state) for one source.
+
+        Precedence: a credential wait and a deliberate disable are *stated* facts about the
+        source, while a collection verdict is a measurement. A disabled source that happened
+        to succeed once should still read as disabled.
+        """
+        if spec.get("needs_credential"):
+            return "待凭证", "credential"
+        if not spec.get("enabled", True):
+            return "未启用", "disabled"
+
+        row = (health or {}).get(spec.get("source_id") or "")
+        if row:
+            verdict = (row.get("verdict") or "").lower()
+            items = row.get("items")
+            if verdict in ("ok", "success"):
+                # Two facts, two elements -- the CSS gives them separate styling. Joined
+                # with a middle dot they were flagged by this project's own rule against
+                # `A · B` metadata chrome, which is a template tell in the rendered page.
+                return (f"正常|{items}" if isinstance(items, int) else "正常|"), "ok"
+            if verdict in ("failed", "error", "timeout"):
+                return "采集失败", "failed"
+            if verdict == "skipped":
+                return "已跳过", "unknown"
+            return "已探测", "unknown"
+
+        return "本轮未采集", "unknown"
+
+    groups_html = []
+    for key, label in group_order:
+        rows = by_group.get(key)
+        if not rows:
+            continue
+        items = []
+        for spec in sorted(rows, key=lambda s: (s.get("priority", 9), s.get("name") or "")):
+            state_label, state = state_of(spec)
+            meta_bits = [
+                f'级别 {spec.get("priority", "—")}',
+                spec.get("language") or "—",
+                spec.get("source_type") or "—",
+            ]
+            repo = (spec.get("repositories") or [None])[0]
+            if repo:
+                meta_bits.append(f"来自 {repo}")
+            if spec.get("added_locally"):
+                meta_bits.append("本地增补")
+            cred = spec.get("needs_credential")
+            if cred:
+                # The variable *name* only. A value here would be a credential leak on a
+                # public page, which is the one thing this project forbids outright.
+                meta_bits.append(f"需要 {cred}")
+            items.append(
+                f'<li><div class="source-row">'
+                f'<div>'
+                f'<div class="source-row__name">{esc(spec.get("name") or spec.get("source_id"))}</div>'
+                f'<div class="source-row__meta">'
+                + "".join(f"<span>{esc(b)}</span>" for b in meta_bits)
+                + "</div>"
+                f'<div class="source-row__url">{esc(spec.get("url") or "")}</div>'
+                f"</div>"
+                + state_html(state_label)
+                + "</div></li>"
+            )
+        groups_html.append(
+            f'<section class="section" id="src-{esc(key)}">'
+            f'<h2 class="section__title">{esc(label)}'
+            f'<span class="section__count">{len(rows)} 个</span></h2>'
+            f'<ul class="source-list">{"".join(items)}</ul></section>'
+        )
+
+    total = len(sources)
+    enabled = sum(1 for s in sources if s.get("enabled", True))
+    ok = sum(1 for s in sources if state_of(s)[1] == "ok")
+    need_cred = sum(1 for s in sources if s.get("needs_credential"))
+    probed = sum(1 for s in sources if (s.get("source_id") or "") in (health or {}))
+
+    toc = [
+        (f"src-{key}", label)
+        for key, label in group_order
+        if by_group.get(key)
+    ]
+
+    calendar_data = {
+        "dates": ctx.dates,
+        "current": None,
+        "today": datetime.now(timezone.utc).astimezone().date().isoformat(),
+    }
+
+    return f"""<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>信息源 · AI 日报</title>
+<meta name="description" content="AI 日报的全部信息源与各自的采集状态">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="{FAVICON}">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/components.css">
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<div class="shell">
+  <aside class="rail" aria-label="站点导航">
+    <button class="rail__grip" type="button" data-resize="rail"
+            aria-label="拖动调整左栏宽度" title="拖动调整宽度（双击恢复默认）"></button>
+    <a class="rail__brand" href="index.html"><span class="rail__mark" aria-hidden="true">AI</span><span>AI 日报</span></a>
+    <hr class="rail__sep">
+    <div class="rail__group">
+      <a class="rail__item" href="index.html">{icon("home")}<span>首页</span></a>
+      <a class="rail__item" href="tibo.html">{icon("clock")}<span>Tibo 重置监控</span></a>
+      <a class="rail__item" href="sources.html" aria-current="page">{icon("rss")}<span>信息源</span></a>
+    </div>
+  </aside>
+  <main class="content" id="main">
+    <header class="issue__head">
+      <p class="issue__date">采集范围</p>
+      <h1 class="issue__title">信息源</h1>
+      <p class="issue__lead">日报里的每一条都来自下面这些源。源的清单不会删除，
+      失效的也保留并标出状态 —— 这样覆盖率是看得见的。</p>
+      <div class="stats">
+        <div><b>{total}</b><span>已注册源</span></div>
+        <div><b>{enabled}</b><span>已启用</span></div>
+        <div><b>{probed}</b><span>本轮采集</span></div>
+        <div><b>{ok}</b><span>采集成功</span></div>
+        <div><b>{need_cred}</b><span>待凭证</span></div>
+      </div>
+      {'' if health else '<p class="issue__date" style="margin-top:calc(var(--unit) * 3)">没有找到本轮采集记录，各源状态显示为「本轮未采集」。</p>'}
+    </header>
+
+    <nav class="notice" aria-label="按类别跳转">
+      <p>按类别：{" · ".join(f'<a href="#{esc(slug)}">{esc(label)}</a>' for slug, label in toc)}</p>
+    </nav>
+
+    {''.join(groups_html)}
+
+    <footer class="foot">
+      <p>源的清单由 <code>sources/registry.yaml</code> 与 <code>sources/local.yaml</code>
+      生成，前者来自对六个参考仓库的静态审计，后者登记之后新增的源。
+      两处都遵循同一条规则：<strong>源只增不删</strong>，停用要写明理由。</p>
+      <p>需要凭证的源只显示环境变量名，不显示取值。</p>
+    </footer>
+  </main>
+</div>
+<script type="application/json" id="calendar-data">{json.dumps(calendar_data, ensure_ascii=False)}</script>
+<script src="assets/motion.js" defer></script>
+</body>
+</html>
+"""
+
+
 def render_404(ctx: SiteContext) -> str:
     calendar_data = {"dates": ctx.dates, "current": None, "today": None}
     return f"""<!doctype html>
@@ -891,8 +1189,21 @@ def render_404(ctx: SiteContext) -> str:
 
 
 # ============================== writer ==========================================
+#: Page names that are not issues. Anything that is not an ISO date and not in this set is
+#: still treated as an issue, so a new *issue* page can never be missed -- but a new
+#: non-issue page has to be added here, which is why the check is by shape first.
+NON_ISSUE_PAGES = {"index", "404", "tibo", "sources"}
+
+_ISSUE_NAME = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+
 def load_archive(site_dir: Path) -> list[tuple[str, int]]:
     """Rebuild the archive from the pages that already exist.
+
+    Matched by **filename shape**, not by exclusion list alone. The exclusion list is what
+    broke when `sources.html` was added: the new page was counted as an issue, so the site
+    reported two issues on a day with one. An ISO-date name is what an issue looks like, and
+    nothing else can be one.
 
     A missing count is written as 0 rather than guessed: a wrong number here is
     indistinguishable from a real one.
@@ -901,7 +1212,7 @@ def load_archive(site_dir: Path) -> list[tuple[str, int]]:
     if not site_dir.exists():
         return out
     for path in sorted(site_dir.glob("*.html"), reverse=True):
-        if path.stem in ("index", "404", "tibo"):
+        if path.stem in NON_ISSUE_PAGES or not _ISSUE_NAME.match(path.stem):
             continue
         count = 0
         try:
@@ -925,6 +1236,7 @@ def write_site(
     site_url: str,
     assets_dir: Path | None = None,
     tibo: dict | None = None,
+    sources: list[dict] | None = None,
 ) -> dict[str, object]:
     site = out_dir / "site"
     site.mkdir(parents=True, exist_ok=True)
@@ -950,6 +1262,10 @@ def write_site(
 
     (site / "index.html").write_text(render_index(ctx, digest), encoding="utf-8")
     (site / "tibo.html").write_text(render_tibo(ctx, tibo), encoding="utf-8")
+    (site / "sources.html").write_text(
+        render_sources(ctx, sources or [], digest, health=load_health(out_dir.parent / "state")),
+        encoding="utf-8",
+    )
     (site / "404.html").write_text(render_404(ctx), encoding="utf-8")
 
     manifest = {

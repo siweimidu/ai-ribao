@@ -88,10 +88,18 @@
           <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
             <details class="rail__fold">
               <summary class="rail__item"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M3 4.5A8.5 8.5 0 0 1 11.5 13"/><path d="M3 8A5 5 0 0 1 8 13"/></svg><span>订阅 RSS</span></summary>
-              <div class="rail__sub">
-                <a role="menuitem" href="feed/zh.xml">RSS 2.0</a>
-                <a role="menuitem" href="feed/zh.json">JSON Feed</a>
-                <a role="menuitem" href="feed/zh.xml" download>下载当前 feed</a>
+              <div class="rail__sub" role="menu">
+                <!-- Copy rather than navigate. Clicking a feed URL opens a wall of XML in
+                     the browser, which is not what someone subscribing wants; what they
+                     need is the address, in the clipboard, to paste into a reader. -->
+                <button type="button" data-copy="https://siweimidu.github.io/ai-ribao/feed/zh.xml">
+                  复制 RSS 地址
+                </button>
+                <button type="button" data-copy="https://siweimidu.github.io/ai-ribao/feed/zh.json">
+                  复制 JSON Feed 地址
+                </button>
+                <a role="menuitem" href="feed/zh.xml">在浏览器中查看 RSS</a>
+                <a role="menuitem" href="feed/zh.json">在浏览器中查看 JSON</a>
               </div>
             </details>
           </div>
@@ -118,6 +126,7 @@
           <hr class="rail__sep">
 
           <div class="rail__group">
+            <a class="rail__item" href="sources.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M3 4.5A8.5 8.5 0 0 1 11.5 13"/><path d="M3 8A5 5 0 0 1 8 13"/></svg><span>信息源</span></a>
             <a class="rail__item" href="https://github.com/siweimidu/ai-ribao" rel="noopener noreferrer">
               <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2.5a6.5 6.5 0 0 0-2 12.7c-.1-.5-.1-1.2 0-1.7.2-.8 1.4-5 1.4-5s-.3-.7-.3-1.7c0-1.6.9-2.7 2-2.7.9 0 1.4.7 1.4 1.6 0 1-.6 2.4-.9 3.8-.3 1 .5 1.9 1.6 1.9 1.9 0 3.3-2.5 3.3-5.4 0-2.3-1.6-3.9-4-3.9-2.7 0-4.3 2-4.3 4.1 0 .9.3 1.8.8 2.3.1.1.1.2.1.3l-.3 1.1c0 .2-.2.2-.4.1-1.3-.6-2.1-2.5-2.1-4C5.3 3.4 7.5 2.5 9 2.5z"/></svg><span>源码与说明</span>
             </a>
@@ -134,7 +143,7 @@
         <div><b>224</b><span>事件</span></div>
       </div>
     </header>
-    <section class="section"><h2 class="section__title">2026-10<span class="section__count">1 期</span></h2><ol class="stream"><li><a href="2026-10-14.html"><span>2026-10-14</span><span class="section__count">224 条</span></a></li></ol></section>
+    <section class="section"><h2 class="section__title">2026-10<span class="section__count">1 期</span></h2><ol class="issue-list"><li><a class="issue-row" href="2026-10-14.html"><span class="issue-row__date">2026-10-14</span><span class="issue-row__week">周三</span><span class="issue-row__badge">最新</span><span class="issue-row__count">224 条</span></a></li></ol></section>
     <footer class="foot">
       <p>最新一期：2026-10-14</p>
     </footer>
@@ -142,7 +151,6 @@
 </div>
 <dialog class="search" id="search-dialog" aria-label="搜索往期内容">
   <div class="search__form">
-    <svg viewBox="0 0 18 18" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="7.5" r="5"/><path d="M11.5 11.5 15 15"/></svg>
     <input type="search" placeholder="搜索往期内容…" aria-label="搜索关键词" autocomplete="off">
     <kbd>Esc</kbd>
   </div>

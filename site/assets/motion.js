@@ -676,7 +676,66 @@
   }
 
   /* ============================================================================
-     八、唯一的入场：标题 + 统计
+     八、复制订阅地址
+     ----------------------------------------------------------------------------
+     点订阅按钮的意图是"把地址给我"，不是"打开一屏 XML"。所以复制到剪贴板，
+     并给一个明确的成功反馈 —— 没有反馈的复制按钮和坏掉的按钮无法区分。
+
+     `navigator.clipboard` 需要安全上下文（https 或 localhost）。本站是 https，
+     但用 file:// 打开的本地副本会走到回退分支，所以回退用
+     `select()` + `execCommand`，而不是静默失败。
+     ========================================================================= */
+  const copyButtons = document.querySelectorAll('[data-copy]');
+  if (copyButtons.length) {
+    const flash = (button, ok) => {
+      if (!button.dataset.label) button.dataset.label = button.textContent.trim();
+      button.textContent = ok ? '已复制' : '复制失败，请手动选择';
+      button.dataset.copied = ok ? 'true' : 'false';
+      window.setTimeout(() => {
+        button.textContent = button.dataset.label;
+        delete button.dataset.copied;
+      }, 1600);
+    };
+
+    const legacyCopy = (text) => {
+      // Fallback for a non-secure context: a hidden textarea plus the deprecated command is
+      // the only option there, and still better than telling the reader to select the text
+      // themselves when the modern API is simply unavailable.
+      const area = document.createElement('textarea');
+      area.value = text;
+      area.setAttribute('readonly', '');
+      area.style.position = 'fixed';
+      area.style.top = '-1000px';
+      document.body.appendChild(area);
+      area.select();
+      let ok = false;
+      try { ok = document.execCommand('copy'); } catch { ok = false; }
+      document.body.removeChild(area);
+      return ok;
+    };
+
+    copyButtons.forEach((button) => {
+      button.addEventListener('click', async () => {
+        const text = button.dataset.copy || '';
+        if (!text) return;
+        let ok = false;
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            ok = true;
+          } else {
+            ok = legacyCopy(text);
+          }
+        } catch {
+          ok = legacyCopy(text);
+        }
+        flash(button, ok);
+      });
+    });
+  }
+
+  /* ============================================================================
+     九、唯一的入场：标题 + 统计
      ========================================================================= */
   if (!reduced.matches) {
     document.documentElement.classList.add('js-motion');
