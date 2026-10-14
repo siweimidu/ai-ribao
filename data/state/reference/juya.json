@@ -1,0 +1,1755 @@
+{
+ "title": "AI 早报 2026-10-14",
+ "lang": "zh-CN",
+ "rails": [
+  {
+   "tag": "aside",
+   "cls": "site-navigation",
+   "box": {
+    "x": 0,
+    "y": 0,
+    "w": 240,
+    "h": 1000
+   },
+   "text": "橘鸦AI早报 今日 搜索往期内容 首页 微信公众号 订阅 RSS 主题 报错/投稿"
+  },
+  {
+   "tag": "div",
+   "cls": "layout layout--toc",
+   "box": {
+    "x": 260,
+    "y": 28,
+    "w": 1160,
+    "h": 19385
+   },
+   "text": "目录 概览 要闻 Google 全球开放 Gemini 4 Argon #1 OpenAI 优化 ChatGPT 桌面应用存储占用 #2 模型发布 Cat Jam 匿名编程模型免费上线 OpenCode #3 Fish Audio 发布 Drama 3，开放模型权重 #4 Liquid AI 发布 LFM2.5-24B-A2B #5 开发生态 Command Code 推出 GOAT 限时额度优惠 #6 MiniMax 入驻天猫，开售三档订阅方案 #7 Antigravity 最高档向科研人员开放免费申请 #8 Cursor 的 Origin 支持逾 20 项集成 #9 产品应用 Google Play 新增私人应用功能 #10 llama.cpp 推出 Windows 桌面应用 Llama Windows #11 Arena 推出 Agent 版 Max 模型路由器 #12 阿里千问推出个人 Agent 千问 Go，限时邀测 #13 千问开售 N 系列 AI 眼镜及耳夹式耳机 #14 阶跃终端发布 STEPX Neo 先行版手机 #15 技术与洞察 Anthropic 弃用 Git，自建版本控制系统 Scion #16 AISI 发布开源评估工具 Transect，支持核查 Agent 活动分类 #17 AA 新增缓存命中率与任务成本对比榜单 #18 Google 展示 Gemi"
+  },
+  {
+   "tag": "aside",
+   "cls": "sidebar",
+   "box": {
+    "x": 1092,
+    "y": 64,
+    "w": 240,
+    "h": 912
+   },
+   "text": "目录 概览 要闻 Google 全球开放 Gemini 4 Argon #1 OpenAI 优化 ChatGPT 桌面应用存储占用 #2 模型发布 Cat Jam 匿名编程模型免费上线 OpenCode #3 Fish Audio 发布 Drama 3，开放模型权重 #4 Liquid AI 发布 LFM2.5-24B-A2B #5 开发生态 Command Code 推出 GOAT 限时额度优惠 #6 MiniMax 入驻天猫，开售三档订阅方案 #7 Antigravity 最高档向科研人员开放免费申请 #8 Cursor 的 Origin 支持逾 20 项集成 #9 产品应用 Google Play 新增私人应用功能 #10 llama.cpp 推出 Windows 桌面应用 Llama Windows #11 Arena 推出 Agent 版 Max 模型路由器 #12 阿里千问推出个人 Agent 千问 Go，限时邀测 #13 千问开售 N 系列 AI 眼镜及耳夹式耳机 #14 阶跃终端发布 STEPX Neo 先行版手机 #15 技术与洞察 Anthropic 弃用 Git，自建版本控制系统 Scion #16 AISI 发布开源评估工具 Transect，支持核查 Agent 活动分类 #17 AA 新增缓存命中率与任务成本对比榜单 #18 Google 展示 Gemi"
+  },
+  {
+   "tag": "details",
+   "cls": "toc",
+   "box": {
+    "x": 1113,
+    "y": 64,
+    "w": 193,
+    "h": 1994
+   },
+   "text": "目录 概览 要闻 Google 全球开放 Gemini 4 Argon #1 OpenAI 优化 ChatGPT 桌面应用存储占用 #2 模型发布 Cat Jam 匿名编程模型免费上线 OpenCode #3 Fish Audio 发布 Drama 3，开放模型权重 #4 Liquid AI 发布 LFM2.5-24B-A2B #5 开发生态 Command Code 推出 GOAT 限时额度优惠 #6 MiniMax 入驻天猫，开售三档订阅方案 #7 Antigravity 最高档向科研人员开放免费申请 #8 Cursor 的 Origin 支持逾 20 项集成 #9 产品应用 Google Play 新增私人应用功能 #10 llama.cpp 推出 Windows 桌面应用 Llama Windows #11 Arena 推出 Agent 版 Max 模型路由器 #12 阿里千问推出个人 Agent 千问 Go，限时邀测 #13 千问开售 N 系列 AI 眼镜及耳夹式耳机 #14 阶跃终端发布 STEPX Neo 先行版手机 #15 技术与洞察 Anthropic 弃用 Git，自建版本控制系统 Scion #16 AISI 发布开源评估工具 Transect，支持核查 Agent 活动分类 #17 AA 新增缓存命中率与任务成本对比榜单 #18 Google 展示 Gemi"
+  },
+  {
+   "tag": "nav",
+   "cls": "toc-nav",
+   "box": {
+    "x": 1113,
+    "y": 110,
+    "w": 193,
+    "h": 1948
+   },
+   "text": "概览 要闻 Google 全球开放 Gemini 4 Argon #1 OpenAI 优化 ChatGPT 桌面应用存储占用 #2 模型发布 Cat Jam 匿名编程模型免费上线 OpenCode #3 Fish Audio 发布 Drama 3，开放模型权重 #4 Liquid AI 发布 LFM2.5-24B-A2B #5 开发生态 Command Code 推出 GOAT 限时额度优惠 #6 MiniMax 入驻天猫，开售三档订阅方案 #7 Antigravity 最高档向科研人员开放免费申请 #8 Cursor 的 Origin 支持逾 20 项集成 #9 产品应用 Google Play 新增私人应用功能 #10 llama.cpp 推出 Windows 桌面应用 Llama Windows #11 Arena 推出 Agent 版 Max 模型路由器 #12 阿里千问推出个人 Agent 千问 Go，限时邀测 #13 千问开售 N 系列 AI 眼镜及耳夹式耳机 #14 阶跃终端发布 STEPX Neo 先行版手机 #15 技术与洞察 Anthropic 弃用 Git，自建版本控制系统 Scion #16 AISI 发布开源评估工具 Transect，支持核查 Agent 活动分类 #17 AA 新增缓存命中率与任务成本对比榜单 #18 Google 展示 Gemini "
+  }
+ ],
+ "headings": [
+  {
+   "tag": "h1",
+   "text": "AI 早报 2026-10-14",
+   "id": null
+  },
+  {
+   "tag": "h2",
+   "text": "概览",
+   "id": "s1"
+  },
+  {
+   "tag": "h3",
+   "text": "要闻",
+   "id": "s2"
+  },
+  {
+   "tag": "h3",
+   "text": "模型发布",
+   "id": "s3"
+  },
+  {
+   "tag": "h3",
+   "text": "开发生态",
+   "id": "s4"
+  },
+  {
+   "tag": "h3",
+   "text": "产品应用",
+   "id": "s5"
+  },
+  {
+   "tag": "h3",
+   "text": "技术与洞察",
+   "id": "s6"
+  },
+  {
+   "tag": "h3",
+   "text": "行业动态",
+   "id": "s7"
+  },
+  {
+   "tag": "h3",
+   "text": "前瞻与传闻",
+   "id": "s8"
+  },
+  {
+   "tag": "h2",
+   "text": "要闻",
+   "id": "s9"
+  },
+  {
+   "tag": "h3",
+   "text": "Google 全球开放 Gemini 4 Argon #1",
+   "id": "s10"
+  },
+  {
+   "tag": "h3",
+   "text": "OpenAI 优化 ChatGPT 桌面应用存储占用 #2",
+   "id": "s11"
+  },
+  {
+   "tag": "h2",
+   "text": "模型发布",
+   "id": "s12"
+  },
+  {
+   "tag": "h3",
+   "text": "Cat Jam 匿名编程模型免费上线 OpenCode #3",
+   "id": "s13"
+  },
+  {
+   "tag": "h3",
+   "text": "Fish Audio 发布 Drama 3，开放模型权重 #4",
+   "id": "s14"
+  },
+  {
+   "tag": "h3",
+   "text": "Liquid AI 发布 LFM2.5-24B-A2B #5",
+   "id": "s15"
+  },
+  {
+   "tag": "h2",
+   "text": "开发生态",
+   "id": "s16"
+  },
+  {
+   "tag": "h3",
+   "text": "Command Code 推出 GOAT 限时额度优惠 #6",
+   "id": "s17"
+  },
+  {
+   "tag": "h3",
+   "text": "MiniMax 入驻天猫，开售三档订阅方案 #7",
+   "id": "s18"
+  },
+  {
+   "tag": "h3",
+   "text": "Antigravity 最高档向科研人员开放免费申请 #8",
+   "id": "s19"
+  },
+  {
+   "tag": "h3",
+   "text": "Cursor 的 Origin 支持逾 20 项集成 #9",
+   "id": "s20"
+  },
+  {
+   "tag": "h2",
+   "text": "产品应用",
+   "id": "s21"
+  },
+  {
+   "tag": "h3",
+   "text": "Google Play 新增私人应用功能 #10",
+   "id": "s22"
+  },
+  {
+   "tag": "h3",
+   "text": "llama.cpp 推出 Windows 桌面应用 Llama Windows #11",
+   "id": "s23"
+  },
+  {
+   "tag": "h3",
+   "text": "Arena 推出 Agent 版 Max 模型路由器 #12",
+   "id": "s24"
+  },
+  {
+   "tag": "h3",
+   "text": "阿里千问推出个人 Agent 千问 Go，限时邀测 #13",
+   "id": "s25"
+  },
+  {
+   "tag": "h3",
+   "text": "千问开售 N 系列 AI 眼镜及耳夹式耳机 #14",
+   "id": "s26"
+  },
+  {
+   "tag": "h3",
+   "text": "阶跃终端发布 STEPX Neo 先行版手机 #15",
+   "id": "s27"
+  },
+  {
+   "tag": "h2",
+   "text": "技术与洞察",
+   "id": "s28"
+  },
+  {
+   "tag": "h3",
+   "text": "Anthropic 弃用 Git，自建版本控制系统 Scion #16",
+   "id": "s29"
+  },
+  {
+   "tag": "h3",
+   "text": "AISI 发布开源评估工具 Transect，支持核查 Agent 活动分类 #17",
+   "id": "s30"
+  },
+  {
+   "tag": "h3",
+   "text": "AA 新增缓存命中率与任务成本对比榜单 #18",
+   "id": "s31"
+  },
+  {
+   "tag": "h3",
+   "text": "Google 展示 Gemini 4 Argon 机器人仿真与控制能力 #19",
+   "id": "s32"
+  },
+  {
+   "tag": "h2",
+   "text": "行业动态",
+   "id": "s33"
+  },
+  {
+   "tag": "h3",
+   "text": "OpenAI 工程师涉在高管会议室窃听被捕 #20",
+   "id": "s34"
+  },
+  {
+   "tag": "h3",
+   "text": "Manus 与 OPPO 合作，接入 ColorOS 17 #21",
+   "id": "s35"
+  },
+  {
+   "tag": "h3",
+   "text": "Character.ai 申请破产保护，拟出售资产 #22",
+   "id": "s36"
+  },
+  {
+   "tag": "h3",
+   "text": "Exa 宣布年化收入突破 1 亿美元 #23",
+   "id": "s37"
+  },
+  {
+   "tag": "h3",
+   "text": "NVIDIA 与法国生态扩大 Agent 计算部署 #24",
+   "id": "s38"
+  },
+  {
+   "tag": "h3",
+   "text": "IDC：英伟达中国 AI 芯片份额降至 34% #25",
+   "id": "s39"
+  },
+  {
+   "tag": "h2",
+   "text": "前瞻与传闻",
+   "id": "s40"
+  },
+  {
+   "tag": "h3",
+   "text": "Anthropic 据称正谈大阪数据中心项目 #26",
+   "id": "s41"
+  },
+  {
+   "tag": "h3",
+   "text": "报道称字节 Seed 将成立安全与对齐部门 #27",
+   "id": "s42"
+  }
+ ],
+ "buttons": [
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "打开导航"
+  },
+  {
+   "text": "",
+   "cls": "nav-backdrop",
+   "aria": "关闭导航"
+  },
+  {
+   "text": "",
+   "cls": "nav-avatar-toggle",
+   "aria": "展开导航"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "收起导航"
+  },
+  {
+   "text": "搜索往期内容",
+   "cls": "nav-button nav-tool",
+   "aria": "搜索往期内容"
+  },
+  {
+   "text": "",
+   "cls": "nav-button nav-tool",
+   "aria": "按日期浏览"
+  },
+  {
+   "text": "‹",
+   "cls": "cal-nav-btn",
+   "aria": "上个月"
+  },
+  {
+   "text": "›",
+   "cls": "cal-nav-btn",
+   "aria": "下个月"
+  },
+  {
+   "text": "微信公众号",
+   "cls": "nav-button nav-tool",
+   "aria": "微信公众号"
+  },
+  {
+   "text": "主题",
+   "cls": "nav-button nav-tool",
+   "aria": "主题（当前：自动）"
+  },
+  {
+   "text": "自动",
+   "cls": "theme-option",
+   "aria": null
+  },
+  {
+   "text": "默认",
+   "cls": "theme-option",
+   "aria": null
+  },
+  {
+   "text": "亮色",
+   "cls": "theme-option",
+   "aria": null
+  },
+  {
+   "text": "暗色",
+   "cls": "theme-option",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "收起目录"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "简洁模式"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "更多"
+  },
+  {
+   "text": "目录",
+   "cls": "",
+   "aria": null
+  },
+  {
+   "text": "YouTube",
+   "cls": "",
+   "aria": null
+  },
+  {
+   "text": "哔哩哔哩",
+   "cls": "",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "上一张图片"
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "下一张图片"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "上一张图片"
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "下一张图片"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "上一张图片"
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "下一张图片"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "上一张图片"
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "下一张图片"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "上一张图片"
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "下一张图片"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "上一张图片"
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "下一张图片"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "上一张图片"
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "下一张图片"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "上一张图片"
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "下一张图片"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "上一张图片"
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "下一张图片"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "上一张图片"
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "下一张图片"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "上一张图片"
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "下一张图片"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "上一张图片"
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "下一张图片"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "上一张图片"
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "下一张图片"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "上一张图片"
+  },
+  {
+   "text": "",
+   "cls": "gallery-button",
+   "aria": "下一张图片"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "复制事件 Markdown"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "生成事件分享图片"
+  },
+  {
+   "text": "…−",
+   "cls": "news-body-toggle",
+   "aria": "返回概要"
+  },
+  {
+   "text": "正文",
+   "cls": "news-body-summary",
+   "aria": null
+  },
+  {
+   "text": "×",
+   "cls": "nav-button",
+   "aria": "关闭弹窗"
+  },
+  {
+   "text": "×",
+   "cls": "nav-button",
+   "aria": "关闭分享"
+  },
+  {
+   "text": "复制链接",
+   "cls": "",
+   "aria": null
+  },
+  {
+   "text": "复制标题和链接",
+   "cls": "",
+   "aria": null
+  },
+  {
+   "text": "Markdown 链接",
+   "cls": "",
+   "aria": null
+  },
+  {
+   "text": "系统分享",
+   "cls": "",
+   "aria": null
+  },
+  {
+   "text": "微信 · 复制文案",
+   "cls": "",
+   "aria": null
+  },
+  {
+   "text": "分享此页",
+   "cls": "more-item",
+   "aria": "分享此页"
+  },
+  {
+   "text": "快捷分享",
+   "cls": "more-item",
+   "aria": null
+  },
+  {
+   "text": "概要",
+   "cls": "",
+   "aria": null
+  },
+  {
+   "text": "正文",
+   "cls": "",
+   "aria": null
+  },
+  {
+   "text": "公众号",
+   "cls": "more-item more-item--tile",
+   "aria": "微信公众号"
+  },
+  {
+   "text": "",
+   "cls": "nav-button event-share-copy",
+   "aria": "复制图片"
+  },
+  {
+   "text": "",
+   "cls": "nav-button event-share-native",
+   "aria": "系统分享"
+  },
+  {
+   "text": "",
+   "cls": "nav-button",
+   "aria": "关闭图片分享"
+  }
+ ],
+ "links": [
+  {
+   "href": "#main-content",
+   "text": "跳到正文",
+   "cls": "skip-link"
+  },
+  {
+   "href": "/",
+   "text": "橘鸦AI早报",
+   "cls": "site-brand"
+  },
+  {
+   "href": "/",
+   "text": "橘鸦AI早报",
+   "cls": "site-brand"
+  },
+  {
+   "href": "/latest/",
+   "text": "今日",
+   "cls": "nav-button nav-tool"
+  },
+  {
+   "href": "/",
+   "text": "首页",
+   "cls": "nav-button nav-tool"
+  },
+  {
+   "href": "/rss.xml",
+   "text": "订阅 RSS",
+   "cls": "nav-button nav-tool"
+  },
+  {
+   "href": "https://message.bilibili.com/#/whisper/mid285286947",
+   "text": "报错/投稿",
+   "cls": "nav-feedback"
+  },
+  {
+   "href": "#s1",
+   "text": "概览",
+   "cls": "toc-h2 toc-overview active"
+  },
+  {
+   "href": "#s9",
+   "text": "要闻",
+   "cls": "toc-h2"
+  },
+  {
+   "href": "#s10",
+   "text": "Google 全球开放 Gemini 4 Argon #1",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s11",
+   "text": "OpenAI 优化 ChatGPT 桌面应用存储占用 #2",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s12",
+   "text": "模型发布",
+   "cls": "toc-h2"
+  },
+  {
+   "href": "#s13",
+   "text": "Cat Jam 匿名编程模型免费上线 OpenCode #3",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s14",
+   "text": "Fish Audio 发布 Drama 3，开放模型权重 #4",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s15",
+   "text": "Liquid AI 发布 LFM2.5-24B-A2B #5",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s16",
+   "text": "开发生态",
+   "cls": "toc-h2"
+  },
+  {
+   "href": "#s17",
+   "text": "Command Code 推出 GOAT 限时额度优惠 #6",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s18",
+   "text": "MiniMax 入驻天猫，开售三档订阅方案 #7",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s19",
+   "text": "Antigravity 最高档向科研人员开放免费申请 #8",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s20",
+   "text": "Cursor 的 Origin 支持逾 20 项集成 #9",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s21",
+   "text": "产品应用",
+   "cls": "toc-h2"
+  },
+  {
+   "href": "#s22",
+   "text": "Google Play 新增私人应用功能 #10",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s23",
+   "text": "llama.cpp 推出 Windows 桌面应用 Llama Windows #11",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s24",
+   "text": "Arena 推出 Agent 版 Max 模型路由器 #12",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s25",
+   "text": "阿里千问推出个人 Agent 千问 Go，限时邀测 #13",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s26",
+   "text": "千问开售 N 系列 AI 眼镜及耳夹式耳机 #14",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s27",
+   "text": "阶跃终端发布 STEPX Neo 先行版手机 #15",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s28",
+   "text": "技术与洞察",
+   "cls": "toc-h2"
+  },
+  {
+   "href": "#s29",
+   "text": "Anthropic 弃用 Git，自建版本控制系统 Scion #16",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s30",
+   "text": "AISI 发布开源评估工具 Transect，支持核查 Agent 活动分类 #17",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s31",
+   "text": "AA 新增缓存命中率与任务成本对比榜单 #18",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s32",
+   "text": "Google 展示 Gemini 4 Argon 机器人仿真与控制能力 #19",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s33",
+   "text": "行业动态",
+   "cls": "toc-h2"
+  },
+  {
+   "href": "#s34",
+   "text": "OpenAI 工程师涉在高管会议室窃听被捕 #20",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s35",
+   "text": "Manus 与 OPPO 合作，接入 ColorOS 17 #21",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s36",
+   "text": "Character.ai 申请破产保护，拟出售资产 #22",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s37",
+   "text": "Exa 宣布年化收入突破 1 亿美元 #23",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s38",
+   "text": "NVIDIA 与法国生态扩大 Agent 计算部署 #24",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s39",
+   "text": "IDC：英伟达中国 AI 芯片份额降至 34% #25",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s40",
+   "text": "前瞻与传闻",
+   "cls": "toc-h2"
+  },
+  {
+   "href": "#s41",
+   "text": "Anthropic 据称正谈大阪数据中心项目 #26",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "#s42",
+   "text": "报道称字节 Seed 将成立安全与对齐部门 #27",
+   "cls": "toc-h3"
+  },
+  {
+   "href": "https://deepmind.google/blog/introducing-gemini-4-argon/",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s10",
+   "text": "#1",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://x.com/thsottiaux/status/2110151780478927344",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s11",
+   "text": "#2",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://x.com/opencode/status/2110068008945381853",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s13",
+   "text": "#3",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://fish.audio/blog/fish-audio-drama-3/",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s14",
+   "text": "#4",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://www.liquid.ai/blog/lfm2-5-24b-a2b",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s15",
+   "text": "#5",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://x.com/CommandCodeAI/status/2110023209416630626",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s17",
+   "text": "#6",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://mp.weixin.qq.com/s/fYK1sb1E8c2jVYf3lZ85Jw",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s18",
+   "text": "#7",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://x.com/Google/status/2110041308257493356",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s19",
+   "text": "#8",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://x.com/cursor_ai/status/2110075611633074295",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s20",
+   "text": "#9",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://blog.google/products-and-platforms/platforms/google-play/google-play-updates-october-2026/",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s22",
+   "text": "#10",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://huggingface.co/blog/huggingface/llama-windows",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s23",
+   "text": "#11",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://arena.ai/blog/max-router-tops-agent-arena",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s24",
+   "text": "#12",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://mp.weixin.qq.com/s/MhlweW9-Ia6jizS3zf7OMQ",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s25",
+   "text": "#13",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://mp.weixin.qq.com/s/uSTqMa0eVGqBRr4YaooLZA",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s26",
+   "text": "#14",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://www.stepx.com/",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s27",
+   "text": "#15",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://www.anthropic.com/engineering/redesigning-source-control",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s29",
+   "text": "#16",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://www.aisi.gov.uk/blog/transect-making-large-scale-agentic-evaluations-easier-to-understand",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s30",
+   "text": "#17",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://artificialanalysis.ai/models/glm-5-3/providers",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s31",
+   "text": "#18",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://developers.googleblog.com/gemini-4-argon-for-robotics/",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s32",
+   "text": "#19",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://www.justice.gov/opa/pr/saudi-national-arrested-installing-surreptitious-audio-recording-device-openai",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s34",
+   "text": "#20",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://www.oppo.com/en/newsroom/press/oppo-manus/",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s35",
+   "text": "#21",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://blog.character.ai/an-update-on-character-ai/",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s36",
+   "text": "#22",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://x.com/WilliamBryk/status/2110058915589464192",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s37",
+   "text": "#23",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://blogs.nvidia.com/blog/france-ecosystem-agentic-computing/",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s38",
+   "text": "#24",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://www.reuters.com/business/retail-consumer/nvidias-china-ai-chip-share-falls-huawei-closes-gap-report-finds-2026-10-13/",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s39",
+   "text": "#25",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://asia.nikkei.com/business/technology/artificial-intelligence/ntt-to-build-first-data-center-for-anthropic-in-japan",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s41",
+   "text": "#26",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://www.thepaper.cn/newsDetail_forward_34241236",
+   "text": "↗",
+   "cls": ""
+  },
+  {
+   "href": "#s42",
+   "text": "#27",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://deepmind.google/blog/introducing-gemini-4-argon/",
+   "text": "Google 全球开放 Gemini 4 Argon",
+   "cls": ""
+  },
+  {
+   "href": "#overview-item-1",
+   "text": "#1",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://deepmind.google/blog/introducing-gemini-4-argon/",
+   "text": "https://deepmind.google/blog/introducing-gemini-4-argon/",
+   "cls": ""
+  },
+  {
+   "href": "https://ai.google.dev/gemini-api/docs/pricing",
+   "text": "https://ai.google.dev/gemini-api/docs/pricing",
+   "cls": ""
+  },
+  {
+   "href": "https://antigravity.google/blog/gemini-4-argon-in-google-antigravity",
+   "text": "https://antigravity.google/blog/gemini-4-argon-in-google-ant",
+   "cls": ""
+  },
+  {
+   "href": "https://gemini.google/release-notes/",
+   "text": "https://gemini.google/release-notes/",
+   "cls": ""
+  },
+  {
+   "href": "https://x.com/thsottiaux/status/2110151780478927344",
+   "text": "OpenAI 优化 ChatGPT 桌面应用存储占用",
+   "cls": ""
+  },
+  {
+   "href": "#overview-item-2",
+   "text": "#2",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://x.com/thsottiaux/status/2110151780478927344",
+   "text": "https://x.com/thsottiaux/status/2110151780478927344",
+   "cls": ""
+  },
+  {
+   "href": "https://x.com/opencode/status/2110068008945381853",
+   "text": "Cat Jam 匿名编程模型免费上线 OpenCode",
+   "cls": ""
+  },
+  {
+   "href": "#overview-item-3",
+   "text": "#3",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://x.com/opencode/status/2110068008945381853",
+   "text": "https://x.com/opencode/status/2110068008945381853",
+   "cls": ""
+  },
+  {
+   "href": "https://fish.audio/blog/fish-audio-drama-3/",
+   "text": "Fish Audio 发布 Drama 3，开放模型权重",
+   "cls": ""
+  },
+  {
+   "href": "#overview-item-4",
+   "text": "#4",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://fish.audio/blog/fish-audio-drama-3/",
+   "text": "https://fish.audio/blog/fish-audio-drama-3/",
+   "cls": ""
+  },
+  {
+   "href": "https://docs.fish.audio/features/text-to-speech/drama-3",
+   "text": "https://docs.fish.audio/features/text-to-speech/drama-3",
+   "cls": ""
+  },
+  {
+   "href": "https://huggingface.co/fishaudio/drama-3",
+   "text": "https://huggingface.co/fishaudio/drama-3",
+   "cls": ""
+  },
+  {
+   "href": "https://github.com/fishaudio/fish-speech/blob/main/docs/assets/Fish_Audio_Drama_3_Technical_Report.pdf",
+   "text": "https://github.com/fishaudio/fish-speech/blob/main/docs/asse",
+   "cls": ""
+  },
+  {
+   "href": "https://www.liquid.ai/blog/lfm2-5-24b-a2b",
+   "text": "Liquid AI 发布 LFM2.5-24B-A2B",
+   "cls": ""
+  },
+  {
+   "href": "#overview-item-5",
+   "text": "#5",
+   "cls": "article-ref"
+  },
+  {
+   "href": "https://www.liquid.ai/blog/lfm2-5-24b-a2b",
+   "text": "https://www.liquid.ai/blog/lfm2-5-24b-a2b",
+   "cls": ""
+  },
+  {
+   "href": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
+   "text": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
+   "cls": ""
+  },
+  {
+   "href": "https://x.com/CommandCodeAI/status/2110023209416630626",
+   "text": "Command Code 推出 GOAT 限时额度优惠",
+   "cls": ""
+  },
+  {
+   "href": "#overview-item-6",
+   "text": "#6",
+   "cls": "article-ref"
+  }
+ ],
+ "calendar": [
+  {
+   "tag": "div",
+   "cls": "calendar",
+   "text": "‹ ›",
+   "box": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   }
+  }
+ ],
+ "bodyBg": "rgb(253, 252, 250)",
+ "fontFamily": "\"Sarasa Gothic SC\", \"更纱黑体 SC\", \"Noto Sans CJK SC\", sans-serif",
+ "h1Size": "32px",
+ "docHeight": 19413,
+ "hasTocScrollSpy": true
+}

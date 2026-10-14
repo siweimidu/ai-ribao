@@ -5,32 +5,149 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI 日报 · 往期</title>
 <meta name="color-scheme" content="light dark">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230065fd'/%3E%3Cpath d='M9 21.5 14.2 10.5h3.6L23 21.5h-3.3l-1-2.3h-5.4l-1 2.3z' fill='white'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230065fd'/%3E%3Cpath d='M9.5 21.5 14.4 10.5h3.4l4.9 11h-3.1l-1-2.4h-5.2l-1 2.4z' fill='white'/%3E%3C/svg%3E">
 <link rel="alternate" type="application/rss+xml" title="AI 日报" href="feed/zh.xml">
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/components.css">
 </head>
 <body>
-<main class="wrap">
-  <header class="masthead">
-    <div>
-      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>AI 日报</p>
-      <h1>往期</h1>
-      <p class="sub">每日自动聚合 AI 领域的信息源，去重、交叉验证，并区分事实与推断。</p>
-    </div>
-    <div class="tally" role="group" aria-label="归档统计">
-      <div><b>1</b><span>期</span></div>
-      <div><b>224</b><span>事件</span></div>
-    </div>
-  </header>
-  <section class="archive">
-    <h2>全部期数</h2>
-    <ul><li><a href="2026-10-14.html"><span class="date">2026-10-14</span><span class="count">224 条</span></a></li></ul>
-  </section>
-  <footer class="foot">
-    <div class="notice"><p>最新一期：2026-10-14 ·
-      <a href="feed/zh.xml">RSS</a> · <a href="feed/zh.json">JSON Feed</a></p></div>
-  </footer>
-</main>
+<a class="skip" href="#main">跳到正文</a>
+<div class="shell">
+      <aside class="rail" aria-label="站点导航">
+        <div class="rail__head">
+          <a class="rail__brand" href="index.html">
+            <span class="rail__mark" aria-hidden="true">AI</span>
+            <span>AI 日报</span>
+          </a>
+          <button class="rail__toggle rail__item" type="button" aria-expanded="false"
+                  aria-controls="rail-body" style="width:auto">
+            <span class="sr">展开导航</span>
+            <span aria-hidden="true">☰</span>
+          </button>
+        </div>
+
+        <div class="rail__body" id="rail-body">
+          <!-- 1. 搜索往期内容 -->
+          <div class="rail__group">
+            <button class="rail__item" type="button" data-open-search>
+              <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="7.5" r="5"/><path d="M11.5 11.5 15 15"/></svg><span>搜索往期内容</span><span class="rail__hint">⌘K</span>
+            </button>
+          </div>
+
+          <!-- 2. 首页 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <a class="rail__item" href="index.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5 9 3l6 5.5V15H3z"/><path d="M7.5 15v-4h3v4"/></svg><span>首页</span></a>
+          </div>
+
+          <hr class="rail__sep">
+
+          <!-- 3. 日历 -->
+          <div class="cal" aria-label="按日期浏览">
+            <div class="cal__head">
+              <span class="cal__month">—</span>
+              <span class="cal__nav">
+                <button type="button" data-nav="prev" aria-label="上个月">‹</button>
+                <button type="button" data-nav="next" aria-label="下个月">›</button>
+              </span>
+            </div>
+            <div class="cal__grid" role="grid">
+              <span class="cal__dow">日</span><span class="cal__dow">一</span>
+              <span class="cal__dow">二</span><span class="cal__dow">三</span>
+              <span class="cal__dow">四</span><span class="cal__dow">五</span>
+              <span class="cal__dow">六</span>
+            </div>
+            <div class="cal__legend">
+              <span><i data-k="today"></i>今天</span>
+              <span><i data-k="has"></i>有日报</span>
+            </div>
+          </div>
+
+          <hr class="rail__sep">
+
+          <!-- 4. Tibo 重置监控 -->
+          <div class="rail__group">
+            <a class="rail__item" href="tibo.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6.5"/><path d="M9 5.5V9l2.5 1.5"/></svg><span>Tibo 重置监控</span></a>
+          </div>
+
+          <!-- 5. 微信公众号 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <details class="rail__fold">
+              <summary class="rail__item"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 7.5c0-2.5 2.4-4.5 5.4-4.5s5.4 2 5.4 4.5-2.4 4.5-5.4 4.5c-.6 0-1.2-.1-1.7-.2L4 13l.7-2.1A4.4 4.4 0 0 1 2.5 7.5z"/><path d="M9.8 11.4c.4 2 2.4 3.4 4.8 3.4.5 0 1-.1 1.5-.2l1.7 1.1-.5-1.7a3.6 3.6 0 0 0 1.4-2.6c0-1.5-1-2.8-2.5-3.4"/></svg><span>微信公众号</span></summary>
+              <div class="rail__sub">
+                <p style="margin:0;color:var(--muted-fg);font-size:var(--fs-small);line-height:1.7">
+                  在微信里搜索公众号「AI 日报」，或扫描站点首页底部的二维码。
+                  公众号推送与网页同一份内容。
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <!-- 6. 订阅 RSS -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <details class="rail__fold">
+              <summary class="rail__item"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M3 4.5A8.5 8.5 0 0 1 11.5 13"/><path d="M3 8A5 5 0 0 1 8 13"/></svg><span>订阅 RSS</span></summary>
+              <div class="rail__sub">
+                <a role="menuitem" href="feed/zh.xml">RSS 2.0</a>
+                <a role="menuitem" href="feed/zh.json">JSON Feed</a>
+                <a role="menuitem" href="feed/zh.xml" download>下载当前 feed</a>
+              </div>
+            </details>
+          </div>
+
+          <!-- 7. 主题 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <details class="rail__fold">
+              <summary class="rail__item">
+                <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M9 3v12"/><path d="M9 3a6 6 0 0 1 0 12"/></svg><span>主题</span>
+                <span class="rail__hint" data-theme-summary>自动</span>
+              </summary>
+              <div class="rail__sub" role="menu"><button type="button" data-theme-choice="auto" aria-checked="false">自动</button><button type="button" data-theme-choice="default" aria-checked="false">默认</button><button type="button" data-theme-choice="light" aria-checked="false">亮色</button><button type="button" data-theme-choice="dark" aria-checked="false">暗色</button></div>
+            </details>
+          </div>
+
+          <!-- 8. 下载 markdown -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <details class="rail__fold">
+              <summary class="rail__item"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v8"/><path d="M5.5 8 9 11.5 12.5 8"/><path d="M3.5 13.5h11"/></svg><span>下载 markdown</span></summary>
+              <div class="rail__sub" role="menu"><a role="menuitem" href="2026-10-14.brief.md" download>速览版 (markdown)</a><a role="menuitem" href="2026-10-14.md" download>深度版 (markdown)</a></div>
+            </details>
+          </div>
+
+          <hr class="rail__sep">
+
+          <div class="rail__group">
+            <a class="rail__item" href="https://github.com/siweimidu/ai-ribao" rel="noopener noreferrer">
+              <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2.5a6.5 6.5 0 0 0-2 12.7c-.1-.5-.1-1.2 0-1.7.2-.8 1.4-5 1.4-5s-.3-.7-.3-1.7c0-1.6.9-2.7 2-2.7.9 0 1.4.7 1.4 1.6 0 1-.6 2.4-.9 3.8-.3 1 .5 1.9 1.6 1.9 1.9 0 3.3-2.5 3.3-5.4 0-2.3-1.6-3.9-4-3.9-2.7 0-4.3 2-4.3 4.1 0 .9.3 1.8.8 2.3.1.1.1.2.1.3l-.3 1.1c0 .2-.2.2-.4.1-1.3-.6-2.1-2.5-2.1-4C5.3 3.4 7.5 2.5 9 2.5z"/></svg><span>源码与说明</span>
+            </a>
+          </div>
+        </div>
+      </aside>
+  <main class="content" id="main">
+    <header class="issue__head">
+      <p class="issue__date enter">全部往期</p>
+      <h1 class="issue__title enter">AI 日报</h1>
+      <p class="issue__lead enter">每日自动聚合 AI 领域的信息源，去重、交叉验证，并区分事实与推断。</p>
+      <div class="stats enter">
+        <div><b>1</b><span>期</span></div>
+        <div><b>224</b><span>事件</span></div>
+      </div>
+    </header>
+    <section class="section"><h2 class="section__title">2026-10<span class="section__count">1 期</span></h2><ol class="stream"><li><a href="2026-10-14.html"><span>2026-10-14</span><span class="section__count">224 条</span></a></li></ol></section>
+    <footer class="foot">
+      <p>最新一期：2026-10-14</p>
+    </footer>
+  </main>
+</div>
+<dialog class="search" id="search-dialog" aria-label="搜索往期内容">
+  <div class="search__form">
+    <svg viewBox="0 0 18 18" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="7.5" r="5"/><path d="M11.5 11.5 15 15"/></svg>
+    <input type="search" placeholder="搜索往期内容…" aria-label="搜索关键词" autocomplete="off">
+    <kbd>Esc</kbd>
+  </div>
+  <ul class="search__results"></ul>
+</dialog>
+<script type="application/json" id="calendar-data">{"dates": ["2026-10-14"], "current": "2026-10-14", "today": "2026-10-14"}</script>
+<script type="application/json" id="search-index">[]</script>
+<script src="assets/motion.js" defer></script>
 </body>
 </html>

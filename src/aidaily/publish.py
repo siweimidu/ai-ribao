@@ -117,9 +117,10 @@ def write_site(
 ) -> DeliveryResult:
     """Render the designed site (see aidaily/site.py), keeping the markdown alongside.
 
-    The markdown is written to the same directory because the deep version is also the
-    plain-text artefact: it is what gets committed, diffed and grepped. The HTML is for
-    reading; the markdown is for the record.
+    The markdown is also written into `site/` because the sidebar links both editions as
+    downloads and the deploy uploads only `site/`. Writing it to the parent directory left
+    the download buttons pointing at 404s — the same failure class as the feeds, caught
+    this time by the link guard instead of by a reader.
     """
     from .site import write_site as render_site
 
@@ -132,7 +133,13 @@ def write_site(
         site_url=site_url,
         assets_dir=assets,
     )
-    (out_dir / "site" / f"{digest.date}.md").write_text(deep_md, encoding="utf-8")
+
+    site = out_dir / "site"
+    (site / f"{digest.date}.md").write_text(deep_md, encoding="utf-8")
+    brief = out_dir / f"{digest.date}.brief.md"
+    if brief.exists():
+        (site / brief.name).write_bytes(brief.read_bytes())
+
     return DeliveryResult(
         "pages",
         True,

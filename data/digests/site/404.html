@@ -5,23 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>找不到这一期 · AI 日报</title>
 <meta name="color-scheme" content="light dark">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230065fd'/%3E%3Cpath d='M9 21.5 14.2 10.5h3.6L23 21.5h-3.3l-1-2.3h-5.4l-1 2.3z' fill='white'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230065fd'/%3E%3Cpath d='M9.5 21.5 14.4 10.5h3.4l4.9 11h-3.1l-1-2.4h-5.2l-1 2.4z' fill='white'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/components.css">
 </head>
 <body>
-<main class="wrap">
-  <header class="masthead">
-    <div>
-      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>404</p>
-      <h1>找不到这一期</h1>
-      <p class="sub">这一期可能还没有生成，或者日期写错了。归档里所有已发布的期数都能点开。</p>
-    </div>
-  </header>
-  <section class="archive">
-    <h2>去往期索引</h2>
-    <ul><li><a href="index.html"><span class="date">全部期数</span><span class="count">→</span></a></li></ul>
-  </section>
-</main>
+<a class="skip" href="#main">跳到正文</a>
+<div class="shell">
+  <main class="content" id="main">
+    <header class="issue__head">
+      <p class="issue__date">404</p>
+      <h1 class="issue__title">找不到这一期</h1>
+      <p class="issue__lead">这一期可能还没有生成，或者日期写错了。往期索引里所有已发布的期数都能点开。</p>
+    </header>
+    <nav class="pager"><a href="index.html"><span>去往期索引</span>全部期数</a></nav>
+  </main>
+</div>
+<script type="application/json" id="calendar-data">{"dates": ["2026-10-14"], "current": null, "today": null}</script>
+<script src="assets/motion.js" defer></script>
 </body>
 </html>

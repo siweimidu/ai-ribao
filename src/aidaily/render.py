@@ -21,6 +21,10 @@ from .analyze import EventInsight
 from .models import Digest, Event, NormalizedItem
 
 CATEGORY_LABELS = {
+    # "mixed" is the pipeline's bucket for events with more than one independent source.
+    # It was missing, so the most corroborated stories in the issue -- the ones the whole
+    # clustering stage exists to find -- were labelled 其它 and sorted to the bottom.
+    "mixed": "多源验证",
     "lab-official": "官方发布",
     "lab-blog": "实验室博客",
     "zh-media": "中文媒体",
@@ -143,8 +147,14 @@ def render_deep(
     # rendered as an empty document -- a silent, total failure of the output stage.
     section_lookup: dict[str, str] = {}
     for category, rows in digest.sections.items():
-        for event in rows:
-            section_lookup.setdefault(event.event_id, category)
+        for row in rows:
+            # In memory these are Events; from the archived JSON they are event ids. Both
+            # shapes reach this function (the archive stores ids so the file does not
+            # duplicate every event body), and assuming only one crashed or silently
+            # produced an empty section map.
+            key = row if isinstance(row, str) else getattr(row, "event_id", None)
+            if key:
+                section_lookup.setdefault(key, category)
 
     grouped: dict[str, list[Event]] = {}
     for event in digest.top_events:

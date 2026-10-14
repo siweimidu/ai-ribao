@@ -1,331 +1,582 @@
 /* ============================================================================
    组件层
    ----------------------------------------------------------------------------
-   版面刻意用三种互不相同的段落形态，而不是「每段都是标题 + 居中段落」：
-     1. 信息带（masthead）—— 左标题 + 右指标的网格
-     2. 事件流（stream）—— 序号化的编辑列表，前三条权重更大
-     3. 归档表（archive）—— 等宽数字的密集表格
-   slop 闸门 A3 要求一页至少三种段落结构；A2 禁止「居中三列等宽卡片」，
-   所以事件流是**不等宽**的：序号 + 主列 + 来源列，按重要度分配空间。
+   版式来自 juya 的实测结构，但刻意避开 frontend-design 点名的模板特征：
+   · 不给每个标题加全大写小标签
+   · 不用等宽字体装饰小数据
+   · 不用 `A · B · C` 中间点串接的 meta
+   · 不给每张卡片同一套圆角 + 同一层灰阴影
    ========================================================================= */
 
-/* --- 控制条：分隔线 + 极少的控制项 --------------------------------------- */
-.bar {
+/* --- 侧栏结构 -------------------------------------------------------------------- */
+.rail__brand {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--unit) * 2.5);
+  font-weight: 640;
+  font-size: var(--fs-h3);
+  letter-spacing: -0.01em;
+  margin-bottom: calc(var(--unit) * 6);
+}
+
+.rail__mark {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex: none;
+}
+
+.rail__group { display: grid; gap: calc(var(--unit) * 1); }
+
+.rail__sep {
+  height: 1px;
+  background: var(--border);
+  margin-block: calc(var(--unit) * 5);
+  border: 0;
+}
+
+/* 按钮与导航项共用一个造型：侧栏里它们是同级的东西，读者不该去分辨
+   「这是链接还是按钮」。 */
+.rail__item {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--unit) * 2.5);
+  width: 100%;
+  padding: calc(var(--unit) * 2.25) calc(var(--unit) * 3);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--fg);
+  font: inherit;
+  font-size: var(--fs-body);
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-circ);
+}
+
+.rail__item:hover { background: var(--muted); }
+
+.rail__item[aria-current="page"] {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.rail__item svg { width: 16px; height: 16px; flex: none; opacity: 0.75; }
+.rail__item[aria-current="page"] svg { opacity: 1; }
+
+.rail__hint {
+  margin-left: auto;
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+
+/* 展开式（主题四选一、下载二选一）：用原生 <details>，
+   键盘可用、无 JS 也能开合。 */
+.rail__fold > summary {
+  list-style: none;
+  cursor: pointer;
+}
+.rail__fold > summary::-webkit-details-marker { display: none; }
+.rail__fold > summary::after {
+  content: "";
+  width: 6px; height: 6px;
+  margin-left: auto;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  opacity: 0.5;
+  transition: transform var(--dur-fast) var(--ease-out-circ);
+}
+.rail__fold[open] > summary::after { transform: rotate(-135deg) translateY(-2px); }
+
+.rail__sub {
+  display: grid;
+  gap: calc(var(--unit) * 0.5);
+  padding: calc(var(--unit) * 1) 0 calc(var(--unit) * 2) calc(var(--unit) * 6);
+}
+
+.rail__sub button {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--unit) * 2);
+  padding: calc(var(--unit) * 1.5) calc(var(--unit) * 2.5);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--muted-fg);
+  font: inherit;
+  font-size: var(--fs-small);
+  text-align: left;
+  cursor: pointer;
+}
+.rail__sub button:hover { background: var(--muted); color: var(--fg); }
+.rail__sub button[aria-checked="true"] { color: var(--accent); font-weight: 600; }
+.rail__sub button[aria-checked="true"]::before { content: "✓"; }
+
+/* ============================================================================
+   日历
+   ----------------------------------------------------------------------------
+   规范要求：当日高亮 + 圆形强调。这里当日的圆是**实心强调色圆**，
+   有链接的其它日期是**浅底可点**，两者视觉权重清楚不同 ——
+   「今天」是位置，「有内容的日子」是可去的地方，不是同一件事。
+   ========================================================================= */
+.cal { margin-top: calc(var(--unit) * 1); }
+
+.cal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--unit) * 2);
+  margin-bottom: calc(var(--unit) * 2);
+}
+
+.cal__month {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.cal__nav {
+  display: flex;
+  gap: calc(var(--unit) * 0.5);
+}
+
+.cal__nav button {
+  width: 22px; height: 22px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--muted-fg);
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-circ);
+}
+.cal__nav button:hover { background: var(--muted); color: var(--fg); }
+.cal__nav button:disabled { opacity: 0.35; cursor: default; }
+
+.cal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.cal__dow {
+  font-size: 10px;
+  color: var(--muted-fg);
+  text-align: center;
+  padding-bottom: calc(var(--unit) * 0.5);
+}
+
+.cal__day {
+  position: relative;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;          /* 圆形：规范要求 */
+  background: transparent;
+  color: var(--muted-fg);
+  font: inherit;
+  font-size: var(--fs-small);
+  font-variant-numeric: tabular-nums;
+  cursor: default;
+}
+
+/* 有归档的日期：可点，浅底 */
+.cal__day[data-has="true"] {
+  background: var(--muted);
+  color: var(--fg);
+  cursor: pointer;
+  font-weight: 600;
+  transition:
+    background var(--dur-fast) var(--ease-out-circ),
+    transform var(--dur-fast) var(--spring-bouncy);
+}
+.cal__day[data-has="true"]:hover { background: var(--accent-soft); color: var(--accent); }
+.cal__day[data-has="true"]:active { transform: scale(0.9); }
+
+/* 今天：实心强调色圆 + 圆形光晕（规范的「圆形阴影」） */
+.cal__day[data-today="true"] {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.cal__day[data-today="true"]:hover { background: var(--accent); color: #fff; }
+
+/* 正在看的这一期 */
+.cal__day[data-current="true"]:not([data-today="true"]) {
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+}
+
+.cal__day[aria-disabled="true"] { opacity: 0.3; }
+
+.cal__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--unit) * 3);
+  margin-top: calc(var(--unit) * 3);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+.cal__legend span { display: flex; align-items: center; gap: calc(var(--unit) * 1.5); }
+.cal__legend i {
+  width: 9px; height: 9px; border-radius: 50%; flex: none;
+  background: var(--muted);
+  border: 1px solid var(--border);
+}
+.cal__legend i[data-k="today"] { background: var(--accent); border-color: var(--accent); }
+.cal__legend i[data-k="has"] { background: var(--muted); }
+
+/* ============================================================================
+   内容列
+   ========================================================================= */
+.content { padding-block: calc(var(--unit) * 10) calc(var(--unit) * 16); min-width: 0; }
+
+.issue__head { margin-bottom: calc(var(--unit) * 8); }
+
+.issue__date {
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+  margin-bottom: calc(var(--unit) * 2);
+}
+
+.issue__title {
+  margin: 0;
+  font-size: var(--fs-display);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.015em;
+  font-weight: 660;
+  /* 60px 中文在 700px 列里一行约 11 字，不限 measure 会长标题铺满整行。 */
+  max-width: 20ch;
+  text-wrap: balance;
+}
+
+.issue__lead {
+  margin: calc(var(--unit) * 4) 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--muted-fg);
+  max-width: 60ch;
+}
+
+/* 统计条：真实数字，横排一条，不是卡片组 */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--unit) * 7);
+  margin-top: calc(var(--unit) * 7);
+  padding-top: calc(var(--unit) * 5);
+  border-top: 1px solid var(--border);
+}
+
+.stats div { min-width: 0; }
+.stats b {
+  display: block;
+  font-size: 1.375rem;
+  font-weight: 660;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+.stats span { font-size: var(--fs-micro); color: var(--muted-fg); }
+
+/* --- 章节 ---------------------------------------------------------------------- */
+.section { margin-top: calc(var(--unit) * 12); scroll-margin-top: calc(var(--unit) * 6); }
+
+.section__title {
+  display: flex;
+  align-items: baseline;
+  gap: calc(var(--unit) * 3);
+  margin: 0 0 calc(var(--unit) * 5);
+  font-size: var(--fs-h2);
+  font-weight: 640;
+  letter-spacing: -0.01em;
+  padding-bottom: calc(var(--unit) * 2.5);
+  border-bottom: 1px solid var(--border);
+}
+
+.section__count {
+  font-size: var(--fs-small);
+  font-weight: 400;
+  color: var(--muted-fg);
+}
+
+/* --- 条目 ---------------------------------------------------------------------- */
+.stream { list-style: none; margin: 0; padding: 0; }
+
+.item {
+  padding-block: calc(var(--unit) * 6);
+  border-bottom: 1px solid var(--border);
+  scroll-margin-top: calc(var(--unit) * 6);
+}
+.item:last-child { border-bottom: 0; }
+
+.item__head {
+  display: flex;
+  align-items: baseline;
+  gap: calc(var(--unit) * 3);
+}
+
+/* 序号：内容确实是按顺序编出来的当日要闻，编号承载信息。
+   不用等宽字体（规范点名的 AI 味），用同族的半粗数字。 */
+.item__no {
+  flex: none;
+  font-size: var(--fs-small);
+  font-weight: 640;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  min-width: 1.6em;
+}
+
+.item__title {
+  margin: 0;
+  font-size: var(--fs-h3);
+  font-weight: 620;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  text-wrap: pretty;
+}
+.item__title a:hover { color: var(--accent); }
+
+.item__meta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: calc(var(--unit) * 5);
-  padding-block: calc(var(--unit) * 5);
-  border-bottom: 1px solid var(--border);
-  font-size: var(--fs-small);
-  color: var(--muted-fg);
-}
-
-.bar .spacer { flex: 1 1 auto; }
-
-.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: calc(var(--unit) * 2);
-  padding: calc(var(--unit) * 1.6) calc(var(--unit) * 4);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--bg);
-  color: var(--fg);
-  font-size: var(--fs-small);
-  font-family: inherit;
-  cursor: pointer;
-  /* 弹簧手感：不是 0.3s ease，而是与 JS 弹簧同源的 linear() 曲线 */
-  transition:
-    background var(--dur-fast) var(--ease-out-circ),
-    border-color var(--dur-fast) var(--ease-out-circ),
-    transform var(--dur-fast) var(--spring-bouncy);
-}
-
-.chip:hover { background: var(--muted); border-color: var(--muted-fg); }
-.chip:active { transform: scale(0.955); }
-.chip[aria-pressed="true"] {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
-}
-
-/* --- 事件流 -------------------------------------------------------------- */
-.stream {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.row {
-  position: relative;
-  display: grid;
-  gap: calc(var(--unit) * 2) calc(var(--unit) * 7);
-  padding-block: calc(var(--unit) * 9);
-  border-bottom: 1px solid var(--border);
-  /* 光标跟随的弹簧变换写在这两个自定义属性上，由 motion.js 驱动。
-     不给未悬停的行加 transition —— 那会让整页在滚动时抖动。 */
-  transform:
-    translate3d(var(--tx, 0px), var(--ty, 0px), 0)
-    rotate(var(--rot, 0deg));
-  will-change: auto;
-}
-
-/* 网格：序号 | 内容 | 来源。不等宽 —— 内容列拿走全部余量。 */
-@media (min-width: 720px) {
-  .row {
-    grid-template-columns: 3.25rem minmax(0, 1fr) 11rem;
-    align-items: start;
-  }
-}
-
-/* 前三条：更大的标题，更多留白。权重差异是版面事实，不是装饰。 */
-.row[data-rank="1"] .row-title,
-.row[data-rank="2"] .row-title,
-.row[data-rank="3"] .row-title {
-  font-size: var(--fs-title);
-  line-height: 1.35;
-  letter-spacing: -0.005em;
-}
-
-.row[data-rank="1"] { padding-block: calc(var(--unit) * 12); }
-.row[data-rank="1"] .row-title { font-weight: 660; }
-
-/* 序号：等宽数字，本身就是可动画的把手（果冻抖动的载体） */
-.row-index {
-  font-family: var(--font-mono);
-  font-size: var(--fs-small);
-  font-variant-numeric: tabular-nums;
-  color: var(--muted-fg);
-  padding-top: 0.35em;
-  display: inline-block;
-  transform-origin: left center;
-  transform: scale(var(--ix, 1), var(--iy, 1));
-}
-
-.row:hover .row-index { color: var(--accent); }
-
-.row-title {
-  margin: 0;
-  font-size: calc(var(--fs-body) * 1.35);
-  line-height: 1.5;
-  font-weight: 570;
-  letter-spacing: -0.002em;
-  text-wrap: pretty;
-}
-
-.row-title a:hover { color: var(--accent); }
-
-/* 事实 / 推断 / 不确定：三栏分离，标签用真实语义而不是装饰性图标 */
-.facts {
-  margin: calc(var(--unit) * 4) 0 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: calc(var(--unit) * 2);
-}
-
-.facts li {
-  font-size: var(--fs-body);
-  line-height: 1.72;
-  color: var(--fg);
-  padding-left: calc(var(--unit) * 5);
-  border-left: 2px solid var(--border);
-}
-
-.facts[data-kind="inference"] li { color: var(--muted-fg); }
-.facts[data-kind="uncertain"] li {
-  color: var(--muted-fg);
-  border-left-style: dashed;
-}
-
-.fact-label {
-  font-family: var(--font-mono);
+  gap: calc(var(--unit) * 2.5);
+  margin-top: calc(var(--unit) * 2);
+  padding-left: calc(1.6em + var(--unit) * 3);
   font-size: var(--fs-micro);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--muted-fg);
-  margin-top: calc(var(--unit) * 5);
-  display: block;
 }
 
-/* 来源列：主链接 + 其余来源的折叠清单 */
-.sources {
-  font-size: var(--fs-small);
-  line-height: 1.6;
-}
-
-@media (min-width: 720px) {
-  .sources { text-align: right; }
-}
-
-.evidence {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: var(--fs-micro);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: calc(var(--unit) * 1) calc(var(--unit) * 2.6);
+.badge {
+  padding: calc(var(--unit) * 0.25) calc(var(--unit) * 2);
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
-  color: var(--muted-fg);
   white-space: nowrap;
 }
-
-.evidence[data-level="multi_source"] {
+.badge[data-level="multi_source"] {
   border-color: var(--accent);
   color: var(--accent);
   background: var(--accent-soft);
 }
 
-.src-link {
-  display: block;
-  margin-top: calc(var(--unit) * 2.5);
-  color: var(--muted-fg);
-  word-break: break-all;
-}
-
-.src-link:hover { color: var(--accent); }
-
-.src-more {
-  display: block;
-  margin-top: calc(var(--unit) * 1.5);
-  font-family: var(--font-mono);
-  font-size: var(--fs-micro);
-  color: var(--muted-fg);
-  cursor: help;
-}
-
-/* 无日期：明确标注，绝不假装是今天的（数据诚实性要露在版面上） */
-.when-unknown { opacity: 0.65; }
-
-/* --- 归档表：第三种段落形态 --------------------------------------------- */
-.archive {
-  padding-block: calc(var(--unit) * 12);
-}
-
-.archive h2 {
-  font-size: var(--fs-lead);
-  font-weight: 600;
-  margin: 0 0 calc(var(--unit) * 6);
-}
-
-.archive ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+/* 事实 / 推断 / 不确定：三栏分离，用左侧色条区分，
+   标签用普通字号而非等宽小字。 */
+.facts {
+  margin: calc(var(--unit) * 3) 0 0;
+  padding-left: calc(1.6em + var(--unit) * 3);
   display: grid;
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
+  gap: calc(var(--unit) * 2);
 }
 
-.archive li { background: var(--bg); }
+.facts__label {
+  font-size: var(--fs-micro);
+  font-weight: 620;
+  color: var(--muted-fg);
+  margin-top: calc(var(--unit) * 2);
+}
+.facts__label[data-kind="fact"] { color: var(--fg); }
 
-.archive a {
+.facts ul { margin: 0; padding: 0; list-style: none; display: grid; gap: calc(var(--unit) * 1.5); }
+
+.facts li {
+  padding-left: calc(var(--unit) * 4);
+  border-left: 2px solid var(--border);
+  line-height: 1.7;
+}
+.facts li[data-kind="inference"] { color: var(--muted-fg); }
+.facts li[data-kind="uncertain"] { color: var(--muted-fg); border-left-style: dashed; }
+
+.item__links {
+  margin-top: calc(var(--unit) * 2.5);
+  padding-left: calc(1.6em + var(--unit) * 3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--unit) * 1.5) calc(var(--unit) * 4);
+  font-size: var(--fs-small);
+}
+.item__links a { color: var(--muted-fg); word-break: break-all; }
+.item__links a:hover { color: var(--accent); }
+
+/* 无日期：明确标注，不假装是今天的 */
+.when-unknown { font-style: italic; }
+
+/* --- 右侧目录 ------------------------------------------------------------------- */
+.toc { display: none; }
+
+@media (min-width: 1400px) {
+  .toc {
+    display: block;
+    position: sticky;
+    top: 0;
+    align-self: start;
+    max-height: 100vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    padding-block: calc(var(--unit) * 10);
+    font-size: var(--fs-small);
+  }
+}
+
+.toc__title {
+  font-size: var(--fs-micro);
+  font-weight: 640;
+  color: var(--muted-fg);
+  margin-bottom: calc(var(--unit) * 3);
+}
+
+.toc__nav { display: grid; gap: 1px; }
+
+.toc__nav a {
+  display: block;
+  padding: calc(var(--unit) * 1.25) calc(var(--unit) * 3);
+  border-left: 2px solid transparent;
+  color: var(--muted-fg);
+  line-height: 1.5;
+  transition: color var(--dur-fast) var(--ease-out-circ),
+              border-color var(--dur-fast) var(--ease-out-circ);
+}
+
+.toc__nav a:hover { color: var(--fg); }
+
+/* 滚动高亮：当前阅读位置。这是页面上唯一「活」的东西。 */
+.toc__nav a[aria-current="true"] {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  font-weight: 600;
+}
+
+.toc__nav a[data-level="2"] { padding-left: calc(var(--unit) * 6); font-size: var(--fs-micro); }
+
+/* --- 上一条 / 下一条 ----------------------------------------------------------------- */
+.pager {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
   gap: calc(var(--unit) * 4);
-  padding: calc(var(--unit) * 4) calc(var(--unit) * 6);
-  transition: background var(--dur-fast) var(--ease-out-circ);
+  margin-top: calc(var(--unit) * 12);
+  padding-top: calc(var(--unit) * 6);
+  border-top: 1px solid var(--border);
 }
-
-.archive a:hover { background: var(--muted); }
-
-.archive .date {
-  font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums;
+.pager a {
+  display: grid;
+  gap: calc(var(--unit) * 0.5);
   font-size: var(--fs-small);
 }
+.pager a:hover { color: var(--accent); }
+.pager span { color: var(--muted-fg); font-size: var(--fs-micro); }
+.pager a:last-child { text-align: right; }
 
-.archive .count {
-  font-family: var(--font-mono);
+/* --- 搜索对话框 ------------------------------------------------------------------- */
+.search {
+  width: min(100% - 2rem, 46rem);
+  max-height: 80vh;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--fg);
+  box-shadow: 0 18px 48px rgb(0 0 0 / 0.14);
+  overflow: hidden;
+}
+.search::backdrop { background: rgb(0 0 0 / 0.35); }
+
+.search__form {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--unit) * 3);
+  padding: calc(var(--unit) * 4) calc(var(--unit) * 5);
+  border-bottom: 1px solid var(--border);
+}
+.search__form input {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 1.0625rem;
+  outline: none;
+}
+.search__form kbd {
+  font-family: var(--font-sans);
   font-size: var(--fs-micro);
   color: var(--muted-fg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1px 6px;
 }
 
-/* --- 页脚 --------------------------------------------------------------- */
+.search__results {
+  list-style: none;
+  margin: 0;
+  padding: calc(var(--unit) * 2);
+  overflow-y: auto;
+  max-height: 62vh;
+}
+.search__results li a {
+  display: block;
+  padding: calc(var(--unit) * 3) calc(var(--unit) * 4);
+  border-radius: var(--radius-sm);
+}
+.search__results li a:hover,
+.search__results li a:focus-visible { background: var(--muted); }
+.search__results b { display: block; font-weight: 620; margin-bottom: calc(var(--unit) * 0.5); }
+.search__results small { color: var(--muted-fg); }
+.search__empty { padding: calc(var(--unit) * 6); text-align: center; color: var(--muted-fg); }
+
+/* --- 页脚 ------------------------------------------------------------------------ */
 .foot {
+  margin-top: calc(var(--unit) * 14);
+  padding-top: calc(var(--unit) * 6);
   border-top: 1px solid var(--border);
-  margin-top: calc(var(--unit) * 16);
-  padding-block: calc(var(--unit) * 8) calc(var(--unit) * 14);
   font-size: var(--fs-small);
   color: var(--muted-fg);
-  display: grid;
-  gap: calc(var(--unit) * 4);
 }
-
-@media (min-width: 720px) {
-  .foot { grid-template-columns: minmax(0, 1fr) auto; align-items: start; }
-}
-
+.foot p { max-width: 68ch; line-height: 1.7; }
 .foot a { color: var(--fg); }
 .foot a:hover { color: var(--accent); }
 
+/* --- 提示条 ---------------------------------------------------------------------- */
 .notice {
-  max-width: 62ch;
-  line-height: 1.7;
-}
-
-/* --- 警告条：数据不全时的显式声明 --------------------------------------- */
-.warn {
-  border: 1px solid var(--border);
   border-left: 3px solid var(--accent);
-  border-radius: var(--radius-sm);
   background: var(--muted);
-  padding: calc(var(--unit) * 4) calc(var(--unit) * 6);
+  border-radius: var(--radius-sm);
+  padding: calc(var(--unit) * 3.5) calc(var(--unit) * 5);
   margin-block: calc(var(--unit) * 6);
   font-size: var(--fs-small);
-  line-height: 1.7;
 }
-
-.warn strong {
-  font-family: var(--font-mono);
-  font-size: var(--fs-micro);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: calc(var(--unit) * 2);
-  color: var(--fg);
-}
-
-.warn ul { margin: 0; padding-left: 1.1em; }
+.notice p { margin: 0; }
+.notice ul { margin: calc(var(--unit) * 1.5) 0 0; padding-left: 1.1em; }
+.notice strong { font-weight: 620; }
 
 /* ============================================================================
-   入场：整个页面只有三处入场。
-   slop 闸门 B2 说「每一块都 opacity 0→1 + translateY(20px)」会让页面变成
-   一串相同的到达，读者到第三段就学会忽略入场。
-   所以只有：标题带、前三行事件、指标数字。其余内容本来就在那里。
-
-   **隐藏必须由 JS 亲自开启。** 初版在 CSS 里直接写 `.enter { opacity: 0 }`，
-   结果 IntersectionObserver 未触发时前三条事件是隐形的——截图里整段空白。
-   这正是 B8 的失败模式：内容被藏在动效后面。
-   现在 CSS 默认一切可见，只有 JS 显式加上 `js-motion` 才允许隐藏。
+   入场
+   ----------------------------------------------------------------------------
+   frontend-design：「单次编排的一个瞬间胜过零散效果」。
+   所以整个页面只有**一次**入场：标题 + 首屏统计。
+   条目不参与 —— 一页 60 条各自淡入正是规范点名的通用默认。
+   同样地，隐藏必须由 JS 开启（B8 闸门的失败模式）。
    ========================================================================= */
-.js-motion .enter:not(.is-in) {
-  opacity: 0;
-  transform: translate3d(0, 14px, 0);
-}
-
+.js-motion .enter:not(.is-in) { opacity: 0; transform: translate3d(0, 10px, 0); }
 .js-motion .enter.is-in {
   opacity: 1;
   transform: none;
   transition:
     opacity var(--dur-slow) var(--ease-out-expo),
     transform var(--dur-slow) var(--ease-out-expo);
-  transition-delay: var(--enter-delay, 0ms);
 }
 
-/* 数字滚动：只在指标上，不在正文上 */
-.count-up { font-variant-numeric: tabular-nums; }
-
-/* ============================================================================
-   降级：reduced-motion 的静止帧必须是完整的页面，不是空白页或坏页面
-   （slop 闸门 B8）。这里不隐藏任何内容，只把时长压掉。
-   ========================================================================= */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
@@ -334,12 +585,11 @@
     transition-duration: 0.01ms !important;
   }
   .js-motion .enter { opacity: 1 !important; transform: none !important; }
-  .row { transform: none !important; }
 }
 
-/* 打印：日报是会被打印/转 PDF 的东西 */
 @media print {
-  .bar, .foot, .chip { display: none; }
-  .row { break-inside: avoid; border-bottom-color: #ccc; transform: none !important; }
-  .evidence { border-color: #999; }
+  .rail, .toc, .pager, .search, .stats { display: none; }
+  .shell { display: block; }
+  .item { break-inside: avoid; }
+  body { background: #fff; }
 }

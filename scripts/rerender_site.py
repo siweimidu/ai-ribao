@@ -30,18 +30,24 @@ from aidaily.render import render_brief, render_deep, render_json_feed  # noqa: 
 
 def load(path: Path) -> tuple[Digest, dict[str, EventInsight], dict[str, NormalizedItem]]:
     payload = json.loads(path.read_text(encoding="utf-8"))
-    digest = Digest.model_validate(payload["digest"])
+    # The archive stores the section layout *separately* from the digest: `digest` is
+    # dumped with `exclude={"sections"}` and the top-level `sections` key holds
+    # `{category: [event_id, ...]}`. Validating `digest` alone therefore yields a digest
+    # with no sections at all, and every story lands in "其它" — which is exactly what the
+    # first version of this script produced on the real page. Reattach them here.
+    digest_doc = dict(payload["digest"])
+    by_id = {e["event_id"]: e for e in digest_doc.get("top_events", [])}
+    digest_doc["sections"] = {
+        category: [by_id[eid] for eid in ids if eid in by_id]
+        for category, ids in (payload.get("sections") or {}).items()
+    }
+    digest = Digest.model_validate(digest_doc)
 
     insights: dict[str, EventInsight] = {}
     for event_id, raw in (payload.get("insights") or {}).items():
         insights[event_id] = EventInsight(**raw)
 
-    # `insights` are keyed by event id, and the members live in the digest's own events,
-    # so the item map is rebuilt from those members rather than from a separate archive.
-    # Only the fields the site renders are needed; a missing body degrades to a bare
-    # headline row, which is visible rather than wrong.
-    items: dict[str, NormalizedItem] = {}
-    return digest, insights, items
+    return digest, insights, {}
 
 
 def main() -> int:
@@ -70,7 +76,13 @@ def main() -> int:
         site_url=site_url, insights=insights, items_by_id=items,
     )
 
-    feed_dir = out_dir / "site" / "feed"
+    # Keep the downloads the sidebar links next to the pages that link them: the deploy
+    # uploads `site/` only, so anything outside it 404s on the live site.
+    site_dir = out_dir / "site"
+    site_dir.joinpath(f"{digest.date}.md").write_text(deep, encoding="utf-8")
+    site_dir.joinpath(f"{digest.date}.brief.md").write_text(brief, encoding="utf-8")
+
+    feed_dir = site_dir / "feed"
     feed_dir.mkdir(parents=True, exist_ok=True)
     feed_dir.joinpath("zh.json").write_text(feed, encoding="utf-8")
 

@@ -1,54 +1,29 @@
 /* ============================================================================
-   motion.js — 「Q弹、灵动、跟手」的具体实现
+   motion.js — 侧栏交互、日历、搜索、目录高亮
    ----------------------------------------------------------------------------
-   全部是原生 rAF，没有引入任何动效库。依据 motion-web 的 handfeel.md：
-     诊断表把「四平八稳/太机械」归因于「朝目标做普通 lerp，没有过冲也没有重量」，
-     把「自己在动/不跟手」归因于「元素忽略自身速度」。
+   原则（frontend-design）：「单次编排的一个瞬间胜过零散效果」。
+   所以这里没有滚动淡入、没有卡片 hover 抬升、没有拖尾光标。
+   留下的动效都**回应人的动作**：点击、展开、切换、阅读位置变化。
 
-   所以这里用四件事：
-     §1 欠阻尼弹簧      —— 过冲后回稳，读作「有重量地落下」，而不是「滑过去」
-     §2 速度耦合        —— 倾斜量随速度变化，停下时自然回正
-     §4 次级果冻        —— 环境元素跟着主运动的余速晃动（同一流体内的物体）
-     §7.1 1-exp(-k·dt)  —— 帧率无关，30/60/120fps 手感一致
-
-   刻意**没有**做的（都是 slop 闸门明确点名的）：
-     × 拖尾圆点光标（B7，2019 年的签名，现在是默认值）
-     × 每个卡片都 translateY(-4px) + 阴影（B1，对一切生效等于什么都没说）
-     × 全站统一的滚动 fade-up（B2）
+   弹簧与帧率无关的趋近仍沿用 motion-web 的手感规范：
+   欠阻尼弹簧负责「Q 弹」，1-exp(-k·dt) 保证 30/60/120fps 手感一致。
    ========================================================================= */
 
 (() => {
   'use strict';
 
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-  /* ------------------------------------------------------------------ 工具 */
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const clamp = (v, lo, hi) => (v < lo ? lo : v > hi ? hi : v);
+  const approach = (cur, target, k, dt) => cur + (target - cur) * (1 - Math.exp(-k * dt));
 
-  /**
-   * 帧率无关的指数趋近（handfeel §7.1）。
-   *
-   * 每帧常数 lerp（`x += d * 0.1`）在不同帧率下是**不同的滤波器**——120Hz 屏幕上
-   * 会快一倍。这里用 1-exp(-k·dt)，k 是「每秒的趋近速率」，与帧率无关。
-   */
-  const approach = (current, target, k, dt) =>
-    current + (target - current) * (1 - Math.exp(-k * dt));
-
-  /* ============================================================ §1 欠阻尼弹簧
-   * 一个弹簧管一个量，速度存在闭包里（绝不放在会触发重渲染的地方）。
-   * damping 0.86 = 顽皮弹跳，0.90 = 果冻，0.93 = 平静。
-   */
+  /* ============================================================ 弹簧 */
   class Spring {
-    constructor({ stiffness = 80, damping = 0.90 } = {}) {
-      this.k = stiffness;
-      this.damping = damping;
-      this.value = 0;
-      this.target = 0;
-      this.velocity = 0;
+    constructor({ stiffness = 90, damping = 0.88 } = {}) {
+      this.k = stiffness; this.damping = damping;
+      this.value = 0; this.target = 0; this.velocity = 0;
     }
     step(dt) {
-      // 积分步长钳制：切标签页回来时 dt 可能是几秒，会让弹簧炸开
+      // 切标签页回来时 dt 可能是几秒，不钳制会让弹簧炸开
       const h = Math.min(dt, 1 / 30);
       this.velocity += (this.target - this.value) * this.k * h;
       this.velocity *= this.damping;
@@ -60,248 +35,343 @@
     }
   }
 
-  /* ==================================================== 光标跟随：主循环
-   * 悬停某一行时，行本身轻微让位（位移 + 按速度倾斜），序号做果冻缩放。
-   * 不是「整张卡片抬起来」——那是 B1。这里表达的是：这一行正在被读。
-   */
-  const rows = Array.from(document.querySelectorAll('.row'));
-
-  if (finePointer && !reduced && rows.length) {
-    const state = rows.map(() => ({
-      tx: new Spring({ stiffness: 90, damping: 0.88 }),
-      ty: new Spring({ stiffness: 90, damping: 0.88 }),
-      rot: new Spring({ stiffness: 60, damping: 0.93 }),
-      jelly: new Spring({ stiffness: 55, damping: 0.90 }),   // §4 次级
-      ix: new Spring({ stiffness: 120, damping: 0.86 }),      // 序号 x 缩放
-      iy: new Spring({ stiffness: 120, damping: 0.86 }),
-    }));
-
-    let hovered = -1;
-    let pointerX = 0, pointerY = 0;
-    let lastX = 0, lastY = 0;
-
-    const MAX_SHIFT = 5;      // px，位移上限。再大就成了「卡片跳舞」
-    const MAX_TILT = 0.55;    // deg，倾角上限
-    const LEAD = 0.06;        // 速度耦合增益
-
-    window.addEventListener('pointermove', (e) => {
-      pointerX = e.clientX;
-      pointerY = e.clientY;
-    }, { passive: true });
-
-    rows.forEach((row, i) => {
-      row.addEventListener('pointerenter', () => { hovered = i; });
-      row.addEventListener('pointerleave', () => { if (hovered === i) hovered = -1; });
+  /* ============================================================================
+     一、左侧栏：移动端抽屉
+     ========================================================================= */
+  const rail = document.querySelector('.rail');
+  const railToggle = document.querySelector('.rail__toggle');
+  if (rail && railToggle) {
+    rail.dataset.open = 'false';
+    railToggle.setAttribute('aria-expanded', 'false');
+    railToggle.addEventListener('click', () => {
+      const open = rail.dataset.open === 'true';
+      rail.dataset.open = open ? 'false' : 'true';
+      railToggle.setAttribute('aria-expanded', open ? 'false' : 'true');
     });
+  }
 
-    let prev = performance.now();
-    let rafId = 0;
+  /* ============================================================================
+     二、日历
+     ----------------------------------------------------------------------------
+     数据来自内联 JSON（生成期写入）：哪些日期有归档、当前期是哪天、今天哪天。
+     只渲染当前显示的月份，左右箭头切月。
+     ========================================================================= */
+  const cal = document.querySelector('.cal');
+  if (cal) {
+    const raw = document.getElementById('calendar-data');
+    let data = { dates: [], current: null, today: null };
+    try {
+      data = JSON.parse(raw?.textContent || '{}');
+    } catch { /* 数据坏了就退化成空日历，不要整页报错 */ }
 
-    const frame = (now) => {
-      const dt = Math.min((now - prev) / 1000, 1 / 30);
-      prev = now;
+    const have = new Set(data.dates || []);
+    const today = data.today;
+    const current = data.current;
+    const grid = cal.querySelector('.cal__grid');
+    const label = cal.querySelector('.cal__month');
+    const prev = cal.querySelector('[data-nav="prev"]');
+    const next = cal.querySelector('[data-nav="next"]');
 
-      // 光标速度：位移量除以时间，再用指数趋近抹平抖动
-      const dx = (pointerX - lastX) / Math.max(dt, 1 / 240);
-      const dy = (pointerY - lastY) / Math.max(dt, 1 / 240);
-      lastX = approach(lastX, pointerX, 18, dt);
-      lastY = approach(lastY, pointerY, 18, dt);
+    // 从当前期所在月份开始，没有当前期就退到有归档的最近一个月
+    const anchor = (current || data.dates?.[data.dates.length - 1] || today || '');
+    let [yy, mm] = (anchor.split('-').map(Number) || []);
+    if (!yy || !mm) { const d = new Date(); yy = d.getFullYear(); mm = d.getMonth() + 1; }
+    yy = Number(yy); mm = Number(mm);
 
-      let active = 0;
+    const pad = (n) => String(n).padStart(2, '0');
+    const iso = (y, m, d) => `${y}-${pad(m)}-${pad(d)}`;
+    const DOW = ['日', '一', '二', '三', '四', '五', '六'];
 
-      rows.forEach((row, i) => {
-        const s = state[i];
-        const isHot = i === hovered;
+    const render = () => {
+      label.textContent = `${yy} 年 ${mm} 月`;
+      // 清掉日期格但保留星期表头
+      grid.querySelectorAll('.cal__day').forEach((el) => el.remove());
 
-        if (isHot) {
-          // §2 速度耦合：元素对「自己移动得多快」作出反应。
-          s.tx.target = clamp(dx * LEAD, -MAX_SHIFT, MAX_SHIFT);
-          s.ty.target = clamp(dy * LEAD, -MAX_SHIFT, MAX_SHIFT);
-          s.rot.target = clamp(s.tx.value * 0.09, -MAX_TILT, MAX_TILT);
-          s.jelly.target = clamp(Math.hypot(dx, dy) / 900, 0, 0.5);
-          s.ix.target = 1.14;
-          s.iy.target = 0.86;   // 水平拉伸 + 垂直压缩 = 体积守恒的挤压感
+      const first = new Date(yy, mm - 1, 1);
+      const days = new Date(yy, mm, 0).getDate();
+      const lead = first.getDay();      // 周日 = 0
+      for (let i = 0; i < lead; i++) {
+        const pad_ = document.createElement('span');
+        pad_.className = 'cal__day';
+        pad_.setAttribute('aria-hidden', 'true');
+        grid.appendChild(pad_);
+      }
+      for (let d = 1; d <= days; d++) {
+        const key = iso(yy, mm, d);
+        const has = have.has(key);
+        const el = document.createElement(has ? 'a' : 'span');
+        el.className = 'cal__day';
+        el.textContent = String(d);
+        if (has) {
+          el.href = `${key}.html`;
+          el.dataset.has = 'true';
+          el.title = `${key} 的日报`;
+          if (key === current) el.setAttribute('aria-current', 'page');
         } else {
-          s.tx.target = 0; s.ty.target = 0; s.rot.target = 0;
-          s.jelly.target = 0; s.ix.target = 1; s.iy.target = 1;
+          el.setAttribute('aria-disabled', 'true');
         }
-
-        const tx = s.tx.step(dt);
-        const ty = s.ty.step(dt);
-        const rot = s.rot.step(dt);
-        const jel = s.jelly.step(dt);
-        const ix = s.ix.step(dt);
-        const iy = s.iy.step(dt);
-
-        row.style.setProperty('--tx', tx.toFixed(2) + 'px');
-        row.style.setProperty('--ty', ty.toFixed(2) + 'px');
-        row.style.setProperty('--rot', rot.toFixed(3) + 'deg');
-
-        const index = row.querySelector('.row-index');
-        if (index) {
-          // 果冻叠加在缩放的绝对值上，而不是相乘 —— 否则松手瞬间会「弹回再抖」
-          index.style.setProperty('--ix', (ix + jel).toFixed(3));
-          index.style.setProperty('--iy', (iy - jel * 0.6).toFixed(3));
-          index.style.setProperty('--rot-ix', (rot * -0.4).toFixed(2) + 'deg');
-          index.style.transform =
-            `scale(var(--ix, 1), var(--iy, 1)) rotate(var(--rot-ix, 0deg))`;
+        if (key === current) el.dataset.current = 'true';
+        if (key === today) {
+          el.dataset.today = 'true';
+          el.title = has ? `${key}（今天）` : `${key}（今天，尚无日报）`;
+          if (!has) el.dataset.has = 'false';
         }
+        grid.appendChild(el);
+      }
 
-        // 仍在动就继续跑；全静止就停掉 rAF，别空转耗电
-        const moving = !s.tx.settled || !s.ty.settled || !s.rot.settled ||
-                       !s.jelly.settled || !s.ix.settled || !s.iy.settled;
-        if (moving || isHot) active++;
-      });
+      // 上下界：没有更早/更晚的归档就禁用箭头，而不是让人无限翻空月份
+      const sorted = [...have].sort();
+      const earliest = sorted[0] || '';
+      const latest = sorted[sorted.length - 1] || '';
+      const thisMonth = `${yy}-${pad(mm)}`;
+      prev.disabled = !earliest || thisMonth <= earliest.slice(0, 7);
+      next.disabled = !latest || thisMonth >= latest.slice(0, 7);
+    };
 
-      if (active === 0 && hovered === -1) {
-        rafId = window.setTimeout(() => {
-          rafId = requestAnimationFrame(frame);
-        }, 420);   // 冷下来后降频轮询，不占用每帧预算
+    const shift = (delta) => {
+      mm += delta;
+      if (mm < 1) { mm = 12; yy -= 1; }
+      if (mm > 12) { mm = 1; yy += 1; }
+      render();
+    };
+
+    prev?.addEventListener('click', () => shift(-1));
+    next?.addEventListener('click', () => shift(1));
+    render();
+  }
+
+  /* ============================================================================
+     三、搜索往期
+     ----------------------------------------------------------------------------
+     索引是生成期写入的 JSON（每期的事件标题 + 源名），不请求后端。
+     匹配用简单的分词子串，中文按**字**切，因为中文没有空格可切。
+     ========================================================================= */
+  const dialog = document.getElementById('search-dialog');
+  const openers = document.querySelectorAll('[data-open-search]');
+  if (dialog && openers.length) {
+    const input = dialog.querySelector('input[type="search"]');
+    const list = dialog.querySelector('.search__results');
+    let index = [];
+    try {
+      index = JSON.parse(document.getElementById('search-index')?.textContent || '[]');
+    } catch { index = []; }
+
+    const flatten = () => index.flatMap((issue) =>
+      (issue.items || []).map((it) => ({ date: issue.date, title: it.t, source: it.s || '' }))
+    );
+    let rows = [];
+
+    const renderResults = (query) => {
+      const q = query.trim().toLowerCase();
+      list.innerHTML = '';
+      if (!q) {
+        const hint = document.createElement('li');
+        hint.className = 'search__empty';
+        hint.textContent = index.length
+          ? `共 ${index.length} 期，输入关键词开始搜索`
+          : '还没有可搜索的往期内容';
+        list.appendChild(hint);
         return;
       }
-      rafId = requestAnimationFrame(frame);
+      // 中文按字切、拉丁按词切：`gemini 4` 要能命中 `Gemini 4 Argon`
+      const tokens = q.match(/[a-z0-9]+|[\u4e00-\u9fff]/g) || [q];
+      const hits = rows
+        .map((r) => {
+          const hay = (r.title + ' ' + r.source).toLowerCase();
+          const score = tokens.reduce((n, t) => n + (hay.includes(t) ? 1 : 0), 0);
+          return { r, score };
+        })
+        .filter((x) => x.score === tokens.length)
+        .slice(0, 60);
+
+      if (!hits.length) {
+        const none = document.createElement('li');
+        none.className = 'search__empty';
+        none.textContent = `没有匹配「${query}」的内容`;
+        list.appendChild(none);
+        return;
+      }
+      for (const { r } of hits) {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = `${r.date}.html`;
+        const b = document.createElement('b');
+        b.textContent = r.title;
+        const small = document.createElement('small');
+        small.textContent = `${r.date}${r.source ? '　' + r.source : ''}`;
+        a.append(b, small);
+        li.appendChild(a);
+        list.appendChild(li);
+      }
     };
 
-    // 只在有行进入视口时才启动，且尊重 reduced-motion
-    const reduceMQ = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const start = () => {
-      if (reduceMQ.matches) return;
-      prev = performance.now();
-      lastX = pointerX; lastY = pointerY;
-      rafId = requestAnimationFrame(frame);
+    const open = () => {
+      if (!rows.length) rows = flatten();
+      if (typeof dialog.showModal === 'function') dialog.showModal();
+      else dialog.setAttribute('open', '');
+      input.value = '';
+      renderResults('');
+      window.setTimeout(() => input.focus(), 20);
     };
-    start();
-    reduceMQ.addEventListener('change', () => {
-      if (reduceMQ.matches) {
-        cancelAnimationFrame(rafId);
-        rows.forEach((row) => {
-          row.style.removeProperty('--tx');
-          row.style.removeProperty('--ty');
-          row.style.removeProperty('--rot');
-        });
-      } else {
-        start();
+
+    const close = () => {
+      if (typeof dialog.close === 'function') dialog.close();
+      else dialog.removeAttribute('open');
+    };
+
+    openers.forEach((btn) => btn.addEventListener('click', open));
+    dialog.addEventListener('click', (e) => { if (e.target === dialog) close(); });
+    dialog.addEventListener('close', () => {
+      const opener = document.querySelector('[data-open-search]');
+      if (opener && document.activeElement === document.body) opener.focus();
+    });
+
+    // Esc must close even while the input has focus. `<dialog>` closes itself on Esc only
+    // when the event is not consumed by a focused control, and a search field focuses
+    // itself on open -- so in practice Esc did nothing and the modal blocked the page.
+    // This shipped and the interaction test caught it.
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        close();
+      }
+    });
+
+    let debounce = 0;
+    input.addEventListener('input', () => {
+      window.clearTimeout(debounce);
+      debounce = window.setTimeout(() => renderResults(input.value), 90);
+    });
+
+    // Ctrl/⌘+K 打开；Esc 由 <dialog> 原生处理
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        open();
       }
     });
   }
 
-  /* ================================================ 入场：只有三处
-   * B2：全站统一的 fade-up 会让页面变成一串相同的到达。
-   * 这里只给三类元素入场：标题带、前三行事件、指标数字。其余内容本来就在。
-   *
-   * 关键：**隐藏是 JS 开启的，不是 CSS 默认的**。初版把 `.enter { opacity: 0 }`
-   * 写在 CSS 里，一旦观察器没及时触发，前三条事件就是隐形的——截图里整段空白。
-   * 内容绝不能依赖动效才能出现（B8）。所以先加类、再观察，且下面有兜底。
-   */
-  if (!reduced) {
-    document.documentElement.classList.add('js-motion');
-
-    const targets = document.querySelectorAll('.enter');
-
-    const reveal = (el) => {
-      el.style.setProperty('--enter-delay', (el.dataset.delay || 0) + 'ms');
-      el.classList.add('is-in');
-    };
-
-    // 先无条件显示首屏内的元素：不把「看得见」这件事交给观察器的时序
-    const revealVisible = () => {
-      targets.forEach((el) => {
-        if (el.classList.contains('is-in')) return;
-        if (el.getBoundingClientRect().top < window.innerHeight * 0.95) reveal(el);
+  /* ============================================================================
+     四、主题
+     ----------------------------------------------------------------------------
+     四档（自动 / 默认 / 亮色 / 暗色），与 juya 一致。
+     存 localStorage —— 这是读者本机的偏好，不是内容。
+     ========================================================================= */
+  const themeRoot = document.documentElement;
+  const THEME_KEY = 'aidaily-theme';
+  const themeButtons = document.querySelectorAll('[data-theme-choice]');
+  if (themeButtons.length) {
+    const apply = (choice) => {
+      if (choice === 'auto') themeRoot.removeAttribute('data-theme');
+      else themeRoot.setAttribute('data-theme', choice);
+      themeButtons.forEach((b) => {
+        b.setAttribute('aria-checked', b.dataset.themeChoice === choice ? 'true' : 'false');
       });
+      const summary = document.querySelector('[data-theme-summary]');
+      if (summary) {
+        const LABEL = { auto: '自动', default: '默认', light: '亮色', dark: '暗色' };
+        summary.textContent = LABEL[choice] || '自动';
+      }
     };
 
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          reveal(entry.target);
-          io.unobserve(entry.target);
-        });
-      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
-      targets.forEach((el) => io.observe(el));
-    }
+    let saved = 'auto';
+    try { saved = window.localStorage.getItem(THEME_KEY) || 'auto'; } catch { /* 隐私模式 */ }
+    apply(saved);
 
-    revealVisible();
-    window.setTimeout(revealVisible, 600);
-    window.addEventListener('load', revealVisible, { once: true });
-  }
-
-  /* ==================================================== 指标数字：只在指标上
-   * 数字滚动是**内容相关**的：它告诉读者「这是刚算出来的」。放在正文上就是装饰。
-   */
-  if (!reduced) {
-    const counters = document.querySelectorAll('.count-up[data-to]');
-    const run = (el) => {
-      const to = parseFloat(el.dataset.to);
-      if (!isFinite(to)) return;
-      const dur = 900;
-      const t0 = performance.now();
-      const tick = (now) => {
-        const p = clamp((now - t0) / dur, 0, 1);
-        // ease-out-expo：快进慢落，与页面其它入场同一性格
-        const eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
-        el.textContent = Math.round(to * eased).toLocaleString('en-US');
-        if (p < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    };
-
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          run(entry.target);
-          io.unobserve(entry.target);
-        });
-      }, { threshold: 0.4 });
-      counters.forEach((el) => io.observe(el));
-    } else {
-      counters.forEach(run);
-    }
-  } else {
-    // 降级：直接把终值写上，不留空
-    document.querySelectorAll('.count-up[data-to]').forEach((el) => {
-      el.textContent = Math.round(parseFloat(el.dataset.to)).toLocaleString('en-US');
+    themeButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const choice = btn.dataset.themeChoice;
+        apply(choice);
+        try { window.localStorage.setItem(THEME_KEY, choice); } catch { /* 忽略 */ }
+      });
     });
   }
 
-  /* ============================================ 筛选：单源/多源
-   * 这是页面上唯一真正的交互控制。用 aria-pressed 表达状态，
-   * 保证键盘与读屏可用（components.md 要求交互组件有完整状态矩阵）。
-   */
-  const filters = document.querySelectorAll('.chip[data-filter]');
-  if (filters.length) {
-    filters.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const on = btn.getAttribute('aria-pressed') === 'true';
-        filters.forEach((b) => b.setAttribute('aria-pressed', 'false'));
-        btn.setAttribute('aria-pressed', on ? 'false' : 'true');
-        const mode = on ? 'all' : btn.dataset.filter;
+  /* ============================================================================
+     五、右侧目录：滚动高亮
+     ----------------------------------------------------------------------------
+     这是页面上唯一「活」的东西，也是整页唯一的冒险点。
+     用 IntersectionObserver 而不是 scroll 事件：滚动处理函数在长页面上会掉帧，
+     而且 60 个条目 + 8 个章节逐帧算位置是浪费。
+     ========================================================================= */
+  const tocLinks = [...document.querySelectorAll('.toc__nav a')];
+  const targets = tocLinks
+    .map((a) => ({ a, el: document.getElementById(decodeURIComponent(a.hash.slice(1))) }))
+    .filter((x) => x.el);
 
-        document.querySelectorAll('.row').forEach((row) => {
-          const multi = row.dataset.level === 'multi_source';
-          const show = mode === 'all' || (mode === 'multi' && multi) || (mode === 'single' && !multi);
-          row.hidden = !show;
-        });
+  if (targets.length && 'IntersectionObserver' in window) {
+    // Track which targets are currently inside the reading band, then highlight the
+    // topmost one. Taking "the last thing that entered" instead makes the highlight jump
+    // around during a fast scroll.
+    const visible = new Map();
+    const setCurrent = (id) => {
+      tocLinks.forEach((a) => {
+        if (a.hash.slice(1) === id) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
+      });
+    };
 
-        const shown = document.querySelectorAll('.row:not([hidden])').length;
-        const status = document.getElementById('filter-status');
-        if (status) {
-          status.textContent = mode === 'all'
-            ? `显示全部 ${shown} 条`
-            : `已筛选：显示 ${shown} 条`;
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) visible.set(e.target.id, e.isIntersecting);
+      const firstOn = targets.find((t) => visible.get(t.el.id));
+      // At the very top nothing may be inside the band yet, and clearing the highlight
+      // leaves the TOC looking broken. Fall back to the first section.
+      setCurrent(firstOn ? firstOn.a.hash.slice(1) : targets[0].a.hash.slice(1));
+    }, {
+      // The band starts below the sticky offset and does not reach the bottom of the
+      // viewport, so the highlight tracks what is being *read* rather than what has just
+      // scrolled past.
+      rootMargin: '-88px 0px -55% 0px',
+      threshold: 0,
+    });
+
+    targets.forEach((t) => io.observe(t.el));
+    setCurrent(targets[0].a.hash.slice(1));
+
+    // Clicking a TOC link: move the highlight immediately, otherwise it lags behind the
+    // smooth scroll and briefly marks the wrong section.
+    tocLinks.forEach((a) => {
+      a.addEventListener('click', () => setCurrent(a.hash.slice(1)));
+    });
+  }
+
+  /* ============================================================================
+     六、唯一的入场：标题 + 统计
+     ========================================================================= */
+  if (!reduced.matches) {
+    document.documentElement.classList.add('js-motion');
+    const targets2 = document.querySelectorAll('.enter');
+    const reveal = (el) => el.classList.add('is-in');
+    // 首屏内的无条件显示：不把「看得见」交给观察器的时序
+    const showVisible = () => {
+      targets2.forEach((el) => {
+        if (!el.classList.contains('is-in') && el.getBoundingClientRect().top < window.innerHeight * 0.95) {
+          reveal(el);
         }
       });
-    });
+    };
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { reveal(e.target); io.unobserve(e.target); } });
+      }, { threshold: 0.05 });
+      targets2.forEach((el) => io.observe(el));
+    }
+    showVisible();
+    window.setTimeout(showVisible, 600);
   }
 
-  /* -------------------------------------------------- 打印前清掉变换 */
+  /* ============================================================================
+     七、目录只在正文滚动时消耗注意力，打印前清掉状态
+     ========================================================================= */
   window.addEventListener('beforeprint', () => {
-    rows.forEach((row) => {
-      row.style.removeProperty('--tx');
-      row.style.removeProperty('--ty');
-      row.style.removeProperty('--rot');
+    document.querySelectorAll('[aria-current]').forEach((el) => {
+      if (el.closest('.toc')) el.removeAttribute('aria-current');
     });
+  });
+
+  // reduced-motion 中途被打开：停掉弹簧（本页没有常驻 rAF，这里只需清状态）
+  reduced.addEventListener?.('change', () => {
+    if (reduced.matches) document.querySelectorAll('.enter').forEach((el) => el.classList.add('is-in'));
   });
 })();

@@ -144,3 +144,14 @@ jobs:
             exit 1
           fi
           echo "config files are clean"
+
+      - name: Generated site is sound
+        run: |
+          # The site guards live in a script so they can be run before a push too.
+          # They exist because a leftover TypeScript annotation in `assets/motion.js` made
+          # the browser reject the entire file: search, theme, calendar and the TOC all
+          # died silently while the Python suite stayed green.
+          #
+          # The built copy under `data/digests/site/` is committed, so the freshness and
+          # dead-link checks have something to compare against here.
+          bash scripts/site_guards.sh
