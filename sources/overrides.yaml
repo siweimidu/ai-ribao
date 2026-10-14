@@ -135,3 +135,12 @@ overrides:
   "rss:raw-githubusercontent-com-ai-rss-feeds-anthropic-news":
     priority: 1
     reason: "厂商一手官方公告"
+
+  # ── AIHOT：两个 feed 是同一批内容的两种切分，必须归为一组 ──────────────────
+  # 审计源收录的是 /feed/all.xml（最近 7 天全站动态，来自 Horizon 的源清单）；
+  # 增补源补上 /feed.xml（编辑精选）。精选是全站动态的子集。
+  # 不归组的话，同一条新闻会以两个"独立来源"的身份进入 L3 聚类，
+  # 直接虚高「独立来源数」—— 那是本站排序与多源验证最核心的信号。
+  "rss:aihot-news":
+    dedup_group: "aihot"
+    reason: "与增补源 rss:aihot-news-picks 是同一批内容（全站动态 vs 编辑精选），归为一组避免重复计入独立来源数"

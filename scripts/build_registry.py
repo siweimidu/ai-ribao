@@ -184,6 +184,69 @@ def merge_parameter_rows(unique: list[dict]) -> tuple[list[dict], dict]:
     return out, merged_stats
 
 
+def load_local_sources() -> list[dict]:
+    """Sources that are not from the six audited repositories.
+
+    `registry.yaml` is generated from `audit/sources_ledger.json`, and that ledger only
+    covers the six repositories this project started from. Anything added later -- a source
+    discovered by testing, or supplied by the user -- has no place in it, and editing
+    `registry.yaml` by hand loses the change on the next rebuild.
+
+    So local additions live in `sources/local.yaml` and are appended here. They are real
+    registry entries: same adapters, same dedup rules, same never-delete policy. The only
+    difference is provenance -- an audited source's parameters are evidence and cannot be
+    rewritten, while a local source is defined directly.
+
+    Every entry must carry `why` and `found_in`. A source without a stated reason is a
+    source nobody can later evaluate, and `found_in` is what makes it traceable at all.
+    """
+    path = ROOT / "sources" / "local.yaml"
+    if not path.exists():
+        return []
+    doc = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    rows = doc.get("sources") or []
+    out: list[dict] = []
+    for row in rows:
+        for required in ("source_id", "name", "url", "why", "found_in"):
+            if not row.get(required):
+                raise SystemExit(f"sources/local.yaml: {row.get('source_id') or row} 缺少 {required}")
+        parsed = urlparse(row["url"])
+        source_type = row.get("source_type", "rss")
+        fetch_method, adapter = ADAPTER_BY_TYPE.get(source_type, ("feedparser", "RssFetcher"))
+        out.append({
+            "source_id": row["source_id"],
+            "name": row["name"],
+            "url": row["url"],
+            "normalized_url": row["url"],
+            "domain": parsed.netloc,
+            "category": row.get("category", "mixed"),
+            "categories_all": [row.get("category", "mixed")],
+            "language": row.get("language", "zh"),
+            "source_type": source_type,
+            "fetch_method": row.get("fetch_method", fetch_method),
+            "adapter": row.get("adapter", adapter),
+            "enabled": bool(row.get("enabled", True)),
+            "priority": int(row.get("priority", 3)),
+            "polling_interval": row.get("polling_interval", "6h"),
+            "timeout_s": int(row.get("timeout_s", 20)),
+            "needs_credential": row.get("needs_credential"),
+            "dedup_group": row.get("dedup_group"),
+            "health_status": "unverified",
+            "last_success_at": None,
+            "last_failure_at": None,
+            "notes": (row.get("notes") or "").strip() or None,
+            "why": (row.get("why") or "").strip(),
+            "license_note": (row.get("license_note") or "").strip() or None,
+            "found_in": row["found_in"],
+            "provenance_count": len(row["found_in"]),
+            "repositories": row.get("repositories") or [],
+            "params": None,
+            "merged_parameter_rows": 1,
+            "added_locally": True,
+        })
+    return out
+
+
 def main() -> int:
     ledger = json.loads(LEDGER.read_text(encoding="utf-8"))
     unique = ledger["unique_sources"]
@@ -256,6 +319,19 @@ def main() -> int:
                 "merged_parameter_rows": entry.get("merged_parameter_rows", 1),
             }
         )
+
+    local = load_local_sources()
+    existing = {s["source_id"] for s in sources}
+    for row in local:
+        if row["source_id"] in existing:
+            # A local entry may not shadow an audited one: the audited parameters came from
+            # evidence, and silently replacing them would break the provenance chain the
+            # coverage guard asserts.
+            raise SystemExit(
+                f"sources/local.yaml: {row['source_id']} 与审计源同名；"
+                "增补源必须用新的 source_id"
+            )
+        sources.append(row)
 
     sources.sort(key=lambda s: (s["priority"], s["category"], s["source_id"]))
 

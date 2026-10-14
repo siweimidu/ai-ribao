@@ -12,6 +12,12 @@ _audit/
 # build is worse than no screenshot because it looks authoritative.
 data/state/shots/
 
+# --- AIHOT response cache -----------------------------------------------------------
+# Runtime state, not source. AIHOT's terms permit caching for non-commercial use and ask
+# that clients respect the cache headers; the cache is rebuilt on the next run, and
+# committing it would publish a snapshot of another project's data into this repository.
+data/state/aihot_cache/
+
 # --- runtime data that must not be committed --------------------------------------
 # Feed bodies contain whatever the sources contain: real people's email addresses,
 # quoted newsletters, and megabytes of text per day. It is an artefact, not source.

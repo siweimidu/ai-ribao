@@ -288,7 +288,9 @@
   font-variant-numeric: tabular-nums;
   line-height: 1.2;
 }
-.stats span { font-size: var(--fs-micro); color: var(--muted-fg); }
+/* `display: block` matters: `b` is block and this was left inline, so the label rendered
+   on the same line as the number ("23近 90 天重置") instead of beneath it. */
+.stats span { display: block; font-size: var(--fs-micro); color: var(--muted-fg); }
 
 /* --- 章节 ---------------------------------------------------------------------- */
 .section { margin-top: calc(var(--unit) * 12); scroll-margin-top: calc(var(--unit) * 6); }

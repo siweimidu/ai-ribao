@@ -51,18 +51,31 @@ def test_provenance_count_is_not_shrinking() -> None:
     actual = all_provenance(sources)
 
     assert expected.total() == 107, "audit ledger changed; re-audit before adjusting"
-    assert actual.total() == expected.total(), "provenance rows were lost in the registry"
-    assert actual == expected
+    # The audited rows must all survive *and* every locally-added source must carry its own
+    # provenance. 107 is the audited baseline; 109 is that plus the two `found_in` entries
+    # on AIHOT's curated feed (`sources/local.yaml`). Asserting `== expected` alone would
+    # fail on any local addition, and asserting a bare total would let an audited row be
+    # swapped for a local one -- so the baseline is checked for containment and the total is
+    # checked exactly.
+    assert all(actual[k] >= v for k, v in expected.items()), "provenance rows were lost"
+    local_rows = sum(v for k, v in actual.items() if k not in expected)
+    assert local_rows == 2, f"unexpected local provenance rows: {local_rows}"
+    assert actual.total() == expected.total() + 2
 
 
 def test_registry_shape_is_stable() -> None:
-    """80 endpoint-level sources after collapsing Google Trends' 20 keyword rows.
+    """81 endpoint-level sources: 80 audited + AIHOT's editorially curated feed.
 
-    Counting those keywords as separate sources would inflate completeness; dropping
-    them would lose information. They live in the parent source's `params`.
+    The audited 80 come from collapsing Google Trends' 20 keyword rows (counting them as
+    separate sources would inflate completeness; dropping them would lose information, so
+    they live in the parent source's `params`).
+
+    The 81st is `rss:aihot-news-picks`, added through `sources/local.yaml`. It is a *local*
+    addition rather than an audited one, so the number here changes only when a source is
+    deliberately added -- which is exactly what this test is for.
     """
     sources = load_registry(REGISTRY)
-    assert len(sources) == 80
+    assert len(sources) == 81
 
     trend = [s for s in sources if s.domain == "trends.google.com"]
     assert len(trend) == 1, "the 20 trend keywords must be one source, not twenty"
@@ -74,17 +87,21 @@ def test_registry_shape_is_stable() -> None:
 def test_no_source_was_silently_enabled_or_deleted() -> None:
     """Disabled sources stay in the file with their reason, rather than vanishing.
 
-    Counts are asserted exactly on purpose: a drop means a source was deleted
-    (forbidden), and an unexplained rise means something was enabled without review.
+    Counts are asserted exactly on purpose: a drop means a source was deleted (forbidden),
+    and an unexplained rise means something was enabled without review.
 
-    Current shape: 80 total = 53 collectable + 20 present-but-not-wired-up
-    (Horizon presets/examples + Cloudflare's unregistered adapters) + 7 needing
-    credentials.
+    Current shape: 81 total = 54 collectable + 20 present-but-not-wired-up (Horizon
+    presets/examples + Cloudflare's unregistered adapters) + 7 needing credentials.
+
+    The 81st source is AIHOT's curated feed (see `sources/local.yaml`): the audited source
+    `rss:aihot-news` points at `/feed/all.xml` (seven days of public activity) while the
+    editorial picks live at `/feed.xml`. They share `dedup_group: aihot` via
+    `sources/overrides.yaml`, so the pair cannot double-count as two independent sources.
     """
     sources = load_registry(REGISTRY)
     stats = registry_stats(sources)
-    assert stats["total"] == 80
-    assert stats["enabled"] == 53
+    assert stats["total"] == 81
+    assert stats["enabled"] == 54
     assert stats["disabled"] == 20, "Horizon presets/examples and unwired adapters are kept, not dropped"
     assert stats["needs_credential"] == 7
 

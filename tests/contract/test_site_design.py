@@ -254,17 +254,20 @@ def test_no_invented_proof(site_source: str) -> None:
         assert tell.lower() not in body.lower(), f"invented proof: {tell}"
 
 
-def test_the_reset_monitor_does_not_invent_records(site_source: str) -> None:
-    """The reference site shows "22 resets in 90 days". Its data source is an X account and
-    every public X-to-RSS bridge is dead (RSSHub 404, Nitter 410), so those numbers cannot
-    be sourced here.
+def test_the_reset_monitor_labels_who_computed_its_numbers(site_source: str) -> None:
+    """The reset monitor shows four headline statistics, and they are computed **here**
+    from AIHOT's event stream -- AIHOT's own `monitor` field reports collector health
+    (`status`, `lastAttemptAt`, `pendingCount`), not these numbers.
 
-    The page must render an explicit empty state instead. A fabricated reset history is
-    indistinguishable from a real one on the page, which is the one thing this project
-    cannot afford.
+    A figure this project derived and a figure the source published are different claims,
+    so the page has to say which one the reader is looking at. That is the same rule as
+    never inventing a number, applied to a number that happens to be real.
     """
+    assert "不是 AIHOT 直出的统计" in site_source, "the page must say who computed the stats"
+    assert "monitor" in site_source, "name the field being distinguished"
+
+    # And it must still render an honest empty state when the source is unreachable.
     assert "还没有记录" in site_source, "the monitor must say so when it has no data"
-    assert "不展示任何未经来源核实的数字" in site_source
 
 
 # =============================== motion correctness ==============================

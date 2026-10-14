@@ -1,0 +1,69 @@
+# 本地增补源
+#
+# 用途：登记**六个审计仓库之外**的信息源，或补充审计源覆盖不到的端点。
+# registry.yaml 由 scripts/build_registry.py 从 audit/sources_ledger.json 生成，
+# 手改会在下次重建时丢失；这个文件补上账本覆盖不到的部分。
+#
+# 规则（与 registry 的 policy 一致）：
+#   1. 增补源同样**永不删除**。要停用就在 sources/overrides.yaml 里写
+#      enabled: false 并给出 reason。
+#   2. 每个源必须写 `why`：为什么值得收录。没有理由的源不该进注册表。
+#   3. `source_id` 一经写入即视为稳定标识。
+#   4. `found_in` 写这个源是从哪里发现的。它是溯源证据。
+#   5. **不得与审计源同名。** 审计源的参数来自证据链，不可被覆盖；
+#      build_registry.py 会直接报错而不是静默替换。
+#
+# 注意：AIHOT 的**全站动态** feed（/feed/all.xml）已在审计源里
+# （source_id: rss:aihot-news，来自 Horizon 的源清单）。这里只补它没有的部分。
+
+sources:
+
+  # ── AIHOT 编辑精选 ────────────────────────────────────────────────────────
+  #
+  # 与审计源 rss:aihot-news 的区别，实测确认（2026-10-14）：
+  #   /feed/all.xml   14294B  最近 7 天**公开动态**，未审内容已剔除，50 条
+  #   /feed.xml       14976B  最近 50 条**编辑精选**（人工选过）
+  #   /feed/full.xml  20170B  精选的全文版
+  # 三个都存在且都有内容。精选是全站动态的子集，所以两个源必须同属一个
+  # dedup_group —— 否则同一条新闻会在「独立来源数」里被算两次，而独立性是
+  # 本站排序与多源验证的核心信号。
+  #
+  # 使用边界（依据 https://aihot.news/terms v1.1 与响应头
+  # `x-aihot-commercial-use: written-authorization-required`）：
+  #   · 个人非商业 / 公益非商业 / 组织内部使用免费；
+  #   · 明确允许「必要的缓存和同步」，要求遵循缓存指令与最小轮询间隔；
+  #   · 对外商业产品、公开镜像、批量公开再分发需事先书面授权。
+  # 因此本站**只把它当作一个信息源来读**（等同阅读器订阅），保留署名与
+  # canonical 链接并点回原文；**不调用 /selected/snapshot**（那是为「保留完整
+  # 本地副本」设计的接口，属于批量再分发场景）。详见 docs/AIHOT_INTEGRATION.md。
+  - source_id: "rss:aihot-news-picks"
+    name: "AIHOT 编辑精选"
+    url: "https://aihot.news/feed.xml"
+    category: "digest"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    # priority 2：编辑精选质量高于聚合，低于实验室官方一手公告。
+    priority: 2
+    polling_interval: "6h"
+    timeout_s: 20
+    dedup_group: "aihot"
+    notes: >-
+      最近 50 条编辑精选。与审计源 rss:aihot-news（全站动态）同属 dedup_group
+      "aihot"，不会重复计入独立来源数。
+    why: >-
+      人工精选过的中文 AI 资讯，与本站的多源聚合互补：同一条新闻在两边都出现时
+      会形成真实的多源佐证，是 L3 事件聚类需要的独立来源信号。
+    # Provenance entries follow the audited sources' format: `repo:path#anchor`.
+    # The endpoint's own documentation is cited through the repository file that points at
+    # it, so every entry stays machine-checkable by the coverage guard.
+    found_in:
+      - "KKKKhazix/AIHOT:README.md#它是怎么工作的"
+      - "KKKKhazix/AIHOT:docs/sources.md#六种信源"
+    repositories:
+      - "KKKKhazix/AIHOT"
+    license_note: >-
+      数据使用受 https://aihot.news/terms 约束，非 MIT；其代码为 MIT。
+      页面须保留署名与原文/canonical 链接。

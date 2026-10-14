@@ -593,42 +593,135 @@ def render_index(ctx: SiteContext, latest: Digest | None) -> str:
 """
 
 
-def render_tibo(ctx: SiteContext, records: list[dict[str, object]] | None = None) -> str:
+def render_tibo(ctx: SiteContext, monitor: dict | None = None) -> str:
     """Codex quota-reset monitor.
 
-    The reference site (aihot.news/codex-reset) was read from its screenshot and README; its
-    implementation is not in the open-source repo — the README says the reset monitor stays
-    on the hosted site. Its data source is a specific X account, and every public X-to-RSS
-    bridge tested for this project is dead (RSSHub 404, Nitter 410).
+    The reference page is aihot.news/codex-reset. Its data comes from AIHOT's public API,
+    which is read here the same way a reader reads the site -- see `aidaily/aihot.py` for
+    the terms that shape this and why `/selected/snapshot` is deliberately not used.
 
-    So this page renders the structure and shows *nothing it cannot source*. It reports
-    "no records" rather than inventing counts, because a fabricated "22 resets" is
-    indistinguishable from a real one on the page — and this project's whole contract is
-    that numbers come from somewhere.
+    Two honesty rules the page follows:
+
+    * every figure is labelled with who computed it. The four headline numbers are derived
+      from the event stream *here*, not published by AIHOT, and the page says so rather
+      than implying they came from the source.
+    * with no data the page says so. An invented reset history is indistinguishable from a
+      real one once rendered, which is the one thing this project cannot afford.
     """
-    if records:
-        rows = "".join(
-            f'<tr><td>{esc(r.get("date", ""))}</td><td>{esc(r.get("kind", ""))}</td>'
-            f'<td>{esc(r.get("note", ""))}</td></tr>'
-            for r in records
-        )
-        table = (
-            '<table style="width:100%;border-collapse:collapse;font-size:var(--fs-small)">'
-            "<thead><tr><th style='text-align:left;padding:8px 0;border-bottom:1px solid var(--border)'>日期</th>"
-            "<th style='text-align:left'>类型</th><th style='text-align:left'>说明</th></tr></thead>"
-            f"<tbody>{rows}</tbody></table>"
-        )
-    else:
-        table = (
-            '<div class="notice"><p>还没有记录。这个页面显示 Codex 额度重置的历史，'
-            '数据需要接入来源后才会出现。</p></div>'
-        )
+    monitor = monitor or {}
+    stats = monitor.get("stats") or {}
+    events = monitor.get("events") or []
+    acts = monitor.get("activities") or []
+    policy = monitor.get("policy") or {}
+    attribution = monitor.get("attribution") or {}
 
     calendar_data = {
         "dates": ctx.dates,
         "current": None,
         "today": datetime.now(timezone.utc).astimezone().date().isoformat(),
     }
+
+    def number(value, suffix: str = "") -> str:
+        if value is None:
+            return "—"
+        return f"{value}{suffix}"
+
+    if stats:
+        summary = f"""      <div class="stats">
+        <div><b>{number(stats.get('resets90d'))}</b><span>近 90 天重置</span></div>
+        <div><b>{number(stats.get('cards90d'))}</b><span>近 90 天发卡</span></div>
+        <div><b>{number(stats.get('medianGapDays'), ' 天')}</b><span>重置间隔中位数</span></div>
+        <div><b>{number(stats.get('lastResetOn'))}</b><span>上次额度重置</span></div>
+      </div>
+      <p class="issue__date" style="margin-top:calc(var(--unit) * 3)">
+        以上数字由本站根据 {monitor.get('total_events', 0)} 条事件记录计算，
+        不是 AIHOT 直出的统计（其 <code>monitor</code> 字段报告的是采集器健康状态）。<br>
+        覆盖自 {esc(monitor.get('history_from') or '—')}，数据检查于
+        {esc((monitor.get('checked_at') or '')[:16].replace('T', ' '))}（{esc(monitor.get('timezone') or '')}）。
+      </p>"""
+    else:
+        summary = (
+            '<div class="notice"><p>还没有记录。这个页面显示 Codex 额度重置的历史，'
+            '需要能访问来源后才会出现。</p></div>'
+        )
+
+    if events:
+        rows = []
+        for e in events[:40]:
+            posts = "".join(
+                f'<li>'
+                f'<span class="facts__label">{esc(p.get("stage") or "动态")}</span>'
+                f'<div>{esc(p.get("text") or "")}</div>'
+                + (f'<div style="color:var(--muted-fg);font-size:var(--fs-small)">{esc(p.get("original") or "")}</div>' if p.get("original") else "")
+                + (f'<a href="{esc(p.get("url"))}" rel="noopener noreferrer" style="font-size:var(--fs-small);color:var(--muted-fg)">在原站查看 ↗</a>' if p.get("url") else "")
+                + "</li>"
+                for p in (e.get("posts") or [])[:3]
+            )
+            when = (e.get("created_at") or "")[:16].replace("T", " ")
+            schedule = (
+                f'<div style="color:var(--muted-fg);font-size:var(--fs-small)">'
+                f'{esc(e.get("schedule_label"))}</div>'
+                if e.get("schedule_label") else ""
+            )
+            rows.append(
+                f'<li class="item">'
+                f'<div class="item__head"><h3 class="item__title">{esc(e.get("title") or "")}</h3></div>'
+                f'<div class="item__meta">'
+                f'<span class="badge">{esc(e.get("label") or "")}</span>'
+                f'<span>{esc(when)}</span>'
+                f'<span>{esc(e.get("status") or "")}</span>'
+                f'</div>{schedule}'
+                f'<ul class="facts" style="list-style:none;padding-left:0">{posts}</ul>'
+                f'</li>'
+            )
+        event_list = f'<ol class="stream">{"".join(rows)}</ol>'
+    else:
+        event_list = '<p style="color:var(--muted-fg)">暂无事件记录。</p>'
+
+    if acts:
+        act_rows = "".join(
+            f'<li class="item" style="padding-block:calc(var(--unit) * 3)">'
+            f'<div style="display:flex;gap:calc(var(--unit) * 3);align-items:flex-start">'
+            f'<span style="color:var(--muted-fg);font-size:var(--fs-small);white-space:nowrap">'
+            f'{esc((a.get("at") or "")[:16].replace("T", " "))}</span>'
+            f'<div><div>{esc(a.get("text") or "")}</div>'
+            + (f'<div style="color:var(--muted-fg);font-size:var(--fs-small)">{esc(a.get("original") or "")}</div>' if a.get("original") else "")
+            + (f'<a href="{esc(a.get("url"))}" rel="noopener noreferrer" style="font-size:var(--fs-small);color:var(--muted-fg)">在原站查看 ↗</a>' if a.get("url") else "")
+            + '</div></div></li>'
+            for a in acts[:20]
+        )
+        activity_block = (
+            '<section class="section"><h2 class="section__title">Tibo 相关动态'
+            f'<span class="section__count">{len(acts)} 条</span></h2>'
+            f'<ol class="stream">{act_rows}</ol></section>'
+        )
+    else:
+        activity_block = ""
+
+    attribution_block = ""
+    if attribution:
+        policy_note = ""
+        if policy:
+            policy_note = (
+                f'<p>该接口在响应头声明其使用规则版本 {esc(str(policy.get("version") or "—"))}：'
+                f'<code>{esc(str(policy.get("commercial_use") or ""))}</code>。'
+                f'个人非商业、公益非商业与组织内部使用免费；'
+                f'对外商业产品、公开镜像与批量公开再分发需事先取得书面授权。'
+                f'联系方式：{esc(str(policy.get("contact") or ""))}。</p>'
+            )
+        # `attribution["note"]` already states the source and the retention rule, so the
+        # sentence is not repeated before it -- an earlier version said the same thing twice
+        # in one paragraph because both halves were concatenated.
+        attribution_block = f"""      <section class="section" id="sec-source">
+        <h2 class="section__title">数据来源与使用边界</h2>
+        <div class="notice">
+          <p>事件记录与 Tibo 原帖来自
+          <a href="{esc(attribution.get('url') or '')}" rel="noopener noreferrer">{esc(attribution.get('name') or '')}</a>
+          的公开接口。{esc(attribution.get('note') or '')}</p>
+          {policy_note}
+          <p><a href="{esc(str(policy.get('terms_url') or 'https://aihot.news/terms'))}" rel="noopener noreferrer">完整使用规则</a></p>
+        </div>
+      </section>"""
 
     return f"""<!doctype html>
 <html lang="zh-CN">
@@ -650,6 +743,7 @@ def render_tibo(ctx: SiteContext, records: list[dict[str, object]] | None = None
     <div class="rail__group">
       <a class="rail__item" href="index.html">{icon("home")}<span>首页</span></a>
       <a class="rail__item" href="tibo.html" aria-current="page">{icon("clock")}<span>Tibo 重置监控</span></a>
+      <a class="rail__item" href="feed/zh.xml">{icon("rss")}<span>订阅 RSS</span></a>
     </div>
   </aside>
   <main class="content" id="main">
@@ -658,10 +752,14 @@ def render_tibo(ctx: SiteContext, records: list[dict[str, object]] | None = None
       <h1 class="issue__title">Tibo 重置监控</h1>
       <p class="issue__lead">什么时候生效、给谁、Tibo 原话。</p>
     </header>
-    {table}
-    <footer class="foot">
-      <p>数据来源：需要接入后才能显示。本页不展示任何未经来源核实的数字。</p>
-    </footer>
+    {summary}
+    {attribution_block}
+    <section class="section" id="sec-events">
+      <h2 class="section__title">重置记录<span class="section__count">{len(events)} 条</span></h2>
+      {event_list}
+    </section>
+    {activity_block}
+    <nav class="pager"><a href="index.html"><span>返回</span>往期索引</a></nav>
   </main>
 </div>
 <script type="application/json" id="calendar-data">{json.dumps(calendar_data, ensure_ascii=False)}</script>
@@ -737,7 +835,7 @@ def write_site(
     *,
     site_url: str,
     assets_dir: Path | None = None,
-    tibo_records: list[dict[str, object]] | None = None,
+    tibo: dict | None = None,
 ) -> dict[str, object]:
     site = out_dir / "site"
     site.mkdir(parents=True, exist_ok=True)
@@ -762,7 +860,7 @@ def write_site(
     (site / f"{digest.date}.html").write_text(day_html, encoding="utf-8")
 
     (site / "index.html").write_text(render_index(ctx, digest), encoding="utf-8")
-    (site / "tibo.html").write_text(render_tibo(ctx, tibo_records), encoding="utf-8")
+    (site / "tibo.html").write_text(render_tibo(ctx, tibo), encoding="utf-8")
     (site / "404.html").write_text(render_404(ctx), encoding="utf-8")
 
     manifest = {

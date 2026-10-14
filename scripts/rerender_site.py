@@ -50,6 +50,30 @@ def load(path: Path) -> tuple[Digest, dict[str, EventInsight], dict[str, Normali
     return digest, insights, {}
 
 
+def load_tibo() -> dict:
+    """Fetch the Codex reset monitor for the page, tolerating total failure.
+
+    A source that is down must never stop the digest from rendering: the page falls back to
+    its explicit empty state, which is honest, rather than to stale numbers presented as
+    current.
+    """
+    try:
+        from aidaily.aihot import AihotClient, activities, reset_events, reset_summary
+
+        client = AihotClient(cache_dir=ROOT / "data" / "state" / "aihot_cache")
+        payload = client.codex_resets()
+        if not payload:
+            return {}
+        summary = reset_summary(payload, policy=client.policy)
+        summary["events"] = reset_events(payload)
+        summary["activities"] = activities(payload)
+        summary["client_stats"] = dict(client.stats)
+        return summary
+    except Exception as exc:  # noqa: BLE001
+        print(f"  （Tibo 监控数据获取失败，页面将显示空状态：{type(exc).__name__}: {exc}）")
+        return {}
+
+
 def main() -> int:
     if len(sys.argv) < 2:
         print(__doc__)
@@ -71,9 +95,10 @@ def main() -> int:
     (out_dir / f"{digest.date}.deep.md").write_text(deep, encoding="utf-8")
 
     rss = write_rss(digest, out_dir, site_url=site_url)
+    tibo = load_tibo()
     site = write_site(
         digest, deep, out_dir,
-        site_url=site_url, insights=insights, items_by_id=items,
+        site_url=site_url, insights=insights, items_by_id=items, tibo=tibo,
     )
 
     # Keep the downloads the sidebar links next to the pages that link them: the deploy

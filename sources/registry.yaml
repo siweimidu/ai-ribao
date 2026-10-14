@@ -1,4 +1,4 @@
-generated_at: '2026-10-13T15:23:27.050563+00:00'
+generated_at: '2026-10-14T05:04:42.747461+00:00'
 generated_by: scripts/build_registry.py
 source_of_truth: audit/sources_ledger.json (static audit of six repositories)
 policy:
@@ -6,14 +6,15 @@ policy:
   coverage_guard: tests/contract/test_source_coverage.py asserts every provenance entry survives.
 stats:
   url_level_rows_before_merge: 100
-  parameter_rows_merged: 20
+  parameter_rows_merged: 19
   merge_breakdown:
     google_trends: 21
-  unique_sources: 80
-  provenance_rows: 107
+  unique_sources: 81
+  provenance_rows: 109
   by_repository:
     CloudFlare-AI-Insight-Daily: 11
     Horizon: 45
+    KKKKhazix/AIHOT: 1
     ai-daily-sources: 4
     daily-briefing: 1
     dailydawn: 19
@@ -21,13 +22,13 @@ stats:
   by_source_type:
     api: 32
     jsonfeed: 1
-    rss: 42
+    rss: 43
     scrape: 5
   by_category:
     community: 19
     dataset: 1
     dev: 2
-    digest: 3
+    digest: 4
     example: 5
     lab-blog: 4
     lab-official: 7
@@ -246,6 +247,39 @@ sources:
   - Horizon
   params: null
   merged_parameter_rows: 1
+- source_id: rss:aihot-news-picks
+  name: AIHOT 编辑精选
+  url: https://aihot.news/feed.xml
+  normalized_url: https://aihot.news/feed.xml
+  domain: aihot.news
+  category: digest
+  categories_all:
+  - digest
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 20
+  needs_credential: null
+  dedup_group: aihot
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 最近 50 条编辑精选。与审计源 rss:aihot-news（全站动态）同属 dedup_group "aihot"，不会重复计入独立来源数。
+  why: 人工精选过的中文 AI 资讯，与本站的多源聚合互补：同一条新闻在两边都出现时 会形成真实的多源佐证，是 L3 事件聚类需要的独立来源信号。
+  license_note: 数据使用受 https://aihot.news/terms 约束，非 MIT；其代码为 MIT。 页面须保留署名与原文/canonical 链接。
+  found_in:
+  - KKKKhazix/AIHOT:README.md#它是怎么工作的
+  - KKKKhazix/AIHOT:docs/sources.md#六种信源
+  provenance_count: 2
+  repositories:
+  - KKKKhazix/AIHOT
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: rss:bair-berkeley-edu-blog
   name: BAIR Blog
   url: https://bair.berkeley.edu/blog/feed.xml
