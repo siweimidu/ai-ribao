@@ -1,6 +1,6 @@
-generated_at: '2026-10-14T05:04:42.747461+00:00'
+generated_at: '2026-10-14T05:39:52.645245+00:00'
 generated_by: scripts/build_registry.py
-source_of_truth: audit/sources_ledger.json (static audit of six repositories)
+source_of_truth: audit/sources_ledger.json (static audit of six repositories) + sources/local.yaml (later additions)
 policy:
   never_delete: Sources are never removed; disable via sources/overrides.yaml instead.
   coverage_guard: tests/contract/test_source_coverage.py asserts every provenance entry survives.
@@ -19,6 +19,14 @@ stats:
     daily-briefing: 1
     dailydawn: 19
     daybrief: 5
+  by_repository_audited:
+    CloudFlare-AI-Insight-Daily: 11
+    Horizon: 45
+    ai-daily-sources: 4
+    daily-briefing: 1
+    dailydawn: 19
+    daybrief: 5
+  added_locally: 1
   by_source_type:
     api: 32
     jsonfeed: 1

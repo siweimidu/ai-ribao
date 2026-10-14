@@ -54,7 +54,9 @@ jobs:
 
       - name: Registry is reproducible
         # Regenerating from the audit ledger must produce the same source ids; ids are
-        # referenced by sources/overrides.yaml and config/daily.yaml.
+        # referenced by sources/overrides.yaml and config/daily.yaml. Local additions in
+        # sources/local.yaml are appended by the same script, so they must survive a
+        # rebuild too -- that is what makes them safe to reference.
         run: |
           cp sources/registry.yaml /tmp/registry.before.yaml
           python scripts/build_registry.py
@@ -72,6 +74,13 @@ jobs:
               sys.exit(1)
           print(f'{len(a)} source ids stable')
           PY
+
+      - name: Feeds are consumable
+        # The feeds are the n8n hand-off. "It parses" is not the bar: a workflow needs the
+        # body, a stable id, a parseable timestamp and plain text for nodes that cannot
+        # render HTML. The first version sent a list of URLs as `<description>` while the
+        # JSON feed carried the facts, so this asserts the two agree.
+        run: python scripts/test_feeds.py
 
   guards:
     runs-on: ubuntu-latest
@@ -155,3 +164,15 @@ jobs:
           # The built copy under `data/digests/site/` is committed, so the freshness and
           # dead-link checks have something to compare against here.
           bash scripts/site_guards.sh
+
+      - name: Every page works with motion disabled
+        # The design gate: the reduced-motion version is the page, and the motion is the
+        # enhancement. A still frame that does not read as designed means the motion was
+        # carrying an undesigned layout.
+        #
+        # Playwright is installed only here, not in the test matrix, because the browser
+        # download dominates CI time and this check needs no Python version coverage.
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+          python scripts/test_site_interactions.py

@@ -25,9 +25,11 @@ from typing import Mapping
 
 import httpx
 
+from .analyze import EventInsight
 from .config import AppConfig
-from .models import Digest
-from .render import render_email_html
+from .models import Digest, Event
+from .render import build_item_html, feed_summary, render_email_html
+from .render import _domain
 
 CHANNELS = ("rss", "pages", "email", "telegram", "n8n")
 
@@ -71,30 +73,89 @@ def _xml_escape(text: str) -> str:
     return html_mod.escape(text or "", quote=True)
 
 
-def write_rss(digest: Digest, out_dir: Path, *, site_url: str) -> DeliveryResult:
-    """An RSS 2.0 feed alongside the JSON Feed, for readers that only speak RSS."""
+def write_rss(
+    digest: Digest,
+    out_dir: Path,
+    *,
+    site_url: str,
+    insights: dict[str, EventInsight] | None = None,
+) -> DeliveryResult:
+    """An RSS 2.0 feed alongside the JSON Feed, for readers that only speak RSS.
+
+    The first version carried a `<description>` holding nothing but a list of URLs, so a
+    consumer got a headline and some links -- while the JSON feed carried the facts,
+    inferences and evidence level for the same items. This is the format n8n reaches for
+    first, so the two are now built from one shared body and differ only in envelope.
+
+    What was added and why each matters to a machine consumer:
+
+    * `content:encoded` -- the full item body. The RSS spec's `<description>` is limited to
+      500 characters of escaped HTML in practice, and readers that truncate it lose the
+      facts entirely.
+    * `atom:link rel="self"` -- lets a poller detect a moved or redirected feed instead of
+      silently reading a stale cache.
+    * `ttl` and `generator` -- the feed changes once a day; telling an aggregator that
+      avoids needless polling, which the upstream sources' terms ask for.
+    * `<source>` per item -- the originating feed's name and URL, which is how attribution
+      survives aggregation.
+    * `dc:date` for the machine-readable timestamp, because `pubDate` is RFC-822 and
+      notoriously ambiguous about time zones.
+    """
+    insights = insights or {}
     items = []
     for event in digest.top_events:
-        when = event.published_range[0].strftime("%a, %d %b %Y %H:%M:%S +0000") if event.published_range else ""
-        links = "".join(
-            f'<li><a href="{_xml_escape(u)}">{_xml_escape(u)}</a></li>' for u in event.all_urls
+        insight = insights.get(event.event_id)
+        title = (insight.title if insight and insight.title else event.title) or event.title
+        when = (
+            event.published_range[0].strftime("%a, %d %b %Y %H:%M:%S +0000")
+            if event.published_range else ""
+        )
+        iso = (
+            event.published_range[0].astimezone(timezone.utc).isoformat()
+            if event.published_range else digest.generated_at.astimezone(timezone.utc).isoformat()
+        )
+        body = _feed_item_html(event, insight, site_url)
+        summary = _feed_summary(event, insight)
+        first_url = event.all_urls[0] if event.all_urls else site_url
+
+        # One `<category>` per source rather than a comma-joined blob: RSS says a category
+        # element is a single category, and consumers filter on them.
+        categories = "".join(
+            f"<category>{_xml_escape(s)}</category>" for s in sorted(set(event.source_ids))
         )
         items.append(
             "<item>"
-            f"<title>{_xml_escape(event.title)}</title>"
-            f"<link>{_xml_escape(event.all_urls[0] if event.all_urls else site_url)}</link>"
-            f"<guid isPermaLink=\"false\">{_xml_escape(digest.date)}-{_xml_escape(event.event_id)}</guid>"
+            f"<title>{_xml_escape(title)}</title>"
+            f"<link>{_xml_escape(first_url)}</link>"
+            f'<guid isPermaLink="false">{_xml_escape(digest.date)}-{_xml_escape(event.event_id)}</guid>'
             f"<pubDate>{when}</pubDate>"
-            f"<description>{_xml_escape('<ul>' + links + '</ul>')}</description>"
-            f"<category>{_xml_escape(','.join(event.source_ids))}</category>"
+            f"<dc:date>{_xml_escape(iso)}</dc:date>"
+            f"<description>{_xml_escape(summary)}</description>"
+            f'<content:encoded><![CDATA[{body}]]></content:encoded>'
+            f"{categories}"
+            f'<source url="{_xml_escape(first_url)}">{_xml_escape(_domain(first_url))}</source>'
             "</item>"
         )
+
+    self_url = f"{site_url.rstrip('/')}/feed/zh.xml"
     xml = (
-        '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel>'
-        f"<title>AI 日报</title><link>{_xml_escape(site_url)}</link>"
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0" '
+        'xmlns:atom="http://www.w3.org/2005/Atom" '
+        'xmlns:content="http://purl.org/rss/1.0/modules/content/" '
+        'xmlns:dc="http://purl.org/dc/elements/1.1/">'
+        "<channel>"
+        "<title>AI 日报</title>"
+        f"<link>{_xml_escape(site_url)}</link>"
         "<language>zh-cn</language>"
-        f"<lastBuildDate>{digest.generated_at.strftime('%a, %d %b %Y %H:%M:%S +0000')}</lastBuildDate>"
-        f"<description>每日 AI 资讯聚合</description>{''.join(items)}</channel></rss>\n"
+        f'<atom:link href="{_xml_escape(self_url)}" rel="self" type="application/rss+xml"/>'
+        f"<lastBuildDate>{digest.generated_at.astimezone(timezone.utc).strftime('%a, %d %b %Y %H:%M:%S +0000')}</lastBuildDate>"
+        "<description>每日 AI 资讯聚合，去重、交叉验证，区分事实与推断</description>"
+        # The digest is published once a day; 720 minutes tells aggregators not to poll more
+        # often than that, which is what the upstream sources' terms ask of consumers.
+        "<ttl>720</ttl>"
+        "<generator>ai-ribao</generator>"
+        f"{''.join(items)}</channel></rss>\n"
     )
     # Written into `site/` because that is the directory Pages deploys. It used to go to
     # `digests/feed/`, which meant the feed was built correctly and never published: the
@@ -105,6 +166,19 @@ def write_rss(digest: Digest, out_dir: Path, *, site_url: str) -> DeliveryResult
     target.write_text(xml, encoding="utf-8")
     return DeliveryResult("rss", True, f"{target.name}: {len(items)} items")
 
+
+def _feed_item_html(event: Event, insight: EventInsight | None, site_url: str) -> str:
+    """RSS and JSON Feed must carry the same body; `render.build_item_html` builds it.
+
+    Re-exported through this module so the RSS writer has one obvious source of truth. The
+    two formats previously diverged -- the JSON feed had the facts and the RSS had a list of
+    URLs -- and keeping a second copy here is how that happened.
+    """
+    return build_item_html(event, insight, site_url)
+
+
+def _feed_summary(event: Event, insight: EventInsight | None) -> str:
+    return feed_summary(event, insight)
 
 def write_site(
     digest: Digest,
@@ -201,7 +275,7 @@ async def deliver_all(
     # --- local artefacts first: they always succeed and other channels link to them ---
     if cfg.delivery.rss:
         try:
-            record(write_rss(digest, out_dir, site_url=site_url))
+            record(write_rss(digest, out_dir, site_url=site_url, insights=insights))
         except Exception as exc:  # noqa: BLE001
             record(DeliveryResult("rss", False, f"{type(exc).__name__}: {exc}"[:200]))
 

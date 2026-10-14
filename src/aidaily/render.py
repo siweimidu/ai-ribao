@@ -196,6 +196,80 @@ def render_deep(
 
 
 # --- machine-readable -------------------------------------------------------------
+def _plain_text(markup: str) -> str:
+    """Strip tags for `content_text`.
+
+    Minimal on purpose: the only markup this project generates is `<p>`, `<ul>`, `<li>`,
+    `<strong>` and `<a>`, so a parser (and its failure modes) would be more risk than the
+    job needs.
+    """
+    text = re.sub(r"<li>", "\n· ", markup)
+    text = re.sub(r"</p>|</ul>", "\n", text)
+    text = re.sub(r"<[^>]+>", "", text)
+    text = html_mod.unescape(text)
+    return "\n".join(line.strip() for line in text.splitlines() if line.strip())
+
+
+def _domains(urls: list[str]) -> list[str]:
+    seen: list[str] = []
+    for url in urls:
+        domain = _domain(url)
+        if domain and domain not in seen:
+            seen.append(domain)
+    return seen
+
+
+def build_item_html(event: Event, insight: EventInsight | None, site_url: str) -> str:
+    """The item body shared by RSS and JSON Feed.
+
+    Built once and used by both, because they were previously different: the JSON feed
+    carried the facts/inferences/sources while the RSS carried a bare list of URLs. A
+    consumer's experience depended on which format it happened to read, and the RSS one --
+    the format most n8n instances reach for first -- was nearly empty.
+    """
+    parts: list[str] = []
+
+    if insight:
+        for label, rows in (
+            ("事实", insight.facts),
+            ("推断", insight.inferences),
+            ("不确定", insight.uncertainties),
+        ):
+            if rows:
+                lis = "".join(f"<li>{html_mod.escape(r)}</li>" for r in rows)
+                parts.append(f"<p><strong>{label}</strong></p><ul>{lis}</ul>")
+
+    if not parts:
+        # No model output: say so rather than emitting an empty body, which a consumer
+        # cannot distinguish from a fetch failure.
+        parts.append("<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p>")
+
+    level = "多源交叉验证" if event.evidence_level == "multi_source" else "单一来源"
+    if event.independent_source_count > 1:
+        level += f"（{event.independent_source_count} 个独立来源）"
+    parts.append(f"<p><strong>可信度</strong>：{html_mod.escape(level)}</p>")
+
+    links = "".join(
+        f'<li><a href="{html_mod.escape(u)}">{html_mod.escape(_domain(u))}</a></li>'
+        for u in event.all_urls
+    )
+    parts.append(f"<p><strong>来源</strong></p><ul>{links}</ul>")
+    parts.append(f'<p><a href="{html_mod.escape(site_url.rstrip("/"))}">AI 日报</a></p>')
+    return "".join(parts)
+
+
+def feed_summary(event: Event, insight: EventInsight | None) -> str:
+    """A plain-text one-liner for readers that only show a description."""
+    if insight and insight.facts:
+        text = " ".join(insight.facts)
+    elif insight and insight.title:
+        text = insight.title
+    else:
+        text = event.title
+    text = " ".join(text.split())
+    return text[:280] + ("…" if len(text) > 280 else "")
+
+
 def render_json_feed(
     digest: Digest,
     insights: dict[str, EventInsight],
@@ -207,43 +281,47 @@ def render_json_feed(
 
     One feed item per event, with every source URL inside `content_html`, so a consumer
     gets the corroboration along with the story.
+
+    Fields beyond the minimum are chosen for what a workflow actually does with them:
+    `content_text` because some nodes read only plain text, `summary` because chat
+    integrations show it as the card body, `authors` and `tags` because n8n routes on them,
+    and `_ai_daily` because a machine consumer needs the event identity and evidence level
+    without parsing the rendered HTML back out.
     """
     items = []
     for event in digest.top_events:
         insight = insights.get(event.event_id)
         title = insight.title if insight and insight.title else event.title
-        body: list[str] = []
-        if insight:
-            if insight.facts:
-                body.append("<p><strong>事实</strong></p><ul>"
-                            + "".join(f"<li>{html_mod.escape(f)}</li>" for f in insight.facts)
-                            + "</ul>")
-            if insight.inferences:
-                body.append("<p><strong>推断</strong></p><ul>"
-                            + "".join(f"<li>{html_mod.escape(f)}</li>" for f in insight.inferences)
-                            + "</ul>")
-            if insight.uncertainties:
-                body.append("<p><strong>不确定</strong></p><ul>"
-                            + "".join(f"<li>{html_mod.escape(u)}</li>" for u in insight.uncertainties)
-                            + "</ul>")
-        body.append("<p><strong>来源</strong></p><ul>"
-                    + "".join(f'<li><a href="{html_mod.escape(u)}">{html_mod.escape(_domain(u))}</a></li>'
-                              for u in event.all_urls)
-                    + "</ul>")
+        content_html = build_item_html(event, insight, site_url)
         published = event.published_range[0] if event.published_range else digest.generated_at
+        first_url = event.all_urls[0] if event.all_urls else site_url
+        summary = feed_summary(event, insight)
+
         items.append({
             "id": f"{digest.date}-{event.event_id}",
-            "url": event.all_urls[0] if event.all_urls else site_url,
+            "url": first_url,
+            "external_url": first_url,
             "title": title,
-            "content_html": "".join(body),
+            "summary": summary,
+            "content_html": content_html,
+            # Plain text, derived from the same parts: some consumers (chat nodes, SMS)
+            # render only this, and an empty string there looks like a broken item.
+            "content_text": _plain_text(content_html),
             "date_published": published.isoformat(),
+            "authors": [{"name": domain} for domain in _domains(event.all_urls)],
             "tags": sorted({*event.source_ids}),
+            "language": "zh-CN",
             "_ai_daily": {
                 "event_id": event.event_id,
                 "source_ids": event.source_ids,
                 "all_urls": event.all_urls,
+                "independent_source_count": event.independent_source_count,
                 "evidence_level": event.evidence_level,
                 "confidence": event.confidence,
+                "facts": list(insight.facts) if insight else [],
+                "inferences": list(insight.inferences) if insight else [],
+                "uncertainties": list(insight.uncertainties) if insight else [],
+                "rule_based": bool(insight.rule_based) if insight else True,
             },
         })
 
@@ -252,6 +330,7 @@ def render_json_feed(
         "title": "AI 日报",
         "home_page_url": site_url,
         "feed_url": f"{site_url.rstrip('/')}/{feed_path}",
+        "description": "每日 AI 资讯聚合，去重、交叉验证，区分事实与推断",
         "language": "zh-CN",
         "items": items,
     }

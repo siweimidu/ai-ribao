@@ -33,6 +33,7 @@ from .pipeline import (
     build_digest,
     dedup_report,
     run_dedup_stage,
+    select_for_digest,
     write_groups_jsonl,
     write_json,
 )
@@ -343,8 +344,16 @@ async def _analyze_async(stage, sources, cfg, router, http, args):
             judge_concurrency=cfg.dedup.l3.judge_concurrency,
         )
         by_id = {i.item_id: i for i in stage.window.kept}
+
+        # Select *before* analysing. The digest publishes `deep.max_items` events chosen by
+        # rank + diversity, while analysis used to run on `events[:limit]` in arrival order
+        # -- two different sets that overlapped by 8 of 40. Every other model call was paid
+        # for and discarded, and the published items mostly fell back to a source excerpt.
+        selected, _ = select_for_digest(events, stage, sources, cfg)
+        analyse = selected[: args.analyze_limit] if args.analyze_limit else selected
+
         insights, analyze_warnings = await analyze_events(
-            events, by_id, router, limit=args.analyze_limit
+            analyse, by_id, router, limit=None
         )
         return events, cluster_result, insights, analyze_warnings
     finally:

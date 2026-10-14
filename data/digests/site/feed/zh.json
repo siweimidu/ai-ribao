@@ -3,17 +3,27 @@
   "title": "AI 日报",
   "home_page_url": "https://siweimidu.github.io/ai-ribao",
   "feed_url": "https://siweimidu.github.io/ai-ribao/feed/zh.json",
+  "description": "每日 AI 资讯聚合，去重、交叉验证，区分事实与推断",
   "language": "zh-CN",
   "items": [
     {
       "id": "2026-10-14-e66f894e87c56c8",
       "url": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/",
+      "external_url": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/",
       "title": "Google DeepMind and Singapore Government announce new AI tool to protect citizens against scams",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://deepmind.google/blog/on-device-ai-scam-detection-mddi/\">deepmind.google</a></li></ul>",
+      "summary": "Google DeepMind and Singapore Government announce new AI tool to protect citizens against scams",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://deepmind.google/blog/on-device-ai-scam-detection-mddi/\">deepmind.google</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· deepmind.google\nAI 日报",
       "date_published": "2026-10-14T02:00:14+00:00",
+      "authors": [
+        {
+          "name": "deepmind.google"
+        }
+      ],
       "tags": [
         "rss:deepmind-google-blog"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e66f894e87c56c8",
         "source_ids": [
@@ -22,20 +32,37 @@
         "all_urls": [
           "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-ef82b85eedd06ee",
       "url": "https://aihot.news/items/znq5591d0ans7l79658wn4dys",
+      "external_url": "https://aihot.news/items/znq5591d0ans7l79658wn4dys",
       "title": "Anthropic 团队开发自研源码控制系统 Scion 代替 Git",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Anthropic 的代码合并量从 2026 年 5 月的日均约 2,500 次增加到 9 月的超过 30,000 次。</li><li>Anthropic 由 7 人团队耗时 5 个月完成了从 Git 到自研系统 Scion 的迁移。</li><li>Simon Willison 使用 Claude 修改了 Anthropic 的图表以添加 2026 年各模型公开版本的标记。</li></ul><p><strong>推断</strong></p><ul><li>Anthropic 开发自研源码控制系统 Scion 是为了应对代码合并量的大幅增长。</li></ul><p><strong>不确定</strong></p><ul><li>图表中显示的公开发布日期是否代表模型内部可用日期无法从材料中完全确认。</li><li>Simon Willison 关于模型内部使用日期的猜测是否准确不得而知。</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/znq5591d0ans7l79658wn4dys\">aihot.news</a></li><li><a href=\"https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/\">simonwillison.net</a></li></ul>",
+      "summary": "Anthropic 的代码合并量从 2026 年 5 月的日均约 2,500 次增加到 9 月的超过 30,000 次。 Anthropic 由 7 人团队耗时 5 个月完成了从 Git 到自研系统 Scion 的迁移。 Simon Willison 使用 Claude 修改了 Anthropic 的图表以添加 2026 年各模型公开版本的标记。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Anthropic 的代码合并量从 2026 年 5 月的日均约 2,500 次增加到 9 月的超过 30,000 次。</li><li>Anthropic 由 7 人团队耗时 5 个月完成了从 Git 到自研系统 Scion 的迁移。</li><li>Simon Willison 使用 Claude 修改了 Anthropic 的图表以添加 2026 年各模型公开版本的标记。</li></ul><p><strong>推断</strong></p><ul><li>Anthropic 开发自研源码控制系统 Scion 是为了应对代码合并量的大幅增长。</li></ul><p><strong>不确定</strong></p><ul><li>图表中显示的公开发布日期是否代表模型内部可用日期无法从材料中完全确认。</li><li>Simon Willison 关于模型内部使用日期的猜测是否准确不得而知。</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/znq5591d0ans7l79658wn4dys\">aihot.news</a></li><li><a href=\"https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/\">simonwillison.net</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "事实\n· Anthropic 的代码合并量从 2026 年 5 月的日均约 2,500 次增加到 9 月的超过 30,000 次。\n· Anthropic 由 7 人团队耗时 5 个月完成了从 Git 到自研系统 Scion 的迁移。\n· Simon Willison 使用 Claude 修改了 Anthropic 的图表以添加 2026 年各模型公开版本的标记。\n推断\n· Anthropic 开发自研源码控制系统 Scion 是为了应对代码合并量的大幅增长。\n不确定\n· 图表中显示的公开发布日期是否代表模型内部可用日期无法从材料中完全确认。\n· Simon Willison 关于模型内部使用日期的猜测是否准确不得而知。\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\n· simonwillison.net\nAI 日报",
       "date_published": "2026-10-13T23:00:06+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        },
+        {
+          "name": "simonwillison.net"
+        }
+      ],
       "tags": [
         "rss:aihot-news",
         "rss:simonwillison-net-everything"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "ef82b85eedd06ee",
         "source_ids": [
@@ -46,19 +73,42 @@
           "https://aihot.news/items/znq5591d0ans7l79658wn4dys",
           "https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/"
         ],
+        "independent_source_count": 2,
         "evidence_level": "multi_source",
-        "confidence": 0.9
+        "confidence": 0.9,
+        "facts": [
+          "Anthropic 的代码合并量从 2026 年 5 月的日均约 2,500 次增加到 9 月的超过 30,000 次。",
+          "Anthropic 由 7 人团队耗时 5 个月完成了从 Git 到自研系统 Scion 的迁移。",
+          "Simon Willison 使用 Claude 修改了 Anthropic 的图表以添加 2026 年各模型公开版本的标记。"
+        ],
+        "inferences": [
+          "Anthropic 开发自研源码控制系统 Scion 是为了应对代码合并量的大幅增长。"
+        ],
+        "uncertainties": [
+          "图表中显示的公开发布日期是否代表模型内部可用日期无法从材料中完全确认。",
+          "Simon Willison 关于模型内部使用日期的猜测是否准确不得而知。"
+        ],
+        "rule_based": false
       }
     },
     {
       "id": "2026-10-14-ea9f702a23f7c51",
       "url": "https://aihot.news/items/k34wzu8kjh65jmyq0udod9yue",
+      "external_url": "https://aihot.news/items/k34wzu8kjh65jmyq0udod9yue",
       "title": "Grok Bot 邮件多智能体用例",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/k34wzu8kjh65jmyq0udod9yue\">aihot.news</a></li></ul>",
+      "summary": "Grok Bot 邮件多智能体用例",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/k34wzu8kjh65jmyq0udod9yue\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
       "date_published": "2026-10-14T02:50:51+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
       "tags": [
         "rss:aihot-news"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "ea9f702a23f7c51",
         "source_ids": [
@@ -67,19 +117,33 @@
         "all_urls": [
           "https://aihot.news/items/k34wzu8kjh65jmyq0udod9yue"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e0a2598dd178c5a",
       "url": "https://aihot.news/items/w0kr5nvs73elhfd23vj0vm8hi",
+      "external_url": "https://aihot.news/items/w0kr5nvs73elhfd23vj0vm8hi",
       "title": "Xbow 用 GPT-5.6 挖出 Chrome 三个漏洞，获 Google 25 万美元全链奖励",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Xbow 工程师 Brendan Dolan-Gavitt 用 OpenAI 的 gpt-5.6-sol 分析 Chrome 源码，历时六天、花费约 4 万美元算力，找到三个独立漏洞组成漏洞链，使标签页内普通 JavaScript 代码穿越两个防护边界、逃出所有沙箱。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/w0kr5nvs73elhfd23vj0vm8hi\">aihot.news</a></li></ul>",
+      "summary": "Xbow 工程师 Brendan Dolan-Gavitt 用 OpenAI 的 gpt-5.6-sol 分析 Chrome 源码，历时六天、花费约 4 万美元算力，找到三个独立漏洞组成漏洞链，使标签页内普通 JavaScript 代码穿越两个防护边界、逃出所有沙箱。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Xbow 工程师 Brendan Dolan-Gavitt 用 OpenAI 的 gpt-5.6-sol 分析 Chrome 源码，历时六天、花费约 4 万美元算力，找到三个独立漏洞组成漏洞链，使标签页内普通 JavaScript 代码穿越两个防护边界、逃出所有沙箱。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/w0kr5nvs73elhfd23vj0vm8hi\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "事实\n· Xbow 工程师 Brendan Dolan-Gavitt 用 OpenAI 的 gpt-5.6-sol 分析 Chrome 源码，历时六天、花费约 4 万美元算力，找到三个独立漏洞组成漏洞链，使标签页内普通 JavaScript 代码穿越两个防护边界、逃出所有沙箱。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
       "date_published": "2026-10-14T02:58:37+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
       "tags": [
         "rss:aihot-news"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e0a2598dd178c5a",
         "source_ids": [
@@ -88,19 +152,37 @@
         "all_urls": [
           "https://aihot.news/items/w0kr5nvs73elhfd23vj0vm8hi"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [
+          "Xbow 工程师 Brendan Dolan-Gavitt 用 OpenAI 的 gpt-5.6-sol 分析 Chrome 源码，历时六天、花费约 4 万美元算力，找到三个独立漏洞组成漏洞链，使标签页内普通 JavaScript 代码穿越两个防护边界、逃出所有沙箱。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-ea2035490dc7767",
       "url": "https://aihot.news/items/ztibf3wgcvr415zkgdaubnz3c",
+      "external_url": "https://aihot.news/items/ztibf3wgcvr415zkgdaubnz3c",
       "title": "广电总局“AI 魔改”视频治理：9 月清理违规视频近 1.3 万条、处置账号 30 余个",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/ztibf3wgcvr415zkgdaubnz3c\">aihot.news</a></li></ul>",
+      "summary": "广电总局“AI 魔改”视频治理：9 月清理违规视频近 1.3 万条、处置账号 30 余个",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/ztibf3wgcvr415zkgdaubnz3c\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
       "date_published": "2026-10-14T02:12:34+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
       "tags": [
         "rss:aihot-news"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "ea2035490dc7767",
         "source_ids": [
@@ -109,19 +191,33 @@
         "all_urls": [
           "https://aihot.news/items/ztibf3wgcvr415zkgdaubnz3c"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e76db7400593334",
       "url": "https://aihot.news/items/j2dwv051tuwdwu8nd28d1q9p7",
+      "external_url": "https://aihot.news/items/j2dwv051tuwdwu8nd28d1q9p7",
       "title": "OpenBMB 发布 MiniCPM-V 4.7，35B-A3B MoE 多模态模型在手机上仅占 3GB 内存",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/j2dwv051tuwdwu8nd28d1q9p7\">aihot.news</a></li></ul>",
+      "summary": "OpenBMB 发布 MiniCPM-V 4.7，35B-A3B MoE 多模态模型在手机上仅占 3GB 内存",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/j2dwv051tuwdwu8nd28d1q9p7\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
       "date_published": "2026-10-14T02:48:23+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
       "tags": [
         "rss:aihot-news"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e76db7400593334",
         "source_ids": [
@@ -130,19 +226,33 @@
         "all_urls": [
           "https://aihot.news/items/j2dwv051tuwdwu8nd28d1q9p7"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-ea556a08208c3ff",
       "url": "https://aihot.news/items/ljduhw3ygl9fbfxazt66gm99d",
+      "external_url": "https://aihot.news/items/ljduhw3ygl9fbfxazt66gm99d",
       "title": "企业微信升级 5.0.12 版本，内置 WorkBuddy 对话助手",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/ljduhw3ygl9fbfxazt66gm99d\">aihot.news</a></li></ul>",
+      "summary": "企业微信升级 5.0.12 版本，内置 WorkBuddy 对话助手",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/ljduhw3ygl9fbfxazt66gm99d\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
       "date_published": "2026-10-14T02:41:43+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
       "tags": [
         "rss:aihot-news"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "ea556a08208c3ff",
         "source_ids": [
@@ -151,19 +261,33 @@
         "all_urls": [
           "https://aihot.news/items/ljduhw3ygl9fbfxazt66gm99d"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-ed58b5de01f057e",
       "url": "https://aihot.news/items/r6nn05zme1z711ory2cl7hmo8",
+      "external_url": "https://aihot.news/items/r6nn05zme1z711ory2cl7hmo8",
       "title": "Anthropic 用 5 个月将内部 monorepo 从 Git 迁移到自研版本控制系统 Scion",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/r6nn05zme1z711ory2cl7hmo8\">aihot.news</a></li></ul>",
+      "summary": "Anthropic 用 5 个月将内部 monorepo 从 Git 迁移到自研版本控制系统 Scion",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/r6nn05zme1z711ory2cl7hmo8\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
       "date_published": "2026-10-14T01:49:01+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
       "tags": [
         "rss:aihot-news"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "ed58b5de01f057e",
         "source_ids": [
@@ -172,20 +296,37 @@
         "all_urls": [
           "https://aihot.news/items/r6nn05zme1z711ory2cl7hmo8"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-eca713df852b07e",
       "url": "https://deepmind.google/blog/gemini-4-argon-for-robotics/",
+      "external_url": "https://deepmind.google/blog/gemini-4-argon-for-robotics/",
       "title": "Gemini 4 Argon for Robotics发布",
-      "content_html": "<p><strong>事实</strong></p><ul><li>发布了Gemini 4 Argon for Robotics。</li><li>相关信息于2026年10月13日出现在不同来源中。</li></ul><p><strong>推断</strong></p><ul><li>Gemini 4 Argon for Robotics可能与机器人领域相关。</li></ul><p><strong>不确定</strong></p><ul><li>Gemini 4 Argon for Robotics的具体功能和技术细节是什么。</li><li>该发布是由哪家具体机构进行的。</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://deepmind.google/blog/gemini-4-argon-for-robotics/\">deepmind.google</a></li><li><a href=\"https://developers.googleblog.com/gemini-4-argon-for-robotics/\">developers.googleblog.com</a></li></ul>",
+      "summary": "发布了Gemini 4 Argon for Robotics。 相关信息于2026年10月13日出现在不同来源中。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>发布了Gemini 4 Argon for Robotics。</li><li>相关信息于2026年10月13日出现在不同来源中。</li></ul><p><strong>推断</strong></p><ul><li>Gemini 4 Argon for Robotics可能与机器人领域相关。</li></ul><p><strong>不确定</strong></p><ul><li>Gemini 4 Argon for Robotics的具体功能和技术细节是什么。</li><li>该发布是由哪家具体机构进行的。</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://deepmind.google/blog/gemini-4-argon-for-robotics/\">deepmind.google</a></li><li><a href=\"https://developers.googleblog.com/gemini-4-argon-for-robotics/\">developers.googleblog.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "事实\n· 发布了Gemini 4 Argon for Robotics。\n· 相关信息于2026年10月13日出现在不同来源中。\n推断\n· Gemini 4 Argon for Robotics可能与机器人领域相关。\n不确定\n· Gemini 4 Argon for Robotics的具体功能和技术细节是什么。\n· 该发布是由哪家具体机构进行的。\n可信度：多源交叉验证（2 个独立来源）\n来源\n· deepmind.google\n· developers.googleblog.com\nAI 日报",
       "date_published": "2026-10-13T16:55:47+00:00",
+      "authors": [
+        {
+          "name": "deepmind.google"
+        },
+        {
+          "name": "developers.googleblog.com"
+        }
+      ],
       "tags": [
         "api:hn-algolia-com-search",
         "rss:deepmind-google-blog"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "eca713df852b07e",
         "source_ids": [
@@ -196,19 +337,41 @@
           "https://deepmind.google/blog/gemini-4-argon-for-robotics/",
           "https://developers.googleblog.com/gemini-4-argon-for-robotics/"
         ],
+        "independent_source_count": 2,
         "evidence_level": "multi_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [
+          "发布了Gemini 4 Argon for Robotics。",
+          "相关信息于2026年10月13日出现在不同来源中。"
+        ],
+        "inferences": [
+          "Gemini 4 Argon for Robotics可能与机器人领域相关。"
+        ],
+        "uncertainties": [
+          "Gemini 4 Argon for Robotics的具体功能和技术细节是什么。",
+          "该发布是由哪家具体机构进行的。"
+        ],
+        "rule_based": false
       }
     },
     {
       "id": "2026-10-14-e5aa373e79c8494",
       "url": "https://aihot.news/items/ozs5y80l5cpy45igqa71uohns",
+      "external_url": "https://aihot.news/items/ozs5y80l5cpy45igqa71uohns",
       "title": "豆包手机助手宣布陆续放开第三方应用屏幕自动化操作权限，阿里、腾讯系等 App 明确拒绝",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/ozs5y80l5cpy45igqa71uohns\">aihot.news</a></li></ul>",
+      "summary": "豆包手机助手宣布陆续放开第三方应用屏幕自动化操作权限，阿里、腾讯系等 App 明确拒绝",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/ozs5y80l5cpy45igqa71uohns\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
       "date_published": "2026-10-14T02:22:35+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
       "tags": [
         "rss:aihot-news"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e5aa373e79c8494",
         "source_ids": [
@@ -217,19 +380,33 @@
         "all_urls": [
           "https://aihot.news/items/ozs5y80l5cpy45igqa71uohns"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-eb4d06d6d67d8ae",
       "url": "https://aihot.news/items/evw4hug7sw1r9wznyj7cnrxrb",
+      "external_url": "https://aihot.news/items/evw4hug7sw1r9wznyj7cnrxrb",
       "title": "Anthropic 红队研究：小型 AI 模型或可在无数据中心情况下于 IoT 设备间自我复制",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/evw4hug7sw1r9wznyj7cnrxrb\">aihot.news</a></li></ul>",
+      "summary": "Anthropic 红队研究：小型 AI 模型或可在无数据中心情况下于 IoT 设备间自我复制",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/evw4hug7sw1r9wznyj7cnrxrb\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
       "date_published": "2026-10-14T02:27:42+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
       "tags": [
         "rss:aihot-news"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "eb4d06d6d67d8ae",
         "source_ids": [
@@ -238,19 +415,33 @@
         "all_urls": [
           "https://aihot.news/items/evw4hug7sw1r9wznyj7cnrxrb"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-eee64482a5f99c2",
       "url": "https://aihot.news/items/d0ftvqryq1dyy0088esy4cznd",
+      "external_url": "https://aihot.news/items/d0ftvqryq1dyy0088esy4cznd",
       "title": "千问办公将推电商运营版，阿里基因再落电商场景",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/d0ftvqryq1dyy0088esy4cznd\">aihot.news</a></li></ul>",
+      "summary": "千问办公将推电商运营版，阿里基因再落电商场景",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/d0ftvqryq1dyy0088esy4cznd\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
       "date_published": "2026-10-14T02:02:41+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
       "tags": [
         "rss:aihot-news"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "eee64482a5f99c2",
         "source_ids": [
@@ -259,19 +450,33 @@
         "all_urls": [
           "https://aihot.news/items/d0ftvqryq1dyy0088esy4cznd"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-eff1f1128a2cdb9",
       "url": "https://pulseos.finance",
+      "external_url": "https://pulseos.finance",
       "title": "Show HN: Pulse Local, a Mac budgeting app whose AI models run on your machine",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://pulseos.finance\">pulseos.finance</a></li></ul>",
+      "summary": "Show HN: Pulse Local, a Mac budgeting app whose AI models run on your machine",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://pulseos.finance\">pulseos.finance</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· pulseos.finance\nAI 日报",
       "date_published": "2026-10-13T23:13:23+00:00",
+      "authors": [
+        {
+          "name": "pulseos.finance"
+        }
+      ],
       "tags": [
         "rss:hnrss-org-frontpage"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "eff1f1128a2cdb9",
         "source_ids": [
@@ -280,19 +485,33 @@
         "all_urls": [
           "https://pulseos.finance"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e5aaf795abbc129",
       "url": "https://www.theverge.com/ai-artificial-intelligence/1010642/openai-employee-arrested-recording-device",
+      "external_url": "https://www.theverge.com/ai-artificial-intelligence/1010642/openai-employee-arrested-recording-device",
       "title": "OpenAI employee arrested for allegedly planting a bug in a conference room",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/ai-artificial-intelligence/1010642/openai-employee-arrested-recording-device\">theverge.com</a></li></ul>",
+      "summary": "OpenAI employee arrested for allegedly planting a bug in a conference room",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/ai-artificial-intelligence/1010642/openai-employee-arrested-recording-device\">theverge.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· theverge.com\nAI 日报",
       "date_published": "2026-10-13T20:45:25+00:00",
+      "authors": [
+        {
+          "name": "theverge.com"
+        }
+      ],
       "tags": [
         "rss:theverge-com-ai-artificial-intelligence"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e5aaf795abbc129",
         "source_ids": [
@@ -301,19 +520,33 @@
         "all_urls": [
           "https://www.theverge.com/ai-artificial-intelligence/1010642/openai-employee-arrested-recording-device"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e2ec53c51e11c7e",
       "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE55allEMXlOWmVEQVh1VmE3bGg0Rm9pNzlBWmRJMUFTYnlMQUxOUmp5akR5U3VHb3JsNmRMZ2Z1eGc1bTJiV1V4V2R5c20zTC12VFE4?oc=5",
+      "external_url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE55allEMXlOWmVEQVh1VmE3bGg0Rm9pNzlBWmRJMUFTYnlMQUxOUmp5akR5U3VHb3JsNmRMZ2Z1eGc1bTJiV1V4V2R5c20zTC12VFE4?oc=5",
       "title": "AI算力战进入下半场：从拼单芯XPU性能到拼系统，电力、散热和网络成新战场 - 华尔街见闻",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiU0FVX3lxTE55allEMXlOWmVEQVh1VmE3bGg0Rm9pNzlBWmRJMUFTYnlMQUxOUmp5akR5U3VHb3JsNmRMZ2Z1eGc1bTJiV1V4V2R5c20zTC12VFE4?oc=5\">news.google.com</a></li></ul>",
+      "summary": "AI算力战进入下半场：从拼单芯XPU性能到拼系统，电力、散热和网络成新战场 - 华尔街见闻",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiU0FVX3lxTE55allEMXlOWmVEQVh1VmE3bGg0Rm9pNzlBWmRJMUFTYnlMQUxOUmp5akR5U3VHb3JsNmRMZ2Z1eGc1bTJiV1V4V2R5c20zTC12VFE4?oc=5\">news.google.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· news.google.com\nAI 日报",
       "date_published": "2026-10-14T03:09:58+00:00",
+      "authors": [
+        {
+          "name": "news.google.com"
+        }
+      ],
       "tags": [
         "api:news-google-com-search"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e2ec53c51e11c7e",
         "source_ids": [
@@ -322,19 +555,33 @@
         "all_urls": [
           "https://news.google.com/rss/articles/CBMiU0FVX3lxTE55allEMXlOWmVEQVh1VmE3bGg0Rm9pNzlBWmRJMUFTYnlMQUxOUmp5akR5U3VHb3JsNmRMZ2Z1eGc1bTJiV1V4V2R5c20zTC12VFE4?oc=5"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-eb845f25ce003ba",
       "url": "https://www.v2ex.com/t/1248562",
+      "external_url": "https://www.v2ex.com/t/1248562",
       "title": "最好看最好用的 iOS V2EX 客户端过审了，欢迎 TestFlight 体验打脸",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.v2ex.com/t/1248562\">v2ex.com</a></li></ul>",
+      "summary": "最好看最好用的 iOS V2EX 客户端过审了，欢迎 TestFlight 体验打脸",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.v2ex.com/t/1248562\">v2ex.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· v2ex.com\nAI 日报",
       "date_published": "2026-10-14T00:02:37+00:00",
+      "authors": [
+        {
+          "name": "v2ex.com"
+        }
+      ],
       "tags": [
         "api:v2ex-com-topics-hot"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "eb845f25ce003ba",
         "source_ids": [
@@ -343,19 +590,33 @@
         "all_urls": [
           "https://www.v2ex.com/t/1248562"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-ecb583e767393e8",
       "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9TaTRyN2M2RnVXMk1mVldKcjl3S3drcFVPd1oyNXpnVzJCZWduYTNIVGktM1FMVlpJZktKOFNhYjdkR3lsSm1KeWlPNTJlYWNZbTJ2ZFcxVUQ2VTN5?oc=5",
+      "external_url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9TaTRyN2M2RnVXMk1mVldKcjl3S3drcFVPd1oyNXpnVzJCZWduYTNIVGktM1FMVlpJZktKOFNhYjdkR3lsSm1KeWlPNTJlYWNZbTJ2ZFcxVUQ2VTN5?oc=5",
       "title": "中微尹志尧警示AI或现泡沫，国内半导体设备90%厂商或被淘汰 - 电子工程专辑",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiXEFVX3lxTE9TaTRyN2M2RnVXMk1mVldKcjl3S3drcFVPd1oyNXpnVzJCZWduYTNIVGktM1FMVlpJZktKOFNhYjdkR3lsSm1KeWlPNTJlYWNZbTJ2ZFcxVUQ2VTN5?oc=5\">news.google.com</a></li></ul>",
+      "summary": "中微尹志尧警示AI或现泡沫，国内半导体设备90%厂商或被淘汰 - 电子工程专辑",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiXEFVX3lxTE9TaTRyN2M2RnVXMk1mVldKcjl3S3drcFVPd1oyNXpnVzJCZWduYTNIVGktM1FMVlpJZktKOFNhYjdkR3lsSm1KeWlPNTJlYWNZbTJ2ZFcxVUQ2VTN5?oc=5\">news.google.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· news.google.com\nAI 日报",
       "date_published": "2026-10-14T03:00:29+00:00",
+      "authors": [
+        {
+          "name": "news.google.com"
+        }
+      ],
       "tags": [
         "api:news-google-com-search"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "ecb583e767393e8",
         "source_ids": [
@@ -364,19 +625,33 @@
         "all_urls": [
           "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9TaTRyN2M2RnVXMk1mVldKcjl3S3drcFVPd1oyNXpnVzJCZWduYTNIVGktM1FMVlpJZktKOFNhYjdkR3lsSm1KeWlPNTJlYWNZbTJ2ZFcxVUQ2VTN5?oc=5"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e1f53d9457dc321",
       "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPX1p2eGZhblhYS3pJUHhwczhWVWVIVkQ0QU9la3FjNzRLTnRtUndjMjZHQlFjRkpjbExQOHF3czZHcDhEWHhJUTlob3hKMU85b2ZrbjRPTDVPUHJMWGdGd3djQ3llQ3I5d0lpT2hXajdUNlR3Q0tYN3huRmxrN0daVkhySVFVU2lX?oc=5",
+      "external_url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPX1p2eGZhblhYS3pJUHhwczhWVWVIVkQ0QU9la3FjNzRLTnRtUndjMjZHQlFjRkpjbExQOHF3czZHcDhEWHhJUTlob3hKMU85b2ZrbjRPTDVPUHJMWGdGd3djQ3llQ3I5d0lpT2hXajdUNlR3Q0tYN3huRmxrN0daVkhySVFVU2lX?oc=5",
       "title": "真人短剧完了吗？对话智象未来王科：AI正重构影视，不是取代 - 搜狐",
-      "content_html": "<p><strong>事实</strong></p><ul><li>真人短剧完了吗？对话智象未来王科：AI正重构影视，不是取代 搜狐</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiiAFBVV95cUxPX1p2eGZhblhYS3pJUHhwczhWVWVIVkQ0QU9la3FjNzRLTnRtUndjMjZHQlFjRkpjbExQOHF3czZHcDhEWHhJUTlob3hKMU85b2ZrbjRPTDVPUHJMWGdGd3djQ3llQ3I5d0lpT2hXajdUNlR3Q0tYN3huRmxrN0daVkhySVFVU2lX?oc=5\">news.google.com</a></li></ul>",
+      "summary": "真人短剧完了吗？对话智象未来王科：AI正重构影视，不是取代 搜狐",
+      "content_html": "<p><strong>事实</strong></p><ul><li>真人短剧完了吗？对话智象未来王科：AI正重构影视，不是取代 搜狐</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiiAFBVV95cUxPX1p2eGZhblhYS3pJUHhwczhWVWVIVkQ0QU9la3FjNzRLTnRtUndjMjZHQlFjRkpjbExQOHF3czZHcDhEWHhJUTlob3hKMU85b2ZrbjRPTDVPUHJMWGdGd3djQ3llQ3I5d0lpT2hXajdUNlR3Q0tYN3huRmxrN0daVkhySVFVU2lX?oc=5\">news.google.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "事实\n· 真人短剧完了吗？对话智象未来王科：AI正重构影视，不是取代 搜狐\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· news.google.com\nAI 日报",
       "date_published": "2026-10-14T03:03:50+00:00",
+      "authors": [
+        {
+          "name": "news.google.com"
+        }
+      ],
       "tags": [
         "api:news-google-com-search"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e1f53d9457dc321",
         "source_ids": [
@@ -385,19 +660,37 @@
         "all_urls": [
           "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPX1p2eGZhblhYS3pJUHhwczhWVWVIVkQ0QU9la3FjNzRLTnRtUndjMjZHQlFjRkpjbExQOHF3czZHcDhEWHhJUTlob3hKMU85b2ZrbjRPTDVPUHJMWGdGd3djQ3llQ3I5d0lpT2hXajdUNlR3Q0tYN3huRmxrN0daVkhySVFVU2lX?oc=5"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [
+          "真人短剧完了吗？对话智象未来王科：AI正重构影视，不是取代 搜狐"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e0791749e1c6dc9",
       "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1xVlB0N0pEOGZLWHVFVFJFb0FmRjZhbGVZT2RaVkFDM2xZZHA4VXVWSF9aUE1zNkVQLVFnN2plZ3dwQnBPMUN1ZVpWVUZyWVVYZWI0bzUzQk9NaTI4?oc=5",
+      "external_url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1xVlB0N0pEOGZLWHVFVFJFb0FmRjZhbGVZT2RaVkFDM2xZZHA4VXVWSF9aUE1zNkVQLVFnN2plZ3dwQnBPMUN1ZVpWVUZyWVVYZWI0bzUzQk9NaTI4?oc=5",
       "title": "OPPO Find X10系列手机将搭载Manus的AI智能体 - 电子工程专辑",
-      "content_html": "<p><strong>事实</strong></p><ul><li>OPPO Find X10系列手机将搭载Manus的AI智能体 电子工程专辑</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiXEFVX3lxTE1xVlB0N0pEOGZLWHVFVFJFb0FmRjZhbGVZT2RaVkFDM2xZZHA4VXVWSF9aUE1zNkVQLVFnN2plZ3dwQnBPMUN1ZVpWVUZyWVVYZWI0bzUzQk9NaTI4?oc=5\">news.google.com</a></li></ul>",
+      "summary": "OPPO Find X10系列手机将搭载Manus的AI智能体 电子工程专辑",
+      "content_html": "<p><strong>事实</strong></p><ul><li>OPPO Find X10系列手机将搭载Manus的AI智能体 电子工程专辑</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiXEFVX3lxTE1xVlB0N0pEOGZLWHVFVFJFb0FmRjZhbGVZT2RaVkFDM2xZZHA4VXVWSF9aUE1zNkVQLVFnN2plZ3dwQnBPMUN1ZVpWVUZyWVVYZWI0bzUzQk9NaTI4?oc=5\">news.google.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "事实\n· OPPO Find X10系列手机将搭载Manus的AI智能体 电子工程专辑\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· news.google.com\nAI 日报",
       "date_published": "2026-10-14T02:48:00+00:00",
+      "authors": [
+        {
+          "name": "news.google.com"
+        }
+      ],
       "tags": [
         "api:news-google-com-search"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e0791749e1c6dc9",
         "source_ids": [
@@ -406,19 +699,37 @@
         "all_urls": [
           "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1xVlB0N0pEOGZLWHVFVFJFb0FmRjZhbGVZT2RaVkFDM2xZZHA4VXVWSF9aUE1zNkVQLVFnN2plZ3dwQnBPMUN1ZVpWVUZyWVVYZWI0bzUzQk9NaTI4?oc=5"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [
+          "OPPO Find X10系列手机将搭载Manus的AI智能体 电子工程专辑"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-ee0894f492f39d2",
       "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPNEdYMGlqU3RNR2prczNHcnhRWklndVVPZlBKTmFTNVhScEZIYkVxLWtCNDlfNHJJczB6UjljS0NfOE1wMmNvWWlHS3FPUXVuYnFkUzBXYkJkUTNQNGZFUUM3ck00VXE3YVJyYkpQQUhKNUdDbk5TMi1hYmRHMm4taVc3SEJFWk5OWkItTQ?oc=5",
+      "external_url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPNEdYMGlqU3RNR2prczNHcnhRWklndVVPZlBKTmFTNVhScEZIYkVxLWtCNDlfNHJJczB6UjljS0NfOE1wMmNvWWlHS3FPUXVuYnFkUzBXYkJkUTNQNGZFUUM3ck00VXE3YVJyYkpQQUhKNUdDbk5TMi1hYmRHMm4taVc3SEJFWk5OWkItTQ?oc=5",
       "title": "网店兜售AI词元，谨防低价引流圈套 - 搜狐",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMijAFBVV95cUxPNEdYMGlqU3RNR2prczNHcnhRWklndVVPZlBKTmFTNVhScEZIYkVxLWtCNDlfNHJJczB6UjljS0NfOE1wMmNvWWlHS3FPUXVuYnFkUzBXYkJkUTNQNGZFUUM3ck00VXE3YVJyYkpQQUhKNUdDbk5TMi1hYmRHMm4taVc3SEJFWk5OWkItTQ?oc=5\">news.google.com</a></li></ul>",
+      "summary": "网店兜售AI词元，谨防低价引流圈套 - 搜狐",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMijAFBVV95cUxPNEdYMGlqU3RNR2prczNHcnhRWklndVVPZlBKTmFTNVhScEZIYkVxLWtCNDlfNHJJczB6UjljS0NfOE1wMmNvWWlHS3FPUXVuYnFkUzBXYkJkUTNQNGZFUUM3ck00VXE3YVJyYkpQQUhKNUdDbk5TMi1hYmRHMm4taVc3SEJFWk5OWkItTQ?oc=5\">news.google.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· news.google.com\nAI 日报",
       "date_published": "2026-10-14T02:57:35+00:00",
+      "authors": [
+        {
+          "name": "news.google.com"
+        }
+      ],
       "tags": [
         "api:news-google-com-search"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "ee0894f492f39d2",
         "source_ids": [
@@ -427,19 +738,33 @@
         "all_urls": [
           "https://news.google.com/rss/articles/CBMijAFBVV95cUxPNEdYMGlqU3RNR2prczNHcnhRWklndVVPZlBKTmFTNVhScEZIYkVxLWtCNDlfNHJJczB6UjljS0NfOE1wMmNvWWlHS3FPUXVuYnFkUzBXYkJkUTNQNGZFUUM3ck00VXE3YVJyYkpQQUhKNUdDbk5TMi1hYmRHMm4taVc3SEJFWk5OWkItTQ?oc=5"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-eb55ff50817a6da",
       "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1NZXgzS1dMNFJvVkQ2TVJMNnFnR0x6Z1pQZkZvX0NEZTNqblBCUHd2dE1acEJvNm1vcDItdzdOdWx3cXVCdS1KaFVRTFktNmxsYVRld0RPLUVJV0lpVTFF?oc=5",
+      "external_url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1NZXgzS1dMNFJvVkQ2TVJMNnFnR0x6Z1pQZkZvX0NEZTNqblBCUHd2dE1acEJvNm1vcDItdzdOdWx3cXVCdS1KaFVRTFktNmxsYVRld0RPLUVJV0lpVTFF?oc=5",
       "title": "AI改代码时，到底该让它一次性重写整个文件，还是像人类程序员一样一小段一小段地打补丁？ - 科技行者",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiX0FVX3lxTE1NZXgzS1dMNFJvVkQ2TVJMNnFnR0x6Z1pQZkZvX0NEZTNqblBCUHd2dE1acEJvNm1vcDItdzdOdWx3cXVCdS1KaFVRTFktNmxsYVRld0RPLUVJV0lpVTFF?oc=5\">news.google.com</a></li></ul>",
+      "summary": "AI改代码时，到底该让它一次性重写整个文件，还是像人类程序员一样一小段一小段地打补丁？ - 科技行者",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiX0FVX3lxTE1NZXgzS1dMNFJvVkQ2TVJMNnFnR0x6Z1pQZkZvX0NEZTNqblBCUHd2dE1acEJvNm1vcDItdzdOdWx3cXVCdS1KaFVRTFktNmxsYVRld0RPLUVJV0lpVTFF?oc=5\">news.google.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· news.google.com\nAI 日报",
       "date_published": "2026-10-14T02:34:00+00:00",
+      "authors": [
+        {
+          "name": "news.google.com"
+        }
+      ],
       "tags": [
         "api:news-google-com-search"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "eb55ff50817a6da",
         "source_ids": [
@@ -448,19 +773,33 @@
         "all_urls": [
           "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1NZXgzS1dMNFJvVkQ2TVJMNnFnR0x6Z1pQZkZvX0NEZTNqblBCUHd2dE1acEJvNm1vcDItdzdOdWx3cXVCdS1KaFVRTFktNmxsYVRld0RPLUVJV0lpVTFF?oc=5"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e31b6333c500f3d",
       "url": "https://news.google.com/rss/articles/CBMiwgJBVV95cUxPaEhUa1d1SzZOekhmMTQ5NXNOY202ZDFKNUpHa2MyTTBtbEs4aVFndkd4U1hIeG1seU5aTVlMcHNPRnFwMHFmbjU3RkxFeWpRVi1Vd2pIaUJ4MzI2amtsendrdGE4YzBTMUhGd0dQSmJvRkxWTDA0LVNYV0ZfLUpYckpQcHdFdUdHcXFmak9Tb2twc04teUVCQ3dxS1V4OGpvYW1tZVFUTVl2WkZSYUpvOV9NSzYzNGk2UkoyeHNDN1dKNF9ISnRJR193Z21UVVdmT3dsWC1XUmVsWnVrT2hSTlluRy1zY0JXWGMydERNUkQ4bS1DRUhNTjZKQWpzbElFYnlGdVRYazFiVnZWVHJTQ0hVeXVBbTFEd2NxQTgtM1VCZUphMmNCemZhZjlTWmtUdmZNaFQzd0xMODROVDdIWHpB?oc=5",
+      "external_url": "https://news.google.com/rss/articles/CBMiwgJBVV95cUxPaEhUa1d1SzZOekhmMTQ5NXNOY202ZDFKNUpHa2MyTTBtbEs4aVFndkd4U1hIeG1seU5aTVlMcHNPRnFwMHFmbjU3RkxFeWpRVi1Vd2pIaUJ4MzI2amtsendrdGE4YzBTMUhGd0dQSmJvRkxWTDA0LVNYV0ZfLUpYckpQcHdFdUdHcXFmak9Tb2twc04teUVCQ3dxS1V4OGpvYW1tZVFUTVl2WkZSYUpvOV9NSzYzNGk2UkoyeHNDN1dKNF9ISnRJR193Z21UVVdmT3dsWC1XUmVsWnVrT2hSTlluRy1zY0JXWGMydERNUkQ4bS1DRUhNTjZKQWpzbElFYnlGdVRYazFiVnZWVHJTQ0hVeXVBbTFEd2NxQTgtM1VCZUphMmNCemZhZjlTWmtUdmZNaFQzd0xMODROVDdIWHpB?oc=5",
       "title": "2027年HR趋势报告：你的工作正被重构｜首席人才官 - 红杉",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiwgJBVV95cUxPaEhUa1d1SzZOekhmMTQ5NXNOY202ZDFKNUpHa2MyTTBtbEs4aVFndkd4U1hIeG1seU5aTVlMcHNPRnFwMHFmbjU3RkxFeWpRVi1Vd2pIaUJ4MzI2amtsendrdGE4YzBTMUhGd0dQSmJvRkxWTDA0LVNYV0ZfLUpYckpQcHdFdUdHcXFmak9Tb2twc04teUVCQ3dxS1V4OGpvYW1tZVFUTVl2WkZSYUpvOV9NSzYzNGk2UkoyeHNDN1dKNF9ISnRJR193Z21UVVdmT3dsWC1XUmVsWnVrT2hSTlluRy1zY0JXWGMydERNUkQ4bS1DRUhNTjZKQWpzbElFYnlGdVRYazFiVnZWVHJTQ0hVeXVBbTFEd2NxQTgtM1VCZUphMmNCemZhZjlTWmtUdmZNaFQzd0xMODROVDdIWHpB?oc=5\">news.google.com</a></li></ul>",
+      "summary": "2027年HR趋势报告：你的工作正被重构｜首席人才官 - 红杉",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiwgJBVV95cUxPaEhUa1d1SzZOekhmMTQ5NXNOY202ZDFKNUpHa2MyTTBtbEs4aVFndkd4U1hIeG1seU5aTVlMcHNPRnFwMHFmbjU3RkxFeWpRVi1Vd2pIaUJ4MzI2amtsendrdGE4YzBTMUhGd0dQSmJvRkxWTDA0LVNYV0ZfLUpYckpQcHdFdUdHcXFmak9Tb2twc04teUVCQ3dxS1V4OGpvYW1tZVFUTVl2WkZSYUpvOV9NSzYzNGk2UkoyeHNDN1dKNF9ISnRJR193Z21UVVdmT3dsWC1XUmVsWnVrT2hSTlluRy1zY0JXWGMydERNUkQ4bS1DRUhNTjZKQWpzbElFYnlGdVRYazFiVnZWVHJTQ0hVeXVBbTFEd2NxQTgtM1VCZUphMmNCemZhZjlTWmtUdmZNaFQzd0xMODROVDdIWHpB?oc=5\">news.google.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· news.google.com\nAI 日报",
       "date_published": "2026-10-14T02:47:23+00:00",
+      "authors": [
+        {
+          "name": "news.google.com"
+        }
+      ],
       "tags": [
         "api:news-google-com-search"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e31b6333c500f3d",
         "source_ids": [
@@ -469,19 +808,33 @@
         "all_urls": [
           "https://news.google.com/rss/articles/CBMiwgJBVV95cUxPaEhUa1d1SzZOekhmMTQ5NXNOY202ZDFKNUpHa2MyTTBtbEs4aVFndkd4U1hIeG1seU5aTVlMcHNPRnFwMHFmbjU3RkxFeWpRVi1Vd2pIaUJ4MzI2amtsendrdGE4YzBTMUhGd0dQSmJvRkxWTDA0LVNYV0ZfLUpYckpQcHdFdUdHcXFmak9Tb2twc04teUVCQ3dxS1V4OGpvYW1tZVFUTVl2WkZSYUpvOV9NSzYzNGk2UkoyeHNDN1dKNF9ISnRJR193Z21UVVdmT3dsWC1XUmVsWnVrT2hSTlluRy1zY0JXWGMydERNUkQ4bS1DRUhNTjZKQWpzbElFYnlGdVRYazFiVnZWVHJTQ0hVeXVBbTFEd2NxQTgtM1VCZUphMmNCemZhZjlTWmtUdmZNaFQzd0xMODROVDdIWHpB?oc=5"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e7e117e1da8ef65",
       "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFB6Mm5xWE16M2F4OW1wVGVVamFWTklqRmJmdDJCLVo4bFczeHpVdG0zNUpOa21JS3dJb3VHcEhTdmpsWHZJQXp5V3BTQU95cThlQ2pPQ0p2ZUUxZ3dsSTBVUQ?oc=5",
+      "external_url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFB6Mm5xWE16M2F4OW1wVGVVamFWTklqRmJmdDJCLVo4bFczeHpVdG0zNUpOa21JS3dJb3VHcEhTdmpsWHZJQXp5V3BTQU95cThlQ2pPQ0p2ZUUxZ3dsSTBVUQ?oc=5",
       "title": "苹果(AAPL.US)才是AI投资“版本答案”? 半导体暴跌之际再触5万亿美元，折叠iPhone与AI家居点燃增长想象 - 证券之星",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiYEFVX3lxTFB6Mm5xWE16M2F4OW1wVGVVamFWTklqRmJmdDJCLVo4bFczeHpVdG0zNUpOa21JS3dJb3VHcEhTdmpsWHZJQXp5V3BTQU95cThlQ2pPQ0p2ZUUxZ3dsSTBVUQ?oc=5\">news.google.com</a></li></ul>",
+      "summary": "苹果(AAPL.US)才是AI投资“版本答案”? 半导体暴跌之际再触5万亿美元，折叠iPhone与AI家居点燃增长想象 - 证券之星",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiYEFVX3lxTFB6Mm5xWE16M2F4OW1wVGVVamFWTklqRmJmdDJCLVo4bFczeHpVdG0zNUpOa21JS3dJb3VHcEhTdmpsWHZJQXp5V3BTQU95cThlQ2pPQ0p2ZUUxZ3dsSTBVUQ?oc=5\">news.google.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· news.google.com\nAI 日报",
       "date_published": "2026-10-14T02:19:52+00:00",
+      "authors": [
+        {
+          "name": "news.google.com"
+        }
+      ],
       "tags": [
         "api:news-google-com-search"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e7e117e1da8ef65",
         "source_ids": [
@@ -490,19 +843,33 @@
         "all_urls": [
           "https://news.google.com/rss/articles/CBMiYEFVX3lxTFB6Mm5xWE16M2F4OW1wVGVVamFWTklqRmJmdDJCLVo4bFczeHpVdG0zNUpOa21JS3dJb3VHcEhTdmpsWHZJQXp5V3BTQU95cThlQ2pPQ0p2ZUUxZ3dsSTBVUQ?oc=5"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-eadbb0dd18a1f47",
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5wR2FJQ3M3QTFDOWd5c1NNZ2tDSlhRbUVhX2pyQ0Q5aXR4Z0N5cl8xQy1EX1k0X21kY3VfbTVGdFRWLXJuQXpRNTVZUHlGT1cxSkFwNDB1NHpSc2lWVUJXSURsdF9ZcEFWUzRoaFAtcTFBZw?oc=5",
+      "external_url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5wR2FJQ3M3QTFDOWd5c1NNZ2tDSlhRbUVhX2pyQ0Q5aXR4Z0N5cl8xQy1EX1k0X21kY3VfbTVGdFRWLXJuQXpRNTVZUHlGT1cxSkFwNDB1NHpSc2lWVUJXSURsdF9ZcEFWUzRoaFAtcTFBZw?oc=5",
       "title": "四连板！AI应用概念又爆了 - 金融界",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMickFVX3lxTE5wR2FJQ3M3QTFDOWd5c1NNZ2tDSlhRbUVhX2pyQ0Q5aXR4Z0N5cl8xQy1EX1k0X21kY3VfbTVGdFRWLXJuQXpRNTVZUHlGT1cxSkFwNDB1NHpSc2lWVUJXSURsdF9ZcEFWUzRoaFAtcTFBZw?oc=5\">news.google.com</a></li></ul>",
+      "summary": "四连板！AI应用概念又爆了 - 金融界",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMickFVX3lxTE5wR2FJQ3M3QTFDOWd5c1NNZ2tDSlhRbUVhX2pyQ0Q5aXR4Z0N5cl8xQy1EX1k0X21kY3VfbTVGdFRWLXJuQXpRNTVZUHlGT1cxSkFwNDB1NHpSc2lWVUJXSURsdF9ZcEFWUzRoaFAtcTFBZw?oc=5\">news.google.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· news.google.com\nAI 日报",
       "date_published": "2026-10-14T02:54:51+00:00",
+      "authors": [
+        {
+          "name": "news.google.com"
+        }
+      ],
       "tags": [
         "api:news-google-com-search"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "eadbb0dd18a1f47",
         "source_ids": [
@@ -511,19 +878,33 @@
         "all_urls": [
           "https://news.google.com/rss/articles/CBMickFVX3lxTE5wR2FJQ3M3QTFDOWd5c1NNZ2tDSlhRbUVhX2pyQ0Q5aXR4Z0N5cl8xQy1EX1k0X21kY3VfbTVGdFRWLXJuQXpRNTVZUHlGT1cxSkFwNDB1NHpSc2lWVUJXSURsdF9ZcEFWUzRoaFAtcTFBZw?oc=5"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e429fd86616f8cb",
       "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9NUm1SWmh2ZS10YUNEby1YOWZYVWlwSmh5c29nNkdvdE1MOURnUFZIYjlYYUlVdEtoTFh4S2JCYXQxakYzSmVvYkR3ZnNacHZXd3VzYVZheC0?oc=5",
+      "external_url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9NUm1SWmh2ZS10YUNEby1YOWZYVWlwSmh5c29nNkdvdE1MOURnUFZIYjlYYUlVdEtoTFh4S2JCYXQxakYzSmVvYkR3ZnNacHZXd3VzYVZheC0?oc=5",
       "title": "计算机与人工智能学院举办“智绘AI工坊”物联网创新展演活动 - 西南民族大学",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiWEFVX3lxTE9NUm1SWmh2ZS10YUNEby1YOWZYVWlwSmh5c29nNkdvdE1MOURnUFZIYjlYYUlVdEtoTFh4S2JCYXQxakYzSmVvYkR3ZnNacHZXd3VzYVZheC0?oc=5\">news.google.com</a></li></ul>",
+      "summary": "计算机与人工智能学院举办“智绘AI工坊”物联网创新展演活动 - 西南民族大学",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiWEFVX3lxTE9NUm1SWmh2ZS10YUNEby1YOWZYVWlwSmh5c29nNkdvdE1MOURnUFZIYjlYYUlVdEtoTFh4S2JCYXQxakYzSmVvYkR3ZnNacHZXd3VzYVZheC0?oc=5\">news.google.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· news.google.com\nAI 日报",
       "date_published": "2026-10-14T02:39:23+00:00",
+      "authors": [
+        {
+          "name": "news.google.com"
+        }
+      ],
       "tags": [
         "api:news-google-com-search"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e429fd86616f8cb",
         "source_ids": [
@@ -532,19 +913,33 @@
         "all_urls": [
           "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9NUm1SWmh2ZS10YUNEby1YOWZYVWlwSmh5c29nNkdvdE1MOURnUFZIYjlYYUlVdEtoTFh4S2JCYXQxakYzSmVvYkR3ZnNacHZXd3VzYVZheC0?oc=5"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-ecbbf7b73143b89",
       "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9BbFpWdnNJdXVWc2owd0VzTkFaSFU1UUJrazJPR1JuLXpMaG4xbWU2MEFlOS1tNlNrOHprRzM0VHJCQ2hKRU51Vk1hUTctTzVIa3FtRFBfZHBWd2VudjlNUXpHamY4R2lE?oc=5",
+      "external_url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9BbFpWdnNJdXVWc2owd0VzTkFaSFU1UUJrazJPR1JuLXpMaG4xbWU2MEFlOS1tNlNrOHprRzM0VHJCQ2hKRU51Vk1hUTctTzVIa3FtRFBfZHBWd2VudjlNUXpHamY4R2lE?oc=5",
       "title": "山东“智造”，来了一批“AI工友”_山东新闻 - 大众网",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiaEFVX3lxTE9BbFpWdnNJdXVWc2owd0VzTkFaSFU1UUJrazJPR1JuLXpMaG4xbWU2MEFlOS1tNlNrOHprRzM0VHJCQ2hKRU51Vk1hUTctTzVIa3FtRFBfZHBWd2VudjlNUXpHamY4R2lE?oc=5\">news.google.com</a></li></ul>",
+      "summary": "山东“智造”，来了一批“AI工友”_山东新闻 - 大众网",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiaEFVX3lxTE9BbFpWdnNJdXVWc2owd0VzTkFaSFU1UUJrazJPR1JuLXpMaG4xbWU2MEFlOS1tNlNrOHprRzM0VHJCQ2hKRU51Vk1hUTctTzVIa3FtRFBfZHBWd2VudjlNUXpHamY4R2lE?oc=5\">news.google.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· news.google.com\nAI 日报",
       "date_published": "2026-10-14T02:47:00+00:00",
+      "authors": [
+        {
+          "name": "news.google.com"
+        }
+      ],
       "tags": [
         "api:news-google-com-search"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "ecbbf7b73143b89",
         "source_ids": [
@@ -553,19 +948,33 @@
         "all_urls": [
           "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9BbFpWdnNJdXVWc2owd0VzTkFaSFU1UUJrazJPR1JuLXpMaG4xbWU2MEFlOS1tNlNrOHprRzM0VHJCQ2hKRU51Vk1hUTctTzVIa3FtRFBfZHBWd2VudjlNUXpHamY4R2lE?oc=5"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e7d0108b81c39d0",
       "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFB0TnI5LWYwRkxYMGN2ZEhYR1FZV2tEX1U5bFNDS0RIOXo1ZENmV3ZaLUJDRFB1NkdyUlBabTdzN0kyY2s5SXpQZDBCazgySnliVVUxcTFMbw?oc=5",
+      "external_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFB0TnI5LWYwRkxYMGN2ZEhYR1FZV2tEX1U5bFNDS0RIOXo1ZENmV3ZaLUJDRFB1NkdyUlBabTdzN0kyY2s5SXpQZDBCazgySnliVVUxcTFMbw?oc=5",
       "title": "从规模化制造到AI驱动研发-- 擎科生物加速构建分子研发与智造闭环 - 美通社",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiV0FVX3lxTFB0TnI5LWYwRkxYMGN2ZEhYR1FZV2tEX1U5bFNDS0RIOXo1ZENmV3ZaLUJDRFB1NkdyUlBabTdzN0kyY2s5SXpQZDBCazgySnliVVUxcTFMbw?oc=5\">news.google.com</a></li></ul>",
+      "summary": "从规模化制造到AI驱动研发-- 擎科生物加速构建分子研发与智造闭环 - 美通社",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiV0FVX3lxTFB0TnI5LWYwRkxYMGN2ZEhYR1FZV2tEX1U5bFNDS0RIOXo1ZENmV3ZaLUJDRFB1NkdyUlBabTdzN0kyY2s5SXpQZDBCazgySnliVVUxcTFMbw?oc=5\">news.google.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· news.google.com\nAI 日报",
       "date_published": "2026-10-14T02:35:00+00:00",
+      "authors": [
+        {
+          "name": "news.google.com"
+        }
+      ],
       "tags": [
         "api:news-google-com-search"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e7d0108b81c39d0",
         "source_ids": [
@@ -574,19 +983,33 @@
         "all_urls": [
           "https://news.google.com/rss/articles/CBMiV0FVX3lxTFB0TnI5LWYwRkxYMGN2ZEhYR1FZV2tEX1U5bFNDS0RIOXo1ZENmV3ZaLUJDRFB1NkdyUlBabTdzN0kyY2s5SXpQZDBCazgySnliVVUxcTFMbw?oc=5"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e2e179c5c0e4e79",
       "url": "https://www.theverge.com/news/1010365/shopify-opens-its-catalog-up-to-more-ai-agents",
+      "external_url": "https://www.theverge.com/news/1010365/shopify-opens-its-catalog-up-to-more-ai-agents",
       "title": "Shopify opens its catalog up to more AI agents",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/news/1010365/shopify-opens-its-catalog-up-to-more-ai-agents\">theverge.com</a></li></ul>",
+      "summary": "Shopify opens its catalog up to more AI agents",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/news/1010365/shopify-opens-its-catalog-up-to-more-ai-agents\">theverge.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· theverge.com\nAI 日报",
       "date_published": "2026-10-13T19:42:42+00:00",
+      "authors": [
+        {
+          "name": "theverge.com"
+        }
+      ],
       "tags": [
         "rss:theverge-com-ai-artificial-intelligence"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e2e179c5c0e4e79",
         "source_ids": [
@@ -595,19 +1018,33 @@
         "all_urls": [
           "https://www.theverge.com/news/1010365/shopify-opens-its-catalog-up-to-more-ai-agents"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-efbcb58f65b260d",
       "url": "https://www.v2ex.com/t/1248572",
+      "external_url": "https://www.v2ex.com/t/1248572",
       "title": "v2 的大佬们指点一下我该不该割肉，房子的事",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.v2ex.com/t/1248572\">v2ex.com</a></li></ul>",
+      "summary": "v2 的大佬们指点一下我该不该割肉，房子的事",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.v2ex.com/t/1248572\">v2ex.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· v2ex.com\nAI 日报",
       "date_published": "2026-10-14T00:53:39+00:00",
+      "authors": [
+        {
+          "name": "v2ex.com"
+        }
+      ],
       "tags": [
         "api:v2ex-com-topics-hot"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "efbcb58f65b260d",
         "source_ids": [
@@ -616,19 +1053,33 @@
         "all_urls": [
           "https://www.v2ex.com/t/1248572"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-eee18872766a648",
       "url": "https://www.theverge.com/news/1010406/xbox-labs-game-decompiling-emulation-exploration",
+      "external_url": "https://www.theverge.com/news/1010406/xbox-labs-game-decompiling-emulation-exploration",
       "title": "Xbox is officially embracing the chaos of AI-powered game ports",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/news/1010406/xbox-labs-game-decompiling-emulation-exploration\">theverge.com</a></li></ul>",
+      "summary": "Xbox is officially embracing the chaos of AI-powered game ports",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/news/1010406/xbox-labs-game-decompiling-emulation-exploration\">theverge.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· theverge.com\nAI 日报",
       "date_published": "2026-10-13T19:00:48+00:00",
+      "authors": [
+        {
+          "name": "theverge.com"
+        }
+      ],
       "tags": [
         "rss:theverge-com-ai-artificial-intelligence"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "eee18872766a648",
         "source_ids": [
@@ -637,20 +1088,34 @@
         "all_urls": [
           "https://www.theverge.com/news/1010406/xbox-labs-game-decompiling-emulation-exploration"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e80aa90e1b32737",
       "url": "https://guitoro.com/",
+      "external_url": "https://guitoro.com/",
       "title": "Show HN: Guitoro, a virtual guitar you strum with your keyboard",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Guitoro is a free browser guitar using recordings of real instruments. You can strum with your keyboard, mouse, or touchscreen, choose acoustic, classical, electric guitar or bass, and see chord fingering and each stroke. Song practice can be slowed to 20%, and there are free chord tools and tuners.</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://guitoro.com/\">guitoro.com</a></li></ul>",
+      "summary": "Guitoro is a free browser guitar using recordings of real instruments. You can strum with your keyboard, mouse, or touchscreen, choose acoustic, classical, electric guitar or bass, and see chord fingering and each stroke. Song practice can be slowed to 20%, and there are free cho…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Guitoro is a free browser guitar using recordings of real instruments. You can strum with your keyboard, mouse, or touchscreen, choose acoustic, classical, electric guitar or bass, and see chord fingering and each stroke. Song practice can be slowed to 20%, and there are free chord tools and tuners.</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://guitoro.com/\">guitoro.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "事实\n· Guitoro is a free browser guitar using recordings of real instruments. You can strum with your keyboard, mouse, or touchscreen, choose acoustic, classical, electric guitar or bass, and see chord fingering and each stroke. Song practice can be slowed to 20%, and there are free chord tools and tuners.\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· guitoro.com\nAI 日报",
       "date_published": "2026-10-13T19:11:48+00:00",
+      "authors": [
+        {
+          "name": "guitoro.com"
+        }
+      ],
       "tags": [
         "api:hn-algolia-com-search",
         "rss:hnrss-org-frontpage"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e80aa90e1b32737",
         "source_ids": [
@@ -660,19 +1125,37 @@
         "all_urls": [
           "https://guitoro.com/"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [
+          "Guitoro is a free browser guitar using recordings of real instruments. You can strum with your keyboard, mouse, or touchscreen, choose acoustic, classical, electric guitar or bass, and see chord fingering and each stroke. Song practice can be slowed to 20%, and there are free chord tools and tuners."
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-eedf2d5b4243645",
       "url": "https://www.theverge.com/tech/1009128/ray-ban-meta-audio-glasses-review-smart-glasses-headphones-wearables",
+      "external_url": "https://www.theverge.com/tech/1009128/ray-ban-meta-audio-glasses-review-smart-glasses-headphones-wearables",
       "title": "I don’t miss the camera on the Ray-Ban Meta Audio glasses",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/tech/1009128/ray-ban-meta-audio-glasses-review-smart-glasses-headphones-wearables\">theverge.com</a></li></ul>",
+      "summary": "I don’t miss the camera on the Ray-Ban Meta Audio glasses",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/tech/1009128/ray-ban-meta-audio-glasses-review-smart-glasses-headphones-wearables\">theverge.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· theverge.com\nAI 日报",
       "date_published": "2026-10-13T18:00:00+00:00",
+      "authors": [
+        {
+          "name": "theverge.com"
+        }
+      ],
       "tags": [
         "rss:theverge-com-ai-artificial-intelligence"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "eedf2d5b4243645",
         "source_ids": [
@@ -681,19 +1164,33 @@
         "all_urls": [
           "https://www.theverge.com/tech/1009128/ray-ban-meta-audio-glasses-review-smart-glasses-headphones-wearables"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-eba87afb41e2597",
       "url": "https://www.theverge.com/tech/1010344/meta-facebook-your-algorithm-ai",
+      "external_url": "https://www.theverge.com/tech/1010344/meta-facebook-your-algorithm-ai",
       "title": "Facebook will let you customize your feed algorithm using AI",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/tech/1010344/meta-facebook-your-algorithm-ai\">theverge.com</a></li></ul>",
+      "summary": "Facebook will let you customize your feed algorithm using AI",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/tech/1010344/meta-facebook-your-algorithm-ai\">theverge.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· theverge.com\nAI 日报",
       "date_published": "2026-10-13T17:01:31+00:00",
+      "authors": [
+        {
+          "name": "theverge.com"
+        }
+      ],
       "tags": [
         "rss:theverge-com-ai-artificial-intelligence"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "eba87afb41e2597",
         "source_ids": [
@@ -702,19 +1199,33 @@
         "all_urls": [
           "https://www.theverge.com/tech/1010344/meta-facebook-your-algorithm-ai"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e7841724e95b262",
       "url": "https://www.theverge.com/tech/1009066/google-play-vibe-coded-android-apps-launch",
+      "external_url": "https://www.theverge.com/tech/1009066/google-play-vibe-coded-android-apps-launch",
       "title": "Google makes it easier to launch your vibe-coded apps",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/tech/1009066/google-play-vibe-coded-android-apps-launch\">theverge.com</a></li></ul>",
+      "summary": "Google makes it easier to launch your vibe-coded apps",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/tech/1009066/google-play-vibe-coded-android-apps-launch\">theverge.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· theverge.com\nAI 日报",
       "date_published": "2026-10-13T17:00:00+00:00",
+      "authors": [
+        {
+          "name": "theverge.com"
+        }
+      ],
       "tags": [
         "rss:theverge-com-ai-artificial-intelligence"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e7841724e95b262",
         "source_ids": [
@@ -723,19 +1234,33 @@
         "all_urls": [
           "https://www.theverge.com/tech/1009066/google-play-vibe-coded-android-apps-launch"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-ec0c109918ab4ce",
       "url": "https://www.v2ex.com/t/1248569",
+      "external_url": "https://www.v2ex.com/t/1248569",
       "title": "昨天把家里 Wi-Fi 2.4G 和 5G 分开了，你们呢？",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.v2ex.com/t/1248569\">v2ex.com</a></li></ul>",
+      "summary": "昨天把家里 Wi-Fi 2.4G 和 5G 分开了，你们呢？",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.v2ex.com/t/1248569\">v2ex.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· v2ex.com\nAI 日报",
       "date_published": "2026-10-14T00:46:23+00:00",
+      "authors": [
+        {
+          "name": "v2ex.com"
+        }
+      ],
       "tags": [
         "api:v2ex-com-topics-hot"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "ec0c109918ab4ce",
         "source_ids": [
@@ -744,19 +1269,33 @@
         "all_urls": [
           "https://www.v2ex.com/t/1248569"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e47caeb21a62fee",
       "url": "https://www.theverge.com/ai-artificial-intelligence/1010277/mia-goth-instagram-ai-shirt-deepfake-divorce",
+      "external_url": "https://www.theverge.com/ai-artificial-intelligence/1010277/mia-goth-instagram-ai-shirt-deepfake-divorce",
       "title": "It’s ‘incomprehensible’ that Instagram allowed an AI image of Mia Goth to spread, say her reps",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/ai-artificial-intelligence/1010277/mia-goth-instagram-ai-shirt-deepfake-divorce\">theverge.com</a></li></ul>",
+      "summary": "It’s ‘incomprehensible’ that Instagram allowed an AI image of Mia Goth to spread, say her reps",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/ai-artificial-intelligence/1010277/mia-goth-instagram-ai-shirt-deepfake-divorce\">theverge.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· theverge.com\nAI 日报",
       "date_published": "2026-10-13T16:42:51+00:00",
+      "authors": [
+        {
+          "name": "theverge.com"
+        }
+      ],
       "tags": [
         "rss:theverge-com-ai-artificial-intelligence"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e47caeb21a62fee",
         "source_ids": [
@@ -765,19 +1304,33 @@
         "all_urls": [
           "https://www.theverge.com/ai-artificial-intelligence/1010277/mia-goth-instagram-ai-shirt-deepfake-divorce"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e441f6c9e7dd6fb",
       "url": "https://www.v2ex.com/t/1248577",
+      "external_url": "https://www.v2ex.com/t/1248577",
       "title": "现在修电视都这么贵的吗？",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.v2ex.com/t/1248577\">v2ex.com</a></li></ul>",
+      "summary": "现在修电视都这么贵的吗？",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.v2ex.com/t/1248577\">v2ex.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· v2ex.com\nAI 日报",
       "date_published": "2026-10-14T01:11:06+00:00",
+      "authors": [
+        {
+          "name": "v2ex.com"
+        }
+      ],
       "tags": [
         "api:v2ex-com-topics-hot"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e441f6c9e7dd6fb",
         "source_ids": [
@@ -786,19 +1339,33 @@
         "all_urls": [
           "https://www.v2ex.com/t/1248577"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e938258fbd8326b",
       "url": "https://www.theverge.com/games/1010097/epic-games-disney-project-ai-coding-art",
+      "external_url": "https://www.theverge.com/games/1010097/epic-games-disney-project-ai-coding-art",
       "title": "Epic shifts to ‘AI-accelerated development’ for upcoming Disney game",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/games/1010097/epic-games-disney-project-ai-coding-art\">theverge.com</a></li></ul>",
+      "summary": "Epic shifts to ‘AI-accelerated development’ for upcoming Disney game",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/games/1010097/epic-games-disney-project-ai-coding-art\">theverge.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· theverge.com\nAI 日报",
       "date_published": "2026-10-13T15:12:59+00:00",
+      "authors": [
+        {
+          "name": "theverge.com"
+        }
+      ],
       "tags": [
         "rss:theverge-com-ai-artificial-intelligence"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e938258fbd8326b",
         "source_ids": [
@@ -807,19 +1374,33 @@
         "all_urls": [
           "https://www.theverge.com/games/1010097/epic-games-disney-project-ai-coding-art"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e4392884424a76f",
       "url": "https://openai.com/index/higgsfield-longer-videos-voice",
+      "external_url": "https://openai.com/index/higgsfield-longer-videos-voice",
       "title": "Higgsfield takes AI video from 1 minute to over 10",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://openai.com/index/higgsfield-longer-videos-voice\">openai.com</a></li></ul>",
+      "summary": "Higgsfield takes AI video from 1 minute to over 10",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://openai.com/index/higgsfield-longer-videos-voice\">openai.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· openai.com\nAI 日报",
       "date_published": "2026-10-13T12:00:00+00:00",
+      "authors": [
+        {
+          "name": "openai.com"
+        }
+      ],
       "tags": [
         "rss:openai-com-news"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e4392884424a76f",
         "source_ids": [
@@ -828,19 +1409,33 @@
         "all_urls": [
           "https://openai.com/index/higgsfield-longer-videos-voice"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e459dc7f81d23d0",
       "url": "https://www.theverge.com/news/1009904/dlss-5-hogwarts-legacy-changes-improvements",
+      "external_url": "https://www.theverge.com/news/1009904/dlss-5-hogwarts-legacy-changes-improvements",
       "title": "DLSS 5 gets toned down for its Hogwarts Legacy debut next month",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/news/1009904/dlss-5-hogwarts-legacy-changes-improvements\">theverge.com</a></li></ul>",
+      "summary": "DLSS 5 gets toned down for its Hogwarts Legacy debut next month",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/news/1009904/dlss-5-hogwarts-legacy-changes-improvements\">theverge.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· theverge.com\nAI 日报",
       "date_published": "2026-10-13T13:55:45+00:00",
+      "authors": [
+        {
+          "name": "theverge.com"
+        }
+      ],
       "tags": [
         "rss:theverge-com-ai-artificial-intelligence"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e459dc7f81d23d0",
         "source_ids": [
@@ -849,19 +1444,33 @@
         "all_urls": [
           "https://www.theverge.com/news/1009904/dlss-5-hogwarts-legacy-changes-improvements"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e3f61f4d9a94a99",
       "url": "https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b",
+      "external_url": "https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b",
       "title": "Run fast, private agents on-device with LFM2.5-24B-A2B",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b\">huggingface.co</a></li></ul>",
+      "summary": "Run fast, private agents on-device with LFM2.5-24B-A2B",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b\">huggingface.co</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· huggingface.co\nAI 日报",
       "date_published": "2026-10-13T17:05:48+00:00",
+      "authors": [
+        {
+          "name": "huggingface.co"
+        }
+      ],
       "tags": [
         "rss:huggingface-co-blog"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e3f61f4d9a94a99",
         "source_ids": [
@@ -870,19 +1479,33 @@
         "all_urls": [
           "https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e3e5ff0ca7edf94",
       "url": "https://therundownai.beehiiv.com/p/meta-watermelon-ripens-into-a-frontier-model",
+      "external_url": "https://therundownai.beehiiv.com/p/meta-watermelon-ripens-into-a-frontier-model",
       "title": "Meta's Watermelon ripens into a frontier model",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://therundownai.beehiiv.com/p/meta-watermelon-ripens-into-a-frontier-model\">therundownai.beehiiv.com</a></li></ul>",
+      "summary": "Meta's Watermelon ripens into a frontier model",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://therundownai.beehiiv.com/p/meta-watermelon-ripens-into-a-frontier-model\">therundownai.beehiiv.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· therundownai.beehiiv.com\nAI 日报",
       "date_published": "2026-10-13T09:00:00+00:00",
+      "authors": [
+        {
+          "name": "therundownai.beehiiv.com"
+        }
+      ],
       "tags": [
         "rss:rss-beehiiv-com-2r3c6bt5wj"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e3e5ff0ca7edf94",
         "source_ids": [
@@ -891,19 +1514,33 @@
         "all_urls": [
           "https://therundownai.beehiiv.com/p/meta-watermelon-ripens-into-a-frontier-model"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e2a7ca02934b9cf",
       "url": "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651062445&idx=1&sn=608c7ccba2cb0bcd1a34da07084d6cd1",
+      "external_url": "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651062445&idx=1&sn=608c7ccba2cb0bcd1a34da07084d6cd1",
       "title": "九章云极问鼎陶哲轩数学挑战赛！让强化学习成为AI4S新基建",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651062445&amp;idx=1&amp;sn=608c7ccba2cb0bcd1a34da07084d6cd1\">mp.weixin.qq.com</a></li></ul>",
+      "summary": "九章云极问鼎陶哲轩数学挑战赛！让强化学习成为AI4S新基建",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651062445&amp;idx=1&amp;sn=608c7ccba2cb0bcd1a34da07084d6cd1\">mp.weixin.qq.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· mp.weixin.qq.com\nAI 日报",
       "date_published": "2026-10-13T04:00:00+00:00",
+      "authors": [
+        {
+          "name": "mp.weixin.qq.com"
+        }
+      ],
       "tags": [
         "rss:wechat2rss-xlab-app-51e92aad2728acdd1fda7314be32b16639353001"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e2a7ca02934b9cf",
         "source_ids": [
@@ -912,19 +1549,33 @@
         "all_urls": [
           "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651062445&idx=1&sn=608c7ccba2cb0bcd1a34da07084d6cd1"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e93eb10664e1e94",
       "url": "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651062445&idx=3&sn=c93fe78ae034dea794c3760e35192930",
+      "external_url": "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651062445&idx=3&sn=c93fe78ae034dea794c3760e35192930",
       "title": "生成的世界也能交互！牛津大学&莫纳什大学&布里斯托大学等团队提出交互式视频世界模型Oneira",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651062445&amp;idx=3&amp;sn=c93fe78ae034dea794c3760e35192930\">mp.weixin.qq.com</a></li></ul>",
+      "summary": "生成的世界也能交互！牛津大学&莫纳什大学&布里斯托大学等团队提出交互式视频世界模型Oneira",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651062445&amp;idx=3&amp;sn=c93fe78ae034dea794c3760e35192930\">mp.weixin.qq.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· mp.weixin.qq.com\nAI 日报",
       "date_published": "2026-10-13T04:00:00+00:00",
+      "authors": [
+        {
+          "name": "mp.weixin.qq.com"
+        }
+      ],
       "tags": [
         "rss:wechat2rss-xlab-app-51e92aad2728acdd1fda7314be32b16639353001"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e93eb10664e1e94",
         "source_ids": [
@@ -933,19 +1584,33 @@
         "all_urls": [
           "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651062445&idx=3&sn=c93fe78ae034dea794c3760e35192930"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-eb6145c2343dc82",
       "url": "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651062445&idx=2&sn=09d3ae148779c3bd1a544b44f72c02ea",
+      "external_url": "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651062445&idx=2&sn=09d3ae148779c3bd1a544b44f72c02ea",
       "title": "申报倒计时7天！2026云程奖，要给「在校AI本硕博」发奖学金",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651062445&amp;idx=2&amp;sn=09d3ae148779c3bd1a544b44f72c02ea\">mp.weixin.qq.com</a></li></ul>",
+      "summary": "申报倒计时7天！2026云程奖，要给「在校AI本硕博」发奖学金",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651062445&amp;idx=2&amp;sn=09d3ae148779c3bd1a544b44f72c02ea\">mp.weixin.qq.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· mp.weixin.qq.com\nAI 日报",
       "date_published": "2026-10-13T04:00:00+00:00",
+      "authors": [
+        {
+          "name": "mp.weixin.qq.com"
+        }
+      ],
       "tags": [
         "rss:wechat2rss-xlab-app-51e92aad2728acdd1fda7314be32b16639353001"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "eb6145c2343dc82",
         "source_ids": [
@@ -954,19 +1619,33 @@
         "all_urls": [
           "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651062445&idx=2&sn=09d3ae148779c3bd1a544b44f72c02ea"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-ecd67a9edef7a8d",
       "url": "https://github.com/debpalash/VoiceStudio",
+      "external_url": "https://github.com/debpalash/VoiceStudio",
       "title": "debpalash/VoiceStudio",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/debpalash/VoiceStudio\">github.com</a></li></ul>",
+      "summary": "debpalash/VoiceStudio",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://github.com/debpalash/VoiceStudio\">github.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· github.com\nAI 日报",
       "date_published": "2026-10-14T03:40:46.762571+00:00",
+      "authors": [
+        {
+          "name": "github.com"
+        }
+      ],
       "tags": [
         "scrape:github-com-trending"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "ecd67a9edef7a8d",
         "source_ids": [
@@ -975,19 +1654,33 @@
         "all_urls": [
           "https://github.com/debpalash/VoiceStudio"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e02dd5c06e99c81",
       "url": "https://github.com/mksglu/context-mode",
+      "external_url": "https://github.com/mksglu/context-mode",
       "title": "mksglu/context-mode",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and enforces routing across 17 platforms via MCP + hooks.</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://github.com/mksglu/context-mode\">github.com</a></li></ul>",
+      "summary": "Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and enforces routing across 17 platforms via MCP + hooks.",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and enforces routing across 17 platforms via MCP + hooks.</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://github.com/mksglu/context-mode\">github.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "事实\n· Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and enforces routing across 17 platforms via MCP + hooks.\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· github.com\nAI 日报",
       "date_published": "2026-10-14T03:40:46.762571+00:00",
+      "authors": [
+        {
+          "name": "github.com"
+        }
+      ],
       "tags": [
         "scrape:github-com-trending"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e02dd5c06e99c81",
         "source_ids": [
@@ -996,19 +1689,37 @@
         "all_urls": [
           "https://github.com/mksglu/context-mode"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [
+          "Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and enforces routing across 17 platforms via MCP + hooks."
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-ec6bd315ea89ad0",
       "url": "https://github.com/cathrynlavery/diagram-design",
+      "external_url": "https://github.com/cathrynlavery/diagram-design",
       "title": "cathrynlavery/diagram-design",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/cathrynlavery/diagram-design\">github.com</a></li></ul>",
+      "summary": "cathrynlavery/diagram-design",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://github.com/cathrynlavery/diagram-design\">github.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· github.com\nAI 日报",
       "date_published": "2026-10-14T03:40:46.762571+00:00",
+      "authors": [
+        {
+          "name": "github.com"
+        }
+      ],
       "tags": [
         "scrape:github-com-trending"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "ec6bd315ea89ad0",
         "source_ids": [
@@ -1017,19 +1728,33 @@
         "all_urls": [
           "https://github.com/cathrynlavery/diagram-design"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e24f518fe0cc746",
       "url": "https://github.com/bilawalsidhu/gods-eye-view",
+      "external_url": "https://github.com/bilawalsidhu/gods-eye-view",
       "title": "bilawalsidhu/gods-eye-view",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/bilawalsidhu/gods-eye-view\">github.com</a></li></ul>",
+      "summary": "bilawalsidhu/gods-eye-view",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://github.com/bilawalsidhu/gods-eye-view\">github.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· github.com\nAI 日报",
       "date_published": "2026-10-14T03:40:46.762571+00:00",
+      "authors": [
+        {
+          "name": "github.com"
+        }
+      ],
       "tags": [
         "scrape:github-com-trending"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e24f518fe0cc746",
         "source_ids": [
@@ -1038,19 +1763,33 @@
         "all_urls": [
           "https://github.com/bilawalsidhu/gods-eye-view"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e35f5c2fb46e1d1",
       "url": "https://github.com/xtool-org/xtool",
+      "external_url": "https://github.com/xtool-org/xtool",
       "title": "xtool-org/xtool",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/xtool-org/xtool\">github.com</a></li></ul>",
+      "summary": "xtool-org/xtool",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://github.com/xtool-org/xtool\">github.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· github.com\nAI 日报",
       "date_published": "2026-10-14T03:40:46.762571+00:00",
+      "authors": [
+        {
+          "name": "github.com"
+        }
+      ],
       "tags": [
         "scrape:github-com-trending"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e35f5c2fb46e1d1",
         "source_ids": [
@@ -1059,19 +1798,33 @@
         "all_urls": [
           "https://github.com/xtool-org/xtool"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e5b5e0a893baf98",
       "url": "https://github.com/storytold/artcraft",
+      "external_url": "https://github.com/storytold/artcraft",
       "title": "storytold/artcraft",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/storytold/artcraft\">github.com</a></li></ul>",
+      "summary": "storytold/artcraft",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://github.com/storytold/artcraft\">github.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· github.com\nAI 日报",
       "date_published": "2026-10-14T03:40:46.762571+00:00",
+      "authors": [
+        {
+          "name": "github.com"
+        }
+      ],
       "tags": [
         "scrape:github-com-trending"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e5b5e0a893baf98",
         "source_ids": [
@@ -1080,19 +1833,33 @@
         "all_urls": [
           "https://github.com/storytold/artcraft"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-edec6fe1d812289",
       "url": "https://github.com/morluto/rea",
+      "external_url": "https://github.com/morluto/rea",
       "title": "morluto/rea",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/morluto/rea\">github.com</a></li></ul>",
+      "summary": "morluto/rea",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://github.com/morluto/rea\">github.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· github.com\nAI 日报",
       "date_published": "2026-10-14T03:40:46.762571+00:00",
+      "authors": [
+        {
+          "name": "github.com"
+        }
+      ],
       "tags": [
         "scrape:github-com-trending"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "edec6fe1d812289",
         "source_ids": [
@@ -1101,19 +1868,33 @@
         "all_urls": [
           "https://github.com/morluto/rea"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-ef6384abac4f498",
       "url": "https://simonwillison.net/2026/Oct/13/llm-gemini/",
+      "external_url": "https://simonwillison.net/2026/Oct/13/llm-gemini/",
       "title": "llm-gemini 0.35",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://simonwillison.net/2026/Oct/13/llm-gemini/\">simonwillison.net</a></li></ul>",
+      "summary": "llm-gemini 0.35",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://simonwillison.net/2026/Oct/13/llm-gemini/\">simonwillison.net</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· simonwillison.net\nAI 日报",
       "date_published": "2026-10-13T22:28:54+00:00",
+      "authors": [
+        {
+          "name": "simonwillison.net"
+        }
+      ],
       "tags": [
         "rss:simonwillison-net-everything"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "ef6384abac4f498",
         "source_ids": [
@@ -1122,19 +1903,33 @@
         "all_urls": [
           "https://simonwillison.net/2026/Oct/13/llm-gemini/"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e29024d77069a0c",
       "url": "https://aihot.news/items/cn2zpsopcfepfo7sjij0n30f4",
+      "external_url": "https://aihot.news/items/cn2zpsopcfepfo7sjij0n30f4",
       "title": "Google DeepMind 用 Gemma 构建端侧反诈骗检测",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/cn2zpsopcfepfo7sjij0n30f4\">aihot.news</a></li></ul>",
+      "summary": "Google DeepMind 用 Gemma 构建端侧反诈骗检测",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/cn2zpsopcfepfo7sjij0n30f4\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
       "date_published": "2026-10-14T02:05:00+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
       "tags": [
         "rss:aihot-news"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e29024d77069a0c",
         "source_ids": [
@@ -1143,19 +1938,33 @@
         "all_urls": [
           "https://aihot.news/items/cn2zpsopcfepfo7sjij0n30f4"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-ead6172be1f54aa",
       "url": "https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/",
+      "external_url": "https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/",
       "title": "Developing Gemini 4 Argon responsibly and safely",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/\">deepmind.google</a></li></ul>",
+      "summary": "Developing Gemini 4 Argon responsibly and safely",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/\">deepmind.google</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· deepmind.google\nAI 日报",
       "date_published": "2026-10-13T19:43:07+00:00",
+      "authors": [
+        {
+          "name": "deepmind.google"
+        }
+      ],
       "tags": [
         "rss:deepmind-google-blog"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "ead6172be1f54aa",
         "source_ids": [
@@ -1164,19 +1973,33 @@
         "all_urls": [
           "https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e8536989a16c400",
       "url": "https://daily.juya.uk/issues/2026-10-14/",
+      "external_url": "https://daily.juya.uk/issues/2026-10-14/",
       "title": "2026-10-14",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://daily.juya.uk/issues/2026-10-14/\">daily.juya.uk</a></li></ul>",
+      "summary": "2026-10-14",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://daily.juya.uk/issues/2026-10-14/\">daily.juya.uk</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· daily.juya.uk\nAI 日报",
       "date_published": "2026-10-14T01:33:20+00:00",
+      "authors": [
+        {
+          "name": "daily.juya.uk"
+        }
+      ],
       "tags": [
         "rss:daily-juya-uk"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e8536989a16c400",
         "source_ids": [
@@ -1185,19 +2008,33 @@
         "all_urls": [
           "https://daily.juya.uk/issues/2026-10-14/"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e96c69f7f761cc1",
       "url": "https://aihot.news/items/fnk44ma5316w76jwk9050bne8",
+      "external_url": "https://aihot.news/items/fnk44ma5316w76jwk9050bne8",
       "title": "Grok Bot 邮件多智能体玩法",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/fnk44ma5316w76jwk9050bne8\">aihot.news</a></li></ul>",
+      "summary": "Grok Bot 邮件多智能体玩法",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/fnk44ma5316w76jwk9050bne8\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
       "date_published": "2026-10-14T02:14:04+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
       "tags": [
         "rss:aihot-news"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e96c69f7f761cc1",
         "source_ids": [
@@ -1206,19 +2043,33 @@
         "all_urls": [
           "https://aihot.news/items/fnk44ma5316w76jwk9050bne8"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-ea0622315da250a",
       "url": "https://deepmind.google/blog/introducing-gemini-4-argon/",
+      "external_url": "https://deepmind.google/blog/introducing-gemini-4-argon/",
       "title": "Gemini 4 Argon: Built to solve your hardest problems",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://deepmind.google/blog/introducing-gemini-4-argon/\">deepmind.google</a></li></ul>",
+      "summary": "Gemini 4 Argon: Built to solve your hardest problems",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://deepmind.google/blog/introducing-gemini-4-argon/\">deepmind.google</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· deepmind.google\nAI 日报",
       "date_published": "2026-10-13T16:01:52+00:00",
+      "authors": [
+        {
+          "name": "deepmind.google"
+        }
+      ],
       "tags": [
         "rss:deepmind-google-blog"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "ea0622315da250a",
         "source_ids": [
@@ -1227,19 +2078,33 @@
         "all_urls": [
           "https://deepmind.google/blog/introducing-gemini-4-argon/"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-ee0137e4edac953",
       "url": "https://www.theverge.com/ai-artificial-intelligence/1009862/google-releases-gemini-4-argon",
+      "external_url": "https://www.theverge.com/ai-artificial-intelligence/1009862/google-releases-gemini-4-argon",
       "title": "Google finally releases Gemini 4 Argon",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/ai-artificial-intelligence/1009862/google-releases-gemini-4-argon\">theverge.com</a></li></ul>",
+      "summary": "Google finally releases Gemini 4 Argon",
+      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/ai-artificial-intelligence/1009862/google-releases-gemini-4-argon\">theverge.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· theverge.com\nAI 日报",
       "date_published": "2026-10-13T16:00:00+00:00",
+      "authors": [
+        {
+          "name": "theverge.com"
+        }
+      ],
       "tags": [
         "rss:theverge-com-ai-artificial-intelligence"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "ee0137e4edac953",
         "source_ids": [
@@ -1248,19 +2113,33 @@
         "all_urls": [
           "https://www.theverge.com/ai-artificial-intelligence/1009862/google-releases-gemini-4-argon"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [],
+        "inferences": [],
+        "uncertainties": [],
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-14-e1964896e997499",
       "url": "https://daily.juya.uk/issues/2026-10-13/",
+      "external_url": "https://daily.juya.uk/issues/2026-10-13/",
       "title": "2026-10-13",
-      "content_html": "<p><strong>事实</strong></p><ul><li>AI 早报 2026 10 13 视频版 ：YouTube ｜ 哔哩哔哩 概览 要闻 Meta 发布 Muse Wonder 模型系列 ↗ 1 The X Subscription 推出：整合Grok、Cursor 和 X Premium ↗ 2 Codex 第 8 天安排：重置用量额度 ↗ 3 模型发布 智谱推出法律模型 GLM Legal，开放测试申请 ↗ 4 OpenBMB 发布 MiniCPM V 4.7 系列两款模型 ↗ 5 开发生态 OpenCode Go 提供 80 美元 V4.1 Flash 额度 ↗ 6 阶跃 Step 5 Preview 上线 WorkBuddy，独家限免两</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://daily.juya.uk/issues/2026-10-13/\">daily.juya.uk</a></li></ul>",
+      "summary": "AI 早报 2026 10 13 视频版 ：YouTube ｜ 哔哩哔哩 概览 要闻 Meta 发布 Muse Wonder 模型系列 ↗ 1 The X Subscription 推出：整合Grok、Cursor 和 X Premium ↗ 2 Codex 第 8 天安排：重置用量额度 ↗ 3 模型发布 智谱推出法律模型 GLM Legal，开放测试申请 ↗ 4 OpenBMB 发布 MiniCPM V 4.7 系列两款模型 ↗ 5 开发生态 OpenCode Go 提供 80 美元 V4.1 Flash 额度 ↗ 6 阶跃 Step 5 Previe…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>AI 早报 2026 10 13 视频版 ：YouTube ｜ 哔哩哔哩 概览 要闻 Meta 发布 Muse Wonder 模型系列 ↗ 1 The X Subscription 推出：整合Grok、Cursor 和 X Premium ↗ 2 Codex 第 8 天安排：重置用量额度 ↗ 3 模型发布 智谱推出法律模型 GLM Legal，开放测试申请 ↗ 4 OpenBMB 发布 MiniCPM V 4.7 系列两款模型 ↗ 5 开发生态 OpenCode Go 提供 80 美元 V4.1 Flash 额度 ↗ 6 阶跃 Step 5 Preview 上线 WorkBuddy，独家限免两</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://daily.juya.uk/issues/2026-10-13/\">daily.juya.uk</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
+      "content_text": "事实\n· AI 早报 2026 10 13 视频版 ：YouTube ｜ 哔哩哔哩 概览 要闻 Meta 发布 Muse Wonder 模型系列 ↗ 1 The X Subscription 推出：整合Grok、Cursor 和 X Premium ↗ 2 Codex 第 8 天安排：重置用量额度 ↗ 3 模型发布 智谱推出法律模型 GLM Legal，开放测试申请 ↗ 4 OpenBMB 发布 MiniCPM V 4.7 系列两款模型 ↗ 5 开发生态 OpenCode Go 提供 80 美元 V4.1 Flash 额度 ↗ 6 阶跃 Step 5 Preview 上线 WorkBuddy，独家限免两\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· daily.juya.uk\nAI 日报",
       "date_published": "2026-10-13T01:48:17+00:00",
+      "authors": [
+        {
+          "name": "daily.juya.uk"
+        }
+      ],
       "tags": [
         "rss:daily-juya-uk"
       ],
+      "language": "zh-CN",
       "_ai_daily": {
         "event_id": "e1964896e997499",
         "source_ids": [
@@ -1269,8 +2148,17 @@
         "all_urls": [
           "https://daily.juya.uk/issues/2026-10-13/"
         ],
+        "independent_source_count": 1,
         "evidence_level": "single_source",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "facts": [
+          "AI 早报 2026 10 13 视频版 ：YouTube ｜ 哔哩哔哩 概览 要闻 Meta 发布 Muse Wonder 模型系列 ↗ 1 The X Subscription 推出：整合Grok、Cursor 和 X Premium ↗ 2 Codex 第 8 天安排：重置用量额度 ↗ 3 模型发布 智谱推出法律模型 GLM Legal，开放测试申请 ↗ 4 OpenBMB 发布 MiniCPM V 4.7 系列两款模型 ↗ 5 开发生态 OpenCode Go 提供 80 美元 V4.1 Flash 额度 ↗ 6 阶跃 Step 5 Preview 上线 WorkBuddy，独家限免两"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
       }
     }
   ]

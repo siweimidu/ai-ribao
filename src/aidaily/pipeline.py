@@ -106,6 +106,64 @@ def write_json(path: Path | str, payload: object) -> Path:
 
 
 # --- digest assembly --------------------------------------------------------------
+def select_for_digest(
+    events: list[Event],
+    stage,
+    sources: list[SourceSpec],
+    cfg: AppConfig,
+    *,
+    now: datetime | None = None,
+) -> tuple[list[Event], dict]:
+    """Rank and diversify, returning the events the digest will actually publish.
+
+    Split out of `build_digest` so the analysis stage can run on **these** events rather
+    than on whatever happened to come first. It did not, and the cost was real: the digest
+    analysed `events[:40]` in arrival order and then ranked all 224 and published a
+    different 60, so only 8 of 40 paid-for insights reached a reader while most published
+    items showed a bare source excerpt. Analysing after selection means every model call is
+    spent on something a reader will see.
+    """
+    ranked = rank_events(
+        events,
+        stage.window.kept,
+        sources,
+        weights=cfg.quality.source_weights,
+        rank=RankWeights(
+            recency_half_life_hours=cfg.quality.recency_half_life_hours,
+            recency_floor=cfg.quality.recency_floor,
+            content_substance=cfg.quality.content_substance,
+            corroboration=cfg.quality.corroboration,
+            engagement=cfg.quality.engagement,
+            max_per_source=cfg.quality.max_per_source,
+            max_per_group=cfg.quality.max_per_group,
+        ),
+        now=now,
+    )
+    chosen = select_diverse(
+        ranked,
+        cfg.output.deep.max_items,
+        sources,
+        rank=RankWeights(
+            max_per_source=cfg.quality.max_per_source,
+            max_per_group=cfg.quality.max_per_group,
+            topic_similarity_penalty=cfg.quality.topic_similarity_penalty,
+            topic_similarity_threshold=cfg.quality.topic_similarity_threshold,
+            topic_overlap_min=cfg.quality.topic_overlap_min,
+            topic_overlap_penalty=cfg.quality.topic_overlap_penalty,
+            duplicate_url_penalty=cfg.quality.duplicate_url_penalty,
+        ),
+    )
+    # Copied *after* selection: `select_diverse` adds `topic_penalty` and `final_score` to
+    # the same dict, and Pydantic snapshots the mapping on assignment. Doing this before
+    # selection archived a penalty of 1.0 for every entry -- the audit trail disagreed with
+    # the ranking that actually ran.
+    for row in ranked:
+        row.event.rank_score = row.score
+        row.event.rank_components = dict(row.components)
+
+    return [row.event for row in chosen], diversity_report(chosen, sources)
+
+
 def build_digest(
     stage: DedupStage,
     events: list[Event],
@@ -157,48 +215,7 @@ def build_digest(
 
     multi = [e for e in events if e.independent_source_count > 1]
 
-    # Ranking replaces what used to be `(-independent_source_count, -timestamp)`, which
-    # degenerated to pure recency whenever nothing had corroboration -- and filled the
-    # head with whatever source publishes most often. See src/aidaily/rank.py.
-    ranked = rank_events(
-        events,
-        stage.window.kept,
-        sources,
-        weights=cfg.quality.source_weights,
-        rank=RankWeights(
-            recency_half_life_hours=cfg.quality.recency_half_life_hours,
-            recency_floor=cfg.quality.recency_floor,
-            content_substance=cfg.quality.content_substance,
-            corroboration=cfg.quality.corroboration,
-            engagement=cfg.quality.engagement,
-            max_per_source=cfg.quality.max_per_source,
-            max_per_group=cfg.quality.max_per_group,
-        ),
-        now=now,
-    )
-    chosen = select_diverse(
-        ranked,
-        cfg.output.deep.max_items,
-        sources,
-        rank=RankWeights(
-            max_per_source=cfg.quality.max_per_source,
-            max_per_group=cfg.quality.max_per_group,
-            topic_similarity_penalty=cfg.quality.topic_similarity_penalty,
-            topic_similarity_threshold=cfg.quality.topic_similarity_threshold,
-            topic_overlap_min=cfg.quality.topic_overlap_min,
-            topic_overlap_penalty=cfg.quality.topic_overlap_penalty,
-            duplicate_url_penalty=cfg.quality.duplicate_url_penalty,
-        ),
-    )
-    # Copied *after* selection: `select_diverse` adds `topic_penalty` and `final_score` to
-    # the same dict, and Pydantic snapshots the mapping on assignment. Doing this before
-    # selection archived a penalty of 1.0 for every entry -- the audit trail disagreed
-    # with the ranking that actually ran.
-    for row in ranked:
-        row.event.rank_score = row.score
-        row.event.rank_components = dict(row.components)
-    ordered = [row.event for row in chosen]
-    rank_report = diversity_report(chosen, sources)
+    ordered, rank_report = select_for_digest(events, stage, sources, cfg, now=now)
 
     # The headline comes from the top-ranked event that actually has an insight.
     headline = ""

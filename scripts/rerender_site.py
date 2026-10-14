@@ -94,7 +94,7 @@ def main() -> int:
     (out_dir / f"{digest.date}.brief.md").write_text(brief, encoding="utf-8")
     (out_dir / f"{digest.date}.deep.md").write_text(deep, encoding="utf-8")
 
-    rss = write_rss(digest, out_dir, site_url=site_url)
+    rss = write_rss(digest, out_dir, site_url=site_url, insights=insights)
     tibo = load_tibo()
     site = write_site(
         digest, deep, out_dir,

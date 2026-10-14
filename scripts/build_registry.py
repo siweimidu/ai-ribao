@@ -336,10 +336,17 @@ def main() -> int:
     sources.sort(key=lambda s: (s["priority"], s["category"], s["source_id"]))
 
     provenance_rows = sum(s["provenance_count"] for s in sources)
+    # `by_repository` counts the audited provenance, which is what it is for. A local
+    # addition declares its origin repo too, and leaving it out made the statistics
+    # contradict the source list (AIHOT showed 1 provenance row but no repository row).
+    audits = {r for s in sources if not s.get("added_locally") for r in s["repositories"]}
     doc = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "generated_by": "scripts/build_registry.py",
-        "source_of_truth": "audit/sources_ledger.json (static audit of six repositories)",
+        "source_of_truth": (
+            "audit/sources_ledger.json (static audit of six repositories) "
+            "+ sources/local.yaml (later additions)"
+        ),
         "policy": {
             "never_delete": "Sources are never removed; disable via sources/overrides.yaml instead.",
             "coverage_guard": "tests/contract/test_source_coverage.py asserts every provenance entry survives.",
@@ -354,6 +361,11 @@ def main() -> int:
                 r: sum(1 for s in sources if r in s["repositories"])
                 for r in sorted({r for s in sources for r in s["repositories"]})
             },
+            "by_repository_audited": {
+                r: sum(1 for s in sources if r in s["repositories"] and not s.get("added_locally"))
+                for r in sorted(audits)
+            },
+            "added_locally": sum(1 for s in sources if s.get("added_locally")),
             "by_source_type": {
                 t: sum(1 for s in sources if s["source_type"] == t)
                 for t in sorted({s["source_type"] for s in sources})

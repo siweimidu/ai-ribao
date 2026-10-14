@@ -98,11 +98,48 @@ def test_rss_is_well_formed_and_escapes(tmp_path: Path) -> None:
     assert result.ok
 
     root = ET.parse(tmp_path / "site" / "feed" / "zh.xml").getroot()
+    channel = root.find("./channel")
     item = root.find("./channel/item")
     assert item is not None
-    assert item.findtext("title") == "A story & <tag>"
+    assert item.findtext("title") == "A story & <tag>", "the title must survive escaping"
     assert item.findtext("guid").endswith("e1")
-    assert "example.com" in (item.findtext("description") or "")
+
+    ns = {
+        "atom": "http://www.w3.org/2005/Atom",
+        "content": "http://purl.org/rss/1.0/modules/content/",
+        "dc": "http://purl.org/dc/elements/1.1/",
+    }
+    # The body carries the sources and the corroboration, not just a link. An earlier
+    # version put a bare `<ul>` of URLs in `<description>` and nothing else anywhere, so a
+    # feed consumer got a headline and a link -- while the JSON feed carried the facts for
+    # the same items.
+    body = item.findtext("content:encoded", namespaces=ns) or ""
+    assert "example.com" in body, "the source URL must be in the body"
+    assert "来源" in body and "可信度" in body, "the body must carry sources and evidence level"
+    assert item.findtext("dc:date", namespaces=ns), "a machine-readable timestamp is required"
+    # Namespaced lookups need the prefix map: `find("atom:link")` without it returns None
+    # and reads as "the element is missing" when it is present.
+    assert channel.find("atom:link", ns) is not None, "a self link lets a poller detect a move"
+    assert channel.findtext("ttl"), "ttl tells aggregators not to poll needlessly"
+
+
+def test_rss_and_json_feed_carry_the_same_body(tmp_path: Path) -> None:
+    """The two formats must not diverge: a consumer's experience should not depend on which
+    one it happens to read."""
+    import json as json_mod
+
+    from aidaily.render import render_json_feed
+
+    rss = write_rss(make_digest(), tmp_path, site_url="https://site.example")
+    assert rss.ok
+    doc = json_mod.loads(
+        render_json_feed(make_digest(), {}, site_url="https://site.example")
+    )
+    item = doc["items"][0]
+    assert item["content_html"].strip()
+    assert item["content_text"].strip(), "nodes that cannot render HTML need plain text"
+    assert item["summary"].strip(), "chat integrations show the summary as the card body"
+    assert item["authors"], "attribution must survive into the feed"
 
 
 def test_site_writes_a_day_page_and_an_index(tmp_path: Path) -> None:
