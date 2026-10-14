@@ -97,7 +97,7 @@ def test_rss_is_well_formed_and_escapes(tmp_path: Path) -> None:
     result = write_rss(make_digest(), tmp_path, site_url="https://site.example")
     assert result.ok
 
-    root = ET.parse(tmp_path / "feed" / "zh.xml").getroot()
+    root = ET.parse(tmp_path / "site" / "feed" / "zh.xml").getroot()
     item = root.find("./channel/item")
     assert item is not None
     assert item.findtext("title") == "A story & <tag>"

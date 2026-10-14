@@ -209,7 +209,6 @@ def cmd_run(args: argparse.Namespace) -> int:
     brief_path = out_dir / f"{digest.date}.brief.md"
     deep_path = out_dir / f"{digest.date}.deep.md"
     json_path = out_dir / f"{digest.date}.json"
-    feed_path = out_dir / "feed" / "zh.json"
 
     brief_path.write_text(brief, encoding="utf-8")
     deep_path.write_text(deep, encoding="utf-8")
@@ -229,8 +228,12 @@ def cmd_run(args: argparse.Namespace) -> int:
         ),
         encoding="utf-8",
     )
-    feed_path.parent.mkdir(parents=True, exist_ok=True)
-    feed_path.write_text(feed, encoding="utf-8")
+    # The JSON Feed goes into `site/` with the RSS feed: that is the directory Pages
+    # deploys, and both feeds are linked from the page. Writing them to `digests/feed/`
+    # built them correctly and published neither.
+    feed_dir = out_dir / "site" / "feed"
+    feed_dir.mkdir(parents=True, exist_ok=True)
+    feed_dir.joinpath("zh.json").write_text(feed, encoding="utf-8")
 
     print(f"\nevents        : {digest.counts['events']}  (多源 {digest.counts['multi_source_events']})")
     print(f"brief         : {_rel(brief_path)}  ({len(brief)} chars)")

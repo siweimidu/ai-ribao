@@ -292,3 +292,63 @@ def test_story_links_are_present_and_come_from_captured_urls() -> None:
     source = (ROOT / "src" / "aidaily" / "site.py").read_text(encoding="utf-8")
     assert "event.all_urls" in source
     assert "insight.url" not in source and "insight['url']" not in source
+
+
+# =============================== build freshness =================================
+def test_committed_assets_match_their_source() -> None:
+    """`site/assets/` is the source; `data/digests/site/assets/` is the built copy.
+
+    Both must exist — the deploy step uploads the built directory as a self-contained
+    artifact, so it cannot reference the source path — which means they can drift. They
+    did: an edit to the source followed by a `--no-deliver` re-render silently measured
+    and screenshotted the old build, twice.
+
+    Drift is a real failure of the artifact, not a test artefact, so it fails here.
+    """
+    source_dir = ASSETS
+    built_dir = ROOT / "data" / "digests" / "site" / "assets"
+    assert built_dir.exists(), "产物目录不存在；跑一次完整分发"
+
+    for src in sorted(source_dir.iterdir()):
+        if not src.is_file():
+            continue
+        built = built_dir / src.name
+        assert built.exists(), f"{src.name} 未拷贝到产物目录"
+        assert built.read_bytes() == src.read_bytes(), (
+            f"{src.name} 与产物不一致；用 --no-llm 重渲染（--no-deliver 不会拷贝资源）"
+        )
+
+
+def test_every_linked_path_is_actually_deployed() -> None:
+    """A page that links a URL the deploy never uploads is a 404 with extra steps.
+
+    This shipped: the RSS and JSON feeds were written to `data/digests/feed/` while Pages
+    uploads `data/digests/site/`, so both feeds were built correctly, linked from every
+    page, and served 404. The feed is the n8n hand-off — an unpublished feed is no feed.
+    """
+    site_dir = ROOT / "data" / "digests" / "site"
+    assert site_dir.exists(), "产物目录不存在"
+
+    # Collect relative hrefs from the generated pages.
+    linked: set[str] = set()
+    for page in list(site_dir.glob("*.html")):
+        text = page.read_text(encoding="utf-8")
+        for href in re.findall(r'href="([^"#:]+)"', text):
+            if href.startswith(("http", "data:", "mailto:", "//")):
+                continue
+            linked.add(href.split("?", 1)[0])
+
+    assert linked, "页面里没有相对链接；生成器或正则变了形状"
+    missing = sorted(h for h in linked if not (site_dir / h).exists())
+    assert not missing, f"页面链接了未部署的路径：{missing}"
+
+
+def test_feeds_are_written_into_the_published_directory() -> None:
+    """Guards the fix above at the source level too, so a future edit to either writer
+    that moves the output back out of `site/` fails here rather than on the live site."""
+    main_src = (ROOT / "src" / "aidaily" / "__main__.py").read_text(encoding="utf-8")
+    publish_src = (ROOT / "src" / "aidaily" / "publish.py").read_text(encoding="utf-8")
+
+    assert '"site" / "feed"' in main_src, "JSON Feed must be written under site/"
+    assert 'out_dir / "site" / "feed" / "zh.xml"' in publish_src, "RSS must be written under site/"
+    assert 'out_dir / "feed"' not in publish_src

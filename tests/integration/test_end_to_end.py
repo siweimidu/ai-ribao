@@ -128,7 +128,10 @@ def test_full_chain_produces_a_publishable_digest(fixture_items: Path, isolated_
 
     brief = (out_dir / f"{TODAY}.brief.md").read_text(encoding="utf-8")
     deep = (out_dir / f"{TODAY}.deep.md").read_text(encoding="utf-8")
-    feed = json.loads((out_dir / "feed" / "zh.json").read_text(encoding="utf-8"))
+    # Feeds land under `site/`, which is the directory Pages deploys. They used to be
+    # written to `digests/feed/` and were therefore never published, while every page
+    # linked them.
+    feed = json.loads((out_dir / "site" / "feed" / "zh.json").read_text(encoding="utf-8"))
 
     # The duplicate is one entry carrying all three links, not three entries.
     assert brief.count("Nvidia unveils rack design") >= 1

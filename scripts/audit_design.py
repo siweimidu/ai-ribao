@@ -26,6 +26,33 @@ from playwright.async_api import async_playwright
 ROOT = Path(__file__).resolve().parent.parent
 
 
+def check_assets_fresh(site_dir: Path) -> list[str]:
+    """Refuse to measure a stale build.
+
+    This is the mistake that cost two rounds of debugging: `site/assets/` is the source,
+    `data/digests/site/assets/` is a copy made by `write_site`, and `--no-deliver` skips
+    that copy. Editing the source and then re-running an audit against the old copy
+    reports the numbers of a build that no longer exists — confidently, and wrong.
+
+    The copies must stay (the deploy step uploads `data/digests/site/` as a self-contained
+    artifact) so the fix is to make staleness loud instead of silent.
+    """
+    source = ROOT / "site" / "assets"
+    built = site_dir / "assets"
+    problems: list[str] = []
+    if not built.exists():
+        return [f"缺少 {built.relative_to(ROOT)}：先跑一次完整分发（不要用 --no-deliver）"]
+    for src in sorted(source.iterdir()):
+        if not src.is_file():
+            continue
+        target = built / src.name
+        if not target.exists():
+            problems.append(f"{target.name} 未拷贝到产物目录")
+        elif target.read_bytes() != src.read_bytes():
+            problems.append(f"{target.name} 与源不一致（源 {src.stat().st_size:,}B，产物 {target.stat().st_size:,}B）")
+    return problems
+
+
 async def audit(url: str, width: int, height: int, label: str) -> dict:
     async with async_playwright() as p:
         browser = await p.chromium.launch()
@@ -102,9 +129,21 @@ def report(d: dict) -> None:
 
 
 async def main() -> int:
+    day = sys.argv[2] if len(sys.argv) > 2 else "2026-10-14"
+    site_dir = ROOT / "data" / "digests" / "site"
     url = sys.argv[1] if len(sys.argv) > 1 else (
-        "file:///" + str(ROOT / "data" / "digests" / "site" / "2026-10-14.html").replace("\\", "/")
+        "file:///" + str(site_dir / f"{day}.html").replace("\\", "/")
     )
+
+    stale = check_assets_fresh(site_dir)
+    if stale:
+        print("❌ 产物是旧的，测量结果不可信：")
+        for problem in stale:
+            print(f"   · {problem}")
+        print("\n修法：python -m aidaily run --from-items data/raw/items.jsonl --no-llm")
+        return 2
+    print("✅ 资源与源一致，可以测量")
+
     results = []
     for width, height, label in ((1440, 1000, "桌面"), (1024, 900, "小桌面"), (390, 844, "移动")):
         results.append(await audit(url, width, height, label))

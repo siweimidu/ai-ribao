@@ -96,7 +96,11 @@ def write_rss(digest: Digest, out_dir: Path, *, site_url: str) -> DeliveryResult
         f"<lastBuildDate>{digest.generated_at.strftime('%a, %d %b %Y %H:%M:%S +0000')}</lastBuildDate>"
         f"<description>每日 AI 资讯聚合</description>{''.join(items)}</channel></rss>\n"
     )
-    target = out_dir / "feed" / "zh.xml"
+    # Written into `site/` because that is the directory Pages deploys. It used to go to
+    # `digests/feed/`, which meant the feed was built correctly and never published: the
+    # pages linked `feed/zh.xml` and the URL 404'd. RSS is the n8n hand-off, so a feed
+    # that exists but is not served is the same as no feed.
+    target = out_dir / "site" / "feed" / "zh.xml"
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(xml, encoding="utf-8")
     return DeliveryResult("rss", True, f"{target.name}: {len(items)} items")
