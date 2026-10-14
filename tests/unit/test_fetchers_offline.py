@@ -356,7 +356,34 @@ def test_explicit_unimplemented_adapter_is_not_silently_swapped(spec_factory) ->
 def test_registry_placeholder_adapter_falls_back_by_type(spec_factory) -> None:
     assert resolve_adapter(spec_factory(source_type="api", adapter="ApiFetcher")) == "JsonApiFetcher"
     assert resolve_adapter(spec_factory(source_type="rss", adapter="ApiFetcher")) == "RssFetcher"
-    assert resolve_adapter(spec_factory(source_type="scrape", adapter="HtmlFetcher")) is None
+    assert resolve_adapter(spec_factory(source_type="scrape", adapter="ApiFetcher")) == "HtmlFetcher"
+
+
+def test_html_sources_now_resolve_to_the_html_fetcher(spec_factory) -> None:
+    """`HtmlFetcher` used to be a placeholder, and this asserted it resolved to `None`.
+
+    That was true when it did not exist: the registry generator wrote `HtmlFetcher` for
+    every scrape source, the resolver treated the name as "no choice made", and the generic
+    JSON parser was handed an HTML page. Every such source reported a healthy HTTP 200 with
+    zero items.
+
+    It is implemented now, so naming it means what it says -- and this asserts the opposite
+    of what it used to, deliberately, because the previous behaviour was the bug.
+    """
+    assert resolve_adapter(spec_factory(source_type="scrape", adapter="HtmlFetcher")) == "HtmlFetcher"
+    assert resolve_adapter(spec_factory(source_type="api", adapter="HtmlFetcher")) == "HtmlFetcher"
+    # And by source_type alone, for a registry row that names no adapter at all.
+    assert resolve_adapter(spec_factory(source_type="scrape", adapter="")) == "HtmlFetcher"
+
+
+def test_an_unknown_adapter_name_is_still_refused(spec_factory) -> None:
+    """The placeholder list shrank; it must not have become "accept anything".
+
+    A name nobody implements is a statement that a specific reader is required, and falling
+    back to a generic parser would reproduce exactly the silent-zero bug above.
+    """
+    assert resolve_adapter(spec_factory(source_type="api", adapter="SomeFetcherNobodyWrote")) is None
+    assert resolve_adapter(spec_factory(source_type="rss", adapter="PyTrendsFetcher")) is None
 
 
 def test_implemented_adapter_is_used_as_named(spec_factory) -> None:

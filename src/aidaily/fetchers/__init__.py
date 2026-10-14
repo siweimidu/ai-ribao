@@ -12,6 +12,7 @@ from ..http import HttpClient
 from ..models import SourceSpec
 from .base import BaseFetcher, SourceResult
 from .github_trending import GitHubTrendingFetcher
+from .html import HtmlFetcher
 from .jsonapi import JsonApiFetcher
 from .reddit import RedditFetcher, json_url_to_html
 from .rss import RssFetcher
@@ -23,6 +24,7 @@ ADAPTERS: dict[str, type[BaseFetcher]] = {
     "RedditFetcher": RedditFetcher,
     "JsonApiFetcher": JsonApiFetcher,
     "GitHubTrendingFetcher": GitHubTrendingFetcher,
+    "HtmlFetcher": HtmlFetcher,
 }
 
 #: fallback when the registry names an adapter we do not have yet
@@ -31,11 +33,20 @@ _BY_SOURCE_TYPE = {
     "atom": "RssFetcher",
     "jsonfeed": "JsonFeedFetcher",
     "api": "JsonApiFetcher",
+    # A scrape source is HTML by definition. Without this it fell through to the JSON
+    # parser, which cannot read HTML -- so a page that fetched fine produced zero items and
+    # looked healthy.
+    "scrape": "HtmlFetcher",
+    "web": "HtmlFetcher",
 }
 
 #: Names the *registry generator* assigns in bulk, i.e. "no specific adapter chosen".
 #: A human naming anything else is stating a requirement.
-_PLACEHOLDER_ADAPTERS = {"ApiFetcher", "HtmlFetcher", "FeedFetcher", ""}
+#:
+#: `HtmlFetcher` used to be listed here as a placeholder, because it did not exist yet: the
+#: generator wrote it for every scrape source and the resolver swapped it for the generic
+#: JSON parser. It is now implemented, so naming it means what it says.
+_PLACEHOLDER_ADAPTERS = {"ApiFetcher", "FeedFetcher", ""}
 
 
 def resolve_adapter(spec: SourceSpec) -> str | None:
@@ -66,6 +77,7 @@ __all__ = [
     "ADAPTERS",
     "BaseFetcher",
     "GitHubTrendingFetcher",
+    "HtmlFetcher",
     "JsonApiFetcher",
     "RedditFetcher",
     "RssFetcher",

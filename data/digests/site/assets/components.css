@@ -862,6 +862,119 @@
 .rail__sub button[data-copy] { position: relative; }
 .rail__sub button[data-copy][data-copied="true"] { color: var(--accent); font-weight: 600; }
 
+/* --- 概览 ----------------------------------------------------------------------- */
+/* The day at a glance. Deliberately a numbered list of real headlines rather than a
+   generated paragraph: a summary here would be a second, unchecked claim about the day,
+   and it would drift from the list below it. */
+.ov { list-style: none; margin: 0; padding: 0; display: grid; gap: calc(var(--unit) * 1); }
+
+.ov a {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: calc(var(--unit) * 3);
+  align-items: baseline;
+  padding: calc(var(--unit) * 2.5) calc(var(--unit) * 3);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: background var(--dur-fast) var(--ease-out-circ),
+              border-color var(--dur-fast) var(--ease-out-circ);
+}
+
+.ov a:hover { background: var(--muted); border-color: var(--border); }
+
+.ov__no {
+  font-size: var(--fs-small);
+  font-weight: 640;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.ov b { font-weight: 620; line-height: 1.5; }
+
+.ov__detail {
+  display: block;
+  margin-top: calc(var(--unit) * 0.5);
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+  line-height: 1.6;
+}
+
+.ov__foot {
+  margin: calc(var(--unit) * 4) 0 0;
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+}
+
+/* --- TOC 序号与概览项 ------------------------------------------------------------ */
+.toc__no {
+  display: inline-block;
+  min-width: 1.9em;
+  color: var(--muted-fg);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--fs-micro);
+}
+
+.toc__overview {
+  font-weight: 640;
+  color: var(--fg);
+}
+
+/* --- 待翻译条目 ------------------------------------------------------------------ */
+/* Items whose source is foreign and which the model did not reach -- usually because the
+   quota ran out mid-run. Collapsed by default and labelled: present so nothing is lost,
+   separated so an English line never reads as the digest's own writing. */
+.untranslated {
+  margin-top: calc(var(--unit) * 12);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: calc(var(--unit) * 4) calc(var(--unit) * 5);
+  background: var(--muted);
+}
+
+.untranslated summary {
+  cursor: pointer;
+  font-weight: 620;
+  color: var(--muted-fg);
+}
+
+.untranslated p {
+  margin: calc(var(--unit) * 3) 0;
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+  line-height: 1.7;
+  max-width: 70ch;
+}
+
+.untranslated ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: calc(var(--unit) * 2);
+}
+
+.untranslated li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: calc(var(--unit) * 3);
+  align-items: baseline;
+  font-size: var(--fs-small);
+}
+
+.untranslated__no {
+  color: var(--muted-fg);
+  font-variant-numeric: tabular-nums;
+}
+
+.untranslated a { word-break: break-word; }
+.untranslated a:hover { color: var(--accent); }
+.untranslated__src { color: var(--muted-fg); font-size: var(--fs-micro); white-space: nowrap; }
+
+@media (max-width: 620px) {
+  .untranslated li { grid-template-columns: auto minmax(0, 1fr); }
+  .untranslated__src { grid-column: 2; }
+}
+
 /* --- 页脚 ------------------------------------------------------------------------ */
 .foot {
   margin-top: calc(var(--unit) * 14);

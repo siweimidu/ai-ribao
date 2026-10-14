@@ -118,7 +118,21 @@ async def test_feeds_sharing_a_dedup_group_are_one_source(make_item) -> None:
 
 
 @async_test
-async def test_no_router_degrades_to_singletons_without_guessing(make_item) -> None:
+async def test_no_router_merges_only_what_is_unambiguous(make_item) -> None:
+    """Policy change, and the reasoning matters.
+
+    This test used to assert that **nothing** merged without the judge -- "degrade to
+    singletons rather than guess". The intent was sound but the consequence was not: on a
+    real day that left thirteen separate reports of the Gemini 4 Argon launch, and the
+    diversity pass then penalised every one of them for repeating a topic, so the day's
+    biggest story scattered across positions 1, 41, 55, 56, 57, 59 and 60 of 60.
+
+    The conservative choice is not "merge nothing", it is "merge what is unambiguous". Here
+    that means two headlines both dominated by the same subject, with similar wording.
+
+    What has NOT changed is the refusal to guess at genuinely different stories -- asserted
+    below, because a policy that merges everything is as wrong as one that merges nothing.
+    """
     a = make_item(title="OpenAI ships GPT-6 model", url="https://a.example/1", item_id="i1")
     b = make_item(title="OpenAI GPT-6 benchmarks leak", url="https://b.example/2", item_id="i2")
 
@@ -126,9 +140,27 @@ async def test_no_router_degrades_to_singletons_without_guessing(make_item) -> N
     units = units_from_result(stage, [a, b])
     events, result = await build_events(units, router=None)
 
+    assert len(events) == 1, "two reports of one GPT-6 story are one event"
+    assert result.judged == 0, "no judge ran, and the result must not claim one did"
+    assert result.accepted_without_judge == 1, "the merge is attributed to the fallback"
+
+
+@async_test
+async def test_no_router_keeps_unrelated_stories_apart(make_item) -> None:
+    """The other half of the policy: a fallback that merges everything is not a fallback.
+
+    These two share no entity, so no amount of overlap passes the threshold -- which is the
+    property that stops the fallback from becoming "assume it is all one story".
+    """
+    a = make_item(title="Anthropic publishes a safety report", url="https://a.example/1", item_id="i1")
+    b = make_item(title="Nvidia announces quarterly earnings", url="https://b.example/2", item_id="i2")
+
+    stage = l2_cluster([a, b])
+    units = units_from_result(stage, [a, b])
+    events, result = await build_events(units, router=None)
+
     assert len(events) == 2
-    assert result.judged == 0
-    assert all(e.evidence_level == "single_source" for e in events)
+    assert result.accepted_without_judge == 0
 
 
 @async_test

@@ -144,3 +144,152 @@ overrides:
   "rss:aihot-news":
     dedup_group: "aihot"
     reason: "与增补源 rss:aihot-news-picks 是同一批内容（全站动态 vs 编辑精选），归为一组避免重复计入独立来源数"
+
+  # ══ 全部启用：实测可用，并指到真正能读它的适配器 ═══════════════════════════════
+  #
+  # 这 2 个源此前被标成 map 到 JsonApiFetcher —— 而它们是 HTML 页面，JSON 解析器读不了，
+  # 于是「HTTP 200 但 0 条」：看起来采集成功，实际什么也没拿到。
+  # 现在 HtmlFetcher 已实现，它们指向正确的适配器。
+  #
+  # 实测（2026-10-14，curl -L --compressed）：
+  #   aibase.com      200 / 197KB HTML / HtmlFetcher 提取 40 条真实文章
+  #   xinzhiyuan.ai   200 / 1KB HTML（页面很薄，可能是 JS 渲染；启用后由采集结果说明）
+  "api:aibase-com":
+    enabled: true
+    adapter: HtmlFetcher
+    reason: >-
+      2026-10-14 实测 200，HtmlFetcher 提取 40 条文章（含标题与日期）。
+      此前被映射到 JsonApiFetcher 而读不出内容 —— 是适配器缺失，不是源的问题。
+  "api:xinzhiyuan-ai":
+    enabled: true
+    adapter: HtmlFetcher
+    reason: >-
+      2026-10-14 实测 200。页面仅 1KB，可能是 JS 渲染；启用后以实际采集条数为准，
+      若长期为 0 再按证据禁用。
+
+  # ══ 实测不可用：保留但写明原因（附测量日期与结果）═══════════════════════════════
+  #
+  # 这些源是审计阶段带进来的，禁用时**没有记录任何理由** —— 下一个维护者无法分辨
+  # 「深思熟虑」还是「手滑」。补上证据。
+  "api:jiqizhixin-ai":
+    enabled: false
+    reason: "2026-10-14 实测连接失败（curl 000），域名不可达"
+  "api:qbit-ai":
+    enabled: false
+    reason: "2026-10-14 实测连接失败（curl 000），域名不可达"
+  "api:xiaohu-ai":
+    enabled: false
+    reason: "2026-10-14 实测 403 Forbidden，对方拒绝非浏览器访问"
+  "api:huggingface-co-papers":
+    enabled: false
+    reason: >-
+      2026-10-14 实测 curl 000。该源为 HTML 列表页，需换用 HtmlFetcher 并确认可达后重试
+  "api:api-producthunt-com-graphql":
+    enabled: false
+    reason: "2026-10-14 实测 404，GraphQL 端点已变更"
+  "api:api-follow-is":
+    enabled: false
+    reason: >-
+      2026-10-14 实测 301 重定向且跟随後返回 0 字节，需要额外的鉴权或头部；
+      属「需要用户提供」的一类，按约定搁置
+  "api:api-follow-is-53a9e3":
+    enabled: false
+    reason: "同 api:api-follow-is —— 2026-10-14 实测 301 + 0 字节，需鉴权（搁置）"
+  "api:api-follow-is-b0b06f":
+    enabled: false
+    reason: "同 api:api-follow-is —— 2026-10-14 实测 301 + 0 字节，需鉴权（搁置）"
+  "api:api-follow-is-b77cbe":
+    enabled: false
+    reason: "同 api:api-follow-is —— 2026-10-14 实测 301 + 0 字节，需鉴权（搁置）"
+  "api:api-tavily-com-search":
+    enabled: false
+    reason: "2026-10-14 实测 401，需要 TAVILY_API_KEY（需用户提供，搁置）"
+
+  # ══ Horizon preset/example 源：逐个实测后处理 ═════════════════════════════════════
+  #
+  # 这 15 个源来自 Horizon 的 preset 配置，被标成 `preset`/`example` —— 那是**审计来源**标签，
+  # 不是内容分类。这不只是命名问题：`source_weights` 给 preset 0.6、example 0.3，
+  # 于是一条真实的 NVIDIA 博客会被当成模板占位符来排序。所以下面同时修正了分类。
+  #
+  # 实测方式：curl -L --compressed，2026-10-14。
+
+  # 实测可用（8 个）：启用并归入真实分类
+  "rss:developer-nvidia-com-tag-cuda":
+    enabled: true
+    category: dev
+    language: en
+    reason: >-
+      2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example），
+      此处改为 dev，使其按真实来源权重参与排序。
+  "rss:vllm-ai-blog":
+    enabled: true
+    category: dev
+    language: en
+    reason: >-
+      2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example），
+      此处改为 dev，使其按真实来源权重参与排序。
+  "rss:brendangregg-com-blog":
+    enabled: true
+    category: dev
+    language: en
+    reason: >-
+      2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example），
+      此处改为 dev，使其按真实来源权重参与排序。
+  "rss:lwn-net-headlines":
+    enabled: true
+    category: dev
+    language: en
+    reason: >-
+      2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example），
+      此处改为 dev，使其按真实来源权重参与排序。
+  "rss:mshibanami-github-io-githubtrendingrss-daily":
+    enabled: true
+    category: dev
+    language: en
+    reason: >-
+      2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example），
+      此处改为 dev，使其按真实来源权重参与排序。
+  "rss:seangoedecke-com":
+    enabled: true
+    category: community
+    language: en
+    reason: >-
+      2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example），
+      此处改为 community，使其按真实来源权重参与排序。
+  "rss:search-cnbc-com-combinedcms-view":
+    enabled: true
+    category: media
+    language: en
+    reason: >-
+      2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example），
+      此处改为 media，使其按真实来源权重参与排序。
+  "rss:hackaday-com":
+    enabled: true
+    category: media
+    language: en
+    reason: >-
+      2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example），
+      此处改为 media，使其按真实来源权重参与排序。
+
+  # 实测不可用（7 个）：保留，写明测量结果
+  "rss:lwn-net-headlines-full-text":
+    enabled: false
+    reason: 2026-10-14 实测 403。URL 含 ${LWN_KEY} 订阅凭证 —— 属「需要用户提供」，按约定搁置
+  "rss:api-quantamagazine-org":
+    enabled: false
+    reason: 2026-10-14 实测连接失败（curl 000）
+  "rss:css-tricks-com":
+    enabled: false
+    reason: 2026-10-14 实测连接失败（curl 000）
+  "rss:krebsonsecurity-com":
+    enabled: false
+    reason: 2026-10-14 实测连接失败（curl 000）
+  "rss:nature-com-nature":
+    enabled: false
+    reason: 2026-10-14 实测 301 重定向后无内容，需确认新地址
+  "rss:schneier-com":
+    enabled: false
+    reason: 2026-10-14 实测连接失败（curl 000）
+  "rss:wechat2rss-xlab-app-7131b577c61365cb47e81000738c10d872685908":
+    enabled: false
+    reason: 2026-10-14 实测连接失败（curl 000）；该服务为第三方自建实例，稳定性无保证

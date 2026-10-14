@@ -23,6 +23,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 
 from aidaily.analyze import EventInsight  # noqa: E402
+from aidaily.collect import read_items_jsonl  # noqa: E402
 from aidaily.models import Digest, NormalizedItem  # noqa: E402
 from aidaily.publish import write_rss, write_site  # noqa: E402
 from aidaily.render import render_brief, render_deep, render_json_feed  # noqa: E402
@@ -47,7 +48,20 @@ def load(path: Path) -> tuple[Digest, dict[str, EventInsight], dict[str, Normali
     for event_id, raw in (payload.get("insights") or {}).items():
         insights[event_id] = EventInsight(**raw)
 
-    return digest, insights, {}
+    # The raw items, keyed by id.
+    #
+    # This used to return {} -- an empty map. Nothing failed loudly, but every feature that
+    # looks up a story's member items silently did nothing: most visibly, a headline whose
+    # model-written title was still English could not fall back to the Chinese title of a
+    # member outlet, so the day's biggest story rendered in English and was moved into the
+    # untranslated block.
+    items: dict[str, NormalizedItem] = {}
+    raw_path = ROOT / "data" / "raw" / "items.jsonl"
+    if raw_path.exists():
+        for item in read_items_jsonl(str(raw_path)):
+            items[item.item_id] = item
+
+    return digest, insights, items
 
 
 def load_sources() -> list[dict]:

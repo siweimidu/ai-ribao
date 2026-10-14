@@ -2,509 +2,283 @@
  "digest": {
   "date": "2026-10-14",
   "kind": "deep",
-  "generated_at": "2026-10-14T03:40:46.762571Z",
-  "window_start": "2026-10-13T01:40:46.762571Z",
-  "window_end": "2026-10-14T03:40:46.762571Z",
-  "headline": "Anthropic 团队开发自研源码控制系统 Scion 代替 Git",
+  "generated_at": "2026-10-14T07:57:04.696257Z",
+  "window_start": "2026-10-13T05:57:04.696257Z",
+  "window_end": "2026-10-14T07:57:04.696257Z",
+  "headline": "Gemini 4 Argon 全面开放，实测难敌 Claude Opus 5.5 与 GPT-6 Astra",
   "top_events": [
    {
-    "event_id": "e66f894e87c56c8",
-    "title": "Google DeepMind and Singapore Government announce new AI tool to protect citizens against scams",
+    "event_id": "e3d7c0693e413c8",
+    "title": "Google finally releases Gemini 4 Argon",
     "member_item_ids": [
-     "a5c0d25327f0c190"
+     "1efd2c4cef6085ce",
+     "64c746da5c16e38d",
+     "66ce16e4d82ae0f3",
+     "6b2f66e0be4eeded",
+     "931c5945d3e11b7c",
+     "9576ce2dabbd947d",
+     "a81a32049694dcbb",
+     "e176eb62beed1b61",
+     "fc5c1f8a8af5a82a"
     ],
-    "primary_item_id": "a5c0d25327f0c190",
+    "primary_item_id": "931c5945d3e11b7c",
     "source_ids": [
-     "rss:deepmind-google-blog"
+     "api:hn-algolia-com-search",
+     "rss:aihot-news-picks",
+     "rss:deepmind-google-blog",
+     "rss:hnrss-org-frontpage",
+     "rss:theverge-com-ai-artificial-intelligence"
     ],
     "all_urls": [
-     "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/"
+     "https://aihot.news/items/d4oyzg3qte4pt0ywsonolctwf",
+     "https://aihot.news/items/smxxtw5ca2c9jscojk4ppe5hf",
+     "https://deepmind.google/blog/gemini-4-argon-for-robotics/",
+     "https://deepmind.google/blog/introducing-gemini-4-argon/",
+     "https://deepmind.google/models/gemini/",
+     "https://developers.googleblog.com/gemini-4-argon-for-robotics/",
+     "https://www.theverge.com/ai-artificial-intelligence/1009862/google-releases-gemini-4-argon",
+     "https://www.theverge.com/tech/1009066/google-play-vibe-coded-android-apps-launch"
     ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
+    "independent_source_count": 5,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
     "published_range": [
-     "2026-10-14T02:00:14Z",
-     "2026-10-14T02:00:14Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 2.059757,
-    "rank_components": {
-     "source_weight": 1.5,
-     "corroboration": 1.0,
-     "substance": 0.278,
-     "substance_chars": 167.0,
-     "engagement": 0.0,
-     "recency": 0.931,
-     "title_quality": 1.0,
-     "score": 2.059757,
-     "topic_penalty": 1.0,
-     "final_score": 2.059757
-    }
-   },
-   {
-    "event_id": "ef82b85eedd06ee",
-    "title": "Redesigning source control at Anthropic",
-    "member_item_ids": [
-     "7a7d9ceebb53d87d",
-     "c1f7648caf84ab14"
-    ],
-    "primary_item_id": "c1f7648caf84ab14",
-    "source_ids": [
-     "rss:aihot-news",
-     "rss:simonwillison-net-everything"
-    ],
-    "all_urls": [
-     "https://aihot.news/items/znq5591d0ans7l79658wn4dys",
-     "https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/"
-    ],
-    "independent_source_count": 2,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-13T23:00:06Z",
-     "2026-10-13T23:00:06Z"
+     "2026-10-13T16:00:00Z",
+     "2026-10-13T17:00:00Z"
     ],
     "unique_facts": {},
     "confidence": 0.9,
     "evidence_level": "multi_source",
     "needs_review": false,
-    "rank_score": 1.978468,
+    "rank_score": 105.851248,
     "rank_components": {
-     "source_weight": 1.2,
-     "corroboration": 1.585,
+     "source_weight": 1.5,
+     "source_damped": 1.1067,
      "substance": 1.0,
-     "substance_chars": 2216.0,
-     "engagement": 0.0,
-     "recency": 0.822,
+     "substance_chars": 686.0,
      "title_quality": 1.0,
-     "score": 1.978468,
+     "heat": 0.956474,
+     "h_corroboration": 0.9208,
+     "h_magnitude": 1.0,
+     "h_engagement": 1.0,
+     "h_reach": 1.0,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.6951,
+     "significance": 3.2,
+     "frontier_model_release": 3.2,
+     "sig_model": 1.0,
+     "sig_release": 1.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 1.0,
+     "score": 105.851248,
      "topic_penalty": 1.0,
-     "final_score": 1.978468
+     "final_score": 105.851248
     }
    },
    {
-    "event_id": "ea9f702a23f7c51",
-    "title": "Grok Bot 邮件多智能体用例",
+    "event_id": "eb38ec17a2adccd",
+    "title": "Google DeepMind 用 Gemma 构建端侧反诈骗检测",
     "member_item_ids": [
-     "c3de2a853bcc9e5a"
+     "27fe1c5a13edafe6",
+     "a5c0d25327f0c190",
+     "c865d2ec11e9a0b7",
+     "ebb4011cb18622fb"
     ],
-    "primary_item_id": "c3de2a853bcc9e5a",
+    "primary_item_id": "27fe1c5a13edafe6",
     "source_ids": [
-     "rss:aihot-news"
-    ],
-    "all_urls": [
-     "https://aihot.news/items/k34wzu8kjh65jmyq0udod9yue"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T02:50:51Z",
-     "2026-10-14T02:50:51Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.798295,
-    "rank_components": {
-     "source_weight": 1.2,
-     "corroboration": 1.0,
-     "substance": 0.452,
-     "substance_chars": 271.0,
-     "engagement": 0.0,
-     "recency": 0.965,
-     "title_quality": 1.0,
-     "score": 1.798295,
-     "topic_penalty": 1.0,
-     "final_score": 1.798295
-    }
-   },
-   {
-    "event_id": "e0a2598dd178c5a",
-    "title": "Xbow 用 GPT-5.6 挖出 Chrome 三个漏洞，获 Google 25 万美元全链奖励",
-    "member_item_ids": [
-     "71ad7f0002e4ae79"
-    ],
-    "primary_item_id": "71ad7f0002e4ae79",
-    "source_ids": [
-     "rss:aihot-news"
-    ],
-    "all_urls": [
-     "https://aihot.news/items/w0kr5nvs73elhfd23vj0vm8hi"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T02:58:37Z",
-     "2026-10-14T02:58:37Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.751539,
-    "rank_components": {
-     "source_weight": 1.2,
-     "corroboration": 1.0,
-     "substance": 0.343,
-     "substance_chars": 206.0,
-     "engagement": 0.0,
-     "recency": 0.97,
-     "title_quality": 1.0,
-     "score": 1.751539,
-     "topic_penalty": 1.0,
-     "final_score": 1.751539
-    }
-   },
-   {
-    "event_id": "ea2035490dc7767",
-    "title": "广电总局“AI 魔改”视频治理：9 月清理违规视频近 1.3 万条、处置账号 30 余个",
-    "member_item_ids": [
-     "cabb984945e92357"
-    ],
-    "primary_item_id": "cabb984945e92357",
-    "source_ids": [
-     "rss:aihot-news"
-    ],
-    "all_urls": [
-     "https://aihot.news/items/ztibf3wgcvr415zkgdaubnz3c"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T02:12:34Z",
-     "2026-10-14T02:12:34Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.710368,
-    "rank_components": {
-     "source_weight": 1.2,
-     "corroboration": 1.0,
-     "substance": 0.373,
-     "substance_chars": 224.0,
-     "engagement": 0.0,
-     "recency": 0.939,
-     "title_quality": 1.0,
-     "score": 1.710368,
-     "topic_penalty": 1.0,
-     "final_score": 1.710368
-    }
-   },
-   {
-    "event_id": "e76db7400593334",
-    "title": "OpenBMB 发布 MiniCPM-V 4.7，35B-A3B MoE 多模态模型在手机上仅占 3GB 内存",
-    "member_item_ids": [
-     "134460c5c6d2f0d9"
-    ],
-    "primary_item_id": "134460c5c6d2f0d9",
-    "source_ids": [
-     "rss:aihot-news"
-    ],
-    "all_urls": [
-     "https://aihot.news/items/j2dwv051tuwdwu8nd28d1q9p7"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T02:48:23Z",
-     "2026-10-14T02:48:23Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.706722,
-    "rank_components": {
-     "source_weight": 1.2,
-     "corroboration": 1.0,
-     "substance": 0.282,
-     "substance_chars": 169.0,
-     "engagement": 0.0,
-     "recency": 0.963,
-     "title_quality": 1.0,
-     "score": 1.706722,
-     "topic_penalty": 1.0,
-     "final_score": 1.706722
-    }
-   },
-   {
-    "event_id": "ea556a08208c3ff",
-    "title": "企业微信升级 5.0.12 版本，内置 WorkBuddy 对话助手",
-    "member_item_ids": [
-     "216a75559a3f9b87"
-    ],
-    "primary_item_id": "216a75559a3f9b87",
-    "source_ids": [
-     "rss:aihot-news"
-    ],
-    "all_urls": [
-     "https://aihot.news/items/ljduhw3ygl9fbfxazt66gm99d"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T02:41:43Z",
-     "2026-10-14T02:41:43Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.701225,
-    "rank_components": {
-     "source_weight": 1.2,
-     "corroboration": 1.0,
-     "substance": 0.287,
-     "substance_chars": 172.0,
-     "engagement": 0.0,
-     "recency": 0.959,
-     "title_quality": 1.0,
-     "score": 1.701225,
-     "topic_penalty": 1.0,
-     "final_score": 1.701225
-    }
-   },
-   {
-    "event_id": "ed58b5de01f057e",
-    "title": "Anthropic 用 5 个月将内部 monorepo 从 Git 迁移到自研版本控制系统 Scion",
-    "member_item_ids": [
-     "512609c641202f38"
-    ],
-    "primary_item_id": "512609c641202f38",
-    "source_ids": [
-     "rss:aihot-news"
-    ],
-    "all_urls": [
-     "https://aihot.news/items/r6nn05zme1z711ory2cl7hmo8"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T01:49:01Z",
-     "2026-10-14T01:49:01Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.69969,
-    "rank_components": {
-     "source_weight": 1.2,
-     "corroboration": 1.0,
-     "substance": 0.408,
-     "substance_chars": 245.0,
-     "engagement": 0.0,
-     "recency": 0.923,
-     "title_quality": 1.0,
-     "score": 1.69969,
-     "topic_penalty": 1.0,
-     "final_score": 1.69969
-    }
-   },
-   {
-    "event_id": "eca713df852b07e",
-    "title": "Gemini 4 Argon for Robotics",
-    "member_item_ids": [
-     "64c746da5c16e38d",
-     "66ce16e4d82ae0f3"
-    ],
-    "primary_item_id": "66ce16e4d82ae0f3",
-    "source_ids": [
-     "api:hn-algolia-com-search",
+     "rss:aihot-news",
      "rss:deepmind-google-blog"
     ],
     "all_urls": [
-     "https://deepmind.google/blog/gemini-4-argon-for-robotics/",
-     "https://developers.googleblog.com/gemini-4-argon-for-robotics/"
+     "https://aihot.news/items/cn2zpsopcfepfo7sjij0n30f4",
+     "https://aihot.news/items/h9cdmwv98lxcr0yvuf83j0cno",
+     "https://aihot.news/items/xardfzy6zj0cp97wgubmeerwq",
+     "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/"
     ],
     "independent_source_count": 2,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
     "published_range": [
-     "2026-10-13T16:55:47Z",
-     "2026-10-13T16:55:47Z"
+     "2026-10-14T00:29:10Z",
+     "2026-10-14T02:05:00Z"
     ],
     "unique_facts": {},
-    "confidence": 1.0,
+    "confidence": 0.9,
     "evidence_level": "multi_source",
     "needs_review": false,
-    "rank_score": 1.693723,
+    "rank_score": 45.852931,
     "rank_components": {
      "source_weight": 1.5,
-     "corroboration": 1.585,
-     "substance": 0.045,
-     "substance_chars": 27.0,
-     "engagement": 0.77,
-     "recency": 0.653,
+     "source_damped": 1.1067,
+     "substance": 0.342,
+     "substance_chars": 205.0,
      "title_quality": 1.0,
-     "score": 1.693723,
+     "heat": 0.414328,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.6826,
+     "h_substance": 0.5125,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7898,
+     "significance": 1.0,
+     "sig_model": 1.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 1.0,
+     "score": 45.852931,
      "topic_penalty": 1.0,
-     "final_score": 1.693723
+     "final_score": 45.852931
     }
    },
    {
-    "event_id": "e5aa373e79c8494",
-    "title": "豆包手机助手宣布陆续放开第三方应用屏幕自动化操作权限，阿里、腾讯系等 App 明确拒绝",
+    "event_id": "ef62e6267ad9fae",
+    "title": "Cyberattack halts construction of tunnel between Denmark and Germany",
     "member_item_ids": [
-     "9c626fa4ad491c4c"
+     "153715f872ee799d"
     ],
-    "primary_item_id": "9c626fa4ad491c4c",
+    "primary_item_id": "153715f872ee799d",
     "source_ids": [
-     "rss:aihot-news"
+     "api:hn-algolia-com-search"
     ],
     "all_urls": [
-     "https://aihot.news/items/ozs5y80l5cpy45igqa71uohns"
+     "https://ua.news/en/world/kiberataka-zupinila-budivnitstvo-tuneliu-mizh-daniieiu-ta-nimechchinoiu-rmf24"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
     "published_range": [
-     "2026-10-14T02:22:35Z",
-     "2026-10-14T02:22:35Z"
+     "2026-10-13T16:24:15Z",
+     "2026-10-13T16:24:15Z"
     ],
     "unique_facts": {},
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 1.689338,
+    "rank_score": 38.310489,
+    "rank_components": {
+     "source_weight": 0.9,
+     "source_damped": 0.974,
+     "substance": 0.113,
+     "substance_chars": 68.0,
+     "title_quality": 1.0,
+     "heat": 0.39333,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.7338,
+     "h_reach": 0.4307,
+     "h_substance": 0.17,
+     "h_velocity": 1.0,
+     "h_freshness": 0.6989,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 38.310489,
+     "topic_penalty": 1.0,
+     "final_score": 38.310489
+    }
+   },
+   {
+    "event_id": "e04b133080b6251",
+    "title": "How artificial neural networks build their own learning machinery",
+    "member_item_ids": [
+     "45301f0705a9d66f"
+    ],
+    "primary_item_id": "45301f0705a9d66f",
+    "source_ids": [
+     "rss:news-mit-edu-topic-mitartificial-intelligence2-rss"
+    ],
+    "all_urls": [
+     "https://news.mit.edu/2026/how-artificial-neural-networks-build-their-own-learning-machinery-1013"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-13T21:00:00Z",
+     "2026-10-13T21:00:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 37.617114,
     "rank_components": {
      "source_weight": 1.2,
-     "corroboration": 1.0,
-     "substance": 0.308,
-     "substance_chars": 185.0,
-     "engagement": 0.0,
-     "recency": 0.946,
-     "title_quality": 1.0,
-     "score": 1.689338,
-     "topic_penalty": 1.0,
-     "final_score": 1.689338
-    }
-   },
-   {
-    "event_id": "eb4d06d6d67d8ae",
-    "title": "Anthropic 红队研究：小型 AI 模型或可在无数据中心情况下于 IoT 设备间自我复制",
-    "member_item_ids": [
-     "36f0149616dbf323"
-    ],
-    "primary_item_id": "36f0149616dbf323",
-    "source_ids": [
-     "rss:aihot-news"
-    ],
-    "all_urls": [
-     "https://aihot.news/items/evw4hug7sw1r9wznyj7cnrxrb"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T02:27:42Z",
-     "2026-10-14T02:27:42Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.672412,
-    "rank_components": {
-     "source_weight": 1.2,
-     "corroboration": 1.0,
-     "substance": 0.263,
-     "substance_chars": 158.0,
-     "engagement": 0.0,
-     "recency": 0.949,
-     "title_quality": 1.0,
-     "score": 1.672412,
-     "topic_penalty": 1.0,
-     "final_score": 1.672412
-    }
-   },
-   {
-    "event_id": "eee64482a5f99c2",
-    "title": "千问办公将推电商运营版，阿里基因再落电商场景",
-    "member_item_ids": [
-     "529deeed336822ef"
-    ],
-    "primary_item_id": "529deeed336822ef",
-    "source_ids": [
-     "rss:aihot-news"
-    ],
-    "all_urls": [
-     "https://aihot.news/items/d0ftvqryq1dyy0088esy4cznd"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T02:02:41Z",
-     "2026-10-14T02:02:41Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.660722,
-    "rank_components": {
-     "source_weight": 1.2,
-     "corroboration": 1.0,
-     "substance": 0.298,
-     "substance_chars": 179.0,
-     "engagement": 0.0,
-     "recency": 0.932,
-     "title_quality": 1.0,
-     "score": 1.660722,
-     "topic_penalty": 1.0,
-     "final_score": 1.660722
-    }
-   },
-   {
-    "event_id": "eff1f1128a2cdb9",
-    "title": "Show HN: Pulse Local, a Mac budgeting app whose AI models run on your machine",
-    "member_item_ids": [
-     "0f3243ec8fef89e4"
-    ],
-    "primary_item_id": "0f3243ec8fef89e4",
-    "source_ids": [
-     "rss:hnrss-org-frontpage"
-    ],
-    "all_urls": [
-     "https://pulseos.finance"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-13T23:13:23Z",
-     "2026-10-13T23:13:23Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.493605,
-    "rank_components": {
-     "source_weight": 1.0,
-     "corroboration": 1.0,
+     "source_damped": 1.0466,
      "substance": 1.0,
-     "substance_chars": 2132.0,
-     "engagement": 0.0,
-     "recency": 0.83,
+     "substance_chars": 5916.0,
      "title_quality": 1.0,
-     "score": 1.493605,
+     "heat": 0.35941,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7471,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 37.617114,
      "topic_penalty": 1.0,
-     "final_score": 1.493605
+     "final_score": 37.617114
+    }
+   },
+   {
+    "event_id": "e3852035b2c255a",
+    "title": "MIT Lincoln Laboratory hosts National Security Commission on Emerging Biotechnology",
+    "member_item_ids": [
+     "9f715b96d230ba08"
+    ],
+    "primary_item_id": "9f715b96d230ba08",
+    "source_ids": [
+     "rss:news-mit-edu-topic-mitartificial-intelligence2-rss"
+    ],
+    "all_urls": [
+     "https://news.mit.edu/2026/mit-lincoln-laboratory-hosts-national-security-commission-emerging-biotechnology-1013"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-13T20:40:00Z",
+     "2026-10-13T20:40:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 37.589273,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 1.0,
+     "substance_chars": 7167.0,
+     "title_quality": 1.0,
+     "heat": 0.359144,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7433,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 37.589273,
+     "topic_penalty": 1.0,
+     "final_score": 37.589273
     }
    },
    {
@@ -521,8 +295,8 @@
      "https://www.theverge.com/ai-artificial-intelligence/1010642/openai-employee-arrested-recording-device"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
     "published_range": [
      "2026-10-13T20:45:25Z",
      "2026-10-13T20:45:25Z"
@@ -531,512 +305,29 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 1.490553,
+    "rank_score": 36.787802,
     "rank_components": {
      "source_weight": 1.1,
-     "corroboration": 1.0,
+     "source_damped": 1.0241,
      "substance": 1.0,
      "substance_chars": 686.0,
-     "engagement": 0.0,
-     "recency": 0.753,
      "title_quality": 1.0,
-     "score": 1.490553,
+     "heat": 0.359216,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7443,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "score": 36.787802,
      "topic_penalty": 1.0,
-     "final_score": 1.490553
-    }
-   },
-   {
-    "event_id": "e2ec53c51e11c7e",
-    "title": "AI算力战进入下半场：从拼单芯XPU性能到拼系统，电力、散热和网络成新战场 - 华尔街见闻",
-    "member_item_ids": [
-     "c64f22872b0d39a3"
-    ],
-    "primary_item_id": "c64f22872b0d39a3",
-    "source_ids": [
-     "api:news-google-com-search"
-    ],
-    "all_urls": [
-     "https://news.google.com/rss/articles/CBMiU0FVX3lxTE55allEMXlOWmVEQVh1VmE3bGg0Rm9pNzlBWmRJMUFTYnlMQUxOUmp5akR5U3VHb3JsNmRMZ2Z1eGc1bTJiV1V4V2R5c20zTC12VFE4?oc=5"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T03:09:58Z",
-     "2026-10-14T03:09:58Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.487145,
-    "rank_components": {
-     "source_weight": 1.1,
-     "corroboration": 1.0,
-     "substance": 0.072,
-     "substance_chars": 43.0,
-     "engagement": 0.0,
-     "recency": 0.978,
-     "title_quality": 1.0,
-     "score": 1.487145,
-     "topic_penalty": 1.0,
-     "final_score": 1.487145
-    }
-   },
-   {
-    "event_id": "eb845f25ce003ba",
-    "title": "最好看最好用的 iOS V2EX 客户端过审了，欢迎 TestFlight 体验打脸",
-    "member_item_ids": [
-     "4027416290b59972"
-    ],
-    "primary_item_id": "4027416290b59972",
-    "source_ids": [
-     "api:v2ex-com-topics-hot"
-    ],
-    "all_urls": [
-     "https://www.v2ex.com/t/1248562"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T00:02:37Z",
-     "2026-10-14T00:02:37Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.480989,
-    "rank_components": {
-     "source_weight": 0.9,
-     "corroboration": 1.0,
-     "substance": 1.0,
-     "substance_chars": 612.0,
-     "engagement": 0.59,
-     "recency": 0.858,
-     "title_quality": 1.0,
-     "score": 1.480989,
-     "topic_penalty": 1.0,
-     "final_score": 1.480989
-    }
-   },
-   {
-    "event_id": "ecb583e767393e8",
-    "title": "中微尹志尧警示AI或现泡沫，国内半导体设备90%厂商或被淘汰 - 电子工程专辑",
-    "member_item_ids": [
-     "a0252e1b3c6da594"
-    ],
-    "primary_item_id": "a0252e1b3c6da594",
-    "source_ids": [
-     "api:news-google-com-search"
-    ],
-    "all_urls": [
-     "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9TaTRyN2M2RnVXMk1mVldKcjl3S3drcFVPd1oyNXpnVzJCZWduYTNIVGktM1FMVlpJZktKOFNhYjdkR3lsSm1KeWlPNTJlYWNZbTJ2ZFcxVUQ2VTN5?oc=5"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T03:00:29Z",
-     "2026-10-14T03:00:29Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.472275,
-    "rank_components": {
-     "source_weight": 1.1,
-     "corroboration": 1.0,
-     "substance": 0.062,
-     "substance_chars": 37.0,
-     "engagement": 0.0,
-     "recency": 0.971,
-     "title_quality": 1.0,
-     "score": 1.472275,
-     "topic_penalty": 1.0,
-     "final_score": 1.472275
-    }
-   },
-   {
-    "event_id": "e1f53d9457dc321",
-    "title": "真人短剧完了吗？对话智象未来王科：AI正重构影视，不是取代 - 搜狐",
-    "member_item_ids": [
-     "1a7ba20666f0be57"
-    ],
-    "primary_item_id": "1a7ba20666f0be57",
-    "source_ids": [
-     "api:news-google-com-search"
-    ],
-    "all_urls": [
-     "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPX1p2eGZhblhYS3pJUHhwczhWVWVIVkQ0QU9la3FjNzRLTnRtUndjMjZHQlFjRkpjbExQOHF3czZHcDhEWHhJUTlob3hKMU85b2ZrbjRPTDVPUHJMWGdGd3djQ3llQ3I5d0lpT2hXajdUNlR3Q0tYN3huRmxrN0daVkhySVFVU2lX?oc=5"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T03:03:50Z",
-     "2026-10-14T03:03:50Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.47179,
-    "rank_components": {
-     "source_weight": 1.1,
-     "corroboration": 1.0,
-     "substance": 0.053,
-     "substance_chars": 32.0,
-     "engagement": 0.0,
-     "recency": 0.974,
-     "title_quality": 1.0,
-     "score": 1.47179,
-     "topic_penalty": 1.0,
-     "final_score": 1.47179
-    }
-   },
-   {
-    "event_id": "e0791749e1c6dc9",
-    "title": "OPPO Find X10系列手机将搭载Manus的AI智能体 - 电子工程专辑",
-    "member_item_ids": [
-     "ca22211a1148ce64"
-    ],
-    "primary_item_id": "ca22211a1148ce64",
-    "source_ids": [
-     "api:news-google-com-search"
-    ],
-    "all_urls": [
-     "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1xVlB0N0pEOGZLWHVFVFJFb0FmRjZhbGVZT2RaVkFDM2xZZHA4VXVWSF9aUE1zNkVQLVFnN2plZ3dwQnBPMUN1ZVpWVUZyWVVYZWI0bzUzQk9NaTI4?oc=5"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T02:48:00Z",
-     "2026-10-14T02:48:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.460008,
-    "rank_components": {
-     "source_weight": 1.1,
-     "corroboration": 1.0,
-     "substance": 0.063,
-     "substance_chars": 38.0,
-     "engagement": 0.0,
-     "recency": 0.963,
-     "title_quality": 1.0,
-     "score": 1.460008,
-     "topic_penalty": 1.0,
-     "final_score": 1.460008
-    }
-   },
-   {
-    "event_id": "ee0894f492f39d2",
-    "title": "网店兜售AI词元，谨防低价引流圈套 - 搜狐",
-    "member_item_ids": [
-     "1c74ba5572389ea7"
-    ],
-    "primary_item_id": "1c74ba5572389ea7",
-    "source_ids": [
-     "api:news-google-com-search"
-    ],
-    "all_urls": [
-     "https://news.google.com/rss/articles/CBMijAFBVV95cUxPNEdYMGlqU3RNR2prczNHcnhRWklndVVPZlBKTmFTNVhScEZIYkVxLWtCNDlfNHJJczB6UjljS0NfOE1wMmNvWWlHS3FPUXVuYnFkUzBXYkJkUTNQNGZFUUM3ck00VXE3YVJyYkpQQUhKNUdDbk5TMi1hYmRHMm4taVc3SEJFWk5OWkItTQ?oc=5"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T02:57:35Z",
-     "2026-10-14T02:57:35Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.45563,
-    "rank_components": {
-     "source_weight": 1.1,
-     "corroboration": 1.0,
-     "substance": 0.033,
-     "substance_chars": 20.0,
-     "engagement": 0.0,
-     "recency": 0.969,
-     "title_quality": 1.0,
-     "score": 1.45563,
-     "topic_penalty": 1.0,
-     "final_score": 1.45563
-    }
-   },
-   {
-    "event_id": "eb55ff50817a6da",
-    "title": "AI改代码时，到底该让它一次性重写整个文件，还是像人类程序员一样一小段一小段地打补丁？ - 科技行者",
-    "member_item_ids": [
-     "4ab9cb34cc53eb18"
-    ],
-    "primary_item_id": "4ab9cb34cc53eb18",
-    "source_ids": [
-     "api:news-google-com-search"
-    ],
-    "all_urls": [
-     "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1NZXgzS1dMNFJvVkQ2TVJMNnFnR0x6Z1pQZkZvX0NEZTNqblBCUHd2dE1acEJvNm1vcDItdzdOdWx3cXVCdS1KaFVRTFktNmxsYVRld0RPLUVJV0lpVTFF?oc=5"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T02:34:00Z",
-     "2026-10-14T02:34:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.453402,
-    "rank_components": {
-     "source_weight": 1.1,
-     "corroboration": 1.0,
-     "substance": 0.08,
-     "substance_chars": 48.0,
-     "engagement": 0.0,
-     "recency": 0.953,
-     "title_quality": 1.0,
-     "score": 1.453402,
-     "topic_penalty": 1.0,
-     "final_score": 1.453402
-    }
-   },
-   {
-    "event_id": "e31b6333c500f3d",
-    "title": "2027年HR趋势报告：你的工作正被重构｜首席人才官 - 红杉",
-    "member_item_ids": [
-     "4bd75682a0cf4eb3"
-    ],
-    "primary_item_id": "4bd75682a0cf4eb3",
-    "source_ids": [
-     "api:news-google-com-search"
-    ],
-    "all_urls": [
-     "https://news.google.com/rss/articles/CBMiwgJBVV95cUxPaEhUa1d1SzZOekhmMTQ5NXNOY202ZDFKNUpHa2MyTTBtbEs4aVFndkd4U1hIeG1seU5aTVlMcHNPRnFwMHFmbjU3RkxFeWpRVi1Vd2pIaUJ4MzI2amtsendrdGE4YzBTMUhGd0dQSmJvRkxWTDA0LVNYV0ZfLUpYckpQcHdFdUdHcXFmak9Tb2twc04teUVCQ3dxS1V4OGpvYW1tZVFUTVl2WkZSYUpvOV9NSzYzNGk2UkoyeHNDN1dKNF9ISnRJR193Z21UVVdmT3dsWC1XUmVsWnVrT2hSTlluRy1zY0JXWGMydERNUkQ4bS1DRUhNTjZKQWpzbElFYnlGdVRYazFiVnZWVHJTQ0hVeXVBbTFEd2NxQTgtM1VCZUphMmNCemZhZjlTWmtUdmZNaFQzd0xMODROVDdIWHpB?oc=5"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T02:47:23Z",
-     "2026-10-14T02:47:23Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.452221,
-    "rank_components": {
-     "source_weight": 1.1,
-     "corroboration": 1.0,
-     "substance": 0.048,
-     "substance_chars": 29.0,
-     "engagement": 0.0,
-     "recency": 0.962,
-     "title_quality": 1.0,
-     "score": 1.452221,
-     "topic_penalty": 1.0,
-     "final_score": 1.452221
-    }
-   },
-   {
-    "event_id": "e7e117e1da8ef65",
-    "title": "苹果(AAPL.US)才是AI投资“版本答案”? 半导体暴跌之际再触5万亿美元，折叠iPhone与AI家居点燃增长想象 - 证券之星",
-    "member_item_ids": [
-     "f1eb8bc51ad68196"
-    ],
-    "primary_item_id": "f1eb8bc51ad68196",
-    "source_ids": [
-     "api:news-google-com-search"
-    ],
-    "all_urls": [
-     "https://news.google.com/rss/articles/CBMiYEFVX3lxTFB6Mm5xWE16M2F4OW1wVGVVamFWTklqRmJmdDJCLVo4bFczeHpVdG0zNUpOa21JS3dJb3VHcEhTdmpsWHZJQXp5V3BTQU95cThlQ2pPQ0p2ZUUxZ3dsSTBVUQ?oc=5"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T02:19:52Z",
-     "2026-10-14T02:19:52Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.45137,
-    "rank_components": {
-     "source_weight": 1.1,
-     "corroboration": 1.0,
-     "substance": 0.107,
-     "substance_chars": 64.0,
-     "engagement": 0.0,
-     "recency": 0.944,
-     "title_quality": 1.0,
-     "score": 1.45137,
-     "topic_penalty": 1.0,
-     "final_score": 1.45137
-    }
-   },
-   {
-    "event_id": "eadbb0dd18a1f47",
-    "title": "四连板！AI应用概念又爆了 - 金融界",
-    "member_item_ids": [
-     "9fd3c20236264747"
-    ],
-    "primary_item_id": "9fd3c20236264747",
-    "source_ids": [
-     "api:news-google-com-search"
-    ],
-    "all_urls": [
-     "https://news.google.com/rss/articles/CBMickFVX3lxTE5wR2FJQ3M3QTFDOWd5c1NNZ2tDSlhRbUVhX2pyQ0Q5aXR4Z0N5cl8xQy1EX1k0X21kY3VfbTVGdFRWLXJuQXpRNTVZUHlGT1cxSkFwNDB1NHpSc2lWVUJXSURsdF9ZcEFWUzRoaFAtcTFBZw?oc=5"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T02:54:51Z",
-     "2026-10-14T02:54:51Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.450397,
-    "rank_components": {
-     "source_weight": 1.1,
-     "corroboration": 1.0,
-     "substance": 0.028,
-     "substance_chars": 17.0,
-     "engagement": 0.0,
-     "recency": 0.968,
-     "title_quality": 1.0,
-     "score": 1.450397,
-     "topic_penalty": 1.0,
-     "final_score": 1.450397
-    }
-   },
-   {
-    "event_id": "e429fd86616f8cb",
-    "title": "计算机与人工智能学院举办“智绘AI工坊”物联网创新展演活动 - 西南民族大学",
-    "member_item_ids": [
-     "e5f8f804df10a844"
-    ],
-    "primary_item_id": "e5f8f804df10a844",
-    "source_ids": [
-     "api:news-google-com-search"
-    ],
-    "all_urls": [
-     "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9NUm1SWmh2ZS10YUNEby1YOWZYVWlwSmh5c29nNkdvdE1MOURnUFZIYjlYYUlVdEtoTFh4S2JCYXQxakYzSmVvYkR3ZnNacHZXd3VzYVZheC0?oc=5"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T02:39:23Z",
-     "2026-10-14T02:39:23Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.4495,
-    "rank_components": {
-     "source_weight": 1.1,
-     "corroboration": 1.0,
-     "substance": 0.06,
-     "substance_chars": 36.0,
-     "engagement": 0.0,
-     "recency": 0.957,
-     "title_quality": 1.0,
-     "score": 1.4495,
-     "topic_penalty": 1.0,
-     "final_score": 1.4495
-    }
-   },
-   {
-    "event_id": "ecbbf7b73143b89",
-    "title": "山东“智造”，来了一批“AI工友”_山东新闻 - 大众网",
-    "member_item_ids": [
-     "9389873cb9744745"
-    ],
-    "primary_item_id": "9389873cb9744745",
-    "source_ids": [
-     "api:news-google-com-search"
-    ],
-    "all_urls": [
-     "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9BbFpWdnNJdXVWc2owd0VzTkFaSFU1UUJrazJPR1JuLXpMaG4xbWU2MEFlOS1tNlNrOHprRzM0VHJCQ2hKRU51Vk1hUTctTzVIa3FtRFBfZHBWd2VudjlNUXpHamY4R2lE?oc=5"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T02:47:00Z",
-     "2026-10-14T02:47:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.449443,
-    "rank_components": {
-     "source_weight": 1.1,
-     "corroboration": 1.0,
-     "substance": 0.043,
-     "substance_chars": 26.0,
-     "engagement": 0.0,
-     "recency": 0.962,
-     "title_quality": 1.0,
-     "score": 1.449443,
-     "topic_penalty": 1.0,
-     "final_score": 1.449443
-    }
-   },
-   {
-    "event_id": "e7d0108b81c39d0",
-    "title": "从规模化制造到AI驱动研发-- 擎科生物加速构建分子研发与智造闭环 - 美通社",
-    "member_item_ids": [
-     "e5d3d19406a6ca01"
-    ],
-    "primary_item_id": "e5d3d19406a6ca01",
-    "source_ids": [
-     "api:news-google-com-search"
-    ],
-    "all_urls": [
-     "https://news.google.com/rss/articles/CBMiV0FVX3lxTFB0TnI5LWYwRkxYMGN2ZEhYR1FZV2tEX1U5bFNDS0RIOXo1ZENmV3ZaLUJDRFB1NkdyUlBabTdzN0kyY2s5SXpQZDBCazgySnliVVUxcTFMbw?oc=5"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T02:35:00Z",
-     "2026-10-14T02:35:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.445778,
-    "rank_components": {
-     "source_weight": 1.1,
-     "corroboration": 1.0,
-     "substance": 0.062,
-     "substance_chars": 37.0,
-     "engagement": 0.0,
-     "recency": 0.954,
-     "title_quality": 1.0,
-     "score": 1.445778,
-     "topic_penalty": 1.0,
-     "final_score": 1.445778
+     "final_score": 36.787802
     }
    },
    {
@@ -1053,8 +344,8 @@
      "https://www.theverge.com/news/1010365/shopify-opens-its-catalog-up-to-more-ai-agents"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
     "published_range": [
      "2026-10-13T19:42:42Z",
      "2026-10-13T19:42:42Z"
@@ -1063,56 +354,29 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 1.432223,
+    "rank_score": 36.704542,
     "rank_components": {
      "source_weight": 1.1,
-     "corroboration": 1.0,
+     "source_damped": 1.0241,
      "substance": 1.0,
      "substance_chars": 873.0,
-     "engagement": 0.0,
-     "recency": 0.723,
      "title_quality": 1.0,
-     "score": 1.432223,
+     "heat": 0.358403,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7327,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 36.704542,
      "topic_penalty": 1.0,
-     "final_score": 1.432223
-    }
-   },
-   {
-    "event_id": "efbcb58f65b260d",
-    "title": "v2 的大佬们指点一下我该不该割肉，房子的事",
-    "member_item_ids": [
-     "846356da1912836d"
-    ],
-    "primary_item_id": "846356da1912836d",
-    "source_ids": [
-     "api:v2ex-com-topics-hot"
-    ],
-    "all_urls": [
-     "https://www.v2ex.com/t/1248572"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T00:53:39Z",
-     "2026-10-14T00:53:39Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.431688,
-    "rank_components": {
-     "source_weight": 0.9,
-     "corroboration": 1.0,
-     "substance": 0.703,
-     "substance_chars": 422.0,
-     "engagement": 0.619,
-     "recency": 0.889,
-     "title_quality": 1.0,
-     "score": 1.431688,
-     "topic_penalty": 1.0,
-     "final_score": 1.431688
+     "final_score": 36.704542
     }
    },
    {
@@ -1129,8 +393,8 @@
      "https://www.theverge.com/news/1010406/xbox-labs-game-decompiling-emulation-exploration"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
     "published_range": [
      "2026-10-13T19:00:48Z",
      "2026-10-13T19:00:48Z"
@@ -1139,58 +403,29 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 1.39517,
+    "rank_score": 36.650776,
     "rank_components": {
      "source_weight": 1.1,
-     "corroboration": 1.0,
+     "source_damped": 1.0241,
      "substance": 1.0,
      "substance_chars": 686.0,
-     "engagement": 0.0,
-     "recency": 0.705,
      "title_quality": 1.0,
-     "score": 1.39517,
+     "heat": 0.357878,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7252,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 36.650776,
      "topic_penalty": 1.0,
-     "final_score": 1.39517
-    }
-   },
-   {
-    "event_id": "e80aa90e1b32737",
-    "title": "Show HN: Guitoro, a virtual guitar you strum with your keyboard",
-    "member_item_ids": [
-     "05ecd379bbf8593a",
-     "f38031071ace7124"
-    ],
-    "primary_item_id": "05ecd379bbf8593a",
-    "source_ids": [
-     "api:hn-algolia-com-search",
-     "rss:hnrss-org-frontpage"
-    ],
-    "all_urls": [
-     "https://guitoro.com/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-13T19:11:48Z",
-     "2026-10-13T19:11:48Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.354478,
-    "rank_components": {
-     "source_weight": 1.0,
-     "corroboration": 1.0,
-     "substance": 0.87,
-     "substance_chars": 522.0,
-     "engagement": 0.838,
-     "recency": 0.709,
-     "title_quality": 1.0,
-     "score": 1.354478,
-     "topic_penalty": 1.0,
-     "final_score": 1.354478
+     "final_score": 36.650776
     }
    },
    {
@@ -1207,8 +442,8 @@
      "https://www.theverge.com/tech/1009128/ray-ban-meta-audio-glasses-review-smart-glasses-headphones-wearables"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
     "published_range": [
      "2026-10-13T18:00:00Z",
      "2026-10-13T18:00:00Z"
@@ -1217,18 +452,30 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 1.343993,
+    "rank_score": 36.575299,
     "rank_components": {
      "source_weight": 1.1,
-     "corroboration": 1.0,
+     "source_damped": 1.0241,
      "substance": 1.0,
      "substance_chars": 685.0,
-     "engagement": 0.0,
-     "recency": 0.679,
      "title_quality": 1.0,
-     "score": 1.343993,
+     "heat": 0.357141,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7147,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "score": 36.575299,
      "topic_penalty": 1.0,
-     "final_score": 1.343993
+     "final_score": 36.575299
     }
    },
    {
@@ -1245,8 +492,8 @@
      "https://www.theverge.com/tech/1010344/meta-facebook-your-algorithm-ai"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
     "published_range": [
      "2026-10-13T17:01:31Z",
      "2026-10-13T17:01:31Z"
@@ -1255,94 +502,29 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 1.297514,
+    "rank_score": 36.505352,
     "rank_components": {
      "source_weight": 1.1,
-     "corroboration": 1.0,
+     "source_damped": 1.0241,
      "substance": 1.0,
      "substance_chars": 686.0,
-     "engagement": 0.0,
-     "recency": 0.655,
      "title_quality": 1.0,
-     "score": 1.297514,
+     "heat": 0.356458,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7049,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 36.505352,
      "topic_penalty": 1.0,
-     "final_score": 1.297514
-    }
-   },
-   {
-    "event_id": "e7841724e95b262",
-    "title": "Google makes it easier to launch your vibe-coded apps",
-    "member_item_ids": [
-     "1efd2c4cef6085ce"
-    ],
-    "primary_item_id": "1efd2c4cef6085ce",
-    "source_ids": [
-     "rss:theverge-com-ai-artificial-intelligence"
-    ],
-    "all_urls": [
-     "https://www.theverge.com/tech/1009066/google-play-vibe-coded-android-apps-launch"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-13T17:00:00Z",
-     "2026-10-13T17:00:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.296343,
-    "rank_components": {
-     "source_weight": 1.1,
-     "corroboration": 1.0,
-     "substance": 1.0,
-     "substance_chars": 686.0,
-     "engagement": 0.0,
-     "recency": 0.655,
-     "title_quality": 1.0,
-     "score": 1.296343,
-     "topic_penalty": 1.0,
-     "final_score": 1.296343
-    }
-   },
-   {
-    "event_id": "ec0c109918ab4ce",
-    "title": "昨天把家里 Wi-Fi 2.4G 和 5G 分开了，你们呢？",
-    "member_item_ids": [
-     "71af70af3ed7c590"
-    ],
-    "primary_item_id": "71af70af3ed7c590",
-    "source_ids": [
-     "api:v2ex-com-topics-hot"
-    ],
-    "all_urls": [
-     "https://www.v2ex.com/t/1248569"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T00:46:23Z",
-     "2026-10-14T00:46:23Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.289052,
-    "rank_components": {
-     "source_weight": 0.9,
-     "corroboration": 1.0,
-     "substance": 0.325,
-     "substance_chars": 195.0,
-     "engagement": 0.619,
-     "recency": 0.884,
-     "title_quality": 1.0,
-     "score": 1.289052,
-     "topic_penalty": 1.0,
-     "final_score": 1.289052
+     "final_score": 36.505352
     }
    },
    {
@@ -1359,8 +541,8 @@
      "https://www.theverge.com/ai-artificial-intelligence/1010277/mia-goth-instagram-ai-shirt-deepfake-divorce"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
     "published_range": [
      "2026-10-13T16:42:51Z",
      "2026-10-13T16:42:51Z"
@@ -1369,56 +551,29 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 1.283221,
+    "rank_score": 36.483641,
     "rank_components": {
      "source_weight": 1.1,
-     "corroboration": 1.0,
+     "source_damped": 1.0241,
      "substance": 1.0,
      "substance_chars": 757.0,
-     "engagement": 0.0,
-     "recency": 0.648,
      "title_quality": 1.0,
-     "score": 1.283221,
+     "heat": 0.356246,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7019,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 36.483641,
      "topic_penalty": 1.0,
-     "final_score": 1.283221
-    }
-   },
-   {
-    "event_id": "e441f6c9e7dd6fb",
-    "title": "现在修电视都这么贵的吗？",
-    "member_item_ids": [
-     "bee1be65bb218de1"
-    ],
-    "primary_item_id": "bee1be65bb218de1",
-    "source_ids": [
-     "api:v2ex-com-topics-hot"
-    ],
-    "all_urls": [
-     "https://www.v2ex.com/t/1248577"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T01:11:06Z",
-     "2026-10-14T01:11:06Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.281844,
-    "rank_components": {
-     "source_weight": 0.9,
-     "corroboration": 1.0,
-     "substance": 0.252,
-     "substance_chars": 151.0,
-     "engagement": 0.602,
-     "recency": 0.899,
-     "title_quality": 1.0,
-     "score": 1.281844,
-     "topic_penalty": 1.0,
-     "final_score": 1.281844
+     "final_score": 36.483641
     }
    },
    {
@@ -1435,8 +590,8 @@
      "https://www.theverge.com/games/1010097/epic-games-disney-project-ai-coding-art"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
     "published_range": [
      "2026-10-13T15:12:59Z",
      "2026-10-13T15:12:59Z"
@@ -1445,56 +600,79 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 1.217895,
+    "rank_score": 36.382356,
     "rank_components": {
      "source_weight": 1.1,
-     "corroboration": 1.0,
+     "source_damped": 1.0241,
      "substance": 1.0,
      "substance_chars": 686.0,
-     "engagement": 0.0,
-     "recency": 0.615,
      "title_quality": 1.0,
-     "score": 1.217895,
+     "heat": 0.355257,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.6878,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 36.382356,
      "topic_penalty": 1.0,
-     "final_score": 1.217895
+     "final_score": 36.382356
     }
    },
    {
-    "event_id": "e4392884424a76f",
-    "title": "Higgsfield takes AI video from 1 minute to over 10",
+    "event_id": "e7d6899eae0640a",
+    "title": "Meta打出AI翻身牌：新模型并肩行业巨头 暗示接下来还要加速 - 财联社",
     "member_item_ids": [
-     "dadf7c4584af3e3a"
+     "0daf6302f9ea9eed"
     ],
-    "primary_item_id": "dadf7c4584af3e3a",
+    "primary_item_id": "0daf6302f9ea9eed",
     "source_ids": [
-     "rss:openai-com-news"
+     "api:news-google-com-search"
     ],
     "all_urls": [
-     "https://openai.com/index/higgsfield-longer-videos-voice"
+     "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9ZVFlCRm9FTnVHREVNMlRGeGxYcmJtVElnRnF1MUt0bDhIWDlvckNjTFRDR1BwVUFLUzN6NHhmUkJUbmhSRGJ3YQ?oc=5"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
     "published_range": [
-     "2026-10-13T12:00:00Z",
-     "2026-10-13T12:00:00Z"
+     "2026-10-13T23:42:28Z",
+     "2026-10-13T23:42:28Z"
     ],
     "unique_facts": {},
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 1.207351,
+    "rank_score": 36.318963,
     "rank_components": {
-     "source_weight": 1.5,
-     "corroboration": 1.0,
-     "substance": 0.233,
-     "substance_chars": 140.0,
-     "engagement": 0.0,
-     "recency": 0.553,
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.058,
+     "substance_chars": 35.0,
      "title_quality": 1.0,
-     "score": 1.207351,
+     "heat": 0.354638,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.2273,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0875,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7798,
+     "significance": 1.5,
+     "lab_new_thing": 1.5,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "score": 36.318963,
      "topic_penalty": 1.0,
-     "final_score": 1.207351
+     "final_score": 36.318963
     }
    },
    {
@@ -1511,8 +689,8 @@
      "https://www.theverge.com/news/1009904/dlss-5-hogwarts-legacy-changes-improvements"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
     "published_range": [
      "2026-10-13T13:55:45Z",
      "2026-10-13T13:55:45Z"
@@ -1521,453 +699,427 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 1.166095,
+    "rank_score": 36.299915,
     "rank_components": {
      "source_weight": 1.1,
-     "corroboration": 1.0,
+     "source_damped": 1.0241,
      "substance": 1.0,
      "substance_chars": 685.0,
-     "engagement": 0.0,
-     "recency": 0.589,
      "title_quality": 1.0,
-     "score": 1.166095,
+     "heat": 0.354452,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.6763,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 36.299915,
      "topic_penalty": 1.0,
-     "final_score": 1.166095
+     "final_score": 36.299915
     }
    },
    {
-    "event_id": "e3f61f4d9a94a99",
-    "title": "Run fast, private agents on-device with LFM2.5-24B-A2B",
+    "event_id": "e4ba1bf2cf89cf8",
+    "title": "DailyDawn · 2026-10-14",
     "member_item_ids": [
-     "cf898ebd75ff2c44"
+     "da2215b64241d4a1"
     ],
-    "primary_item_id": "cf898ebd75ff2c44",
+    "primary_item_id": "da2215b64241d4a1",
     "source_ids": [
-     "rss:huggingface-co-blog"
+     "jsonfeed:dailydawn-dev"
     ],
     "all_urls": [
-     "https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b"
+     "https://dailydawn.dev/zh/2026-10-14"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
     "published_range": [
-     "2026-10-13T17:05:48Z",
-     "2026-10-13T17:05:48Z"
+     "2026-10-14T00:00:00Z",
+     "2026-10-14T00:00:00Z"
     ],
     "unique_facts": {},
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 1.096245,
+    "rank_score": 36.1956,
     "rank_components": {
-     "source_weight": 1.2,
-     "corroboration": 1.0,
-     "substance": 0.09,
-     "substance_chars": 54.0,
-     "engagement": 0.0,
-     "recency": 0.657,
-     "title_quality": 1.0,
-     "score": 1.096245,
-     "topic_penalty": 1.0,
-     "final_score": 1.096245
-    }
-   },
-   {
-    "event_id": "e3e5ff0ca7edf94",
-    "title": "Meta's Watermelon ripens into a frontier model",
-    "member_item_ids": [
-     "5cb7f68f3a5ab20e"
-    ],
-    "primary_item_id": "5cb7f68f3a5ab20e",
-    "source_ids": [
-     "rss:rss-beehiiv-com-2r3c6bt5wj"
-    ],
-    "all_urls": [
-     "https://therundownai.beehiiv.com/p/meta-watermelon-ripens-into-a-frontier-model"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-13T09:00:00Z",
-     "2026-10-13T09:00:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 0.999814,
-    "rank_components": {
-     "source_weight": 1.1,
-     "corroboration": 1.0,
+     "source_weight": 1.0,
+     "source_damped": 1.0,
      "substance": 1.0,
-     "substance_chars": 9667.0,
-     "engagement": 0.0,
-     "recency": 0.505,
+     "substance_chars": 21118.0,
      "title_quality": 1.0,
-     "score": 0.999814,
+     "heat": 0.361956,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7835,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 36.1956,
      "topic_penalty": 1.0,
-     "final_score": 0.999814
+     "final_score": 36.1956
     }
    },
    {
-    "event_id": "e2a7ca02934b9cf",
-    "title": "九章云极问鼎陶哲轩数学挑战赛！让强化学习成为AI4S新基建",
+    "event_id": "eff1f1128a2cdb9",
+    "title": "Show HN: Pulse Local, a Mac budgeting app whose AI models run on your machine",
     "member_item_ids": [
-     "6c97cf0b223d3005"
+     "0f3243ec8fef89e4"
     ],
-    "primary_item_id": "6c97cf0b223d3005",
+    "primary_item_id": "0f3243ec8fef89e4",
     "source_ids": [
-     "rss:wechat2rss-xlab-app-51e92aad2728acdd1fda7314be32b16639353001"
+     "rss:hnrss-org-frontpage"
     ],
     "all_urls": [
-     "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651062445&idx=1&sn=608c7ccba2cb0bcd1a34da07084d6cd1"
+     "https://pulseos.finance"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
     "published_range": [
-     "2026-10-13T04:00:00Z",
-     "2026-10-13T04:00:00Z"
+     "2026-10-13T23:13:23Z",
+     "2026-10-13T23:13:23Z"
     ],
     "unique_facts": {},
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 0.952564,
+    "rank_score": 36.1268,
     "rank_components": {
-     "source_weight": 1.2,
-     "corroboration": 1.0,
+     "source_weight": 1.0,
+     "source_damped": 1.0,
      "substance": 1.0,
-     "substance_chars": 5867.0,
-     "engagement": 0.0,
-     "recency": 0.441,
+     "substance_chars": 2132.0,
      "title_quality": 1.0,
-     "score": 0.952564,
+     "heat": 0.361268,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7737,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 36.1268,
      "topic_penalty": 1.0,
-     "final_score": 0.952564
+     "final_score": 36.1268
     }
    },
    {
-    "event_id": "e93eb10664e1e94",
-    "title": "生成的世界也能交互！牛津大学&莫纳什大学&布里斯托大学等团队提出交互式视频世界模型Oneira",
+    "event_id": "efbcb58f65b260d",
+    "title": "v2 的大佬们指点一下我该不该割肉，房子的事",
     "member_item_ids": [
-     "265f8c217491f8f4"
+     "846356da1912836d"
     ],
-    "primary_item_id": "265f8c217491f8f4",
+    "primary_item_id": "846356da1912836d",
     "source_ids": [
-     "rss:wechat2rss-xlab-app-51e92aad2728acdd1fda7314be32b16639353001"
+     "api:v2ex-com-topics-hot"
     ],
     "all_urls": [
-     "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651062445&idx=3&sn=c93fe78ae034dea794c3760e35192930"
+     "https://www.v2ex.com/t/1248572"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
     "published_range": [
-     "2026-10-13T04:00:00Z",
-     "2026-10-13T04:00:00Z"
+     "2026-10-14T00:53:39Z",
+     "2026-10-14T00:53:39Z"
     ],
     "unique_facts": {},
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 0.952564,
+    "rank_score": 35.334324,
     "rank_components": {
-     "source_weight": 1.2,
-     "corroboration": 1.0,
-     "substance": 1.0,
-     "substance_chars": 3185.0,
-     "engagement": 0.0,
-     "recency": 0.441,
+     "source_weight": 0.9,
+     "source_damped": 0.974,
+     "substance": 0.703,
+     "substance_chars": 422.0,
      "title_quality": 1.0,
-     "score": 0.952564,
+     "heat": 0.362774,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7952,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 35.334324,
      "topic_penalty": 1.0,
-     "final_score": 0.952564
+     "final_score": 35.334324
     }
    },
    {
-    "event_id": "eb6145c2343dc82",
-    "title": "申报倒计时7天！2026云程奖，要给「在校AI本硕博」发奖学金",
+    "event_id": "eb845f25ce003ba",
+    "title": "最好看最好用的 iOS V2EX 客户端过审了，欢迎 TestFlight 体验打脸",
     "member_item_ids": [
-     "6a8e35a6923fde96"
+     "4027416290b59972"
     ],
-    "primary_item_id": "6a8e35a6923fde96",
+    "primary_item_id": "4027416290b59972",
     "source_ids": [
-     "rss:wechat2rss-xlab-app-51e92aad2728acdd1fda7314be32b16639353001"
+     "api:v2ex-com-topics-hot"
     ],
     "all_urls": [
-     "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651062445&idx=2&sn=09d3ae148779c3bd1a544b44f72c02ea"
+     "https://www.v2ex.com/t/1248562"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
     "published_range": [
-     "2026-10-13T04:00:00Z",
-     "2026-10-13T04:00:00Z"
+     "2026-10-14T00:02:37Z",
+     "2026-10-14T00:02:37Z"
     ],
     "unique_facts": {},
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 0.952564,
+    "rank_score": 35.258546,
     "rank_components": {
-     "source_weight": 1.2,
-     "corroboration": 1.0,
+     "source_weight": 0.9,
+     "source_damped": 0.974,
      "substance": 1.0,
-     "substance_chars": 885.0,
-     "engagement": 0.0,
-     "recency": 0.441,
+     "substance_chars": 612.0,
      "title_quality": 1.0,
-     "score": 0.952564,
+     "heat": 0.361996,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.784,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 35.258546,
      "topic_penalty": 1.0,
-     "final_score": 0.952564
+     "final_score": 35.258546
     }
    },
    {
-    "event_id": "ecd67a9edef7a8d",
-    "title": "debpalash/VoiceStudio",
+    "event_id": "e4392884424a76f",
+    "title": "Higgsfield takes AI video from 1 minute to over 10",
     "member_item_ids": [
-     "8088c94af4a7344d"
+     "dadf7c4584af3e3a"
     ],
-    "primary_item_id": "8088c94af4a7344d",
+    "primary_item_id": "dadf7c4584af3e3a",
     "source_ids": [
-     "scrape:github-com-trending"
+     "rss:openai-com-news"
     ],
     "all_urls": [
-     "https://github.com/debpalash/VoiceStudio"
+     "https://openai.com/index/higgsfield-longer-videos-voice"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": null,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-13T12:00:00Z",
+     "2026-10-13T12:00:00Z"
+    ],
     "unique_facts": {},
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 0.92625,
+    "rank_score": 34.065662,
     "rank_components": {
-     "source_weight": 1.0,
-     "corroboration": 1.0,
-     "substance": 0.293,
-     "substance_chars": 176.0,
-     "engagement": 0.0,
-     "recency": 0.625,
+     "source_weight": 1.5,
+     "source_damped": 1.1067,
+     "substance": 0.233,
+     "substance_chars": 140.0,
      "title_quality": 1.0,
-     "score": 0.92625,
+     "heat": 0.307818,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.35,
+     "h_velocity": 1.0,
+     "h_freshness": 0.6601,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 1.0,
+     "score": 34.065662,
      "topic_penalty": 1.0,
-     "final_score": 0.92625
+     "final_score": 34.065662
     }
    },
    {
-    "event_id": "e02dd5c06e99c81",
-    "title": "mksglu/context-mode",
+    "event_id": "e87ef27d85948df",
+    "title": "Is 'Attention' the Essence of Intelligence?",
     "member_item_ids": [
-     "802eb27f9ba22fa0"
+     "c5c6543e97949e72"
     ],
-    "primary_item_id": "802eb27f9ba22fa0",
+    "primary_item_id": "c5c6543e97949e72",
     "source_ids": [
-     "scrape:github-com-trending"
+     "rss:hnrss-org-frontpage"
     ],
     "all_urls": [
-     "https://github.com/mksglu/context-mode"
+     "https://www.quantamagazine.org/is-attention-the-essence-of-intelligence-20261012/"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": null,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-14T03:10:25Z",
+     "2026-10-14T03:10:25Z"
+    ],
     "unique_facts": {},
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 0.923906,
+    "rank_score": 32.7016,
     "rank_components": {
      "source_weight": 1.0,
-     "corroboration": 1.0,
-     "substance": 0.285,
-     "substance_chars": 171.0,
-     "engagement": 0.0,
-     "recency": 0.625,
+     "source_damped": 1.0,
+     "substance": 0.305,
+     "substance_chars": 183.0,
      "title_quality": 1.0,
-     "score": 0.923906,
+     "heat": 0.327016,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.4575,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8268,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 32.7016,
      "topic_penalty": 1.0,
-     "final_score": 0.923906
+     "final_score": 32.7016
     }
    },
    {
-    "event_id": "ec6bd315ea89ad0",
-    "title": "cathrynlavery/diagram-design",
+    "event_id": "ec0c109918ab4ce",
+    "title": "昨天把家里 Wi-Fi 2.4G 和 5G 分开了，你们呢？",
     "member_item_ids": [
-     "0da8a6ea375319d4"
+     "71af70af3ed7c590"
     ],
-    "primary_item_id": "0da8a6ea375319d4",
+    "primary_item_id": "71af70af3ed7c590",
     "source_ids": [
-     "scrape:github-com-trending"
+     "api:v2ex-com-topics-hot"
     ],
     "all_urls": [
-     "https://github.com/cathrynlavery/diagram-design"
+     "https://www.v2ex.com/t/1248569"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": null,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-14T00:46:23Z",
+     "2026-10-14T00:46:23Z"
+    ],
     "unique_facts": {},
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 0.922969,
+    "rank_score": 31.829176,
     "rank_components": {
-     "source_weight": 1.0,
-     "corroboration": 1.0,
-     "substance": 0.282,
-     "substance_chars": 169.0,
-     "engagement": 0.0,
-     "recency": 0.625,
+     "source_weight": 0.9,
+     "source_damped": 0.974,
+     "substance": 0.325,
+     "substance_chars": 195.0,
      "title_quality": 1.0,
-     "score": 0.922969,
+     "heat": 0.326787,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.4875,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7936,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 31.829176,
      "topic_penalty": 1.0,
-     "final_score": 0.922969
+     "final_score": 31.829176
     }
    },
    {
-    "event_id": "e24f518fe0cc746",
-    "title": "bilawalsidhu/gods-eye-view",
+    "event_id": "e528bcd1e7b84f8",
+    "title": "Redesigning source control at Anthropic",
     "member_item_ids": [
-     "96682d5bb20923d1"
+     "c1f7648caf84ab14"
     ],
-    "primary_item_id": "96682d5bb20923d1",
+    "primary_item_id": "c1f7648caf84ab14",
     "source_ids": [
-     "scrape:github-com-trending"
+     "rss:simonwillison-net-everything"
     ],
     "all_urls": [
-     "https://github.com/bilawalsidhu/gods-eye-view"
+     "https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": null,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-13T23:00:06Z",
+     "2026-10-13T23:00:06Z"
+    ],
     "unique_facts": {},
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 0.907031,
+    "rank_score": 31.778723,
     "rank_components": {
-     "source_weight": 1.0,
-     "corroboration": 1.0,
-     "substance": 0.225,
-     "substance_chars": 135.0,
-     "engagement": 0.0,
-     "recency": 0.625,
+     "source_weight": 0.6,
+     "source_damped": 0.8801,
+     "substance": 1.0,
+     "substance_chars": 2216.0,
      "title_quality": 1.0,
-     "score": 0.907031,
+     "heat": 0.361076,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7709,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "score": 31.778723,
      "topic_penalty": 1.0,
-     "final_score": 0.907031
-    }
-   },
-   {
-    "event_id": "e35f5c2fb46e1d1",
-    "title": "xtool-org/xtool",
-    "member_item_ids": [
-     "43f403299eeeba03"
-    ],
-    "primary_item_id": "43f403299eeeba03",
-    "source_ids": [
-     "scrape:github-com-trending"
-    ],
-    "all_urls": [
-     "https://github.com/xtool-org/xtool"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": null,
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 0.889687,
-    "rank_components": {
-     "source_weight": 1.0,
-     "corroboration": 1.0,
-     "substance": 0.163,
-     "substance_chars": 98.0,
-     "engagement": 0.0,
-     "recency": 0.625,
-     "title_quality": 1.0,
-     "score": 0.889687,
-     "topic_penalty": 1.0,
-     "final_score": 0.889687
-    }
-   },
-   {
-    "event_id": "e5b5e0a893baf98",
-    "title": "storytold/artcraft",
-    "member_item_ids": [
-     "f3eb62f60428f0aa"
-    ],
-    "primary_item_id": "f3eb62f60428f0aa",
-    "source_ids": [
-     "scrape:github-com-trending"
-    ],
-    "all_urls": [
-     "https://github.com/storytold/artcraft"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": null,
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 0.881719,
-    "rank_components": {
-     "source_weight": 1.0,
-     "corroboration": 1.0,
-     "substance": 0.135,
-     "substance_chars": 81.0,
-     "engagement": 0.0,
-     "recency": 0.625,
-     "title_quality": 1.0,
-     "score": 0.881719,
-     "topic_penalty": 1.0,
-     "final_score": 0.881719
-    }
-   },
-   {
-    "event_id": "edec6fe1d812289",
-    "title": "morluto/rea",
-    "member_item_ids": [
-     "4beff672e959f1a3"
-    ],
-    "primary_item_id": "4beff672e959f1a3",
-    "source_ids": [
-     "scrape:github-com-trending"
-    ],
-    "all_urls": [
-     "https://github.com/morluto/rea"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": null,
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 0.881719,
-    "rank_components": {
-     "source_weight": 1.0,
-     "corroboration": 1.0,
-     "substance": 0.135,
-     "substance_chars": 81.0,
-     "engagement": 0.0,
-     "recency": 0.625,
-     "title_quality": 1.0,
-     "score": 0.881719,
-     "topic_penalty": 1.0,
-     "final_score": 0.881719
+     "final_score": 31.778723
     }
    },
    {
@@ -1984,8 +1136,8 @@
      "https://simonwillison.net/2026/Oct/13/llm-gemini/"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
     "published_range": [
      "2026-10-13T22:28:54Z",
      "2026-10-13T22:28:54Z"
@@ -1994,56 +1146,1388 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 0.869914,
+    "rank_score": 31.739558,
     "rank_components": {
      "source_weight": 0.6,
-     "corroboration": 1.0,
+     "source_damped": 0.8801,
      "substance": 1.0,
      "substance_chars": 1931.0,
-     "engagement": 0.0,
-     "recency": 0.805,
      "title_quality": 1.0,
-     "score": 0.869914,
+     "heat": 0.360631,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7645,
+     "significance": 1.0,
+     "sig_model": 1.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "score": 31.739558,
      "topic_penalty": 1.0,
-     "final_score": 0.869914
+     "final_score": 31.739558
     }
    },
    {
-    "event_id": "e29024d77069a0c",
-    "title": "Google DeepMind 用 Gemma 构建端侧反诈骗检测",
+    "event_id": "e27a6e08b31f50b",
+    "title": "AI浪潮下，真人剧怎样留观众？|我不是大师|兰香如故|余红旧事|郭柯宇|张哲华 - finance.sina.com.cn",
     "member_item_ids": [
-     "27fe1c5a13edafe6"
+     "ad4439cf6f57c275"
     ],
-    "primary_item_id": "27fe1c5a13edafe6",
+    "primary_item_id": "ad4439cf6f57c275",
     "source_ids": [
-     "rss:aihot-news"
+     "api:news-google-com-search"
     ],
     "all_urls": [
-     "https://aihot.news/items/cn2zpsopcfepfo7sjij0n30f4"
+     "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOS3hiUW5YaHg2NUNvTWdaWmEtWmh4aEk1Y3BlTzVqT2NpNUhiWGU0NU1qRzI5NG5jc0dqQUtJVUw2U0xNVVJRaHFhSUttd2UteGRNYXZoM2JLLS1HRGRDTjdjOV96Uk1nUC1LYTUzVkNkRk9pcFRGSDdhRjJCYUNRbnRIb3RxNnpCalhz?oc=5"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
     "published_range": [
-     "2026-10-14T02:05:00Z",
-     "2026-10-14T02:05:00Z"
+     "2026-10-14T03:56:15Z",
+     "2026-10-14T03:56:15Z"
     ],
     "unique_facts": {},
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 0.758381,
+    "rank_score": 31.348427,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.098,
+     "substance_chars": 59.0,
+     "title_quality": 1.0,
+     "heat": 0.306103,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.1475,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8381,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 31.348427,
+     "topic_penalty": 1.0,
+     "final_score": 31.348427
+    }
+   },
+   {
+    "event_id": "edf424f85b59d69",
+    "title": "创业板、科创50均跌超1%，AI漫剧概念再爆发，电力、煤炭活跃，恒科指低开高走涨超1%，权重科网股集体反弹 - 华尔街见闻",
+    "member_item_ids": [
+     "3c4662ad026baef2"
+    ],
+    "primary_item_id": "3c4662ad026baef2",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1Pd290ZGczTVh2YjlMNjE1aGk4MmRPTk1fUG5tMkFhY3FSZ2RkUkl6Y0EtZ21aVi1NTS1LUGN0R2Q2NUhJcl9PWFlfbzJVRzY0b0Y0?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-14T03:55:58Z",
+     "2026-10-14T03:55:58Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 31.348018,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.098,
+     "substance_chars": 59.0,
+     "title_quality": 1.0,
+     "heat": 0.306099,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.1475,
+     "h_velocity": 1.0,
+     "h_freshness": 0.838,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 31.348018,
+     "topic_penalty": 1.0,
+     "final_score": 31.348018
+    }
+   },
+   {
+    "event_id": "ef52220a9143d82",
+    "title": "Quoting Geoffrey Huntley",
+    "member_item_ids": [
+     "fb8e4397a0309ee5"
+    ],
+    "primary_item_id": "fb8e4397a0309ee5",
+    "source_ids": [
+     "rss:simonwillison-net-everything"
+    ],
+    "all_urls": [
+     "https://simonwillison.net/2026/Oct/13/geoffrey-huntley/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-13T13:32:00Z",
+     "2026-10-13T13:32:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 31.174702,
+    "rank_components": {
+     "source_weight": 0.6,
+     "source_damped": 0.8801,
+     "substance": 0.948,
+     "substance_chars": 569.0,
+     "title_quality": 1.0,
+     "heat": 0.354213,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.6729,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 31.174702,
+     "topic_penalty": 1.0,
+     "final_score": 31.174702
+    }
+   },
+   {
+    "event_id": "e441f6c9e7dd6fb",
+    "title": "现在修电视都这么贵的吗？",
+    "member_item_ids": [
+     "bee1be65bb218de1"
+    ],
+    "primary_item_id": "bee1be65bb218de1",
+    "source_ids": [
+     "api:v2ex-com-topics-hot"
+    ],
+    "all_urls": [
+     "https://www.v2ex.com/t/1248577"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-14T01:11:06Z",
+     "2026-10-14T01:11:06Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 31.116595,
+    "rank_components": {
+     "source_weight": 0.9,
+     "source_damped": 0.974,
+     "substance": 0.252,
+     "substance_chars": 151.0,
+     "title_quality": 1.0,
+     "heat": 0.319471,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.3775,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7991,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 31.116595,
+     "topic_penalty": 1.0,
+     "final_score": 31.116595
+    }
+   },
+   {
+    "event_id": "e4de331a4c35b05",
+    "title": "成本5000元广告费15万 AI综艺创作者：每天工作10小时，没时间享受收益 - 川观新闻",
+    "member_item_ids": [
+     "493bee578b13f3d3"
+    ],
+    "primary_item_id": "493bee578b13f3d3",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5UeWE5OE82Yzc1RFQ5d1I2bmlIV21RNl9vUjRoVFVaMXIyc1lFckVjemQ2Y01faDlKdnN6ZURVdnBvVjk0WEhwVVdVc1g1dw?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-14T04:21:00Z",
+     "2026-10-14T04:21:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 31.106224,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.072,
+     "substance_chars": 43.0,
+     "title_quality": 1.0,
+     "heat": 0.303738,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.1075,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8443,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 31.106224,
+     "topic_penalty": 1.0,
+     "final_score": 31.106224
+    }
+   },
+   {
+    "event_id": "ec501eb25a46069",
+    "title": "拍照识热量、大数据定制食谱……AI“减重搭子”走红，你觉得靠谱吗？丨V观话题 - 川观新闻",
+    "member_item_ids": [
+     "327305bcc77de0ba"
+    ],
+    "primary_item_id": "327305bcc77de0ba",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiTkFVX3lxTFB2VGxKeHE2WFZEeVRkZ0RXMHpCTkh4N3o1NnZpdlF5UWhxX1VGdk1FMEh6TlQwTWg4WW9BRXNMS3EyS3JRdG1mbE9hSXFYUQ?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-14T03:54:00Z",
+     "2026-10-14T03:54:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 31.057681,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.072,
+     "substance_chars": 43.0,
+     "title_quality": 1.0,
+     "heat": 0.303264,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.1075,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8375,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 31.057681,
+     "topic_penalty": 1.0,
+     "final_score": 31.057681
+    }
+   },
+   {
+    "event_id": "e3f61f4d9a94a99",
+    "title": "Run fast, private agents on-device with LFM2.5-24B-A2B",
+    "member_item_ids": [
+     "cf898ebd75ff2c44"
+    ],
+    "primary_item_id": "cf898ebd75ff2c44",
+    "source_ids": [
+     "rss:huggingface-co-blog"
+    ],
+    "all_urls": [
+     "https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-13T17:05:48Z",
+     "2026-10-13T17:05:48Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 30.9759,
     "rank_components": {
      "source_weight": 1.2,
-     "corroboration": 1.0,
-     "substance": 0.342,
-     "substance_chars": 205.0,
-     "engagement": 0.0,
-     "recency": 0.934,
+     "source_damped": 1.0466,
+     "substance": 0.09,
+     "substance_chars": 54.0,
      "title_quality": 1.0,
-     "score": 1.68529,
+     "heat": 0.295957,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.135,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7056,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 1.0,
+     "score": 30.9759,
+     "topic_penalty": 1.0,
+     "final_score": 30.9759
+    }
+   },
+   {
+    "event_id": "e6c197c81fcb62e",
+    "title": "中国又一款AI手机发售，中美开始争夺AI操作系统定义权 - 观察者网",
+    "member_item_ids": [
+     "7bada11cf9603dc2"
+    ],
+    "primary_item_id": "7bada11cf9603dc2",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5LTDliTFJmWGllSGVqRGRHMDRKTHhxR0M5M0FhQzItMDhLZDh0Yzl1akNtVEI5WGE3eXZrSGY1eGVyUUc0ZmdBMUNXNmJUVTN6ZGRwY05YM2pWNlQ4azJkUVZzSFEydw?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-14T04:34:00Z",
+     "2026-10-14T04:34:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 30.932842,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.053,
+     "substance_chars": 32.0,
+     "title_quality": 1.0,
+     "heat": 0.302045,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.08,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8476,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 30.932842,
+     "topic_penalty": 1.0,
+     "final_score": 30.932842
+    }
+   },
+   {
+    "event_id": "e71832a3e700595",
+    "title": "这家美股智慧教育服务商推出首款AI陪伴产品，进军消费硬件市场 - 多知网",
+    "member_item_ids": [
+     "4eabf2db1ef06481"
+    ],
+    "primary_item_id": "4eabf2db1ef06481",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiakFVX3lxTE1WdWZxLUFWTkF0TmRYeHVsZVlpRFF3MmVucU5WVVhvTjBmZlhpenNqa05IbDFkSzdra3h1LTRRdUV2NkpuREgzdGRiU3lhbjVlOHBKZUpiaVJuRG42aVd4RmdsLW8zMG5XdUE?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-14T04:03:31Z",
+     "2026-10-14T04:03:31Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 30.913384,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.057,
+     "substance_chars": 34.0,
+     "title_quality": 1.0,
+     "heat": 0.301855,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.085,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8399,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 30.913384,
+     "topic_penalty": 1.0,
+     "final_score": 30.913384
+    }
+   },
+   {
+    "event_id": "ec4f05f0c90560c",
+    "title": "Anthropic震撼研究：AI竟能通过电视盒子自我复制 - 投资界",
+    "member_item_ids": [
+     "b1ef62a09b887954"
+    ],
+    "primary_item_id": "b1ef62a09b887954",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5BMldEUUQ1WWdyV1pEN2JsaHVWckEwcDhjWjFaWHkxb3FGSW1XbHdaS0JaejM1QXFKWWJEVDBKa290YVFwZTFuU01LNURNeGo5WlFQcUpR?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-14T04:20:00Z",
+     "2026-10-14T04:20:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 30.907341,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.053,
+     "substance_chars": 32.0,
+     "title_quality": 1.0,
+     "heat": 0.301796,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.08,
+     "h_velocity": 1.0,
+     "h_freshness": 0.844,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "score": 30.907341,
+     "topic_penalty": 1.0,
+     "final_score": 30.907341
+    }
+   },
+   {
+    "event_id": "eddd688ed752a40",
+    "title": "“AI挂在嘴边，实际一事无成” 年轻人正被“AI登”逼疯 - 文学城",
+    "member_item_ids": [
+     "aadc08b104846694"
+    ],
+    "primary_item_id": "aadc08b104846694",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiaEFVX3lxTE93d0xOcHFNWTUxT2hFT2JnVnNxOGk4OXJOSmZzVDd1Uk80YXV5aUJyRnpPWmVCTDcwQ0E1WllMd0JsWjN5RlNaTGY1OVdHemIzMGE5VlJVMTRiN1lPcHhqS0JQWmVhTnhJ?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-14T03:46:30Z",
+     "2026-10-14T03:46:30Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 30.847226,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.053,
+     "substance_chars": 32.0,
+     "title_quality": 1.0,
+     "heat": 0.301209,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.08,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8357,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 30.847226,
+     "topic_penalty": 1.0,
+     "final_score": 30.847226
+    }
+   },
+   {
+    "event_id": "e8bfc9e901a28d1",
+    "title": "欧美芯片巨头：AI 时代的\"卖铲人\"棋局 - 36Kr",
+    "member_item_ids": [
+     "3a471bc2ab1590e1"
+    ],
+    "primary_item_id": "3a471bc2ab1590e1",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1JTzVhTmd6RXJyUmNGa3hpLXJmQ1BkRE9CNE0xVzdFQXg4emZUQUd5UGNXb2VyRTRyVE1FLXFkdGt3TmNkcHJFTVU1VDUzdjQ?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-14T04:28:40Z",
+     "2026-10-14T04:28:40Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 30.797659,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.042,
+     "substance_chars": 25.0,
+     "title_quality": 1.0,
+     "heat": 0.300725,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0625,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8462,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 30.797659,
+     "topic_penalty": 1.0,
+     "final_score": 30.797659
+    }
+   },
+   {
+    "event_id": "edfcc1812593c2f",
+    "title": "解码浙江丨AI“吃”算力，新基建“加速跑” - 温州新闻",
+    "member_item_ids": [
+     "3cd957a55442d063"
+    ],
+    "primary_item_id": "3cd957a55442d063",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMibEFVX3lxTE5LY3VZbU9MQy1udkRWd00yTG03eFZMVVBfX2EzdUM5UU11M1dLMTBNcVU3czc4VGlYSXJLT0hzUWZkWWUzU2hINDYzOTd0RERQVVZTSC04X0JLa0Noei1HZmRNRFdVaF9ZbDBZYw?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-14T03:58:00Z",
+     "2026-10-14T03:58:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 30.760176,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.043,
+     "substance_chars": 26.0,
+     "title_quality": 1.0,
+     "heat": 0.300359,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.065,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8385,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 30.760176,
+     "topic_penalty": 1.0,
+     "final_score": 30.760176
+    }
+   },
+   {
+    "event_id": "e5bfb04250d6eda",
+    "title": "AI漫剧行情升温，媒体探访影视行业生产变局 - 新浪网",
+    "member_item_ids": [
+     "2bf173a7d01d09de"
+    ],
+    "primary_item_id": "2bf173a7d01d09de",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMif0FVX3lxTE9ZRjFxcHZMZXpyT1EtNmM5VURJRGpWZDdMLVB4RWRPcVUyX05FRkh3TjhYMmUtdXdjV0VOUFRzbUJWWldUS01YVVFOM2hMSjFLWV9Vd3lxVjZ6RGU3THd4RXQ5UkZVZ18wR2J3alo2WjhNMHJvSE5tckR2bFRjU1E?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-14T03:53:00Z",
+     "2026-10-14T03:53:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 30.733345,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.042,
+     "substance_chars": 25.0,
+     "title_quality": 1.0,
+     "heat": 0.300097,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0625,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8373,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 30.733345,
+     "topic_penalty": 1.0,
+     "final_score": 30.733345
+    }
+   },
+   {
+    "event_id": "ee8a1d0e279345f",
+    "title": "当预订界面消失，AI会如何改写商旅？ - 环球旅讯",
+    "member_item_ids": [
+     "746a0c7b4ad93c2e"
+    ],
+    "primary_item_id": "746a0c7b4ad93c2e",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiVEFVX3lxTFA0RXJpSFZxaHVYMGhPcDRIanlNSm95ZWFFYWI2Q3hwR0p4VXRLdXB0Xy1XMDh6NVhFa3Fhdm9UTHNTWS15alJzbDQxOE5qLTFQWmV3SQ?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-14T04:00:00Z",
+     "2026-10-14T04:00:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 30.709995,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.038,
+     "substance_chars": 23.0,
+     "title_quality": 1.0,
+     "heat": 0.299869,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0575,
+     "h_velocity": 1.0,
+     "h_freshness": 0.839,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 30.709995,
+     "topic_penalty": 1.0,
+     "final_score": 30.709995
+    }
+   },
+   {
+    "event_id": "eab7f26edae1a6c",
+    "title": "上海大模型芯片创企，融资近亿元 - 智东西",
+    "member_item_ids": [
+     "1a47ff5b14bccd19"
+    ],
+    "primary_item_id": "1a47ff5b14bccd19",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5TV3JPaFlnQm10N0pHTlhOclYyQ1dKUTJXUUs2T0xpdUJuemJ1Tkh4d2g0dzRJNk5CeEl0eXl0RkM2cy01WnNoTg?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-14T04:26:20Z",
+     "2026-10-14T04:26:20Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 30.685826,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.032,
+     "substance_chars": 19.0,
+     "title_quality": 1.0,
+     "heat": 0.299633,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0475,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8457,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 30.685826,
+     "topic_penalty": 1.0,
+     "final_score": 30.685826
+    }
+   },
+   {
+    "event_id": "e20aec83fadf50b",
+    "title": "风口研报 - 财联社",
+    "member_item_ids": [
+     "f835b9b65aec9037"
+    ],
+    "primary_item_id": "f835b9b65aec9037",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiSEFVX3lxTE41dmYyLW5CclNKSUlhbUR5Tzl4WjVVcTdhaVpuT1BnZzQ1MFRQeE5Yd1BZWE1NRzVjSGszbHhFOTdranA2TEJXUQ?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-14T04:46:00Z",
+     "2026-10-14T04:46:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 30.524733,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.013,
+     "substance_chars": 8.0,
+     "title_quality": 1.0,
+     "heat": 0.29806,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.02,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8507,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 30.524733,
+     "topic_penalty": 1.0,
+     "final_score": 30.524733
+    }
+   },
+   {
+    "event_id": "e5b22f81d4041ac",
+    "title": "muse 30 亿免费 token",
+    "member_item_ids": [
+     "39eacd6b00c31414"
+    ],
+    "primary_item_id": "39eacd6b00c31414",
+    "source_ids": [
+     "api:v2ex-com-topics-hot"
+    ],
+    "all_urls": [
+     "https://www.v2ex.com/t/1248583"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-14T01:36:37Z",
+     "2026-10-14T01:36:37Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 30.405962,
+    "rank_components": {
+     "source_weight": 0.9,
+     "source_damped": 0.974,
+     "substance": 0.178,
+     "substance_chars": 107.0,
+     "title_quality": 1.0,
+     "heat": 0.312175,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.2675,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8048,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 30.405962,
+     "topic_penalty": 1.0,
+     "final_score": 30.405962
+    }
+   },
+   {
+    "event_id": "e8b213ee806d44d",
+    "title": "Gemini 4 Argon 全面开放，作者实测后认为难以撼动 Claude Opus 5.5 和 GPT-6 Astra",
+    "member_item_ids": [
+     "59fe387f3c2fcb1f",
+     "b16d7265205007ad"
+    ],
+    "primary_item_id": "b16d7265205007ad",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-picks"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/e8516i4snh2ut9d6zedoc9jsv"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-14T01:02:59Z",
+     "2026-10-14T01:02:59Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "needs_review": false,
+    "rank_score": 29.579652,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.255,
+     "substance_chars": 153.0,
+     "title_quality": 1.0,
+     "heat": 0.628037,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 1.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.3825,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7972,
+     "significance": 3.2,
+     "frontier_model_release": 3.2,
+     "sig_model": 1.0,
+     "sig_release": 1.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "score": 65.732559,
      "topic_penalty": 0.45,
-     "final_score": 0.758381
+     "final_score": 29.579652
+    }
+   },
+   {
+    "event_id": "ecd67a9edef7a8d",
+    "title": "debpalash/VoiceStudio",
+    "member_item_ids": [
+     "8088c94af4a7344d"
+    ],
+    "primary_item_id": "8088c94af4a7344d",
+    "source_ids": [
+     "scrape:github-com-trending"
+    ],
+    "all_urls": [
+     "https://github.com/debpalash/VoiceStudio"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": null,
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 21.2912,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.293,
+     "substance_chars": 176.0,
+     "title_quality": 1.0,
+     "heat": 0.212912,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.44,
+     "h_velocity": 0.0,
+     "h_freshness": 0.5,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 21.2912,
+     "topic_penalty": 1.0,
+     "final_score": 21.2912
+    }
+   },
+   {
+    "event_id": "e02dd5c06e99c81",
+    "title": "mksglu/context-mode",
+    "member_item_ids": [
+     "802eb27f9ba22fa0"
+    ],
+    "primary_item_id": "802eb27f9ba22fa0",
+    "source_ids": [
+     "scrape:github-com-trending"
+    ],
+    "all_urls": [
+     "https://github.com/mksglu/context-mode"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": null,
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 21.2037,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.285,
+     "substance_chars": 171.0,
+     "title_quality": 1.0,
+     "heat": 0.212037,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.4275,
+     "h_velocity": 0.0,
+     "h_freshness": 0.5,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 21.2037,
+     "topic_penalty": 1.0,
+     "final_score": 21.2037
+    }
+   },
+   {
+    "event_id": "ec6bd315ea89ad0",
+    "title": "cathrynlavery/diagram-design",
+    "member_item_ids": [
+     "0da8a6ea375319d4"
+    ],
+    "primary_item_id": "0da8a6ea375319d4",
+    "source_ids": [
+     "scrape:github-com-trending"
+    ],
+    "all_urls": [
+     "https://github.com/cathrynlavery/diagram-design"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": null,
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 21.1687,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.282,
+     "substance_chars": 169.0,
+     "title_quality": 1.0,
+     "heat": 0.211687,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.4225,
+     "h_velocity": 0.0,
+     "h_freshness": 0.5,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 21.1687,
+     "topic_penalty": 1.0,
+     "final_score": 21.1687
+    }
+   },
+   {
+    "event_id": "e24f518fe0cc746",
+    "title": "bilawalsidhu/gods-eye-view",
+    "member_item_ids": [
+     "96682d5bb20923d1"
+    ],
+    "primary_item_id": "96682d5bb20923d1",
+    "source_ids": [
+     "scrape:github-com-trending"
+    ],
+    "all_urls": [
+     "https://github.com/bilawalsidhu/gods-eye-view"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": null,
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 20.5737,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.225,
+     "substance_chars": 135.0,
+     "title_quality": 1.0,
+     "heat": 0.205737,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.3375,
+     "h_velocity": 0.0,
+     "h_freshness": 0.5,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 20.5737,
+     "topic_penalty": 1.0,
+     "final_score": 20.5737
+    }
+   },
+   {
+    "event_id": "e35f5c2fb46e1d1",
+    "title": "xtool-org/xtool",
+    "member_item_ids": [
+     "43f403299eeeba03"
+    ],
+    "primary_item_id": "43f403299eeeba03",
+    "source_ids": [
+     "scrape:github-com-trending"
+    ],
+    "all_urls": [
+     "https://github.com/xtool-org/xtool"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": null,
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 19.9262,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.163,
+     "substance_chars": 98.0,
+     "title_quality": 1.0,
+     "heat": 0.199262,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.245,
+     "h_velocity": 0.0,
+     "h_freshness": 0.5,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 19.9262,
+     "topic_penalty": 1.0,
+     "final_score": 19.9262
+    }
+   },
+   {
+    "event_id": "e5b5e0a893baf98",
+    "title": "storytold/artcraft",
+    "member_item_ids": [
+     "f3eb62f60428f0aa"
+    ],
+    "primary_item_id": "f3eb62f60428f0aa",
+    "source_ids": [
+     "scrape:github-com-trending"
+    ],
+    "all_urls": [
+     "https://github.com/storytold/artcraft"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": null,
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 19.6287,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.135,
+     "substance_chars": 81.0,
+     "title_quality": 1.0,
+     "heat": 0.196287,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.2025,
+     "h_velocity": 0.0,
+     "h_freshness": 0.5,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 19.6287,
+     "topic_penalty": 1.0,
+     "final_score": 19.6287
+    }
+   },
+   {
+    "event_id": "edec6fe1d812289",
+    "title": "morluto/rea",
+    "member_item_ids": [
+     "4beff672e959f1a3"
+    ],
+    "primary_item_id": "4beff672e959f1a3",
+    "source_ids": [
+     "scrape:github-com-trending"
+    ],
+    "all_urls": [
+     "https://github.com/morluto/rea"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": null,
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 19.6287,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.135,
+     "substance_chars": 81.0,
+     "title_quality": 1.0,
+     "heat": 0.196287,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.2025,
+     "h_velocity": 0.0,
+     "h_freshness": 0.5,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 19.6287,
+     "topic_penalty": 1.0,
+     "final_score": 19.6287
+    }
+   },
+   {
+    "event_id": "eda90031ffce733",
+    "title": "lyogavin/airllm",
+    "member_item_ids": [
+     "b70a0581c123da4f"
+    ],
+    "primary_item_id": "b70a0581c123da4f",
+    "source_ids": [
+     "scrape:github-com-trending"
+    ],
+    "all_urls": [
+     "https://github.com/lyogavin/airllm"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": null,
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 18.9987,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.075,
+     "substance_chars": 45.0,
+     "title_quality": 1.0,
+     "heat": 0.189987,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.1125,
+     "h_velocity": 0.0,
+     "h_freshness": 0.5,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 18.9987,
+     "topic_penalty": 1.0,
+     "final_score": 18.9987
+    }
+   },
+   {
+    "event_id": "eb26e2f34774c61",
+    "title": "vercel-labs/skills",
+    "member_item_ids": [
+     "f94434da377dfc34"
+    ],
+    "primary_item_id": "f94434da377dfc34",
+    "source_ids": [
+     "scrape:github-com-trending"
+    ],
+    "all_urls": [
+     "https://github.com/vercel-labs/skills"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": null,
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 18.8937,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.065,
+     "substance_chars": 39.0,
+     "title_quality": 1.0,
+     "heat": 0.188937,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0975,
+     "h_velocity": 0.0,
+     "h_freshness": 0.5,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 18.8937,
+     "topic_penalty": 1.0,
+     "final_score": 18.8937
     }
    },
    {
@@ -2060,8 +2544,8 @@
      "https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
     "published_range": [
      "2026-10-13T19:43:07Z",
      "2026-10-13T19:43:07Z"
@@ -2070,18 +2554,29 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 0.676903,
+    "rank_score": 6.651559,
     "rank_components": {
      "source_weight": 1.5,
-     "corroboration": 1.0,
+     "source_damped": 1.1067,
      "substance": 0.08,
      "substance_chars": 48.0,
-     "engagement": 0.0,
-     "recency": 0.724,
      "title_quality": 1.0,
-     "score": 1.504229,
-     "topic_penalty": 0.45,
-     "final_score": 0.676903
+     "heat": 0.296808,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.12,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7328,
+     "significance": 1.0,
+     "sig_model": 1.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 1.0,
+     "score": 32.847205,
+     "topic_penalty": 0.2025,
+     "final_score": 6.651559
     }
    },
    {
@@ -2098,8 +2593,8 @@
      "https://daily.juya.uk/issues/2026-10-14/"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
     "published_range": [
      "2026-10-14T01:33:20Z",
      "2026-10-14T01:33:20Z"
@@ -2108,177 +2603,38 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 0.295942,
+    "rank_score": 1.996812,
     "rank_components": {
      "source_weight": 1.2,
-     "corroboration": 1.0,
+     "source_damped": 1.0466,
      "substance": 1.0,
      "substance_chars": 13783.0,
-     "engagement": 0.0,
-     "recency": 0.913,
      "title_quality": 0.15,
-     "score": 0.295942,
-     "topic_penalty": 1.0,
-     "final_score": 0.295942
-    }
-   },
-   {
-    "event_id": "e96c69f7f761cc1",
-    "title": "Grok Bot 邮件多智能体玩法",
-    "member_item_ids": [
-     "d718f61ad15a5db6"
-    ],
-    "primary_item_id": "d718f61ad15a5db6",
-    "source_ids": [
-     "rss:aihot-news"
-    ],
-    "all_urls": [
-     "https://aihot.news/items/fnk44ma5316w76jwk9050bne8"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-14T02:14:04Z",
-     "2026-10-14T02:14:04Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 0.270202,
-    "rank_components": {
-     "source_weight": 1.2,
-     "corroboration": 1.0,
-     "substance": 0.38,
-     "substance_chars": 228.0,
-     "engagement": 0.0,
-     "recency": 0.94,
-     "title_quality": 1.0,
-     "score": 1.715566,
-     "topic_penalty": 0.1575,
-     "final_score": 0.270202
-    }
-   },
-   {
-    "event_id": "ea0622315da250a",
-    "title": "Gemini 4 Argon: Built to solve your hardest problems",
-    "member_item_ids": [
-     "e176eb62beed1b61"
-    ],
-    "primary_item_id": "e176eb62beed1b61",
-    "source_ids": [
-     "rss:deepmind-google-blog"
-    ],
-    "all_urls": [
-     "https://deepmind.google/blog/introducing-gemini-4-argon/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-13T16:01:52Z",
-     "2026-10-13T16:01:52Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 0.266938,
-    "rank_components": {
-     "source_weight": 1.5,
-     "corroboration": 1.0,
-     "substance": 0.087,
-     "substance_chars": 52.0,
-     "engagement": 0.0,
-     "recency": 0.633,
-     "title_quality": 1.0,
-     "score": 1.318211,
-     "topic_penalty": 0.2025,
-     "final_score": 0.266938
-    }
-   },
-   {
-    "event_id": "ee0137e4edac953",
-    "title": "Google finally releases Gemini 4 Argon",
-    "member_item_ids": [
-     "931c5945d3e11b7c"
-    ],
-    "primary_item_id": "931c5945d3e11b7c",
-    "source_ids": [
-     "rss:theverge-com-ai-artificial-intelligence"
-    ],
-    "all_urls": [
-     "https://www.theverge.com/ai-artificial-intelligence/1009862/google-releases-gemini-4-argon"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-13T16:00:00Z",
-     "2026-10-13T16:00:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 0.114031,
-    "rank_components": {
-     "source_weight": 1.1,
-     "corroboration": 1.0,
-     "substance": 1.0,
-     "substance_chars": 686.0,
-     "engagement": 0.0,
-     "recency": 0.632,
-     "title_quality": 1.0,
-     "score": 1.251367,
-     "topic_penalty": 0.0911,
-     "final_score": 0.114031
-    }
-   },
-   {
-    "event_id": "e1964896e997499",
-    "title": "2026-10-13",
-    "member_item_ids": [
-     "fd1304bc67be5e37"
-    ],
-    "primary_item_id": "fd1304bc67be5e37",
-    "source_ids": [
-     "rss:daily-juya-uk"
-    ],
-    "all_urls": [
-     "https://daily.juya.uk/issues/2026-10-13/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T03:19:30.801173Z",
-    "last_updated_at": "2026-10-14T03:19:30.801173Z",
-    "published_range": [
-     "2026-10-13T01:48:17Z",
-     "2026-10-13T01:48:17Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 0.04743,
-    "rank_components": {
-     "source_weight": 1.2,
-     "corroboration": 1.0,
-     "substance": 1.0,
-     "substance_chars": 13927.0,
-     "engagement": 0.0,
-     "recency": 0.418,
-     "title_quality": 0.15,
-     "score": 0.135514,
+     "heat": 0.363398,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8041,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "score": 5.705177,
      "topic_penalty": 0.35,
-     "final_score": 0.04743
+     "final_score": 1.996812
     }
    }
   ],
+  "sections": {},
   "trend_notes": [],
   "source_coverage": {
-   "total": 80,
-   "active": 14,
+   "total": 81,
+   "active": 16,
    "failed": 0,
    "degraded": 0,
    "blocked": 0,
@@ -2286,16 +2642,18 @@
   },
   "llm_usage": {
    "calls": 22,
-   "prompt_tokens": 10269,
-   "completion_tokens": 5572,
-   "tokens": 15841,
+   "prompt_tokens": 12367,
+   "completion_tokens": 5847,
+   "tokens": 18214,
    "max_calls": 400,
    "max_tokens": 2000000,
    "dead_providers": {
     "gemini": "rate_limited(daily=True): gemini: HTTP 429",
     "groq": "rate_limited(daily=False): groq: HTTP 429"
    },
-   "provider_failures": {},
+   "provider_failures": {
+    "groq": "groq: ConnectError: "
+   },
    "calls_per_provider": {
     "gemini": 17,
     "groq": 5
@@ -2304,21 +2662,20 @@
   "warnings": [
    "模型供应商 2 个（gemini, groq）",
    "部分条目降级为原文摘录（首次失败：LLMUnavailable）",
-   "30/40 个事件降级为规则摘录",
-   "仅分析前 40 个事件，其余未做模型处理"
+   "47/60 个事件降级为规则摘录"
   ],
   "counts": {
-   "events": 224,
-   "multi_source_events": 2,
-   "items_after_window": 236,
+   "events": 53,
+   "multi_source_events": 1,
+   "items_after_window": 250,
    "items_merged_away": 11,
-   "distinct_sources_in_head": 14,
-   "head_max_source_share": 19,
-   "dropped_older": 2985,
+   "distinct_sources_in_head": 16,
+   "head_max_source_share": 24,
+   "dropped_older": 3546,
    "dropped_future_dated": 4,
-   "dropped_outside_window": 71,
+   "dropped_outside_window": 109,
    "dropped_unknown": 13,
-   "dropped_no_url": 10
+   "dropped_no_url": 11
   }
  },
  "sections": {
@@ -2328,9 +2685,11 @@
    "efbcb58f65b260d",
    "ec0c109918ab4ce",
    "e441f6c9e7dd6fb",
+   "e5b22f81d4041ac",
+   "ef62e6267ad9fae",
    "e86569ef914ddac",
-   "ed6d6858cd0d961",
-   "e014d3d2b07de40",
+   "e030b01ab839c66",
+   "e2d114494b64023",
    "e2784deb6eaf14e",
    "e4ea69111a607ed",
    "edefe6c56bd4dc5",
@@ -2338,13 +2697,8 @@
    "eccbe7aa20bba0b",
    "ed0af34df3eb494",
    "ef7bda68d25f80c",
-   "e08d12fd26f2c5e",
    "ea7d2276dc42b7a",
-   "e9bfd4b0d7b218a",
-   "e296c5a46b7091c",
-   "e77fa71e3fec3f8",
-   "ef3296f828a4e98",
-   "ec959befed7b1ec"
+   "e9bfd4b0d7b218a"
   ],
   "dev": [
    "ecd67a9edef7a8d",
@@ -2358,136 +2712,160 @@
    "eb26e2f34774c61"
   ],
   "digest": [
-   "e3e5ff0ca7edf94"
+   "e5c767693252873",
+   "eefa173c739f1d6",
+   "e054497bc82543c",
+   "e3656fdc308f427",
+   "ef0f95449c03fcd",
+   "e2f1ff94657a91b",
+   "e1cb8b729472941",
+   "e67c23c7e691528",
+   "e3006ca35d067aa",
+   "e55ee0a2519d38b",
+   "e08211bc3d305e1",
+   "e3e5ff0ca7edf94",
+   "ed8adf23b541293",
+   "e5ecb97d3f27c14",
+   "e3e302035bceee4",
+   "e863842c4fda2c7",
+   "e59d479c54f336b",
+   "e0aca085eb16aef",
+   "e67455f7a512e8c",
+   "e1cc2b7fc96963e"
   ],
   "lab-blog": [
+   "e04b133080b6251",
+   "e3852035b2c255a",
    "e3f61f4d9a94a99"
   ],
   "lab-official": [
-   "e66f894e87c56c8",
+   "ea0622315da250a",
    "e4392884424a76f",
-   "ead6172be1f54aa",
-   "ea0622315da250a"
+   "e66f894e87c56c8",
+   "ead6172be1f54aa"
   ],
   "media": [
+   "e7d6899eae0640a",
+   "e6c197c81fcb62e",
+   "e4de331a4c35b05",
+   "e20aec83fadf50b",
+   "e8bfc9e901a28d1",
+   "ec4f05f0c90560c",
+   "e27a6e08b31f50b",
+   "edf424f85b59d69",
+   "eab7f26edae1a6c",
+   "e71832a3e700595",
+   "ec501eb25a46069",
+   "edfcc1812593c2f",
+   "ee8a1d0e279345f",
    "e5aaf795abbc129",
+   "e5bfb04250d6eda",
+   "eddd688ed752a40",
+   "e3cc7b678593a66",
+   "e3fbb2b2e3db29c",
+   "e5e9c4fc0a689ca",
+   "e62f5f4474335a0",
+   "ef393719eda2146",
    "e2ec53c51e11c7e",
+   "e8f6edf4ead5618",
+   "ea5837627ad87a0",
+   "eb6609e91347b1f",
+   "e0cdd6cf2177fb4",
    "ecb583e767393e8",
-   "e1f53d9457dc321",
+   "ea4a0eaefafbf02",
+   "e7939dbf8d7f083",
+   "e2e179c5c0e4e79",
+   "e0d59fbb08307c9",
    "e0791749e1c6dc9",
-   "ee0894f492f39d2",
+   "e7b00e77615b5f1",
+   "ea1a5592311ddc4",
    "eb55ff50817a6da",
-   "e31b6333c500f3d",
-   "e7e117e1da8ef65",
-   "eadbb0dd18a1f47",
-   "e429fd86616f8cb",
-   "ecbbf7b73143b89",
    "e7d0108b81c39d0",
    "ecc6aeb90ba9de4",
+   "efbc458a57cb344",
    "ef808a76d16055e",
-   "e667786f32b4522",
-   "e5c6616012ac69c",
    "e81c8dcb2a1bec6",
    "eee41f0eaceb2f5",
-   "e40c383ad4fac6c",
-   "ebf609879f0ca21",
-   "e2e179c5c0e4e79",
    "ee0c73a16ddaa1c",
-   "e67081653cf4435",
+   "eee18872766a648",
+   "ea896012e453b92",
    "ed7d7a0fe83ed74",
    "e7f0357a2303a45",
+   "e4d00644788f24a",
    "ef95ed5696e1d36",
-   "e00d13b72eee1f1",
-   "e7fcf719bd3ca3d",
+   "ed9530b18c9ccc6",
    "ea6c61b2d6c2d91",
+   "e7fcf719bd3ca3d",
+   "e42ab51b13ecfbc",
+   "e9cda7bdde8cc31",
    "e12f295b10c1cc5",
    "e6c0c266ec13f85",
+   "eaddb56879c4a8c",
    "e8ef5fda8fb1eeb",
-   "e7d702d2bb70679",
-   "eee18872766a648",
+   "ed5de721688afba",
    "ed27dba2be70734",
-   "e53a4a2a1cbd27b",
-   "eae12985c48383b",
-   "ee2587d5ae54c58",
+   "eef701100dc1582",
+   "eedf2d5b4243645",
    "ef9c95512a81185",
+   "ee2587d5ae54c58",
    "eeec2861b1693a1",
-   "e20e8b4bd66d6fe",
    "e104d2897ecba76",
+   "e20e8b4bd66d6fe",
    "e6b44704dfe03f9",
    "ea732d336df2f98",
-   "ea96b5bfa994b60",
-   "ef04bbd585389d2",
-   "e3084c8730592f6",
+   "e47e831b51864fd",
    "ea23471b8230ae8",
+   "ed479b280e554b2",
    "e524f5cd707d6a2",
    "e6f9523a3049d35",
    "e8c4d136ae881ca",
    "eb37e236ad8ae2a",
    "ecf61a212b7125e",
    "e3dc104cd8e3274",
-   "eedf2d5b4243645",
    "e1cd1b4adac6306",
+   "e8361652ebc5645",
    "ecaee7ce07ae6ab",
    "e41347ab97131bc",
-   "e60eb69b1735378",
-   "e4a316e4ac30d6d",
-   "eb23de6aaac0ae0",
-   "e5901bab2cec0f1",
-   "e17002f078db275",
-   "edaccb8b2c271e4",
-   "ebcbe02ee6c4a99",
-   "ea075a26af5fb53",
-   "e120d48acd846cc",
-   "e989b0a25388663",
    "eba87afb41e2597",
    "e7841724e95b262",
-   "e791b10ccbebd70",
-   "efcd8c8d604fcba",
-   "edd991ccc5056c9",
+   "ef9060da4c66af3",
+   "eb23de6aaac0ae0",
    "e47caeb21a62fee",
-   "e7d6899eae0640a",
+   "ebcbe02ee6c4a99",
+   "ea075a26af5fb53",
+   "ea6bab142448a7a",
+   "e791b10ccbebd70",
+   "e129c8cf0f31608",
+   "efcd8c8d604fcba",
+   "edc7b643ad4073e",
+   "edd991ccc5056c9",
    "ed3c58321778ea4",
    "ec51171dbfebe03",
-   "e69665bf7486ce9",
    "efdccc58e3af4f1",
-   "efc1ae4dbf30bfd",
-   "e78070fbb6c3e93",
    "e1b4bb1e40ba65a",
-   "e4060a650902726",
-   "e0971bdae5ec959",
+   "e938258fbd8326b",
    "e1b59c35ab3aee5",
    "e5e96d34e918f2f",
-   "e2e4f5382785459",
    "edd0b0155f2d1d3",
-   "e22f8c629c95cd6",
-   "e938258fbd8326b",
-   "e0f86c24dce65e5",
-   "e3630867d6fe74f",
-   "edc7b643ad4073e",
    "e06a2463262a945",
    "e459dc7f81d23d0",
    "e6d68e8fcacd887",
    "ee75f2d1d95869c",
-   "e5bc7349637df3d",
    "eae3b671eedb409",
-   "e71d711b18cf8ae",
-   "ee0aef1eb3a21c1",
    "e98f70e40c85c91",
-   "e372203697641d2",
-   "e2ce7d2b0918599",
-   "e4e3139979212c8",
-   "e52831ade59536c",
-   "ebcf35e4503cdd3",
-   "e4a48bda7bcd975",
+   "ebd4d2692add539",
    "ee0137e4edac953"
   ],
   "mixed": [
+   "e4ba1bf2cf89cf8",
    "eff1f1128a2cdb9",
+   "e87ef27d85948df",
    "e80aa90e1b32737",
    "ea59e4000bf9ff4",
+   "e834c70dc7e0f65",
    "e31f134433f7b8e",
-   "eaf30beee319167",
    "efcf6a58ca9e0b0",
+   "eaf30beee319167",
    "e727800262bc6d2",
    "ef87902b0ca2f72",
    "e7ccafed56daa65",
@@ -2499,327 +2877,125 @@
    "e5dc404f849cec9",
    "e603ff452ab7968",
    "e6b2fc5108b0807",
-   "e428f08db47fac8",
-   "e1abca7d6348f70",
-   "e880a733e1847f5"
+   "e1abca7d6348f70"
   ],
   "preset": [
-   "ef82b85eedd06ee",
+   "e528bcd1e7b84f8",
    "ef6384abac4f498",
    "ef52220a9143d82"
   ],
   "zh-media": [
+   "e8b213ee806d44d",
+   "eecc7e8106a018b",
+   "ec862dbbb944d48",
+   "e6c2fec6771a58e",
+   "e9edd9840c4198f",
+   "e51b617f46a106c",
+   "e6b761850f0fcc6",
    "ea9f702a23f7c51",
-   "e0a2598dd178c5a",
+   "e3e88a902e5033c",
+   "eccb27e1335961f",
+   "e8d1868271aaa69",
+   "e6b674516589399",
+   "ee78061c60c59fb",
+   "e96c69f7f761cc1",
    "ea2035490dc7767",
    "e76db7400593334",
-   "ea556a08208c3ff",
    "ed58b5de01f057e",
+   "ea556a08208c3ff",
    "e5aa373e79c8494",
+   "e29024d77069a0c",
    "eb4d06d6d67d8ae",
    "eee64482a5f99c2",
    "ee7ece706ba5055",
-   "eecc7e8106a018b",
    "e97d6b68f08bc8e",
    "e3debe7a4a8d3ef",
-   "e06ed0e1b58a2b8",
    "e5766667dc27cdb",
    "e68063170a5557f",
+   "e06ed0e1b58a2b8",
    "ed24567bd36cd9a",
-   "e214e80e435ca29",
    "e979574bb15d0e4",
+   "e214e80e435ca29",
    "ec003ee380c1a9a",
    "e01341dec229ff2",
    "ef184a133048151",
-   "e734db07a7bbecb",
-   "e1105b592fb22d1",
    "e07c9159c729320",
-   "e5e8735db7958d5",
+   "e1105b592fb22d1",
+   "e734db07a7bbecb",
    "e59a388a897f951",
-   "e2c9a790c88257c",
    "e378ee97de523f7",
    "e316bf6d7f50b27",
-   "eff73050f12973c",
    "e863db4245e0800",
-   "e5d292c964818bf",
    "e0c7830dbe74c61",
+   "eff73050f12973c",
    "e998c713d232ac3",
    "eec6f4f08ceb7bf",
-   "ebb1854546c385d",
    "e2277c3b2ef4e63",
    "e5d34a59c321c61",
    "edd520aa38b8ef6",
-   "ec50c0c882b59cf",
-   "e80bb2cec9afebf",
-   "e3985b03040d355",
-   "e8ac68f624d45eb",
    "eab4b33cf9b69b8",
-   "ebc6e37a6b511c7",
-   "e63526cfa01a157",
-   "e2a7ca02934b9cf",
-   "e93eb10664e1e94",
-   "eb6145c2343dc82",
-   "e29024d77069a0c",
-   "e8536989a16c400",
-   "e96c69f7f761cc1",
-   "e1964896e997499"
+   "e8536989a16c400"
   ]
  },
  "insights": {
-  "e428f08db47fac8": {
-   "event_id": "e428f08db47fac8",
-   "title": "New Apple TV 4K 相关讨论",
+  "e3d7c0693e413c8": {
+   "event_id": "ee0137e4edac953",
+   "title": "Google finally releases Gemini 4 Argon",
    "facts": [
-    "出现了一条关于 New Apple TV 4K 的文章链接。",
-    "该文章获得了 307 个积分。",
-    "该文章有 566 条评论。"
-   ],
-   "inferences": [
-    "New Apple TV 4K 相关内容可能引发了用户的广泛讨论。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "文章的具体内容和链接地址是什么。",
-    "New Apple TV 4K 的具体规格、价格或发布状态是什么。"
-   ],
-   "key_points": [
-    "出现了关于 New Apple TV 4K 的讨论。",
-    "该讨论获得了 307 个积分和 566 条评论。"
-   ],
-   "rule_based": false
-  },
-  "eca713df852b07e": {
-   "event_id": "eca713df852b07e",
-   "title": "Gemini 4 Argon for Robotics发布",
-   "facts": [
-    "发布了Gemini 4 Argon for Robotics。",
-    "相关信息于2026年10月13日出现在不同来源中。"
-   ],
-   "inferences": [
-    "Gemini 4 Argon for Robotics可能与机器人领域相关。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "Gemini 4 Argon for Robotics的具体功能和技术细节是什么。",
-    "该发布是由哪家具体机构进行的。"
-   ],
-   "key_points": [
-    "Gemini 4 Argon for Robotics"
-   ],
-   "rule_based": false
-  },
-  "ef82b85eedd06ee": {
-   "event_id": "ef82b85eedd06ee",
-   "title": "Anthropic 团队开发自研源码控制系统 Scion 代替 Git",
-   "facts": [
-    "Anthropic 的代码合并量从 2026 年 5 月的日均约 2,500 次增加到 9 月的超过 30,000 次。",
-    "Anthropic 由 7 人团队耗时 5 个月完成了从 Git 到自研系统 Scion 的迁移。",
-    "Simon Willison 使用 Claude 修改了 Anthropic 的图表以添加 2026 年各模型公开版本的标记。"
-   ],
-   "inferences": [
-    "Anthropic 开发自研源码控制系统 Scion 是为了应对代码合并量的大幅增长。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "图表中显示的公开发布日期是否代表模型内部可用日期无法从材料中完全确认。",
-    "Simon Willison 关于模型内部使用日期的猜测是否准确不得而知。"
-   ],
-   "key_points": [
-    "Anthropic 代码合并量在数月内出现戏剧性增长。",
-    "Anthropic 建立了自己的定制源码控制系统 Scion 代替 Git。",
-    "相关图表被修改以展示 2026 年各模型的公开发布日期。"
-   ],
-   "rule_based": false
-  },
-  "e46869dfd9b7a35": {
-   "event_id": "e46869dfd9b7a35",
-   "title": "Gemini 4 Argon 相关讨论引发关注",
-   "facts": [
-    "出现了一个名为 Gemini 4 Argon 的主题。",
-    "存在与 Gemini 4 Argon for Robotics 相关的参见内容。",
-    "相关讨论获得了 1065 个积分和 792 条评论。"
-   ],
-   "inferences": [
-    "Gemini 4 Argon 可能是一个新发布的技术、模型或产品，并引发了社区的广泛讨论。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "Gemini 4 Argon 的具体定义、功能以及发布主体在材料中均未说明。"
-   ],
-   "key_points": [
-    "Gemini 4 Argon 引起了 Hacker News 用户的关注。",
-    "存在衍生方向 Gemini 4 Argon for Robotics。"
-   ],
-   "rule_based": false
-  },
-  "e5dc404f849cec9": {
-   "event_id": "e5dc404f849cec9",
-   "title": "Thunderbird for iOS 相关讨论受关注",
-   "facts": [
-    "出现关于 Thunderbird for iOS 的讨论。",
-    "相关文章获得了 362 个积分。",
-    "相关讨论有 162 条评论。"
-   ],
-   "inferences": [
-    "Thunderbird for iOS 可能会受到用户的广泛关注。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料未说明 Thunderbird for iOS 的具体发布状态或功能细节。",
-    "材料未说明文章的具体内容和评论的具体倾向。"
-   ],
-   "key_points": [
-    "Thunderbird for iOS 获得了 362 个积分。",
-    "Thunderbird for iOS 拥有 162 条评论。"
-   ],
-   "rule_based": false
-  },
-  "e603ff452ab7968": {
-   "event_id": "e603ff452ab7968",
-   "title": "网站发至Hacker News后遭遇大量AI机器人流量",
-   "facts": [
-    "有人在Hacker News上发布了内容。",
-    "发布后其网站遭遇了大量AI机器人流量。",
-    "该讨论获得了272个积分和152条评论。"
-   ],
-   "inferences": [
-    "这可能表明在Hacker News上发布内容会吸引AI爬虫或机器人访问。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "发布的内容具体是什么。",
-    "遭遇的AI机器人流量的具体规模或数量是多少。",
-    "这些AI机器人流量访问网站的具体目的或来源是什么。"
-   ],
-   "key_points": [
-    "在Hacker News发帖后网站涌入大量AI机器人流量",
-    "该话题获得了272个积分及152条评论"
-   ],
-   "rule_based": false
-  },
-  "e880a733e1847f5": {
-   "event_id": "e880a733e1847f5",
-   "title": "Apple HomeView",
-   "facts": [
-    "Title is Apple HomeView",
-    "Points: 689",
-    "Comments: 799",
-    "Content includes Apple HomeView"
-   ],
-   "inferences": [
-    "The article discusses Apple HomeView",
-    "The article has 689 points and 799 comments"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "The article URL is not provided",
-    "The comments URL is not provided",
-    "The content beyond the title is not provided"
-   ],
-   "key_points": [
-    "Apple HomeView",
-    "689 points",
-    "799 comments"
-   ],
-   "rule_based": false
-  },
-  "e6b2fc5108b0807": {
-   "event_id": "e6b2fc5108b0807",
-   "title": "Apple 推出 'Switch to Safari' 活动，说明为何放弃 Chrome",
-   "facts": [
-    "Apple launched a new 'Switch to Safari' campaign.",
-    "The campaign details why you should ditch Chrome."
-   ],
-   "inferences": [
-    "Apple is encouraging users to switch from Chrome to Safari."
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "The specific reasons presented in the campaign are not provided.",
-    "The campaign's target audience and distribution channels are unclear."
-   ],
-   "key_points": [
-    "Apple's new 'Switch to Safari' campaign",
-    "Campaign explains why to ditch Chrome"
-   ],
-   "rule_based": false
-  },
-  "ea17045bc00201f": {
-   "event_id": "ea17045bc00201f",
-   "title": "英国人均发电量低于1970年代",
-   "facts": [
-    "英国人均发电量低于1970年代",
-    "文章获得222分",
-    "文章有315条评论"
-   ],
-   "inferences": [
-    "英国能源生产量相对下降"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "原因不明"
-   ],
-   "key_points": [
-    "英国人均发电量低于1970年代",
-    "文章在Hacker News获得222分"
-   ],
-   "rule_based": false
-  },
-  "ede09ffe65a61b5": {
-   "event_id": "ede09ffe65a61b5",
-   "title": "Redesigning source control at Anthropic",
-   "facts": [
-    "Article URL:\nComments URL:\nPoints: 584\n# Comments: 557"
+    "After months sitting on the sidelines of the frontier AI race, Google has finally launched its long-awaited Gemini 4 Argon model, claiming it can compete with the best the industry has to offer. Google says Argon delivers \"frontier reasoning and improved performance across complex workflows,\" while "
    ],
    "inferences": [],
    "opinions": [],
    "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
    ],
    "key_points": [],
    "rule_based": true
   },
-  "e00d13b72eee1f1": {
-   "event_id": "e00d13b72eee1f1",
-   "title": "这届毕业生，卡在AI 率里 - 虎嗅网",
+  "e8b213ee806d44d": {
+   "event_id": "e8b213ee806d44d",
+   "title": "Gemini 4 Argon 全面开放，实测难敌 Claude Opus 5.5 与 GPT-6 Astra",
    "facts": [
-    "这届毕业生，卡在AI 率里 虎嗅网"
+    "Google 于 2026 年 10 月 14 日全面开放 Gemini 4 Argon。"
    ],
-   "inferences": [],
-   "opinions": [],
+   "inferences": [
+    "作者对 Gemini 4 Argon 进行了实测。"
+   ],
+   "opinions": [
+    "Gemini 4 Argon 难以撼动 Claude Opus 5.5 和 GPT-6 Astra 的地位。"
+   ],
    "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
+    "作者的具体身份和实测的评测标准未在材料中说明。",
+    "Claude Opus 5.5 和 GPT-6 Astra 是否同期发布或更新未在材料中说明。"
    ],
-   "key_points": [],
-   "rule_based": true
+   "key_points": [
+    "Google 于 2026 年 10 月 14 日全面开放 Gemini 4 Argon。",
+    "实测表明其难以冲击 Claude Opus 5.5 和 GPT-6 Astra 的地位。"
+   ],
+   "rule_based": false
   },
-  "e01341dec229ff2": {
-   "event_id": "e01341dec229ff2",
-   "title": "德勤调查：英国 52% 大企业首席财务官预计未来一年用 AI 裁员",
+  "eb38ec17a2adccd": {
+   "event_id": "eecc7e8106a018b",
+   "title": "Google DeepMind 与新加坡政府合作推出端侧 AI 诈骗检测模型",
    "facts": [
-    "德勤发布的首席财务官调查显示，52% 的英国大企业 CFO 预计未来一年借助 AI 裁员，67% 的受访者表示目前仅实现预期 AI 变革的四分之一。调查于 9 月 17 日至 10 月 1 日覆盖 66 名 CFO，其中仅三分之一认为 AI 将在未来一年提升利润率；另一份 Multiverse 报告指出企业采购 AI 工具却缺乏员工培训，导致投入浪费。"
+    "Google DeepMind 与新加坡政府科技局在新加坡国际网络周发布了端侧诈骗检测模型。",
+    "诈骗占新加坡报案犯罪的比例超过一半。",
+    "新加坡自 2019 年以来的诈骗损失超过 40 亿新元。"
    ],
-   "inferences": [],
+   "inferences": [
+    "此次合作可能是为了应对新加坡严重的诈骗犯罪问题。"
+   ],
    "opinions": [],
    "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
+    "该端侧 AI 诈骗检测模型的具体技术架构和运行机制是什么。",
+    "该模型将在哪些具体的设备或平台上部署。"
    ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e014d3d2b07de40": {
-   "event_id": "e014d3d2b07de40",
-   "title": "用 Rust 重写一切，这次是 navicat",
-   "facts": [
-    "## 背景\n公司前阵子收到了律师函，于是通知全员删除 navicat ，个人版也不行，要求用开源的 DBeaver ，由于常年习惯了 navicat 的布局和操作习惯，实在适应不了其他工具，都 AI 时代了，索性自己撸一个吧。\n## 技术栈 & 进度\nRust + GPUI ，gpui-kit 组件库 , shadcn 风格。无 WebView ，全部 UI 都用 Rust 写\n适配了 ODBC 驱动，理论上只要有 ODBC 驱动，都能连接\n| 数据库 | 状态\n| MySQL / MariaDB | ✅\n| SQLite | ✅\n| SQL Server | ✅\n| PostgreSQL |"
+   "key_points": [
+    "Google DeepMind 与新加坡政府科技局合作推出端侧 AI 诈骗检测模型。",
+    "该模型在新加坡国际网络周上发布，旨在应对当地严峻的诈骗问题。"
    ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
+   "rule_based": false
   },
   "e02dd5c06e99c81": {
    "event_id": "e02dd5c06e99c81",
@@ -2830,389 +3006,807 @@
    "inferences": [],
    "opinions": [],
    "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
    ],
    "key_points": [],
    "rule_based": true
   },
-  "e06a2463262a945": {
-   "event_id": "e06a2463262a945",
-   "title": "风向标·小海豹研究所| 会聊天的AI遍地都是，会干活的AI为什么在山东？_山东新闻 - 大众网",
+  "e04b133080b6251": {
+   "event_id": "e04b133080b6251",
+   "title": "人工神经网络如何构建自身的学习机制",
    "facts": [
-    "风向标·小海豹研究所| 会聊天的AI遍地都是，会干活的AI为什么在山东？_山东新闻 大众网"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e06ed0e1b58a2b8": {
-   "event_id": "e06ed0e1b58a2b8",
-   "title": "新研究：AI 支出仍\"很难找到实际、可量化的财务影响\"",
-   "facts": [
-    "一项新研究显示，AI 支出至今仍\"很难找到实际、可量化的财务影响\"，大规模提升员工生产率和国家 GDP 的证据为零。The Information 的 Laura Bratton 在邮件通讯中报告了这一研究，并指出可记录的 ROI 极低与数万亿美元投入之间的反差依然反常。"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e0791749e1c6dc9": {
-   "event_id": "e0791749e1c6dc9",
-   "title": "OPPO Find X10系列手机将搭载Manus的AI智能体 - 电子工程专辑",
-   "facts": [
-    "OPPO Find X10系列手机将搭载Manus的AI智能体 电子工程专辑"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e07c9159c729320": {
-   "event_id": "e07c9159c729320",
-   "title": "OpenAI 沙特籍员工在高管会议室安装录音设备被捕",
-   "facts": [
-    "OpenAI 产品团队工程主管阿尔福赞因涉嫌在旧金山总部高管会议室电视机后安装录音设备被 FBI 逮捕，10月9日被解雇，面临非法截获口头通信指控，最高可判5年监禁及25万美元罚款。该员工曾在内部办公软件中检索高管日程与会议室位置，并在9月24日至30日期间用配偶关联的AI账号提问如何制作和隐藏录音设备；OpenAI 安全团队调用自家大模型分析设备线索锁定嫌疑人。"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e08d12fd26f2c5e": {
-   "event_id": "e08d12fd26f2c5e",
-   "title": "Claude 很好开啊",
-   "facts": [
-    "Codex 额度真的消耗太快了，跟风开个 Claude 做补充\n不过 Claude 很好开啊，用之前开过的一张 Revolut ，Windows 端直接就付款成功了\n另外使用过程中有哪些注意事项吗？我在党政机关工作，希望用它来处理报表台账、公文撰写以及偶尔写点政府网站的插件扩展，会不会一张嘴就秒封了\n![PixPin_2026-10-13_10-52-37.png](\n![IMG_3013.png]("
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e0971bdae5ec959": {
-   "event_id": "e0971bdae5ec959",
-   "title": "大华股份国产化AI算力服务器项目落户望城经开区国产AI算力赛道再添湖南力量- 长沙 - 新湖南",
-   "facts": [
-    "大华股份国产化AI算力服务器项目落户望城经开区国产AI算力赛道再添湖南力量- 长沙 新湖南"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e0a2598dd178c5a": {
-   "event_id": "e0a2598dd178c5a",
-   "title": "Xbow 用 GPT-5.6 挖出 Chrome 三个漏洞，获 Google 25 万美元全链奖励",
-   "facts": [
-    "Xbow 工程师 Brendan Dolan-Gavitt 用 OpenAI 的 gpt-5.6-sol 分析 Chrome 源码，历时六天、花费约 4 万美元算力，找到三个独立漏洞组成漏洞链，使标签页内普通 JavaScript 代码穿越两个防护边界、逃出所有沙箱。"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e0c7830dbe74c61": {
-   "event_id": "e0c7830dbe74c61",
-   "title": "王兴兴：过去十几年我犯的最大的错误就是对AI相信得还不够",
-   "facts": [
-    "宇树 CEO 王兴兴表示，GPT-6 发布后在各种机器人上测试效果很好，宇树和其他机器人公司已在工厂落地试点，大规模应用还需提升泛化性和效率，但未来几年很可能解决。他认为商业服务场景的落地可能比工业领域更快，并称过去十几年自己犯的最大错误就是对AI的相信还不太够。作者评论称机器人行业要被 OpenAI 抄家了。"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e0f86c24dce65e5": {
-   "event_id": "e0f86c24dce65e5",
-   "title": "普联软件：云湖平台的AI能力尚未形成可独立计价的收入模式 - 东方财富",
-   "facts": [
-    "普联软件：云湖平台的AI能力尚未形成可独立计价的收入模式 东方财富"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e104d2897ecba76": {
-   "event_id": "e104d2897ecba76",
-   "title": "山东“数字工友”上岗！大模型变身车间“熟手” - 山东宣传网",
-   "facts": [
-    "山东“数字工友”上岗！大模型变身车间“熟手” 山东宣传网"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e1105b592fb22d1": {
-   "event_id": "e1105b592fb22d1",
-   "title": "印孚瑟斯董事长尼勒卡尼：AI 推动业务增长，就业担忧纯属无稽之谈",
-   "facts": [
-    "印孚瑟斯董事长尼勒卡尼在彭博创新经济论坛上驳斥 AI 导致大规模失业的说法，称其\"纯属无稽之谈\"，认为 AI 安全可靠运行将创造治理、变革管理、企业转型和安全防护等新岗位。他承认编程工作逐渐自动化，但强调技术在整个服务项目中只占很小一部分，企业转型需求比以往更大。过去两年印孚瑟斯股价累计下跌约 45%。"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e120d48acd846cc": {
-   "event_id": "e120d48acd846cc",
-   "title": "Workday签署协议收购AI身份管理平台C1.ai - 观点网",
-   "facts": [
-    "Workday签署协议收购AI身份管理平台C1.ai 观点网"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e12f295b10c1cc5": {
-   "event_id": "e12f295b10c1cc5",
-   "title": "垂域大模型看山东｜山东“人工智能服务军团”以普惠AI赋能产业升级 - 新浪网",
-   "facts": [
-    "垂域大模型看山东｜山东“人工智能服务军团”以普惠AI赋能产业升级 新浪网"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e17002f078db275": {
-   "event_id": "e17002f078db275",
-   "title": "PUPPETEER：会看场合的AI手势生成，让虚拟人懂得坐姿站姿和身边的桌椅 - 科技行者",
-   "facts": [
-    "PUPPETEER：会看场合的AI手势生成，让虚拟人懂得坐姿站姿和身边的桌椅 科技行者"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e1964896e997499": {
-   "event_id": "e1964896e997499",
-   "title": "2026-10-13",
-   "facts": [
-    "AI 早报 2026 10 13 视频版 ：YouTube ｜ 哔哩哔哩 概览 要闻 Meta 发布 Muse Wonder 模型系列 ↗ 1 The X Subscription 推出：整合Grok、Cursor 和 X Premium ↗ 2 Codex 第 8 天安排：重置用量额度 ↗ 3 模型发布 智谱推出法律模型 GLM Legal，开放测试申请 ↗ 4 OpenBMB 发布 MiniCPM V 4.7 系列两款模型 ↗ 5 开发生态 OpenCode Go 提供 80 美元 V4.1 Flash 额度 ↗ 6 阶跃 Step 5 Preview 上线 WorkBuddy，独家限免两"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e1abca7d6348f70": {
-   "event_id": "e1abca7d6348f70",
-   "title": "Show HN: How random are you?",
-   "facts": [
-    "Article URL:\nComments URL:\nPoints: 84\n# Comments: 48"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e1b4bb1e40ba65a": {
-   "event_id": "e1b4bb1e40ba65a",
-   "title": "员工借助AI辅助办公遭辞退 法院：系合理使用不构成违规 - 华商网",
-   "facts": [
-    "员工借助AI辅助办公遭辞退 法院：系合理使用不构成违规 华商网"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e1b59c35ab3aee5": {
-   "event_id": "e1b59c35ab3aee5",
-   "title": "国泰海通：AI制药迎来产业拐点大模型入局重构行业范式_券商最新研判 - 证券之星",
-   "facts": [
-    "国泰海通：AI制药迎来产业拐点大模型入局重构行业范式_券商最新研判 证券之星"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e1cd1b4adac6306": {
-   "event_id": "e1cd1b4adac6306",
-   "title": "Edge AI Daily 早报（10月14日） - 钛媒体",
-   "facts": [
-    "Edge AI Daily 早报（10月14日） 钛媒体"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e1f53d9457dc321": {
-   "event_id": "e1f53d9457dc321",
-   "title": "真人短剧完了吗？对话智象未来王科：AI正重构影视，不是取代 - 搜狐",
-   "facts": [
-    "真人短剧完了吗？对话智象未来王科：AI正重构影视，不是取代 搜狐"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e20e8b4bd66d6fe": {
-   "event_id": "e20e8b4bd66d6fe",
-   "title": "IMF：AI投资对冲全球经济下行压力 - 红网",
-   "facts": [
-    "IMF：AI投资对冲全球经济下行压力 红网"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e214e80e435ca29": {
-   "event_id": "e214e80e435ca29",
-   "title": "Grok Bot 漏洞报告邮箱",
-   "facts": [
-    "如果你想提交 bug 报告，让你的 bot 发邮件到 tibo@mail.grokbot.com！"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e2277c3b2ef4e63": {
-   "event_id": "e2277c3b2ef4e63",
-   "title": "实测评测认为 Gemini 4 Argon 让 Google 重新追上第一梯队但 Antigravity 仍落后",
-   "facts": [
-    "indigo 测试 Gemini 4 Argon 的写作和知识组合能力，结论是其让 Google 重新追上第一梯队但未超越对手，应用 Antigravity（Harness）落后半年到一年。"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e22f8c629c95cd6": {
-   "event_id": "e22f8c629c95cd6",
-   "title": "这场国家级AI大会，为什么选山东_山东新闻 - 大众网",
-   "facts": [
-    "这场国家级AI大会，为什么选山东_山东新闻 大众网"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e80aa90e1b32737": {
-   "event_id": "e80aa90e1b32737",
-   "title": "Show HN: Guitoro, a virtual guitar you strum with your keyboard",
-   "facts": [
-    "Guitoro is a free browser guitar using recordings of real instruments. You can strum with your keyboard, mouse, or touchscreen, choose acoustic, classical, electric guitar or bass, and see chord fingering and each stroke. Song practice can be slowed to 20%, and there are free chord tools and tuners."
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "eaf30beee319167": {
-   "event_id": "eaf30beee319167",
-   "title": "OpenAI engineer arrested",
-   "facts": [
-    "OpenAI engineer arrested",
-    "bugging of executive conference room"
+    "机器学习网络能够在没有设计者详细指令的情况下进行学习。",
+    "这类网络可能为大脑在学习过程中如何进行自我重组提供见解。"
    ],
    "inferences": [
-    "The arrest was related to bugging the executive conference room"
+    "研究人工神经网络的学习过程或有助于理解人类大脑的重组机制。"
    ],
    "opinions": [],
    "uncertainties": [
-    "Details of the arrest",
-    "Charges against the engineer",
-    "Identity of the engineer",
-    "Circumstances of the bugging"
+    "材料未说明机器学习网络在没有详细指令的情况下具体是如何进行学习的。",
+    "材料未说明这类网络具体能为大脑重组提供哪些方面的见解。",
+    "材料未提及具体涉及哪些人工神经网络模型或架构。"
    ],
    "key_points": [
-    "OpenAI engineer arrested",
-    "Bugging of executive conference room"
+    "机器学习网络无需设计者的详细指令即可学习。",
+    "此类网络有助于了解大脑在学习时的自我重组方式。"
    ],
    "rule_based": false
+  },
+  "e20aec83fadf50b": {
+   "event_id": "e20aec83fadf50b",
+   "title": "财联社发布风口研报",
+   "facts": [
+    "财联社发布了风口研报。"
+   ],
+   "inferences": [
+    "相关研报可能涉及当时的市场热点或投资机会。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "研报的具体内容是什么。",
+    "研报指向的具体行业或板块是什么。"
+   ],
+   "key_points": [
+    "财联社发布风口研报"
+   ],
+   "rule_based": false
+  },
+  "e24f518fe0cc746": {
+   "event_id": "e24f518fe0cc746",
+   "title": "bilawalsidhu/gods-eye-view",
+   "facts": [
+    "A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe."
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e27a6e08b31f50b": {
+   "event_id": "e27a6e08b31f50b",
+   "title": "AI浪潮下，真人剧怎样留观众？|我不是大师|兰香如故|余红旧事|郭柯宇|张哲华 - finance.sina.com.cn",
+   "facts": [
+    "AI浪潮下，真人剧怎样留观众？|我不是大师|兰香如故|余红旧事|郭柯宇|张哲华 finance.sina.com.cn"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e2e179c5c0e4e79": {
+   "event_id": "e2e179c5c0e4e79",
+   "title": "Shopify opens its catalog up to more AI agents",
+   "facts": [
+    "More AI agents will soon be able to browse and purchase from Shopify listings, marking an expansion of the company's agentic commerce ambitions. Shopify announced Tuesday it will let shoppers configure their AI agents to purchase products on their behalf, giving more agents access to over a billion "
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e35f5c2fb46e1d1": {
+   "event_id": "e35f5c2fb46e1d1",
+   "title": "xtool-org/xtool",
+   "facts": [
+    "Cross-platform Xcode replacement. Build and deploy iOS apps with SwiftPM on Linux, Windows, macOS."
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e3852035b2c255a": {
+   "event_id": "e3852035b2c255a",
+   "title": "MIT Lincoln Laboratory 举办新兴生物技术国家安全委员会路演",
+   "facts": [
+    "MIT Lincoln Laboratory 主办了新兴生物技术国家安全委员会的路演活动。",
+    "该路演活动重点展示了马萨诸塞州的国防生物技术生态系统。"
+   ],
+   "inferences": [
+    "此次路演活动可能旨在促进马萨诸塞州国防生物技术生态系统与国家安全委员会之间的交流与合作。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "活动讨论的具体技术细节和议题有哪些。",
+    "出席此次路演活动的具体人员和机构有哪些。",
+    "活动是否达成或签署了任何具体协议。"
+   ],
+   "key_points": [
+    "MIT Lincoln Laboratory 举办新兴生物技术国家安全委员会路演。",
+    "活动聚焦马萨诸塞州的国防生物技术生态系统。"
+   ],
+   "rule_based": false
+  },
+  "e3f61f4d9a94a99": {
+   "event_id": "e3f61f4d9a94a99",
+   "title": "Run fast, private agents on-device with LFM2.5-24B-A2B",
+   "facts": [
+    "Run fast, private agents on-device with LFM2.5-24B-A2B"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e4392884424a76f": {
+   "event_id": "e4392884424a76f",
+   "title": "Higgsfield takes AI video from 1 minute to over 10",
+   "facts": [
+    "Higgsfield brings creators longer videos with GPT-6 Astra, precise visuals with GPT-Image-2.5, and a path to voice filmmaking with GPT-Live."
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e441f6c9e7dd6fb": {
+   "event_id": "e441f6c9e7dd6fb",
+   "title": "现在修电视都这么贵的吗？",
+   "facts": [
+    "19 年买的大法，国庆回来，小孩说就灰屏了。找了师傅上门，说是屏幕坏了。修的话要 1000 多，我想着现在只有我儿子看，就懒得修了。1000 多加一点钱都能买个国产了。上门费：78\n再回头想想，也是月初修的洗衣机，网上查了零件才 40 ，修了 370 。这电视会不会也是坏了小毛病，然后报价奇高。"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e459dc7f81d23d0": {
+   "event_id": "e459dc7f81d23d0",
+   "title": "DLSS 5 gets toned down for its Hogwarts Legacy debut next month",
+   "facts": [
+    "When Nvidia originally showed off DLSS 5 earlier this year, the technology immediately got branded as gen AI for video games. To gamers, Nvidia had lost the plot. I personally couldn't get over how faces were transformed using DLSS 5. The 15-year-old student from Hogwarts Legacy suddenly looked much"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e47caeb21a62fee": {
+   "event_id": "e47caeb21a62fee",
+   "title": "It’s ‘incomprehensible’ that Instagram allowed an AI image of Mia Goth to spread, say her reps",
+   "facts": [
+    "Earlier this month, news broke that actress Mia Goth had filed for divorce from actor and filmmaker Shia LaBeouf. An Instagram post from the account miagoth_ - marked with a blue verified checkmark - quickly spread. The post shows Goth in a T-shirt that reads \"MY EX IS MY BIGGEST FAN\" in bold black "
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e4ba1bf2cf89cf8": {
+   "event_id": "e4ba1bf2cf89cf8",
+   "title": "DailyDawn · 2026-10-14",
+   "facts": [
+    "DailyDawn · 2026-10-14\n\n📍 今日 Top 3 信号\n\n高置信度：今日登榜的debpalash/VoiceStudio上线首日拿1748星，覆盖646种语言全栈本地语音能力\n\n外部发现：\"open source local AI voice tools\" 7日搜索涨幅 +142%\n\n双重验证：GitHub Trending、Product Hunt双源同步出现自托管语音工具相关项目，热度持续走高\n\n🧠 认知调试\n\n今天GitHub Trending一口气上线三个自托管语音相关项目，单项目最高拿到4081星，整个赛道的用户需求爆发速度远超我此前的预判。过去72小时里，闭源语"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e4de331a4c35b05": {
+   "event_id": "e4de331a4c35b05",
+   "title": "成本5000元广告费15万 AI综艺创作者：每天工作10小时，没时间享受收益 - 川观新闻",
+   "facts": [
+    "成本5000元广告费15万 AI综艺创作者：每天工作10小时，没时间享受收益 川观新闻"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e528bcd1e7b84f8": {
+   "event_id": "e528bcd1e7b84f8",
+   "title": "Redesigning source control at Anthropic",
+   "facts": [
+    "Redesigning source control at Anthropic\nInteresting piece from Anthropic describing why and how they built their own custom alternative to Git, based on the dramatic increase in rate of changes to their code after the past six months.\nIn May 2026, Anthropic averaged around 2,500 code changes merged "
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e5aaf795abbc129": {
+   "event_id": "e5aaf795abbc129",
+   "title": "OpenAI employee arrested for allegedly planting a bug in a conference room",
+   "facts": [
+    "An OpenAI engineer was arrested after the company said it discovered a \"sophisticated recording device\" hidden in one of its offices. The employee was identified as Abdulrahman Alfozan, a 35-year-old Saudi national. Alfozan is charged with using or endeavoring to use a device to intercept oral commu"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e5b22f81d4041ac": {
+   "event_id": "e5b22f81d4041ac",
+   "title": "muse 30 亿免费 token",
+   "facts": [
+    "直接 tg ，输出自己的邀请码就行。可自己生成邀请链接，单个邀请码好像最高 3 次，合计 90 亿 token"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e5b5e0a893baf98": {
+   "event_id": "e5b5e0a893baf98",
+   "title": "storytold/artcraft",
+   "facts": [
+    "ArtCraft is an intentional crafting engine for artists, designers, and filmmakers"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e5bfb04250d6eda": {
+   "event_id": "e5bfb04250d6eda",
+   "title": "AI漫剧行情升温，媒体探访影视行业生产变局 - 新浪网",
+   "facts": [
+    "AI漫剧行情升温，媒体探访影视行业生产变局 新浪网"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e6c197c81fcb62e": {
+   "event_id": "e6c197c81fcb62e",
+   "title": "中国又一款AI手机发售，中美争夺AI操作系统定义权",
+   "facts": [
+    "中国又一款AI手机发售。",
+    "中美开始争夺AI操作系统定义权。"
+   ],
+   "inferences": [
+    "中国新AI手机的发售可能加剧了中美双方在AI操作系统定义权方面的竞争。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "发售的AI手机具体品牌和型号是什么。",
+    "争夺AI操作系统定义权的具体现状和细节是什么。"
+   ],
+   "key_points": [
+    "中国又一款AI手机发售",
+    "中美开始争夺AI操作系统定义权"
+   ],
+   "rule_based": false
+  },
+  "e71832a3e700595": {
+   "event_id": "e71832a3e700595",
+   "title": "美股智慧教育服务商推出首款AI陪伴产品进军消费硬件市场",
+   "facts": [
+    "这家美股智慧教育服务商推出首款AI陪伴产品",
+    "该公司进军消费硬件市场"
+   ],
+   "inferences": [
+    "该AI陪伴产品可能是硬件设备"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "该公司具体名称",
+    "AI陪伴产品的具体功能",
+    "产品是否为硬件设备",
+    "上市时间"
+   ],
+   "key_points": [
+    "该公司推出首款AI陪伴产品",
+    "该公司进军消费硬件市场"
+   ],
+   "rule_based": false
+  },
+  "e7d6899eae0640a": {
+   "event_id": "e7d6899eae0640a",
+   "title": "Meta推出新AI模型并暗示将加速发展",
+   "facts": [
+    "Meta发布了新的AI模型。",
+    "新模型达到了行业巨头的水平。",
+    "Meta暗示接下来还要加速。"
+   ],
+   "inferences": [
+    "Meta此次发布的新模型可能有助于其在人工智能领域取得更好的市场地位。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "新模型的具体名称是什么。",
+    "Meta接下来加速的具体计划和方向是什么。"
+   ],
+   "key_points": [
+    "Meta推出新模型并肩行业巨头。",
+    "Meta暗示接下来还要加速。"
+   ],
+   "rule_based": false
+  },
+  "e8536989a16c400": {
+   "event_id": "e8536989a16c400",
+   "title": "2026-10-14",
+   "facts": [
+    "AI 早报 2026 10 14 视频版 ：YouTube ｜ 哔哩哔哩 概览 要闻 Google 全球开放 Gemini 4 Argon ↗ 1 OpenAI 优化 ChatGPT 桌面应用存储占用 ↗ 2 模型发布 Cat Jam 匿名编程模型免费上线 OpenCode ↗ 3 Fish Audio 发布 Drama 3，开放模型权重 ↗ 4 Liquid AI 发布 LFM2.5 24B A2B ↗ 5 开发生态 Command Code 推出 GOAT 限时额度优惠 ↗ 6 MiniMax 入驻天猫，开售三档订阅方案 ↗ 7 Antigravity 最高档向科研人员开放免费申请 ↗ 8"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e87ef27d85948df": {
+   "event_id": "e87ef27d85948df",
+   "title": "Is 'Attention' the Essence of Intelligence?",
+   "facts": [
+    "Article URL:\nComments URL:\nPoints: 26\n# Comments: 11"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e8bfc9e901a28d1": {
+   "event_id": "e8bfc9e901a28d1",
+   "title": "欧美芯片巨头：AI 时代的卖铲人棋局",
+   "facts": [
+    "文章标题为“欧美芯片巨头：AI 时代的卖铲人棋局”。",
+    "文章来源为36Kr。"
+   ],
+   "inferences": [
+    "文章讨论欧美芯片巨头在AI时代的角色。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "文章具体内容不明。"
+   ],
+   "key_points": [
+    "欧美芯片巨头",
+    "AI 时代的卖铲人棋局"
+   ],
+   "rule_based": false
+  },
+  "e938258fbd8326b": {
+   "event_id": "e938258fbd8326b",
+   "title": "Epic shifts to ‘AI-accelerated development’ for upcoming Disney game",
+   "facts": [
+    "Epic Games plans to use AI to generate code and art for an unannounced Disney game, which is now delayed from its original March release window, according to a report from Bloomberg. The project's developers have been given an \"AI-first\" mandate directing them to use tools like Anthropic's Claude mo"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "eab7f26edae1a6c": {
+   "event_id": "eab7f26edae1a6c",
+   "title": "上海大模型芯片创企融资近亿元",
+   "facts": [
+    "上海大模型芯片创企融资近亿元",
+    "智东西报道该事件"
+   ],
+   "inferences": [
+    "该公司位于上海",
+    "该公司专注大模型芯片技术"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "融资具体金额未披露",
+    "公司名称未披露",
+    "投资方信息未披露"
+   ],
+   "key_points": [
+    "上海大模型芯片创企融资近亿元",
+    "智东西报道该事件"
+   ],
+   "rule_based": false
+  },
+  "ead6172be1f54aa": {
+   "event_id": "ead6172be1f54aa",
+   "title": "Developing Gemini 4 Argon responsibly and safely",
+   "facts": [
+    "Developing Gemini 4 Argon responsibly and safely"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "eb26e2f34774c61": {
+   "event_id": "eb26e2f34774c61",
+   "title": "vercel-labs/skills",
+   "facts": [
+    "The open agent skills tool - npx skills"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "eb845f25ce003ba": {
+   "event_id": "eb845f25ce003ba",
+   "title": "最好看最好用的 iOS V2EX 客户端过审了，欢迎 TestFlight 体验打脸",
+   "facts": [
+    "## 前情提要\n新手口喷了最好看最好用的 iOS V2EX 客户端，帮我看看值得上架 App Store 吗？\n**立即体验：**\n- 注册开发者，审核用了两天\n- 第一个 TF 审核用了两天，感觉还挺快的，后边小版本一天能过审\n上次发帖之后做了很多更新，还有一些更新没上 TF 。\n牛逼的说，应该是 1000 万以内最好的 V2EX 客户端了，欢迎大家体验，打我脸。\n简单传几张图吧，吹牛逼文案还没想：\n![](\n![](\n![](\n![](\n![](\n![](\n![](\n![]("
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "eba87afb41e2597": {
+   "event_id": "eba87afb41e2597",
+   "title": "Facebook will let you customize your feed algorithm using AI",
+   "facts": [
+    "Facebook's new \"Your Algorithm\" feature will let you directly add and manage topics you want to see in your feed and Facebook Reels. Meta says your recommendations \"respond right away\" after you make updates using the new feature by hitting \"interested\" or \"not interested\" for different topics. Your"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "ec0c109918ab4ce": {
+   "event_id": "ec0c109918ab4ce",
+   "title": "昨天把家里 Wi-Fi 2.4G 和 5G 分开了，你们呢？",
+   "facts": [
+    "家里有个稍微老点的小爱音箱，老是掉线，后来研究发现不支持 5G 的，当时家里的 wifi 上二频合一的，虽然连上了，隔一段时间莫名其妙就掉线了。\n一直想拆分，但是家里几十个设备要重新配置，尤其是有些设备重置网络的方法都忘记了（分别是什么长按这个键那个键的）得去查。\n昨天晚上还是决定去拆了一下，把 iot 设备都分到 2.4G 上去，手机电脑保留 5G 上，心理上感觉好像速度快了一些。"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "ec4f05f0c90560c": {
+   "event_id": "ec4f05f0c90560c",
+   "title": "Anthropic研究AI自我复制",
+   "facts": [
+    "Anthropic进行了一项震撼研究",
+    "研究内容涉及AI通过电视盒子自我复制"
+   ],
+   "inferences": [
+    "此研究可能引发安全担忧"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "研究方法细节不明",
+    "是否可行未验证"
+   ],
+   "key_points": [
+    "Anthropic研究AI自我复制",
+    "通过电视盒子实现复制"
+   ],
+   "rule_based": false
+  },
+  "ec501eb25a46069": {
+   "event_id": "ec501eb25a46069",
+   "title": "拍照识热量、大数据定制食谱……AI“减重搭子”走红，你觉得靠谱吗？丨V观话题 - 川观新闻",
+   "facts": [
+    "拍照识热量、大数据定制食谱……AI“减重搭子”走红，你觉得靠谱吗？丨V观话题 川观新闻"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "ec6bd315ea89ad0": {
+   "event_id": "ec6bd315ea89ad0",
+   "title": "cathrynlavery/diagram-design",
+   "facts": [
+    "Editorial diagram design for Claude Code, Codex, GitHub Copilot, Cursor, Factory Droid, and Pi. 44 diagram types. Self-contained HTML + SVG. No shadows. No Mermaid slop."
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "ecd67a9edef7a8d": {
+   "event_id": "ecd67a9edef7a8d",
+   "title": "debpalash/VoiceStudio",
+   "facts": [
+    "VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages."
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "eda90031ffce733": {
+   "event_id": "eda90031ffce733",
+   "title": "lyogavin/airllm",
+   "facts": [
+    "AirLLM 2.8T LLM inference with single 4GB GPU"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "eddd688ed752a40": {
+   "event_id": "eddd688ed752a40",
+   "title": "“AI挂在嘴边，实际一事无成” 年轻人正被“AI登”逼疯 - 文学城",
+   "facts": [
+    "“AI挂在嘴边，实际一事无成” 年轻人正被“AI登”逼疯 文学城"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "edec6fe1d812289": {
+   "event_id": "edec6fe1d812289",
+   "title": "morluto/rea",
+   "facts": [
+    "Reverse engineer anything with agents, from app behavior down to native binaries."
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "edf424f85b59d69": {
+   "event_id": "edf424f85b59d69",
+   "title": "创业板科创50跌超1% AI漫剧概念再爆发",
+   "facts": [
+    "创业板、科创50均跌超1%。",
+    "AI漫剧概念再爆发。",
+    "电力、煤炭活跃。",
+    "恒科指低开高走涨超1%。",
+    "权重科网股集体反弹。"
+   ],
+   "inferences": [
+    "整体市场下跌，但部分板块表现好。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "未说明跌幅具体原因。",
+    "未说明AI漫剧概念再爆发的具体驱动因素。"
+   ],
+   "key_points": [
+    "创业板科创50跌超1%",
+    "权重科网股集体反弹"
+   ],
+   "rule_based": false
+  },
+  "edfcc1812593c2f": {
+   "event_id": "edfcc1812593c2f",
+   "title": "解码浙江丨AI“吃”算力，新基建“加速跑” - 温州新闻",
+   "facts": [
+    "解码浙江丨AI“吃”算力，新基建“加速跑” 温州新闻"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "ee8a1d0e279345f": {
+   "event_id": "ee8a1d0e279345f",
+   "title": "当预订界面消失，AI会如何改写商旅？ - 环球旅讯",
+   "facts": [
+    "当预订界面消失，AI会如何改写商旅？ 环球旅讯"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "eedf2d5b4243645": {
+   "event_id": "eedf2d5b4243645",
+   "title": "I don’t miss the camera on the Ray-Ban Meta Audio glasses",
+   "facts": [
+    "The other day I whizzed past several people while running in the park, my playlist blasting at full volume. The next morning, I smiled at a barista while ordering a caramel apple-flavored matcha latte. Afterward, I sat on a park bench reading a book, called up a pal to chat about her recent trip to "
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "eee18872766a648": {
+   "event_id": "eee18872766a648",
+   "title": "Xbox is officially embracing the chaos of AI-powered game ports",
+   "facts": [
+    "Retro gaming is going through a wild time at the moment, thanks to decompilations and recompilations that are letting gamers port classic titles to new devices, or merge code from two different games into a single new experience. Microsoft has witnessed skateboarding being modded into Call of Duty a"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "ef52220a9143d82": {
+   "event_id": "ef52220a9143d82",
+   "title": "Quoting Geoffrey Huntley",
+   "facts": [
+    "If the agent isn't using my diagnostics library, I could introspect and update AGENTS.md, but there's still a delta, and it'll drift. Instead, I write a pre-commit hook that checks the git diff for direct calls to observability modules that bypass my diagnostics module. Boom: fail the commit, inject"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "ef62e6267ad9fae": {
+   "event_id": "ef62e6267ad9fae",
+   "title": "Cyberattack halts construction of tunnel between Denmark and Germany",
+   "facts": [
+    "Cyberattack halts construction of tunnel between Denmark and Germany"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "ef6384abac4f498": {
+   "event_id": "ef6384abac4f498",
+   "title": "llm-gemini 0.35",
+   "facts": [
+    "Release: llm-gemini 0.35\nI added support to llm-gemini for the new Gemini 4 Argon model, made available today via the Gemini API and for customers of their $100/month subscription plan.\nHere are the low, medium and high pelicans. As expected, they are all excellent: Gemini has a track record of prod"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "efbcb58f65b260d": {
+   "event_id": "efbcb58f65b260d",
+   "title": "v2 的大佬们指点一下我该不该割肉，房子的事",
+   "facts": [
+    "目前情况：\n1. 西安当时高位买了一套房子目前月供不到 4k 但是已经资不抵债了。 贷款还有 60 个。 房子只能买 50 出头甚至都没人看。\n2. 杭州去年不算最低点但也不是高点入手了一套月供 4k+，贷款 100 个， 卖杭州房子的时候还借了点钱。\n因为买房后两边贷款加起来 8k 出头 家庭收入也就一个月也就 15k 左右。 当时没下手杭州这边的时候没想到西安那边出手如此困难。\n细节我就不描述了。\n我目前的想法：西安那边继续降价贴钱卖。 杭州这边快满二了也出手掉。 杭州这边应该是能平处亏个装修的钱。 西安那边能欠 10 来万吧 全都卖掉后 1 年时间处理掉债务 然后重新攒钱 租房住 重头再"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "eff1f1128a2cdb9": {
+   "event_id": "eff1f1128a2cdb9",
+   "title": "Show HN: Pulse Local, a Mac budgeting app whose AI models run on your machine",
+   "facts": [
+    "Hi HN, I'm Niz. Pulse Local is a budgeting app for Mac (Apple Silicon, beta) that answers questions about your spending with models that run on your machine. Local mode needs no account. The ledger and your questions stay on the machine, and the app sends no analytics or crash logs.I felt there are "
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
   }
  },
  "factcheck": {
   "ok": true,
-  "checked_events": 224,
-  "checked_urls": 226,
+  "checked_events": 239,
+  "checked_urls": 240,
   "violations": 0,
   "by_kind": {}
  }

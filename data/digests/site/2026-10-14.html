@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Anthropic 团队开发自研源码控制系统 Scion 代替 Git · AI 日报</title>
-<meta name="description" content="">
+<title>Gemini 4 Argon 全面开放，实测难敌 Claude Opus 5.5 与 GPT-6 Astra · AI 日报</title>
+<meta name="description" content="After months sitting on the sidelines of the frontier AI race, Google has finally launched its long-awaited Gemini 4 Argon model, claiming it can comp">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#0065fd">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230065fd'/%3E%3Cpath d='M9.5 21.5 14.4 10.5h3.4l4.9 11h-3.1l-1-2.4h-5.2l-1 2.4z' fill='white'/%3E%3C/svg%3E">
 <link rel="canonical" href="https://siweimidu.github.io/ai-ribao/2026-10-14.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Anthropic 团队开发自研源码控制系统 Scion 代替 Git">
-<meta property="og:description" content="">
+<meta property="og:title" content="Gemini 4 Argon 全面开放，实测难敌 Claude Opus 5.5 与 GPT-6 Astra">
+<meta property="og:description" content="After months sitting on the sidelines of the frontier AI race, Google has finally launched its long-awaited Gemini 4 Argon model, claiming it can comp">
 <link rel="alternate" type="application/rss+xml" title="AI 日报" href="feed/zh.xml">
 <link rel="alternate" type="application/feed+json" title="AI 日报" href="feed/zh.json">
 <link rel="stylesheet" href="assets/tokens.css">
@@ -145,805 +145,96 @@
   <main class="content" id="main">
     <header class="issue__head">
       <p class="issue__date enter">2026-10-14　第 1 期</p>
-      <h1 class="issue__title enter">Anthropic 团队开发自研源码控制系统 Scion 代替 Git</h1>
-      
-      <div class="stats enter"><div><b class="count-up" data-to="224">224</b><span>事件</span></div><div><b class="count-up" data-to="14">14</b><span>有内容的源</span></div><div><b class="count-up" data-to="2">2</b><span>多源验证</span></div><div><b class="count-up" data-to="14">14</b><span>头条覆盖来源</span></div></div>
+      <h1 class="issue__title enter">Gemini 4 Argon 全面开放，实测难敌 Claude Opus 5.5 与 GPT-6 Astra</h1>
+      <p class="issue__lead enter">After months sitting on the sidelines of the frontier AI race, Google has finally launched its long-awaited Gemini 4 Argon model, claiming it can compete with the best the industry has to offer. Googl</p>
+      <div class="stats enter"><div><b class="count-up" data-to="53">53</b><span>事件</span></div><div><b class="count-up" data-to="16">16</b><span>有内容的源</span></div><div><b class="count-up" data-to="1">1</b><span>多源验证</span></div><div><b class="count-up" data-to="16">16</b><span>头条覆盖来源</span></div></div>
     </header>
 
-    <div class="notice"><strong>本期说明</strong><ul><li>模型供应商 2 个（gemini, groq）</li><li>部分条目降级为原文摘录（首次失败：LLMUnavailable）</li><li>30/40 个事件降级为规则摘录</li><li>仅分析前 40 个事件，其余未做模型处理</li></ul></div>
+    <div class="notice"><strong>本期说明</strong><ul><li>模型供应商 2 个（gemini, groq）</li><li>部分条目降级为原文摘录（首次失败：LLMUnavailable）</li><li>47/60 个事件降级为规则摘录</li></ul></div>
 
-      <section class="section" id="sec-mixed">
-        <h2 class="section__title">多源验证<span class="section__count">2 条</span></h2>
+          <section class="section overview" id="overview">
+        <h2 class="section__title">概览<span class="section__count">今日要闻</span></h2>
+        <ol class="ov"><li><a href="#e-e3d7c0693e"><span class="ov__no">01</span><span><b>Google 发布 Gemini 4 Argon：面向复杂工程与科研任务的前沿模型</b></span></a></li><li><a href="#e-eb38ec17a2"><span class="ov__no">02</span><span><b>Google DeepMind 与新加坡政府合作推出端侧 AI 诈骗检测模型</b><span class="ov__detail">Google DeepMind 与新加坡政府科技局在新加坡国际网络周发布了端侧诈骗检测模型。</span></span></a></li><li><a href="#e-e04b133080"><span class="ov__no">04</span><span><b>人工神经网络如何构建自身的学习机制</b><span class="ov__detail">机器学习网络能够在没有设计者详细指令的情况下进行学习。</span></span></a></li><li><a href="#e-e3852035b2"><span class="ov__no">05</span><span><b>MIT Lincoln Laboratory 举办新兴生物技术国家安全委员会路演</b><span class="ov__detail">MIT Lincoln Laboratory 主办了新兴生物技术国家安全委员会的路演活动。</span></span></a></li><li><a href="#e-e7d6899eae"><span class="ov__no">13</span><span><b>Meta推出新AI模型并暗示将加速发展</b><span class="ov__detail">Meta发布了新的AI模型。</span></span></a></li><li><a href="#e-efbcb58f65"><span class="ov__no">17</span><span><b>v2 的大佬们指点一下我该不该割肉，房子的事</b></span></a></li><li><a href="#e-eb845f25ce"><span class="ov__no">18</span><span><b>最好看最好用的 iOS V2EX 客户端过审了，欢迎 TestFlight 体验打脸</b></span></a></li><li><a href="#e-ec0c109918"><span class="ov__no">21</span><span><b>昨天把家里 Wi-Fi 2.4G 和 5G 分开了，你们呢？</b></span></a></li></ol>
+        <p class="ov__foot">今日共 53 条事件，
+        其中 1 条经多个独立来源交叉验证。下面是完整列表。</p>
+      </section>
+
+      <section class="section" id="all">
+        <h2 class="section__title">全部消息<span class="section__count">25 条</span></h2>
         <ol class="stream">
-        <li class="item" id="e-eff1f1128a">
+        <li class="item" id="e-e3d7c0693e">
           <div class="item__head">
             <span class="item__no">01</span>
-            <h3 class="item__title"><a href="https://pulseos.finance" rel="noopener noreferrer">Show HN: Pulse Local, a Mac budgeting app whose AI models run on your machine</a></h3>
+            <h3 class="item__title"><a href="https://aihot.news/items/d4oyzg3qte4pt0ywsonolctwf" rel="noopener noreferrer">Google 发布 Gemini 4 Argon：面向复杂工程与科研任务的前沿模型</a></h3>
           </div>
           <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-13 23:13 UTC</span>
-            <a href="https://pulseos.finance" rel="noopener noreferrer">pulseos.finance</a>
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>5 个独立来源</span>
+            <span>10-13 16:00 UTC</span>
+            <a href="https://aihot.news/items/d4oyzg3qte4pt0ywsonolctwf" rel="noopener noreferrer">aihot.news</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">After months sitting on the sidelines of the frontier AI race, Google has finally launched its long-awaited Gemini 4 Argon model, claiming it can compete with the best the industry has to offer. Google says Argon delivers &quot;frontier reasoning and improved performance across complex workflows,&quot; while </li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">本次未调用大模型，内容为来源原文摘录</li><li data-kind="uncertain">本条的来源标题为外文，未调用大模型，因此未翻译</li></ul></div><div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          <div class="item__links"><a href="https://aihot.news/items/smxxtw5ca2c9jscojk4ppe5hf" rel="noopener noreferrer">aihot.news</a><a href="https://deepmind.google/blog/gemini-4-argon-for-robotics/" rel="noopener noreferrer">deepmind.google</a><a href="https://deepmind.google/blog/introducing-gemini-4-argon/" rel="noopener noreferrer">deepmind.google</a><a href="https://deepmind.google/models/gemini/" rel="noopener noreferrer">deepmind.google</a><span style="color:var(--muted-fg)">另有 3 个来源</span></div>
         </li>
-        <li class="item" id="e-e80aa90e1b">
+        <li class="item" id="e-eb38ec17a2">
           <div class="item__head">
             <span class="item__no">02</span>
-            <h3 class="item__title"><a href="https://guitoro.com/" rel="noopener noreferrer">Show HN: Guitoro, a virtual guitar you strum with your keyboard</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-13 19:11 UTC</span>
-            <a href="https://guitoro.com/" rel="noopener noreferrer">guitoro.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Guitoro is a free browser guitar using recordings of real instruments. You can strum with your keyboard, mouse, or touchscreen, choose acoustic, classical, electric guitar or bass, and see chord fingering and each stroke. Song practice can be slowed to 20%, and there are free chord tools and tuners.</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">本次未调用大模型，内容为来源原文摘录</li></ul></div><div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        </ol>
-      </section>
-      <section class="section" id="sec-lab-official">
-        <h2 class="section__title">官方发布<span class="section__count">4 条</span></h2>
-        <ol class="stream">
-        <li class="item" id="e-e66f894e87">
-          <div class="item__head">
-            <span class="item__no">03</span>
-            <h3 class="item__title"><a href="https://deepmind.google/blog/on-device-ai-scam-detection-mddi/" rel="noopener noreferrer">Google DeepMind and Singapore Government announce new AI tool to protect citizens against scams</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 02:00 UTC</span>
-            <a href="https://deepmind.google/blog/on-device-ai-scam-detection-mddi/" rel="noopener noreferrer">deepmind.google</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e439288442">
-          <div class="item__head">
-            <span class="item__no">04</span>
-            <h3 class="item__title"><a href="https://openai.com/index/higgsfield-longer-videos-voice" rel="noopener noreferrer">Higgsfield takes AI video from 1 minute to over 10</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-13 12:00 UTC</span>
-            <a href="https://openai.com/index/higgsfield-longer-videos-voice" rel="noopener noreferrer">openai.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-ead6172be1">
-          <div class="item__head">
-            <span class="item__no">05</span>
-            <h3 class="item__title"><a href="https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/" rel="noopener noreferrer">Developing Gemini 4 Argon responsibly and safely</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-13 19:43 UTC</span>
-            <a href="https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/" rel="noopener noreferrer">deepmind.google</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-ea0622315d">
-          <div class="item__head">
-            <span class="item__no">06</span>
-            <h3 class="item__title"><a href="https://deepmind.google/blog/introducing-gemini-4-argon/" rel="noopener noreferrer">Gemini 4 Argon: Built to solve your hardest problems</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-13 16:01 UTC</span>
-            <a href="https://deepmind.google/blog/introducing-gemini-4-argon/" rel="noopener noreferrer">deepmind.google</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        </ol>
-      </section>
-      <section class="section" id="sec-lab-blog">
-        <h2 class="section__title">实验室博客<span class="section__count">1 条</span></h2>
-        <ol class="stream">
-        <li class="item" id="e-e3f61f4d9a">
-          <div class="item__head">
-            <span class="item__no">07</span>
-            <h3 class="item__title"><a href="https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b" rel="noopener noreferrer">Run fast, private agents on-device with LFM2.5-24B-A2B</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-13 17:05 UTC</span>
-            <a href="https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b" rel="noopener noreferrer">huggingface.co</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        </ol>
-      </section>
-      <section class="section" id="sec-media">
-        <h2 class="section__title">科技媒体<span class="section__count">22 条</span></h2>
-        <ol class="stream">
-        <li class="item" id="e-e5aaf795ab">
-          <div class="item__head">
-            <span class="item__no">08</span>
-            <h3 class="item__title"><a href="https://www.theverge.com/ai-artificial-intelligence/1010642/openai-employee-arrested-recording-device" rel="noopener noreferrer">OpenAI employee arrested for allegedly planting a bug in a conference room</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-13 20:45 UTC</span>
-            <a href="https://www.theverge.com/ai-artificial-intelligence/1010642/openai-employee-arrested-recording-device" rel="noopener noreferrer">theverge.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e2ec53c51e">
-          <div class="item__head">
-            <span class="item__no">09</span>
-            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiU0FVX3lxTE55allEMXlOWmVEQVh1VmE3bGg0Rm9pNzlBWmRJMUFTYnlMQUxOUmp5akR5U3VHb3JsNmRMZ2Z1eGc1bTJiV1V4V2R5c20zTC12VFE4?oc=5" rel="noopener noreferrer">AI算力战进入下半场：从拼单芯XPU性能到拼系统，电力、散热和网络成新战场 - 华尔街见闻</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 03:09 UTC</span>
-            <a href="https://news.google.com/rss/articles/CBMiU0FVX3lxTE55allEMXlOWmVEQVh1VmE3bGg0Rm9pNzlBWmRJMUFTYnlMQUxOUmp5akR5U3VHb3JsNmRMZ2Z1eGc1bTJiV1V4V2R5c20zTC12VFE4?oc=5" rel="noopener noreferrer">news.google.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-ecb583e767">
-          <div class="item__head">
-            <span class="item__no">10</span>
-            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiXEFVX3lxTE9TaTRyN2M2RnVXMk1mVldKcjl3S3drcFVPd1oyNXpnVzJCZWduYTNIVGktM1FMVlpJZktKOFNhYjdkR3lsSm1KeWlPNTJlYWNZbTJ2ZFcxVUQ2VTN5?oc=5" rel="noopener noreferrer">中微尹志尧警示AI或现泡沫，国内半导体设备90%厂商或被淘汰 - 电子工程专辑</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 03:00 UTC</span>
-            <a href="https://news.google.com/rss/articles/CBMiXEFVX3lxTE9TaTRyN2M2RnVXMk1mVldKcjl3S3drcFVPd1oyNXpnVzJCZWduYTNIVGktM1FMVlpJZktKOFNhYjdkR3lsSm1KeWlPNTJlYWNZbTJ2ZFcxVUQ2VTN5?oc=5" rel="noopener noreferrer">news.google.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e1f53d9457">
-          <div class="item__head">
-            <span class="item__no">11</span>
-            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxPX1p2eGZhblhYS3pJUHhwczhWVWVIVkQ0QU9la3FjNzRLTnRtUndjMjZHQlFjRkpjbExQOHF3czZHcDhEWHhJUTlob3hKMU85b2ZrbjRPTDVPUHJMWGdGd3djQ3llQ3I5d0lpT2hXajdUNlR3Q0tYN3huRmxrN0daVkhySVFVU2lX?oc=5" rel="noopener noreferrer">真人短剧完了吗？对话智象未来王科：AI正重构影视，不是取代 - 搜狐</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 03:03 UTC</span>
-            <a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxPX1p2eGZhblhYS3pJUHhwczhWVWVIVkQ0QU9la3FjNzRLTnRtUndjMjZHQlFjRkpjbExQOHF3czZHcDhEWHhJUTlob3hKMU85b2ZrbjRPTDVPUHJMWGdGd3djQ3llQ3I5d0lpT2hXajdUNlR3Q0tYN3huRmxrN0daVkhySVFVU2lX?oc=5" rel="noopener noreferrer">news.google.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">真人短剧完了吗？对话智象未来王科：AI正重构影视，不是取代 搜狐</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">本次未调用大模型，内容为来源原文摘录</li></ul></div><div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e0791749e1">
-          <div class="item__head">
-            <span class="item__no">12</span>
-            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiXEFVX3lxTE1xVlB0N0pEOGZLWHVFVFJFb0FmRjZhbGVZT2RaVkFDM2xZZHA4VXVWSF9aUE1zNkVQLVFnN2plZ3dwQnBPMUN1ZVpWVUZyWVVYZWI0bzUzQk9NaTI4?oc=5" rel="noopener noreferrer">OPPO Find X10系列手机将搭载Manus的AI智能体 - 电子工程专辑</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 02:48 UTC</span>
-            <a href="https://news.google.com/rss/articles/CBMiXEFVX3lxTE1xVlB0N0pEOGZLWHVFVFJFb0FmRjZhbGVZT2RaVkFDM2xZZHA4VXVWSF9aUE1zNkVQLVFnN2plZ3dwQnBPMUN1ZVpWVUZyWVVYZWI0bzUzQk9NaTI4?oc=5" rel="noopener noreferrer">news.google.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OPPO Find X10系列手机将搭载Manus的AI智能体 电子工程专辑</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">本次未调用大模型，内容为来源原文摘录</li></ul></div><div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-ee0894f492">
-          <div class="item__head">
-            <span class="item__no">13</span>
-            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxPNEdYMGlqU3RNR2prczNHcnhRWklndVVPZlBKTmFTNVhScEZIYkVxLWtCNDlfNHJJczB6UjljS0NfOE1wMmNvWWlHS3FPUXVuYnFkUzBXYkJkUTNQNGZFUUM3ck00VXE3YVJyYkpQQUhKNUdDbk5TMi1hYmRHMm4taVc3SEJFWk5OWkItTQ?oc=5" rel="noopener noreferrer">网店兜售AI词元，谨防低价引流圈套 - 搜狐</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 02:57 UTC</span>
-            <a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxPNEdYMGlqU3RNR2prczNHcnhRWklndVVPZlBKTmFTNVhScEZIYkVxLWtCNDlfNHJJczB6UjljS0NfOE1wMmNvWWlHS3FPUXVuYnFkUzBXYkJkUTNQNGZFUUM3ck00VXE3YVJyYkpQQUhKNUdDbk5TMi1hYmRHMm4taVc3SEJFWk5OWkItTQ?oc=5" rel="noopener noreferrer">news.google.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-eb55ff5081">
-          <div class="item__head">
-            <span class="item__no">14</span>
-            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTE1NZXgzS1dMNFJvVkQ2TVJMNnFnR0x6Z1pQZkZvX0NEZTNqblBCUHd2dE1acEJvNm1vcDItdzdOdWx3cXVCdS1KaFVRTFktNmxsYVRld0RPLUVJV0lpVTFF?oc=5" rel="noopener noreferrer">AI改代码时，到底该让它一次性重写整个文件，还是像人类程序员一样一小段一小段地打补丁？ - 科技行者</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 02:34 UTC</span>
-            <a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTE1NZXgzS1dMNFJvVkQ2TVJMNnFnR0x6Z1pQZkZvX0NEZTNqblBCUHd2dE1acEJvNm1vcDItdzdOdWx3cXVCdS1KaFVRTFktNmxsYVRld0RPLUVJV0lpVTFF?oc=5" rel="noopener noreferrer">news.google.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e31b6333c5">
-          <div class="item__head">
-            <span class="item__no">15</span>
-            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiwgJBVV95cUxPaEhUa1d1SzZOekhmMTQ5NXNOY202ZDFKNUpHa2MyTTBtbEs4aVFndkd4U1hIeG1seU5aTVlMcHNPRnFwMHFmbjU3RkxFeWpRVi1Vd2pIaUJ4MzI2amtsendrdGE4YzBTMUhGd0dQSmJvRkxWTDA0LVNYV0ZfLUpYckpQcHdFdUdHcXFmak9Tb2twc04teUVCQ3dxS1V4OGpvYW1tZVFUTVl2WkZSYUpvOV9NSzYzNGk2UkoyeHNDN1dKNF9ISnRJR193Z21UVVdmT3dsWC1XUmVsWnVrT2hSTlluRy1zY0JXWGMydERNUkQ4bS1DRUhNTjZKQWpzbElFYnlGdVRYazFiVnZWVHJTQ0hVeXVBbTFEd2NxQTgtM1VCZUphMmNCemZhZjlTWmtUdmZNaFQzd0xMODROVDdIWHpB?oc=5" rel="noopener noreferrer">2027年HR趋势报告：你的工作正被重构｜首席人才官 - 红杉</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 02:47 UTC</span>
-            <a href="https://news.google.com/rss/articles/CBMiwgJBVV95cUxPaEhUa1d1SzZOekhmMTQ5NXNOY202ZDFKNUpHa2MyTTBtbEs4aVFndkd4U1hIeG1seU5aTVlMcHNPRnFwMHFmbjU3RkxFeWpRVi1Vd2pIaUJ4MzI2amtsendrdGE4YzBTMUhGd0dQSmJvRkxWTDA0LVNYV0ZfLUpYckpQcHdFdUdHcXFmak9Tb2twc04teUVCQ3dxS1V4OGpvYW1tZVFUTVl2WkZSYUpvOV9NSzYzNGk2UkoyeHNDN1dKNF9ISnRJR193Z21UVVdmT3dsWC1XUmVsWnVrT2hSTlluRy1zY0JXWGMydERNUkQ4bS1DRUhNTjZKQWpzbElFYnlGdVRYazFiVnZWVHJTQ0hVeXVBbTFEd2NxQTgtM1VCZUphMmNCemZhZjlTWmtUdmZNaFQzd0xMODROVDdIWHpB?oc=5" rel="noopener noreferrer">news.google.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e7e117e1da">
-          <div class="item__head">
-            <span class="item__no">16</span>
-            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTFB6Mm5xWE16M2F4OW1wVGVVamFWTklqRmJmdDJCLVo4bFczeHpVdG0zNUpOa21JS3dJb3VHcEhTdmpsWHZJQXp5V3BTQU95cThlQ2pPQ0p2ZUUxZ3dsSTBVUQ?oc=5" rel="noopener noreferrer">苹果(AAPL.US)才是AI投资“版本答案”? 半导体暴跌之际再触5万亿美元，折叠iPhone与AI家居点燃增长想象 - 证券之星</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 02:19 UTC</span>
-            <a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTFB6Mm5xWE16M2F4OW1wVGVVamFWTklqRmJmdDJCLVo4bFczeHpVdG0zNUpOa21JS3dJb3VHcEhTdmpsWHZJQXp5V3BTQU95cThlQ2pPQ0p2ZUUxZ3dsSTBVUQ?oc=5" rel="noopener noreferrer">news.google.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-eadbb0dd18">
-          <div class="item__head">
-            <span class="item__no">17</span>
-            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMickFVX3lxTE5wR2FJQ3M3QTFDOWd5c1NNZ2tDSlhRbUVhX2pyQ0Q5aXR4Z0N5cl8xQy1EX1k0X21kY3VfbTVGdFRWLXJuQXpRNTVZUHlGT1cxSkFwNDB1NHpSc2lWVUJXSURsdF9ZcEFWUzRoaFAtcTFBZw?oc=5" rel="noopener noreferrer">四连板！AI应用概念又爆了 - 金融界</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 02:54 UTC</span>
-            <a href="https://news.google.com/rss/articles/CBMickFVX3lxTE5wR2FJQ3M3QTFDOWd5c1NNZ2tDSlhRbUVhX2pyQ0Q5aXR4Z0N5cl8xQy1EX1k0X21kY3VfbTVGdFRWLXJuQXpRNTVZUHlGT1cxSkFwNDB1NHpSc2lWVUJXSURsdF9ZcEFWUzRoaFAtcTFBZw?oc=5" rel="noopener noreferrer">news.google.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e429fd8661">
-          <div class="item__head">
-            <span class="item__no">18</span>
-            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiWEFVX3lxTE9NUm1SWmh2ZS10YUNEby1YOWZYVWlwSmh5c29nNkdvdE1MOURnUFZIYjlYYUlVdEtoTFh4S2JCYXQxakYzSmVvYkR3ZnNacHZXd3VzYVZheC0?oc=5" rel="noopener noreferrer">计算机与人工智能学院举办“智绘AI工坊”物联网创新展演活动 - 西南民族大学</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 02:39 UTC</span>
-            <a href="https://news.google.com/rss/articles/CBMiWEFVX3lxTE9NUm1SWmh2ZS10YUNEby1YOWZYVWlwSmh5c29nNkdvdE1MOURnUFZIYjlYYUlVdEtoTFh4S2JCYXQxakYzSmVvYkR3ZnNacHZXd3VzYVZheC0?oc=5" rel="noopener noreferrer">news.google.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-ecbbf7b731">
-          <div class="item__head">
-            <span class="item__no">19</span>
-            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE9BbFpWdnNJdXVWc2owd0VzTkFaSFU1UUJrazJPR1JuLXpMaG4xbWU2MEFlOS1tNlNrOHprRzM0VHJCQ2hKRU51Vk1hUTctTzVIa3FtRFBfZHBWd2VudjlNUXpHamY4R2lE?oc=5" rel="noopener noreferrer">山东“智造”，来了一批“AI工友”_山东新闻 - 大众网</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 02:47 UTC</span>
-            <a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE9BbFpWdnNJdXVWc2owd0VzTkFaSFU1UUJrazJPR1JuLXpMaG4xbWU2MEFlOS1tNlNrOHprRzM0VHJCQ2hKRU51Vk1hUTctTzVIa3FtRFBfZHBWd2VudjlNUXpHamY4R2lE?oc=5" rel="noopener noreferrer">news.google.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e7d0108b81">
-          <div class="item__head">
-            <span class="item__no">20</span>
-            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiV0FVX3lxTFB0TnI5LWYwRkxYMGN2ZEhYR1FZV2tEX1U5bFNDS0RIOXo1ZENmV3ZaLUJDRFB1NkdyUlBabTdzN0kyY2s5SXpQZDBCazgySnliVVUxcTFMbw?oc=5" rel="noopener noreferrer">从规模化制造到AI驱动研发-- 擎科生物加速构建分子研发与智造闭环 - 美通社</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 02:35 UTC</span>
-            <a href="https://news.google.com/rss/articles/CBMiV0FVX3lxTFB0TnI5LWYwRkxYMGN2ZEhYR1FZV2tEX1U5bFNDS0RIOXo1ZENmV3ZaLUJDRFB1NkdyUlBabTdzN0kyY2s5SXpQZDBCazgySnliVVUxcTFMbw?oc=5" rel="noopener noreferrer">news.google.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e2e179c5c0">
-          <div class="item__head">
-            <span class="item__no">21</span>
-            <h3 class="item__title"><a href="https://www.theverge.com/news/1010365/shopify-opens-its-catalog-up-to-more-ai-agents" rel="noopener noreferrer">Shopify opens its catalog up to more AI agents</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-13 19:42 UTC</span>
-            <a href="https://www.theverge.com/news/1010365/shopify-opens-its-catalog-up-to-more-ai-agents" rel="noopener noreferrer">theverge.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-eee1887276">
-          <div class="item__head">
-            <span class="item__no">22</span>
-            <h3 class="item__title"><a href="https://www.theverge.com/news/1010406/xbox-labs-game-decompiling-emulation-exploration" rel="noopener noreferrer">Xbox is officially embracing the chaos of AI-powered game ports</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-13 19:00 UTC</span>
-            <a href="https://www.theverge.com/news/1010406/xbox-labs-game-decompiling-emulation-exploration" rel="noopener noreferrer">theverge.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-eedf2d5b42">
-          <div class="item__head">
-            <span class="item__no">23</span>
-            <h3 class="item__title"><a href="https://www.theverge.com/tech/1009128/ray-ban-meta-audio-glasses-review-smart-glasses-headphones-wearables" rel="noopener noreferrer">I don’t miss the camera on the Ray-Ban Meta Audio glasses</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-13 18:00 UTC</span>
-            <a href="https://www.theverge.com/tech/1009128/ray-ban-meta-audio-glasses-review-smart-glasses-headphones-wearables" rel="noopener noreferrer">theverge.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-eba87afb41">
-          <div class="item__head">
-            <span class="item__no">24</span>
-            <h3 class="item__title"><a href="https://www.theverge.com/tech/1010344/meta-facebook-your-algorithm-ai" rel="noopener noreferrer">Facebook will let you customize your feed algorithm using AI</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-13 17:01 UTC</span>
-            <a href="https://www.theverge.com/tech/1010344/meta-facebook-your-algorithm-ai" rel="noopener noreferrer">theverge.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e7841724e9">
-          <div class="item__head">
-            <span class="item__no">25</span>
-            <h3 class="item__title"><a href="https://www.theverge.com/tech/1009066/google-play-vibe-coded-android-apps-launch" rel="noopener noreferrer">Google makes it easier to launch your vibe-coded apps</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-13 17:00 UTC</span>
-            <a href="https://www.theverge.com/tech/1009066/google-play-vibe-coded-android-apps-launch" rel="noopener noreferrer">theverge.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e47caeb21a">
-          <div class="item__head">
-            <span class="item__no">26</span>
-            <h3 class="item__title"><a href="https://www.theverge.com/ai-artificial-intelligence/1010277/mia-goth-instagram-ai-shirt-deepfake-divorce" rel="noopener noreferrer">It’s ‘incomprehensible’ that Instagram allowed an AI image of Mia Goth to spread, say her reps</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-13 16:42 UTC</span>
-            <a href="https://www.theverge.com/ai-artificial-intelligence/1010277/mia-goth-instagram-ai-shirt-deepfake-divorce" rel="noopener noreferrer">theverge.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e938258fbd">
-          <div class="item__head">
-            <span class="item__no">27</span>
-            <h3 class="item__title"><a href="https://www.theverge.com/games/1010097/epic-games-disney-project-ai-coding-art" rel="noopener noreferrer">Epic shifts to ‘AI-accelerated development’ for upcoming Disney game</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-13 15:12 UTC</span>
-            <a href="https://www.theverge.com/games/1010097/epic-games-disney-project-ai-coding-art" rel="noopener noreferrer">theverge.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e459dc7f81">
-          <div class="item__head">
-            <span class="item__no">28</span>
-            <h3 class="item__title"><a href="https://www.theverge.com/news/1009904/dlss-5-hogwarts-legacy-changes-improvements" rel="noopener noreferrer">DLSS 5 gets toned down for its Hogwarts Legacy debut next month</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-13 13:55 UTC</span>
-            <a href="https://www.theverge.com/news/1009904/dlss-5-hogwarts-legacy-changes-improvements" rel="noopener noreferrer">theverge.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-ee0137e4ed">
-          <div class="item__head">
-            <span class="item__no">29</span>
-            <h3 class="item__title"><a href="https://www.theverge.com/ai-artificial-intelligence/1009862/google-releases-gemini-4-argon" rel="noopener noreferrer">Google finally releases Gemini 4 Argon</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-13 16:00 UTC</span>
-            <a href="https://www.theverge.com/ai-artificial-intelligence/1009862/google-releases-gemini-4-argon" rel="noopener noreferrer">theverge.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        </ol>
-      </section>
-      <section class="section" id="sec-dev">
-        <h2 class="section__title">开发者动态<span class="section__count">7 条</span></h2>
-        <ol class="stream">
-        <li class="item" id="e-ecd67a9ede">
-          <div class="item__head">
-            <span class="item__no">30</span>
-            <h3 class="item__title"><a href="https://github.com/debpalash/VoiceStudio" rel="noopener noreferrer">debpalash/VoiceStudio</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span class="when-unknown">时间未知</span>
-            <a href="https://github.com/debpalash/VoiceStudio" rel="noopener noreferrer">github.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e02dd5c06e">
-          <div class="item__head">
-            <span class="item__no">31</span>
-            <h3 class="item__title"><a href="https://github.com/mksglu/context-mode" rel="noopener noreferrer">mksglu/context-mode</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span class="when-unknown">时间未知</span>
-            <a href="https://github.com/mksglu/context-mode" rel="noopener noreferrer">github.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and enforces routing across 17 platforms via MCP + hooks.</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">本次未调用大模型，内容为来源原文摘录</li></ul></div><div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-ec6bd315ea">
-          <div class="item__head">
-            <span class="item__no">32</span>
-            <h3 class="item__title"><a href="https://github.com/cathrynlavery/diagram-design" rel="noopener noreferrer">cathrynlavery/diagram-design</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span class="when-unknown">时间未知</span>
-            <a href="https://github.com/cathrynlavery/diagram-design" rel="noopener noreferrer">github.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e24f518fe0">
-          <div class="item__head">
-            <span class="item__no">33</span>
-            <h3 class="item__title"><a href="https://github.com/bilawalsidhu/gods-eye-view" rel="noopener noreferrer">bilawalsidhu/gods-eye-view</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span class="when-unknown">时间未知</span>
-            <a href="https://github.com/bilawalsidhu/gods-eye-view" rel="noopener noreferrer">github.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e35f5c2fb4">
-          <div class="item__head">
-            <span class="item__no">34</span>
-            <h3 class="item__title"><a href="https://github.com/xtool-org/xtool" rel="noopener noreferrer">xtool-org/xtool</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span class="when-unknown">时间未知</span>
-            <a href="https://github.com/xtool-org/xtool" rel="noopener noreferrer">github.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e5b5e0a893">
-          <div class="item__head">
-            <span class="item__no">35</span>
-            <h3 class="item__title"><a href="https://github.com/storytold/artcraft" rel="noopener noreferrer">storytold/artcraft</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span class="when-unknown">时间未知</span>
-            <a href="https://github.com/storytold/artcraft" rel="noopener noreferrer">github.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-edec6fe1d8">
-          <div class="item__head">
-            <span class="item__no">36</span>
-            <h3 class="item__title"><a href="https://github.com/morluto/rea" rel="noopener noreferrer">morluto/rea</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span class="when-unknown">时间未知</span>
-            <a href="https://github.com/morluto/rea" rel="noopener noreferrer">github.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        </ol>
-      </section>
-      <section class="section" id="sec-zh-media">
-        <h2 class="section__title">中文媒体<span class="section__count">16 条</span></h2>
-        <ol class="stream">
-        <li class="item" id="e-ea9f702a23">
-          <div class="item__head">
-            <span class="item__no">37</span>
-            <h3 class="item__title"><a href="https://aihot.news/items/k34wzu8kjh65jmyq0udod9yue" rel="noopener noreferrer">Grok Bot 邮件多智能体用例</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 02:50 UTC</span>
-            <a href="https://aihot.news/items/k34wzu8kjh65jmyq0udod9yue" rel="noopener noreferrer">aihot.news</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e0a2598dd1">
-          <div class="item__head">
-            <span class="item__no">38</span>
-            <h3 class="item__title"><a href="https://aihot.news/items/w0kr5nvs73elhfd23vj0vm8hi" rel="noopener noreferrer">Xbow 用 GPT-5.6 挖出 Chrome 三个漏洞，获 Google 25 万美元全链奖励</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 02:58 UTC</span>
-            <a href="https://aihot.news/items/w0kr5nvs73elhfd23vj0vm8hi" rel="noopener noreferrer">aihot.news</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Xbow 工程师 Brendan Dolan-Gavitt 用 OpenAI 的 gpt-5.6-sol 分析 Chrome 源码，历时六天、花费约 4 万美元算力，找到三个独立漏洞组成漏洞链，使标签页内普通 JavaScript 代码穿越两个防护边界、逃出所有沙箱。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">本次未调用大模型，内容为来源原文摘录</li></ul></div><div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-ea2035490d">
-          <div class="item__head">
-            <span class="item__no">39</span>
-            <h3 class="item__title"><a href="https://aihot.news/items/ztibf3wgcvr415zkgdaubnz3c" rel="noopener noreferrer">广电总局“AI 魔改”视频治理：9 月清理违规视频近 1.3 万条、处置账号 30 余个</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 02:12 UTC</span>
-            <a href="https://aihot.news/items/ztibf3wgcvr415zkgdaubnz3c" rel="noopener noreferrer">aihot.news</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e76db74005">
-          <div class="item__head">
-            <span class="item__no">40</span>
-            <h3 class="item__title"><a href="https://aihot.news/items/j2dwv051tuwdwu8nd28d1q9p7" rel="noopener noreferrer">OpenBMB 发布 MiniCPM-V 4.7，35B-A3B MoE 多模态模型在手机上仅占 3GB 内存</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 02:48 UTC</span>
-            <a href="https://aihot.news/items/j2dwv051tuwdwu8nd28d1q9p7" rel="noopener noreferrer">aihot.news</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-ea556a0820">
-          <div class="item__head">
-            <span class="item__no">41</span>
-            <h3 class="item__title"><a href="https://aihot.news/items/ljduhw3ygl9fbfxazt66gm99d" rel="noopener noreferrer">企业微信升级 5.0.12 版本，内置 WorkBuddy 对话助手</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 02:41 UTC</span>
-            <a href="https://aihot.news/items/ljduhw3ygl9fbfxazt66gm99d" rel="noopener noreferrer">aihot.news</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-ed58b5de01">
-          <div class="item__head">
-            <span class="item__no">42</span>
-            <h3 class="item__title"><a href="https://aihot.news/items/r6nn05zme1z711ory2cl7hmo8" rel="noopener noreferrer">Anthropic 用 5 个月将内部 monorepo 从 Git 迁移到自研版本控制系统 Scion</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 01:49 UTC</span>
-            <a href="https://aihot.news/items/r6nn05zme1z711ory2cl7hmo8" rel="noopener noreferrer">aihot.news</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e5aa373e79">
-          <div class="item__head">
-            <span class="item__no">43</span>
-            <h3 class="item__title"><a href="https://aihot.news/items/ozs5y80l5cpy45igqa71uohns" rel="noopener noreferrer">豆包手机助手宣布陆续放开第三方应用屏幕自动化操作权限，阿里、腾讯系等 App 明确拒绝</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 02:22 UTC</span>
-            <a href="https://aihot.news/items/ozs5y80l5cpy45igqa71uohns" rel="noopener noreferrer">aihot.news</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-eb4d06d6d6">
-          <div class="item__head">
-            <span class="item__no">44</span>
-            <h3 class="item__title"><a href="https://aihot.news/items/evw4hug7sw1r9wznyj7cnrxrb" rel="noopener noreferrer">Anthropic 红队研究：小型 AI 模型或可在无数据中心情况下于 IoT 设备间自我复制</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 02:27 UTC</span>
-            <a href="https://aihot.news/items/evw4hug7sw1r9wznyj7cnrxrb" rel="noopener noreferrer">aihot.news</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-eee64482a5">
-          <div class="item__head">
-            <span class="item__no">45</span>
-            <h3 class="item__title"><a href="https://aihot.news/items/d0ftvqryq1dyy0088esy4cznd" rel="noopener noreferrer">千问办公将推电商运营版，阿里基因再落电商场景</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 02:02 UTC</span>
-            <a href="https://aihot.news/items/d0ftvqryq1dyy0088esy4cznd" rel="noopener noreferrer">aihot.news</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e2a7ca0293">
-          <div class="item__head">
-            <span class="item__no">46</span>
-            <h3 class="item__title"><a href="https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651062445&amp;idx=1&amp;sn=608c7ccba2cb0bcd1a34da07084d6cd1" rel="noopener noreferrer">九章云极问鼎陶哲轩数学挑战赛！让强化学习成为AI4S新基建</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-13 04:00 UTC</span>
-            <a href="https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651062445&amp;idx=1&amp;sn=608c7ccba2cb0bcd1a34da07084d6cd1" rel="noopener noreferrer">mp.weixin.qq.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e93eb10664">
-          <div class="item__head">
-            <span class="item__no">47</span>
-            <h3 class="item__title"><a href="https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651062445&amp;idx=3&amp;sn=c93fe78ae034dea794c3760e35192930" rel="noopener noreferrer">生成的世界也能交互！牛津大学&amp;莫纳什大学&amp;布里斯托大学等团队提出交互式视频世界模型Oneira</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-13 04:00 UTC</span>
-            <a href="https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651062445&amp;idx=3&amp;sn=c93fe78ae034dea794c3760e35192930" rel="noopener noreferrer">mp.weixin.qq.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-eb6145c234">
-          <div class="item__head">
-            <span class="item__no">48</span>
-            <h3 class="item__title"><a href="https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651062445&amp;idx=2&amp;sn=09d3ae148779c3bd1a544b44f72c02ea" rel="noopener noreferrer">申报倒计时7天！2026云程奖，要给「在校AI本硕博」发奖学金</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-13 04:00 UTC</span>
-            <a href="https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651062445&amp;idx=2&amp;sn=09d3ae148779c3bd1a544b44f72c02ea" rel="noopener noreferrer">mp.weixin.qq.com</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e29024d770">
-          <div class="item__head">
-            <span class="item__no">49</span>
-            <h3 class="item__title"><a href="https://aihot.news/items/cn2zpsopcfepfo7sjij0n30f4" rel="noopener noreferrer">Google DeepMind 用 Gemma 构建端侧反诈骗检测</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 02:05 UTC</span>
-            <a href="https://aihot.news/items/cn2zpsopcfepfo7sjij0n30f4" rel="noopener noreferrer">aihot.news</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e8536989a1">
-          <div class="item__head">
-            <span class="item__no">50</span>
-            <h3 class="item__title"><a href="https://daily.juya.uk/issues/2026-10-14/" rel="noopener noreferrer">2026-10-14</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 01:33 UTC</span>
-            <a href="https://daily.juya.uk/issues/2026-10-14/" rel="noopener noreferrer">daily.juya.uk</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e96c69f7f7">
-          <div class="item__head">
-            <span class="item__no">51</span>
-            <h3 class="item__title"><a href="https://aihot.news/items/fnk44ma5316w76jwk9050bne8" rel="noopener noreferrer">Grok Bot 邮件多智能体玩法</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-14 02:14 UTC</span>
-            <a href="https://aihot.news/items/fnk44ma5316w76jwk9050bne8" rel="noopener noreferrer">aihot.news</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        <li class="item" id="e-e1964896e9">
-          <div class="item__head">
-            <span class="item__no">52</span>
-            <h3 class="item__title"><a href="https://daily.juya.uk/issues/2026-10-13/" rel="noopener noreferrer">2026-10-13</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-13 01:48 UTC</span>
-            <a href="https://daily.juya.uk/issues/2026-10-13/" rel="noopener noreferrer">daily.juya.uk</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">AI 早报 2026 10 13 视频版 ：YouTube ｜ 哔哩哔哩 概览 要闻 Meta 发布 Muse Wonder 模型系列 ↗ 1 The X Subscription 推出：整合Grok、Cursor 和 X Premium ↗ 2 Codex 第 8 天安排：重置用量额度 ↗ 3 模型发布 智谱推出法律模型 GLM Legal，开放测试申请 ↗ 4 OpenBMB 发布 MiniCPM V 4.7 系列两款模型 ↗ 5 开发生态 OpenCode Go 提供 80 美元 V4.1 Flash 额度 ↗ 6 阶跃 Step 5 Preview 上线 WorkBuddy，独家限免两</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">本次未调用大模型，内容为来源原文摘录</li></ul></div><div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
-          
-        </li>
-        </ol>
-      </section>
-      <section class="section" id="sec-community">
-        <h2 class="section__title">社区讨论<span class="section__count">5 条</span></h2>
-        <ol class="stream">
-        <li class="item" id="e-eca713df85">
-          <div class="item__head">
-            <span class="item__no">53</span>
-            <h3 class="item__title"><a href="https://deepmind.google/blog/gemini-4-argon-for-robotics/" rel="noopener noreferrer">Gemini 4 Argon for Robotics发布</a></h3>
+            <h3 class="item__title"><a href="https://aihot.news/items/cn2zpsopcfepfo7sjij0n30f4" rel="noopener noreferrer">Google DeepMind 与新加坡政府合作推出端侧 AI 诈骗检测模型</a></h3>
           </div>
           <div class="item__meta">
             <span class="badge" data-level="multi_source">多源交叉验证</span>
             <span>2 个独立来源</span>
-            <span>10-13 16:55 UTC</span>
-            <a href="https://deepmind.google/blog/gemini-4-argon-for-robotics/" rel="noopener noreferrer">deepmind.google</a>
+            <span>10-14 00:29 UTC</span>
+            <a href="https://aihot.news/items/cn2zpsopcfepfo7sjij0n30f4" rel="noopener noreferrer">aihot.news</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">发布了Gemini 4 Argon for Robotics。</li><li data-kind="fact">相关信息于2026年10月13日出现在不同来源中。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Gemini 4 Argon for Robotics可能与机器人领域相关。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">Gemini 4 Argon for Robotics的具体功能和技术细节是什么。</li><li data-kind="uncertain">该发布是由哪家具体机构进行的。</li></ul></div>
-          <div class="item__links"><a href="https://developers.googleblog.com/gemini-4-argon-for-robotics/" rel="noopener noreferrer">developers.googleblog.com</a></div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Google DeepMind 与新加坡政府科技局在新加坡国际网络周发布了端侧诈骗检测模型。</li><li data-kind="fact">诈骗占新加坡报案犯罪的比例超过一半。</li><li data-kind="fact">新加坡自 2019 年以来的诈骗损失超过 40 亿新元。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">此次合作可能是为了应对新加坡严重的诈骗犯罪问题。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">该端侧 AI 诈骗检测模型的具体技术架构和运行机制是什么。</li><li data-kind="uncertain">该模型将在哪些具体的设备或平台上部署。</li></ul></div>
+          <div class="item__links"><a href="https://aihot.news/items/h9cdmwv98lxcr0yvuf83j0cno" rel="noopener noreferrer">aihot.news</a><a href="https://aihot.news/items/xardfzy6zj0cp97wgubmeerwq" rel="noopener noreferrer">aihot.news</a><a href="https://deepmind.google/blog/on-device-ai-scam-detection-mddi/" rel="noopener noreferrer">deepmind.google</a></div>
         </li>
-        <li class="item" id="e-eb845f25ce">
+        <li class="item" id="e-e04b133080">
           <div class="item__head">
-            <span class="item__no">54</span>
-            <h3 class="item__title"><a href="https://www.v2ex.com/t/1248562" rel="noopener noreferrer">最好看最好用的 iOS V2EX 客户端过审了，欢迎 TestFlight 体验打脸</a></h3>
+            <span class="item__no">04</span>
+            <h3 class="item__title"><a href="https://news.mit.edu/2026/how-artificial-neural-networks-build-their-own-learning-machinery-1013" rel="noopener noreferrer">人工神经网络如何构建自身的学习机制</a></h3>
           </div>
           <div class="item__meta">
             <span class="badge" data-level="single_source">单一来源</span>
             
-            <span>10-14 00:02 UTC</span>
-            <a href="https://www.v2ex.com/t/1248562" rel="noopener noreferrer">v2ex.com</a>
+            <span>10-13 21:00 UTC</span>
+            <a href="https://news.mit.edu/2026/how-artificial-neural-networks-build-their-own-learning-machinery-1013" rel="noopener noreferrer">news.mit.edu</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">机器学习网络能够在没有设计者详细指令的情况下进行学习。</li><li data-kind="fact">这类网络可能为大脑在学习过程中如何进行自我重组提供见解。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">研究人工神经网络的学习过程或有助于理解人类大脑的重组机制。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明机器学习网络在没有详细指令的情况下具体是如何进行学习的。</li><li data-kind="uncertain">材料未说明这类网络具体能为大脑重组提供哪些方面的见解。</li><li data-kind="uncertain">材料未提及具体涉及哪些人工神经网络模型或架构。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e3852035b2">
+          <div class="item__head">
+            <span class="item__no">05</span>
+            <h3 class="item__title"><a href="https://news.mit.edu/2026/mit-lincoln-laboratory-hosts-national-security-commission-emerging-biotechnology-1013" rel="noopener noreferrer">MIT Lincoln Laboratory 举办新兴生物技术国家安全委员会路演</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-13 20:40 UTC</span>
+            <a href="https://news.mit.edu/2026/mit-lincoln-laboratory-hosts-national-security-commission-emerging-biotechnology-1013" rel="noopener noreferrer">news.mit.edu</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">MIT Lincoln Laboratory 主办了新兴生物技术国家安全委员会的路演活动。</li><li data-kind="fact">该路演活动重点展示了马萨诸塞州的国防生物技术生态系统。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">此次路演活动可能旨在促进马萨诸塞州国防生物技术生态系统与国家安全委员会之间的交流与合作。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">活动讨论的具体技术细节和议题有哪些。</li><li data-kind="uncertain">出席此次路演活动的具体人员和机构有哪些。</li><li data-kind="uncertain">活动是否达成或签署了任何具体协议。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e7d6899eae">
+          <div class="item__head">
+            <span class="item__no">13</span>
+            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE9ZVFlCRm9FTnVHREVNMlRGeGxYcmJtVElnRnF1MUt0bDhIWDlvckNjTFRDR1BwVUFLUzN6NHhmUkJUbmhSRGJ3YQ?oc=5" rel="noopener noreferrer">Meta推出新AI模型并暗示将加速发展</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-13 23:42 UTC</span>
+            <a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE9ZVFlCRm9FTnVHREVNMlRGeGxYcmJtVElnRnF1MUt0bDhIWDlvckNjTFRDR1BwVUFLUzN6NHhmUkJUbmhSRGJ3YQ?oc=5" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Meta发布了新的AI模型。</li><li data-kind="fact">新模型达到了行业巨头的水平。</li><li data-kind="fact">Meta暗示接下来还要加速。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Meta此次发布的新模型可能有助于其在人工智能领域取得更好的市场地位。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">新模型的具体名称是什么。</li><li data-kind="uncertain">Meta接下来加速的具体计划和方向是什么。</li></ul></div>
           
         </li>
         <li class="item" id="e-efbcb58f65">
           <div class="item__head">
-            <span class="item__no">55</span>
+            <span class="item__no">17</span>
             <h3 class="item__title"><a href="https://www.v2ex.com/t/1248572" rel="noopener noreferrer">v2 的大佬们指点一下我该不该割肉，房子的事</a></h3>
           </div>
           <div class="item__meta">
@@ -952,12 +243,46 @@
             <span>10-14 00:53 UTC</span>
             <a href="https://www.v2ex.com/t/1248572" rel="noopener noreferrer">v2ex.com</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">目前情况：
+1. 西安当时高位买了一套房子目前月供不到 4k 但是已经资不抵债了。 贷款还有 60 个。 房子只能买 50 出头甚至都没人看。
+2. 杭州去年不算最低点但也不是高点入手了一套月供 4k+，贷款 100 个， 卖杭州房子的时候还借了点钱。
+因为买房后两边贷款加起来 8k 出头 家庭收入也就一个月也就 15k 左右。 当时没下手杭州这边的时候没想到西安那边出手如此困难。
+细节我就不描述了。
+我目前的想法：西安那边继续降价贴钱卖。 杭州这边快满二了也出手掉。 杭州这边应该是能平处亏个装修的钱。 西安那边能欠 10 来万吧 全都卖掉后 1 年时间处理掉债务 然后重新攒钱 租房住 重头再</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">本次未调用大模型，内容为来源原文摘录</li></ul></div><div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-eb845f25ce">
+          <div class="item__head">
+            <span class="item__no">18</span>
+            <h3 class="item__title"><a href="https://www.v2ex.com/t/1248562" rel="noopener noreferrer">最好看最好用的 iOS V2EX 客户端过审了，欢迎 TestFlight 体验打脸</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-14 00:02 UTC</span>
+            <a href="https://www.v2ex.com/t/1248562" rel="noopener noreferrer">v2ex.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">## 前情提要
+新手口喷了最好看最好用的 iOS V2EX 客户端，帮我看看值得上架 App Store 吗？
+**立即体验：**
+- 注册开发者，审核用了两天
+- 第一个 TF 审核用了两天，感觉还挺快的，后边小版本一天能过审
+上次发帖之后做了很多更新，还有一些更新没上 TF 。
+牛逼的说，应该是 1000 万以内最好的 V2EX 客户端了，欢迎大家体验，打我脸。
+简单传几张图吧，吹牛逼文案还没想：
+![](
+![](
+![](
+![](
+![](
+![](
+![](
+![](</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">本次未调用大模型，内容为来源原文摘录</li></ul></div><div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
           
         </li>
         <li class="item" id="e-ec0c109918">
           <div class="item__head">
-            <span class="item__no">56</span>
+            <span class="item__no">21</span>
             <h3 class="item__title"><a href="https://www.v2ex.com/t/1248569" rel="noopener noreferrer">昨天把家里 Wi-Fi 2.4G 和 5G 分开了，你们呢？</a></h3>
           </div>
           <div class="item__meta">
@@ -966,12 +291,42 @@
             <span>10-14 00:46 UTC</span>
             <a href="https://www.v2ex.com/t/1248569" rel="noopener noreferrer">v2ex.com</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">家里有个稍微老点的小爱音箱，老是掉线，后来研究发现不支持 5G 的，当时家里的 wifi 上二频合一的，虽然连上了，隔一段时间莫名其妙就掉线了。
+一直想拆分，但是家里几十个设备要重新配置，尤其是有些设备重置网络的方法都忘记了（分别是什么长按这个键那个键的）得去查。
+昨天晚上还是决定去拆了一下，把 iot 设备都分到 2.4G 上去，手机电脑保留 5G 上，心理上感觉好像速度快了一些。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">本次未调用大模型，内容为来源原文摘录</li></ul></div><div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e27a6e08b3">
+          <div class="item__head">
+            <span class="item__no">24</span>
+            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxOS3hiUW5YaHg2NUNvTWdaWmEtWmh4aEk1Y3BlTzVqT2NpNUhiWGU0NU1qRzI5NG5jc0dqQUtJVUw2U0xNVVJRaHFhSUttd2UteGRNYXZoM2JLLS1HRGRDTjdjOV96Uk1nUC1LYTUzVkNkRk9pcFRGSDdhRjJCYUNRbnRIb3RxNnpCalhz?oc=5" rel="noopener noreferrer">AI浪潮下，真人剧怎样留观众？|我不是大师|兰香如故|余红旧事|郭柯宇|张哲华 - finance.sina.com.cn</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-14 03:56 UTC</span>
+            <a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxOS3hiUW5YaHg2NUNvTWdaWmEtWmh4aEk1Y3BlTzVqT2NpNUhiWGU0NU1qRzI5NG5jc0dqQUtJVUw2U0xNVVJRaHFhSUttd2UteGRNYXZoM2JLLS1HRGRDTjdjOV96Uk1nUC1LYTUzVkNkRk9pcFRGSDdhRjJCYUNRbnRIb3RxNnpCalhz?oc=5" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">AI浪潮下，真人剧怎样留观众？|我不是大师|兰香如故|余红旧事|郭柯宇|张哲华 finance.sina.com.cn</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">本次未调用大模型，内容为来源原文摘录</li></ul></div><div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-edf424f85b">
+          <div class="item__head">
+            <span class="item__no">25</span>
+            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiU0FVX3lxTE1Pd290ZGczTVh2YjlMNjE1aGk4MmRPTk1fUG5tMkFhY3FSZ2RkUkl6Y0EtZ21aVi1NTS1LUGN0R2Q2NUhJcl9PWFlfbzJVRzY0b0Y0?oc=5" rel="noopener noreferrer">创业板科创50跌超1% AI漫剧概念再爆发</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-14 03:55 UTC</span>
+            <a href="https://news.google.com/rss/articles/CBMiU0FVX3lxTE1Pd290ZGczTVh2YjlMNjE1aGk4MmRPTk1fUG5tMkFhY3FSZ2RkUkl6Y0EtZ21aVi1NTS1LUGN0R2Q2NUhJcl9PWFlfbzJVRzY0b0Y0?oc=5" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">创业板、科创50均跌超1%。</li><li data-kind="fact">AI漫剧概念再爆发。</li><li data-kind="fact">电力、煤炭活跃。</li><li data-kind="fact">恒科指低开高走涨超1%。</li><li data-kind="fact">权重科网股集体反弹。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">整体市场下跌，但部分板块表现好。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">未说明跌幅具体原因。</li><li data-kind="uncertain">未说明AI漫剧概念再爆发的具体驱动因素。</li></ul></div>
           
         </li>
         <li class="item" id="e-e441f6c9e7">
           <div class="item__head">
-            <span class="item__no">57</span>
+            <span class="item__no">27</span>
             <h3 class="item__title"><a href="https://www.v2ex.com/t/1248577" rel="noopener noreferrer">现在修电视都这么贵的吗？</a></h3>
           </div>
           <div class="item__meta">
@@ -980,153 +335,263 @@
             <span>10-14 01:11 UTC</span>
             <a href="https://www.v2ex.com/t/1248577" rel="noopener noreferrer">v2ex.com</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">19 年买的大法，国庆回来，小孩说就灰屏了。找了师傅上门，说是屏幕坏了。修的话要 1000 多，我想着现在只有我儿子看，就懒得修了。1000 多加一点钱都能买个国产了。上门费：78
+再回头想想，也是月初修的洗衣机，网上查了零件才 40 ，修了 370 。这电视会不会也是坏了小毛病，然后报价奇高。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">本次未调用大模型，内容为来源原文摘录</li></ul></div><div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
           
         </li>
-        </ol>
-      </section>
-      <section class="section" id="sec-digest">
-        <h2 class="section__title">行业简报<span class="section__count">1 条</span></h2>
-        <ol class="stream">
-        <li class="item" id="e-e3e5ff0ca7">
+        <li class="item" id="e-e4de331a4c">
           <div class="item__head">
-            <span class="item__no">58</span>
-            <h3 class="item__title"><a href="https://therundownai.beehiiv.com/p/meta-watermelon-ripens-into-a-frontier-model" rel="noopener noreferrer">Meta&#x27;s Watermelon ripens into a frontier model</a></h3>
+            <span class="item__no">28</span>
+            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE5UeWE5OE82Yzc1RFQ5d1I2bmlIV21RNl9vUjRoVFVaMXIyc1lFckVjemQ2Y01faDlKdnN6ZURVdnBvVjk0WEhwVVdVc1g1dw?oc=5" rel="noopener noreferrer">成本5000元广告费15万 AI综艺创作者：每天工作10小时，没时间享受收益 - 川观新闻</a></h3>
           </div>
           <div class="item__meta">
             <span class="badge" data-level="single_source">单一来源</span>
             
-            <span>10-13 09:00 UTC</span>
-            <a href="https://therundownai.beehiiv.com/p/meta-watermelon-ripens-into-a-frontier-model" rel="noopener noreferrer">therundownai.beehiiv.com</a>
+            <span>10-14 04:21 UTC</span>
+            <a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE5UeWE5OE82Yzc1RFQ5d1I2bmlIV21RNl9vUjRoVFVaMXIyc1lFckVjemQ2Y01faDlKdnN6ZURVdnBvVjk0WEhwVVdVc1g1dw?oc=5" rel="noopener noreferrer">news.google.com</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">成本5000元广告费15万 AI综艺创作者：每天工作10小时，没时间享受收益 川观新闻</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">本次未调用大模型，内容为来源原文摘录</li></ul></div><div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
           
         </li>
-        </ol>
-      </section>
-      <section class="section" id="sec-preset">
-        <h2 class="section__title">预设源<span class="section__count">2 条</span></h2>
-        <ol class="stream">
-        <li class="item" id="e-ef82b85eed">
+        <li class="item" id="e-ec501eb25a">
           <div class="item__head">
-            <span class="item__no">59</span>
-            <h3 class="item__title"><a href="https://aihot.news/items/znq5591d0ans7l79658wn4dys" rel="noopener noreferrer">Anthropic 团队开发自研源码控制系统 Scion 代替 Git</a></h3>
+            <span class="item__no">29</span>
+            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTFB2VGxKeHE2WFZEeVRkZ0RXMHpCTkh4N3o1NnZpdlF5UWhxX1VGdk1FMEh6TlQwTWg4WW9BRXNMS3EyS3JRdG1mbE9hSXFYUQ?oc=5" rel="noopener noreferrer">拍照识热量、大数据定制食谱……AI“减重搭子”走红，你觉得靠谱吗？丨V观话题 - 川观新闻</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-14 03:54 UTC</span>
+            <a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTFB2VGxKeHE2WFZEeVRkZ0RXMHpCTkh4N3o1NnZpdlF5UWhxX1VGdk1FMEh6TlQwTWg4WW9BRXNMS3EyS3JRdG1mbE9hSXFYUQ?oc=5" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">拍照识热量、大数据定制食谱……AI“减重搭子”走红，你觉得靠谱吗？丨V观话题 川观新闻</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">本次未调用大模型，内容为来源原文摘录</li></ul></div><div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e6c197c81f">
+          <div class="item__head">
+            <span class="item__no">31</span>
+            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiZkFVX3lxTE5LTDliTFJmWGllSGVqRGRHMDRKTHhxR0M5M0FhQzItMDhLZDh0Yzl1akNtVEI5WGE3eXZrSGY1eGVyUUc0ZmdBMUNXNmJUVTN6ZGRwY05YM2pWNlQ4azJkUVZzSFEydw?oc=5" rel="noopener noreferrer">中国又一款AI手机发售，中美争夺AI操作系统定义权</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-14 04:34 UTC</span>
+            <a href="https://news.google.com/rss/articles/CBMiZkFVX3lxTE5LTDliTFJmWGllSGVqRGRHMDRKTHhxR0M5M0FhQzItMDhLZDh0Yzl1akNtVEI5WGE3eXZrSGY1eGVyUUc0ZmdBMUNXNmJUVTN6ZGRwY05YM2pWNlQ4azJkUVZzSFEydw?oc=5" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">中国又一款AI手机发售。</li><li data-kind="fact">中美开始争夺AI操作系统定义权。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">中国新AI手机的发售可能加剧了中美双方在AI操作系统定义权方面的竞争。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">发售的AI手机具体品牌和型号是什么。</li><li data-kind="uncertain">争夺AI操作系统定义权的具体现状和细节是什么。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e71832a3e7">
+          <div class="item__head">
+            <span class="item__no">32</span>
+            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiakFVX3lxTE1WdWZxLUFWTkF0TmRYeHVsZVlpRFF3MmVucU5WVVhvTjBmZlhpenNqa05IbDFkSzdra3h1LTRRdUV2NkpuREgzdGRiU3lhbjVlOHBKZUpiaVJuRG42aVd4RmdsLW8zMG5XdUE?oc=5" rel="noopener noreferrer">美股智慧教育服务商推出首款AI陪伴产品进军消费硬件市场</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-14 04:03 UTC</span>
+            <a href="https://news.google.com/rss/articles/CBMiakFVX3lxTE1WdWZxLUFWTkF0TmRYeHVsZVlpRFF3MmVucU5WVVhvTjBmZlhpenNqa05IbDFkSzdra3h1LTRRdUV2NkpuREgzdGRiU3lhbjVlOHBKZUpiaVJuRG42aVd4RmdsLW8zMG5XdUE?oc=5" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">这家美股智慧教育服务商推出首款AI陪伴产品</li><li data-kind="fact">该公司进军消费硬件市场</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该AI陪伴产品可能是硬件设备</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">该公司具体名称</li><li data-kind="uncertain">AI陪伴产品的具体功能</li><li data-kind="uncertain">产品是否为硬件设备</li><li data-kind="uncertain">上市时间</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-ec4f05f0c9">
+          <div class="item__head">
+            <span class="item__no">33</span>
+            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiVkFVX3lxTE5BMldEUUQ1WWdyV1pEN2JsaHVWckEwcDhjWjFaWHkxb3FGSW1XbHdaS0JaejM1QXFKWWJEVDBKa290YVFwZTFuU01LNURNeGo5WlFQcUpR?oc=5" rel="noopener noreferrer">Anthropic研究AI自我复制</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-14 04:20 UTC</span>
+            <a href="https://news.google.com/rss/articles/CBMiVkFVX3lxTE5BMldEUUQ1WWdyV1pEN2JsaHVWckEwcDhjWjFaWHkxb3FGSW1XbHdaS0JaejM1QXFKWWJEVDBKa290YVFwZTFuU01LNURNeGo5WlFQcUpR?oc=5" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Anthropic进行了一项震撼研究</li><li data-kind="fact">研究内容涉及AI通过电视盒子自我复制</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">此研究可能引发安全担忧</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">研究方法细节不明</li><li data-kind="uncertain">是否可行未验证</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-eddd688ed7">
+          <div class="item__head">
+            <span class="item__no">34</span>
+            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE93d0xOcHFNWTUxT2hFT2JnVnNxOGk4OXJOSmZzVDd1Uk80YXV5aUJyRnpPWmVCTDcwQ0E1WllMd0JsWjN5RlNaTGY1OVdHemIzMGE5VlJVMTRiN1lPcHhqS0JQWmVhTnhJ?oc=5" rel="noopener noreferrer">“AI挂在嘴边，实际一事无成” 年轻人正被“AI登”逼疯 - 文学城</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-14 03:46 UTC</span>
+            <a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE93d0xOcHFNWTUxT2hFT2JnVnNxOGk4OXJOSmZzVDd1Uk80YXV5aUJyRnpPWmVCTDcwQ0E1WllMd0JsWjN5RlNaTGY1OVdHemIzMGE5VlJVMTRiN1lPcHhqS0JQWmVhTnhJ?oc=5" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">“AI挂在嘴边，实际一事无成” 年轻人正被“AI登”逼疯 文学城</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">本次未调用大模型，内容为来源原文摘录</li></ul></div><div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e8bfc9e901">
+          <div class="item__head">
+            <span class="item__no">35</span>
+            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE1JTzVhTmd6RXJyUmNGa3hpLXJmQ1BkRE9CNE0xVzdFQXg4emZUQUd5UGNXb2VyRTRyVE1FLXFkdGt3TmNkcHJFTVU1VDUzdjQ?oc=5" rel="noopener noreferrer">欧美芯片巨头：AI 时代的卖铲人棋局</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-14 04:28 UTC</span>
+            <a href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE1JTzVhTmd6RXJyUmNGa3hpLXJmQ1BkRE9CNE0xVzdFQXg4emZUQUd5UGNXb2VyRTRyVE1FLXFkdGt3TmNkcHJFTVU1VDUzdjQ?oc=5" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">文章标题为“欧美芯片巨头：AI 时代的卖铲人棋局”。</li><li data-kind="fact">文章来源为36Kr。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">文章讨论欧美芯片巨头在AI时代的角色。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">文章具体内容不明。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-edfcc18125">
+          <div class="item__head">
+            <span class="item__no">36</span>
+            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE5LY3VZbU9MQy1udkRWd00yTG03eFZMVVBfX2EzdUM5UU11M1dLMTBNcVU3czc4VGlYSXJLT0hzUWZkWWUzU2hINDYzOTd0RERQVVZTSC04X0JLa0Noei1HZmRNRFdVaF9ZbDBZYw?oc=5" rel="noopener noreferrer">解码浙江丨AI“吃”算力，新基建“加速跑” - 温州新闻</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-14 03:58 UTC</span>
+            <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE5LY3VZbU9MQy1udkRWd00yTG03eFZMVVBfX2EzdUM5UU11M1dLMTBNcVU3czc4VGlYSXJLT0hzUWZkWWUzU2hINDYzOTd0RERQVVZTSC04X0JLa0Noei1HZmRNRFdVaF9ZbDBZYw?oc=5" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">解码浙江丨AI“吃”算力，新基建“加速跑” 温州新闻</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">本次未调用大模型，内容为来源原文摘录</li></ul></div><div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e5bfb04250">
+          <div class="item__head">
+            <span class="item__no">37</span>
+            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE9ZRjFxcHZMZXpyT1EtNmM5VURJRGpWZDdMLVB4RWRPcVUyX05FRkh3TjhYMmUtdXdjV0VOUFRzbUJWWldUS01YVVFOM2hMSjFLWV9Vd3lxVjZ6RGU3THd4RXQ5UkZVZ18wR2J3alo2WjhNMHJvSE5tckR2bFRjU1E?oc=5" rel="noopener noreferrer">AI漫剧行情升温，媒体探访影视行业生产变局 - 新浪网</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-14 03:53 UTC</span>
+            <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE9ZRjFxcHZMZXpyT1EtNmM5VURJRGpWZDdMLVB4RWRPcVUyX05FRkh3TjhYMmUtdXdjV0VOUFRzbUJWWldUS01YVVFOM2hMSjFLWV9Vd3lxVjZ6RGU3THd4RXQ5UkZVZ18wR2J3alo2WjhNMHJvSE5tckR2bFRjU1E?oc=5" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">AI漫剧行情升温，媒体探访影视行业生产变局 新浪网</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">本次未调用大模型，内容为来源原文摘录</li></ul></div><div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-ee8a1d0e27">
+          <div class="item__head">
+            <span class="item__no">38</span>
+            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiVEFVX3lxTFA0RXJpSFZxaHVYMGhPcDRIanlNSm95ZWFFYWI2Q3hwR0p4VXRLdXB0Xy1XMDh6NVhFa3Fhdm9UTHNTWS15alJzbDQxOE5qLTFQWmV3SQ?oc=5" rel="noopener noreferrer">当预订界面消失，AI会如何改写商旅？ - 环球旅讯</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-14 04:00 UTC</span>
+            <a href="https://news.google.com/rss/articles/CBMiVEFVX3lxTFA0RXJpSFZxaHVYMGhPcDRIanlNSm95ZWFFYWI2Q3hwR0p4VXRLdXB0Xy1XMDh6NVhFa3Fhdm9UTHNTWS15alJzbDQxOE5qLTFQWmV3SQ?oc=5" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">当预订界面消失，AI会如何改写商旅？ 环球旅讯</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">本次未调用大模型，内容为来源原文摘录</li></ul></div><div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-eab7f26eda">
+          <div class="item__head">
+            <span class="item__no">39</span>
+            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE5TV3JPaFlnQm10N0pHTlhOclYyQ1dKUTJXUUs2T0xpdUJuemJ1Tkh4d2g0dzRJNk5CeEl0eXl0RkM2cy01WnNoTg?oc=5" rel="noopener noreferrer">上海大模型芯片创企融资近亿元</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-14 04:26 UTC</span>
+            <a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE5TV3JPaFlnQm10N0pHTlhOclYyQ1dKUTJXUUs2T0xpdUJuemJ1Tkh4d2g0dzRJNk5CeEl0eXl0RkM2cy01WnNoTg?oc=5" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">上海大模型芯片创企融资近亿元</li><li data-kind="fact">智东西报道该事件</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该公司位于上海</li><li data-kind="inference">该公司专注大模型芯片技术</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">融资具体金额未披露</li><li data-kind="uncertain">公司名称未披露</li><li data-kind="uncertain">投资方信息未披露</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e20aec83fa">
+          <div class="item__head">
+            <span class="item__no">40</span>
+            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE41dmYyLW5CclNKSUlhbUR5Tzl4WjVVcTdhaVpuT1BnZzQ1MFRQeE5Yd1BZWE1NRzVjSGszbHhFOTdranA2TEJXUQ?oc=5" rel="noopener noreferrer">财联社发布风口研报</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-14 04:46 UTC</span>
+            <a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE41dmYyLW5CclNKSUlhbUR5Tzl4WjVVcTdhaVpuT1BnZzQ1MFRQeE5Yd1BZWE1NRzVjSGszbHhFOTdranA2TEJXUQ?oc=5" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">财联社发布了风口研报。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">相关研报可能涉及当时的市场热点或投资机会。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">研报的具体内容是什么。</li><li data-kind="uncertain">研报指向的具体行业或板块是什么。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e5b22f81d4">
+          <div class="item__head">
+            <span class="item__no">41</span>
+            <h3 class="item__title"><a href="https://www.v2ex.com/t/1248583" rel="noopener noreferrer">muse 30 亿免费 token</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-14 01:36 UTC</span>
+            <a href="https://www.v2ex.com/t/1248583" rel="noopener noreferrer">v2ex.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">直接 tg ，输出自己的邀请码就行。可自己生成邀请链接，单个邀请码好像最高 3 次，合计 90 亿 token</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">本次未调用大模型，内容为来源原文摘录</li></ul></div><div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e8b213ee80">
+          <div class="item__head">
+            <span class="item__no">42</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/e8516i4snh2ut9d6zedoc9jsv" rel="noopener noreferrer">Gemini 4 Argon 全面开放，实测难敌 Claude Opus 5.5 与 GPT-6 Astra</a></h3>
           </div>
           <div class="item__meta">
             <span class="badge" data-level="multi_source">多源交叉验证</span>
             <span>2 个独立来源</span>
-            <span>10-13 23:00 UTC</span>
-            <a href="https://aihot.news/items/znq5591d0ans7l79658wn4dys" rel="noopener noreferrer">aihot.news</a>
+            <span>10-14 01:02 UTC</span>
+            <a href="https://aihot.news/items/e8516i4snh2ut9d6zedoc9jsv" rel="noopener noreferrer">aihot.news</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Anthropic 的代码合并量从 2026 年 5 月的日均约 2,500 次增加到 9 月的超过 30,000 次。</li><li data-kind="fact">Anthropic 由 7 人团队耗时 5 个月完成了从 Git 到自研系统 Scion 的迁移。</li><li data-kind="fact">Simon Willison 使用 Claude 修改了 Anthropic 的图表以添加 2026 年各模型公开版本的标记。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Anthropic 开发自研源码控制系统 Scion 是为了应对代码合并量的大幅增长。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">图表中显示的公开发布日期是否代表模型内部可用日期无法从材料中完全确认。</li><li data-kind="uncertain">Simon Willison 关于模型内部使用日期的猜测是否准确不得而知。</li></ul></div>
-          <div class="item__links"><a href="https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/" rel="noopener noreferrer">simonwillison.net</a></div>
-        </li>
-        <li class="item" id="e-ef6384abac">
-          <div class="item__head">
-            <span class="item__no">60</span>
-            <h3 class="item__title"><a href="https://simonwillison.net/2026/Oct/13/llm-gemini/" rel="noopener noreferrer">llm-gemini 0.35</a></h3>
-          </div>
-          <div class="item__meta">
-            <span class="badge" data-level="single_source">单一来源</span>
-            
-            <span>10-13 22:28 UTC</span>
-            <a href="https://simonwillison.net/2026/Oct/13/llm-gemini/" rel="noopener noreferrer">simonwillison.net</a>
-          </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Google 于 2026 年 10 月 14 日全面开放 Gemini 4 Argon。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">作者对 Gemini 4 Argon 进行了实测。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">作者的具体身份和实测的评测标准未在材料中说明。</li><li data-kind="uncertain">Claude Opus 5.5 和 GPT-6 Astra 是否同期发布或更新未在材料中说明。</li></ul></div>
           
         </li>
         </ol>
       </section>
 
+          <details class="untranslated" id="untranslated">
+        <summary>本期待翻译条目（28 条）</summary>
+        <p>这些条目的来源是外文，且本期模型额度用完、未能逐条译成中文，
+        因此只在这里保留原文与出处，不混进上面的正文。
+        <strong>点开即离开本站、前往原文</strong>。</p>
+        <ol><li><span class="untranslated__no">03</span><a href="https://ua.news/en/world/kiberataka-zupinila-budivnitstvo-tuneliu-mizh-daniieiu-ta-nimechchinoiu-rmf24" rel="noopener noreferrer">Cyberattack halts construction of tunnel between Denmark and Germany</a><span class="untranslated__src">ua.news</span></li><li><span class="untranslated__no">06</span><a href="https://www.theverge.com/ai-artificial-intelligence/1010642/openai-employee-arrested-recording-device" rel="noopener noreferrer">OpenAI employee arrested for allegedly planting a bug in a conference room</a><span class="untranslated__src">theverge.com</span></li><li><span class="untranslated__no">07</span><a href="https://www.theverge.com/news/1010365/shopify-opens-its-catalog-up-to-more-ai-agents" rel="noopener noreferrer">Shopify opens its catalog up to more AI agents</a><span class="untranslated__src">theverge.com</span></li><li><span class="untranslated__no">08</span><a href="https://www.theverge.com/news/1010406/xbox-labs-game-decompiling-emulation-exploration" rel="noopener noreferrer">Xbox is officially embracing the chaos of AI-powered game ports</a><span class="untranslated__src">theverge.com</span></li><li><span class="untranslated__no">09</span><a href="https://www.theverge.com/tech/1009128/ray-ban-meta-audio-glasses-review-smart-glasses-headphones-wearables" rel="noopener noreferrer">I don’t miss the camera on the Ray-Ban Meta Audio glasses</a><span class="untranslated__src">theverge.com</span></li><li><span class="untranslated__no">10</span><a href="https://www.theverge.com/tech/1010344/meta-facebook-your-algorithm-ai" rel="noopener noreferrer">Facebook will let you customize your feed algorithm using AI</a><span class="untranslated__src">theverge.com</span></li><li><span class="untranslated__no">11</span><a href="https://www.theverge.com/ai-artificial-intelligence/1010277/mia-goth-instagram-ai-shirt-deepfake-divorce" rel="noopener noreferrer">It’s ‘incomprehensible’ that Instagram allowed an AI image of Mia Goth to spread, say her reps</a><span class="untranslated__src">theverge.com</span></li><li><span class="untranslated__no">12</span><a href="https://www.theverge.com/games/1010097/epic-games-disney-project-ai-coding-art" rel="noopener noreferrer">Epic shifts to ‘AI-accelerated development’ for upcoming Disney game</a><span class="untranslated__src">theverge.com</span></li><li><span class="untranslated__no">14</span><a href="https://www.theverge.com/news/1009904/dlss-5-hogwarts-legacy-changes-improvements" rel="noopener noreferrer">DLSS 5 gets toned down for its Hogwarts Legacy debut next month</a><span class="untranslated__src">theverge.com</span></li><li><span class="untranslated__no">15</span><a href="https://dailydawn.dev/zh/2026-10-14" rel="noopener noreferrer">DailyDawn · 2026-10-14</a><span class="untranslated__src">dailydawn.dev</span></li><li><span class="untranslated__no">16</span><a href="https://pulseos.finance" rel="noopener noreferrer">Show HN: Pulse Local, a Mac budgeting app whose AI models run on your machine</a><span class="untranslated__src">pulseos.finance</span></li><li><span class="untranslated__no">19</span><a href="https://openai.com/index/higgsfield-longer-videos-voice" rel="noopener noreferrer">Higgsfield takes AI video from 1 minute to over 10</a><span class="untranslated__src">openai.com</span></li><li><span class="untranslated__no">20</span><a href="https://www.quantamagazine.org/is-attention-the-essence-of-intelligence-20261012/" rel="noopener noreferrer">Is &#x27;Attention&#x27; the Essence of Intelligence?</a><span class="untranslated__src">quantamagazine.org</span></li><li><span class="untranslated__no">22</span><a href="https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/" rel="noopener noreferrer">Redesigning source control at Anthropic</a><span class="untranslated__src">simonwillison.net</span></li><li><span class="untranslated__no">23</span><a href="https://simonwillison.net/2026/Oct/13/llm-gemini/" rel="noopener noreferrer">llm-gemini 0.35</a><span class="untranslated__src">simonwillison.net</span></li><li><span class="untranslated__no">26</span><a href="https://simonwillison.net/2026/Oct/13/geoffrey-huntley/" rel="noopener noreferrer">Quoting Geoffrey Huntley</a><span class="untranslated__src">simonwillison.net</span></li><li><span class="untranslated__no">30</span><a href="https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b" rel="noopener noreferrer">Run fast, private agents on-device with LFM2.5-24B-A2B</a><span class="untranslated__src">huggingface.co</span></li><li><span class="untranslated__no">43</span><a href="https://github.com/debpalash/VoiceStudio" rel="noopener noreferrer">debpalash/VoiceStudio</a><span class="untranslated__src">github.com</span></li><li><span class="untranslated__no">44</span><a href="https://github.com/mksglu/context-mode" rel="noopener noreferrer">mksglu/context-mode</a><span class="untranslated__src">github.com</span></li><li><span class="untranslated__no">45</span><a href="https://github.com/cathrynlavery/diagram-design" rel="noopener noreferrer">cathrynlavery/diagram-design</a><span class="untranslated__src">github.com</span></li><li><span class="untranslated__no">46</span><a href="https://github.com/bilawalsidhu/gods-eye-view" rel="noopener noreferrer">bilawalsidhu/gods-eye-view</a><span class="untranslated__src">github.com</span></li><li><span class="untranslated__no">47</span><a href="https://github.com/xtool-org/xtool" rel="noopener noreferrer">xtool-org/xtool</a><span class="untranslated__src">github.com</span></li><li><span class="untranslated__no">48</span><a href="https://github.com/storytold/artcraft" rel="noopener noreferrer">storytold/artcraft</a><span class="untranslated__src">github.com</span></li><li><span class="untranslated__no">49</span><a href="https://github.com/morluto/rea" rel="noopener noreferrer">morluto/rea</a><span class="untranslated__src">github.com</span></li><li><span class="untranslated__no">50</span><a href="https://github.com/lyogavin/airllm" rel="noopener noreferrer">lyogavin/airllm</a><span class="untranslated__src">github.com</span></li><li><span class="untranslated__no">51</span><a href="https://github.com/vercel-labs/skills" rel="noopener noreferrer">vercel-labs/skills</a><span class="untranslated__src">github.com</span></li><li><span class="untranslated__no">52</span><a href="https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/" rel="noopener noreferrer">Developing Gemini 4 Argon responsibly and safely</a><span class="untranslated__src">deepmind.google</span></li><li><span class="untranslated__no">53</span><a href="https://daily.juya.uk/issues/2026-10-14/" rel="noopener noreferrer">2026-10-14</a><span class="untranslated__src">daily.juya.uk</span></li></ol>
+      </details>
+
     
 
     <footer class="foot">
-      <p>本期从 80 个已注册信息源采集，
-      14 个源提供了窗口内的内容，
+      <p>本期从 81 个已注册信息源采集，
+      16 个源提供了窗口内的内容，
       0 个失败，0 个跳过。
-      共 236 条条目进入分析，
+      共 250 条条目进入分析，
       11 条被判定为重复。</p>
-      <p>大模型：22 次调用 / 15,841 token。
+      <p>大模型：22 次调用 / 18,214 token。
       摘要由 AI 从原始来源整理，事实、推断与不确定项已分列；
       <strong>每个条目的链接都来自采集记录，未经模型生成</strong>。请以原始来源为准。</p>
-      <p>生成于 2026-10-14 03:40 UTC</p>
+      <p>生成于 2026-10-14 07:57 UTC</p>
     </footer>
   </main>
 
       <nav class="toc" aria-label="目录">
         <button class="toc__grip" type="button" data-resize="toc"
                 aria-label="拖动调整目录宽度" title="拖动调整宽度（双击恢复默认）"></button>
-        <p class="toc__title">目录</p>
+        <p class="toc__title">今日目录</p>
         <div class="toc__nav">
-          <a href="#sec-mixed" data-level="1">多源验证</a>
-          <a href="#e-eff1f1128a" data-level="2">Show HN: Pulse Local, a Mac budgeting …</a>
-          <a href="#e-e80aa90e1b" data-level="2">Show HN: Guitoro, a virtual guitar you…</a>
-          <a href="#sec-lab-official" data-level="1">官方发布</a>
-          <a href="#e-e66f894e87" data-level="2">Google DeepMind and Singapore Governme…</a>
-          <a href="#e-e439288442" data-level="2">Higgsfield takes AI video from 1 minut…</a>
-          <a href="#e-ead6172be1" data-level="2">Developing Gemini 4 Argon responsibly …</a>
-          <a href="#e-ea0622315d" data-level="2">Gemini 4 Argon: Built to solve your ha…</a>
-          <a href="#sec-lab-blog" data-level="1">实验室博客</a>
-          <a href="#e-e3f61f4d9a" data-level="2">Run fast, private agents on-device wit…</a>
-          <a href="#sec-media" data-level="1">科技媒体</a>
-          <a href="#e-e5aaf795ab" data-level="2">OpenAI employee arrested for allegedly…</a>
-          <a href="#e-e2ec53c51e" data-level="2">AI算力战进入下半场：从拼单芯XPU性能到拼系统，电力、散热和网络成新战场 …</a>
-          <a href="#e-ecb583e767" data-level="2">中微尹志尧警示AI或现泡沫，国内半导体设备90%厂商或被淘汰 - 电子工程专辑</a>
-          <a href="#e-e1f53d9457" data-level="2">真人短剧完了吗？对话智象未来王科：AI正重构影视，不是取代 - 搜狐</a>
-          <a href="#e-e0791749e1" data-level="2">OPPO Find X10系列手机将搭载Manus的AI智能体 - 电子工程专辑</a>
-          <a href="#e-ee0894f492" data-level="2">网店兜售AI词元，谨防低价引流圈套 - 搜狐</a>
-          <a href="#e-eb55ff5081" data-level="2">AI改代码时，到底该让它一次性重写整个文件，还是像人类程序员一样一小段一小段…</a>
-          <a href="#e-e31b6333c5" data-level="2">2027年HR趋势报告：你的工作正被重构｜首席人才官 - 红杉</a>
-          <a href="#e-e7e117e1da" data-level="2">苹果(AAPL.US)才是AI投资“版本答案”? 半导体暴跌之际再触5万亿美…</a>
-          <a href="#e-eadbb0dd18" data-level="2">四连板！AI应用概念又爆了 - 金融界</a>
-          <a href="#e-e429fd8661" data-level="2">计算机与人工智能学院举办“智绘AI工坊”物联网创新展演活动 - 西南民族大学</a>
-          <a href="#e-ecbbf7b731" data-level="2">山东“智造”，来了一批“AI工友”_山东新闻 - 大众网</a>
-          <a href="#e-e7d0108b81" data-level="2">从规模化制造到AI驱动研发-- 擎科生物加速构建分子研发与智造闭环 - 美通社</a>
-          <a href="#e-e2e179c5c0" data-level="2">Shopify opens its catalog up to more A…</a>
-          <a href="#e-eee1887276" data-level="2">Xbox is officially embracing the chaos…</a>
-          <a href="#e-eedf2d5b42" data-level="2">I don’t miss the camera on the Ray-Ban…</a>
-          <a href="#e-eba87afb41" data-level="2">Facebook will let you customize your f…</a>
-          <a href="#e-e7841724e9" data-level="2">Google makes it easier to launch your …</a>
-          <a href="#e-e47caeb21a" data-level="2">It’s ‘incomprehensible’ that Instagram…</a>
-          <a href="#e-e938258fbd" data-level="2">Epic shifts to ‘AI-accelerated develop…</a>
-          <a href="#e-e459dc7f81" data-level="2">DLSS 5 gets toned down for its Hogwart…</a>
-          <a href="#e-ee0137e4ed" data-level="2">Google finally releases Gemini 4 Argon</a>
-          <a href="#sec-dev" data-level="1">开发者动态</a>
-          <a href="#e-ecd67a9ede" data-level="2">debpalash/VoiceStudio</a>
-          <a href="#e-e02dd5c06e" data-level="2">mksglu/context-mode</a>
-          <a href="#e-ec6bd315ea" data-level="2">cathrynlavery/diagram-design</a>
-          <a href="#e-e24f518fe0" data-level="2">bilawalsidhu/gods-eye-view</a>
-          <a href="#e-e35f5c2fb4" data-level="2">xtool-org/xtool</a>
-          <a href="#e-e5b5e0a893" data-level="2">storytold/artcraft</a>
-          <a href="#e-edec6fe1d8" data-level="2">morluto/rea</a>
-          <a href="#sec-zh-media" data-level="1">中文媒体</a>
-          <a href="#e-ea9f702a23" data-level="2">Grok Bot 邮件多智能体用例</a>
-          <a href="#e-e0a2598dd1" data-level="2">Xbow 用 GPT-5.6 挖出 Chrome 三个漏洞，获 Google…</a>
-          <a href="#e-ea2035490d" data-level="2">广电总局“AI 魔改”视频治理：9 月清理违规视频近 1.3 万条、处置账号…</a>
-          <a href="#e-e76db74005" data-level="2">OpenBMB 发布 MiniCPM-V 4.7，35B-A3B MoE 多…</a>
-          <a href="#e-ea556a0820" data-level="2">企业微信升级 5.0.12 版本，内置 WorkBuddy 对话助手</a>
-          <a href="#e-ed58b5de01" data-level="2">Anthropic 用 5 个月将内部 monorepo 从 Git 迁移到…</a>
-          <a href="#e-e5aa373e79" data-level="2">豆包手机助手宣布陆续放开第三方应用屏幕自动化操作权限，阿里、腾讯系等 App…</a>
-          <a href="#e-eb4d06d6d6" data-level="2">Anthropic 红队研究：小型 AI 模型或可在无数据中心情况下于 Io…</a>
-          <a href="#e-eee64482a5" data-level="2">千问办公将推电商运营版，阿里基因再落电商场景</a>
-          <a href="#e-e2a7ca0293" data-level="2">九章云极问鼎陶哲轩数学挑战赛！让强化学习成为AI4S新基建</a>
-          <a href="#e-e93eb10664" data-level="2">生成的世界也能交互！牛津大学&amp;莫纳什大学&amp;布里斯托大学等团队提出交互式视频世…</a>
-          <a href="#e-eb6145c234" data-level="2">申报倒计时7天！2026云程奖，要给「在校AI本硕博」发奖学金</a>
-          <a href="#e-e29024d770" data-level="2">Google DeepMind 用 Gemma 构建端侧反诈骗检测</a>
-          <a href="#e-e8536989a1" data-level="2">2026-10-14</a>
-          <a href="#e-e96c69f7f7" data-level="2">Grok Bot 邮件多智能体玩法</a>
-          <a href="#e-e1964896e9" data-level="2">2026-10-13</a>
-          <a href="#sec-community" data-level="1">社区讨论</a>
-          <a href="#e-eca713df85" data-level="2">Gemini 4 Argon for Robotics</a>
-          <a href="#e-eb845f25ce" data-level="2">最好看最好用的 iOS V2EX 客户端过审了，欢迎 TestFlight …</a>
-          <a href="#e-efbcb58f65" data-level="2">v2 的大佬们指点一下我该不该割肉，房子的事</a>
-          <a href="#e-ec0c109918" data-level="2">昨天把家里 Wi-Fi 2.4G 和 5G 分开了，你们呢？</a>
-          <a href="#e-e441f6c9e7" data-level="2">现在修电视都这么贵的吗？</a>
-          <a href="#sec-digest" data-level="1">行业简报</a>
-          <a href="#e-e3e5ff0ca7" data-level="2">Meta&#x27;s Watermelon ripens into a fronti…</a>
-          <a href="#sec-preset" data-level="1">预设源</a>
-          <a href="#e-ef82b85eed" data-level="2">Redesigning source control at Anthropic</a>
-          <a href="#e-ef6384abac" data-level="2">llm-gemini 0.35</a>
+          <a href="#overview" class="toc__overview">概览</a>
+          <a href="#e-e3d7c0693e"><span class="toc__no">01</span>Google 发布 Gemini 4 Argon：面向复杂工程与科研任务的前沿模型</a>
+          <a href="#e-eb38ec17a2"><span class="toc__no">02</span>Google DeepMind 与新加坡政府合作推出端侧 AI 诈骗检测模型</a>
+          <a href="#e-e04b133080"><span class="toc__no">04</span>人工神经网络如何构建自身的学习机制</a>
+          <a href="#e-e3852035b2"><span class="toc__no">05</span>MIT Lincoln Laboratory 举办新兴生物技术国家安全委员会路演</a>
+          <a href="#e-e7d6899eae"><span class="toc__no">13</span>Meta推出新AI模型并暗示将加速发展</a>
+          <a href="#e-efbcb58f65"><span class="toc__no">17</span>v2 的大佬们指点一下我该不该割肉，房子的事</a>
+          <a href="#e-eb845f25ce"><span class="toc__no">18</span>最好看最好用的 iOS V2EX 客户端过审了，欢迎 TestFlight 体验打脸</a>
+          <a href="#e-ec0c109918"><span class="toc__no">21</span>昨天把家里 Wi-Fi 2.4G 和 5G 分开了，你们呢？</a>
+          <a href="#e-e27a6e08b3"><span class="toc__no">24</span>AI浪潮下，真人剧怎样留观众？|我不是大师|兰香如故|余红旧事|郭柯宇|张哲华 …</a>
+          <a href="#e-edf424f85b"><span class="toc__no">25</span>创业板科创50跌超1% AI漫剧概念再爆发</a>
+          <a href="#e-e441f6c9e7"><span class="toc__no">27</span>现在修电视都这么贵的吗？</a>
+          <a href="#e-e4de331a4c"><span class="toc__no">28</span>成本5000元广告费15万 AI综艺创作者：每天工作10小时，没时间享受收益 -…</a>
+          <a href="#e-ec501eb25a"><span class="toc__no">29</span>拍照识热量、大数据定制食谱……AI“减重搭子”走红，你觉得靠谱吗？丨V观话题 -…</a>
+          <a href="#e-e6c197c81f"><span class="toc__no">31</span>中国又一款AI手机发售，中美争夺AI操作系统定义权</a>
+          <a href="#e-e71832a3e7"><span class="toc__no">32</span>美股智慧教育服务商推出首款AI陪伴产品进军消费硬件市场</a>
+          <a href="#e-ec4f05f0c9"><span class="toc__no">33</span>Anthropic研究AI自我复制</a>
+          <a href="#e-eddd688ed7"><span class="toc__no">34</span>“AI挂在嘴边，实际一事无成” 年轻人正被“AI登”逼疯 - 文学城</a>
+          <a href="#e-e8bfc9e901"><span class="toc__no">35</span>欧美芯片巨头：AI 时代的卖铲人棋局</a>
+          <a href="#e-edfcc18125"><span class="toc__no">36</span>解码浙江丨AI“吃”算力，新基建“加速跑” - 温州新闻</a>
+          <a href="#e-e5bfb04250"><span class="toc__no">37</span>AI漫剧行情升温，媒体探访影视行业生产变局 - 新浪网</a>
+          <a href="#e-ee8a1d0e27"><span class="toc__no">38</span>当预订界面消失，AI会如何改写商旅？ - 环球旅讯</a>
+          <a href="#e-eab7f26eda"><span class="toc__no">39</span>上海大模型芯片创企融资近亿元</a>
+          <a href="#e-e20aec83fa"><span class="toc__no">40</span>财联社发布风口研报</a>
+          <a href="#e-e5b22f81d4"><span class="toc__no">41</span>muse 30 亿免费 token</a>
+          <a href="#e-e8b213ee80"><span class="toc__no">42</span>Gemini 4 Argon 全面开放，实测难敌 Claude Opus 5.5…</a>
         </div>
       </nav>
 </div>
@@ -1140,7 +605,7 @@
 </dialog>
 
 <script type="application/json" id="calendar-data">{"dates": ["2026-10-14"], "current": "2026-10-14", "today": "2026-10-14"}</script>
-<script type="application/json" id="search-index">[{"date": "2026-10-14", "items": [{"t": "Google DeepMind and Singapore Government announce new AI tool to protect citizens against scams", "s": "rss:deepmind-google-blog"}, {"t": "Redesigning source control at Anthropic", "s": "rss:aihot-news, rss:simonwillison-net-everything"}, {"t": "Grok Bot 邮件多智能体用例", "s": "rss:aihot-news"}, {"t": "Xbow 用 GPT-5.6 挖出 Chrome 三个漏洞，获 Google 25 万美元全链奖励", "s": "rss:aihot-news"}, {"t": "广电总局“AI 魔改”视频治理：9 月清理违规视频近 1.3 万条、处置账号 30 余个", "s": "rss:aihot-news"}, {"t": "OpenBMB 发布 MiniCPM-V 4.7，35B-A3B MoE 多模态模型在手机上仅占 3GB 内存", "s": "rss:aihot-news"}, {"t": "企业微信升级 5.0.12 版本，内置 WorkBuddy 对话助手", "s": "rss:aihot-news"}, {"t": "Anthropic 用 5 个月将内部 monorepo 从 Git 迁移到自研版本控制系统 Scion", "s": "rss:aihot-news"}, {"t": "Gemini 4 Argon for Robotics", "s": "api:hn-algolia-com-search, rss:deepmind-google-blog"}, {"t": "豆包手机助手宣布陆续放开第三方应用屏幕自动化操作权限，阿里、腾讯系等 App 明确拒绝", "s": "rss:aihot-news"}, {"t": "Anthropic 红队研究：小型 AI 模型或可在无数据中心情况下于 IoT 设备间自我复制", "s": "rss:aihot-news"}, {"t": "千问办公将推电商运营版，阿里基因再落电商场景", "s": "rss:aihot-news"}, {"t": "Show HN: Pulse Local, a Mac budgeting app whose AI models run on your machine", "s": "rss:hnrss-org-frontpage"}, {"t": "OpenAI employee arrested for allegedly planting a bug in a conference room", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "AI算力战进入下半场：从拼单芯XPU性能到拼系统，电力、散热和网络成新战场 - 华尔街见闻", "s": "api:news-google-com-search"}, {"t": "最好看最好用的 iOS V2EX 客户端过审了，欢迎 TestFlight 体验打脸", "s": "api:v2ex-com-topics-hot"}, {"t": "中微尹志尧警示AI或现泡沫，国内半导体设备90%厂商或被淘汰 - 电子工程专辑", "s": "api:news-google-com-search"}, {"t": "真人短剧完了吗？对话智象未来王科：AI正重构影视，不是取代 - 搜狐", "s": "api:news-google-com-search"}, {"t": "OPPO Find X10系列手机将搭载Manus的AI智能体 - 电子工程专辑", "s": "api:news-google-com-search"}, {"t": "网店兜售AI词元，谨防低价引流圈套 - 搜狐", "s": "api:news-google-com-search"}, {"t": "AI改代码时，到底该让它一次性重写整个文件，还是像人类程序员一样一小段一小段地打补丁？ - 科技行者", "s": "api:news-google-com-search"}, {"t": "2027年HR趋势报告：你的工作正被重构｜首席人才官 - 红杉", "s": "api:news-google-com-search"}, {"t": "苹果(AAPL.US)才是AI投资“版本答案”? 半导体暴跌之际再触5万亿美元，折叠iPhone与AI家居点燃增长想象 - 证券之星", "s": "api:news-google-com-search"}, {"t": "四连板！AI应用概念又爆了 - 金融界", "s": "api:news-google-com-search"}, {"t": "计算机与人工智能学院举办“智绘AI工坊”物联网创新展演活动 - 西南民族大学", "s": "api:news-google-com-search"}, {"t": "山东“智造”，来了一批“AI工友”_山东新闻 - 大众网", "s": "api:news-google-com-search"}, {"t": "从规模化制造到AI驱动研发-- 擎科生物加速构建分子研发与智造闭环 - 美通社", "s": "api:news-google-com-search"}, {"t": "Shopify opens its catalog up to more AI agents", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "v2 的大佬们指点一下我该不该割肉，房子的事", "s": "api:v2ex-com-topics-hot"}, {"t": "Xbox is officially embracing the chaos of AI-powered game ports", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "Show HN: Guitoro, a virtual guitar you strum with your keyboard", "s": "api:hn-algolia-com-search, rss:hnrss-org-frontpage"}, {"t": "I don’t miss the camera on the Ray-Ban Meta Audio glasses", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "Facebook will let you customize your feed algorithm using AI", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "Google makes it easier to launch your vibe-coded apps", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "昨天把家里 Wi-Fi 2.4G 和 5G 分开了，你们呢？", "s": "api:v2ex-com-topics-hot"}, {"t": "It’s ‘incomprehensible’ that Instagram allowed an AI image of Mia Goth to spread, say her reps", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "现在修电视都这么贵的吗？", "s": "api:v2ex-com-topics-hot"}, {"t": "Epic shifts to ‘AI-accelerated development’ for upcoming Disney game", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "Higgsfield takes AI video from 1 minute to over 10", "s": "rss:openai-com-news"}, {"t": "DLSS 5 gets toned down for its Hogwarts Legacy debut next month", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "Run fast, private agents on-device with LFM2.5-24B-A2B", "s": "rss:huggingface-co-blog"}, {"t": "Meta's Watermelon ripens into a frontier model", "s": "rss:rss-beehiiv-com-2r3c6bt5wj"}, {"t": "九章云极问鼎陶哲轩数学挑战赛！让强化学习成为AI4S新基建", "s": "rss:wechat2rss-xlab-app-51e92aad2728acdd1fda7314be32b16639353001"}, {"t": "生成的世界也能交互！牛津大学&莫纳什大学&布里斯托大学等团队提出交互式视频世界模型Oneira", "s": "rss:wechat2rss-xlab-app-51e92aad2728acdd1fda7314be32b16639353001"}, {"t": "申报倒计时7天！2026云程奖，要给「在校AI本硕博」发奖学金", "s": "rss:wechat2rss-xlab-app-51e92aad2728acdd1fda7314be32b16639353001"}, {"t": "debpalash/VoiceStudio", "s": "scrape:github-com-trending"}, {"t": "mksglu/context-mode", "s": "scrape:github-com-trending"}, {"t": "cathrynlavery/diagram-design", "s": "scrape:github-com-trending"}, {"t": "bilawalsidhu/gods-eye-view", "s": "scrape:github-com-trending"}, {"t": "xtool-org/xtool", "s": "scrape:github-com-trending"}, {"t": "storytold/artcraft", "s": "scrape:github-com-trending"}, {"t": "morluto/rea", "s": "scrape:github-com-trending"}, {"t": "llm-gemini 0.35", "s": "rss:simonwillison-net-everything"}, {"t": "Google DeepMind 用 Gemma 构建端侧反诈骗检测", "s": "rss:aihot-news"}, {"t": "Developing Gemini 4 Argon responsibly and safely", "s": "rss:deepmind-google-blog"}, {"t": "2026-10-14", "s": "rss:daily-juya-uk"}, {"t": "Grok Bot 邮件多智能体玩法", "s": "rss:aihot-news"}, {"t": "Gemini 4 Argon: Built to solve your hardest problems", "s": "rss:deepmind-google-blog"}, {"t": "Google finally releases Gemini 4 Argon", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "2026-10-13", "s": "rss:daily-juya-uk"}]}]</script>
+<script type="application/json" id="search-index">[{"date": "2026-10-14", "items": [{"t": "Google finally releases Gemini 4 Argon", "s": "api:hn-algolia-com-search, rss:aihot-news-picks"}, {"t": "Google DeepMind 用 Gemma 构建端侧反诈骗检测", "s": "rss:aihot-news, rss:deepmind-google-blog"}, {"t": "Cyberattack halts construction of tunnel between Denmark and Germany", "s": "api:hn-algolia-com-search"}, {"t": "How artificial neural networks build their own learning machinery", "s": "rss:news-mit-edu-topic-mitartificial-intelligence2-rss"}, {"t": "MIT Lincoln Laboratory hosts National Security Commission on Emerging Biotechnology", "s": "rss:news-mit-edu-topic-mitartificial-intelligence2-rss"}, {"t": "OpenAI employee arrested for allegedly planting a bug in a conference room", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "Shopify opens its catalog up to more AI agents", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "Xbox is officially embracing the chaos of AI-powered game ports", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "I don’t miss the camera on the Ray-Ban Meta Audio glasses", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "Facebook will let you customize your feed algorithm using AI", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "It’s ‘incomprehensible’ that Instagram allowed an AI image of Mia Goth to spread, say her reps", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "Epic shifts to ‘AI-accelerated development’ for upcoming Disney game", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "Meta打出AI翻身牌：新模型并肩行业巨头 暗示接下来还要加速 - 财联社", "s": "api:news-google-com-search"}, {"t": "DLSS 5 gets toned down for its Hogwarts Legacy debut next month", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "DailyDawn · 2026-10-14", "s": "jsonfeed:dailydawn-dev"}, {"t": "Show HN: Pulse Local, a Mac budgeting app whose AI models run on your machine", "s": "rss:hnrss-org-frontpage"}, {"t": "v2 的大佬们指点一下我该不该割肉，房子的事", "s": "api:v2ex-com-topics-hot"}, {"t": "最好看最好用的 iOS V2EX 客户端过审了，欢迎 TestFlight 体验打脸", "s": "api:v2ex-com-topics-hot"}, {"t": "Higgsfield takes AI video from 1 minute to over 10", "s": "rss:openai-com-news"}, {"t": "Is 'Attention' the Essence of Intelligence?", "s": "rss:hnrss-org-frontpage"}, {"t": "昨天把家里 Wi-Fi 2.4G 和 5G 分开了，你们呢？", "s": "api:v2ex-com-topics-hot"}, {"t": "Redesigning source control at Anthropic", "s": "rss:simonwillison-net-everything"}, {"t": "llm-gemini 0.35", "s": "rss:simonwillison-net-everything"}, {"t": "AI浪潮下，真人剧怎样留观众？|我不是大师|兰香如故|余红旧事|郭柯宇|张哲华 - finance.sina.com.cn", "s": "api:news-google-com-search"}, {"t": "创业板、科创50均跌超1%，AI漫剧概念再爆发，电力、煤炭活跃，恒科指低开高走涨超1%，权重科网股集体反弹 - 华尔街见闻", "s": "api:news-google-com-search"}, {"t": "Quoting Geoffrey Huntley", "s": "rss:simonwillison-net-everything"}, {"t": "现在修电视都这么贵的吗？", "s": "api:v2ex-com-topics-hot"}, {"t": "成本5000元广告费15万 AI综艺创作者：每天工作10小时，没时间享受收益 - 川观新闻", "s": "api:news-google-com-search"}, {"t": "拍照识热量、大数据定制食谱……AI“减重搭子”走红，你觉得靠谱吗？丨V观话题 - 川观新闻", "s": "api:news-google-com-search"}, {"t": "Run fast, private agents on-device with LFM2.5-24B-A2B", "s": "rss:huggingface-co-blog"}, {"t": "中国又一款AI手机发售，中美开始争夺AI操作系统定义权 - 观察者网", "s": "api:news-google-com-search"}, {"t": "这家美股智慧教育服务商推出首款AI陪伴产品，进军消费硬件市场 - 多知网", "s": "api:news-google-com-search"}, {"t": "Anthropic震撼研究：AI竟能通过电视盒子自我复制 - 投资界", "s": "api:news-google-com-search"}, {"t": "“AI挂在嘴边，实际一事无成” 年轻人正被“AI登”逼疯 - 文学城", "s": "api:news-google-com-search"}, {"t": "欧美芯片巨头：AI 时代的\"卖铲人\"棋局 - 36Kr", "s": "api:news-google-com-search"}, {"t": "解码浙江丨AI“吃”算力，新基建“加速跑” - 温州新闻", "s": "api:news-google-com-search"}, {"t": "AI漫剧行情升温，媒体探访影视行业生产变局 - 新浪网", "s": "api:news-google-com-search"}, {"t": "当预订界面消失，AI会如何改写商旅？ - 环球旅讯", "s": "api:news-google-com-search"}, {"t": "上海大模型芯片创企，融资近亿元 - 智东西", "s": "api:news-google-com-search"}, {"t": "风口研报 - 财联社", "s": "api:news-google-com-search"}, {"t": "muse 30 亿免费 token", "s": "api:v2ex-com-topics-hot"}, {"t": "Gemini 4 Argon 全面开放，作者实测后认为难以撼动 Claude Opus 5.5 和 GPT-6 Astra", "s": "rss:aihot-news, rss:aihot-news-picks"}, {"t": "debpalash/VoiceStudio", "s": "scrape:github-com-trending"}, {"t": "mksglu/context-mode", "s": "scrape:github-com-trending"}, {"t": "cathrynlavery/diagram-design", "s": "scrape:github-com-trending"}, {"t": "bilawalsidhu/gods-eye-view", "s": "scrape:github-com-trending"}, {"t": "xtool-org/xtool", "s": "scrape:github-com-trending"}, {"t": "storytold/artcraft", "s": "scrape:github-com-trending"}, {"t": "morluto/rea", "s": "scrape:github-com-trending"}, {"t": "lyogavin/airllm", "s": "scrape:github-com-trending"}, {"t": "vercel-labs/skills", "s": "scrape:github-com-trending"}, {"t": "Developing Gemini 4 Argon responsibly and safely", "s": "rss:deepmind-google-blog"}, {"t": "2026-10-14", "s": "rss:daily-juya-uk"}]}]</script>
 <script src="assets/motion.js" defer></script>
 </body>
 </html>

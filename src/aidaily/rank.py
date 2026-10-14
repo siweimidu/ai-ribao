@@ -33,6 +33,7 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 
 from .entities import topic_overlap
+from .heat import heat
 from .models import Event, NormalizedItem, SourceSpec
 from .normalize import title_similarity
 from .titles import title_quality
@@ -134,39 +135,58 @@ def score_event(
     rank: RankWeights,
     now: datetime,
 ) -> RankedEvent:
+    """Score one event for placement.
+
+    The shape changed after reading how the reference sites actually order their content
+    (`scripts/probe_ordering.py`, and the analysis in `heat.py`):
+
+    **Before** — `source_weight × quality × recency × title × significance`. A product of
+    multipliers, where a frontier-lab release and a chat-app point release differed only by
+    the 1.5-vs-1.1 source category, and recency was a first-class factor. On a real day that
+    put `Gemini 4 Argon: Built to solve your hardest problems` at position 58 of 60.
+
+    **Now** — a normalised `heat` score in [0, 1] is the primary term, and the surviving
+    multipliers are demotions rather than promotions:
+
+    * `title_factor` — a container entry (`2026-10-14`) is discounted, never dropped.
+    * `source_weight` — kept, but **heavily damped** (`^0.25`). A tier-1 lab still has an
+      edge, but it can no longer carry a trivial post past a competitor's launch: with the
+      raw weight, a 1.5 lab blog outranked everything from a 1.1 media source regardless of
+      what either said.
+
+    Substance (body length) is reported but no longer scored. It measured article *size*,
+    and a long aggregator post is not more important than a terse launch announcement --
+    which is exactly the error it produced.
+    """
     members = [items_by_id[i] for i in event.member_item_ids if i in items_by_id]
     source_weight = max(
         (_source_weight(s, sources, weights) for s in event.source_ids), default=1.0
     )
-    corroboration = math.log2(1.0 + max(0, event.independent_source_count))
+    # Damped: the ranking must be about the story, not the letterhead.
+    damped_source = source_weight ** 0.25
+
     substance_raw = _substance(members)
-    substance = min(substance_raw / max(1, rank.substance_reference_chars), 1.0)
-    engagement = _engagement(members)
-    recency = _recency(event, now, rank.recency_half_life_hours, rank.recency_floor)
-    # A feed entry titled `2026-10-14` is a container, not a story: it scored 1.0 on
-    # substance (the container holds a whole day of news) and reached position 3 of a real
-    # digest under the headline "2026-10-14". Demoted, never dropped -- losing a source is
-    # worse than ranking it low.
+
+    heat_score, heat_components = heat(event, items_by_id, now=now)
+
+    # A feed entry titled `2026-10-14` is a container, not a story. Demoted, never dropped.
     title_factor = title_quality(event.title)
 
-    quality = 1.0 + (
-        rank.corroboration * corroboration
-        + rank.content_substance * substance
-        + rank.engagement * engagement
-    )
-    score = source_weight * quality * recency * title_factor
+    # `heat` already covers freshness; the old multiplicative recency term is gone, because
+    # multiplying an independent decay on top of a normalised score is what made "newest
+    # first" the effective rule whenever nothing was corroborated.
+    score = heat_score * damped_source * title_factor * 100
 
     return RankedEvent(
         event=event,
         score=round(score, 6),
         components={
             "source_weight": round(source_weight, 3),
-            "corroboration": round(corroboration, 3),
-            "substance": round(substance, 3),
+            "source_damped": round(damped_source, 4),
+            "substance": round(min(substance_raw / max(1, rank.substance_reference_chars), 1.0), 3),
             "substance_chars": float(substance_raw),
-            "engagement": round(engagement, 3),
-            "recency": round(recency, 3),
             "title_quality": round(title_factor, 3),
+            **heat_components,
             "score": round(score, 6),
         },
     )

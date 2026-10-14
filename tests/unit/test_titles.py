@@ -132,7 +132,7 @@ def test_the_date_container_ranks_below_a_real_story() -> None:
     story = score_event(story_event, by_id, sources, weights, rank, now)
 
     assert container.components["substance"] == story.components["substance"] == 1.0
-    assert container.components["recency"] > story.components["recency"], "it was fresher too"
+    assert container.components["h_freshness"] > story.components["h_freshness"], "it was fresher too"
     assert story.score > container.score, "the real story must win"
     assert container.components["title_quality"] < 1.0
     assert story.components["title_quality"] == 1.0

@@ -27,11 +27,13 @@ import re
 from collections import defaultdict
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta, timezone
+from itertools import combinations
 
 from .dedup import ArticleUnit
 from .entities import KNOWN_ENTITIES, extract_entities
 from .llm import LLMError, LLMUnavailable, Router
 from .models import Event, NormalizedItem
+from .normalize import title_similarity
 
 #: Re-exported so existing callers keep working; the implementation moved to entities.py
 #: when ranking also needed it (ranking a list should not import the clustering module).
@@ -52,6 +54,11 @@ class ClusterResult:
     judged: int = 0
     rejected: int = 0
     llm_failed: bool = False
+    #: Clusters the judge never returned a verdict for -- usually the provider was rate
+    #: limited mid-run. Counted separately so a report cannot imply the model reviewed them.
+    unjudged: int = 0
+    #: Clusters merged by the deterministic fallback because no judge reviewed them.
+    accepted_without_judge: int = 0
 
 
 def _time_bucket(published: datetime | None, hours: int) -> int:
@@ -79,47 +86,70 @@ def coarse_clusters(
             f"{item.title} {item.summary[:200]}", lexicon
         )
 
-    parent: dict[str, str] = {i.item_id: i.item_id for i in items}
-
-    def find(x: str) -> str:
-        root = x
-        while parent[root] != root:
-            root = parent[root]
-        while parent[x] != root:
-            parent[x], x = root, parent[x]
-        return root
-
-    def union(a: str, b: str) -> None:
-        ra, rb = find(a), find(b)
-        if ra != rb:
-            parent[max(ra, rb)] = min(ra, rb)
-
     buckets: dict[int, list[NormalizedItem]] = defaultdict(list)
     for item in items:
         buckets[_time_bucket(item.published_at, time_bucket_hours)].append(item)
 
-    for bucket in buckets.values():
-        for idx, left in enumerate(bucket):
-            le = entity_map[left.item_id]
-            if len(le) < entity_overlap_min:
-                continue
-            for right in bucket[idx + 1:]:
-                overlap = le & entity_map[right.item_id]
-                if len(overlap) >= entity_overlap_min:
-                    union(left.item_id, right.item_id)
-
-    grouped: dict[str, list[str]] = defaultdict(list)
-    for item in items:
-        grouped[find(item.item_id)].append(item.item_id)
-
+    # Seed-based grouping, not union-find.
+    #
+    # Union-find computes a **transitive closure**: A joins B on two shared entities, B joins
+    # C on two others, and A and C end up in one cluster having nothing in common. Measured
+    # on a real day this produced a single candidate cluster of **116 items** whose
+    # shared-entity intersection was empty. The thirteen reports of the Gemini 4 Argon
+    # launch were inside that blob, so they never formed their own event -- and since the
+    # blob was then rejected as incoherent, none of them merged at all. They scattered to
+    # positions 1, 41, 55, 56, 57, 59 and 60 of 60 instead of leading the issue.
+    #
+    # Here a cluster is built around a seed and every member must share entities **with the
+    # seed**. That is a real constraint rather than a chain: an item that shares nothing with
+    # the seed cannot enter by way of a third party. Cost is that a genuine story carried by
+    # two different vocabularies may split into two clusters -- which the merge step tolerates
+    # (two entries about one story) whereas a 116-item blob does not.
     out: list[CandidateCluster] = []
-    for root, ids in grouped.items():
-        if len(ids) < 2:
-            continue
-        shared: set[str] = set.intersection(*(entity_map[i] for i in ids)) if ids else set()
-        ids.sort()
-        out.append(CandidateCluster(key="c" + hashlib.sha1("|".join(ids).encode()).hexdigest()[:10],
-                                    item_ids=ids, shared_entities=shared))
+    for bucket in buckets.values():
+        # Longest entity sets first: a headline naming several specifics is a better anchor
+        # than one that happens to share a common word.
+        ordered = sorted(bucket, key=lambda i: (-len(entity_map[i.item_id]), i.item_id))
+        claimed: set[str] = set()
+
+        for seed in ordered:
+            if seed.item_id in claimed:
+                continue
+            seed_entities = entity_map[seed.item_id]
+            if len(seed_entities) < entity_overlap_min:
+                continue
+
+            members = [seed.item_id]
+            for other in bucket:
+                if other.item_id == seed.item_id or other.item_id in claimed:
+                    continue
+                if len(seed_entities & entity_map[other.item_id]) >= entity_overlap_min:
+                    members.append(other.item_id)
+
+            if len(members) < 2:
+                continue
+            claimed.update(members)
+            # What the cluster is *about*: the smallest entity set a member shares with the
+            # seed. Every member is guaranteed to share at least `entity_overlap_min` with
+            # it, so this is non-empty by construction.
+            #
+            # Not the intersection of every member: seven headlines about one launch will
+            # each mention a different extra detail, so their global intersection is empty
+            # even though they are unmistakably one story. Measured -- the seven-report
+            # Gemini 4 Argon cluster reported `shared=0` under the intersection rule and was
+            # rejected as incoherent.
+            core: set[str] | None = None
+            for member in members:
+                overlap = seed_entities & entity_map[member]
+                if core is None or len(overlap) < len(core):
+                    core = set(overlap)
+            members.sort()
+            out.append(CandidateCluster(
+                key="c" + hashlib.sha1("|".join(members).encode()).hexdigest()[:10],
+                item_ids=members,
+                shared_entities=core or set(),
+            ))
+
     out.sort(key=lambda c: (-len(c.item_ids), c.key))
     return out
 
@@ -206,6 +236,43 @@ async def build_events(
     result = ClusterResult(clusters=candidates)
     accepted: list[CandidateCluster] = []
 
+    def merge_unambiguous(cluster: CandidateCluster) -> bool:
+        """Deterministic merge for a cluster no judge reviewed.
+
+        Merging nothing leaves one story split across as many "events" as there are
+        reports, and the diversity pass then penalises every one of them for repeating a
+        topic -- so the day's biggest story ends up buried.
+
+        Measured: thirteen reports of the Gemini 4 Argon launch, unmerged, landed at
+        positions 1, 41, 55, 56, 57, 59 and 60 of 60, while a chat-app point release sat in
+        the top twelve. The conservative choice is not "merge nothing", it is "merge what is
+        unambiguous".
+
+        Deliberately narrower than the LLM's brief. Two conditions, both required:
+
+        * a shared core of at least three entities **and** some headline similarity, or
+        * the minimum overlap **and** a clearly similar headline (0.5).
+
+        The headline condition is not decoration. Entities nest -- `gpt` and `gpt-6` are one
+        thing counted twice, exactly as sliding CJK bigrams were -- so "three shared
+        entities" on its own merged "OpenAI ships GPT-6 model" with "OpenAI GPT-6 benchmarks
+        leak": the same two facts written twice. Requiring the headlines to also resemble
+        each other is what keeps a count of entities from standing in for a judgement about
+        the story.
+        """
+        titles = [by_id[i].title for i in cluster.item_ids if i in by_id]
+        if not titles:
+            return False
+        shared = len(cluster.shared_entities)
+        best_similarity = 0.0
+        for left, right in combinations(titles, 2):
+            best_similarity = max(
+                best_similarity, title_similarity(left.lower(), right.lower())
+            )
+        return (shared >= 3 and best_similarity >= 0.35) or (
+            shared >= entity_overlap_min and best_similarity >= 0.5
+        )
+
     if router is not None:
         # Judged concurrently. Sequentially, 60 candidate clusters at a few seconds each
         # blew past the job's time budget -- the first live run had to be killed at ten
@@ -229,6 +296,17 @@ async def build_events(
         for cluster in candidates:
             got = outcomes.get(cluster.key)
             if got is None:
+                # The judge never returned for this one: either the provider was rate
+                # limited mid-run, or the budget ran out. That is the production case --
+                # a live run hit `gemini: HTTP 429 daily` and `groq: HTTP 429` and left
+                # most clusters unjudged. Skipping them here is what let the day's biggest
+                # story scatter, so they fall through to the deterministic merge instead.
+                result.unjudged += 1
+                if merge_unambiguous(cluster):
+                    accepted.append(cluster)
+                    result.accepted_without_judge += 1
+                else:
+                    result.rejected += 1
                 continue
             same, confidence, _reason = got
             result.judged += 1
@@ -238,6 +316,16 @@ async def build_events(
                 result.rejected += 1
         if failed:
             result.llm_failed = True
+
+    else:
+        # No judge configured at all (`--no-llm`, or no provider key). Same reasoning: merge
+        # what is unambiguous, leave the rest split.
+        for cluster in candidates:
+            if merge_unambiguous(cluster):
+                accepted.append(cluster)
+                result.accepted_without_judge += 1
+            else:
+                result.rejected += 1
 
     membership: dict[str, str] = {}
     for cluster in accepted:
@@ -254,7 +342,31 @@ async def build_events(
         members = [by_unit[u] for u in unit_ids if u in by_unit]
         if not members:
             continue
-        primary = max(members, key=lambda u: (len(u.representative.content_text or u.representative.summary or ""), u.unit_id)).representative
+
+        # The representative is the **most central** title, not the longest one.
+        #
+        # Longest-body used to win, which for a merged cluster picked whichever member
+        # happened to have the most text -- not whichever described the story. Measured: the
+        # seven-report Gemini 4 Argon cluster took its title from a passing mention of
+        # Google's vibe-coding tool, so the event that led the issue was headlined with a
+        # different story than the one its six other members were about.
+        #
+        # Centrality here is "how many other members does this title share entities with".
+        # That is exactly the property the cluster was built on, so the anchor that bound it
+        # together is the one that names it. Ties break on body length (a more informative
+        # title is better than a terser one) and then on unit id for determinism.
+        def centrality(unit) -> tuple[int, int, str]:
+            entities = extract_entities(unit.representative.title)
+            shared_with = sum(
+                1
+                for other in members
+                if other.unit_id != unit.unit_id
+                and entities & extract_entities(other.representative.title)
+            )
+            body = len(unit.representative.content_text or unit.representative.summary or "")
+            return (shared_with, body, unit.unit_id)
+
+        primary = max(members, key=centrality).representative
 
         # Expand back to every underlying item, URL and source across the whole event.
         item_ids = sorted({i for u in members for i in u.item_ids})

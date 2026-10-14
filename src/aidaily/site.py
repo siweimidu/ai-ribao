@@ -255,21 +255,55 @@ def render_rail(ctx: SiteContext, digest: Digest) -> str:
 
 
 # ============================== right TOC =======================================
-def render_toc(sections: list[tuple[str, str, list[Event]]]) -> str:
-    """Right rail: section headings plus their stories, as working anchors."""
-    rows: list[str] = []
-    for slug, label, events in sections:
-        rows.append(f'<a href="#{esc(slug)}" data-level="1">{esc(label)}</a>')
-        for event in events:
-            anchor = f"e-{event.event_id[:10]}"
-            title = event.title if len(event.title) <= 40 else event.title[:38] + "…"
-            rows.append(f'<a href="#{esc(anchor)}" data-level="2">{esc(title)}</a>')
-    if not rows:
+def _looks_chinese(text: str) -> bool:
+    """True when a title has any CJK at all.
+
+    Deliberately loose: "Gemini 4 Argon 全面开放" and "OpenAI 发布 GPT-6" are Chinese
+    headlines that carry Latin proper nouns, which is what the digest is supposed to look
+    like. What this filters is a title that is *entirely* foreign.
+    """
+    return any("\u4e00" <= ch <= "\u9fff" for ch in (text or ""))
+
+
+def render_toc(
+    events: list[Event],
+    insights: dict[str, EventInsight] | None = None,
+    items_by_id: dict[str, NormalizedItem] | None = None,
+) -> str:
+    """Right rail: an overview link plus every story of the day, in rank order.
+
+    Three things this replaced, all of them the user's report:
+
+    * **No section headings.** The page already groups by section; repeating that structure
+      in the rail meant scrolling past eight group labels to reach the stories. The rail is
+      for finding a story, so it is one flat list in rank order.
+    * **No English.** A title that has not been translated yet is *skipped* rather than
+      shown: the rail is the column the reader scans constantly, and it is the one place an
+      English line cannot be avoided. The story is still on the page below.
+    * **An 概览 entry at the top**, pointing at the day's summary, so the rail answers "what
+      happened today" before "where is that one story".
+    """
+    insights = insights or {}
+    rows: list[str] = ['<a href="#overview" class="toc__overview">概览</a>']
+
+    for index, event in enumerate(events, start=1):
+        insight = insights.get(event.event_id)
+        title = _display_title(event, insight, items_by_id)
+        if not _looks_chinese(title):
+            continue
+        anchor = f"e-{event.event_id[:10]}"
+        label = title if len(title) <= 42 else title[:40] + "…"
+        rows.append(
+            f'<a href="#{esc(anchor)}">'
+            f'<span class="toc__no">{index:02d}</span>{esc(label)}</a>'
+        )
+
+    if len(rows) == 1:
         return ""
     return f"""      <nav class="toc" aria-label="目录">
         <button class="toc__grip" type="button" data-resize="toc"
                 aria-label="拖动调整目录宽度" title="拖动调整宽度（双击恢复默认）"></button>
-        <p class="toc__title">目录</p>
+        <p class="toc__title">今日目录</p>
         <div class="toc__nav">
 {chr(10).join('          ' + r for r in rows)}
         </div>
@@ -277,8 +311,52 @@ def render_toc(sections: list[tuple[str, str, list[Event]]]) -> str:
 
 
 # ============================== story ===========================================
-def render_item(index: int, event: Event, insight: EventInsight | None) -> str:
-    title = (insight.title if insight and insight.title else event.title) or event.title
+def _display_title(
+    event: Event,
+    insight: EventInsight | None,
+    items_by_id: dict[str, NormalizedItem] | None = None,
+) -> str:
+    """The best Chinese title available for an event.
+
+    Order of preference:
+
+    1. the model's title, when it is Chinese;
+    2. **a Chinese member title**, when the model gave a foreign one (or none).
+
+    Step 2 exists because of a real failure: on a day when the quota ran out mid-run, the
+    top-ranked event was the Gemini 4 Argon launch -- and because its analysis had fallen back
+    to the source's English wording, the page moved it into the collapsed "待翻译" block. The
+    single biggest story of the day became the least visible thing on the page.
+
+    A story carried by several sources often has a Chinese-language member: the same launch
+    reported by a Chinese outlet. Choosing that title shows the reader the story in their own
+    language, using a headline a real publisher wrote rather than one this code invented.
+    """
+    candidates: list[str] = []
+    if insight and insight.title:
+        candidates.append(insight.title)
+    candidates.append(event.title)
+    if items_by_id:
+        for item_id in event.member_item_ids:
+            item = items_by_id.get(item_id)
+            if item and item.title:
+                candidates.append(item.title)
+
+    for title in candidates:
+        if _looks_chinese(title):
+            return title.strip()
+    # Nothing Chinese anywhere: return the model's title or the event's, unchanged, so the
+    # caller can route it to the untranslated block.
+    return (candidates[0] or "").strip()
+
+
+def render_item(
+    index: int,
+    event: Event,
+    insight: EventInsight | None,
+    items_by_id: dict[str, NormalizedItem] | None = None,
+) -> str:
+    title = _display_title(event, insight, items_by_id)
     anchor = f"e-{event.event_id[:10]}"
     first_url = event.all_urls[0] if event.all_urls else "#"
     when_text, known = _when(event)
@@ -393,30 +471,134 @@ def _stats(digest: Digest) -> str:
 
 
 # ============================== page ============================================
+# ============================== overview ========================================
+def _render_overview(
+    digest: Digest,
+    insights: dict[str, EventInsight],
+    translated_ids: set[str] | None = None,
+    items_by_id: dict[str, NormalizedItem] | None = None,
+) -> str:
+    """The day at a glance: the top stories, one line each, before the full list.
+
+    This is the "概览" the user asked for. It answers "what happened today" in a few
+    seconds, which the full sectioned list cannot: by the time a reader has scrolled eight
+    groups they have read more than they wanted to.
+
+    Built from the same ranked events as the body, so the overview can never disagree with
+    the list below it. Every line is a real headline from the digest, not a generated
+    summary -- a summary here would be a second, unchecked claim about the day.
+    """
+    translated_ids = translated_ids or set()
+    rows: list[str] = []
+    for index, event in enumerate(digest.top_events, start=1):
+        if len(rows) >= 8:
+            break
+        # Only items that made it into the body, so the overview never links to an anchor
+        # that was moved into the untranslated block.
+        if translated_ids and event.event_id not in translated_ids:
+            continue
+        insight = insights.get(event.event_id)
+        title = _display_title(event, insight, items_by_id)
+        if not _looks_chinese(title):
+            continue
+        anchor = f"e-{event.event_id[:10]}"
+
+        # The first supporting fact, when there is one, is what makes the line informative
+        # rather than a second headline.
+        detail = ""
+        if insight and insight.facts:
+            fact = insight.facts[0].strip()
+            if fact and fact != title and len(fact) <= 120:
+                detail = fact
+        rows.append(
+            f'<li><a href="#{esc(anchor)}">'
+            f'<span class="ov__no">{index:02d}</span>'
+            f"<span><b>{esc(title)}</b>"
+            + (f'<span class="ov__detail">{esc(detail)}</span>' if detail else "")
+            + "</span></a></li>"
+        )
+
+    if not rows:
+        return ""
+
+    counts = digest.counts
+    multi = counts.get("multi_source_events", 0)
+    return f"""      <section class="section overview" id="overview">
+        <h2 class="section__title">概览<span class="section__count">今日要闻</span></h2>
+        <ol class="ov">{''.join(rows)}</ol>
+        <p class="ov__foot">今日共 {counts.get('events', 0)} 条事件，
+        其中 {multi} 条经多个独立来源交叉验证。下面是完整列表。</p>
+      </section>"""
+
+
 def render_day(
     digest: Digest,
     insights: dict[str, EventInsight],
     items_by_id: dict[str, NormalizedItem],
     ctx: SiteContext,
 ) -> str:
-    sections = _sections_of(digest)
-    toc = render_toc(sections)
+    toc = render_toc(digest.top_events, insights, items_by_id)
+
+    # One flat list, in heat order.
+    #
+    # It used to be grouped by **source category** -- 实验室博客, 科技媒体, 中文媒体, 社区讨论,
+    # 其它 -- which is an ordering by where a story came from, not by whether it matters. The
+    # measured result: `Gemini 4 Argon 全面开放` sat at **position 18 of the body**, under
+    # three sections of unrelated news, on the day it was the biggest story in the industry.
+    # That is precisely the "把无关紧要的东西放在前面" the user reported.
+    #
+    # The reference sites agree: daily.juya.uk renders one numbered list with no grouping at
+    # all. The ranker already computes the order; the page's job is to show it.
+    #
+    # The page must also read as Chinese. When model quota runs out mid-run the items past
+    # the cut fall back to the source's own words -- for an English feed, an English sentence
+    # rendered as the digest's own writing. So untranslated items are collected into one
+    # collapsed block at the end: visible, labelled, reachable, but not mixed into the digest
+    # as though it were finished work. Nothing is dropped -- the source stays in the registry
+    # and the item stays in the archive.
+    translated_ids: set[str] = set()
+    untranslated: list[tuple[int, Event]] = []
+    rows: list[str] = []
+    counter = 0
+
+    for event in digest.top_events:
+        counter += 1
+        insight = insights.get(event.event_id)
+        title = _display_title(event, insight, items_by_id)
+        if not _looks_chinese(title):
+            untranslated.append((counter, event))
+            continue
+        translated_ids.add(event.event_id)
+        rows.append(render_item(counter, event, insight, items_by_id))
 
     body: list[str] = []
-    counter = 0
-    for slug, label, events in sections:
-        rows = []
-        for event in events:
-            counter += 1
-            rows.append(render_item(counter, event, insights.get(event.event_id)))
+    if rows:
         body.append(
-            f"""      <section class="section" id="{esc(slug)}">
-        <h2 class="section__title">{esc(label)}<span class="section__count">{len(events)} 条</span></h2>
+            f"""      <section class="section" id="all">
+        <h2 class="section__title">全部消息<span class="section__count">{len(rows)} 条</span></h2>
         <ol class="stream">
 {chr(10).join(rows)}
         </ol>
       </section>"""
         )
+
+    untranslated_block = ""
+    if untranslated:
+        items = "".join(
+            f'<li><span class="untranslated__no">{n:02d}</span>'
+            f'<a href="{esc((e.all_urls or ["#"])[0])}" rel="noopener noreferrer">{esc(e.title)}</a>'
+            f'<span class="untranslated__src">{esc(_domain((e.all_urls or [""])[0]))}</span></li>'
+            for n, e in untranslated
+        )
+        untranslated_block = f"""      <details class="untranslated" id="untranslated">
+        <summary>本期待翻译条目（{len(untranslated)} 条）</summary>
+        <p>这些条目的来源是外文，且本期模型额度用完、未能逐条译成中文，
+        因此只在这里保留原文与出处，不混进上面的正文。
+        <strong>点开即离开本站、前往原文</strong>。</p>
+        <ol>{items}</ol>
+      </details>"""
+
+    overview = _render_overview(digest, insights, translated_ids, items_by_id)
 
     lead = ""
     for event in digest.top_events[:1]:
@@ -496,7 +678,11 @@ def render_day(
 
     {warnings}
 
+    {overview}
+
 {chr(10).join(body)}
+
+    {untranslated_block}
 
     {pager}
 

@@ -72,8 +72,20 @@ def extract_entities(text: str, extra_lexicon: set[str] | None = None) -> set[st
             found.add(token.lower())
 
     for run in _CJK_RUN.findall(text):
-        # Sliding 2-grams keep Chinese usable without a segmenter.
-        for idx in range(len(run) - 1):
+        # **Non-overlapping** 2-grams. The previous version slid one character at a time,
+        # so `大模型` produced both `大模` and `模型`. Two unrelated stories that merely both
+        # mention 大模型 therefore shared *two* entities, met the clustering threshold, and
+        # chain-merged through union-find.
+        #
+        # Measured on a real day: one candidate cluster of **116 items** whose shared-entity
+        # intersection was empty -- items with nothing in common, joined transitively. The
+        # thirteen reports of the Gemini 4 Argon launch were inside that blob, so they never
+        # formed their own event and scattered across positions 1, 41, 55, 56, 57, 59 and 60
+        # of 60 instead of leading the issue.
+        #
+        # Stepping by two keeps Chinese usable without a segmenter while removing the
+        # overlap that let a single word count as two.
+        for idx in range(0, len(run) - 1, 2):
             found.add(run[idx:idx + 2])
 
     if extra_lexicon:

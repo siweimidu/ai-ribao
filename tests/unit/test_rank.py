@@ -119,14 +119,14 @@ def test_stars_today_is_not_engagement() -> None:
     by_id = {"i1": items[0]}
     scored = score_event(event("e1", ["i1"], "Repo"), by_id, {"rss:a": spec("rss:a")},
                          WEIGHTS, RankWeights(), NOW)
-    assert scored.components["engagement"] == 0.0
+    assert scored.components["h_engagement"] == 0.0
 
 
 def test_points_do_count_as_engagement() -> None:
     items = [item("i1", "rss:a", body="x" * 300, metrics={"points": 900})]
     scored = score_event(event("e1", ["i1"], "Post"), {"i1": items[0]},
                          {"rss:a": spec("rss:a")}, WEIGHTS, RankWeights(), NOW)
-    assert scored.components["engagement"] > 0.9
+    assert scored.components["h_engagement"] > 0.9
 
 
 def test_recency_decays_but_never_to_zero() -> None:
