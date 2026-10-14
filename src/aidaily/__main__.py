@@ -260,6 +260,9 @@ def cmd_run(args: argparse.Namespace) -> int:
         deliver_all(
             digest, brief, deep, cfg, dict(os.environ), out_dir,
             site_url=args.site_url, already_done=already,
+            # The site needs the three-bucket breakdown and the source bodies; both
+            # already exist here, so they are passed rather than re-derived.
+            insights=insights, items_by_id=by_id,
         )
     )
     print("\n分发：" + json.dumps(delivery.summary(), ensure_ascii=False))

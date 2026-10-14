@@ -102,35 +102,39 @@ def write_rss(digest: Digest, out_dir: Path, *, site_url: str) -> DeliveryResult
     return DeliveryResult("rss", True, f"{target.name}: {len(items)} items")
 
 
-def write_site(digest: Digest, deep_md: str, out_dir: Path, *, site_url: str) -> DeliveryResult:
-    """A minimal static page plus an archive index.
+def write_site(
+    digest: Digest,
+    deep_md: str,
+    out_dir: Path,
+    *,
+    site_url: str,
+    insights: dict[str, object] | None = None,
+    items_by_id: dict[str, object] | None = None,
+) -> DeliveryResult:
+    """Render the designed site (see aidaily/site.py), keeping the markdown alongside.
 
-    Deliberately plain: the styled front end is a separate piece of work, and shipping a
-    readable page now is better than shipping a broken designed one.
+    The markdown is written to the same directory because the deep version is also the
+    plain-text artefact: it is what gets committed, diffed and grepped. The HTML is for
+    reading; the markdown is for the record.
     """
-    site = out_dir / "site"
-    site.mkdir(parents=True, exist_ok=True)
-    body = html_mod.escape(deep_md)
-    (site / f"{digest.date}.html").write_text(
-        "<!doctype html><html lang='zh-CN'><head><meta charset='utf-8'>"
-        "<meta name='viewport' content='width=device-width,initial-scale=1'>"
-        f"<title>AI 日报 {digest.date}</title></head>"
-        f"<body style='max-width:760px;margin:0 auto;padding:20px;font-family:system-ui,sans-serif'>"
-        f"<pre style='white-space:pre-wrap;font-family:inherit'>{body}</pre></body></html>",
-        encoding="utf-8",
-    )
+    from .site import write_site as render_site
 
-    days = sorted((p.stem for p in site.glob("*.html") if p.stem != "index"), reverse=True)
-    links = "".join(f"<li><a href='{d}.html'>{d}</a></li>" for d in days[:180])
-    (site / "index.html").write_text(
-        "<!doctype html><html lang='zh-CN'><head><meta charset='utf-8'>"
-        "<meta name='viewport' content='width=device-width,initial-scale=1'>"
-        "<title>AI 日报</title></head>"
-        "<body style='max-width:760px;margin:0 auto;padding:20px;font-family:system-ui,sans-serif'>"
-        f"<h1>AI 日报</h1><p>共 {len(days)} 期</p><ul>{links}</ul></body></html>",
-        encoding="utf-8",
+    assets = Path(__file__).resolve().parents[2] / "site" / "assets"
+    manifest = render_site(
+        digest,
+        insights or {},
+        items_by_id or {},
+        out_dir,
+        site_url=site_url,
+        assets_dir=assets,
     )
-    return DeliveryResult("pages", True, f"{len(days)} 期归档")
+    (out_dir / "site" / f"{digest.date}.md").write_text(deep_md, encoding="utf-8")
+    return DeliveryResult(
+        "pages",
+        True,
+        f"{manifest['pages']} 期归档 · 当日 {manifest['bytes'] // 1024} KB · "
+        f"{len(manifest['assets'])} 个资源",
+    )
 
 
 def _send_email_sync(env: Mapping[str, str], subject: str, html_body: str, text_body: str) -> str:
@@ -170,6 +174,8 @@ async def deliver_all(
     *,
     site_url: str,
     already_done: Mapping[str, str] | None = None,
+    insights: dict[str, object] | None = None,
+    items_by_id: dict[str, object] | None = None,
 ) -> DeliveryReport:
     """Attempt every enabled channel, independently."""
     done = set((already_done or {}).keys())
@@ -187,7 +193,12 @@ async def deliver_all(
 
     if cfg.delivery.pages:
         try:
-            record(write_site(digest, deep_md, out_dir, site_url=site_url))
+            record(
+                write_site(
+                    digest, deep_md, out_dir, site_url=site_url,
+                    insights=insights, items_by_id=items_by_id,
+                )
+            )
         except Exception as exc:  # noqa: BLE001
             record(DeliveryResult("pages", False, f"{type(exc).__name__}: {exc}"[:200]))
 

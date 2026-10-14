@@ -3,6 +3,15 @@
 # GPL-3.0 and unlicensed code into an MIT repository.
 _audit/
 
+# --- third-party design/motion skill packs, extracted locally for reference ---------
+# Not ours to redistribute: the motion pack alone carries ~32 MB of example media.
+.skills/
+
+# --- screenshot artefacts ----------------------------------------------------------
+# Regenerate with `python scripts/shots.py`. 4+ MB per run, and a screenshot of an old
+# build is worse than no screenshot because it looks authoritative.
+data/state/shots/
+
 # --- runtime data that must not be committed --------------------------------------
 # Feed bodies contain whatever the sources contain: real people's email addresses,
 # quoted newsletters, and megabytes of text per day. It is an artefact, not source.

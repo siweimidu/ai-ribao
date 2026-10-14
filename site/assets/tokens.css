@@ -1,0 +1,256 @@
+/* ============================================================================
+   AI 日报 · 设计令牌
+   ----------------------------------------------------------------------------
+   令牌来自 Doubao 设计系统（冷色调极简 AI 仪表盘），配色刻意保持小：
+   视觉库实测中位数是 4 种dominant色，而「光谱不是配色」——
+   主色 #0065fd + 中性灰阶，不用渐变背景（design-slop A4 明确禁止紫蓝渐变）。
+   ========================================================================= */
+
+:root {
+  /* --- 语义色：4 种，不扩增 ------------------------------------------------ */
+  --bg:          #ffffff;
+  --fg:          #0e1115;
+  --muted:       #eff1f4;   /* 次级面 */
+  --muted-fg:    #7f8d9f;   /* 次级文字 */
+  --border:      #e7eaef;
+  --accent:      #0065fd;   /* 唯一的饱和色 */
+  --accent-soft: #e5e9ff;
+
+  /* --- 圆角与间距：单一来源，全局缩放 -------------------------------------- */
+  --radius:      1.2rem;    /* Doubao 的 19.2px */
+  --radius-sm:   0.6rem;
+  --unit:        0.24rem;   /* 所有间距都是它的倍数 */
+
+  /* --- 字体 --------------------------------------------------------------- */
+  /* 中文必须单独指定，否则回退字体与拉丁面不匹配（page-design §4） */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system,
+               "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* --- 字阶：对比就是设计本身 --------------------------------------------- */
+  /* 实测（page-design §2，n=12 获奖页）：展示字中位数 108px、正文中位数 16px，
+     比值中位数 ≈8×，且**下限是 4×**——低于 4× 页面就没有尺度对比了。
+     规范里还有一条关键观察：「有几家把正文做到 12px，正是小正文让展示字显得巨大」。
+     所以这里两侧一起动：正文 13px，展示字按视口 46→76px。
+
+     两轮实测校准：
+       初版 clamp(2.5rem,6.5vw,5rem) → 桌面 80/15=5.3× 但 h1 占高 317px（超屏 1/3）
+       一版 clamp(2.1rem,5.2vw,3.6rem) → h1 147px ✅ 但 58/15=3.8× ❌ 比例不达标
+       现在：正文降到 13px，展示字上限抬到 4.75rem，两个约束同时满足。
+
+     中文展示字行高用 1.28（不是拉丁的 1.0）——中文光学尺寸更大，
+     负字距会闭合字怀，行高太小会糊成一块（page-design §4）。 */
+  --fs-display: clamp(2.4rem, 5.4vw, 4.75rem);  /* 38 → 76px */
+  --fs-title:   clamp(1.3rem, 1.9vw, 1.75rem);
+  --fs-lead:    clamp(0.95rem, 1.15vw, 1.0625rem);
+  --fs-body:    0.8125rem;                     /* 13px — 与实测中位数一致 */
+  --fs-small:   0.75rem;                       /* 12px */
+  --fs-micro:   0.6875rem;                     /* 11px — 标签 */
+
+  /* --- 动效令牌（motion-tokens.md 的三层，不是单一 0.3s ease） ------------- */
+  --dur-instant:  90ms;
+  --dur-fast:     170ms;
+  --dur-standard: 320ms;
+  --dur-medium:   460ms;
+  --dur-slow:     700ms;
+
+  --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-expo:   cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-out-back:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out-circ:  cubic-bezier(0, 0.55, 0.45, 1);
+
+  /* 弹簧的 CSS 等价物：cubic-bezier 表达不了「过冲后回落」，linear() 可以。
+     这两个数列由 rank.py 同款的欠阻尼弹簧采样而来，让 CSS 元素与 JS 弹簧
+     保持同一种运动性格（motion-tokens.md）。 */
+  --spring-bouncy:  linear(0, 0.32 8%, 0.79 20%, 1.03 30%, 1.01 46%, 1);
+  --spring-jelly:   linear(0, 0.18 6%, 0.62 18%, 0.94 32%, 1.06 46%, 1.02 62%, 1);
+
+  /* --- 层叠：边框主导，阴影几乎不用（Doubao 的 shadow 全为 0 透明度） ------ */
+  --ring: 0 0 0 3px color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:          #0e1115;
+    --fg:          #eff1f4;
+    --muted:       #161a20;
+    --muted-fg:    #afbbcb;
+    --border:      #262b33;
+    --accent:      #60a5fa;
+    --accent-soft: #00266b;
+  }
+}
+
+/* 移动端不是「缩小版」，是另一种设计（page-design §7）。
+   实测两轮：
+     1) 390px 下 clamp 的 5.4vw 只有 21px，撞到下限 38px → 比例 3.0× 不合格
+     2) 改成固定 52px → 比例 4.3× ✅ 但标题换成 6 行、占满整个首屏，
+        把筛选条和第一条内容全推到屏外
+   结论：窄屏真正要守的是**首屏里必须看得到第一条内容**，而不是最大字号。
+   所以字号回到 40px（比例 3.3×），同时把 measure 放宽到 100% 让它少换行——
+   移动端的标题独占整行是正常的，硬撑字号只会把页面变成一张海报。 */
+@media (max-width: 560px) {
+  :root {
+    --fs-display: 2.5rem;    /* 40px */
+    --fs-title:   1.3125rem;
+    --fs-lead:    0.9375rem;
+    --fs-body:    0.8125rem; /* 13px */
+  }
+  .masthead h1 {
+    max-width: 100%;
+    line-height: 1.24;
+  }
+}
+
+/* --- 基础 ---------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  /* 全局不设 max-width。实测 15/15 个获奖页面都没有全局居中列——
+     全局居中列读起来像文档，不像设计过的页面（page-design §2）。 */
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  /* 13px 正文需要更松的行高才可读。实测获奖页正文行高 1.5-1.65，
+     中文再往上取，因此这里用 1.75。 */
+  line-height: 1.75;
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+a:focus-visible,
+button:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+  border-radius: var(--radius-sm);
+}
+
+/* 屏幕阅读器专用 */
+.sr {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ============================================================================
+   版面：三条不同形态的段落
+   slop 闸门 A3 要求一页至少三种不同的段落结构——「每段都是标题+居中段落」
+   即使字体完美也读作模板。
+   ========================================================================= */
+
+.wrap {
+  /* 每个元素自己定measure，而不是给 body 一个全局宽度 */
+  width: min(100% - 2.5rem, 1180px);
+  margin-inline: auto;
+}
+
+@media (min-width: 900px) {
+  .wrap { width: min(100% - 5rem, 1180px); }
+}
+
+/* --- 顶部：不是 hero，是一条信息带 --------------------------------------- */
+/* A1 禁止「全宽 + 居中大标题 + 副标题 + 两个按钮」的默认 hero。
+   这里是左对齐带 + 右侧实时指标，标题与数据在同一行里对话。 */
+.masthead {
+  display: grid;
+  gap: calc(var(--unit) * 8);
+  padding-block: calc(var(--unit) * 14) calc(var(--unit) * 10);
+  border-bottom: 1px solid var(--border);
+}
+
+@media (min-width: 860px) {
+  .masthead {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: calc(var(--unit) * 16);
+  }
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-fg);
+  display: flex;
+  align-items: center;
+  gap: calc(var(--unit) * 3);
+  margin: 0 0 calc(var(--unit) * 6);
+}
+
+.dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex: none;
+}
+
+/* 呼吸：唯一的常驻动效，ambient 层，极慢 */
+@media (prefers-reduced-motion: no-preference) {
+  .dot { animation: breathe 3.4s ease-in-out infinite; }
+}
+@keyframes breathe {
+  0%, 100% { opacity: 1;    transform: scale(1); }
+  50%      { opacity: 0.45; transform: scale(0.72); }
+}
+
+.masthead h1 {
+  margin: 0;
+  /* 桌面限制 measure，让中文标题保持在 2-3 行而不是铺满整行。
+     窄屏在下面的媒体查询里放开到 100%——移动端标题独占整行是正常的。 */
+  max-width: 22ch;
+  font-size: var(--fs-display);
+  /* 中文展示字：行高 1.28、字距 -0.01em。拉丁面对应的 1.0 / -0.04em 在中文
+     上会把笔画挤在一起（page-design §4）。 */
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+  font-weight: 640;
+  text-wrap: balance;
+}
+
+.masthead .sub {
+  margin: calc(var(--unit) * 6) 0 0;
+  font-size: var(--fs-lead);
+  line-height: 1.7;
+  color: var(--muted-fg);
+  max-width: 46ch;
+}
+
+/* 右侧：真实计数，不是编造的证明（A8） */
+.tally {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+  gap: calc(var(--unit) * 6);
+  min-width: min(100%, 320px);
+}
+
+.tally div {
+  border-left: 1px solid var(--border);
+  padding-left: calc(var(--unit) * 5);
+}
+
+.tally b {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.tally span {
+  display: block;
+  font-size: var(--fs-micro);
+  letter-spacing: 0.06em;
+  color: var(--muted-fg);
+  text-transform: uppercase;
+  margin-top: calc(var(--unit) * 1.5);
+}
