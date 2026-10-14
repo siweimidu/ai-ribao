@@ -1,47 +1,728 @@
 {
   "version": "https://jsonfeed.org/version/1.1",
   "title": "AI 日报",
-  "home_page_url": "https://example.github.io/ai-daily",
-  "feed_url": "https://example.github.io/ai-daily/feed/zh.json",
+  "home_page_url": "https://siweimidu.github.io/ai-ribao",
+  "feed_url": "https://siweimidu.github.io/ai-ribao/feed/zh.json",
   "language": "zh-CN",
   "items": [
     {
-      "id": "2026-10-14-ea0622315da250a",
-      "url": "https://deepmind.google/blog/introducing-gemini-4-argon/",
-      "title": "Gemini 4 Argon: Built to solve your hardest problems",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://deepmind.google/blog/introducing-gemini-4-argon/\">deepmind.google</a></li></ul>",
-      "date_published": "2026-10-13T16:01:52+00:00",
+      "id": "2026-10-14-e66f894e87c56c8",
+      "url": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/",
+      "title": "Google DeepMind and Singapore Government announce new AI tool to protect citizens against scams",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://deepmind.google/blog/on-device-ai-scam-detection-mddi/\">deepmind.google</a></li></ul>",
+      "date_published": "2026-10-14T02:00:14+00:00",
       "tags": [
         "rss:deepmind-google-blog"
       ],
       "_ai_daily": {
-        "event_id": "ea0622315da250a",
+        "event_id": "e66f894e87c56c8",
         "source_ids": [
           "rss:deepmind-google-blog"
         ],
         "all_urls": [
-          "https://deepmind.google/blog/introducing-gemini-4-argon/"
+          "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/"
         ],
         "evidence_level": "single_source",
         "confidence": 1.0
       }
     },
     {
-      "id": "2026-10-14-e3515854a868c55",
-      "url": "https://aihot.news/items/qnecjege2flrjakp3h48srnyl",
-      "title": "Gemini 多类用户试用方式公布",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/qnecjege2flrjakp3h48srnyl\">aihot.news</a></li></ul>",
-      "date_published": "2026-10-13T16:05:41+00:00",
+      "id": "2026-10-14-ef82b85eedd06ee",
+      "url": "https://aihot.news/items/znq5591d0ans7l79658wn4dys",
+      "title": "Anthropic 用自研 Scion 取代 Git",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Anthropic 的代码合并量从 2026 年 5 月的日均约 2,500 次增至 9 月的超过 30,000 次。</li><li>Anthropic 用 7 人团队、5 个月时间完成了从 Git 到自研系统 Scion 的迁移。</li></ul><p><strong>推断</strong></p><ul><li>Anthropic 迁移到自研系统 Scion 是为了应对代码合并量的大幅增长。</li></ul><p><strong>不确定</strong></p><ul><li>材料未说明 2026 年各类模型的具体内部可用日期。</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/znq5591d0ans7l79658wn4dys\">aihot.news</a></li><li><a href=\"https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/\">simonwillison.net</a></li></ul>",
+      "date_published": "2026-10-13T23:00:06+00:00",
+      "tags": [
+        "rss:aihot-news",
+        "rss:simonwillison-net-everything"
+      ],
+      "_ai_daily": {
+        "event_id": "ef82b85eedd06ee",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:simonwillison-net-everything"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/znq5591d0ans7l79658wn4dys",
+          "https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/"
+        ],
+        "evidence_level": "multi_source",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "2026-10-14-e8536989a16c400",
+      "url": "https://daily.juya.uk/issues/2026-10-14/",
+      "title": "2026-10-14",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://daily.juya.uk/issues/2026-10-14/\">daily.juya.uk</a></li></ul>",
+      "date_published": "2026-10-14T01:33:20+00:00",
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "_ai_daily": {
+        "event_id": "e8536989a16c400",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://daily.juya.uk/issues/2026-10-14/"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e96c69f7f761cc1",
+      "url": "https://aihot.news/items/fnk44ma5316w76jwk9050bne8",
+      "title": "Grok Bot 邮件多智能体玩法",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/fnk44ma5316w76jwk9050bne8\">aihot.news</a></li></ul>",
+      "date_published": "2026-10-14T02:14:04+00:00",
       "tags": [
         "rss:aihot-news"
       ],
       "_ai_daily": {
-        "event_id": "e3515854a868c55",
+        "event_id": "e96c69f7f761cc1",
         "source_ids": [
           "rss:aihot-news"
         ],
         "all_urls": [
-          "https://aihot.news/items/qnecjege2flrjakp3h48srnyl"
+          "https://aihot.news/items/fnk44ma5316w76jwk9050bne8"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-eca713df852b07e",
+      "url": "https://deepmind.google/blog/gemini-4-argon-for-robotics/",
+      "title": "Gemini 4 Argon for Robotics 相关动态发布",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Gemini 4 Argon for Robotics 在 2026-10-13 16:01 UTC 被发布在 rss:deepmind-google-blog 上。</li><li>Gemini 4 Argon for Robotics 在 2026-10-13 16:55 UTC 被收录于 api:hn-algolia-com-search。</li></ul><p><strong>推断</strong></p><ul><li>由于两则材料均以“Gemini 4 Argon for Robotics”为标题和内容，该事件可能是一项新发布的机器人相关技术或产品。</li></ul><p><strong>不确定</strong></p><ul><li>材料未提供关于 Gemini 4 Argon for Robotics 的具体功能介绍。</li><li>材料未说明该技术或产品的具体应用场景。</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://deepmind.google/blog/gemini-4-argon-for-robotics/\">deepmind.google</a></li><li><a href=\"https://developers.googleblog.com/gemini-4-argon-for-robotics/\">developers.googleblog.com</a></li></ul>",
+      "date_published": "2026-10-13T16:55:47+00:00",
+      "tags": [
+        "api:hn-algolia-com-search",
+        "rss:deepmind-google-blog"
+      ],
+      "_ai_daily": {
+        "event_id": "eca713df852b07e",
+        "source_ids": [
+          "api:hn-algolia-com-search",
+          "rss:deepmind-google-blog"
+        ],
+        "all_urls": [
+          "https://deepmind.google/blog/gemini-4-argon-for-robotics/",
+          "https://developers.googleblog.com/gemini-4-argon-for-robotics/"
+        ],
+        "evidence_level": "multi_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-eee64482a5f99c2",
+      "url": "https://aihot.news/items/d0ftvqryq1dyy0088esy4cznd",
+      "title": "千问办公将推电商运营版，阿里基因再落电商场景",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/d0ftvqryq1dyy0088esy4cznd\">aihot.news</a></li></ul>",
+      "date_published": "2026-10-14T02:02:41+00:00",
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "_ai_daily": {
+        "event_id": "eee64482a5f99c2",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/d0ftvqryq1dyy0088esy4cznd"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e97d6b68f08bc8e",
+      "url": "https://aihot.news/items/igcfi6tvtvz1r3ermq3vd6u2f",
+      "title": "Ethan Mollick 用 AI 生成\"Imminence\"主题游戏",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/igcfi6tvtvz1r3ermq3vd6u2f\">aihot.news</a></li></ul>",
+      "date_published": "2026-10-14T01:21:44+00:00",
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "_ai_daily": {
+        "event_id": "e97d6b68f08bc8e",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/igcfi6tvtvz1r3ermq3vd6u2f"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e3debe7a4a8d3ef",
+      "url": "https://aihot.news/items/mki7thwz4szvly5njmczvwh81",
+      "title": "AI 模型玩\"除非来自 X\"式玩笑",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/mki7thwz4szvly5njmczvwh81\">aihot.news</a></li></ul>",
+      "date_published": "2026-10-14T00:52:26+00:00",
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "_ai_daily": {
+        "event_id": "e3debe7a4a8d3ef",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/mki7thwz4szvly5njmczvwh81"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e06ed0e1b58a2b8",
+      "url": "https://aihot.news/items/nk3m65c4hyx63cbqcbpxo9qe2",
+      "title": "新研究：AI 支出仍\"很难找到实际、可量化的财务影响\"",
+      "content_html": "<p><strong>事实</strong></p><ul><li>一项新研究显示，AI 支出至今仍&quot;很难找到实际、可量化的财务影响&quot;，大规模提升员工生产率和国家 GDP 的证据为零。The Information 的 Laura Bratton 在邮件通讯中报告了这一研究，并指出可记录的 ROI 极低与数万亿美元投入之间的反差依然反常。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/nk3m65c4hyx63cbqcbpxo9qe2\">aihot.news</a></li></ul>",
+      "date_published": "2026-10-14T01:29:11+00:00",
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "_ai_daily": {
+        "event_id": "e06ed0e1b58a2b8",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/nk3m65c4hyx63cbqcbpxo9qe2"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e5766667dc27cdb",
+      "url": "https://aihot.news/items/vopvb869l8pcmph7qho0jnxy7",
+      "title": "卡拉克第一定律与 LeCun 唱衰大语言模型",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/vopvb869l8pcmph7qho0jnxy7\">aihot.news</a></li></ul>",
+      "date_published": "2026-10-14T00:44:39+00:00",
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "_ai_daily": {
+        "event_id": "e5766667dc27cdb",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/vopvb869l8pcmph7qho0jnxy7"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e979574bb15d0e4",
+      "url": "https://aihot.news/items/rg2iyvu663n5fpn2mzrnxx0mz",
+      "title": "黄仁勋宣布英伟达拟追加 20 亿美元投资欧洲 AI，并注资法国四家初创企业",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/rg2iyvu663n5fpn2mzrnxx0mz\">aihot.news</a></li></ul>",
+      "date_published": "2026-10-14T00:30:26+00:00",
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "_ai_daily": {
+        "event_id": "e979574bb15d0e4",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/rg2iyvu663n5fpn2mzrnxx0mz"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-ec003ee380c1a9a",
+      "url": "https://aihot.news/items/v661w34vaagelkbp0kh6yyoxs",
+      "title": "Context.dev 开源 Rust 编写的本地语义代码搜索 CLI「sgrep」",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/v661w34vaagelkbp0kh6yyoxs\">aihot.news</a></li></ul>",
+      "date_published": "2026-10-14T01:30:29+00:00",
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "_ai_daily": {
+        "event_id": "ec003ee380c1a9a",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/v661w34vaagelkbp0kh6yyoxs"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-eff1f1128a2cdb9",
+      "url": "https://pulseos.finance",
+      "title": "Show HN: Pulse Local, a Mac budgeting app whose AI models run on your machine",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://pulseos.finance\">pulseos.finance</a></li></ul>",
+      "date_published": "2026-10-13T23:13:23+00:00",
+      "tags": [
+        "rss:hnrss-org-frontpage"
+      ],
+      "_ai_daily": {
+        "event_id": "eff1f1128a2cdb9",
+        "source_ids": [
+          "rss:hnrss-org-frontpage"
+        ],
+        "all_urls": [
+          "https://pulseos.finance"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e5aaf795abbc129",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1010642/openai-employee-arrested-recording-device",
+      "title": "OpenAI employee arrested for allegedly planting a bug in a conference room",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/ai-artificial-intelligence/1010642/openai-employee-arrested-recording-device\">theverge.com</a></li></ul>",
+      "date_published": "2026-10-13T20:45:25+00:00",
+      "tags": [
+        "rss:theverge-com-ai-artificial-intelligence"
+      ],
+      "_ai_daily": {
+        "event_id": "e5aaf795abbc129",
+        "source_ids": [
+          "rss:theverge-com-ai-artificial-intelligence"
+        ],
+        "all_urls": [
+          "https://www.theverge.com/ai-artificial-intelligence/1010642/openai-employee-arrested-recording-device"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-eb845f25ce003ba",
+      "url": "https://www.v2ex.com/t/1248562",
+      "title": "最好看最好用的 iOS V2EX 客户端过审了，欢迎 TestFlight 体验打脸",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.v2ex.com/t/1248562\">v2ex.com</a></li></ul>",
+      "date_published": "2026-10-14T00:02:37+00:00",
+      "tags": [
+        "api:v2ex-com-topics-hot"
+      ],
+      "_ai_daily": {
+        "event_id": "eb845f25ce003ba",
+        "source_ids": [
+          "api:v2ex-com-topics-hot"
+        ],
+        "all_urls": [
+          "https://www.v2ex.com/t/1248562"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e216b66e8c3e822",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFA5R1dRSXVab1hrVkZJZzQ2T1BodHd4c2Q3WUk1aG1tRmpWMGJnX0k2TEJ1RnNRdmNSWHhHcE9hZktUUVpTRFpmYjFtODdsZ1M0RlVXOWliUzQ0LVZBSGc?oc=5",
+      "title": "无问芯穹联合创始人戴国浩博士确认出席 QCon 上海，分享 Agentic Infra 技术探索与实践 - InfoQ-CN",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTFA5R1dRSXVab1hrVkZJZzQ2T1BodHd4c2Q3WUk1aG1tRmpWMGJnX0k2TEJ1RnNRdmNSWHhHcE9hZktUUVpTRFpmYjFtODdsZ1M0RlVXOWliUzQ0LVZBSGc?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T02:00:52+00:00",
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "_ai_daily": {
+        "event_id": "e216b66e8c3e822",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMiXkFVX3lxTFA5R1dRSXVab1hrVkZJZzQ2T1BodHd4c2Q3WUk1aG1tRmpWMGJnX0k2TEJ1RnNRdmNSWHhHcE9hZktUUVpTRFpmYjFtODdsZ1M0RlVXOWliUzQ0LVZBSGc?oc=5"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e2e179c5c0e4e79",
+      "url": "https://www.theverge.com/news/1010365/shopify-opens-its-catalog-up-to-more-ai-agents",
+      "title": "Shopify opens its catalog up to more AI agents",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/news/1010365/shopify-opens-its-catalog-up-to-more-ai-agents\">theverge.com</a></li></ul>",
+      "date_published": "2026-10-13T19:42:42+00:00",
+      "tags": [
+        "rss:theverge-com-ai-artificial-intelligence"
+      ],
+      "_ai_daily": {
+        "event_id": "e2e179c5c0e4e79",
+        "source_ids": [
+          "rss:theverge-com-ai-artificial-intelligence"
+        ],
+        "all_urls": [
+          "https://www.theverge.com/news/1010365/shopify-opens-its-catalog-up-to-more-ai-agents"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-eb08465afd937b0",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9xVFkyalBpRkV4bHE0ODg4VTFqbkM2cGdlcGdOa3FVZ2F1MkQ4UWw1UElFdHdJd1dXMTdMWFVBQmVjbWNyVUpRNFJRUzhSb25ldjFkNnNkWFhMTFhrRnp6d24yOA?oc=5",
+      "title": "广西AI下南洋丨活力中国调研行 - http://www.jingjiribao.cn/",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiY0FVX3lxTE9xVFkyalBpRkV4bHE0ODg4VTFqbkM2cGdlcGdOa3FVZ2F1MkQ4UWw1UElFdHdJd1dXMTdMWFVBQmVjbWNyVUpRNFJRUzhSb25ldjFkNnNkWFhMTFhrRnp6d24yOA?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T02:08:29+00:00",
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "_ai_daily": {
+        "event_id": "eb08465afd937b0",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9xVFkyalBpRkV4bHE0ODg4VTFqbkM2cGdlcGdOa3FVZ2F1MkQ4UWw1UElFdHdJd1dXMTdMWFVBQmVjbWNyVUpRNFJRUzhSb25ldjFkNnNkWFhMTFhrRnp6d24yOA?oc=5"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-ef95ed5696e1d36",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBZTFBvSkxIM29WNG9hWDVvaV96RjVJbnU4RS02ZVVlaEJwNEhvdDJVcnhYeDh2NmR2cUY2MGNQSll0SWhRSW5NV3hKTGFsclJFeE5YUTF4MTk1SFp2SmFoTm53?oc=5",
+      "title": "阶跃终端发布大模型原生智能体手机STEPX Neo 定价3999元 - 观点网",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiYkFVX3lxTFBZTFBvSkxIM29WNG9hWDVvaV96RjVJbnU4RS02ZVVlaEJwNEhvdDJVcnhYeDh2NmR2cUY2MGNQSll0SWhRSW5NV3hKTGFsclJFeE5YUTF4MTk1SFp2SmFoTm53?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T02:07:48+00:00",
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "_ai_daily": {
+        "event_id": "ef95ed5696e1d36",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBZTFBvSkxIM29WNG9hWDVvaV96RjVJbnU4RS02ZVVlaEJwNEhvdDJVcnhYeDh2NmR2cUY2MGNQSll0SWhRSW5NV3hKTGFsclJFeE5YUTF4MTk1SFp2SmFoTm53?oc=5"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-ea6c61b2d6c2d91",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9CUE1lVzBQV2w0UHA1R3ZlVnZlY3lqeUpYc2ZyT3BrQVhZN2gxY0MxVGxYemhUVkl0SDkwZVRMSjE4ZzUtcV9EVnI0SjZfaDE0azlobDRJRjRPUURyc1lTRjd6T0pSMVRjMVE0aGhQclc3MGtKcnJZ?oc=5",
+      "title": "日本企业重返AI牌桌的信心来自何处？——从川崎重工的“机器人化”转型，看物理AI如何进入工厂、医院与基础设施 - 客观日本",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMid0FVX3lxTE9CUE1lVzBQV2w0UHA1R3ZlVnZlY3lqeUpYc2ZyT3BrQVhZN2gxY0MxVGxYemhUVkl0SDkwZVRMSjE4ZzUtcV9EVnI0SjZfaDE0azlobDRJRjRPUURyc1lTRjd6T0pSMVRjMVE0aGhQclc3MGtKcnJZ?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T01:46:13+00:00",
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "_ai_daily": {
+        "event_id": "ea6c61b2d6c2d91",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMid0FVX3lxTE9CUE1lVzBQV2w0UHA1R3ZlVnZlY3lqeUpYc2ZyT3BrQVhZN2gxY0MxVGxYemhUVkl0SDkwZVRMSjE4ZzUtcV9EVnI0SjZfaDE0azlobDRJRjRPUURyc1lTRjd6T0pSMVRjMVE0aGhQclc3MGtKcnJZ?oc=5"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e12f295b10c1cc5",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQdF85cGR3Ti1FU1JPeXdNMEtROEpoVkM1dVJJUmt3c0lndmJycnJsT0JTZ0l2VWwzVExnTk9KenVXWFdFVG5nUG4xVF9UNGVsWm5iNjNHOUNQMGlKVktSang3b1RFU3VQSEY3QUFGdDFWV0VWamIyME1ZbVJPbmJYdUVSbXhDWDRoS25hMDJ3?oc=5",
+      "title": "垂域大模型看山东｜山东“人工智能服务军团”以普惠AI赋能产业升级 - 新浪网",
+      "content_html": "<p><strong>事实</strong></p><ul><li>垂域大模型看山东｜山东“人工智能服务军团”以普惠AI赋能产业升级 新浪网</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMijgFBVV95cUxQdF85cGR3Ti1FU1JPeXdNMEtROEpoVkM1dVJJUmt3c0lndmJycnJsT0JTZ0l2VWwzVExnTk9KenVXWFdFVG5nUG4xVF9UNGVsWm5iNjNHOUNQMGlKVktSang3b1RFU3VQSEY3QUFGdDFWV0VWamIyME1ZbVJPbmJYdUVSbXhDWDRoS25hMDJ3?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T01:57:00+00:00",
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "_ai_daily": {
+        "event_id": "e12f295b10c1cc5",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMijgFBVV95cUxQdF85cGR3Ti1FU1JPeXdNMEtROEpoVkM1dVJJUmt3c0lndmJycnJsT0JTZ0l2VWwzVExnTk9KenVXWFdFVG5nUG4xVF9UNGVsWm5iNjNHOUNQMGlKVktSang3b1RFU3VQSEY3QUFGdDFWV0VWamIyME1ZbVJPbmJYdUVSbXhDWDRoS25hMDJ3?oc=5"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e6c0c266ec13f85",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBRMU1nV3U3eEFmYUhWb29PZGhtVTlIVFU5UDIwU3U1NTdDd3hHNHA0Qk9RSkN0R3RrNHZDVG81UlRqSzlySWQtZE9jcHk2enhwN3ZBaDNQQzU?oc=5",
+      "title": "又一华中首店来了！“千问AI眼镜”落子武商梦时代- 湖北日报新闻客户端 - 湖北日报传媒集团",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiWEFVX3lxTFBRMU1nV3U3eEFmYUhWb29PZGhtVTlIVFU5UDIwU3U1NTdDd3hHNHA0Qk9RSkN0R3RrNHZDVG81UlRqSzlySWQtZE9jcHk2enhwN3ZBaDNQQzU?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T01:49:27+00:00",
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "_ai_daily": {
+        "event_id": "e6c0c266ec13f85",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBRMU1nV3U3eEFmYUhWb29PZGhtVTlIVFU5UDIwU3U1NTdDd3hHNHA0Qk9RSkN0R3RrNHZDVG81UlRqSzlySWQtZE9jcHk2enhwN3ZBaDNQQzU?oc=5"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-ec871e743c1e6bc",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE40cHkzLXJZNE9BRDlCbTIyLUpMaldVWDE3V3ROTnUxUVJDaVN5OXFSdUk5UWhzdjZSRDdNakN0bm9JMEFtTF9JdlJKaTNzd0lWY3M0V3pGZjk1MHZCVUE?oc=5",
+      "title": "9月清理“AI魔改”违规视频近1.3万条 处置违规账号30余个 - 中国新闻网",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTE40cHkzLXJZNE9BRDlCbTIyLUpMaldVWDE3V3ROTnUxUVJDaVN5OXFSdUk5UWhzdjZSRDdNakN0bm9JMEFtTF9JdlJKaTNzd0lWY3M0V3pGZjk1MHZCVUE?oc=5\">news.google.com</a></li><li><a href=\"https://news.google.com/rss/articles/CBMiaEFVX3lxTE5IaXBSdW0zTm1LbVZvMlhxWFpMSmZkS05JTGhDVFhLTnBuOWNCQXp2UXQ2YWFkam9aMHV3eGVPMm9xTk5YczFPZEFFczFpb1RSVU5Ta3JSdEJyZk1IWGZHbl85dmR4Vkxi?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T01:54:36+00:00",
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "_ai_daily": {
+        "event_id": "ec871e743c1e6bc",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMiXkFVX3lxTE40cHkzLXJZNE9BRDlCbTIyLUpMaldVWDE3V3ROTnUxUVJDaVN5OXFSdUk5UWhzdjZSRDdNakN0bm9JMEFtTF9JdlJKaTNzd0lWY3M0V3pGZjk1MHZCVUE?oc=5",
+          "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5IaXBSdW0zTm1LbVZvMlhxWFpMSmZkS05JTGhDVFhLTnBuOWNCQXp2UXQ2YWFkam9aMHV3eGVPMm9xTk5YczFPZEFFczFpb1RSVU5Ta3JSdEJyZk1IWGZHbl85dmR4Vkxi?oc=5"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "2026-10-14-e3937c803ec3a43",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFAxbklUY0RSWUZKeHB3V3RYQWRjZU1VRHFBM3lmUjd0Vkc4UFNXWWFBZEZhajNjb2wyYnpaN2w5Z3AwRHN4SE1iNVVhZFhPU0dQR3lLNTBqYXIweWhsTXdQSlpWYUI?oc=5",
+      "title": "STEPX首款大模型原生智能体手机STEPX Neo正式发布_滚动新闻 - 证券之星",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiZEFVX3lxTFAxbklUY0RSWUZKeHB3V3RYQWRjZU1VRHFBM3lmUjd0Vkc4UFNXWWFBZEZhajNjb2wyYnpaN2w5Z3AwRHN4SE1iNVVhZFhPU0dQR3lLNTBqYXIweWhsTXdQSlpWYUI?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T01:51:39+00:00",
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "_ai_daily": {
+        "event_id": "e3937c803ec3a43",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMiZEFVX3lxTFAxbklUY0RSWUZKeHB3V3RYQWRjZU1VRHFBM3lmUjd0Vkc4UFNXWWFBZEZhajNjb2wyYnpaN2w5Z3AwRHN4SE1iNVVhZFhPU0dQR3lLNTBqYXIweWhsTXdQSlpWYUI?oc=5"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-ebd4fb3d3ef02ff",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9USkJ0R0hoUHc4cy13WkhabW9YZ0t1NUZQNkMwMm9PdURPRTJudlNES2xWUWE0dEFJb2NYVkJTQ3plZTJxc1k4NDFiX290ZzhQcFo4T0ZnNzc?oc=5",
+      "title": "千问AI眼镜想让更多用户真正用起来 - Jiemian.com",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiWEFVX3lxTE9USkJ0R0hoUHc4cy13WkhabW9YZ0t1NUZQNkMwMm9PdURPRTJudlNES2xWUWE0dEFJb2NYVkJTQ3plZTJxc1k4NDFiX290ZzhQcFo4T0ZnNzc?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T01:58:52+00:00",
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "_ai_daily": {
+        "event_id": "ebd4fb3d3ef02ff",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9USkJ0R0hoUHc4cy13WkhabW9YZ0t1NUZQNkMwMm9PdURPRTJudlNES2xWUWE0dEFJb2NYVkJTQ3plZTJxc1k4NDFiX290ZzhQcFo4T0ZnNzc?oc=5"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e8ef5fda8fb1eeb",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBlN29GcWpReHpSMHZhYkt1MlcyNDZNVzF0cUNoSXE0dVRGREZfb3AzbUtpT1RsWksyT0xqTEFFOFh0cXFUOTltNWxmMnl4X3M5Vm1IMzhxcVh0aWFXUkt6Y3hn?oc=5",
+      "title": "文化传媒及AI视频板块盘初调整：广电网络龙版传媒双双跌停 - 观点网",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiYkFVX3lxTFBlN29GcWpReHpSMHZhYkt1MlcyNDZNVzF0cUNoSXE0dVRGREZfb3AzbUtpT1RsWksyT0xqTEFFOFh0cXFUOTltNWxmMnl4X3M5Vm1IMzhxcVh0aWFXUkt6Y3hn?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T01:52:41+00:00",
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "_ai_daily": {
+        "event_id": "e8ef5fda8fb1eeb",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBlN29GcWpReHpSMHZhYkt1MlcyNDZNVzF0cUNoSXE0dVRGREZfb3AzbUtpT1RsWksyT0xqTEFFOFh0cXFUOTltNWxmMnl4X3M5Vm1IMzhxcVh0aWFXUkt6Y3hn?oc=5"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-eba2748808ac8aa",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1KajNtZTRkUUtjektHMl8xN01zd1dCcUNRWThWckpnUFJSai1YXzVBeC1LVDViWlNrbUFaZl85UWpEMkF6TS1ISVE4RzdOX2M5Q0xONFIxLXdzYzg4b1czSzcyZXhCejlEN0xIUUhpS0xjTDR1TVNoMGRPY3JtQQ?oc=5",
+      "title": "院士专家齐聚武汉共话AI前沿 - 新浪网",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMifkFVX3lxTE1KajNtZTRkUUtjektHMl8xN01zd1dCcUNRWThWckpnUFJSai1YXzVBeC1LVDViWlNrbUFaZl85UWpEMkF6TS1ISVE4RzdOX2M5Q0xONFIxLXdzYzg4b1czSzcyZXhCejlEN0xIUUhpS0xjTDR1TVNoMGRPY3JtQQ?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T01:59:00+00:00",
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "_ai_daily": {
+        "event_id": "eba2748808ac8aa",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMifkFVX3lxTE1KajNtZTRkUUtjektHMl8xN01zd1dCcUNRWThWckpnUFJSai1YXzVBeC1LVDViWlNrbUFaZl85UWpEMkF6TS1ISVE4RzdOX2M5Q0xONFIxLXdzYzg4b1czSzcyZXhCejlEN0xIUUhpS0xjTDR1TVNoMGRPY3JtQQ?oc=5"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e226600210728f6",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPeGp0dzZyQnR0TlhYMkxybFFfTGxSRzY3SktVLUN6SFJvaXF5M2FDbVdKSW81UmgtRVlYWm9TMGE2VDZUaU9pMkJFbFJnMUFXWGpTdmFaX2E3QlZnOEo3SWs4cHdWcVA5M2JOX3VVa0VoamRRclpLNXdxbWJfcG8tV3lTM3VteEwzZTFib3ZNdHBCUQ?oc=5",
+      "title": "上汽集团新能源“全明星阵容”亮相2026工博会_国企动态 - 上海市国有资产监督管理委员会",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMikgFBVV95cUxPeGp0dzZyQnR0TlhYMkxybFFfTGxSRzY3SktVLUN6SFJvaXF5M2FDbVdKSW81UmgtRVlYWm9TMGE2VDZUaU9pMkJFbFJnMUFXWGpTdmFaX2E3QlZnOEo3SWs4cHdWcVA5M2JOX3VVa0VoamRRclpLNXdxbWJfcG8tV3lTM3VteEwzZTFib3ZNdHBCUQ?oc=5\">news.google.com</a></li></ul>",
+      "date_published": "2026-10-14T01:39:01+00:00",
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "_ai_daily": {
+        "event_id": "e226600210728f6",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMikgFBVV95cUxPeGp0dzZyQnR0TlhYMkxybFFfTGxSRzY3SktVLUN6SFJvaXF5M2FDbVdKSW81UmgtRVlYWm9TMGE2VDZUaU9pMkJFbFJnMUFXWGpTdmFaX2E3QlZnOEo3SWs4cHdWcVA5M2JOX3VVa0VoamRRclpLNXdxbWJfcG8tV3lTM3VteEwzZTFib3ZNdHBCUQ?oc=5"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-eee18872766a648",
+      "url": "https://www.theverge.com/news/1010406/xbox-labs-game-decompiling-emulation-exploration",
+      "title": "Xbox is officially embracing the chaos of AI-powered game ports",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/news/1010406/xbox-labs-game-decompiling-emulation-exploration\">theverge.com</a></li></ul>",
+      "date_published": "2026-10-13T19:00:48+00:00",
+      "tags": [
+        "rss:theverge-com-ai-artificial-intelligence"
+      ],
+      "_ai_daily": {
+        "event_id": "eee18872766a648",
+        "source_ids": [
+          "rss:theverge-com-ai-artificial-intelligence"
+        ],
+        "all_urls": [
+          "https://www.theverge.com/news/1010406/xbox-labs-game-decompiling-emulation-exploration"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e80aa90e1b32737",
+      "url": "https://guitoro.com/",
+      "title": "Show HN: Guitoro, a virtual guitar you strum with your keyboard",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Guitoro is a free browser guitar using recordings of real instruments. You can strum with your keyboard, mouse, or touchscreen, choose acoustic, classical, electric guitar or bass, and see chord fingering and each stroke. Song practice can be slowed to 20%, and there are free chord tools and tuners.</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://guitoro.com/\">guitoro.com</a></li></ul>",
+      "date_published": "2026-10-13T19:11:48+00:00",
+      "tags": [
+        "api:hn-algolia-com-search",
+        "rss:hnrss-org-frontpage"
+      ],
+      "_ai_daily": {
+        "event_id": "e80aa90e1b32737",
+        "source_ids": [
+          "api:hn-algolia-com-search",
+          "rss:hnrss-org-frontpage"
+        ],
+        "all_urls": [
+          "https://guitoro.com/"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-eedf2d5b4243645",
+      "url": "https://www.theverge.com/tech/1009128/ray-ban-meta-audio-glasses-review-smart-glasses-headphones-wearables",
+      "title": "I don’t miss the camera on the Ray-Ban Meta Audio glasses",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/tech/1009128/ray-ban-meta-audio-glasses-review-smart-glasses-headphones-wearables\">theverge.com</a></li></ul>",
+      "date_published": "2026-10-13T18:00:00+00:00",
+      "tags": [
+        "rss:theverge-com-ai-artificial-intelligence"
+      ],
+      "_ai_daily": {
+        "event_id": "eedf2d5b4243645",
+        "source_ids": [
+          "rss:theverge-com-ai-artificial-intelligence"
+        ],
+        "all_urls": [
+          "https://www.theverge.com/tech/1009128/ray-ban-meta-audio-glasses-review-smart-glasses-headphones-wearables"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-eba87afb41e2597",
+      "url": "https://www.theverge.com/tech/1010344/meta-facebook-your-algorithm-ai",
+      "title": "Facebook will let you customize your feed algorithm using AI",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/tech/1010344/meta-facebook-your-algorithm-ai\">theverge.com</a></li></ul>",
+      "date_published": "2026-10-13T17:01:31+00:00",
+      "tags": [
+        "rss:theverge-com-ai-artificial-intelligence"
+      ],
+      "_ai_daily": {
+        "event_id": "eba87afb41e2597",
+        "source_ids": [
+          "rss:theverge-com-ai-artificial-intelligence"
+        ],
+        "all_urls": [
+          "https://www.theverge.com/tech/1010344/meta-facebook-your-algorithm-ai"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e7841724e95b262",
+      "url": "https://www.theverge.com/tech/1009066/google-play-vibe-coded-android-apps-launch",
+      "title": "Google makes it easier to launch your vibe-coded apps",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/tech/1009066/google-play-vibe-coded-android-apps-launch\">theverge.com</a></li></ul>",
+      "date_published": "2026-10-13T17:00:00+00:00",
+      "tags": [
+        "rss:theverge-com-ai-artificial-intelligence"
+      ],
+      "_ai_daily": {
+        "event_id": "e7841724e95b262",
+        "source_ids": [
+          "rss:theverge-com-ai-artificial-intelligence"
+        ],
+        "all_urls": [
+          "https://www.theverge.com/tech/1009066/google-play-vibe-coded-android-apps-launch"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e47caeb21a62fee",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1010277/mia-goth-instagram-ai-shirt-deepfake-divorce",
+      "title": "It’s ‘incomprehensible’ that Instagram allowed an AI image of Mia Goth to spread, say her reps",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/ai-artificial-intelligence/1010277/mia-goth-instagram-ai-shirt-deepfake-divorce\">theverge.com</a></li></ul>",
+      "date_published": "2026-10-13T16:42:51+00:00",
+      "tags": [
+        "rss:theverge-com-ai-artificial-intelligence"
+      ],
+      "_ai_daily": {
+        "event_id": "e47caeb21a62fee",
+        "source_ids": [
+          "rss:theverge-com-ai-artificial-intelligence"
+        ],
+        "all_urls": [
+          "https://www.theverge.com/ai-artificial-intelligence/1010277/mia-goth-instagram-ai-shirt-deepfake-divorce"
         ],
         "evidence_level": "single_source",
         "confidence": 1.0
@@ -69,105 +750,21 @@
       }
     },
     {
-      "id": "2026-10-14-eccde17ec544859",
-      "url": "https://aihot.news/items/e0znyja7ohbk6d8hfwfy9ddo5",
-      "title": "Hugging Face 与 Inria、NVIDIA 合作公告",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/e0znyja7ohbk6d8hfwfy9ddo5\">aihot.news</a></li></ul>",
-      "date_published": "2026-10-13T16:02:08+00:00",
+      "id": "2026-10-14-e4392884424a76f",
+      "url": "https://openai.com/index/higgsfield-longer-videos-voice",
+      "title": "Higgsfield takes AI video from 1 minute to over 10",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://openai.com/index/higgsfield-longer-videos-voice\">openai.com</a></li></ul>",
+      "date_published": "2026-10-13T12:00:00+00:00",
       "tags": [
-        "rss:aihot-news"
+        "rss:openai-com-news"
       ],
       "_ai_daily": {
-        "event_id": "eccde17ec544859",
+        "event_id": "e4392884424a76f",
         "source_ids": [
-          "rss:aihot-news"
+          "rss:openai-com-news"
         ],
         "all_urls": [
-          "https://aihot.news/items/e0znyja7ohbk6d8hfwfy9ddo5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-efc7fa7fd7e1f8d",
-      "url": "https://aihot.news/items/cwpmrkdyoiyp20nol5ixhgnb3",
-      "title": "Kylon 推出团队聊天应用,Codex、Claude 等 AI agent 可加入同一团队协作",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/cwpmrkdyoiyp20nol5ixhgnb3\">aihot.news</a></li></ul>",
-      "date_published": "2026-10-13T16:20:47+00:00",
-      "tags": [
-        "rss:aihot-news"
-      ],
-      "_ai_daily": {
-        "event_id": "efc7fa7fd7e1f8d",
-        "source_ids": [
-          "rss:aihot-news"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/cwpmrkdyoiyp20nol5ixhgnb3"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e3a2e9bb780a0d4",
-      "url": "https://aihot.news/items/lhmc05cr832e7gmc1zipt21ag",
-      "title": "卡内基梅隆与微软论文发布 CRBugBench:最佳代码审查 Agent 检出 71.9% 已知 bug",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/lhmc05cr832e7gmc1zipt21ag\">aihot.news</a></li></ul>",
-      "date_published": "2026-10-13T16:08:50+00:00",
-      "tags": [
-        "rss:aihot-news"
-      ],
-      "_ai_daily": {
-        "event_id": "e3a2e9bb780a0d4",
-        "source_ids": [
-          "rss:aihot-news"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/lhmc05cr832e7gmc1zipt21ag"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-ef531448a9dcb3f",
-      "url": "https://aihot.news/items/mdzuunxh8akx9mf2e0rzak9ee",
-      "title": "Sam Newman 新书节选:构建韧性的 AI 软件并为此类故障做好准备",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/mdzuunxh8akx9mf2e0rzak9ee\">aihot.news</a></li></ul>",
-      "date_published": "2026-10-13T16:03:33+00:00",
-      "tags": [
-        "rss:aihot-news"
-      ],
-      "_ai_daily": {
-        "event_id": "ef531448a9dcb3f",
-        "source_ids": [
-          "rss:aihot-news"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/mdzuunxh8akx9mf2e0rzak9ee"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e89a4009df00e75",
-      "url": "https://aihot.news/items/iu6bi2r9qmve0jwcs2320s8sc",
-      "title": "Google 开放 Antigravity 最高档免费申请",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/iu6bi2r9qmve0jwcs2320s8sc\">aihot.news</a></li></ul>",
-      "date_published": "2026-10-13T16:13:45+00:00",
-      "tags": [
-        "rss:aihot-news"
-      ],
-      "_ai_daily": {
-        "event_id": "e89a4009df00e75",
-        "source_ids": [
-          "rss:aihot-news"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/iu6bi2r9qmve0jwcs2320s8sc"
+          "https://openai.com/index/higgsfield-longer-videos-voice"
         ],
         "evidence_level": "single_source",
         "confidence": 1.0
@@ -195,84 +792,21 @@
       }
     },
     {
-      "id": "2026-10-14-e0d80309b8569bf",
-      "url": "https://aihot.news/items/o80xtnqrazc1cp8mpik4fnmi0",
-      "title": "Kylon 发布:让人类与 AI 智能体同队协作的公司级 harness",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Kylon 正式发布,定位为首个面向人类、AI 智能体与工具的&quot;company harness&quot;,让二者作为同一团队协作。其 Apps 功能中由智能体创建的数据库全部由 Databricks Neon 提供支持。天使投资人 Yuchen Jin 称,AI 的问题不在智能而在上下文,智能体若掌握公司业务全貌将成为强大队友。\n🔗 阅读原文</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/o80xtnqrazc1cp8mpik4fnmi0\">aihot.news</a></li></ul>",
-      "date_published": "2026-10-13T16:01:12+00:00",
+      "id": "2026-10-14-e3f61f4d9a94a99",
+      "url": "https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b",
+      "title": "Run fast, private agents on-device with LFM2.5-24B-A2B",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b\">huggingface.co</a></li></ul>",
+      "date_published": "2026-10-13T17:05:48+00:00",
       "tags": [
-        "rss:aihot-news"
+        "rss:huggingface-co-blog"
       ],
       "_ai_daily": {
-        "event_id": "e0d80309b8569bf",
+        "event_id": "e3f61f4d9a94a99",
         "source_ids": [
-          "rss:aihot-news"
+          "rss:huggingface-co-blog"
         ],
         "all_urls": [
-          "https://aihot.news/items/o80xtnqrazc1cp8mpik4fnmi0"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-ec3792067bc5cd7",
-      "url": "https://www.theverge.com/tech/1009704/apple-homeview-smart-display-first-look",
-      "title": "Apple launches HomeView, its first smart display for the home",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/tech/1009704/apple-homeview-smart-display-first-look\">theverge.com</a></li></ul>",
-      "date_published": "2026-10-13T13:00:00+00:00",
-      "tags": [
-        "rss:theverge-com-ai-artificial-intelligence"
-      ],
-      "_ai_daily": {
-        "event_id": "ec3792067bc5cd7",
-        "source_ids": [
-          "rss:theverge-com-ai-artificial-intelligence"
-        ],
-        "all_urls": [
-          "https://www.theverge.com/tech/1009704/apple-homeview-smart-display-first-look"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-ed6a564e3a86798",
-      "url": "https://news.ycombinator.com/item?id=50073471",
-      "title": "Launch HN: Consus (YC F24) – LLM gateway for companies handling sensitive data",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.ycombinator.com/item?id=50073471\">news.ycombinator.com</a></li></ul>",
-      "date_published": "2026-10-13T15:41:00+00:00",
-      "tags": [
-        "rss:hnrss-org-frontpage"
-      ],
-      "_ai_daily": {
-        "event_id": "ed6a564e3a86798",
-        "source_ids": [
-          "rss:hnrss-org-frontpage"
-        ],
-        "all_urls": [
-          "https://news.ycombinator.com/item?id=50073471"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-ef5b8dda52d4130",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/1009802/character-ai-files-for-bankruptcy-disney",
-      "title": "Character.AI files for bankruptcy",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/ai-artificial-intelligence/1009802/character-ai-files-for-bankruptcy-disney\">theverge.com</a></li></ul>",
-      "date_published": "2026-10-13T10:32:23+00:00",
-      "tags": [
-        "rss:theverge-com-ai-artificial-intelligence"
-      ],
-      "_ai_daily": {
-        "event_id": "ef5b8dda52d4130",
-        "source_ids": [
-          "rss:theverge-com-ai-artificial-intelligence"
-        ],
-        "all_urls": [
-          "https://www.theverge.com/ai-artificial-intelligence/1009802/character-ai-files-for-bankruptcy-disney"
+          "https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b"
         ],
         "evidence_level": "single_source",
         "confidence": 1.0
@@ -300,177 +834,9 @@
       }
     },
     {
-      "id": "2026-10-14-e2553ca8f025368",
-      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFB4aXRncWtSX2l0dk5HWGpSLWdiSDU3QkE1V2QtLTFjdzNTb2dHenh6UUNRakJkWms5MUNibExKQzVNaTUxZ04zemIyTUc1TF9wZW1KNVVSa2FTMUZzU0ZVcld2MA?oc=5",
-      "title": "英伟达将宣布20亿美元欧洲AI新投资 - 东方财富",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiY0FVX3lxTFB4aXRncWtSX2l0dk5HWGpSLWdiSDU3QkE1V2QtLTFjdzNTb2dHenh6UUNRakJkWms5MUNibExKQzVNaTUxZ04zemIyTUc1TF9wZW1KNVVSa2FTMUZzU0ZVcld2MA?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-13T16:35:34+00:00",
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "e2553ca8f025368",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMiY0FVX3lxTFB4aXRncWtSX2l0dk5HWGpSLWdiSDU3QkE1V2QtLTFjdzNTb2dHenh6UUNRakJkWms5MUNibExKQzVNaTUxZ04zemIyTUc1TF9wZW1KNVVSa2FTMUZzU0ZVcld2MA?oc=5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e899eac23ec0cb4",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1nUUtTMndYV281WFNEd1NuaXlJNGRleG9DTHVfUzFDS2pOem8wZ0l2MFFlWGF4QmwyZjVGZ0hGdEx1V25GT01BZm9YLWlESTRXVDlnZlp5czRFQUtvZ2xENUpOR2huOER6YmJpRHhkM1U?oc=5",
-      "title": "闪电评论丨落地济南!看AI产业大会和山东适配度有多高 - 新浪网",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMicEFVX3lxTE1nUUtTMndYV281WFNEd1NuaXlJNGRleG9DTHVfUzFDS2pOem8wZ0l2MFFlWGF4QmwyZjVGZ0hGdEx1V25GT01BZm9YLWlESTRXVDlnZlp5czRFQUtvZ2xENUpOR2huOER6YmJpRHhkM1U?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-13T16:21:00+00:00",
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "e899eac23ec0cb4",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMicEFVX3lxTE1nUUtTMndYV281WFNEd1NuaXlJNGRleG9DTHVfUzFDS2pOem8wZ0l2MFFlWGF4QmwyZjVGZ0hGdEx1V25GT01BZm9YLWlESTRXVDlnZlp5czRFQUtvZ2xENUpOR2huOER6YmJpRHhkM1U?oc=5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-ebe9b88d55276a7",
-      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNZU5jdmVJd0U2Y19TaW1oQ3VEQmNVeVpKVnY4RWdMRFRwTzloaWZjRjVCT3dyUVVKckFVUFR5bXNwT2tNdW5LdkNWUl9UZmdUWTh5dVFaeVJvelNWZzdRVG9CTWt4TWtTS3FwZXBoZTI4bWtPbF9OYW9WSE12bVNQb21INXpWZw?oc=5",
-      "title": "日韩股市大跌:存储芯片股遭抛售,AI投资逻辑生变 - 21财经",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMihgFBVV95cUxNZU5jdmVJd0U2Y19TaW1oQ3VEQmNVeVpKVnY4RWdMRFRwTzloaWZjRjVCT3dyUVVKckFVUFR5bXNwT2tNdW5LdkNWUl9UZmdUWTh5dVFaeVJvelNWZzdRVG9CTWt4TWtTS3FwZXBoZTI4bWtPbF9OYW9WSE12bVNQb21INXpWZw?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-13T16:16:40+00:00",
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "ebe9b88d55276a7",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMihgFBVV95cUxNZU5jdmVJd0U2Y19TaW1oQ3VEQmNVeVpKVnY4RWdMRFRwTzloaWZjRjVCT3dyUVVKckFVUFR5bXNwT2tNdW5LdkNWUl9UZmdUWTh5dVFaeVJvelNWZzdRVG9CTWt4TWtTS3FwZXBoZTI4bWtPbF9OYW9WSE12bVNQb21INXpWZw?oc=5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e17f4742b8df4bf",
-      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOQ0REU3VjN3NwZFRvLXVocHktcWljZ2cxNFlMWllqVmhIY25hTU12aUpMbE9JQXpYZEdvQXM3dFBLcnJzNzdhZjREb25PQ01Hd1g5ZkE2SWxVbE4xRDNDT3I1TjMtbzhpTkpYZTlpb0k2Y2twTE9qWm1CSjJxZm1Md0lR?oc=5",
-      "title": "高盛:AI已改写中国股市格局,相关上市公司创造市值近5万亿美元 - 新浪网",
-      "content_html": "<p><strong>事实</strong></p><ul><li>高盛:AI已改写中国股市格局,相关上市公司创造市值近5万亿美元 新浪网</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiggFBVV95cUxOQ0REU3VjN3NwZFRvLXVocHktcWljZ2cxNFlMWllqVmhIY25hTU12aUpMbE9JQXpYZEdvQXM3dFBLcnJzNzdhZjREb25PQ01Hd1g5ZkE2SWxVbE4xRDNDT3I1TjMtbzhpTkpYZTlpb0k2Y2twTE9qWm1CSjJxZm1Md0lR?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-13T16:08:25+00:00",
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "e17f4742b8df4bf",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMiggFBVV95cUxOQ0REU3VjN3NwZFRvLXVocHktcWljZ2cxNFlMWllqVmhIY25hTU12aUpMbE9JQXpYZEdvQXM3dFBLcnJzNzdhZjREb25PQ01Hd1g5ZkE2SWxVbE4xRDNDT3I1TjMtbzhpTkpYZTlpb0k2Y2twTE9qWm1CSjJxZm1Md0lR?oc=5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-ef02b38f8e5a163",
-      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1FbEluaS1tdmZuRWVzNVo0UGpQOFJWOHZxNFM3Q25xUF9iTlM3bVhBUTk0dndISEtLMkN1eVlqYWZ6VFMwNHh3bnM0bEFpcnRUalhj?oc=5",
-      "title": "小扎打赢AI翻身仗?空降新模型长程编程夺冠,3D实测却惨遭打脸 - 华尔街见闻",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiU0FVX3lxTE1FbEluaS1tdmZuRWVzNVo0UGpQOFJWOHZxNFM3Q25xUF9iTlM3bVhBUTk0dndISEtLMkN1eVlqYWZ6VFMwNHh3bnM0bEFpcnRUalhj?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-13T15:56:12+00:00",
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "ef02b38f8e5a163",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1FbEluaS1tdmZuRWVzNVo0UGpQOFJWOHZxNFM3Q25xUF9iTlM3bVhBUTk0dndISEtLMkN1eVlqYWZ6VFMwNHh3bnM0bEFpcnRUalhj?oc=5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-ed8c0c526cd9b15",
-      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPVUV5dTl6YUpPRHhHVndFS1dJTjBwYlpuR3VZa3BlckgyTUV3dkNiZkJmdEg2eEpEVDRfdUtEUFkzendfNjZVaWI0UHpGdGtCR0c4SkVCLVJQN2owOVEtYU9qMkwyM1ExTFZxZHhKcnloaDg0UUpZbFZVdGl0UFdIa3FIS3l1ZkdUNkVkeGpBWnV0MmFuUUh2LUJmSWU?oc=5",
-      "title": "AI热潮催生巨额资金循环全球失衡风险进一步加剧|弗吉尼亚州|人工智能相关基金|次贷危机|经济学家|全球经济 - finance.sina.com.cn",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMinAFBVV95cUxPVUV5dTl6YUpPRHhHVndFS1dJTjBwYlpuR3VZa3BlckgyTUV3dkNiZkJmdEg2eEpEVDRfdUtEUFkzendfNjZVaWI0UHpGdGtCR0c4SkVCLVJQN2owOVEtYU9qMkwyM1ExTFZxZHhKcnloaDg0UUpZbFZVdGl0UFdIa3FIS3l1ZkdUNkVkeGpBWnV0MmFuUUh2LUJmSWU?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-13T15:11:27+00:00",
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "ed8c0c526cd9b15",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMinAFBVV95cUxPVUV5dTl6YUpPRHhHVndFS1dJTjBwYlpuR3VZa3BlckgyTUV3dkNiZkJmdEg2eEpEVDRfdUtEUFkzendfNjZVaWI0UHpGdGtCR0c4SkVCLVJQN2owOVEtYU9qMkwyM1ExTFZxZHhKcnloaDg0UUpZbFZVdGl0UFdIa3FIS3l1ZkdUNkVkeGpBWnV0MmFuUUh2LUJmSWU?oc=5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e85c8ecd4c340f7",
-      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOUUlNTDZfQlBtZFZ1V0xra3MwZjZqOVRnR2ZDTmp3R29WLVB5VXE2Y2lVLXBhcHFiZjcyeGtSMDhxX3c5QjZsR2NNR0QtckMxTnFaaWFXa3hJTHpjUkJod1F1bWFiWlpBSXcyM0Q1bFRaWHhXM1VhZGNfcEtWYXFIaUJRNUU2QnZrdjJ4MDVRRTFBbm5KTzMxX0FlenR2cW1mNHlyZEtKTThnTlI2OFh6RnFhb3g1LWc?oc=5",
-      "title": "第8天:借助Moomoo AI进行行业轮动与宏观趋势追踪 - Moomoo",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMitwFBVV95cUxOUUlNTDZfQlBtZFZ1V0xra3MwZjZqOVRnR2ZDTmp3R29WLVB5VXE2Y2lVLXBhcHFiZjcyeGtSMDhxX3c5QjZsR2NNR0QtckMxTnFaaWFXa3hJTHpjUkJod1F1bWFiWlpBSXcyM0Q1bFRaWHhXM1VhZGNfcEtWYXFIaUJRNUU2QnZrdjJ4MDVRRTFBbm5KTzMxX0FlenR2cW1mNHlyZEtKTThnTlI2OFh6RnFhb3g1LWc?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-13T15:27:16+00:00",
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "e85c8ecd4c340f7",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMitwFBVV95cUxOUUlNTDZfQlBtZFZ1V0xra3MwZjZqOVRnR2ZDTmp3R29WLVB5VXE2Y2lVLXBhcHFiZjcyeGtSMDhxX3c5QjZsR2NNR0QtckMxTnFaaWFXa3hJTHpjUkJod1F1bWFiWlpBSXcyM0Q1bFRaWHhXM1VhZGNfcEtWYXFIaUJRNUU2QnZrdjJ4MDVRRTFBbm5KTzMxX0FlenR2cW1mNHlyZEtKTThnTlI2OFh6RnFhb3g1LWc?oc=5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e009ae8657860b9",
-      "url": "https://news.mit.edu/2026/qa-building-accountability-behind-our-words-and-ai-civic-conversations-1013",
-      "title": "Q&A: Building accountability behind our words — and AI’s — in civic conversations",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Professor Deb Roy contends there should be someone who is “answerable” for every piece of text in public life, no matter its origins.</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://news.mit.edu/2026/qa-building-accountability-behind-our-words-and-ai-civic-conversations-1013\">news.mit.edu</a></li></ul>",
-      "date_published": "2026-10-13T04:00:00+00:00",
-      "tags": [
-        "rss:news-mit-edu-topic-mitartificial-intelligence2-rss"
-      ],
-      "_ai_daily": {
-        "event_id": "e009ae8657860b9",
-        "source_ids": [
-          "rss:news-mit-edu-topic-mitartificial-intelligence2-rss"
-        ],
-        "all_urls": [
-          "https://news.mit.edu/2026/qa-building-accountability-behind-our-words-and-ai-civic-conversations-1013"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
       "id": "2026-10-14-e2a7ca02934b9cf",
       "url": "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651062445&idx=1&sn=608c7ccba2cb0bcd1a34da07084d6cd1",
-      "title": "九章云极问鼎陶哲轩数学挑战赛!让强化学习成为AI4S新基建",
+      "title": "九章云极问鼎陶哲轩数学挑战赛！让强化学习成为AI4S新基建",
       "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651062445&amp;idx=1&amp;sn=608c7ccba2cb0bcd1a34da07084d6cd1\">mp.weixin.qq.com</a></li></ul>",
       "date_published": "2026-10-13T04:00:00+00:00",
       "tags": [
@@ -491,7 +857,7 @@
     {
       "id": "2026-10-14-e93eb10664e1e94",
       "url": "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651062445&idx=3&sn=c93fe78ae034dea794c3760e35192930",
-      "title": "生成的世界也能交互!牛津大学&莫纳什大学&布里斯托大学等团队提出交互式视频世界模型Oneira",
+      "title": "生成的世界也能交互！牛津大学&莫纳什大学&布里斯托大学等团队提出交互式视频世界模型Oneira",
       "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651062445&amp;idx=3&amp;sn=c93fe78ae034dea794c3760e35192930\">mp.weixin.qq.com</a></li></ul>",
       "date_published": "2026-10-13T04:00:00+00:00",
       "tags": [
@@ -512,7 +878,7 @@
     {
       "id": "2026-10-14-eb6145c2343dc82",
       "url": "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651062445&idx=2&sn=09d3ae148779c3bd1a544b44f72c02ea",
-      "title": "申报倒计时7天!2026云程奖,要给「在校AI本硕博」发奖学金",
+      "title": "申报倒计时7天！2026云程奖，要给「在校AI本硕博」发奖学金",
       "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651062445&amp;idx=2&amp;sn=09d3ae148779c3bd1a544b44f72c02ea\">mp.weixin.qq.com</a></li></ul>",
       "date_published": "2026-10-13T04:00:00+00:00",
       "tags": [
@@ -531,116 +897,11 @@
       }
     },
     {
-      "id": "2026-10-14-e986f88fd832880",
-      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9lUmNXbVlMQXN6MTJWUlBXX25UOGlSMUI4cUxxTjE0cmJ0OS1fcjlHVGl5SVdRZGdhWVVGd1ZKc25MS0s4V0RhdUtNNEZhOVJFelhGTFlrTEJoWmxTRXM3SA?oc=5",
-      "title": "液冷来势汹汹、AI数据中心冷却战升级,德国隐形巨头:风冷仍有大增量 - ThePaper.cn",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiYEFVX3lxTE9lUmNXbVlMQXN6MTJWUlBXX25UOGlSMUI4cUxxTjE0cmJ0OS1fcjlHVGl5SVdRZGdhWVVGd1ZKc25MS0s4V0RhdUtNNEZhOVJFelhGTFlrTEJoWmxTRXM3SA?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-13T14:46:00+00:00",
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "e986f88fd832880",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9lUmNXbVlMQXN6MTJWUlBXX25UOGlSMUI4cUxxTjE0cmJ0OS1fcjlHVGl5SVdRZGdhWVVGd1ZKc25MS0s4V0RhdUtNNEZhOVJFelhGTFlrTEJoWmxTRXM3SA?oc=5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e2ce7d2b0918599",
-      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1sNGJoVi12b2tqNDRGRkQ0YXZRRW5IOGhZMHdKMnYzWThvWS1YTklGUmtmYVRrYzBCdU93SG5aTVQtc1lWbE1mLXZCbHBPMFAzWFd5dmZEUmwwR25GMmhMSHJn?oc=5",
-      "title": "中控技术:将继续推进TPT大模型在各行业的场景落地 - 观点网",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiYkFVX3lxTE1sNGJoVi12b2tqNDRGRkQ0YXZRRW5IOGhZMHdKMnYzWThvWS1YTklGUmtmYVRrYzBCdU93SG5aTVQtc1lWbE1mLXZCbHBPMFAzWFd5dmZEUmwwR25GMmhMSHJn?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-13T14:59:19+00:00",
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "e2ce7d2b0918599",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1sNGJoVi12b2tqNDRGRkQ0YXZRRW5IOGhZMHdKMnYzWThvWS1YTklGUmtmYVRrYzBCdU93SG5aTVQtc1lWbE1mLXZCbHBPMFAzWFd5dmZEUmwwR25GMmhMSHJn?oc=5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e36ee9f1523498e",
-      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9wQmV4RXFEV21wa1RJdW1raWpxRUdCRy1SbFFjNGFMV2I3SGhnaUtVVUx6NzY3R0tCVGFuejB0MklwbWJDQ1JRaWtrVWNOR0Y2bG1tbWl4UEFuWkpqcTVmY1hR?oc=5",
-      "title": "爱芯元智发布AX8860大算力边端AI芯片系列 - 观点网",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiYkFVX3lxTE9wQmV4RXFEV21wa1RJdW1raWpxRUdCRy1SbFFjNGFMV2I3SGhnaUtVVUx6NzY3R0tCVGFuejB0MklwbWJDQ1JRaWtrVWNOR0Y2bG1tbWl4UEFuWkpqcTVmY1hR?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-13T14:57:13+00:00",
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "e36ee9f1523498e",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9wQmV4RXFEV21wa1RJdW1raWpxRUdCRy1SbFFjNGFMV2I3SGhnaUtVVUx6NzY3R0tCVGFuejB0MklwbWJDQ1JRaWtrVWNOR0Y2bG1tbWl4UEFuWkpqcTVmY1hR?oc=5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e4e3139979212c8",
-      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9BZW9HckRRZVkzdzNoNWhwVlJqemIzblI2SVhOeFkyaVdOd0J2TjRnMWtEUFVLYlBlZDgydFdmYk5TVWt4SEVSZDgxc1FnR0E3LWs4VlhZMmpESmlvQXVn?oc=5",
-      "title": "和 AI 共同创作了1300天 艺术家舒勇:AI激活了人的另一种主体性 - 新湖南",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiX0FVX3lxTE9BZW9HckRRZVkzdzNoNWhwVlJqemIzblI2SVhOeFkyaVdOd0J2TjRnMWtEUFVLYlBlZDgydFdmYk5TVWt4SEVSZDgxc1FnR0E3LWs4VlhZMmpESmlvQXVn?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-13T14:44:53+00:00",
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "e4e3139979212c8",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9BZW9HckRRZVkzdzNoNWhwVlJqemIzblI2SVhOeFkyaVdOd0J2TjRnMWtEUFVLYlBlZDgydFdmYk5TVWt4SEVSZDgxc1FnR0E3LWs4VlhZMmpESmlvQXVn?oc=5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e1964896e997499",
-      "url": "https://daily.juya.uk/issues/2026-10-13/",
-      "title": "2026-10-13",
-      "content_html": "<p><strong>事实</strong></p><ul><li>AI 早报 2026 10 13 视频版 :YouTube | 哔哩哔哩 概览 要闻 Meta 发布 Muse Wonder 模型系列 ↗ 1 The X Subscription 推出:整合Grok、Cursor 和 X Premium ↗ 2 Codex 第 8 天安排:重置用量额度 ↗ 3 模型发布 智谱推出法律模型 GLM Legal,开放测试申请 ↗ 4 OpenBMB 发布 MiniCPM V 4.7 系列两款模型 ↗ 5 开发生态 OpenCode Go 提供 80 美元 V4.1 Flash 额度 ↗ 6 阶跃 Step 5 Preview 上线 WorkBuddy,独家限免两</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://daily.juya.uk/issues/2026-10-13/\">daily.juya.uk</a></li></ul>",
-      "date_published": "2026-10-13T01:48:17+00:00",
-      "tags": [
-        "rss:daily-juya-uk"
-      ],
-      "_ai_daily": {
-        "event_id": "e1964896e997499",
-        "source_ids": [
-          "rss:daily-juya-uk"
-        ],
-        "all_urls": [
-          "https://daily.juya.uk/issues/2026-10-13/"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
       "id": "2026-10-14-ecd67a9edef7a8d",
       "url": "https://github.com/debpalash/VoiceStudio",
       "title": "debpalash/VoiceStudio",
       "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/debpalash/VoiceStudio\">github.com</a></li></ul>",
-      "date_published": "2026-10-14T02:07:30.328249+00:00",
+      "date_published": "2026-10-14T02:38:08.354745+00:00",
       "tags": [
         "scrape:github-com-trending"
       ],
@@ -661,7 +922,7 @@
       "url": "https://github.com/mksglu/context-mode",
       "title": "mksglu/context-mode",
       "content_html": "<p><strong>事实</strong></p><ul><li>Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and enforces routing across 17 platforms via MCP + hooks.</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://github.com/mksglu/context-mode\">github.com</a></li></ul>",
-      "date_published": "2026-10-14T02:07:30.328249+00:00",
+      "date_published": "2026-10-14T02:38:08.354745+00:00",
       "tags": [
         "scrape:github-com-trending"
       ],
@@ -682,7 +943,7 @@
       "url": "https://github.com/cathrynlavery/diagram-design",
       "title": "cathrynlavery/diagram-design",
       "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/cathrynlavery/diagram-design\">github.com</a></li></ul>",
-      "date_published": "2026-10-14T02:07:30.328249+00:00",
+      "date_published": "2026-10-14T02:38:08.354745+00:00",
       "tags": [
         "scrape:github-com-trending"
       ],
@@ -699,11 +960,32 @@
       }
     },
     {
+      "id": "2026-10-14-ef6384abac4f498",
+      "url": "https://simonwillison.net/2026/Oct/13/llm-gemini/",
+      "title": "llm-gemini 0.35",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://simonwillison.net/2026/Oct/13/llm-gemini/\">simonwillison.net</a></li></ul>",
+      "date_published": "2026-10-13T22:28:54+00:00",
+      "tags": [
+        "rss:simonwillison-net-everything"
+      ],
+      "_ai_daily": {
+        "event_id": "ef6384abac4f498",
+        "source_ids": [
+          "rss:simonwillison-net-everything"
+        ],
+        "all_urls": [
+          "https://simonwillison.net/2026/Oct/13/llm-gemini/"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
       "id": "2026-10-14-e24f518fe0cc746",
       "url": "https://github.com/bilawalsidhu/gods-eye-view",
       "title": "bilawalsidhu/gods-eye-view",
       "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/bilawalsidhu/gods-eye-view\">github.com</a></li></ul>",
-      "date_published": "2026-10-14T02:07:30.328249+00:00",
+      "date_published": "2026-10-14T02:38:08.354745+00:00",
       "tags": [
         "scrape:github-com-trending"
       ],
@@ -724,7 +1006,7 @@
       "url": "https://github.com/xtool-org/xtool",
       "title": "xtool-org/xtool",
       "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/xtool-org/xtool\">github.com</a></li></ul>",
-      "date_published": "2026-10-14T02:07:30.328249+00:00",
+      "date_published": "2026-10-14T02:38:08.354745+00:00",
       "tags": [
         "scrape:github-com-trending"
       ],
@@ -745,7 +1027,7 @@
       "url": "https://github.com/storytold/artcraft",
       "title": "storytold/artcraft",
       "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/storytold/artcraft\">github.com</a></li></ul>",
-      "date_published": "2026-10-14T02:07:30.328249+00:00",
+      "date_published": "2026-10-14T02:38:08.354745+00:00",
       "tags": [
         "scrape:github-com-trending"
       ],
@@ -766,7 +1048,7 @@
       "url": "https://github.com/morluto/rea",
       "title": "morluto/rea",
       "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/morluto/rea\">github.com</a></li></ul>",
-      "date_published": "2026-10-14T02:07:30.328249+00:00",
+      "date_published": "2026-10-14T02:38:08.354745+00:00",
       "tags": [
         "scrape:github-com-trending"
       ],
@@ -785,7 +1067,7 @@
     {
       "id": "2026-10-14-e86569ef914ddac",
       "url": "https://www.v2ex.com/t/1248405",
-      "title": "关于长辈抽烟的问题,有好的解决办法么?",
+      "title": "关于长辈抽烟的问题，有好的解决办法么？",
       "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.v2ex.com/t/1248405\">v2ex.com</a></li></ul>",
       "date_published": "2026-10-13T07:13:06+00:00",
       "tags": [
@@ -808,7 +1090,7 @@
       "url": "https://github.com/lyogavin/airllm",
       "title": "lyogavin/airllm",
       "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/lyogavin/airllm\">github.com</a></li></ul>",
-      "date_published": "2026-10-14T02:07:30.328249+00:00",
+      "date_published": "2026-10-14T02:38:08.354745+00:00",
       "tags": [
         "scrape:github-com-trending"
       ],
@@ -829,7 +1111,7 @@
       "url": "https://github.com/vercel-labs/skills",
       "title": "vercel-labs/skills",
       "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://github.com/vercel-labs/skills\">github.com</a></li></ul>",
-      "date_published": "2026-10-14T02:07:30.328249+00:00",
+      "date_published": "2026-10-14T02:38:08.354745+00:00",
       "tags": [
         "scrape:github-com-trending"
       ],
@@ -846,189 +1128,126 @@
       }
     },
     {
-      "id": "2026-10-14-e014d3d2b07de40",
-      "url": "https://www.v2ex.com/t/1248355",
-      "title": "用 Rust 重写一切,这次是 navicat",
-      "content_html": "<p><strong>事实</strong></p><ul><li>## 背景\n公司前阵子收到了律师函,于是通知全员删除 navicat ,个人版也不行,要求用开源的 DBeaver ,由于常年习惯了 navicat 的布局和操作习惯,实在适应不了其他工具,都 AI 时代了,索性自己撸一个吧。\n## 技术栈 &amp; 进度\nRust + GPUI ,gpui-kit 组件库 , shadcn 风格。无 WebView ,全部 UI 都用 Rust 写\n适配了 ODBC 驱动,理论上只要有 ODBC 驱动,都能连接\n| 数据库 | 状态\n| MySQL / MariaDB | ✅\n| SQLite | ✅\n| SQL Server | ✅\n| PostgreSQL |</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://www.v2ex.com/t/1248355\">v2ex.com</a></li></ul>",
-      "date_published": "2026-10-13T05:12:07+00:00",
+      "id": "2026-10-14-e29024d77069a0c",
+      "url": "https://aihot.news/items/cn2zpsopcfepfo7sjij0n30f4",
+      "title": "Google DeepMind 用 Gemma 构建端侧反诈骗检测",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/cn2zpsopcfepfo7sjij0n30f4\">aihot.news</a></li></ul>",
+      "date_published": "2026-10-14T02:05:00+00:00",
       "tags": [
-        "api:v2ex-com-topics-hot"
+        "rss:aihot-news"
       ],
       "_ai_daily": {
-        "event_id": "e014d3d2b07de40",
+        "event_id": "e29024d77069a0c",
         "source_ids": [
-          "api:v2ex-com-topics-hot"
+          "rss:aihot-news"
         ],
         "all_urls": [
-          "https://www.v2ex.com/t/1248355"
+          "https://aihot.news/items/cn2zpsopcfepfo7sjij0n30f4"
         ],
         "evidence_level": "single_source",
         "confidence": 1.0
       }
     },
     {
-      "id": "2026-10-14-ed0af34df3eb494",
-      "url": "https://www.v2ex.com/t/1248372",
-      "title": "2026 年了,还有老架构坚持 MySQL 单表数据不能超过 2000 万行",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.v2ex.com/t/1248372\">v2ex.com</a></li></ul>",
-      "date_published": "2026-10-13T06:05:14+00:00",
+      "id": "2026-10-14-e68063170a5557f",
+      "url": "https://aihot.news/items/mmsgsagw75tonh458uyhcsqhv",
+      "title": "用 Grok Bot 每日汇总推友推文到 Notion",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/mmsgsagw75tonh458uyhcsqhv\">aihot.news</a></li></ul>",
+      "date_published": "2026-10-14T00:58:59+00:00",
       "tags": [
-        "api:v2ex-com-topics-hot"
+        "rss:aihot-news"
       ],
       "_ai_daily": {
-        "event_id": "ed0af34df3eb494",
+        "event_id": "e68063170a5557f",
         "source_ids": [
-          "api:v2ex-com-topics-hot"
+          "rss:aihot-news"
         ],
         "all_urls": [
-          "https://www.v2ex.com/t/1248372"
+          "https://aihot.news/items/mmsgsagw75tonh458uyhcsqhv"
         ],
         "evidence_level": "single_source",
         "confidence": 1.0
       }
     },
     {
-      "id": "2026-10-14-e4f528c3940246e",
-      "url": "https://www.v2ex.com/t/1248260",
-      "title": "避坑恒洁卫浴,前所未见的售后体验",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.v2ex.com/t/1248260\">v2ex.com</a></li></ul>",
-      "date_published": "2026-10-13T00:36:50+00:00",
-      "tags": [
-        "api:v2ex-com-topics-hot"
-      ],
-      "_ai_daily": {
-        "event_id": "e4f528c3940246e",
-        "source_ids": [
-          "api:v2ex-com-topics-hot"
-        ],
-        "all_urls": [
-          "https://www.v2ex.com/t/1248260"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e08d12fd26f2c5e",
-      "url": "https://www.v2ex.com/t/1248324",
-      "title": "Claude 很好开啊",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Codex 额度真的消耗太快了,跟风开个 Claude 做补充\n不过 Claude 很好开啊,用之前开过的一张 Revolut ,Windows 端直接就付款成功了\n另外使用过程中有哪些注意事项吗?我在党政机关工作,希望用它来处理报表台账、公文撰写以及偶尔写点政府网站的插件扩展,会不会一张嘴就秒封了\n![PixPin_2026-10-13_10-52-37.png](\n![IMG_3013.png](</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://www.v2ex.com/t/1248324\">v2ex.com</a></li></ul>",
-      "date_published": "2026-10-13T03:20:42+00:00",
-      "tags": [
-        "api:v2ex-com-topics-hot"
-      ],
-      "_ai_daily": {
-        "event_id": "e08d12fd26f2c5e",
-        "source_ids": [
-          "api:v2ex-com-topics-hot"
-        ],
-        "all_urls": [
-          "https://www.v2ex.com/t/1248324"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-ea3c4e6497ad55a",
-      "url": "https://www.v2ex.com/t/1248259",
-      "title": "现在 AI 是不是逐渐能取代很多高水平程序员了",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.v2ex.com/t/1248259\">v2ex.com</a></li></ul>",
-      "date_published": "2026-10-13T00:35:14+00:00",
-      "tags": [
-        "api:v2ex-com-topics-hot"
-      ],
-      "_ai_daily": {
-        "event_id": "ea3c4e6497ad55a",
-        "source_ids": [
-          "api:v2ex-com-topics-hot"
-        ],
-        "all_urls": [
-          "https://www.v2ex.com/t/1248259"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e9bfd4b0d7b218a",
-      "url": "https://www.thehistoryblog.com/archives/77107",
-      "title": "Hittite royal archive found in Turkey",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://www.thehistoryblog.com/archives/77107\">thehistoryblog.com</a></li></ul>",
-      "date_published": "2026-10-13T06:02:51+00:00",
-      "tags": [
-        "api:hn-algolia-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "e9bfd4b0d7b218a",
-        "source_ids": [
-          "api:hn-algolia-com-search"
-        ],
-        "all_urls": [
-          "https://www.thehistoryblog.com/archives/77107"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-ef52220a9143d82",
-      "url": "https://simonwillison.net/2026/Oct/13/geoffrey-huntley/",
-      "title": "Quoting Geoffrey Huntley",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://simonwillison.net/2026/Oct/13/geoffrey-huntley/\">simonwillison.net</a></li></ul>",
-      "date_published": "2026-10-13T13:32:00+00:00",
-      "tags": [
-        "rss:simonwillison-net-everything"
-      ],
-      "_ai_daily": {
-        "event_id": "ef52220a9143d82",
-        "source_ids": [
-          "rss:simonwillison-net-everything"
-        ],
-        "all_urls": [
-          "https://simonwillison.net/2026/Oct/13/geoffrey-huntley/"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e07478a92f7ef74",
-      "url": "https://deepmind.google/blog/gemini-4-argon-for-robotics/",
-      "title": "Gemini 4 Argon for Robotics",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Gemini 4 Argon for Robotics</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://deepmind.google/blog/gemini-4-argon-for-robotics/\">deepmind.google</a></li></ul>",
-      "date_published": "2026-10-13T16:01:58+00:00",
+      "id": "2026-10-14-ead6172be1f54aa",
+      "url": "https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/",
+      "title": "Developing Gemini 4 Argon responsibly and safely",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/\">deepmind.google</a></li></ul>",
+      "date_published": "2026-10-13T19:43:07+00:00",
       "tags": [
         "rss:deepmind-google-blog"
       ],
       "_ai_daily": {
-        "event_id": "e07478a92f7ef74",
+        "event_id": "ead6172be1f54aa",
         "source_ids": [
           "rss:deepmind-google-blog"
         ],
         "all_urls": [
-          "https://deepmind.google/blog/gemini-4-argon-for-robotics/"
+          "https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/"
         ],
         "evidence_level": "single_source",
         "confidence": 1.0
       }
     },
     {
-      "id": "2026-10-14-e1e4cf2529ef8d7",
-      "url": "https://www.v2ex.com/t/1248258",
-      "title": "广州欢迎你",
-      "content_html": "<p><strong>事实</strong></p><ul><li>欢迎来广州旅游,哈哈哈\n旅游地址:</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://www.v2ex.com/t/1248258\">v2ex.com</a></li></ul>",
-      "date_published": "2026-10-13T00:29:12+00:00",
+      "id": "2026-10-14-e1964896e997499",
+      "url": "https://daily.juya.uk/issues/2026-10-13/",
+      "title": "2026-10-13",
+      "content_html": "<p><strong>事实</strong></p><ul><li>AI 早报 2026 10 13 视频版 ：YouTube ｜ 哔哩哔哩 概览 要闻 Meta 发布 Muse Wonder 模型系列 ↗ 1 The X Subscription 推出：整合Grok、Cursor 和 X Premium ↗ 2 Codex 第 8 天安排：重置用量额度 ↗ 3 模型发布 智谱推出法律模型 GLM Legal，开放测试申请 ↗ 4 OpenBMB 发布 MiniCPM V 4.7 系列两款模型 ↗ 5 开发生态 OpenCode Go 提供 80 美元 V4.1 Flash 额度 ↗ 6 阶跃 Step 5 Preview 上线 WorkBuddy，独家限免两</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://daily.juya.uk/issues/2026-10-13/\">daily.juya.uk</a></li></ul>",
+      "date_published": "2026-10-13T01:48:17+00:00",
       "tags": [
-        "api:v2ex-com-topics-hot"
+        "rss:daily-juya-uk"
       ],
       "_ai_daily": {
-        "event_id": "e1e4cf2529ef8d7",
+        "event_id": "e1964896e997499",
         "source_ids": [
-          "api:v2ex-com-topics-hot"
+          "rss:daily-juya-uk"
         ],
         "all_urls": [
-          "https://www.v2ex.com/t/1248258"
+          "https://daily.juya.uk/issues/2026-10-13/"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-ea0622315da250a",
+      "url": "https://deepmind.google/blog/introducing-gemini-4-argon/",
+      "title": "Gemini 4 Argon: Built to solve your hardest problems",
+      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://deepmind.google/blog/introducing-gemini-4-argon/\">deepmind.google</a></li></ul>",
+      "date_published": "2026-10-13T16:01:52+00:00",
+      "tags": [
+        "rss:deepmind-google-blog"
+      ],
+      "_ai_daily": {
+        "event_id": "ea0622315da250a",
+        "source_ids": [
+          "rss:deepmind-google-blog"
+        ],
+        "all_urls": [
+          "https://deepmind.google/blog/introducing-gemini-4-argon/"
+        ],
+        "evidence_level": "single_source",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "2026-10-14-e214e80e435ca29",
+      "url": "https://aihot.news/items/upjqhgi2dlxlrzo0gygvqtbmk",
+      "title": "Grok Bot 漏洞报告邮箱",
+      "content_html": "<p><strong>事实</strong></p><ul><li>如果你想提交 bug 报告，让你的 bot 发邮件到 tibo@mail.grokbot.com！</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/upjqhgi2dlxlrzo0gygvqtbmk\">aihot.news</a></li></ul>",
+      "date_published": "2026-10-14T02:16:02+00:00",
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "_ai_daily": {
+        "event_id": "e214e80e435ca29",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/upjqhgi2dlxlrzo0gygvqtbmk"
         ],
         "evidence_level": "single_source",
         "confidence": 1.0
@@ -1050,218 +1269,6 @@
         ],
         "all_urls": [
           "https://www.theverge.com/ai-artificial-intelligence/1009862/google-releases-gemini-4-argon"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e70822fe9fcc5d2",
-      "url": "https://aihot.news/items/t3opvzo5h7gp9yvz5rl0d41ek",
-      "title": "Gemini 4 Argon 推出至 Antigravity、GeminiApp 和搜索 AI Mode",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/t3opvzo5h7gp9yvz5rl0d41ek\">aihot.news</a></li></ul>",
-      "date_published": "2026-10-13T16:05:09+00:00",
-      "tags": [
-        "rss:aihot-news"
-      ],
-      "_ai_daily": {
-        "event_id": "e70822fe9fcc5d2",
-        "source_ids": [
-          "rss:aihot-news"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/t3opvzo5h7gp9yvz5rl0d41ek"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e46869dfd9b7a35",
-      "url": "https://deepmind.google/models/gemini/",
-      "title": "Gemini 4 Argon",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Article URL:\nComments URL:\nPoints: 180\n# Comments: 148</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>来源</strong></p><ul><li><a href=\"https://deepmind.google/models/gemini/\">deepmind.google</a></li></ul>",
-      "date_published": "2026-10-13T16:03:16+00:00",
-      "tags": [
-        "api:hn-algolia-com-search",
-        "rss:hnrss-org-frontpage"
-      ],
-      "_ai_daily": {
-        "event_id": "e46869dfd9b7a35",
-        "source_ids": [
-          "api:hn-algolia-com-search",
-          "rss:hnrss-org-frontpage"
-        ],
-        "all_urls": [
-          "https://deepmind.google/models/gemini/"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-ef7d4740c24a158",
-      "url": "https://aihot.news/items/vjruhdn4n0oshl6oeu7q2saox",
-      "title": "Google 发布 Gemini 4 Argon,面向订阅用户和开发者开放",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/vjruhdn4n0oshl6oeu7q2saox\">aihot.news</a></li></ul>",
-      "date_published": "2026-10-13T16:13:44+00:00",
-      "tags": [
-        "rss:aihot-news"
-      ],
-      "_ai_daily": {
-        "event_id": "ef7d4740c24a158",
-        "source_ids": [
-          "rss:aihot-news"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/vjruhdn4n0oshl6oeu7q2saox"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e6fb3843b56e077",
-      "url": "https://aihot.news/items/ybgzppx2oxa2u025sukbmuo47",
-      "title": "François Chollet 祝贺 Gemini 4 Argon 发布",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/ybgzppx2oxa2u025sukbmuo47\">aihot.news</a></li></ul>",
-      "date_published": "2026-10-13T16:20:16+00:00",
-      "tags": [
-        "rss:aihot-news"
-      ],
-      "_ai_daily": {
-        "event_id": "e6fb3843b56e077",
-        "source_ids": [
-          "rss:aihot-news"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/ybgzppx2oxa2u025sukbmuo47"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-ef707697afcaaa6",
-      "url": "https://aihot.news/items/wys99erqcmchl1b453p6pb8ei",
-      "title": "Gemini 4 Argon 上线 Devin",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/wys99erqcmchl1b453p6pb8ei\">aihot.news</a></li></ul>",
-      "date_published": "2026-10-13T16:22:52+00:00",
-      "tags": [
-        "rss:aihot-news"
-      ],
-      "_ai_daily": {
-        "event_id": "ef707697afcaaa6",
-        "source_ids": [
-          "rss:aihot-news"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/wys99erqcmchl1b453p6pb8ei"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e5400e7e8b1933c",
-      "url": "https://aihot.news/items/rtx1gydz2aqfhsd244a1z6w4y",
-      "title": "Google 发布 Gemini 4 Argon 并公布可用性、定价与演示",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/rtx1gydz2aqfhsd244a1z6w4y\">aihot.news</a></li></ul>",
-      "date_published": "2026-10-13T16:04:10+00:00",
-      "tags": [
-        "rss:aihot-news"
-      ],
-      "_ai_daily": {
-        "event_id": "e5400e7e8b1933c",
-        "source_ids": [
-          "rss:aihot-news"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/rtx1gydz2aqfhsd244a1z6w4y"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-eb4924628aca450",
-      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5hVjZDZU9VcWtJckg3V1F5MW1lLTBCMDFzMlFGZkZUN2M2UENpTDRBUFhBY2JIaHJWRTJnWWR3VUk3blkzMjF6WEJqdWdWRVhFV3hCQnlfaXhLQzUtSHNNbEFrYw?oc=5",
-      "title": "谷歌开始向Google AI订阅用户推出Gemini 4 Argon - 东方财富",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiY0FVX3lxTE5hVjZDZU9VcWtJckg3V1F5MW1lLTBCMDFzMlFGZkZUN2M2UENpTDRBUFhBY2JIaHJWRTJnWWR3VUk3blkzMjF6WEJqdWdWRVhFV3hCQnlfaXhLQzUtSHNNbEFrYw?oc=5\">news.google.com</a></li></ul>",
-      "date_published": "2026-10-13T16:10:41+00:00",
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "_ai_daily": {
-        "event_id": "eb4924628aca450",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5hVjZDZU9VcWtJckg3V1F5MW1lLTBCMDFzMlFGZkZUN2M2UENpTDRBUFhBY2JIaHJWRTJnWWR3VUk3blkzMjF6WEJqdWdWRVhFV3hCQnlfaXhLQzUtSHNNbEFrYw?oc=5"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-ebcf9e35482bb11",
-      "url": "https://aihot.news/items/tow9u7icr31fs0bbjshuris0y",
-      "title": "Google 官方宣布 Gemini 4 Argon 上线 API 及 Ultra 订阅",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/tow9u7icr31fs0bbjshuris0y\">aihot.news</a></li></ul>",
-      "date_published": "2026-10-13T16:08:44+00:00",
-      "tags": [
-        "rss:aihot-news"
-      ],
-      "_ai_daily": {
-        "event_id": "ebcf9e35482bb11",
-        "source_ids": [
-          "rss:aihot-news"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/tow9u7icr31fs0bbjshuris0y"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-e71e09a592ca213",
-      "url": "https://aihot.news/items/dk4crr74g7qcyj88gygbw6a04",
-      "title": "Gemini 4 Argon 上线 Gemini API 和 Google AI Studio",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/dk4crr74g7qcyj88gygbw6a04\">aihot.news</a></li></ul>",
-      "date_published": "2026-10-13T16:05:09+00:00",
-      "tags": [
-        "rss:aihot-news"
-      ],
-      "_ai_daily": {
-        "event_id": "e71e09a592ca213",
-        "source_ids": [
-          "rss:aihot-news"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/dk4crr74g7qcyj88gygbw6a04"
-        ],
-        "evidence_level": "single_source",
-        "confidence": 1.0
-      }
-    },
-    {
-      "id": "2026-10-14-ed63af6119ade52",
-      "url": "https://aihot.news/items/m60ib8cduv8r99ac05qb98kg5",
-      "title": "Gemini 4 Argon 让机器人通过看视频学会真人运动",
-      "content_html": "<p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/m60ib8cduv8r99ac05qb98kg5\">aihot.news</a></li></ul>",
-      "date_published": "2026-10-13T16:13:43+00:00",
-      "tags": [
-        "rss:aihot-news"
-      ],
-      "_ai_daily": {
-        "event_id": "ed63af6119ade52",
-        "source_ids": [
-          "rss:aihot-news"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/m60ib8cduv8r99ac05qb98kg5"
         ],
         "evidence_level": "single_source",
         "confidence": 1.0
