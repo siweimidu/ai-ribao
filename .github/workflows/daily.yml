@@ -76,7 +76,11 @@ jobs:
             code=0
           else
             python -m aidaily gate | tee gate.json
-            code=$?
+            # `${PIPESTATUS[0]}`, not `$?`: pipefail is off in a `run:` block, so `$?` is
+            # `tee`'s status and is always 0. That made the `10` branch below (already
+            # published) and the failure branch both unreachable -- every trigger looked
+            # like "go", and a crashing gate looked like "go" too.
+            code=${PIPESTATUS[0]}
           fi
           date=$(python -c "import json;print(json.load(open('gate.json'))['date'])")
           echo "date=$date" >> "$GITHUB_OUTPUT"
@@ -207,10 +211,21 @@ jobs:
             --from-items data/raw/items.jsonl \
             --site-url "$SITE_URL" \
             --analyze-limit 0 | tee publish.log
-          code=$?
+          # `${PIPESTATUS[0]}`, not `$?`. GitHub Actions runs a `run:` block as
+          # `bash -e {0}` with **pipefail off**, so `$?` after a pipeline is `tee`'s status
+          # -- and tee succeeds because it dutifully wrote the output. A crash therefore
+          # came back as 0, the job reported success, and the only symptom was that the site
+          # did not update: indistinguishable from "nothing to publish today".
+          #
+          # It also silently defeated the gate below: exit 10 read as 0, so an
+          # already-published day looked like a normal success.
+          code=${PIPESTATUS[0]}
           echo "code=$code" >> "$GITHUB_OUTPUT"
           # 10 = the gate inside `run` decided today was already delivered.
           if [ "$code" = "10" ]; then exit 0; fi
+          if [ "$code" != "0" ]; then
+            echo "::error::publish failed with exit code $code"
+          fi
           exit "$code"
 
       - name: Run summary

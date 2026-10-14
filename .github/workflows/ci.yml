@@ -154,6 +154,13 @@ jobs:
           fi
           echo "config files are clean"
 
+      - name: Workflow shell is sound
+        # `$?` after a pipeline is the *last* command's status, and a `run:` block has
+        # pipefail off. The daily workflow read `code=$?` after `... | tee publish.log`, so
+        # a crash reported success and the gate's "already published" code 10 was
+        # unreachable. The only visible symptom was that the site did not update.
+        run: bash scripts/workflow_guards.sh
+
       - name: Generated site is sound
         run: |
           # The site guards live in a script so they can be run before a push too.
