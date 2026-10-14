@@ -35,6 +35,7 @@ from datetime import datetime, timezone
 from .entities import topic_overlap
 from .models import Event, NormalizedItem, SourceSpec
 from .normalize import title_similarity
+from .titles import title_quality
 
 #: Metric names read as an engagement signal. Deliberately excludes `stars_today`: a
 #: repository gaining 1000 stars in a day is not 1000 points of news importance, and
@@ -142,13 +143,18 @@ def score_event(
     substance = min(substance_raw / max(1, rank.substance_reference_chars), 1.0)
     engagement = _engagement(members)
     recency = _recency(event, now, rank.recency_half_life_hours, rank.recency_floor)
+    # A feed entry titled `2026-10-14` is a container, not a story: it scored 1.0 on
+    # substance (the container holds a whole day of news) and reached position 3 of a real
+    # digest under the headline "2026-10-14". Demoted, never dropped -- losing a source is
+    # worse than ranking it low.
+    title_factor = title_quality(event.title)
 
     quality = 1.0 + (
         rank.corroboration * corroboration
         + rank.content_substance * substance
         + rank.engagement * engagement
     )
-    score = source_weight * quality * recency
+    score = source_weight * quality * recency * title_factor
 
     return RankedEvent(
         event=event,
@@ -160,6 +166,7 @@ def score_event(
             "substance_chars": float(substance_raw),
             "engagement": round(engagement, 3),
             "recency": round(recency, 3),
+            "title_quality": round(title_factor, 3),
             "score": round(score, 6),
         },
     )
