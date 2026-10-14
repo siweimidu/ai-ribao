@@ -600,6 +600,18 @@ def render_day(
 
     overview = _render_overview(digest, insights, translated_ids, items_by_id)
 
+    # The headline shown at the top of the page.
+    #
+    # Taken from the highest-ranked event **as displayed**, not from `digest.headline`.
+    # That field is written once when the digest is generated, so after any re-rank it
+    # describes the previous ordering: a measured run had the body leading with Gemini 4
+    # Argon while the h1 still announced an Apple smart speaker. Two elements on one page
+    # disagreeing about what the day's top story is looks like a bug to the reader, and it
+    # is one.
+    headline = _display_title(
+        digest.top_events[0], insights.get(digest.top_events[0].event_id), items_by_id
+    ) if digest.top_events else (digest.headline or digest.date)
+
     lead = ""
     for event in digest.top_events[:1]:
         insight = insights.get(event.event_id)
@@ -671,7 +683,7 @@ def render_day(
   <main class="content" id="main">
     <header class="issue__head">
       <p class="issue__date enter">{esc(digest.date)}　第 {len(ctx.archive)} 期</p>
-      <h1 class="issue__title enter">{esc(digest.headline or digest.date)}</h1>
+      <h1 class="issue__title enter">{esc(headline)}</h1>
       {f'<p class="issue__lead enter">{esc(lead[:200])}</p>' if lead else ''}
       {_stats(digest)}
     </header>

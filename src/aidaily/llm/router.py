@@ -110,6 +110,8 @@ class Router:
         env: Mapping[str, str] | None = None,
         relay_max_calls: int = 20,
         on_retry: Callable[[RateLimited], None] | None = None,
+        rate_limit_backoff: float = 2.0,
+        rate_limit_backoff_max: float = 30.0,
     ) -> None:
         self.env = env if env is not None else os.environ
         self.providers = sorted(
@@ -122,6 +124,8 @@ class Router:
         self._relay_calls = 0
         self._lock = asyncio.Lock()
         self._on_retry = on_retry
+        self._rate_limit_backoff = rate_limit_backoff
+        self._rate_limit_backoff_max = rate_limit_backoff_max
 
     # --- provider bookkeeping ---------------------------------------------------
     def mark_dead(self, provider_id: str, reason: str) -> None:
@@ -178,11 +182,39 @@ class Router:
                     last_error = exc
                     break
                 except RateLimited as exc:
-                    # Daily quota -> done for today; transient 429 -> also done for this
-                    # run, because waiting inside a scheduled job wastes the job.
-                    self.mark_dead(spec.id, f"rate_limited(daily={exc.daily}): {exc}")
-                    if self._on_retry:
-                        self._on_retry(exc)
+                    # Two different things were being treated as one.
+                    #
+                    # A **daily** cap means the provider is finished until tomorrow, and
+                    # waiting is pointless. A **transient** 429 means "slow down" -- the
+                    # provider is fine and will answer the next request.
+                    #
+                    # Marking both dead ended the run's use of that provider on its first
+                    # transient 429. Measured against the relay endpoint: fifty calls
+                    # succeeded, the fifty-first hit a momentary limit, the provider was
+                    # marked dead, and the remaining 47 of 60 events fell back to rule-based
+                    # English summaries. Probing the same endpoint immediately afterwards
+                    # answered eight consecutive requests in about a second each -- the
+                    # credential was never exhausted; the router simply stopped using it.
+                    if exc.daily:
+                        self.mark_dead(spec.id, f"rate_limited(daily=True): {exc}")
+                        last_error = exc
+                        break
+
+                    if attempt == 1:
+                        delay = exc.retry_after if exc.retry_after else self._rate_limit_backoff
+                        # Cap it: a provider that asks for ten minutes is not worth the
+                        # job's time budget, and the next candidate should get a turn.
+                        delay = min(float(delay), self._rate_limit_backoff_max)
+                        self.stats.note("rate_limited_retry", provider=spec.id,
+                                        wait_s=round(delay, 1), error=str(exc)[:120])
+                        if self._on_retry:
+                            self._on_retry(exc)
+                        await asyncio.sleep(delay)
+                        continue
+
+                    # Still limited after waiting: stop using it for this run, but record it
+                    # as unavailable rather than dead, because the credential is fine.
+                    self.stats.failures[spec.id] = f"rate_limited: {exc}"[:200]
                     last_error = exc
                     break
                 except UnsupportedParam as exc:

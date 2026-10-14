@@ -55,8 +55,9 @@ class HeatWeights:
     #: Independent sources. The heaviest term: "many people are saying it" is the closest
     #: thing to an objective measure of newsworthiness this pipeline has.
     corroboration: float = 0.28
-    #: Frontier-model release / official announcement. This is what makes Gemini 4 Argon
-    #: lead the issue, and it is the term a pure engagement model cannot see.
+    #: Frontier-model release / official announcement. The second-heaviest term, and the one
+    #: that carries the *convex* mapping -- see `_magnitude`. A pure engagement model cannot
+    #: see this signal at all, which is how a smart speaker outranked Gemini 4 Argon.
     magnitude: float = 0.25
     #: Points and comments, where the source exposes them.
     engagement: float = 0.13
@@ -100,16 +101,29 @@ def _corroboration(event: Event, weights: HeatWeights) -> float:
 
 
 def _magnitude(event: Event) -> tuple[float, dict]:
-    """How big the news itself is, independent of who reported it."""
+    """How big the news itself is, independent of who reported it.
+
+    Mapped onto [0, 1] **convexly**, and the convexity is the point.
+
+    `significance()` returns 1.0 for ordinary news, 2.2 for an announcement, and 3.2 for a
+    frontier lab shipping a named model. Mapping that linearly onto [0, 1] was not enough:
+    a measured run put "Apple 发布 7 英寸智能音箱 HomeView" (2.2 -- it has a release verb and
+    a lab name) at heat 0.664, above "Google finally releases Gemini 4 Argon" (3.2) at 0.605,
+    because the speaker was corroborated by more outlets. A smart speaker led the digest on
+    the day a frontier model shipped.
+
+    Squaring the normalised value widens the gap between "someone announced something" and
+    "a frontier model launched", so the latter wins unless the former is *vastly* more
+    widely reported. Importance is a stronger signal than reach, which is what the user
+    asked for: 最火爆的消息 must not mean only the most-repeated one.
+    """
     score, components = significance(
         event.title,
         independent_sources=event.independent_source_count,
         urls=event.all_urls,
     )
-    # `significance` returns a multiplier with a floor of 1.0 and a ceiling of 3.2; map that
-    # onto [0, 1] so it composes with the other normalised terms.
-    normalised = max(0.0, min(1.0, (score - 1.0) / 2.2))
-    return normalised, components
+    linear = max(0.0, min(1.0, (score - 1.0) / 2.2))
+    return linear * linear, {**components, "magnitude_linear": round(linear, 4)}
 
 
 def _engagement(items: list[NormalizedItem]) -> float:

@@ -102,7 +102,17 @@ llm:
   tiers: [official-free, relay]
   max_calls_per_run: 400
   max_tokens_per_run: 2000000
-  relay_max_calls_per_run: 20   # 中转站不可信，硬限制调用量
+  # Relay (third-party OpenAI-compatible) call ceiling per run.
+  #
+  # 20 was set when the relay was only a fallback for a handful of entries the official
+  # free tiers could not cover. That number is now the binding constraint on the digest
+  # being readable: a full day is ~60 events, and when the official tiers are rate limited
+  # (measured: `gemini: HTTP 429 daily`, `groq: HTTP 429`) the relay is the only path that
+  # produces Chinese. At 20, forty entries render the source's own English headline.
+  #
+  # 120 leaves headroom for the ~60 analyses plus retries while still bounding a runaway
+  # loop. The per-run token budget remains the real cost guard.
+  relay_max_calls_per_run: 120   # 中转站不可信，硬限制调用量
   request_timeout_s: 120
   batch_size:
     summarize: 8                # daybrief 实测：8 条一批可省数倍调用
