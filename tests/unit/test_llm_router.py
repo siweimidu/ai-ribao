@@ -474,16 +474,74 @@ def test_providers_from_env_only_includes_keys_that_exist() -> None:
     assert got[0].tier == "official-free"
 
 
-def test_providers_from_env_parses_relay_json_and_dedupes() -> None:
+def test_providers_from_env_keeps_every_key_on_a_host() -> None:
+    """Rotation within one host, which is the normal case rather than an edge case.
+
+    This test used to assert the opposite -- it was named `..._and_dedupes` and required
+    `len(got) == 2`, keeping only the first key per `baseUrl`. **The test was protecting the
+    bug.** A provider id was derived from the host alone, so a daily-limited key was
+    recorded dead under an id shared by every key on that host, and one exhausted credential
+    retired all the others.
+
+    The requirement is the opposite of a dedupe: "我一个密钥的免费额度耗完不能自动切下一个".
+    The measured key file has 13 keys for `api.hcnsec.cn`; without this, twelve are
+    unreachable.
+    """
     relay = json.dumps([
-        {"baseUrl": "https://a.example/v1", "key": "k1", "label": "A"},
-        {"baseUrl": "https://a.example/v1", "key": "k2", "label": "A dup"},
-        {"baseUrl": "https://b.example/v1", "key": "k3", "label": "B"},
+        {"baseUrl": "https://a.example/v1", "key": "k1", "label": "A1"},
+        {"baseUrl": "https://a.example/v1", "key": "k2", "label": "A2"},
+        {"baseUrl": "https://a.example/v1", "key": "k3", "label": "A3"},
+        {"baseUrl": "https://b.example/v1", "key": "k4", "label": "B1"},
     ])
     got = providers_from_env({"RELAY_KEYS_JSON": relay}, include_relay=True)
-    assert len(got) == 2
+
+    assert len(got) == 4, "每一把密钥都必须保留"
     assert all(p.tier == "relay" for p in got)
     assert all(p.key_literal for p in got)
+
+    # Ids unique per key, not per host: `mark_dead` keys off the id.
+    ids = [p.id for p in got]
+    assert len(set(ids)) == 4
+    assert ids == [f"relay:a.example#0", "relay:a.example#1", "relay:a.example#2",
+                   "relay:b.example#0"]
+
+    # The label survives, so a failure report can name the account.
+    assert [p.note for p in got[:3]] == ["A1", "A2", "A3"]
+
+
+def test_relay_rows_without_a_key_or_url_are_dropped() -> None:
+    relay = json.dumps([
+        {"baseUrl": "https://a.example/v1", "key": "k1"},
+        {"baseUrl": "", "key": "k2"},
+        {"baseUrl": "https://a.example/v1", "key": ""},
+        {"baseUrl": "https://a.example/v1", "key": "k3"},
+    ])
+    got = providers_from_env({"RELAY_KEYS_JSON": relay}, include_relay=True)
+    assert [p.id for p in got] == ["relay:a.example#0", "relay:a.example#1"]
+
+
+def test_relay_is_read_from_the_environment_alone() -> None:
+    """A configured secret must not be ignored because a flag was not passed.
+
+    The workflow sets `RELAY_KEYS_JSON` from a secret and invokes `run` with no
+    `--relay-keys` flag. The gate used to be the flag alone
+    (`include_relay=bool(args.relay_keys)`), so production populated the variable and the
+    router never read it: no error, no relay, and a digest that quietly degraded to English
+    rule-based summaries. A configured credential the code declines to read is
+    indistinguishable from a missing one.
+
+    `providers_from_env` already required the variable to be present; the fix is that the
+    caller passes `include_relay` when **either** the flag or the variable is set. This
+    asserts the router half of that contract.
+    """
+    relay = json.dumps([{"baseUrl": "https://a.example/v1", "key": "k1", "model": "m"}])
+    env = {"RELAY_KEYS_JSON": relay}
+
+    assert providers_from_env(env, include_relay=False) == []
+    # What `_build_router` now computes: flag OR variable.
+    got = providers_from_env(env, include_relay=bool(env.get("RELAY_KEYS_JSON")))
+    assert len(got) == 1
+    assert got[0].model == "m"
 
 
 def test_providers_from_env_ignores_malformed_relay_json() -> None:

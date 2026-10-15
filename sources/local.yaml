@@ -67,3 +67,732 @@ sources:
     license_note: >-
       数据使用受 https://aihot.news/terms 约束，非 MIT；其代码为 MIT。
       页面须保留署名与原文/canonical 链接。
+
+  # ══════════════════════════════════════════════════════════════════════════════
+  # 用户提供的源（2026-10-15 逐个实测核验）
+  #
+  # 核验方式：scripts/verify_sources.py，检查可达性 / 是否为 feed / 是否与 AI 相关。
+  # 结果留档于 data/state/source_verification.json。
+  #
+  # 两条核验教训（都是测量错误，不是源的问题）：
+  #   1. 超时设 30s 太短。xlab.app 实测 10.7s、hex2077 实测 20.5s 才返回，
+  #      被误判为「不可达」。慢不等于死。
+  #   2. AI 判定原先用 `title or summary`，于是标题只有日期的 feed
+  #      （CloudFlare 日报的标题是「2026-10-15日刊」）正文从未被检查，
+  #      被误判为「与 AI 无关」。标题和正文都要看。
+  #
+  # 分组说明：12 个 AIHOT feed 是**同一发布者的 12 个视图**
+  # （category 分类 feed 是 all.xml 的子集），必须同属一个 dedup_group，
+  # 否则同一条新闻会被算成两个独立来源 —— 而 independent_source_count
+  # 是热度排序里最重的信号、也是「多源验证」徽标的依据，
+  # 不能变成本流水线自己制造出来的数字。
+  # 微信公众号同理：机器之心有 3 个镜像地址、新智元 2 个、宝玉 2 个。
+  # 其他 AI 日报**各自成组**（它们是不同发布者，两家报道同一条是真交叉验证；
+  # 但同一家的 RSS/JSON 两个变体不能对自己重复计数）。
+  # ══════════════════════════════════════════════════════════════════════════════
+
+  # ── AIHOT 其余视图（dedup_group: aihot）────────────────────────────────────
+  - source_id: "rss:aihot-news-daily"
+    name: "AIHOT 日报"
+    url: "https://aihot.news/feed/daily.xml"
+    category: "digest"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 2
+    polling_interval: "6h"
+    timeout_s: 45
+    dedup_group: "aihot"
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      AIHOT 是人工编辑过的中文精选；这些是它的日/周/月报与分类视图，覆盖「精选」之外的选题分面。与 all.xml 同属一个 dedup_group，因此不会重复计入独立来源数。
+    notes: >-
+      2026-10-15 核验：实测可用，实测 30 条。
+  - source_id: "rss:aihot-news-full"
+    name: "AIHOT 全文"
+    url: "https://aihot.news/feed/full.xml"
+    category: "digest"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 2
+    polling_interval: "6h"
+    timeout_s: 45
+    dedup_group: "aihot"
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      AIHOT 是人工编辑过的中文精选；这些是它的日/周/月报与分类视图，覆盖「精选」之外的选题分面。与 all.xml 同属一个 dedup_group，因此不会重复计入独立来源数。
+    notes: >-
+      2026-10-15 核验：实测可用，实测 50 条。
+  - source_id: "rss:aihot-news-weekly"
+    name: "AIHOT 周报"
+    url: "https://aihot.news/feed/weekly.xml"
+    category: "digest"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 3
+    polling_interval: "6h"
+    timeout_s: 45
+    dedup_group: "aihot"
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      AIHOT 是人工编辑过的中文精选；这些是它的日/周/月报与分类视图，覆盖「精选」之外的选题分面。与 all.xml 同属一个 dedup_group，因此不会重复计入独立来源数。
+    notes: >-
+      2026-10-15 核验：实测可用，实测 12 条。
+  - source_id: "rss:aihot-news-monthly"
+    name: "AIHOT 月报"
+    url: "https://aihot.news/feed/monthly.xml"
+    category: "digest"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 4
+    polling_interval: "6h"
+    timeout_s: 45
+    dedup_group: "aihot"
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      AIHOT 是人工编辑过的中文精选；这些是它的日/周/月报与分类视图，覆盖「精选」之外的选题分面。与 all.xml 同属一个 dedup_group，因此不会重复计入独立来源数。
+    notes: >-
+      2026-10-15 核验：实测可用，实测 5 条。
+  - source_id: "rss:aihot-cat-models"
+    name: "AIHOT 模型分类"
+    url: "https://aihot.news/feed/category/ai-models.xml"
+    category: "model"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 2
+    polling_interval: "6h"
+    timeout_s: 45
+    dedup_group: "aihot"
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      AIHOT 是人工编辑过的中文精选；这些是它的日/周/月报与分类视图，覆盖「精选」之外的选题分面。与 all.xml 同属一个 dedup_group，因此不会重复计入独立来源数。
+    notes: >-
+      2026-10-15 核验：实测可用，实测 18 条。
+  - source_id: "rss:aihot-cat-products"
+    name: "AIHOT 产品分类"
+    url: "https://aihot.news/feed/category/ai-products.xml"
+    category: "product"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 3
+    polling_interval: "6h"
+    timeout_s: 45
+    dedup_group: "aihot"
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      AIHOT 是人工编辑过的中文精选；这些是它的日/周/月报与分类视图，覆盖「精选」之外的选题分面。与 all.xml 同属一个 dedup_group，因此不会重复计入独立来源数。
+    notes: >-
+      2026-10-15 核验：实测可用，实测 19 条。
+  - source_id: "rss:aihot-cat-industry"
+    name: "AIHOT 行业分类"
+    url: "https://aihot.news/feed/category/industry.xml"
+    category: "news"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 3
+    polling_interval: "6h"
+    timeout_s: 45
+    dedup_group: "aihot"
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      AIHOT 是人工编辑过的中文精选；这些是它的日/周/月报与分类视图，覆盖「精选」之外的选题分面。与 all.xml 同属一个 dedup_group，因此不会重复计入独立来源数。
+    notes: >-
+      2026-10-15 核验：实测可用，实测 28 条。
+  - source_id: "rss:aihot-cat-paper"
+    name: "AIHOT 论文分类"
+    url: "https://aihot.news/feed/category/paper.xml"
+    category: "paper"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 3
+    polling_interval: "6h"
+    timeout_s: 45
+    dedup_group: "aihot"
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      AIHOT 是人工编辑过的中文精选；这些是它的日/周/月报与分类视图，覆盖「精选」之外的选题分面。与 all.xml 同属一个 dedup_group，因此不会重复计入独立来源数。
+    notes: >-
+      2026-10-15 核验：实测可用，实测 11 条。
+  - source_id: "rss:aihot-cat-tip"
+    name: "AIHOT 教程分类"
+    url: "https://aihot.news/feed/category/tip.xml"
+    category: "dev"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 4
+    polling_interval: "6h"
+    timeout_s: 45
+    dedup_group: "aihot"
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      AIHOT 是人工编辑过的中文精选；这些是它的日/周/月报与分类视图，覆盖「精选」之外的选题分面。与 all.xml 同属一个 dedup_group，因此不会重复计入独立来源数。
+    notes: >-
+      2026-10-15 核验：实测可用，实测 14 条。
+  - source_id: "rss:aihot-cat-opinion"
+    name: "AIHOT 观点分类"
+    url: "https://aihot.news/feed/category/opinion.xml"
+    category: "community"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 4
+    polling_interval: "6h"
+    timeout_s: 45
+    dedup_group: "aihot"
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      AIHOT 是人工编辑过的中文精选；这些是它的日/周/月报与分类视图，覆盖「精选」之外的选题分面。与 all.xml 同属一个 dedup_group，因此不会重复计入独立来源数。
+    notes: >-
+      2026-10-15 核验：实测可用，实测 6 条。
+
+  # ── 机器之心 的多镜像（dedup_group: jiqizhixin）────────────────────
+  - source_id: "rss:wechat-jiqizhixin-xlab"
+    name: "机器之心"
+    url: "https://wechat2rss.xlab.app/feed/51e92aad2728acdd1fda7314be32b16639353001.xml"
+    category: "zh-media"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 1
+    polling_interval: "6h"
+    timeout_s: 45
+    dedup_group: "jiqizhixin"
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      机器之心是中文 AI 报道的主力源之一。三个镜像地址是同一发布者，同组去重；镜像并存是为了在某一个中转站失效时仍有备份。
+    notes: >-
+      2026-10-15 核验：本地实测超时（需 CI 复核）。
+  - source_id: "rss:wechat-jiqizhixin-bestblogs"
+    name: "机器之心"
+    url: "https://wechat2rss.bestblogs.dev/feed/8d97af31b0de9e48da74558af128a4673d78c9a3.xml"
+    category: "zh-media"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 2
+    polling_interval: "6h"
+    timeout_s: 45
+    dedup_group: "jiqizhixin"
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      机器之心是中文 AI 报道的主力源之一。三个镜像地址是同一发布者，同组去重；镜像并存是为了在某一个中转站失效时仍有备份。
+    notes: >-
+      2026-10-15 核验：本地实测超时（需 CI 复核）。
+  - source_id: "rss:wechat-jiqizhixin-decemberpei"
+    name: "机器之心"
+    url: "https://decemberpei.cyou/rssbox/wechat-jiqizhixin.xml"
+    category: "zh-media"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 3
+    polling_interval: "6h"
+    timeout_s: 45
+    dedup_group: "jiqizhixin"
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      机器之心是中文 AI 报道的主力源之一。三个镜像地址是同一发布者，同组去重；镜像并存是为了在某一个中转站失效时仍有备份。
+    notes: >-
+      2026-10-15 核验：本地实测超时（需 CI 复核）。
+
+  # ── 新智元 的多镜像（dedup_group: xinzhiyuan）────────────────────
+  - source_id: "rss:wechat-xinzhiyuan-xlab"
+    name: "新智元"
+    url: "https://wechat2rss.xlab.app/feed/ede30346413ea70dbef5d485ea5cbb95cca446e7.xml"
+    category: "zh-media"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 1
+    polling_interval: "6h"
+    timeout_s: 45
+    dedup_group: "xinzhiyuan"
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      新智元与机器之心并列为中文 AI 报道的另一主力。两个镜像同组。
+    notes: >-
+      2026-10-15 核验：本地实测超时（需 CI 复核）。
+  - source_id: "rss:wechat-xinzhiyuan-decemberpei"
+    name: "新智元"
+    url: "https://decemberpei.cyou/rssbox/wechat-xinzhiyuan.xml"
+    category: "zh-media"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 3
+    polling_interval: "6h"
+    timeout_s: 45
+    dedup_group: "xinzhiyuan"
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      新智元与机器之心并列为中文 AI 报道的另一主力。两个镜像同组。
+    notes: >-
+      2026-10-15 核验：本地实测超时（需 CI 复核）。
+
+  # ── 独立来源 ───────────────────────────────────────────────────────────────
+  - source_id: "rss:wechat-liangziwei"
+    name: "量子位"
+    url: "https://decemberpei.cyou/rssbox/wechat-liangziwei.xml"
+    category: "zh-media"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 1
+    polling_interval: "6h"
+    timeout_s: 45
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      中文 AI 媒体，用于补足中文语境下的行业动态与解读。
+    notes: >-
+      2026-10-15 核验：实测可用，实测 7 条。
+  - source_id: "rss:wechat-deepseek"
+    name: "DeepSeek 官方"
+    url: "https://wechat2rss.bestblogs.dev/feed/1709da4f538d4ce4fb6d7a8ba1a5a1c297919601.xml"
+    category: "lab-official"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 1
+    polling_interval: "6h"
+    timeout_s: 45
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      厂商官方公众号，属一手信源，优先级等同实验室官网 —— 新模型发布这类消息在这里最早出现。
+    notes: >-
+      2026-10-15 核验：本地实测超时（需 CI 复核）。
+  - source_id: "rss:wechat-zhipu"
+    name: "智谱官方"
+    url: "https://wechat2rss.bestblogs.dev/feed/433d2134dca54d80804daf32e8be546155be3300.xml"
+    category: "lab-official"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 1
+    polling_interval: "6h"
+    timeout_s: 45
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      厂商官方公众号，属一手信源，优先级等同实验室官网 —— 新模型发布这类消息在这里最早出现。
+    notes: >-
+      2026-10-15 核验：本地实测超时（需 CI 复核）。
+  - source_id: "rss:wechat-hunyuan"
+    name: "腾讯混元官方"
+    url: "https://wechat2rss.bestblogs.dev/feed/306ce19a1ca590c9c2df781789e828d1acfa1356.xml"
+    category: "lab-official"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 1
+    polling_interval: "6h"
+    timeout_s: 45
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      厂商官方公众号，属一手信源，优先级等同实验室官网 —— 新模型发布这类消息在这里最早出现。
+    notes: >-
+      2026-10-15 核验：本地实测超时（需 CI 复核）。
+  - source_id: "rss:wechat-shenkeji"
+    name: "DeepTech深科技"
+    url: "https://decemberpei.cyou/rssbox/wechat-shenkeji.xml"
+    category: "zh-media"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 2
+    polling_interval: "6h"
+    timeout_s: 45
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      中文 AI 媒体，用于补足中文语境下的行业动态与解读。
+    notes: >-
+      2026-10-15 核验：实测可用，实测 4 条。
+  - source_id: "rss:wechat-paperweekly"
+    name: "PaperWeekly"
+    url: "https://decemberpei.cyou/rssbox/wechat-paperweekly.xml"
+    category: "paper"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 2
+    polling_interval: "6h"
+    timeout_s: 45
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      论文与学术向内容，用于补足研究进展。
+    notes: >-
+      2026-10-15 核验：实测可用，实测 5 条。
+  - source_id: "rss:wechat-jisuanjishijuelife"
+    name: "计算机视觉life"
+    url: "https://decemberpei.cyou/rssbox/wechat-jisuanjishijuelife.xml"
+    category: "paper"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 3
+    polling_interval: "6h"
+    timeout_s: 45
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      论文与学术向内容，用于补足研究进展。
+    notes: >-
+      2026-10-15 核验：本地实测超时（需 CI 复核）。
+  - source_id: "rss:wechat-aiqianxian"
+    name: "AI前线"
+    url: "https://decemberpei.cyou/rssbox/wechat-aiqianxian.xml"
+    category: "zh-media"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 2
+    polling_interval: "6h"
+    timeout_s: 45
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      中文 AI 媒体，用于补足中文语境下的行业动态与解读。
+    notes: >-
+      2026-10-15 核验：实测可用，实测 3 条。
+  - source_id: "rss:wechat-xixiaoyaokejishuo"
+    name: "夕小瑶科技说"
+    url: "https://decemberpei.cyou/rssbox/wechat-xixiaoyaokejishuo.xml"
+    category: "zh-media"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 3
+    polling_interval: "6h"
+    timeout_s: 45
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      中文 AI 媒体，用于补足中文语境下的行业动态与解读。
+    notes: >-
+      2026-10-15 核验：实测可用，实测 2 条。
+  - source_id: "rss:wechat-jizhijvlebu"
+    name: "集智俱乐部"
+    url: "https://decemberpei.cyou/rssbox/wechat-jizhijvlebu.xml"
+    category: "paper"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 3
+    polling_interval: "6h"
+    timeout_s: 45
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      论文与学术向内容，用于补足研究进展。
+    notes: >-
+      2026-10-15 核验：本地实测超时（需 CI 复核）。
+  - source_id: "rss:wechat-ai-cv-xlab"
+    name: "我爱计算机视觉"
+    url: "https://wechat2rss.xlab.app/feed/b81ffcfff1107b5265cd7e39de610dc7ca72caf4.xml"
+    category: "paper"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 3
+    polling_interval: "6h"
+    timeout_s: 45
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      论文与学术向内容，用于补足研究进展。
+    notes: >-
+      2026-10-15 核验：本地实测超时（需 CI 复核）。
+
+  # ── 宝玉的分享 的多镜像（dedup_group: baoyu）────────────────────
+  - source_id: "rss:baoyu-io"
+    name: "宝玉的分享"
+    url: "https://baoyu.io/feed.xml"
+    category: "community"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 2
+    polling_interval: "6h"
+    timeout_s: 45
+    dedup_group: "baoyu"
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      宝玉长期翻译并解读海外 AI 一手消息，是中文圈少见的「翻译准确且附原文」的源。两个 feed（长文/短讯）同组。
+    notes: >-
+      2026-10-15 核验：本地实测超时（需 CI 复核）。
+  - source_id: "rss:baoyu-s"
+    name: "宝玉的分享（短）"
+    url: "https://s.baoyu.io/feed.xml"
+    category: "community"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 3
+    polling_interval: "6h"
+    timeout_s: 45
+    dedup_group: "baoyu"
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      宝玉长期翻译并解读海外 AI 一手消息，是中文圈少见的「翻译准确且附原文」的源。两个 feed（长文/短讯）同组。
+    notes: >-
+      2026-10-15 核验：本地实测超时（需 CI 复核）。
+
+  # ── 独立来源 ───────────────────────────────────────────────────────────────
+  - source_id: "rss:leovan-me"
+    name: "范叶亮的博客"
+    url: "https://leovan.me/cn/index.xml"
+    category: "dev"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 3
+    polling_interval: "6h"
+    timeout_s: 45
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      作者持续输出 AI 相关技术内容，用于补充工程视角。
+    notes: >-
+      2026-10-15 核验：本地实测超时（需 CI 复核）。
+  - source_id: "rss:wangyi-ai"
+    name: "Yi's blog"
+    url: "https://wangyi.ai/atom.xml"
+    category: "dev"
+    language: "en"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 3
+    polling_interval: "6h"
+    timeout_s: 45
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      作者持续输出 AI 相关技术内容，用于补充工程视角。
+    notes: >-
+      2026-10-15 核验：实测可用，实测 20 条。
+  - source_id: "rss:cf-ai-insight-daily"
+    name: "CloudFlare AI 资讯日报"
+    url: "https://justlovemaki.github.io/CloudFlare-AI-Insight-Daily/rss.xml"
+    category: "digest"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 3
+    polling_interval: "6h"
+    timeout_s: 45
+    dedup_group: "cf-ai-insight"
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      其他 AI 日报，用于扩大覆盖面；每个发布者独立成组。注意它们是**二手聚合**，引用时应指向原文而非它们。
+    notes: >-
+      2026-10-15 核验：本地实测超时（需 CI 复核）。
+  - source_id: "rss:unclejoeyao-ai-daily"
+    name: "unclejoeyao AI 早报"
+    url: "https://unclejoeyao666.github.io/ai-daily-news/rss.xml"
+    category: "digest"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 4
+    polling_interval: "6h"
+    timeout_s: 45
+    dedup_group: "unclejoeyao"
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      其他 AI 日报，用于扩大覆盖面；每个发布者独立成组。注意它们是**二手聚合**，引用时应指向原文而非它们。
+    notes: >-
+      2026-10-15 核验：本地实测超时（需 CI 复核）。
+  - source_id: "rss:daily-ai225"
+    name: "daily.ai225"
+    url: "https://daily.ai225.com/rss.xml"
+    category: "digest"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 4
+    polling_interval: "6h"
+    timeout_s: 45
+    dedup_group: "ai225"
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      其他 AI 日报，用于扩大覆盖面；每个发布者独立成组。注意它们是**二手聚合**，引用时应指向原文而非它们。
+    notes: >-
+      2026-10-15 核验：本地实测超时（需 CI 复核）。
+
+  # ── 独立来源 ───────────────────────────────────────────────────────────────
+  - source_id: "rss:hex2077"
+    name: "hex2077 AI 日刊"
+    url: "https://hex2077.dev/rss.xml"
+    category: "digest"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 4
+    polling_interval: "6h"
+    timeout_s: 45
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      其他 AI 日报，用于扩大覆盖面；每个发布者独立成组。注意它们是**二手聚合**，引用时应指向原文而非它们。
+    notes: >-
+      2026-10-15 核验：本地实测超时（需 CI 复核）。
+  - source_id: "rss:ai-hubtoday"
+    name: "ai.hubtoday"
+    url: "https://ai.hubtoday.app/rss.xml"
+    category: "digest"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 4
+    polling_interval: "6h"
+    timeout_s: 45
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      其他 AI 日报，用于扩大覆盖面；每个发布者独立成组。注意它们是**二手聚合**，引用时应指向原文而非它们。
+    notes: >-
+      2026-10-15 核验：本地实测超时（需 CI 复核）。
+  - source_id: "rss:podrss-1874"
+    name: "podrss AI 播报"
+    url: "https://podrss.1874.run/rss.xml"
+    category: "digest"
+    language: "zh"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 4
+    polling_interval: "6h"
+    timeout_s: 45
+    found_in:
+      - "user-list:2026-10-15#用户提供的信息源清单"
+    why: >-
+      其他 AI 日报，用于扩大覆盖面；每个发布者独立成组。注意它们是**二手聚合**，引用时应指向原文而非它们。
+    notes: >-
+      2026-10-15 核验：本地实测超时（需 CI 复核）。
+
+  # ══ 用户清单中**未收录**的源（附实测理由）══════════════════════════════════════
+  #
+  # 用户明确要求「我只要和AI相关的」，且源清单未经他本人核验。
+  # 下面这些不收录，每条都写明测量结果 —— 而不是默默丢掉。
+  #   高军AI日报                     2026-10-15 实测 404，feed 不存在
+  #   Builders Digest            2026-10-15 实测 404
+  #   Ken AI日报                   2026-10-15 实测 404
+  #   yanxiuzi AI brief          2026-10-15 实测 404
+  #   lhdbot AI新闻日报              2026-10-15 实测 404
+  #   vigor AI Daily Digest      2026-10-15 实测 404
+  #   LeeFeee AI行业日报             2026-10-15 实测 404
+  #   Park AI日报                  2026-10-15 实测 404
+  #   yeekal AI Daily            2026-10-15 实测 404
+  #   海外独角兽                      可用但实测与 AI 无关（ai_hits=0），用户要求只收 AI 相关
+  #   甲子光年                       可用但实测与 AI 无关（ai_hits=0）
+  #   Kaichao You                可用但实测与 AI 无关（ai_hits=0，系统方向博客）
+  #   Changkun's Blog            可用但 285 条中仅 6 个 AI 命中，属通用技术博客
+  #   謝懿Shine                    2026-10-15 DNS 解析失败（getaddrinfo），域名不可达
+  #   TG AI_News_CN              本地实测连接失败；Telegram 在境内不可达，须由 CI（美国 runner）复核
+  #   TG aipluscn                同上
+  #   TG ai_copilot_channel      同上
+  #   TG rollerrolling           同上
+  #   TG followbun               同上

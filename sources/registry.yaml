@@ -1,4 +1,4 @@
-generated_at: '2026-10-14T05:39:52.645245+00:00'
+generated_at: '2026-10-15T14:00:34.834566+00:00'
 generated_by: scripts/build_registry.py
 source_of_truth: audit/sources_ledger.json (static audit of six repositories) + sources/local.yaml (later additions)
 policy:
@@ -6,11 +6,11 @@ policy:
   coverage_guard: tests/contract/test_source_coverage.py asserts every provenance entry survives.
 stats:
   url_level_rows_before_merge: 100
-  parameter_rows_merged: 19
+  parameter_rows_merged: -17
   merge_breakdown:
     google_trends: 21
-  unique_sources: 81
-  provenance_rows: 109
+  unique_sources: 117
+  provenance_rows: 145
   by_repository:
     CloudFlare-AI-Insight-Daily: 11
     Horizon: 45
@@ -26,31 +26,31 @@ stats:
     daily-briefing: 1
     dailydawn: 19
     daybrief: 5
-  added_locally: 1
+  added_locally: 37
   by_source_type:
     api: 32
     jsonfeed: 1
-    rss: 43
+    rss: 79
     scrape: 5
   by_category:
-    community: 19
+    community: 22
     dataset: 1
-    dev: 2
-    digest: 4
+    dev: 5
+    digest: 14
     example: 5
     lab-blog: 4
-    lab-official: 7
+    lab-official: 10
     media: 2
     mixed: 3
-    model: 1
-    news: 1
-    paper: 4
+    model: 2
+    news: 2
+    paper: 9
     preset: 11
-    product: 1
+    product: 2
     search: 1
     social: 1
     trend: 1
-    zh-media: 13
+    zh-media: 22
 sources:
 - source_id: rss:deepmind-google-blog
   name: Google DeepMind
@@ -255,6 +255,285 @@ sources:
   - Horizon
   params: null
   merged_parameter_rows: 1
+- source_id: rss:wechat-deepseek
+  name: DeepSeek 官方
+  url: https://wechat2rss.bestblogs.dev/feed/1709da4f538d4ce4fb6d7a8ba1a5a1c297919601.xml
+  normalized_url: https://wechat2rss.bestblogs.dev/feed/1709da4f538d4ce4fb6d7a8ba1a5a1c297919601.xml
+  domain: wechat2rss.bestblogs.dev
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：本地实测超时（需 CI 复核）。
+  why: 厂商官方公众号，属一手信源，优先级等同实验室官网 —— 新模型发布这类消息在这里最早出现。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:wechat-hunyuan
+  name: 腾讯混元官方
+  url: https://wechat2rss.bestblogs.dev/feed/306ce19a1ca590c9c2df781789e828d1acfa1356.xml
+  normalized_url: https://wechat2rss.bestblogs.dev/feed/306ce19a1ca590c9c2df781789e828d1acfa1356.xml
+  domain: wechat2rss.bestblogs.dev
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：本地实测超时（需 CI 复核）。
+  why: 厂商官方公众号，属一手信源，优先级等同实验室官网 —— 新模型发布这类消息在这里最早出现。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:wechat-zhipu
+  name: 智谱官方
+  url: https://wechat2rss.bestblogs.dev/feed/433d2134dca54d80804daf32e8be546155be3300.xml
+  normalized_url: https://wechat2rss.bestblogs.dev/feed/433d2134dca54d80804daf32e8be546155be3300.xml
+  domain: wechat2rss.bestblogs.dev
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：本地实测超时（需 CI 复核）。
+  why: 厂商官方公众号，属一手信源，优先级等同实验室官网 —— 新模型发布这类消息在这里最早出现。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:wechat-jiqizhixin-xlab
+  name: 机器之心
+  url: https://wechat2rss.xlab.app/feed/51e92aad2728acdd1fda7314be32b16639353001.xml
+  normalized_url: https://wechat2rss.xlab.app/feed/51e92aad2728acdd1fda7314be32b16639353001.xml
+  domain: wechat2rss.xlab.app
+  category: zh-media
+  categories_all:
+  - zh-media
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: jiqizhixin
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：本地实测超时（需 CI 复核）。
+  why: 机器之心是中文 AI 报道的主力源之一。三个镜像地址是同一发布者，同组去重；镜像并存是为了在某一个中转站失效时仍有备份。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:wechat-liangziwei
+  name: 量子位
+  url: https://decemberpei.cyou/rssbox/wechat-liangziwei.xml
+  normalized_url: https://decemberpei.cyou/rssbox/wechat-liangziwei.xml
+  domain: decemberpei.cyou
+  category: zh-media
+  categories_all:
+  - zh-media
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：实测可用，实测 7 条。
+  why: 中文 AI 媒体，用于补足中文语境下的行业动态与解读。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:wechat-xinzhiyuan-xlab
+  name: 新智元
+  url: https://wechat2rss.xlab.app/feed/ede30346413ea70dbef5d485ea5cbb95cca446e7.xml
+  normalized_url: https://wechat2rss.xlab.app/feed/ede30346413ea70dbef5d485ea5cbb95cca446e7.xml
+  domain: wechat2rss.xlab.app
+  category: zh-media
+  categories_all:
+  - zh-media
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: xinzhiyuan
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：本地实测超时（需 CI 复核）。
+  why: 新智元与机器之心并列为中文 AI 报道的另一主力。两个镜像同组。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:baoyu-io
+  name: 宝玉的分享
+  url: https://baoyu.io/feed.xml
+  normalized_url: https://baoyu.io/feed.xml
+  domain: baoyu.io
+  category: community
+  categories_all:
+  - community
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: baoyu
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：本地实测超时（需 CI 复核）。
+  why: 宝玉长期翻译并解读海外 AI 一手消息，是中文圈少见的「翻译准确且附原文」的源。两个 feed（长文/短讯）同组。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:aihot-news-daily
+  name: AIHOT 日报
+  url: https://aihot.news/feed/daily.xml
+  normalized_url: https://aihot.news/feed/daily.xml
+  domain: aihot.news
+  category: digest
+  categories_all:
+  - digest
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: aihot
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：实测可用，实测 30 条。
+  why: AIHOT 是人工编辑过的中文精选；这些是它的日/周/月报与分类视图，覆盖「精选」之外的选题分面。与 all.xml 同属一个 dedup_group，因此不会重复计入独立来源数。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:aihot-news-full
+  name: AIHOT 全文
+  url: https://aihot.news/feed/full.xml
+  normalized_url: https://aihot.news/feed/full.xml
+  domain: aihot.news
+  category: digest
+  categories_all:
+  - digest
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: aihot
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：实测可用，实测 50 条。
+  why: AIHOT 是人工编辑过的中文精选；这些是它的日/周/月报与分类视图，覆盖「精选」之外的选题分面。与 all.xml 同属一个 dedup_group，因此不会重复计入独立来源数。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: rss:aihot-news-picks
   name: AIHOT 编辑精选
   url: https://aihot.news/feed.xml
@@ -462,6 +741,37 @@ sources:
   - Horizon
   params: null
   merged_parameter_rows: 1
+- source_id: rss:aihot-cat-models
+  name: AIHOT 模型分类
+  url: https://aihot.news/feed/category/ai-models.xml
+  normalized_url: https://aihot.news/feed/category/ai-models.xml
+  domain: aihot.news
+  category: model
+  categories_all:
+  - model
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: aihot
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：实测可用，实测 18 条。
+  why: AIHOT 是人工编辑过的中文精选；这些是它的日/周/月报与分类视图，覆盖「精选」之外的选题分面。与 all.xml 同属一个 dedup_group，因此不会重复计入独立来源数。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: api:api-follow-is-53a9e3
   name: 'Folo 列表: 新闻聚合 (158437828119024640)'
   url: https://api.follow.is/entries?listId=158437828119024640
@@ -491,6 +801,37 @@ sources:
   - CloudFlare-AI-Insight-Daily
   params: null
   merged_parameter_rows: 1
+- source_id: rss:wechat-paperweekly
+  name: PaperWeekly
+  url: https://decemberpei.cyou/rssbox/wechat-paperweekly.xml
+  normalized_url: https://decemberpei.cyou/rssbox/wechat-paperweekly.xml
+  domain: decemberpei.cyou
+  category: paper
+  categories_all:
+  - paper
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：实测可用，实测 5 条。
+  why: 论文与学术向内容，用于补足研究进展。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: api:aibase-com
   name: AIBase (通过 Folo 列表)
   url: https://aibase.com
@@ -786,6 +1127,99 @@ sources:
   - ai-daily-sources
   params: null
   merged_parameter_rows: 1
+- source_id: rss:wechat-aiqianxian
+  name: AI前线
+  url: https://decemberpei.cyou/rssbox/wechat-aiqianxian.xml
+  normalized_url: https://decemberpei.cyou/rssbox/wechat-aiqianxian.xml
+  domain: decemberpei.cyou
+  category: zh-media
+  categories_all:
+  - zh-media
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：实测可用，实测 3 条。
+  why: 中文 AI 媒体，用于补足中文语境下的行业动态与解读。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:wechat-jiqizhixin-bestblogs
+  name: 机器之心
+  url: https://wechat2rss.bestblogs.dev/feed/8d97af31b0de9e48da74558af128a4673d78c9a3.xml
+  normalized_url: https://wechat2rss.bestblogs.dev/feed/8d97af31b0de9e48da74558af128a4673d78c9a3.xml
+  domain: wechat2rss.bestblogs.dev
+  category: zh-media
+  categories_all:
+  - zh-media
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: jiqizhixin
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：本地实测超时（需 CI 复核）。
+  why: 机器之心是中文 AI 报道的主力源之一。三个镜像地址是同一发布者，同组去重；镜像并存是为了在某一个中转站失效时仍有备份。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:wechat-shenkeji
+  name: DeepTech深科技
+  url: https://decemberpei.cyou/rssbox/wechat-shenkeji.xml
+  normalized_url: https://decemberpei.cyou/rssbox/wechat-shenkeji.xml
+  domain: decemberpei.cyou
+  category: zh-media
+  categories_all:
+  - zh-media
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：实测可用，实测 4 条。
+  why: 中文 AI 媒体，用于补足中文语境下的行业动态与解读。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: rss:wechat2rss-xlab-app-51e92aad2728acdd1fda7314be32b16639353001
   name: 机器之心
   url: https://wechat2rss.xlab.app/feed/51e92aad2728acdd1fda7314be32b16639353001.xml
@@ -1339,6 +1773,37 @@ sources:
   - dailydawn
   params: null
   merged_parameter_rows: 1
+- source_id: rss:baoyu-s
+  name: 宝玉的分享（短）
+  url: https://s.baoyu.io/feed.xml
+  normalized_url: https://s.baoyu.io/feed.xml
+  domain: s.baoyu.io
+  category: community
+  categories_all:
+  - community
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 3
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: baoyu
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：本地实测超时（需 CI 复核）。
+  why: 宝玉长期翻译并解读海外 AI 一手消息，是中文圈少见的「翻译准确且附原文」的源。两个 feed（长文/短讯）同组。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: scrape:old-reddit-com-artificial-hot
   name: r/artificial
   url: https://old.reddit.com/r/artificial/hot
@@ -1484,6 +1949,68 @@ sources:
   - CloudFlare-AI-Insight-Daily
   params: null
   merged_parameter_rows: 1
+- source_id: rss:leovan-me
+  name: 范叶亮的博客
+  url: https://leovan.me/cn/index.xml
+  normalized_url: https://leovan.me/cn/index.xml
+  domain: leovan.me
+  category: dev
+  categories_all:
+  - dev
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 3
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：本地实测超时（需 CI 复核）。
+  why: 作者持续输出 AI 相关技术内容，用于补充工程视角。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:wangyi-ai
+  name: Yi's blog
+  url: https://wangyi.ai/atom.xml
+  normalized_url: https://wangyi.ai/atom.xml
+  domain: wangyi.ai
+  category: dev
+  categories_all:
+  - dev
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 3
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：实测可用，实测 20 条。
+  why: 作者持续输出 AI 相关技术内容，用于补充工程视角。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: scrape:github-com-trending
   name: GitHub Trending
   url: https://github.com/trending?since=daily
@@ -1513,6 +2040,68 @@ sources:
   - dailydawn
   params: null
   merged_parameter_rows: 1
+- source_id: rss:aihot-news-weekly
+  name: AIHOT 周报
+  url: https://aihot.news/feed/weekly.xml
+  normalized_url: https://aihot.news/feed/weekly.xml
+  domain: aihot.news
+  category: digest
+  categories_all:
+  - digest
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 3
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: aihot
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：实测可用，实测 12 条。
+  why: AIHOT 是人工编辑过的中文精选；这些是它的日/周/月报与分类视图，覆盖「精选」之外的选题分面。与 all.xml 同属一个 dedup_group，因此不会重复计入独立来源数。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:cf-ai-insight-daily
+  name: CloudFlare AI 资讯日报
+  url: https://justlovemaki.github.io/CloudFlare-AI-Insight-Daily/rss.xml
+  normalized_url: https://justlovemaki.github.io/CloudFlare-AI-Insight-Daily/rss.xml
+  domain: justlovemaki.github.io
+  category: digest
+  categories_all:
+  - digest
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 3
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: cf-ai-insight
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：本地实测超时（需 CI 复核）。
+  why: 其他 AI 日报，用于扩大覆盖面；每个发布者独立成组。注意它们是**二手聚合**，引用时应指向原文而非它们。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: rss:raw-githubusercontent-com-ai-rss-feeds-ai-rss-feeds-news
   name: AI RSS Feeds News
   url: https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/ai-rss-feeds-news.xml
@@ -1722,6 +2311,37 @@ sources:
   - dailydawn
   params: null
   merged_parameter_rows: 1
+- source_id: rss:aihot-cat-industry
+  name: AIHOT 行业分类
+  url: https://aihot.news/feed/category/industry.xml
+  normalized_url: https://aihot.news/feed/category/industry.xml
+  domain: aihot.news
+  category: news
+  categories_all:
+  - news
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 3
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: aihot
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：实测可用，实测 28 条。
+  why: AIHOT 是人工编辑过的中文精选；这些是它的日/周/月报与分类视图，覆盖「精选」之外的选题分面。与 all.xml 同属一个 dedup_group，因此不会重复计入独立来源数。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: api:api-follow-is-b77cbe
   name: 'Folo 列表: HuggingFace Papers (158437917409783808)'
   url: https://api.follow.is/entries?listId=158437917409783808
@@ -1780,6 +2400,37 @@ sources:
   - CloudFlare-AI-Insight-Daily
   params: null
   merged_parameter_rows: 1
+- source_id: rss:aihot-cat-paper
+  name: AIHOT 论文分类
+  url: https://aihot.news/feed/category/paper.xml
+  normalized_url: https://aihot.news/feed/category/paper.xml
+  domain: aihot.news
+  category: paper
+  categories_all:
+  - paper
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 3
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: aihot
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：实测可用，实测 11 条。
+  why: AIHOT 是人工编辑过的中文精选；这些是它的日/周/月报与分类视图，覆盖「精选」之外的选题分面。与 all.xml 同属一个 dedup_group，因此不会重复计入独立来源数。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: rss:decemberpei-cyou-rssbox-wechat-paperweekly
   name: PaperWeekly
   url: https://decemberpei.cyou/rssbox/wechat-paperweekly.xml
@@ -1838,6 +2489,130 @@ sources:
   - Horizon
   params: null
   merged_parameter_rows: 1
+- source_id: rss:wechat-ai-cv-xlab
+  name: 我爱计算机视觉
+  url: https://wechat2rss.xlab.app/feed/b81ffcfff1107b5265cd7e39de610dc7ca72caf4.xml
+  normalized_url: https://wechat2rss.xlab.app/feed/b81ffcfff1107b5265cd7e39de610dc7ca72caf4.xml
+  domain: wechat2rss.xlab.app
+  category: paper
+  categories_all:
+  - paper
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 3
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：本地实测超时（需 CI 复核）。
+  why: 论文与学术向内容，用于补足研究进展。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:wechat-jisuanjishijuelife
+  name: 计算机视觉life
+  url: https://decemberpei.cyou/rssbox/wechat-jisuanjishijuelife.xml
+  normalized_url: https://decemberpei.cyou/rssbox/wechat-jisuanjishijuelife.xml
+  domain: decemberpei.cyou
+  category: paper
+  categories_all:
+  - paper
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 3
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：本地实测超时（需 CI 复核）。
+  why: 论文与学术向内容，用于补足研究进展。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:wechat-jizhijvlebu
+  name: 集智俱乐部
+  url: https://decemberpei.cyou/rssbox/wechat-jizhijvlebu.xml
+  normalized_url: https://decemberpei.cyou/rssbox/wechat-jizhijvlebu.xml
+  domain: decemberpei.cyou
+  category: paper
+  categories_all:
+  - paper
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 3
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：本地实测超时（需 CI 复核）。
+  why: 论文与学术向内容，用于补足研究进展。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:aihot-cat-products
+  name: AIHOT 产品分类
+  url: https://aihot.news/feed/category/ai-products.xml
+  normalized_url: https://aihot.news/feed/category/ai-products.xml
+  domain: aihot.news
+  category: product
+  categories_all:
+  - product
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 3
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: aihot
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：实测可用，实测 19 条。
+  why: AIHOT 是人工编辑过的中文精选；这些是它的日/周/月报与分类视图，覆盖「精选」之外的选题分面。与 all.xml 同属一个 dedup_group，因此不会重复计入独立来源数。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: api:api-tavily-com-search
   name: Tavily 检索（运行时动态查询，无静态源表）
   url: https://api.tavily.com/search
@@ -1867,6 +2642,347 @@ sources:
   - daily-briefing
   params: null
   merged_parameter_rows: 1
+- source_id: rss:wechat-jiqizhixin-decemberpei
+  name: 机器之心
+  url: https://decemberpei.cyou/rssbox/wechat-jiqizhixin.xml
+  normalized_url: https://decemberpei.cyou/rssbox/wechat-jiqizhixin.xml
+  domain: decemberpei.cyou
+  category: zh-media
+  categories_all:
+  - zh-media
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 3
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: jiqizhixin
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：本地实测超时（需 CI 复核）。
+  why: 机器之心是中文 AI 报道的主力源之一。三个镜像地址是同一发布者，同组去重；镜像并存是为了在某一个中转站失效时仍有备份。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:wechat-xinzhiyuan-decemberpei
+  name: 新智元
+  url: https://decemberpei.cyou/rssbox/wechat-xinzhiyuan.xml
+  normalized_url: https://decemberpei.cyou/rssbox/wechat-xinzhiyuan.xml
+  domain: decemberpei.cyou
+  category: zh-media
+  categories_all:
+  - zh-media
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 3
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: xinzhiyuan
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：本地实测超时（需 CI 复核）。
+  why: 新智元与机器之心并列为中文 AI 报道的另一主力。两个镜像同组。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:wechat-xixiaoyaokejishuo
+  name: 夕小瑶科技说
+  url: https://decemberpei.cyou/rssbox/wechat-xixiaoyaokejishuo.xml
+  normalized_url: https://decemberpei.cyou/rssbox/wechat-xixiaoyaokejishuo.xml
+  domain: decemberpei.cyou
+  category: zh-media
+  categories_all:
+  - zh-media
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 3
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：实测可用，实测 2 条。
+  why: 中文 AI 媒体，用于补足中文语境下的行业动态与解读。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:aihot-cat-opinion
+  name: AIHOT 观点分类
+  url: https://aihot.news/feed/category/opinion.xml
+  normalized_url: https://aihot.news/feed/category/opinion.xml
+  domain: aihot.news
+  category: community
+  categories_all:
+  - community
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 4
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: aihot
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：实测可用，实测 6 条。
+  why: AIHOT 是人工编辑过的中文精选；这些是它的日/周/月报与分类视图，覆盖「精选」之外的选题分面。与 all.xml 同属一个 dedup_group，因此不会重复计入独立来源数。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:aihot-cat-tip
+  name: AIHOT 教程分类
+  url: https://aihot.news/feed/category/tip.xml
+  normalized_url: https://aihot.news/feed/category/tip.xml
+  domain: aihot.news
+  category: dev
+  categories_all:
+  - dev
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 4
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: aihot
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：实测可用，实测 14 条。
+  why: AIHOT 是人工编辑过的中文精选；这些是它的日/周/月报与分类视图，覆盖「精选」之外的选题分面。与 all.xml 同属一个 dedup_group，因此不会重复计入独立来源数。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:ai-hubtoday
+  name: ai.hubtoday
+  url: https://ai.hubtoday.app/rss.xml
+  normalized_url: https://ai.hubtoday.app/rss.xml
+  domain: ai.hubtoday.app
+  category: digest
+  categories_all:
+  - digest
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 4
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：本地实测超时（需 CI 复核）。
+  why: 其他 AI 日报，用于扩大覆盖面；每个发布者独立成组。注意它们是**二手聚合**，引用时应指向原文而非它们。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:aihot-news-monthly
+  name: AIHOT 月报
+  url: https://aihot.news/feed/monthly.xml
+  normalized_url: https://aihot.news/feed/monthly.xml
+  domain: aihot.news
+  category: digest
+  categories_all:
+  - digest
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 4
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: aihot
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：实测可用，实测 5 条。
+  why: AIHOT 是人工编辑过的中文精选；这些是它的日/周/月报与分类视图，覆盖「精选」之外的选题分面。与 all.xml 同属一个 dedup_group，因此不会重复计入独立来源数。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:daily-ai225
+  name: daily.ai225
+  url: https://daily.ai225.com/rss.xml
+  normalized_url: https://daily.ai225.com/rss.xml
+  domain: daily.ai225.com
+  category: digest
+  categories_all:
+  - digest
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 4
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: ai225
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：本地实测超时（需 CI 复核）。
+  why: 其他 AI 日报，用于扩大覆盖面；每个发布者独立成组。注意它们是**二手聚合**，引用时应指向原文而非它们。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:hex2077
+  name: hex2077 AI 日刊
+  url: https://hex2077.dev/rss.xml
+  normalized_url: https://hex2077.dev/rss.xml
+  domain: hex2077.dev
+  category: digest
+  categories_all:
+  - digest
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 4
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：本地实测超时（需 CI 复核）。
+  why: 其他 AI 日报，用于扩大覆盖面；每个发布者独立成组。注意它们是**二手聚合**，引用时应指向原文而非它们。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:podrss-1874
+  name: podrss AI 播报
+  url: https://podrss.1874.run/rss.xml
+  normalized_url: https://podrss.1874.run/rss.xml
+  domain: podrss.1874.run
+  category: digest
+  categories_all:
+  - digest
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 4
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：本地实测超时（需 CI 复核）。
+  why: 其他 AI 日报，用于扩大覆盖面；每个发布者独立成组。注意它们是**二手聚合**，引用时应指向原文而非它们。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:unclejoeyao-ai-daily
+  name: unclejoeyao AI 早报
+  url: https://unclejoeyao666.github.io/ai-daily-news/rss.xml
+  normalized_url: https://unclejoeyao666.github.io/ai-daily-news/rss.xml
+  domain: unclejoeyao666.github.io
+  category: digest
+  categories_all:
+  - digest
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 4
+  polling_interval: 6h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: unclejoeyao
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-15 核验：本地实测超时（需 CI 复核）。
+  why: 其他 AI 日报，用于扩大覆盖面；每个发布者独立成组。注意它们是**二手聚合**，引用时应指向原文而非它们。
+  license_note: null
+  found_in:
+  - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: api:api-producthunt-com-graphql
   name: Product Hunt GraphQL
   url: https://api.producthunt.com/v2/api/graphql

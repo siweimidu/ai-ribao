@@ -52,30 +52,33 @@ def test_provenance_count_is_not_shrinking() -> None:
 
     assert expected.total() == 107, "audit ledger changed; re-audit before adjusting"
     # The audited rows must all survive *and* every locally-added source must carry its own
-    # provenance. 107 is the audited baseline; 109 is that plus the two `found_in` entries
-    # on AIHOT's curated feed (`sources/local.yaml`). Asserting `== expected` alone would
-    # fail on any local addition, and asserting a bare total would let an audited row be
-    # swapped for a local one -- so the baseline is checked for containment and the total is
-    # checked exactly.
+    # provenance. 107 is the audited baseline; the local rows are on top of it. The baseline
+    # is checked for containment so a local row cannot be swapped in for an audited one, and
+    # the local count is checked exactly so an addition has to be deliberate.
     assert all(actual[k] >= v for k, v in expected.items()), "provenance rows were lost"
+
+    # 2 from AIHOT's curated feed; 36 from the user-supplied list of 2026-10-15
+    # (`user-list:2026-10-15#用户提供的信息源清单`). Bumping this number is the point at which
+    # a human confirms a new source was added on purpose.
     local_rows = sum(v for k, v in actual.items() if k not in expected)
-    assert local_rows == 2, f"unexpected local provenance rows: {local_rows}"
-    assert actual.total() == expected.total() + 2
+    assert local_rows == 38, f"unexpected local provenance rows: {local_rows}"
+    assert actual.total() == expected.total() + 38
 
 
 def test_registry_shape_is_stable() -> None:
-    """81 endpoint-level sources: 80 audited + AIHOT's editorially curated feed.
+    """117 endpoint-level sources: 80 audited + 37 local additions.
 
     The audited 80 come from collapsing Google Trends' 20 keyword rows (counting them as
     separate sources would inflate completeness; dropping them would lose information, so
     they live in the parent source's `params`).
 
-    The 81st is `rss:aihot-news-picks`, added through `sources/local.yaml`. It is a *local*
-    addition rather than an audited one, so the number here changes only when a source is
+    The 37 local ones are AIHOT's curated feed plus the 36 sources the user supplied on
+    2026-10-15, each verified before being added (`scripts/verify_sources.py`, results in
+    `data/state/source_verification.json`). The number here changes only when a source is
     deliberately added -- which is exactly what this test is for.
     """
     sources = load_registry(REGISTRY)
-    assert len(sources) == 81
+    assert len(sources) == 117
 
     trend = [s for s in sources if s.domain == "trends.google.com"]
     assert len(trend) == 1, "the 20 trend keywords must be one source, not twenty"
@@ -90,28 +93,44 @@ def test_no_source_was_silently_enabled_or_deleted() -> None:
     Counts are asserted exactly on purpose: a drop means a source was deleted (forbidden),
     and an unexplained rise means something was enabled without review.
 
-    Current shape: 81 total = 54 collectable + 20 present-but-not-wired-up (Horizon
+    Current shape: 117 total = 90 collectable + 20 present-but-not-wired-up (Horizon
     presets/examples + Cloudflare's unregistered adapters) + 7 needing credentials.
 
-    The 81st source is AIHOT's curated feed (see `sources/local.yaml`): the audited source
-    `rss:aihot-news` points at `/feed/all.xml` (seven days of public activity) while the
-    editorial picks live at `/feed.xml`. They share `dedup_group: aihot` via
-    `sources/overrides.yaml`, so the pair cannot double-count as two independent sources.
+    AIHOT's curated feed and the 36 user-supplied sources are local additions; see
+    `sources/local.yaml`. The AIHOT pair shares `dedup_group: aihot`, and the user-supplied
+    feeds are grouped per publisher, so neither can double-count as independent sources.
     """
     sources = load_registry(REGISTRY)
     stats = registry_stats(sources)
-    assert stats["total"] == 81
-    assert stats["enabled"] == 54
+    assert stats["total"] == 117
+    assert stats["enabled"] == 90
     assert stats["disabled"] == 20, "Horizon presets/examples and unwired adapters are kept, not dropped"
     assert stats["needs_credential"] == 7
 
 
 def test_every_source_carries_provenance() -> None:
+    """Every source is traceable, in one of two forms.
+
+    An **audited** source traces to the repository it was found in (`repo:file#key`) and
+    names that repository in `repositories`.
+
+    A **locally-added** source traces to the list it came from
+    (`user-list:2026-10-15#...`) and has no originating repository -- because it has none.
+    Requiring a `repositories` entry here would mean inventing one, and a fabricated
+    provenance is worse than an absent field: it would defeat the purpose of the check while
+    appearing to satisfy it.
+    """
     for spec in load_registry(REGISTRY):
         assert spec.found_in, f"{spec.source_id} has no provenance"
-        assert spec.repositories, f"{spec.source_id} has no originating repository"
         for entry in spec.found_in:
             assert ":" in entry and "#" in entry, f"malformed provenance entry: {entry}"
+
+        audited = any(not e.startswith("user-list:") for e in spec.found_in)
+        if audited:
+            assert spec.repositories, f"{spec.source_id} has no originating repository"
+        else:
+            # Locally added: the reason it was included stands in for the audit trail.
+            assert spec.why, f"{spec.source_id} is local and states no reason for inclusion"
 
 
 def test_source_ids_are_unique() -> None:

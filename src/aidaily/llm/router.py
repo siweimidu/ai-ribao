@@ -307,19 +307,39 @@ def providers_from_env(
             rows = json.loads(env["RELAY_KEYS_JSON"])
         except (TypeError, ValueError):
             rows = []
-        seen: set[str] = set()
+
+        # Every key is kept, including several for the same host.
+        #
+        # This used to dedupe on `baseUrl` alone (`if base in seen: continue`), so a host
+        # with thirteen keys contributed exactly one provider and the other twelve were
+        # discarded before the router ever saw them. The user hit this directly: "我一个密钥
+        # 的免费额度耗完不能自动切下一个" -- which is precisely what the dedupe caused.
+        #
+        # The measured key file has 13 keys for `api.hcnsec.cn` and 3 for `open.bigmodel.cn`,
+        # so rotation within a host is the normal case rather than an edge case.
+        #
+        # Provider ids must be unique per key, not per host, because a daily-limited key is
+        # recorded dead by id -- with one id per host, exhausting any single key retired all
+        # thirteen.
+        per_host: dict[str, int] = {}
         for row in rows if isinstance(rows, list) else []:
             base = str(row.get("baseUrl") or "").rstrip("/")
             key = str(row.get("key") or "")
-            if not base or not key or base in seen:
+            if not base or not key:
                 continue
-            seen.add(base)
+            host = base.split("//")[-1].split("/")[0]
+            index = per_host.get(host, 0)
+            per_host[host] = index + 1
+            label = str(row.get("label") or "").strip()
             out.append(
                 ProviderSpec(
-                    id=f"relay:{base.split('//')[-1].split('/')[0]}",
+                    # `#n` rather than a hash of the key: a stable, readable position, and
+                    # no fingerprint of a credential in a log line or a stats dict.
+                    id=f"relay:{host}#{index}",
                     tier="relay", base_url=base,
                     model=str(row.get("model") or default_model),
                     key_literal=key, weight=len(out),
+                    note=label or None,
                 )
             )
     return out

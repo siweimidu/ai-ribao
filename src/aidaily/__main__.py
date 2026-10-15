@@ -404,7 +404,18 @@ def _build_router(args: argparse.Namespace):
         else:
             warnings.append(f"relay 密钥文件不存在：{path}")
 
-    providers = providers_from_env(env, include_relay=bool(args.relay_keys))
+    # Relay is enabled by **either** a key file or an already-populated `RELAY_KEYS_JSON`.
+    #
+    # The gate used to be `include_relay=bool(args.relay_keys)` -- the flag alone. The
+    # workflow sets `RELAY_KEYS_JSON` from a secret and calls `run` without the flag, so in
+    # production the relay was never consulted: the secret was configured, the environment
+    # variable was populated, and the router silently ignored all of it, degrading to
+    # rule-based English summaries with no error anywhere. A configured credential that the
+    # code declines to read is indistinguishable from a missing one, which is exactly the
+    # failure this project keeps having to fix.
+    providers = providers_from_env(
+        env, include_relay=bool(args.relay_keys) or bool(env.get("RELAY_KEYS_JSON"))
+    )
     if not providers:
         return None, ["未找到任何可用的模型密钥，本次未调用大模型"], None
 

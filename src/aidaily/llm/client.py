@@ -84,6 +84,12 @@ class ProviderSpec:
     timeout_s: float = 120.0
     #: lower runs first inside a tier
     weight: int = 100
+    #: Human label for the credential, from the key file's `label` field.
+    #:
+    #: For diagnosis only. With rotation across many keys, "relay:api.example.com#3 hit its
+    #: daily cap" is actionable and "a relay failed" is not -- and this is how the operator
+    #: knows *which* of their accounts to look at. Never holds a key or a hash of one.
+    note: str | None = None
 
     def resolve_key(self, env: Mapping[str, str]) -> str | None:
         if self.key_env and env.get(self.key_env):
