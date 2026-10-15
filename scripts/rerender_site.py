@@ -81,79 +81,11 @@ def load_sources() -> list[dict]:
         return []
 
 
-#: Committed snapshot of the last successful Tibo fetch.
-#:
-#: `data/state/aihot_cache/` is gitignored -- it is a network cache for a third-party API,
-#: subject to that API's caching terms. That is the right call for the cache, but it made the
-#: Tibo page depend on a live call succeeding **on the machine doing the rendering**. In CI
-#: it does not, so every CI-deployed `tibo.html` was the explicit empty state: 3 KB instead
-#: of 82 KB, no calendar at all -- and `scripts/test_calendars.py`, which asserts the grid
-#: exists, failed the build.
-#:
-#: This snapshot is deliberately outside the gitignored cache and *is* committed. It is small
-#: (a few hundred reset events), it is the page's own data rather than a redistribution of the
-#: upstream feed, and it means the page has something true to show when the API is unreachable.
-TIBO_SNAPSHOT = ROOT / "data" / "state" / "aihot-codex-snapshot.json"
-
-
-def load_tibo() -> dict:
-    """The Codex reset monitor for the page: live when possible, snapshot when not.
-
-    A source that is down must not stop the digest from rendering. It must also not silently
-    become an empty page -- "the API is unreachable" and "there is nothing to show" look
-    identical to a reader, and only one of them is true.
-    """
-    try:
-        from aidaily.aihot import AihotClient, activities, reset_events, reset_summary
-
-        client = AihotClient(cache_dir=ROOT / "data" / "state" / "aihot_cache")
-        payload = client.codex_resets()
-        if payload:
-            summary = reset_summary(payload, policy=client.policy)
-            summary["events"] = reset_events(payload)
-            summary["activities"] = activities(payload)
-            summary["client_stats"] = dict(client.stats)
-
-            # **The test is `events`, not whether `payload` is truthy.**
-            #
-            # A successful HTTP response carrying no events is truthy, so the first version
-            # took the success path and returned a summary with an empty calendar -- exactly
-            # the blank page the snapshot exists to prevent. The snapshot was committed and
-            # the fallback never ran, because from the code's point of view nothing had
-            # failed.
-            #
-            # What matters is whether there is anything to draw. No events means use the
-            # snapshot, however healthy the request looked.
-            if summary.get("events"):
-                summary.pop("stale", None)
-                try:
-                    TIBO_SNAPSHOT.parent.mkdir(parents=True, exist_ok=True)
-                    TIBO_SNAPSHOT.write_text(
-                        json.dumps(summary, ensure_ascii=False), encoding="utf-8"
-                    )
-                except OSError:
-                    # A read-only checkout must not break rendering; the snapshot is an
-                    # optimisation, not a requirement.
-                    pass
-                return summary
-            reason = f"抓取成功但 events 为空（total_events={summary.get('total_events')}）"
-        else:
-            reason = "抓取返回空载荷"
-    except Exception as exc:  # noqa: BLE001
-        reason = f"{type(exc).__name__}: {str(exc)[:80]}"
-
-    if TIBO_SNAPSHOT.exists():
-        try:
-            summary = json.loads(TIBO_SNAPSHOT.read_text(encoding="utf-8"))
-            summary["stale"] = reason
-            print(f"  （Tibo 实时抓取失败（{reason}），改用已提交快照）")
-            return summary
-        except (OSError, ValueError) as exc:
-            print(f"  （Tibo 快照也无法读取：{type(exc).__name__}）")
-
-    print(f"  （Tibo 监控数据获取失败且无快照，页面显示空状态：{reason}）")
-    return {}
-
+# load_tibo used to live here, as a second implementation beside the one in
+# idaily/publish.py. Having two loaders is what let this bug survive: the local script
+# built a good page while the publishing path shipped a blank one, and fixing either alone
+# changed nothing about what readers saw. The logic now lives in idaily/tibo.py, and both
+# paths call it.
 
 def main() -> int:
     if len(sys.argv) < 2:
@@ -176,7 +108,11 @@ def main() -> int:
     (out_dir / f"{digest.date}.deep.md").write_text(deep, encoding="utf-8")
 
     rss = write_rss(digest, out_dir, site_url=site_url, insights=insights)
-    tibo = load_tibo()
+    # The package's loader, shared with the publishing path. A second implementation here
+    # is what let the local script render a good page while CI shipped a blank one.
+    from aidaily.tibo import load_tibo
+
+    tibo = load_tibo(ROOT)
     site = write_site(
         digest, deep, out_dir,
         site_url=site_url, insights=insights, items_by_id=items, tibo=tibo,

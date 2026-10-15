@@ -11,7 +11,7 @@ import asyncio
 import json
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -177,7 +177,7 @@ def cmd_run(args: argparse.Namespace) -> int:
     # 3) L3 semantic clustering + 4) analysis, both need the LLM
     router, llm_warnings, http = _build_router(args)
     (events, cluster_result, insights, analyze_warnings, history,
-     rubric_scores) = asyncio.run(
+     rubric_scores, run_now) = asyncio.run(
         _analyze_async(stage, sources, cfg, router, http, args)
     )
 
@@ -199,7 +199,7 @@ def cmd_run(args: argparse.Namespace) -> int:
     digest = build_digest(
         stage, events, sources, cfg,
         report=report, insights=insights, warnings=warnings, llm_usage=llm_usage,
-        history=history, rubric_scores=rubric_scores,
+        history=history, rubric_scores=rubric_scores, now=run_now,
     )
 
     # 6) fact check -- a failing digest is not published
@@ -366,6 +366,20 @@ async def _analyze_async(stage, sources, cfg, router, http, args):
         # read by nothing, so a story that led yesterday's issue could lead today's with no
         # new information -- the most visible quality problem a daily can have.
         history_notes: list[str] = []
+
+        # **One timestamp for the whole run.**
+        #
+        # `select_for_digest` falls back to `datetime.now()` when `now` is None, and this run
+        # selects three times: the candidate pool, the final list the model's scores feed,
+        # and `build_digest`'s own recomputation. Each call therefore ranked against a
+        # slightly different clock. Recency is a scoring term, so events sitting near a score
+        # boundary swapped places between calls -- and the digest analysed one set of sixty
+        # while publishing a different sixty, leaving twenty entries with no insight and the
+        # source's English headline on a Chinese page.
+        #
+        # One instant is now used everywhere, and it is handed to `build_digest` so its
+        # selection is identical by construction rather than by timing luck.
+        run_now = datetime.now(timezone.utc)
         #
         # The archive directory comes from the caller's arguments: this function is handed
         # `args`, and `out_dir` is resolved in `cmd_run`. Re-deriving it here from the same
@@ -397,7 +411,8 @@ async def _analyze_async(stage, sources, cfg, router, http, args):
         rubric_result = None
         pool_target = max(cfg.output.deep.max_items * 2, cfg.output.deep.max_items + 40)
         pool, _ = select_for_digest(
-            events, stage, sources, cfg, history=history, pool_only=pool_target
+            events, stage, sources, cfg, history=history, pool_only=pool_target,
+            now=run_now,
         )
         rubric_result = await score_events(
             pool, router,
@@ -420,7 +435,8 @@ async def _analyze_async(stage, sources, cfg, router, http, args):
 
         # Phase 2: the real selection, now that the model's judgement is on the table.
         selected, _ = select_for_digest(
-            events, stage, sources, cfg, history=history, rubric_scores=rubric_scores
+            events, stage, sources, cfg, history=history, rubric_scores=rubric_scores,
+            now=run_now,
         )
 
         # The limit must cover everything that will be published, not just "the first N".
@@ -444,7 +460,7 @@ async def _analyze_async(stage, sources, cfg, router, http, args):
         if analyse_note:
             analyze_warnings = [*analyze_warnings, analyse_note]
         return (events, cluster_result, insights, analyze_warnings + history_notes,
-                history, rubric_scores)
+                history, rubric_scores, run_now)
     finally:
         if http is not None:
             await http.aclose()

@@ -199,8 +199,17 @@ def write_site(
     this time by the link guard instead of by a reader.
     """
     from .site import write_site as render_site
+    from .tibo import load_tibo
 
     assets = Path(__file__).resolve().parents[2] / "site" / "assets"
+    # Loaded **here**, in the publishing path, and not only in `scripts/rerender_site.py`.
+    #
+    # That script is a development tool. The page readers actually see is produced by this
+    # function, and it was being handed `tibo=None` on every scheduled run -- so the Tibo
+    # page shipped as its empty state every single day, and fixing the local script changed
+    # nothing about what anyone saw. A helper only the local tool calls is not a fix.
+    if tibo is None:
+        tibo = load_tibo(Path(__file__).resolve().parents[2])
     manifest = render_site(
         digest,
         insights or {},
