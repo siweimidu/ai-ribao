@@ -119,13 +119,35 @@
         grid.appendChild(el);
       }
 
-      // 上下界：没有更早/更晚的归档就禁用箭头，而不是让人无限翻空月份
+      // 上下界：**不再禁用箭头**。
+      //
+      // 原来的写法是「没有更早/更晚的归档就禁用」，用的是 `<=` / `>=`：
+      //
+      //     prev.disabled = thisMonth <= earliest.slice(0, 7);
+      //     next.disabled = thisMonth >= latest.slice(0, 7);
+      //
+      // 当归档只跨一个月份时（10-14 与 10-15 都在 2026-10），`thisMonth` 同时
+      // 满足这两个条件，**两个箭头一起变灰** —— 读者看到的是一个动不了的日历，
+      // 而这不是「边界」，是「坏掉」。用户报告的就是这个。
+      //
+      // 边界保护本身也不是必要的：翻到一个没有日报的月份，日历会诚实地显示为空的，
+      // 那本身是有用的信息（那个月没有出刊）。而一个不能翻的日历每天都在误导人。
       const sorted = [...have].sort();
       const earliest = sorted[0] || '';
       const latest = sorted[sorted.length - 1] || '';
       const thisMonth = `${yy}-${pad(mm)}`;
-      prev.disabled = !earliest || thisMonth <= earliest.slice(0, 7);
-      next.disabled = !latest || thisMonth >= latest.slice(0, 7);
+      prev.disabled = false;
+      next.disabled = false;
+      // 只在过远的地方停住，避免无限翻页翻到 1970 年。
+      const monthsAway = (a, b) => {
+        const [ay, am] = a.split('-').map(Number);
+        const [by, bm] = b.split('-').map(Number);
+        return (ay - by) * 12 + (am - bm);
+      };
+      if (sorted.length) {
+        if (monthsAway(thisMonth, earliest.slice(0, 7)) > 24) prev.disabled = true;
+        if (monthsAway(latest.slice(0, 7), thisMonth) > 24) next.disabled = true;
+      }
     };
 
     const shift = (delta) => {

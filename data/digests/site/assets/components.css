@@ -1076,3 +1076,188 @@
   .item { break-inside: avoid; }
   body { background: #fff; }
 }
+
+/* --- 日历：侧栏月历与事件日历共用一套视觉语言 ------------------------------------
+   两个日历此前各写各的：侧栏用「有日报就填满整格」，事件日历用「数字下面点一个点」。
+   同一个概念两套画法，而读者是在这两页之间来回走的。
+
+   填满整格的版本尤其糟：见方格里有的填有的不填，看起来像棋盘格，而只有两期归档时
+   那个图案完全是偶然的；它还和「今天」的实心圆抢注意力，而后者才是全月唯一该响的地方。
+
+   现在：
+   · 有内容 → 数字下方一个点（两个日历一致）。格子保持安静，点是信号。
+   · 今天 → 唯一的实心形状：强调色圆 + 柔和光环。
+   · 正在阅读的这一期 → 描边圆环，不用第二种颜色就能和今天区分。
+   · 无内容的日期 → 降透明度而不是保持正常字重，让这个月的「哪里有事」一眼可见。
+   ============================================================================== */
+
+/* 共用：日期格与点 */
+.cal__day,
+.ecal__day {
+  position: relative;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted-fg);
+  font: inherit;
+  font-size: var(--fs-small);
+  font-variant-numeric: tabular-nums;
+  cursor: default;
+  transition: background var(--dur-fast) var(--ease-out-circ),
+              color var(--dur-fast) var(--ease-out-circ),
+              box-shadow var(--dur-fast) var(--ease-out-circ);
+}
+
+/* 网格留出呼吸：格与格之间不留缝时，点会挤在一起看不出属于哪一天。 */
+.cal__grid,
+.ecal__grid { gap: calc(var(--unit) * 0.6); }
+
+/* 有内容的日期：安静的字重，点来做标记 */
+.cal__day[data-has="true"],
+.ecal__day[data-count] {
+  color: var(--fg);
+  font-weight: 620;
+  cursor: pointer;
+}
+
+/* 数字下方的小点。用 ::after 而不是额外元素，因为它是装饰，不该出现在无障碍树里。 */
+.cal__day[data-has="true"]::after,
+.ecal__day[data-count]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.55;
+  transform: translateX(-50%);
+}
+
+/* 悬停：底色提示可点，但不变形、不换色相，避免整片闪动 */
+.cal__day[data-has="true"]:hover,
+.ecal__day[data-count]:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.cal__day[data-has="true"]:active,
+.ecal__day[data-count]:active { transform: scale(0.92); }
+
+/* 今天：全月唯一的实心形状 + 柔和光环 */
+.cal__day[data-today="true"],
+.ecal__day[data-today="true"] {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.cal__day[data-today="true"]:hover,
+.ecal__day[data-today="true"]:hover { background: var(--accent); color: #fff; }
+
+/* 今天同时有内容时，点要用白色才看得见 */
+.cal__day[data-today="true"][data-has="true"]::after,
+.ecal__day[data-today="true"][data-count]::after { background: #fff; opacity: 0.85; }
+
+/* 正在阅读的这一期：描边圆环。
+   和今天用同色系但不填满 —— 不引入第二种颜色就能区分「今天」和「我在看的这天」。 */
+.cal__day[data-current="true"]:not([data-today="true"]),
+.ecal__day[aria-selected="true"]:not([data-today="true"]) {
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+}
+
+/* 无内容的日期：降透明度，让这个月的活动分布显出来 */
+.cal__day[aria-disabled="true"],
+.ecal__day[aria-disabled="true"] { opacity: 0.28; }
+
+/* 空位（月初补齐与月末留白）完全隐形，但保留占位以保证列对齐 */
+.cal__day[aria-hidden="true"],
+.ecal__day--pad { opacity: 0; pointer-events: none; }
+
+/* 星期表头与月份标题：两者统一 */
+.cal__dow,
+.ecal__dow {
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  font-weight: 600;
+  text-align: center;
+  padding-bottom: calc(var(--unit) * 0.5);
+}
+
+.cal__month,
+.ecal__month {
+  font-size: var(--fs-small);
+  font-weight: 640;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+
+/* 上/下月按钮：做成一个安静的方形按钮，而不是裸箭头字符 */
+.cal__nav button,
+.ecal__nav button {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--muted-fg);
+  font-size: 0.9rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-circ),
+              color var(--dur-fast) var(--ease-out-circ),
+              border-color var(--dur-fast) var(--ease-out-circ);
+}
+
+.cal__nav button:hover:not(:disabled),
+.ecal__nav button:hover:not(:disabled) {
+  background: var(--muted);
+  border-color: var(--border);
+  color: var(--fg);
+}
+
+.cal__nav button:disabled,
+.ecal__nav button:disabled { opacity: 0.3; cursor: default; }
+
+/* 图例：点和圆环要跟日历里画的一模一样，否则图例本身在骗人 */
+.cal__legend,
+.ecal__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--unit) * 2) calc(var(--unit) * 3);
+  margin-top: calc(var(--unit) * 2);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+
+.cal__legend span,
+.ecal__legend span { display: flex; align-items: center; gap: calc(var(--unit) * 1.2); }
+
+.cal__legend i,
+.ecal__legend i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+  background: var(--muted-fg);
+}
+
+/* 事件日历按类型上色，因为在那里「类型」就是信息本身 */
+.ecal__marks { display: none; }   /* 点数移到 ::after 之后不再需要独立元素 */
+
+.ecal__legend i[data-kind="direct_reset"] { background: var(--accent); }
+.ecal__legend i[data-kind="reset_credit"] { background: #d97706; }
+.ecal__legend i[data-kind="today"] {
+  background: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
