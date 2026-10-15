@@ -16,6 +16,7 @@ from .html import HtmlFetcher
 from .jsonapi import JsonApiFetcher
 from .reddit import RedditFetcher, json_url_to_html
 from .rss import RssFetcher
+from .tavily import TavilyFetcher
 
 #: adapter name (as written in sources/registry.yaml) -> implementation
 ADAPTERS: dict[str, type[BaseFetcher]] = {
@@ -25,6 +26,7 @@ ADAPTERS: dict[str, type[BaseFetcher]] = {
     "JsonApiFetcher": JsonApiFetcher,
     "GitHubTrendingFetcher": GitHubTrendingFetcher,
     "HtmlFetcher": HtmlFetcher,
+    "TavilyFetcher": TavilyFetcher,
 }
 
 #: fallback when the registry names an adapter we do not have yet
@@ -81,6 +83,7 @@ __all__ = [
     "JsonApiFetcher",
     "RedditFetcher",
     "RssFetcher",
+    "TavilyFetcher",
     "SourceResult",
     "get_fetcher",
     "json_url_to_html",

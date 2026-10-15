@@ -103,6 +103,72 @@ class HttpClient:
             await self._client.aclose()
             self._client = None
 
+    async def post_json(
+        self,
+        url: str,
+        payload: dict,
+        *,
+        headers: dict[str, str] | None = None,
+    ) -> HttpResult:
+        """POST a JSON body and return the response.
+
+        Needed because a search API is not a feed: Tavily takes a query and a result count in
+        a request body, so there is no URL to `get`. The retry, rate-limit and size-cap
+        behaviour is the same as `get` -- one transport policy for the whole pipeline rather
+        than a second one invented here.
+
+        No conditional headers: an ETag applies to a URL, and the same URL with a different
+        body is a different request. Sending `If-None-Match` would let a cached 304 answer a
+        query that was never made.
+        """
+        if self._client is None:
+            raise RuntimeError("HttpClient must be used as an async context manager")
+
+        req_headers = {"Content-Type": "application/json", **(headers or {})}
+        last_detail = ""
+        for attempt in range(1, self.retries + 2):
+            await self.limiter.wait(url)
+            try:
+                resp = await self._client.post(url, json=payload, headers=req_headers)
+            except (httpx.TimeoutException, httpx.TransportError) as exc:
+                last_detail = f"{type(exc).__name__}: {exc}"[:200]
+            except Exception as exc:  # noqa: BLE001 - one bad source must not kill a run
+                return HttpResult(False, url, None, b"", "", "dead",
+                                  f"{type(exc).__name__}: {exc}"[:200], attempt)
+            else:
+                if resp.status_code < 400:
+                    return HttpResult(
+                        True, url, resp.status_code, resp.content[: self.max_bytes],
+                        resp.headers.get("Content-Type", ""), "ok", "", attempt,
+                    )
+
+                if resp.status_code in BLOCKED_CODES:
+                    if resp.status_code == 429 and attempt <= self.retries:
+                        delay = _retry_after(resp.headers.get("Retry-After"))
+                        last_detail = f"HTTP 429 (waited {delay:.0f}s)"
+                        await asyncio.sleep(delay)
+                        continue
+                    return HttpResult(
+                        False, url, resp.status_code, b"", "", "blocked",
+                        f"HTTP {resp.status_code} {resp.reason_phrase}", attempt,
+                    )
+
+                if resp.status_code in RETRYABLE_CODES:
+                    last_detail = f"HTTP {resp.status_code} {resp.reason_phrase}"
+                else:
+                    return HttpResult(
+                        False, url, resp.status_code, b"", "", "dead",
+                        f"HTTP {resp.status_code} {resp.reason_phrase}", attempt,
+                    )
+
+            if attempt <= self.retries:
+                # Same backoff as `get`, deliberately: jitter matters when several sources
+                # share a host, and two different retry curves in one client is a surprise
+                # waiting for whoever tunes it.
+                await asyncio.sleep(min(2 ** attempt + random.random(), 30))
+
+        return HttpResult(False, url, None, b"", "", "error", last_detail or "exhausted", self.retries + 1)
+
     async def get(self, url: str, *, conditional: bool = True) -> HttpResult:
         if self._client is None:
             raise RuntimeError("HttpClient must be used as an async context manager")

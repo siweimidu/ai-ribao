@@ -293,3 +293,21 @@ overrides:
   "rss:wechat2rss-xlab-app-7131b577c61365cb47e81000738c10d872685908":
     enabled: false
     reason: 2026-10-14 实测连接失败（curl 000）；该服务为第三方自建实例，稳定性无保证
+
+  # ══ Tavily 搜索：用户提供密钥后启用 ══════════════════════════════════════════════
+  #
+  # 此前适配器缺失：registry 生成器给所有 source_type=api 的源派 ApiFetcher，
+  # 而 Tavily 是**搜索 API**（query 与结果数在 POST body 里），没有可供 GET 的 URL。
+  # 通用 JSON 解析器对它发 GET，得到的自然是 401/405。
+  # 新增 TavilyFetcher（POST + 显式 skip 而非静默 0 条）。
+  #
+  # 密钥经 TAVILY_API_KEY 环境变量注入（GitHub Secret），**不写入本仓库**。
+  "api:api-tavily-com-search":
+    enabled: true
+    adapter: TavilyFetcher
+    category: search
+    reason: >-
+      2026-10-16 用户提供密钥后启用。TavilyFetcher 走 POST，密钥只放在
+      Authorization 头（不放 URL，避免密钥进日志）。返回的是搜索结果而非已发布条目，
+      因此 published_date 缺失时留空，由流水线按「未知新鲜度」处理，
+      而不是盖上抓取时间冒充当天发布。
