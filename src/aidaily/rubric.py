@@ -122,6 +122,29 @@ def load_profile(path: Path | None = None) -> tuple[str, str]:
     markdown file. It falls back to the built-in text and says so, because "the professor
     is using the default criteria" is something the run log should admit.
     """
+    # Prefer the four-file profile, where scope and scoring are separate documents.
+    if path is None:
+        from .profiles import load_profile as load_structured
+
+        structured = load_structured()
+        if structured is not None and (structured.match or structured.analysis):
+            # Scope first, then scoring, in that order.
+            #
+            # The order is the point of the split: match.md decides whether an item belongs
+            # to the section at all, analysis.md decides how important it is. Read the other
+            # way round, the model meets the score bands first and answers "does this belong"
+            # with a number -- which is how a consumer-hardware story gets rated
+            # merely-unimportant instead of out-of-scope.
+            parts = []
+            if structured.match:
+                parts.append(
+                    "# 范围判定（先判断是否属于本栏目，不属于的一律 0-2 分）\n\n"
+                    + structured.match
+                )
+            if structured.analysis:
+                parts.append("# 评分标准\n\n" + structured.analysis)
+            return "\n\n---\n\n".join(parts), str(structured.source)
+
     target = Path(path) if path else PROFILE_PATH
     try:
         text = target.read_text(encoding="utf-8").strip()

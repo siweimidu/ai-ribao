@@ -1,0 +1,75 @@
+{
+  "id": "ai-daily",
+  "name": "AI 日报",
+  "display_names": {
+    "zh": "AI 日报",
+    "en": "AI Daily"
+  },
+  "language": "zh",
+  "match": "match.md",
+  "analysis": "analysis.md",
+  "enrichment": {
+    "prompt": "enrichment.md",
+    "blocks": [
+      {
+        "id": "facts",
+        "label": "事实",
+        "type": "list",
+        "primary": true,
+        "required": true,
+        "description": "什么实际变了、对谁变了，含决定性的具体信息",
+        "tools": []
+      },
+      {
+        "id": "inferences",
+        "label": "推断",
+        "type": "list",
+        "required": false,
+        "description": "只能从已给材料推出；推不出就留空",
+        "tools": []
+      },
+      {
+        "id": "opinions",
+        "label": "观点",
+        "type": "list",
+        "required": false,
+        "description": "来源里真实出现过的观点或争论，须注明是谁说的",
+        "tools": []
+      },
+      {
+        "id": "uncertainties",
+        "label": "不确定",
+        "type": "list",
+        "required": true,
+        "description": "还不知道或有争议的关键点；确实没有也要写明「来源未提及」",
+        "tools": []
+      }
+    ]
+  },
+  "scoring": {
+    "scale": [0, 10],
+    "bands": {
+      "9-10": "突破性",
+      "7-8": "高价值",
+      "5-6": "有趣",
+      "3-4": "低优先",
+      "0-2": "噪音"
+    },
+    "batch_size": 10,
+    "concurrency": 2
+  },
+  "relevance_gate": {
+    "comment": "焦点乘数的下限。非 AI 内容被降权但不删除 —— 平静的一天仍要有内容可发。",
+    "floor": 0.22,
+    "score_below_this_is_not_scored_by_the_model": 0.35
+  },
+  "sections": {
+    "comment": "页面呈现顺序。热度排序是主序，分节仅用于归档浏览。",
+    "order": ["模型与能力", "AI 产品", "AI 行业", "AI 研究", "其它"]
+  },
+  "citations": {
+    "comment": "模型不得输出链接；链接由程序从自己的记录回填。",
+    "allow_model_urls": false,
+    "allow_model_ids": true
+  }
+}

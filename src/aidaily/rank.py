@@ -33,6 +33,7 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 
 from .entities import topic_overlap
+from .focus import focus_multiplier
 from .heat import heat
 from .models import Event, NormalizedItem, SourceSpec
 from .normalize import title_similarity
@@ -158,6 +159,8 @@ def score_event(
     and a long aggregator post is not more important than a terse launch announcement --
     which is exactly the error it produced.
     """
+    # ocus_multiplier needs a lookup by id, and the caller passes a list.
+    source_index = {s.source_id: s for s in sources} if not isinstance(sources, dict) else sources
     members = [items_by_id[i] for i in event.member_item_ids if i in items_by_id]
     source_weight = max(
         (_source_weight(s, sources, weights) for s in event.source_ids), default=1.0
@@ -172,10 +175,25 @@ def score_event(
     # A feed entry titled `2026-10-14` is a container, not a story. Demoted, never dropped.
     title_factor = title_quality(event.title)
 
+    # **Is this story about AI at all?**
+    #
+    # Every other term in the heat model measures attention -- corroboration, engagement,
+    # reach, velocity -- and none of them asks what the story is about. Measured against
+    # `daily.juya.uk` for 2026-10-14: of this digest's top twenty, five were AI stories and
+    # the rest included an Apple smart speaker, Xbox game ports, Ray-Ban glasses, a DLSS
+    # patch, and V2EX chatter about mortgage debt and splitting a Wi-Fi network into two
+    # bands -- all of them scoring 0.36, level with real AI news.
+    #
+    # Applied as a multiplier rather than a rank term because relevance is closer to a
+    # precondition than to a peer of "how many outlets covered it". It never reaches zero:
+    # demote, never delete, so a quiet day still prints and a borderline item can still lead
+    # if it is genuinely the day's biggest thing.
+    focus_factor, focus_components = focus_multiplier(event, source_index)
+
     # `heat` already covers freshness; the old multiplicative recency term is gone, because
     # multiplying an independent decay on top of a normalised score is what made "newest
     # first" the effective rule whenever nothing was corroborated.
-    score = heat_score * damped_source * title_factor * 100
+    score = heat_score * damped_source * title_factor * focus_factor * 100
 
     return RankedEvent(
         event=event,
@@ -187,6 +205,7 @@ def score_event(
             "substance_chars": float(substance_raw),
             "title_quality": round(title_factor, 3),
             **heat_components,
+            **focus_components,
             "score": round(score, 6),
         },
     )

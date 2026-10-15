@@ -183,6 +183,17 @@ async def main() -> int:
     print(f"  输出: {args.out}")
 
     from collections import Counter
+
+    vendors = Counter(r.get("_vendor") or "未识别" for r in resolved)
+    print("  端点归属:")
+    for name, n in vendors.most_common(10):
+        print(f"    {n:4}  {name or "未识别"}")
+
+    via = Counter(r.get("_via") or "未解析" for r in resolved)
+    print("  解析方式:")
+    for name, n in via.most_common():
+        print(f"    {n:4}  {name}")
+
     reasons = Counter(r["_unusable"] for r in resolved if not r.get("model"))
     if reasons:
         print("  未解析原因:")
