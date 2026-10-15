@@ -81,28 +81,64 @@ def load_sources() -> list[dict]:
         return []
 
 
-def load_tibo() -> dict:
-    """Fetch the Codex reset monitor for the page, tolerating total failure.
+#: Committed snapshot of the last successful Tibo fetch.
+#:
+#: `data/state/aihot_cache/` is gitignored -- it is a network cache for a third-party API,
+#: subject to that API's caching terms. That is the right call for the cache, but it made the
+#: Tibo page depend on a live call succeeding **on the machine doing the rendering**. In CI
+#: it does not, so every CI-deployed `tibo.html` was the explicit empty state: 3 KB instead
+#: of 82 KB, no calendar at all -- and `scripts/test_calendars.py`, which asserts the grid
+#: exists, failed the build.
+#:
+#: This snapshot is deliberately outside the gitignored cache and *is* committed. It is small
+#: (a few hundred reset events), it is the page's own data rather than a redistribution of the
+#: upstream feed, and it means the page has something true to show when the API is unreachable.
+TIBO_SNAPSHOT = ROOT / "data" / "state" / "aihot-codex-snapshot.json"
 
-    A source that is down must never stop the digest from rendering: the page falls back to
-    its explicit empty state, which is honest, rather than to stale numbers presented as
-    current.
+
+def load_tibo() -> dict:
+    """The Codex reset monitor for the page: live when possible, snapshot when not.
+
+    A source that is down must not stop the digest from rendering. It must also not silently
+    become an empty page -- "the API is unreachable" and "there is nothing to show" look
+    identical to a reader, and only one of them is true.
     """
     try:
         from aidaily.aihot import AihotClient, activities, reset_events, reset_summary
 
         client = AihotClient(cache_dir=ROOT / "data" / "state" / "aihot_cache")
         payload = client.codex_resets()
-        if not payload:
-            return {}
-        summary = reset_summary(payload, policy=client.policy)
-        summary["events"] = reset_events(payload)
-        summary["activities"] = activities(payload)
-        summary["client_stats"] = dict(client.stats)
-        return summary
+        if payload:
+            summary = reset_summary(payload, policy=client.policy)
+            summary["events"] = reset_events(payload)
+            summary["activities"] = activities(payload)
+            summary["client_stats"] = dict(client.stats)
+            summary.pop("stale", None)
+            try:
+                TIBO_SNAPSHOT.parent.mkdir(parents=True, exist_ok=True)
+                TIBO_SNAPSHOT.write_text(
+                    json.dumps(summary, ensure_ascii=False), encoding="utf-8"
+                )
+            except OSError:
+                # A read-only checkout must not break rendering; the snapshot is an
+                # optimisation, not a requirement.
+                pass
+            return summary
+        reason = "抓取返回空"
     except Exception as exc:  # noqa: BLE001
-        print(f"  （Tibo 监控数据获取失败，页面将显示空状态：{type(exc).__name__}: {exc}）")
-        return {}
+        reason = f"{type(exc).__name__}: {str(exc)[:80]}"
+
+    if TIBO_SNAPSHOT.exists():
+        try:
+            summary = json.loads(TIBO_SNAPSHOT.read_text(encoding="utf-8"))
+            summary["stale"] = reason
+            print(f"  （Tibo 实时抓取失败（{reason}），改用已提交快照）")
+            return summary
+        except (OSError, ValueError) as exc:
+            print(f"  （Tibo 快照也无法读取：{type(exc).__name__}）")
+
+    print(f"  （Tibo 监控数据获取失败且无快照，页面显示空状态：{reason}）")
+    return {}
 
 
 def main() -> int:
