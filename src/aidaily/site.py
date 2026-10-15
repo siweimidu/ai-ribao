@@ -57,6 +57,9 @@ ICONS = {
     "home": '<path d="M3 8.5 9 3l6 5.5V15H3z"/><path d="M7.5 15v-4h3v4"/>',
     "wechat": '<path d="M2.5 7.5c0-2.5 2.4-4.5 5.4-4.5s5.4 2 5.4 4.5-2.4 4.5-5.4 4.5c-.6 0-1.2-.1-1.7-.2L4 13l.7-2.1A4.4 4.4 0 0 1 2.5 7.5z"/><path d="M9.8 11.4c.4 2 2.4 3.4 4.8 3.4.5 0 1-.1 1.5-.2l1.7 1.1-.5-1.7a3.6 3.6 0 0 0 1.4-2.6c0-1.5-1-2.8-2.5-3.4"/>',
     "rss": '<path d="M3.5 12.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M3 4.5A8.5 8.5 0 0 1 11.5 13"/><path d="M3 8A5 5 0 0 1 8 13"/>',
+    # The list of feeds is not the act of subscribing. Both used the RSS glyph, so the same
+    # symbol meant two different things on pages a reader moves between.
+    "list": '<path d="M6 5h7"/><path d="M6 9h7"/><path d="M6 13h7"/><path d="M3.5 5h.01"/><path d="M3.5 9h.01"/><path d="M3.5 13h.01"/>',
     "theme": '<circle cx="9" cy="9" r="6"/><path d="M9 3v12"/><path d="M9 3a6 6 0 0 1 0 12"/>',
     "download": '<path d="M9 3v8"/><path d="M5.5 8 9 11.5 12.5 8"/><path d="M3.5 13.5h11"/>',
     "clock": '<circle cx="9" cy="9" r="6.5"/><path d="M9 5.5V9l2.5 1.5"/>',
@@ -111,6 +114,37 @@ class SiteContext:
 
 
 # ============================== left rail =======================================
+def rail_rss_copy(ctx: SiteContext, *, compact: bool = False) -> str:
+    """The subscribe control: copies the feed address, never navigates to it.
+
+    One function because the same control lives in three rails, and duplicating it is what
+    let the first "copy instead of navigate" fix miss two of them -- `tibo.html` went on
+    opening a wall of XML for a while after the home page was fixed.
+
+    `compact` is for the secondary pages, whose rail is a short list of destinations rather
+    than a full navigation panel.
+    """
+    base = esc(ctx.site_url.rstrip("/"))
+    if compact:
+        return (
+            f'<button class="rail__item" type="button" data-copy="{base}/feed/zh.xml">'
+            f'{icon("rss")}<span>复制订阅地址</span></button>'
+        )
+    return f"""<div class="rail__sub rail__sub--rss" role="menu">
+                <button type="button" class="rail__btn" data-copy="{base}/feed/zh.xml">
+                  <span class="rail__btn-k">RSS</span>复制订阅地址
+                </button>
+                <button type="button" class="rail__btn" data-copy="{base}/feed/zh.json">
+                  <span class="rail__btn-k">JSON</span>复制订阅地址
+                </button>
+                <p class="rail__fine">
+                  或在浏览器中查看
+                  <a href="feed/zh.xml">RSS</a>
+                  <a href="feed/zh.json">JSON</a>
+                </p>
+              </div>"""
+
+
 def render_rail(ctx: SiteContext, digest: Digest) -> str:
     """The navigation rail: search, home, calendar, Tibo monitor, WeChat, RSS, theme, download.
 
@@ -121,15 +155,29 @@ def render_rail(ctx: SiteContext, digest: Digest) -> str:
 
     theme_items = "".join(
         f'<button type="button" data-theme-choice="{key}" aria-checked="false">{label}</button>'
-        for key, label in (("auto", "自动"), ("default", "默认"), ("light", "亮色"), ("dark", "暗色"))
+        for key, label in (
+            ("auto", "自动"),
+            ("default", "默认"),
+            ("light", "亮色"),
+            ("dark", "暗色"),
+            # Claude's palette: a warm paper background rather than the usual neutral grey,
+            # with its terracotta accent. Named after the product rather than described by its
+            # colours, because that is how someone asks for it.
+            ("claude-light", "Claude 亮色"),
+            ("claude-dark", "Claude 暗色"),
+        )
     )
 
-    # Both editions are offered because they answer different questions: the brief is what
-    # happened today, the deep version is everything with its evidence. The filenames must
-    # match what the writer actually puts in `site/` — the guard checks every href resolves.
+    # **One edition, one link.**
+    #
+    # This offered "速览版" and "深度版" behind a fold. Both parts were wrong: the reader
+    # thinks of the digest as one thing, so offering two names for the same day asks them to
+    # choose between synonyms; and a fold makes them open a panel to reach a file they have
+    # already decided to download. The full `.md` is the one kept -- it is the edition the
+    # page itself renders -- and `download` tells the browser to save rather than navigate.
     download_items = (
-        f'<a role="menuitem" href="{esc(digest.date)}.brief.md" download>速览版 (markdown)</a>'
-        f'<a role="menuitem" href="{esc(digest.date)}.md" download>深度版 (markdown)</a>'
+        f'<a class="rail__item" href="{esc(digest.date)}.md" download>'
+        f'{icon("download")}<span>下载 Markdown</span></a>'
     )
 
     return f"""      <aside class="rail" aria-label="站点导航">
@@ -151,7 +199,7 @@ def render_rail(ctx: SiteContext, digest: Digest) -> str:
           <!-- 1. 搜索往期内容 -->
           <div class="rail__group">
             <button class="rail__item" type="button" data-open-search>
-              {icon("search")}<span>搜索往期内容</span><span class="rail__hint">⌘K</span>
+              <span>搜索往期内容</span><span class="rail__hint">⌘K</span>
             </button>
           </div>
 
@@ -190,36 +238,13 @@ def render_rail(ctx: SiteContext, digest: Digest) -> str:
             <a class="rail__item" href="tibo.html">{icon("clock")}<span>Tibo 重置监控</span></a>
           </div>
 
-          <!-- 5. 微信公众号 -->
-          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
-            <details class="rail__fold">
-              <summary class="rail__item">{icon("wechat")}<span>微信公众号</span></summary>
-              <div class="rail__sub">
-                <p style="margin:0;color:var(--muted-fg);font-size:var(--fs-small);line-height:1.7">
-                  在微信里搜索公众号「AI 日报」，或扫描站点首页底部的二维码。
-                  公众号推送与网页同一份内容。
-                </p>
-              </div>
-            </details>
-          </div>
+          <!-- 微信公众号：暂无账号，先不放入口。留一个不能用的按钮比没有更糟。 -->
 
           <!-- 6. 订阅 RSS -->
           <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
             <details class="rail__fold">
               <summary class="rail__item">{icon("rss")}<span>订阅 RSS</span></summary>
-              <div class="rail__sub" role="menu">
-                <!-- Copy rather than navigate. Clicking a feed URL opens a wall of XML in
-                     the browser, which is not what someone subscribing wants; what they
-                     need is the address, in the clipboard, to paste into a reader. -->
-                <button type="button" data-copy="{esc(ctx.site_url.rstrip('/'))}/feed/zh.xml">
-                  复制 RSS 地址
-                </button>
-                <button type="button" data-copy="{esc(ctx.site_url.rstrip('/'))}/feed/zh.json">
-                  复制 JSON Feed 地址
-                </button>
-                <a role="menuitem" href="feed/zh.xml">在浏览器中查看 RSS</a>
-                <a role="menuitem" href="feed/zh.json">在浏览器中查看 JSON</a>
-              </div>
+              {rail_rss_copy(ctx)}
             </details>
           </div>
 
@@ -236,10 +261,11 @@ def render_rail(ctx: SiteContext, digest: Digest) -> str:
 
           <!-- 8. 下载 markdown -->
           <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
-            <details class="rail__fold">
-              <summary class="rail__item">{icon("download")}<span>下载 markdown</span></summary>
-              <div class="rail__sub" role="menu">{download_items}</div>
-            </details>
+            <!-- A plain link with `download`, not a fold.
+                 Two things were wrong with the fold: it offered a choice between "速览版"
+                 and "深度版" when only one edition exists, and it made the reader open a
+                 panel to reach a file they had already decided to download. -->
+            {download_items}
           </div>
 
           <hr class="rail__sep">
@@ -1062,7 +1088,7 @@ def render_tibo(ctx: SiteContext, monitor: dict | None = None) -> str:
     <div class="rail__group">
       <a class="rail__item" href="index.html">{icon("home")}<span>首页</span></a>
       <a class="rail__item" href="tibo.html" aria-current="page">{icon("clock")}<span>Tibo 重置监控</span></a>
-      <a class="rail__item" href="feed/zh.xml">{icon("rss")}<span>订阅 RSS</span></a>
+      {rail_rss_copy(ctx, compact=True)}
     </div>
   </aside>
   <main class="content" id="main">
@@ -1314,7 +1340,7 @@ def render_sources(
     <div class="rail__group">
       <a class="rail__item" href="index.html">{icon("home")}<span>首页</span></a>
       <a class="rail__item" href="tibo.html">{icon("clock")}<span>Tibo 重置监控</span></a>
-      <a class="rail__item" href="sources.html" aria-current="page">{icon("rss")}<span>信息源</span></a>
+      <a class="rail__item" href="sources.html" aria-current="page">{icon("list")}<span>信息源</span></a>
     </div>
   </aside>
   <main class="content" id="main">

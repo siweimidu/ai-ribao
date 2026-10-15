@@ -862,6 +862,49 @@
 .rail__sub button[data-copy] { position: relative; }
 .rail__sub button[data-copy][data-copied="true"] { color: var(--accent); font-weight: 600; }
 
+/* --- 订阅面板：两个按钮 + 一行小字 ------------------------------------------------
+   原来是四行等重的内容（两个复制按钮 + 两个在浏览器中查看），挤在 15rem 的栏里。
+   现在分层：复制是主要动作，给整行和足够的内边距；查看是罕用动作，压成一行小字。
+   层级而不是等分，是这一处拥挤的根源。 */
+.rail__sub--rss { display: grid; gap: calc(var(--unit) * 1.5); }
+
+.rail__btn {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: calc(var(--unit) * 2);
+  width: 100%;
+  padding: calc(var(--unit) * 2.5) calc(var(--unit) * 3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  text-align: left;
+  line-height: 1.4;
+}
+
+.rail__btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* 协议名做成一个短标签，让两个按钮在同一位置对齐，扫一眼就能分清。 */
+.rail__btn-k {
+  font-size: var(--fs-micro);
+  font-weight: 640;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 3px;
+  padding: 1px calc(var(--unit) * 1.2);
+}
+
+.rail__fine {
+  margin: 0;
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  line-height: 1.8;
+}
+
+.rail__fine a { color: var(--muted-fg); text-decoration: underline; text-underline-offset: 2px; }
+.rail__fine a:hover { color: var(--accent); }
+
 /* --- 概览 ----------------------------------------------------------------------- */
 /* The day at a glance. Deliberately a numbered list of real headlines rather than a
    generated paragraph: a summary here would be a second, unchecked claim about the day,

@@ -32,7 +32,7 @@
           <!-- 1. 搜索往期内容 -->
           <div class="rail__group">
             <button class="rail__item" type="button" data-open-search>
-              <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="7.5" r="5"/><path d="M11.5 11.5 15 15"/></svg><span>搜索往期内容</span><span class="rail__hint">⌘K</span>
+              <span>搜索往期内容</span><span class="rail__hint">⌘K</span>
             </button>
           </div>
 
@@ -71,35 +71,24 @@
             <a class="rail__item" href="tibo.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6.5"/><path d="M9 5.5V9l2.5 1.5"/></svg><span>Tibo 重置监控</span></a>
           </div>
 
-          <!-- 5. 微信公众号 -->
-          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
-            <details class="rail__fold">
-              <summary class="rail__item"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 7.5c0-2.5 2.4-4.5 5.4-4.5s5.4 2 5.4 4.5-2.4 4.5-5.4 4.5c-.6 0-1.2-.1-1.7-.2L4 13l.7-2.1A4.4 4.4 0 0 1 2.5 7.5z"/><path d="M9.8 11.4c.4 2 2.4 3.4 4.8 3.4.5 0 1-.1 1.5-.2l1.7 1.1-.5-1.7a3.6 3.6 0 0 0 1.4-2.6c0-1.5-1-2.8-2.5-3.4"/></svg><span>微信公众号</span></summary>
-              <div class="rail__sub">
-                <p style="margin:0;color:var(--muted-fg);font-size:var(--fs-small);line-height:1.7">
-                  在微信里搜索公众号「AI 日报」，或扫描站点首页底部的二维码。
-                  公众号推送与网页同一份内容。
-                </p>
-              </div>
-            </details>
-          </div>
+          <!-- 微信公众号：暂无账号，先不放入口。留一个不能用的按钮比没有更糟。 -->
 
           <!-- 6. 订阅 RSS -->
           <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
             <details class="rail__fold">
               <summary class="rail__item"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M3 4.5A8.5 8.5 0 0 1 11.5 13"/><path d="M3 8A5 5 0 0 1 8 13"/></svg><span>订阅 RSS</span></summary>
-              <div class="rail__sub" role="menu">
-                <!-- Copy rather than navigate. Clicking a feed URL opens a wall of XML in
-                     the browser, which is not what someone subscribing wants; what they
-                     need is the address, in the clipboard, to paste into a reader. -->
-                <button type="button" data-copy="https://siweimidu.github.io/ai-ribao/feed/zh.xml">
-                  复制 RSS 地址
+              <div class="rail__sub rail__sub--rss" role="menu">
+                <button type="button" class="rail__btn" data-copy="https://siweimidu.github.io/ai-ribao/feed/zh.xml">
+                  <span class="rail__btn-k">RSS</span>复制订阅地址
                 </button>
-                <button type="button" data-copy="https://siweimidu.github.io/ai-ribao/feed/zh.json">
-                  复制 JSON Feed 地址
+                <button type="button" class="rail__btn" data-copy="https://siweimidu.github.io/ai-ribao/feed/zh.json">
+                  <span class="rail__btn-k">JSON</span>复制订阅地址
                 </button>
-                <a role="menuitem" href="feed/zh.xml">在浏览器中查看 RSS</a>
-                <a role="menuitem" href="feed/zh.json">在浏览器中查看 JSON</a>
+                <p class="rail__fine">
+                  或在浏览器中查看
+                  <a href="feed/zh.xml">RSS</a>
+                  <a href="feed/zh.json">JSON</a>
+                </p>
               </div>
             </details>
           </div>
@@ -111,16 +100,17 @@
                 <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M9 3v12"/><path d="M9 3a6 6 0 0 1 0 12"/></svg><span>主题</span>
                 <span class="rail__hint" data-theme-summary>自动</span>
               </summary>
-              <div class="rail__sub" role="menu"><button type="button" data-theme-choice="auto" aria-checked="false">自动</button><button type="button" data-theme-choice="default" aria-checked="false">默认</button><button type="button" data-theme-choice="light" aria-checked="false">亮色</button><button type="button" data-theme-choice="dark" aria-checked="false">暗色</button></div>
+              <div class="rail__sub" role="menu"><button type="button" data-theme-choice="auto" aria-checked="false">自动</button><button type="button" data-theme-choice="default" aria-checked="false">默认</button><button type="button" data-theme-choice="light" aria-checked="false">亮色</button><button type="button" data-theme-choice="dark" aria-checked="false">暗色</button><button type="button" data-theme-choice="claude-light" aria-checked="false">Claude 亮色</button><button type="button" data-theme-choice="claude-dark" aria-checked="false">Claude 暗色</button></div>
             </details>
           </div>
 
           <!-- 8. 下载 markdown -->
           <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
-            <details class="rail__fold">
-              <summary class="rail__item"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v8"/><path d="M5.5 8 9 11.5 12.5 8"/><path d="M3.5 13.5h11"/></svg><span>下载 markdown</span></summary>
-              <div class="rail__sub" role="menu"><a role="menuitem" href="2026-10-16.brief.md" download>速览版 (markdown)</a><a role="menuitem" href="2026-10-16.md" download>深度版 (markdown)</a></div>
-            </details>
+            <!-- A plain link with `download`, not a fold.
+                 Two things were wrong with the fold: it offered a choice between "速览版"
+                 and "深度版" when only one edition exists, and it made the reader open a
+                 panel to reach a file they had already decided to download. -->
+            <a class="rail__item" href="2026-10-15.md" download><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v8"/><path d="M5.5 8 9 11.5 12.5 8"/><path d="M3.5 13.5h11"/></svg><span>下载 Markdown</span></a>
           </div>
 
           <hr class="rail__sep">
@@ -139,13 +129,13 @@
       <h1 class="issue__title enter">AI 日报</h1>
       <p class="issue__lead enter">每日自动聚合 AI 领域的信息源，去重、交叉验证，并区分事实与推断。</p>
       <div class="stats enter">
-        <div><b>3</b><span>期</span></div>
-        <div><b>633</b><span>事件</span></div>
+        <div><b>2</b><span>期</span></div>
+        <div><b>337</b><span>事件</span></div>
       </div>
     </header>
-    <section class="section"><h2 class="section__title">2026-10<span class="section__count">3 期</span></h2><ol class="issue-list"><li><a class="issue-row" href="2026-10-16.html"><span class="issue-row__date">2026-10-16</span><span class="issue-row__week">周五</span><span class="issue-row__badge">最新</span><span class="issue-row__count">296 条</span></a></li><li><a class="issue-row" href="2026-10-15.html"><span class="issue-row__date">2026-10-15</span><span class="issue-row__week">周四</span><span class="issue-row__count">282 条</span></a></li><li><a class="issue-row" href="2026-10-14.html"><span class="issue-row__date">2026-10-14</span><span class="issue-row__week">周三</span><span class="issue-row__count">55 条</span></a></li></ol></section>
+    <section class="section"><h2 class="section__title">2026-10<span class="section__count">2 期</span></h2><ol class="issue-list"><li><a class="issue-row" href="2026-10-15.html"><span class="issue-row__date">2026-10-15</span><span class="issue-row__week">周四</span><span class="issue-row__badge">最新</span><span class="issue-row__count">282 条</span></a></li><li><a class="issue-row" href="2026-10-14.html"><span class="issue-row__date">2026-10-14</span><span class="issue-row__week">周三</span><span class="issue-row__count">55 条</span></a></li></ol></section>
     <footer class="foot">
-      <p>最新一期：2026-10-16</p>
+      <p>最新一期：2026-10-15</p>
     </footer>
   </main>
 </div>
@@ -156,7 +146,7 @@
   </div>
   <ul class="search__results"></ul>
 </dialog>
-<script type="application/json" id="calendar-data">{"dates": ["2026-10-16", "2026-10-15", "2026-10-14"], "current": "2026-10-16", "today": "2026-10-15"}</script>
+<script type="application/json" id="calendar-data">{"dates": ["2026-10-15", "2026-10-14"], "current": "2026-10-15", "today": "2026-10-16"}</script>
 <script type="application/json" id="search-index">[]</script>
 <script src="assets/motion.js" defer></script>
 </body>

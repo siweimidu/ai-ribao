@@ -168,7 +168,13 @@ class Event(BaseModel):
     needs_review: bool = False
     #: ranking result, kept so a placement can be explained after the fact
     rank_score: float = 0.0
-    rank_components: dict[str, float] = Field(default_factory=dict)
+    #: `float | str`, not `float`. The rubric records `rubric_band` ("突破性"), and typing this
+    #: as `float` meant **every archived digest failed to load**: `Event.model_validate` raised
+    #: `unable to parse string as a number` on a file the pipeline itself had just written.
+    #: Everything that reads the archive -- re-ranking, the audit tools, the tests -- broke on
+    #: data produced minutes earlier, and it looked like corrupt input rather than a schema
+    #: that no longer matched its own writer.
+    rank_components: dict[str, float | str] = Field(default_factory=dict)
 
 
 class SourceCoverage(BaseModel):

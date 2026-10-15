@@ -44,6 +44,10 @@ from .registry import apply_overrides, assert_provenance_complete, load_ledger, 
 from .render import render_brief, render_deep, render_json_feed
 from .state import EXIT_ALREADY_PUBLISHED, RunRecord, append_record, gate, utcnow_iso
 
+#: "Too early to build today's digest." Its own code, like `EXIT_ALREADY_PUBLISHED`, so that
+#: neither condition can ever be read as a failure by the workflow.
+EXIT_TOO_EARLY = 11
+
 ROOT = Path(__file__).resolve().parents[2]
 
 
@@ -149,6 +153,33 @@ def cmd_run(args: argparse.Namespace) -> int:
     out_dir = Path(args.out_dir) if args.out_dir else ROOT / "data" / "digests"
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    # **Do not build today's digest before the collection hour.**
+    #
+    # The digest is defined as "the last 24 hours as of 10:00 Beijing". A run at 02:00 has
+    # only two hours of the day behind it, so what it produces is not an early edition of
+    # today's issue -- it is a different, meaningless document that then occupies the date.
+    # Measured: manual `--force` runs at 00:12 and 01:28 created 2026-10-16 issues built from
+    # two hours of news, and they were published, so the site's "today" was a two-hour
+    # snapshot the whole morning.
+    #
+    # A guard rather than a warning, because a warning would still ship the file. Exit 11 is
+    # its own code so "too early" is never confused with a failure, the same way exit 10 means
+    # "already published".
+    digest_date = getattr(args, "date", None) or datetime.now(
+        ZoneInfo(cfg.timezone)
+    ).strftime("%Y-%m-%d")
+    publish_hour = cfg.run.publish_hour if hasattr(cfg.run, "publish_hour") else 10
+    now_local = datetime.now(ZoneInfo(cfg.timezone))
+    if not args.allow_early and digest_date == now_local.strftime("%Y-%m-%d") \
+            and now_local.hour < publish_hour:
+        print(
+            f"now {now_local.strftime('%H:%M')} {cfg.timezone} is before the {publish_hour:02d}:00 "
+            f"collection hour; {digest_date} is not complete yet, so no digest is built.",
+            file=sys.stderr,
+        )
+        print("（如需强制生成，加 --allow-early）", file=sys.stderr)
+        return EXIT_TOO_EARLY
+
     # 1) collect (or replay a stored items file)
     report = None
     if args.from_items:
@@ -178,7 +209,7 @@ def cmd_run(args: argparse.Namespace) -> int:
     router, llm_warnings, http = _build_router(args)
     (events, cluster_result, insights, analyze_warnings, history,
      rubric_scores, run_now) = asyncio.run(
-        _analyze_async(stage, sources, cfg, router, http, args)
+        _analyze_async(stage, sources, cfg, router, http, args, digest_date)
     )
 
     warnings = [*llm_warnings, *analyze_warnings]
@@ -334,7 +365,7 @@ def cmd_gate(args: argparse.Namespace) -> int:
     return 0 if should else EXIT_ALREADY_PUBLISHED
 
 
-async def _analyze_async(stage, sources, cfg, router, http, args):
+async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str):
     """L3 + analysis in one event loop, with the HTTP client closed on the way out.
 
     They share a loop because an `httpx.AsyncClient` is bound to the loop that created
@@ -412,7 +443,7 @@ async def _analyze_async(stage, sources, cfg, router, http, args):
         pool_target = max(cfg.output.deep.max_items * 2, cfg.output.deep.max_items + 40)
         pool, _ = select_for_digest(
             events, stage, sources, cfg, history=history, pool_only=pool_target,
-            now=run_now,
+            now=run_now, today=run_date,
         )
         rubric_result = await score_events(
             pool, router,
@@ -436,7 +467,7 @@ async def _analyze_async(stage, sources, cfg, router, http, args):
         # Phase 2: the real selection, now that the model's judgement is on the table.
         selected, _ = select_for_digest(
             events, stage, sources, cfg, history=history, rubric_scores=rubric_scores,
-            now=run_now,
+            now=run_now, today=run_date,
         )
 
         # The limit must cover everything that will be published, not just "the first N".
@@ -587,6 +618,8 @@ def build_parser() -> argparse.ArgumentParser:
     r.add_argument("--relay-keys", help="第三方中转 key 的 JSON 文件（只读入内存，不落仓库）")
     r.add_argument("--no-llm", action="store_true", help="完全跳过模型调用，产出规则降级版")
     r.add_argument("--no-deliver", action="store_true", help="只生成产物，不分发")
+    r.add_argument("--allow-early", action="store_true",
+                   help="允许在采集时间（默认 10:00）之前生成当天日报；默认拒绝")
     r.add_argument("--site-url", default="https://example.github.io/ai-daily")
     r.add_argument("--no-env", action="store_true")
     r.set_defaults(func=cmd_run)

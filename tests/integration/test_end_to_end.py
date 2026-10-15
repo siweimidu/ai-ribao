@@ -111,7 +111,19 @@ def isolated_env(tmp_path: Path, monkeypatch):
 
 
 def run_cli(*args: str) -> int:
-    return main([*args])
+    """Invoke the CLI with the publication-hour gate disabled.
+
+    `run` refuses to build today's digest before the collection hour (default 10:00 Beijing),
+    because a run at 02:00 has two hours of news behind it and what it produces is not an
+    early edition -- it is a different, meaningless document that then occupies the date. That
+    is a *publishing* policy.
+
+    The tests are exercising the pipeline, not the schedule, and they run whenever CI or a
+    developer happens to start them. So they opt out explicitly, which is also what makes the
+    gate's existence visible here rather than something a future reader has to discover by
+    running the suite at the wrong time of day.
+    """
+    return main([*args, "--allow-early"]) if args and args[0] == "run" else main([*args])
 
 
 # =============================== the chain =======================================
