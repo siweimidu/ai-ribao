@@ -29,6 +29,7 @@ from .config import load_config, validate_critical_sources, validate_delivery
 from .dedup import units_from_result
 from .factcheck import check_digest
 from .l3 import build_events
+from .history import PublishedHistory
 from .pipeline import (
     build_digest,
     dedup_report,
@@ -174,7 +175,7 @@ def cmd_run(args: argparse.Namespace) -> int:
 
     # 3) L3 semantic clustering + 4) analysis, both need the LLM
     router, llm_warnings, http = _build_router(args)
-    events, cluster_result, insights, analyze_warnings = asyncio.run(
+    events, cluster_result, insights, analyze_warnings, history = asyncio.run(
         _analyze_async(stage, sources, cfg, router, http, args)
     )
 
@@ -196,6 +197,7 @@ def cmd_run(args: argparse.Namespace) -> int:
     digest = build_digest(
         stage, events, sources, cfg,
         report=report, insights=insights, warnings=warnings, llm_usage=llm_usage,
+        history=history,
     )
 
     # 6) fact check -- a failing digest is not published
@@ -281,6 +283,12 @@ def cmd_run(args: argparse.Namespace) -> int:
             sources=[s.model_dump() for s in sources],
         )
     )
+    # Recorded only after delivery, so a run that crashed before publishing does not
+    # suppress tomorrow's coverage of the same story. The history describes what readers
+    # saw, not what the pipeline attempted.
+    written = history.record(digest.top_events, date=digest.date)
+    print(f"跨天记忆：记录 {written} 条（窗口 {history.window_days} 天）")
+
     print("\n分发：" + json.dumps(delivery.summary(), ensure_ascii=False))
     for result in delivery.results:
         if result.skipped and result.detail and "未配置" in result.detail:
@@ -352,7 +360,32 @@ async def _analyze_async(stage, sources, cfg, router, http, args):
         # rank + diversity, while analysis used to run on `events[:limit]` in arrival order
         # -- two different sets that overlapped by 8 of 40. Every other model call was paid
         # for and discarded, and the published items mostly fell back to a source excerpt.
-        selected, _ = select_for_digest(events, stage, sources, cfg)
+        # Cross-day memory. The config field `dedup.l3.cross_day_window_days` existed and was
+        # read by nothing, so a story that led yesterday's issue could lead today's with no
+        # new information -- the most visible quality problem a daily can have.
+        history_notes: list[str] = []
+        #
+        # The archive directory comes from the caller's arguments: this function is handed
+        # `args`, and `out_dir` is resolved in `cmd_run`. Re-deriving it here from the same
+        # default would silently disagree with an explicit `--out-dir`.
+        #
+        # Rebuilt from the archived digests when the record is missing, because the archive
+        # is authoritative and the history file is only a cache over it. Starting from empty
+        # would silently re-publish a week of old news.
+        archive_dir = Path(args.out_dir) if args.out_dir else ROOT / "data" / "digests"
+        history = PublishedHistory(
+            Path(args.history_file) if getattr(args, "history_file", None)
+            else ROOT / "data" / "state" / "published_history.jsonl",
+            window_days=cfg.dedup.l3.cross_day_window_days,
+        )
+        history.load()
+        if not history._index and list(archive_dir.glob("????-??-??.json")):
+            rebuilt = history.rebuild_from_archives(archive_dir)
+            # Kept in a local list: `analyze_warnings` is created further down, and a
+            # warning about the history must reach the reader whether or not analysis runs.
+            history_notes.append(f"跨天去重记录缺失，已从 {rebuilt} 条归档事件重建")
+
+        selected, _ = select_for_digest(events, stage, sources, cfg, history=history)
 
         # The limit must cover everything that will be published, not just "the first N".
         # When it did not, the items past the cut fell back to the source's own headline --
@@ -374,7 +407,7 @@ async def _analyze_async(stage, sources, cfg, router, http, args):
         )
         if analyse_note:
             analyze_warnings = [*analyze_warnings, analyse_note]
-        return events, cluster_result, insights, analyze_warnings
+        return events, cluster_result, insights, analyze_warnings + history_notes, history
     finally:
         if http is not None:
             await http.aclose()

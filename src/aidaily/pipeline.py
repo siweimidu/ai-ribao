@@ -23,6 +23,15 @@ from .select import WindowResult, select_window
 if TYPE_CHECKING:  # pragma: no cover - typing only
     from .analyze import EventInsight
     from .collect import CollectReport
+    from .history import PublishedHistory
+
+#: Multiplier applied to an event already published inside the cross-day window.
+#
+#: Not zero. A hard drop would empty the digest on a quiet day and would also discard a
+#: story that genuinely developed overnight -- the penalty is applied to the *match*, and a
+#: story that gained sources or URLs since yesterday breaks the match on its own. Demote,
+#: never delete, which is the same rule the source registry follows.
+REPEAT_PENALTY = 0.12
 
 
 def dedup_config_from(cfg: AppConfig) -> DedupConfig:
@@ -113,6 +122,8 @@ def select_for_digest(
     cfg: AppConfig,
     *,
     now: datetime | None = None,
+    history: PublishedHistory | None = None,
+    today: str | None = None,
 ) -> tuple[list[Event], dict]:
     """Rank and diversify, returning the events the digest will actually publish.
 
@@ -122,6 +133,10 @@ def select_for_digest(
     different 60, so only 8 of 40 paid-for insights reached a reader while most published
     items showed a bare source excerpt. Analysing after selection means every model call is
     spent on something a reader will see.
+
+    `history`, when given, demotes anything already published inside the cross-day window.
+    Demoted rather than dropped, deliberately -- see `history.py` for the reasoning and for
+    what a hard drop would cost on a quiet day.
     """
     ranked = rank_events(
         events,
@@ -139,6 +154,33 @@ def select_for_digest(
         ),
         now=now,
     )
+
+    repeats: list[dict] = []
+    if history is not None:
+        # `dedup.cross_day_window_days` was declared in the config and read by nothing --
+        # dead configuration that looked like a working feature. It is wired up here.
+        history.window_days = cfg.dedup.l3.cross_day_window_days
+        now_ref = now or datetime.now(timezone.utc)
+        stamp = today or now_ref.astimezone().date().isoformat()
+
+        for row in ranked:
+            repeat = history.find_repeat(row.event, today=stamp, now=now_ref)
+            if repeat is None:
+                continue
+            row.score = round(row.score * REPEAT_PENALTY, 6)
+            row.components["cross_day_repeat"] = REPEAT_PENALTY
+            row.components["cross_day_days_ago"] = float(repeat.days_ago)
+            row.components["score"] = row.score
+            repeats.append({
+                "event_id": repeat.event_id,
+                "title": row.event.title[:120],
+                "first_seen": repeat.first_seen,
+                "days_ago": repeat.days_ago,
+                "matched_on": repeat.matched_on,
+            })
+        # The penalty is applied after ranking, so the order has to be rebuilt.
+        ranked.sort(key=lambda r: (-r.score, r.event.event_id))
+
     chosen = select_diverse(
         ranked,
         cfg.output.deep.max_items,
@@ -161,7 +203,17 @@ def select_for_digest(
         row.event.rank_score = row.score
         row.event.rank_components = dict(row.components)
 
-    return [row.event for row in chosen], diversity_report(chosen, sources)
+    report = diversity_report(chosen, sources)
+    if history is not None:
+        # Carried out with the report rather than logged and forgotten: "we demoted 14
+        # repeats" is a number a reader of the archive can check, and without it a quiet
+        # day looks identical to a broken collector.
+        report["cross_day_repeats"] = len(repeats)
+        report["cross_day_window_days"] = history.window_days
+        if repeats:
+            report["cross_day_examples"] = repeats[:10]
+
+    return [row.event for row in chosen], report
 
 
 def build_digest(
@@ -175,6 +227,7 @@ def build_digest(
     warnings: list[str] | None = None,
     llm_usage: dict | None = None,
     now: datetime | None = None,
+    history: PublishedHistory | None = None,
 ) -> Digest:
     """Assemble the Digest from the stages' output.
 
@@ -215,7 +268,10 @@ def build_digest(
 
     multi = [e for e in events if e.independent_source_count > 1]
 
-    ordered, rank_report = select_for_digest(events, stage, sources, cfg, now=now)
+    ordered, rank_report = select_for_digest(
+        events, stage, sources, cfg, now=now, history=history,
+        today=(now or datetime.now(timezone.utc)).astimezone().date().isoformat(),
+    )
 
     # The headline comes from the top-ranked event that actually has an insight.
     headline = ""
