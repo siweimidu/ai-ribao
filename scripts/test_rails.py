@@ -20,6 +20,7 @@ silently remove the affordance.
 from __future__ import annotations
 
 import asyncio
+import re
 import sys
 from pathlib import Path
 
@@ -180,45 +181,63 @@ async def main() -> int:
 
         # --- scrollbars -----------------------------------------------------------
         print("\n滚动条")
-        # The rails must remain scrollable: a scrollbar styled to invisibility removes the
-        # only cue that there is more content below.
+        # The rails must remain scrollable and the scrollbar must be **hidden**.
+        #
+        # These two assertions used to be in tension the other way round: the test required
+        # `scrollbar-color` to resolve to a colour, on the reasoning that a scrollbar styled to
+        # invisibility removes the only cue that there is more content below. The user then
+        # asked for the bars to be hidden outright, so the requirement changed -- and what has
+        # to keep being checked is that hiding the bar did not remove the *ability* to scroll.
         scrollable = await page.evaluate(
             """() => {
               const rail = document.querySelector('.rail');
               const toc = document.querySelector('.toc');
+              const railStyle = getComputedStyle(rail);
+              const tocStyle = getComputedStyle(toc);
               return {
-                railOverflow: getComputedStyle(rail).overflowY,
-                tocOverflow: getComputedStyle(toc).overflowY,
+                railOverflow: railStyle.overflowY,
+                tocOverflow: tocStyle.overflowY,
                 railScrollable: rail.scrollHeight > rail.clientHeight,
+                // `none` is what hides it; a leftover `auto` or `thin` means a browser will
+                // draw a bar again.
+                railBar: railStyle.scrollbarWidth,
+                tocBar: tocStyle.scrollbarWidth,
               };
             }"""
         )
         check("左栏仍可滚动", scrollable["railOverflow"] == "auto", scrollable["railOverflow"])
         check("目录仍可滚动", scrollable["tocOverflow"] == "auto", scrollable["tocOverflow"])
+        check("左栏滚动条已隐藏", scrollable["railBar"] == "none", scrollable["railBar"])
+        check("目录滚动条已隐藏", scrollable["tocBar"] == "none", scrollable["tocBar"])
+        # A rail whose content is shorter than the viewport cannot demonstrate scrollability,
+        # so this is only meaningful on a page that actually overflows.
+        if scrollable["railScrollable"]:
+            moved = await page.evaluate(
+                """async () => {
+                  const rail = document.querySelector('.rail');
+                  const before = rail.scrollTop;
+                  rail.scrollTop = 400;
+                  await new Promise((r) => requestAnimationFrame(r));
+                  const after = rail.scrollTop;
+                  rail.scrollTop = before;
+                  return after > before;
+                }"""
+            )
+            check("隐藏滚动条后可实际滚动", moved, "scrollTop 可改变")
 
-        dark = await browser.new_page(viewport={"width": 1600, "height": 1000}, color_scheme="dark")
-        await dark.goto(URL, wait_until="load")
-        await dark.wait_for_timeout(800)
-        # `scrollbar-color` is the standard property and the one both Chrome and Firefox
-        # resolve, so it is the one worth asserting on.
-        colours = await dark.evaluate(
-            """() => {
-              const rail = getComputedStyle(document.querySelector('.rail')).scrollbarColor;
-              const toc = getComputedStyle(document.querySelector('.toc')).scrollbarColor;
-              return { rail, toc, theme: document.documentElement.dataset.theme || '' };
-            }"""
+        # And the WebKit path, since `scrollbar-width` is not what Safari honours.
+        #
+        # Asserted against the shipped stylesheet rather than through the browser's CSSOM:
+        # reading `cssRules` from a `file://` document is a cross-origin access and throws, so
+        # the in-page version returned an empty string and reported a missing rule that was
+        # present. The file is what actually ships, so the file is what gets checked.
+        css = (ROOT / "site" / "assets" / "tokens.css").read_text(encoding="utf-8")
+        has_webkit_rule = bool(
+            re.search(r"\.rail::-webkit-scrollbar[^{]*\{[^}]*display:\s*none", css, re.S)
         )
-        check("深色下滚动条已着色（而非默认亮轨）",
-              "rgba" in colours["rail"] or "rgb" in colours["rail"], colours["rail"])
-
-        light = await browser.new_page(viewport={"width": 1600, "height": 1000}, color_scheme="light")
-        await light.goto(URL, wait_until="load")
-        await light.wait_for_timeout(700)
-        light_colour = await light.evaluate(
-            "getComputedStyle(document.querySelector('.rail')).scrollbarColor"
-        )
-        check("深浅两色下取值不同", light_colour != colours["rail"],
-              f"light={light_colour} dark={colours['rail']}")
+        check("WebKit 路径也隐藏了滚动条", has_webkit_rule,
+              "tokens.css 内 ::-webkit-scrollbar { display: none }")
+        check("Firefox 路径也隐藏了滚动条", "scrollbar-width: none" in css, "scrollbar-width: none")
 
         print("\n运行时")
         check("无 JavaScript 错误", not errors, str(errors[:2]))
