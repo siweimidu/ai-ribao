@@ -113,18 +113,32 @@ def load_tibo() -> dict:
             summary["events"] = reset_events(payload)
             summary["activities"] = activities(payload)
             summary["client_stats"] = dict(client.stats)
-            summary.pop("stale", None)
-            try:
-                TIBO_SNAPSHOT.parent.mkdir(parents=True, exist_ok=True)
-                TIBO_SNAPSHOT.write_text(
-                    json.dumps(summary, ensure_ascii=False), encoding="utf-8"
-                )
-            except OSError:
-                # A read-only checkout must not break rendering; the snapshot is an
-                # optimisation, not a requirement.
-                pass
-            return summary
-        reason = "抓取返回空"
+
+            # **The test is `events`, not whether `payload` is truthy.**
+            #
+            # A successful HTTP response carrying no events is truthy, so the first version
+            # took the success path and returned a summary with an empty calendar -- exactly
+            # the blank page the snapshot exists to prevent. The snapshot was committed and
+            # the fallback never ran, because from the code's point of view nothing had
+            # failed.
+            #
+            # What matters is whether there is anything to draw. No events means use the
+            # snapshot, however healthy the request looked.
+            if summary.get("events"):
+                summary.pop("stale", None)
+                try:
+                    TIBO_SNAPSHOT.parent.mkdir(parents=True, exist_ok=True)
+                    TIBO_SNAPSHOT.write_text(
+                        json.dumps(summary, ensure_ascii=False), encoding="utf-8"
+                    )
+                except OSError:
+                    # A read-only checkout must not break rendering; the snapshot is an
+                    # optimisation, not a requirement.
+                    pass
+                return summary
+            reason = f"抓取成功但 events 为空（total_events={summary.get('total_events')}）"
+        else:
+            reason = "抓取返回空载荷"
     except Exception as exc:  # noqa: BLE001
         reason = f"{type(exc).__name__}: {str(exc)[:80]}"
 
