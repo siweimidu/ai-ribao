@@ -147,6 +147,37 @@ def test_full_chain_produces_a_publishable_digest(fixture_items: Path, isolated_
     assert "An old story" not in deep
 
 
+def test_every_published_event_carries_its_own_analysis(fixture_items: Path, isolated_env, tmp_path, capsys):
+    """No published event may lack an insight, and no insight may be orphaned.
+
+    Selection happens in two places -- once to choose what the model should look at, and once
+    to choose what is published -- so the two can silently disagree. They did: a digest went
+    out whose `top_events` shared only 40 ids with its own `insights` map. Twenty entries
+    rendered the source's English headline while their analyses sat in the archive attached
+    to events no reader would ever see.
+
+    This is the invariant that catches it, and it is worth stating plainly because the same
+    mistake is described in `select_for_digest`'s own docstring -- an earlier version analysed
+    `events[:40]` and published a different sixty.
+    """
+    out_dir = tmp_path / "digests"
+    code = run_cli(
+        "run", "--from-items", str(fixture_items), "--out-dir", str(out_dir),
+        "--no-llm", "--no-deliver", "--no-env",
+    )
+    assert code == 0, capsys.readouterr().out
+
+    payload = json.loads((out_dir / f"{TODAY}.json").read_text(encoding="utf-8"))
+    published = {e["event_id"] for e in payload["digest"]["top_events"]}
+    analysed = set(payload.get("insights") or {})
+
+    assert published, "the digest published nothing"
+    assert published <= analysed, (
+        f"{len(published - analysed)} 条已发布但没有分析，"
+        f"{len(analysed - published)} 条分析对应的条目未发布"
+    )
+
+
 def test_junk_is_dropped_with_a_visible_reason(fixture_items: Path, isolated_env, tmp_path, capsys):
     """Dropping silently is worse than dropping loudly.
 

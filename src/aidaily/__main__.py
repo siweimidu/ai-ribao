@@ -176,7 +176,8 @@ def cmd_run(args: argparse.Namespace) -> int:
 
     # 3) L3 semantic clustering + 4) analysis, both need the LLM
     router, llm_warnings, http = _build_router(args)
-    events, cluster_result, insights, analyze_warnings, history = asyncio.run(
+    (events, cluster_result, insights, analyze_warnings, history,
+     rubric_scores) = asyncio.run(
         _analyze_async(stage, sources, cfg, router, http, args)
     )
 
@@ -198,7 +199,7 @@ def cmd_run(args: argparse.Namespace) -> int:
     digest = build_digest(
         stage, events, sources, cfg,
         report=report, insights=insights, warnings=warnings, llm_usage=llm_usage,
-        history=history,
+        history=history, rubric_scores=rubric_scores,
     )
 
     # 6) fact check -- a failing digest is not published
@@ -442,7 +443,8 @@ async def _analyze_async(stage, sources, cfg, router, http, args):
         )
         if analyse_note:
             analyze_warnings = [*analyze_warnings, analyse_note]
-        return events, cluster_result, insights, analyze_warnings + history_notes, history
+        return (events, cluster_result, insights, analyze_warnings + history_notes,
+                history, rubric_scores)
     finally:
         if http is not None:
             await http.aclose()

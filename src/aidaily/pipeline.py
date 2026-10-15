@@ -272,6 +272,7 @@ def build_digest(
     llm_usage: dict | None = None,
     now: datetime | None = None,
     history: PublishedHistory | None = None,
+    rubric_scores: dict[str, float] | None = None,
 ) -> Digest:
     """Assemble the Digest from the stages' output.
 
@@ -315,6 +316,16 @@ def build_digest(
     ordered, rank_report = select_for_digest(
         events, stage, sources, cfg, now=now, history=history,
         today=(now or datetime.now(timezone.utc)).astimezone().date().isoformat(),
+        # The rubric scores **must** be passed here, or this call re-selects a different
+        # sixty events than the caller analysed.
+        #
+        # That is not hypothetical: omitting them produced a digest whose `top_events` shared
+        # only 40 ids with its own `insights` map. Twenty entries rendered the source's
+        # English headline while their analyses sat in the archive attached to events nobody
+        # would see -- and it is the exact failure `select_for_digest`'s own docstring warns
+        # about, reintroduced by adding a second selection pass without threading the scores
+        # through. Selection happens in two places and they must agree.
+        rubric_scores=rubric_scores,
     )
 
     # The headline comes from the top-ranked event that actually has an insight.
