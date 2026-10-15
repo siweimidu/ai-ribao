@@ -23,6 +23,7 @@ import asyncio
 import json
 import re
 import sys
+import time
 from pathlib import Path
 
 import httpx
@@ -55,22 +56,53 @@ def pick_model(ids: list[str]) -> str | None:
 
 
 async def discover_one(
-    client: httpx.AsyncClient, sem: asyncio.Semaphore, row: dict
+    client: httpx.AsyncClient, sem: asyncio.Semaphore, row: dict, *, vendor_first: bool = False
 ) -> dict:
+    """Fill in a model for one relay row.
+
+    The host is identified first, always, and recorded even when it does not change what is
+    tried -- "which endpoint is this" is what makes a failure report readable.
+
+    `vendor_first` tries a known vendor's own model names with a one-token completion before
+    asking for a listing. It is **off by default**, and that is a measured decision rather
+    than a cautious one: enabling it dropped resolution from 111/167 to 81/167, with
+    `ConnectError` rising from 3 to 22. The extra requests may simply have met a worse network
+    on the run that measured it, so the flag is kept rather than deleted -- but a change whose
+    evidence is ambiguous does not get to become the default.
+    """
+    from aidaily.vendors import identify, looks_like_aggregator
+
     base = str(row.get("baseUrl") or "").rstrip("/")
     out = dict(row)
     if not base:
         out["_pick_error"] = "no baseUrl"
         return out
 
+    vendor = identify(base)
+    aggregator = looks_like_aggregator(base)
+    out["_vendor"] = vendor.name if vendor else ("中转站" if aggregator else "")
+    headers = {"Authorization": f"Bearer {row.get('key','')}", "Content-Type": "application/json"}
+
     async with sem:
-        # Some gateways need a trailing /v1 that the export omits, and some forbid it.
+        # --- 1. Optional: a known vendor's own model names, tried directly -----------------
+        #
+        # Skipped for a reseller: `newapi.*` and friends proxy arbitrary upstreams, so a
+        # first-party model name is a guess, and a guessed name 404s in a way that reads like
+        # a bad credential.
+        if vendor_first and vendor and vendor.models and not aggregator and not row.get("model"):
+            for model in vendor.models[:3]:
+                ok, detail = await _try_model(client, base, headers, model)
+                if ok:
+                    out["model"] = model
+                    out["_via"] = f"vendor:{vendor.id}"
+                    out.pop("_pick_error", None)
+                    return out
+                out["_pick_error"] = detail
+
+        # --- 2. Ask the endpoint what it serves ------------------------------------
         for candidate in (base, base + "/v1", re.sub(r"/v1$", "", base)):
             try:
-                resp = await client.get(
-                    f"{candidate}/models",
-                    headers={"Authorization": f"Bearer {row.get('key','')}"},
-                )
+                resp = await client.get(f"{candidate}/models", headers=headers)
             except Exception as exc:  # noqa: BLE001
                 out["_pick_error"] = f"{type(exc).__name__}"
                 continue
@@ -105,10 +137,32 @@ async def discover_one(
             out["baseUrl"] = candidate
             out["model"] = chosen
             out["_models"] = len(ids)
+            out["_via"] = "probe"
             out.pop("_pick_error", None)
             return out
 
     return out
+
+
+async def _try_model(
+    client: httpx.AsyncClient, base: str, headers: dict, model: str
+) -> tuple[bool, str]:
+    """One minimal completion: does this endpoint actually serve this model?
+
+    A `/models` listing being present does not mean a model is callable, so the check is a
+    real request with `max_tokens: 1` rather than a listing lookup.
+    """
+    try:
+        resp = await client.post(
+            f"{base}/chat/completions", headers=headers,
+            json={"model": model, "messages": [{"role": "user", "content": "hi"}],
+                  "max_tokens": 1},
+        )
+    except Exception as exc:  # noqa: BLE001
+        return False, f"{type(exc).__name__}"
+    if resp.status_code == 200:
+        return True, ""
+    return False, f"{model}: HTTP {resp.status_code}"
 
 
 async def main() -> int:
@@ -118,6 +172,10 @@ async def main() -> int:
     ap.add_argument("--cache", default=None, help="探测结果缓存（JSON）")
     ap.add_argument("--offline", action="store_true", help="不联网，只用缓存")
     ap.add_argument("--concurrency", type=int, default=10)
+    ap.add_argument("--retry-failed-after", type=float, default=6.0,
+                    help="失败项多少小时后重试（默认 6；设 0 表示每次都重试）")
+    ap.add_argument("--vendor-first", action="store_true",
+                    help="先试厂商自有模型名（默认关闭；见 discover_one 的说明）")
     args = ap.parse_args()
 
     doc = json.loads(Path(args.keys).read_text(encoding="utf-8-sig"))
@@ -138,17 +196,39 @@ async def main() -> int:
             # One discovery per (base, key): the same gateway can serve different model
             # sets per account tier.
             todo = []
+            # Failures are cached too, with a timestamp.
+            #
+            # Only successes were remembered before, so every run re-probed every failure --
+            # and the failures are mostly endpoints that rate-limited us, so retrying them is
+            # what keeps them failing. Measured across three consecutive runs: resolution
+            # fell 111 -> 81 -> 78 while `ConnectError` climbed 3 -> 22 -> 18. The discovery
+            # was measuring its own load, and the numbers looked like a property of the
+            # endpoints.
+            fresh_after = time.time() - args.retry_failed_after * 3600
             for row in rows:
                 ck = f"{row.get('baseUrl')}|{row.get('key','')[:8]}"
-                if ck in cache and cache[ck].get("model"):
+                hit = cache.get(ck)
+                if hit is None:
+                    todo.append((ck, row))
+                    continue
+                if hit.get("model"):
+                    continue
+                # A recent failure: leave it alone. An old one: try again, the limit may
+                # have reset.
+                if float(hit.get("_failed_at") or 0) >= fresh_after:
                     continue
                 todo.append((ck, row))
-            print(f"  需探测 {len(todo)} 条（缓存命中 {len(rows)-len(todo)}）")
+
+            skipped = len(rows) - len(todo)
+            print(f"  需探测 {len(todo)} 条（缓存命中 {skipped}）")
 
             done = 0
+
             async def run(ck: str, row: dict) -> None:
                 nonlocal done
-                result = await discover_one(client, sem, row)
+                result = await discover_one(client, sem, row, vendor_first=args.vendor_first)
+                if not result.get("model"):
+                    result["_failed_at"] = time.time()
                 cache[ck] = result
                 done += 1
                 if done % 20 == 0:
@@ -170,6 +250,14 @@ async def main() -> int:
             # the key count in the log disagree with the key file.
             entry["model"] = row.get("model") or ""
             entry["_unusable"] = hit.get("_pick_error", "not discovered")
+        # Provenance travels with the row.
+        #
+        # `_vendor` and `_via` are set by `discover_one` and were being dropped here, because
+        # only `baseUrl` and `model` were copied out of the cache -- so the run reported
+        # "167 未识别 / 167 未解析" while the data was sitting right there in the same dict.
+        for key in ("_vendor", "_via", "_models"):
+            if hit.get(key) is not None:
+                entry[key] = hit[key]
         resolved.append(entry)
 
     usable = [r for r in resolved if r.get("model")]
@@ -186,8 +274,9 @@ async def main() -> int:
 
     vendors = Counter(r.get("_vendor") or "未识别" for r in resolved)
     print("  端点归属:")
-    for name, n in vendors.most_common(10):
-        print(f"    {n:4}  {name or "未识别"}")
+    for name, n in vendors.most_common(12):
+        label = name or "未识别"
+        print(f"    {n:4}  {label}")
 
     via = Counter(r.get("_via") or "未解析" for r in resolved)
     print("  解析方式:")
