@@ -18,6 +18,7 @@ from .config import AppConfig
 from .dedup import DedupConfig, DedupResult, cluster
 from .models import Digest, Event, NormalizedItem, SourceCoverage, SourceSpec
 from .rank import RankWeights, diversity_report, rank_events, select_diverse
+from .rubric import band, rubric_multiplier
 from .select import WindowResult, select_window
 
 if TYPE_CHECKING:  # pragma: no cover - typing only
@@ -124,6 +125,8 @@ def select_for_digest(
     now: datetime | None = None,
     history: PublishedHistory | None = None,
     today: str | None = None,
+    rubric_scores: dict[str, float] | None = None,
+    pool_only: int | None = None,
 ) -> tuple[list[Event], dict]:
     """Rank and diversify, returning the events the digest will actually publish.
 
@@ -137,6 +140,15 @@ def select_for_digest(
     `history`, when given, demotes anything already published inside the cross-day window.
     Demoted rather than dropped, deliberately -- see `history.py` for the reasoning and for
     what a hard drop would cost on a quiet day.
+
+    `rubric_scores`, when given, multiplies each event's score by the model's judgement of
+    it (see `rubric.py`). An event with no score keeps exactly its formula value, so a failed
+    batch is neutral rather than a penalty.
+
+    `pool_only`, when given, returns the top N by formula **without** the diversity pass.
+    It exists so the caller can decide which candidates deserve a model's attention before
+    spending calls on them: scoring every one of ~280 events would cost twenty-eight batched
+    calls to rank items that can never reach the digest anyway.
     """
     ranked = rank_events(
         events,
@@ -180,6 +192,38 @@ def select_for_digest(
             })
         # The penalty is applied after ranking, so the order has to be rebuilt.
         ranked.sort(key=lambda r: (-r.score, r.event.event_id))
+
+    rubric_report: dict = {}
+    if rubric_scores:
+        # The model's judgement multiplies the formula score. `rubric_multiplier` returns
+        # exactly 1.0 for an event the model did not score, so a batch that failed leaves
+        # those rows where the formula put them rather than dropping them down the list.
+        graded = 0
+        for row in ranked:
+            raw = rubric_scores.get(row.event.event_id)
+            if raw is None:
+                continue
+            multiplier = rubric_multiplier(raw)
+            row.score = round(row.score * multiplier, 6)
+            row.components["rubric_score"] = float(raw)
+            row.components["rubric_multiplier"] = round(multiplier, 4)
+            row.components["rubric_band"] = band(float(raw))
+            row.components["score"] = row.score
+            graded += 1
+        ranked.sort(key=lambda r: (-r.score, r.event.event_id))
+        rubric_report = {
+            "rubric_scored": graded,
+            "rubric_scored_total": len(rubric_scores),
+        }
+
+    if pool_only is not None:
+        # Candidate pool only: no diversity pass, no archive side effects. The caller uses
+        # this to choose what to spend model calls on.
+        return [row.event for row in ranked[:pool_only]], {
+            **(rubric_report or {}),
+            "pool_only": pool_only,
+            "pool_size": len(ranked),
+        }
 
     chosen = select_diverse(
         ranked,

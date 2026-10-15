@@ -30,6 +30,7 @@ from .dedup import units_from_result
 from .factcheck import check_digest
 from .l3 import build_events
 from .history import PublishedHistory
+from .rubric import score_events
 from .pipeline import (
     build_digest,
     dedup_report,
@@ -385,7 +386,41 @@ async def _analyze_async(stage, sources, cfg, router, http, args):
             # warning about the history must reach the reader whether or not analysis runs.
             history_notes.append(f"跨天去重记录缺失，已从 {rebuilt} 条归档事件重建")
 
-        selected, _ = select_for_digest(events, stage, sources, cfg, history=history)
+        # --- Rubric pass: two phases, so model calls land on candidates that can matter ---
+        #
+        # Phase 1 ranks by formula and returns the top of the list **without** the diversity
+        # pass. Scoring all ~280 events would cost ~28 batched calls to grade rows that can
+        # never reach the digest; the pool is what the final selection actually draws from,
+        # with headroom so a story the formula underrates can still be promoted by the model.
+        rubric_scores: dict[str, float] = {}
+        rubric_result = None
+        pool_target = max(cfg.output.deep.max_items * 2, cfg.output.deep.max_items + 40)
+        pool, _ = select_for_digest(
+            events, stage, sources, cfg, history=history, pool_only=pool_target
+        )
+        rubric_result = await score_events(
+            pool, router,
+            batch_size=cfg.llm.batch_size.rubric,
+            concurrency=cfg.llm.batch_size.rubric_concurrency,
+        )
+        rubric_scores = rubric_result.scores
+
+        rubric_note = (
+            f"rubric 评分 {rubric_result.coverage}"
+            f"（标准来源：{rubric_result.profile_source}）"
+        )
+        if rubric_result.unknown_ids:
+            # Recorded, not silently dropped. The ids themselves are discarded, but a model
+            # inventing rows is worth surfacing.
+            rubric_note += f"；模型返回了 {rubric_result.unknown_ids} 个未发送的 id（已丢弃）"
+        if rubric_result.failed_batches:
+            rubric_note += f"；{rubric_result.failed_batches} 批失败（这些条目仍用公式分）"
+        history_notes.append(rubric_note)
+
+        # Phase 2: the real selection, now that the model's judgement is on the table.
+        selected, _ = select_for_digest(
+            events, stage, sources, cfg, history=history, rubric_scores=rubric_scores
+        )
 
         # The limit must cover everything that will be published, not just "the first N".
         # When it did not, the items past the cut fell back to the source's own headline --
@@ -437,6 +472,29 @@ def _build_router(args: argparse.Namespace):
         else:
             warnings.append(f"relay 密钥文件不存在：{path}")
 
+    # Validate the relay payload here, where a message can still reach the reader.
+    #
+    # `providers_from_env` swallows a `json.JSONDecodeError` and returns no relay providers,
+    # which is the same "configured but silently ignored" failure this section already
+    # documents -- just one layer down. A secret stored through a shell pipeline can arrive
+    # UTF-16 encoded or with a BOM, and the symptom is not an error: it is a digest that
+    # quietly degrades to English with two providers instead of a hundred.
+    relay_raw = env.get("RELAY_KEYS_JSON")
+    if relay_raw:
+        try:
+            rows = json.loads(relay_raw.lstrip("\ufeff"))
+            if not isinstance(rows, list):
+                raise ValueError("not a JSON list")
+            env["RELAY_KEYS_JSON"] = json.dumps(rows)
+            warnings.append(f"中转密钥已读取：{len(rows)} 条")
+        except (TypeError, ValueError) as exc:
+            warnings.append(
+                f"RELAY_KEYS_JSON 存在但无法解析（{type(exc).__name__}: {str(exc)[:60]}）；"
+                f"本次不使用中转。长度 {len(relay_raw)} 字节，"
+                f"首字节 {relay_raw[:1]!r}"
+            )
+            env.pop("RELAY_KEYS_JSON", None)
+
     # Relay is enabled by **either** a key file or an already-populated `RELAY_KEYS_JSON`.
     #
     # The gate used to be `include_relay=bool(args.relay_keys)` -- the flag alone. The
@@ -450,7 +508,14 @@ def _build_router(args: argparse.Namespace):
         env, include_relay=bool(args.relay_keys) or bool(env.get("RELAY_KEYS_JSON"))
     )
     if not providers:
-        return None, ["未找到任何可用的模型密钥，本次未调用大模型"], None
+        # The accumulated warnings are kept, not replaced.
+        #
+        # Returning a fresh one-element list discarded the relay-parse warning -- so the
+        # single message explaining *why* there were no providers was thrown away on the
+        # exact path where it is the only useful information. "No keys found" and "a secret
+        # arrived unparseable" need completely different responses from an operator, and
+        # only one of them was ever shown.
+        return None, [*warnings, "未找到任何可用的模型密钥，本次未调用大模型"], None
 
     cfg = load_config(env={})
     budget = Budget(

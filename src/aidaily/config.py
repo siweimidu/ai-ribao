@@ -148,6 +148,13 @@ class LLMBatchConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
     summarize: int = 8
     cluster_judge: int = 10
+    #: Headlines per rubric call. Larger than the other two because the rubric prompt is
+    #: short per item -- an id and a title -- and because the point of batching is to bring
+    #: a full ranking pass down from ~60 calls to under ten.
+    rubric: int = 10
+    #: Concurrent rubric calls. Deliberately low: these run before anything is published, so
+    #: a rate limit here delays the whole run rather than degrading a single item.
+    rubric_concurrency: int = 2
 
 
 class LLMConfig(BaseModel):

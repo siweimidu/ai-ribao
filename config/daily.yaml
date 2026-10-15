@@ -117,6 +117,11 @@ llm:
   batch_size:
     summarize: 8                # daybrief 实测：8 条一批可省数倍调用
     cluster_judge: 10
+    # 每次 rubric 调用评多少条。比另外两项大，因为每条内容很短（一个 id + 一个标题），
+    # 批量的意义就是把一整轮排序从约 60 次调用压到 10 次以内。
+    rubric: 10
+    # rubric 并发。刻意压低：它在发布之前运行，这里被限流会拖慢整轮，而不是降级某一条。
+    rubric_concurrency: 2
 
 budget:
   # 运行期熔断；超限则降级为规则摘要并在 digest.warnings 中声明
