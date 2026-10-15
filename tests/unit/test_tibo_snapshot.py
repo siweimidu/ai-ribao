@@ -71,8 +71,6 @@ def test_an_event_less_response_falls_back_to_the_snapshot(monkeypatch) -> None:
     Simulated by making the client return a payload whose events list is empty, which is
     what a reachable-but-empty upstream looks like.
     """
-    module = load_rerender_module()
-
     class FakeClient:
         policy = None
         stats: dict = {}
@@ -92,12 +90,35 @@ def test_an_event_less_response_falls_back_to_the_snapshot(monkeypatch) -> None:
     fake_aihot.activities = lambda payload: []     # type: ignore[attr-defined]
 
     monkeypatch.setitem(sys.modules, "aidaily.aihot", fake_aihot)
-    # `from aidaily.aihot import ...` inside the function still consults the real package,
-    # so patch the attribute the import binds to.
-    import aidaily
-    monkeypatch.setattr(aidaily, "aihot", fake_aihot, raising=False)
 
-    summary = module.load_tibo()
+    # Imported **after** the patch, and from the package rather than from the script.
+    #
+    # `load_tibo` used to live in `scripts/rerender_site.py`, which is how the bug survived:
+    # the local tool rendered a good page while the publishing path shipped a blank one. The
+    # loader now lives in `aidaily.tibo` and this asserts against that one -- the one both
+    # paths call.
+    from aidaily.tibo import load_tibo
+
+    summary = load_tibo(ROOT)
     assert summary, "应当回退到快照而不是返回空"
     assert summary.get("events"), "回退到的快照必须带事件"
     assert summary.get("stale"), "回退时必须标记 stale，页面才能说明数据来自缓存"
+
+
+def test_the_loader_used_by_publishing_is_the_one_tested_here() -> None:
+    """The publishing path must call the same loader, not a copy.
+
+    Two implementations is what produced a blank Tibo page for every scheduled run while the
+    local script worked: `publish.write_site` accepted a `tibo` argument that nothing ever
+    filled in, and `rerender_site.py` had its own loader that CI never invoked.
+    """
+    import inspect
+
+    from aidaily import publish
+
+    source = inspect.getsource(publish.write_site)
+    assert "load_tibo" in source, "发布路径必须自行加载 Tibo 数据，而不是等着别人传进来"
+
+    script = (ROOT / "scripts" / "rerender_site.py").read_text(encoding="utf-8")
+    assert "def load_tibo" not in script, "本地脚本不该再有第二份实现"
+    assert "from aidaily.tibo import load_tibo" in script, "本地脚本应当调用包内实现"
