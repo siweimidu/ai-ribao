@@ -55,7 +55,11 @@
      "magnitude_linear": 1.0,
      "score": 62.655975,
      "topic_penalty": 1.0,
-     "final_score": 62.655975
+     "final_score": 62.655975,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -106,7 +110,11 @@
      "magnitude_linear": 1.0,
      "score": 57.844297,
      "topic_penalty": 1.0,
-     "final_score": 57.844297
+     "final_score": 57.844297,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -158,111 +166,11 @@
      "magnitude_linear": 0.0,
      "score": 50.0848,
      "topic_penalty": 1.0,
-     "final_score": 50.0848
-    }
-   },
-   {
-    "event_id": "e1d427f62bbbb8e",
-    "title": "Google launches its ‘universal’ online shopping cart ahead of the holidays",
-    "member_item_ids": [
-     "f945a0689e6301d9"
-    ],
-    "primary_item_id": "f945a0689e6301d9",
-    "source_ids": [
-     "rss:theverge-com-ai-artificial-intelligence"
-    ],
-    "all_urls": [
-     "https://www.theverge.com/tech/1011797/google-ai-universal-cart-shopping-tool-launch"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T13:00:00Z",
-     "2026-10-15T13:00:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 45.820587,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 759.0,
-     "title_quality": 1.0,
-     "heat": 0.447417,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.2975,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.9418,
-     "significance": 2.2,
-     "lab_announcement": 2.2,
-     "sig_model": 0.0,
-     "sig_release": 1.0,
-     "sig_lab": 1.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.5455,
-     "score": 45.820587,
-     "topic_penalty": 1.0,
-     "final_score": 45.820587
-    }
-   },
-   {
-    "event_id": "e1d230cda3b0ab7",
-    "title": "Things to know when you get cancer",
-    "member_item_ids": [
-     "54eb9d6e18f265d1",
-     "e559ce96f580c8a0"
-    ],
-    "primary_item_id": "e559ce96f580c8a0",
-    "source_ids": [
-     "api:hn-algolia-com-search",
-     "rss:hnrss-org-frontpage"
-    ],
-    "all_urls": [
-     "https://jjmaxwell4.com/writing/things-to-know-when-you-get-cancer/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-14T19:26:30Z",
-     "2026-10-14T19:26:30Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 44.6045,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 0.285,
-     "substance_chars": 171.0,
-     "title_quality": 1.0,
-     "heat": 0.446045,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 1.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.4275,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7001,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 44.6045,
-     "topic_penalty": 1.0,
-     "final_score": 44.6045
+     "final_score": 50.0848,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.35,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -313,7 +221,11 @@
      "magnitude_linear": 0.5455,
      "score": 39.46275,
      "topic_penalty": 1.0,
-     "final_score": 39.46275
+     "final_score": 39.46275,
+     "focus": 0.385,
+     "focus_headline": 0.18,
+     "focus_source": 1.0,
+     "focus_multiplier": 0.5203
     }
    },
    {
@@ -364,109 +276,11 @@
      "magnitude_linear": 0.5455,
      "score": 39.4134,
      "topic_penalty": 1.0,
-     "final_score": 39.4134
-    }
-   },
-   {
-    "event_id": "e0c5331c30bfcc1",
-    "title": "Hand-Machined Stake Sharpener Just in Time for Dracula Season",
-    "member_item_ids": [
-     "224bdd908ae49638"
-    ],
-    "primary_item_id": "224bdd908ae49638",
-    "source_ids": [
-     "rss:hackaday-com"
-    ],
-    "all_urls": [
-     "https://hackaday.com/2026/10/15/hand-machined-stake-sharpener-just-in-time-for-dracula-season/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T15:30:26Z",
-     "2026-10-15T15:30:26Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 38.560543,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 1546.0,
-     "title_quality": 1.0,
-     "heat": 0.376526,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.9916,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 38.560543,
-     "topic_penalty": 1.0,
-     "final_score": 38.560543
-    }
-   },
-   {
-    "event_id": "ea9da7a2a4b82fa",
-    "title": "How Windows is being optimized for Nvidia’s RTX Spark laptops",
-    "member_item_ids": [
-     "cd6bff3e129e8831"
-    ],
-    "primary_item_id": "cd6bff3e129e8831",
-    "source_ids": [
-     "rss:theverge-com-ai-artificial-intelligence"
-    ],
-    "all_urls": [
-     "https://www.theverge.com/tech/1011996/microsoft-windows-rtx-spark-platform-changes-notepad"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T14:30:00Z",
-     "2026-10-15T14:30:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 38.412866,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 685.0,
-     "title_quality": 1.0,
-     "heat": 0.375084,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.971,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 1.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 38.412866,
-     "topic_penalty": 1.0,
-     "final_score": 38.412866
+     "final_score": 39.4134,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.35,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -516,212 +330,11 @@
      "magnitude_linear": 0.0,
      "score": 38.350293,
      "topic_penalty": 1.0,
-     "final_score": 38.350293
-    }
-   },
-   {
-    "event_id": "ed2665ce5f1dbf2",
-    "title": "So You Want To Make Your SDR Work On Other Frequencies",
-    "member_item_ids": [
-     "00fb3cacb0192989"
-    ],
-    "primary_item_id": "00fb3cacb0192989",
-    "source_ids": [
-     "rss:hackaday-com"
-    ],
-    "all_urls": [
-     "https://hackaday.com/2026/10/15/so-you-want-to-make-your-sdr-work-on-other-frequencies/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T14:00:44Z",
-     "2026-10-15T14:00:44Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 38.343329,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 7234.0,
-     "title_quality": 1.0,
-     "heat": 0.374405,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.9613,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 38.343329,
-     "topic_penalty": 1.0,
-     "final_score": 38.343329
-    }
-   },
-   {
-    "event_id": "ef97fb20fb70b68",
-    "title": "Benn Jordan on Flock, privacy, and the new surveillance backlash",
-    "member_item_ids": [
-     "12b944f9d65519fd"
-    ],
-    "primary_item_id": "12b944f9d65519fd",
-    "source_ids": [
-     "rss:theverge-com-ai-artificial-intelligence"
-    ],
-    "all_urls": [
-     "https://www.theverge.com/podcast/1011170/benn-jordan-flock-cameras-alpr-ai-surveillance-privacy"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T14:00:00Z",
-     "2026-10-15T14:00:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 38.341588,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 57090.0,
-     "title_quality": 1.0,
-     "heat": 0.374388,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.9611,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 38.341588,
-     "topic_penalty": 1.0,
-     "final_score": 38.341588
-    }
-   },
-   {
-    "event_id": "ec1be483a1b27cd",
-    "title": "Amazon’s always-listening Bee wearable can now help you buy stuff",
-    "member_item_ids": [
-     "580a3900d0b13543"
-    ],
-    "primary_item_id": "580a3900d0b13543",
-    "source_ids": [
-     "rss:theverge-com-ai-artificial-intelligence"
-    ],
-    "all_urls": [
-     "https://www.theverge.com/tech/1011475/amazon-bee-frontier-eclipse-price-specs"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T12:00:00Z",
-     "2026-10-15T12:00:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 38.069993,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 686.0,
-     "title_quality": 1.0,
-     "heat": 0.371736,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.9232,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 1.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 38.069993,
-     "topic_penalty": 1.0,
-     "final_score": 38.069993
-    }
-   },
-   {
-    "event_id": "e75483d5224a100",
-    "title": "独立建制、招10名顶尖安全人才：字节Seed对AGI的目标可能被低估了",
-    "member_item_ids": [
-     "1a1ee3ec2de611f7",
-     "3196631be28ab7e2"
-    ],
-    "primary_item_id": "3196631be28ab7e2",
-    "source_ids": [
-     "rss:wechat-jiqizhixin-bestblogs",
-     "rss:wechat-jiqizhixin-xlab"
-    ],
-    "all_urls": [
-     "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651062870&idx=1&sn=a16c85f0a054c2e0fffdcb7f6a38b4ee"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T04:17:00Z",
-     "2026-10-15T04:17:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 38.015986,
-    "rank_components": {
-     "source_weight": 1.2,
-     "source_damped": 1.0466,
-     "substance": 1.0,
-     "substance_chars": 4225.0,
-     "title_quality": 1.0,
-     "heat": 0.363221,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.8016,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 38.015986,
-     "topic_penalty": 1.0,
-     "final_score": 38.015986
+     "final_score": 38.350293,
+     "focus": 0.4,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -773,7 +386,11 @@
      "magnitude_linear": 0.0,
      "score": 38.015986,
      "topic_penalty": 1.0,
-     "final_score": 38.015986
+     "final_score": 38.015986,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -825,109 +442,11 @@
      "magnitude_linear": 0.0,
      "score": 38.015986,
      "topic_penalty": 1.0,
-     "final_score": 38.015986
-    }
-   },
-   {
-    "event_id": "e863ea3e1ba3c05",
-    "title": "A Thermal Camera That Uses WebUSB",
-    "member_item_ids": [
-     "43ff14cad507d4af"
-    ],
-    "primary_item_id": "43ff14cad507d4af",
-    "source_ids": [
-     "rss:hackaday-com"
-    ],
-    "all_urls": [
-     "https://hackaday.com/2026/10/15/a-thermal-camera-that-uses-webusb/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T11:00:40Z",
-     "2026-10-15T11:00:40Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 37.94331,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 1172.0,
-     "title_quality": 1.0,
-     "heat": 0.370499,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.9055,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 37.94331,
-     "topic_penalty": 1.0,
-     "final_score": 37.94331
-    }
-   },
-   {
-    "event_id": "edbbd451617132d",
-    "title": "Your secrets aren’t safe with this cute robot toy — they’re on Chinese servers ready to be hacked",
-    "member_item_ids": [
-     "0ad16d2bc4b21a43"
-    ],
-    "primary_item_id": "0ad16d2bc4b21a43",
-    "source_ids": [
-     "rss:theverge-com-ai-artificial-intelligence"
-    ],
-    "all_urls": [
-     "https://www.theverge.com/tech/1010727/eiliko-robot-hack-energize-lab"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T11:00:00Z",
-     "2026-10-15T11:00:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 37.941876,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 734.0,
-     "title_quality": 1.0,
-     "heat": 0.370485,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.9053,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 37.941876,
-     "topic_penalty": 1.0,
-     "final_score": 37.941876
+     "final_score": 38.015986,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -977,415 +496,11 @@
      "magnitude_linear": 0.0,
      "score": 37.699878,
      "topic_penalty": 1.0,
-     "final_score": 37.699878
-    }
-   },
-   {
-    "event_id": "ef93c4899453c19",
-    "title": "[$] Vendor hooks in the Android kernel",
-    "member_item_ids": [
-     "cf8d3a48ae77c14f"
-    ],
-    "primary_item_id": "cf8d3a48ae77c14f",
-    "source_ids": [
-     "rss:lwn-net-headlines"
-    ],
-    "all_urls": [
-     "https://lwn.net/Articles/1098493/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T15:09:15Z",
-     "2026-10-15T15:09:15Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 37.6014,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 0.832,
-     "substance_chars": 499.0,
-     "title_quality": 1.0,
-     "heat": 0.376014,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.9843,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 37.6014,
-     "topic_penalty": 1.0,
-     "final_score": 37.6014
-    }
-   },
-   {
-    "event_id": "ed3cce69819828c",
-    "title": "Building An M7 Pan Tilt Head Controller",
-    "member_item_ids": [
-     "1c3de77b190d1f75"
-    ],
-    "primary_item_id": "1c3de77b190d1f75",
-    "source_ids": [
-     "rss:hackaday-com"
-    ],
-    "all_urls": [
-     "https://hackaday.com/2026/10/15/building-an-m7-pan-tilt-head-controller/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T08:00:43Z",
-     "2026-10-15T08:00:43Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 37.587123,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 1175.0,
-     "title_quality": 1.0,
-     "heat": 0.367021,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.8558,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 37.587123,
-     "topic_penalty": 1.0,
-     "final_score": 37.587123
-    }
-   },
-   {
-    "event_id": "ef4e206f48f0926",
-    "title": "KDE releases documentary",
-    "member_item_ids": [
-     "d691eeede63d40a2"
-    ],
-    "primary_item_id": "d691eeede63d40a2",
-    "source_ids": [
-     "rss:lwn-net-headlines"
-    ],
-    "all_urls": [
-     "https://lwn.net/Articles/1100787/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T13:24:31Z",
-     "2026-10-15T13:24:31Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 37.3583,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 1.0,
-     "substance_chars": 853.0,
-     "title_quality": 1.0,
-     "heat": 0.373583,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.9496,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 1.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 37.3583,
-     "topic_penalty": 1.0,
-     "final_score": 37.3583
-    }
-   },
-   {
-    "event_id": "e205888839e0b66",
-    "title": "Ubuntu 26.10 released",
-    "member_item_ids": [
-     "1cdd87f51d07070c"
-    ],
-    "primary_item_id": "1cdd87f51d07070c",
-    "source_ids": [
-     "rss:lwn-net-headlines"
-    ],
-    "all_urls": [
-     "https://lwn.net/Articles/1100786/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T13:19:23Z",
-     "2026-10-15T13:19:23Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 37.3468,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 1.0,
-     "substance_chars": 676.0,
-     "title_quality": 1.0,
-     "heat": 0.373468,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.9479,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 1.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 37.3468,
-     "topic_penalty": 1.0,
-     "final_score": 37.3468
-    }
-   },
-   {
-    "event_id": "ee4170afecc58d7",
-    "title": "Security updates for Thursday",
-    "member_item_ids": [
-     "5ad255ddd097d38a"
-    ],
-    "primary_item_id": "5ad255ddd097d38a",
-    "source_ids": [
-     "rss:lwn-net-headlines"
-    ],
-    "all_urls": [
-     "https://lwn.net/Articles/1100785/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T13:09:44Z",
-     "2026-10-15T13:09:44Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 37.3252,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 1.0,
-     "substance_chars": 1373.0,
-     "title_quality": 1.0,
-     "heat": 0.373252,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.9449,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 37.3252,
-     "topic_penalty": 1.0,
-     "final_score": 37.3252
-    }
-   },
-   {
-    "event_id": "edfa08f2477031f",
-    "title": "Seven stable kernels for Thursday with fix for critical vulnerability",
-    "member_item_ids": [
-     "4c2f23413e7bcdac"
-    ],
-    "primary_item_id": "4c2f23413e7bcdac",
-    "source_ids": [
-     "rss:lwn-net-headlines"
-    ],
-    "all_urls": [
-     "https://lwn.net/Articles/1100611/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T13:01:31Z",
-     "2026-10-15T13:01:31Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 37.307,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 0.785,
-     "substance_chars": 471.0,
-     "title_quality": 1.0,
-     "heat": 0.37307,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.9423,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 37.307,
-     "topic_penalty": 1.0,
-     "final_score": 37.307
-    }
-   },
-   {
-    "event_id": "ebb6d8128e7c6ac",
-    "title": "Pager Converted to Meshtastic Node",
-    "member_item_ids": [
-     "7336ebe21debd59d"
-    ],
-    "primary_item_id": "7336ebe21debd59d",
-    "source_ids": [
-     "rss:hackaday-com"
-    ],
-    "all_urls": [
-     "https://hackaday.com/2026/10/14/pager-converted-to-meshtastic-node/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T05:00:22Z",
-     "2026-10-15T05:00:22Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 37.269136,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 1706.0,
-     "title_quality": 1.0,
-     "heat": 0.363916,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.8115,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 37.269136,
-     "topic_penalty": 1.0,
-     "final_score": 37.269136
-    }
-   },
-   {
-    "event_id": "e9837a199e25375",
-    "title": "2026-10-15日刊",
-    "member_item_ids": [
-     "8c1269e5ad63503c"
-    ],
-    "primary_item_id": "8c1269e5ad63503c",
-    "source_ids": [
-     "rss:cf-ai-insight-daily"
-    ],
-    "all_urls": [
-     "https://hex2077.dev/docs/2026-10/2026-10-15/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T03:21:55Z",
-     "2026-10-15T03:21:55Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 37.110398,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 3220.0,
-     "title_quality": 1.0,
-     "heat": 0.362366,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7893,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 37.110398,
-     "topic_penalty": 1.0,
-     "final_score": 37.110398
+     "final_score": 37.699878,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -1435,7 +550,11 @@
      "magnitude_linear": 0.0,
      "score": 36.98648,
      "topic_penalty": 1.0,
-     "final_score": 36.98648
+     "final_score": 36.98648,
+     "focus": 0.4,
+     "focus_headline": 0.2727,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -1485,58 +604,11 @@
      "magnitude_linear": 0.0,
      "score": 36.889292,
      "topic_penalty": 1.0,
-     "final_score": 36.889292
-    }
-   },
-   {
-    "event_id": "e23558187fd8138",
-    "title": "Single Button, Handheld Gaming Console",
-    "member_item_ids": [
-     "325f09112f790cc2"
-    ],
-    "primary_item_id": "325f09112f790cc2",
-    "source_ids": [
-     "rss:hackaday-com"
-    ],
-    "all_urls": [
-     "https://hackaday.com/2026/10/14/single-button-handheld-gaming-console/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-14T23:00:53Z",
-     "2026-10-14T23:00:53Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 36.735163,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 1726.0,
-     "title_quality": 1.0,
-     "heat": 0.358702,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.737,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 36.735163,
-     "topic_penalty": 1.0,
-     "final_score": 36.735163
+     "final_score": 36.889292,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -1586,7 +658,11 @@
      "magnitude_linear": 0.0,
      "score": 36.725536,
      "topic_penalty": 1.0,
-     "final_score": 36.725536
+     "final_score": 36.725536,
+     "focus": 0.4,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -1636,7 +712,11 @@
      "magnitude_linear": 0.0,
      "score": 36.595679,
      "topic_penalty": 1.0,
-     "final_score": 36.595679
+     "final_score": 36.595679,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -1686,7 +766,11 @@
      "magnitude_linear": 0.0,
      "score": 36.447387,
      "topic_penalty": 1.0,
-     "final_score": 36.447387
+     "final_score": 36.447387,
+     "focus": 0.4,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -1736,7 +820,11 @@
      "magnitude_linear": 0.0,
      "score": 36.426802,
      "topic_penalty": 1.0,
-     "final_score": 36.426802
+     "final_score": 36.426802,
+     "focus": 0.4,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -1787,109 +875,11 @@
      "magnitude_linear": 0.0,
      "score": 36.42223,
      "topic_penalty": 1.0,
-     "final_score": 36.42223
-    }
-   },
-   {
-    "event_id": "ebd90bedf3534b9",
-    "title": "谈了三个月的女朋友才发现她和前任有较大经济纠纷",
-    "member_item_ids": [
-     "5231f0c4b085adee"
-    ],
-    "primary_item_id": "5231f0c4b085adee",
-    "source_ids": [
-     "api:v2ex-com-topics-hot"
-    ],
-    "all_urls": [
-     "https://www.v2ex.com/t/1249080"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T08:08:16Z",
-     "2026-10-15T08:08:16Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 35.761424,
-    "rank_components": {
-     "source_weight": 0.9,
-     "source_damped": 0.974,
-     "substance": 0.67,
-     "substance_chars": 402.0,
-     "title_quality": 1.0,
-     "heat": 0.367159,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.8578,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 35.761424,
-     "topic_penalty": 1.0,
-     "final_score": 35.761424
-    }
-   },
-   {
-    "event_id": "e74af908d2c97f0",
-    "title": "[$] LWN.net Weekly Edition for October 15, 2026",
-    "member_item_ids": [
-     "caa26494f28d8e7d"
-    ],
-    "primary_item_id": "caa26494f28d8e7d",
-    "source_ids": [
-     "rss:lwn-net-headlines"
-    ],
-    "all_urls": [
-     "https://lwn.net/Articles/1099247/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T00:04:00Z",
-     "2026-10-15T00:04:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 35.4283,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 0.617,
-     "substance_chars": 370.0,
-     "title_quality": 1.0,
-     "heat": 0.354283,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.925,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7489,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 35.4283,
-     "topic_penalty": 1.0,
-     "final_score": 35.4283
+     "final_score": 36.42223,
+     "focus": 0.385,
+     "focus_headline": 0.18,
+     "focus_source": 1.0,
+     "focus_multiplier": 0.5203
     }
    },
    {
@@ -1940,7 +930,11 @@
      "magnitude_linear": 0.0,
      "score": 35.3462,
      "topic_penalty": 1.0,
-     "final_score": 35.3462
+     "final_score": 35.3462,
+     "focus": 0.385,
+     "focus_headline": 0.18,
+     "focus_source": 1.0,
+     "focus_multiplier": 0.5203
     }
    },
    {
@@ -1991,58 +985,11 @@
      "magnitude_linear": 0.0,
      "score": 35.3462,
      "topic_penalty": 1.0,
-     "final_score": 35.3462
-    }
-   },
-   {
-    "event_id": "e291e7b88fe75cb",
-    "title": "[$] Collaborating with out-of-tree tracers",
-    "member_item_ids": [
-     "8bc48424f44fe006"
-    ],
-    "primary_item_id": "8bc48424f44fe006",
-    "source_ids": [
-     "rss:lwn-net-headlines"
-    ],
-    "all_urls": [
-     "https://lwn.net/Articles/1099300/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-14T13:56:50Z",
-     "2026-10-14T13:56:50Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 35.2781,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 0.833,
-     "substance_chars": 500.0,
-     "title_quality": 1.0,
-     "heat": 0.352781,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.6524,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 35.2781,
-     "topic_penalty": 1.0,
-     "final_score": 35.2781
+     "final_score": 35.3462,
+     "focus": 0.385,
+     "focus_headline": 0.18,
+     "focus_source": 1.0,
+     "focus_multiplier": 0.5203
     }
    },
    {
@@ -2093,7 +1040,11 @@
      "magnitude_linear": 0.0,
      "score": 34.852623,
      "topic_penalty": 1.0,
-     "final_score": 34.852623
+     "final_score": 34.852623,
+     "focus": 0.385,
+     "focus_headline": 0.18,
+     "focus_source": 1.0,
+     "focus_multiplier": 0.5203
     }
    },
    {
@@ -2143,58 +1094,11 @@
      "magnitude_linear": 0.0,
      "score": 34.3739,
      "topic_penalty": 1.0,
-     "final_score": 34.3739
-    }
-   },
-   {
-    "event_id": "ee10eff5c54804d",
-    "title": "比亚迪新车大汉上市，高速续航 566km，续航不及特斯拉与小米",
-    "member_item_ids": [
-     "5664d3287d64e9c6"
-    ],
-    "primary_item_id": "5664d3287d64e9c6",
-    "source_ids": [
-     "api:v2ex-com-topics-hot"
-    ],
-    "all_urls": [
-     "https://www.v2ex.com/t/1248884"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T00:48:12Z",
-     "2026-10-15T00:48:12Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 33.764814,
-    "rank_components": {
-     "source_weight": 0.9,
-     "source_damped": 0.974,
-     "substance": 0.538,
-     "substance_chars": 323.0,
-     "title_quality": 1.0,
-     "heat": 0.34666,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.8075,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7575,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 33.764814,
-     "topic_penalty": 1.0,
-     "final_score": 33.764814
+     "final_score": 34.3739,
+     "focus": 0.4,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -2244,7 +1148,11 @@
      "magnitude_linear": 0.0,
      "score": 32.839257,
      "topic_penalty": 1.0,
-     "final_score": 32.839257
+     "final_score": 32.839257,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.35,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -2294,58 +1202,11 @@
      "magnitude_linear": 0.0,
      "score": 32.548689,
      "topic_penalty": 1.0,
-     "final_score": 32.548689
-    }
-   },
-   {
-    "event_id": "e843be3c28edd36",
-    "title": "China indicates rare earths will keep flowing to EU, regardless of U.S. trade deal expiration",
-    "member_item_ids": [
-     "bfc6822c5912148e"
-    ],
-    "primary_item_id": "bfc6822c5912148e",
-    "source_ids": [
-     "rss:search-cnbc-com-combinedcms-view"
-    ],
-    "all_urls": [
-     "https://www.cnbc.com/2026/10/15/china-rare-earth-exports-europe.html"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T09:02:31Z",
-     "2026-10-15T09:02:31Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 32.525339,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 0.185,
-     "substance_chars": 111.0,
-     "title_quality": 1.0,
-     "heat": 0.317595,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.2775,
-     "h_velocity": 1.0,
-     "h_freshness": 0.8723,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 32.525339,
-     "topic_penalty": 1.0,
-     "final_score": 32.525339
+     "final_score": 32.548689,
+     "focus": 0.4,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -2395,7 +1256,11 @@
      "magnitude_linear": 0.0,
      "score": 32.299726,
      "topic_penalty": 1.0,
-     "final_score": 32.299726
+     "final_score": 32.299726,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -2445,7 +1310,11 @@
      "magnitude_linear": 0.0,
      "score": 32.180212,
      "topic_penalty": 1.0,
-     "final_score": 32.180212
+     "final_score": 32.180212,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -2496,7 +1365,11 @@
      "magnitude_linear": 0.0,
      "score": 32.026186,
      "topic_penalty": 1.0,
-     "final_score": 32.026186
+     "final_score": 32.026186,
+     "focus": 0.4,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -2546,58 +1419,11 @@
      "magnitude_linear": 0.0,
      "score": 31.97836,
      "topic_penalty": 1.0,
-     "final_score": 31.97836
-    }
-   },
-   {
-    "event_id": "ea2c4ba6d713e83",
-    "title": "Tree Appreciator",
-    "member_item_ids": [
-     "d4e11da0e85f5fab"
-    ],
-    "primary_item_id": "d4e11da0e85f5fab",
-    "source_ids": [
-     "rss:simonwillison-net-everything"
-    ],
-    "all_urls": [
-     "https://simonwillison.net/2026/Oct/14/tree-appreciator/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-14T21:23:01Z",
-     "2026-10-14T21:23:01Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 31.462146,
-    "rank_components": {
-     "source_weight": 0.6,
-     "source_damped": 0.8801,
-     "substance": 1.0,
-     "substance_chars": 827.0,
-     "title_quality": 1.0,
-     "heat": 0.357479,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7195,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 31.462146,
-     "topic_penalty": 1.0,
-     "final_score": 31.462146
+     "final_score": 31.97836,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -2648,7 +1474,11 @@
      "magnitude_linear": 0.0,
      "score": 31.270527,
      "topic_penalty": 1.0,
-     "final_score": 31.270527
+     "final_score": 31.270527,
+     "focus": 0.385,
+     "focus_headline": 0.18,
+     "focus_source": 1.0,
+     "focus_multiplier": 0.5203
     }
    },
    {
@@ -2698,7 +1528,11 @@
      "magnitude_linear": 0.0,
      "score": 30.255288,
      "topic_penalty": 1.0,
-     "final_score": 30.255288
+     "final_score": 30.255288,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -2749,7 +1583,11 @@
      "magnitude_linear": 1.0,
      "score": 62.418296,
      "topic_penalty": 0.45,
-     "final_score": 28.088233
+     "final_score": 28.088233,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -2796,157 +1634,11 @@
      "magnitude_linear": 0.0,
      "score": 24.1612,
      "topic_penalty": 1.0,
-     "final_score": 24.1612
-    }
-   },
-   {
-    "event_id": "eae4f6c1dbbb3c6",
-    "title": "xerj-org/xerj",
-    "member_item_ids": [
-     "fc8c505c5e850f45"
-    ],
-    "primary_item_id": "fc8c505c5e850f45",
-    "source_ids": [
-     "scrape:github-com-trending"
-    ],
-    "all_urls": [
-     "https://github.com/xerj-org/xerj"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": null,
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 24.0037,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 0.552,
-     "substance_chars": 331.0,
-     "title_quality": 1.0,
-     "heat": 0.240037,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.8275,
-     "h_velocity": 0.0,
-     "h_freshness": 0.5,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 24.0037,
-     "topic_penalty": 1.0,
-     "final_score": 24.0037
-    }
-   },
-   {
-    "event_id": "e9cea81c684e357",
-    "title": "Bank of America shares drop after third-quarter revenue miss and regulatory penalty",
-    "member_item_ids": [
-     "a211c5655fcce394"
-    ],
-    "primary_item_id": "a211c5655fcce394",
-    "source_ids": [
-     "rss:search-cnbc-com-combinedcms-view"
-    ],
-    "all_urls": [
-     "https://www.cnbc.com/2026/10/14/bank-of-america-bac-q3-2026-earnings.html"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-14T20:20:46Z",
-     "2026-10-14T20:20:46Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 14.399986,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 0.245,
-     "substance_chars": 147.0,
-     "title_quality": 1.0,
-     "heat": 0.312465,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.3675,
-     "h_velocity": 1.0,
-     "h_freshness": 0.709,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 31.999968,
-     "topic_penalty": 0.45,
-     "final_score": 14.399986
-    }
-   },
-   {
-    "event_id": "e4499cf0394cb68",
-    "title": "DailyDawn · 2026-10-15",
-    "member_item_ids": [
-     "8cdfbe9ce3af2ff6"
-    ],
-    "primary_item_id": "8cdfbe9ce3af2ff6",
-    "source_ids": [
-     "jsonfeed:dailydawn-dev"
-    ],
-    "all_urls": [
-     "https://dailydawn.dev/zh/2026-10-15"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T00:00:00Z",
-     "2026-10-15T00:00:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 12.581765,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 1.0,
-     "substance_chars": 20941.0,
-     "title_quality": 1.0,
-     "heat": 0.359479,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7481,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 35.9479,
-     "topic_penalty": 0.35,
-     "final_score": 12.581765
+     "final_score": 24.1612,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.35,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -3001,58 +1693,11 @@
      "magnitude_linear": 1.0,
      "score": 61.992981,
      "topic_penalty": 0.0709,
-     "final_score": 4.393753
-    }
-   },
-   {
-    "event_id": "e6d23cf8b32fcc6",
-    "title": "2026-10-15",
-    "member_item_ids": [
-     "01968eed3477f71e"
-    ],
-    "primary_item_id": "01968eed3477f71e",
-    "source_ids": [
-     "rss:daily-juya-uk"
-    ],
-    "all_urls": [
-     "https://daily.juya.uk/issues/2026-10-15/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T01:55:08Z",
-     "2026-10-15T01:55:08Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 0.694424,
-    "rank_components": {
-     "source_weight": 1.2,
-     "source_damped": 1.0466,
-     "substance": 1.0,
-     "substance_chars": 14861.0,
-     "title_quality": 0.15,
-     "heat": 0.361079,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.771,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 5.66877,
-     "topic_penalty": 0.1225,
-     "final_score": 0.694424
+     "final_score": 4.393753,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 1.0,
+     "focus_multiplier": 1.0
     }
    }
   ],
@@ -3094,7 +1739,7 @@
    "rubric 评分 120 条已打分 / 12 次调用（标准来源：/home/runner/work/ai-ribao/ai-ribao/config/profile.md）"
   ],
   "counts": {
-   "events": 282,
+   "events": 31,
    "multi_source_events": 1,
    "items_after_window": 348,
    "items_merged_away": 64,
@@ -3104,7 +1749,8 @@
    "dropped_older": 4125,
    "dropped_future_dated": 4,
    "dropped_unknown": 103,
-   "dropped_no_url": 11
+   "dropped_no_url": 11,
+   "with_insights": 28
   }
  },
  "sections": {

@@ -1300,3 +1300,173 @@
 .ecal__day[data-count]::after {
   bottom: 3px;
 }
+
+
+/* ==============================================================================
+   终版覆盖 —— 本块是日历与布局的**唯一权威**，文件里更早的日历规则作废。
+   （此前三个日历块叠了三层规则互相打架：aspect-ratio 跟列宽走、min-height 残留、
+   flex/grid 互相覆盖，才有了截图里数字漂在圆外的样子。这里一次性钉死。）
+   ============================================================================== */
+
+/* --- 一、版心：把两侧的大空隙收掉 ------------------------------------------------
+   shell 中列与两轨之间是 3rem，两侧内边距 2rem，宽屏再居中收进 1560px ——
+   三层空隙叠出来，正文在 1100px 的窗口里只剩 600px。现在：缝隙减半、
+   内边距减到 0.5rem、上限放宽到 1880px。正文优先，导航贴边。 */
+.shell {
+  max-width: 1880px;
+  padding-inline: calc(var(--unit) * 2);
+}
+@media (min-width: 1080px) {
+  .shell { gap: calc(var(--unit) * 6); padding-inline: calc(var(--unit) * 2); }
+}
+@media (min-width: 1400px) {
+  .shell { gap: calc(var(--unit) * 8); }
+}
+
+/* --- 二、侧栏过窄时日历不得挤作一团 ----------------------------------------------
+   侧栏宽度是读者可拖的，拖到 180px 时七个 15rem 列会互相压字。
+   给日历一个最小宽度，窄了就在侧栏内部横向滚动（滚动条已隐藏，功能在）；
+   格子本身用 min() 随可用宽度收缩，但数字永不小于可读字号。 */
+.cal { min-width: 12.25rem; }
+.rail__body { overflow-x: auto; overflow-y: auto; }
+.cal__grid,
+.ecal__grid {
+  display: grid !important;
+  grid-template-columns: repeat(7, minmax(26px, 34px));
+  justify-content: space-between;
+  gap: calc(var(--unit) * 1);
+}
+.cal__day,
+.ecal__day {
+  width: 30px;
+  height: 30px;
+  min-height: 0;
+  aspect-ratio: auto;
+  padding: 0;
+  place-content: center;
+  display: grid !important;
+  place-items: center !important;
+  justify-self: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  font-size: 0.78rem;
+  line-height: 1;
+}
+/* 数字必须在圆心里。此前 ecal 的格子里数字 + 标记行用了 flex-column 加内边距，
+   数字被顶到圆外。marks 已隐藏，数字用 place-items 居中。 */
+.ecal__day .ecal__num { display: block; line-height: 1; }
+.ecal__marks { display: none !important; }
+
+/* 有内容：数字下方内侧一个点 */
+.cal__day[data-has="true"]::after,
+.ecal__day[data-count]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.6;
+  transform: translateX(-50%);
+}
+.cal__day[data-has="true"],
+.ecal__day[data-count] { color: var(--fg); font-weight: 620; cursor: pointer; }
+.cal__day[data-has="true"]:hover,
+.ecal__day[data-count]:hover { background: var(--accent-soft); color: var(--accent); }
+.cal__day[data-has="true"]:active,
+.ecal__day[data-count]:active { transform: scale(0.9); }
+
+/* 今天：全月唯一实心圆 + 柔和光环 */
+.cal__day[data-today="true"],
+.ecal__day[data-today="true"] {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.cal__day[data-today="true"]::after,
+.ecal__day[data-today="true"][data-count]::after { background: #fff; opacity: 0.9; }
+
+/* 正在阅读的这一期：描边圆环 */
+.cal__day[data-current="true"]:not([data-today="true"]),
+.ecal__day[aria-selected="true"]:not([data-today="true"]) {
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+}
+.cal__day[aria-disabled="true"],
+.ecal__day[aria-disabled="true"] { opacity: 0.28; }
+.cal__day[aria-hidden="true"],
+.ecal__day--pad { opacity: 0; pointer-events: none; }
+
+/* --- 三、Q弹动效 ------------------------------------------------------------------
+   手感配方（motion-web handfeel §1）：欠阻尼弹簧，STIFFNESS 80–90，DAMPING 0.86，
+   落地会过冲一点再回稳 —— 读作「有重量地落」，而不是「匀速滑过去」。
+   CSS 侧用带过冲的贝塞尔近似；JS 侧对悬停抬升用真弹簧（帧率无关写法）。 */
+
+:root {
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);      /* 过冲 12% 的落弹 */
+  --spring-soft: cubic-bezier(0.22, 1.28, 0.5, 1);  /* 轻一点，用于大块面 */
+}
+
+/* 条目入场：整列瀑布式浮现。只动 opacity/transform，走合成层。 */
+.js-motion .item {
+  opacity: 0;
+  transform: translateY(10px) scale(0.995);
+  animation: item-in 0.5s var(--spring-soft) forwards;
+}
+.js-motion .item:nth-child(2) { animation-delay: 0.03s; }
+.js-motion .item:nth-child(3) { animation-delay: 0.06s; }
+.js-motion .item:nth-child(4) { animation-delay: 0.09s; }
+.js-motion .item:nth-child(5) { animation-delay: 0.12s; }
+.js-motion .item:nth-child(n+6) { animation-delay: 0.15s; }
+@keyframes item-in {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* 卡片悬停：抬升 + 阴影，用弹簧曲线放手时有回弹 */
+.item {
+  transition: transform 0.45s var(--spring), box-shadow 0.45s var(--spring-soft),
+              border-color 0.2s ease;
+  will-change: transform;
+}
+.item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px -14px color-mix(in srgb, var(--fg) 26%, transparent);
+}
+
+/* 日历格按下：缩到 0.88 再弹回（--spring 带过冲） */
+.cal__day:active,
+.ecal__day:active { transform: scale(0.88); transition: transform 0.35s var(--spring); }
+
+/* 侧栏条目悬停：向右探 2px，弹簧回位 */
+.rail__item { transition: transform 0.4s var(--spring), background 0.2s ease, color 0.2s ease; }
+.rail__item:hover { transform: translateX(2px); }
+
+/* 主题切换：颜色 0.25s、变换 0.4s 弹簧，避免整页闪变 */
+html { transition: none; }
+body, .rail, .toc, .item, .ecal__card {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.25s;
+  transition-timing-function: ease;
+}
+
+/* 尊重系统减少动效设置（文件前部已有全局块，这里只补弹簧相关） */
+@media (prefers-reduced-motion: reduce) {
+  .js-motion .item { animation: none; opacity: 1; transform: none; }
+  .item, .rail__item { transition: none; }
+}
+
+.ecal__num {
+  /* 嵌套小圆清场：旧规则给数字套了 1.6em 的强调色圆 + 3px 光环，
+     于是「今天」看起来有两个实心圆、「阅读中」有两层环。数字就是数字。 */
+  width: auto; height: auto;
+  background: none; border-radius: 0; box-shadow: none;
+  display: block; font-weight: inherit; color: inherit;
+  margin: 0; padding: 0;
+}
+
+.ecal__day .ecal__num { justify-self: center; align-self: center; }
+.cal__day { justify-self: center; }

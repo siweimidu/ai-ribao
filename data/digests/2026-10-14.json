@@ -74,7 +74,11 @@
      "magnitude_linear": 1.0,
      "score": 105.776215,
      "topic_penalty": 1.0,
-     "final_score": 105.776215
+     "final_score": 105.776215,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 1.0,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -131,58 +135,11 @@
      "magnitude_linear": 0.0,
      "score": 45.748903,
      "topic_penalty": 1.0,
-     "final_score": 45.748903
-    }
-   },
-   {
-    "event_id": "e2d114494b64023",
-    "title": "Apple HomeView",
-    "member_item_ids": [
-     "63b030f35df56a41"
-    ],
-    "primary_item_id": "63b030f35df56a41",
-    "source_ids": [
-     "api:hn-algolia-com-search"
-    ],
-    "all_urls": [
-     "https://www.apple.com/apple-homeview/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": [
-     "2026-10-13T13:02:12Z",
-     "2026-10-13T13:02:12Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 40.160512,
-    "rank_components": {
-     "source_weight": 0.9,
-     "source_damped": 0.974,
-     "substance": 0.023,
-     "substance_chars": 14.0,
-     "title_quality": 1.0,
-     "heat": 0.412324,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.9735,
-     "h_reach": 0.4307,
-     "h_substance": 0.035,
-     "h_velocity": 1.0,
-     "h_freshness": 0.66,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 1.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 40.160512,
-     "topic_penalty": 1.0,
-     "final_score": 40.160512
+     "final_score": 45.748903,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 1.0,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -232,7 +189,11 @@
      "magnitude_linear": 0.0,
      "score": 37.53108,
      "topic_penalty": 1.0,
-     "final_score": 37.53108
+     "final_score": 37.53108,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 1.0,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -283,7 +244,11 @@
      "magnitude_linear": 0.0,
      "score": 37.504391,
      "topic_penalty": 1.0,
-     "final_score": 37.504391
+     "final_score": 37.504391,
+     "focus": 0.385,
+     "focus_headline": 0.18,
+     "focus_source": 1.0,
+     "focus_multiplier": 0.5203
     }
    },
    {
@@ -333,7 +298,11 @@
      "magnitude_linear": 0.0,
      "score": 36.704439,
      "topic_penalty": 1.0,
-     "final_score": 36.704439
+     "final_score": 36.704439,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -383,7 +352,11 @@
      "magnitude_linear": 0.0,
      "score": 36.624456,
      "topic_penalty": 1.0,
-     "final_score": 36.624456
+     "final_score": 36.624456,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -433,58 +406,11 @@
      "magnitude_linear": 0.0,
      "score": 36.572841,
      "topic_penalty": 1.0,
-     "final_score": 36.572841
-    }
-   },
-   {
-    "event_id": "eedf2d5b4243645",
-    "title": "I don’t miss the camera on the Ray-Ban Meta Audio glasses",
-    "member_item_ids": [
-     "19557c47e2dbc627"
-    ],
-    "primary_item_id": "19557c47e2dbc627",
-    "source_ids": [
-     "rss:theverge-com-ai-artificial-intelligence"
-    ],
-    "all_urls": [
-     "https://www.theverge.com/tech/1009128/ray-ban-meta-audio-glasses-review-smart-glasses-headphones-wearables"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": [
-     "2026-10-13T18:00:00Z",
-     "2026-10-13T18:00:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 36.500231,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 685.0,
-     "title_quality": 1.0,
-     "heat": 0.356408,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7042,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 1.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 36.500231,
-     "topic_penalty": 1.0,
-     "final_score": 36.500231
+     "final_score": 36.572841,
+     "focus": 0.4,
+     "focus_headline": 0.2727,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -534,7 +460,11 @@
      "magnitude_linear": 0.0,
      "score": 36.433152,
      "topic_penalty": 1.0,
-     "final_score": 36.433152
+     "final_score": 36.433152,
+     "focus": 0.4,
+     "focus_headline": 0.2727,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -584,7 +514,11 @@
      "magnitude_linear": 0.0,
      "score": 36.41226,
      "topic_penalty": 1.0,
-     "final_score": 36.41226
+     "final_score": 36.41226,
+     "focus": 0.4,
+     "focus_headline": 0.2727,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -634,109 +568,11 @@
      "magnitude_linear": 0.0,
      "score": 36.315071,
      "topic_penalty": 1.0,
-     "final_score": 36.315071
-    }
-   },
-   {
-    "event_id": "e459dc7f81d23d0",
-    "title": "DLSS 5 gets toned down for its Hogwarts Legacy debut next month",
-    "member_item_ids": [
-     "053ac29d3dc79cea"
-    ],
-    "primary_item_id": "053ac29d3dc79cea",
-    "source_ids": [
-     "rss:theverge-com-ai-artificial-intelligence"
-    ],
-    "all_urls": [
-     "https://www.theverge.com/news/1009904/dlss-5-hogwarts-legacy-changes-improvements"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": [
-     "2026-10-13T13:55:45Z",
-     "2026-10-13T13:55:45Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 36.235805,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 685.0,
-     "title_quality": 1.0,
-     "heat": 0.353826,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.6673,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 36.235805,
-     "topic_penalty": 1.0,
-     "final_score": 36.235805
-    }
-   },
-   {
-    "event_id": "e4ba1bf2cf89cf8",
-    "title": "DailyDawn · 2026-10-14",
-    "member_item_ids": [
-     "da2215b64241d4a1"
-    ],
-    "primary_item_id": "da2215b64241d4a1",
-    "source_ids": [
-     "jsonfeed:dailydawn-dev"
-    ],
-    "all_urls": [
-     "https://dailydawn.dev/zh/2026-10-14"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": [
-     "2026-10-14T00:00:00Z",
-     "2026-10-14T00:00:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 36.1034,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 1.0,
-     "substance_chars": 21118.0,
-     "title_quality": 1.0,
-     "heat": 0.361034,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7703,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 36.1034,
-     "topic_penalty": 1.0,
-     "final_score": 36.1034
+     "final_score": 36.315071,
+     "focus": 0.4,
+     "focus_headline": 0.2727,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -786,211 +622,11 @@
      "magnitude_linear": 0.0,
      "score": 36.0373,
      "topic_penalty": 1.0,
-     "final_score": 36.0373
-    }
-   },
-   {
-    "event_id": "efcf6a58ca9e0b0",
-    "title": "Show HN: XY Music Notation",
-    "member_item_ids": [
-     "a30d6e8b3c2cdaf1"
-    ],
-    "primary_item_id": "a30d6e8b3c2cdaf1",
-    "source_ids": [
-     "rss:hnrss-org-frontpage"
-    ],
-    "all_urls": [
-     "https://music.xy.dev/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": [
-     "2026-10-13T17:43:05Z",
-     "2026-10-13T17:43:05Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 35.6216,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 1.0,
-     "substance_chars": 604.0,
-     "title_quality": 1.0,
-     "heat": 0.356216,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7015,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 35.6216,
-     "topic_penalty": 1.0,
-     "final_score": 35.6216
-    }
-   },
-   {
-    "event_id": "efbcb58f65b260d",
-    "title": "v2 的大佬们指点一下我该不该割肉，房子的事",
-    "member_item_ids": [
-     "846356da1912836d"
-    ],
-    "primary_item_id": "846356da1912836d",
-    "source_ids": [
-     "api:v2ex-com-topics-hot"
-    ],
-    "all_urls": [
-     "https://www.v2ex.com/t/1248572"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": [
-     "2026-10-14T00:53:39Z",
-     "2026-10-14T00:53:39Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 35.241404,
-    "rank_components": {
-     "source_weight": 0.9,
-     "source_damped": 0.974,
-     "substance": 0.703,
-     "substance_chars": 422.0,
-     "title_quality": 1.0,
-     "heat": 0.36182,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7815,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 35.241404,
-     "topic_penalty": 1.0,
-     "final_score": 35.241404
-    }
-   },
-   {
-    "event_id": "eb845f25ce003ba",
-    "title": "最好看最好用的 iOS V2EX 客户端过审了，欢迎 TestFlight 体验打脸",
-    "member_item_ids": [
-     "4027416290b59972"
-    ],
-    "primary_item_id": "4027416290b59972",
-    "source_ids": [
-     "api:v2ex-com-topics-hot"
-    ],
-    "all_urls": [
-     "https://www.v2ex.com/t/1248562"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": [
-     "2026-10-14T00:02:37Z",
-     "2026-10-14T00:02:37Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 35.168548,
-    "rank_components": {
-     "source_weight": 0.9,
-     "source_damped": 0.974,
-     "substance": 1.0,
-     "substance_chars": 612.0,
-     "title_quality": 1.0,
-     "heat": 0.361072,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7708,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 35.168548,
-     "topic_penalty": 1.0,
-     "final_score": 35.168548
-    }
-   },
-   {
-    "event_id": "ec0c109918ab4ce",
-    "title": "昨天把家里 Wi-Fi 2.4G 和 5G 分开了，你们呢？",
-    "member_item_ids": [
-     "71af70af3ed7c590"
-    ],
-    "primary_item_id": "71af70af3ed7c590",
-    "source_ids": [
-     "api:v2ex-com-topics-hot"
-    ],
-    "all_urls": [
-     "https://www.v2ex.com/t/1248569"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": [
-     "2026-10-14T00:46:23Z",
-     "2026-10-14T00:46:23Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 31.736646,
-    "rank_components": {
-     "source_weight": 0.9,
-     "source_damped": 0.974,
-     "substance": 0.325,
-     "substance_chars": 195.0,
-     "title_quality": 1.0,
-     "heat": 0.325837,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.4875,
-     "h_velocity": 1.0,
-     "h_freshness": 0.78,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 31.736646,
-     "topic_penalty": 1.0,
-     "final_score": 31.736646
+     "final_score": 36.0373,
+     "focus": 0.4,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -1041,7 +677,11 @@
      "magnitude_linear": 0.2273,
      "score": 31.729193,
      "topic_penalty": 1.0,
-     "final_score": 31.729193
+     "final_score": 31.729193,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -1091,7 +731,11 @@
      "magnitude_linear": 0.0,
      "score": 31.700569,
      "topic_penalty": 1.0,
-     "final_score": 31.700569
+     "final_score": 31.700569,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.35,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -1141,7 +785,11 @@
      "magnitude_linear": 0.0,
      "score": 31.662988,
      "topic_penalty": 1.0,
-     "final_score": 31.662988
+     "final_score": 31.662988,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.35,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -1191,7 +839,11 @@
      "magnitude_linear": 0.0,
      "score": 31.272336,
      "topic_penalty": 1.0,
-     "final_score": 31.272336
+     "final_score": 31.272336,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -1241,7 +893,11 @@
      "magnitude_linear": 0.0,
      "score": 31.23854,
      "topic_penalty": 1.0,
-     "final_score": 31.23854
+     "final_score": 31.23854,
+     "focus": 0.4,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -1291,58 +947,11 @@
      "magnitude_linear": 0.0,
      "score": 31.238028,
      "topic_penalty": 1.0,
-     "final_score": 31.238028
-    }
-   },
-   {
-    "event_id": "ef52220a9143d82",
-    "title": "Quoting Geoffrey Huntley",
-    "member_item_ids": [
-     "fb8e4397a0309ee5"
-    ],
-    "primary_item_id": "fb8e4397a0309ee5",
-    "source_ids": [
-     "rss:simonwillison-net-everything"
-    ],
-    "all_urls": [
-     "https://simonwillison.net/2026/Oct/13/geoffrey-huntley/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": [
-     "2026-10-13T13:32:00Z",
-     "2026-10-13T13:32:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 31.120399,
-    "rank_components": {
-     "source_weight": 0.6,
-     "source_damped": 0.8801,
-     "substance": 0.948,
-     "substance_chars": 569.0,
-     "title_quality": 1.0,
-     "heat": 0.353596,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.6641,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 31.120399,
-     "topic_penalty": 1.0,
-     "final_score": 31.120399
+     "final_score": 31.238028,
+     "focus": 0.4,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -1392,58 +1001,11 @@
      "magnitude_linear": 0.0,
      "score": 31.024603,
      "topic_penalty": 1.0,
-     "final_score": 31.024603
-    }
-   },
-   {
-    "event_id": "e441f6c9e7dd6fb",
-    "title": "现在修电视都这么贵的吗？",
-    "member_item_ids": [
-     "bee1be65bb218de1"
-    ],
-    "primary_item_id": "bee1be65bb218de1",
-    "source_ids": [
-     "api:v2ex-com-topics-hot"
-    ],
-    "all_urls": [
-     "https://www.v2ex.com/t/1248577"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": [
-     "2026-10-14T01:11:06Z",
-     "2026-10-14T01:11:06Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 31.022604,
-    "rank_components": {
-     "source_weight": 0.9,
-     "source_damped": 0.974,
-     "substance": 0.252,
-     "substance_chars": 151.0,
-     "title_quality": 1.0,
-     "heat": 0.318506,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.3775,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7853,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 31.022604,
-     "topic_penalty": 1.0,
-     "final_score": 31.022604
+     "final_score": 31.024603,
+     "focus": 0.4,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -1493,7 +1055,11 @@
      "magnitude_linear": 0.0,
      "score": 30.994596,
      "topic_penalty": 1.0,
-     "final_score": 30.994596
+     "final_score": 30.994596,
+     "focus": 0.4,
+     "focus_headline": 0.2727,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -1543,7 +1109,11 @@
      "magnitude_linear": 0.0,
      "score": 30.947896,
      "topic_penalty": 1.0,
-     "final_score": 30.947896
+     "final_score": 30.947896,
+     "focus": 0.4,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -1594,7 +1164,11 @@
      "magnitude_linear": 0.0,
      "score": 30.93233,
      "topic_penalty": 1.0,
-     "final_score": 30.93233
+     "final_score": 30.93233,
+     "focus": 0.4,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -1644,7 +1218,11 @@
      "magnitude_linear": 0.0,
      "score": 30.903962,
      "topic_penalty": 1.0,
-     "final_score": 30.903962
+     "final_score": 30.903962,
+     "focus": 0.4,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -1694,7 +1272,11 @@
      "magnitude_linear": 0.0,
      "score": 30.901902,
      "topic_penalty": 1.0,
-     "final_score": 30.901902
+     "final_score": 30.901902,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 1.0,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -1744,7 +1326,11 @@
      "magnitude_linear": 0.0,
      "score": 30.873546,
      "topic_penalty": 1.0,
-     "final_score": 30.873546
+     "final_score": 30.873546,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -1794,7 +1380,11 @@
      "magnitude_linear": 0.0,
      "score": 30.860232,
      "topic_penalty": 1.0,
-     "final_score": 30.860232
+     "final_score": 30.860232,
+     "focus": 0.4,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -1844,7 +1434,11 @@
      "magnitude_linear": 0.0,
      "score": 30.83719,
      "topic_penalty": 1.0,
-     "final_score": 30.83719
+     "final_score": 30.83719,
+     "focus": 0.7969,
+     "focus_headline": 0.75,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.8416
     }
    },
    {
@@ -1894,7 +1488,11 @@
      "magnitude_linear": 0.0,
      "score": 30.828485,
      "topic_penalty": 1.0,
-     "final_score": 30.828485
+     "final_score": 30.828485,
+     "focus": 0.4,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -1944,7 +1542,11 @@
      "magnitude_linear": 0.0,
      "score": 30.820189,
      "topic_penalty": 1.0,
-     "final_score": 30.820189
+     "final_score": 30.820189,
+     "focus": 0.4,
+     "focus_headline": 0.4286,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -1998,7 +1600,11 @@
      "magnitude_linear": 0.0,
      "score": 30.81937,
      "topic_penalty": 1.0,
-     "final_score": 30.81937
+     "final_score": 30.81937,
+     "focus": 0.4,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -2048,58 +1654,11 @@
      "magnitude_linear": 0.0,
      "score": 30.817117,
      "topic_penalty": 1.0,
-     "final_score": 30.817117
-    }
-   },
-   {
-    "event_id": "e0cdd6cf2177fb4",
-    "title": "三个月落地 10 只基金备案，GIM Capital 迈入产品化运行阶段 - 美通社",
-    "member_item_ids": [
-     "f3cd273d6b1dfb09"
-    ],
-    "primary_item_id": "f3cd273d6b1dfb09",
-    "source_ids": [
-     "api:news-google-com-search"
-    ],
-    "all_urls": [
-     "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBqbm9HTTZjMHlVVXBFZlpJUGs5U09KcE44NThsSElBTW80YWN2SXNBOWNUVlhTZWhoS2dVNEcxcUpMT2RKYUE4bWstUExRZ0RQd3p0My11QQ?oc=5"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": [
-     "2026-10-14T03:00:00Z",
-     "2026-10-14T03:00:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 30.803292,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 0.067,
-     "substance_chars": 40.0,
-     "title_quality": 1.0,
-     "heat": 0.30078,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.1,
-     "h_velocity": 1.0,
-     "h_freshness": 0.8095,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 30.803292,
-     "topic_penalty": 1.0,
-     "final_score": 30.803292
+     "final_score": 30.817117,
+     "focus": 0.4,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -2149,57 +1708,11 @@
      "magnitude_linear": 0.0,
      "score": 30.802984,
      "topic_penalty": 1.0,
-     "final_score": 30.802984
-    }
-   },
-   {
-    "event_id": "e5b22f81d4041ac",
-    "title": "muse 30 亿免费 token",
-    "member_item_ids": [
-     "39eacd6b00c31414"
-    ],
-    "primary_item_id": "39eacd6b00c31414",
-    "source_ids": [
-     "api:v2ex-com-topics-hot"
-    ],
-    "all_urls": [
-     "https://www.v2ex.com/t/1248583"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": [
-     "2026-10-14T01:36:37Z",
-     "2026-10-14T01:36:37Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 30.310315,
-    "rank_components": {
-     "source_weight": 0.9,
-     "source_damped": 0.974,
-     "substance": 0.178,
-     "substance_chars": 107.0,
-     "title_quality": 1.0,
-     "heat": 0.311193,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.2675,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7908,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 30.310315,
-     "topic_penalty": 1.0,
-     "final_score": 30.310315
+     "final_score": 30.802984,
+     "focus": 0.4,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532
     }
    },
    {
@@ -2252,438 +1765,11 @@
      "magnitude_linear": 1.0,
      "score": 65.632082,
      "topic_penalty": 0.45,
-     "final_score": 29.534437
-    }
-   },
-   {
-    "event_id": "ecd67a9edef7a8d",
-    "title": "debpalash/VoiceStudio",
-    "member_item_ids": [
-     "8088c94af4a7344d"
-    ],
-    "primary_item_id": "8088c94af4a7344d",
-    "source_ids": [
-     "scrape:github-com-trending"
-    ],
-    "all_urls": [
-     "https://github.com/debpalash/VoiceStudio"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": null,
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 21.2912,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 0.293,
-     "substance_chars": 176.0,
-     "title_quality": 1.0,
-     "heat": 0.212912,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.44,
-     "h_velocity": 0.0,
-     "h_freshness": 0.5,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 21.2912,
-     "topic_penalty": 1.0,
-     "final_score": 21.2912
-    }
-   },
-   {
-    "event_id": "e02dd5c06e99c81",
-    "title": "mksglu/context-mode",
-    "member_item_ids": [
-     "802eb27f9ba22fa0"
-    ],
-    "primary_item_id": "802eb27f9ba22fa0",
-    "source_ids": [
-     "scrape:github-com-trending"
-    ],
-    "all_urls": [
-     "https://github.com/mksglu/context-mode"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": null,
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 21.2037,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 0.285,
-     "substance_chars": 171.0,
-     "title_quality": 1.0,
-     "heat": 0.212037,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.4275,
-     "h_velocity": 0.0,
-     "h_freshness": 0.5,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 21.2037,
-     "topic_penalty": 1.0,
-     "final_score": 21.2037
-    }
-   },
-   {
-    "event_id": "ec6bd315ea89ad0",
-    "title": "cathrynlavery/diagram-design",
-    "member_item_ids": [
-     "0da8a6ea375319d4"
-    ],
-    "primary_item_id": "0da8a6ea375319d4",
-    "source_ids": [
-     "scrape:github-com-trending"
-    ],
-    "all_urls": [
-     "https://github.com/cathrynlavery/diagram-design"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": null,
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 21.1687,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 0.282,
-     "substance_chars": 169.0,
-     "title_quality": 1.0,
-     "heat": 0.211687,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.4225,
-     "h_velocity": 0.0,
-     "h_freshness": 0.5,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 21.1687,
-     "topic_penalty": 1.0,
-     "final_score": 21.1687
-    }
-   },
-   {
-    "event_id": "e24f518fe0cc746",
-    "title": "bilawalsidhu/gods-eye-view",
-    "member_item_ids": [
-     "96682d5bb20923d1"
-    ],
-    "primary_item_id": "96682d5bb20923d1",
-    "source_ids": [
-     "scrape:github-com-trending"
-    ],
-    "all_urls": [
-     "https://github.com/bilawalsidhu/gods-eye-view"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": null,
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 20.5737,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 0.225,
-     "substance_chars": 135.0,
-     "title_quality": 1.0,
-     "heat": 0.205737,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.3375,
-     "h_velocity": 0.0,
-     "h_freshness": 0.5,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 20.5737,
-     "topic_penalty": 1.0,
-     "final_score": 20.5737
-    }
-   },
-   {
-    "event_id": "e35f5c2fb46e1d1",
-    "title": "xtool-org/xtool",
-    "member_item_ids": [
-     "43f403299eeeba03"
-    ],
-    "primary_item_id": "43f403299eeeba03",
-    "source_ids": [
-     "scrape:github-com-trending"
-    ],
-    "all_urls": [
-     "https://github.com/xtool-org/xtool"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": null,
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 19.9262,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 0.163,
-     "substance_chars": 98.0,
-     "title_quality": 1.0,
-     "heat": 0.199262,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.245,
-     "h_velocity": 0.0,
-     "h_freshness": 0.5,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 19.9262,
-     "topic_penalty": 1.0,
-     "final_score": 19.9262
-    }
-   },
-   {
-    "event_id": "e5b5e0a893baf98",
-    "title": "storytold/artcraft",
-    "member_item_ids": [
-     "f3eb62f60428f0aa"
-    ],
-    "primary_item_id": "f3eb62f60428f0aa",
-    "source_ids": [
-     "scrape:github-com-trending"
-    ],
-    "all_urls": [
-     "https://github.com/storytold/artcraft"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": null,
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 19.6287,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 0.135,
-     "substance_chars": 81.0,
-     "title_quality": 1.0,
-     "heat": 0.196287,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.2025,
-     "h_velocity": 0.0,
-     "h_freshness": 0.5,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 19.6287,
-     "topic_penalty": 1.0,
-     "final_score": 19.6287
-    }
-   },
-   {
-    "event_id": "edec6fe1d812289",
-    "title": "morluto/rea",
-    "member_item_ids": [
-     "4beff672e959f1a3"
-    ],
-    "primary_item_id": "4beff672e959f1a3",
-    "source_ids": [
-     "scrape:github-com-trending"
-    ],
-    "all_urls": [
-     "https://github.com/morluto/rea"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": null,
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 19.6287,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 0.135,
-     "substance_chars": 81.0,
-     "title_quality": 1.0,
-     "heat": 0.196287,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.2025,
-     "h_velocity": 0.0,
-     "h_freshness": 0.5,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 19.6287,
-     "topic_penalty": 1.0,
-     "final_score": 19.6287
-    }
-   },
-   {
-    "event_id": "eda90031ffce733",
-    "title": "lyogavin/airllm",
-    "member_item_ids": [
-     "b70a0581c123da4f"
-    ],
-    "primary_item_id": "b70a0581c123da4f",
-    "source_ids": [
-     "scrape:github-com-trending"
-    ],
-    "all_urls": [
-     "https://github.com/lyogavin/airllm"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": null,
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 18.9987,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 0.075,
-     "substance_chars": 45.0,
-     "title_quality": 1.0,
-     "heat": 0.189987,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.1125,
-     "h_velocity": 0.0,
-     "h_freshness": 0.5,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 18.9987,
-     "topic_penalty": 1.0,
-     "final_score": 18.9987
-    }
-   },
-   {
-    "event_id": "eb26e2f34774c61",
-    "title": "vercel-labs/skills",
-    "member_item_ids": [
-     "f94434da377dfc34"
-    ],
-    "primary_item_id": "f94434da377dfc34",
-    "source_ids": [
-     "scrape:github-com-trending"
-    ],
-    "all_urls": [
-     "https://github.com/vercel-labs/skills"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": null,
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 18.8937,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 0.065,
-     "substance_chars": 39.0,
-     "title_quality": 1.0,
-     "heat": 0.188937,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.0975,
-     "h_velocity": 0.0,
-     "h_freshness": 0.5,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 18.8937,
-     "topic_penalty": 1.0,
-     "final_score": 18.8937
+     "final_score": 29.534437,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0
     }
    },
    {
@@ -2733,58 +1819,11 @@
      "magnitude_linear": 0.0,
      "score": 32.760662,
      "topic_penalty": 0.2025,
-     "final_score": 6.634034
-    }
-   },
-   {
-    "event_id": "e8536989a16c400",
-    "title": "2026-10-14",
-    "member_item_ids": [
-     "21d1d77e89ebd62d"
-    ],
-    "primary_item_id": "21d1d77e89ebd62d",
-    "source_ids": [
-     "rss:daily-juya-uk"
-    ],
-    "all_urls": [
-     "https://daily.juya.uk/issues/2026-10-14/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": [
-     "2026-10-14T01:33:20Z",
-     "2026-10-14T01:33:20Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.991427,
-    "rank_components": {
-     "source_weight": 1.2,
-     "source_damped": 1.0466,
-     "substance": 1.0,
-     "substance_chars": 13783.0,
-     "title_quality": 0.15,
-     "heat": 0.362418,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7901,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 5.689791,
-     "topic_penalty": 0.35,
-     "final_score": 1.991427
+     "final_score": 6.634034,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 1.0,
+     "focus_multiplier": 1.0
     }
    }
   ],
@@ -2819,7 +1858,7 @@
    "7/60 个事件降级为规则摘录"
   ],
   "counts": {
-   "events": 55,
+   "events": 33,
    "multi_source_events": 2,
    "items_after_window": 237,
    "items_merged_away": 11,
@@ -2829,7 +1868,8 @@
    "dropped_future_dated": 4,
    "dropped_outside_window": 122,
    "dropped_unknown": 13,
-   "dropped_no_url": 11
+   "dropped_no_url": 11,
+   "with_insights": 33
   }
  },
  "sections": {

@@ -234,15 +234,46 @@ def select_for_digest(
     #
     # The consequence worth stating: a story 橘鸦 led with and a pure score put 47th differs by
     # *category*, and no weighting of a continuous score can move it across a category boundary.
-    section_of: dict[str, str] = {}
+    # **The relevance floor is a hard filter, applied before the section sort.**
+    #
+    # It was a demotion multiplier ("demote, never delete"), and ten days of published output
+    # settled the argument: a demoted non-AI story still lands in the digest, and 60 slots are
+    # more than the AI pool needs. Dropped rows are counted in the report so a thin day reads as
+    # "今天AI新闻少", which is true, rather than being padded back to sixty with consumer
+    # electronics, which is not.
+    focus_floor = 0.35
+    kept: list = []
+    dropped_focus = 0
     for row in ranked:
+        focus = row.components.get("focus")
+        if focus is not None and float(focus) < focus_floor:
+            dropped_focus += 1
+            continue
+        kept.append(row)
+    if len(kept) < 20 and dropped_focus:
+        # A thin day relaxes the floor stepwise rather than publishing five items -- but the
+        # relaxed rows are marked, so the shortfall is stated, not hidden.
+        relaxed = sorted(
+            (r for r in ranked if r not in kept),
+            key=lambda r: -float(r.components.get("focus") or 0),
+        )
+        need = min(20 - len(kept), dropped_focus)
+        kept.extend(relaxed[:need])
+        report_extra = {"relevance_floor_relaxed_to": round(
+            min((float(r.components.get("focus") or 0) for r in relaxed[:need]), default=0.0), 3)}
+    else:
+        report_extra = {}
+
+    section_of: dict[str, str] = {}
+    for row in kept:
         # The model's judgement first -- it reads the story, and measured 41.8% accuracy is what
         # the rule-based classifier reaches on 橘鸦's own 478 examples, which is not enough on
         # its own. The rules are the fallback for a row the model did not classify.
         section = (rubric_sections or {}).get(row.event.event_id) or classify(row.event.title)
         section_of[row.event.event_id] = section
         row.components["section"] = section
-    ranked.sort(key=lambda r: (rank_of(section_of[r.event.event_id]), -r.score, r.event.event_id))
+    kept.sort(key=lambda r: (rank_of(section_of[r.event.event_id]), -r.score, r.event.event_id))
+    ranked = kept
 
     if pool_only is not None:
         # Candidate pool only: no diversity pass, no archive side effects. The caller uses
@@ -315,6 +346,10 @@ def select_for_digest(
     report["section_distribution"] = dict(
         Counter(r.components.get("section") or classify(r.event.title) for r in chosen)
     )
+
+    if dropped_focus:
+        report["relevance_floor_dropped"] = dropped_focus
+        report.update(report_extra)
 
     return [row.event for row in chosen], report
 

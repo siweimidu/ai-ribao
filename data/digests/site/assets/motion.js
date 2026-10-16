@@ -823,4 +823,33 @@
   reduced.addEventListener?.('change', () => {
     if (reduced.matches) document.querySelectorAll('.enter').forEach((el) => el.classList.add('is-in'));
   });
+
+  /* ============================================================================
+     六、悬停抬升的欠阻尼弹簧（handfeel §1）
+     帧率无关写法：vel += (target - x) * k * dt; vel *= damping; x += vel * dt。
+     CSS 过冲贝塞尔管不了「放手回弹」，这里用真弹簧：进入把 target 抬到 -3px，
+     离开回到 0，弹簧带着速度过冲一点再停 —— 这才是 Q 弹。
+     ========================================================================== */
+  const springItems = [...document.querySelectorAll('.item')]
+    .filter((el) => !window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const springs = springItems.map((el) => ({ el, x: 0, v: 0, target: 0, raf: 0 }));
+  const K = 90, DAMPING = 0.86;
+
+  const tick = (s) => {
+    const dt = 1 / 60;
+    s.v += (s.target - s.x) * K * dt;
+    s.v *= DAMPING;
+    s.x += s.v * dt;
+    s.el.style.transform = Math.abs(s.x) < 0.01 && Math.abs(s.v) < 0.01
+      ? (s.raf = 0, '')
+      : `translateY(${s.x.toFixed(2)}px)`;
+    if (s.raf || Math.abs(s.x) >= 0.01 || Math.abs(s.v) >= 0.01) s.raf = requestAnimationFrame(() => tick(s));
+  };
+  const kick = (s) => { if (!s.raf) s.raf = requestAnimationFrame(() => tick(s)); };
+
+  for (const s of springs) {
+    s.el.addEventListener('mouseenter', () => { s.target = -3; kick(s); });
+    s.el.addEventListener('mouseleave', () => { s.target = 0; kick(s); });
+  }
+
 })();
