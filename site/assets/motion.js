@@ -508,10 +508,30 @@
         grid.appendChild(cell);
       }
 
+      // **Same bug as the rail calendar, in the second copy of the code.**
+      //
+      // `here <= months[0]` and `here >= months[last]` with closed comparisons: whenever the
+      // displayed month is both the earliest *and* the latest month that has events, both
+      // arrows disable and the month cannot be moved at all. Fixed in the rail calendar first
+      // and left here, because the two calendars are separate functions -- which is the same
+      // reason the RSS control had to be fixed twice.
+      //
+      // Not disabling at the boundary is the honest behaviour: a month with no events renders
+      // as an empty month, and that is information. A calendar that will not move reads as
+      // broken, which is exactly how it was reported.
       const months = [...new Set([...byDay.keys()].map((k) => k.slice(0, 7)))].sort();
       const here = `${yy}-${pad(mm)}`;
-      prev.disabled = !months.length || here <= months[0];
-      next.disabled = !months.length || here >= months[months.length - 1];
+      prev.disabled = false;
+      next.disabled = false;
+      const away = (a, b) => {
+        const [ay, am] = a.split('-').map(Number);
+        const [by, bm] = b.split('-').map(Number);
+        return (ay - by) * 12 + (am - bm);
+      };
+      if (months.length) {
+        if (away(here, months[0]) > 24) prev.disabled = true;
+        if (away(months[months.length - 1], here) > 24) next.disabled = true;
+      }
     };
 
     const select = (day) => {

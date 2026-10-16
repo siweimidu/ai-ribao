@@ -14,6 +14,7 @@ from .fetchers import get_fetcher, resolve_adapter
 from .fetchers.base import SourceResult
 from .http import HttpClient
 from .ingest import normalize_raw
+from .roundup import split_all
 from .models import NormalizedItem, RawItem, SourceSpec
 
 
@@ -104,7 +105,16 @@ async def collect(
     for result in results:
         report.results.append(result)
         spec = by_id[result.source_id]
-        for raw in result.items:
+        # **Split roundups before normalisation, not after.**
+        #
+        # A daily roundup arrives as one item titled `2026-10-15` whose body holds the whole
+        # day's news. Normalisation computes `item_id`, `simhash`, `title_norm` and the content
+        # hash from the title and body, so splitting afterwards would mean rebuilding all of
+        # them by hand -- and `NormalizedItem` has no `native_id` to derive a new identity from.
+        #
+        # Splitting here means the split stories are normalised like any other item, and every
+        # downstream stage sees them as ordinary news.
+        for raw in split_all(result.items):
             report.items.append(normalize_raw(raw, spec, now))
 
     report.finished_at = datetime.now(timezone.utc)

@@ -34,6 +34,8 @@ from datetime import datetime, timezone
 
 from .entities import topic_overlap
 from .focus import focus_multiplier
+from .vendor_priority import components as vendor_components
+from .vendor_priority import vendor_priority as vendor_priority_of
 from .heat import heat
 from .models import Event, NormalizedItem, SourceSpec
 from .normalize import title_similarity
@@ -190,10 +192,26 @@ def score_event(
     # if it is genuinely the day's biggest thing.
     focus_factor, focus_components = focus_multiplier(event, source_index)
 
+    # **Editorial priority for Chinese model vendors** (explicit user instruction):
+    # DeepSeek > Kimi > GLM > MiniMax/Qwen/豆包/阶跃星辰/元宝, all above the rest.
+    #
+    # A multiplier, not a sort key: ordering by vendor before looking at the news would put a
+    # routine version bump above a frontier release. And it is keyed on the vendor being the
+    # *subject* of the headline -- UCSD 用 DeepSeek V4.1-Flash 做机械臂 is a robotics story
+    # that happens to use DeepSeek, and boosting it would outrank DeepSeek's own news.
+    vendor_factor = 1.0
+    for candidate in (event.title, *(m.title for m in members[:3] if hasattr(m, "title"))):
+        factor, vendor = vendor_priority_of(candidate)
+        if factor > vendor_factor:
+            vendor_factor = factor
+            vendor_components_result = vendor_components(candidate)
+    if vendor_factor == 1.0:
+        vendor_components_result = {"vendor_priority": 1.0, "vendor_subject": ""}
+
     # `heat` already covers freshness; the old multiplicative recency term is gone, because
     # multiplying an independent decay on top of a normalised score is what made "newest
     # first" the effective rule whenever nothing was corroborated.
-    score = heat_score * damped_source * title_factor * focus_factor * 100
+    score = heat_score * damped_source * title_factor * focus_factor * vendor_factor * 100
 
     return RankedEvent(
         event=event,
@@ -206,6 +224,7 @@ def score_event(
             "title_quality": round(title_factor, 3),
             **heat_components,
             **focus_components,
+            **vendor_components_result,
             "score": round(score, 6),
         },
     )
