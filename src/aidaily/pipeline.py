@@ -7,6 +7,8 @@ network -- which is how the numbers in docs/ROADMAP.md were produced.
 
 from __future__ import annotations
 
+from collections import Counter
+
 import json
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta, timezone
@@ -282,6 +284,37 @@ def select_for_digest(
         report["cross_day_window_days"] = history.window_days
         if repeats:
             report["cross_day_examples"] = repeats[:10]
+
+    # **The section sort goes here, not before `select_diverse`.**
+    #
+    # It was placed with the other score sorts, and `select_diverse` -- which reorders by its
+    # own `final_score` after applying the max-per-source and topic-overlap penalties -- undid
+    # it immediately. Measured on the published 10-16 digest: 25 of 60 stories carried
+    # `section: 其他`, and `其他` sorts last, yet four of them were in the top four positions.
+    # The ordering was the diversity pass's, not the taxonomy's.
+    #
+    # A stable sort, so `select_diverse`'s judgement still decides the order *within* a section,
+    # which is exactly where the analysis said it belongs: outside a section, no title feature
+    # predicts 橘鸦's order; within one, the score is the only signal available.
+    chosen.sort(key=lambda r: (
+        rank_of(r.components.get("section") or classify(r.event.title)),
+        -r.score,
+    ))
+
+    # Where the sections came from. Without this, a run where the model returned no sections at
+    # all looks the same as one where the model classified everything as 其他 -- and the fix is
+    # in a different place for each.
+    from_model = sum(
+        1 for r in chosen if r.event.event_id in (rubric_sections or {})
+    )
+    report["section_source"] = {
+        "from_model": from_model,
+        "from_rules": len(chosen) - from_model,
+        "model_returned": len(rubric_sections or {}),
+    }
+    report["section_distribution"] = dict(
+        Counter(r.components.get("section") or classify(r.event.title) for r in chosen)
+    )
 
     return [row.event for row in chosen], report
 
