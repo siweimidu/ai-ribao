@@ -242,17 +242,44 @@ def test_second_publish_on_the_same_day_is_a_no_op(fixture_items: Path, isolated
 
 
 # =============================== gate wiring =====================================
-def test_gate_command_exit_codes(isolated_env, capsys):
+def test_gate_command_exit_codes(isolated_env, capsys, tmp_path: Path):
+    """The gate's three answers: proceed, already published, forced.
+
+    The archive file now matters. The gate used to trust the ledger alone, and a scheduled run
+    reported "already published" for a date whose digest had been deleted -- three ledger rows
+    saying `published` while `data/digests/2026-10-16.json` did not exist. That date would have
+    been skipped forever: there is no digest, and no future trigger would ever build one.
+
+    So the ledger is a record of intent and the artifact is the thing itself. This test writes
+    both, and then removes only the artifact to check that the gate notices.
+    """
     from aidaily.state import EXIT_ALREADY_PUBLISHED
 
-    assert run_cli("gate", "--date", TODAY, "--no-env") == 0
+    out_dir = tmp_path / "digests"
+    out_dir.mkdir()
+
+    assert run_cli("gate", "--date", TODAY, "--no-env", "--out-dir", str(out_dir)) == 0
     capsys.readouterr()
 
     from aidaily.state import RunRecord, append_record
 
     append_record(RunRecord(date=TODAY, status="published", at="t"))
-    assert run_cli("gate", "--date", TODAY, "--no-env") == EXIT_ALREADY_PUBLISHED
-    assert run_cli("gate", "--date", TODAY, "--no-env", "--force") == 0
+
+    # A ledger row with no archive is not a publication -- the gate must rebuild.
+    assert run_cli("gate", "--date", TODAY, "--no-env", "--out-dir", str(out_dir)) == 0
+    reason = json.loads(capsys.readouterr().out)
+    assert reason["publish"] is True
+    assert "不存在" in reason["reason"]
+
+    # With the archive present, the same row is honoured.
+    (out_dir / f"{TODAY}.json").write_text("{}", encoding="utf-8")
+    assert run_cli(
+        "gate", "--date", TODAY, "--no-env", "--out-dir", str(out_dir)
+    ) == EXIT_ALREADY_PUBLISHED
+
+    assert run_cli(
+        "gate", "--date", TODAY, "--no-env", "--out-dir", str(out_dir), "--force"
+    ) == 0
 
 
 # =============================== fact-check is a gate ============================

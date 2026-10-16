@@ -83,7 +83,13 @@ def append_record(record: RunRecord, path: Path | str | None = None) -> Path:
     return p
 
 
-def gate(date: str, path: Path | str | None = None, *, digest_id: str | None = None) -> tuple[bool, str, dict[str, str]]:
+def gate(
+    date: str,
+    path: Path | str | None = None,
+    *,
+    digest_id: str | None = None,
+    artifact_dir: Path | str | None = None,
+) -> tuple[bool, str, dict[str, str]]:
     """Decide whether this trigger should publish.
 
     Returns (should_publish, reason, channels_already_done). A previous *partial* run
@@ -101,6 +107,22 @@ def gate(date: str, path: Path | str | None = None, *, digest_id: str | None = N
     records = [r for r in read_ledger(path) if r.date == date]
     if not records:
         return True, f"{date} 尚未发布", {}
+
+    # **The ledger records intent; the artifact is the thing itself.**
+    #
+    # A scheduled run reported "already published" for a date whose digest had been deleted:
+    # three ledger rows said published while data/digests/2026-10-16.json did not exist.
+    # The gate would have skipped that date forever -- there is no digest, and no future
+    # trigger would ever build one. When the archive is missing, the honest answer is that the
+    # date is *not* published, whatever the ledger says.
+    if artifact_dir is not None and records[-1].status == "published":
+        archive = Path(artifact_dir) / f"{date}.json"
+        if not archive.exists():
+            return True, (
+                f"{date} 账本记为已发布，但归档 {archive.name} 不存在 —— "
+                f"按未发布处理并重建"
+            ), {}
+
     latest = records[-1]
     if latest.status == "published":
         if digest_id and latest.digest_id and latest.digest_id != digest_id:

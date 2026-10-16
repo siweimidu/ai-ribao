@@ -290,6 +290,7 @@ def cmd_run(args: argparse.Namespace) -> int:
 
     should, reason, already = gate(
         digest.date,
+        artifact_dir=out_dir,
         # The gate compares this against what was last published. A same-day re-trigger
         # produces a different digest as new items arrive (219 events became 223), and
         # skipping delivery then left the live page describing 219 while its own archived
@@ -357,7 +358,9 @@ def cmd_gate(args: argparse.Namespace) -> int:
     if args.force:
         print(json.dumps({"date": date, "publish": True, "reason": "--force"}, ensure_ascii=False))
         return 0
-    should, reason, done = gate(date)
+    # 传产物目录：账本说「已发布」而归档不存在时，必须重建而不是永远跳过。
+    out_dir = Path(args.out_dir) if getattr(args, "out_dir", None) else ROOT / "data" / "digests"
+    should, reason, done = gate(date, artifact_dir=out_dir)
     print(json.dumps(
         {"date": date, "publish": should, "reason": reason, "done_channels": done},
         ensure_ascii=False,
@@ -628,6 +631,8 @@ def build_parser() -> argparse.ArgumentParser:
     g.add_argument("--date", help="YYYY-MM-DD（默认取配置时区的今天）")
     g.add_argument("--force", action="store_true", help="忽略账本，强制继续")
     g.add_argument("--no-env", action="store_true")
+    # The gate checks that the archive exists, so it needs to know where archives live.
+    g.add_argument("--out-dir", help="归档目录（默认 data/digests）")
     g.set_defaults(func=cmd_gate)
     return p
 
