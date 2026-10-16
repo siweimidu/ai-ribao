@@ -825,31 +825,74 @@
   });
 
   /* ============================================================================
-     六、悬停抬升的欠阻尼弹簧（handfeel §1）
-     帧率无关写法：vel += (target - x) * k * dt; vel *= damping; x += vel * dt。
-     CSS 过冲贝塞尔管不了「放手回弹」，这里用真弹簧：进入把 target 抬到 -3px，
-     离开回到 0，弹簧带着速度过冲一点再停 —— 这才是 Q 弹。
+     六、动效（motion-web handfeel §1 / §7.1）
+     ----------------------------------------------------------------------------
+     上一版把 dt 写死成 1/60，那在 30 / 90 / 120Hz 下是**不同的滤波器** ——
+     同一份代码在不同机器上手感不一样。这里用真实 dt（上限 1/30）：
+       vel += (target - x) * STIFFNESS * dt;  vel *= DAMPING;  x += vel * dt;
+     §1 的参数：STIFFNESS 80、DAMPING 0.86 = 落地会过冲一点再回稳，读作「有重量」。
+     日历高亮另走一条路：它必须**到位就停**，所以用帧率无关的一阶跟随（§7.1），
+       x += (target - x) * (1 - exp(-k*dt))，k 是 1/s 的「紧度」而不是每帧比例。
      ========================================================================== */
-  const springItems = [...document.querySelectorAll('.item')]
-    .filter((el) => !window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-  const springs = springItems.map((el) => ({ el, x: 0, v: 0, target: 0, raf: 0 }));
-  const K = 90, DAMPING = 0.86;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const tick = (s) => {
-    const dt = 1 / 60;
-    s.v += (s.target - s.x) * K * dt;
-    s.v *= DAMPING;
-    s.x += s.v * dt;
-    s.el.style.transform = Math.abs(s.x) < 0.01 && Math.abs(s.v) < 0.01
-      ? (s.raf = 0, '')
-      : `translateY(${s.x.toFixed(2)}px)`;
-    if (s.raf || Math.abs(s.x) >= 0.01 || Math.abs(s.v) >= 0.01) s.raf = requestAnimationFrame(() => tick(s));
-  };
-  const kick = (s) => { if (!s.raf) s.raf = requestAnimationFrame(() => tick(s)); };
+  if (!reduce) {
+    const STIFFNESS = 80, DAMPING = 0.86;
+    const springs = [...document.querySelectorAll('.item')].map((el) => ({
+      el, x: 0, v: 0, target: 0, raf: 0,
+    }));
 
-  for (const s of springs) {
-    s.el.addEventListener('mouseenter', () => { s.target = -3; kick(s); });
-    s.el.addEventListener('mouseleave', () => { s.target = 0; kick(s); });
+    const step = (s, dt) => {
+      s.v += (s.target - s.x) * STIFFNESS * dt;
+      s.v *= DAMPING;
+      s.x += s.v * dt;
+    };
+
+    let last = performance.now();
+    const frame = (now) => {
+      const dt = Math.min((now - last) / 1000, 1 / 30);
+      last = now;
+      let active = 0;
+      for (const s of springs) {
+        if (Math.abs(s.target - s.x) < 0.02 && Math.abs(s.v) < 0.02) {
+          if (s.x !== 0) { s.x = 0; s.el.style.transform = ''; }
+          continue;
+        }
+        step(s, dt);
+        s.el.style.transform = `translateY(${s.x.toFixed(2)}px)`;
+        active += 1;
+      }
+      if (active) requestAnimationFrame(frame);
+      else running = false;
+    };
+    let running = false;
+    const kick = () => { if (!running) { running = true; last = performance.now(); requestAnimationFrame(frame); } };
+
+    for (const s of springs) {
+      s.el.addEventListener('mouseenter', () => { s.target = -3; kick(); });
+      s.el.addEventListener('mouseleave', () => { s.target = 0; kick(); });
+    }
+
+    // §7.1: the calendar's selected-day highlight arrives and stops; no overshoot, and the same
+    // behaviour at any refresh rate.
+    const K = 12;  // 1/s
+    let hlX = 0, hlTarget = 0, hlRaf = 0, hlLast = 0;
+    const hlFrame = (now) => {
+      const dt = Math.min((now - hlLast) / 1000, 1 / 30);
+      hlLast = now;
+      hlX += (hlTarget - hlX) * (1 - Math.exp(-K * dt));
+      if (Math.abs(hlTarget - hlX) < 0.4) hlX = hlTarget;
+      document.documentElement.style.setProperty('--hl-x', `${hlX.toFixed(1)}px`);
+      if (hlX !== hlTarget) hlRaf = requestAnimationFrame(hlFrame);
+      else hlRaf = 0;
+    };
+    document.addEventListener('click', (event) => {
+      const day = event.target.closest?.('.cal__day, .ecal__day');
+      if (!day) return;
+      const box = day.getBoundingClientRect();
+      hlTarget = box.left + box.width / 2;
+      if (!hlRaf) { hlLast = performance.now(); hlRaf = requestAnimationFrame(hlFrame); }
+    }, true);
   }
 
 })();

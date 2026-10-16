@@ -1470,3 +1470,151 @@ body, .rail, .toc, .item, .ecal__card {
 
 .ecal__day .ecal__num { justify-self: center; align-self: center; }
 .cal__day { justify-self: center; }
+
+
+/* ==============================================================================
+   终版覆盖（二）—— 动效与版心。本块在文件末尾，优先级最高。
+   ============================================================================== */
+
+/* --- 一、版心：把两侧的大空隙交给内容 --------------------------------------------
+   实测 1440px 下：左轨 240 + 缝 32 + 正文 880 + 缝 32 + 右栏 240，
+   右侧还剩约 248px 空白而左侧只有 32px —— 版心没有居中，空隙全堆在一边。
+   上限放大、内边距收小、缝收小，让正文列吸收掉多余宽度。 */
+.shell {
+  max-width: none;
+  padding-inline: calc(var(--unit) * 2);
+}
+@media (min-width: 1080px) {
+  .shell { gap: calc(var(--unit) * 5); padding-inline: calc(var(--unit) * 3); }
+}
+@media (min-width: 1400px) {
+  .shell { gap: calc(var(--unit) * 7); padding-inline: calc(var(--unit) * 3); }
+}
+/* 超宽屏才收边，且收得晚、收得宽 —— 1899px 之前一直用满窗口。 */
+@media (min-width: 2000px) {
+  .shell { max-width: 1880px; margin-inline: auto; padding-inline: calc(var(--unit) * 6); }
+}
+
+/* --- 二、日历：Tibo 页的事件日历与侧栏日历共用同一套几何 ------------------------
+   数字居中靠 place-content（grid 隐式轨道默认从左上排，这是数字偏左的真正原因）。
+   侧栏可拖窄，所以格子用固定值 + 网格居中，窄到放不下时侧栏内部横向滚动。 */
+.cal__grid,
+.ecal__grid {
+  display: grid !important;
+  grid-template-columns: repeat(7, minmax(24px, 32px));
+  justify-content: space-between;
+  gap: calc(var(--unit) * 0.5);
+  width: 100%;
+}
+.cal__day,
+.ecal__day {
+  width: 28px;
+  height: 28px;
+  min-height: 0;
+  aspect-ratio: auto;
+  padding: 0 !important;
+  display: grid !important;
+  place-content: center !important;
+  place-items: center !important;
+  justify-self: center;
+  flex-direction: row !important;
+  border: 0 !important;
+  border-radius: 50%;
+  font-size: 0.76rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.ecal__num {
+  width: auto; height: auto; background: none; border-radius: 0; box-shadow: none;
+  display: block; font-weight: inherit; color: inherit; margin: 0; padding: 0;
+}
+.ecal__day .ecal__num { justify-self: center; align-self: center; }
+.ecal__marks { display: none !important; }
+
+.cal__day[data-has="true"]::after,
+.ecal__day[data-count]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 3px;
+  width: 3.5px;
+  height: 3.5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.6;
+  transform: translateX(-50%);
+}
+.cal__day[data-has="true"],
+.ecal__day[data-count] { color: var(--fg); font-weight: 620; cursor: pointer; }
+.cal__day[data-has="true"]:hover,
+.ecal__day[data-count]:hover { background: var(--accent-soft); color: var(--accent); }
+
+.cal__day[data-today="true"],
+.ecal__day[data-today="true"] {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.cal__day[data-current="true"]:not([data-today="true"]),
+.ecal__day[aria-selected="true"]:not([data-today="true"]) {
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+}
+.cal__day[aria-disabled="true"],
+.ecal__day[aria-disabled="true"] { opacity: 0.26; }
+.cal__day[aria-hidden="true"],
+.ecal__day--pad { opacity: 0; pointer-events: none; }
+
+/* 窄侧栏：日历给最小宽度，放不下时在侧栏内横向滚动（滚动条仍隐藏，功能在）。 */
+.cal { min-width: 11.5rem; }
+.rail__body { overflow-x: auto; }
+
+/* --- 三、Q弹动效（motion-web handfeel §1 / §6）---------------------------------
+   入场用欠阻尼弹簧的 CSS 近似（过冲 12%），悬停抬升与日历高亮用 JS 真弹簧。
+   所有动效只碰 transform / opacity，不触发布局。 */
+
+:root {
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --spring-soft: cubic-bezier(0.22, 1.28, 0.5, 1);
+}
+
+.js-motion .item {
+  opacity: 0;
+  transform: translateY(12px) scale(0.994);
+  animation: item-in 0.52s var(--spring-soft) forwards;
+}
+.js-motion .item:nth-child(2) { animation-delay: 0.035s; }
+.js-motion .item:nth-child(3) { animation-delay: 0.07s; }
+.js-motion .item:nth-child(4) { animation-delay: 0.105s; }
+.js-motion .item:nth-child(n+5) { animation-delay: 0.14s; }
+@keyframes item-in {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.item {
+  transition: box-shadow 0.45s var(--spring-soft), border-color 0.2s ease;
+  will-change: transform;
+}
+.item:hover {
+  box-shadow: 0 12px 30px -16px color-mix(in srgb, var(--fg) 28%, transparent);
+}
+
+/* 日历按下：缩到 0.86 再由 JS 弹簧弹回 */
+.cal__day:active, .ecal__day:active { transform: scale(0.86); }
+.rail__item { transition: transform 0.42s var(--spring), background 0.2s ease, color 0.2s ease; }
+.rail__item:hover { transform: translateX(2px); }
+
+/* 品牌标记的空闲呼吸（§6）：两个不同频率，绝不同步。 */
+@media (prefers-reduced-motion: no-preference) {
+  .rail__mark { animation: breathe 4.6s ease-in-out infinite; }
+}
+@keyframes breathe {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-1.4px) rotate(-1.1deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js-motion .item { animation: none; opacity: 1; transform: none; }
+  .item, .rail__item, .rail__mark { transition: none; animation: none; }
+}
