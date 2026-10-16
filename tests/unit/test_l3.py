@@ -226,7 +226,12 @@ def test_items_without_a_url_are_excluded(make_item) -> None:
 
 # =============================== critical-source wait gate =======================
 def test_wait_window_covers_the_scheduled_triggers() -> None:
-    """09:53 / 10:07 / 10:23 / 10:41 Beijing must all arm the freshness gate."""
+    """Both slots' triggers must arm the freshness gate.
+
+    The schedule is two collections a day, 07:00 and 19:00 Beijing, each with a retry 17 minutes
+    later. The window is anchored on `run.at` and reaches three hours forward, so both triggers of
+    a slot are covered; this asserts that, rather than the previous single 10:00 target.
+    """
     from datetime import datetime
     from zoneinfo import ZoneInfo
 
@@ -234,7 +239,7 @@ def test_wait_window_covers_the_scheduled_triggers() -> None:
 
     cfg = _cfg()
     tz = ZoneInfo("Asia/Shanghai")
-    for hhmm in ("09:53", "10:00", "10:07", "10:23", "10:41", "11:30", "12:59"):
+    for hhmm in ("06:30", "07:00", "07:17", "09:59", "18:30", "19:00", "19:17", "21:59"):
         h, m = (int(x) for x in hhmm.split(":"))
         when = datetime(2026, 10, 14, h, m, tzinfo=tz)
         armed, why = wait_window(cfg, when)
@@ -244,9 +249,12 @@ def test_wait_window_covers_the_scheduled_triggers() -> None:
 def test_wait_window_is_disarmed_outside_the_schedule() -> None:
     """Regression from the first real GitHub run.
 
-    A manual trigger at 02:00 Beijing waited the full 20-minute timeout for juya's
-    edition -- which does not exist until 09:48. The gate has to know when a late source
-    is even plausible, otherwise it just burns the job's time budget.
+    A manual trigger at 02:00 Beijing waited the full 20-minute timeout for juya's edition --
+    which does not exist until much later. The gate has to know when a late source is even
+    plausible, otherwise it just burns the job's time budget.
+
+    The hours here are the gaps *between* the two slots: before the morning run, and in the small
+    hours after the evening one.
     """
     from datetime import datetime
     from zoneinfo import ZoneInfo
@@ -255,7 +263,7 @@ def test_wait_window_is_disarmed_outside_the_schedule() -> None:
 
     cfg = _cfg()
     tz = ZoneInfo("Asia/Shanghai")
-    for hhmm in ("02:00", "07:00", "09:00", "14:00", "23:30"):
+    for hhmm in ("02:00", "05:00", "06:00", "12:00", "14:00", "23:30"):
         h, m = (int(x) for x in hhmm.split(":"))
         when = datetime(2026, 10, 14, h, m, tzinfo=tz)
         armed, why = wait_window(cfg, when)

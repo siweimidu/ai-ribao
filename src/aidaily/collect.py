@@ -124,28 +124,26 @@ async def collect(
 def wait_window(cfg: AppConfig, now: datetime) -> tuple[bool, str]:
     """Whether the freshness gate is meaningful at `now`.
 
-    The gate exists to cover a source that is a few minutes late for the 10:00 run: juya
-    publishes at 09:48 and a twelve-minute margin is a coincidence, not a schedule.
+    The gate exists to cover a source that is a few minutes late for a scheduled run, so it is
+    anchored on the **schedule**, not on a single hour. Two collections a day means two windows;
+    anchoring on `run.at` alone armed the morning and left the evening run waiting for nothing.
 
-    Outside a window around the scheduled time it does nothing but burn twenty minutes:
-    a manual trigger at 02:00 Beijing is waiting for an edition that will not exist for
-    another eight hours. The first real GitHub run hit exactly that -- `collect` sat
-    waiting for the full 20-minute timeout -- so the gate is now bounded to the period
-    where a late source is actually plausible.
+    Outside both windows it does nothing but burn twenty minutes: a manual trigger at 02:00
+    Beijing is waiting for an edition that will not exist for hours. The first real GitHub run hit
+    exactly that -- `collect` sat for the full timeout.
     """
-    tz_start = datetime.combine(
-        now.astimezone(ZoneInfo(cfg.timezone)).date(),
-        cfg.run.at_time(),
-        tzinfo=ZoneInfo(cfg.timezone),
-    )
-    start = tz_start - timedelta(minutes=30)      # covers the 09:53 trigger
-    end = tz_start + timedelta(hours=3)           # covers the 10:41 trigger and its delay
     local = now.astimezone(ZoneInfo(cfg.timezone))
-    if start <= local <= end:
-        return True, ""
+    tz = ZoneInfo(cfg.timezone)
+    for hhmm in cfg.run.schedule_times():
+        anchor = datetime.combine(local.date(), hhmm, tzinfo=tz)
+        # The lead covers a trigger that fires a little early; the tail covers the retry 17
+        # minutes later plus GitHub's documented scheduling delay.
+        if anchor - timedelta(minutes=30) <= local <= anchor + timedelta(hours=3):
+            return True, ""
+    first = cfg.run.at_time()
     return False, (
-        f"当前 {local:%H:%M} 不在调度窗口 {start:%H:%M}-{end:%H:%M}（{cfg.timezone}）内，"
-        "跳过关键源等待"
+        f"当前 {local:%H:%M} 不在调度窗口（{cfg.timezone}，"
+        f"{first:%H:%M} 起各时段 -30min ~ +3h）内，跳过关键源等待"
     )
 
 

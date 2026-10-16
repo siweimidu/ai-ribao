@@ -1,28 +1,32 @@
 name: AI Daily
 
-# Beijing 10:00 target. Measuring the sources first is what set this time:
-#   juya publishes at 09:48 Beijing, dailydawn at 08:00, ai-daily-sources at 08:02.
-# A 07:00 run would have systematically shipped the previous day's editions of the three
-# most-shared Chinese sources.
+# Two collections a day, 07:00 and 19:00 Beijing.
 #
-# Four triggers, sixteen minutes apart, none on the hour:
-#   * GitHub's schedule event is delayed under load, and the docs say queued jobs may be
-#     *dropped* -- so one trigger is not enough;
-#   * the start of every hour is the documented peak, hence :53/:07/:23/:41;
-#   * the idempotency gate makes the first successful publish win and the rest no-ops.
+# The morning run takes what published overnight; the evening run takes the day's releases and
+# merges them into the same date's issue, deduplicated against the morning's content. That is why
+# the idempotency gate keys on **date + slot** rather than date alone: keyed on the date, the
+# evening run was a permanent no-op and the day's afternoon news never arrived.
+#
+# Two triggers per slot, 17 minutes apart and off the hour, because GitHub's schedule event is
+# delayed under load and the docs say queued jobs may be *dropped*. Within a slot the first
+# successful publish wins and the retry is a no-op.
 #
 # The timezone key is used instead of hand-converted UTC so the schedule cannot drift.
 
 on:
+  # **UTC, with no `timezone` key.** GitHub Actions runs POSIX cron in UTC and does not document
+  # a `timezone` field on a schedule entry; carrying one left the actual fire time impossible to
+  # predict from the file. The UTC hour is written directly instead, so the schedule means exactly
+  # one thing. 07:00 Beijing = 23:00 UTC the day before; 19:00 Beijing = 11:00 UTC.
+  #
+  # Two triggers per slot, 17 minutes apart and off the hour: GitHub's schedule event is delayed
+  # under load and the docs say queued jobs may be *dropped*, so one trigger per slot is not
+  # enough. Within a slot the first successful publish wins and the retry is a no-op.
   schedule:
-    - cron: "53 9 * * *"
-      timezone: "Asia/Shanghai"
-    - cron: "7 10 * * *"
-      timezone: "Asia/Shanghai"
-    - cron: "23 10 * * *"
-      timezone: "Asia/Shanghai"
-    - cron: "41 10 * * *"
-      timezone: "Asia/Shanghai"
+    - cron: "0 23 * * *"     # 07:00 北京
+    - cron: "17 23 * * *"    # 07:17 北京（重试）
+    - cron: "0 11 * * *"     # 19:00 北京
+    - cron: "17 11 * * *"    # 19:17 北京（重试）
   workflow_dispatch:
     inputs:
       force:

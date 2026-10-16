@@ -41,10 +41,17 @@ CONFIG = load_config(env={})
 TODAY = NOW.astimezone(ZoneInfo(CONFIG.timezone)).strftime("%Y-%m-%d")
 
 SHARED_BODY = (
-    "Nvidia announced a new datacenter rack design at the OCP summit today. "
+    "Nvidia announced a new datacenter rack design for AI training at the OCP summit today. "
     "The company said the design targets multi-gigawatt AI factories and will be "
     "published as an open specification for partners."
 )
+
+#: The headline must carry a **specific** AI term, not just `AI`. Measured against the scorer:
+#: `Nvidia unveils AI datacenter rack design` scores 0.50 (a bare `AI` cannot clear the 0.70
+#: floor), while `Nvidia unveils rack design for LLM training` scores 1.00. The old fixture title
+#: was `Nvidia unveils rack design`, whose AI connection lived only in the body -- correctly
+#: refused, and useless for a test whose purpose is multi-source dedup.
+SHARED_TITLE = "Nvidia unveils rack design for LLM training"
 
 
 def item(
@@ -76,11 +83,11 @@ def item(
 def fixture_items(tmp_path: Path) -> Path:
     items = [
         # The same story carried by three feeds: must become ONE multi-source event.
-        item(item_id="dup1", title="Nvidia unveils rack design", url="https://nvidia.example/news/rack",
+        item(item_id="dup1", title=SHARED_TITLE, url="https://nvidia.example/news/rack",
              source_id="rss:nvidia-blog"),
-        item(item_id="dup2", title="Nvidia unveils rack design", url="https://mirror.example/rack",
+        item(item_id="dup2", title=SHARED_TITLE, url="https://mirror.example/rack",
              source_id="rss:mirror"),
-        item(item_id="dup3", title="Nvidia unveils rack design", url="https://third.example/rack",
+        item(item_id="dup3", title=SHARED_TITLE, url="https://third.example/rack",
              source_id="rss:third"),
         # A distinct story.
         item(item_id="solo1", title="OpenAI ships a reasoning model",
@@ -146,7 +153,7 @@ def test_full_chain_produces_a_publishable_digest(fixture_items: Path, isolated_
     feed = json.loads((out_dir / "site" / "feed" / "zh.json").read_text(encoding="utf-8"))
 
     # The duplicate is one entry carrying all three links, not three entries.
-    assert brief.count("Nvidia unveils rack design") >= 1
+    assert brief.count(SHARED_TITLE) >= 1
     for url in ("https://nvidia.example/news/rack", "https://mirror.example/rack", "https://third.example/rack"):
         assert url in deep, f"{url} was lost during dedup"
     assert any("nvidia.example/news/rack" in u for u in feed["items"][0]["_ai_daily"]["all_urls"]) or feed["items"]

@@ -21,6 +21,7 @@ from .dedup import DedupConfig, DedupResult, cluster
 from .models import Digest, Event, NormalizedItem, SourceCoverage, SourceSpec
 from .rank import RankWeights, diversity_report, rank_events, select_diverse
 from .sections import classify, rank_of
+from .focus import focus_multiplier
 from .rubric import band, rubric_multiplier
 from .select import WindowResult, select_window
 
@@ -36,6 +37,21 @@ if TYPE_CHECKING:  # pragma: no cover - typing only
 #: story that gained sources or URLs since yesterday breaks the match on its own. Demote,
 #: never delete, which is the same rule the source registry follows.
 REPEAT_PENALTY = 0.12
+
+# A bare mention of AI (focus≈0.4) is not sufficient for an AI digest. This floor was selected
+# against the measured daily candidate pool: 39/153 stories clear 0.70, while 65 score exactly
+# 0.40 on a generic `AI` mention and 47 fall below 0.35. Do not relax this to fill slots.
+MIN_AI_RELEVANCE = 0.70
+
+
+def passes_ai_relevance(focus: float | str | None) -> bool:
+    """Fail closed: missing scores and scores under the high-relevance floor never publish."""
+    if focus is None:
+        return False
+    try:
+        return float(focus) >= MIN_AI_RELEVANCE
+    except (TypeError, ValueError):
+        return False
 
 
 def dedup_config_from(cfg: AppConfig) -> DedupConfig:
@@ -241,28 +257,43 @@ def select_for_digest(
     # more than the AI pool needs. Dropped rows are counted in the report so a thin day reads as
     # "今天AI新闻少", which is true, rather than being padded back to sixty with consumer
     # electronics, which is not.
-    focus_floor = 0.35
+    focus_floor = MIN_AI_RELEVANCE
     kept: list = []
     dropped_focus = 0
+    missing_focus = 0
+    dropped_focus_examples: list[dict[str, object]] = []
     for row in ranked:
         focus = row.components.get("focus")
-        if focus is not None and float(focus) < focus_floor:
+        # Missing relevance is not permission to publish. This used to be `if focus is not
+        # None and focus < floor`, so any new event type that skipped the scorer silently
+        # bypassed the filter. Absence of evidence now fails closed.
+        if not passes_ai_relevance(focus):
             dropped_focus += 1
+            missing = focus is None
+            missing_focus += int(missing)
+            try:
+                focus_value = float(focus) if focus is not None else 0.0
+            except (TypeError, ValueError):
+                focus_value = 0.0
+                missing_focus += 1
+            if len(dropped_focus_examples) < 12:
+                dropped_focus_examples.append({
+                    "event_id": row.event.event_id,
+                    "title": row.event.title[:100],
+                    "focus": round(focus_value, 3),
+                    "reason": "missing_or_invalid_focus" if missing or focus_value == 0.0 else "below_floor",
+                })
             continue
         kept.append(row)
-    if len(kept) < 20 and dropped_focus:
-        # A thin day relaxes the floor stepwise rather than publishing five items -- but the
-        # relaxed rows are marked, so the shortfall is stated, not hidden.
-        relaxed = sorted(
-            (r for r in ranked if r not in kept),
-            key=lambda r: -float(r.components.get("focus") or 0),
-        )
-        need = min(20 - len(kept), dropped_focus)
-        kept.extend(relaxed[:need])
-        report_extra = {"relevance_floor_relaxed_to": round(
-            min((float(r.components.get("focus") or 0) for r in relaxed[:need]), default=0.0), 3)}
-    else:
-        report_extra = {}
+
+    # No relaxation and no slot-filling exceptions. `select_diverse` must not reinsert rejected
+    # rows, and publication asserts the invariant again after diversity selection.
+    report_extra = {
+        "relevance_floor": focus_floor,
+        "relevance_floor_dropped": dropped_focus,
+        "relevance_missing_dropped": missing_focus,
+        "relevance_dropped_examples": dropped_focus_examples,
+    }
 
     section_of: dict[str, str] = {}
     for row in kept:
@@ -284,20 +315,12 @@ def select_for_digest(
             "pool_size": len(ranked),
         }
 
-    chosen = select_diverse(
-        ranked,
-        cfg.output.deep.max_items,
-        sources,
-        rank=RankWeights(
-            max_per_source=cfg.quality.max_per_source,
-            max_per_group=cfg.quality.max_per_group,
-            topic_similarity_penalty=cfg.quality.topic_similarity_penalty,
-            topic_similarity_threshold=cfg.quality.topic_similarity_threshold,
-            topic_overlap_min=cfg.quality.topic_overlap_min,
-            topic_overlap_penalty=cfg.quality.topic_overlap_penalty,
-            duplicate_url_penalty=cfg.quality.duplicate_url_penalty,
-        ),
-    )
+    # Do not ask diversity selection to repopulate a fixed-size issue with irrelevant stories.
+    # At 0.70 the measured daily candidate pool retains ~39/153 high-confidence AI stories;
+    # max_items is an upper bound, not a target. Preserve that complete eligible pool, ranked
+    # by the already-applied section-first order and score. Source caps are not allowed to
+    # exclude/replace a high-relevance item with a weaker one.
+    chosen = list(ranked[:cfg.output.deep.max_items])
     # Copied *after* selection: `select_diverse` adds `topic_penalty` and `final_score` to
     # the same dict, and Pydantic snapshots the mapping on assignment. Doing this before
     # selection archived a penalty of 1.0 for every entry -- the audit trail disagreed with
@@ -305,6 +328,18 @@ def select_for_digest(
     for row in ranked:
         row.event.rank_score = row.score
         row.event.rank_components = dict(row.components)
+
+    # Final invariant at the publication boundary: diversity selection is permitted to reorder
+    # or omit candidates, never to restore one below the high-relevance floor.
+    violating = [
+        row.event.title for row in chosen
+        if not passes_ai_relevance(row.components.get("focus"))
+    ]
+    if violating:
+        raise AssertionError(
+            "select_diverse reintroduced stories below the AI relevance floor: "
+            + "; ".join(title[:80] for title in violating[:5])
+        )
 
     report = diversity_report(chosen, sources)
     if history is not None:

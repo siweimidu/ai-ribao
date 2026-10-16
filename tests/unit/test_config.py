@@ -25,7 +25,9 @@ def test_shipped_config_is_valid() -> None:
     """The committed config must always load -- CI fails otherwise."""
     cfg = load_config(DAILY, env={})
     assert cfg.timezone == "Asia/Shanghai"
-    assert cfg.run.at_time().hour == 10, "北京时间 10:00 是既定决策"
+    # The first collection of the day, and the anchor for the "too early to publish" gate.
+    # Two collections a day (07:00 and 19:00 Beijing) replaced the single 10:00 target.
+    assert cfg.run.at_time().hour == 7, "北京时间 07:00 是当天第一次采集"
     assert cfg.output.brief.enabled and cfg.output.deep.enabled
     assert cfg.output.deep.languages == ["zh"], "深度版默认纯中文（免费额度约束）"
 
@@ -81,7 +83,7 @@ def test_env_override_does_not_mutate_the_source_mapping() -> None:
 
 def test_unrelated_env_is_ignored() -> None:
     cfg = load_config(DAILY, env={"PATH": "/usr/bin", "GEMINI_API_KEY": "secret-value-here"})
-    assert cfg.run.at == "10:00"
+    assert cfg.run.at == "07:00"
 
 
 # --- critical sources validation --------------------------------------------------

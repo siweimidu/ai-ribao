@@ -37,16 +37,34 @@ class ConfigError(RuntimeError):
 
 class RunConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    at: str = "10:00"
+    at: str = "07:00"
     window_hours: int = 26
     critical_wait_minutes: int = 20
     critical_sources: list[str] = Field(default_factory=list)
+    #: Every hour the workflow collects at, in `timezone`. The first entry is the day's first
+    #: collection and is what `at` must equal; the rest are the later slots. Kept as data because
+    #: two places need it and they must agree: the "too early to publish" gate and the
+    #: critical-source wait window. Hard-coding "07:00" in the wait logic left the evening run
+    #: waiting for nothing.
+    slots: list[str] = Field(default_factory=lambda: ["07:00", "19:00"])
 
     def at_time(self) -> time:
         m = _HHMM.match(self.at.strip())
         if not m:
             raise ConfigError(f"run.at must be HH:MM, got {self.at!r}")
         return time(int(m.group(1)), int(m.group(2)))
+
+    def schedule_times(self) -> list[time]:
+        """Every slot as a `time`, in order, with `at` guaranteed present."""
+        out: list[time] = []
+        for raw in self.slots or [self.at]:
+            m = _HHMM.match(str(raw).strip())
+            if not m:
+                raise ConfigError(f"run.slots entries must be HH:MM, got {raw!r}")
+            out.append(time(int(m.group(1)), int(m.group(2))))
+        if self.at_time() not in out:
+            out.insert(0, self.at_time())
+        return sorted(out)
 
 
 class OutputVariant(BaseModel):
