@@ -1627,3 +1627,44 @@ body, .rail, .toc, .item, .ecal__card {
   .js-motion .item { animation: none; opacity: 1; transform: none; }
   .item, .rail__item, .rail__mark { transition: none; animation: none; }
 }
+
+
+/* ==============================================================================
+   终版覆盖（三）—— 移动端留白 + 品牌标记
+   ============================================================================== */
+
+/* --- 一、窄屏必须给足边距 ------------------------------------------------------
+   实测 390px 下 padding-inline 只有 8px，标题和正文几乎贴着屏幕边。
+   桌面收窄留白是对的，但这个值不该在所有宽度生效 —— 手机上它是缺陷不是节省。 */
+@media (max-width: 900px) {
+  .shell { padding-inline: calc(var(--unit) * 5); }
+}
+@media (max-width: 560px) {
+  .shell { padding-inline: calc(var(--unit) * 4); }
+  /* 卡片是全宽出血的，所以正文自己也要有内边距，否则文字仍然贴边。 */
+  .content { padding-inline: calc(var(--unit) * 1); }
+  .item__title, .issue__title, .issue__lead, .section__title {
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
+}
+
+/* --- 二、品牌标记：把「AI」两个字母换成真正设计的图标 --------------------------
+   broadcast / feed：一个点 + 两道向外扩散的弧 —— 多路来源汇成一个信号，
+   正是这个产品在做的事。用 currentColor，跟随主题，无网络请求。 */
+.rail__mark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--accent-fg, #fff);
+  flex: none;
+  overflow: hidden;
+}
+.rail__mark .brand-mark__svg { display: block; }
+.rail__brand { gap: calc(var(--unit) * 2.5); }
+
+/* 首页大标题区的标记（如果用到）同样处理 */
+.brand-mark__svg { vertical-align: middle; }

@@ -42,12 +42,21 @@ SECTION_ORDER = [
     "search", "trend", "preset", "other",
 ]
 
+#: The browser-tab icon, inlined as a data URI so there is no extra request and no file to 404.
+#:
+#: It is the **same geometry as the header mark**: a dot with two expanding arcs, a feed being
+#: broadcast. It used to be a blue tile with the letter "A" -- a different logo from the one on
+#: the page, and two hand-drawn versions of one mark is exactly how they drift apart.
 FAVICON = (
     "data:image/svg+xml,"
     "%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E"
-    "%3Crect width='32' height='32' rx='8' fill='%230065fd'/%3E"
-    "%3Cpath d='M9.5 21.5 14.4 10.5h3.4l4.9 11h-3.1l-1-2.4h-5.2l-1 2.4z' fill='white'/%3E"
-    "%3C/svg%3E"
+    # 底色用当前主题的强调色，页头标记与标签页因此永远一致。
+    "%3Crect width='32' height='32' rx='7.2' fill='%230065fd'/%3E"
+    "%3Cg fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round'%3E"
+    "%3Ccircle cx='8.6' cy='23.4' r='2.5' fill='white' stroke='none'/%3E"
+    "%3Cpath d='M7.5 15.2a9.6 9.6 0 0 1 9.3 9.3'/%3E"
+    "%3Cpath d='M7.5 6.9A17.9 17.9 0 0 1 25.1 24.5'/%3E"
+    "%3C/g%3E%3C/svg%3E"
 )
 
 #: Inline icons. Deliberately minimal single-path marks rather than an icon font: an icon
@@ -59,6 +68,11 @@ ICONS = {
     "rss": '<path d="M3.5 12.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M3 4.5A8.5 8.5 0 0 1 11.5 13"/><path d="M3 8A5 5 0 0 1 8 13"/>',
     # The list of feeds is not the act of subscribing. Both used the RSS glyph, so the same
     # symbol meant two different things on pages a reader moves between.
+    # The brand mark. A designed feed/broadcast glyph replaces the literal "AI"
+    # characters that stood in for a logo; see the module docstring.
+    "brand": '<circle cx="6.4" cy="17.6" r="1.9" fill="currentColor" stroke="none"/>'
+             '<path d="M5.6 11.4a7.2 7.2 0 0 1 7.0 7.0"/>'
+             '<path d="M5.6 5.2A13.4 13.4 0 0 1 18.8 18.4"/>',
     "list": '<path d="M6 5h7"/><path d="M6 9h7"/><path d="M6 13h7"/><path d="M3.5 5h.01"/><path d="M3.5 9h.01"/><path d="M3.5 13h.01"/>',
     "theme": '<circle cx="9" cy="9" r="6"/><path d="M9 3v12"/><path d="M9 3a6 6 0 0 1 0 12"/>',
     "download": '<path d="M9 3v8"/><path d="M5.5 8 9 11.5 12.5 8"/><path d="M3.5 13.5h11"/>',
@@ -190,7 +204,7 @@ def render_rail(ctx: SiteContext, digest: Digest, *, dated: bool = True) -> str:
                 aria-label="拖动调整左栏宽度" title="拖动调整宽度（双击恢复默认）"></button>
         <div class="rail__head">
           <a class="rail__brand" href="index.html">
-            <span class="rail__mark" aria-hidden="true">AI</span>
+            <span class="rail__mark" aria-hidden="true"><svg class="brand-mark__svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="6.4" cy="17.6" r="1.9" fill="currentColor" stroke="none"/><path d="M5.6 11.4a7.2 7.2 0 0 1 7.0 7.0"/><path d="M5.6 5.2A13.4 13.4 0 0 1 18.8 18.4"/></svg></span>
             <span>AI 日报</span>
           </a>
           <button class="rail__toggle rail__item" type="button" aria-expanded="false"
@@ -1084,7 +1098,7 @@ def render_tibo(ctx: SiteContext, monitor: dict | None = None) -> str:
   <aside class="rail" aria-label="站点导航">
     <button class="rail__grip" type="button" data-resize="rail"
             aria-label="拖动调整左栏宽度" title="拖动调整宽度（双击恢复默认）"></button>
-    <a class="rail__brand" href="index.html"><span class="rail__mark" aria-hidden="true">AI</span><span>AI 日报</span></a>
+    <a class="rail__brand" href="index.html"><span class="rail__mark" aria-hidden="true"><svg class="brand-mark__svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="6.4" cy="17.6" r="1.9" fill="currentColor" stroke="none"/><path d="M5.6 11.4a7.2 7.2 0 0 1 7.0 7.0"/><path d="M5.6 5.2A13.4 13.4 0 0 1 18.8 18.4"/></svg></span><span>AI 日报</span></a>
     <hr class="rail__sep">
     <div class="rail__group">
       <a class="rail__item" href="index.html">{icon("home")}<span>首页</span></a>
@@ -1336,7 +1350,7 @@ def render_sources(
   <aside class="rail" aria-label="站点导航">
     <button class="rail__grip" type="button" data-resize="rail"
             aria-label="拖动调整左栏宽度" title="拖动调整宽度（双击恢复默认）"></button>
-    <a class="rail__brand" href="index.html"><span class="rail__mark" aria-hidden="true">AI</span><span>AI 日报</span></a>
+    <a class="rail__brand" href="index.html"><span class="rail__mark" aria-hidden="true"><svg class="brand-mark__svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="6.4" cy="17.6" r="1.9" fill="currentColor" stroke="none"/><path d="M5.6 11.4a7.2 7.2 0 0 1 7.0 7.0"/><path d="M5.6 5.2A13.4 13.4 0 0 1 18.8 18.4"/></svg></span><span>AI 日报</span></a>
     <hr class="rail__sep">
     <div class="rail__group">
       <a class="rail__item" href="index.html">{icon("home")}<span>首页</span></a>

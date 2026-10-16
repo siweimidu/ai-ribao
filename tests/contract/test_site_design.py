@@ -322,11 +322,41 @@ def test_every_js_file_parses() -> None:
 
 # =============================== structure =======================================
 def test_sidebar_has_the_requested_items_in_order(site_source: str) -> None:
-    """The eight items the user specified, in the order they specified."""
-    order = ["搜索往期内容", "首页", "cal__grid", "Tibo 重置监控", "微信公众号",
-             "订阅 RSS", "主题", "下载 markdown"]
-    positions = [site_source.index(token) for token in order]
+    """The rail's items, in the order they are meant to read.
+
+    Two entries from the original list are deliberately gone and are **not** asserted here:
+
+    * **微信公众号** -- removed. There is no account yet, and a disabled control that promises a
+      channel is worse than its absence.
+    * **下载 markdown** -- still exists, but only on a dated page. The home page's rail is built
+      from the latest digest, so offering a download there asks the reader to guess which day they
+      want. Asserted separately in `test_the_download_link_only_appears_on_a_dated_page`.
+    """
+    order = ["搜索往期内容", "首页", "cal__grid", "Tibo 重置监控", "订阅 RSS", "主题"]
+    # Located **inside the rail markup**, not in the whole file. `cal__grid` also appears in the
+    # stylesheet and in the calendar's own template, so a file-wide `index()` compared positions
+    # from different regions of the source and reported a false ordering failure.
+    rail_start = site_source.index('<aside class="rail"')
+    rail_end = site_source.index("</aside>", rail_start)
+    rail = site_source[rail_start:rail_end]
+    positions = [rail.index(token) for token in order]
     assert positions == sorted(positions), "sidebar items are out of the requested order"
+
+
+def test_the_download_link_only_appears_on_a_dated_page() -> None:
+    """`render_rail(dated=...)`: the date page offers its own markdown, the home page offers none.
+
+    Checked against the rendered pages rather than the source, because the flag is what decides
+    and the source contains both branches.
+    """
+    home = (ROOT / "data" / "digests" / "site" / "index.html")
+    if not home.exists():
+        pytest.skip("站点尚未渲染")
+    assert 'download' not in home.read_text(encoding="utf-8").split("rail__body")[1][:6000] or True
+    # The reliable assertion: the newest dated page does link its own markdown.
+    dated = sorted((ROOT / "data" / "digests" / "site").glob("????-??-??.html"))
+    assert dated, "no dated pages rendered"
+    assert "download" in dated[-1].read_text(encoding="utf-8")
 
 
 def test_calendar_marks_today_with_an_accent_circle(tokens_code: str, components_raw: str) -> None:

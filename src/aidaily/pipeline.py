@@ -485,7 +485,16 @@ def build_digest(
         llm_usage=llm_usage or {},
         warnings=list(warnings or []),
         counts={
-            "events": len(events),
+            # **What was published, not what was considered.**
+            #
+            # This was `len(events)` -- every event the clusterer produced, before the relevance
+            # floor and the item cap. Measured consequence: the 2026-10-16 issue published 60
+            # stories while its own `counts.events` said 297, so the page header, the archive
+            # index and the fact-check summary all quoted a number no reader could see. The
+            # preceding two issues were correct only because nothing had been filtered out of
+            # them yet.
+            "events": len(ordered),
+            "events_considered": len(events),
             "multi_source_events": len(multi),
             "items_after_window": len(stage.window.kept),
             "items_merged_away": sum(len(g.member_item_ids) - 1 for g in stage.result.groups),
