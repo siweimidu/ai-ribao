@@ -89,6 +89,7 @@ def gate(
     *,
     digest_id: str | None = None,
     artifact_dir: Path | str | None = None,
+    slot: int | None = None,
 ) -> tuple[bool, str, dict[str, str]]:
     """Decide whether this trigger should publish.
 
@@ -122,6 +123,21 @@ def gate(
                 f"{date} 账本记为已发布，但归档 {archive.name} 不存在 —— "
                 f"按未发布处理并重建"
             ), {}
+
+    # Two collections a day (07:00 and 19:00 Beijing) are two publications of the same date.
+    # Keyed on the date alone, the gate made the evening run a permanent no-op -- the morning
+    # run published, and every later trigger that day was told "already published" even though
+    # the evening's news had not been collected. A slot is the half-day a run belongs to; the
+    # gate skips only a repeat *of the same slot*, which is what it exists to do.
+    if slot is not None and records[-1].status == "published":
+        last_at = str(records[-1].at or "")
+        try:
+            last_hour = int(last_at[11:13]) + 8  # ledger stores UTC; Beijing = UTC+8
+            last_slot = 0 if (last_hour % 24) < 13 else 1
+        except ValueError:
+            last_slot = slot
+        if last_slot != slot:
+            return True, f"{date} 已在上一个时段发布，本时段照常重建（含新增信息，去重合并）", {}
 
     latest = records[-1]
     if latest.status == "published":

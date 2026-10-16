@@ -155,9 +155,10 @@ def render_rail(ctx: SiteContext, digest: Digest, *, dated: bool = True) -> str:
 
     theme_items = "".join(
         f'<button type="button" data-theme-choice="{key}" aria-checked="false">{label}</button>'
+        # 自动 and 默认 removed: a first visit is light, and after the reader picks a theme
+        # that choice is stored and reused. Four ways to say "let the site decide" were three
+        # too many.
         for key, label in (
-            ("auto", "自动"),
-            ("default", "默认"),
             ("light", "亮色"),
             ("dark", "暗色"),
             # Claude's palette: a warm paper background rather than the usual neutral grey,
@@ -430,7 +431,7 @@ def render_item(
     return f"""        <li class="item" id="{esc(anchor)}">
           <div class="item__head">
             <span class="item__no">{index:02d}</span>
-            <h3 class="item__title"><a href="{esc(first_url)}" rel="noopener noreferrer">{esc(title)}</a></h3>
+            <h3 class="item__title"><a href="{esc(first_url)}" target="_blank" rel="noopener noreferrer">{esc(title)}</a></h3>
           </div>
           <div class="item__meta">
             <span class="badge" data-level="{esc(level)}">{esc(label)}</span>
@@ -612,7 +613,7 @@ def render_day(
     if untranslated:
         items = "".join(
             f'<li><span class="untranslated__no">{n:02d}</span>'
-            f'<a href="{esc((e.all_urls or ["#"])[0])}" rel="noopener noreferrer">{esc(e.title)}</a>'
+            f'<a href="{esc((e.all_urls or ["#"])[0])}" target="_blank" rel="noopener noreferrer">{esc(e.title)}</a>'
             f'<span class="untranslated__src">{esc(_domain((e.all_urls or [""])[0]))}</span></li>'
             for n, e in untranslated
         )
@@ -1421,16 +1422,41 @@ NON_ISSUE_PAGES = {"index", "404", "tibo", "sources"}
 _ISSUE_NAME = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
-def load_archive(site_dir: Path) -> list[tuple[str, int]]:
-    """Rebuild the archive from the pages that already exist.
+def load_archive(digest_dir: Path) -> list[tuple[str, int]]:
+    """Rebuild the archive from the **digests on disk**, never from pages already written.
 
-    Matched by **filename shape**, not by exclusion list alone. The exclusion list is what
-    broke when `sources.html` was added: the new page was counted as an issue, so the site
-    reported two issues on a day with one. An ISO-date name is what an issue looks like, and
-    nothing else can be one.
+    Reading the site's own HTML made the archive depend on render order. Pages are only
+    re-rendered when their own digest changes, so a page written early keeps the date list it
+    was born with forever: measured on the published site, `2026-10-14.html` embedded
+    `dates=['2026-10-14']` and `2026-10-15.html` embedded `['2026-10-15', '2026-10-14']` --
+    from the 14th the reader could not reach the 15th or the 16th, and from the 15th not the
+    16th. The rail calendar looked broken on every page except the newest one.
 
-    A missing count is written as 0 rather than guessed: a wrong number here is
-    indistinguishable from a real one.
+    The digests directory is the source of truth: every page must see every issue. Counts come
+    from each digest; a file that will not parse contributes a 0 rather than being dropped,
+    because a missing row would make the calendar hide that day entirely.
+
+    Matched by ISO-date filename shape, not by an exclusion list: the exclusion list is what
+    broke when `sources.html` was added and the site reported two issues on a day with one.
+    """
+    out: list[tuple[str, int]] = []
+    if not digest_dir.exists():
+        return out
+    for path in sorted(digest_dir.glob("????-??-??.json"), reverse=True):
+        try:
+            doc = json.loads(path.read_text(encoding="utf-8"))
+            count = len(((doc.get("digest") or {}).get("top_events")) or [])
+        except (OSError, ValueError):
+            count = 0
+        out.append((path.stem, count))
+    return out
+
+
+def _load_archive_from_html(site_dir: Path) -> list[tuple[str, int]]:
+    """The previous HTML-based scan, kept for reference and not called.
+
+    Deleting it would hide why it was wrong; the failure mode is subtle enough that the next
+    person to touch archive loading should meet the explanation.
     """
     out: list[tuple[str, int]] = []
     if not site_dir.exists():
@@ -1472,8 +1498,15 @@ def write_site(
             if src.is_file():
                 (target / src.name).write_bytes(src.read_bytes())
 
-    archive = load_archive(site)
+    # The digests directory, not the site directory: every page must see every issue,
+    # regardless of the order pages happen to be (re)written in. The HTML scan is unioned in
+    # because `write_site` is also called directly with a bare digest (tests, one-off renders)
+    # in cases where no digest JSON exists for a page that *was* just written -- dropping that
+    # source made the index lose the row for the very page it had just rendered.
+    archive = load_archive(out_dir)
     merged = {date: count for date, count in archive}
+    for date, count in _load_archive_from_html(site):
+        merged.setdefault(date, count)
     merged[digest.date] = int(digest.counts.get("events", 0))
     ctx = SiteContext(
         site_url=site_url,

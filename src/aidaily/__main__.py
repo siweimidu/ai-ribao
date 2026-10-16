@@ -168,7 +168,7 @@ def cmd_run(args: argparse.Namespace) -> int:
     digest_date = getattr(args, "date", None) or datetime.now(
         ZoneInfo(cfg.timezone)
     ).strftime("%Y-%m-%d")
-    publish_hour = cfg.run.publish_hour if hasattr(cfg.run, "publish_hour") else 10
+    publish_hour = cfg.run.publish_hour if hasattr(cfg.run, "publish_hour") else 7
     now_local = datetime.now(ZoneInfo(cfg.timezone))
     if not args.allow_early and digest_date == now_local.strftime("%Y-%m-%d") \
             and now_local.hour < publish_hour:
@@ -360,7 +360,14 @@ def cmd_gate(args: argparse.Namespace) -> int:
         return 0
     # 传产物目录：账本说「已发布」而归档不存在时，必须重建而不是永远跳过。
     out_dir = Path(args.out_dir) if getattr(args, "out_dir", None) else ROOT / "data" / "digests"
-    should, reason, done = gate(date, artifact_dir=out_dir)
+
+    # Two collections a day (07:00 and 19:00 Beijing) are two publications of the same date.
+    # Keying the gate on the date alone made the evening run a permanent no-op. A slot is the
+    # half-day the run belongs to; a same-slot retry still skips, which is what the gate is for.
+    tz = load_config(env={} if getattr(args, "no_env", False) else None).timezone
+    now_local_slot = datetime.now(ZoneInfo(tz))
+    slot = 0 if now_local_slot.hour < 13 else 1
+    should, reason, done = gate(date, artifact_dir=out_dir, slot=slot)
     print(json.dumps(
         {"date": date, "publish": should, "reason": reason, "done_channels": done},
         ensure_ascii=False,

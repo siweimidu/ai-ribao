@@ -1,130 +1,147 @@
-# AI 日报
+# AI 日报 · ai-ribao
 
-把六个 AI 日报相关仓库里有价值的信息源与处理能力，整合成一个**自动运行、可自证完整**的聚合平台。
+每天全自动生成的中文 AI 日报：**采集 → 去重 → 聚类 → 栏目分类 → 大模型分析 → 事实核查 → 多通道分发**，全程跑在 GitHub Actions 上，零服务器、零常驻进程。
 
-每天北京时间 **10:00** 自动运行一次：采集 34 个已启用的信息源 → 三层去重 → 大模型分析 →
-生成**速览版**（邮件 + Telegram）与**深度版**（GitHub Pages + RSS + n8n），零常驻服务器。
+在线阅读：**https://siweimidu.github.io/ai-ribao/**
+
+---
+
+## 它是怎么工作的
+
+整条流水线分七步，每一步的产物都落盘，可独立复查：
+
+### 1. 采集（每天 07:00 与 19:00，北京时间）
+
+`python -m aidaily collect` 并发抓取 `sources/registry.yaml` 里的全部信息源 —— RSS、JSON API、网页正文抓取、GitHub Trending，共 117 个源（90 启用，停用均有记录在案的原因）。每个源声明自己的适配器、类别、语言与凭据需求；抓取结果带判定（ok / blocked / not_modified / dead）写入审计日志。
+
+每天两个时段各采集一次，**信息去重后合并进当天同一份日报**：早上拿到夜里发生的事，晚上补全白天发生的事。
+
+### 2. 窗口与去重（L2）
+
+只保留采集窗口内的条目；同源重复按标题指纹与 URL 规范化合并；跨天的重复内容按 7 天窗口降权 12%（重复是"还在被讨论"，不是"不存在"）。
+
+### 3. 聚类（L3）
+
+把"多家媒体报同一件事"的多条目合并成一个**事件**，并记录独立来源数 —— 它是后面热度计算里权重最高的信号。同一发布者的多个镜像源（例如同一家的日报/周报/月报）预先声明为同一 `dedup_group`，否则"独立来源数"会被流水线自己制造出来。
+
+### 4. 排序：栏目优先，分数其次
+
+这是本项目和"按热度堆一条长列表"的做法最不一样的地方。排序第一主键是**栏目**，第二主键才是分数：
 
 ```
-3882 条原始条目 → 时间窗 237 条 → L2 去重 229 个事件 → 事实校验 → 五路分发
-真实消耗：约 10 次模型调用 / 7,800 token / 每次运行
+要闻 > 开发生态 > 模型发布 > 产品应用 > 技术与洞察 > 行业动态 > 其他
 ```
 
----
+栏目由大模型在打分的同时判定（判据写在 `config/profiles/ai-daily/section.md`，改它就能改分类，不用改代码）。分数是四个因子的乘积：
 
-## 它和"把六个仓库拼起来"有什么区别
+| 因子 | 含义 |
+|---|---|
+| 热度 | 独立来源数 0.28、量级 0.25、互动 0.13、触达 0.11、增速 0.09、实质 0.07、新鲜 0.07 |
+| AI 相关度 | 这条新闻**是关于** AI，还是只**提到** AI —— 消费电子、游戏、名人八卦乘 0.13–0.24 |
+| 厂商优先级 | DeepSeek 1.45 > Kimi 1.32 > GLM 1.24 > MiniMax/Qwen/豆包/阶跃/元宝 1.15（仅当厂商是**主体**，"用 DeepSeek 做的机器人研究"不加权） |
+| 来源与标题 | 来源权重开 0.25 次方（减弱信源出身的影响）；纯日期容器标题降权 |
 
-审计发现六个仓库里**四个是第三方上游的 fork**，其中两个用户**一行源码都没改**。
-真正的自有资产只有约 6 个文件。因此这个项目不是拼装，而是：
+### 5. 大模型分析：四栏认知分栏
 
-1. **完整继承信息源**：107 条审计记录 → **80 个端点级唯一源**，其中 20 条是同一
-   Google Trends 端点的查询参数。溯源一条不丢，CI 有强制守卫。
-2. **重新实现处理逻辑**：GPL-3.0 的 CloudFlare 仓库与**无许可证**的 dailydawn 都
-   **没有复制任何代码**（见 `NOTICE`），只吸收了 URL 清单这类事实性数据。
-3. **三层去重严格分离**：重复的**源**、同一篇文章的**重复抓取**、多篇不同文章报道
-   **同一事件**——三个不同的问题，三套不同的规则。
+通过筛选的每条新闻由大模型写成**事实 / 推断 / 观点 / 不确定**四栏 —— 让读者一眼分清"哪些是事实、哪些是推测、哪些话现在还不能信"。
 
----
+防幻觉是结构性的：**模型只返回条目 id 和分析文本，永远不返回链接**；所有 URL 由程序从自己的采集记录回填，模型编不出它没见过的链接。`不确定` 栏是必填的 —— 空栏和"没有不确定"在页面上长得一样，而后者几乎不成立。
 
-## 设计上几个不妥协的地方
+### 6. 事实核查
 
-**模型永远不输出 URL。** 它只返回条目 id，链接由程序从自己的记录回填。
-编造链接在这个设计里**结构上不可能发生**。入库时还会剥掉来源摘要里的裸链接，
-否则那些链接会绕过"每个链接都可验证"的保证。
+日报里每一个 URL 都必须能在本项目的采集记录里找到，找不到就拒绝发布（退出码非 0）。模型没有说过"据某处报道"却不给出来处的自由。
 
-**事实与推断分开。** 每条事件产出四个独立字段：`facts` / `inferences` / `opinions` /
-`uncertainties`。合并成一段 summary 就无法区分"报道的事实"和"模型的猜测"。
+### 7. 分发
 
-**丢失信息比留下噪音严重得多。** L2 去重在"不同域名 + 标题相似"时**不合并**，
-只记进歧义队列供人工复核。实证：窗口内最相似的一对真实标题相似度 0.696，但
-一条说"法院判合理使用不违规"、另一条说"法院判公司违法"——**结论相反**。
-
-**HTTP 200 不是"源可用"的证明。** `old.reddit.com` 会返回 200 加一个 330KB 的登录页。
-探测脚本现在做 DOM 结构校验（这个假阳性一开始骗过了我自己）。
-
-**失败必须可见。** 跳过一个源要写原因，丢弃条目要计数并进入发布记录，
-模型供应商失败要记录最后一次错误。一份静默丢弃 3500 条输入的日报，
-应该自己说得出这件事。
+同一次运行产出五种通道：GitHub Pages、RSS + JSON Feed、QQ 邮件、Telegram、n8n webhook。渠道各自幂等，部分失败可单独补发。
 
 ---
+
+## 它和别的 AI 日报有什么不同
+
+- **排序可解释**：页面上每一条的位置都能拆成栏目、热度、相关度、厂商优先级几个数字，写在归档的 `rank_components` 里
+- **筛选标准是数据文件**：评分标准、栏目判据、相关度词表全是 markdown/yaml，改完提交即生效
+- **密钥轮换**：支持任意多个 OpenAI 兼容端点，按 baseUrl 识别 22 家厂商并自动选默认模型；一个 key 额度耗尽自动切下一个，429 自动退避重试
+- **降权不删除**：跨天重复、非 AI 内容、聚合站搬运都被降权而不是丢弃，平静的一天也有完整日报
+- **一切可审计**：每次运行的采集判定、去重合并数、模型调用数与供应商、栏目分布都写进归档
 
 ## 快速开始
 
+### 1. Fork 并开启 Actions
+
+Fork 本仓库后，在 **Settings → Actions → General → Workflow permissions** 选 **Read and write**（工作流需要提交生成的日报）。
+
+### 2. 提供一个大模型 API（必需）
+
+任意 **OpenAI 兼容**端点都可以，官方或中转均可。在本地准备一个 JSON 文件（**不要提交进仓库**）：
+
+```json
+[
+  {"baseUrl": "https://api.deepseek.com/v1", "key": "sk-xxx", "label": "DeepSeek 官方"},
+  {"baseUrl": "https://open.bigmodel.cn/api/paas/v4", "key": "xxx", "label": "智谱"},
+  {"baseUrl": "https://api.moonshot.cn/v1", "key": "sk-xxx", "label": "Kimi", "model": "kimi-k2-0905-preview"}
+]
+```
+
+- `model` 可省略：程序会按 baseUrl 识别厂商（DeepSeek / 智谱 / Kimi / MiniMax / 通义 / 豆包 / 阶跃 / Groq / OpenRouter 等 22 家）并自动选默认模型
+- 识别不出的自定义中转站会自动探测其 `/models` 列表
+- 同一 baseUrl 放多把 key 即自动轮换
+
+然后写入仓库 secret（文件重定向可避开命令行长度限制）：
+
 ```bash
-pip install -e ".[fetchers,llm,dev]"
-
-pytest -q                                   # 249 个离线测试，约 8 秒，不联网
-
-# 本地完整链路（密钥从文件读入内存，不落仓库）
-python scripts/run_local.py keys.json run --from-items data/raw/items.jsonl
-
-# 不调用模型，只验证链路
-python -m aidaily run --from-items data/raw/items.jsonl --no-llm --no-deliver
-
-# 真实源健康探测（生成 docs/HEALTH_REPORT.md）
-python scripts/probe_sources.py
-
-# 模型渠道可用性探测（用 GET /models，消耗 0 token）
-python scripts/probe_llm_channels.py --keys keys.json
+gh secret set RELAY_KEYS_JSON --repo <你的用户名>/ai-ribao < keys.json
 ```
 
----
+**免费额度够用吗？** 单次运行约 120–140 次调用。把多家厂商的免费 key 放进同一个文件即可轮换；只用一把也能跑，只是额度用尽后当天会降级为纯公式排序（不会失败）。
 
-## 在 GitHub 上运行
+### 3. 可选通道
 
-1. 建一个**公开仓库**（公开仓库的标准 runner 完全免费，这是成本模型的前提）。
-2. 在 Settings → Secrets 中配置（见 `docs/RUNBOOK.md` 的完整清单）：
-   ```
-   GEMINI_API_KEY / GROQ_API_KEY          # 至少一个模型供应商
-   SMTP_HOST / SMTP_PASSWORD / MAIL_TO    # 邮件
-   TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID  # Telegram
-   N8N_WEBHOOK_URL                        # n8n
-   ```
-   一个都不配也能跑：日报会照常生成并发布到 Pages，跳过的通道会在运行摘要里明确列出。
-3. 工作流按 `09:53 / 10:07 / 10:23 / 10:41`（北京时间）四个触发点运行，
-   第一个成功的发布生效，其余被幂等闸门跳过。
+| Secret | 用途 | 不配置时 |
+|---|---|---|
+| `TAVILY_API_KEY` | Tavily 搜索源补充覆盖 | 该源跳过，其余正常 |
+| `SMTP_HOST` / `SMTP_PORT` / `SMTP_USER` / `SMTP_PASS` / `MAIL_TO` | QQ 邮件推送 | 邮件通道 skipped |
+| `TELEGRAM_BOT_TOKEN` / `TELEGRAM_CHAT_ID` | Telegram 推送 | TG 通道 skipped |
+| `N8N_WEBHOOK_URL` | n8n 工作流对接 | webhook skipped |
 
----
+所有通道缺失都只是 skipped，不会让运行失败。
 
-## 目录
+### 4. 让它跑起来
 
-```
-src/aidaily/
-  registry.py    信息源注册表 + 溯源完整性守卫（多重集比较，禁用必须写 reason）
-  http.py        重试策略（4xx 不重试）/ 限速 / 条件请求 / 响应体上限
-  fetchers/      RSS·Atom·JSONFeed / 通用 JSON API / Reddit / GitHub Trending
-  ingest.py      RawItem → NormalizedItem（日期缺失就保持缺失，决不用抓取时间冒充）
-  normalize.py   URL 规范化 / 标题规范化 / SimHash（CJK 用字符二元组）
-  dedup.py       L2 文章级去重（并查集 + 多索引哈希 + 歧义标记）
-  select.py      时间窗（未来日期与无链接条目在此显式排除并计数）
-  l3.py          L3 语义事件聚类（实体重叠 + 时间桶 + 并行 LLM 判定）
-  analyze.py     摘要生成（事实/推断/观点/不确定四栏分离）
-  llm/           统一调用层（分层路由 / 降级链 / 供应商拉黑 / 预算熔断）
-  factcheck.py   发布闸门（URL 与日期必须来自输入，多源声明必须诚实）
-  render.py      速览版 / 深度版 / JSON Feed / 邮件 HTML
-  publish.py     五路分发（各自独立，互不牵连）
-  state.py       幂等账本（退出码 10 = 今天已发布，与故障严格区分）
+工作流每天自动运行两次：**07:00 与 19:00**（北京时间，另各有两次重试应对 GitHub 整点拥堵）。也可以手动触发：**Actions → daily → Run workflow**，两个开关：
+
+- `force` —— 忽略当天该时段已发布的记录，强制重建
+- `skip_collect` —— 复用最近一次采集的条目，只重跑分析（调试排版用）
+
+### 5. 本地运行
+
+```bash
+pip install -e ".[fetchers,llm]"
+python -m aidaily run --no-deliver      # 完整流水线，只产文件不分发
+python -m aidaily gate                  # 查看今天这个时段还需不需要发布
+python -m aidaily collect --only rss:daily-juya-uk   # 只采集一个源
 ```
 
----
+## 定制
 
-## 文档
-
-| 文件 | 内容 |
+| 想改什么 | 改哪里 |
 |---|---|
-| `audit/AUDIT_REPORT.md` | 六仓库深度审计（含 fork 差异实测、许可证分析、安全发现） |
-| `docs/ARCHITECTURE.md` | 架构、四方案对比、三层去重算法、数据模型、成本模型 |
-| `docs/WORKFLOWS.md` | 工作流设计、官方调度限制、八个关键问题的逐条回答 |
-| `docs/ACCEPTANCE.md` | 十一项验收要求 → 实际测试对照表 |
-| `docs/ROADMAP.md` | 十阶段实施记录（含每一轮抓出的真实缺陷） |
-| `docs/HEALTH_REPORT.md` | 信息源真实存活探测结果 |
-| `docs/LLM_CHANNELS.md` | 157 个模型渠道可用性实测（0 token 成本） |
-| `docs/RUNBOOK.md` | 运维手册：Secrets 清单、故障处置、成本控制 |
+| 排序标准（分数档位、降分类型） | `config/profiles/ai-daily/analysis.md` |
+| 栏目判据 | `config/profiles/ai-daily/section.md` |
+| 收录范围（什么算 AI 新闻） | `config/profiles/ai-daily/match.md` |
+| 写作风格与四栏要求 | `config/profiles/ai-daily/enrichment.md` |
+| 相关度词表（哪些词算 AI 核心） | `src/aidaily/focus.py` |
+| 厂商优先级 | `src/aidaily/vendor_priority.py` |
+| 信息源增删 | `sources/` 下的 yaml，跑 `python scripts/verify_sources.py` 核验 |
 
----
+改完全部是提交即生效，下一次运行就按新标准执行。
 
-## 许可证
+## 数据与凭据安全
 
-MIT。第三方归属见 `NOTICE`。本项目的源码**不包含** GPL-3.0 或无许可证项目的任何代码。
+- 所有密钥只经 GitHub Secrets 与环境变量注入，**仓库内不含任何凭据**（CI 里有守卫检查）
+- 日报正文、归档、审计日志全部提交进仓库 —— 它们是内容，不是秘密
+- 模型永远不输出链接：URL 只能来自本项目自己的采集记录
 
-日报中的内容是第三方来源的摘要与链接，请以原始来源为准；生成内容由 AI 辅助整理。
+## 许可
+
+MIT
