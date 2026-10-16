@@ -40,7 +40,9 @@ before.
 from __future__ import annotations
 
 import re
+import sys
 from datetime import datetime
+from typing import Callable
 
 from .models import RawItem, SourceSpec
 
@@ -140,16 +142,43 @@ def split_roundup(item: RawItem, spec: SourceSpec | None = None) -> list[RawItem
     return out or [item]
 
 
-def split_all(items: list[RawItem], specs: dict[str, SourceSpec] | None = None) -> list[RawItem]:
+def split_all(
+    items: list[RawItem],
+    specs: dict[str, SourceSpec] | None = None,
+    *,
+    on_error: Callable[[RawItem, Exception], None] | None = None,
+) -> list[RawItem]:
     """Split every roundup in a collection run, leaving ordinary items untouched.
 
-    Reports nothing and raises nothing: a roundup that fails to split stays one item, which is
-    the pre-existing behaviour and never worse than it.
+    A roundup that fails to split stays one item, which is the pre-existing behaviour and never
+    worse than it -- but **the failure is reported, not swallowed**.
+
+    An earlier version caught every exception and appended the item unchanged:
+
+        except Exception:
+            out.append(item)
+
+    That made "not a roundup" and "the splitter crashed" produce byte-identical output. Measured
+    consequence: a production collect run wrote 4836 items with **zero** splits, while the same
+    splitter on the same ten roundup items from that very run produced 37 and 29 stories. The
+    code was correct, the run looked normal, and there was nothing in the log to say which of
+    the two had happened. `on_error` exists so a caller can record it; the default prints to
+    stderr, because silence is what caused the investigation.
     """
     out: list[RawItem] = []
     for item in items:
         try:
             out.extend(split_roundup(item, (specs or {}).get(item.source_id)))
-        except Exception:  # noqa: BLE001 - a split failure must not lose the item
+        except Exception as exc:  # noqa: BLE001 - a split failure must not lose the item
+            report = on_error or _report_split_error
+            report(item, exc)
             out.append(item)
     return out
+
+
+def _report_split_error(item: RawItem, exc: Exception) -> None:
+    print(
+        f"roundup: 拆分失败，保留原条目 {item.source_id} {item.title[:40]!r} "
+        f"({type(exc).__name__}: {exc})",
+        file=sys.stderr,
+    )
