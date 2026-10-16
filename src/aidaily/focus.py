@@ -59,13 +59,20 @@ GENERAL_CATEGORIES = frozenset({"community", "dev", "social", "other", "example"
 _CORE = re.compile(
     r"(?<![a-z])(gpt|claude|gemini|llama|qwen|deepseek|kimi|glm|mistral|mixtral|grok|"
     r"sora|whisper|midjourney|stable diffusion|flux|phi|gemma|nemotron|minicpm|"
+    r"kling|seedream|seedance|doubao|hunyuan|ernie|spark|"
     r"llms?|agents?|transformers?|diffusion|rag|embeddings?|tokenizers?|"
     r"benchmarks?|fine-?tun\w*|open-?weight\w*|context window|inference|multimodal|"
     r"neural networks?|machine learning|deep learning|reinforcement learning)"
     r"(?![a-z])|"
     r"大模型|新模型|模型权重|模型发布|发布模型|开源权重|智能体|多模态|微调|推理|训练|"
     r"预训练|算力|提示词|上下文|向量|基准测试|参数规模|端侧|蒸馏|对齐|神经网络|"
-    r"机器学习|深度学习",
+    r"机器学习|深度学习|"
+    # Added after the 0.70 floor started rejecting real AI news. Measured misses:
+    # `可灵AI新一代模型Kling 4.0正式上线` and `范式智能…开源推出 AI 部署平台模域ModelSphere`
+    # both scored 0.50 -- below the floor -- because bare `模型` and `开源` were absent from this
+    # list while `大模型` and `开源权重` were present. A vocabulary that only recognises the
+    # longer compound is a vocabulary that misses how headlines are actually written.
+    r"模型|开源|上线|推理服务|智能体平台|模型服务",
     re.IGNORECASE,
 )
 

@@ -56,10 +56,7 @@
      "score": 62.655975,
      "topic_penalty": 1.0,
      "final_score": 62.655975,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0
+     "focus": 1.0
     }
    },
    {
@@ -111,10 +108,7 @@
      "score": 57.844297,
      "topic_penalty": 1.0,
      "final_score": 57.844297,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0
+     "focus": 1.0
     }
    },
    {
@@ -167,65 +161,7 @@
      "score": 50.0848,
      "topic_penalty": 1.0,
      "final_score": 50.0848,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.35,
-     "focus_multiplier": 1.0
-    }
-   },
-   {
-    "event_id": "ed681482fbf171a",
-    "title": "Apertus 1.5 Release Notes",
-    "member_item_ids": [
-     "5914a0036eb2bd98"
-    ],
-    "primary_item_id": "5914a0036eb2bd98",
-    "source_ids": [
-     "rss:huggingface-co-blog"
-    ],
-    "all_urls": [
-     "https://huggingface.co/blog/swiss-ai/apertus-v15-release-notes"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T09:08:45Z",
-     "2026-10-15T09:08:45Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 39.46275,
-    "rank_components": {
-     "source_weight": 1.2,
-     "source_damped": 1.0466,
-     "substance": 0.042,
-     "substance_chars": 25.0,
-     "title_quality": 1.0,
-     "heat": 0.377044,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.2975,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.0625,
-     "h_velocity": 1.0,
-     "h_freshness": 0.8739,
-     "significance": 2.2,
-     "first_party_announcement": 2.2,
-     "sig_model": 0.0,
-     "sig_release": 1.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 1.0,
-     "magnitude_linear": 0.5455,
-     "score": 39.46275,
-     "topic_penalty": 1.0,
-     "final_score": 39.46275,
-     "focus": 0.385,
-     "focus_headline": 0.18,
-     "focus_source": 1.0,
-     "focus_multiplier": 0.5203
+     "focus": 1.0
     }
    },
    {
@@ -277,64 +213,59 @@
      "score": 39.4134,
      "topic_penalty": 1.0,
      "final_score": 39.4134,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.35,
-     "focus_multiplier": 1.0
+     "focus": 1.0
     }
    },
    {
-    "event_id": "e51dfe7c1055e35",
-    "title": "Nobody is safe from celebrity AI deepfakes",
+    "event_id": "ea9da7a2a4b82fa",
+    "title": "How Windows is being optimized for Nvidia’s RTX Spark laptops",
     "member_item_ids": [
-     "d5391f81cd9515b5"
+     "cd6bff3e129e8831"
     ],
-    "primary_item_id": "d5391f81cd9515b5",
+    "primary_item_id": "cd6bff3e129e8831",
     "source_ids": [
      "rss:theverge-com-ai-artificial-intelligence"
     ],
     "all_urls": [
-     "https://www.theverge.com/report/1011927/instagram-celebrity-ai-slop-likeness-taylor-swift-mia-goth"
+     "https://www.theverge.com/tech/1011996/microsoft-windows-rtx-spark-platform-changes-notepad"
     ],
     "independent_source_count": 1,
     "first_seen_at": "2026-10-15T15:44:17.498100Z",
     "last_updated_at": "2026-10-15T15:44:17.498100Z",
     "published_range": [
-     "2026-10-15T14:03:42Z",
-     "2026-10-15T14:03:42Z"
+     "2026-10-15T14:30:00Z",
+     "2026-10-15T14:30:00Z"
     ],
     "unique_facts": {},
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 38.350293,
+    "rank_score": 38.412866,
     "rank_components": {
      "source_weight": 1.1,
      "source_damped": 1.0241,
      "substance": 1.0,
-     "substance_chars": 686.0,
+     "substance_chars": 685.0,
      "title_quality": 1.0,
-     "heat": 0.374473,
+     "heat": 0.375084,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 1.0,
      "h_velocity": 1.0,
-     "h_freshness": 0.9623,
+     "h_freshness": 0.971,
      "significance": 1.0,
+     "not_ai": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
-     "sig_lab": 0.0,
+     "sig_lab": 1.0,
      "sig_first_party": 0.0,
      "magnitude_linear": 0.0,
-     "score": 38.350293,
+     "score": 38.412866,
      "topic_penalty": 1.0,
-     "final_score": 38.350293,
-     "focus": 0.4,
-     "focus_headline": 0.5,
-     "focus_source": 0.75,
-     "focus_multiplier": 0.532
+     "final_score": 38.412866,
+     "focus": 1.0
     }
    },
    {
@@ -387,10 +318,7 @@
      "score": 38.015986,
      "topic_penalty": 1.0,
      "final_score": 38.015986,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0
+     "focus": 1.0
     }
    },
    {
@@ -443,10 +371,7 @@
      "score": 38.015986,
      "topic_penalty": 1.0,
      "final_score": 38.015986,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0
+     "focus": 1.0
     }
    },
    {
@@ -497,64 +422,7 @@
      "score": 37.699878,
      "topic_penalty": 1.0,
      "final_score": 37.699878,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0
-    }
-   },
-   {
-    "event_id": "e9a36c6409e95b4",
-    "title": "AI Controls iPhone Via ESP32",
-    "member_item_ids": [
-     "c75dfd24f17f62be"
-    ],
-    "primary_item_id": "c75dfd24f17f62be",
-    "source_ids": [
-     "rss:hackaday-com"
-    ],
-    "all_urls": [
-     "https://hackaday.com/2026/10/14/ai-controls-iphone-via-esp32/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T02:00:25Z",
-     "2026-10-15T02:00:25Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 36.98648,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 1221.0,
-     "title_quality": 1.0,
-     "heat": 0.361156,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.772,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 36.98648,
-     "topic_penalty": 1.0,
-     "final_score": 36.98648,
-     "focus": 0.4,
-     "focus_headline": 0.2727,
-     "focus_source": 0.75,
-     "focus_multiplier": 0.532
+     "focus": 1.0
     }
    },
    {
@@ -605,64 +473,7 @@
      "score": 36.889292,
      "topic_penalty": 1.0,
      "final_score": 36.889292,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0
-    }
-   },
-   {
-    "event_id": "e354437df16b665",
-    "title": "McKinsey is making job applicants spar with a fake AI client",
-    "member_item_ids": [
-     "89e10d476fcbeac5"
-    ],
-    "primary_item_id": "89e10d476fcbeac5",
-    "source_ids": [
-     "rss:theverge-com-ai-artificial-intelligence"
-    ],
-    "all_urls": [
-     "https://www.theverge.com/news/1011654/mckinsey-ai-client-interview"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-14T22:53:31Z",
-     "2026-10-14T22:53:31Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 36.725536,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 686.0,
-     "title_quality": 1.0,
-     "heat": 0.358608,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7356,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 36.725536,
-     "topic_penalty": 1.0,
-     "final_score": 36.725536,
-     "focus": 0.4,
-     "focus_headline": 0.5,
-     "focus_source": 0.75,
-     "focus_multiplier": 0.532
+     "focus": 1.0
     }
    },
    {
@@ -713,392 +524,7 @@
      "score": 36.595679,
      "topic_penalty": 1.0,
      "final_score": 36.595679,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0
-    }
-   },
-   {
-    "event_id": "e22757dba47f388",
-    "title": "The AI race is back on",
-    "member_item_ids": [
-     "b32741b1eb23cc0c"
-    ],
-    "primary_item_id": "b32741b1eb23cc0c",
-    "source_ids": [
-     "rss:theverge-com-ai-artificial-intelligence"
-    ],
-    "all_urls": [
-     "https://www.theverge.com/ai-artificial-intelligence/1011311/the-ai-race-is-back-on"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-14T19:06:03Z",
-     "2026-10-14T19:06:03Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 36.447387,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 808.0,
-     "title_quality": 1.0,
-     "heat": 0.355892,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.6968,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 36.447387,
-     "topic_penalty": 1.0,
-     "final_score": 36.447387,
-     "focus": 0.4,
-     "focus_headline": 0.5,
-     "focus_source": 0.75,
-     "focus_multiplier": 0.532
-    }
-   },
-   {
-    "event_id": "eb25bc8aff42aa3",
-    "title": "Now that Character.AI is going bankrupt, what happens to all of its users’ data?",
-    "member_item_ids": [
-     "6d27b230b5866a70"
-    ],
-    "primary_item_id": "6d27b230b5866a70",
-    "source_ids": [
-     "rss:theverge-com-ai-artificial-intelligence"
-    ],
-    "all_urls": [
-     "https://www.theverge.com/policy/1011417/new-york-ag-characterai-bankruptcy"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-14T18:47:54Z",
-     "2026-10-14T18:47:54Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 36.426802,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 686.0,
-     "title_quality": 1.0,
-     "heat": 0.355691,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.694,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 36.426802,
-     "topic_penalty": 1.0,
-     "final_score": 36.426802,
-     "focus": 0.4,
-     "focus_headline": 0.5,
-     "focus_source": 0.75,
-     "focus_multiplier": 0.532
-    }
-   },
-   {
-    "event_id": "e65eb62d44ff073",
-    "title": "Teaching students to think and learn through questions",
-    "member_item_ids": [
-     "017695bd69598e2c"
-    ],
-    "primary_item_id": "017695bd69598e2c",
-    "source_ids": [
-     "rss:openai-com-news"
-    ],
-    "all_urls": [
-     "https://openai.com/index/teaching-students-to-think-and-learn-through-questions"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T13:00:00Z",
-     "2026-10-15T13:00:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 36.42223,
-    "rank_components": {
-     "source_weight": 1.5,
-     "source_damped": 1.1067,
-     "substance": 0.248,
-     "substance_chars": 149.0,
-     "title_quality": 1.0,
-     "heat": 0.329112,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.3725,
-     "h_velocity": 1.0,
-     "h_freshness": 0.9418,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 1.0,
-     "magnitude_linear": 0.0,
-     "score": 36.42223,
-     "topic_penalty": 1.0,
-     "final_score": 36.42223,
-     "focus": 0.385,
-     "focus_headline": 0.18,
-     "focus_source": 1.0,
-     "focus_multiplier": 0.5203
-    }
-   },
-   {
-    "event_id": "eb1e630a3837468",
-    "title": "NeurIPS 2026 | 不止记住摘要，OmniMem让长视频生成直接检索完整历史",
-    "member_item_ids": [
-     "fc820f9325271ba8"
-    ],
-    "primary_item_id": "fc820f9325271ba8",
-    "source_ids": [
-     "rss:wechat-ai-cv-xlab"
-    ],
-    "all_urls": [
-     "https://mp.weixin.qq.com/s?__biz=MzIwMTE1NjQxMQ==&mid=2247666334&idx=1&sn=ebe9eb0c4f78513727229d26dbc2d200"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-14T15:10:00Z",
-     "2026-10-14T15:10:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 35.3462,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 1.0,
-     "substance_chars": 1824.0,
-     "title_quality": 1.0,
-     "heat": 0.353462,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.6621,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 35.3462,
-     "topic_penalty": 1.0,
-     "final_score": 35.3462,
-     "focus": 0.385,
-     "focus_headline": 0.18,
-     "focus_source": 1.0,
-     "focus_multiplier": 0.5203
-    }
-   },
-   {
-    "event_id": "eb624b101e3d082",
-    "title": "RelightFormer ：重光照无需逆渲染",
-    "member_item_ids": [
-     "3bc3c8fe5bf21c73"
-    ],
-    "primary_item_id": "3bc3c8fe5bf21c73",
-    "source_ids": [
-     "rss:wechat-ai-cv-xlab"
-    ],
-    "all_urls": [
-     "https://mp.weixin.qq.com/s?__biz=MzIwMTE1NjQxMQ==&mid=2247666334&idx=2&sn=695cc3e9b590a5deac7ef8e26b39cb4c"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-14T15:10:00Z",
-     "2026-10-14T15:10:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 35.3462,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 1.0,
-     "substance_chars": 2144.0,
-     "title_quality": 1.0,
-     "heat": 0.353462,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.6621,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 35.3462,
-     "topic_penalty": 1.0,
-     "final_score": 35.3462,
-     "focus": 0.385,
-     "focus_headline": 0.18,
-     "focus_source": 1.0,
-     "focus_multiplier": 0.5203
-    }
-   },
-   {
-    "event_id": "e50376796168b4c",
-    "title": "Preparing for the 2026 US midterms",
-    "member_item_ids": [
-     "d635614555759b91"
-    ],
-    "primary_item_id": "d635614555759b91",
-    "source_ids": [
-     "rss:raw-githubusercontent-com-ai-rss-feeds-anthropic-news"
-    ],
-    "all_urls": [
-     "https://www.anthropic.com/news/2026-us-midterms"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-14T18:33:00Z",
-     "2026-10-14T18:33:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 34.852623,
-    "rank_components": {
-     "source_weight": 1.5,
-     "source_damped": 1.1067,
-     "substance": 0.28,
-     "substance_chars": 168.0,
-     "title_quality": 1.0,
-     "heat": 0.314929,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.42,
-     "h_velocity": 1.0,
-     "h_freshness": 0.6917,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 1.0,
-     "magnitude_linear": 0.0,
-     "score": 34.852623,
-     "topic_penalty": 1.0,
-     "final_score": 34.852623,
-     "focus": 0.385,
-     "focus_headline": 0.18,
-     "focus_source": 1.0,
-     "focus_multiplier": 0.5203
-    }
-   },
-   {
-    "event_id": "ef958a6e37f6088",
-    "title": "Simons Foundation Launches $15M Effort to Help Mathematicians Navigate AI Era",
-    "member_item_ids": [
-     "91c9fa1250489d2a"
-    ],
-    "primary_item_id": "91c9fa1250489d2a",
-    "source_ids": [
-     "rss:hnrss-org-frontpage"
-    ],
-    "all_urls": [
-     "https://www.simonsfoundation.org/news/simons-foundation-launches-15m-effort-to-help-mathematicians-navigate-ai-era/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T14:58:48Z",
-     "2026-10-15T14:58:48Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 34.3739,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 0.362,
-     "substance_chars": 217.0,
-     "title_quality": 1.0,
-     "heat": 0.343739,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.5425,
-     "h_velocity": 1.0,
-     "h_freshness": 0.9807,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 1.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 34.3739,
-     "topic_penalty": 1.0,
-     "final_score": 34.3739,
-     "focus": 0.4,
-     "focus_headline": 0.5,
-     "focus_source": 0.75,
-     "focus_multiplier": 0.532
+     "focus": 1.0
     }
    },
    {
@@ -1149,64 +575,7 @@
      "score": 32.839257,
      "topic_penalty": 1.0,
      "final_score": 32.839257,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.35,
-     "focus_multiplier": 1.0
-    }
-   },
-   {
-    "event_id": "ec8e47af1c8589f",
-    "title": "晚报丨美国9月PPI今晚20:30揭晓；AI领域上演“砸塌美债收益率”式大跌，韩国紧急开会救市；市场发现AI最大瓶颈是钱；美媒称美国已制定新的对伊打击计划；苹果智能在华获批；台积电营收净利双超预期 - 东方财富",
-    "member_item_ids": [
-     "286df2cff6d09de2"
-    ],
-    "primary_item_id": "286df2cff6d09de2",
-    "source_ids": [
-     "api:news-google-com-search"
-    ],
-    "all_urls": [
-     "https://news.google.com/rss/articles/CBMiYEFVX3lxTE16QUxpOE1TUkpkSVV3UkQwRVpKNEFBQzZBc3VqbmJFRTJCY25Bdk1SM3BUWGRaeTI0RV81RG5XVGIwbFBQdnhZTHAyd3p5aFpIRHhOaEhhUUNLNnNQQ1pmag?oc=5"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T10:26:02Z",
-     "2026-10-15T10:26:02Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 32.548689,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 0.172,
-     "substance_chars": 103.0,
-     "title_quality": 1.0,
-     "heat": 0.317823,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.2575,
-     "h_velocity": 1.0,
-     "h_freshness": 0.8955,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 32.548689,
-     "topic_penalty": 1.0,
-     "final_score": 32.548689,
-     "focus": 0.4,
-     "focus_headline": 0.5,
-     "focus_source": 0.75,
-     "focus_multiplier": 0.532
+     "focus": 1.0
     }
    },
    {
@@ -1257,10 +626,7 @@
      "score": 32.299726,
      "topic_penalty": 1.0,
      "final_score": 32.299726,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0
+     "focus": 1.0
     }
    },
    {
@@ -1311,65 +677,7 @@
      "score": 32.180212,
      "topic_penalty": 1.0,
      "final_score": 32.180212,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0
-    }
-   },
-   {
-    "event_id": "ecdeb098c92a745",
-    "title": "2026工博会｜工业AI走向生产现场，六联智能展现软硬协同能力 - 潮新闻客户端",
-    "member_item_ids": [
-     "1dcd9238a7095a0a"
-    ],
-    "primary_item_id": "1dcd9238a7095a0a",
-    "source_ids": [
-     "api:news-google-com-search"
-    ],
-    "all_urls": [
-     "https://news.google.com/rss/articles/CBMic0FVX3lxTE5DcXZmX0piRkw3ajdLRzdtM0FCaXpZUXZYRkNTM0psRWJzR3NxZl9ydDMtcklOZFJXLVFsZnVtMnowaHVTUWNUTENBR2V2MjhFc0N0d0JsR0NYSWg2dzZ6ZF9pdnRQd1hrVHplamxGeW94NUk?oc=5"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T15:11:37Z",
-     "2026-10-15T15:11:37Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 32.026186,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 0.063,
-     "substance_chars": 38.0,
-     "title_quality": 1.0,
-     "heat": 0.312721,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.095,
-     "h_velocity": 1.0,
-     "h_freshness": 0.9851,
-     "significance": 1.0,
-     "application_not_model": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 32.026186,
-     "topic_penalty": 1.0,
-     "final_score": 32.026186,
-     "focus": 0.4,
-     "focus_headline": 0.5,
-     "focus_source": 0.75,
-     "focus_multiplier": 0.532
+     "focus": 1.0
     }
    },
    {
@@ -1420,65 +728,7 @@
      "score": 31.97836,
      "topic_penalty": 1.0,
      "final_score": 31.97836,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0
-    }
-   },
-   {
-    "event_id": "e89502d844b06bb",
-    "title": "HiRO-ACEv2: Simulating extreme weather at 3 km resolution for a fraction of the cost",
-    "member_item_ids": [
-     "9e2b4a4973f26175"
-    ],
-    "primary_item_id": "9e2b4a4973f26175",
-    "source_ids": [
-     "rss:huggingface-co-blog"
-    ],
-    "all_urls": [
-     "https://huggingface.co/blog/allenai/hiro-acev2"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-14T16:12:42Z",
-     "2026-10-14T16:12:42Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 31.270527,
-    "rank_components": {
-     "source_weight": 1.2,
-     "source_damped": 1.0466,
-     "substance": 0.14,
-     "substance_chars": 84.0,
-     "title_quality": 1.0,
-     "heat": 0.298772,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.21,
-     "h_velocity": 1.0,
-     "h_freshness": 0.6709,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 1.0,
-     "magnitude_linear": 0.0,
-     "score": 31.270527,
-     "topic_penalty": 1.0,
-     "final_score": 31.270527,
-     "focus": 0.385,
-     "focus_headline": 0.18,
-     "focus_source": 1.0,
-     "focus_multiplier": 0.5203
+     "focus": 1.0
     }
    },
    {
@@ -1529,10 +779,7 @@
      "score": 30.255288,
      "topic_penalty": 1.0,
      "final_score": 30.255288,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0
+     "focus": 1.0
     }
    },
    {
@@ -1584,10 +831,7 @@
      "score": 62.418296,
      "topic_penalty": 0.45,
      "final_score": 28.088233,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0
+     "focus": 1.0
     }
    },
    {
@@ -1635,10 +879,7 @@
      "score": 24.1612,
      "topic_penalty": 1.0,
      "final_score": 24.1612,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.35,
-     "focus_multiplier": 1.0
+     "focus": 1.0
     }
    },
    {
@@ -1694,10 +935,59 @@
      "score": 61.992981,
      "topic_penalty": 0.0709,
      "final_score": 4.393753,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 1.0,
-     "focus_multiplier": 1.0
+     "focus": 1.0
+    }
+   },
+   {
+    "event_id": "e6d23cf8b32fcc6",
+    "title": "2026-10-15",
+    "member_item_ids": [
+     "01968eed3477f71e"
+    ],
+    "primary_item_id": "01968eed3477f71e",
+    "source_ids": [
+     "rss:daily-juya-uk"
+    ],
+    "all_urls": [
+     "https://daily.juya.uk/issues/2026-10-15/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-15T15:44:17.498100Z",
+    "last_updated_at": "2026-10-15T15:44:17.498100Z",
+    "published_range": [
+     "2026-10-15T01:55:08Z",
+     "2026-10-15T01:55:08Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 0.694424,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 1.0,
+     "substance_chars": 14861.0,
+     "title_quality": 0.15,
+     "heat": 0.361079,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.771,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "score": 5.66877,
+     "topic_penalty": 0.1225,
+     "final_score": 0.694424,
+     "focus": 1.0
     }
    }
   ],
@@ -1739,7 +1029,7 @@
    "rubric 评分 120 条已打分 / 12 次调用（标准来源：/home/runner/work/ai-ribao/ai-ribao/config/profile.md）"
   ],
   "counts": {
-   "events": 31,
+   "events": 19,
    "multi_source_events": 1,
    "items_after_window": 348,
    "items_merged_away": 64,
@@ -1750,7 +1040,7 @@
    "dropped_future_dated": 4,
    "dropped_unknown": 103,
    "dropped_no_url": 11,
-   "with_insights": 28
+   "with_insights": 17
   }
  },
  "sections": {
