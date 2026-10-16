@@ -145,7 +145,7 @@ def rail_rss_copy(ctx: SiteContext, *, compact: bool = False) -> str:
               </div>"""
 
 
-def render_rail(ctx: SiteContext, digest: Digest) -> str:
+def render_rail(ctx: SiteContext, digest: Digest, *, dated: bool = True) -> str:
     """The navigation rail: search, home, calendar, Tibo monitor, WeChat, RSS, theme, download.
 
     Order is the user's, and it is also a sensible reading order: find something, go to the
@@ -179,6 +179,10 @@ def render_rail(ctx: SiteContext, digest: Digest) -> str:
         f'<a class="rail__item" href="{esc(digest.date)}.md" download>'
         f'{icon("download")}<span>下载 Markdown</span></a>'
     )
+    download_block = (
+        '<div class="rail__group" style="margin-top:calc(var(--unit) * 2)">'
+        + download_items + "</div>"
+    ) if dated else ""
 
     return f"""      <aside class="rail" aria-label="站点导航">
         <button class="rail__grip" type="button" data-resize="rail"
@@ -199,7 +203,7 @@ def render_rail(ctx: SiteContext, digest: Digest) -> str:
           <!-- 1. 搜索往期内容 -->
           <div class="rail__group">
             <button class="rail__item" type="button" data-open-search>
-              <span>搜索往期内容</span><span class="rail__hint">⌘K</span>
+              <span>搜索往期内容</span>
             </button>
           </div>
 
@@ -259,14 +263,10 @@ def render_rail(ctx: SiteContext, digest: Digest) -> str:
             </details>
           </div>
 
-          <!-- 8. 下载 markdown -->
-          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
-            <!-- A plain link with `download`, not a fold.
-                 Two things were wrong with the fold: it offered a choice between "速览版"
-                 and "深度版" when only one edition exists, and it made the reader open a
-                 panel to reach a file they had already decided to download. -->
-            {download_items}
-          </div>
+          <!-- 8. 下载 markdown（仅在有具体日期的页面上显示）
+               首页的 rail 用的是最新一期，在这里放下载按钮等于让读者先猜自己要看哪一天。
+               先把日期选出来，日期页再给出那一天的 markdown。 -->
+          {download_block}
 
           <hr class="rail__sep">
 
@@ -826,7 +826,7 @@ def render_index(ctx: SiteContext, latest: Digest | None) -> str:
 <body>
 <a class="skip" href="#main">跳到正文</a>
 <div class="shell">
-{render_rail(ctx, latest) if latest else ''}
+{render_rail(ctx, latest, dated=False) if latest else ''}
   <main class="content" id="main">
     <header class="issue__head">
       <p class="issue__date enter">全部往期</p>

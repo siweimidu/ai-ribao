@@ -40,7 +40,7 @@
           <!-- 1. 搜索往期内容 -->
           <div class="rail__group">
             <button class="rail__item" type="button" data-open-search>
-              <span>搜索往期内容</span><span class="rail__hint">⌘K</span>
+              <span>搜索往期内容</span>
             </button>
           </div>
 
@@ -112,14 +112,10 @@
             </details>
           </div>
 
-          <!-- 8. 下载 markdown -->
-          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
-            <!-- A plain link with `download`, not a fold.
-                 Two things were wrong with the fold: it offered a choice between "速览版"
-                 and "深度版" when only one edition exists, and it made the reader open a
-                 panel to reach a file they had already decided to download. -->
-            <a class="rail__item" href="2026-10-16.md" download><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v8"/><path d="M5.5 8 9 11.5 12.5 8"/><path d="M3.5 13.5h11"/></svg><span>下载 Markdown</span></a>
-          </div>
+          <!-- 8. 下载 markdown（仅在有具体日期的页面上显示）
+               首页的 rail 用的是最新一期，在这里放下载按钮等于让读者先猜自己要看哪一天。
+               先把日期选出来，日期页再给出那一天的 markdown。 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)"><a class="rail__item" href="2026-10-16.md" download><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v8"/><path d="M5.5 8 9 11.5 12.5 8"/><path d="M3.5 13.5h11"/></svg><span>下载 Markdown</span></a></div>
 
           <hr class="rail__sep">
 

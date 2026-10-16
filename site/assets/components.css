@@ -1261,3 +1261,42 @@
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent);
 }
 
+
+/* --- 日历：日期格尺寸与不重叠 ------------------------------------------------------
+   上一版给日期格加了 `aspect-ratio: 1`，而事件日历的列宽是 `1fr` —— 于是容器一宽，
+   格子就跟着一宽，行高却由内容决定，**圆圈溢出并在垂直方向压住相邻日期**。
+   读者点 15 号，命中的是盖在上面的另一个圆圈，看起来就是「切换不了」。
+
+   这一版把尺寸**钉死**而不是跟着列走：固定 2.25rem 的圆，在自己的格子里居中。
+   这样任何容器宽度下它都还是个日历，圆圈之间也不会互相覆盖。
+   ============================================================================== */
+.cal__grid,
+.ecal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: calc(var(--unit) * 0.5);
+  justify-items: center;
+}
+
+.cal__day,
+.ecal__day {
+  /* 钉死，不跟随列宽 */
+  width: 2.25rem;
+  height: 2.25rem;
+  min-height: 0;
+  aspect-ratio: auto;
+  padding: 0 !important;
+  display: grid !important;
+  place-items: center !important;
+  flex-direction: row !important;
+  border: 0 !important;
+  border-radius: 50%;
+  font-size: var(--fs-small);
+  line-height: 1;
+}
+
+/* 上一版的点仍保留，但要贴着圆的下沿内侧，不能溢出 */
+.cal__day[data-has="true"]::after,
+.ecal__day[data-count]::after {
+  bottom: 3px;
+}

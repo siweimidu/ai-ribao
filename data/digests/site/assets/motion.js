@@ -283,8 +283,32 @@
   const themeRoot = document.documentElement;
   const THEME_KEY = 'aidaily-theme';
   const themeButtons = document.querySelectorAll('[data-theme-choice]');
+
+  const apply = (choice) => {
+    // Applying the preference must not depend on this page having a control for it. `tibo.html`
+    // has no theme buttons, so guarding the whole block left the reader on the default blue
+    // after they had chosen Claude light on the home page. Only the button sync is conditional.
+    if (choice === 'auto') themeRoot.removeAttribute('data-theme');
+    else themeRoot.setAttribute('data-theme', choice);
+    themeButtons.forEach((b) => {
+      b.setAttribute('aria-checked', b.dataset.themeChoice === choice ? 'true' : 'false');
+    });
+    const summary = document.querySelector('[data-theme-summary]');
+    if (summary) {
+      const LABEL = {
+        auto: '自动', default: '默认', light: '亮色', dark: '暗色',
+        'claude-light': 'Claude 亮色', 'claude-dark': 'Claude 暗色',
+      };
+      summary.textContent = LABEL[choice] || '自动';
+    }
+  };
+
+  let savedTheme = 'auto';
+  try { savedTheme = window.localStorage.getItem(THEME_KEY) || 'auto'; } catch { /* 隐私模式 */ }
+  apply(savedTheme);
+
   if (themeButtons.length) {
-    const apply = (choice) => {
+    const unusedApply = (choice) => {
       if (choice === 'auto') themeRoot.removeAttribute('data-theme');
       else themeRoot.setAttribute('data-theme', choice);
       themeButtons.forEach((b) => {
