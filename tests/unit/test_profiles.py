@@ -119,7 +119,7 @@ def test_citations_forbid_model_written_urls() -> None:
 
 def test_the_rubric_uses_scope_before_scoring() -> None:
     """Order matters, and it is the whole reason for splitting the files."""
-    text, source = load_rubric_text()
+    text, source, section = load_rubric_text()
     assert "ai-daily" in source
     assert "范围判定" in text
     assert "评分标准" in text

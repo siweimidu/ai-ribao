@@ -44,24 +44,24 @@ def make_event(event_id: str = "e1", title: str = "OpenAI releases GPT-6") -> Ev
 
 # =============================== response parsing ================================
 def test_plain_json_object_is_parsed() -> None:
-    got = _parse_scores('{"scores": [{"id": "e1", "score": 9}, {"id": "e2", "score": 3}]}')
+    got, _ = _parse_scores('{"scores": [{"id": "e1", "score": 9}, {"id": "e2", "score": 3}]}')
     assert got == {"e1": 9.0, "e2": 3.0}
 
 
 def test_json_wrapped_in_a_code_fence_is_parsed() -> None:
     """Models fence their JSON constantly; refusing it would waste the call."""
-    got = _parse_scores('```json\n{"scores": [{"id": "e1", "score": 8}]}\n```')
+    got, _ = _parse_scores('```json\n{"scores": [{"id": "e1", "score": 8}]}\n```')
     assert got == {"e1": 8.0}
 
 
 def test_json_surrounded_by_prose_is_parsed() -> None:
-    got = _parse_scores('Here are the scores:\n{"scores": [{"id": "e1", "score": 7}]}\nDone.')
+    got, _ = _parse_scores('Here are the scores:\n{"scores": [{"id": "e1", "score": 7}]}\nDone.')
     assert got == {"e1": 7.0}
 
 
 def test_a_bare_list_is_not_accepted() -> None:
     """The envelope carries the ids; a bare list has none, so it cannot be applied."""
-    assert _parse_scores('[{"id": "e1", "score": 7}]') == {}
+    assert _parse_scores('[{"id": "e1", "score": 7}]')[0] == {}
 
 
 def test_out_of_range_scores_are_dropped_not_clamped() -> None:
@@ -69,7 +69,7 @@ def test_out_of_range_scores_are_dropped_not_clamped() -> None:
     got = _parse_scores(
         '{"scores": [{"id": "e1", "score": 99}, {"id": "e2", "score": -3},'
         ' {"id": "e3", "score": 6}]}'
-    )
+    )[0]
     assert got == {"e3": 6.0}
 
 
@@ -77,17 +77,44 @@ def test_non_numeric_and_missing_fields_are_dropped() -> None:
     got = _parse_scores(
         '{"scores": [{"id": "e1", "score": "high"}, {"id": "e2"},'
         ' {"score": 5}, {"id": "e4", "score": 4}]}'
-    )
+    )[0]
     assert got == {"e4": 4.0}
+
+
+def test_a_section_outside_the_taxonomy_is_dropped() -> None:
+    """A model that invents `模型發布` (traditional characters) or `Model Release` would create
+    a section that sorts last and quietly demotes the story. Dropping it lets the row fall back
+    to the rule-based classifier, which is safer than trusting a string outside the taxonomy.
+    """
+    scores, sections = _parse_scores(
+        '{"scores": ['
+        '{"id": "e1", "score": 8, "section": "模型发布"},'
+        '{"id": "e2", "score": 8, "section": "模型發布"},'
+        '{"id": "e3", "score": 8, "section": "Model Release"},'
+        '{"id": "e4", "score": 8}'
+        ']}'
+    )
+    assert set(scores) == {"e1", "e2", "e3", "e4"}
+    assert sections == {"e1": "模型发布"}
+
+
+def test_every_taxonomy_section_is_accepted() -> None:
+    from aidaily.sections import SECTIONS
+
+    rows = ",".join(
+        f'{{"id": "e{i}", "score": 5, "section": "{s}"}}' for i, s in enumerate(SECTIONS)
+    )
+    _, sections = _parse_scores('{"scores": [' + rows + "]}")
+    assert set(sections.values()) == set(SECTIONS)
 
 
 def test_garbage_returns_nothing_rather_than_raising() -> None:
     for text in ("", "not json at all", "{", "null", '{"scores": "nope"}'):
-        assert _parse_scores(text) == {}
+        assert _parse_scores(text)[0] == {}
 
 
 def test_float_scores_survive() -> None:
-    assert _parse_scores('{"scores": [{"id": "e1", "score": 7.5}]}') == {"e1": 7.5}
+    assert _parse_scores('{"scores": [{"id": "e1", "score": 7.5}]}')[0] == {"e1": 7.5}
 
 
 # =============================== the multiplier ==================================
@@ -131,7 +158,7 @@ def test_bands_match_the_rubric_table(score: int, expected: str) -> None:
 # =============================== the profile file ================================
 def test_a_missing_profile_falls_back_and_says_so(tmp_path) -> None:
     """Deleting a markdown file must not stop the pipeline, but it must be visible."""
-    text, source = load_profile(tmp_path / "nope.md")
+    text, source, _ = load_profile(tmp_path / "nope.md")
     assert text == DEFAULT_PROFILE
     assert "missing" in source
 
@@ -139,7 +166,7 @@ def test_a_missing_profile_falls_back_and_says_so(tmp_path) -> None:
 def test_an_empty_profile_falls_back(tmp_path) -> None:
     path = tmp_path / "profile.md"
     path.write_text("   \n\n", encoding="utf-8")
-    text, source = load_profile(path)
+    text, source, _ = load_profile(path)
     assert text == DEFAULT_PROFILE
     assert "empty" in source
 
@@ -147,7 +174,7 @@ def test_an_empty_profile_falls_back(tmp_path) -> None:
 def test_a_real_profile_is_used_verbatim(tmp_path) -> None:
     path = tmp_path / "profile.md"
     path.write_text("# 我的标准\n\n只关心开源模型。\n", encoding="utf-8")
-    text, source = load_profile(path)
+    text, source, _ = load_profile(path)
     assert "只关心开源模型" in text
     assert source == str(path)
 
@@ -156,6 +183,6 @@ def test_the_shipped_profile_exists_and_says_heat_is_not_importance() -> None:
     """The one line that matters most, asserted so a rewrite cannot quietly drop it."""
     from aidaily.rubric import PROFILE_PATH
 
-    text, source = load_profile(PROFILE_PATH)
+    text, source, _ = load_profile(PROFILE_PATH)
     assert source == str(PROFILE_PATH), "仓库里应当有 config/profile.md"
     assert "热度 ≠ 重要性" in text

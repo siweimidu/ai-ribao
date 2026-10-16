@@ -208,7 +208,7 @@ def cmd_run(args: argparse.Namespace) -> int:
     # 3) L3 semantic clustering + 4) analysis, both need the LLM
     router, llm_warnings, http = _build_router(args)
     (events, cluster_result, insights, analyze_warnings, history,
-     rubric_scores, run_now) = asyncio.run(
+     rubric_scores, rubric_sections, run_now) = asyncio.run(
         _analyze_async(stage, sources, cfg, router, http, args, digest_date)
     )
 
@@ -470,6 +470,7 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
         # Phase 2: the real selection, now that the model's judgement is on the table.
         selected, _ = select_for_digest(
             events, stage, sources, cfg, history=history, rubric_scores=rubric_scores,
+            rubric_sections=getattr(rubric_result, "sections", None),
             now=run_now, today=run_date,
         )
 
@@ -493,8 +494,11 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
         )
         if analyse_note:
             analyze_warnings = [*analyze_warnings, analyse_note]
+        # `rubric_sections` travels with the scores: the section is the ranking's primary key,
+        # so the caller that re-selects with the scores must receive the sections too, or the
+        # final order would fall back to the rule-based classifier for rows the model classified.
         return (events, cluster_result, insights, analyze_warnings + history_notes,
-                history, rubric_scores, run_now)
+                history, rubric_scores, getattr(rubric_result, "sections", None), run_now)
     finally:
         if http is not None:
             await http.aclose()

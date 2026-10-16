@@ -60,6 +60,9 @@ class Profile:
     match: str
     analysis: str
     enrichment: str
+    #: The section taxonomy. Separate from `analysis` because it is the ranking's primary key, not
+    #: a description of importance -- see the module docstring in `sections.py`.
+    section: str = ""
     blocks: list[Block] = field(default_factory=list)
     scoring: dict = field(default_factory=dict)
     relevance_gate: dict = field(default_factory=dict)
@@ -130,6 +133,7 @@ def load_profile(profile_id: str = DEFAULT_PROFILE_ID, *, root: Path | None = No
         match=_read(directory / str(doc.get("match") or "match.md")),
         analysis=_read(directory / str(doc.get("analysis") or "analysis.md")),
         enrichment=_read(directory / str(enrichment.get("prompt") or "enrichment.md")),
+        section=_read(directory / str(doc.get("section") or "section.md")),
         blocks=blocks,
         scoring=doc.get("scoring") or {},
         relevance_gate=doc.get("relevance_gate") or {},

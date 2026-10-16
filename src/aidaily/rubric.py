@@ -35,6 +35,7 @@ from pathlib import Path
 
 from .llm import LLMError, LLMUnavailable, Router
 from .models import Event
+from .sections import SECTION_RANK
 
 #: Where the editable criteria live. Changing this file changes the ranking; no code change
 #: and no redeploy.
@@ -50,28 +51,38 @@ DEFAULT_PROFILE = """\
 
 SYSTEM = (
     "你是 AI 日报的主编，负责决定今天的新闻排序。\n"
-    "你会读到一份评分标准，然后给若干条新闻标题打分。\n"
+    "你会读到一份栏目判定标准和一份评分标准，然后给若干条新闻标题\n"
+    "同时判定栏目并打分。\n"
+    "\n"
+    "**栏目比分数重要**：最终排序是先按栏目、再按分数。\n"
     "\n"
     "输出要求：\n"
-    "- 只输出 JSON，形如 {\"scores\": [{\"id\": \"...\", \"score\": 7}, ...]}\n"
+    "- 只输出 JSON，形如 "
+    '{"scores": [{"id": "...", "score": 7, "section": "模型发布"}, ...]}\n'
     "- 每个 id 必须原样照抄输入里给的 id，不要改写、不要新增、不要遗漏\n"
     "- score 是 0 到 10 之间的整数\n"
+    "- section 只能取：要闻、开发生态、模型发布、产品应用、技术与洞察、行业动态、其他\n"
     "- 不要输出解释以外的任何文字\n"
 )
 
 USER = """\
+# 栏目判定标准
+
+{section}
+
 # 评分标准
 
 {profile}
 
-# 待评分新闻（{count} 条）
+# 待处理新闻（{count} 条）
 
 {items}
 
 # 任务
 
-给上面每一条打分，输出 JSON：{{"scores": [{{"id": "...", "score": 7}}, ...]}}
-必须为全部 {count} 个 id 各给一个分数。
+给上面每一条判定栏目并打分，输出 JSON：
+{{"scores": [{{"id": "...", "score": 7, "section": "模型发布"}}, ...]}}
+必须为全部 {count} 个 id 各给一个栏目和一个分数。
 """
 
 
@@ -96,6 +107,10 @@ class RubricResult:
     """Scores by event id, plus what happened while getting them."""
 
     scores: dict[str, float] = field(default_factory=dict)
+    #: Section id per event, the ranking's **primary** key. Separate from `scores`
+    #: because "important" and "filed under 行业动态" are different judgements, and
+    #: folding one into the other loses the distinction the ordering depends on.
+    sections: dict[str, str] = field(default_factory=dict)
     batches: int = 0
     calls: int = 0
     failed_batches: int = 0
@@ -115,7 +130,7 @@ class RubricResult:
         return " / ".join(parts)
 
 
-def load_profile(path: Path | None = None) -> tuple[str, str]:
+def load_profile(path: Path | None = None) -> tuple[str, str, str]:
     """The rubric text and where it came from.
 
     A missing file is not an error: the pipeline must not stop because someone deleted a
@@ -143,24 +158,34 @@ def load_profile(path: Path | None = None) -> tuple[str, str]:
                 )
             if structured.analysis:
                 parts.append("# 评分标准\n\n" + structured.analysis)
-            return "\n\n---\n\n".join(parts), str(structured.source)
+            return (
+                "\n\n---\n\n".join(parts),
+                str(structured.source),
+                structured.section or "",
+            )
 
     target = Path(path) if path else PROFILE_PATH
     try:
         text = target.read_text(encoding="utf-8").strip()
     except OSError:
-        return DEFAULT_PROFILE, "default (config/profile.md missing)"
+        return DEFAULT_PROFILE, "default (config/profile.md missing)", ""
     if not text:
-        return DEFAULT_PROFILE, "default (config/profile.md empty)"
-    return text, str(target)
+        return DEFAULT_PROFILE, "default (config/profile.md empty)", ""
+    return text, str(target), ""
 
 
-def _parse_scores(raw: str) -> dict[str, float]:
-    """Pull `{id: score}` out of a model response.
+def _parse_scores(raw: str) -> tuple[dict[str, float], dict[str, str]]:
+    """Pull `{id: score}` and `{id: section}` out of a model response.
 
-    Tolerant about the envelope -- models wrap JSON in prose or a code fence -- and strict
-    about the values: a score outside 0-10 or a non-numeric one is dropped rather than
-    clamped, because clamping a bogus 99 to 10 would silently promote a row.
+    Tolerant about the envelope -- models wrap JSON in prose or a code fence -- and strict about
+    the values: a score outside 0-10 or a non-numeric one is dropped rather than clamped,
+    because clamping a bogus 99 to 10 would silently promote a row.
+
+    A section that is not one of the known ids is **also dropped**, and that is deliberate. A
+    model that invents `模型發布` (traditional characters) or `Model Release` would otherwise
+    create a section that sorts last and quietly demotes the story; falling back to the
+    rule-based classifier for that row is both safer and more accurate than trusting a string
+    outside the taxonomy.
     """
     text = (raw or "").strip()
     if text.startswith("```"):
@@ -177,15 +202,16 @@ def _parse_scores(raw: str) -> dict[str, float]:
             try:
                 doc = json.loads(text[start:end + 1])
             except (TypeError, ValueError):
-                return {}
+                return {}, {}
     if not isinstance(doc, dict):
-        return {}
+        return {}, {}
 
     rows = doc.get("scores")
     if not isinstance(rows, list):
-        return {}
+        return {}, {}
 
     out: dict[str, float] = {}
+    sections: dict[str, str] = {}
     for row in rows:
         if not isinstance(row, dict):
             continue
@@ -200,7 +226,10 @@ def _parse_scores(raw: str) -> dict[str, float]:
         if not 0.0 <= number <= 10.0:
             continue
         out[str(rid)] = number
-    return out
+        section = str(row.get("section") or "").strip()
+        if section in SECTION_RANK:
+            sections[str(rid)] = section
+    return out, sections
 
 
 async def score_events(
@@ -223,7 +252,7 @@ async def score_events(
     counted as a failed batch instead.
     """
     result = RubricResult()
-    profile, source = load_profile(profile_path)
+    profile, source, section_text = load_profile(profile_path)
     result.profile_source = source
 
     if router is None or not events:
@@ -241,7 +270,7 @@ async def score_events(
         messages = [
             {"role": "system", "content": SYSTEM},
             {"role": "user", "content": USER.format(
-                profile=profile, count=len(batch), items=listing)},
+                profile=profile, section=section_text, count=len(batch), items=listing)},
         ]
         # Broad on purpose. This stage is optional by design, so any unforeseen failure --
         # a transport error, a missing attribute, a response shape nobody expected -- must
@@ -254,7 +283,7 @@ async def score_events(
             text = getattr(response, "text", None)
             if text is None:
                 raise ValueError("router returned a response with no text")
-            got = _parse_scores(text)
+            got, got_sections = _parse_scores(text)
         except (LLMError, LLMUnavailable):
             async with lock:
                 result.failed_batches += 1
@@ -273,6 +302,9 @@ async def score_events(
             for event_id, value in got.items():
                 if event_id in sent:
                     result.scores[event_id] = value
+            for event_id, section in got_sections.items():
+                if event_id in sent:
+                    result.sections[event_id] = section
 
     await asyncio.gather(*(run(b) for b in batches))
 

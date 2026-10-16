@@ -47,7 +47,10 @@
     ]
   },
   "scoring": {
-    "scale": [0, 10],
+    "scale": [
+      0,
+      10
+    ],
     "bands": {
       "9-10": "突破性",
       "7-8": "高价值",
@@ -56,7 +59,8 @@
       "0-2": "噪音"
     },
     "batch_size": 10,
-    "concurrency": 2
+    "concurrency": 2,
+    "bands_note": "档位描述重要性；section 描述栏目；排序先按栏目再按分数"
   },
   "relevance_gate": {
     "comment": "焦点乘数的下限。非 AI 内容被降权但不删除 —— 平静的一天仍要有内容可发。",
@@ -65,11 +69,18 @@
   },
   "sections": {
     "comment": "页面呈现顺序。热度排序是主序，分节仅用于归档浏览。",
-    "order": ["模型与能力", "AI 产品", "AI 行业", "AI 研究", "其它"]
+    "order": [
+      "模型与能力",
+      "AI 产品",
+      "AI 行业",
+      "AI 研究",
+      "其它"
+    ]
   },
   "citations": {
     "comment": "模型不得输出链接；链接由程序从自己的记录回填。",
     "allow_model_urls": false,
     "allow_model_ids": true
-  }
+  },
+  "section": "section.md"
 }

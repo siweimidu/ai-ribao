@@ -18,6 +18,7 @@ from .config import AppConfig
 from .dedup import DedupConfig, DedupResult, cluster
 from .models import Digest, Event, NormalizedItem, SourceCoverage, SourceSpec
 from .rank import RankWeights, diversity_report, rank_events, select_diverse
+from .sections import classify, rank_of
 from .rubric import band, rubric_multiplier
 from .select import WindowResult, select_window
 
@@ -126,6 +127,7 @@ def select_for_digest(
     history: PublishedHistory | None = None,
     today: str | None = None,
     rubric_scores: dict[str, float] | None = None,
+    rubric_sections: dict[str, str] | None = None,
     pool_only: int | None = None,
 ) -> tuple[list[Event], dict]:
     """Rank and diversify, returning the events the digest will actually publish.
@@ -216,6 +218,30 @@ def select_for_digest(
             "rubric_scored_total": len(rubric_scores),
         }
 
+    # **Section first, score second.** This is the reverse of a pure score ranking and it is the
+    # whole point of the section analysis.
+    #
+    # Reverse-engineered from `daily.juya.uk`: every story carries a rank (`... ↗ #17`) and the
+    # ranks are handed out **by section in contiguous blocks**. Over ten issues the pairwise
+    # "A before B" tally is 100% for thirteen pairs and 5:4 for one, giving
+    #
+    #     要闻 > 开发生态 > 模型发布 > 产品应用 > 技术与洞察 > 行业动态 > 其他
+    #
+    # Within a section, no title feature predicts position (Spearman below 0.35 for every
+    # candidate, signs flipping between sections), so that part stays with the score.
+    #
+    # The consequence worth stating: a story 橘鸦 led with and a pure score put 47th differs by
+    # *category*, and no weighting of a continuous score can move it across a category boundary.
+    section_of: dict[str, str] = {}
+    for row in ranked:
+        # The model's judgement first -- it reads the story, and measured 41.8% accuracy is what
+        # the rule-based classifier reaches on 橘鸦's own 478 examples, which is not enough on
+        # its own. The rules are the fallback for a row the model did not classify.
+        section = (rubric_sections or {}).get(row.event.event_id) or classify(row.event.title)
+        section_of[row.event.event_id] = section
+        row.components["section"] = section
+    ranked.sort(key=lambda r: (rank_of(section_of[r.event.event_id]), -r.score, r.event.event_id))
+
     if pool_only is not None:
         # Candidate pool only: no diversity pass, no archive side effects. The caller uses
         # this to choose what to spend model calls on.
@@ -273,6 +299,7 @@ def build_digest(
     now: datetime | None = None,
     history: PublishedHistory | None = None,
     rubric_scores: dict[str, float] | None = None,
+    rubric_sections: dict[str, str] | None = None,
 ) -> Digest:
     """Assemble the Digest from the stages' output.
 
