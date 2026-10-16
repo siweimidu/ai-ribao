@@ -1683,3 +1683,61 @@ body, .rail, .toc, .item, .ecal__card {
 
 /* 首页大标题区的标记（如果用到）同样处理 */
 .brand-mark__svg { vertical-align: middle; }
+
+
+/* ==============================================================================
+   终版覆盖（四）—— 字体
+   ----------------------------------------------------------------------------
+   标题宋体（模板 ai-daily-deck 自己的选择）、正文与侧栏 MiSans、数字与元信息等宽。
+   三者的分工依据是各自的强项：
+
+   · 宋体（Noto Serif SC）笔画有横细竖粗的对比，大字号下有"刊物感"，适合标题。
+     小字号时笔画偏细，所以**不用**于正文。
+   · MiSans 笔画均匀、字腔开，是小米为界面做的字，小字号下清晰，适合正文与控件。
+   · IBM Plex Mono 等宽，数字位宽一致，统计行与时间戳不会跳动。
+
+   实测代价：MiSans 走官方分片 CSS，浏览器按 unicode-range 只取用到的分片 ——
+   整期日报实测 500 KB / 38 个文件；思源宋体 1.1 MB。合计 1.6 MB，可缓存。
+   两个 CDN 都不可达时退回系统字体栈，不会乱码、不会撑破布局。
+   ============================================================================== */
+
+:root {
+  --f-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", Georgia, serif;
+  --f-sans:  "MiSans", "Noto Sans SC", "PingFang SC", "Hiragino Sans GB",
+             "Microsoft YaHei", system-ui, sans-serif;
+  --f-mono:  "IBM Plex Mono", "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+/* 标题：宋体 */
+.issue__title,
+.item__title,
+.section__title,
+.issue__head h1,
+.cover__title,
+h1, h2, h3 {
+  font-family: var(--f-serif);
+}
+
+/* 正文与控件：MiSans。正文行高比黑体略松一点，字腔开、行距紧会显得密。 */
+.facts, .inferences, .opinions, .uncertainties,
+.item__body, .item p, p, li,
+.facts li, .inferences li, .opinions li, .uncertainties li,
+.rail__item, .rail__sub button, .rail__btn, .toc__nav a,
+.rail__brand, .section__count, .issue__date,
+button, input, select, summary {
+  font-family: var(--f-sans);
+}
+
+.facts li, .inferences li, .opinions li, .uncertainties li { line-height: 1.85; }
+
+/* 数字与元信息：等宽，等宽数字让统计行不跳动 */
+.stats b, .stats span,
+.item__meta, .item__meta span,
+.cal__month, .ecal__month,
+[data-theme-summary], time {
+  font-family: var(--f-mono);
+  font-feature-settings: "tnum";
+}
+
+/* 界面正文的最后一道兜底：没有 --f-sans 声明的元素也走 MiSans，避免混排出两种黑体。 */
+body { font-family: var(--f-sans); }

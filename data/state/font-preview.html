@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>字体预览 · 换字体前后对比</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700&family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* 模板 ai-daily-deck 的字体变量，原样搬过来 */
+    --f-serif:"Noto Serif SC","Source Han Serif SC","Songti SC",Georgia,serif;
+    --f-serif-en:"Playfair Display","Source Serif 4",Georgia,"Times New Roman",serif;
+    --f-display:"Playfair Display","Noto Serif SC","Source Han Serif SC",Georgia,serif;
+    --f-sans:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+    --f-mono:"IBM Plex Mono","JetBrains Mono","SFMono-Regular",Consolas,monospace;
+    /* 站点当前的字体栈（改之前），用于对比 */
+    --f-current:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --bg:#fdfcfa; --fg:#16181c; --muted:#6b7280; --border:#e6e4df; --accent:#0065fd;
+    --card:#fff; --soft:#f6f5f2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);line-height:1.7}
+  .wrap{max-width:1080px;margin:0 auto;padding:48px 28px 96px}
+  h2{font-size:15px;font-weight:600;letter-spacing:.14em;color:var(--muted);
+     text-transform:uppercase;margin:56px 0 18px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+  .cmp{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .col{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px}
+  .col h3{margin:0 0 16px;font-size:13px;letter-spacing:.1em;color:var(--muted);font-weight:600}
+  .col.now h3{color:#b91c1c}
+  .col.new h3{color:#15803d}
+  .cover-title{font-size:56px;font-weight:700;line-height:1.06;letter-spacing:-.03em;margin:0}
+  .cover-latin{font-size:15px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);
+               font-weight:700;font-style:italic;margin-top:8px}
+  .lead{font-size:16px;margin:12px 0 0;color:var(--muted)}
+  h1.issue{font-size:42px;font-weight:660;line-height:1.15;letter-spacing:-.02em;margin:0 0 10px}
+  .item-title{font-size:19px;font-weight:620;margin:0 0 6px}
+  .facts{font-size:15.5px;margin:0;color:var(--fg);opacity:.9}
+  .meta{font-size:12.5px;color:var(--muted);letter-spacing:.04em}
+  .mono{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .stackrow{display:grid;grid-template-columns:104px 1fr;gap:18px;align-items:baseline;
+            padding:14px 0;border-bottom:1px dashed var(--border)}
+  .stackrow:last-child{border-bottom:0}
+  .k{font-size:12px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border)}
+  th{font-size:12px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;font-weight:600}
+  .use-serif{font-family:var(--f-serif)}
+  .use-display{font-family:var(--f-display)}
+  .use-sans{font-family:var(--f-sans)}
+  .use-mono{font-family:var(--f-mono)}
+  .use-current{font-family:var(--f-current)}
+  .note{background:var(--soft);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;
+        padding:14px 18px;font-size:14px;color:var(--muted);margin:18px 0 0}
+  .swatch{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;
+          background:var(--accent);color:#fff;margin-right:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="mono">字体预览 · 仅预览，尚未改动网站</p>
+  <h1 class="issue" style="margin-top:10px">AI 日报 字体对照预览</h1>
+  <p class="lead">左列为<b>现在站点用的系统字体</b>，右列为<b>模板 ai-daily-deck 的字体</b>（思源宋体等）。
+     下面每一块都是同一段真实内容，两栏唯一的差别就是字体。</p>
+
+  <h2>一、封面标题「AI 日报」—— 这是模板里 206px / weight 700 的那四个字</h2>
+  <div class="cmp">
+    <div class="col now">
+      <h3>现在 · 系统无衬线</h3>
+      <p class="cover-title use-current">AI 日报</p>
+      <p class="cover-latin use-current">DAILY AI</p>
+    </div>
+    <div class="col new">
+      <h3>改后 · Noto Serif SC（宋体）</h3>
+      <p class="cover-title use-serif">AI 日报</p>
+      <p class="cover-latin use-display">Daily AI</p>
+    </div>
+  </div>
+
+  <h2>二、日报正文标题与正文</h2>
+  <div class="cmp">
+    <div class="col now">
+      <h3>现在</h3>
+      <h1 class="issue use-current">Gemini 4 Argon 向全体付费订阅者开放</h1>
+      <p class="item-title use-current">腾讯 WorkBuddy 与 CodeBuddy 宣布 DeepSeek 故障补偿</p>
+      <p class="facts use-current">腾讯 WorkBuddy 和 CodeBuddy 针对 DeepSeek 服务故障发布补偿公告，
+         10 月 8 日–14 日期间在国内版端内使用 DeepSeek 模型消耗的积分将全额返还，7 个工作日内到账。</p>
+      <p class="meta use-current">单一来源 · 10-16 04:37 UTC · aihot.news</p>
+    </div>
+    <div class="col new">
+      <h3>改后</h3>
+      <h1 class="issue use-serif">Gemini 4 Argon 向全体付费订阅者开放</h1>
+      <p class="item-title use-sans">腾讯 WorkBuddy 与 CodeBuddy 宣布 DeepSeek 故障补偿</p>
+      <p class="facts use-sans">腾讯 WorkBuddy 和 CodeBuddy 针对 DeepSeek 服务故障发布补偿公告，
+         10 月 8 日–14 日期间在国内版端内使用 DeepSeek 模型消耗的积分将全额返还，7 个工作日内到账。</p>
+      <p class="meta use-mono">SINGLE SOURCE · 10-16 04:37 UTC · AIHOT.NEWS</p>
+    </div>
+  </div>
+
+  <h2>三、四个字族的全貌（模板的变量原样）</h2>
+  <div class="col">
+    <div class="stackrow"><span class="k">标题 serif</span>
+      <span class="use-serif" style="font-size:26px;font-weight:700">AI 日报 · 今日要闻 · 模型发布</span></div>
+    <div class="stackrow"><span class="k">西文 display</span>
+      <span class="use-display" style="font-size:26px;font-weight:700;font-style:italic">Daily AI · Volume 001</span></div>
+    <div class="stackrow"><span class="k">正文 sans</span>
+      <span class="use-sans" style="font-size:17px">每日自动聚合 AI 领域的信息源，去重、交叉验证，并区分事实与推断。</span></div>
+    <div class="stackrow"><span class="k">数据 mono</span>
+      <span class="use-mono" style="font-size:15px">27 STORIES · 2026-10-14 · VOL.001</span></div>
+  </div>
+
+  <h2>四、取舍：请注意三件事</h2>
+  <table>
+    <tr><th>项目</th><th>说明</th></tr>
+    <tr><td>体积</td><td>四个字族的 CSS 请求约 <b>1.0 MB</b>（936 个 @font-face，按需分片下载）。
+        整站字体从 0 变成需要联网下载。</td></tr>
+    <tr><td>离线 / 断网</td><td>Google Fonts 在国内通常可达（实测 HTTP 200），但被墙时页面会退回到
+        系统字体 —— 不会乱码，只是变回现在的样子。</td></tr>
+    <tr><td>可读性</td><td>宋体在大字号标题上气质最好；<b>正文仍建议用无衬线</b>（右栏那样），
+        因为宋体小字在屏幕上笔画细、阅读慢。这也是模板自己的做法。</td></tr>
+  </table>
+  <p class="note">如果你要「全部改成宋体」，我就把正文也换成 serif；如果想更稳妥，就按模板的做法：
+      标题与封面用 serif，正文用 sans，数字与时间用 mono。你定。</p>
+
+</div>
+</body>
+</html>

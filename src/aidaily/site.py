@@ -722,6 +722,10 @@ def render_day(
 <link rel="alternate" type="application/feed+json" title="AI 日报" href="feed/zh.json">
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/components.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Regular.min.css">
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
@@ -845,6 +849,10 @@ def render_index(ctx: SiteContext, latest: Digest | None) -> str:
 <link rel="alternate" type="application/rss+xml" title="AI 日报" href="feed/zh.xml">
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/components.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Regular.min.css">
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
@@ -1099,6 +1107,10 @@ def render_tibo(ctx: SiteContext, monitor: dict | None = None) -> str:
 <link rel="icon" href="{FAVICON}">
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/components.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Regular.min.css">
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
@@ -1351,6 +1363,10 @@ def render_sources(
 <link rel="icon" href="{FAVICON}">
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/components.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Regular.min.css">
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
@@ -1415,6 +1431,10 @@ def render_404(ctx: SiteContext) -> str:
 <link rel="icon" href="{FAVICON}">
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/components.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Regular.min.css">
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
