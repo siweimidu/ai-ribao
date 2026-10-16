@@ -1501,15 +1501,24 @@ body, .rail, .toc, .item, .ecal__card {
 .cal__grid,
 .ecal__grid {
   display: grid !important;
-  grid-template-columns: repeat(7, minmax(24px, 32px));
-  justify-content: space-between;
+  /* **A capped, centred grid.** It used to be `width: 100%` with `space-between`, which pushed
+     seven 32px tracks across a 437px card and produced a 68px column pitch for a 28px circle --
+     the sparse, scattered look. A max-width bounds the pitch; `1fr` tracks let the rail's narrower
+     grid shrink instead of overlapping. */
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  justify-content: center;
+  justify-items: center;
   gap: calc(var(--unit) * 0.5);
   width: 100%;
+  /* 网格宽度决定「列距 / 圆」的比例。19rem 时列距 44px 而圆只有 26px，仍然发空；
+     收到 16rem 并把圆放大到 30px 后，视觉间隙约 7px —— 这才像一本日历。 */
+  max-width: 16rem;
+  margin-inline: auto;
 }
 .cal__day,
 .ecal__day {
-  width: 28px;
-  height: 28px;
+  width: min(30px, 100%);
+  height: 30px;
   min-height: 0;
   aspect-ratio: auto;
   padding: 0 !important;
@@ -1567,7 +1576,7 @@ body, .rail, .toc, .item, .ecal__card {
 .ecal__day--pad { opacity: 0; pointer-events: none; }
 
 /* 窄侧栏：日历给最小宽度，放不下时在侧栏内横向滚动（滚动条仍隐藏，功能在）。 */
-.cal { min-width: 11.5rem; }
+.cal { min-width: 13rem; }
 .rail__body { overflow-x: auto; }
 
 /* --- 三、Q弹动效（motion-web handfeel §1 / §6）---------------------------------
