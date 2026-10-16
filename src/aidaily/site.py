@@ -55,7 +55,7 @@ FAVICON = (
     "%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1530 1530'%3E"
     "%3Cstyle%3E:root{color-scheme:light dark}rect{fill:%23FEFEFE}g{fill:%23231A15}"
     "@media(prefers-color-scheme:dark){rect{fill:%230B0D10}g{fill:%23F2F4F7}}%3C/style%3E"
-    "%3Crect width='1530' height='1530'/%3E"
+    "%3Crect width='1530' height='1530' rx='765'/%3E"
     "%3Cg transform='translate(765 765) scale(2.65) translate(-765 -765)'%3E"
     "%3Cpath fill-rule='evenodd' d='M 494,818 L 626,504 L 711,503 L 800,711 L 803,711 "
     "L 1018,546 L 1032,538 L 1027,544 L 745,795 L 740,795 L 726,765 L 610,765 L 586,820 "

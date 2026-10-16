@@ -1668,7 +1668,9 @@ body, .rail, .toc, .item, .ecal__card {
   place-items: center;
   width: 30px;
   height: 30px;
-  border-radius: 8px;
+  /* 圆形边框：用户要求页头图标与标签页图标都是圆的。用 50% 而不是固定半径，
+     这样侧栏宽度变化时它仍然是正圆。 */
+  border-radius: 50%;
   background: var(--accent);
   color: var(--accent-fg, #fff);
   flex: none;
