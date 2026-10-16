@@ -48,27 +48,39 @@ SECTION_ORDER = [
 #: broadcast. It used to be a blue tile with the letter "A" -- a different logo from the one on
 #: the page, and two hand-drawn versions of one mark is exactly how they drift apart.
 FAVICON = (
+    # `ai1.svg`: the background and the mark both react to `prefers-color-scheme`, so the
+    # tab icon is legible on a light **and** a dark browser UI. A fixed white tile is the
+    # exact problem `color-scheme` exists to solve.
     "data:image/svg+xml,"
-    "%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E"
-    "%3Crect width='32' height='32' rx='8' fill='%230065fd'/%3E"
-    "%3Cpath d='M16 6.6 8.1 25.4h3.9l1.6-3.9h6.8l1.6 3.9h3.9L16 6.6zm-1.2 11.4L16 14l1.2 4z' "
-    "fill='white'/%3E"
-    "%3C/svg%3E"
+    "%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1530 1530'%3E"
+    "%3Cstyle%3E:root{color-scheme:light dark}rect{fill:%23FEFEFE}g{fill:%23231A15}"
+    "@media(prefers-color-scheme:dark){rect{fill:%230B0D10}g{fill:%23F2F4F7}}%3C/style%3E"
+    "%3Crect width='1530' height='1530'/%3E"
+    "%3Cg transform='translate(765 765) scale(2.65) translate(-765 -765)'%3E"
+    "%3Cpath fill-rule='evenodd' d='M 494,818 L 626,504 L 711,503 L 800,711 L 803,711 "
+    "L 1018,546 L 1032,538 L 1027,544 L 745,795 L 740,795 L 726,765 L 610,765 L 586,820 "
+    "Z M 669,614 L 701,694 L 636,694 Z'/%3E"
+    "%3Cpath d='M 871,713 L 867,712 L 560,989 L 587,971 L 781,825 L 783,1025 L 871,1024 "
+    "Z'/%3E%3C/g%3E%3C/svg%3E"
 )
 
-#: Inline icons. Deliberately minimal single-path marks rather than an icon font: an icon
-#: font is another network dependency and another thing that can render as a blank square.
+#: Inline icons.
+#:
+#: `brand` is the user-supplied logo (`ai2.svg`), drawn on the same 18x18 grid as the rest: the
+#: source art is on a 1530-unit canvas, so it is scaled by 18/1530 and re-centred. The outer tile
+#: comes from CSS, which lets the mark inherit the theme instead of carrying its own white box.
 ICONS = {
     "search": '<circle cx="7.5" cy="7.5" r="5"/><path d="M11.5 11.5 15 15"/>',
     "home": '<path d="M3 8.5 9 3l6 5.5V15H3z"/><path d="M7.5 15v-4h3v4"/>',
     "wechat": '<path d="M2.5 7.5c0-2.5 2.4-4.5 5.4-4.5s5.4 2 5.4 4.5-2.4 4.5-5.4 4.5c-.6 0-1.2-.1-1.7-.2L4 13l.7-2.1A4.4 4.4 0 0 1 2.5 7.5z"/><path d="M9.8 11.4c.4 2 2.4 3.4 4.8 3.4.5 0 1-.1 1.5-.2l1.7 1.1-.5-1.7a3.6 3.6 0 0 0 1.4-2.6c0-1.5-1-2.8-2.5-3.4"/>',
     "rss": '<path d="M3.5 12.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M3 4.5A8.5 8.5 0 0 1 11.5 13"/><path d="M3 8A5 5 0 0 1 8 13"/>',
-    # The list of feeds is not the act of subscribing. Both used the RSS glyph, so the same
-    # symbol meant two different things on pages a reader moves between.
-    # The brand mark. A designed feed/broadcast glyph replaces the literal "AI"
-    # characters that stood in for a logo; see the module docstring.
-    # Authored on the 18x18 grid `icon()` uses, not the 24-grid the old inline SVG had.
-    "brand": '<path d="M9 3.2 3.4 14.8h2.6l1.1-2.4h3.8l1.1 2.4h2.6L9 3.2zm-1 7.1L9 8l1 2.3z" fill="currentColor" stroke="none"/>',
+    "brand": '<g transform="translate(9 9) scale(0.0314) translate(-765 -765)" '
+             'fill="currentColor">'
+             '<path fill-rule="evenodd" d="M 494,818 L 626,504 L 711,503 L 800,711 '
+             'L 803,711 L 1018,546 L 1032,538 L 1027,544 L 745,795 L 740,795 '
+             'L 726,765 L 610,765 L 586,820 Z M 669,614 L 701,694 L 636,694 Z"/>'
+             '<path d="M 871,713 L 867,712 L 560,989 L 587,971 L 781,825 '
+             'L 783,1025 L 871,1024 Z"/></g>',
     "list": '<path d="M6 5h7"/><path d="M6 9h7"/><path d="M6 13h7"/><path d="M3.5 5h.01"/><path d="M3.5 9h.01"/><path d="M3.5 13h.01"/>',
     "theme": '<circle cx="9" cy="9" r="6"/><path d="M9 3v12"/><path d="M9 3a6 6 0 0 1 0 12"/>',
     "download": '<path d="M9 3v8"/><path d="M5.5 8 9 11.5 12.5 8"/><path d="M3.5 13.5h11"/>',

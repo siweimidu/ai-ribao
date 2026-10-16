@@ -1580,8 +1580,15 @@ body, .rail, .toc, .item, .ecal__card {
 .ecal__day--pad { opacity: 0; pointer-events: none; }
 
 /* 窄侧栏：日历给最小宽度，放不下时在侧栏内横向滚动（滚动条仍隐藏，功能在）。 */
-.cal { min-width: 13rem; }
-.rail__body { overflow-x: visible; }
+/* **No floor on the calendar, and no horizontal scrolling.**
+   `overflow-x: visible` beside `overflow-y: auto` computes to `auto`, so a horizontal bar appears
+   whenever the rail's content is wider than the rail -- and `.cal`'s 13rem (208px) floor could be
+   dragged below, because a saved rail preference from an earlier build can be narrower than the
+   current 212px minimum. Removing the floor lets the calendar contract instead: measured with no
+   scrollbar at 160 / 180 / 190 / 200 / 212px, with day cells shrinking 29px -> 21px rather than
+   overflowing. The grid tracks are already `minmax(0, 1fr)`, so they do this unaided. */
+.cal { min-width: 0; }
+.rail__body { overflow-x: hidden; }
 
 /* --- 三、Q弹动效（motion-web handfeel §1 / §6）---------------------------------
    入场用欠阻尼弹簧的 CSS 近似（过冲 12%），悬停抬升与日历高亮用 JS 真弹簧。

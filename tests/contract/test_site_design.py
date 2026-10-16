@@ -454,3 +454,31 @@ def test_every_linked_path_is_actually_deployed() -> None:
     assert linked, "页面里没有相对链接；生成器或正则变了形状"
     missing = sorted(h for h in linked if not (BUILT / h).exists())
     assert not missing, f"页面链接了未部署的路径：{missing}"
+
+
+def test_every_rail_icon_actually_draws_something() -> None:
+    """An icon name with no entry renders an empty `<svg>` -- no error, no failure, no picture.
+
+    This happened: a text replacement computed its end offset as "the second `)` after
+    `FAVICON = (`", which swallowed the first four entries of the icon table. `search`, `home`,
+    `wechat` and `rss` became empty elements on every page, every test still passed, and the only
+    symptom was that the rail was missing its pictures.
+    """
+    from aidaily.site import ICONS, icon
+
+    required = {"search", "home", "rss", "brand", "list", "theme", "download", "clock", "github"}
+    missing = required - set(ICONS)
+    assert not missing, f"图标表缺少：{sorted(missing)}"
+
+    for name, path in ICONS.items():
+        assert path.strip(), f"{name} 是空的"
+        rendered = icon(name)
+        assert "currentColor" in rendered, f"{name} 不继承颜色，主题切换时会消失"
+        # The inner markup must survive into the rendered element.
+        assert path[:20] in rendered, f"{name} 的内容没有进入渲染结果"
+
+    # And every name a template asks for must exist, or the page renders an empty element.
+    source = (ROOT / "src" / "aidaily" / "site.py").read_text(encoding="utf-8")
+    asked = set(re.findall(r'icon\("([a-z]+)"', source))
+    unknown = sorted(asked - set(ICONS))
+    assert not unknown, f"模板引用了不存在的图标：{unknown}"
