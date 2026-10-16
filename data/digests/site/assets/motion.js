@@ -610,7 +610,14 @@
       cssVar: '--rail-w',
       // The rail sits on the left, so dragging right makes it wider.
       direction: 1,
-      min: 190,
+      // **At least the calendar's own floor (13rem = 208px), plus the body's inset.**
+      //
+      // At 190 the calendar could not fit, so `.rail__body`'s `overflow-y: auto` forced
+      // `overflow-x` to compute as `auto` (per spec, a `visible` axis next to a scrolling one
+      // becomes `auto`) and a horizontal scrollbar appeared under the rail. Measured: a bar at
+      // 190px and 200px, none from 210px up. Hiding the bar instead would have clipped the
+      // calendar with no way to reach the rest of it.
+      min: 212,
       // The TOC is the constraint on the rail, and vice versa.
       otherVar: '--toc-w',
       fallback: 240,

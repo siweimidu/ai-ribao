@@ -1328,7 +1328,11 @@
    给日历一个最小宽度，窄了就在侧栏内部横向滚动（滚动条已隐藏，功能在）；
    格子本身用 min() 随可用宽度收缩，但数字永不小于可读字号。 */
 .cal { min-width: 12.25rem; }
-.rail__body { overflow-x: auto; overflow-y: auto; }
+/* No horizontal scrollbar. It was added so a calendar narrower than its minimum could be
+   scrolled to, but the rail's content now fits at its minimum width -- so the bar had nothing to
+   scroll and only appeared while the rail was being dragged, which reads as a defect.
+   `hidden` is wrong here: it would clip the calendar instead of showing it. */
+.rail__body { overflow-x: visible; overflow-y: auto; }
 .cal__grid,
 .ecal__grid {
   display: grid !important;
@@ -1577,7 +1581,7 @@ body, .rail, .toc, .item, .ecal__card {
 
 /* 窄侧栏：日历给最小宽度，放不下时在侧栏内横向滚动（滚动条仍隐藏，功能在）。 */
 .cal { min-width: 13rem; }
-.rail__body { overflow-x: auto; }
+.rail__body { overflow-x: visible; }
 
 /* --- 三、Q弹动效（motion-web handfeel §1 / §6）---------------------------------
    入场用欠阻尼弹簧的 CSS 近似（过冲 12%），悬停抬升与日历高亮用 JS 真弹簧。
@@ -1664,6 +1668,8 @@ body, .rail, .toc, .item, .ecal__card {
   overflow: hidden;
 }
 .rail__mark .brand-mark__svg { display: block; }
+/* 「A」比弧形图标视觉重心更高，稍微下移一点让它居中。 */
+.rail__mark svg { transform: translateY(0.5px); }
 .rail__brand { gap: calc(var(--unit) * 2.5); }
 
 /* 首页大标题区的标记（如果用到）同样处理 */
