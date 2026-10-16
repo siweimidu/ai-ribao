@@ -312,6 +312,19 @@ async def build_events(
             result.judged += 1
             if same and confidence >= confidence_threshold:
                 accepted.append(cluster)
+            elif merge_unambiguous(cluster):
+                # **The judge said no; the evidence says they are one story.**
+                #
+                # `merge_unambiguous` was only consulted when the judge returned *nothing*, so a
+                # cluster the judge rejected was discarded whole. Measured: four Muse Spark Open
+                # headlines sharing `{meta, muse, spark}` -- one launch, announced once -- stayed as
+                # four entries because the judge judged them separate events.
+                #
+                # The rule applied is the conservative one already in this file (three shared
+                # entities *and* similar headlines, or the minimum overlap plus 0.5). It cannot
+                # merge unrelated stories; it stops a single launch being split four ways.
+                accepted.append(cluster)
+                result.accepted_without_judge += 1
             else:
                 result.rejected += 1
         if failed:

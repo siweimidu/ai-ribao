@@ -13,6 +13,8 @@ of being merged.
 
 from __future__ import annotations
 
+import re
+
 import hashlib
 from collections import defaultdict
 from dataclasses import dataclass, field
@@ -20,6 +22,45 @@ from datetime import datetime, timedelta
 
 from .models import AmbiguousPair, DupGroup, NormalizedItem
 from .normalize import hamming, normalize_content, title_similarity, url_domain
+
+
+#: Title similarity that merges without consulting simhash.
+#:
+#: Above every real near-duplicate measured on a published issue (the closest was 0.976) and below
+#: the point where two different stories about one subject coincide. The publication window still
+#: applies. See the `title_prefix` candidate channel for why the simhash gate alone is not enough.
+TITLE_MERGE_WITHOUT_SIMHASH = 0.93
+
+#: Words that announce a story without changing it. Removing them from both headlines and finding
+#: the results equal is a stronger signal than a similarity ratio: `可灵 Kling 4.0 正式发布` and
+#: `可灵 Kling 4.0 发布` score 0.917 -- below the threshold above -- but are the same headline with
+#: one adverb added.
+#:
+#: Measured against the pairs that must *not* merge: `Meta 发布多模态开放权重模型 Muse Spark Open`
+#: and `Meta 发布开源权重模型 Muse Spark Open` (0.906) differ by a real technical qualifier, and
+#: stripping leaves them unequal, so this rule does not touch them.
+_TITLE_NOISE = re.compile(
+    r"(正式|快速|全新|重磅|最新|刚刚|同步|独家|首发|官宣|"
+    r"officially|now|just|finally|正式版)"
+)
+
+
+def titles_are_the_same_story(left: str, right: str) -> bool:
+    """True when two folded headlines differ only by announcement filler.
+
+    Deliberately narrow. A similarity ratio cannot separate "same headline plus an adverb" from
+    "same subject, different fact", and the second kind must not be merged.
+    """
+    if not left or not right:
+        return False
+    strip = lambda t: _TITLE_NOISE.sub("", t)  # noqa: E731
+    a, b = strip(left), strip(right)
+    if a == b:
+        return True
+    # The shorter is contained in the longer with at most a few characters left over, which covers
+    # a dropped outlet suffix (`... - 东方财富`) without letting a genuinely longer headline through.
+    short, long = sorted((a, b), key=len)
+    return len(short) >= 8 and short in long and len(long) - len(short) <= 6
 
 
 @dataclass
@@ -233,13 +274,71 @@ def cluster(items: list[NormalizedItem], cfg: DedupConfig | None = None) -> Dedu
                 if candidate.item_id >= item.item_id or candidate.item_id in considered:
                     continue
                 considered.add(candidate.item_id)
-                if hamming(item.simhash, candidate.simhash) > cfg.simhash_distance:
-                    continue
                 if not _within(item.published_at, candidate.published_at, cfg.publish_window_hours):
                     continue
                 sim = title_similarity(item.title_norm, candidate.title_norm)
+                # **Title similarity can merge on its own, without the simhash gate.**
+                #
+                # The gate exists to avoid comparing every pair, not to judge sameness -- and it
+                # measures the wrong thing: "…马斯克回应：…" vs "…马斯克快速回应：…" is 0.976 similar
+                # by title and 6 bits apart by simhash, because two changed CJK bigrams spread
+                # across several bits. Gated on simhash alone, a 97.6%-identical pair published
+                # twice in one issue was never even compared.
+                if sim >= TITLE_MERGE_WITHOUT_SIMHASH:
+                    link(item.item_id, candidate.item_id, "title_very_similar")
+                    continue
+                if hamming(item.simhash, candidate.simhash) > cfg.simhash_distance:
+                    continue
                 if sim >= cfg.title_similarity_merge:
                     link(item.item_id, candidate.item_id, "simhash+title")
+
+    # --- title-prefix candidates -------------------------------------------------
+    # **An independent candidate channel, because multi-index hashing under-generates.**
+    #
+    # Measured on a pair published twice in one issue: titles 0.976 similar, simhash 6 bits apart
+    # with the differences spread across all four blocks -- so the pigeonhole scheme (which needs
+    # one exact block match at d=3) generated no pair at all and the two were never compared. A
+    # gate meant to bound the work was silently deciding the answer.
+    #
+    # Near-duplicate headlines share their opening characters, so a prefix bucket finds them
+    # without any hashing assumption. The comparison below is the same one the simhash path uses,
+    # so the decision is still made by title similarity.
+    prefix_buckets: dict[str, list[NormalizedItem]] = defaultdict(list)
+    for item in items:
+        if item.title_norm:
+            prefix_buckets[item.title_norm[:8]].append(item)
+    for rows in prefix_buckets.values():
+        if len(rows) < 2:
+            continue
+        for idx, left in enumerate(rows):
+            for right in rows[idx + 1:]:
+                if dsu.find(left.item_id) == dsu.find(right.item_id):
+                    continue
+                if not _within(left.published_at, right.published_at, cfg.publish_window_hours):
+                    continue
+                # **The title is not enough on its own.**
+                #
+                # Measured: two headlines differing only in `API 访问` / `API 调用` on different
+                # domains, whose bodies are about different things (one is a pricing table, the
+                # other is a rack power design). A title-only rule merged them, which deletes a
+                # real story -- the one outcome L2 must never produce, and the reason this case
+                # exists in the test suite at all.
+                #
+                # The simhash path never had this bug: a small simhash distance *is* evidence the
+                # bodies match. This channel removed that evidence while keeping the conclusion, so
+                # the body check is restored here rather than assumed.
+                body_close = (
+                    bool(left.simhash) and bool(right.simhash)
+                    and hamming(left.simhash, right.simhash) <= cfg.simhash_distance
+                ) or (left.content_sha256 and left.content_sha256 == right.content_sha256)
+                if not body_close:
+                    continue
+                if titles_are_the_same_story(left.title_norm, right.title_norm):
+                    link(left.item_id, right.item_id, "title_same_story")
+                    continue
+                sim = title_similarity(left.title_norm, right.title_norm)
+                if sim >= cfg.title_similarity_merge:
+                    link(left.item_id, right.item_id, "title_prefix")
 
     # --- ambiguous: similar titles, different domains, close in time -------------
     # Never merged. Recorded so a human can review the near-misses.
