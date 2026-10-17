@@ -11,16 +11,23 @@ dependencies = [
     "pydantic>=2.9",
     "PyYAML>=6.0",
     "tenacity>=9.0",
+    # **Core, not an extra.** `roundup.py` parses the HTML of upstream aggregators with
+    # BeautifulSoup, and `collect.py` imports it at module load, so anything that imports
+    # `aidaily.collect` needs bs4 present. While it lived only in the `fetchers` extra,
+    # `python -m aidaily gate` died with `ModuleNotFoundError: No module named 'bs4'` in any
+    # environment installed with plain `pip install -e .` -- which is exactly what the gate job
+    # did, so four consecutive scheduled runs failed before anyone saw a digest.
+    "beautifulsoup4>=4.12",
 ]
 
 [project.optional-dependencies]
-fetchers = ["beautifulsoup4>=4.12", "lxml>=5.0", "trafilatura>=2.1"]
+fetchers = ["lxml>=5.0", "trafilatura>=2.1"]
 llm = ["openai>=1.54"]
 # `dev` includes the parser dependencies on purpose: the offline fetcher tests exercise
 # the HTML parsers, so `pip install -e ".[dev]"` alone must be enough to run the suite.
 # Without this, CI installed no bs4 and the Reddit/GitHub-Trending parser tests failed
 # with ModuleNotFoundError -- a broken install, not a broken test.
-dev = ["pytest>=8.0", "pytest-cov>=5.0", "beautifulsoup4>=4.12", "lxml>=5.0"]
+dev = ["pytest>=8.0", "pytest-cov>=5.0", "lxml>=5.0"]
 
 [build-system]
 requires = ["hatchling"]

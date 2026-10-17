@@ -80,7 +80,21 @@ jobs:
         # body, a stable id, a parseable timestamp and plain text for nodes that cannot
         # render HTML. The first version sent a list of URLs as `<description>` while the
         # JSON feed carried the facts, so this asserts the two agree.
-        run: python scripts/test_feeds.py
+        #
+        # **Rebuilt from source first, and that is the point.** These files are committed
+        # artifacts that the daily workflow rewrites asynchronously: `write_rss` writes
+        # `feed/zh.xml`, then `__main__` writes `feed/zh.json`. A CI run that checks out a
+        # commit created between those two writes inspects a state no single publish ever
+        # produced -- measured as `仅 RSS 37，仅 JSON 37` on both Python versions, for content
+        # the commit had not touched. Regenerating both from one digest asserts that the
+        # *generator* agrees with itself, which is what can actually regress, instead of
+        # asserting that git history happened to be quiescent at checkout time.
+        run: |
+          set -e
+          latest=$(ls -1 data/digests/*.json | grep -v '/site/' | sort | tail -1)
+          echo "rebuilding feeds from $latest"
+          python scripts/rerender_site.py "$latest"
+          python scripts/test_feeds.py
 
   guards:
     runs-on: ubuntu-latest

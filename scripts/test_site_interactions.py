@@ -53,9 +53,16 @@ async def main() -> int:
         rail_items = await page.evaluate(
             "[...document.querySelectorAll('.rail__item')].map(e=>e.textContent.trim().replace(/\\s+/g,' '))"
         )
-        for want in ("搜索往期内容", "首页", "Tibo 重置监控", "微信公众号",
-                     "订阅 RSS", "主题", "下载 markdown"):
+        # The expected labels are read from the site as it is, not from memory. Two of these
+        # used to be wrong in the guard rather than in the page: 微信公众号 was removed on
+        # request (so the guard demanded a link that must not exist), and the download label
+        # is "下载 Markdown" with a capital M. Both failed every run while the site was right,
+        # which trains people to ignore the guard.
+        for want in ("搜索往期内容", "首页", "Tibo 重置监控",
+                     "订阅 RSS", "主题", "下载 Markdown"):
             check(f"侧栏有「{want}」", any(want in t for t in rail_items), str(rail_items)[:80])
+        check("侧栏不再有「微信公众号」",
+              not any("微信公众号" in t for t in rail_items), str(rail_items)[:80])
         check("右侧目录可见", await page.evaluate(
             "(() => { const t = document.querySelector('.toc'); return t && getComputedStyle(t).display !== 'none'; })()"
         ))
@@ -84,8 +91,16 @@ async def main() -> int:
         print("主题")
         await page.click(".rail__fold:has([data-theme-summary]) summary")
         await page.wait_for_timeout(250)
+        # 自动/默认 were removed from the site on purpose, so `auto` is not a choice any
+        # more. This loop used to click it and waited 30 s for a button that does not exist --
+        # the guard failed on every run while the site was correct.
+        choices = await page.evaluate(
+            "[...document.querySelectorAll('[data-theme-choice]')].map(b=>b.dataset.themeChoice)"
+        )
+        check("提供了多个主题且不含 auto", len(choices) >= 2 and "auto" not in choices, str(choices))
+
         seen = {}
-        for choice in ("dark", "light", "auto"):
+        for choice in ("dark", "light"):
             await page.click(f'[data-theme-choice="{choice}"]')
             await page.wait_for_timeout(380)
             seen[choice] = {
@@ -93,21 +108,30 @@ async def main() -> int:
                 "attr": await page.evaluate("document.documentElement.dataset.theme || ''"),
                 "label": (await page.evaluate(
                     "document.querySelector('[data-theme-summary]').textContent")).strip(),
+                # The choice must reach storage, or a reader's pick is forgotten on the next
+                # page. Read the key the site actually writes (`THEME_KEY` in motion.js is
+                # 'aidaily-theme'); guessing 'ai-daily-theme' made this check fail on a site
+                # that was working.
+                "stored": await page.evaluate(
+                    "localStorage.getItem('aidaily-theme') || ''"
+                ),
             }
         check("暗色改变背景", seen["dark"]["bg"] != seen["light"]["bg"],
               f"dark={seen['dark']['bg']} light={seen['light']['bg']}")
         check("暗色设置 data-theme", seen["dark"]["attr"] == "dark")
-        check("自动清除 data-theme", seen["auto"]["attr"] == "")
+        check("亮色设置 data-theme", seen["light"]["attr"] == "light")
+        check("主题选择被记住", seen["dark"]["stored"] != "" and seen["light"]["stored"] != "",
+              f"dark={seen['dark']['stored']!r} light={seen['light']['stored']!r}")
         check("标签跟随选择", seen["dark"]["label"] == "暗色" and seen["light"]["label"] == "亮色",
               f"{seen['dark']['label']}/{seen['light']['label']}")
 
         await page.click('[data-theme-choice="dark"]')
         await page.wait_for_timeout(400)
         await page.screenshot(path=str(ROOT / "data" / "state" / "shots" / "neo-dark.png"))
-        # Restore "auto" for the remaining checks. The panel is still open (clicking a
-        # choice does not close it) — clicking the summary again would *close* it and the
+        # Restore the light theme for the remaining checks. The panel is still open (clicking
+        # a choice does not close it) — clicking the summary again would *close* it and the
         # next click would then time out on an invisible button.
-        await page.click('[data-theme-choice="auto"]')
+        await page.click('[data-theme-choice="light"]')
         await page.wait_for_timeout(300)
 
         # --- table of contents --------------------------------------------------

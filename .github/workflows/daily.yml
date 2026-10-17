@@ -68,7 +68,11 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-      - run: pip install -e .
+      # `[fetchers]` and not plain `-e .`: the gate imports `aidaily.collect`, which imports the
+      # HTML roundup splitter. With only the base install this step died on a missing `bs4`
+      # before it could decide anything, and because the failure branch only appended a
+      # `::error::` the run read as "gate failed" with no reason attached.
+      - run: pip install -e ".[fetchers]"
       - name: Decide whether today still needs publishing
         id: decide
         env:
@@ -86,7 +90,18 @@ jobs:
             # like "go", and a crashing gate looked like "go" too.
             code=${PIPESTATUS[0]}
           fi
-          date=$(python -c "import json;print(json.load(open('gate.json'))['date'])")
+          # A gate that crashed wrote nothing, so the `json.load` below would raise
+          # `JSONDecodeError` and bury the real cause under a traceback about JSON. Report the
+          # exit code and the (empty) output first, then the parse error explains itself.
+          if [ ! -s gate.json ]; then
+            echo "::error::gate produced no output (exit $code) -- see the traceback above"
+            exit "${code:-1}"
+          fi
+          date=$(python -c "import json;print(json.load(open('gate.json'))['date'])" 2>/dev/null)
+          if [ -z "$date" ]; then
+            echo "::error::gate output has no 'date' field: $(cat gate.json)"
+            exit 1
+          fi
           echo "date=$date" >> "$GITHUB_OUTPUT"
           case "$code" in
             0)  echo "run=true"  >> "$GITHUB_OUTPUT" ;;
