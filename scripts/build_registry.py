@@ -240,7 +240,11 @@ def load_local_sources() -> list[dict]:
             "found_in": row["found_in"],
             "provenance_count": len(row["found_in"]),
             "repositories": row.get("repositories") or [],
-            "params": None,
+            # `params` is how a local source declares that its JSON fields do not match the
+            # adapter's generic key lists -- AIBase nests under `data.list` and has no URL field,
+            # so without this its entries fetched fine and parsed to zero items. Hard-coding
+            # `None` here is why the config was written and then silently ignored.
+            "params": row.get("params"),
             "merged_parameter_rows": 1,
             "added_locally": True,
         })

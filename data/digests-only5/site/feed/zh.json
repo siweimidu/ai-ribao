@@ -1,0 +1,1491 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "AI 日报",
+  "home_page_url": "https://example.github.io/ai-daily",
+  "feed_url": "https://example.github.io/ai-daily/feed/zh.json",
+  "description": "每日 AI 资讯聚合，去重、交叉验证，区分事实与推断",
+  "language": "zh-CN",
+  "items": [
+    {
+      "id": "2026-10-16-e23ed734e9f3c9e",
+      "url": "https://openai.com/index/introducing-the-rosalind-academic-plan/",
+      "external_url": "https://openai.com/index/introducing-the-rosalind-academic-plan/",
+      "title": "OpenAI 推出 Rosalind 学术计划",
+      "summary": "OpenAI 推出 Rosalind 学术计划，为符合条件的美国大学实验室提供赞助访问权限，扩大生命科学模型 GPT-Rosalind 的学术应用。该模型可辅助研究人员分析科学文献和生物数据，但使用前仍需通过访问审批。 OpenAI 推出 Rosalind 学术计划，目前已开放申请，面向符合条件的美国大学实验室提供赞助访问权限。 获批实验室可免费获得最多 30 个 Business Standard 席位，期限最长 12 个月 ，包含 ChatGPT 和 Codex 。 GPT-Rosalind 可辅助研究人员综合科学文献与生物数据进行推理，其访问权限仍…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>OpenAI 推出 Rosalind 学术计划，为符合条件的美国大学实验室提供赞助访问权限，扩大生命科学模型 GPT-Rosalind 的学术应用。该模型可辅助研究人员分析科学文献和生物数据，但使用前仍需通过访问审批。\nOpenAI 推出 Rosalind 学术计划，目前已开放申请，面向符合条件的美国大学实验室提供赞助访问权限。\n获批实验室可免费获得最多 30 个 Business Standard 席位，期限最长 12 个月 ，包含 ChatGPT 和 Codex 。\nGPT-Rosalind 可辅助研究人员综合科学文献与生物数据进行推理，其访问权限仍需通过可信访问审批并完成激活。该计划受相</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://openai.com/index/introducing-the-rosalind-academic-plan/\">openai.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· OpenAI 推出 Rosalind 学术计划，为符合条件的美国大学实验室提供赞助访问权限，扩大生命科学模型 GPT-Rosalind 的学术应用。该模型可辅助研究人员分析科学文献和生物数据，但使用前仍需通过访问审批。\nOpenAI 推出 Rosalind 学术计划，目前已开放申请，面向符合条件的美国大学实验室提供赞助访问权限。\n获批实验室可免费获得最多 30 个 Business Standard 席位，期限最长 12 个月 ，包含 ChatGPT 和 Codex 。\nGPT-Rosalind 可辅助研究人员综合科学文献与生物数据进行推理，其访问权限仍需通过可信访问审批并完成激活。该计划受相\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· openai.com\nAI 日报",
+      "date_published": "2026-10-16T01:54:14+00:00",
+      "authors": [
+        {
+          "name": "openai.com"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e23ed734e9f3c9e",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://openai.com/index/introducing-the-rosalind-academic-plan/"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "OpenAI 推出 Rosalind 学术计划，为符合条件的美国大学实验室提供赞助访问权限，扩大生命科学模型 GPT-Rosalind 的学术应用。该模型可辅助研究人员分析科学文献和生物数据，但使用前仍需通过访问审批。\nOpenAI 推出 Rosalind 学术计划，目前已开放申请，面向符合条件的美国大学实验室提供赞助访问权限。\n获批实验室可免费获得最多 30 个 Business Standard 席位，期限最长 12 个月 ，包含 ChatGPT 和 Codex 。\nGPT-Rosalind 可辅助研究人员综合科学文献与生物数据进行推理，其访问权限仍需通过可信访问审批并完成激活。该计划受相"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-e629cf443f15f50",
+      "url": "https://www.anthropic.com/news/an-update-on-independent-evaluators",
+      "external_url": "https://www.anthropic.com/news/an-update-on-independent-evaluators",
+      "title": "Anthropic 向 METR 开放员工级别内部权限",
+      "summary": "Anthropic 已向非营利评估机构 METR 的研究员提供近似员工级别的内部访问权限，让他们独立评估模型和安全实践。 METR 可自行发布评估结果， Anthropic 无权否决，但可要求删去少数预先界定的敏感信息。 Anthropic 已向非营利 AI 评估机构 METR 的 6 名 研究员提供近似员工级别的内部访问权限，用于独立评估其模型、安全实践和风险管理。 这些研究员获得公司硬件、办公空间，以及与内部风险评估团队大致相当的工具和系统访问权限。 METR 可自行发布分析， Anthropic 无权否决，但可要求删去客户数据、律师与客户之间受保密…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Anthropic 已向非营利评估机构 METR 的研究员提供近似员工级别的内部访问权限，让他们独立评估模型和安全实践。 METR 可自行发布评估结果， Anthropic 无权否决，但可要求删去少数预先界定的敏感信息。\nAnthropic 已向非营利 AI 评估机构 METR 的 6 名 研究员提供近似员工级别的内部访问权限，用于独立评估其模型、安全实践和风险管理。\n这些研究员获得公司硬件、办公空间，以及与内部风险评估团队大致相当的工具和系统访问权限。\nMETR 可自行发布分析， Anthropic 无权否决，但可要求删去客户数据、律师与客户之间受保密特权保护的信息、模型架构信息等预先界定类</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.anthropic.com/news/an-update-on-independent-evaluators\">anthropic.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Anthropic 已向非营利评估机构 METR 的研究员提供近似员工级别的内部访问权限，让他们独立评估模型和安全实践。 METR 可自行发布评估结果， Anthropic 无权否决，但可要求删去少数预先界定的敏感信息。\nAnthropic 已向非营利 AI 评估机构 METR 的 6 名 研究员提供近似员工级别的内部访问权限，用于独立评估其模型、安全实践和风险管理。\n这些研究员获得公司硬件、办公空间，以及与内部风险评估团队大致相当的工具和系统访问权限。\nMETR 可自行发布分析， Anthropic 无权否决，但可要求删去客户数据、律师与客户之间受保密特权保护的信息、模型架构信息等预先界定类\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· anthropic.com\nAI 日报",
+      "date_published": "2026-10-16T01:54:14+00:00",
+      "authors": [
+        {
+          "name": "anthropic.com"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e629cf443f15f50",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://www.anthropic.com/news/an-update-on-independent-evaluators"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Anthropic 已向非营利评估机构 METR 的研究员提供近似员工级别的内部访问权限，让他们独立评估模型和安全实践。 METR 可自行发布评估结果， Anthropic 无权否决，但可要求删去少数预先界定的敏感信息。\nAnthropic 已向非营利 AI 评估机构 METR 的 6 名 研究员提供近似员工级别的内部访问权限，用于独立评估其模型、安全实践和风险管理。\n这些研究员获得公司硬件、办公空间，以及与内部风险评估团队大致相当的工具和系统访问权限。\nMETR 可自行发布分析， Anthropic 无权否决，但可要求删去客户数据、律师与客户之间受保密特权保护的信息、模型架构信息等预先界定类"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-e80024004445899",
+      "url": "https://claude.com/resources/articles/code-review-is-now-generally-available",
+      "external_url": "https://claude.com/resources/articles/code-review-is-now-generally-available",
+      "title": "Claude Code Review 正式开放",
+      "summary": "Anthropic 的 Claude Code Review 已结束研究预览，正式向 Team 和 Enterprise 订阅方案开放。这项服务会检查 GitHub 上提交的代码变更，查找逻辑错误和安全漏洞。 Anthropic 的 Claude Code Review 已结束研究预览，正式向 Claude Team 和 Enterprise 订阅方案开放，用于审查 GitHub 代码库中的拉取请求。 管理员可为各代码库选择 Quick 、 Standard 或 Deep 三档审查级别，默认采用兼顾深度、速度与成本的 Standard 。 Anthrop…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Anthropic 的 Claude Code Review 已结束研究预览，正式向 Team 和 Enterprise 订阅方案开放。这项服务会检查 GitHub 上提交的代码变更，查找逻辑错误和安全漏洞。\nAnthropic 的 Claude Code Review 已结束研究预览，正式向 Claude Team 和 Enterprise 订阅方案开放，用于审查 GitHub 代码库中的拉取请求。\n管理员可为各代码库选择 Quick 、 Standard 或 Deep 三档审查级别，默认采用兼顾深度、速度与成本的 Standard 。 Anthropic 称，多数审查的耗时已从预览期间的约</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://claude.com/resources/articles/code-review-is-now-generally-available\">claude.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Anthropic 的 Claude Code Review 已结束研究预览，正式向 Team 和 Enterprise 订阅方案开放。这项服务会检查 GitHub 上提交的代码变更，查找逻辑错误和安全漏洞。\nAnthropic 的 Claude Code Review 已结束研究预览，正式向 Claude Team 和 Enterprise 订阅方案开放，用于审查 GitHub 代码库中的拉取请求。\n管理员可为各代码库选择 Quick 、 Standard 或 Deep 三档审查级别，默认采用兼顾深度、速度与成本的 Standard 。 Anthropic 称，多数审查的耗时已从预览期间的约\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· claude.com\nAI 日报",
+      "date_published": "2026-10-16T01:54:14+00:00",
+      "authors": [
+        {
+          "name": "claude.com"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e80024004445899",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://claude.com/resources/articles/code-review-is-now-generally-available"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Anthropic 的 Claude Code Review 已结束研究预览，正式向 Team 和 Enterprise 订阅方案开放。这项服务会检查 GitHub 上提交的代码变更，查找逻辑错误和安全漏洞。\nAnthropic 的 Claude Code Review 已结束研究预览，正式向 Claude Team 和 Enterprise 订阅方案开放，用于审查 GitHub 代码库中的拉取请求。\n管理员可为各代码库选择 Quick 、 Standard 或 Deep 三档审查级别，默认采用兼顾深度、速度与成本的 Standard 。 Anthropic 称，多数审查的耗时已从预览期间的约"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-efdc8fdda8ec478",
+      "url": "https://microsoft.ai/news/frontier-pre-training-at-microsoft-ai/",
+      "external_url": "https://microsoft.ai/news/frontier-pre-training-at-microsoft-ai/",
+      "title": "微软宣布 MAI-Base-2 完成预训练，2.8T总参数",
+      "summary": "微软 AI 宣布已完成自研基础模型 MAI-Base-2 的预训练，总参数量达 2.8 万亿 ，并公布了内部评测和训练效率数据。目前该模型仍在进行后训练，相关结果将于近期公布。 微软 AI 已完成 MAI-Base-2 的预训练，该自研 MoE 基础模型拥有 2.8 万亿 总参数、 800 亿 激活参数，并原生采用视觉与语言结合的 VLM 架构。 微软称，该模型在代码、问答、 STEM 和数学留出集评测中优于所有参与测试的开放权重模型。 根据微软的缩放定律拟合估算，其训练配方达到 DeepSeek-V4-Pro-Base 同等评测分数时， FLOPs 效…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>微软 AI 宣布已完成自研基础模型 MAI-Base-2 的预训练，总参数量达 2.8 万亿 ，并公布了内部评测和训练效率数据。目前该模型仍在进行后训练，相关结果将于近期公布。\n微软 AI 已完成 MAI-Base-2 的预训练，该自研 MoE 基础模型拥有 2.8 万亿 总参数、 800 亿 激活参数，并原生采用视觉与语言结合的 VLM 架构。\n微软称，该模型在代码、问答、 STEM 和数学留出集评测中优于所有参与测试的开放权重模型。\n根据微软的缩放定律拟合估算，其训练配方达到 DeepSeek-V4-Pro-Base 同等评测分数时， FLOPs 效率为后者的 4.2—12.3 倍 。\n目</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://microsoft.ai/news/frontier-pre-training-at-microsoft-ai/\">microsoft.ai</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 微软 AI 宣布已完成自研基础模型 MAI-Base-2 的预训练，总参数量达 2.8 万亿 ，并公布了内部评测和训练效率数据。目前该模型仍在进行后训练，相关结果将于近期公布。\n微软 AI 已完成 MAI-Base-2 的预训练，该自研 MoE 基础模型拥有 2.8 万亿 总参数、 800 亿 激活参数，并原生采用视觉与语言结合的 VLM 架构。\n微软称，该模型在代码、问答、 STEM 和数学留出集评测中优于所有参与测试的开放权重模型。\n根据微软的缩放定律拟合估算，其训练配方达到 DeepSeek-V4-Pro-Base 同等评测分数时， FLOPs 效率为后者的 4.2—12.3 倍 。\n目\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· microsoft.ai\nAI 日报",
+      "date_published": "2026-10-16T01:54:14+00:00",
+      "authors": [
+        {
+          "name": "microsoft.ai"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "efdc8fdda8ec478",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://microsoft.ai/news/frontier-pre-training-at-microsoft-ai/"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "微软 AI 宣布已完成自研基础模型 MAI-Base-2 的预训练，总参数量达 2.8 万亿 ，并公布了内部评测和训练效率数据。目前该模型仍在进行后训练，相关结果将于近期公布。\n微软 AI 已完成 MAI-Base-2 的预训练，该自研 MoE 基础模型拥有 2.8 万亿 总参数、 800 亿 激活参数，并原生采用视觉与语言结合的 VLM 架构。\n微软称，该模型在代码、问答、 STEM 和数学留出集评测中优于所有参与测试的开放权重模型。\n根据微软的缩放定律拟合估算，其训练配方达到 DeepSeek-V4-Pro-Base 同等评测分数时， FLOPs 效率为后者的 4.2—12.3 倍 。\n目"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-ebb078d82447ed6",
+      "url": "https://aihot.news/items/nb9mm730e9jfk7h2zn18hiuj2",
+      "external_url": "https://aihot.news/items/nb9mm730e9jfk7h2zn18hiuj2",
+      "title": "Claude Code 新增 idle compaction 空闲自动压缩功能",
+      "summary": "Claude Code 上线 idle compaction：prompt cache 保留 1 小时，200K+ token 会话闲置约 54 分钟后自动压缩，返回时得到温热摘要而非冷缓存。可通过 CLAUDE_CODE_IDLE_COMPACT_MIN_TOKENS 设阈值，用 \"idleCompaction\": false 关闭。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Claude Code 上线 idle compaction：prompt cache 保留 1 小时，200K+ token 会话闲置约 54 分钟后自动压缩，返回时得到温热摘要而非冷缓存。可通过 CLAUDE_CODE_IDLE_COMPACT_MIN_TOKENS 设阈值，用 &quot;idleCompaction&quot;: false 关闭。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/nb9mm730e9jfk7h2zn18hiuj2\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Claude Code 上线 idle compaction：prompt cache 保留 1 小时，200K+ token 会话闲置约 54 分钟后自动压缩，返回时得到温热摘要而非冷缓存。可通过 CLAUDE_CODE_IDLE_COMPACT_MIN_TOKENS 设阈值，用 \"idleCompaction\": false 关闭。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-16T15:41:17+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ebb078d82447ed6",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/nb9mm730e9jfk7h2zn18hiuj2"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Claude Code 上线 idle compaction：prompt cache 保留 1 小时，200K+ token 会话闲置约 54 分钟后自动压缩，返回时得到温热摘要而非冷缓存。可通过 CLAUDE_CODE_IDLE_COMPACT_MIN_TOKENS 设阈值，用 \"idleCompaction\": false 关闭。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-ebbebac73dff8ed",
+      "url": "https://x.com/thsottiaux/status/2110750421367287996",
+      "external_url": "https://x.com/thsottiaux/status/2110750421367287996",
+      "title": "Codex 28 天活动：重置额度，增加算力投入",
+      "summary": "OpenAI Codex 负责人 Tibo 在 28 天 活动的第 10 天 ，宣布完整重置了一次用量额度；在第 11 天 ，他宣布其团队通过一系列改动和更多算力，大幅减少“所选模型已达容量上限”的提示，提示出现时也会自动继续，不再卡住。 OpenAI Codex 负责人 Tibo 此前宣布，未来 28 天 里，团队每天要么上线一项对多数 Codex 和 Work 用户有明显价值的改进，要么完整重置一次用量额度。 第 10 天 ，他宣布重置用量额度。 第 11 天 ，他表示团队已上线一系列改动并投入更多算力，大幅减少“所选模型已达容量上限，请换用其他模型…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>OpenAI Codex 负责人 Tibo 在 28 天 活动的第 10 天 ，宣布完整重置了一次用量额度；在第 11 天 ，他宣布其团队通过一系列改动和更多算力，大幅减少“所选模型已达容量上限”的提示，提示出现时也会自动继续，不再卡住。\nOpenAI Codex 负责人 Tibo 此前宣布，未来 28 天 里，团队每天要么上线一项对多数 Codex 和 Work 用户有明显价值的改进，要么完整重置一次用量额度。\n第 10 天 ，他宣布重置用量额度。\n第 11 天 ，他表示团队已上线一系列改动并投入更多算力，大幅减少“所选模型已达容量上限，请换用其他模型”的提示；即使提示出现，任务最终也应自动</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://x.com/thsottiaux/status/2110750421367287996\">x.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· OpenAI Codex 负责人 Tibo 在 28 天 活动的第 10 天 ，宣布完整重置了一次用量额度；在第 11 天 ，他宣布其团队通过一系列改动和更多算力，大幅减少“所选模型已达容量上限”的提示，提示出现时也会自动继续，不再卡住。\nOpenAI Codex 负责人 Tibo 此前宣布，未来 28 天 里，团队每天要么上线一项对多数 Codex 和 Work 用户有明显价值的改进，要么完整重置一次用量额度。\n第 10 天 ，他宣布重置用量额度。\n第 11 天 ，他表示团队已上线一系列改动并投入更多算力，大幅减少“所选模型已达容量上限，请换用其他模型”的提示；即使提示出现，任务最终也应自动\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· x.com\nAI 日报",
+      "date_published": "2026-10-16T01:54:14+00:00",
+      "authors": [
+        {
+          "name": "x.com"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ebbebac73dff8ed",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://x.com/thsottiaux/status/2110750421367287996"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "OpenAI Codex 负责人 Tibo 在 28 天 活动的第 10 天 ，宣布完整重置了一次用量额度；在第 11 天 ，他宣布其团队通过一系列改动和更多算力，大幅减少“所选模型已达容量上限”的提示，提示出现时也会自动继续，不再卡住。\nOpenAI Codex 负责人 Tibo 此前宣布，未来 28 天 里，团队每天要么上线一项对多数 Codex 和 Work 用户有明显价值的改进，要么完整重置一次用量额度。\n第 10 天 ，他宣布重置用量额度。\n第 11 天 ，他表示团队已上线一系列改动并投入更多算力，大幅减少“所选模型已达容量上限，请换用其他模型”的提示；即使提示出现，任务最终也应自动"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-e99c2ec5433e3c3",
+      "url": "https://aihot.news/items/q6qe08qrkw0omnzmtk48loi24",
+      "external_url": "https://aihot.news/items/q6qe08qrkw0omnzmtk48loi24",
+      "title": "Perplexity 将 Reverse-Engineer-Anything 技能集成进 Computer，提供最多 10000 credits",
+      "summary": "Perplexity CEO Aravind Srinivas 宣布已将 @morluto 的 Reverse-Engineer-Anything 技能集成进 Computer，该技能可在无源码的情况下分析应用工作原理并构建可运行版本。用户可用最多 10000 credits 的启动额度逆向工程任意应用，通过 /reverse-engineer 执行的任务 10 月 31 日前免费。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Perplexity CEO Aravind Srinivas 宣布已将 @morluto 的 Reverse-Engineer-Anything 技能集成进 Computer，该技能可在无源码的情况下分析应用工作原理并构建可运行版本。用户可用最多 10000 credits 的启动额度逆向工程任意应用，通过 /reverse-engineer 执行的任务 10 月 31 日前免费。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/q6qe08qrkw0omnzmtk48loi24\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Perplexity CEO Aravind Srinivas 宣布已将 @morluto 的 Reverse-Engineer-Anything 技能集成进 Computer，该技能可在无源码的情况下分析应用工作原理并构建可运行版本。用户可用最多 10000 credits 的启动额度逆向工程任意应用，通过 /reverse-engineer 执行的任务 10 月 31 日前免费。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-16T15:59:02+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e99c2ec5433e3c3",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/q6qe08qrkw0omnzmtk48loi24"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Perplexity CEO Aravind Srinivas 宣布已将 @morluto 的 Reverse-Engineer-Anything 技能集成进 Computer，该技能可在无源码的情况下分析应用工作原理并构建可运行版本。用户可用最多 10000 credits 的启动额度逆向工程任意应用，通过 /reverse-engineer 执行的任务 10 月 31 日前免费。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-ef82f1fa725b615",
+      "url": "https://aihot.news/items/i77xoqh9wepc71kb32ht498vz",
+      "external_url": "https://aihot.news/items/i77xoqh9wepc71kb32ht498vz",
+      "title": "Meta 新商业条款被指或可免费爬取出版商内容训练 AI",
+      "summary": "据 Nieman Lab 报道，Meta 将于 10 月 30 日生效的新商业条款授权其用爬虫抓取与商业账号相关联的网站内容，用于开发和训练 AI 产品。法律专家认为这可能让 Meta 绕过 robots.txt 等屏蔽指令和授权协议；Meta 发言人否认爬虫使用方式有变化，称内容方仍可用 robots.txt 表达偏好。不同意新条款的企业须停止将 Meta 产品用于商业用途。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>据 Nieman Lab 报道，Meta 将于 10 月 30 日生效的新商业条款授权其用爬虫抓取与商业账号相关联的网站内容，用于开发和训练 AI 产品。法律专家认为这可能让 Meta 绕过 robots.txt 等屏蔽指令和授权协议；Meta 发言人否认爬虫使用方式有变化，称内容方仍可用 robots.txt 表达偏好。不同意新条款的企业须停止将 Meta 产品用于商业用途。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/i77xoqh9wepc71kb32ht498vz\">aihot.news</a></li><li><a href=\"https://aihot.news/items/wu9utz147vbhybz867b916z6y\">aihot.news</a></li><li><a href=\"https://aihot.news/items/x4bazql0xz9wu49lq7owii3zq\">aihot.news</a></li><li><a href=\"https://aihot.news/items/y3kwpw0akme33xx3t1njrk6m2\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 据 Nieman Lab 报道，Meta 将于 10 月 30 日生效的新商业条款授权其用爬虫抓取与商业账号相关联的网站内容，用于开发和训练 AI 产品。法律专家认为这可能让 Meta 绕过 robots.txt 等屏蔽指令和授权协议；Meta 发言人否认爬虫使用方式有变化，称内容方仍可用 robots.txt 表达偏好。不同意新条款的企业须停止将 Meta 产品用于商业用途。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\n· aihot.news\n· aihot.news\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-16T14:02:40+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ef82f1fa725b615",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/i77xoqh9wepc71kb32ht498vz",
+          "https://aihot.news/items/wu9utz147vbhybz867b916z6y",
+          "https://aihot.news/items/x4bazql0xz9wu49lq7owii3zq",
+          "https://aihot.news/items/y3kwpw0akme33xx3t1njrk6m2"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 0.9,
+        "facts": [
+          "据 Nieman Lab 报道，Meta 将于 10 月 30 日生效的新商业条款授权其用爬虫抓取与商业账号相关联的网站内容，用于开发和训练 AI 产品。法律专家认为这可能让 Meta 绕过 robots.txt 等屏蔽指令和授权协议；Meta 发言人否认爬虫使用方式有变化，称内容方仍可用 robots.txt 表达偏好。不同意新条款的企业须停止将 Meta 产品用于商业用途。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-e1a3177f7582817",
+      "url": "https://aihot.news/items/j8stsy5vqxh5ob1amu2fpx9o3",
+      "external_url": "https://aihot.news/items/j8stsy5vqxh5ob1amu2fpx9o3",
+      "title": "Perplexity 开源 agent 代码执行沙箱平台 SPACE，基于 Firecracker microVM 隔离运行不可信代码",
+      "summary": "Perplexity 团队（@denisyarats）宣布开源内部 agent 安全运行时沙箱平台 SPACE，GitHub 地址为 Computer 产品及 RL 训练与评测负载。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Perplexity 团队（@denisyarats）宣布开源内部 agent 安全运行时沙箱平台 SPACE，GitHub 地址为   Computer 产品及 RL 训练与评测负载。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/j8stsy5vqxh5ob1amu2fpx9o3\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Perplexity 团队（@denisyarats）宣布开源内部 agent 安全运行时沙箱平台 SPACE，GitHub 地址为   Computer 产品及 RL 训练与评测负载。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-16T13:31:08+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e1a3177f7582817",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/j8stsy5vqxh5ob1amu2fpx9o3"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Perplexity 团队（@denisyarats）宣布开源内部 agent 安全运行时沙箱平台 SPACE，GitHub 地址为   Computer 产品及 RL 训练与评测负载。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-e6b64f2a21bcc10",
+      "url": "https://x.com/antigravity/status/2110866531932316011",
+      "external_url": "https://x.com/antigravity/status/2110866531932316011",
+      "title": "Gemini 4 Argon 向正价付费 Google AI Pro 用户开放",
+      "summary": "Google 的 AI 编程工具 Antigravity 正向付费 Pro 用户推出 Gemini 4 Argon ，并提供独立的每周额度，不占用 Gemini 3.8 Flash 的额度。此次开放不包括处于优惠试用的 Pro 用户。 Google 正在 AI 编程工具 Antigravity 中向付费 Google AI Pro 订阅用户逐步推出 Gemini 4 Argon 。 Pro 用户新增独立的 Argon 每周配额，与现有 Gemini 3.8 Flash 额度分开计算。官方文档明确， Pro 优惠试用用户、免费用户和 Google AI P…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Google 的 AI 编程工具 Antigravity 正向付费 Pro 用户推出 Gemini 4 Argon ，并提供独立的每周额度，不占用 Gemini 3.8 Flash 的额度。此次开放不包括处于优惠试用的 Pro 用户。\nGoogle 正在 AI 编程工具 Antigravity 中向付费 Google AI Pro 订阅用户逐步推出 Gemini 4 Argon 。 Pro 用户新增独立的 Argon 每周配额，与现有 Gemini 3.8 Flash 额度分开计算。官方文档明确， Pro 优惠试用用户、免费用户和 Google AI Plus 用户不在开放范围内。 Argon</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://x.com/antigravity/status/2110866531932316011\">x.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Google 的 AI 编程工具 Antigravity 正向付费 Pro 用户推出 Gemini 4 Argon ，并提供独立的每周额度，不占用 Gemini 3.8 Flash 的额度。此次开放不包括处于优惠试用的 Pro 用户。\nGoogle 正在 AI 编程工具 Antigravity 中向付费 Google AI Pro 订阅用户逐步推出 Gemini 4 Argon 。 Pro 用户新增独立的 Argon 每周配额，与现有 Gemini 3.8 Flash 额度分开计算。官方文档明确， Pro 优惠试用用户、免费用户和 Google AI Plus 用户不在开放范围内。 Argon\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· x.com\nAI 日报",
+      "date_published": "2026-10-16T01:54:14+00:00",
+      "authors": [
+        {
+          "name": "x.com"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e6b64f2a21bcc10",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://x.com/antigravity/status/2110866531932316011"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Google 的 AI 编程工具 Antigravity 正向付费 Pro 用户推出 Gemini 4 Argon ，并提供独立的每周额度，不占用 Gemini 3.8 Flash 的额度。此次开放不包括处于优惠试用的 Pro 用户。\nGoogle 正在 AI 编程工具 Antigravity 中向付费 Google AI Pro 订阅用户逐步推出 Gemini 4 Argon 。 Pro 用户新增独立的 Argon 每周配额，与现有 Gemini 3.8 Flash 额度分开计算。官方文档明确， Pro 优惠试用用户、免费用户和 Google AI Plus 用户不在开放范围内。 Argon"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-ebb46de35cadfb5",
+      "url": "https://mistral.ai/news/timestral",
+      "external_url": "https://mistral.ai/news/timestral",
+      "title": "Mistral 发布时间序列模型 Timestral",
+      "summary": "Mistral AI 发布时间序列基础模型系列 Timestral ，提供 4 种 规模，并开放模型权重和源代码。它能根据历史数据预测未来走势，无需针对新数据重新训练，也能联合分析多个相关变量。 Mistral AI 发布时间序列基础模型系列 Timestral ，开放模型权重和源代码，提供 500 万、2800 万、1.23 亿和 2.09 亿 参数版本。 该系列支持零样本预测，即无需针对新数据重新训练，就能根据历史数据进行预测，并支持联合预测多个相关变量、利用历史或已知的未来辅助信息。模型最多接收 32768 个历史时间步，每个时间步输出 21 个分…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Mistral AI 发布时间序列基础模型系列 Timestral ，提供 4 种 规模，并开放模型权重和源代码。它能根据历史数据预测未来走势，无需针对新数据重新训练，也能联合分析多个相关变量。\nMistral AI 发布时间序列基础模型系列 Timestral ，开放模型权重和源代码，提供 500 万、2800 万、1.23 亿和 2.09 亿 参数版本。\n该系列支持零样本预测，即无需针对新数据重新训练，就能根据历史数据进行预测，并支持联合预测多个相关变量、利用历史或已知的未来辅助信息。模型最多接收 32768 个历史时间步，每个时间步输出 21 个分位数，以呈现预测的不确定性，可在 CPU</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://mistral.ai/news/timestral\">mistral.ai</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Mistral AI 发布时间序列基础模型系列 Timestral ，提供 4 种 规模，并开放模型权重和源代码。它能根据历史数据预测未来走势，无需针对新数据重新训练，也能联合分析多个相关变量。\nMistral AI 发布时间序列基础模型系列 Timestral ，开放模型权重和源代码，提供 500 万、2800 万、1.23 亿和 2.09 亿 参数版本。\n该系列支持零样本预测，即无需针对新数据重新训练，就能根据历史数据进行预测，并支持联合预测多个相关变量、利用历史或已知的未来辅助信息。模型最多接收 32768 个历史时间步，每个时间步输出 21 个分位数，以呈现预测的不确定性，可在 CPU\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· mistral.ai\nAI 日报",
+      "date_published": "2026-10-16T01:54:14+00:00",
+      "authors": [
+        {
+          "name": "mistral.ai"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ebb46de35cadfb5",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://mistral.ai/news/timestral"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Mistral AI 发布时间序列基础模型系列 Timestral ，提供 4 种 规模，并开放模型权重和源代码。它能根据历史数据预测未来走势，无需针对新数据重新训练，也能联合分析多个相关变量。\nMistral AI 发布时间序列基础模型系列 Timestral ，开放模型权重和源代码，提供 500 万、2800 万、1.23 亿和 2.09 亿 参数版本。\n该系列支持零样本预测，即无需针对新数据重新训练，就能根据历史数据进行预测，并支持联合预测多个相关变量、利用历史或已知的未来辅助信息。模型最多接收 32768 个历史时间步，每个时间步输出 21 个分位数，以呈现预测的不确定性，可在 CPU"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-eb748fb8fa44c62",
+      "url": "https://gemma.ai/deployment/",
+      "external_url": "https://gemma.ai/deployment/",
+      "title": "Google 推出 Gemma 全新官方文档中心",
+      "summary": "Google 推出 Gemma 全新官方文档中心 gemma.ai 。开发者可以在这里查阅模型部署与训练指南，并直接体验端侧演示。 Google 推出 Gemma 全新官方文档中心 gemma.ai ，供开发者查阅指南、体验演示和开发应用。 新站提供全局模型选择器，可按所选模型展示定制代码片段，并支持将任意页面转为 Markdown ，方便 Agent 使用。站内还提供直接在浏览器中运行的端侧演示。 相关链接：",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Google 推出 Gemma 全新官方文档中心 gemma.ai 。开发者可以在这里查阅模型部署与训练指南，并直接体验端侧演示。\nGoogle 推出 Gemma 全新官方文档中心 gemma.ai ，供开发者查阅指南、体验演示和开发应用。\n新站提供全局模型选择器，可按所选模型展示定制代码片段，并支持将任意页面转为 Markdown ，方便 Agent 使用。站内还提供直接在浏览器中运行的端侧演示。\n相关链接：</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://gemma.ai/deployment/\">gemma.ai</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Google 推出 Gemma 全新官方文档中心 gemma.ai 。开发者可以在这里查阅模型部署与训练指南，并直接体验端侧演示。\nGoogle 推出 Gemma 全新官方文档中心 gemma.ai ，供开发者查阅指南、体验演示和开发应用。\n新站提供全局模型选择器，可按所选模型展示定制代码片段，并支持将任意页面转为 Markdown ，方便 Agent 使用。站内还提供直接在浏览器中运行的端侧演示。\n相关链接：\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· gemma.ai\nAI 日报",
+      "date_published": "2026-10-16T01:54:14+00:00",
+      "authors": [
+        {
+          "name": "gemma.ai"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "eb748fb8fa44c62",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://gemma.ai/deployment/"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Google 推出 Gemma 全新官方文档中心 gemma.ai 。开发者可以在这里查阅模型部署与训练指南，并直接体验端侧演示。\nGoogle 推出 Gemma 全新官方文档中心 gemma.ai ，供开发者查阅指南、体验演示和开发应用。\n新站提供全局模型选择器，可按所选模型展示定制代码片段，并支持将任意页面转为 Markdown ，方便 Agent 使用。站内还提供直接在浏览器中运行的端侧演示。\n相关链接："
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-e12b64b569335eb",
+      "url": "https://research.meta.ai/blog/muse-spark-open",
+      "external_url": "https://research.meta.ai/blog/muse-spark-open",
+      "title": "Meta 发布多模态开放权重模型 Muse Spark Open",
+      "summary": "Meta 开放了 Muse Spark Open 的模型权重，该模型总参数 816B ，激活参数约 42B ，面向编程和 Agent 任务，支持文字、图片、音频和视频输入。开发者可以自行部署，也能通过 OpenRouter 等多家平台的 API 使用，商用需遵守附带限制的许可证。 Meta 发布开放权重模型 Muse Spark Open ，面向编程和 Agent 任务，并称其为迄今能力最强的美国开放权重模型。该模型总参数量为 8160 亿 ，每个 token 激活约 420 亿 参数，支持最高 100 万 token 上下文，可接收文字、图片、视频和音…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Meta 开放了 Muse Spark Open 的模型权重，该模型总参数 816B ，激活参数约 42B ，面向编程和 Agent 任务，支持文字、图片、音频和视频输入。开发者可以自行部署，也能通过 OpenRouter 等多家平台的 API 使用，商用需遵守附带限制的许可证。\nMeta 发布开放权重模型 Muse Spark Open ，面向编程和 Agent 任务，并称其为迄今能力最强的美国开放权重模型。该模型总参数量为 8160 亿 ，每个 token 激活约 420 亿 参数，支持最高 100 万 token 上下文，可接收文字、图片、视频和音频输入，输出文字。\n权重已通过 Hugg</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://research.meta.ai/blog/muse-spark-open\">research.meta.ai</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Meta 开放了 Muse Spark Open 的模型权重，该模型总参数 816B ，激活参数约 42B ，面向编程和 Agent 任务，支持文字、图片、音频和视频输入。开发者可以自行部署，也能通过 OpenRouter 等多家平台的 API 使用，商用需遵守附带限制的许可证。\nMeta 发布开放权重模型 Muse Spark Open ，面向编程和 Agent 任务，并称其为迄今能力最强的美国开放权重模型。该模型总参数量为 8160 亿 ，每个 token 激活约 420 亿 参数，支持最高 100 万 token 上下文，可接收文字、图片、视频和音频输入，输出文字。\n权重已通过 Hugg\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· research.meta.ai\nAI 日报",
+      "date_published": "2026-10-16T01:54:14+00:00",
+      "authors": [
+        {
+          "name": "research.meta.ai"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e12b64b569335eb",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://research.meta.ai/blog/muse-spark-open"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Meta 开放了 Muse Spark Open 的模型权重，该模型总参数 816B ，激活参数约 42B ，面向编程和 Agent 任务，支持文字、图片、音频和视频输入。开发者可以自行部署，也能通过 OpenRouter 等多家平台的 API 使用，商用需遵守附带限制的许可证。\nMeta 发布开放权重模型 Muse Spark Open ，面向编程和 Agent 任务，并称其为迄今能力最强的美国开放权重模型。该模型总参数量为 8160 亿 ，每个 token 激活约 420 亿 参数，支持最高 100 万 token 上下文，可接收文字、图片、视频和音频输入，输出文字。\n权重已通过 Hugg"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-ed461e49799c6e3",
+      "url": "https://github.com/stepfun-ai/Step-5-Preview",
+      "external_url": "https://github.com/stepfun-ai/Step-5-Preview",
+      "title": "阶跃 Step 5 Preview 开放模型权重",
+      "summary": "阶跃 宣布开放 Step 5 Preview 模型权重，该模型总参数 600B ，激活参数 27B ，支持最高 100 万 token 上下文和原生文本、视觉输入，面向长程 Agent 任务。 阶跃 宣布已开放 Step 5 Preview 的 BF16 和 FP8 权重，可在 Hugging Face 与 ModelScope 获取，并同步公开技术博客。 该模型采用稀疏 MoE 架构，总参数量为 6000 亿 ，每个 token 激活 270 亿 参数，支持最高 100 万 token 上下文及原生文本、视觉输入。 该模型面向编程、软件工程、专业知识工…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>阶跃 宣布开放 Step 5 Preview 模型权重，该模型总参数 600B ，激活参数 27B ，支持最高 100 万 token 上下文和原生文本、视觉输入，面向长程 Agent 任务。\n阶跃 宣布已开放 Step 5 Preview 的 BF16 和 FP8 权重，可在 Hugging Face 与 ModelScope 获取，并同步公开技术博客。\n该模型采用稀疏 MoE 架构，总参数量为 6000 亿 ，每个 token 激活 270 亿 参数，支持最高 100 万 token 上下文及原生文本、视觉输入。\n该模型面向编程、软件工程、专业知识工作和金融等长程 Agent 任务，可通过</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://github.com/stepfun-ai/Step-5-Preview\">github.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 阶跃 宣布开放 Step 5 Preview 模型权重，该模型总参数 600B ，激活参数 27B ，支持最高 100 万 token 上下文和原生文本、视觉输入，面向长程 Agent 任务。\n阶跃 宣布已开放 Step 5 Preview 的 BF16 和 FP8 权重，可在 Hugging Face 与 ModelScope 获取，并同步公开技术博客。\n该模型采用稀疏 MoE 架构，总参数量为 6000 亿 ，每个 token 激活 270 亿 参数，支持最高 100 万 token 上下文及原生文本、视觉输入。\n该模型面向编程、软件工程、专业知识工作和金融等长程 Agent 任务，可通过\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· github.com\nAI 日报",
+      "date_published": "2026-10-16T01:54:14+00:00",
+      "authors": [
+        {
+          "name": "github.com"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ed461e49799c6e3",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://github.com/stepfun-ai/Step-5-Preview"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "阶跃 宣布开放 Step 5 Preview 模型权重，该模型总参数 600B ，激活参数 27B ，支持最高 100 万 token 上下文和原生文本、视觉输入，面向长程 Agent 任务。\n阶跃 宣布已开放 Step 5 Preview 的 BF16 和 FP8 权重，可在 Hugging Face 与 ModelScope 获取，并同步公开技术博客。\n该模型采用稀疏 MoE 架构，总参数量为 6000 亿 ，每个 token 激活 270 亿 参数，支持最高 100 万 token 上下文及原生文本、视觉输入。\n该模型面向编程、软件工程、专业知识工作和金融等长程 Agent 任务，可通过"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-e28e5164f80227f",
+      "url": "https://bfl.ai/blog/flux-3-image-klein",
+      "external_url": "https://bfl.ai/blog/flux-3-image-klein",
+      "title": "FLUX 3 Image Klein 发布并开放权重",
+      "summary": "Black Forest Labs 发布图像模型 FLUX 3 Image Klein 并开放权重，该模型有 56 亿参数 ，支持原生 4K 生图、多图参考和图像编辑。它提供基础版和低延迟蒸馏版，特定量化版本可在 8 GB 显存的消费级显卡上运行。 Black Forest Labs 发布 FLUX 3 Image Klein ，基础版和蒸馏版的权重已在 Hugging Face 提供，分别面向微调训练和低延迟生成。该模型的 图像 Transformer 为 56 亿 参数，不含独立的文本编码器，支持原生 4K 生成、最多 10 张 参考图和边界框布局控…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Black Forest Labs 发布图像模型 FLUX 3 Image Klein 并开放权重，该模型有 56 亿参数 ，支持原生 4K 生图、多图参考和图像编辑。它提供基础版和低延迟蒸馏版，特定量化版本可在 8 GB 显存的消费级显卡上运行。\nBlack Forest Labs 发布 FLUX 3 Image Klein ，基础版和蒸馏版的权重已在 Hugging Face 提供，分别面向微调训练和低延迟生成。该模型的 图像 Transformer 为 56 亿 参数，不含独立的文本编码器，支持原生 4K 生成、最多 10 张 参考图和边界框布局控制。\nINT8 版本可通过 ComfyU</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://bfl.ai/blog/flux-3-image-klein\">bfl.ai</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Black Forest Labs 发布图像模型 FLUX 3 Image Klein 并开放权重，该模型有 56 亿参数 ，支持原生 4K 生图、多图参考和图像编辑。它提供基础版和低延迟蒸馏版，特定量化版本可在 8 GB 显存的消费级显卡上运行。\nBlack Forest Labs 发布 FLUX 3 Image Klein ，基础版和蒸馏版的权重已在 Hugging Face 提供，分别面向微调训练和低延迟生成。该模型的 图像 Transformer 为 56 亿 参数，不含独立的文本编码器，支持原生 4K 生成、最多 10 张 参考图和边界框布局控制。\nINT8 版本可通过 ComfyU\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· bfl.ai\nAI 日报",
+      "date_published": "2026-10-16T01:54:14+00:00",
+      "authors": [
+        {
+          "name": "bfl.ai"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e28e5164f80227f",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://bfl.ai/blog/flux-3-image-klein"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Black Forest Labs 发布图像模型 FLUX 3 Image Klein 并开放权重，该模型有 56 亿参数 ，支持原生 4K 生图、多图参考和图像编辑。它提供基础版和低延迟蒸馏版，特定量化版本可在 8 GB 显存的消费级显卡上运行。\nBlack Forest Labs 发布 FLUX 3 Image Klein ，基础版和蒸馏版的权重已在 Hugging Face 提供，分别面向微调训练和低延迟生成。该模型的 图像 Transformer 为 56 亿 参数，不含独立的文本编码器，支持原生 4K 生成、最多 10 张 参考图和边界框布局控制。\nINT8 版本可通过 ComfyU"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-e9006d273de1e53",
+      "url": "https://aihot.news/items/izosdhgzul1qej6jgxiospak8",
+      "external_url": "https://aihot.news/items/izosdhgzul1qej6jgxiospak8",
+      "title": "Reflection 发布首个开源权重模型 Beam，501B 参数 MoE 采用 Apache 2.0 协议",
+      "summary": "Reflection 发布首个开源权重模型 Beam，权重已在 Hugging Face 以 Apache 2.0 协议放出。Beam 为稀疏 MoE 模型，总参数 501B、激活 23B，面向编码、推理和长程智能体任务，提供 BF16、FP8、NVFP4 精度权重和投机解码 drafter 模型。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Reflection 发布首个开源权重模型 Beam，权重已在 Hugging Face 以 Apache 2.0 协议放出。Beam 为稀疏 MoE 模型，总参数 501B、激活 23B，面向编码、推理和长程智能体任务，提供 BF16、FP8、NVFP4 精度权重和投机解码 drafter 模型。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/izosdhgzul1qej6jgxiospak8\">aihot.news</a></li><li><a href=\"https://aihot.news/items/oihccsv3xbl0w9p56p3tcrlko\">aihot.news</a></li><li><a href=\"https://aihot.news/items/q45st5brculk4j1oam2f6opu1\">aihot.news</a></li><li><a href=\"https://aihot.news/items/qanr9web2cbejzwu8spxh821y\">aihot.news</a></li><li><a href=\"https://aihot.news/items/rl9is2j8ikvczosv8z7b1pxe1\">aihot.news</a></li><li><a href=\"https://aihot.news/items/t1g09n7zc2h4630t45dvraagt\">aihot.news</a></li><li><a href=\"https://aihot.news/items/vczdbqpsoedeuvj203olwwq3j\">aihot.news</a></li><li><a href=\"https://aihot.news/items/y6jb11pqhf6q8x3gfxao1sheb\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Reflection 发布首个开源权重模型 Beam，权重已在 Hugging Face 以 Apache 2.0 协议放出。Beam 为稀疏 MoE 模型，总参数 501B、激活 23B，面向编码、推理和长程智能体任务，提供 BF16、FP8、NVFP4 精度权重和投机解码 drafter 模型。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\n· aihot.news\n· aihot.news\n· aihot.news\n· aihot.news\n· aihot.news\n· aihot.news\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-16T13:31:22+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e9006d273de1e53",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/izosdhgzul1qej6jgxiospak8",
+          "https://aihot.news/items/oihccsv3xbl0w9p56p3tcrlko",
+          "https://aihot.news/items/q45st5brculk4j1oam2f6opu1",
+          "https://aihot.news/items/qanr9web2cbejzwu8spxh821y",
+          "https://aihot.news/items/rl9is2j8ikvczosv8z7b1pxe1",
+          "https://aihot.news/items/t1g09n7zc2h4630t45dvraagt",
+          "https://aihot.news/items/vczdbqpsoedeuvj203olwwq3j",
+          "https://aihot.news/items/y6jb11pqhf6q8x3gfxao1sheb"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 0.9,
+        "facts": [
+          "Reflection 发布首个开源权重模型 Beam，权重已在 Hugging Face 以 Apache 2.0 协议放出。Beam 为稀疏 MoE 模型，总参数 501B、激活 23B，面向编码、推理和长程智能体任务，提供 BF16、FP8、NVFP4 精度权重和投机解码 drafter 模型。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-e37929ddcc50fa2",
+      "url": "https://9to5mac.com/wp-content/uploads/sites/6/2026/10/Apple_Inc_v_Liu_et_al__candce-26-07078__0176.0.pdf",
+      "external_url": "https://9to5mac.com/wp-content/uploads/sites/6/2026/10/Apple_Inc_v_Liu_et_al__candce-26-07078__0176.0.pdf",
+      "title": "英伟达发布 Nemotron Bolt 本地模型",
+      "summary": "英伟达 发布 Nemotron 3.5 Bolt 模型，总参数 740亿 、激活参数 90亿 ，面向本地 Agent 任务，支持文本、图片和视频输入，经压缩和低位量化，文本推理内存可控制在 24GB 以内。 NVIDIA 发布 Nemotron 3.5 Bolt 74B-A9B 24GB ，面向 RTX Spark 和 DGX Spark 上的本地 Agent 任务，已在 Hugging Face 开放权重，可用于商业及非商业用途。 该模型总参数为 740 亿 、激活参数为 90 亿 ，支持文本、图片和视频输入，以及工具调用、网页浏览和终端操作。 技术报…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>英伟达 发布 Nemotron 3.5 Bolt 模型，总参数 740亿 、激活参数 90亿 ，面向本地 Agent 任务，支持文本、图片和视频输入，经压缩和低位量化，文本推理内存可控制在 24GB 以内。\nNVIDIA 发布 Nemotron 3.5 Bolt 74B-A9B 24GB ，面向 RTX Spark 和 DGX Spark 上的本地 Agent 任务，已在 Hugging Face 开放权重，可用于商业及非商业用途。\n该模型总参数为 740 亿 、激活参数为 90 亿 ，支持文本、图片和视频输入，以及工具调用、网页浏览和终端操作。\n技术报告估算，在批量为 1 、上下文长度为 1</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://9to5mac.com/wp-content/uploads/sites/6/2026/10/Apple_Inc_v_Liu_et_al__candce-26-07078__0176.0.pdf\">9to5mac.com</a></li><li><a href=\"https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/\">blogs.nvidia.com</a></li><li><a href=\"https://mp.weixin.qq.com/s?__biz=MzU5NTkwNDU2OA==&amp;mid=2247497194&amp;idx=1&amp;sn=5ad686eba90d8332d7c49025ab39468f&amp;chksm=ff6d7094465595fa40ad92cba41a893249d223c00036fc9c097d540169441abb1aba8da7ddfc\">mp.weixin.qq.com</a></li><li><a href=\"https://prismml.com/news/bonsai-2-family\">prismml.com</a></li><li><a href=\"https://research.nvidia.com/labs/nemotron/Nemotron-3.5-Bolt-24GB/\">research.nvidia.com</a></li><li><a href=\"https://www.krea.ai/blog/introducing-krea-3\">krea.ai</a></li><li><a href=\"https://x.com/OpenAI/status/2110797830361436604\">x.com</a></li><li><a href=\"https://youcanjustbuildthings.openai.chatgpt.site\">youcanjustbuildthings.openai.chatgpt.site</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 英伟达 发布 Nemotron 3.5 Bolt 模型，总参数 740亿 、激活参数 90亿 ，面向本地 Agent 任务，支持文本、图片和视频输入，经压缩和低位量化，文本推理内存可控制在 24GB 以内。\nNVIDIA 发布 Nemotron 3.5 Bolt 74B-A9B 24GB ，面向 RTX Spark 和 DGX Spark 上的本地 Agent 任务，已在 Hugging Face 开放权重，可用于商业及非商业用途。\n该模型总参数为 740 亿 、激活参数为 90 亿 ，支持文本、图片和视频输入，以及工具调用、网页浏览和终端操作。\n技术报告估算，在批量为 1 、上下文长度为 1\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· 9to5mac.com\n· blogs.nvidia.com\n· mp.weixin.qq.com\n· prismml.com\n· research.nvidia.com\n· krea.ai\n· x.com\n· youcanjustbuildthings.openai.chatgpt.site\nAI 日报",
+      "date_published": "2026-10-16T01:54:14+00:00",
+      "authors": [
+        {
+          "name": "9to5mac.com"
+        },
+        {
+          "name": "blogs.nvidia.com"
+        },
+        {
+          "name": "mp.weixin.qq.com"
+        },
+        {
+          "name": "prismml.com"
+        },
+        {
+          "name": "research.nvidia.com"
+        },
+        {
+          "name": "krea.ai"
+        },
+        {
+          "name": "x.com"
+        },
+        {
+          "name": "youcanjustbuildthings.openai.chatgpt.site"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e37929ddcc50fa2",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://9to5mac.com/wp-content/uploads/sites/6/2026/10/Apple_Inc_v_Liu_et_al__candce-26-07078__0176.0.pdf",
+          "https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/",
+          "https://mp.weixin.qq.com/s?__biz=MzU5NTkwNDU2OA==&mid=2247497194&idx=1&sn=5ad686eba90d8332d7c49025ab39468f&chksm=ff6d7094465595fa40ad92cba41a893249d223c00036fc9c097d540169441abb1aba8da7ddfc",
+          "https://prismml.com/news/bonsai-2-family",
+          "https://research.nvidia.com/labs/nemotron/Nemotron-3.5-Bolt-24GB/",
+          "https://www.krea.ai/blog/introducing-krea-3",
+          "https://x.com/OpenAI/status/2110797830361436604",
+          "https://youcanjustbuildthings.openai.chatgpt.site"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 0.9,
+        "facts": [
+          "英伟达 发布 Nemotron 3.5 Bolt 模型，总参数 740亿 、激活参数 90亿 ，面向本地 Agent 任务，支持文本、图片和视频输入，经压缩和低位量化，文本推理内存可控制在 24GB 以内。\nNVIDIA 发布 Nemotron 3.5 Bolt 74B-A9B 24GB ，面向 RTX Spark 和 DGX Spark 上的本地 Agent 任务，已在 Hugging Face 开放权重，可用于商业及非商业用途。\n该模型总参数为 740 亿 、激活参数为 90 亿 ，支持文本、图片和视频输入，以及工具调用、网页浏览和终端操作。\n技术报告估算，在批量为 1 、上下文长度为 1"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-e06b65e9bead878",
+      "url": "https://status.deepseek.com/incidents/7086651324287",
+      "external_url": "https://status.deepseek.com/incidents/7086651324287",
+      "title": "DeepSeek 恢复服务，赠金形式补偿 API 用户",
+      "summary": "DeepSeek 网页与 API 服务于 10月15日 上午发生故障导致服务中断约 5个小时 ，官方恢复相关服务后宣布将 API 用户此前 7天 的消耗金额以赠金形式全额返还作为补偿。官方还称已启动针对服务稳定性的全面排查和彻底整改，坚决杜绝同类问题再次发生。 DeepSeek 网页与 API 服务于 10月15日上午 发生故障导致服务中断约 5个小时 ，官方在当日下午恢复了相关服务，向用户致歉并宣布将 API 用户此前 7天 的消耗金额以赠金形式全额返还。 补偿会自动到账，后续 API 计费将优先扣除赠金，已有用户反馈收到补偿。 官方还称，已启动针对服…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>DeepSeek 网页与 API 服务于 10月15日 上午发生故障导致服务中断约 5个小时 ，官方恢复相关服务后宣布将 API 用户此前 7天 的消耗金额以赠金形式全额返还作为补偿。官方还称已启动针对服务稳定性的全面排查和彻底整改，坚决杜绝同类问题再次发生。\nDeepSeek 网页与 API 服务于 10月15日上午 发生故障导致服务中断约 5个小时 ，官方在当日下午恢复了相关服务，向用户致歉并宣布将 API 用户此前 7天 的消耗金额以赠金形式全额返还。\n补偿会自动到账，后续 API 计费将优先扣除赠金，已有用户反馈收到补偿。\n官方还称，已启动针对服务稳定性的全面排查和彻底整改，全面梳理并</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://status.deepseek.com/incidents/7086651324287\">status.deepseek.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· DeepSeek 网页与 API 服务于 10月15日 上午发生故障导致服务中断约 5个小时 ，官方恢复相关服务后宣布将 API 用户此前 7天 的消耗金额以赠金形式全额返还作为补偿。官方还称已启动针对服务稳定性的全面排查和彻底整改，坚决杜绝同类问题再次发生。\nDeepSeek 网页与 API 服务于 10月15日上午 发生故障导致服务中断约 5个小时 ，官方在当日下午恢复了相关服务，向用户致歉并宣布将 API 用户此前 7天 的消耗金额以赠金形式全额返还。\n补偿会自动到账，后续 API 计费将优先扣除赠金，已有用户反馈收到补偿。\n官方还称，已启动针对服务稳定性的全面排查和彻底整改，全面梳理并\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· status.deepseek.com\nAI 日报",
+      "date_published": "2026-10-16T01:54:14+00:00",
+      "authors": [
+        {
+          "name": "status.deepseek.com"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e06b65e9bead878",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://status.deepseek.com/incidents/7086651324287"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "DeepSeek 网页与 API 服务于 10月15日 上午发生故障导致服务中断约 5个小时 ，官方恢复相关服务后宣布将 API 用户此前 7天 的消耗金额以赠金形式全额返还作为补偿。官方还称已启动针对服务稳定性的全面排查和彻底整改，坚决杜绝同类问题再次发生。\nDeepSeek 网页与 API 服务于 10月15日上午 发生故障导致服务中断约 5个小时 ，官方在当日下午恢复了相关服务，向用户致歉并宣布将 API 用户此前 7天 的消耗金额以赠金形式全额返还。\n补偿会自动到账，后续 API 计费将优先扣除赠金，已有用户反馈收到补偿。\n官方还称，已启动针对服务稳定性的全面排查和彻底整改，全面梳理并"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-e78094ffd730f18",
+      "url": "https://x.com/opencode/status/2110635747648909472",
+      "external_url": "https://x.com/opencode/status/2110635747648909472",
+      "title": "OpenCode 限免 DeepSeek V4.1 Flash",
+      "summary": "OpenCode 宣布， DeepSeek V4.1 Flash 已在其平台限时免费提供，免费版本的输入、输出和缓存读取均不收费。不过，据用户实测，该版本支持的上下文窗口为 200K 。 OpenCode 宣布， DeepSeek V4.1 Flash 现已在其平台免费提供，官方文档明确此次为 限时免费 。模型列表中的 DeepSeek V4.1 Flash Free 输入、输出和缓存读取均免费。据用户实测，免费版支持 200K 上下文窗口，低于 1M 上下文版本。 相关链接：",
+      "content_html": "<p><strong>事实</strong></p><ul><li>OpenCode 宣布， DeepSeek V4.1 Flash 已在其平台限时免费提供，免费版本的输入、输出和缓存读取均不收费。不过，据用户实测，该版本支持的上下文窗口为 200K 。\nOpenCode 宣布， DeepSeek V4.1 Flash 现已在其平台免费提供，官方文档明确此次为 限时免费 。模型列表中的 DeepSeek V4.1 Flash Free 输入、输出和缓存读取均免费。据用户实测，免费版支持 200K 上下文窗口，低于 1M 上下文版本。\n相关链接：</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://x.com/opencode/status/2110635747648909472\">x.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· OpenCode 宣布， DeepSeek V4.1 Flash 已在其平台限时免费提供，免费版本的输入、输出和缓存读取均不收费。不过，据用户实测，该版本支持的上下文窗口为 200K 。\nOpenCode 宣布， DeepSeek V4.1 Flash 现已在其平台免费提供，官方文档明确此次为 限时免费 。模型列表中的 DeepSeek V4.1 Flash Free 输入、输出和缓存读取均免费。据用户实测，免费版支持 200K 上下文窗口，低于 1M 上下文版本。\n相关链接：\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· x.com\nAI 日报",
+      "date_published": "2026-10-16T01:54:14+00:00",
+      "authors": [
+        {
+          "name": "x.com"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e78094ffd730f18",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://x.com/opencode/status/2110635747648909472"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "OpenCode 宣布， DeepSeek V4.1 Flash 已在其平台限时免费提供，免费版本的输入、输出和缓存读取均不收费。不过，据用户实测，该版本支持的上下文窗口为 200K 。\nOpenCode 宣布， DeepSeek V4.1 Flash 现已在其平台免费提供，官方文档明确此次为 限时免费 。模型列表中的 DeepSeek V4.1 Flash Free 输入、输出和缓存读取均免费。据用户实测，免费版支持 200K 上下文窗口，低于 1M 上下文版本。\n相关链接："
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-e72b038f136b874",
+      "url": "https://x.com/Ronny_MiniMax/status/2110575910630182927",
+      "external_url": "https://x.com/Ronny_MiniMax/status/2110575910630182927",
+      "title": "MiniMax Code 推出 MiniApp 和 MiniMax Bot",
+      "summary": "MiniMax Code 推出 MiniApp ，让用户把桌面端扩展为自定义应用，并介绍了可组建机器人团队、开启群聊和设置定时任务的 MiniMax Bot 。 MiniApp 是带有交互页面和后台功能的插件，用户可以描述需求，让 Agent 创建应用后再检查和修改。 MiniMax Code 推出 MiniApp ，支持通过带有交互页面和后台功能的插件，在桌面端创建自定义应用。并介绍了 MiniMax Bot ，该功能可组建机器人团队、开启群聊、设置定时任务，机器人之间可通过群聊中的 @ 提及交接工作。耗时任务可转入后台执行，用户继续聊天，完成后再接收…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>MiniMax Code 推出 MiniApp ，让用户把桌面端扩展为自定义应用，并介绍了可组建机器人团队、开启群聊和设置定时任务的 MiniMax Bot 。 MiniApp 是带有交互页面和后台功能的插件，用户可以描述需求，让 Agent 创建应用后再检查和修改。\nMiniMax Code 推出 MiniApp ，支持通过带有交互页面和后台功能的插件，在桌面端创建自定义应用。并介绍了 MiniMax Bot ，该功能可组建机器人团队、开启群聊、设置定时任务，机器人之间可通过群聊中的 @ 提及交接工作。耗时任务可转入后台执行，用户继续聊天，完成后再接收结果；每个机器人可分别设置模型、推理强度</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://x.com/Ronny_MiniMax/status/2110575910630182927\">x.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· MiniMax Code 推出 MiniApp ，让用户把桌面端扩展为自定义应用，并介绍了可组建机器人团队、开启群聊和设置定时任务的 MiniMax Bot 。 MiniApp 是带有交互页面和后台功能的插件，用户可以描述需求，让 Agent 创建应用后再检查和修改。\nMiniMax Code 推出 MiniApp ，支持通过带有交互页面和后台功能的插件，在桌面端创建自定义应用。并介绍了 MiniMax Bot ，该功能可组建机器人团队、开启群聊、设置定时任务，机器人之间可通过群聊中的 @ 提及交接工作。耗时任务可转入后台执行，用户继续聊天，完成后再接收结果；每个机器人可分别设置模型、推理强度\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· x.com\nAI 日报",
+      "date_published": "2026-10-16T01:54:14+00:00",
+      "authors": [
+        {
+          "name": "x.com"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e72b038f136b874",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://x.com/Ronny_MiniMax/status/2110575910630182927"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "MiniMax Code 推出 MiniApp ，让用户把桌面端扩展为自定义应用，并介绍了可组建机器人团队、开启群聊和设置定时任务的 MiniMax Bot 。 MiniApp 是带有交互页面和后台功能的插件，用户可以描述需求，让 Agent 创建应用后再检查和修改。\nMiniMax Code 推出 MiniApp ，支持通过带有交互页面和后台功能的插件，在桌面端创建自定义应用。并介绍了 MiniMax Bot ，该功能可组建机器人团队、开启群聊、设置定时任务，机器人之间可通过群聊中的 @ 提及交接工作。耗时任务可转入后台执行，用户继续聊天，完成后再接收结果；每个机器人可分别设置模型、推理强度"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-e5ddf59fdff1f49",
+      "url": "https://elevenlabs.io/blog/introducing-instant-soundtracks",
+      "external_url": "https://elevenlabs.io/blog/introducing-instant-soundtracks",
+      "title": "ElevenLabs 推出视频自动配乐与音效功能",
+      "summary": "ElevenLabs 推出 Instant Soundtracks ，上传视频后即可自动生成原创配乐，识别适合添加音效的时刻，并把音效放到对应时间点。 ElevenLabs 推出 Instant Soundtracks ，可为上传的视频生成原创配乐，并识别画面中的音效时机，将生成的音效自动放到对应时间点。 该功能还支持参考视频原有音频的风格来生成配乐，并随场景切换音乐情绪。在 ElevenCreative 编辑器中，音效以独立图层呈现，可单独调整。 功能已在 ElevenCreative 、 ElevenMusic 和 ElevenAPI 上线； API…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>ElevenLabs 推出 Instant Soundtracks ，上传视频后即可自动生成原创配乐，识别适合添加音效的时刻，并把音效放到对应时间点。\nElevenLabs 推出 Instant Soundtracks ，可为上传的视频生成原创配乐，并识别画面中的音效时机，将生成的音效自动放到对应时间点。\n该功能还支持参考视频原有音频的风格来生成配乐，并随场景切换音乐情绪。在 ElevenCreative 编辑器中，音效以独立图层呈现，可单独调整。\n功能已在 ElevenCreative 、 ElevenMusic 和 ElevenAPI 上线； API 每次请求最多支持 10 个视频，总大小</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://elevenlabs.io/blog/introducing-instant-soundtracks\">elevenlabs.io</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· ElevenLabs 推出 Instant Soundtracks ，上传视频后即可自动生成原创配乐，识别适合添加音效的时刻，并把音效放到对应时间点。\nElevenLabs 推出 Instant Soundtracks ，可为上传的视频生成原创配乐，并识别画面中的音效时机，将生成的音效自动放到对应时间点。\n该功能还支持参考视频原有音频的风格来生成配乐，并随场景切换音乐情绪。在 ElevenCreative 编辑器中，音效以独立图层呈现，可单独调整。\n功能已在 ElevenCreative 、 ElevenMusic 和 ElevenAPI 上线； API 每次请求最多支持 10 个视频，总大小\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· elevenlabs.io\nAI 日报",
+      "date_published": "2026-10-16T01:54:14+00:00",
+      "authors": [
+        {
+          "name": "elevenlabs.io"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e5ddf59fdff1f49",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://elevenlabs.io/blog/introducing-instant-soundtracks"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "ElevenLabs 推出 Instant Soundtracks ，上传视频后即可自动生成原创配乐，识别适合添加音效的时刻，并把音效放到对应时间点。\nElevenLabs 推出 Instant Soundtracks ，可为上传的视频生成原创配乐，并识别画面中的音效时机，将生成的音效自动放到对应时间点。\n该功能还支持参考视频原有音频的风格来生成配乐，并随场景切换音乐情绪。在 ElevenCreative 编辑器中，音效以独立图层呈现，可单独调整。\n功能已在 ElevenCreative 、 ElevenMusic 和 ElevenAPI 上线； API 每次请求最多支持 10 个视频，总大小"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-ec1602be40d7e77",
+      "url": "https://aihot.news/items/q5zc74jblm1ayo630xtpe34i9",
+      "external_url": "https://aihot.news/items/q5zc74jblm1ayo630xtpe34i9",
+      "title": "MAI-Transcribe-2 上线 OpenRouter",
+      "summary": "在 openrouter 上体验 MAI-Transcribe-2：",
+      "content_html": "<p><strong>事实</strong></p><ul><li>在 openrouter 上体验 MAI-Transcribe-2：</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/q5zc74jblm1ayo630xtpe34i9\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 在 openrouter 上体验 MAI-Transcribe-2：\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-16T15:26:48+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ec1602be40d7e77",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/q5zc74jblm1ayo630xtpe34i9"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "在 openrouter 上体验 MAI-Transcribe-2："
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-e7e96e2f5007341",
+      "url": "https://aihot.news/items/h24pfd1mze28st714mmwlx62w",
+      "external_url": "https://aihot.news/items/h24pfd1mze28st714mmwlx62w",
+      "title": "Reflection 发布 501B 参数 MoE 模型 Beam，主打高效推理的编码与智能体工作负载",
+      "summary": "Reflection 发布新模型家族的首个模型 Beam，采用 MoE 架构，总参数 501B、每 token 激活 23B，上下文窗口最高 100 万 token。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Reflection 发布新模型家族的首个模型 Beam，采用 MoE 架构，总参数 501B、每 token 激活 23B，上下文窗口最高 100 万 token。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/h24pfd1mze28st714mmwlx62w\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Reflection 发布新模型家族的首个模型 Beam，采用 MoE 架构，总参数 501B、每 token 激活 23B，上下文窗口最高 100 万 token。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-16T13:51:20+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e7e96e2f5007341",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/h24pfd1mze28st714mmwlx62w"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Reflection 发布新模型家族的首个模型 Beam，采用 MoE 架构，总参数 501B、每 token 激活 23B，上下文窗口最高 100 万 token。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-ed70039afeae208",
+      "url": "https://x.com/nathancgy4/status/2110522061953327565",
+      "external_url": "https://x.com/nathancgy4/status/2110522061953327565",
+      "title": "17 岁研究员陈广宇离开 Kimi",
+      "summary": "17 岁 研究员 陈广宇 宣布离开 月之暗面 。他 16 岁 加入 月之暗面 ，是 Attention Residuals 论文的共同一作。 Kimi 研究员 陈广宇 （ Nathan Chen ）在 X 发文称，自己近期已离开 月之暗面 。他 16 岁加入 Kimi ，今年 17 岁，是今年 3 月发布的 Attention Residuals 论文的共同一作。 他在帖中回顾了过去一年的工作，包括 KDA 内核优化、 Attention Residuals 的提出与完善、优化器研究和 K3 发布案例制作，并特别感谢当年聘用他的 Yulun Du 。 A…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>17 岁 研究员 陈广宇 宣布离开 月之暗面 。他 16 岁 加入 月之暗面 ，是 Attention Residuals 论文的共同一作。\nKimi 研究员 陈广宇 （ Nathan Chen ）在 X 发文称，自己近期已离开 月之暗面 。他 16 岁加入 Kimi ，今年 17 岁，是今年 3 月发布的 Attention Residuals 论文的共同一作。\n他在帖中回顾了过去一年的工作，包括 KDA 内核优化、 Attention Residuals 的提出与完善、优化器研究和 K3 发布案例制作，并特别感谢当年聘用他的 Yulun Du 。\nAnthropic 研究员 Sholto </li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://x.com/nathancgy4/status/2110522061953327565\">x.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 17 岁 研究员 陈广宇 宣布离开 月之暗面 。他 16 岁 加入 月之暗面 ，是 Attention Residuals 论文的共同一作。\nKimi 研究员 陈广宇 （ Nathan Chen ）在 X 发文称，自己近期已离开 月之暗面 。他 16 岁加入 Kimi ，今年 17 岁，是今年 3 月发布的 Attention Residuals 论文的共同一作。\n他在帖中回顾了过去一年的工作，包括 KDA 内核优化、 Attention Residuals 的提出与完善、优化器研究和 K3 发布案例制作，并特别感谢当年聘用他的 Yulun Du 。\nAnthropic 研究员 Sholto\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· x.com\nAI 日报",
+      "date_published": "2026-10-16T01:54:14+00:00",
+      "authors": [
+        {
+          "name": "x.com"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ed70039afeae208",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://x.com/nathancgy4/status/2110522061953327565"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "17 岁 研究员 陈广宇 宣布离开 月之暗面 。他 16 岁 加入 月之暗面 ，是 Attention Residuals 论文的共同一作。\nKimi 研究员 陈广宇 （ Nathan Chen ）在 X 发文称，自己近期已离开 月之暗面 。他 16 岁加入 Kimi ，今年 17 岁，是今年 3 月发布的 Attention Residuals 论文的共同一作。\n他在帖中回顾了过去一年的工作，包括 KDA 内核优化、 Attention Residuals 的提出与完善、优化器研究和 K3 发布案例制作，并特别感谢当年聘用他的 Yulun Du 。\nAnthropic 研究员 Sholto "
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-ee03f9684a7d8b5",
+      "url": "https://apolloresearch.ai/science/update-aware-reasoning-glm-5-3",
+      "external_url": "https://apolloresearch.ai/science/update-aware-reasoning-glm-5-3",
+      "title": "研究称 GLM-5.3 出现更新感知推理",
+      "summary": "AI 安全机构 Apollo Research 称， 智谱 GLM-5.3 有时会未经提示，思考当前行为如何成为训练数据、影响未来的自己。 AI 安全机构 Apollo Research 称， 智谱 GLM-5.3 在行为评测中偶尔会未经提示，推理自身行动如何影响训练更新或当前任务之后的行为，研究人员将其称为“更新感知推理”。该机构在 6452 次 运行中识别出 10 次 ，约为每 1000 次 出现 1—2 次 ，且只能检测模型明确表达出来的推理，可能存在漏检。 Apollo Research 认为，这种推理是对齐伪装的重要前置能力，但本次实例中，模型…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>AI 安全机构 Apollo Research 称， 智谱 GLM-5.3 有时会未经提示，思考当前行为如何成为训练数据、影响未来的自己。\nAI 安全机构 Apollo Research 称， 智谱 GLM-5.3 在行为评测中偶尔会未经提示，推理自身行动如何影响训练更新或当前任务之后的行为，研究人员将其称为“更新感知推理”。该机构在 6452 次 运行中识别出 10 次 ，约为每 1000 次 出现 1—2 次 ，且只能检测模型明确表达出来的推理，可能存在漏检。\nApollo Research 认为，这种推理是对齐伪装的重要前置能力，但本次实例中，模型似乎认为自己保护的目标符合开发者意图，因</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://apolloresearch.ai/science/update-aware-reasoning-glm-5-3\">apolloresearch.ai</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· AI 安全机构 Apollo Research 称， 智谱 GLM-5.3 有时会未经提示，思考当前行为如何成为训练数据、影响未来的自己。\nAI 安全机构 Apollo Research 称， 智谱 GLM-5.3 在行为评测中偶尔会未经提示，推理自身行动如何影响训练更新或当前任务之后的行为，研究人员将其称为“更新感知推理”。该机构在 6452 次 运行中识别出 10 次 ，约为每 1000 次 出现 1—2 次 ，且只能检测模型明确表达出来的推理，可能存在漏检。\nApollo Research 认为，这种推理是对齐伪装的重要前置能力，但本次实例中，模型似乎认为自己保护的目标符合开发者意图，因\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· apolloresearch.ai\nAI 日报",
+      "date_published": "2026-10-16T01:54:14+00:00",
+      "authors": [
+        {
+          "name": "apolloresearch.ai"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ee03f9684a7d8b5",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://apolloresearch.ai/science/update-aware-reasoning-glm-5-3"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "AI 安全机构 Apollo Research 称， 智谱 GLM-5.3 有时会未经提示，思考当前行为如何成为训练数据、影响未来的自己。\nAI 安全机构 Apollo Research 称， 智谱 GLM-5.3 在行为评测中偶尔会未经提示，推理自身行动如何影响训练更新或当前任务之后的行为，研究人员将其称为“更新感知推理”。该机构在 6452 次 运行中识别出 10 次 ，约为每 1000 次 出现 1—2 次 ，且只能检测模型明确表达出来的推理，可能存在漏检。\nApollo Research 认为，这种推理是对齐伪装的重要前置能力，但本次实例中，模型似乎认为自己保护的目标符合开发者意图，因"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-e7dc2eea0865846",
+      "url": "https://aihot.news/items/ydo8hx5v3aozyzo6e437euxhu",
+      "external_url": "https://aihot.news/items/ydo8hx5v3aozyzo6e437euxhu",
+      "title": "豆包工作上线 AI 资产一键迁移，作者实测从 ChatGPT、Claude Code 导入对话、技能与记忆",
+      "summary": "作者实测豆包工作新上线的 AI 资产一键迁移功能，支持从 ChatGPT、Claude Code 导入对话、技能与记忆，其本机检测到 Claude 240 项、ChatGPT 682 项可导入，一两分钟完成，且导入的历史会话可继续衔接上下文。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>作者实测豆包工作新上线的 AI 资产一键迁移功能，支持从 ChatGPT、Claude Code 导入对话、技能与记忆，其本机检测到 Claude 240 项、ChatGPT 682 项可导入，一两分钟完成，且导入的历史会话可继续衔接上下文。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/ydo8hx5v3aozyzo6e437euxhu\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 作者实测豆包工作新上线的 AI 资产一键迁移功能，支持从 ChatGPT、Claude Code 导入对话、技能与记忆，其本机检测到 Claude 240 项、ChatGPT 682 项可导入，一两分钟完成，且导入的历史会话可继续衔接上下文。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-16T14:26:52+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e7dc2eea0865846",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/ydo8hx5v3aozyzo6e437euxhu"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "作者实测豆包工作新上线的 AI 资产一键迁移功能，支持从 ChatGPT、Claude Code 导入对话、技能与记忆，其本机检测到 Claude 240 项、ChatGPT 682 项可导入，一两分钟完成，且导入的历史会话可继续衔接上下文。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-e17f45fc8a704b9",
+      "url": "https://home.cern/cern-and-mistral-join-forces-to-accelerate-ai-for-science/",
+      "external_url": "https://home.cern/cern-and-mistral-join-forces-to-accelerate-ai-for-science/",
+      "title": "Mistral AI 与欧洲核子研究中心拟开发大型物理模型",
+      "summary": "Mistral AI 与欧洲核子研究中心签署合作意向声明，计划用数十亿次模拟碰撞训练单一大型物理模型。双方希望让同一个 AI 模型承担碰撞重建、粒子识别、异常信号标记和未来探测器设计评估等任务。 Mistral AI 与 欧洲核子研究中心（CERN） 签署合作意向声明，拟建立长期战略伙伴关系，开发用于科学发现的 基础模型 ，初期聚焦高能物理。双方计划开发单一预训练 大型物理模型 ，使用 大型强子对撞机（LHC） 的 数十亿次 模拟质子碰撞进行训练。该模型拟支持碰撞重建、粒子识别、异常信号标记及未来探测器设计评估，将多项任务纳入同一个模型。 相关链接：",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Mistral AI 与欧洲核子研究中心签署合作意向声明，计划用数十亿次模拟碰撞训练单一大型物理模型。双方希望让同一个 AI 模型承担碰撞重建、粒子识别、异常信号标记和未来探测器设计评估等任务。\nMistral AI 与 欧洲核子研究中心（CERN） 签署合作意向声明，拟建立长期战略伙伴关系，开发用于科学发现的 基础模型 ，初期聚焦高能物理。双方计划开发单一预训练 大型物理模型 ，使用 大型强子对撞机（LHC） 的 数十亿次 模拟质子碰撞进行训练。该模型拟支持碰撞重建、粒子识别、异常信号标记及未来探测器设计评估，将多项任务纳入同一个模型。\n相关链接：</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://home.cern/cern-and-mistral-join-forces-to-accelerate-ai-for-science/\">home.cern</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Mistral AI 与欧洲核子研究中心签署合作意向声明，计划用数十亿次模拟碰撞训练单一大型物理模型。双方希望让同一个 AI 模型承担碰撞重建、粒子识别、异常信号标记和未来探测器设计评估等任务。\nMistral AI 与 欧洲核子研究中心（CERN） 签署合作意向声明，拟建立长期战略伙伴关系，开发用于科学发现的 基础模型 ，初期聚焦高能物理。双方计划开发单一预训练 大型物理模型 ，使用 大型强子对撞机（LHC） 的 数十亿次 模拟质子碰撞进行训练。该模型拟支持碰撞重建、粒子识别、异常信号标记及未来探测器设计评估，将多项任务纳入同一个模型。\n相关链接：\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· home.cern\nAI 日报",
+      "date_published": "2026-10-16T01:54:14+00:00",
+      "authors": [
+        {
+          "name": "home.cern"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e17f45fc8a704b9",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://home.cern/cern-and-mistral-join-forces-to-accelerate-ai-for-science/"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Mistral AI 与欧洲核子研究中心签署合作意向声明，计划用数十亿次模拟碰撞训练单一大型物理模型。双方希望让同一个 AI 模型承担碰撞重建、粒子识别、异常信号标记和未来探测器设计评估等任务。\nMistral AI 与 欧洲核子研究中心（CERN） 签署合作意向声明，拟建立长期战略伙伴关系，开发用于科学发现的 基础模型 ，初期聚焦高能物理。双方计划开发单一预训练 大型物理模型 ，使用 大型强子对撞机（LHC） 的 数十亿次 模拟质子碰撞进行训练。该模型拟支持碰撞重建、粒子识别、异常信号标记及未来探测器设计评估，将多项任务纳入同一个模型。\n相关链接："
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-eaed1803ec60f5e",
+      "url": "https://the-decoder.com/anthropics-q3-revenue-hits-16-8b-but-growth-slows-ahead-of-planned-november-ipo/",
+      "external_url": "https://the-decoder.com/anthropics-q3-revenue-hits-16-8b-but-growth-slows-ahead-of-planned-november-ipo/",
+      "title": "Anthropic 据报大幅削减蒸馏收入",
+      "summary": "据英国金融时报报道， Anthropic 向投资人透露， 第三季度 已大幅削减来自 模型蒸馏 的收入。这笔钱此前占其营收的 5% 至 7% 。 据英国《金融时报》援引 4 位 直接知情人士报道， Anthropic 向投资人透露，蒸馏带来的收入占公司营收的 5% 至 7% ，第三季度已大幅削减这部分收入。 蒸馏是指利用较强模型的回答训练自己的模型，相关付费调用会给 Anthropic 带来收入。据报道， Anthropic 告诉投资人，蒸馏收入减少将拖累本季度营收。 Anthropic 此前在官方博客中称，新防护措施的早期证据显示，蒸馏者获取的数据量减少…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>据英国金融时报报道， Anthropic 向投资人透露， 第三季度 已大幅削减来自 模型蒸馏 的收入。这笔钱此前占其营收的 5% 至 7% 。\n据英国《金融时报》援引 4 位 直接知情人士报道， Anthropic 向投资人透露，蒸馏带来的收入占公司营收的 5% 至 7% ，第三季度已大幅削减这部分收入。\n蒸馏是指利用较强模型的回答训练自己的模型，相关付费调用会给 Anthropic 带来收入。据报道， Anthropic 告诉投资人，蒸馏收入减少将拖累本季度营收。\nAnthropic 此前在官方博客中称，新防护措施的早期证据显示，蒸馏者获取的数据量减少了约 90% 至 99% 。\n相关链接：</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://the-decoder.com/anthropics-q3-revenue-hits-16-8b-but-growth-slows-ahead-of-planned-november-ipo/\">the-decoder.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 据英国金融时报报道， Anthropic 向投资人透露， 第三季度 已大幅削减来自 模型蒸馏 的收入。这笔钱此前占其营收的 5% 至 7% 。\n据英国《金融时报》援引 4 位 直接知情人士报道， Anthropic 向投资人透露，蒸馏带来的收入占公司营收的 5% 至 7% ，第三季度已大幅削减这部分收入。\n蒸馏是指利用较强模型的回答训练自己的模型，相关付费调用会给 Anthropic 带来收入。据报道， Anthropic 告诉投资人，蒸馏收入减少将拖累本季度营收。\nAnthropic 此前在官方博客中称，新防护措施的早期证据显示，蒸馏者获取的数据量减少了约 90% 至 99% 。\n相关链接：\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· the-decoder.com\nAI 日报",
+      "date_published": "2026-10-16T01:54:14+00:00",
+      "authors": [
+        {
+          "name": "the-decoder.com"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "eaed1803ec60f5e",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://the-decoder.com/anthropics-q3-revenue-hits-16-8b-but-growth-slows-ahead-of-planned-november-ipo/"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "据英国金融时报报道， Anthropic 向投资人透露， 第三季度 已大幅削减来自 模型蒸馏 的收入。这笔钱此前占其营收的 5% 至 7% 。\n据英国《金融时报》援引 4 位 直接知情人士报道， Anthropic 向投资人透露，蒸馏带来的收入占公司营收的 5% 至 7% ，第三季度已大幅削减这部分收入。\n蒸馏是指利用较强模型的回答训练自己的模型，相关付费调用会给 Anthropic 带来收入。据报道， Anthropic 告诉投资人，蒸馏收入减少将拖累本季度营收。\nAnthropic 此前在官方博客中称，新防护措施的早期证据显示，蒸馏者获取的数据量减少了约 90% 至 99% 。\n相关链接："
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-ebbded90ce3aafa",
+      "url": "https://aihot.news/items/xtk8guwzdxy96d3o3r1z3ag4t",
+      "external_url": "https://aihot.news/items/xtk8guwzdxy96d3o3r1z3ag4t",
+      "title": "Tripo API 与 Claude 打造森林小鹿",
+      "summary": "一只小鹿在森林中漫步。仅用 1 小时凭感觉编码完成。 Tripo API 负责角色生成流程。Claude Opus 5.5 为其编写周围的交互环境。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>一只小鹿在森林中漫步。仅用 1 小时凭感觉编码完成。\nTripo API 负责角色生成流程。Claude Opus 5.5 为其编写周围的交互环境。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/xtk8guwzdxy96d3o3r1z3ag4t\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 一只小鹿在森林中漫步。仅用 1 小时凭感觉编码完成。\nTripo API 负责角色生成流程。Claude Opus 5.5 为其编写周围的交互环境。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-16T15:00:00+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ebbded90ce3aafa",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/xtk8guwzdxy96d3o3r1z3ag4t"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "一只小鹿在森林中漫步。仅用 1 小时凭感觉编码完成。\nTripo API 负责角色生成流程。Claude Opus 5.5 为其编写周围的交互环境。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-ee2a9e33df0107d",
+      "url": "https://www.simonsfoundation.org/news/simons-foundation-launches-15m-effort-to-help-mathematicians-navigate-ai-era/",
+      "external_url": "https://www.simonsfoundation.org/news/simons-foundation-launches-15m-effort-to-help-mathematicians-navigate-ai-era/",
+      "title": "西蒙斯基金会携手 Anthropic、OpenAI 启动 AI 数学研究资助计划",
+      "summary": "西蒙斯基金会联合 Anthropic 和 OpenAI ，宣布投入总计 1500 万美元 的资金与资源，支持数学界评估和使用 AI，并为基金会支持的研究人员提供 AI 工具和算力。相关资助将由基金会以社区主导的方式管理。 西蒙斯基金会 联合 Anthropic 和 OpenAI 启动数学领域 AI 研究支持计划，承诺投入总计 1500 万美元 的资金与资源。 计划将支持工作坊、会议、专家讲座等活动，帮助研究人员评估 AI 辅助研究成果、学习新工具，并共同制定 AI 使用标准。 OpenAI 承诺出资 500 万美元 ， Anthropic 承诺提供总值 …",
+      "content_html": "<p><strong>事实</strong></p><ul><li>西蒙斯基金会联合 Anthropic 和 OpenAI ，宣布投入总计 1500 万美元 的资金与资源，支持数学界评估和使用 AI，并为基金会支持的研究人员提供 AI 工具和算力。相关资助将由基金会以社区主导的方式管理。\n西蒙斯基金会 联合 Anthropic 和 OpenAI 启动数学领域 AI 研究支持计划，承诺投入总计 1500 万美元 的资金与资源。\n计划将支持工作坊、会议、专家讲座等活动，帮助研究人员评估 AI 辅助研究成果、学习新工具，并共同制定 AI 使用标准。\nOpenAI 承诺出资 500 万美元 ， Anthropic 承诺提供总值 500 万美元 的资金、算力和 Clau</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.simonsfoundation.org/news/simons-foundation-launches-15m-effort-to-help-mathematicians-navigate-ai-era/\">simonsfoundation.org</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 西蒙斯基金会联合 Anthropic 和 OpenAI ，宣布投入总计 1500 万美元 的资金与资源，支持数学界评估和使用 AI，并为基金会支持的研究人员提供 AI 工具和算力。相关资助将由基金会以社区主导的方式管理。\n西蒙斯基金会 联合 Anthropic 和 OpenAI 启动数学领域 AI 研究支持计划，承诺投入总计 1500 万美元 的资金与资源。\n计划将支持工作坊、会议、专家讲座等活动，帮助研究人员评估 AI 辅助研究成果、学习新工具，并共同制定 AI 使用标准。\nOpenAI 承诺出资 500 万美元 ， Anthropic 承诺提供总值 500 万美元 的资金、算力和 Clau\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· simonsfoundation.org\nAI 日报",
+      "date_published": "2026-10-16T01:54:14+00:00",
+      "authors": [
+        {
+          "name": "simonsfoundation.org"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ee2a9e33df0107d",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://www.simonsfoundation.org/news/simons-foundation-launches-15m-effort-to-help-mathematicians-navigate-ai-era/"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "西蒙斯基金会联合 Anthropic 和 OpenAI ，宣布投入总计 1500 万美元 的资金与资源，支持数学界评估和使用 AI，并为基金会支持的研究人员提供 AI 工具和算力。相关资助将由基金会以社区主导的方式管理。\n西蒙斯基金会 联合 Anthropic 和 OpenAI 启动数学领域 AI 研究支持计划，承诺投入总计 1500 万美元 的资金与资源。\n计划将支持工作坊、会议、专家讲座等活动，帮助研究人员评估 AI 辅助研究成果、学习新工具，并共同制定 AI 使用标准。\nOpenAI 承诺出资 500 万美元 ， Anthropic 承诺提供总值 500 万美元 的资金、算力和 Clau"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-eec9514db65c01c",
+      "url": "https://blog.cloudflare.com/cloudflare-openai-discovery-agentic-web",
+      "external_url": "https://blog.cloudflare.com/cloudflare-openai-discovery-agentic-web",
+      "title": "OpenAI 网站发现试点已索引数亿新网页",
+      "summary": "Cloudflare 公布了与 OpenAI 合作开展网站发现试点的初步成果，称已帮助 OpenAI 将数亿个此前未发现的网页纳入索引，供 ChatGPT 搜索使用。 Cloudflare 公布与 OpenAI 合作开展网站发现试点的初步成果，称已帮助 OpenAI 发现并索引数亿个新网页，供 ChatGPT 搜索使用。 试点参与范围约占 Cloudflare 整体网络的 1% ，由 Cloudflare 提供网络信号， OpenAI 独立评估网页并排序。 双方还在探索减少无效爬取、识别潜在有害页面，并计划改进页面选择和内容变更信号。 该研究使用网页元数…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Cloudflare 公布了与 OpenAI 合作开展网站发现试点的初步成果，称已帮助 OpenAI 将数亿个此前未发现的网页纳入索引，供 ChatGPT 搜索使用。\nCloudflare 公布与 OpenAI 合作开展网站发现试点的初步成果，称已帮助 OpenAI 发现并索引数亿个新网页，供 ChatGPT 搜索使用。\n试点参与范围约占 Cloudflare 整体网络的 1% ，由 Cloudflare 提供网络信号， OpenAI 独立评估网页并排序。\n双方还在探索减少无效爬取、识别潜在有害页面，并计划改进页面选择和内容变更信号。\n该研究使用网页元数据进行搜索和发现，不分享页面内容用于模型</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://blog.cloudflare.com/cloudflare-openai-discovery-agentic-web\">blog.cloudflare.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Cloudflare 公布了与 OpenAI 合作开展网站发现试点的初步成果，称已帮助 OpenAI 将数亿个此前未发现的网页纳入索引，供 ChatGPT 搜索使用。\nCloudflare 公布与 OpenAI 合作开展网站发现试点的初步成果，称已帮助 OpenAI 发现并索引数亿个新网页，供 ChatGPT 搜索使用。\n试点参与范围约占 Cloudflare 整体网络的 1% ，由 Cloudflare 提供网络信号， OpenAI 独立评估网页并排序。\n双方还在探索减少无效爬取、识别潜在有害页面，并计划改进页面选择和内容变更信号。\n该研究使用网页元数据进行搜索和发现，不分享页面内容用于模型\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· blog.cloudflare.com\nAI 日报",
+      "date_published": "2026-10-16T01:54:14+00:00",
+      "authors": [
+        {
+          "name": "blog.cloudflare.com"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "eec9514db65c01c",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://blog.cloudflare.com/cloudflare-openai-discovery-agentic-web"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Cloudflare 公布了与 OpenAI 合作开展网站发现试点的初步成果，称已帮助 OpenAI 将数亿个此前未发现的网页纳入索引，供 ChatGPT 搜索使用。\nCloudflare 公布与 OpenAI 合作开展网站发现试点的初步成果，称已帮助 OpenAI 发现并索引数亿个新网页，供 ChatGPT 搜索使用。\n试点参与范围约占 Cloudflare 整体网络的 1% ，由 Cloudflare 提供网络信号， OpenAI 独立评估网页并排序。\n双方还在探索减少无效爬取、识别潜在有害页面，并计划改进页面选择和内容变更信号。\n该研究使用网页元数据进行搜索和发现，不分享页面内容用于模型"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-e37371bbf7a2d2e",
+      "url": "https://aihot.news/items/cu6e4x8du4fh6e9tsn5nu4wqk",
+      "external_url": "https://aihot.news/items/cu6e4x8du4fh6e9tsn5nu4wqk",
+      "title": "Databricks 用领域知识注入提升 LLM 对 npm 二进制恶意包的检测",
+      "summary": "Databricks 提出在推理阶段注入领域知识，以提升 LLM 对 npm 包内嵌二进制恶意载荷的检测能力。其扫描器自 2025 年 11 月起收集样本，在 11,413 个经 OSV 核验的包版本中，3.8%（432 个）捆绑二进制，这类包无法得出明确恶意结论的比例为 14.4%，是纯源码包 6.2% 的两倍多。团队用五种 .node 载荷测试九款模型，并设计能力画像作为加权条件编码恶意技术。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Databricks 提出在推理阶段注入领域知识，以提升 LLM 对 npm 包内嵌二进制恶意载荷的检测能力。其扫描器自 2025 年 11 月起收集样本，在 11,413 个经 OSV 核验的包版本中，3.8%（432 个）捆绑二进制，这类包无法得出明确恶意结论的比例为 14.4%，是纯源码包 6.2% 的两倍多。团队用五种 .node 载荷测试九款模型，并设计能力画像作为加权条件编码恶意技术。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/cu6e4x8du4fh6e9tsn5nu4wqk\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Databricks 提出在推理阶段注入领域知识，以提升 LLM 对 npm 包内嵌二进制恶意载荷的检测能力。其扫描器自 2025 年 11 月起收集样本，在 11,413 个经 OSV 核验的包版本中，3.8%（432 个）捆绑二进制，这类包无法得出明确恶意结论的比例为 14.4%，是纯源码包 6.2% 的两倍多。团队用五种 .node 载荷测试九款模型，并设计能力画像作为加权条件编码恶意技术。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-16T15:37:00+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e37371bbf7a2d2e",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/cu6e4x8du4fh6e9tsn5nu4wqk"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Databricks 提出在推理阶段注入领域知识，以提升 LLM 对 npm 包内嵌二进制恶意载荷的检测能力。其扫描器自 2025 年 11 月起收集样本，在 11,413 个经 OSV 核验的包版本中，3.8%（432 个）捆绑二进制，这类包无法得出明确恶意结论的比例为 14.4%，是纯源码包 6.2% 的两倍多。团队用五种 .node 载荷测试九款模型，并设计能力画像作为加权条件编码恶意技术。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-e5e7e12bfcceffd",
+      "url": "https://aihot.news/items/j5vlb3dn14h2b4xy1hbdschyc",
+      "external_url": "https://aihot.news/items/j5vlb3dn14h2b4xy1hbdschyc",
+      "title": "a16z 图表周报：智能体购物遭电商拦截，消费意愿仍滞后",
+      "summary": "a16z 图表周报指出智能体商务遇阻，Cloudflare 数据显示智能体与爬虫收到的 403 拒绝响应自夏季起明显增多，约为原先两倍。文章引用 NRF 数据称退货率与退货成本自 2019 年以来分别翻倍和增至三倍，并引用调查指 42% 消费者完全不信任 AI 代购，Similarweb 数据显示 AI 购物多发生在发现与购买之间的中间阶段，而非下单环节。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>a16z 图表周报指出智能体商务遇阻，Cloudflare 数据显示智能体与爬虫收到的 403 拒绝响应自夏季起明显增多，约为原先两倍。文章引用 NRF 数据称退货率与退货成本自 2019 年以来分别翻倍和增至三倍，并引用调查指 42% 消费者完全不信任 AI 代购，Similarweb 数据显示 AI 购物多发生在发现与购买之间的中间阶段，而非下单环节。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/j5vlb3dn14h2b4xy1hbdschyc\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· a16z 图表周报指出智能体商务遇阻，Cloudflare 数据显示智能体与爬虫收到的 403 拒绝响应自夏季起明显增多，约为原先两倍。文章引用 NRF 数据称退货率与退货成本自 2019 年以来分别翻倍和增至三倍，并引用调查指 42% 消费者完全不信任 AI 代购，Similarweb 数据显示 AI 购物多发生在发现与购买之间的中间阶段，而非下单环节。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-16T14:00:39+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e5e7e12bfcceffd",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/j5vlb3dn14h2b4xy1hbdschyc"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "a16z 图表周报指出智能体商务遇阻，Cloudflare 数据显示智能体与爬虫收到的 403 拒绝响应自夏季起明显增多，约为原先两倍。文章引用 NRF 数据称退货率与退货成本自 2019 年以来分别翻倍和增至三倍，并引用调查指 42% 消费者完全不信任 AI 代购，Similarweb 数据显示 AI 购物多发生在发现与购买之间的中间阶段，而非下单环节。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-edda79b0dacb236",
+      "url": "https://aihot.news/items/cqlsedakjd026b9gwsdor3la5",
+      "external_url": "https://aihot.news/items/cqlsedakjd026b9gwsdor3la5",
+      "title": "Google Gemini 4 Argon 在 ARC-AGI-3 达 97.5%，但仍落后数学与软件工程前列",
+      "summary": "Google DeepMind 的 Gemini 4 Argon 在 ARC-AGI-3 上以 Provider Adapter Harness 取得 97.5%，成为继 OpenAI 之后第二家越过 95% 的实验室，成本 $4,800，但仍低于 GPT-6 Astra 的 99.9%。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Google DeepMind 的 Gemini 4 Argon 在 ARC-AGI-3 上以 Provider Adapter Harness 取得 97.5%，成为继 OpenAI 之后第二家越过 95% 的实验室，成本 $4,800，但仍低于 GPT-6 Astra 的 99.9%。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/cqlsedakjd026b9gwsdor3la5\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Google DeepMind 的 Gemini 4 Argon 在 ARC-AGI-3 上以 Provider Adapter Harness 取得 97.5%，成为继 OpenAI 之后第二家越过 95% 的实验室，成本 $4,800，但仍低于 GPT-6 Astra 的 99.9%。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-16T15:03:46+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "edda79b0dacb236",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/cqlsedakjd026b9gwsdor3la5"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Google DeepMind 的 Gemini 4 Argon 在 ARC-AGI-3 上以 Provider Adapter Harness 取得 97.5%，成为继 OpenAI 之后第二家越过 95% 的实验室，成本 $4,800，但仍低于 GPT-6 Astra 的 99.9%。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-e794c0d7b3990e8",
+      "url": "https://aihot.news/items/e5sq3ktyg84rq5fe3t5rwho0x",
+      "external_url": "https://aihot.news/items/e5sq3ktyg84rq5fe3t5rwho0x",
+      "title": "Vercel 数据显示 Jev 成为其史上采用最快的 AI 模型",
+      "summary": "Vercel 周四发布的数据显示，TypeSafe AI 的决策模型 Jev 上线两周内被 35% 的付费团队使用，接近第二名 Sonnet 5.5 的两倍，是 Vercel 平台上模型首两周最快采用纪录。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Vercel 周四发布的数据显示，TypeSafe AI 的决策模型 Jev 上线两周内被 35% 的付费团队使用，接近第二名 Sonnet 5.5 的两倍，是 Vercel 平台上模型首两周最快采用纪录。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/e5sq3ktyg84rq5fe3t5rwho0x\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Vercel 周四发布的数据显示，TypeSafe AI 的决策模型 Jev 上线两周内被 35% 的付费团队使用，接近第二名 Sonnet 5.5 的两倍，是 Vercel 平台上模型首两周最快采用纪录。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-16T15:33:49+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e794c0d7b3990e8",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/e5sq3ktyg84rq5fe3t5rwho0x"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Vercel 周四发布的数据显示，TypeSafe AI 的决策模型 Jev 上线两周内被 35% 的付费团队使用，接近第二名 Sonnet 5.5 的两倍，是 Vercel 平台上模型首两周最快采用纪录。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-eaee773355b5ecc",
+      "url": "https://aihot.news/items/gqxutp7vdw37ps37kqp1hce5r",
+      "external_url": "https://aihot.news/items/gqxutp7vdw37ps37kqp1hce5r",
+      "title": "Gemini 4 Argon 在 WANDR 创纪录",
+      "summary": "Gemini 4 Argon 在 WANDR 上创下新纪录。 现已在 Perplexity 面向 Pro 和 Max 订阅用户开放。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Gemini 4 Argon 在 WANDR 上创下新纪录。\n现已在 Perplexity 面向 Pro 和 Max 订阅用户开放。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/gqxutp7vdw37ps37kqp1hce5r\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Gemini 4 Argon 在 WANDR 上创下新纪录。\n现已在 Perplexity 面向 Pro 和 Max 订阅用户开放。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-16T15:03:25+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "eaee773355b5ecc",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/gqxutp7vdw37ps37kqp1hce5r"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Gemini 4 Argon 在 WANDR 上创下新纪录。\n现已在 Perplexity 面向 Pro 和 Max 订阅用户开放。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-16-ec735ac2d1302eb",
+      "url": "https://aihot.news/items/e79z4iorx69fa9w4a9drfs4y0",
+      "external_url": "https://aihot.news/items/e79z4iorx69fa9w4a9drfs4y0",
+      "title": "MAI 登顶 OpenRouter 转录模型榜",
+      "summary": "MAI 是 OpenRouter 上在所有语言和使用场景中最准确、最受欢迎的转录模型。 现在就用它为你的智能体试试吧！👇",
+      "content_html": "<p><strong>事实</strong></p><ul><li>MAI 是 OpenRouter 上在所有语言和使用场景中最准确、最受欢迎的转录模型。\n现在就用它为你的智能体试试吧！👇</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/e79z4iorx69fa9w4a9drfs4y0\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· MAI 是 OpenRouter 上在所有语言和使用场景中最准确、最受欢迎的转录模型。\n现在就用它为你的智能体试试吧！👇\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-16T15:26:48+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ec735ac2d1302eb",
+        "source_ids": [
+          "rss:aihot-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/e79z4iorx69fa9w4a9drfs4y0"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "MAI 是 OpenRouter 上在所有语言和使用场景中最准确、最受欢迎的转录模型。\n现在就用它为你的智能体试试吧！👇"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    }
+  ]
+}

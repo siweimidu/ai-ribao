@@ -1,4 +1,4 @@
-generated_at: '2026-10-15T18:21:12.433214+00:00'
+generated_at: '2026-10-17T06:29:13.576124+00:00'
 generated_by: scripts/build_registry.py
 source_of_truth: audit/sources_ledger.json (static audit of six repositories) + sources/local.yaml (later additions)
 policy:
@@ -6,11 +6,11 @@ policy:
   coverage_guard: tests/contract/test_source_coverage.py asserts every provenance entry survives.
 stats:
   url_level_rows_before_merge: 100
-  parameter_rows_merged: -17
+  parameter_rows_merged: -24
   merge_breakdown:
     google_trends: 21
-  unique_sources: 117
-  provenance_rows: 145
+  unique_sources: 124
+  provenance_rows: 152
   by_repository:
     CloudFlare-AI-Insight-Daily: 11
     Horizon: 45
@@ -26,17 +26,18 @@ stats:
     daily-briefing: 1
     dailydawn: 19
     daybrief: 5
-  added_locally: 37
+  added_locally: 44
   by_source_type:
-    api: 32
+    api: 34
+    atom: 4
     jsonfeed: 1
-    rss: 79
+    rss: 80
     scrape: 5
   by_category:
     community: 22
     dataset: 1
-    dev: 5
-    digest: 14
+    dev: 9
+    digest: 15
     example: 5
     lab-blog: 4
     lab-official: 10
@@ -50,7 +51,7 @@ stats:
     search: 1
     social: 1
     trend: 1
-    zh-media: 22
+    zh-media: 24
 sources:
 - source_id: rss:deepmind-google-blog
   name: Google DeepMind
@@ -2102,6 +2103,37 @@ sources:
   params: null
   merged_parameter_rows: 1
   added_locally: true
+- source_id: rss:dailydawn-feed-xml
+  name: DailyDawn RSS
+  url: https://dailydawn.dev/feed.xml
+  normalized_url: https://dailydawn.dev/feed.xml
+  domain: dailydawn.dev
+  category: digest
+  categories_all:
+  - digest
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 3
+  polling_interval: 6h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: dailydawn
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-17 实测 HTTP 200，13.5 KB，合法 RSS。
+  why: DailyDawn 的 RSS 版本。与已有的 zh.json 同属一个发布者，因此归入同一 dedup_group —— 否则同一篇内容会被算成两个独立来源。
+  license_note: null
+  found_in:
+  - user-list:2026-10-17#第二批清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: rss:raw-githubusercontent-com-ai-rss-feeds-ai-rss-feeds-news
   name: AI RSS Feeds News
   url: https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/refs/heads/main/feeds/ai-rss-feeds-news.xml
@@ -2642,6 +2674,80 @@ sources:
   - daily-briefing
   params: null
   merged_parameter_rows: 1
+- source_id: api:aibase-ai-news
+  name: AIBase 快讯
+  url: https://mcpapi.aibase.cn/api/aiInfo/aiNews?pageNo=1&langType=zh_cn
+  normalized_url: https://mcpapi.aibase.cn/api/aiInfo/aiNews?pageNo=1&langType=zh_cn
+  domain: mcpapi.aibase.cn
+  category: zh-media
+  categories_all:
+  - zh-media
+  language: zh
+  source_type: api
+  fetch_method: httpx_json
+  adapter: JsonApiFetcher
+  enabled: true
+  priority: 3
+  polling_interval: 6h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-17 实测 HTTP 200，15 KB，JSON 信封 {code,msg,data}。
+  why: 中文 AI 快讯，官方无 RSS，用其公开 JSON 接口。字段路径显式声明， 不依赖通用适配器去猜。
+  license_note: null
+  found_in:
+  - user-list:2026-10-17#第二批清单
+  provenance_count: 1
+  repositories: []
+  params:
+    items_path: data.list
+    title_key: title
+    summary_key: description
+    date_key: createTime
+    id_key: oid
+    url_template: https://www.aibase.com/zh/news/{id}
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: api:aibase-daily-news
+  name: AIBase 日报
+  url: https://mcpapi.aibase.cn/api/aiInfo/dailyNews?pageNo=1&langType=zh_cn
+  normalized_url: https://mcpapi.aibase.cn/api/aiInfo/dailyNews?pageNo=1&langType=zh_cn
+  domain: mcpapi.aibase.cn
+  category: zh-media
+  categories_all:
+  - zh-media
+  language: zh
+  source_type: api
+  fetch_method: httpx_json
+  adapter: JsonApiFetcher
+  enabled: true
+  priority: 3
+  polling_interval: 6h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: aibase
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-17 实测 HTTP 200，22 KB，JSON 信封 {code,msg,data}。
+  why: AIBase 的日报接口，与快讯同属一个发布者，归入同一 dedup_group。
+  license_note: null
+  found_in:
+  - user-list:2026-10-17#第二批清单
+  provenance_count: 1
+  repositories: []
+  params:
+    items_path: data.list
+    title_key: title
+    summary_key: description
+    date_key: createTime
+    id_key: oid
+    url_template: https://www.aibase.com/zh/news/{id}
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: rss:wechat-jiqizhixin-decemberpei
   name: 机器之心
   url: https://decemberpei.cyou/rssbox/wechat-jiqizhixin.xml
@@ -3152,6 +3258,130 @@ sources:
       url: https://trends.google.com/trends/explore?q=vibe%20coding
       name: 'Google Trends: vibe coding'
   merged_parameter_rows: 21
+- source_id: atom:github-ai-ribao-commits
+  name: ai-ribao Commits
+  url: https://github.com/siweimidu/ai-ribao/commits.atom
+  normalized_url: https://github.com/siweimidu/ai-ribao/commits.atom
+  domain: github.com
+  category: dev
+  categories_all:
+  - dev
+  language: en
+  source_type: atom
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 5
+  polling_interval: 12h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-17 实测 HTTP 200，39 KB，合法 Atom。
+  why: 本项目自身的提交流，用于观察迭代节奏。构建事件，优先级最低。
+  license_note: null
+  found_in:
+  - user-list:2026-10-17#第二批清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: atom:github-ai-ribao-releases
+  name: ai-ribao Releases
+  url: https://github.com/siweimidu/ai-ribao/releases.atom
+  normalized_url: https://github.com/siweimidu/ai-ribao/releases.atom
+  domain: github.com
+  category: dev
+  categories_all:
+  - dev
+  language: en
+  source_type: atom
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 5
+  polling_interval: 12h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-17 实测 HTTP 200，521 B，合法 Atom（当前无 release）。
+  why: 本项目自身的发布记录。属于构建事件而非行业新闻，所以优先级最低、类别为 dev —— 排序时应当排在模型发布之后。
+  license_note: null
+  found_in:
+  - user-list:2026-10-17#第二批清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: atom:github-horizon-commits
+  name: Horizon Commits
+  url: https://github.com/siweimidu/Horizon/commits.atom
+  normalized_url: https://github.com/siweimidu/Horizon/commits.atom
+  domain: github.com
+  category: dev
+  categories_all:
+  - dev
+  language: en
+  source_type: atom
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 5
+  polling_interval: 12h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-17 实测 HTTP 200，17 KB，合法 Atom。
+  why: Horizon 的提交流，用于跟踪其排序实现的变化。
+  license_note: null
+  found_in:
+  - user-list:2026-10-17#第二批清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: atom:github-horizon-releases
+  name: Horizon Releases
+  url: https://github.com/siweimidu/Horizon/releases.atom
+  normalized_url: https://github.com/siweimidu/Horizon/releases.atom
+  domain: github.com
+  category: dev
+  categories_all:
+  - dev
+  language: en
+  source_type: atom
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 5
+  polling_interval: 12h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 2026-10-17 实测 HTTP 200，517 B，合法 Atom（当前无 release）。
+  why: Horizon 的发布记录，用于跟踪它的版本变化（本项目的排序与评分设计参考过它）。
+  license_note: null
+  found_in:
+  - user-list:2026-10-17#第二批清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: rss:developer-nvidia-com-tag-cuda
   name: NVIDIA Developer CUDA blog
   url: https://developer.nvidia.com/blog/tag/cuda/feed

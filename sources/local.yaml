@@ -796,3 +796,172 @@ sources:
   #   TG ai_copilot_channel      同上
   #   TG rollerrolling           同上
   #   TG followbun               同上
+
+  # ══ 用户第二批清单（2026-10-17）══════════════════════════════════════════════════
+  #
+  # 每条都实测过；状态与响应大小写进 notes。**没有实测的不加** ——
+  # 「加了但抓不到」和「今天没新闻」在日志里长得一样。
+
+  - source_id: "rss:dailydawn-feed-xml"
+    name: DailyDawn RSS
+    url: https://dailydawn.dev/feed.xml
+    normalized_url: https://dailydawn.dev/feed.xml
+    domain: dailydawn.dev
+    category: digest
+    language: en
+    source_type: rss
+    adapter: RssFetcher
+    enabled: true
+    priority: 3
+    polling_interval: "6h"
+    timeout_s: 30
+    dedup_group: dailydawn
+    found_in:
+      - "user-list:2026-10-17#第二批清单"
+    why: >-
+      DailyDawn 的 RSS 版本。与已有的 zh.json 同属一个发布者，因此归入同一 dedup_group ——
+      否则同一篇内容会被算成两个独立来源。
+    notes: "2026-10-17 实测 HTTP 200，13.5 KB，合法 RSS。"
+
+  - source_id: "atom:github-ai-ribao-releases"
+    name: ai-ribao Releases
+    url: https://github.com/siweimidu/ai-ribao/releases.atom
+    normalized_url: https://github.com/siweimidu/ai-ribao/releases.atom
+    domain: github.com
+    category: dev
+    language: en
+    source_type: atom
+    adapter: RssFetcher
+    enabled: true
+    priority: 5
+    polling_interval: "12h"
+    timeout_s: 30
+    found_in:
+      - "user-list:2026-10-17#第二批清单"
+    why: >-
+      本项目自身的发布记录。属于构建事件而非行业新闻，所以优先级最低、类别为 dev ——
+      排序时应当排在模型发布之后。
+    notes: "2026-10-17 实测 HTTP 200，521 B，合法 Atom（当前无 release）。"
+
+  - source_id: "atom:github-horizon-releases"
+    name: Horizon Releases
+    url: https://github.com/siweimidu/Horizon/releases.atom
+    normalized_url: https://github.com/siweimidu/Horizon/releases.atom
+    domain: github.com
+    category: dev
+    language: en
+    source_type: atom
+    adapter: RssFetcher
+    enabled: true
+    priority: 5
+    polling_interval: "12h"
+    timeout_s: 30
+    found_in:
+      - "user-list:2026-10-17#第二批清单"
+    why: >-
+      Horizon 的发布记录，用于跟踪它的版本变化（本项目的排序与评分设计参考过它）。
+    notes: "2026-10-17 实测 HTTP 200，517 B，合法 Atom（当前无 release）。"
+
+  - source_id: "atom:github-ai-ribao-commits"
+    name: ai-ribao Commits
+    url: https://github.com/siweimidu/ai-ribao/commits.atom
+    normalized_url: https://github.com/siweimidu/ai-ribao/commits.atom
+    domain: github.com
+    category: dev
+    language: en
+    source_type: atom
+    adapter: RssFetcher
+    enabled: true
+    priority: 5
+    polling_interval: "12h"
+    timeout_s: 30
+    found_in:
+      - "user-list:2026-10-17#第二批清单"
+    why: >-
+      本项目自身的提交流，用于观察迭代节奏。构建事件，优先级最低。
+    notes: "2026-10-17 实测 HTTP 200，39 KB，合法 Atom。"
+
+  - source_id: "atom:github-horizon-commits"
+    name: Horizon Commits
+    url: https://github.com/siweimidu/Horizon/commits.atom
+    normalized_url: https://github.com/siweimidu/Horizon/commits.atom
+    domain: github.com
+    category: dev
+    language: en
+    source_type: atom
+    adapter: RssFetcher
+    enabled: true
+    priority: 5
+    polling_interval: "12h"
+    timeout_s: 30
+    found_in:
+      - "user-list:2026-10-17#第二批清单"
+    why: >-
+      Horizon 的提交流，用于跟踪其排序实现的变化。
+    notes: "2026-10-17 实测 HTTP 200，17 KB，合法 Atom。"
+
+  - source_id: "api:aibase-ai-news"
+    name: AIBase 快讯
+    url: https://mcpapi.aibase.cn/api/aiInfo/aiNews?pageNo=1&langType=zh_cn
+    normalized_url: https://mcpapi.aibase.cn/api/aiInfo/aiNews
+    domain: mcpapi.aibase.cn
+    category: zh-media
+    language: zh
+    source_type: api
+    adapter: JsonApiFetcher
+    enabled: true
+    priority: 3
+    polling_interval: "6h"
+    timeout_s: 30
+    found_in:
+      - "user-list:2026-10-17#第二批清单"
+    why: >-
+      中文 AI 快讯，官方无 RSS，用其公开 JSON 接口。字段路径显式声明，
+      不依赖通用适配器去猜。
+    notes: "2026-10-17 实测 HTTP 200，15 KB，JSON 信封 {code,msg,data}。"
+    # 实测字段（2026-10-17）：title / subtitle / thumb / sourceName / author /
+    # description / oid / createTime / pv。**没有 URL 字段**，详情页由 oid 构造
+    # （实测 /zh/news/{oid} = 200，/news/{oid} = 404）。
+    params:
+      items_path: "data.list"
+      title_key: "title"
+      summary_key: "description"
+      date_key: "createTime"
+      id_key: "oid"
+      url_template: "https://www.aibase.com/zh/news/{id}"
+
+  - source_id: "api:aibase-daily-news"
+    name: AIBase 日报
+    url: https://mcpapi.aibase.cn/api/aiInfo/dailyNews?pageNo=1&langType=zh_cn
+    normalized_url: https://mcpapi.aibase.cn/api/aiInfo/dailyNews
+    domain: mcpapi.aibase.cn
+    category: zh-media
+    language: zh
+    source_type: api
+    adapter: JsonApiFetcher
+    enabled: true
+    priority: 3
+    polling_interval: "6h"
+    timeout_s: 30
+    dedup_group: aibase
+    found_in:
+      - "user-list:2026-10-17#第二批清单"
+    why: >-
+      AIBase 的日报接口，与快讯同属一个发布者，归入同一 dedup_group。
+    notes: "2026-10-17 实测 HTTP 200，22 KB，JSON 信封 {code,msg,data}。"
+    # 实测字段（2026-10-17）：title / subtitle / thumb / sourceName / author /
+    # description / oid / createTime / pv。**没有 URL 字段**，详情页由 oid 构造
+    # （实测 /zh/news/{oid} = 200，/news/{oid} = 404）。
+    params:
+      items_path: "data.list"
+      title_key: "title"
+      summary_key: "description"
+      date_key: "createTime"
+      id_key: "oid"
+      url_template: "https://www.aibase.com/zh/news/{id}"
+
+  # ══ 用户清单中**不收录**的源 ══════════════════════════════════════════════════
+  #
+  #   我方 RSS  https://siweimidu.github.io/ai-ribao/feed/zh.xml
+  #       这是本流水线自己的输出。喂回自己会让日报引用自己 —— 循环引用，
+  #       而且会把「已发布的内容」当成新素材再发一次。已从采集侧排除。

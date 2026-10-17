@@ -54,16 +54,107 @@ MIXED_CATEGORIES = frozenset({"media", "zh-media", "digest", "news", "product", 
 #: Categories that are general-purpose: AI appears, but so does everything else.
 GENERAL_CATEGORIES = frozenset({"community", "dev", "social", "other", "example", "preset"})
 
+#: Model and product names, grouped by vendor. **The user supplied this list explicitly** and asked
+#: for these to be treated as focus points, so it is data rather than prose: one entry per family,
+#: each with the aliases that actually appear in Chinese and English headlines.
+#:
+#: Two rules keep this from over-matching:
+#:
+#: * every entry is matched on word boundaries (`(?<![a-z])` / `(?![a-z])`), so `glm` cannot fire
+#:   inside `glamorous` and `spark` cannot fire inside `sparkling`;
+#: * Chinese names are matched plainly, because CJK has no word boundaries -- `混元` inside
+#:   `混元大模型` is the intended hit.
+MODEL_FAMILIES: dict[str, tuple[str, ...]] = {
+    # ── 通用大模型 ──────────────────────────────────────────────────────────────
+    "gpt": ("gpt", "chatgpt", "openai o1", "openai o3", "gpt-oss"),
+    "claude": ("claude", "opus", "sonnet", "haiku"),
+    "gemini": ("gemini", "bard"),
+    "deepseek": ("deepseek", "深度求索"),
+    "qwen": ("qwen", "通义", "千问"),
+    "minimax": ("minimax", "海螺", "abab"),
+    "grok": ("grok", "xai"),
+    "kimi": ("kimi", "moonshot", "月之暗面"),
+    "glm": ("glm", "chatglm", "智谱", "zhipu", "bigmodel"),
+    "mistral": ("mistral", "mixtral", "codestral"),
+    "doubao": ("doubao", "豆包", "seed-", "火山方舟", "volces"),
+    "hunyuan": ("hunyuan", "混元", "元宝"),
+    "mimo": ("mimo", "小米大模型"),
+    "step": ("stepfun", "step-", "阶跃星辰", "阶跃"),
+    "spark": ("讯飞星火", "iflytek spark", "星火大模型"),
+    "ernie": ("ernie", "文心", "wenxin"),
+    "gemma": ("gemma",),
+    "sensenova": ("sensenova", "商汤日日新", "日日新"),
+    "minicpm": ("minicpm", "面壁智能", "openbmb"),
+    "wan": ("wan2", "wanx", "通义万相", "万相"),
+    "pangu": ("pangu", "盘古"),
+    "longcat": ("longcat", "龙猫"),
+    "llama": ("llama", "meta ai"),
+    "phi": ("phi-", "phi3", "phi4"),
+    "nemotron": ("nemotron",),
+    # Cohere names its models `Command R` / `Command R+` / `Command A` — with a space, while the
+    # API id is `command-r`. Both spellings appear in headlines, so both are listed; the hyphenated
+    # form alone missed `Command R++` entirely.
+    "command": ("command-r", "command r", "command a", "command-r+", "command r+", "cohere"),
+    # Deliberately **absent** here; see `_AMBIGUOUS_MODELS`. Every one of these is an ordinary
+    # English word, and a bare match scored 1.00 for `fable of the bees`.
+    # "mythos", "fable", "muse", "reflection", "agnes"
+    # ── 图像 / 视频生成 ─────────────────────────────────────────────────────────
+    "veo": ("veo",),
+    "midjourney": ("midjourney",),
+    "dalle": ("dall-e", "dalle", "dall·e"),
+    "stable diffusion": ("stable diffusion", "sdxl", "sd3", "sd 3"),
+    "flux": ("flux", "black forest labs", "bfl"),
+    "runway": ("runway", "gen-3", "gen3"),
+    "pika": ("pika",),
+    "kling": ("kling", "可灵"),
+    "seedance": ("seedance", "即梦"),
+    "seedream": ("seedream",),
+    "vidu": ("vidu", "生数科技"),
+    "sora": ("sora",),
+    # ── 其它常见 ────────────────────────────────────────────────────────────────
+    "whisper": ("whisper",),
+}
+
+#: A flattened alternation of every family and alias, longest first.
+#:
+#: Longest-first matters: with `glm` before `chatglm`, the alternation would match the shorter
+#: token and leave `chat` to be scanned again, which changes how many hits a headline scores.
+_MODEL_ALTERNATION = "|".join(
+    re.escape(alias)
+    for alias in sorted(
+        {a for aliases in MODEL_FAMILIES.values() for a in aliases},
+        key=len,
+        reverse=True,
+    )
+)
+
+#: Model names that are also ordinary English words. They count **only** when the headline carries
+#: an AI cue as well.
+#:
+#: Measured before this existed: `fable of the bees`, `a musing on life` and `mythos in literature`
+#: all scored 1.00 and would have been published as AI news. The same mistake as the bare-`AI` case
+#: in `_headline_focus`: one ambiguous token is not evidence of the subject.
+_AMBIGUOUS_MODELS = re.compile(
+    r"(?<![a-z])(mythos|fable|muse|reflection|agnes)(?![a-z])", re.IGNORECASE
+)
+
+#: What makes an ambiguous name into an AI story: a model word, a version number, a vendor, or a
+#: technical term. `Fable 发布新模型` passes; `fable of the bees` does not.
+_AI_CONTEXT = re.compile(
+    r"模型|大模型|权重|开源|发布|上线|推出|基准|评测|推理|训练|参数|"
+    r"(?<![a-z])(model|llm|release|launch|benchmark|weights?|open-source|"
+    r"openai|anthropic|google|deepmind|meta|microsoft|nvidia|mistral|cohere)(?![a-z])|"
+    r"\b\d+(\.\d+)?\b",
+    re.IGNORECASE,
+)
+
 #: Vocabulary that only appears in AI coverage. Deliberately specific: "model" alone is a
 #: word in fashion and finance writing, so the bare term is not enough on its own.
 _CORE = re.compile(
-    r"(?<![a-z])(gpt|claude|gemini|llama|qwen|deepseek|kimi|glm|mistral|mixtral|grok|"
-    r"sora|whisper|midjourney|stable diffusion|flux|phi|gemma|nemotron|minicpm|"
-    r"kling|seedream|seedance|doubao|hunyuan|ernie|spark|"
+    rf"(?<![a-z])({_MODEL_ALTERNATION})(?![a-z])|"
     r"llms?|agents?|transformers?|diffusion|rag|embeddings?|tokenizers?|"
     r"benchmarks?|fine-?tun\w*|open-?weight\w*|context window|inference|multimodal|"
-    r"neural networks?|machine learning|deep learning|reinforcement learning)"
-    r"(?![a-z])|"
+    r"neural networks?|machine learning|deep learning|reinforcement learning|"
     r"大模型|新模型|模型权重|模型发布|发布模型|开源权重|智能体|多模态|微调|推理|训练|"
     r"预训练|算力|提示词|上下文|向量|基准测试|参数规模|端侧|蒸馏|对齐|神经网络|"
     r"机器学习|深度学习|"
@@ -131,6 +222,9 @@ def _headline_focus(title: str) -> float:
     # Weights: a named lab is the strongest single token (it names the subject), specific
     # technique vocabulary next, and a bare `AI` least -- it is the word every non-AI story
     # about an AI feature also uses.
+    # An ambiguous name counts only alongside an AI cue; see `_AMBIGUOUS_MODELS`.
+    if _AMBIGUOUS_MODELS.search(text) and _AI_CONTEXT.search(text):
+        core += 1
     ai_hits = core * 1.0 + labs * 1.6 + weak * 0.45
     if ai_hits == 0:
         # Nothing AI-specific. A neutral technology term is not an AI signal on its own.

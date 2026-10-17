@@ -420,7 +420,21 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
         #
         # One instant is now used everywhere, and it is handed to `build_digest` so its
         # selection is identical by construction rather than by timing luck.
-        run_now = datetime.now(timezone.utc)
+        #
+        # When `--date` pins a day, the instant must move with it: the digest's date,
+        # its window and (via the window) which items are in scope all derive from this
+        # value. Leaving it at `now` while pinning the filename elsewhere would produce a
+        # file named for one day containing another day's selection.
+        if getattr(args, "date", None):
+            from zoneinfo import ZoneInfo as _ZI
+            _d = datetime.strptime(args.date, "%Y-%m-%d")
+            # End of the pinned day, not noon: a replay covers everything published that
+            # day, and anything after noon would otherwise be flagged `future_date`.
+            run_now = datetime.now(_ZI(cfg.timezone)).replace(
+                year=_d.year, month=_d.month, day=_d.day, hour=23, minute=59, second=59, microsecond=0
+            ).astimezone(timezone.utc)
+        else:
+            run_now = datetime.now(timezone.utc)
         #
         # The archive directory comes from the caller's arguments: this function is handed
         # `args`, and `out_dir` is resolved in `cmd_run`. Re-deriving it here from the same
@@ -635,6 +649,11 @@ def build_parser() -> argparse.ArgumentParser:
     r.add_argument("--allow-early", action="store_true",
                    help="允许在采集时间（默认 10:00）之前生成当天日报；默认拒绝")
     r.add_argument("--site-url", default="https://example.github.io/ai-daily")
+    # `cmd_run` already reads `getattr(args, "date", None)` when deciding `digest_date`;
+    # the flag was simply never registered, so a replayed run could only ever be dated
+    # "today". Replaying an older items.jsonl (backfill, a restricted-source rerun)
+    # needs the date pinned, so expose it here.
+    r.add_argument("--date", help="YYYY-MM-DD（默认取配置时区的今天）")
     r.add_argument("--no-env", action="store_true")
     r.set_defaults(func=cmd_run)
 

@@ -61,7 +61,10 @@ class JsonApiFetcher(BaseFetcher):
             base.items = []
             return base
 
-        records = _records(doc)
+        # `items_path` from the source's own `params`, when it declares one. AIBase nests its
+        # list under `data.list`, which no generic envelope key would find -- the fetch reported
+        # `empty` for a source that was returning twenty records.
+        records = _records(doc, (spec.params or {}).get("items_path"))
         base.items = [it for r in records if (it := _map_record(spec, r)) is not None]
         return base
 
@@ -93,7 +96,13 @@ def _with_runtime_params(spec: SourceSpec, now: datetime) -> str:
     return f"{spec.url}{joiner}{urlencode(params)}"
 
 
-def _records(doc: object) -> list[dict]:
+def _records(doc: object, items_path: str | None = None) -> list[dict]:
+    # An explicit path beats the envelope heuristics: AIBase nests its list two levels
+    # down (`data.list`), where no generic envelope key would look.
+    if items_path:
+        found = _dig(doc, items_path)
+        if isinstance(found, list):
+            return [r for r in found if isinstance(r, dict)]
     if isinstance(doc, list):
         return [r for r in doc if isinstance(r, dict)]
     if isinstance(doc, dict):
@@ -111,9 +120,44 @@ def _first(record: dict, keys: tuple[str, ...]) -> object | None:
     return None
 
 
+def _dig(doc: object, path: str) -> object | None:
+    """Follow a dotted path (`data.list`) into a decoded JSON document."""
+    node = doc
+    for part in path.split("."):
+        if isinstance(node, dict):
+            node = node.get(part)
+        elif isinstance(node, list) and part.isdigit():
+            node = node[int(part)] if int(part) < len(node) else None
+        else:
+            return None
+        if node is None:
+            return None
+    return node
+
+
+def _mapped(record: dict, params: dict, key: str) -> object | None:
+    """A field by the name the source actually uses, per `params`."""
+    name = params.get(key)
+    if not name:
+        return None
+    value = record.get(str(name))
+    return value if value not in (None, "", [], {}) else None
+
 def _map_record(spec: SourceSpec, record: dict) -> RawItem | None:
+    params = spec.params or {}
     title = _first(record, _TITLE_KEYS)
     url = _first(record, _URL_KEYS)
+
+    # **Declared mapping wins.** A source whose fields do not match the generic key lists was
+    # silently producing zero items; `params` is how it says what its fields are called.
+    if params:
+        title = _mapped(record, params, "title_key") or title
+        url = _mapped(record, params, "url_key") or url
+        template = params.get("url_template")
+        if template and not str(url).startswith("http"):
+            ident = _mapped(record, params, "id_key") or url
+            if ident is not None:
+                url = str(template).format(id=ident)
 
     # Hugging Face: the id IS the resource path, not a URL. The id may arrive under
     # `id` (datasets) or only as `modelId` (models), so fall back to the title -- using
@@ -136,6 +180,8 @@ def _map_record(spec: SourceSpec, record: dict) -> RawItem | None:
         title = str(url)
 
     published = _parse_date(_first(record, _DATE_KEYS))
+    if params.get("date_key"):
+        published = _parse_date(_mapped(record, params, "date_key")) or published
 
     metrics: dict[str, object] = {}
     for key in ("points", "num_comments", "likes", "replies", "ups", "stars", "forks", "comments"):
@@ -148,6 +194,8 @@ def _map_record(spec: SourceSpec, record: dict) -> RawItem | None:
         metrics["node"] = record["node"]["title"]
 
     summary = _first(record, _SUMMARY_KEYS)
+    if params.get("summary_key"):
+        summary = _mapped(record, params, "summary_key") or summary
     author = record.get("author")
     if isinstance(author, dict):
         author = author.get("name") or author.get("username")
