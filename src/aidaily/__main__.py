@@ -42,6 +42,7 @@ from .pipeline import (
 from .publish import deliver_all
 from .registry import apply_overrides, assert_provenance_complete, load_ledger, load_registry
 from .render import render_brief, render_deep, render_json_feed
+from .backfill import local_date, split_by_date
 from .state import (
     EXIT_ALREADY_PUBLISHED,
     RunRecord,
@@ -69,6 +70,16 @@ def _rel(path: Path) -> str:
         return str(path.relative_to(ROOT))
     except ValueError:
         return str(path)
+
+
+def _tz_offset_hours(cfg) -> int:
+    """The configured zone's UTC offset, for date bucketing.
+
+    `split_by_date` needs the offset to turn a publication instant into a calendar date, and it
+    must use the *configured* zone rather than a hard-coded +8, or a future config change would
+    silently file stories one day off.
+    """
+    return int(datetime.now(ZoneInfo(cfg.timezone)).utcoffset().total_seconds() // 3600)
 
 
 def _load_sources():
@@ -180,8 +191,12 @@ def cmd_run(args: argparse.Namespace) -> int:
     # reject a run that was already past it.
     publish_hour = cfg.run.publish_hour()
     now_local = datetime.now(ZoneInfo(cfg.timezone))
-    if not args.allow_early and digest_date == now_local.strftime("%Y-%m-%d") \
-            and now_local.hour < publish_hour:
+    # Only **today** can be "too early". A requested earlier date is a deliberate backfill: its
+    # collection window is complete by definition, so the guard does not apply. Without this,
+    # rebuilding 10-17 on the 18th was refused as "not complete yet" -- for a day that had
+    # already ended.
+    is_today = digest_date == now_local.strftime("%Y-%m-%d")
+    if not args.allow_early and is_today and now_local.hour < publish_hour:
         print(
             f"now {now_local.strftime('%H:%M')} {cfg.timezone} is before the {publish_hour:02d}:00 "
             f"collection hour; {digest_date} is not complete yet, so no digest is built.",
@@ -207,7 +222,17 @@ def cmd_run(args: argparse.Namespace) -> int:
         return 1
 
     # 2) window + L2
-    stage = run_dedup_stage(items, cfg)
+    #
+    # **Route by publication date first.** A story that surfaces today but was published on an
+    # earlier date belongs to that date's issue, ranked by importance like everything else -- the
+    # archive has to say what happened on the 17th, and it cannot do that if a 10-17 release is
+    # only ever seen by the 18th. `split_by_date` returns the target date's items plus a bucket
+    # per earlier date; each bucket is rebuilt into its own issue below.
+    split = split_by_date(items, digest_date, tz_offset_hours=_tz_offset_hours(cfg))
+    if split.late:
+        print(json.dumps({"late_items": split.summary()}, ensure_ascii=False))
+
+    stage = run_dedup_stage(split.target, cfg)
     print(json.dumps(dedup_report(stage)["dedup"], ensure_ascii=False))
     if not stage.window.kept:
         print("no items inside the window; nothing to publish", file=sys.stderr)
@@ -241,6 +266,7 @@ def cmd_run(args: argparse.Namespace) -> int:
         stage, events, sources, cfg,
         report=report, insights=insights, warnings=warnings, llm_usage=llm_usage,
         history=history, rubric_scores=rubric_scores, now=run_now,
+        pre_date_ignored=split.ignored,
     )
 
     # 6) fact check -- a failing digest is not published
@@ -348,6 +374,180 @@ def cmd_run(args: argparse.Namespace) -> int:
     status = "published" if delivery.all_ok else "partial"
     _record_run(digest, delivery.channels, status, reason)
     return 0 if delivery.all_ok else 3
+
+
+def cmd_backfill(args: argparse.Namespace) -> int:
+    """Fold late stories into the issues of the dates they were published on.
+
+    This is the operator entry point for one rule: **a story belongs to the day it was published,
+    not the day it was collected.** DeepSeek V4.1 Flash 1017 is a 10-17 release; the 10-17 issue
+    closed at 14:38 Beijing and never saw it. Re-running that whole day is not an option -- the raw
+    items are pruned -- but the archive still holds the events, and a new story can be added to it
+    and re-ranked.
+    """
+    from .backfill import split_by_date
+    from .backfill_merge import merge_late_items
+
+    cfg = load_config(env={} if args.no_env else None)
+    out_dir = Path(args.out_dir) if args.out_dir else ROOT / "data" / "digests"
+    items = read_items_jsonl(args.items)
+    if not items:
+        print(f"{args.items} 里没有条目", file=sys.stderr)
+        return 1
+
+    offset = _tz_offset_hours(cfg)
+    today = datetime.now(ZoneInfo(cfg.timezone)).strftime("%Y-%m-%d")
+    split = split_by_date(items, today, tz_offset_hours=offset)
+
+    targets = {args.date: None} if args.date else dict(split.late)
+    if not args.date:
+        print(json.dumps({"late_by_date": split.summary()["late_by_date"]}, ensure_ascii=False))
+
+    chapters: list[dict[str, object]] = []
+    for date_str, bucket in sorted(targets.items()):
+        if bucket is None:
+            # Explicit --date: take everything published on that date, regardless of routing.
+            bucket = [
+                i for i in items
+                if i.published_at is not None
+                and local_date(i.published_at, offset) == date_str
+            ]
+        archive = out_dir / f"{date_str}.json"
+        if not archive.exists():
+            chapters.append({"date": date_str, "skipped": "无归档"})
+            continue
+        payload = json.loads(archive.read_text(encoding="utf-8"))
+        digest, insights = _load_archive(payload)
+        merged, insights, report = merge_late_items(
+            digest, bucket, sources=_load_sources(), cfg=cfg, insights=insights
+        )
+        report["date"] = date_str
+        chapters.append(report)
+        if merged.counts.get("late_added"):
+            _write_archive(archive, merged, insights, payload)
+
+    print(json.dumps({"chapters": chapters}, ensure_ascii=False))
+    return 0
+
+
+def _load_archive(payload: dict) -> tuple[Digest, dict]:
+    """Rebuild the Digest from an archived JSON, reattaching the section layout.
+
+    `digest` is stored with `sections` excluded and the layout kept separately as
+    `{category: [event_id]}`; validating `digest` alone yields a Digest whose sections are empty,
+    which would silently move every story to "其它".
+    """
+    from .analyze import EventInsight as _Insight
+    from .models import Digest as _Digest
+
+    doc = dict(payload["digest"])
+    by_id = {e["event_id"]: e for e in doc.get("top_events", [])}
+    doc["sections"] = {
+        cat: [by_id[i] for i in ids if i in by_id]
+        for cat, ids in (payload.get("sections") or {}).items()
+    }
+    digest = _Digest.model_validate(doc)
+    insights = {k: _Insight(**v) for k, v in (payload.get("insights") or {}).items()}
+    return digest, insights
+
+
+def _write_archive(path: Path, digest: Digest, insights: dict, original: dict) -> None:
+    """Write the archive back in the same shape `run` uses, so every reader keeps working."""
+    payload = {
+        "digest": digest.model_dump(mode="json", exclude={"sections"}),
+        "sections": {k: [e.event_id for e in v] for k, v in digest.sections.items()},
+        "insights": {k: (vars(v) if hasattr(v, "__dict__") else v) for k, v in insights.items()},
+        "factcheck": original.get("factcheck"),
+    }
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"  已更新 {path.name}：events={digest.counts.get('events')}")
+
+
+def cmd_backfill(args: argparse.Namespace) -> int:
+    """Fold late stories into the issues of the dates they were published on.
+
+    This is the operator entry point for one rule: **a story belongs to the day it was published,
+    not the day it was collected.** DeepSeek V4.1 Flash 1017 is a 10-17 release; the 10-17 issue
+    closed at 14:38 Beijing and never saw it. Re-running that whole day is not an option -- the raw
+    items are pruned -- but the archive still holds the events, and a new story can be added to it
+    and re-ranked.
+    """
+    from .backfill import split_by_date
+    from .backfill_merge import merge_late_items
+
+    cfg = load_config(env={} if args.no_env else None)
+    out_dir = Path(args.out_dir) if args.out_dir else ROOT / "data" / "digests"
+    items = read_items_jsonl(args.items)
+    if not items:
+        print(f"{args.items} 里没有条目", file=sys.stderr)
+        return 1
+
+    offset = _tz_offset_hours(cfg)
+    today = datetime.now(ZoneInfo(cfg.timezone)).strftime("%Y-%m-%d")
+    split = split_by_date(items, today, tz_offset_hours=offset)
+
+    targets = {args.date: None} if args.date else dict(split.late)
+    if not args.date:
+        print(json.dumps({"late_by_date": split.summary()["late_by_date"]}, ensure_ascii=False))
+
+    chapters: list[dict[str, object]] = []
+    for date_str, bucket in sorted(targets.items()):
+        if bucket is None:
+            # Explicit --date: take everything published on that date, regardless of routing.
+            bucket = [
+                i for i in items
+                if i.published_at is not None
+                and local_date(i.published_at, offset) == date_str
+            ]
+        archive = out_dir / f"{date_str}.json"
+        if not archive.exists():
+            chapters.append({"date": date_str, "skipped": "无归档"})
+            continue
+        payload = json.loads(archive.read_text(encoding="utf-8"))
+        digest, insights = _load_archive(payload)
+        merged, insights, report = merge_late_items(
+            digest, bucket, sources=_load_sources(), cfg=cfg, insights=insights
+        )
+        report["date"] = date_str
+        chapters.append(report)
+        if merged.counts.get("late_added"):
+            _write_archive(archive, merged, insights, payload)
+
+    print(json.dumps({"chapters": chapters}, ensure_ascii=False))
+    return 0
+
+
+def _load_archive(payload: dict) -> tuple[Digest, dict]:
+    """Rebuild the Digest from an archived JSON, reattaching the section layout.
+
+    `digest` is stored with `sections` excluded and the layout kept separately as
+    `{category: [event_id]}`; validating `digest` alone yields a Digest whose sections are empty,
+    which would silently move every story to "其它".
+    """
+    from .analyze import EventInsight as _Insight
+    from .models import Digest as _Digest
+
+    doc = dict(payload["digest"])
+    by_id = {e["event_id"]: e for e in doc.get("top_events", [])}
+    doc["sections"] = {
+        cat: [by_id[i] for i in ids if i in by_id]
+        for cat, ids in (payload.get("sections") or {}).items()
+    }
+    digest = _Digest.model_validate(doc)
+    insights = {k: _Insight(**v) for k, v in (payload.get("insights") or {}).items()}
+    return digest, insights
+
+
+def _write_archive(path: Path, digest: Digest, insights: dict, original: dict) -> None:
+    """Write the archive back in the same shape `run` uses, so every reader keeps working."""
+    payload = {
+        "digest": digest.model_dump(mode="json", exclude={"sections"}),
+        "sections": {k: [e.event_id for e in v] for k, v in digest.sections.items()},
+        "insights": {k: (vars(v) if hasattr(v, "__dict__") else v) for k, v in insights.items()},
+        "factcheck": original.get("factcheck"),
+    }
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"  已更新 {path.name}：events={digest.counts.get('events')}")
 
 
 def _record_run(digest, channels: dict[str, str], status: str, note: str) -> None:
@@ -688,6 +888,17 @@ def build_parser() -> argparse.ArgumentParser:
     # The gate checks that the archive exists, so it needs to know where archives live.
     g.add_argument("--out-dir", help="归档目录（默认 data/digests）")
     g.set_defaults(func=cmd_gate)
+
+    b = sub.add_parser(
+        "backfill",
+        help="把迟到条目并入它发布日期那一天已有的日报，并按重要性重排",
+    )
+    b.add_argument("--items", default=str(ROOT / "data" / "raw" / "items.jsonl"),
+                   help="采集结果 JSONL")
+    b.add_argument("--out-dir", help="归档目录（默认 data/digests）")
+    b.add_argument("--date", help="只处理这一天（YYYY-MM-DD）；省略则按发布日期自动分组")
+    b.add_argument("--no-env", action="store_true")
+    b.set_defaults(func=cmd_backfill)
     return p
 
 

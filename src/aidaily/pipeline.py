@@ -403,6 +403,7 @@ def build_digest(
     history: PublishedHistory | None = None,
     rubric_scores: dict[str, float] | None = None,
     rubric_sections: dict[str, str] | None = None,
+    pre_date_ignored: int = 0,
 ) -> Digest:
     """Assemble the Digest from the stages' output.
 
@@ -504,5 +505,9 @@ def build_digest(
             # a console log nobody keeps. A digest that silently discards 3.5k items
             # should be able to say so.
             **{f"dropped_{bucket}": n for bucket, n in stage.window.dropped_by_bucket.items()},
+            # Items that `split_by_date` sent to another date, or left out because they were
+            # published after this issue's date. They never reach `select_window`, so without
+            # these the digest would under-report how much input it set aside.
+            **({"late_or_ignored": pre_date_ignored} if pre_date_ignored else {}),
         },
     )
