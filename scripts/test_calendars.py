@@ -97,19 +97,28 @@ async def check_event_calendar(page) -> None:
     geom = await page.evaluate(
         """() => {
           const g = document.querySelector('[data-ecal-grid]');
-          const gridLeft = g.getBoundingClientRect().left;
-          const cells = [...g.querySelectorAll('.ecal__day[data-day]')];
-          const colWidth = cells[0].getBoundingClientRect().width;
-          const gap = parseFloat(getComputedStyle(g).columnGap) || 0;
-          const step = colWidth + gap;
+          // Measure against the **weekday header cells**, not the grid box. The box's left
+          // edge is not where column 0 starts: the grid has padding, and the day cells are
+          // narrower than the header cells, so `(cell.left - grid.left) / (dayWidth + gap)`
+          // accumulated error across the leading blanks -- 1 Oct measured as column 5 when
+          // it sits in column 4. The headers ARE the seven columns, so their left edges are
+          // the reference the check means.
+          const heads = [...g.querySelectorAll('.ecal__head-cell, .ecal__dow')];
+          const xs = heads.map((h) => h.getBoundingClientRect().left);
           const out = {};
-          for (const c of cells) {
-            const r = c.getBoundingClientRect();
-            out[c.dataset.day] = Math.round((r.left - gridLeft) / step);
+          for (const c of g.querySelectorAll('.ecal__day[data-day]')) {
+            const left = c.getBoundingClientRect().left;
+            // Nearest header edge: robust to sub-pixel drift and to unequal column widths.
+            let best = 0;
+            for (let i = 1; i < xs.length; i++) {
+              if (Math.abs(xs[i] - left) < Math.abs(xs[best] - left)) best = i;
+            }
+            out[c.dataset.day] = best;
           }
-          return { out, gridLeft: Math.round(gridLeft), step: Math.round(step * 100) / 100 };
+          return { out, columns: xs.length };
         }"""
     )
+    check("量到了 7 个表头作为列基准", geom["columns"] == 7, str(geom["columns"]))
 
     first_col = geom["out"][shape["firstDay"]]
     check(
