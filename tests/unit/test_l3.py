@@ -226,11 +226,11 @@ def test_items_without_a_url_are_excluded(make_item) -> None:
 
 # =============================== critical-source wait gate =======================
 def test_wait_window_covers_the_scheduled_triggers() -> None:
-    """Both slots' triggers must arm the freshness gate.
+    """Every slot's triggers must arm the freshness gate.
 
-    The schedule is two collections a day, 07:00 and 19:00 Beijing, each with a retry 17 minutes
-    later. The window is anchored on `run.at` and reaches three hours forward, so both triggers of
-    a slot are covered; this asserts that, rather than the previous single 10:00 target.
+    The schedule is three collections a day, 04:00 / 12:00 / 20:00 Beijing, each with a retry 17
+    minutes later. `wait_window` iterates `run.schedule_times()`, so this asserts the data behind
+    it rather than any hard-coded hour.
     """
     from datetime import datetime
     from zoneinfo import ZoneInfo
@@ -239,7 +239,9 @@ def test_wait_window_covers_the_scheduled_triggers() -> None:
 
     cfg = _cfg()
     tz = ZoneInfo("Asia/Shanghai")
-    for hhmm in ("06:30", "07:00", "07:17", "09:59", "18:30", "19:00", "19:17", "21:59"):
+    for hhmm in ("03:30", "04:00", "04:17", "06:59",
+                 "11:30", "12:00", "12:17", "14:59",
+                 "19:30", "20:00", "20:17", "22:59"):
         h, m = (int(x) for x in hhmm.split(":"))
         when = datetime(2026, 10, 14, h, m, tzinfo=tz)
         armed, why = wait_window(cfg, when)
@@ -253,8 +255,7 @@ def test_wait_window_is_disarmed_outside_the_schedule() -> None:
     which does not exist until much later. The gate has to know when a late source is even
     plausible, otherwise it just burns the job's time budget.
 
-    The hours here are the gaps *between* the two slots: before the morning run, and in the small
-    hours after the evening one.
+    The hours here are the gaps *between* the three slots, four hours apart at the tightest.
     """
     from datetime import datetime
     from zoneinfo import ZoneInfo
@@ -263,7 +264,7 @@ def test_wait_window_is_disarmed_outside_the_schedule() -> None:
 
     cfg = _cfg()
     tz = ZoneInfo("Asia/Shanghai")
-    for hhmm in ("02:00", "05:00", "06:00", "12:00", "14:00", "23:30"):
+    for hhmm in ("02:00", "08:00", "09:00", "16:00", "17:00", "23:59"):
         h, m = (int(x) for x in hhmm.split(":"))
         when = datetime(2026, 10, 14, h, m, tzinfo=tz)
         armed, why = wait_window(cfg, when)

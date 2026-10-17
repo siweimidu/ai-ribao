@@ -22,11 +22,23 @@ on:
   # Two triggers per slot, 17 minutes apart and off the hour: GitHub's schedule event is delayed
   # under load and the docs say queued jobs may be *dropped*, so one trigger per slot is not
   # enough. Within a slot the first successful publish wins and the retry is a no-op.
+  #
+  # **Three slots a day: 04:00 / 12:00 / 20:00 Beijing.** Two was not enough. Measured on the
+  # 2026-10-17 issue: its window closed at 06:38 UTC (14:38 Beijing), so anything published in
+  # the afternoon -- including DeepSeek V4.1 Flash becoming the day's main story -- could not
+  # appear until the next morning, by which time it was no longer news. Three slots, four hours
+  # apart at the tightest, means the day's afternoon burst lands in that evening's issue.
+  #
+  # Keep these in step with `run.slots` in config/daily.yaml: that list drives the
+  # critical-source wait window and the "too early" gate, and a mismatch makes the gate refuse
+  # a run the cron just started.
   schedule:
-    - cron: "0 23 * * *"     # 07:00 北京
-    - cron: "17 23 * * *"    # 07:17 北京（重试）
-    - cron: "0 11 * * *"     # 19:00 北京
-    - cron: "17 11 * * *"    # 19:17 北京（重试）
+    - cron: "0 20 * * *"     # 04:00 北京（前一天 UTC 20:00）
+    - cron: "17 20 * * *"    # 04:17 北京（重试）
+    - cron: "0 4 * * *"      # 12:00 北京
+    - cron: "17 4 * * *"     # 12:17 北京（重试）
+    - cron: "0 12 * * *"     # 20:00 北京
+    - cron: "17 12 * * *"    # 20:17 北京（重试）
   workflow_dispatch:
     inputs:
       force:

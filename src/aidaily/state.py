@@ -41,6 +41,27 @@ def ledger_path(path: Path | str | None = None) -> Path:
 #: confused with "something broke".
 EXIT_ALREADY_PUBLISHED = 10
 
+#: Default collection hours (Beijing) when a caller does not pass `slot_hours`.
+DEFAULT_SLOT_HOURS: tuple[int, ...] = (4, 12, 20)
+
+
+def _slot_index(hour: int, slot_hours: tuple[int, ...] | list[int] | None) -> int | None:
+    """Which scheduled slot a Beijing `hour` belongs to.
+
+    A slot runs from its scheduled hour until the next slot's hour, so 04:00-11:59 is slot 0,
+    12:00-19:59 is slot 1, and 20:00-03:59 is slot 2. Returning the index lets the gate compare
+    "which collection published last" with "which collection is running now" instead of guessing
+    a fixed split point, which is how the 12:00 and 20:00 runs came to be treated as one.
+    """
+    hours = tuple(sorted(slot_hours or DEFAULT_SLOT_HOURS))
+    if not hours:
+        return None
+    index = len(hours) - 1          # before the first slot belongs to the last (yesterday's tail)
+    for i, start in enumerate(hours):
+        if hour >= start:
+            index = i
+    return index
+
 
 @dataclass
 class RunRecord:
@@ -90,6 +111,7 @@ def gate(
     digest_id: str | None = None,
     artifact_dir: Path | str | None = None,
     slot: int | None = None,
+    slot_hours: tuple[int, ...] | list[int] | None = None,
 ) -> tuple[bool, str, dict[str, str]]:
     """Decide whether this trigger should publish.
 
@@ -124,19 +146,25 @@ def gate(
                 f"按未发布处理并重建"
             ), {}
 
-    # Two collections a day (07:00 and 19:00 Beijing) are two publications of the same date.
-    # Keyed on the date alone, the gate made the evening run a permanent no-op -- the morning
-    # run published, and every later trigger that day was told "already published" even though
-    # the evening's news had not been collected. A slot is the half-day a run belongs to; the
-    # gate skips only a repeat *of the same slot*, which is what it exists to do.
+    # Several collections a day are several publications of the same date. Keyed on the date
+    # alone, the gate made every later run a permanent no-op -- the first run published, and
+    # everything after it was told "already published" even though that slot's news had not been
+    # collected. A slot is the scheduled collection a run belongs to; the gate skips only a
+    # repeat *of the same slot*, which is what it exists for.
+    #
+    # The boundary is **derived from `slot_hours`**, not hard-coded. The previous version split
+    # the day at 13:00 with `0 if hour < 13 else 1`, which silently merged slots 2 and 3 into
+    # one once the schedule grew to three: the 12:00 run published, and the 20:00 run was told it
+    # was a repeat of the same slot and skipped -- the evening's news never arrived. Measured on
+    # 2026-10-17: the issue's window closed at 14:38 Beijing, so the whole afternoon was missing.
     if slot is not None and records[-1].status == "published":
         last_at = str(records[-1].at or "")
         try:
-            last_hour = int(last_at[11:13]) + 8  # ledger stores UTC; Beijing = UTC+8
-            last_slot = 0 if (last_hour % 24) < 13 else 1
+            last_hour = (int(last_at[11:13]) + 8) % 24  # ledger stores UTC; Beijing = UTC+8
+            last_slot = _slot_index(last_hour, slot_hours)
         except ValueError:
             last_slot = slot
-        if last_slot != slot:
+        if last_slot is not None and last_slot != slot:
             return True, f"{date} 已在上一个时段发布，本时段照常重建（含新增信息，去重合并）", {}
 
     latest = records[-1]

@@ -26,8 +26,12 @@ def test_shipped_config_is_valid() -> None:
     cfg = load_config(DAILY, env={})
     assert cfg.timezone == "Asia/Shanghai"
     # The first collection of the day, and the anchor for the "too early to publish" gate.
-    # Two collections a day (07:00 and 19:00 Beijing) replaced the single 10:00 target.
-    assert cfg.run.at_time().hour == 7, "北京时间 07:00 是当天第一次采集"
+    # Three a day (04:00 / 12:00 / 20:00 Beijing) replaced 07:00/19:00: that pair closed its
+    # window at 14:38 Beijing, so the afternoon's stories missed the evening issue entirely.
+    assert cfg.run.at_time().hour == 4, "北京时间 04:00 是当天第一次采集"
+    assert [t.strftime("%H:%M") for t in cfg.run.schedule_times()] == [
+        "04:00", "12:00", "20:00"
+    ], "一天三个时段"
     assert cfg.output.brief.enabled and cfg.output.deep.enabled
     assert cfg.output.deep.languages == ["zh"], "深度版默认纯中文（免费额度约束）"
 
@@ -83,7 +87,7 @@ def test_env_override_does_not_mutate_the_source_mapping() -> None:
 
 def test_unrelated_env_is_ignored() -> None:
     cfg = load_config(DAILY, env={"PATH": "/usr/bin", "GEMINI_API_KEY": "secret-value-here"})
-    assert cfg.run.at == "07:00"
+    assert cfg.run.at == "04:00"
 
 
 # --- critical sources validation --------------------------------------------------

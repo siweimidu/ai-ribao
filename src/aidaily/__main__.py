@@ -42,7 +42,14 @@ from .pipeline import (
 from .publish import deliver_all
 from .registry import apply_overrides, assert_provenance_complete, load_ledger, load_registry
 from .render import render_brief, render_deep, render_json_feed
-from .state import EXIT_ALREADY_PUBLISHED, RunRecord, append_record, gate, utcnow_iso
+from .state import (
+    EXIT_ALREADY_PUBLISHED,
+    RunRecord,
+    _slot_index,
+    append_record,
+    gate,
+    utcnow_iso,
+)
 
 #: "Too early to build today's digest." Its own code, like `EXIT_ALREADY_PUBLISHED`, so that
 #: neither condition can ever be read as a failure by the workflow.
@@ -168,7 +175,10 @@ def cmd_run(args: argparse.Namespace) -> int:
     digest_date = getattr(args, "date", None) or datetime.now(
         ZoneInfo(cfg.timezone)
     ).strftime("%Y-%m-%d")
-    publish_hour = cfg.run.publish_hour if hasattr(cfg.run, "publish_hour") else 7
+    # Derived from `run.at`. The old probe asked for a *field* named publish_hour, found none,
+    # and silently fell back to 7 -- so moving the first slot earlier would have made the gate
+    # reject a run that was already past it.
+    publish_hour = cfg.run.publish_hour()
     now_local = datetime.now(ZoneInfo(cfg.timezone))
     if not args.allow_early and digest_date == now_local.strftime("%Y-%m-%d") \
             and now_local.hour < publish_hour:
@@ -288,9 +298,15 @@ def cmd_run(args: argparse.Namespace) -> int:
         _record_run(digest, {}, "published", "delivery disabled")
         return 0
 
+    # Same slot derivation as `cmd_gate`, for the same reason: without it a third run of the
+    # day is compared against a two-slot schedule and can skip a slot that never published.
+    _slot_hours = tuple(t.hour for t in cfg.run.schedule_times())
+    _slot = _slot_index(datetime.now(ZoneInfo(cfg.timezone)).hour, _slot_hours)
     should, reason, already = gate(
         digest.date,
         artifact_dir=out_dir,
+        slot=_slot,
+        slot_hours=_slot_hours,
         # The gate compares this against what was last published. A same-day re-trigger
         # produces a different digest as new items arrive (219 events became 223), and
         # skipping delivery then left the live page describing 219 while its own archived
@@ -361,13 +377,21 @@ def cmd_gate(args: argparse.Namespace) -> int:
     # 传产物目录：账本说「已发布」而归档不存在时，必须重建而不是永远跳过。
     out_dir = Path(args.out_dir) if getattr(args, "out_dir", None) else ROOT / "data" / "digests"
 
-    # Two collections a day (07:00 and 19:00 Beijing) are two publications of the same date.
-    # Keying the gate on the date alone made the evening run a permanent no-op. A slot is the
-    # half-day the run belongs to; a same-slot retry still skips, which is what the gate is for.
-    tz = load_config(env={} if getattr(args, "no_env", False) else None).timezone
+    # Several collections a day are several publications of the same date. Keying the gate on the
+    # date alone made every later run a permanent no-op. A slot is the scheduled collection the run
+    # belongs to; a same-slot retry still skips, which is what the gate is for.
+    #
+    # `slot` comes from **`run.slots`**, not a fixed 13:00 split. The old `0 if hour < 13 else 1`
+    # collapsed three collections into two, so the 20:00 run was told it repeated the 12:00 slot
+    # and skipped -- the evening's news never got published.
+    cfg_for_slot = load_config(env={} if getattr(args, "no_env", False) else None)
+    tz = cfg_for_slot.timezone
+    slot_hours = tuple(t.hour for t in cfg_for_slot.run.schedule_times())
     now_local_slot = datetime.now(ZoneInfo(tz))
-    slot = 0 if now_local_slot.hour < 13 else 1
-    should, reason, done = gate(date, artifact_dir=out_dir, slot=slot)
+    slot = _slot_index(now_local_slot.hour, slot_hours)
+    should, reason, done = gate(
+        date, artifact_dir=out_dir, slot=slot, slot_hours=slot_hours
+    )
     print(json.dumps(
         {"date": date, "publish": should, "reason": reason, "done_channels": done},
         ensure_ascii=False,

@@ -3,14 +3,14 @@
 # Secrets live ONLY in environment variables / GitHub Secrets -- never here, never in
 # sources/registry.yaml, never in generated output. See docs/ARCHITECTURE.md §9.
 #
-# 生成时间：北京时间 07:00 与 19:00 各采集一次，晚间结果去重合并进同一天。
+# 生成时间：北京时间 04:00 / 12:00 / 20:00 各采集一次，结果去重合并进同一天。
 # `at` 是当天第一次采集的时间，也是「早于它就不生成当天日报」这道闸门的依据。
 
 timezone: Asia/Shanghai
 
 run:
-  at: "07:00"                  # 当天第一次采集；也是「早于它不生成当天日报」闸门的依据
-  slots: ["07:00", "19:00"]     # 每天两个采集时段，wait_window 与闸门都读这里
+  at: "04:00"                  # 当天第一次采集；也是「早于它不生成当天日报」闸门的依据
+  slots: ["04:00", "12:00", "20:00"]   # 每天三个采集时段，wait_window 与闸门都读这里
   window_hours: 26              # 24h + 余量，对抗定时延迟
   critical_wait_minutes: 20     # 关键源当日版缺失时最多等待
   critical_sources:             # 缺了它们就必须等待或明确标注，而不是静默带上旧内容

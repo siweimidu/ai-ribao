@@ -37,7 +37,7 @@ class ConfigError(RuntimeError):
 
 class RunConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    at: str = "07:00"
+    at: str = "04:00"
     window_hours: int = 26
     critical_wait_minutes: int = 20
     critical_sources: list[str] = Field(default_factory=list)
@@ -46,7 +46,21 @@ class RunConfig(BaseModel):
     #: two places need it and they must agree: the "too early to publish" gate and the
     #: critical-source wait window. Hard-coding "07:00" in the wait logic left the evening run
     #: waiting for nothing.
-    slots: list[str] = Field(default_factory=lambda: ["07:00", "19:00"])
+    #: Three slots. Measured with the old 07:00/19:00 pair: a story that broke at 15:00 Beijing
+    #: was still missing from the 19:00 issue, because that run closed its window at 14:38 UTC
+    #: (22:38 Beijing) -- the afternoon burst landed after the cut. 04:00 / 12:00 / 20:00 gives
+    #: the day three chances, four hours apart at the tightest.
+    slots: list[str] = Field(default_factory=lambda: ["04:00", "12:00", "20:00"])
+
+    def publish_hour(self) -> int:
+        """Hour of the day's first collection.
+
+        The "too early" gate needs it. `__main__` used to read
+        `cfg.run.publish_hour if hasattr(cfg.run, "publish_hour") else 7` -- there is no such
+        *field*, so the probe was always False and the gate always used 7. Deriving the value
+        from `at` keeps the gate and the cron from disagreeing when the schedule moves.
+        """
+        return self.at_time().hour
 
     def at_time(self) -> time:
         m = _HHMM.match(self.at.strip())
