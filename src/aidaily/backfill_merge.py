@@ -194,14 +194,34 @@ def merge_late_items(
     if not new_events:
         return digest, insights, report
 
-    # Only the late events are scored: the archived ones have no NormalizedItem bodies left, and
-    # re-scoring them would rank them at zero. Their recorded score is the honest ordering.
-    scored = rank_events(new_events, late_items, sources, now=now)
-    late_by_id = {r.event.event_id: r.score for r in scored}
-    for event in new_events:
-        event.rank_score = late_by_id.get(event.event_id, 0.0)
+    # **Re-score everything**, not just the additions.
+    #
+    # Keeping each archived event's recorded `rank_score` looked safe but froze the ordering: a
+    # change to the weights (commercial promotions demoted, magnitude raised) had no effect on a
+    # rebuilt issue, so a promotion stayed at #1 even after the rule that put it there was fixed.
+    # Measured: rebuilding 2026-10-17 after the weight change produced byte-identical scores.
+    #
+    # The bodies are not in the archive, but the caller passes the collection the issue was built
+    # from, and 85 of 93 member ids were recoverable from it in the real case. Events whose members
+    # cannot be recovered keep their stored score rather than being scored as zero -- a missing
+    # body is not evidence of a minor story.
+    corpus = {i.item_id: i for i in late_items}
+    rescored: list[Event] = []
+    keep_archived: list[Event] = []
+    for event in digest.top_events:
+        if any(mid in corpus for mid in event.member_item_ids):
+            rescored.append(event)
+        else:
+            keep_archived.append(event)
+    report["rescored"] = len(rescored)
+    report["kept_stored_score"] = len(keep_archived)
 
-    combined = list(digest.top_events) + new_events
+    ranked = rank_events(rescored + new_events, list(corpus.values()), sources, now=now)
+    fresh = {r.event.event_id: r.score for r in ranked}
+    for event in rescored + new_events:
+        event.rank_score = fresh.get(event.event_id, event.rank_score or 0.0)
+
+    combined = rescored + new_events + keep_archived
     combined.sort(key=lambda e: (-(e.rank_score or 0.0), e.event_id))
 
     limit = int(getattr(cfg.output.deep, "max_items", 0) or len(combined))

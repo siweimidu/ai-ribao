@@ -195,6 +195,25 @@ def _has_any(text: str, needles: tuple[str, ...]) -> bool:
     return any(n in low for n in needles)
 
 
+#: Commercial activity that is not a model release, however widely it is shared.
+#:
+#: Measured on 2026-10-17: `WorkBuddy Intl 更新支持 DeepSeek-V4.1-Flash-1017，10 月 31 日前免费`
+#: ran on eight sources and scored `widely_reported` 1.6, while the actual DeepSeek release it was
+#: piggy-backing on scored 3.2. That part was right. The heat formula then let those eight sources
+#: (corroboration 0.28, the single heaviest term) outweigh the magnitude gap (0.25 vs 0.019), so a
+#: free-trial promotion led the digest over the launch it advertised.
+#:
+#: A promotion is real news and stays in the digest; it just cannot outrank the release. These
+#: markers cancel the corroboration floor and hold the score at 1.0 -- the same treatment `minor`
+#: already gets, for the same reason: reach is evidence of attention, not of importance.
+_COMMERCIAL = re.compile(
+    r"(限免|免费至|免费试用|试用|优惠|折扣|打折|促销|返现|赠送|补贴|"
+    r"价格战|特惠|限时|领取|兑换|优惠券|免费|"
+    r"\bfree(?: trial)?\b|\bdiscount\b|\bcoupon\b|\bpromo\b|\btrial\b|"
+    r"\bgiveaway\b|\baffiliate\b|\breferral\b)",
+    re.IGNORECASE,
+)
+
 def significance(
     title: str,
     *,
@@ -230,6 +249,7 @@ def significance(
     first_party = _is_first_party(urls)
     is_app = _is_application(text, urls)
     is_ai = _is_ai_related(text, urls, lab_hits)
+    is_commercial = bool(_COMMERCIAL.search(text))
 
     score = 1.0
 
@@ -275,7 +295,9 @@ def significance(
 
     # Corroboration is independent evidence that a story matters: several outlets decided
     # it was worth covering. Applied as a floor so it can raise a 1.0 but not lower a 3.2.
-    if independent_sources >= 3:
+    # Reach must not promote a promotion: that is exactly how a free-trial announcement led the
+    # digest on 2026-10-17 over the model launch it advertised.
+    if independent_sources >= 3 and not is_commercial:
         floor = 1.6
         if floor > score:
             score = floor
@@ -288,6 +310,12 @@ def significance(
         reasons = {"minor": 1.0}
     elif is_minor:
         reasons["minor"] = 1.0
+
+    # A promotion cannot be promoted by reach. It stays in the digest -- a free tier for a real
+    # model is genuinely useful -- but below every release.
+    if is_commercial and score > 1.0:
+        score = 1.0
+        reasons = {"commercial_not_release": 1.0}
 
     if is_app and score < 2.2:
         reasons["application_not_model"] = 1.0

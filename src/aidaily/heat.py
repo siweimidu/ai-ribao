@@ -54,25 +54,32 @@ class HeatWeights:
 
     #: Independent sources. The heaviest term: "many people are saying it" is the closest
     #: thing to an objective measure of newsworthiness this pipeline has.
-    corroboration: float = 0.28
+    #: Independent sources. Reduced from 0.28 after measuring what it cost: 0.28 was more than the
+    #: entire spread between "a frontier lab shipped a model" (magnitude 0.25) and "a promotion
+    #: mentioning it" (0.019), so enough outlets could outvote the day's actual headline. Measured
+    #: on 2026-10-17: eight sources on a free-trial post beat DeepSeek's V4.1 Flash launch.
+    corroboration: float = 0.18
     #: Frontier-model release / official announcement. The second-heaviest term, and the one
     #: that carries the *convex* mapping -- see `_magnitude`. A pure engagement model cannot
     #: see this signal at all, which is how a smart speaker outranked Gemini 4 Argon.
-    magnitude: float = 0.25
+    #: Frontier-model release / official announcement. Raised to 0.32 so a named model launch by a
+    #: frontier lab outranks *any* amount of secondary coverage: at 0.25 a widely-mirrored promotion
+    #: could still outscore it, which is the ordering the user rejected outright.
+    magnitude: float = 0.40
     #: Points and comments, where the source exposes them.
-    engagement: float = 0.13
+    engagement: float = 0.12
     #: Distinct domains covering it.
-    reach: float = 0.11
+    reach: float = 0.10
     #: Whether there is an article behind the headline at all.
     #:
     #: Small on purpose. It exists to separate a real report from a title-only stub -- the
     #: "New Apple TV 4K / Points: 153" failure -- and *not* to reward length: a long
     #: aggregator post is not more important than a terse launch announcement.
-    substance: float = 0.07
+    substance: float = 0.06
     #: How fast coverage accumulated.
-    velocity: float = 0.09
+    velocity: float = 0.08
     #: How recent. Among the smallest terms on purpose.
-    freshness: float = 0.07
+    freshness: float = 0.06
 
     #: Half-life for the freshness term, in hours.
     freshness_half_life_hours: float = 18.0
