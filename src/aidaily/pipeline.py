@@ -28,7 +28,8 @@ from .select import WindowResult, select_window
 if TYPE_CHECKING:  # pragma: no cover - typing only
     from .analyze import EventInsight
     from .collect import CollectReport
-    from .history import PublishedHistory
+from .designation import is_roundup
+from .history import PublishedHistory
 
 #: Multiplier applied to an event already published inside the cross-day window.
 #
@@ -195,14 +196,29 @@ def select_for_digest(
         now_ref = now or datetime.now(timezone.utc)
         stamp = today or now_ref.astimezone().date().isoformat()
 
+        survivors: list = []
+        dropped = 0
+        # Another outlet's digest is not a story: it restates events this issue already carries,
+        # which reads as duplication no matter how the ranking works. Removed before the repeat
+        # check, because a roundup usually matches several events and would otherwise be counted
+        # as a repeat of whichever one it happened to resemble.
+        roundups = [r for r in ranked if is_roundup(r.event.title)]
+        if roundups:
+            ranked = [r for r in ranked if not is_roundup(r.event.title)]
+            for r in roundups:
+                repeats.append({
+                    "event_id": r.event.event_id,
+                    "title": r.event.title[:120],
+                    "matched_on": "roundup",
+                    "days_ago": 0,
+                    "first_seen": stamp,
+                })
         for row in ranked:
             repeat = history.find_repeat(row.event, today=stamp, now=now_ref)
             if repeat is None:
+                survivors.append(row)
                 continue
-            row.score = round(row.score * REPEAT_PENALTY, 6)
-            row.components["cross_day_repeat"] = REPEAT_PENALTY
-            row.components["cross_day_days_ago"] = float(repeat.days_ago)
-            row.components["score"] = row.score
+
             repeats.append({
                 "event_id": repeat.event_id,
                 "title": row.event.title[:120],
@@ -210,6 +226,31 @@ def select_for_digest(
                 "days_ago": repeat.days_ago,
                 "matched_on": repeat.matched_on,
             })
+
+            # `designation` alone means "this model appeared before"; `reworded` means the
+            # wording was compared and matched, which is proof. Both a proven repeat and an
+            # exact one are dropped; only the bare model signal is demoted.
+            if repeat.matched_on != "designation":
+                # Proven repeat: the same headline or the same URL already ran inside the
+                # window. This is **removed**, not demoted. The user's rule is explicit --
+                # "之前报道过的消息，不得再次出现" -- and a penalty was the wrong answer:
+                # measured on 2026-10-14..18, a repeat that keeps 12% of its score still
+                # outranked genuine news on a thin day and reappeared near the top.
+                dropped += 1
+                continue
+
+            # Same model, different wording. That is a hint rather than proof: on one day
+            # three separate Gemini 4 stories are legitimate, so this must not delete. It is
+            # demoted hard, and only for the model, not for the story.
+            row.score = round(row.score * REPEAT_PENALTY, 6)
+            row.components["cross_day_repeat"] = REPEAT_PENALTY
+            row.components["cross_day_days_ago"] = float(repeat.days_ago)
+            row.components["score"] = row.score
+            survivors.append(row)
+
+        if dropped:
+            repeats.append({"dropped_repeats": dropped})
+        ranked = survivors
         # The penalty is applied after ranking, so the order has to be rebuilt.
         ranked.sort(key=lambda r: (-r.score, r.event.event_id))
 

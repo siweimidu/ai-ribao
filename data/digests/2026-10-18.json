@@ -2520,63 +2520,6 @@
      "rubric_band": "有趣",
      "section": "其他"
     }
-   },
-   {
-    "event_id": "ec1957b51473745",
-    "title": "K-Dense-AI/scientific-agent-skills",
-    "member_item_ids": [
-     "303ee5d072beff70"
-    ],
-    "primary_item_id": "303ee5d072beff70",
-    "source_ids": [
-     "scrape:github-com-trending"
-    ],
-    "all_urls": [
-     "https://github.com/K-Dense-AI/scientific-agent-skills"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-18T06:41:19.311040Z",
-    "last_updated_at": "2026-10-18T06:41:19.311040Z",
-    "published_range": null,
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.467843,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 0.567,
-     "substance_chars": 340.0,
-     "title_quality": 1.0,
-     "heat": 0.188185,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.85,
-     "h_velocity": 0.0,
-     "h_freshness": 0.5,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.35,
-     "focus_multiplier": 1.0,
-     "vendor_priority": 1.0,
-     "vendor_subject": "",
-     "score": 1.467843,
-     "cross_day_repeat": 0.12,
-     "cross_day_days_ago": 3.0,
-     "rubric_score": 5.0,
-     "rubric_multiplier": 0.65,
-     "rubric_band": "有趣",
-     "section": "其他"
-    }
    }
   ],
   "trend_notes": [],
@@ -2620,7 +2563,7 @@
    "rubric 评分 43 条已打分 / 5 次调用（标准来源：/home/runner/work/ai-ribao/ai-ribao/config/profiles/ai-daily）"
   ],
   "counts": {
-   "events": 43,
+   "events": 42,
    "events_considered": 150,
    "multi_source_events": 2,
    "items_after_window": 223,
@@ -2651,7 +2594,6 @@
    "e25190a2eb2dfda",
    "e440e1d72a97aec",
    "e806a13d421c6b8",
-   "ec1957b51473745",
    "e0af680d00fbfbb",
    "e1c4ba2631210fd",
    "e280ea9a42974d5",
@@ -3012,30 +2954,6 @@
    "key_points": [
     "REKI是2.4B参数的视觉-语言-动作模型",
     "REKI权重已在Hugging Face开放"
-   ],
-   "rule_based": false
-  },
-  "ec1957b51473745": {
-   "event_id": "ec1957b51473745",
-   "title": "K-Dense-AI科学智能体技能库",
-   "facts": [
-    "K-Dense-AI/scientific-agent-skills提供177项可直接使用且经过验证的技能。",
-    "该技能库被全球超过250,000名科学家使用。",
-    "该技能库包含超过100个科学数据库，覆盖生物学、化学、医学和药物发现领域。",
-    "该技能库兼容Cursor、Claude Code、Codex、Pi、Antigravity和开放的Agent Skills标准。"
-   ],
-   "inferences": [
-    "据此可推断，该技能库旨在让人工智能智能体具备科学研究能力。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "无法确认相关使用人数、技能数量和数据库数量的统计时间。",
-    "无法确认177项技能的具体名称和验证方式。",
-    "无法确认超过100个科学数据库的具体名称。"
-   ],
-   "key_points": [
-    "提供177项经过验证的科学研究技能。",
-    "包含超过100个覆盖多个科学领域的数据库，并兼容多种智能体工具和标准。"
    ],
    "rule_based": false
   },

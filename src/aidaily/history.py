@@ -29,6 +29,7 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+from .designation import designation
 from .models import Event
 
 #: Characters stripped before comparing headlines. Punctuation and spacing differ between
@@ -69,6 +70,11 @@ def fingerprint(event: Event) -> set[str]:
         bare = bare.split("?", 1)[0].split("#", 1)[0].rstrip("/")
         if len(bare) > 10:
             keys.add("u:" + hashlib.sha1(bare.encode()).hexdigest()[:16])
+    # Not hashed: the key is already a short normalised product name, and keeping it legible
+    # makes the history file readable when diagnosing a repeat.
+    model = designation(event.title)
+    if model:
+        keys.add("d:" + model)
     return keys
 
 
@@ -79,6 +85,27 @@ class Repeat:
     matched_on: str
     days_ago: int
 
+
+#: Two headlines about one model above this similarity describe the same event worded
+#: differently. See the call site in `find_repeat` for the measured pairs this sits between.
+NEAR_MATCH_RATIO = 0.80
+
+
+def _is_near_match(headline: str, published) -> bool:
+    """Whether `headline` restates one of `published` in slightly different words."""
+    from difflib import SequenceMatcher
+
+    for other in published:
+        longer = max(len(headline), len(other))
+        if not longer:
+            continue
+        # Cheap rejection first: headlines whose lengths differ by more than half cannot reach
+        # the threshold, and the comparison below is O(n*m).
+        if abs(len(headline) - len(other)) > longer * 0.5:
+            continue
+        if SequenceMatcher(None, headline, other).ratio() >= NEAR_MATCH_RATIO:
+            return True
+    return False
 
 class PublishedHistory:
     """Append-only record of what each issue published, and the lookup over it."""
@@ -94,10 +121,14 @@ class PublishedHistory:
         #: 20 days ago and so fall outside the window, when it is exactly the repeat the
         #: window exists to catch.
         self._index: dict[str, list[tuple[str, str]]] = {}
+        #: date -> folded headlines published that day. Used for the near-match check, which
+        #: the exact hashes cannot serve: one inserted word defeats a hash.
+        self._folds: dict[str, list[str]] = {}
         self._loaded = False
 
     def load(self) -> None:
         self._index.clear()
+        self._folds.clear()
         self._loaded = True
         if not self.path.exists():
             return
@@ -128,6 +159,10 @@ class PublishedHistory:
             else:
                 entries = [(str(row.get("event_id") or ""), str(row.get("title") or ""),
                             row.get("keys") or [])]
+            if "events" in row:
+                for entry in row.get("events") or []:
+                    if isinstance(entry, dict) and entry.get("fold"):
+                        self._folds.setdefault(date, []).append(str(entry["fold"]))
             for _event_id, title, keys in entries:
                 for key in keys:
                     bucket = self._index.setdefault(str(key), [])
@@ -158,6 +193,7 @@ class PublishedHistory:
             return None
         cutoff = today_date - timedelta(days=self.window_days)
 
+        folded_now = _fold(event.title)
         best: Repeat | None = None
         # Sorted, and `>` rather than `>=` when comparing: with both keys matching the same
         # date, whichever a `set` happened to yield last used to win, so `matched_on` varied
@@ -168,6 +204,13 @@ class PublishedHistory:
                 if date_str == today:
                     # Same day: a re-trigger of today's own issue, not cross-day repetition.
                     continue
+                if key.startswith("d:"):
+                    # A designation alone only says "this model appeared before", which is not
+                    # enough to prove a repeat: "Gemini 4 Argon 机器人模型发布" and "Gemini 4
+                    # Argon 在 ARC-AGI-3 获 97.5%" are different events on the same day. Prove
+                    # it by comparing the wording, and only then report a repeat.
+                    if not _is_near_match(folded_now, self._folds.get(date_str, ())):
+                        continue
                 try:
                     when = datetime.fromisoformat(date_str).date()
                 except ValueError:
@@ -175,10 +218,32 @@ class PublishedHistory:
                 if when < cutoff or when > today_date:
                     continue
                 days_ago = (today_date - when).days
-                if best is None or days_ago > best.days_ago:
+                kind = (
+                    # Reaching here through `d:` already means the wording was compared and
+                    # matched, so this is a proven repeat with a weaker trail than an exact
+                    # hash -- reported as such rather than as "designation", which would tell
+                    # the caller to demote it when the evidence says otherwise.
+                    "reworded" if key.startswith("d:")
+                    else "title" if key.startswith("t:")
+                    else "url"
+                )
+                # Rank the evidence, not just the age. An exact headline or URL match is proof;
+                # a model match confirmed by wording is weaker. Proof always wins regardless of
+                # which date it came from -- otherwise iterating keys in a different order
+                # silently changed `matched_on`, which is what made the result non-deterministic
+                # in the first place.
+                strength = 0 if kind in ("designation", "reworded") else 1
+                best_strength = (
+                    0 if best is not None and best.matched_on in ("designation", "reworded") else 1
+                )
+                if (
+                    best is None
+                    or strength > best_strength
+                    or (strength == best_strength and days_ago > best.days_ago)
+                ):
                     best = Repeat(
                         event_id=event.event_id, first_seen=date_str,
-                        matched_on=("title" if key.startswith("t:") else "url"),
+                        matched_on=kind,
                         days_ago=days_ago,
                     )
         return best
@@ -198,7 +263,8 @@ class PublishedHistory:
         payload = {
             "date": date,
             "events": [
-                {"id": e.event_id, "title": e.title[:200], "keys": sorted(fingerprint(e))}
+                {"id": e.event_id, "title": e.title[:200], "keys": sorted(fingerprint(e)),
+                 "fold": _fold(e.title)[:160]}
                 for e in events
             ],
         }
@@ -229,7 +295,17 @@ class PublishedHistory:
                 events = [Event.model_validate(e) for e in payload["digest"]["top_events"]]
             except Exception:  # noqa: BLE001
                 continue
-            rows.extend((date, e) for e in events)
+            # Record the title the reader actually saw. The archived `insights` hold the
+            # Chinese headline the page rendered while `event.title` keeps the raw source
+            # wording; the displayed one is what a repeat repeats. On 2026-10-17 these differed
+            # ("Google AI Studio 向 Pro 订阅用户开放 Gemini 4 Argon" against the displayed
+            # "Gemini 4 Argon 向 Google AI Pro 开放") and only the second repeats 10-16.
+            insights = payload.get("insights") or {}
+            for e in events:
+                shown = (insights.get(e.event_id) or {}).get("title")
+                if shown:
+                    e = e.model_copy(update={"title": shown})
+                rows.append((date, e))
 
         if not rows:
             return 0
@@ -243,7 +319,8 @@ class PublishedHistory:
                     "date": date,
                     "events": [
                         {"id": e.event_id, "title": e.title[:200],
-                         "keys": sorted(fingerprint(e))}
+                         "keys": sorted(fingerprint(e)),
+                         "fold": _fold(e.title)[:160]}
                         for e in by_date[date]
                     ],
                 }, ensure_ascii=False) + "\n")

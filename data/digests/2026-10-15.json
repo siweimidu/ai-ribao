@@ -783,58 +783,6 @@
     }
    },
    {
-    "event_id": "edb8815f4304323",
-    "title": "AIHOT 日报 · 2026-10-15 — Gemini 4 Argon 向全球 Google AI Pro 和 Ultra 订阅者开放",
-    "member_item_ids": [
-     "162733265e5efd97"
-    ],
-    "primary_item_id": "162733265e5efd97",
-    "source_ids": [
-     "rss:aihot-news-daily"
-    ],
-    "all_urls": [
-     "https://aihot.news/daily/2026-10-15"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T00:00:30Z",
-     "2026-10-15T00:00:30Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 28.088233,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 734.0,
-     "title_quality": 1.0,
-     "heat": 0.609486,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 1.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7482,
-     "significance": 3.2,
-     "frontier_model_release": 3.2,
-     "sig_model": 1.0,
-     "sig_release": 1.0,
-     "sig_lab": 1.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 1.0,
-     "score": 62.418296,
-     "topic_penalty": 0.45,
-     "final_score": 28.088233,
-     "focus": 1.0
-    }
-   },
-   {
     "event_id": "ec1957b51473745",
     "title": "K-Dense-AI/scientific-agent-skills",
     "member_item_ids": [
@@ -937,58 +885,6 @@
      "final_score": 4.393753,
      "focus": 1.0
     }
-   },
-   {
-    "event_id": "e6d23cf8b32fcc6",
-    "title": "2026-10-15",
-    "member_item_ids": [
-     "01968eed3477f71e"
-    ],
-    "primary_item_id": "01968eed3477f71e",
-    "source_ids": [
-     "rss:daily-juya-uk"
-    ],
-    "all_urls": [
-     "https://daily.juya.uk/issues/2026-10-15/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-15T15:44:17.498100Z",
-    "last_updated_at": "2026-10-15T15:44:17.498100Z",
-    "published_range": [
-     "2026-10-15T01:55:08Z",
-     "2026-10-15T01:55:08Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 0.694424,
-    "rank_components": {
-     "source_weight": 1.2,
-     "source_damped": 1.0466,
-     "substance": 1.0,
-     "substance_chars": 14861.0,
-     "title_quality": 0.15,
-     "heat": 0.361079,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.771,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 5.66877,
-     "topic_penalty": 0.1225,
-     "final_score": 0.694424,
-     "focus": 1.0
-    }
    }
   ],
   "trend_notes": [],
@@ -1029,7 +925,7 @@
    "rubric 评分 120 条已打分 / 12 次调用（标准来源：/home/runner/work/ai-ribao/ai-ribao/config/profile.md）"
   ],
   "counts": {
-   "events": 19,
+   "events": 17,
    "multi_source_events": 1,
    "items_after_window": 348,
    "items_merged_away": 64,
@@ -1126,7 +1022,6 @@
    "e14dd85ee53a500",
    "e561b0f2faa5e31",
    "ecd3d425d08dfd2",
-   "edb8815f4304323",
    "e6e0f1d3d4808ed"
   ],
   "lab-blog": [
@@ -1347,8 +1242,7 @@
    "e4514f47e81dbb1",
    "ee5201ac027c08d",
    "e20cd85b6810d2f",
-   "e98e210a298bc65",
-   "e6d23cf8b32fcc6"
+   "e98e210a298bc65"
   ]
  },
  "insights": {
@@ -2803,39 +2697,6 @@
    "key_points": [
     "发布了选举安全措施更新",
     "继续加强措施以备2026年美国中期选举"
-   ],
-   "rule_based": false
-  },
-  "e6d23cf8b32fcc6": {
-   "event_id": "e6d23cf8b32fcc6",
-   "title": "AI 早报 2026-10-15：多款模型与工具集中更新",
-   "facts": [
-    "Claude Code 桌面版更新，优化多会话体验。",
-    "Claude Code 新增闲置会话自动压缩功能。",
-    "TypeSafe AI 更新 Jev，开放图像与长上下文功能。",
-    "SpaceXSI 发布端到端语音模型 Grok Voice 3.0。",
-    "蚂蚁百灵开源 Ling 3.1 flash 模型。",
-    "昆仑万维发布并开源 Matrix Game 4.0。",
-    "OpenCode Go 上线 Gemini 4 Argon。",
-    "Qoder 国际版极致档位推出夜间 2 折优惠。"
-   ],
-   "inferences": [
-    "当日 AI 行业动态集中在模型发布、工具更新和平台功能扩展三类。",
-    "多家厂商选择以开源方式发布新模型，开源生态较为活跃。",
-    "OpenAI 公布 GPT 4 模型退役，意味着新一代模型接替工作正在推进。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "Claude Platform 支持导出的具体格式或目标平台（材料截断）。",
-    "SpaceXSI 与 SpaceX 的关系，材料未作说明。",
-    "Gemini 4 Argon 在 Gemini 4 系列中的定位与能力差异，材料未提供。",
-    "Qoder 夜间 2 折优惠的具体时段和适用条件，材料未说明。",
-    "各条新闻的详细背景与具体内容，材料仅提供标题列表。"
-   ],
-   "key_points": [
-    "Claude Code 桌面版更新，并新增闲置会话自动压缩。",
-    "SpaceXSI、蚂蚁百灵、昆仑万维同日发布或开源新模型。",
-    "OpenCode Go 接入 Gemini 4 Argon，OpenAI 启动 GPT 4 部分模型退役。"
    ],
    "rule_based": false
   },

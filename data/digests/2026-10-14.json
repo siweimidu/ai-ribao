@@ -1044,58 +1044,6 @@
      "final_score": 6.634034,
      "focus": 1.0
     }
-   },
-   {
-    "event_id": "e8536989a16c400",
-    "title": "2026-10-14",
-    "member_item_ids": [
-     "21d1d77e89ebd62d"
-    ],
-    "primary_item_id": "21d1d77e89ebd62d",
-    "source_ids": [
-     "rss:daily-juya-uk"
-    ],
-    "all_urls": [
-     "https://daily.juya.uk/issues/2026-10-14/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": [
-     "2026-10-14T01:33:20Z",
-     "2026-10-14T01:33:20Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 1.991427,
-    "rank_components": {
-     "source_weight": 1.2,
-     "source_damped": 1.0466,
-     "substance": 1.0,
-     "substance_chars": 13783.0,
-     "title_quality": 0.15,
-     "heat": 0.362418,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7901,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 5.689791,
-     "topic_penalty": 0.35,
-     "final_score": 1.991427,
-     "focus": 1.0
-    }
    }
   ],
   "sections": {},
@@ -1129,7 +1077,7 @@
    "7/60 个事件降级为规则摘录"
   ],
   "counts": {
-   "events": 21,
+   "events": 20,
    "multi_source_events": 2,
    "items_after_window": 237,
    "items_merged_away": 11,
@@ -1382,8 +1330,7 @@
    "eff73050f12973c",
    "eec6f4f08ceb7bf",
    "eeb68a4febeb760",
-   "e8b213ee806d44d",
-   "e8536989a16c400"
+   "e8b213ee806d44d"
   ]
  },
  "insights": {
@@ -2019,39 +1966,6 @@
    ],
    "key_points": [],
    "rule_based": true
-  },
-  "e8536989a16c400": {
-   "event_id": "e8536989a16c400",
-   "title": "AI 早报：Gemini 4 Argon 全球开放，多家厂商发布新模型",
-   "facts": [
-    "Google 向全球开放 Gemini 4 Argon",
-    "OpenAI 优化 ChatGPT 桌面应用存储占用",
-    "Cat Jam 匿名编程模型在 OpenCode 免费上线",
-    "Fish Audio 发布 Drama 3 并开放模型权重",
-    "Liquid AI 发布 LFM2.5 24B A2B",
-    "Command Code 推出 GOAT 限时额度优惠",
-    "MiniMax 入驻天猫，开售三档订阅方案",
-    "Antigravity 最高档向科研人员开放免费申请"
-   ],
-   "inferences": [
-    "多家厂商集中在同一天发布或更新产品，AI 行业竞争节奏加快",
-    "MiniMax 通过入驻天猫拓展中文市场销售渠道"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "Gemini 4 Argon 的具体能力与定价未在材料中说明",
-    "ChatGPT 桌面应用存储占用的优化幅度未提及",
-    "Cat Jam 匿名编程模型的开发者与背景信息缺失",
-    "Drama 3 的模型规模、训练数据与许可条款未说明",
-    "LFM2.5 24B A2B 中 A2B 的含义未解释"
-   ],
-   "key_points": [
-    "Google 全球开放 Gemini 4 Argon",
-    "Cat Jam、Fish Audio Drama 3、Liquid AI LFM2.5 24B A2B 等多款新模型发布",
-    "MiniMax 入驻天猫开售订阅方案",
-    "Antigravity 最高档向科研人员开放免费申请"
-   ],
-   "rule_based": false
   },
   "e8c4d136ae881ca": {
    "event_id": "e8c4d136ae881ca",
