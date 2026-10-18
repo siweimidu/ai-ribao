@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthropic 撤销受影响的 Claude 密钥 · AI 日报</title>
+<meta name="description" content="Anthropic 的 Lydia Hallie 表示，团队正与 OpenCode 协作处理前一日发生的安全泄露。">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0065fd">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1530 1530'%3E%3Cstyle%3E:root{color-scheme:light dark}rect{fill:%23FEFEFE}g{fill:%23231A15}@media(prefers-color-scheme:dark){rect{fill:%230B0D10}g{fill:%23F2F4F7}}%3C/style%3E%3Crect width='1530' height='1530' rx='765'/%3E%3Cg transform='translate(765 765) scale(2.65) translate(-765 -765)'%3E%3Cpath fill-rule='evenodd' d='M 494,818 L 626,504 L 711,503 L 800,711 L 803,711 L 1018,546 L 1032,538 L 1027,544 L 745,795 L 740,795 L 726,765 L 610,765 L 586,820 Z M 669,614 L 701,694 L 636,694 Z'/%3E%3Cpath d='M 871,713 L 867,712 L 560,989 L 587,971 L 781,825 L 783,1025 L 871,1024 Z'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="canonical" href="https://siweimidu.github.io/ai-ribao/2026-10-18.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Anthropic 撤销受影响的 Claude 密钥">
+<meta property="og:description" content="Anthropic 的 Lydia Hallie 表示，团队正与 OpenCode 协作处理前一日发生的安全泄露。">
+<link rel="alternate" type="application/rss+xml" title="AI 日报" href="feed/zh.xml">
+<link rel="alternate" type="application/feed+json" title="AI 日报" href="feed/zh.json">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/components.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Regular.min.css">
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+
+<div class="shell">
+      <aside class="rail" aria-label="站点导航">
+        <button class="rail__grip" type="button" data-resize="rail"
+                aria-label="拖动调整左栏宽度" title="拖动调整宽度（双击恢复默认）"></button>
+        <div class="rail__head">
+          <a class="rail__brand" href="index.html">
+            <span class="rail__mark" aria-hidden="true"><svg viewBox="0 0 18 18" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g transform="translate(9 9) scale(0.0314) translate(-765 -765)" fill="currentColor"><path fill-rule="evenodd" d="M 494,818 L 626,504 L 711,503 L 800,711 L 803,711 L 1018,546 L 1032,538 L 1027,544 L 745,795 L 740,795 L 726,765 L 610,765 L 586,820 Z M 669,614 L 701,694 L 636,694 Z"/><path d="M 871,713 L 867,712 L 560,989 L 587,971 L 781,825 L 783,1025 L 871,1024 Z"/></g></svg></span>
+            <span>AI 日报</span>
+          </a>
+          <button class="rail__toggle rail__item" type="button" aria-expanded="false"
+                  aria-controls="rail-body" style="width:auto">
+            <span class="sr">展开导航</span>
+            <span aria-hidden="true">☰</span>
+          </button>
+        </div>
+
+        <div class="rail__body" id="rail-body">
+          <!-- 1. 搜索往期内容 -->
+          <div class="rail__group">
+            <button class="rail__item" type="button" data-open-search>
+              <span>搜索往期内容</span>
+            </button>
+          </div>
+
+          <!-- 2. 首页 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <a class="rail__item" href="index.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5 9 3l6 5.5V15H3z"/><path d="M7.5 15v-4h3v4"/></svg><span>首页</span></a>
+          </div>
+
+          <hr class="rail__sep">
+
+          <!-- 3. 日历 -->
+          <div class="cal" aria-label="按日期浏览">
+            <div class="cal__head">
+              <span class="cal__month">—</span>
+              <span class="cal__nav">
+                <button type="button" data-nav="prev" aria-label="上个月">‹</button>
+                <button type="button" data-nav="next" aria-label="下个月">›</button>
+              </span>
+            </div>
+            <div class="cal__grid" role="grid">
+              <span class="cal__dow">日</span><span class="cal__dow">一</span>
+              <span class="cal__dow">二</span><span class="cal__dow">三</span>
+              <span class="cal__dow">四</span><span class="cal__dow">五</span>
+              <span class="cal__dow">六</span>
+            </div>
+            <div class="cal__legend">
+              <span><i data-k="today"></i>今天</span>
+              <span><i data-k="has"></i>有日报</span>
+            </div>
+          </div>
+
+          <hr class="rail__sep">
+
+          <!-- 4. Tibo 重置监控 -->
+          <div class="rail__group">
+            <a class="rail__item" href="tibo.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6.5"/><path d="M9 5.5V9l2.5 1.5"/></svg><span>Tibo 重置监控</span></a>
+          </div>
+
+          <!-- 微信公众号：暂无账号，先不放入口。留一个不能用的按钮比没有更糟。 -->
+
+          <!-- 6. 订阅 RSS -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <details class="rail__fold">
+              <summary class="rail__item"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M3 4.5A8.5 8.5 0 0 1 11.5 13"/><path d="M3 8A5 5 0 0 1 8 13"/></svg><span>订阅 RSS</span></summary>
+              <div class="rail__sub rail__sub--rss" role="menu">
+                <button type="button" class="rail__btn" data-copy="https://siweimidu.github.io/ai-ribao/feed/zh.xml">
+                  <span class="rail__btn-k">RSS</span>复制订阅地址
+                </button>
+                <button type="button" class="rail__btn" data-copy="https://siweimidu.github.io/ai-ribao/feed/zh.json">
+                  <span class="rail__btn-k">JSON</span>复制订阅地址
+                </button>
+                <p class="rail__fine">
+                  或在浏览器中查看
+                  <a href="feed/zh.xml">RSS</a>
+                  <a href="feed/zh.json">JSON</a>
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <!-- 7. 主题 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <details class="rail__fold">
+              <summary class="rail__item">
+                <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M9 3v12"/><path d="M9 3a6 6 0 0 1 0 12"/></svg><span>主题</span>
+                <span class="rail__hint" data-theme-summary>自动</span>
+              </summary>
+              <div class="rail__sub" role="menu"><button type="button" data-theme-choice="light" aria-checked="false">亮色</button><button type="button" data-theme-choice="dark" aria-checked="false">暗色</button><button type="button" data-theme-choice="claude-light" aria-checked="false">Claude 亮色</button><button type="button" data-theme-choice="claude-dark" aria-checked="false">Claude 暗色</button></div>
+            </details>
+          </div>
+
+          <!-- 8. 下载 markdown（仅在有具体日期的页面上显示）
+               首页的 rail 用的是最新一期，在这里放下载按钮等于让读者先猜自己要看哪一天。
+               先把日期选出来，日期页再给出那一天的 markdown。 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)"><a class="rail__item" href="2026-10-18.md" download><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v8"/><path d="M5.5 8 9 11.5 12.5 8"/><path d="M3.5 13.5h11"/></svg><span>下载 Markdown</span></a></div>
+
+          <hr class="rail__sep">
+
+          <div class="rail__group">
+            <a class="rail__item" href="sources.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M3 4.5A8.5 8.5 0 0 1 11.5 13"/><path d="M3 8A5 5 0 0 1 8 13"/></svg><span>信息源</span></a>
+            <a class="rail__item" href="https://github.com/siweimidu/ai-ribao" rel="noopener noreferrer">
+              <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2.5a6.5 6.5 0 0 0-2 12.7c-.1-.5-.1-1.2 0-1.7.2-.8 1.4-5 1.4-5s-.3-.7-.3-1.7c0-1.6.9-2.7 2-2.7.9 0 1.4.7 1.4 1.6 0 1-.6 2.4-.9 3.8-.3 1 .5 1.9 1.6 1.9 1.9 0 3.3-2.5 3.3-5.4 0-2.3-1.6-3.9-4-3.9-2.7 0-4.3 2-4.3 4.1 0 .9.3 1.8.8 2.3.1.1.1.2.1.3l-.3 1.1c0 .2-.2.2-.4.1-1.3-.6-2.1-2.5-2.1-4C5.3 3.4 7.5 2.5 9 2.5z"/></svg><span>源码与说明</span>
+            </a>
+          </div>
+        </div>
+      </aside>
+
+  <main class="content" id="main">
+    <header class="issue__head">
+      <p class="issue__date enter">2026-10-18　第 5 期</p>
+      <h1 class="issue__title enter">Anthropic 撤销受影响的 Claude 密钥</h1>
+      <p class="issue__lead enter">Anthropic 的 Lydia Hallie 表示，团队正与 OpenCode 协作处理前一日发生的安全泄露。</p>
+      <div class="stats enter"><div><b class="count-up" data-to="23">23</b><span>事件</span></div><div><b class="count-up" data-to="7">7</b><span>有内容的源</span></div><div><b class="count-up" data-to="0">0</b><span>多源验证</span></div><div><b class="count-up" data-to="5">5</b><span>头条覆盖来源</span></div></div>
+    </header>
+
+    <div class="notice"><strong>本期说明</strong><ul><li>中转密钥已读取：112 条</li><li>模型供应商 114 个（gemini, groq, relay:tokenrhythm.studio#0, relay:api.stepfun.com#0…）</li><li>rubric 评分 23 条已打分 / 3 次调用（标准来源：/home/runner/work/ai-ribao/ai-ribao/config/profiles/ai-daily）</li></ul></div>
+
+          <section class="section overview" id="overview">
+        <h2 class="section__title">概览<span class="section__count">今日要闻</span></h2>
+        <ol class="ov"><li><a href="#e-e7da4557d6"><span class="ov__no">01</span><span><b>Anthropic 撤销受影响的 Claude 密钥</b><span class="ov__detail">Anthropic 的 Lydia Hallie 表示，团队正与 OpenCode 协作处理前一日发生的安全泄露。</span></span></a></li><li><a href="#e-ec52040708"><span class="ov__no">02</span><span><b>Bolt 周末免费开放 GLM 5.3 Flash</b><span class="ov__detail">Bolt 将 GLM 5.3 Flash 加入每个账户的模型选择器。</span></span></a></li><li><a href="#e-efbaadb28f"><span class="ov__no">03</span><span><b>OpenAI 披露四起新违规事件</b></span></a></li><li><a href="#e-e0ea648ff7"><span class="ov__no">04</span><span><b>Perplexity Decider Flash 可在 M4 Mac 16GB 上端侧运行</b><span class="ov__detail">Perplexity Decider Flash 运行速度极快</span></span></a></li><li><a href="#e-ec9e9111a7"><span class="ov__no">05</span><span><b>Kyutai发布REKI：2.4B视觉语言动作模型</b><span class="ov__detail">Kyutai联合Inria和École des Ponts发布了参数量为2.4B的视觉-语言-动作模型REKI。</span></span></a></li><li><a href="#e-e0416b302e"><span class="ov__no">06</span><span><b>OpenRouter 推出 Scaledown 模型实战手册</b><span class="ov__detail">OpenRouter 新增两本围绕 Scaledown 任务专用模型的实战手册。</span></span></a></li><li><a href="#e-e440e1d72a"><span class="ov__no">07</span><span><b>模型发布须优先于促销，转载数不得决定头条</b><span class="ov__detail">10月17日那期的第一名是WorkBuddy Intl更新支持DeepSeek-V4.1-Flash-1017并在10月31日前免费的条目，该条目有8个来源。</span></span></a></li><li><a href="#e-efbbcfd779"><span class="ov__no">08</span><span><b>OpenCode安全漏洞影响1.4%用户</b><span class="ov__detail">OpenCode 昨晚发生安全漏洞事件。</span></span></a></li></ol>
+        <p class="ov__foot">今日共 23 条事件，
+        其中 0 条经多个独立来源交叉验证。下面是完整列表。</p>
+      </section>
+
+      <section class="section" id="all">
+        <h2 class="section__title">全部消息<span class="section__count">23 条</span></h2>
+        <ol class="stream">
+        <li class="item" id="e-e7da4557d6">
+          <div class="item__head">
+            <span class="item__no">01</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/gp98wqr3twdw0r8xgk2g0dunp" target="_blank" rel="noopener noreferrer">Anthropic 撤销受影响的 Claude 密钥</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 18:08 UTC</span>
+            <a href="https://aihot.news/items/gp98wqr3twdw0r8xgk2g0dunp" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Anthropic 的 Lydia Hallie 表示，团队正与 OpenCode 协作处理前一日发生的安全泄露。</li><li data-kind="fact">Anthropic 已撤销疑似受影响的 Claude API 密钥。</li><li data-kind="fact">Anthropic 建议曾在 OpenCode 保存过密钥的用户重新创建密钥。</li><li data-kind="fact">OpenCode 称安全泄露影响了其 Console 1.4%的用户。</li><li data-kind="fact">OpenCode 称受影响用户均关联了外部提供商，并已通过邮件逐一通知。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">撤销疑似受影响的 Claude API 密钥表明 Anthropic 将相关密钥视为存在泄露风险。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">泄露是否确实与大规模蒸馏攻击有关尚未明确。</li><li data-kind="uncertain">相关流量规模为何如此之大及其与模型训练的关系尚不清楚。</li><li data-kind="uncertain">事件的具体细节尚未公开。</li><li data-kind="uncertain">目前无法确认疑似受影响的 Claude API 密钥数量。</li></ul></div>
+          <div class="item__links"><a href="https://aihot.news/items/i06hfb4sg84wb8r2k15awogk3" rel="noopener noreferrer">aihot.news</a><a href="https://aihot.news/items/l4367pr0mayrgs0f3fnki1pvb" rel="noopener noreferrer">aihot.news</a><a href="https://aihot.news/items/l77k5lljwa77u0w19gsgesqq0" rel="noopener noreferrer">aihot.news</a><a href="https://aihot.news/items/phuuhs87dbdqoj2qygg9kdox2" rel="noopener noreferrer">aihot.news</a><span style="color:var(--muted-fg)">另有 1 个来源</span></div>
+        </li>
+        <li class="item" id="e-ec52040708">
+          <div class="item__head">
+            <span class="item__no">02</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/vr8fu5wpsfcvsufwjs0707ui8" target="_blank" rel="noopener noreferrer">Bolt 周末免费开放 GLM 5.3 Flash</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 16:44 UTC</span>
+            <a href="https://aihot.news/items/vr8fu5wpsfcvsufwjs0707ui8" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Bolt 将 GLM 5.3 Flash 加入每个账户的模型选择器。</li><li data-kind="fact">该功能免费使用，无需更改套餐，也无需兑换码。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">任何未完成应用的人可以立即使用 GLM 5.3 Flash。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">是否仅限特定地区</li><li data-kind="uncertain">是否有使用次数限制</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-efbaadb28f">
+          <div class="item__head">
+            <span class="item__no">03</span>
+            <h3 class="item__title"><a href="https://fortune.com/2026/10/16/openai-discloses-four-more-rogue-incidents-involving-financial-medical-and-government-data/" target="_blank" rel="noopener noreferrer">OpenAI 披露四起新违规事件</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 16:31 UTC</span>
+            <a href="https://fortune.com/2026/10/16/openai-discloses-four-more-rogue-incidents-involving-financial-medical-and-government-data/" rel="noopener noreferrer">fortune.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OpenAI 披露四起新违规事件</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">OpenAI 已经识别出此前未公开的违规事件</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">具体违规内容、原因及后果不明</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e0ea648ff7">
+          <div class="item__head">
+            <span class="item__no">04</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/zg8l7rnj464amx3hz7wjsxe4g" target="_blank" rel="noopener noreferrer">Perplexity Decider Flash 可在 M4 Mac 16GB 上端侧运行</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 20:10 UTC</span>
+            <a href="https://aihot.news/items/zg8l7rnj464amx3hz7wjsxe4g" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Perplexity Decider Flash 运行速度极快</li><li data-kind="fact">Perplexity Decider Flash 能在 M4 Mac 16GB 上端侧运行</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Perplexity Decider Flash 适合需要快速推理的场景</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">是否支持其他型号的 Mac 或其他设备</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-ec9e9111a7">
+          <div class="item__head">
+            <span class="item__no">05</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/z10riaoda3rrn6m1q52k00rgh" target="_blank" rel="noopener noreferrer">Kyutai发布REKI：2.4B视觉语言动作模型</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 20:22 UTC</span>
+            <a href="https://aihot.news/items/z10riaoda3rrn6m1q52k00rgh" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Kyutai联合Inria和École des Ponts发布了参数量为2.4B的视觉-语言-动作模型REKI。</li><li data-kind="fact">REKI仅使用公开数据进行预训练。</li><li data-kind="fact">REKI的权重已在Hugging Face开放。</li><li data-kind="fact">REKI的权重采用CC BY-NC-SA 4.0许可。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">REKI的输入或输出可能涉及视觉、语言和动作三类信息。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明REKI的记忆机制及其效率表现。</li><li data-kind="uncertain">材料未说明REKI在具体机器人操作任务中的表现。</li><li data-kind="uncertain">材料未说明REKI使用了哪些公开数据。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e0416b302e">
+          <div class="item__head">
+            <span class="item__no">06</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/cbdge1jrwgm0ww3ucmtoq53er" target="_blank" rel="noopener noreferrer">OpenRouter 推出 Scaledown 模型实战手册</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 16:00 UTC</span>
+            <a href="https://aihot.news/items/cbdge1jrwgm0ww3ucmtoq53er" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OpenRouter 新增两本围绕 Scaledown 任务专用模型的实战手册。</li><li data-kind="fact">两本实战手册分别针对一个工作流问题提供可直接使用的方案。</li><li data-kind="fact">相关模型目前提供百分之二十折扣，并可用于压缩一百步智能体会话，同时保留所需事实。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这些实战手册可能适合需要压缩长智能体会话的工作流。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">两本实战手册的具体名称未说明。</li><li data-kind="uncertain">任务专用模型的具体名称和技术细节未说明。</li><li data-kind="uncertain">百分之二十折扣的结束时间未说明。</li><li data-kind="uncertain">压缩会话时具体保留哪些事实未说明。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e440e1d72a">
+          <div class="item__head">
+            <span class="item__no">07</span>
+            <h3 class="item__title"><a href="https://github.com/siweimidu/ai-ribao/commit/5fa2e68874dbc3f5b92e61b37a183214f1e584dd" target="_blank" rel="noopener noreferrer">模型发布须优先于促销，转载数不得决定头条</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 19:01 UTC</span>
+            <a href="https://github.com/siweimidu/ai-ribao/commit/5fa2e68874dbc3f5b92e61b37a183214f1e584dd" rel="noopener noreferrer">github.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">10月17日那期的第一名是WorkBuddy Intl更新支持DeepSeek-V4.1-Flash-1017并在10月31日前免费的条目，该条目有8个来源。</li><li data-kind="fact">促销条目的重要性评分为1.60，DeepSeek发布条目的重要性评分为3.20。</li><li data-kind="fact">促销条目的重要性评分由独立来源数不少于3个的广泛报道兜底得到。</li><li data-kind="fact">DeepSeek发布条目的重要性评分由头部模型发布规则得到。</li><li data-kind="fact">热度计算中，DeepSeek发布条目的量级为0.25，促销条目的量级为0.019。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">转载数的权重足以抹平模型发布与促销条目之间的重要性差距，因此促销条目排在了模型发布前面。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明这次修复是否已经完成。</li><li data-kind="uncertain">材料没有说明修复后具体采用了哪种排序实现。</li><li data-kind="uncertain">材料没有说明其他促销条目是否也会统一降权。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-efbbcfd779">
+          <div class="item__head">
+            <span class="item__no">08</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/bc6obtyu94igbbo4ilwg5wq76" target="_blank" rel="noopener noreferrer">OpenCode安全漏洞影响1.4%用户</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 17:56 UTC</span>
+            <a href="https://aihot.news/items/bc6obtyu94igbbo4ilwg5wq76" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OpenCode 昨晚发生安全漏洞事件。</li><li data-kind="fact">此次事件源于一次大规模蒸馏攻击。</li><li data-kind="fact">事件影响了1.4%的 OpenCode Console 用户。</li><li data-kind="fact">OpenCode 已于当天上午通过邮件通知全部受影响用户。</li><li data-kind="fact">事件仍在处理中。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">由于事件仍在处理中，相关处置结果尚未确定。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">OpenCode 尚未透露事件的更多细节。</li><li data-kind="uncertain">材料未说明漏洞的具体成因。</li><li data-kind="uncertain">材料未说明蒸馏攻击的具体方式。</li><li data-kind="uncertain">材料未说明受影响用户的具体数量。</li><li data-kind="uncertain">材料未说明用户受到的具体影响。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e439e566b6">
+          <div class="item__head">
+            <span class="item__no">09</span>
+            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTE1PU0JJUWRpX01sWHl1VUNROEFwNk9NVDVSVnZnd2daMHRpTkhtcS1jOE94c0QtVlZjanF3N3cyaHV0NUk5aEFHVlYtb2xvUWk1b1VORDhYTkdkeWNhWVBZ?oc=5" target="_blank" rel="noopener noreferrer">小红书半年内三次调整AI部门，Dots与Infra聚焦底层模型研发</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 16:58 UTC</span>
+            <a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTE1PU0JJUWRpX01sWHl1VUNROEFwNk9NVDVSVnZnd2daMHRpTkhtcS1jOE94c0QtVlZjanF3N3cyaHV0NUk5aEFHVlYtb2xvUWk1b1VORDhYTkdkeWNhWVBZ?oc=5" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">小红书半年内三次调整AI部门职责</li><li data-kind="fact">Dots与Infra打通并聚焦底层模型研发</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">小红书正在整合AI资源以强化底层模型研发</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">调整的具体原因不明</li><li data-kind="uncertain">Dots与Infra的具体职能不详</li><li data-kind="uncertain">调整后预期效果未说明</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e767262273">
+          <div class="item__head">
+            <span class="item__no">10</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/t9kbnkk2r3i67tnmv578wqon8" target="_blank" rel="noopener noreferrer">Anthropic报告称团队更资深</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 20:21 UTC</span>
+            <a href="https://aihot.news/items/t9kbnkk2r3i67tnmv578wqon8" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Anthropic周五发布报告，介绍围绕Claude重塑工作流后公司内部的变化。</li><li data-kind="fact">技术部门初级员工占比从21%降至14%。</li><li data-kind="fact">初级技术新员工占比从27%降至9%。</li><li data-kind="fact">技术团队占全员比例从61%降至56%。</li><li data-kind="fact">Anthropic将技术团队占比下降归因于业务职能扩张和编码工具让非技术员工也能自行开发软件。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">技术部门初级员工占比下降，表明技术团队的人员结构可能更加资深。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明报告中会议时间增加的具体数据和范围。</li><li data-kind="uncertain">材料未说明上述比例变化对应的具体时间区间。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e391229df8">
+          <div class="item__head">
+            <span class="item__no">11</span>
+            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMi4ARBVV95cUxQVF9OU21RNnQyMThLbWVzRmlfekRwUTdpazhXTGs5T2VCRkxEcFVvSHBvV280OTI3ZkpIUmo1UUZadklLTDZjOVN5Y0FaaDlKSTluRGFZRVFPal93eTB5QUhuSko1dzktMVVWcjkxR2NOVlJnRGNvczI4MGVjelJYNEpJQ1VGazBBa05Cakk2Yld3RnVwOHZLMW1RWnZRSGJHTENjZ2lPSzc2Q3U3UGJGUl9IVk1IZTBnQkg0bmFTbVdlMjVMOEFsQkpfLU1qVUw1a0JZNTNvNDRETXVROUFEZTBsM194aGFmLW9rNkQxQkNCaW00cGtMNkhaWktCOWhZSlYzbktFN09CZGNpOWpRbjdFc2hNYU4zMW9ITHk4MXVHRHg0SzR0SHh5R2dONWZHOXp2bkFaamQ2M2hUYlBsRk9wYU9Gbkh2cDZ1MFY1R005dDZJQlFMSm1Ed3ZlMUdfX3JjMzNldHgwVzc1OEdnMFVjR0NFU2c4QjJXSnZRSHFMSF8yMS1zRWx1SjUzNkZNS3hnU0FCcWtsRjh1TnZzUDg0eDRXZ1FRdi1rN3BWN0wyYTFBdlRGeEF6R1dOS0g4SUtlUkhJTFdsekxybzd1OG41YVZPTzdvaHpvdGhRQlNLVEhOWDVMZXNvVXFCNFlQQnhvYkFhQ1ZqYjhRTFJyWTg4VjRLX1kwUW56ZWJOVEZYV3ZRTHNiQkswMGNFdExxbHVqV0dac2ltN2loYXZFUFQycW5lSThxbjRGRE5yemNRbzZiaFBodEtuSXdlWkVveFdsM1ZITDRTWnVDYnBEbw?oc=5" target="_blank" rel="noopener noreferrer">Anthropic为何布局生命科学并下场做实验？</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 16:16 UTC</span>
+            <a href="https://news.google.com/rss/articles/CBMi4ARBVV95cUxQVF9OU21RNnQyMThLbWVzRmlfekRwUTdpazhXTGs5T2VCRkxEcFVvSHBvV280OTI3ZkpIUmo1UUZadklLTDZjOVN5Y0FaaDlKSTluRGFZRVFPal93eTB5QUhuSko1dzktMVVWcjkxR2NOVlJnRGNvczI4MGVjelJYNEpJQ1VGazBBa05Cakk2Yld3RnVwOHZLMW1RWnZRSGJHTENjZ2lPSzc2Q3U3UGJGUl9IVk1IZTBnQkg0bmFTbVdlMjVMOEFsQkpfLU1qVUw1a0JZNTNvNDRETXVROUFEZTBsM194aGFmLW9rNkQxQkNCaW00cGtMNkhaWktCOWhZSlYzbktFN09CZGNpOWpRbjdFc2hNYU4zMW9ITHk4MXVHRHg0SzR0SHh5R2dONWZHOXp2bkFaamQ2M2hUYlBsRk9wYU9Gbkh2cDZ1MFY1R005dDZJQlFMSm1Ed3ZlMUdfX3JjMzNldHgwVzc1OEdnMFVjR0NFU2c4QjJXSnZRSHFMSF8yMS1zRWx1SjUzNkZNS3hnU0FCcWtsRjh1TnZzUDg0eDRXZ1FRdi1rN3BWN0wyYTFBdlRGeEF6R1dOS0g4SUtlUkhJTFdsekxybzd1OG41YVZPTzdvaHpvdGhRQlNLVEhOWDVMZXNvVXFCNFlQQnhvYkFhQ1ZqYjhRTFJyWTg4VjRLX1kwUW56ZWJOVEZYV3ZRTHNiQkswMGNFdExxbHVqV0dac2ltN2loYXZFUFQycW5lSThxbjRGRE5yemNRbzZiaFBodEtuSXdlWkVveFdsM1ZITDRTWnVDYnBEbw?oc=5" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">材料标题涉及Anthropic的生命科学布局。</li><li data-kind="fact">材料标题提出一家人工智能公司为何下场做实验的问题。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">据标题可推断，Anthropic正在受到其生命科学相关活动的关注。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明Anthropic开展了哪些生物实验。</li><li data-kind="uncertain">材料没有说明Anthropic布局生命科学的具体原因。</li><li data-kind="uncertain">材料没有说明Claude在相关布局中的作用。</li><li data-kind="uncertain">材料没有说明相关实验室的名称、地点和规模。</li><li data-kind="uncertain">材料没有说明Anthropic是否已经形成具体的生命科学产品或服务。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-eb62fc2fef">
+          <div class="item__head">
+            <span class="item__no">12</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/uwoxcnx07tyjhx3o4nz6qzd2u" target="_blank" rel="noopener noreferrer">OpenAI工程师称赴沙特单程票调查前已购</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 16:56 UTC</span>
+            <a href="https://aihot.news/items/uwoxcnx07tyjhx3o4nz6qzd2u" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Abdulrahman Alfozan被控在会议室安装窃听设备并申请保释。</li><li data-kind="fact">其律师称，他于9月13日购买了飞往沙特的单程票，比OpenAI发现设备早17天。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">如果律师所述属实，购票时间早于设备被发现时间。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明窃听设备是否由Abdulrahman Alfozan安装。</li><li data-kind="uncertain">材料未说明单程票购票后是否实际成行。</li><li data-kind="uncertain">材料未说明购票的具体原因。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e1e0afcdd7">
+          <div class="item__head">
+            <span class="item__no">13</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/bvh07bfwx5x7ktp10eb0wv3n1" target="_blank" rel="noopener noreferrer">DeepSeek以1/83成本达Opus 5级表现</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 17:31 UTC</span>
+            <a href="https://aihot.news/items/bvh07bfwx5x7ktp10eb0wv3n1" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Yuchen Jin表示，开源模型永远追不上闭源模型的观点没有撑过一周。</li><li data-kind="fact">DeepSeek-V4.1-Flash-1017在DeepSWE v1.1上得分77。</li><li data-kind="fact">Yuchen Jin表示，DeepSeek-V4.1-Flash-1017以低83倍的成本达到Opus 5级性能。</li><li data-kind="fact">DeepSeek-V4.1-Flash-1017将上线Databricks。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">如果材料中的成绩和成本口径成立，DeepSeek-V4.1-Flash-1017在所述测试中实现了较高的编码成本效益。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明成本比较的具体计算口径。</li><li data-kind="uncertain">材料没有说明DeepSWE v1.1得分77与Opus 5级性能之间的对应关系。</li><li data-kind="uncertain">材料没有说明相关成绩是否经过独立验证。</li><li data-kind="uncertain">材料没有说明DeepSeek-V4.1-Flash-1017上线Databricks的具体时间。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e3e7e7318b">
+          <div class="item__head">
+            <span class="item__no">14</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/mviucck9mw1y2qtfnhcrd7x3a" target="_blank" rel="noopener noreferrer">Anthropic 员工演示 Claude Code mods 拦截危险命令</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 17:03 UTC</span>
+            <a href="https://aihot.news/items/mviucck9mw1y2qtfnhcrd7x3a" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Anthropic 开发者关系员工 Ado Kukic 介绍了 Claude Code mods。</li><li data-kind="fact">Claude Code mods 是能够钩入事件、改变 Claude Code 行为并在终端绘制自定义 UI 的函数。</li><li data-kind="fact">演示中的一个 mod 能够暂扣有风险的 shell 命令，并展示其将删除的内容。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Claude Code mods 可能会被广泛用于提高开发人员在终端执行命令时的安全性。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">Claude Code mods 是否已经向公众开放使用。</li><li data-kind="uncertain">除了拦截删除命令之外，Claude Code mods 还支持哪些具体功能。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e9d784fa48">
+          <div class="item__head">
+            <span class="item__no">15</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/j8sgrs8jthbnwawwbsf3tgjkg" target="_blank" rel="noopener noreferrer">长程智能体为何需要系统级可靠性</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 20:17 UTC</span>
+            <a href="https://aihot.news/items/j8sgrs8jthbnwawwbsf3tgjkg" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">单步成功率为99%时，10步任务全程无失败的概率约为90%，100步任务约为37%。</li><li data-kind="fact">在每次失败可重试一次且失败相互独立的条件下，100步任务的全程无失败概率可从约37%回升到约99%。</li><li data-kind="fact">响应超时可能导致动作重复执行，失败也可能改变系统状态，失败之间未必相互独立。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">可以推断，长程智能体的可靠性不仅取决于模型，还取决于模型周围的系统设计。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">实际失败是否相互独立无法确认。</li><li data-kind="uncertain">响应超时是否会导致动作重复执行无法确认。</li><li data-kind="uncertain">失败是否会改变系统状态无法确认。</li><li data-kind="uncertain">材料未说明重试次数超过一次时的可靠性。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e591680c81">
+          <div class="item__head">
+            <span class="item__no">16</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/ira3iegs0darfxu2by9h9uf1v" target="_blank" rel="noopener noreferrer">OpenAI 今日重置使用限制</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 16:20 UTC</span>
+            <a href="https://aihot.news/items/ira3iegs0darfxu2by9h9uf1v" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OpenAI 在太平洋时间下班前重置了用量限制。</li><li data-kind="fact">这是第13天重置使用限制。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">此次重置可能与 OpenAI 持续的某种周期性调整活动有关。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">此次重置适用的具体用户范围或服务层级是什么。</li><li data-kind="uncertain">第13天的具体含义和背景是什么。</li></ul></div>
+          <div class="item__links"><a href="https://aihot.news/items/zu56fvwrnyjd7xkscu2epuh3z" rel="noopener noreferrer">aihot.news</a></div>
+        </li>
+        <li class="item" id="e-e1a960650a">
+          <div class="item__head">
+            <span class="item__no">17</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/cvptn8xtc9y6m72e983lrhrv2" target="_blank" rel="noopener noreferrer">OpenAI员工用智能体处理税务</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 16:31 UTC</span>
+            <a href="https://aihot.news/items/cvptn8xtc9y6m72e983lrhrv2" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">一名OpenAI员工的工作邮箱“Burger”应私人邮箱“Dorito”的请求，通过邮件协调获取文件。</li><li data-kind="fact">该员工随后与注册会计师协调，完成了一些税务申报事宜。</li><li data-kind="fact">整个过程耗时20分钟。</li><li data-kind="fact">相关工作仍处于非常早期的阶段。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">邮件协调可能已经覆盖文件获取和部分税务申报流程。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">已完成的具体税务申报事项未说明。</li><li data-kind="uncertain">“Burger”和“Dorito”分别对应什么系统或智能体未说明。</li><li data-kind="uncertain">注册会计师参与的具体工作未说明。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-ec3a126719">
+          <div class="item__head">
+            <span class="item__no">18</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/bxn6xmcvdn5fl73mjy0pdw34y" target="_blank" rel="noopener noreferrer">智能体时代可能通过大脑直接输入</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 17:07 UTC</span>
+            <a href="https://aihot.news/items/bxn6xmcvdn5fl73mjy0pdw34y" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">每个计算时代都有自己的输入方式。</li><li data-kind="fact">键盘、鼠标、触屏、语音是常见输入方式。</li><li data-kind="fact">智能体可能会从大脑获得输入。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">如果智能体能直接读取大脑，沟通效率将大幅提升。</li><li data-kind="inference">直接输入能避免措辞导致的信息丢失。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">智能体是否真的能从大脑获得输入尚未验证。</li><li data-kind="uncertain">大脑直接输入技术的实现难度和可行性未知。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e12e61478b">
+          <div class="item__head">
+            <span class="item__no">19</span>
+            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE1fQjR6YmNEZ3ppODlObU4wUlZyd1lKcWhBY2VNaXptZ3NmN0ZaRXlmbHhrZzlkUm1rLUhMaWM0X1owTDEwZVJQUndnTFRHbUV6MXJvakplbXhMcnc4aHZRWVpxQUR4TjF3Qkd3a2dSZXpjYVJpTWNnOGl2aFllZkk?oc=5" target="_blank" rel="noopener noreferrer">极视角入选“垂域智能齐鲁七星”</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 19:42 UTC</span>
+            <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE1fQjR6YmNEZ3ppODlObU4wUlZyd1lKcWhBY2VNaXptZ3NmN0ZaRXlmbHhrZzlkUm1rLUhMaWM0X1owTDEwZVJQUndnTFRHbUV6MXJvakplbXhMcnc4aHZRWVpxQUR4TjF3Qkd3a2dSZXpjYVJpTWNnOGl2aFllZkk?oc=5" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">材料标题称山东押注垂域大模型。</li><li data-kind="fact">材料标题称极视角拿下“垂域智能齐鲁七星”一席。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">从标题措辞看，极视角与山东的垂域大模型布局相关。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明极视角入选的具体原因。</li><li data-kind="uncertain">材料未说明“垂域智能齐鲁七星”的评选标准。</li><li data-kind="uncertain">材料未说明“垂域智能齐鲁七星”包含哪些其他主体。</li><li data-kind="uncertain">材料未提供极视角的产品、技术或业务信息。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e889e9c037">
+          <div class="item__head">
+            <span class="item__no">20</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/udagv3mubdkbu5b6isyqactjj" target="_blank" rel="noopener noreferrer">xAI工程师称在@X发帖改变职业生涯</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 17:21 UTC</span>
+            <a href="https://aihot.news/items/udagv3mubdkbu5b6isyqactjj" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">发帖者表示，自己的职业生涯和获得的机会都归功于在@X发帖。</li><li data-kind="fact">发帖者表示，自己受宠若惊并心怀感激，也感谢@mvanhorn带自己重温旧日时光。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">发帖者认为，在@X发布内容对其职业发展和获得机会起到了重要作用。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明发帖者的姓名。</li><li data-kind="uncertain">材料没有说明哪些具体机会来自在@X发帖。</li><li data-kind="uncertain">材料没有说明“重温旧日时光”具体指什么。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e38825cd4c">
+          <div class="item__head">
+            <span class="item__no">21</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/ylouc75akywlbx6bs05t8e8qf" target="_blank" rel="noopener noreferrer">OpenAI Tibo 推文表明工作已完成</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 21:12 UTC</span>
+            <a href="https://aihot.news/items/ylouc75akywlbx6bs05t8e8qf" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OpenAI 的 Tibo 推文已完成</li><li data-kind="fact">OpenAI 的 Tibo 推文标题为 Done</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">OpenAI 的 Tibo 推文表明某项工作已完成</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">推文所指的完成具体内容不明</li><li data-kind="uncertain">推文是否涉及特定项目不确定</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e806a13d42">
+          <div class="item__head">
+            <span class="item__no">22</span>
+            <h3 class="item__title"><a href="https://github.com/MadsLorentzen/ai-job-search" target="_blank" rel="noopener noreferrer">Claude Code成为多项目开发工具</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span class="when-unknown">时间未知</span>
+            <a href="https://github.com/MadsLorentzen/ai-job-search" rel="noopener noreferrer">github.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Claude Code是一款运行在终端中的智能编程工具。</li><li data-kind="fact">Claude Code能够理解代码库，并通过自然语言命令执行日常任务、解释复杂代码和处理版本控制工作流。</li><li data-kind="fact">anthropics/claude-plugins-official是由Anthropic管理的Claude Code插件目录。</li><li data-kind="fact">stablyai/orca支持使用包括Claude Code在内的编程代理。</li><li data-kind="fact">MadsLorentzen/ai-job-search是基于Claude Code构建的人工智能求职框架。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">多个项目将Claude Code用于编程代理、插件和求职自动化，表明其用途已延伸到不同类型的开发工作流。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明这些项目之间是否存在直接合作关系。</li><li data-kind="uncertain">材料没有说明Claude Code的发布时间、用户数量或使用规模。</li><li data-kind="uncertain">材料没有说明Claude Code支持的具体编程语言和模型。</li></ul></div>
+          <div class="item__links"><a href="https://github.com/affaan-m/ECC" rel="noopener noreferrer">github.com</a><a href="https://github.com/anthropics/claude-code" rel="noopener noreferrer">github.com</a><a href="https://github.com/anthropics/claude-plugins-official" rel="noopener noreferrer">github.com</a><a href="https://github.com/stablyai/orca" rel="noopener noreferrer">github.com</a></div>
+        </li>
+        <li class="item" id="e-ec1957b514">
+          <div class="item__head">
+            <span class="item__no">23</span>
+            <h3 class="item__title"><a href="https://github.com/K-Dense-AI/scientific-agent-skills" target="_blank" rel="noopener noreferrer">K-Dense-AI/scientific-agent-skills提供科学代理技能</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span class="when-unknown">时间未知</span>
+            <a href="https://github.com/K-Dense-AI/scientific-agent-skills" rel="noopener noreferrer">github.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">K-Dense-AI/scientific-agent-skills提供177项可直接使用且经过验证的技能。</li><li data-kind="fact">项目涵盖生物学、化学、医学和药物发现领域，并包含100多个科学数据库。</li><li data-kind="fact">项目称其已被全球25万多名科学家使用。</li><li data-kind="fact">项目兼容Cursor、Claude Code、Codex、Pi、Antigravity和开放的Agent Skills标准。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">由项目兼容多个工具和开放标准可推断，其面向多种人工智能代理开发环境。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明177项技能的具体验证方式。</li><li data-kind="uncertain">材料没有说明科学数据库的确切数量。</li><li data-kind="uncertain">材料没有说明25万多名科学家的统计口径和时间范围。</li><li data-kind="uncertain">材料没有说明各兼容工具的具体支持方式。</li></ul></div>
+          
+        </li>
+        </ol>
+      </section>
+
+    
+
+    <nav class="pager"><a href="2026-10-17.html"><span>上一期</span>2026-10-17</a><span></span></nav>
+
+    <footer class="foot">
+      <p>本期从 124 个已注册信息源采集，
+      7 个源提供了窗口内的内容，
+      0 个失败，0 个跳过。
+      共 91 条条目进入分析，
+      11 条被判定为重复。</p>
+      <p>大模型：40 次调用 / 77,498 token。
+      摘要由 AI 从原始来源整理，事实、推断与不确定项已分列；
+      <strong>每个条目的链接都来自采集记录，未经模型生成</strong>。请以原始来源为准。</p>
+      <p>生成于 2026-10-17 22:20 UTC</p>
+    </footer>
+  </main>
+
+      <nav class="toc" aria-label="目录">
+        <button class="toc__grip" type="button" data-resize="toc"
+                aria-label="拖动调整目录宽度" title="拖动调整宽度（双击恢复默认）"></button>
+        <p class="toc__title">今日目录</p>
+        <div class="toc__nav">
+          <a href="#overview" class="toc__overview">概览</a>
+          <a href="#e-e7da4557d6"><span class="toc__no">01</span>Anthropic 撤销受影响的 Claude 密钥</a>
+          <a href="#e-ec52040708"><span class="toc__no">02</span>Bolt 周末免费开放 GLM 5.3 Flash</a>
+          <a href="#e-efbaadb28f"><span class="toc__no">03</span>OpenAI 披露四起新违规事件</a>
+          <a href="#e-e0ea648ff7"><span class="toc__no">04</span>Perplexity Decider Flash 可在 M4 Mac 16GB …</a>
+          <a href="#e-ec9e9111a7"><span class="toc__no">05</span>Kyutai发布REKI：2.4B视觉语言动作模型</a>
+          <a href="#e-e0416b302e"><span class="toc__no">06</span>OpenRouter 推出 Scaledown 模型实战手册</a>
+          <a href="#e-e440e1d72a"><span class="toc__no">07</span>模型发布须优先于促销，转载数不得决定头条</a>
+          <a href="#e-efbbcfd779"><span class="toc__no">08</span>OpenCode安全漏洞影响1.4%用户</a>
+          <a href="#e-e439e566b6"><span class="toc__no">09</span>小红书半年内三次调整AI部门，Dots与Infra聚焦底层模型研发</a>
+          <a href="#e-e767262273"><span class="toc__no">10</span>Anthropic报告称团队更资深</a>
+          <a href="#e-e391229df8"><span class="toc__no">11</span>Anthropic为何布局生命科学并下场做实验？</a>
+          <a href="#e-eb62fc2fef"><span class="toc__no">12</span>OpenAI工程师称赴沙特单程票调查前已购</a>
+          <a href="#e-e1e0afcdd7"><span class="toc__no">13</span>DeepSeek以1/83成本达Opus 5级表现</a>
+          <a href="#e-e3e7e7318b"><span class="toc__no">14</span>Anthropic 员工演示 Claude Code mods 拦截危险命令</a>
+          <a href="#e-e9d784fa48"><span class="toc__no">15</span>长程智能体为何需要系统级可靠性</a>
+          <a href="#e-e591680c81"><span class="toc__no">16</span>OpenAI 今日重置使用限制</a>
+          <a href="#e-e1a960650a"><span class="toc__no">17</span>OpenAI员工用智能体处理税务</a>
+          <a href="#e-ec3a126719"><span class="toc__no">18</span>智能体时代可能通过大脑直接输入</a>
+          <a href="#e-e12e61478b"><span class="toc__no">19</span>极视角入选“垂域智能齐鲁七星”</a>
+          <a href="#e-e889e9c037"><span class="toc__no">20</span>xAI工程师称在@X发帖改变职业生涯</a>
+          <a href="#e-e38825cd4c"><span class="toc__no">21</span>OpenAI Tibo 推文表明工作已完成</a>
+          <a href="#e-e806a13d42"><span class="toc__no">22</span>Claude Code成为多项目开发工具</a>
+          <a href="#e-ec1957b514"><span class="toc__no">23</span>K-Dense-AI/scientific-agent-skills提供科学代理技能</a>
+        </div>
+      </nav>
+</div>
+
+<dialog class="search" id="search-dialog" aria-label="搜索往期内容">
+  <div class="search__form">
+    <input type="search" placeholder="搜索往期内容…" aria-label="搜索关键词" autocomplete="off">
+    <kbd>Esc</kbd>
+  </div>
+  <ul class="search__results"></ul>
+</dialog>
+
+<script type="application/json" id="calendar-data">{"dates": ["2026-10-18", "2026-10-17", "2026-10-16", "2026-10-15", "2026-10-14"], "current": "2026-10-18", "today": "2026-10-17"}</script>
+<script type="application/json" id="search-index">[{"date": "2026-10-18", "items": [{"t": "Anthropic 就 OpenCode 安全泄露事件撤销受影响的 Claude API 密钥", "s": "rss:aihot-news"}, {"t": "Bolt 周末免费开放 GLM 5.3 Flash", "s": "rss:aihot-news"}, {"t": "OpenAI discloses four more rogue incidents", "s": "api:hn-algolia-com-search"}, {"t": "Perplexity Decider Flash 可端侧运行", "s": "rss:aihot-news"}, {"t": "Kyutai 发布 REKI：2.4B 视觉-语言-动作模型，为机器人操作带来高效记忆", "s": "rss:aihot-news"}, {"t": "OpenRouter 推出 Scaledown 模型实战手册", "s": "rss:aihot-news"}, {"t": "fix(rank): 模型发布必须排在促销前面，转载数不能再决定头条", "s": "atom:github-ai-ribao-commits"}, {"t": "OpenCode 披露安全漏洞，1.4% Console 用户受大规模蒸馏攻击影响", "s": "rss:aihot-news"}, {"t": "小红书半年内三次调整AI部门职责，Dots与Infra打通并聚焦底层模型研发 - 虎嗅网", "s": "api:news-google-com-search"}, {"t": "Anthropic 报告称内部团队更资深、会议时间增加", "s": "rss:aihot-news"}, {"t": "拆解Anthropic的生命科学布局：一家AI公司为何下场做实验？|Claude|生物实验室|语言模型|美国|模型 - 新浪财经", "s": "api:news-google-com-search"}, {"t": "被控窃听会议室的 OpenAI 工程师 Alfozan 称赴沙特单程票在调查前已购买", "s": "rss:aihot-news"}, {"t": "Yuchen Jin 称 DeepSeek-V4.1-Flash-1017 以 1/83 成本达到 Opus 5 级编码表现", "s": "rss:aihot-news"}, {"t": "Anthropic 员工演示 Claude Code mods 拦截危险 shell 命令", "s": "rss:aihot-news"}, {"t": "长程智能体可靠性：99%单步成功率为何不够", "s": "rss:aihot-news"}, {"t": "OpenAI 今日太平洋时间下班前重置用量限制", "s": "rss:aihot-news"}, {"t": "OpenAI员工用AI智能体处理税务", "s": "rss:aihot-news"}, {"t": "智能体时代的新输入方式", "s": "rss:aihot-news"}, {"t": "山东押注垂域大模型，极视角凭什么拿下“垂域智能齐鲁七星”一席？ - 新浪网", "s": "api:news-google-com-search"}, {"t": "xAI 工程师谈发推改变职业生涯", "s": "rss:aihot-news"}, {"t": "OpenAI 的 Tibo 推文：Done", "s": "rss:aihot-news"}, {"t": "anthropics/claude-code", "s": "scrape:github-com-trending"}, {"t": "K-Dense-AI/scientific-agent-skills", "s": "scrape:github-com-trending"}]}]</script>
+<script src="assets/motion.js" defer></script>
+</body>
+</html>
