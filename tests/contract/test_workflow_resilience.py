@@ -85,3 +85,34 @@ def test_every_job_that_imports_collect_installs_the_parser_extras(workflow: dic
         script = " ".join(s.get("run") or "" for s in _steps(workflow, job))
         assert "pip install" in script, f"{job} installs nothing"
         assert "[fetchers" in script, f"{job} installs without the fetchers extra"
+
+def test_each_job_is_defined_once(workflow: dict) -> None:
+    """A duplicated job key makes GitHub reject the whole file.
+
+    After an edit inserted a block at the wrong offset, `publish:` appeared twice. PyYAML keeps
+    the last definition and reports no error, so every Python test still passed while the
+    workflow failed to load with zero jobs -- the run page said only "this run likely failed
+    because of a workflow file issue".
+    """
+    text = WORKFLOW.read_text(encoding="utf-8")
+    for job in workflow["jobs"]:
+        occurrences = sum(1 for ln in text.splitlines() if ln == f"  {job}:")
+        assert occurrences == 1, f"{job}: defined {occurrences} times"
+
+
+def test_no_job_reads_outputs_from_a_needs_it_did_not_declare(workflow: dict) -> None:
+    """`needs.gate` from a job declaring `needs: publish` is an invalid expression.
+
+    GitHub rejects the *file* for it, not just the step. This is the second half of the same
+    breakage and it survived the duplicate-key fix.
+    """
+    import re
+
+    for name, spec in workflow["jobs"].items():
+        needs = spec.get("needs") or []
+        declared = {needs} if isinstance(needs, str) else set(needs)
+        body = yaml.safe_dump(spec)
+        for referenced in set(re.findall(r"needs\.([A-Za-z0-9_-]+)\.", body)):
+            assert referenced in declared, (
+                f"job {name!r} reads needs.{referenced} but declares needs={sorted(declared)}"
+            )

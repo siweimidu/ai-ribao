@@ -100,6 +100,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      # A malformed workflow does not fail a step -- it fails to load, so the run appears with
+      # zero jobs and the only message is "this run likely failed because of a workflow file
+      # issue". That is exactly what happened after an edit left two `publish:` definitions and a
+      # `needs.gate` reference from a job that only declared `needs: publish`. Nothing in the test
+      # suite noticed, because the Python code was fine.
+      - name: Lint workflows
+        run: |
+          go install github.com/rhysd/actionlint/cmd/actionlint@latest
+          "$(go env GOPATH)/bin/actionlint" -color .github/workflows/*.yml
+
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
