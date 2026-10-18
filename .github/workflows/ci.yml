@@ -108,7 +108,8 @@ jobs:
       - name: Lint workflows
         run: |
           go install github.com/rhysd/actionlint/cmd/actionlint@latest
-          "$(go env GOPATH)/bin/actionlint" -color .github/workflows/*.yml
+          # actionlint takes file paths, not globs. Let the shell expand them.
+          "$(go env GOPATH)/bin/actionlint" -color $(ls .github/workflows/*.yml)
 
       - uses: actions/checkout@v7
         with:
