@@ -1,18 +1,22 @@
-"""Cross-day repetition is removed, not merely demoted.
+"""One message is one message, however it is worded.
 
-The user's rule: "之前报道过的消息，不得再次出现，可以检查近一个星期的".
+The rule the user stated: "无论他语言怎么表达，它是一条消息，就是一条消息，重复的就是重复的".
 
-The mechanism that existed could not enforce it, and the failure is measurable in the
-archive: 2026-10-16 published "Gemini 4 Argon 向正价 Google AI Pro 用户开放" and 2026-10-17
-published "Gemini 4 Argon 向 Google AI Pro 开放". Fingerprints were exact hashes of the whole
-headline, so inserting one word made the second look new. Gemini 4 appeared nine times across
-four issues.
-"
-These tests pin the three properties that make the rule workwithout over-deleting:
+The mechanism that shipped did not enforce it, and the archive shows both failures:
 
-* an exact repeat (same headline or URL) is a repeat;
-* the same thing reworded is also a repeat -- that is what the similarity check is for;
-* a different event about the same model is NOT a repeat, or one busy day would erase itself.
+   10-17  deepseek-v4.1-flash-1017 发布了
+   10-18  DeepSeek发布V4.1-Flash-1017并开放搜索接口
+
+   10-17  WorkBuddy Intl 更新支持 DeepSeek-V4.1-Flash-1017，10 月 31 日前免费
+   10-18  WorkBuddy国际版限免DeepSeek模型
+
+Both were reported twice. The first pair failed because the identity was the *model designation*
+and the second headline parsed as "flash" (the verb sat flush against the vendor). The second
+pair failed because a promotion word excluded both headlines from the model rule entirely, so
+they never took part in deduplication.
+
+These tests pin the replacement: identity is **who did what**, compared across languages, word
+orders and version strings.
 """
 
 from __future__ import annotations
@@ -21,14 +25,9 @@ from datetime import datetime, timezone
 
 import pytest
 
-from aidaily.history import (
-    NEAR_MATCH_RATIO,
-    PublishedHistory,
-    _fold,
-    _is_near_match,
-    fingerprint,
-)
+from aidaily.history import PublishedHistory, _canonical_url, _fold, fingerprint
 from aidaily.models import Event
+from aidaily.samestory import actors, event_types, same_message, subjects
 
 NOW = datetime(2026, 10, 18, 4, 0, tzinfo=timezone.utc)
 
@@ -47,71 +46,127 @@ def event(title: str, *, url: str | None = None, event_id: str = "e1") -> Event:
     )
 
 
-def history_with(*entries: tuple[str, list[str]], path) -> PublishedHistory:
+def history_with(*entries, path) -> PublishedHistory:
     """A history populated directly, so a test does not depend on the archive on disk."""
+    import json
+
     lines = []
     for date, titles in entries:
-        events = [
-            {"id": "%s-%d" % (date, i), "title": t, "keys": sorted(fingerprint(event(t))), "fold": _fold(t)}
-            for i, t in enumerate(titles)
-        ]
-        lines.append((date, events))
-    path.write_text(
-        "\n".join(
-            '{"date": "%s", "events": %s}' % (date, __import__("json").dumps(events, ensure_ascii=False))
-            for date, events in lines
-        ),
-        encoding="utf-8",
-    )
+        rows = []
+        for i, title in enumerate(titles):
+            eid = "%s-%d" % (date, i)
+            rows.append({
+                "id": eid,
+                "title": title,
+                "keys": sorted(fingerprint(event(title, event_id=eid))),
+                "fold": _fold(title),
+            })
+        lines.append(json.dumps({"date": date, "events": rows}, ensure_ascii=False))
+    path.write_text("\n".join(lines), encoding="utf-8")
     h = PublishedHistory(path, window_days=7)
     h.load()
     return h
 
 
-def test_the_same_announcement_reworded_is_a_repeat(tmp_path) -> None:
-    """The exact case that shipped twice: one word inserted."""
+# --- the two pairs that shipped twice -------------------------------------------
+
+
+@pytest.mark.parametrize(
+    "earlier,later",
+    [
+        (
+            "deepseek-v4.1-flash-1017 发布了",
+            "DeepSeek发布V4.1-Flash-1017并开放搜索接口",
+        ),
+        (
+            "WorkBuddy Intl 更新支持 DeepSeek-V4.1-Flash-1017，10 月 31 日前免费",
+            "WorkBuddy国际版限免DeepSeek模型",
+        ),
+    ],
+)
+def test_the_two_pairs_the_reader_reported_are_one_message(earlier: str, later: str) -> None:
+    """Reported from the live site on 2026-10-18: both ran on 17 and again on 18."""
+    assert same_message(earlier, later), f"not matched:\n  {earlier}\n  {later}"
+
+
+@pytest.mark.parametrize(
+    "left,right",
+    [
+        ("Anthropic 员工对人工智能能力的预期更高", "Anthropic 递交 AI 安全法案草案"),
+        ("Anthropic 将支付 10% 高息 AI 债券", "Anthropic 初级技术员工占比降至 14%"),
+        ("DeepSeek 近五小时停服", "DeepSeek 发布 V4.1-Flash-1017"),
+        ("OpenAI 发布 GPT-6 Astra Pro", "Anthropic 发布 Claude Opus 5.5"),
+        ("DeepSeek 发布 V4.1-Flash-1017", "WorkBuddy国际版限免DeepSeek模型"),
+        # A commentary piece that mentions a vendor is not that vendor's next launch.
+        ("Meta 开源权重模型竞争力展望", "Meta发布Muse Spark Open：816B开源模型，1M上下文"),
+    ],
+)
+def test_different_news_is_not_collapsed(left: str, right: str) -> None:
+    """Over-merging is the opposite failure, and an earlier rule hit it: thirteen unrelated
+    Anthropic stories were deleted as duplicates of each other."""
+    assert not same_message(left, right), f"wrongly matched:\n  {left}\n  {right}"
+
+
+def test_a_vendor_alias_is_not_a_subject() -> None:
+    """`claude` names a vendor, not a story.
+
+    Including bare aliases as subjects made four unrelated Claude items on 2026-10-17 look like
+    one message. Only a product *with a version* is specific enough.
+    """
+    assert not subjects("Claude Code 团队发文披露内部代码审查流程")
+    assert not subjects("Anthropic 如何在 Claude 写下 90% 代码后重新设计评审")
+    assert subjects("Claude Opus 5.5 发布")
+    assert subjects("DeepSeek 发布 V4.1-Flash-1017")
+
+
+def test_identity_ignores_language_and_separators() -> None:
+    """The same release written four ways produces one actor set and one subject set."""
+    variants = [
+        "DeepSeek 发布 V4.1-Flash-1017",
+        "deepseek-v4.1-flash-1017 发布了",
+        "DeepSeek: DeepSeek v4.1 Flash 1017",
+        "DeepSeek发布V4.1-Flash-1017并开放搜索接口",
+    ]
+    for a in variants:
+        for b in variants:
+            assert same_message(a, b), f"{a!r} vs {b!r}"
+
+
+# --- history integration --------------------------------------------------------
+
+
+def test_a_reworded_repeat_is_dropped(tmp_path) -> None:
     h = history_with(
-        ("2026-10-16", ["Gemini 4 Argon 向正价 Google AI Pro 用户开放"]),
+        ("2026-10-17", ["deepseek-v4.1-flash-1017 发布了"]),
         path=tmp_path / "h.jsonl",
     )
     repeat = h.find_repeat(
-        event("Gemini 4 Argon 向 Google AI Pro 开放", event_id="probe"), today="2026-10-18", now=NOW
+        event("DeepSeek发布V4.1-Flash-1017并开放搜索接口", event_id="probe"),
+        today="2026-10-18",
+        now=NOW,
     )
     assert repeat is not None, "the reworded repeat was not recognised"
-    # "reworded", not "designation": the wording was compared and matched, so the
-    # evidence is proof rather than the bare "this model appeared before" signal.
-    assert repeat.matched_on == "reworded"
-    assert repeat.days_ago == 2
+    assert repeat.matched_on == "message"
+    assert repeat.days_ago == 1
 
 
-def test_a_model_already_covered_across_days_is_a_repeat(tmp_path) -> None:
-    """The same model on a later day counts as a repeat, even as a different event.
-
-    This is the rule the user asked for: "之前报道过的消息，不得再次出现，可以检查近一个星期的".
-    Gemini 4 ran on 14, 15 and 16 with three genuinely distinct events (robotics model,
-    researcher access, Pro rollout; pairwise similarity 0.38..0.52) and the reader experienced
-    one story told three times. Across days the model is the unit, so the second day is dropped.
-
-    Inside a *single* issue the distinction still matters and is handled elsewhere:
-    `RankWeights.max_per_model` caps a model to one entry, and it does so without calling three
-    different events duplicates of each other.
-    """
+def test_a_different_story_about_one_vendor_is_kept(tmp_path) -> None:
     h = history_with(
-        ("2026-10-16", ["Gemini 4 Argon 机器人模型发布"]),
+        ("2026-10-16", ["Anthropic 员工对人工智能能力的预期更高"]),
         path=tmp_path / "h.jsonl",
     )
     repeat = h.find_repeat(
-        event("Gemini 4 Argon 在 ARC-AGI-3 获 97.5%", event_id="probe2"), today="2026-10-18", now=NOW
+        event("Anthropic 递交 AI 安全法案草案", event_id="probe2"),
+        today="2026-10-18",
+        now=NOW,
     )
-    assert repeat is not None, "a model covered two days earlier was treated as new"
-    assert repeat.matched_on == "model-repeat"
+    assert repeat is None, "two different Anthropic stories were treated as one"
 
 
 def test_todays_own_issue_is_not_cross_day_repetition(tmp_path) -> None:
-    """A second trigger of the same day must not see itself as yesterday's news."""
-    h = history_with(("2026-10-18", ["Gemini 4 Argon 向 Google AI Pro 开放"]), path=tmp_path / "h.jsonl")
+    h = history_with(("2026-10-18", ["DeepSeek 发布 V4.1-Flash-1017"]), path=tmp_path / "h.jsonl")
     repeat = h.find_repeat(
-        event("Gemini 4 Argon 向 Google AI Pro 开放", event_id="probe"), today="2026-10-18", now=NOW
+        event("DeepSeek 发布 V4.1-Flash-1017", event_id="probe3"), today="2026-10-18", now=NOW
     )
     assert repeat is None
 
@@ -120,92 +175,38 @@ def test_the_window_is_respected(tmp_path) -> None:
     """Outside the window a story is news again."""
     h = history_with(("2026-09-01", ["DeepSeek 发布 V4.1-Flash-1017"]), path=tmp_path / "h.jsonl")
     repeat = h.find_repeat(
-        event("DeepSeek 发布 V4.1-Flash-1017", event_id="probe3"), today="2026-10-18", now=NOW
+        event("DeepSeek 发布 V4.1-Flash-1017", event_id="probe4"), today="2026-10-18", now=NOW
     )
     assert repeat is None, "a story older than the window was still treated as a repeat"
 
 
-@pytest.mark.parametrize(
-    "left,right,expected",
-    [
-        ("Gemini 4 Argon 向正价 Google AI Pro 用户开放", "Gemini 4 Argon 向 Google AI Pro 开放", True),
-        ("DeepSeek 发布 V4.1-Flash-1017，性能更强", "DeepSeek 发布 V4.1-Flash-1017，输出更省 token", True),
-        ("Gemini 4 Argon 机器人模型发布", "Gemini 4 Argon 在 ARC-AGI-3 获 97.5%", False),
-        ("OpenAI 发布 GPT-6 Astra Pro", "DeepSeek 发布 V4.1-Flash", False),
-    ],
-)
-def test_the_threshold_separates_reworded_repeats_from_new_stories(
-    left: str, right: str, expected: bool
-) -> None:
-    """0.80 sits between the measured pairs with room on both sides.
+# --- URL identity ----------------------------------------------------------------
 
-    Measured ratios: 0.923, 0.807 (same event) against 0.545, 0.333 (different events).
-    """
-    assert _is_near_match(_fold(left), [_fold(right)]) is expected
-
-def test_another_outlets_digest_is_recognised() -> None:
-    """A feed entry that is itself a digest must not enter the issue.
-
-    It restates events the digest already carries under their own headlines, so the reader sees
-    one story twice no matter how the ranking behaves. Five such entries appeared across
-    2026-10-14..18.
-    """
-    from aidaily.designation import is_roundup
-
-    assert is_roundup("AI 早报：Gemini 4 Argon 全球开放，多家厂商发布新模型")
-    assert is_roundup("AIHOT 日报 · 2026-10-15 — Gemini 4 Argon 向全球 Google AI Pro")
-    assert is_roundup("2026-10-17 AI 日报 · 中国拟收紧大模型出口管制")
-
-
-def test_a_real_story_is_not_mistaken_for_a_digest() -> None:
-    """The words 日报/早报 must appear as the masthead, not anywhere in the sentence.
-
-    A first version matched them as substrings and removed two genuine stories:
-    "华尔街拟转让380亿美元AI数据中心债务" and "DeepSeek发布V4.1-Flash-1017并开放搜索接口".
-    """
-    from aidaily.designation import is_roundup
-
-    assert not is_roundup("DeepSeek发布V4.1-Flash-1017并开放搜索接口")
-    assert not is_roundup("Gemini 4 Argon 向 Google AI Pro 开放")
-    assert not is_roundup("华尔街拟转让380亿美元AI数据中心债务，多州起诉OpenAI")
 
 def test_a_query_string_that_carries_the_article_id_is_kept() -> None:
-    """WeChat article identity lives in the query string, and stripping it collapsed the host.
-
-    This shipped as a real failure: every `mp.weixin.qq.com/s?...` URL reduced to
-    `mp.weixin.qq.com/s`, so an unrelated Meta story from 10-16 and the DeepSeek V4.1 launch
-    from 10-17 shared a URL fingerprint. The launch was then dropped as a repeat -- the most
-    important story of the day, deleted by its own deduplicator.
-    """
-    from aidaily.history import _canonical_url
-
+    """Every WeChat URL used to collapse to `mp.weixin.qq.com/s`, so unrelated articles shared a
+    fingerprint and the day's biggest story was deleted as a repeat of another."""
     a = _canonical_url("https://mp.weixin.qq.com/s?__biz=MzA3&mid=265&idx=3&sn=d54")
     b = _canonical_url("https://mp.weixin.qq.com/s?__biz=MzI3&mid=2652&idx=1&sn=7da")
-    assert a != b, "two WeChat articles collapsed to one identity"
+    assert a != b
     assert "mid=265" in a and "mid=2652" in b
 
 
 def test_tracking_parameters_are_still_dropped() -> None:
-    """The fix must not stop ordinary canonicalisation working."""
-    from aidaily.history import _canonical_url
-
     assert _canonical_url("https://example.com/a?utm_source=x&utm_medium=y") == "example.com/a"
     assert _canonical_url("http://example.com/a/") == "example.com/a"
 
 
-def test_a_release_and_an_earlier_promo_about_it_are_different_events(tmp_path) -> None:
-    """The launch must survive even though a promotion mentioned the same model the day before.
+# --- actor and event extraction --------------------------------------------------
 
-    10-16 carried "DeepSeek V4.1 Flash 在 OpenCode 限时免费" and 10-17 carried the launch itself.
-    They share a designation but are not the same story, and the launch is the one that matters.
-    """
-    h = history_with(
-        ("2026-10-16", ["DeepSeek V4.1 Flash 在 OpenCode 限时免费"]),
-        path=tmp_path / "h.jsonl",
-    )
-    repeat = h.find_repeat(
-        event("DeepSeek 发布 V4.1-Flash-1017，性能更强", event_id="launch"),
-        today="2026-10-17",
-        now=NOW,
-    )
-    assert repeat is None, "the launch was treated as a repeat of a promotion"
+
+def test_actors_are_found_across_languages() -> None:
+    assert actors("DeepSeek 发布新模型") == actors("深度求索 ships a new model")
+    assert "alibaba" in actors("阿里 Qwen 开源新基准")
+    assert "google" in actors("Google DeepMind announces Gemini 4")
+
+
+def test_event_types_separate_a_release_from_an_outage() -> None:
+    assert "release" in event_types("DeepSeek 发布 V4.1-Flash-1017")
+    assert "outage" in event_types("DeepSeek 近五小时停服")
+    assert "pricing" in event_types("WorkBuddy 国际版限免 DeepSeek 模型")

@@ -30,6 +30,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from .designation import designation
+from .samestory import message_key, same_message
 from .models import Event
 
 #: Characters stripped before comparing headlines. Punctuation and spacing differ between
@@ -92,11 +93,15 @@ def fingerprint(event: Event) -> set[str]:
         bare = _canonical_url(url)
         if len(bare) > 10:
             keys.add("u:" + hashlib.sha1(bare.encode()).hexdigest()[:16])
-    # Not hashed: the key is already a short normalised product name, and keeping it legible
-    # makes the history file readable when diagnosing a repeat.
-    model = designation(event.title)
-    if model:
-        keys.add("d:" + model)
+    # The *message* key: who did what, independent of language and wording.
+    #
+    # The previous third key was the model designation, which is the wrong unit --
+    # "DeepSeek ships V4.1-Flash" and "WorkBuddy offers it free" name one model and are two
+    # different stories, while the same launch written in Chinese and in English is one story.
+    # See `samestory.py` for the pair that shipped twice and why.
+    who, what = message_key(event.title)
+    if who:
+        keys.add("m:" + hashlib.sha1(",".join(sorted(who)).encode()).hexdigest()[:16])
     return keys
 
 
@@ -129,6 +134,18 @@ def _is_near_match(headline: str, published) -> bool:
             return True
     return False
 
+def _same_message_as(headline: str, published) -> bool:
+    """Whether `headline` describes the same news as any stored (date, title) pair.
+
+    The stored titles are compared in their original form, not their folded one, because the
+    event-type check reads verbs and folding strips the punctuation that separates them.
+    """
+    for _date, title in published:
+        if same_message(headline, str(title)):
+            return True
+    return False
+
+
 class PublishedHistory:
     """Append-only record of what each issue published, and the lookup over it."""
 
@@ -146,11 +163,15 @@ class PublishedHistory:
         #: date -> folded headlines published that day. Used for the near-match check, which
         #: the exact hashes cannot serve: one inserted word defeats a hash.
         self._folds: dict[str, list[str]] = {}
+        #: message key -> [(date, title)]. Kept because a shared actor set is only a candidate:
+        #: the stored headline must also describe the same kind of event.
+        self._titles: dict[str, list[tuple[str, str]]] = {}
         self._loaded = False
 
     def load(self) -> None:
         self._index.clear()
         self._folds.clear()
+        self._titles.clear()
         self._loaded = True
         if not self.path.exists():
             return
@@ -190,6 +211,8 @@ class PublishedHistory:
                     bucket = self._index.setdefault(str(key), [])
                     if not any(d == date for d, _ in bucket):
                         bucket.append((date, title))
+                    if str(key).startswith("m:"):
+                        self._titles.setdefault(str(key), []).append((date, title))
         for bucket in self._index.values():
             bucket.sort()
 
@@ -226,22 +249,16 @@ class PublishedHistory:
                 if date_str == today:
                     # Same day: a re-trigger of today's own issue, not cross-day repetition.
                     continue
-                if key.startswith("d:"):
-                    # Two questions, two answers.
+                if key.startswith("m:"):
+                    # A shared actor set is only a *candidate*: the stored headline has to
+                    # describe the same kind of event. "DeepSeek ships V4.1-Flash" and
+                    # "DeepSeek had a five-hour outage" name one actor and are two stories.
                     #
-                    # *Inside one issue* a model may carry several genuinely different events
-                    # (robotics model, general availability, safety write-up -- measured
-                    # pairwise similarity 0.38..0.52). That is the selection stage's problem,
-                    # and `max_per_model` caps it there.
-                    #
-                    # *Across days* the reader sees one thing: this model again. So a model
-                    # already covered inside the window is reported as a repeat regardless of
-                    # how differently the headline is worded. Measured: Gemini 4 ran on 14,
-                    # 15 and 16 with three distinct events, which reads as one story told
-                    # three times.
-                    if not _is_near_match(folded_now, self._folds.get(date_str, ())):
-                        pass  # still a repeat by model; fall through to report it
-                    kind_override = "model-repeat"
+                    # The **raw** title is compared, not `folded_now`: folding strips the
+                    # separators that keep a verb readable as a verb, and the event-type check
+                    # depends on seeing them.
+                    if not _same_message_as(event.title, self._titles.get(key, ())):
+                        continue
                 try:
                     when = datetime.fromisoformat(date_str).date()
                 except ValueError:
@@ -250,12 +267,9 @@ class PublishedHistory:
                     continue
                 days_ago = (today_date - when).days
                 kind = (
-                    # `reworded` means the wording was compared and matched; `model-repeat`
-                    # means the same model was covered earlier in the window. Both are proof
-                    # for the caller; only the bare "designation" kind is a hint.
-                    "reworded" if key.startswith("d:") and _is_near_match(
-                        folded_now, self._folds.get(date_str, ())
-                    ) else "model-repeat" if key.startswith("d:")
+                    # `message` is the strong signal: the same actors doing the same kind
+                    # of thing, whatever the wording. `title` and `url` are exact matches.
+                    "message" if key.startswith("m:")
                     else "title" if key.startswith("t:")
                     else "url"
                 )
