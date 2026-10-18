@@ -20,6 +20,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Regular.min.css">
+  <!-- Theme read before first paint.
+       `motion.js` is deferred, so it runs after the document parses -- which means the
+       browser has already painted the default light theme and then repaints with the saved
+       one. That repaint is the flash seen on every navigation. This inline block runs while
+       the head is still parsing, so the attribute is set before anything is drawn. It is
+       intentionally duplicated by motion.js (which owns the UI); here it only needs to be
+       fast and to survive JS being disabled afterwards. -->
+  <script>(function(){try{var t=localStorage.getItem('aidaily-theme');if(t&&t!=='auto'&&t!=='default'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
@@ -134,13 +142,13 @@
 
   <main class="content" id="main">
     <header class="issue__head">
-      <p class="issue__date enter">2026-10-14　第 3 期</p>
+      <p class="issue__date enter">2026-10-14　第 5 期</p>
       <h1 class="issue__title enter">Gemini 4 Argon 机器人模型发布</h1>
       <p class="issue__lead enter">DeepMind 博客于 2026 年 10 月 13 日发布题为「Gemini 4 Argon for Robotics」的条目</p>
       <div class="stats enter"><div><b class="count-up" data-to="21">21</b><span>事件</span></div><div><b class="count-up" data-to="15">15</b><span>有内容的源</span></div><div><b class="count-up" data-to="2">2</b><span>多源验证</span></div><div><b class="count-up" data-to="15">15</b><span>头条覆盖来源</span></div></div>
     </header>
 
-    <div class="notice"><strong>本期说明</strong><ul><li>模型供应商 1 个（relay:discovery-api.intern-ai.org.cn）</li><li>部分条目降级为原文摘录（首次失败：LLMUnavailable）</li><li>7/60 个事件降级为规则摘录</li></ul></div>
+    
 
           <section class="section overview" id="overview">
         <h2 class="section__title">概览<span class="section__count">今日要闻</span></h2>
@@ -163,7 +171,7 @@
             <span>10-13 16:00 UTC</span>
             <a href="https://aihot.news/items/d4oyzg3qte4pt0ywsonolctwf" rel="noopener noreferrer">aihot.news</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">DeepMind 博客于 2026 年 10 月 13 日发布题为「Gemini 4 Argon for Robotics」的条目</li><li data-kind="fact">Hacker News 于同日出现同标题条目</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Gemini 4 Argon 是面向机器人领域的模型版本</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">Gemini 4 Argon 的具体能力与参数规模未知</li><li data-kind="uncertain">该模型与既有 Gemini Robotics 系列的关系未知</li><li data-kind="uncertain">发布日期、可用性与定价信息未知</li><li data-kind="uncertain">两条来源均仅含标题，缺乏正文细节</li></ul></div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">DeepMind 博客于 2026 年 10 月 13 日发布题为「Gemini 4 Argon for Robotics」的条目</li><li data-kind="fact">Hacker News 于同日出现同标题条目</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Gemini 4 Argon 是面向机器人领域的模型版本</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">Gemini 4 Argon 的具体能力与参数规模未知</li><li data-kind="uncertain">该模型与既有 Gemini Robotics 系列的关系未知</li><li data-kind="uncertain">发布日期、可用性与定价信息未知</li><li data-kind="uncertain">两条来源均仅含标题，缺乏正文细节</li></ul></div></div>
           <div class="item__links"><a href="https://aihot.news/items/smxxtw5ca2c9jscojk4ppe5hf" rel="noopener noreferrer">aihot.news</a><a href="https://deepmind.google/blog/gemini-4-argon-for-robotics/" rel="noopener noreferrer">deepmind.google</a><a href="https://deepmind.google/blog/introducing-gemini-4-argon/" rel="noopener noreferrer">deepmind.google</a><a href="https://deepmind.google/models/gemini/" rel="noopener noreferrer">deepmind.google</a><span style="color:var(--muted-fg)">另有 3 个来源</span></div>
         </li>
         <li class="item" id="e-eb38ec17a2">
@@ -177,7 +185,7 @@
             <span>10-14 00:29 UTC</span>
             <a href="https://aihot.news/items/cn2zpsopcfepfo7sjij0n30f4" rel="noopener noreferrer">aihot.news</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Google DeepMind与新加坡政府科技局（GovTech）在新加坡国际网络周（SICW 2026）发布端侧诈骗检测模型</li><li data-kind="fact">该模型针对诈骗占新加坡报案犯罪过半、2019年以来损失超40亿新元的问题</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">端侧部署意味着模型可直接在用户设备上运行，无需依赖云端推理</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">该端侧诈骗检测模型的具体技术细节未披露</li><li data-kind="uncertain">模型名称、参数规模、支持的设备平台等未说明</li><li data-kind="uncertain">新加坡政府科技局与Google DeepMind的合作范围与时间表未明确</li><li data-kind="uncertain">该模型的实际检测效果与上线时间未提及</li></ul></div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Google DeepMind与新加坡政府科技局（GovTech）在新加坡国际网络周（SICW 2026）发布端侧诈骗检测模型</li><li data-kind="fact">该模型针对诈骗占新加坡报案犯罪过半、2019年以来损失超40亿新元的问题</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">端侧部署意味着模型可直接在用户设备上运行，无需依赖云端推理</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">该端侧诈骗检测模型的具体技术细节未披露</li><li data-kind="uncertain">模型名称、参数规模、支持的设备平台等未说明</li><li data-kind="uncertain">新加坡政府科技局与Google DeepMind的合作范围与时间表未明确</li><li data-kind="uncertain">该模型的实际检测效果与上线时间未提及</li></ul></div></div>
           <div class="item__links"><a href="https://aihot.news/items/h9cdmwv98lxcr0yvuf83j0cno" rel="noopener noreferrer">aihot.news</a><a href="https://aihot.news/items/xardfzy6zj0cp97wgubmeerwq" rel="noopener noreferrer">aihot.news</a><a href="https://deepmind.google/blog/on-device-ai-scam-detection-mddi/" rel="noopener noreferrer">deepmind.google</a></div>
         </li>
         <li class="item" id="e-e04b133080">
@@ -191,7 +199,7 @@
             <span>10-13 21:00 UTC</span>
             <a href="https://news.mit.edu/2026/how-artificial-neural-networks-build-their-own-learning-machinery-1013" rel="noopener noreferrer">news.mit.edu</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">机器学习网络可以在没有设计者详细指令的情况下进行学习</li><li data-kind="fact">这类网络可能为大脑在学习过程中的自我重组提供线索</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该研究可能涉及神经网络自主学习机制与大脑可塑性的类比</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明具体的研究方法或实验细节</li><li data-kind="uncertain">材料未提及涉及的神经网络类型或具体应用场景</li><li data-kind="uncertain">材料未说明该研究由谁或哪个机构开展</li></ul></div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">机器学习网络可以在没有设计者详细指令的情况下进行学习</li><li data-kind="fact">这类网络可能为大脑在学习过程中的自我重组提供线索</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该研究可能涉及神经网络自主学习机制与大脑可塑性的类比</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明具体的研究方法或实验细节</li><li data-kind="uncertain">材料未提及涉及的神经网络类型或具体应用场景</li><li data-kind="uncertain">材料未说明该研究由谁或哪个机构开展</li></ul></div></div>
           
         </li>
         <li class="item" id="e-e5aaf795ab">
@@ -205,7 +213,7 @@
             <span>10-13 20:45 UTC</span>
             <a href="https://www.theverge.com/ai-artificial-intelligence/1010642/openai-employee-arrested-recording-device" rel="noopener noreferrer">theverge.com</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OpenAI 一名工程师在公司办公室内被发现藏有&quot;精密录音装置&quot;后被捕。</li><li data-kind="fact">该员工被确认为 Abdulrahman Alfozan，35 岁沙特国籍。</li><li data-kind="fact">Alfozan 被指控使用或企图使用设备截取口头通信。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该装置被安装在会议室，可能用于窃听公司内部讨论。</li><li data-kind="inference">被捕原因是 OpenAI 主动发现并报告了该装置。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料中未说明 Alfozan 的具体职位或入职时间。</li><li data-kind="uncertain">材料中未说明该装置被发现的详细经过。</li><li data-kind="uncertain">材料中未说明 Alfozan 是否已认罪或案件审理进展。</li><li data-kind="uncertain">材料中未说明该装置是否已实际录到任何内容。</li></ul></div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OpenAI 一名工程师在公司办公室内被发现藏有&quot;精密录音装置&quot;后被捕。</li><li data-kind="fact">该员工被确认为 Abdulrahman Alfozan，35 岁沙特国籍。</li><li data-kind="fact">Alfozan 被指控使用或企图使用设备截取口头通信。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该装置被安装在会议室，可能用于窃听公司内部讨论。</li><li data-kind="inference">被捕原因是 OpenAI 主动发现并报告了该装置。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料中未说明 Alfozan 的具体职位或入职时间。</li><li data-kind="uncertain">材料中未说明该装置被发现的详细经过。</li><li data-kind="uncertain">材料中未说明 Alfozan 是否已认罪或案件审理进展。</li><li data-kind="uncertain">材料中未说明该装置是否已实际录到任何内容。</li></ul></div></div>
           
         </li>
         <li class="item" id="e-e2e179c5c0">
@@ -219,7 +227,7 @@
             <span>10-13 19:42 UTC</span>
             <a href="https://www.theverge.com/news/1010365/shopify-opens-its-catalog-up-to-more-ai-agents" rel="noopener noreferrer">theverge.com</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Shopify 宣布将允许更多 AI 智能体浏览和购买其平台上的商品</li><li data-kind="fact">Shopify 商品目录包含超过十亿条商品列表</li><li data-kind="fact">Shopify 于周二宣布了这一消息</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Shopify 此举意在扩大其在智能体商务领域的布局</li><li data-kind="inference">用户将可以配置自己的 AI 智能体代为购买 Shopify 上的商品</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">具体哪些 AI 智能体将获得访问权限尚不明确</li><li data-kind="uncertain">该功能的上线时间未在材料中提及</li><li data-kind="uncertain">目录的具体构成细节在材料中被截断</li></ul></div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Shopify 宣布将允许更多 AI 智能体浏览和购买其平台上的商品</li><li data-kind="fact">Shopify 商品目录包含超过十亿条商品列表</li><li data-kind="fact">Shopify 于周二宣布了这一消息</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Shopify 此举意在扩大其在智能体商务领域的布局</li><li data-kind="inference">用户将可以配置自己的 AI 智能体代为购买 Shopify 上的商品</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">具体哪些 AI 智能体将获得访问权限尚不明确</li><li data-kind="uncertain">该功能的上线时间未在材料中提及</li><li data-kind="uncertain">目录的具体构成细节在材料中被截断</li></ul></div></div>
           
         </li>
         <li class="item" id="e-e7d6899eae">
@@ -233,7 +241,7 @@
             <span>10-13 23:42 UTC</span>
             <a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE9ZVFlCRm9FTnVHREVNMlRGeGxYcmJtVElnRnF1MUt0bDhIWDlvckNjTFRDR1BwVUFLUzN6NHhmUkJUbmhSRGJ3YQ?oc=5" rel="noopener noreferrer">news.google.com</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Meta打出AI翻身牌：新模型并肩行业巨头 暗示接下来还要加速 财联社</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">本次未调用大模型，内容为来源原文摘录</li></ul></div><div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Meta打出AI翻身牌：新模型并肩行业巨头 暗示接下来还要加速 财联社</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">本次未调用大模型，内容为来源原文摘录</li></ul></div></div><div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div></div>
           
         </li>
         <li class="item" id="e-e528bcd1e7">
@@ -247,7 +255,7 @@
             <span>10-13 23:00 UTC</span>
             <a href="https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/" rel="noopener noreferrer">simonwillison.net</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Anthropic 2026 年 5 月平均每天合并约 2,500 次代码变更</li><li data-kind="fact">Anthropic 2026 年 9 月每天合并超过 30,000 次代码变更</li><li data-kind="fact">Anthropic 构建了基于 Git 的自定义替代方案用于源代码管理</li><li data-kind="fact">Anthropic 在文中附有展示代码变更增长的图表</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Anthropic 重新设计源代码管理的主要原因是过去六个月代码变更速率大幅上升</li><li data-kind="inference">现有 Git 工具已无法满足 Anthropic 当前规模的代码协作需求</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">Anthropic 自定义源代码管理工具的具体技术细节未在材料中说明</li><li data-kind="uncertain">该工具是否完全替代 Git 或仅作为补充尚不清楚</li><li data-kind="uncertain">材料中提及的 2026 年各模型公开发布日期与内部可用日期的关系未明确</li></ul></div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Anthropic 2026 年 5 月平均每天合并约 2,500 次代码变更</li><li data-kind="fact">Anthropic 2026 年 9 月每天合并超过 30,000 次代码变更</li><li data-kind="fact">Anthropic 构建了基于 Git 的自定义替代方案用于源代码管理</li><li data-kind="fact">Anthropic 在文中附有展示代码变更增长的图表</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Anthropic 重新设计源代码管理的主要原因是过去六个月代码变更速率大幅上升</li><li data-kind="inference">现有 Git 工具已无法满足 Anthropic 当前规模的代码协作需求</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">Anthropic 自定义源代码管理工具的具体技术细节未在材料中说明</li><li data-kind="uncertain">该工具是否完全替代 Git 或仅作为补充尚不清楚</li><li data-kind="uncertain">材料中提及的 2026 年各模型公开发布日期与内部可用日期的关系未明确</li></ul></div></div>
           
         </li>
         <li class="item" id="e-ef6384abac">
@@ -261,7 +269,7 @@
             <span>10-13 22:28 UTC</span>
             <a href="https://simonwillison.net/2026/Oct/13/llm-gemini/" rel="noopener noreferrer">simonwillison.net</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">llm-gemini 发布 0.35 版本，新增对 Gemini 4 Argon 模型的支持</li><li data-kind="fact">Gemini 4 Argon 通过 Gemini API 以及每月 100 美元订阅计划向用户提供</li><li data-kind="fact">Gemini 4 Argon 的输入价格为每百万 token 2 美元，输出价格为每百万 token 10 美元</li><li data-kind="fact">作者使用 Gemini 4 Argon 生成一张高质量鹈鹕 SVG 图片花费了 17.166 美分</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Gemini 4 Argon 的定价与 GPT-6 Sol 相同，约为 Claude Opus 5.5 的一半、Claude Fable 5 的五分之一</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">llm-gemini 0.35 的具体发布日期未在材料中提及</li><li data-kind="uncertain">Gemini 4 Argon 模型的具体能力与上下文窗口等细节未说明</li><li data-kind="uncertain">Claude Opus 5.5 和 Claude Fable 5 的具体定价未在材料中给出，仅作为对比参照</li></ul></div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">llm-gemini 发布 0.35 版本，新增对 Gemini 4 Argon 模型的支持</li><li data-kind="fact">Gemini 4 Argon 通过 Gemini API 以及每月 100 美元订阅计划向用户提供</li><li data-kind="fact">Gemini 4 Argon 的输入价格为每百万 token 2 美元，输出价格为每百万 token 10 美元</li><li data-kind="fact">作者使用 Gemini 4 Argon 生成一张高质量鹈鹕 SVG 图片花费了 17.166 美分</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Gemini 4 Argon 的定价与 GPT-6 Sol 相同，约为 Claude Opus 5.5 的一半、Claude Fable 5 的五分之一</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">llm-gemini 0.35 的具体发布日期未在材料中提及</li><li data-kind="uncertain">Gemini 4 Argon 模型的具体能力与上下文窗口等细节未说明</li><li data-kind="uncertain">Claude Opus 5.5 和 Claude Fable 5 的具体定价未在材料中给出，仅作为对比参照</li></ul></div></div>
           
         </li>
         <li class="item" id="e-eb23de6aaa">
@@ -275,7 +283,7 @@
             <span>10-13 23:46 UTC</span>
             <a href="https://news.google.com/rss/articles/CBMi1gJBVV95cUxOa25faWU2RGl6NGYtdjd4d1hwS1pDZFhyeVNSa0VkWk5RdTVLZEZnc0REbXVuVFNkSk1yc3lxZ1AtMDBwb0VLeUVvTGN0eFU0ZENRbDJmWXBRNkFYcy1fVFZ5ZnhpQkI5VGVNUXM2Zk01NVp1cWFwanJFaDlUZmxNTmlVbndVNmIzb1hYWUNpaXhVRjAxNVZhQlJQZFFLVzRrNktKMVJFMmdlYkM0V2ZHd1owcFBYbk03Vnp3b3NvZko4WTNDalVMc1dYMkY1VjZ2ZzZIb3EtRDN6V3N3WkM5R2JQVjNKT1NOd21jY0lxLXRENFZfdV95VmE1eFlHVUNxTVJ2U0xfSF80QnhZU0YtcGJwbjZlaUtBbXJveHZEeEVsRElKdFlyYTBaYzItVTJRS1d5VmNycHA1R3RtVGlPUWZTQUdJNVlvdndUbGduT1dIX0EyMkE?oc=5" rel="noopener noreferrer">news.google.com</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">IDC首发《中国AI安全技术发展路线图，2026》</li><li data-kind="fact">该路线图涵盖23项AI安全技术</li><li data-kind="fact">智能体安全被定位为核心战场</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">IDC认为AI安全技术正在加速落地</li><li data-kind="inference">智能体安全在当前AI安全领域具有较高优先级</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">23项AI安全技术的具体清单未在材料中披露</li><li data-kind="uncertain">路线图的发布时间未在材料中明确</li><li data-kind="uncertain">路线图的具体内容与建议未在材料中披露</li><li data-kind="uncertain">IDC发布该路线图的背景与目的未在材料中说明</li></ul></div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">IDC首发《中国AI安全技术发展路线图，2026》</li><li data-kind="fact">该路线图涵盖23项AI安全技术</li><li data-kind="fact">智能体安全被定位为核心战场</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">IDC认为AI安全技术正在加速落地</li><li data-kind="inference">智能体安全在当前AI安全领域具有较高优先级</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">23项AI安全技术的具体清单未在材料中披露</li><li data-kind="uncertain">路线图的发布时间未在材料中明确</li><li data-kind="uncertain">路线图的具体内容与建议未在材料中披露</li><li data-kind="uncertain">IDC发布该路线图的背景与目的未在材料中说明</li></ul></div></div>
           
         </li>
         <li class="item" id="e-e3f61f4d9a">
@@ -289,7 +297,7 @@
             <span>10-13 17:05 UTC</span>
             <a href="https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b" rel="noopener noreferrer">huggingface.co</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Hugging Face 博客于 2026-10-13 17:05 UTC 发布标题为《Run fast, private agents on-device with LFM2.5-24B-A2B》的文章</li><li data-kind="fact">文章主题为介绍 LFM2.5-24B-A2B 模型可在端侧运行</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">LFM2.5-24B-A2B 是一款面向端侧部署的模型，强调运行速度与隐私性</li><li data-kind="inference">该模型可能由 Liquid AI 发布（依据命名惯例 LFM 系列）</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">LFM2.5-24B-A2B 的发布方未在材料中明确说明</li><li data-kind="uncertain">模型的具体参数规模、技术细节及性能数据材料未提供</li><li data-kind="uncertain">「A2B」的具体含义材料未说明</li><li data-kind="uncertain">文章正文内容材料未给出，仅有标题</li></ul></div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Hugging Face 博客于 2026-10-13 17:05 UTC 发布标题为《Run fast, private agents on-device with LFM2.5-24B-A2B》的文章</li><li data-kind="fact">文章主题为介绍 LFM2.5-24B-A2B 模型可在端侧运行</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">LFM2.5-24B-A2B 是一款面向端侧部署的模型，强调运行速度与隐私性</li><li data-kind="inference">该模型可能由 Liquid AI 发布（依据命名惯例 LFM 系列）</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">LFM2.5-24B-A2B 的发布方未在材料中明确说明</li><li data-kind="uncertain">模型的具体参数规模、技术细节及性能数据材料未提供</li><li data-kind="uncertain">「A2B」的具体含义材料未说明</li><li data-kind="uncertain">文章正文内容材料未给出，仅有标题</li></ul></div></div>
           
         </li>
         <li class="item" id="e-e2ec53c51e">
@@ -303,7 +311,7 @@
             <span>10-14 03:09 UTC</span>
             <a href="https://news.google.com/rss/articles/CBMiU0FVX3lxTE55allEMXlOWmVEQVh1VmE3bGg0Rm9pNzlBWmRJMUFTYnlMQUxOUmp5akR5U3VHb3JsNmRMZ2Z1eGc1bTJiV1V4V2R5c20zTC12VFE4?oc=5" rel="noopener noreferrer">news.google.com</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">华尔街见闻发布文章《AI算力战进入下半场：从拼单芯XPU性能到拼系统，电力、散热和网络成新战场》</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">AI算力竞争的重心正从单芯片XPU性能转向系统层面的电力、散热和网络能力</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">文章的具体发布时间未在材料中给出</li><li data-kind="uncertain">文章的具体内容、论据和涉及的公司或产品未在材料中提供</li><li data-kind="uncertain">标题中提到的XPU具体所指未在材料中说明</li></ul></div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">华尔街见闻发布文章《AI算力战进入下半场：从拼单芯XPU性能到拼系统，电力、散热和网络成新战场》</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">AI算力竞争的重心正从单芯片XPU性能转向系统层面的电力、散热和网络能力</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">文章的具体发布时间未在材料中给出</li><li data-kind="uncertain">文章的具体内容、论据和涉及的公司或产品未在材料中提供</li><li data-kind="uncertain">标题中提到的XPU具体所指未在材料中说明</li></ul></div></div>
           
         </li>
         <li class="item" id="e-e8c4d136ae">
@@ -317,7 +325,7 @@
             <span>10-14 00:43 UTC</span>
             <a href="https://news.google.com/rss/articles/CBMiZEFVX3lxTE5OM2ZWRUhfcUpNRm9WMDVnWWgxbE9lZWpPaFJCYnlKWkNwQnRHbFAtV2oxYjJJSFZPakhWT0ZzV0RsQXhjbHZjTmM3UWdfckxKY0xvYV9GWXNpWEtJamhqV29ERFU?oc=5" rel="noopener noreferrer">news.google.com</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">字节跳动单独设立大模型安全部门</li><li data-kind="fact">阶跃星辰推出智能体手机</li><li data-kind="fact">美国拟投票封杀认证中国电子设备测试机构</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">字节跳动大模型安全部门的具体职责与人员规模未披露</li><li data-kind="uncertain">阶跃星辰智能体手机的发布时间、价格与功能细节未披露</li><li data-kind="uncertain">美国拟投票封杀的具体机构名单、投票时间与法案名称未披露</li><li data-kind="uncertain">该报道的具体发布日期未在材料中给出</li></ul></div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">字节跳动单独设立大模型安全部门</li><li data-kind="fact">阶跃星辰推出智能体手机</li><li data-kind="fact">美国拟投票封杀认证中国电子设备测试机构</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">字节跳动大模型安全部门的具体职责与人员规模未披露</li><li data-kind="uncertain">阶跃星辰智能体手机的发布时间、价格与功能细节未披露</li><li data-kind="uncertain">美国拟投票封杀的具体机构名单、投票时间与法案名称未披露</li><li data-kind="uncertain">该报道的具体发布日期未在材料中给出</li></ul></div></div>
           
         </li>
         <li class="item" id="e-e8b213ee80">
@@ -331,7 +339,7 @@
             <span>10-14 01:02 UTC</span>
             <a href="https://aihot.news/items/e8516i4snh2ut9d6zedoc9jsv" rel="noopener noreferrer">aihot.news</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Google 于 10 月 14 日全面开放 Gemini 4 Argon。</li><li data-kind="fact">作者实测后认为 Gemini 4 Argon 很难冲击 Claude Opus 5.5 和 GPT-6 Astra 的地位。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">作者认为 Gemini 4 Argon 在与 Claude Opus 5.5、GPT-6 Astra 的竞争中处于劣势。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">作者的具体身份未说明。</li><li data-kind="uncertain">实测的具体维度、方法和结果未给出。</li><li data-kind="uncertain">Gemini 4 Argon 的功能与定价细节未提及。</li><li data-kind="uncertain">Claude Opus 5.5 和 GPT-6 Astra 的发布方与发布时间未说明。</li></ul></div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Google 于 10 月 14 日全面开放 Gemini 4 Argon。</li><li data-kind="fact">作者实测后认为 Gemini 4 Argon 很难冲击 Claude Opus 5.5 和 GPT-6 Astra 的地位。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">作者认为 Gemini 4 Argon 在与 Claude Opus 5.5、GPT-6 Astra 的竞争中处于劣势。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">作者的具体身份未说明。</li><li data-kind="uncertain">实测的具体维度、方法和结果未给出。</li><li data-kind="uncertain">Gemini 4 Argon 的功能与定价细节未提及。</li><li data-kind="uncertain">Claude Opus 5.5 和 GPT-6 Astra 的发布方与发布时间未说明。</li></ul></div></div>
           
         </li>
         <li class="item" id="e-ecd67a9ede">
@@ -345,7 +353,7 @@
             <span class="when-unknown">时间未知</span>
             <a href="https://github.com/debpalash/VoiceStudio" rel="noopener noreferrer">github.com</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">VoiceStudio 由 debpalash 开发，是开源项目</li><li data-kind="fact">VoiceStudio 完全在本地运行</li><li data-kind="fact">VoiceStudio 支持语音克隆、语音设计、视频配音、听写、转录和有声书制作</li><li data-kind="fact">VoiceStudio 支持 646 种语言</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">VoiceStudio 旨在作为 ElevenLabs 的替代选择</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未提供发布时间</li><li data-kind="uncertain">材料未说明项目使用的具体技术栈或底层模型</li><li data-kind="uncertain">材料未提及许可证类型</li><li data-kind="uncertain">材料未说明项目当前是否处于活跃维护状态</li></ul></div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">VoiceStudio 由 debpalash 开发，是开源项目</li><li data-kind="fact">VoiceStudio 完全在本地运行</li><li data-kind="fact">VoiceStudio 支持语音克隆、语音设计、视频配音、听写、转录和有声书制作</li><li data-kind="fact">VoiceStudio 支持 646 种语言</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">VoiceStudio 旨在作为 ElevenLabs 的替代选择</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未提供发布时间</li><li data-kind="uncertain">材料未说明项目使用的具体技术栈或底层模型</li><li data-kind="uncertain">材料未提及许可证类型</li><li data-kind="uncertain">材料未说明项目当前是否处于活跃维护状态</li></ul></div></div>
           
         </li>
         <li class="item" id="e-e02dd5c06e">
@@ -359,7 +367,7 @@
             <span class="when-unknown">时间未知</span>
             <a href="https://github.com/mksglu/context-mode" rel="noopener noreferrer">github.com</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">mksglu/context-mode 是一款针对 AI 编程代理的上下文窗口优化工具</li><li data-kind="fact">该工具可将工具输出沙盒化，体积减少 98%</li><li data-kind="fact">该工具支持会话记忆持久化</li><li data-kind="fact">该工具通过 MCP 与 hooks 在 17 个平台之间强制路由</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该工具可能面向多平台协作的 AI 编程工作流，旨在降低上下文消耗并保持会话连续性</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未提供发布时间、版本号或维护状态</li><li data-kind="uncertain">材料未说明 17 个平台具体指哪些</li><li data-kind="uncertain">材料未给出 98% 缩减比例的测试条件或基准</li><li data-kind="uncertain">MCP 与 hooks 的具体实现细节未披露</li></ul></div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">mksglu/context-mode 是一款针对 AI 编程代理的上下文窗口优化工具</li><li data-kind="fact">该工具可将工具输出沙盒化，体积减少 98%</li><li data-kind="fact">该工具支持会话记忆持久化</li><li data-kind="fact">该工具通过 MCP 与 hooks 在 17 个平台之间强制路由</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该工具可能面向多平台协作的 AI 编程工作流，旨在降低上下文消耗并保持会话连续性</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未提供发布时间、版本号或维护状态</li><li data-kind="uncertain">材料未说明 17 个平台具体指哪些</li><li data-kind="uncertain">材料未给出 98% 缩减比例的测试条件或基准</li><li data-kind="uncertain">MCP 与 hooks 的具体实现细节未披露</li></ul></div></div>
           
         </li>
         <li class="item" id="e-e24f518fe0">
@@ -373,7 +381,7 @@
             <span class="when-unknown">时间未知</span>
             <a href="https://github.com/bilawalsidhu/gods-eye-view" rel="noopener noreferrer">github.com</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">bilawalsidhu 在 GitHub 开源了 gods-eye-view 项目</li><li data-kind="fact">该项目是一个浏览器中的间谍卫星模拟器</li><li data-kind="fact">项目使用真实数据</li><li data-kind="fact">项目提供实时开源空间情报</li><li data-kind="fact">项目以照片级真实感的 3D 地球呈现</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该项目可能利用公开或开源的卫星影像数据源</li><li data-kind="inference">项目面向对地理空间情报感兴趣的开发者和研究者</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">项目具体使用哪些卫星数据源未说明</li><li data-kind="uncertain">项目的实时数据更新频率未说明</li><li data-kind="uncertain">项目是否仍在活跃维护未说明</li><li data-kind="uncertain">项目使用的技术栈未说明</li><li data-kind="uncertain">材料来源时间未知，无法判断时效性</li></ul></div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">bilawalsidhu 在 GitHub 开源了 gods-eye-view 项目</li><li data-kind="fact">该项目是一个浏览器中的间谍卫星模拟器</li><li data-kind="fact">项目使用真实数据</li><li data-kind="fact">项目提供实时开源空间情报</li><li data-kind="fact">项目以照片级真实感的 3D 地球呈现</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该项目可能利用公开或开源的卫星影像数据源</li><li data-kind="inference">项目面向对地理空间情报感兴趣的开发者和研究者</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">项目具体使用哪些卫星数据源未说明</li><li data-kind="uncertain">项目的实时数据更新频率未说明</li><li data-kind="uncertain">项目是否仍在活跃维护未说明</li><li data-kind="uncertain">项目使用的技术栈未说明</li><li data-kind="uncertain">材料来源时间未知，无法判断时效性</li></ul></div></div>
           
         </li>
         <li class="item" id="e-edec6fe1d8">
@@ -387,7 +395,7 @@
             <span class="when-unknown">时间未知</span>
             <a href="https://github.com/morluto/rea" rel="noopener noreferrer">github.com</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">morluto/rea 出现在 GitHub 趋势页面</li><li data-kind="fact">该项目定位为使用智能体进行逆向工程的工具</li><li data-kind="fact">其逆向分析范围从应用行为到原生二进制文件</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该项目可能利用大语言模型或多智能体框架来辅助逆向工程流程</li><li data-kind="inference">它面向安全研究、漏洞分析或软件破解等场景</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未提供项目的具体技术实现细节</li><li data-kind="uncertain">材料未说明项目使用的智能体类型或底层模型</li><li data-kind="uncertain">材料未给出项目的发布日期、作者背景或许可证信息</li><li data-kind="uncertain">材料未提供仓库链接、Star 数或活跃度等量化数据</li></ul></div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">morluto/rea 出现在 GitHub 趋势页面</li><li data-kind="fact">该项目定位为使用智能体进行逆向工程的工具</li><li data-kind="fact">其逆向分析范围从应用行为到原生二进制文件</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该项目可能利用大语言模型或多智能体框架来辅助逆向工程流程</li><li data-kind="inference">它面向安全研究、漏洞分析或软件破解等场景</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未提供项目的具体技术实现细节</li><li data-kind="uncertain">材料未说明项目使用的智能体类型或底层模型</li><li data-kind="uncertain">材料未给出项目的发布日期、作者背景或许可证信息</li><li data-kind="uncertain">材料未提供仓库链接、Star 数或活跃度等量化数据</li></ul></div></div>
           
         </li>
         <li class="item" id="e-eda90031ff">
@@ -401,7 +409,7 @@
             <span class="when-unknown">时间未知</span>
             <a href="https://github.com/lyogavin/airllm" rel="noopener noreferrer">github.com</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">GitHub 上 lyogavin/airllm 项目名称为 AirLLM</li><li data-kind="fact">AirLLM 描述为可在单张 4GB GPU 上推理 2.8T 参数的大语言模型</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该项目可能通过分层加载参数的方式降低显存占用，从而在低显存 GPU 上运行超大模型</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未提供项目发布时间、作者背景、技术细节或性能数据</li><li data-kind="uncertain">材料未说明 2.8T 参数是否为单一模型的实际规模</li><li data-kind="uncertain">材料未提供仓库地址、Star 数等可验证信息</li></ul></div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">GitHub 上 lyogavin/airllm 项目名称为 AirLLM</li><li data-kind="fact">AirLLM 描述为可在单张 4GB GPU 上推理 2.8T 参数的大语言模型</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该项目可能通过分层加载参数的方式降低显存占用，从而在低显存 GPU 上运行超大模型</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未提供项目发布时间、作者背景、技术细节或性能数据</li><li data-kind="uncertain">材料未说明 2.8T 参数是否为单一模型的实际规模</li><li data-kind="uncertain">材料未提供仓库地址、Star 数等可验证信息</li></ul></div></div>
           
         </li>
         <li class="item" id="e-eb26e2f347">
@@ -415,7 +423,7 @@
             <span class="when-unknown">时间未知</span>
             <a href="https://github.com/vercel-labs/skills" rel="noopener noreferrer">github.com</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">vercel-labs/skills 是一个开源的 agent 技能工具</li><li data-kind="fact">可通过 npx skills 命令使用</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该项目可能用于管理和调用 AI agent 的技能模块</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">项目的具体功能与使用场景尚不清楚</li><li data-kind="uncertain">项目发布时间与维护状态未知</li><li data-kind="uncertain">npx skills 命令的具体行为未说明</li></ul></div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">vercel-labs/skills 是一个开源的 agent 技能工具</li><li data-kind="fact">可通过 npx skills 命令使用</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该项目可能用于管理和调用 AI agent 的技能模块</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">项目的具体功能与使用场景尚不清楚</li><li data-kind="uncertain">项目发布时间与维护状态未知</li><li data-kind="uncertain">npx skills 命令的具体行为未说明</li></ul></div></div>
           
         </li>
         <li class="item" id="e-ead6172be1">
@@ -429,7 +437,7 @@
             <span>10-13 19:43 UTC</span>
             <a href="https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/" rel="noopener noreferrer">deepmind.google</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">DeepMind 发布了一篇题为《Developing Gemini 4 Argon responsibly and safely》的文章</li><li data-kind="fact">该文章发布时间为 2026 年 10 月 13 日 19:43 UTC</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该文章聚焦于 Gemini 4 Argon 模型在负责任与安全方面的开发实践</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">文章的具体内容、涉及的安全措施与责任框架细节均未在材料中提供</li><li data-kind="uncertain">Gemini 4 Argon 的能力范围、发布时间线等关键信息无法确认</li></ul></div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">DeepMind 发布了一篇题为《Developing Gemini 4 Argon responsibly and safely》的文章</li><li data-kind="fact">该文章发布时间为 2026 年 10 月 13 日 19:43 UTC</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该文章聚焦于 Gemini 4 Argon 模型在负责任与安全方面的开发实践</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">文章的具体内容、涉及的安全措施与责任框架细节均未在材料中提供</li><li data-kind="uncertain">Gemini 4 Argon 的能力范围、发布时间线等关键信息无法确认</li></ul></div></div>
           
         </li>
         <li class="item" id="e-e8536989a1">
@@ -443,7 +451,7 @@
             <span>10-14 01:33 UTC</span>
             <a href="https://daily.juya.uk/issues/2026-10-14/" rel="noopener noreferrer">daily.juya.uk</a>
           </div>
-          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Google 向全球开放 Gemini 4 Argon</li><li data-kind="fact">OpenAI 优化 ChatGPT 桌面应用存储占用</li><li data-kind="fact">Cat Jam 匿名编程模型在 OpenCode 免费上线</li><li data-kind="fact">Fish Audio 发布 Drama 3 并开放模型权重</li><li data-kind="fact">Liquid AI 发布 LFM2.5 24B A2B</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">多家厂商集中在同一天发布或更新产品，AI 行业竞争节奏加快</li><li data-kind="inference">MiniMax 通过入驻天猫拓展中文市场销售渠道</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">Gemini 4 Argon 的具体能力与定价未在材料中说明</li><li data-kind="uncertain">ChatGPT 桌面应用存储占用的优化幅度未提及</li><li data-kind="uncertain">Cat Jam 匿名编程模型的开发者与背景信息缺失</li><li data-kind="uncertain">Drama 3 的模型规模、训练数据与许可条款未说明</li><li data-kind="uncertain">LFM2.5 24B A2B 中 A2B 的含义未解释</li></ul></div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Google 向全球开放 Gemini 4 Argon</li><li data-kind="fact">OpenAI 优化 ChatGPT 桌面应用存储占用</li><li data-kind="fact">Cat Jam 匿名编程模型在 OpenCode 免费上线</li><li data-kind="fact">Fish Audio 发布 Drama 3 并开放模型权重</li><li data-kind="fact">Liquid AI 发布 LFM2.5 24B A2B</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">多家厂商集中在同一天发布或更新产品，AI 行业竞争节奏加快</li><li data-kind="inference">MiniMax 通过入驻天猫拓展中文市场销售渠道</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">Gemini 4 Argon 的具体能力与定价未在材料中说明</li><li data-kind="uncertain">ChatGPT 桌面应用存储占用的优化幅度未提及</li><li data-kind="uncertain">Cat Jam 匿名编程模型的开发者与背景信息缺失</li><li data-kind="uncertain">Drama 3 的模型规模、训练数据与许可条款未说明</li><li data-kind="uncertain">LFM2.5 24B A2B 中 A2B 的含义未解释</li></ul></div></div>
           
         </li>
         </ol>
@@ -505,7 +513,7 @@
   <ul class="search__results"></ul>
 </dialog>
 
-<script type="application/json" id="calendar-data">{"dates": ["2026-10-16", "2026-10-15", "2026-10-14"], "current": "2026-10-14", "today": "2026-10-16"}</script>
+<script type="application/json" id="calendar-data">{"dates": ["2026-10-18", "2026-10-17", "2026-10-16", "2026-10-15", "2026-10-14"], "current": "2026-10-14", "today": "2026-10-18"}</script>
 <script type="application/json" id="search-index">[{"date": "2026-10-14", "items": [{"t": "Google finally releases Gemini 4 Argon", "s": "api:hn-algolia-com-search, rss:aihot-news-picks"}, {"t": "Google DeepMind 用 Gemma 构建端侧反诈骗检测", "s": "rss:aihot-news, rss:deepmind-google-blog"}, {"t": "How artificial neural networks build their own learning machinery", "s": "rss:news-mit-edu-topic-mitartificial-intelligence2-rss"}, {"t": "OpenAI employee arrested for allegedly planting a bug in a conference room", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "Shopify opens its catalog up to more AI agents", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "Meta打出AI翻身牌：新模型并肩行业巨头 暗示接下来还要加速 - 财联社", "s": "api:news-google-com-search"}, {"t": "Redesigning source control at Anthropic", "s": "rss:simonwillison-net-everything"}, {"t": "llm-gemini 0.35", "s": "rss:simonwillison-net-everything"}, {"t": "IDC首发《中国AI安全技术发展路线图，2026》：23项AI安全技术加速落地，智能体安全成为核心战场 - IDC | Trusted Tech Intelligence", "s": "api:news-google-com-search"}, {"t": "Run fast, private agents on-device with LFM2.5-24B-A2B", "s": "rss:huggingface-co-blog"}, {"t": "AI算力战进入下半场：从拼单芯XPU性能到拼系统，电力、散热和网络成新战场 - 华尔街见闻", "s": "api:news-google-com-search"}, {"t": "T早报｜字节跳动单独设立大模型安全部门；阶跃星辰推出智能体手机；美国拟投票封杀认证中国电子设备测试机构 - 财新", "s": "api:news-google-com-search"}, {"t": "Gemini 4 Argon 全面开放，作者实测后认为难以撼动 Claude Opus 5.5 和 GPT-6 Astra", "s": "rss:aihot-news, rss:aihot-news-picks"}, {"t": "debpalash/VoiceStudio", "s": "scrape:github-com-trending"}, {"t": "mksglu/context-mode", "s": "scrape:github-com-trending"}, {"t": "bilawalsidhu/gods-eye-view", "s": "scrape:github-com-trending"}, {"t": "morluto/rea", "s": "scrape:github-com-trending"}, {"t": "lyogavin/airllm", "s": "scrape:github-com-trending"}, {"t": "vercel-labs/skills", "s": "scrape:github-com-trending"}, {"t": "Developing Gemini 4 Argon responsibly and safely", "s": "rss:deepmind-google-blog"}, {"t": "2026-10-14", "s": "rss:daily-juya-uk"}]}]</script>
 <script src="assets/motion.js" defer></script>
 </body>
