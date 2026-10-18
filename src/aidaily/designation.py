@@ -42,6 +42,16 @@ _USE_OR_PROMO = re.compile(
 )
 
 
+#: Wrapper packages that carry a model name in their own name: `llm-gemini 0.35`,
+#: `langchain-openai 0.2`, `openai-python 1.9`. These version a *library*, not a model, and
+#: treating them as models gave one story two identities and two cap slots.
+_LIBRARY_VERSION = re.compile(
+    r"\b(?:llm|langchain|llama[-_]index|openai[-_]python|anthropic[-_]sdk)[-\s]"
+    r"(?:gpt|claude|gemini|llama|qwen|grok|mistral|deepseek|kimi|ernie|phi|gemma|nova)\b"
+    r"|\b(?:sdk|client library|wrapper|binding|plugin)\b",
+    re.IGNORECASE,
+)
+
 def designation(title: str) -> str | None:
     """Normalised model designation in a headline, or None.
 
@@ -50,6 +60,9 @@ def designation(title: str) -> str | None:
     version directly or after a punctuation mark.
     """
     text = title or ""
+    # A library or SDK release is not a model release.
+    if _LIBRARY_VERSION.search(text):
+        return None
     match = _MODEL_NAME.search(text)
     if not match or _USE_OR_PROMO.search(text):
         return None

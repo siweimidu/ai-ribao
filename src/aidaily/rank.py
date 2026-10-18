@@ -37,6 +37,7 @@ from .focus import focus_multiplier
 from .vendor_priority import components as vendor_components
 from .vendor_priority import vendor_priority as vendor_priority_of
 from .heat import heat
+from .designation import designation
 from .models import Event, NormalizedItem, SourceSpec
 from .normalize import title_similarity
 from .titles import title_quality
@@ -61,6 +62,9 @@ class RankWeights:
     substance_reference_chars: int = 600
     max_per_source: int = 2
     max_per_group: int = 3
+    #: Entries allowed per model designation in one issue. One: the reader treats a model
+    #: name appearing repeatedly as the same news, even when the events differ.
+    max_per_model: int = 1
     #: multiply the score of an entry whose title closely matches one already selected
     topic_similarity_penalty: float = 0.35
     topic_similarity_threshold: float = 0.55
@@ -417,6 +421,22 @@ def select_diverse(
             return False
         return per_group.get(group, 0) >= cap
 
+    #: model designation -> how many entries already chosen from it.
+    #:
+    #: The user reads "Gemini 4 Argon" three times in one issue as repetition even when the
+    #: three entries are genuinely different events (robotics model, general availability,
+    #: safety write-up -- measured pairwise similarity 0.38..0.52, so no similarity rule fires).
+    #: A model is the unit a reader perceives as "this again", so it gets a hard cap: one per
+    #: issue. The cap is not applied to sources or groups, which already have their own.
+    per_model: dict[str, int] = {}
+    model_cap = rank.max_per_model
+
+    def over_model_cap(candidate: RankedEvent) -> bool:
+        model = designation(candidate.event.title)
+        if model is None:
+            return False
+        return per_model.get(model, 0) >= model_cap
+
     def topic_penalty(candidate: RankedEvent) -> float:
         """How much to discount a candidate that repeats a topic already chosen.
 
@@ -458,13 +478,20 @@ def select_diverse(
         candidate.components["topic_penalty"] = round(penalty, 4)
         candidate.score = round(candidate.score * penalty, 6)
         candidate.components["final_score"] = candidate.score
+        model = designation(candidate.event.title)
+        if model:
+            per_model[model] = per_model.get(model, 0) + 1
         take(candidate)
 
     # --- pass 1: strict caps --------------------------------------------------------
     for candidate in ranked:
         if len(chosen) >= limit:
             break
-        if over_source_cap(candidate, rank.max_per_source) or over_group_cap(candidate, rank.max_per_group):
+        if (
+            over_source_cap(candidate, rank.max_per_source)
+            or over_group_cap(candidate, rank.max_per_group)
+            or over_model_cap(candidate)
+        ):
             continue
         consider(candidate)
 
@@ -482,6 +509,8 @@ def select_diverse(
             if over_source_cap(candidate, hard_source_ceiling):
                 continue
             if over_group_cap(candidate, rank.max_per_group):
+                continue
+            if over_model_cap(candidate):
                 continue
             consider(candidate)
 
@@ -504,6 +533,8 @@ def select_diverse(
             if any(candidate is c for c in chosen):
                 continue
             if over_group_cap(candidate, rank.max_per_group):
+                continue
+            if over_model_cap(candidate):
                 continue
             consider(candidate)
 

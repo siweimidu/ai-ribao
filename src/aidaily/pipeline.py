@@ -227,9 +227,10 @@ def select_for_digest(
                 "matched_on": repeat.matched_on,
             })
 
-            # `designation` alone means "this model appeared before"; `reworded` means the
-            # wording was compared and matched, which is proof. Both a proven repeat and an
-            # exact one are dropped; only the bare model signal is demoted.
+            # Every kind except the bare "designation" hint is proof: an exact headline, an
+            # exact URL, a reworded match, or the same model already covered in the window.
+            # The user's rule is that a story already reported must not reappear, and the
+            # cross-day model case is what made Gemini 4 run on four consecutive days.
             if repeat.matched_on != "designation":
                 # Proven repeat: the same headline or the same URL already ran inside the
                 # window. This is **removed**, not demoted. The user's rule is explicit --

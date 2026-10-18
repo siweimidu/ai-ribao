@@ -243,7 +243,7 @@ def cmd_run(args: argparse.Namespace) -> int:
     # 3) L3 semantic clustering + 4) analysis, both need the LLM
     router, llm_warnings, http = _build_router(args)
     (events, cluster_result, insights, analyze_warnings, history,
-     rubric_scores, rubric_sections, run_now) = asyncio.run(
+     rubric_scores, rubric_sections, run_now, selection_report) = asyncio.run(
         _analyze_async(stage, sources, cfg, router, http, args, digest_date)
     )
 
@@ -364,6 +364,16 @@ def cmd_run(args: argparse.Namespace) -> int:
     # saw, not what the pipeline attempted.
     written = history.record(digest.top_events, date=digest.date)
     print(f"跨天记忆：记录 {written} 条（窗口 {history.window_days} 天）")
+    # Report what deduplication *removed*, not only what it recorded. The count was the
+    # missing half: "recorded 60" looks identical whether zero or twenty stories were
+    # dropped as repeats, so a broken rule was invisible in the log.
+    repeat_stats = (selection_report or {}).get("cross_day_repeats")
+    if repeat_stats:
+        print(f"跨天去重：剔除/降权 {repeat_stats} 条")
+        for example in (selection_report or {}).get("cross_day_examples") or []:
+            kind = example.get("matched_on", "?")
+            days = example.get("days_ago", "?")
+            print(f"  · {kind}/{days}天  {example.get('title', '')[:60]}")
 
     print("\n分发：" + json.dumps(delivery.summary(), ensure_ascii=False))
     for result in delivery.results:
@@ -713,7 +723,7 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
         history_notes.append(rubric_note)
 
         # Phase 2: the real selection, now that the model's judgement is on the table.
-        selected, _ = select_for_digest(
+        selected, selection_report = select_for_digest(
             events, stage, sources, cfg, history=history, rubric_scores=rubric_scores,
             rubric_sections=getattr(rubric_result, "sections", None),
             now=run_now, today=run_date,
@@ -743,7 +753,8 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
         # so the caller that re-selects with the scores must receive the sections too, or the
         # final order would fall back to the rule-based classifier for rows the model classified.
         return (events, cluster_result, insights, analyze_warnings + history_notes,
-                history, rubric_scores, getattr(rubric_result, "sections", None), run_now)
+                history, rubric_scores, getattr(rubric_result, "sections", None), run_now,
+                selection_report)
     finally:
         if http is not None:
             await http.aclose()

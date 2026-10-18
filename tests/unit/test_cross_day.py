@@ -84,8 +84,18 @@ def test_the_same_announcement_reworded_is_a_repeat(tmp_path) -> None:
     assert repeat.days_ago == 2
 
 
-def test_a_different_event_about_one_model_is_not_a_repeat(tmp_path) -> None:
-    """Three separate Gemini 4 stories on one day are legitimate; none may delete another."""
+def test_a_model_already_covered_across_days_is_a_repeat(tmp_path) -> None:
+    """The same model on a later day counts as a repeat, even as a different event.
+
+    This is the rule the user asked for: "之前报道过的消息，不得再次出现，可以检查近一个星期的".
+    Gemini 4 ran on 14, 15 and 16 with three genuinely distinct events (robotics model,
+    researcher access, Pro rollout; pairwise similarity 0.38..0.52) and the reader experienced
+    one story told three times. Across days the model is the unit, so the second day is dropped.
+
+    Inside a *single* issue the distinction still matters and is handled elsewhere:
+    `RankWeights.max_per_model` caps a model to one entry, and it does so without calling three
+    different events duplicates of each other.
+    """
     h = history_with(
         ("2026-10-16", ["Gemini 4 Argon 机器人模型发布"]),
         path=tmp_path / "h.jsonl",
@@ -93,7 +103,8 @@ def test_a_different_event_about_one_model_is_not_a_repeat(tmp_path) -> None:
     repeat = h.find_repeat(
         event("Gemini 4 Argon 在 ARC-AGI-3 获 97.5%", event_id="probe2"), today="2026-10-18", now=NOW
     )
-    assert repeat is None, "a different story about the same model was called a repeat"
+    assert repeat is not None, "a model covered two days earlier was treated as new"
+    assert repeat.matched_on == "model-repeat"
 
 
 def test_todays_own_issue_is_not_cross_day_repetition(tmp_path) -> None:

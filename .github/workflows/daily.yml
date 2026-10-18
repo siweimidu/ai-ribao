@@ -282,6 +282,22 @@ jobs:
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
+      # Deduplication is a promise, and until now nothing checked it. Three regressions shipped
+      # unnoticed in one week -- Gemini 4 ran four days running, the DeepSeek V4.1 launch was
+      # deleted as a "repeat" of an unrelated story, another outlet's digest was republished as
+      # news -- and every one was found by the reader. This step runs the audit against the
+      # archived issues after publishing, so a regression turns the run red on the day it
+      # happens instead of accumulating in the archive.
+      - name: Audit deduplication
+        if: always()
+        run: |
+          python -m aidaily.dedup_audit --window 7 | tee dedup-audit.log
+          {
+            echo "### 去重审计"
+            echo '```'
+            cat dedup-audit.log
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
       - name: Commit state and digests
         if: always()
         run: |

@@ -19,7 +19,8 @@
      "9576ce2dabbd947d",
      "a81a32049694dcbb",
      "e176eb62beed1b61",
-     "fc5c1f8a8af5a82a"
+     "fc5c1f8a8af5a82a",
+     "7acb151af643e913"
     ],
     "primary_item_id": "931c5945d3e11b7c",
     "source_ids": [
@@ -37,7 +38,8 @@
      "https://deepmind.google/models/gemini/",
      "https://developers.googleblog.com/gemini-4-argon-for-robotics/",
      "https://www.theverge.com/ai-artificial-intelligence/1009862/google-releases-gemini-4-argon",
-     "https://www.theverge.com/tech/1009066/google-play-vibe-coded-android-apps-launch"
+     "https://www.theverge.com/tech/1009066/google-play-vibe-coded-android-apps-launch",
+     "https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/"
     ],
     "independent_source_count": 5,
     "first_seen_at": "2026-10-14T05:06:59.206892Z",
@@ -46,11 +48,16 @@
      "2026-10-13T16:00:00Z",
      "2026-10-13T17:00:00Z"
     ],
-    "unique_facts": {},
+    "unique_facts": {
+     "merged_titles": [
+      "Google finally releases Gemini 4 Argon",
+      "Developing Gemini 4 Argon responsibly and safely"
+     ]
+    },
     "confidence": 0.9,
     "evidence_level": "multi_source",
     "needs_review": false,
-    "rank_score": 105.776215,
+    "rank_score": 78.687,
     "rank_components": {
      "source_weight": 1.5,
      "source_damped": 1.1067,
@@ -109,7 +116,7 @@
     "confidence": 0.9,
     "evidence_level": "multi_source",
     "needs_review": false,
-    "rank_score": 45.748903,
+    "rank_score": 29.6474,
     "rank_components": {
      "source_weight": 1.5,
      "source_damped": 1.1067,
@@ -137,159 +144,6 @@
     }
    },
    {
-    "event_id": "e04b133080b6251",
-    "title": "How artificial neural networks build their own learning machinery",
-    "member_item_ids": [
-     "45301f0705a9d66f"
-    ],
-    "primary_item_id": "45301f0705a9d66f",
-    "source_ids": [
-     "rss:news-mit-edu-topic-mitartificial-intelligence2-rss"
-    ],
-    "all_urls": [
-     "https://news.mit.edu/2026/how-artificial-neural-networks-build-their-own-learning-machinery-1013"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": [
-     "2026-10-13T21:00:00Z",
-     "2026-10-13T21:00:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 37.53108,
-    "rank_components": {
-     "source_weight": 1.2,
-     "source_damped": 1.0466,
-     "substance": 1.0,
-     "substance_chars": 5916.0,
-     "title_quality": 1.0,
-     "heat": 0.358588,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7354,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 37.53108,
-     "topic_penalty": 1.0,
-     "final_score": 37.53108,
-     "focus": 1.0
-    }
-   },
-   {
-    "event_id": "e5aaf795abbc129",
-    "title": "OpenAI employee arrested for allegedly planting a bug in a conference room",
-    "member_item_ids": [
-     "c6d1fe1272316760"
-    ],
-    "primary_item_id": "c6d1fe1272316760",
-    "source_ids": [
-     "rss:theverge-com-ai-artificial-intelligence"
-    ],
-    "all_urls": [
-     "https://www.theverge.com/ai-artificial-intelligence/1010642/openai-employee-arrested-recording-device"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": [
-     "2026-10-13T20:45:25Z",
-     "2026-10-13T20:45:25Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 36.704439,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 686.0,
-     "title_quality": 1.0,
-     "heat": 0.358402,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7327,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 1.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 36.704439,
-     "topic_penalty": 1.0,
-     "final_score": 36.704439,
-     "focus": 1.0
-    }
-   },
-   {
-    "event_id": "e2e179c5c0e4e79",
-    "title": "Shopify opens its catalog up to more AI agents",
-    "member_item_ids": [
-     "1e6b721a543c9e9f"
-    ],
-    "primary_item_id": "1e6b721a543c9e9f",
-    "source_ids": [
-     "rss:theverge-com-ai-artificial-intelligence"
-    ],
-    "all_urls": [
-     "https://www.theverge.com/news/1010365/shopify-opens-its-catalog-up-to-more-ai-agents"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": [
-     "2026-10-13T19:42:42Z",
-     "2026-10-13T19:42:42Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 36.624456,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 873.0,
-     "title_quality": 1.0,
-     "heat": 0.357621,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7216,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 36.624456,
-     "topic_penalty": 1.0,
-     "final_score": 36.624456,
-     "focus": 1.0
-    }
-   },
-   {
     "event_id": "e7d6899eae0640a",
     "title": "Meta打出AI翻身牌：新模型并肩行业巨头 暗示接下来还要加速 - 财联社",
     "member_item_ids": [
@@ -313,7 +167,7 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 31.729193,
+    "rank_score": 25.3857,
     "rank_components": {
      "source_weight": 1.1,
      "source_damped": 1.0241,
@@ -342,210 +196,6 @@
     }
    },
    {
-    "event_id": "e528bcd1e7b84f8",
-    "title": "Redesigning source control at Anthropic",
-    "member_item_ids": [
-     "c1f7648caf84ab14"
-    ],
-    "primary_item_id": "c1f7648caf84ab14",
-    "source_ids": [
-     "rss:simonwillison-net-everything"
-    ],
-    "all_urls": [
-     "https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": [
-     "2026-10-13T23:00:06Z",
-     "2026-10-13T23:00:06Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 31.700569,
-    "rank_components": {
-     "source_weight": 0.6,
-     "source_damped": 0.8801,
-     "substance": 1.0,
-     "substance_chars": 2216.0,
-     "title_quality": 1.0,
-     "heat": 0.360188,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7582,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 1.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 31.700569,
-     "topic_penalty": 1.0,
-     "final_score": 31.700569,
-     "focus": 1.0
-    }
-   },
-   {
-    "event_id": "ef6384abac4f498",
-    "title": "llm-gemini 0.35",
-    "member_item_ids": [
-     "4657449e74f428b8"
-    ],
-    "primary_item_id": "4657449e74f428b8",
-    "source_ids": [
-     "rss:simonwillison-net-everything"
-    ],
-    "all_urls": [
-     "https://simonwillison.net/2026/Oct/13/llm-gemini/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": [
-     "2026-10-13T22:28:54Z",
-     "2026-10-13T22:28:54Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 31.662988,
-    "rank_components": {
-     "source_weight": 0.6,
-     "source_damped": 0.8801,
-     "substance": 1.0,
-     "substance_chars": 1931.0,
-     "title_quality": 1.0,
-     "heat": 0.359761,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7521,
-     "significance": 1.0,
-     "sig_model": 1.0,
-     "sig_release": 0.0,
-     "sig_lab": 1.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 31.662988,
-     "topic_penalty": 1.0,
-     "final_score": 31.662988,
-     "focus": 1.0
-    }
-   },
-   {
-    "event_id": "eb23de6aaac0ae0",
-    "title": "IDC首发《中国AI安全技术发展路线图，2026》：23项AI安全技术加速落地，智能体安全成为核心战场 - IDC | Trusted Tech Intelligence",
-    "member_item_ids": [
-     "09f3228dfd165298"
-    ],
-    "primary_item_id": "09f3228dfd165298",
-    "source_ids": [
-     "api:news-google-com-search"
-    ],
-    "all_urls": [
-     "https://news.google.com/rss/articles/CBMi1gJBVV95cUxOa25faWU2RGl6NGYtdjd4d1hwS1pDZFhyeVNSa0VkWk5RdTVLZEZnc0REbXVuVFNkSk1yc3lxZ1AtMDBwb0VLeUVvTGN0eFU0ZENRbDJmWXBRNkFYcy1fVFZ5ZnhpQkI5VGVNUXM2Zk01NVp1cWFwanJFaDlUZmxNTmlVbndVNmIzb1hYWUNpaXhVRjAxNVZhQlJQZFFLVzRrNktKMVJFMmdlYkM0V2ZHd1owcFBYbk03Vnp3b3NvZko4WTNDalVMc1dYMkY1VjZ2ZzZIb3EtRDN6V3N3WkM5R2JQVjNKT1NOd21jY0lxLXRENFZfdV95VmE1eFlHVUNxTVJ2U0xfSF80QnhZU0YtcGJwbjZlaUtBbXJveHZEeEVsRElKdFlyYTBaYzItVTJRS1d5VmNycHA1R3RtVGlPUWZTQUdJNVlvdndUbGduT1dIX0EyMkE?oc=5"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": [
-     "2026-10-13T23:46:05Z",
-     "2026-10-13T23:46:05Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 31.272336,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 0.138,
-     "substance_chars": 83.0,
-     "title_quality": 1.0,
-     "heat": 0.30536,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.2075,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7675,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 31.272336,
-     "topic_penalty": 1.0,
-     "final_score": 31.272336,
-     "focus": 1.0
-    }
-   },
-   {
-    "event_id": "e3f61f4d9a94a99",
-    "title": "Run fast, private agents on-device with LFM2.5-24B-A2B",
-    "member_item_ids": [
-     "cf898ebd75ff2c44"
-    ],
-    "primary_item_id": "cf898ebd75ff2c44",
-    "source_ids": [
-     "rss:huggingface-co-blog"
-    ],
-    "all_urls": [
-     "https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": [
-     "2026-10-13T17:05:48Z",
-     "2026-10-13T17:05:48Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 30.901902,
-    "rank_components": {
-     "source_weight": 1.2,
-     "source_damped": 1.0466,
-     "substance": 0.09,
-     "substance_chars": 54.0,
-     "title_quality": 1.0,
-     "heat": 0.29525,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.135,
-     "h_velocity": 1.0,
-     "h_freshness": 0.6955,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 1.0,
-     "magnitude_linear": 0.0,
-     "score": 30.901902,
-     "topic_penalty": 1.0,
-     "final_score": 30.901902,
-     "focus": 1.0
-    }
-   },
-   {
     "event_id": "e2ec53c51e11c7e",
     "title": "AI算力战进入下半场：从拼单芯XPU性能到拼系统，电力、散热和网络成新战场 - 华尔街见闻",
     "member_item_ids": [
@@ -569,7 +219,7 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 30.873546,
+    "rank_score": 23.5904,
     "rank_components": {
      "source_weight": 1.1,
      "source_damped": 1.0241,
@@ -620,7 +270,7 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 30.83719,
+    "rank_score": 23.377003,
     "rank_components": {
      "source_weight": 1.1,
      "source_damped": 1.0241,
@@ -648,71 +298,374 @@
     }
    },
    {
-    "event_id": "e8b213ee806d44d",
-    "title": "Gemini 4 Argon 全面开放，作者实测后认为难以撼动 Claude Opus 5.5 和 GPT-6 Astra",
+    "event_id": "eb23de6aaac0ae0",
+    "title": "IDC首发《中国AI安全技术发展路线图，2026》：23项AI安全技术加速落地，智能体安全成为核心战场 - IDC | Trusted Tech Intelligence",
     "member_item_ids": [
-     "59fe387f3c2fcb1f",
-     "b16d7265205007ad"
+     "09f3228dfd165298"
     ],
-    "primary_item_id": "b16d7265205007ad",
+    "primary_item_id": "09f3228dfd165298",
     "source_ids": [
-     "rss:aihot-news",
-     "rss:aihot-news-picks"
+     "api:news-google-com-search"
     ],
     "all_urls": [
-     "https://aihot.news/items/e8516i4snh2ut9d6zedoc9jsv"
+     "https://news.google.com/rss/articles/CBMi1gJBVV95cUxOa25faWU2RGl6NGYtdjd4d1hwS1pDZFhyeVNSa0VkWk5RdTVLZEZnc0REbXVuVFNkSk1yc3lxZ1AtMDBwb0VLeUVvTGN0eFU0ZENRbDJmWXBRNkFYcy1fVFZ5ZnhpQkI5VGVNUXM2Zk01NVp1cWFwanJFaDlUZmxNTmlVbndVNmIzb1hYWUNpaXhVRjAxNVZhQlJQZFFLVzRrNktKMVJFMmdlYkM0V2ZHd1owcFBYbk03Vnp3b3NvZko4WTNDalVMc1dYMkY1VjZ2ZzZIb3EtRDN6V3N3WkM5R2JQVjNKT1NOd21jY0lxLXRENFZfdV95VmE1eFlHVUNxTVJ2U0xfSF80QnhZU0YtcGJwbjZlaUtBbXJveHZEeEVsRElKdFlyYTBaYzItVTJRS1d5VmNycHA1R3RtVGlPUWZTQUdJNVlvdndUbGduT1dIX0EyMkE?oc=5"
     ],
-    "independent_source_count": 2,
+    "independent_source_count": 1,
     "first_seen_at": "2026-10-14T05:06:59.206892Z",
     "last_updated_at": "2026-10-14T05:06:59.206892Z",
     "published_range": [
-     "2026-10-14T01:02:59Z",
-     "2026-10-14T01:02:59Z"
+     "2026-10-13T23:46:05Z",
+     "2026-10-13T23:46:05Z"
     ],
     "unique_facts": {},
     "confidence": 1.0,
-    "evidence_level": "multi_source",
+    "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 29.534437,
+    "rank_score": 23.324,
     "rank_components": {
-     "source_weight": 1.2,
-     "source_damped": 1.0466,
-     "substance": 0.255,
-     "substance_chars": 153.0,
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.138,
+     "substance_chars": 83.0,
      "title_quality": 1.0,
-     "heat": 0.627077,
-     "h_corroboration": 0.5646,
-     "h_magnitude": 1.0,
+     "heat": 0.30536,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
-     "h_substance": 0.3825,
+     "h_substance": 0.2075,
      "h_velocity": 1.0,
-     "h_freshness": 0.7835,
-     "significance": 3.2,
-     "frontier_model_release": 3.2,
-     "sig_model": 1.0,
-     "sig_release": 1.0,
-     "sig_lab": 1.0,
+     "h_freshness": 0.7675,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
      "sig_first_party": 0.0,
-     "magnitude_linear": 1.0,
-     "score": 65.632082,
-     "topic_penalty": 0.45,
-     "final_score": 29.534437,
+     "magnitude_linear": 0.0,
+     "score": 31.272336,
+     "topic_penalty": 1.0,
+     "final_score": 31.272336,
      "focus": 1.0
     }
    },
    {
-    "event_id": "ecd67a9edef7a8d",
-    "title": "debpalash/VoiceStudio",
+    "event_id": "e528bcd1e7b84f8",
+    "title": "Redesigning source control at Anthropic",
     "member_item_ids": [
-     "8088c94af4a7344d"
+     "c1f7648caf84ab14"
     ],
-    "primary_item_id": "8088c94af4a7344d",
+    "primary_item_id": "c1f7648caf84ab14",
+    "source_ids": [
+     "rss:simonwillison-net-everything"
+    ],
+    "all_urls": [
+     "https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-13T23:00:06Z",
+     "2026-10-13T23:00:06Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 23.2686,
+    "rank_components": {
+     "source_weight": 0.6,
+     "source_damped": 0.8801,
+     "substance": 1.0,
+     "substance_chars": 2216.0,
+     "title_quality": 1.0,
+     "heat": 0.360188,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7582,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "score": 31.700569,
+     "topic_penalty": 1.0,
+     "final_score": 31.700569,
+     "focus": 1.0
+    }
+   },
+   {
+    "event_id": "ef6384abac4f498",
+    "title": "llm-gemini 0.35",
+    "member_item_ids": [
+     "4657449e74f428b8"
+    ],
+    "primary_item_id": "4657449e74f428b8",
+    "source_ids": [
+     "rss:simonwillison-net-everything"
+    ],
+    "all_urls": [
+     "https://simonwillison.net/2026/Oct/13/llm-gemini/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-13T22:28:54Z",
+     "2026-10-13T22:28:54Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 23.2319,
+    "rank_components": {
+     "source_weight": 0.6,
+     "source_damped": 0.8801,
+     "substance": 1.0,
+     "substance_chars": 1931.0,
+     "title_quality": 1.0,
+     "heat": 0.359761,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7521,
+     "significance": 1.0,
+     "sig_model": 1.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "score": 31.662988,
+     "topic_penalty": 1.0,
+     "final_score": 31.662988,
+     "focus": 1.0
+    }
+   },
+   {
+    "event_id": "e04b133080b6251",
+    "title": "How artificial neural networks build their own learning machinery",
+    "member_item_ids": [
+     "45301f0705a9d66f"
+    ],
+    "primary_item_id": "45301f0705a9d66f",
+    "source_ids": [
+     "rss:news-mit-edu-topic-mitartificial-intelligence2-rss"
+    ],
+    "all_urls": [
+     "https://news.mit.edu/2026/how-artificial-neural-networks-build-their-own-learning-machinery-1013"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-13T21:00:00Z",
+     "2026-10-13T21:00:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 23.1314,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 1.0,
+     "substance_chars": 5916.0,
+     "title_quality": 1.0,
+     "heat": 0.358588,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7354,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "score": 37.53108,
+     "topic_penalty": 1.0,
+     "final_score": 37.53108,
+     "focus": 1.0
+    }
+   },
+   {
+    "event_id": "e5aaf795abbc129",
+    "title": "OpenAI employee arrested for allegedly planting a bug in a conference room",
+    "member_item_ids": [
+     "c6d1fe1272316760"
+    ],
+    "primary_item_id": "c6d1fe1272316760",
+    "source_ids": [
+     "rss:theverge-com-ai-artificial-intelligence"
+    ],
+    "all_urls": [
+     "https://www.theverge.com/ai-artificial-intelligence/1010642/openai-employee-arrested-recording-device"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-13T20:45:25Z",
+     "2026-10-13T20:45:25Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 23.1154,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 1.0,
+     "substance_chars": 686.0,
+     "title_quality": 1.0,
+     "heat": 0.358402,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7327,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "score": 36.704439,
+     "topic_penalty": 1.0,
+     "final_score": 36.704439,
+     "focus": 1.0
+    }
+   },
+   {
+    "event_id": "e2e179c5c0e4e79",
+    "title": "Shopify opens its catalog up to more AI agents",
+    "member_item_ids": [
+     "1e6b721a543c9e9f"
+    ],
+    "primary_item_id": "1e6b721a543c9e9f",
+    "source_ids": [
+     "rss:theverge-com-ai-artificial-intelligence"
+    ],
+    "all_urls": [
+     "https://www.theverge.com/news/1010365/shopify-opens-its-catalog-up-to-more-ai-agents"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-13T19:42:42Z",
+     "2026-10-13T19:42:42Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 23.0485,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 1.0,
+     "substance_chars": 873.0,
+     "title_quality": 1.0,
+     "heat": 0.357621,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7216,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "score": 36.624456,
+     "topic_penalty": 1.0,
+     "final_score": 36.624456,
+     "focus": 1.0
+    }
+   },
+   {
+    "event_id": "e3f61f4d9a94a99",
+    "title": "Run fast, private agents on-device with LFM2.5-24B-A2B",
+    "member_item_ids": [
+     "cf898ebd75ff2c44"
+    ],
+    "primary_item_id": "cf898ebd75ff2c44",
+    "source_ids": [
+     "rss:huggingface-co-blog"
+    ],
+    "all_urls": [
+     "https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": [
+     "2026-10-13T17:05:48Z",
+     "2026-10-13T17:05:48Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 22.8923,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.09,
+     "substance_chars": 54.0,
+     "title_quality": 1.0,
+     "heat": 0.29525,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.135,
+     "h_velocity": 1.0,
+     "h_freshness": 0.6955,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 1.0,
+     "magnitude_linear": 0.0,
+     "score": 30.901902,
+     "topic_penalty": 1.0,
+     "final_score": 30.901902,
+     "focus": 1.0
+    }
+   },
+   {
+    "event_id": "eda90031ffce733",
+    "title": "lyogavin/airllm",
+    "member_item_ids": [
+     "b70a0581c123da4f"
+    ],
+    "primary_item_id": "b70a0581c123da4f",
     "source_ids": [
      "scrape:github-com-trending"
     ],
     "all_urls": [
-     "https://github.com/debpalash/VoiceStudio"
+     "https://github.com/lyogavin/airllm"
     ],
     "independent_source_count": 1,
     "first_seen_at": "2026-10-14T05:06:59.206892Z",
@@ -722,31 +675,30 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 21.2912,
+    "rank_score": 13.7185,
     "rank_components": {
      "source_weight": 1.0,
      "source_damped": 1.0,
-     "substance": 0.293,
-     "substance_chars": 176.0,
+     "substance": 0.075,
+     "substance_chars": 45.0,
      "title_quality": 1.0,
-     "heat": 0.212912,
+     "heat": 0.189987,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
-     "h_substance": 0.44,
+     "h_substance": 0.1125,
      "h_velocity": 0.0,
      "h_freshness": 0.5,
      "significance": 1.0,
-     "not_ai": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
      "sig_lab": 0.0,
      "sig_first_party": 0.0,
      "magnitude_linear": 0.0,
-     "score": 21.2912,
+     "score": 18.9987,
      "topic_penalty": 1.0,
-     "final_score": 21.2912,
+     "final_score": 18.9987,
      "focus": 1.0
     }
    },
@@ -771,7 +723,7 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 21.2037,
+    "rank_score": 5.712383,
     "rank_components": {
      "source_weight": 1.0,
      "source_damped": 1.0,
@@ -820,7 +772,7 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 20.5737,
+    "rank_score": 5.712383,
     "rank_components": {
      "source_weight": 1.0,
      "source_damped": 1.0,
@@ -849,103 +801,6 @@
     }
    },
    {
-    "event_id": "edec6fe1d812289",
-    "title": "morluto/rea",
-    "member_item_ids": [
-     "4beff672e959f1a3"
-    ],
-    "primary_item_id": "4beff672e959f1a3",
-    "source_ids": [
-     "scrape:github-com-trending"
-    ],
-    "all_urls": [
-     "https://github.com/morluto/rea"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": null,
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 19.6287,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 0.135,
-     "substance_chars": 81.0,
-     "title_quality": 1.0,
-     "heat": 0.196287,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.2025,
-     "h_velocity": 0.0,
-     "h_freshness": 0.5,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 19.6287,
-     "topic_penalty": 1.0,
-     "final_score": 19.6287,
-     "focus": 1.0
-    }
-   },
-   {
-    "event_id": "eda90031ffce733",
-    "title": "lyogavin/airllm",
-    "member_item_ids": [
-     "b70a0581c123da4f"
-    ],
-    "primary_item_id": "b70a0581c123da4f",
-    "source_ids": [
-     "scrape:github-com-trending"
-    ],
-    "all_urls": [
-     "https://github.com/lyogavin/airllm"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-14T05:06:59.206892Z",
-    "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": null,
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 18.9987,
-    "rank_components": {
-     "source_weight": 1.0,
-     "source_damped": 1.0,
-     "substance": 0.075,
-     "substance_chars": 45.0,
-     "title_quality": 1.0,
-     "heat": 0.189987,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.1125,
-     "h_velocity": 0.0,
-     "h_freshness": 0.5,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "score": 18.9987,
-     "topic_penalty": 1.0,
-     "final_score": 18.9987,
-     "focus": 1.0
-    }
-   },
-   {
     "event_id": "eb26e2f34774c61",
     "title": "vercel-labs/skills",
     "member_item_ids": [
@@ -966,7 +821,7 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 18.8937,
+    "rank_score": 5.712383,
     "rank_components": {
      "source_weight": 1.0,
      "source_damped": 1.0,
@@ -995,58 +850,104 @@
     }
    },
    {
-    "event_id": "ead6172be1f54aa",
-    "title": "Developing Gemini 4 Argon responsibly and safely",
+    "event_id": "ecd67a9edef7a8d",
+    "title": "debpalash/VoiceStudio",
     "member_item_ids": [
-     "7acb151af643e913"
+     "8088c94af4a7344d"
     ],
-    "primary_item_id": "7acb151af643e913",
+    "primary_item_id": "8088c94af4a7344d",
     "source_ids": [
-     "rss:deepmind-google-blog"
+     "scrape:github-com-trending"
     ],
     "all_urls": [
-     "https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/"
+     "https://github.com/debpalash/VoiceStudio"
     ],
     "independent_source_count": 1,
     "first_seen_at": "2026-10-14T05:06:59.206892Z",
     "last_updated_at": "2026-10-14T05:06:59.206892Z",
-    "published_range": [
-     "2026-10-13T19:43:07Z",
-     "2026-10-13T19:43:07Z"
-    ],
+    "published_range": null,
     "unique_facts": {},
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 6.634034,
+    "rank_score": 5.712383,
     "rank_components": {
-     "source_weight": 1.5,
-     "source_damped": 1.1067,
-     "substance": 0.08,
-     "substance_chars": 48.0,
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.293,
+     "substance_chars": 176.0,
      "title_quality": 1.0,
-     "heat": 0.296026,
+     "heat": 0.212912,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
-     "h_substance": 0.12,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7216,
+     "h_substance": 0.44,
+     "h_velocity": 0.0,
+     "h_freshness": 0.5,
      "significance": 1.0,
-     "sig_model": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
      "sig_release": 0.0,
-     "sig_lab": 1.0,
-     "sig_first_party": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
      "magnitude_linear": 0.0,
-     "score": 32.760662,
-     "topic_penalty": 0.2025,
-     "final_score": 6.634034,
+     "score": 21.2912,
+     "topic_penalty": 1.0,
+     "final_score": 21.2912,
+     "focus": 1.0
+    }
+   },
+   {
+    "event_id": "edec6fe1d812289",
+    "title": "morluto/rea",
+    "member_item_ids": [
+     "4beff672e959f1a3"
+    ],
+    "primary_item_id": "4beff672e959f1a3",
+    "source_ids": [
+     "scrape:github-com-trending"
+    ],
+    "all_urls": [
+     "https://github.com/morluto/rea"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-14T05:06:59.206892Z",
+    "last_updated_at": "2026-10-14T05:06:59.206892Z",
+    "published_range": null,
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 5.712383,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.135,
+     "substance_chars": 81.0,
+     "title_quality": 1.0,
+     "heat": 0.196287,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.2025,
+     "h_velocity": 0.0,
+     "h_freshness": 0.5,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "score": 19.6287,
+     "topic_penalty": 1.0,
+     "final_score": 19.6287,
      "focus": 1.0
     }
    }
   ],
-  "sections": {},
   "trend_notes": [],
   "source_coverage": {
    "total": 81,
@@ -1077,7 +978,7 @@
    "7/60 个事件降级为规则摘录"
   ],
   "counts": {
-   "events": 20,
+   "events": 18,
    "multi_source_events": 2,
    "items_after_window": 237,
    "items_merged_away": 11,
@@ -1092,245 +993,33 @@
   }
  },
  "sections": {
-  "community": [
-   "e4ea69111a607ed",
-   "e030b01ab839c66",
-   "e2784deb6eaf14e",
-   "ef62e6267ad9fae",
-   "efbcb58f65b260d",
-   "eb845f25ce003ba",
-   "ec0c109918ab4ce",
-   "e441f6c9e7dd6fb",
-   "e5b22f81d4041ac",
-   "eca713df852b07e"
-  ],
-  "dev": [
-   "ecd67a9edef7a8d",
-   "e02dd5c06e99c81",
-   "ec6bd315ea89ad0",
-   "e24f518fe0cc746",
-   "e35f5c2fb46e1d1",
-   "e5b5e0a893baf98",
-   "edec6fe1d812289",
-   "eda90031ffce733",
-   "eb26e2f34774c61"
-  ],
-  "digest": [
-   "e3c18adebc1dc91",
-   "e1cc2b7fc96963e",
-   "e5c767693252873",
-   "e054497bc82543c",
-   "e3656fdc308f427",
-   "ef0f95449c03fcd",
-   "e1cb8b729472941",
-   "ed8adf23b541293",
-   "e08211bc3d305e1",
-   "e2f1ff94657a91b",
-   "e55ee0a2519d38b",
-   "e5ecb97d3f27c14",
-   "e863842c4fda2c7",
-   "e3006ca35d067aa"
-  ],
-  "lab-blog": [
-   "e04b133080b6251",
-   "e3852035b2c255a",
-   "e3f61f4d9a94a99"
-  ],
-  "lab-official": [
-   "e4392884424a76f",
-   "ea0622315da250a",
-   "e66f894e87c56c8",
-   "ead6172be1f54aa"
+  "other": [
+   "e3d7c0693e413c8",
+   "eb38ec17a2adccd"
   ],
   "media": [
-   "ee0137e4edac953",
-   "e5aaf795abbc129",
-   "e2e179c5c0e4e79",
-   "eee18872766a648",
-   "eedf2d5b4243645",
-   "eba87afb41e2597",
-   "e7841724e95b262",
-   "e47caeb21a62fee",
-   "e938258fbd8326b",
-   "e459dc7f81d23d0",
    "e7d6899eae0640a",
-   "eb23de6aaac0ae0",
-   "e27a6e08b31f50b",
-   "edf424f85b59d69",
-   "ea6c61b2d6c2d91",
-   "e4de331a4c35b05",
-   "ec501eb25a46069",
-   "ed5de721688afba",
-   "eb55ff50817a6da",
-   "e3cc7b678593a66",
    "e2ec53c51e11c7e",
-   "eee41f0eaceb2f5",
    "e8c4d136ae881ca",
-   "e7b00e77615b5f1",
-   "e6c197c81fcb62e",
-   "ee0c73a16ddaa1c",
-   "e0cdd6cf2177fb4",
-   "e71832a3e700595",
-   "ec4f05f0c90560c",
-   "e5e9c4fc0a689ca",
-   "ef9c95512a81185",
-   "ed27dba2be70734",
-   "e62f5f4474335a0",
-   "e6c0c266ec13f85",
-   "eb6609e91347b1f",
-   "ecc6aeb90ba9de4",
-   "ecb583e767393e8",
-   "e0791749e1c6dc9",
-   "e81c8dcb2a1bec6",
-   "eddd688ed752a40",
-   "e7d0108b81c39d0",
-   "e8f6edf4ead5618",
-   "e8bfc9e901a28d1",
-   "e3fbb2b2e3db29c",
-   "e7f0357a2303a45",
-   "e0d59fbb08307c9",
-   "ef95ed5696e1d36",
-   "ea23471b8230ae8",
-   "edfcc1812593c2f",
-   "ea896012e453b92",
-   "e9cda7bdde8cc31",
-   "e12f295b10c1cc5",
-   "e8361652ebc5645",
-   "ef9060da4c66af3",
-   "ef393719eda2146",
-   "e5bfb04250d6eda",
-   "ee8a1d0e279345f",
-   "e42ab51b13ecfbc",
-   "ed9530b18c9ccc6",
-   "eab7f26edae1a6c",
-   "e7fcf719bd3ca3d",
-   "ea732d336df2f98",
-   "e8ef5fda8fb1eeb",
-   "eeec2861b1693a1",
-   "ea4a0eaefafbf02",
-   "ea1a5592311ddc4",
-   "ea075a26af5fb53",
-   "e6b44704dfe03f9",
-   "eaddb56879c4a8c",
-   "ea5837627ad87a0",
-   "e06a2463262a945",
-   "ee2587d5ae54c58",
-   "edc7b643ad4073e",
-   "ef808a76d16055e",
-   "e3dc104cd8e3274",
-   "ed7d7a0fe83ed74",
-   "e6f9523a3049d35",
-   "e20aec83fadf50b",
-   "edd0b0155f2d1d3",
-   "ed479b280e554b2",
-   "e8cb419de030967",
-   "e4d00644788f24a",
-   "e7939dbf8d7f083",
-   "e1b59c35ab3aee5",
-   "e1cd1b4adac6306",
-   "e791b10ccbebd70",
-   "eef701100dc1582",
-   "eae3b671eedb409",
-   "e20e8b4bd66d6fe",
-   "ecf61a212b7125e",
-   "e1b4bb1e40ba65a",
-   "e41347ab97131bc",
-   "e129c8cf0f31608",
-   "e524f5cd707d6a2",
-   "ebcbe02ee6c4a99",
-   "e47e831b51864fd",
-   "ea6bab142448a7a",
-   "efbc458a57cb344",
-   "edd991ccc5056c9",
-   "e5e96d34e918f2f",
-   "ecaee7ce07ae6ab",
-   "ec51171dbfebe03",
-   "efcd8c8d604fcba",
-   "ee75f2d1d95869c",
-   "e6d68e8fcacd887",
-   "e98f70e40c85c91",
-   "ed3c58321778ea4",
-   "efdccc58e3af4f1",
-   "ebd4d2692add539"
-  ],
-  "mixed": [
-   "e80aa90e1b32737",
-   "e46869dfd9b7a35",
-   "ea17045bc00201f",
-   "ede09ffe65a61b5",
-   "e5dc404f849cec9",
-   "eaf30beee319167",
-   "e603ff452ab7968",
-   "e6b2fc5108b0807",
-   "e4ba1bf2cf89cf8",
-   "eff1f1128a2cdb9",
-   "efcf6a58ca9e0b0",
-   "e87ef27d85948df",
-   "ea59e4000bf9ff4",
-   "e834c70dc7e0f65",
-   "e727800262bc6d2",
-   "ebbd2162b43d223",
-   "e31f134433f7b8e",
-   "e7ccafed56daa65",
-   "ef87902b0ca2f72",
-   "eb3493883fa72ad",
-   "e1abca7d6348f70"
+   "eb23de6aaac0ae0",
+   "e5aaf795abbc129",
+   "e2e179c5c0e4e79"
   ],
   "preset": [
    "e528bcd1e7b84f8",
-   "ef6384abac4f498",
-   "ef52220a9143d82"
+   "ef6384abac4f498"
   ],
-  "zh-media": [
-   "eecc7e8106a018b",
-   "e6c2fec6771a58e",
-   "ea9f702a23f7c51",
-   "ec862dbbb944d48",
-   "e5766667dc27cdb",
-   "e3debe7a4a8d3ef",
-   "e979574bb15d0e4",
-   "e6b761850f0fcc6",
-   "ed58b5de01f057e",
-   "e01341dec229ff2",
-   "e8d1868271aaa69",
-   "e68063170a5557f",
-   "e96c69f7f761cc1",
-   "ea2035490dc7767",
-   "ef184a133048151",
-   "eccb27e1335961f",
-   "e97d6b68f08bc8e",
-   "e0c7830dbe74c61",
-   "e1105b592fb22d1",
-   "e3e88a902e5033c",
-   "e29024d77069a0c",
-   "e51b617f46a106c",
-   "e9edd9840c4198f",
-   "e5aa373e79c8494",
-   "ee7ece706ba5055",
-   "e06ed0e1b58a2b8",
-   "eee64482a5f99c2",
-   "e378ee97de523f7",
-   "e863db4245e0800",
-   "ea556a08208c3ff",
-   "e316bf6d7f50b27",
-   "e76db7400593334",
-   "e59a388a897f951",
-   "ec003ee380c1a9a",
-   "eb4d06d6d67d8ae",
-   "e5d34a59c321c61",
-   "e2277c3b2ef4e63",
-   "edd520aa38b8ef6",
-   "e6b674516589399",
-   "e998c713d232ac3",
-   "ed24567bd36cd9a",
-   "e734db07a7bbecb",
-   "e214e80e435ca29",
-   "eab4b33cf9b69b8",
-   "ee78061c60c59fb",
-   "eff73050f12973c",
-   "eec6f4f08ceb7bf",
-   "eeb68a4febeb760",
-   "e8b213ee806d44d"
+  "lab-blog": [
+   "e04b133080b6251",
+   "e3f61f4d9a94a99"
+  ],
+  "dev": [
+   "eda90031ffce733",
+   "e02dd5c06e99c81",
+   "e24f518fe0cc746",
+   "eb26e2f34774c61",
+   "ecd67a9edef7a8d",
+   "edec6fe1d812289"
   ]
  },
  "insights": {
@@ -1354,31 +1043,6 @@
    "key_points": [
     "Gemini 4 Argon 面向机器人场景",
     "DeepMind 与 Hacker News 同日出现该标题"
-   ],
-   "rule_based": false
-  },
-  "e8b213ee806d44d": {
-   "event_id": "e8b213ee806d44d",
-   "title": "Gemini 4 Argon 全面开放，实测难撼 Claude Opus 5.5 与 GPT-6 Astra",
-   "facts": [
-    "Google 于 10 月 14 日全面开放 Gemini 4 Argon。",
-    "作者实测后认为 Gemini 4 Argon 很难冲击 Claude Opus 5.5 和 GPT-6 Astra 的地位。"
-   ],
-   "inferences": [
-    "作者认为 Gemini 4 Argon 在与 Claude Opus 5.5、GPT-6 Astra 的竞争中处于劣势。"
-   ],
-   "opinions": [
-    "作者认为 Gemini 4 Argon 难以撼动 Claude Opus 5.5 和 GPT-6 Astra 的地位。"
-   ],
-   "uncertainties": [
-    "作者的具体身份未说明。",
-    "实测的具体维度、方法和结果未给出。",
-    "Gemini 4 Argon 的功能与定价细节未提及。",
-    "Claude Opus 5.5 和 GPT-6 Astra 的发布方与发布时间未说明。"
-   ],
-   "key_points": [
-    "Gemini 4 Argon 于 10 月 14 日全面开放。",
-    "作者实测后认为其难以撼动 Claude Opus 5.5 和 GPT-6 Astra。"
    ],
    "rule_based": false
   },
@@ -1450,31 +1114,6 @@
    ],
    "rule_based": false
   },
-  "e0cdd6cf2177fb4": {
-   "event_id": "e0cdd6cf2177fb4",
-   "title": "GIM Capital 三个月落地 10 只基金备案，迈入产品化运行阶段",
-   "facts": [
-    "GIM Capital 在三个月内落地 10 只基金备案",
-    "GIM Capital 由此迈入产品化运行阶段",
-    "该消息由美通社发布"
-   ],
-   "inferences": [
-    "10 只基金备案的密集落地表明 GIM Capital 进入了规模化、常态化的产品发行节奏"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "10 只基金的具体类型、策略与投向未披露",
-    "备案与实际募集、运营之间是否同步未说明",
-    "该消息的具体发布日期未在材料中给出",
-    "GIM Capital 的背景、管理规模与所属机构未披露"
-   ],
-   "key_points": [
-    "GIM Capital 三个月内完成 10 只基金备案",
-    "公司由此进入产品化运行阶段",
-    "消息来源为美通社"
-   ],
-   "rule_based": false
-  },
   "e24f518fe0cc746": {
    "event_id": "e24f518fe0cc746",
    "title": "bilawalsidhu 开源浏览器端实时卫星影像 3D 地球",
@@ -1502,54 +1141,6 @@
     "数据来源为真实数据",
     "开源空间情报工具"
    ],
-   "rule_based": false
-  },
-  "e27a6e08b31f50b": {
-   "event_id": "e27a6e08b31f50b",
-   "title": "AI浪潮下真人剧如何留住观众",
-   "facts": [
-    "新浪财经发布了一篇关于AI浪潮下真人剧如何留住观众的文章",
-    "文章标题中提及《我不是大师》《兰香如故》《余红旧事》等剧名",
-    "文章标题中提及郭柯宇、张哲华等人物"
-   ],
-   "inferences": [
-    "该文章可能围绕上述剧集和演员探讨AI技术对真人剧创作与观众留存的影响"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "文章的具体内容和观点尚不清楚",
-    "文章发布时间未在材料中给出",
-    "郭柯宇、张哲华在文章中的具体角色（演员、导演或其他）未说明",
-    "《我不是大师》《兰香如故》《余红旧事》是否为已播出剧集未说明",
-    "AI浪潮的具体所指（AI生成内容、AI辅助制作等）未说明"
-   ],
-   "key_points": [
-    "新浪财经探讨AI浪潮下真人剧的观众留存问题",
-    "文章涉及多部剧集和多位从业者"
-   ],
-   "rule_based": false
-  },
-  "e2d114494b64023": {
-   "event_id": "e3c18adebc1dc91",
-   "title": "Apple 发布 7 英寸智能音箱 HomeView，售价 299 美元",
-   "facts": [
-    "Apple 发布配备 7 英寸 Liquid Retina 显示屏的智能音箱 HomeView",
-    "HomeView 集娱乐、FaceTime、家庭监控和语音自动化于一体",
-    "标准版与壁挂版均定价 299 美元",
-    "11 月 13 日起在美英加澳等市场发售"
-   ],
-   "inferences": [
-    "HomeView 定位为家庭场景的多功能智能中枢",
-    "壁挂版的存在表明 Apple 希望该设备融入家居装修环境"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "HomeView 是否搭载 Siri AI 在材料中未明确说明",
-    "材料未提及具体硬件配置、处理器型号及 Siri AI 的功能细节",
-    "首发市场是否包含中国大陆及其他地区尚不清楚",
-    "材料 1 仅给出产品名称，未提供任何实质信息"
-   ],
-   "key_points": [],
    "rule_based": false
   },
   "e2e179c5c0e4e79": {
@@ -1599,52 +1190,6 @@
    ],
    "rule_based": false
   },
-  "e35f5c2fb46e1d1": {
-   "event_id": "e35f5c2fb46e1d1",
-   "title": "xtool-org/xtool：跨平台替代 Xcode 的 SwiftPM 构建工具",
-   "facts": [
-    "xtool-org/xtool 是一个跨平台替代 Xcode 的工具",
-    "xtool-org/xtool 支持在 Linux、Windows、macOS 上使用 SwiftPM 构建和部署 iOS 应用"
-   ],
-   "inferences": [
-    "xtool-org/xtool 旨在解决 Xcode 仅能在 macOS 上运行、限制 iOS 开发环境的问题"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "xtool-org/xtool 的发布时间、版本号、开发者信息未知",
-    "xtool-org/xtool 是否支持完整的 iOS 应用功能（如模拟器调试、签名发布）尚不明确",
-    "xtool-org/xtool 与现有跨平台 iOS 构建方案的差异未知",
-    "材料来源时间未知，无法判断时效性"
-   ],
-   "key_points": [],
-   "rule_based": false
-  },
-  "e3852035b2c255a": {
-   "event_id": "e3852035b2c255a",
-   "title": "MIT 林肯实验室主办新兴生物技术国家安全委员会路演",
-   "facts": [
-    "MIT 林肯实验室主办了新兴生物技术国家安全委员会相关活动",
-    "该活动以路演形式举行",
-    "活动聚焦马萨诸塞州的国防-生物技术生态系统"
-   ],
-   "inferences": [
-    "该路演旨在展示马萨诸塞州在国防与生物技术交叉领域的产业资源与能力",
-    "活动可能涉及新兴生物技术对国家安全的影响及相关政策讨论"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "活动的具体日期和地点未在材料中提及",
-    "参与路演的机构、企业或人员名单未知",
-    "新兴生物技术国家安全委员会的组成与职能未说明",
-    "路演的具体议程和讨论内容未披露",
-    "该委员会与 MIT 林肯实验室的关系性质（隶属、合作等）不明确"
-   ],
-   "key_points": [
-    "MIT 林肯实验室主办新兴生物技术国家安全委员会路演活动",
-    "活动聚焦马萨诸塞州国防-生物技术生态系统"
-   ],
-   "rule_based": false
-  },
   "e3f61f4d9a94a99": {
    "event_id": "e3f61f4d9a94a99",
    "title": "Liquid 发布可在端侧运行的 LFM2.5-24B-A2B 模型",
@@ -1666,125 +1211,6 @@
    "key_points": [
     "LFM2.5-24B-A2B 定位为可在端侧运行的模型",
     "强调运行速度快与隐私性"
-   ],
-   "rule_based": false
-  },
-  "e441f6c9e7dd6fb": {
-   "event_id": "e441f6c9e7dd6fb",
-   "title": "网友吐槽电视维修费用过高",
-   "facts": [
-    "发帖人于 2019 年购买了一台大法电视",
-    "国庆假期后电视出现灰屏故障",
-    "维修师傅上门检测后称屏幕损坏，维修报价超过 1000 元",
-    "上门费为 78 元",
-    "发帖人月初维修洗衣机时，查询到零件价格约 40 元，但实际维修费用为 370 元"
-   ],
-   "inferences": [
-    "发帖人怀疑维修师傅可能将小故障报为高价维修",
-    "发帖人认为花 1000 多元维修老电视不如加钱买一台新的国产电视"
-   ],
-   "opinions": [
-    "发帖人认为当前家电维修费用过高",
-    "发帖人怀疑维修行业存在小毛病报高价的乱象"
-   ],
-   "uncertainties": [
-    "电视屏幕是否真的损坏无法确认",
-    "1000 多元的维修报价是否合理无法判断",
-    "洗衣机维修费用 370 元中具体包含哪些项目不清楚",
-    "发帖人儿子是否仍会继续使用这台电视不确定"
-   ],
-   "key_points": [
-    "电视维修报价超过 1000 元，加上上门费 78 元",
-    "发帖人对维修行业报价合理性产生怀疑"
-   ],
-   "rule_based": false
-  },
-  "e459dc7f81d23d0": {
-   "event_id": "e459dc7f81d23d0",
-   "title": "DLSS 5 在《霍格沃茨之遗》中首秀时效果被调弱",
-   "facts": [
-    "Nvidia 此前展示了 DLSS 5 技术",
-    "DLSS 5 被部分玩家视为游戏领域的生成式 AI",
-    "DLSS 5 将于下月在《霍格沃茨之遗》中首次应用",
-    "在 DLSS 5 演示中，《霍格沃茨之遗》中 15 岁的学生角色面部看起来明显更老",
-    "演示中《生化危机》中的 Grace 面部也发生了变化"
-   ],
-   "inferences": [
-    "Nvidia 在《霍格沃茨之遗》正式上线前对 DLSS 5 的视觉效果做了调整",
-    "玩家社区对 DLSS 5 的面部修改效果存在较大争议"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "DLSS 5 在《霍格沃茨之遗》中具体被调弱了哪些方面",
-    "DLSS 5 正式首发的确切日期",
-    "Nvidia 调整 DLSS 5 效果的具体原因"
-   ],
-   "key_points": [],
-   "rule_based": false
-  },
-  "e47caeb21a62fee": {
-   "event_id": "e47caeb21a62fee",
-   "title": "Mia Goth 团队称 Instagram 放任其 AI 伪造图片传播令人费解",
-   "facts": [
-    "本月早些时候，Mia Goth 申请与 Shia LaBeouf 离婚的消息被披露",
-    "一个带蓝标认证的 miagoth_ 账号发布的 Instagram 帖子迅速传播",
-    "该帖子中的 Mia Goth 身穿印有「MY EX IS MY BIGGEST FAN」字样的 T 恤",
-    "Mia Goth 的团队表示 Instagram 放任该图片传播令人费解"
-   ],
-   "inferences": [
-    "该 Instagram 帖子中的 Mia Goth 图像为 AI 生成",
-    "该帖子并非 Mia Goth 本人发布"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "该帖子中的图像是否为 AI 生成尚需进一步确认",
-    "该账号 miagoth_ 是否与 Mia Goth 本人有关尚不清楚",
-    "Mia Goth 团队具体通过何种渠道表达不满尚不清楚"
-   ],
-   "key_points": [
-    "Mia Goth 团队指责 Instagram 放任一张疑似 AI 伪造的本人图片传播",
-    "事件发生在 Mia Goth 与 Shia LaBeouf 离婚消息公开之后"
-   ],
-   "rule_based": false
-  },
-  "e4ba1bf2cf89cf8": {
-   "event_id": "e4ba1bf2cf89cf8",
-   "title": "DailyDawn · 2026-10-14",
-   "facts": [
-    "DailyDawn · 2026-10-14\n\n📍 今日 Top 3 信号\n\n高置信度：今日登榜的debpalash/VoiceStudio上线首日拿1748星，覆盖646种语言全栈本地语音能力\n\n外部发现：\"open source local AI voice tools\" 7日搜索涨幅 +142%\n\n双重验证：GitHub Trending、Product Hunt双源同步出现自托管语音工具相关项目，热度持续走高\n\n🧠 认知调试\n\n今天GitHub Trending一口气上线三个自托管语音相关项目，单项目最高拿到4081星，整个赛道的用户需求爆发速度远超我此前的预判。过去72小时里，闭源语"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录",
-    "本条的来源标题为外文，未调用大模型，因此未翻译"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e4de331a4c35b05": {
-   "event_id": "e4de331a4c35b05",
-   "title": "AI综艺创作者投入5000元成本获15万广告费",
-   "facts": [
-    "川观新闻报道了一位AI综艺创作者的故事",
-    "该创作者制作成本为5000元",
-    "该创作者获得广告费15万元",
-    "该创作者每天工作10小时"
-   ],
-   "inferences": [
-    "该创作者认为没有时间享受收益",
-    "AI综艺制作可能具有较高的投入产出比"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "该创作者的具体身份和作品名称未提及",
-    "5000元成本和15万广告费的具体核算周期未明确",
-    "材料来源时间标注为2026年10月，无法确认是否为真实日期",
-    "报道的完整内容缺失，仅有标题信息"
-   ],
-   "key_points": [
-    "AI综艺创作者以低成本获得高额广告收益",
-    "创作者工作强度高，无暇享受收益"
    ],
    "rule_based": false
   },
@@ -1838,121 +1264,6 @@
    ],
    "rule_based": false
   },
-  "e5b22f81d4041ac": {
-   "event_id": "e5b22f81d4041ac",
-   "title": "muse 推出 30 亿免费 token 邀请活动",
-   "facts": [
-    "muse 提供 30 亿免费 token",
-    "用户可通过 Telegram 直接输出邀请码参与",
-    "单个邀请码最多可使用 3 次",
-    "累计可获得 90 亿 token"
-   ],
-   "inferences": [
-    "该活动采用邀请制扩散机制，用户通过分享邀请码获取更多 token",
-    "90 亿 token 是 30 亿乘以 3 次邀请上限得出的累计上限"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "活动是否有时间限制",
-    "每个用户最终能获得的 token 上限是否为 90 亿",
-    "活动是否需要新用户注册才能使用邀请码",
-    "muse 的具体产品形态和服务内容",
-    "邀请码使用 3 次后是否还能继续获取新邀请码"
-   ],
-   "key_points": [],
-   "rule_based": false
-  },
-  "e5b5e0a893baf98": {
-   "event_id": "e5b5e0a893baf98",
-   "title": "artcraft：面向艺术家的创作引擎",
-   "facts": [
-    "ArtCraft 是一个面向艺术家、设计师和电影制作人的创作引擎",
-    "该项目的仓库地址为 storytold/artcraft"
-   ],
-   "inferences": [
-    "ArtCraft 可能专注于为视觉创作类工作流提供工具支持"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料未提供 ArtCraft 的具体功能细节",
-    "材料未说明项目的开发语言、许可证或发布时间",
-    "材料未提及项目作者或所属组织信息"
-   ],
-   "key_points": [
-    "ArtCraft 定位为面向艺术家、设计师和电影制作人的创作引擎",
-    "项目托管在 GitHub，仓库为 storytold/artcraft"
-   ],
-   "rule_based": false
-  },
-  "e6c197c81fcb62e": {
-   "event_id": "e6c197c81fcb62e",
-   "title": "中国又一款AI手机发售，中美争夺AI操作系统定义权",
-   "facts": [
-    "中国又一款AI手机发售",
-    "中美开始争夺AI操作系统定义权"
-   ],
-   "inferences": [
-    "该AI手机的发售被视为中美在AI操作系统领域竞争的一个节点"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "该AI手机的具体品牌、型号、发布时间及参数未在材料中提及",
-    "中美争夺AI操作系统定义权的具体内涵与背景未在材料中说明",
-    "该报道的发布日期未在材料中明确给出"
-   ],
-   "key_points": [
-    "中国又一款AI手机发售",
-    "中美开始争夺AI操作系统定义权"
-   ],
-   "rule_based": false
-  },
-  "e71832a3e700595": {
-   "event_id": "e71832a3e700595",
-   "title": "美股智慧教育服务商推出首款AI陪伴产品进军消费硬件",
-   "facts": [
-    "一家美股上市的智慧教育服务商推出了其首款AI陪伴产品",
-    "该产品标志着这家公司进入消费硬件市场"
-   ],
-   "inferences": [
-    "这家公司可能希望通过AI陪伴产品拓展智慧教育之外的消费市场",
-    "AI陪伴产品可能面向家庭或儿童等消费场景"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "这家美股智慧教育服务商的具体公司名称未在材料中提及",
-    "该AI陪伴产品的名称、功能、定价及上市时间均未披露",
-    "材料来源仅为标题，正文内容缺失，无法获取更多细节"
-   ],
-   "key_points": [
-    "美股智慧教育服务商推出首款AI陪伴产品",
-    "公司由此进入消费硬件市场"
-   ],
-   "rule_based": false
-  },
-  "e7b00e77615b5f1": {
-   "event_id": "e7b00e77615b5f1",
-   "title": "苹果重构智能家居：HomeView成中枢，Siri AI绑定身份识别",
-   "facts": [
-    "苹果正在重构智能家居产品策略",
-    "HomeView成为智能家居体系的中枢",
-    "Siri AI与身份识别功能绑定"
-   ],
-   "inferences": [
-    "苹果希望通过HomeView中枢与Siri AI身份识别形成软硬件协同的智能家居体验"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "HomeView的具体形态（应用、设备还是系统层）尚不清楚",
-    "Siri AI身份识别的技术实现细节未披露",
-    "该策略对应的产品发布时间与价格未提及",
-    "材料来源仅为标题摘要，缺乏正文细节"
-   ],
-   "key_points": [
-    "HomeView被定位为苹果智能家居的新中枢",
-    "Siri AI与身份识别功能深度绑定"
-   ],
-   "rule_based": false
-  },
   "e7d6899eae0640a": {
    "event_id": "e7d6899eae0640a",
    "title": "Meta打出AI翻身牌：新模型并肩行业巨头 暗示接下来还要加速 - 财联社",
@@ -1987,67 +1298,6 @@
     "字节跳动单独设立大模型安全部门",
     "阶跃星辰推出智能体手机",
     "美国拟投票封杀认证中国电子设备测试机构"
-   ],
-   "rule_based": false
-  },
-  "e938258fbd8326b": {
-   "event_id": "e938258fbd8326b",
-   "title": "Epic shifts to ‘AI-accelerated development’ for upcoming Disney game",
-   "facts": [
-    "Epic Games plans to use AI to generate code and art for an unannounced Disney game, which is now delayed from its original March release window, according to a report from Bloomberg. The project's developers have been given an \"AI-first\" mandate directing them to use tools like Anthropic's Claude mo"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录",
-    "本条的来源标题为外文，未调用大模型，因此未翻译"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "ea6c61b2d6c2d91": {
-   "event_id": "ea6c61b2d6c2d91",
-   "title": "日本企业以物理AI重返AI竞争，川崎重工推动机器人化转型",
-   "facts": [
-    "客观日本发布关于日本企业重返AI牌桌信心的报道",
-    "报道以川崎重工的“机器人化”转型为切入点",
-    "报道关注物理AI在工厂、医院与基础设施的应用"
-   ],
-   "inferences": [
-    "日本企业将物理AI视为参与全球AI竞争的重要路径"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "报道的具体发布日期与作者未在材料中给出",
-    "川崎重工“机器人化”转型的具体内容与进展未在材料中说明",
-    "物理AI进入工厂、医院与基础设施的具体案例与数据未在材料中提供",
-    "日本企业重返AI牌桌的信心来源细节未在材料中展开"
-   ],
-   "key_points": [
-    "日本企业正以物理AI为切入点重返AI竞争",
-    "川崎重工的“机器人化”转型被视为代表性案例",
-    "物理AI的应用场景涵盖工厂、医院与基础设施"
-   ],
-   "rule_based": false
-  },
-  "ead6172be1f54aa": {
-   "event_id": "ead6172be1f54aa",
-   "title": "DeepMind 介绍 Gemini 4 Argon 的负责任与安全开发",
-   "facts": [
-    "DeepMind 发布了一篇题为《Developing Gemini 4 Argon responsibly and safely》的文章",
-    "该文章发布时间为 2026 年 10 月 13 日 19:43 UTC"
-   ],
-   "inferences": [
-    "该文章聚焦于 Gemini 4 Argon 模型在负责任与安全方面的开发实践"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "文章的具体内容、涉及的安全措施与责任框架细节均未在材料中提供",
-    "Gemini 4 Argon 的能力范围、发布时间线等关键信息无法确认"
-   ],
-   "key_points": [
-    "DeepMind 围绕 Gemini 4 Argon 发布了负责任与安全开发主题的文章",
-    "材料仅提供标题与发布时间，正文内容缺失"
    ],
    "rule_based": false
   },
@@ -2099,178 +1349,6 @@
    ],
    "rule_based": false
   },
-  "eb55ff50817a6da": {
-   "event_id": "eb55ff50817a6da",
-   "title": "AI改代码应一次性重写还是小段打补丁",
-   "facts": [
-    "科技行者发布了一篇关于AI改代码策略的讨论文章",
-    "文章探讨AI修改代码时是应一次性重写整个文件，还是像人类程序员一样小段打补丁"
-   ],
-   "inferences": [
-    "该文章可能围绕AI编程工具的代码修改方式展开讨论"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "文章的具体内容、观点和结论未知",
-    "文章发布时间和作者信息未提供",
-    "文章是否给出明确答案或倾向未知"
-   ],
-   "key_points": [
-    "讨论AI改代码的两种策略：一次性重写整个文件 vs 小段打补丁",
-    "对比AI与人类程序员在代码修改方式上的差异"
-   ],
-   "rule_based": false
-  },
-  "eb6cea3594acf5e": {
-   "event_id": "e3cc7b678593a66",
-   "title": "2026年Hackster最火的5个创客项目：AI正在这样改变硬件世界 - 电子工程专辑",
-   "facts": [
-    "2026年Hackster最火的5个创客项目：AI正在这样改变硬件世界 电子工程专辑"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "eb845f25ce003ba": {
-   "event_id": "eb845f25ce003ba",
-   "title": "iOS V2EX 客户端通过审核开放 TestFlight 体验",
-   "facts": [
-    "开发者注册开发者账号后首次审核用了两天",
-    "首个 TestFlight 版本审核用了两天",
-    "后续小版本一天可过审",
-    "作者称该应用是 1000 万以内最好的 V2EX 客户端",
-    "作者表示自上次发帖后做了大量更新，部分更新尚未上架 TestFlight",
-    "作者提供了多张应用截图"
-   ],
-   "inferences": [
-    "该应用已通过 App Store 审核并上架",
-    "作者对自家产品体验和设计有较高自信",
-    "应用仍处于持续迭代阶段"
-   ],
-   "opinions": [
-    "最好看最好用的 iOS V2EX 客户端",
-    "1000 万以内最好的 V2EX 客户端",
-    "审核速度还挺快的"
-   ],
-   "uncertainties": [
-    "应用名称未在材料中明确给出",
-    "App Store 上架状态未直接说明",
-    "应用具体功能与更新内容未列出",
-    "作者身份与背景未说明",
-    "截图内容无法查看"
-   ],
-   "key_points": [
-    "iOS 端 V2EX 客户端通过审核并开放 TestFlight 体验",
-    "作者自称该应用是 1000 万以内最好的 V2EX 客户端",
-    "应用仍在持续更新迭代"
-   ],
-   "rule_based": false
-  },
-  "eba87afb41e2597": {
-   "event_id": "eba87afb41e2597",
-   "title": "Facebook 推出",
-   "facts": [
-    "Facebook 推出名为\"Your Algorithm\"的新功能，允许用户直接添加和管理希望在信息流和 Reels 中看到的话题",
-    "Meta 表示，用户通过点击\"interested\"或\"not interested\"更新话题后，推荐内容会\"立即响应\"",
-    "\"Your Algorithm\"功能此前已在 Instagram 上线"
-   ],
-   "inferences": [
-    "Meta 正在将 Instagram 上的个性化算法控制功能扩展到 Facebook 平台",
-    "该功能可能旨在回应用户对算法透明度和可控性的诉求"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "该功能在 Facebook 上的具体上线时间和可用范围尚不清楚",
-    "用户通过该功能管理话题的具体方式（是手动添加还是从预设列表中选择）尚不明确",
-    "该功能是否对所有 Facebook 用户开放尚不清楚"
-   ],
-   "key_points": [],
-   "rule_based": false
-  },
-  "ec0c109918ab4ce": {
-   "event_id": "ec0c109918ab4ce",
-   "title": "网友将家中 Wi-Fi 2.4G 与 5G 拆分为两个网络",
-   "facts": [
-    "发帖人家中有一台较旧的小爱音箱，不支持 5G 频段",
-    "该小爱音箱在双频合一 Wi-Fi 下会不定时掉线",
-    "发帖人家中有几十个联网设备",
-    "发帖人于昨晚将 Wi-Fi 的 2.4G 和 5G 拆分为两个网络",
-    "拆分后 IoT 设备被分配到 2.4G，手机和电脑保留使用 5G"
-   ],
-   "inferences": [
-    "发帖人拆分双频的动机是为了解决旧款小爱音箱在双频合一网络下频繁掉线的问题",
-    "拆分双频的阻力来自需要重新配置大量设备以及部分设备重置网络的方法不易记起"
-   ],
-   "opinions": [
-    "发帖人感觉拆分后网速好像快了一些"
-   ],
-   "uncertainties": [
-    "发帖人感觉网速变快是否经过实际测速验证",
-    "发帖人家中具体有多少台 IoT 设备",
-    "发帖人使用的是哪一款小爱音箱",
-    "发帖人使用的是哪个品牌的路由器",
-    "拆分双频后旧小爱音箱是否仍存在掉线问题"
-   ],
-   "key_points": [
-    "旧款小爱音箱不支持 5G，在双频合一网络下频繁掉线",
-    "发帖人已将 Wi-Fi 拆分为 2.4G 和 5G 两个网络，IoT 设备走 2.4G，手机电脑走 5G"
-   ],
-   "rule_based": false
-  },
-  "ec501eb25a46069": {
-   "event_id": "ec501eb25a46069",
-   "title": "AI减重搭子走红引发靠谱性讨论",
-   "facts": [
-    "川观新闻发布V观话题讨论AI减重搭子的靠谱性",
-    "AI减重搭子的功能包括拍照识别热量和大数据定制食谱"
-   ],
-   "inferences": [
-    "AI减重搭子近期在公众中受到较多关注",
-    "公众对其实际效果存在不同看法"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "AI减重搭子的具体走红程度和用户规模",
-    "拍照识热量和大数据定制食谱的技术原理和准确率",
-    "该话题的发布时间和讨论细节",
-    "AI减重搭子涉及的具体产品或品牌"
-   ],
-   "key_points": [
-    "AI减重搭子以拍照识热量、大数据定制食谱等功能走红",
-    "川观新闻就此靠谱性发起V观话题讨论"
-   ],
-   "rule_based": false
-  },
-  "ec6bd315ea89ad0": {
-   "event_id": "ec6bd315ea89ad0",
-   "title": "GitHub 仓库 cathrynlavery/diagram-design 提供 44 种编辑设计图表",
-   "facts": [
-    "仓库 cathrynlavery/diagram-design 提供面向 Claude Code、Codex、GitHub Copilot、Cursor、Factory Droid 和 Pi 的编辑设计图表",
-    "该仓库包含 44 种图表类型",
-    "图表以独立的 HTML 和 SVG 形式提供",
-    "设计风格不使用阴影，也不使用 Mermaid 风格的渲染"
-   ],
-   "inferences": [
-    "该仓库可能用于在 AI 编程助手工具中生成风格统一的编辑类示意图"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料的发布时间未知",
-    "仓库的维护者身份、许可证和最近更新时间未在材料中说明",
-    "44 种图表的具体类型清单未列出",
-    "该仓库与各 AI 编程助手（Claude Code、Codex、GitHub Copilot、Cursor、Factory Droid、Pi）的具体集成方式未说明"
-   ],
-   "key_points": [
-    "仓库面向多款 AI 编程助手提供编辑设计图表",
-    "包含 44 种图表类型，采用独立 HTML + SVG 形式",
-    "设计风格刻意避免阴影和 Mermaid 风格渲染"
-   ],
-   "rule_based": false
-  },
   "ecd67a9edef7a8d": {
    "event_id": "ecd67a9edef7a8d",
    "title": "VoiceStudio：开源本地化 ElevenLabs 替代方案",
@@ -2294,29 +1372,6 @@
     "VoiceStudio 是开源且完全本地运行的 ElevenLabs 替代方案",
     "支持语音克隆、语音设计、视频配音、听写、转录和有声书制作等多种功能",
     "覆盖 646 种语言"
-   ],
-   "rule_based": false
-  },
-  "ed5de721688afba": {
-   "event_id": "ed5de721688afba",
-   "title": "IDC预计2030年中国AI安全市场规模将达340亿元",
-   "facts": [
-    "IDC预计到2030年中国AI安全市场规模将达340亿元",
-    "AI安全有望成为企业AI部署的刚需"
-   ],
-   "inferences": [
-    "随着企业AI部署规模扩大，AI安全相关投入将持续增长"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "IDC发布该预测的具体报告名称未提及",
-    "该预测的发布时间未明确",
-    "340亿元的具体口径（如是否包含硬件、服务等细分）未说明",
-    "AI安全成为'刚需'的判断依据未给出"
-   ],
-   "key_points": [
-    "IDC预测2030年中国AI安全市场规模达340亿元",
-    "AI安全被视为企业AI部署的刚需"
    ],
    "rule_based": false
   },
@@ -2367,138 +1422,6 @@
    ],
    "rule_based": false
   },
-  "edf424f85b59d69": {
-   "event_id": "edf424f85b59d69",
-   "title": "创业板、科创50均跌超1%，AI漫剧概念再爆发，电力、煤炭活跃，恒科指低开高走涨超1%，权重科网股集体反弹 - 华尔街见闻",
-   "facts": [
-    "创业板、科创50均跌超1%，AI漫剧概念再爆发，电力、煤炭活跃，恒科指低开高走涨超1%，权重科网股集体反弹 华尔街见闻"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "ee0c73a16ddaa1c": {
-   "event_id": "ee0c73a16ddaa1c",
-   "title": "全国首个“词元贷”构建授信新逻辑",
-   "facts": [
-    "西藏自治区科学技术厅发布了题为《全国首个“词元贷”构建授信新逻辑》的报道",
-    "该报道属于“AI落地新实践”系列报道之二"
-   ],
-   "inferences": [
-    "“词元贷”可能是一种与AI相关的创新型贷款或授信产品",
-    "该报道聚焦AI技术在金融授信场景的应用"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "“词元贷”的具体含义、运作机制及授信新逻辑的内容尚不清楚",
-    "报道的发布日期和详细内容未在材料中提供",
-    "“词元贷”由哪家机构推出、面向哪些对象尚不明确"
-   ],
-   "key_points": [
-    "全国首个“词元贷”产品",
-    "构建授信新逻辑",
-    "西藏自治区科学技术厅发布",
-    "属于“AI落地新实践”系列报道"
-   ],
-   "rule_based": false
-  },
-  "eedf2d5b4243645": {
-   "event_id": "eedf2d5b4243645",
-   "title": "作者体验Ray-Ban Meta Audio眼镜后表示不怀念摄像头",
-   "facts": [
-    "作者在公园跑步时戴着Ray-Ban Meta Audio眼镜播放音乐",
-    "作者戴着该眼镜在咖啡店点了一杯焦糖苹果味抹茶拿铁",
-    "作者戴着该眼镜坐在公园长椅上看书并与朋友通话",
-    "文章标题表明作者并不怀念Ray-Ban Meta Audio眼镜上的摄像头"
-   ],
-   "inferences": [
-    "Ray-Ban Meta Audio眼镜是一款不带摄像头的Ray-Ban Meta眼镜版本",
-    "作者在日常跑步、点单、阅读、通话等场景中使用了该眼镜的音频功能",
-    "该眼镜具备播放音乐和通话等音频相关功能"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "Ray-Ban Meta Audio眼镜的具体发布时间和售价未知",
-    "该眼镜与带摄像头的Ray-Ban Meta眼镜在功能上的具体差异未知",
-    "作者使用该眼镜的具体型号和硬件参数未知",
-    "文章正文内容被截断，作者的完整观点和结论未知"
-   ],
-   "key_points": [],
-   "rule_based": false
-  },
-  "eee18872766a648": {
-   "event_id": "eee18872766a648",
-   "title": "Xbox is officially embracing the chaos of AI-powered game ports",
-   "facts": [
-    "Retro gaming is going through a wild time at the moment, thanks to decompilations and recompilations that are letting gamers port classic titles to new devices, or merge code from two different games into a single new experience. Microsoft has witnessed skateboarding being modded into Call of Duty a"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录",
-    "本条的来源标题为外文，未调用大模型，因此未翻译"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "eee41f0eaceb2f5": {
-   "event_id": "eee41f0eaceb2f5",
-   "title": "AI女爱豆宣布因怀孕暂停活动，创作者称遭网暴",
-   "facts": [
-    "一名AI女爱豆宣布因怀孕暂停活动",
-    "创作者称自己只是自娱自乐，没有盈利",
-    "创作者表示遭到网暴"
-   ],
-   "inferences": [
-    "该AI女爱豆由个人创作者运营，并非商业项目",
-    "网暴可能与AI虚拟人物涉及怀孕等敏感话题有关"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "该AI女爱豆的具体名称和形象未知",
-    "创作者的真实身份未知",
-    "网暴发生的具体平台和规模未知",
-    "AI女爱豆宣布怀孕暂停活动的具体时间未知",
-    "该事件在观察者网报道之外是否有其他媒体报道未知"
-   ],
-   "key_points": [
-    "AI女爱豆宣布因怀孕暂停活动",
-    "创作者强调无盈利目的",
-    "创作者称遭到网暴"
-   ],
-   "rule_based": false
-  },
-  "ef52220a9143d82": {
-   "event_id": "ef52220a9143d82",
-   "title": "Geoffrey Huntley 谈用 pre-commit 钩子约束编码代理",
-   "facts": [
-    "Geoffrey Huntley 提出，如果编码代理不调用其诊断库，他会在 git diff 中检查绕过诊断模块直接调用可观测性模块的提交，并让该提交失败。",
-    "Geoffrey Huntley 表示，提交失败后会向代理注入提示，要求其使用诊断库，效果达到满分。",
-    "Geoffrey Huntley 认为已经没有人应该再手写代码。"
-   ],
-   "inferences": [
-    "Geoffrey Huntley 认为仅靠 AGENTS.md 等文档约束编码代理会随时间漂移，需要通过自动化机制强制执行。",
-    "Geoffrey Huntley 倾向于把工程约束编码进工具链（如 git 钩子），而不是依赖代理自觉遵守。"
-   ],
-   "opinions": [
-    "Geoffrey Huntley 认为已经没有人应该再手写代码。"
-   ],
-   "uncertainties": [
-    "材料未说明 Geoffrey Huntley 的具体身份或背景。",
-    "材料未说明该诊断库和可观测性模块的具体名称或技术细节。",
-    "材料未说明该做法在何种项目或场景下被验证。",
-    "材料未说明「满分」是相对什么基准或标准的评价。"
-   ],
-   "key_points": [
-    "Geoffrey Huntley 用 pre-commit 钩子检查 git diff，拦截绕过诊断库的可观测性调用。",
-    "提交失败时注入提示强制代理使用诊断库，从而把约束落到工具链而非文档。"
-   ],
-   "rule_based": false
-  },
   "ef6384abac4f498": {
    "event_id": "ef6384abac4f498",
    "title": "llm-gemini 0.35 新增对 Gemini 4 Argon 模型的支持",
@@ -2526,82 +1449,6 @@
     "Gemini 4 Argon 在 SVG 生成方面表现优秀"
    ],
    "rule_based": false
-  },
-  "efbcb58f65b260d": {
-   "event_id": "efbcb58f65b260d",
-   "title": "西安杭州两套房资不抵债，楼主纠结是否割肉止损",
-   "facts": [
-    "楼主在西安高位购入一套房，月供不到 4000 元，剩余贷款约 60 万，目前市价仅 50 万出头且无人问津。",
-    "楼主去年在杭州购入一套房，月供 4000 多元，贷款 100 万。",
-    "两套房月供合计 8000 多元，家庭月收入约 1.5 万元。",
-    "卖杭州房子时借了点钱。",
-    "楼主计划西安房子继续降价贴钱卖，杭州房子快满两年也出手。",
-    "楼主估算杭州房子基本平出，亏掉装修钱；西安房子可能仍欠 10 多万。",
-    "楼主打算卖房后用一年时间清掉债务，之后租房重新攒钱，不再贷款。"
-   ],
-   "inferences": [
-    "两套房月供占家庭收入超过一半，可支配收入紧张。",
-    "西安房子已资不抵债，属于负资产。",
-    "楼主倾向于割肉止损、清理债务，但仍在犹豫是否继续硬扛。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "西安房子实际能以什么价格成交、最终亏损金额未知。",
-    "杭州房子满两年后能否顺利出手、价格走势未知。",
-    "楼主家庭未来收入是否稳定、能否持续覆盖月供未知。",
-    "西安和杭州当地楼市后续走向未知。",
-    "楼主未披露的具体债务细节（如卖杭州房时所借款项金额、利率、还款安排）未知。"
-   ],
-   "key_points": [
-    "西安房子资不抵债，杭州房子接近平出。",
-    "两套房月供合计 8000 多元，家庭月收入约 1.5 万元。",
-    "楼主纠结是继续硬扛月供还是割肉清债、租房重新开始。"
-   ],
-   "rule_based": false
-  },
-  "efcf6a58ca9e0b0": {
-   "event_id": "efcf6a58ca9e0b0",
-   "title": "作者展示基于十二进制的 XY 音乐记谱法",
-   "facts": [
-    "作者开发了一种新的同构音乐键盘，并使用 base-12 记谱法来表示音符",
-    "该记谱法将 12-TET 中的每个音符表示为一个数字，取值范围为 (0,1,2,3,4,5,6,7,8,9,X,Y)",
-    "作者使用 codex 构建了一个基于 MuseScore 的乐谱渲染后端，并使用自定义的符头显示每个音符的音级",
-    "该帖子在 Hacker News 上获得 61 分和 46 条评论"
-   ],
-   "inferences": [
-    "XY 记谱法可能因为同构键盘的布局而便于演奏者快速识别和演奏音符",
-    "使用 MuseScore 作为后端意味着该记谱法可以借助现有的乐谱软件生态进行渲染和编辑"
-   ],
-   "opinions": [
-    "作者认为该记谱法对学习演奏自己的乐器很有帮助"
-   ],
-   "uncertainties": [
-    "该同构音乐键盘的具体形态和布局尚不清楚",
-    "codex 在此处所指的具体工具或库不明确",
-    "自定义符头的具体设计方式未在材料中说明",
-    "该记谱法是否支持除 12-TET 之外的调律体系未知"
-   ],
-   "key_points": [
-    "XY 音乐记谱法使用 base-12 数字系统表示 12-TET 音级",
-    "基于 MuseScore 构建渲染后端，使用自定义符头显示音级",
-    "作者认为该记谱法有助于学习演奏同构键盘乐器"
-   ],
-   "rule_based": false
-  },
-  "eff1f1128a2cdb9": {
-   "event_id": "eff1f1128a2cdb9",
-   "title": "Show HN: Pulse Local, a Mac budgeting app whose AI models run on your machine",
-   "facts": [
-    "Hi HN, I'm Niz. Pulse Local is a budgeting app for Mac (Apple Silicon, beta) that answers questions about your spending with models that run on your machine. Local mode needs no account. The ledger and your questions stay on the machine, and the app sends no analytics or crash logs.I felt there are "
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录",
-    "本条的来源标题为外文，未调用大模型，因此未翻译"
-   ],
-   "key_points": [],
-   "rule_based": true
   }
  },
  "factcheck": {

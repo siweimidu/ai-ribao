@@ -227,12 +227,21 @@ class PublishedHistory:
                     # Same day: a re-trigger of today's own issue, not cross-day repetition.
                     continue
                 if key.startswith("d:"):
-                    # A designation alone only says "this model appeared before", which is not
-                    # enough to prove a repeat: "Gemini 4 Argon 机器人模型发布" and "Gemini 4
-                    # Argon 在 ARC-AGI-3 获 97.5%" are different events on the same day. Prove
-                    # it by comparing the wording, and only then report a repeat.
+                    # Two questions, two answers.
+                    #
+                    # *Inside one issue* a model may carry several genuinely different events
+                    # (robotics model, general availability, safety write-up -- measured
+                    # pairwise similarity 0.38..0.52). That is the selection stage's problem,
+                    # and `max_per_model` caps it there.
+                    #
+                    # *Across days* the reader sees one thing: this model again. So a model
+                    # already covered inside the window is reported as a repeat regardless of
+                    # how differently the headline is worded. Measured: Gemini 4 ran on 14,
+                    # 15 and 16 with three distinct events, which reads as one story told
+                    # three times.
                     if not _is_near_match(folded_now, self._folds.get(date_str, ())):
-                        continue
+                        pass  # still a repeat by model; fall through to report it
+                    kind_override = "model-repeat"
                 try:
                     when = datetime.fromisoformat(date_str).date()
                 except ValueError:
@@ -241,11 +250,12 @@ class PublishedHistory:
                     continue
                 days_ago = (today_date - when).days
                 kind = (
-                    # Reaching here through `d:` already means the wording was compared and
-                    # matched, so this is a proven repeat with a weaker trail than an exact
-                    # hash -- reported as such rather than as "designation", which would tell
-                    # the caller to demote it when the evidence says otherwise.
-                    "reworded" if key.startswith("d:")
+                    # `reworded` means the wording was compared and matched; `model-repeat`
+                    # means the same model was covered earlier in the window. Both are proof
+                    # for the caller; only the bare "designation" kind is a hint.
+                    "reworded" if key.startswith("d:") and _is_near_match(
+                        folded_now, self._folds.get(date_str, ())
+                    ) else "model-repeat" if key.startswith("d:")
                     else "title" if key.startswith("t:")
                     else "url"
                 )
@@ -254,9 +264,9 @@ class PublishedHistory:
                 # which date it came from -- otherwise iterating keys in a different order
                 # silently changed `matched_on`, which is what made the result non-deterministic
                 # in the first place.
-                strength = 0 if kind in ("designation", "reworded") else 1
+                strength = 0 if kind in ("designation", "reworded", "model-repeat") else 1
                 best_strength = (
-                    0 if best is not None and best.matched_on in ("designation", "reworded") else 1
+                    0 if best is not None and best.matched_on in ("designation", "reworded", "model-repeat") else 1
                 )
                 if (
                     best is None
