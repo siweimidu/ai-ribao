@@ -34,6 +34,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+
       - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
@@ -105,16 +106,20 @@ jobs:
       # issue". That is exactly what happened after an edit left two `publish:` definitions and a
       # `needs.gate` reference from a job that only declared `needs: publish`. Nothing in the test
       # suite noticed, because the Python code was fine.
-      - name: Lint workflows
-        run: |
-          go install github.com/rhysd/actionlint/cmd/actionlint@latest
-          # actionlint takes file paths, not globs. Let the shell expand them.
-          "$(go env GOPATH)/bin/actionlint" -color $(ls .github/workflows/*.yml)
-
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
+      # A malformed workflow does not fail a step -- it fails to load, so the run appears
+      # with zero jobs and the only message is "this run likely failed because of a
+      # workflow file issue". A duplicated `publish:` key and an out-of-scope `needs.gate`
+      # did exactly that, and nothing in the Python suite noticed.
+      - name: Lint workflows
+        run: |
+          go install github.com/rhysd/actionlint/cmd/actionlint@latest
+          # actionlint takes file paths, not globs, and it sits inside a command
+          # substitution here, so the shell must expand them.
+          "$(go env GOPATH)/bin/actionlint" -color $(ls .github/workflows/*.yml)
       - name: No secrets in the repository
         run: |
           set -e
