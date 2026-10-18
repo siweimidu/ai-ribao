@@ -115,9 +115,21 @@ jobs:
             exit 1
           fi
           echo "date=$date" >> "$GITHUB_OUTPUT"
+          # 0  = go
+          # 10 = today is already published, nothing to do
+          # 11 = "too early": the target date is not complete yet. `__main__` gives this its own
+          #      exit code precisely so it is never confused with a failure, and the publish step
+          #      already treats it as a no-op -- but the gate did not, so a scheduled run that
+          #      arrived before the collection window turned the whole workflow red. That is the
+          #      single most common "failure" on the run list: seven of nine red runs were a
+          #      step reporting a correct decision as an error.
           case "$code" in
             0)  echo "run=true"  >> "$GITHUB_OUTPUT" ;;
             10) echo "run=false" >> "$GITHUB_OUTPUT" ;;
+            11)
+              echo "::notice::too early to build $date (exit 11) -- waiting for the collection window"
+              echo "run=false" >> "$GITHUB_OUTPUT"
+              ;;
             *)  echo "::error::gate failed with exit $code"; exit "$code" ;;
           esac
       - name: Report
@@ -298,6 +310,136 @@ jobs:
             cat dedup-audit.log
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v7
+        # Upload even when the step above failed: a partial collection is still the most
+        # useful input for a retry, and re-fetching would produce different data.
+        if: always()
+        with:
+          name: raw-items
+          path: |
+            data/raw/items.jsonl
+            data/state/collect.jsonl
+            collect.log
+          retention-days: 7
+
+  # ---------------------------------------------------------------------------
+  # 3. Analyse, render and deliver. Reading the artefact means a retry here never
+  #    re-fetches, so the digest for a given day is built from one consistent snapshot.
+  # ---------------------------------------------------------------------------
+  publish:
+    needs: [gate, collect]
+    if: needs.gate.outputs.run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[fetchers,llm]"
+
+      - uses: actions/download-artifact@v8
+        if: inputs.skip_collect != true
+        with:
+          name: raw-items
+          path: .
+
+      - name: Publish
+        id: publish
+        env:
+          # Model keys: official tiers first, relays only as a fallback.
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-flash-lite-latest' }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GROQ_MODEL: ${{ vars.GROQ_MODEL || 'openai/gpt-oss-20b' }}
+          # Tavily 搜索。采集与发布两个 job 都要传：publish 在
+          # skip_collect=false 时会自己采集一次。
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          SAMBANOVA_API_KEY: ${{ secrets.SAMBANOVA_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          HUGGINGFACE_API_KEY: ${{ secrets.HUGGINGFACE_API_KEY }}
+          MODELSCOPE_API_KEY: ${{ secrets.MODELSCOPE_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          RELAY_KEYS_JSON: ${{ secrets.RELAY_KEYS_JSON }}
+          # Delivery
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          MAIL_FROM_EMAIL: ${{ secrets.MAIL_FROM_EMAIL }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          N8N_WEBHOOK_URL: ${{ secrets.N8N_WEBHOOK_URL }}
+          SITE_URL: ${{ vars.SITE_URL || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
+        run: |
+          set +e
+          python -m aidaily run \
+            --from-items data/raw/items.jsonl \
+            --site-url "$SITE_URL" \
+            --analyze-limit 0 | tee publish.log
+          # `${PIPESTATUS[0]}`, not `$?`. GitHub Actions runs a `run:` block as
+          # `bash -e {0}` with **pipefail off**, so `$?` after a pipeline is `tee`'s status
+          # -- and tee succeeds because it dutifully wrote the output. A crash therefore
+          # came back as 0, the job reported success, and the only symptom was that the site
+          # did not update: indistinguishable from "nothing to publish today".
+          #
+          # It also silently defeated the gate below: exit 10 read as 0, so an
+          # already-published day looked like a normal success.
+          code=${PIPESTATUS[0]}
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          # 10 = the gate inside `run` decided today was already delivered.
+          # 11 = "too early": the target date is not complete yet, so no digest was built.
+          #      `__main__` gives this its own exit code precisely so it is never confused
+          #      with a failure (see the comment there), but this step only recognised 10, so
+          #      a manual trigger at 00:57 -- before the 07:00 collection window, when there
+          #      is genuinely nothing to build -- turned the whole run red. The code did the
+          #      right thing; the workflow called it an error.
+          if [ "$code" = "10" ]; then exit 0; fi
+          if [ "$code" = "11" ]; then
+            echo "::notice::too early to build a digest (exit 11) -- nothing to publish yet"
+            exit 0
+          fi
+          if [ "$code" != "0" ]; then
+            echo "::error::publish failed with exit code $code"
+          fi
+          exit "$code"
+
+      - name: Run summary
+        if: always()
+        run: |
+          {
+            echo "### Publish"
+            echo '```'
+            tail -n 60 publish.log 2>/dev/null || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # Deduplication is a promise, and until now nothing checked it. Three regressions shipped
+      # unnoticed in one week -- Gemini 4 ran four days running, the DeepSeek V4.1 launch was
+      # deleted as a "repeat" of an unrelated story, another outlet's digest was republished as
+      # news -- and every one was found by the reader. This step runs the audit against the
+      # archived issues after publishing, so a regression turns the run red on the day it
+      # happens instead of accumulating in the archive.
+      - name: Audit deduplication
+        if: always()
+        run: |
+          python -m aidaily.dedup_audit --window 7 | tee dedup-audit.log
+          {
+            echo "### 去重审计"
+            echo '```'
+            cat dedup-audit.log
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
       - name: Commit state and digests
         if: always()
         run: |
@@ -309,19 +451,45 @@ jobs:
             exit 0
           fi
           git commit -m "chore(daily): $(TZ=Asia/Shanghai date +%F) digest"
+          # Retry on a rejected push. The interesting part is what happens on a conflict.
+          #
+          # This loop used to call `git rebase` and abort on any conflict, so all five
+          # attempts failed the same way and the run went red. That happened twice:
+          # 2026-10-15 and 2026-10-16 both died on `CONFLICT (content)` in
+          # data/digests/*.json and site/index.html.
+          #
+          # A conflict here is not a disagreement to be resolved -- it is two runs that both
+          # generated the same files. The commit being pushed was produced seconds ago from
+          # today's data, so ITS version is the current truth and the remote copy is the older
+          # generation. `-X theirs` during rebase says exactly that: on a conflicting hunk,
+          # take the commit being replayed rather than the upstream one.
+          #
+          # Nothing hand-written is ever committed by this job -- only generated output under
+          # data/ and sources/ -- so preferring the newest generation cannot discard an edit a
+          # human made. That property is what makes this safe.
           for attempt in 1 2 3 4 5; do
             if git push; then
               echo "pushed on attempt $attempt"
               exit 0
             fi
-            echo "push rejected; rebasing onto origin/${GITHUB_REF_NAME}"
+            echo "push rejected; rebasing onto origin/${GITHUB_REF_NAME} (attempt $attempt)"
             git fetch origin "$GITHUB_REF_NAME"
-            git rebase "origin/${GITHUB_REF_NAME}" || { git rebase --abort; exit 1; }
-            sleep 3
+            if git rebase -X theirs "origin/${GITHUB_REF_NAME}"; then
+              sleep 3
+              continue
+            fi
+            echo "rebase hit a conflict; keeping this run's generated files"
+            git rebase --abort 2>/dev/null || true
+            if git merge -X ours -m "chore(daily): merge generated output" "origin/${GITHUB_REF_NAME}"; then
+              sleep 3
+              continue
+            fi
+            git merge --abort 2>/dev/null || true
+            echo "::warning::could not reconcile with origin; retrying"
+            sleep 5
           done
           echo "::error::failed to push after 5 attempts"
           exit 1
-
       - uses: actions/upload-artifact@v7
         if: always()
         with:

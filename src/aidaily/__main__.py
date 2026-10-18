@@ -599,6 +599,29 @@ def cmd_gate(args: argparse.Namespace) -> int:
     slot_hours = tuple(t.hour for t in cfg_for_slot.run.schedule_times())
     now_local_slot = datetime.now(ZoneInfo(tz))
     slot = _slot_index(now_local_slot.hour, slot_hours)
+
+    # "Too early" belongs here, not only in `run`.
+    #
+    # The gate is the cheap step; `run` is the ten-minute one. Before this check the gate said
+    # "go" for a trigger that arrived before the collection window, the workflow paid for a full
+    # collection, and `run` then answered exit 11 -- which the gate step reported as a failure
+    # because it only understood 0 and 10. Both halves of that are fixed: the decision is made
+    # where it is cheap, and exit 11 is treated as the normal no-op it is.
+    #
+    # Only *today* can be too early. A requested earlier date is a deliberate backfill whose
+    # window has already closed, so the guard must not apply to it.
+    publish_hour = cfg_for_slot.run.publish_hour()
+    is_today = date == now_local_slot.strftime("%Y-%m-%d")
+    if not getattr(args, "allow_early", False) and is_today and now_local_slot.hour < publish_hour:
+        print(json.dumps({
+            "date": date,
+            "publish": False,
+            "reason": f"too early: {now_local_slot.strftime('%H:%M')} {tz} is before the "
+                      f"{publish_hour:02d}:00 collection hour",
+            "done_channels": {},
+        }, ensure_ascii=False))
+        return EXIT_TOO_EARLY
+
     should, reason, done = gate(
         date, artifact_dir=out_dir, slot=slot, slot_hours=slot_hours
     )
