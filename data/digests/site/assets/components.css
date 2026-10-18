@@ -454,10 +454,14 @@
 }
 
 /* 统计条：真实数字，横排一条，不是卡片组 */
+/* Equal columns, not flex + gap.
+   With flex each cell was exactly as wide as its own number, so 60 / 32 / 9 / 16 produced four
+   unequal blocks at a constant gap -- the row read as misaligned even though nothing overflowed.
+   Equal tracks put the numbers on a rhythm, which is what a stats row is for. */
 .stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: calc(var(--unit) * 7);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr));
+  gap: calc(var(--unit) * 5) calc(var(--unit) * 4);
   margin-top: calc(var(--unit) * 7);
   padding-top: calc(var(--unit) * 5);
   border-top: 1px solid var(--border);
@@ -741,8 +745,12 @@
 }
 
 .issue-row {
+  /* Fixed tracks, not auto auto 1fr auto.
+     auto sized the date and weekday to their own content, so the right-hand count landed at a
+     slightly different x on every row and the column looked ragged. Both strings are fixed width,
+     so they are declared as tracks. */
   display: grid;
-  grid-template-columns: auto auto 1fr auto;
+  grid-template-columns: 7.5rem 2.5rem 1fr auto;
   align-items: baseline;
   gap: calc(var(--unit) * 3);
   padding: calc(var(--unit) * 3) calc(var(--unit) * 4);
@@ -909,21 +917,24 @@
 /* The day at a glance. Deliberately a numbered list of real headlines rather than a
    generated paragraph: a summary here would be a second, unchecked claim about the day,
    and it would drift from the list below it. */
-.ov { list-style: none; margin: 0; padding: 0; display: grid; gap: calc(var(--unit) * 1); }
+.ov { list-style: none; margin: calc(var(--unit) * 4) 0 0; padding: 0; display: grid; gap: calc(var(--unit) * 3); }
 
 .ov a {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   gap: calc(var(--unit) * 3);
   align-items: baseline;
-  padding: calc(var(--unit) * 2.5) calc(var(--unit) * 3);
-  border-radius: var(--radius-sm);
-  border: 1px solid transparent;
-  transition: background var(--dur-fast) var(--ease-out-circ),
+  padding: calc(var(--unit) * 4);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: 0 1px 2px rgb(16 24 40 / 4%);
+  transition: box-shadow var(--dur-fast) var(--ease-out-circ),
+              transform var(--dur-fast) var(--ease-out-circ),
               border-color var(--dur-fast) var(--ease-out-circ);
 }
 
-.ov a:hover { background: var(--muted); border-color: var(--border); }
+.ov a:hover { border-color: color-mix(in srgb, var(--accent) 26%, var(--border)); box-shadow: 0 8px 24px rgb(16 24 40 / 9%); transform: translateY(-1px); }
 
 .ov__no {
   font-size: var(--fs-small);
@@ -1741,3 +1752,97 @@ button, input, select, summary {
 
 /* 界面正文的最后一道兜底：没有 --f-sans 声明的元素也走 MiSans，避免混排出两种黑体。 */
 body { font-family: var(--f-sans); }
+
+/* Two figures on the index page: they belong together, so they must not be spread across the
+   full column. `auto-fit 1fr` stretched them to the edges -- "4" at the left margin and "160" at
+   the far right, which reads as two unrelated numbers rather than one summary line. */
+.stats--pair {
+  grid-template-columns: repeat(2, max-content);
+  gap: calc(var(--unit) * 4) calc(var(--unit) * 10);
+}
+
+/* The archive list is a short table, not a full-width bar. Left to fill the column, the count
+   landed at the far edge, ~640px away from its own date, and the eye could not pair them.
+   Capping the measure keeps each row readable as one line of information. */
+.issue-list { max-width: 44rem; }
+
+/* ==============================================================================
+   卡片：大卡片里套小卡片
+   ------------------------------------------------------------------------------
+   每条新闻是一个圆角外卡片，每个「事实 / 推断 / 不确定」块是它内部的一个浅色圆角
+   小卡片。这样做的理由是**可见的边界**：读者一眼就能看出这件事有多少是已确立的、
+   多少是推断。原来它们只是一串 li，靠缩进区分，长条目里分不清读到哪一块。
+
+   参考实现：外卡片 1px 描边 + 白底；内卡片用 muted 底色、无描边、圆角略小 ——
+   两层都用描边会显得像表格。
+   ============================================================================== */
+
+.item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: calc(var(--unit) * 5) calc(var(--unit) * 5) calc(var(--unit) * 4);
+  margin-bottom: calc(var(--unit) * 4);
+  box-shadow: 0 1px 2px rgb(16 24 40 / 4%);
+  transition: box-shadow var(--dur-fast) var(--ease-out-circ),
+              transform var(--dur-fast) var(--ease-out-circ),
+              border-color var(--dur-fast) var(--ease-out-circ);
+}
+
+/* The lift is the affordance: without it a bordered box reads as a static panel, and the
+   whole row is a link. 1px is enough to feel it; 4px looked like a wobble on scroll. */
+.item:hover {
+  border-color: color-mix(in srgb, var(--accent) 26%, var(--border));
+  box-shadow: 0 8px 24px rgb(16 24 40 / 9%);
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item, .item:hover { transition: none; transform: none; }
+}
+
+/* 内卡片：每个事实块 */
+.factcard {
+  background: var(--muted);
+  border-radius: var(--radius-sm);
+  padding: calc(var(--unit) * 3) calc(var(--unit) * 4);
+  margin-top: calc(var(--unit) * 3);
+}
+
+/* 块之间不再需要额外的段间距，卡片本身已经分开了 */
+.facts { margin-top: calc(var(--unit) * 1); }
+.facts__label { margin-top: 0; }
+
+/* 元信息行在卡片里需要和标题对齐 */
+.item__meta { margin-top: calc(var(--unit) * 2); }
+
+/* 来源链接行 */
+.item__links { margin-top: calc(var(--unit) * 3); }
+
+/* 概览条目：也是卡片，但更轻 —— 它是目录，不是正文。
+   每条一个白底圆角卡，内部不再分块：概览只引一条事实，套小卡片会显得比正文还重。 */
+.ov { display: grid; gap: calc(var(--unit) * 3); margin-top: calc(var(--unit) * 4);
+      list-style: none; padding-inline-start: 0; }
+.ov li > a {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: calc(var(--unit) * 3);
+  align-items: start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: calc(var(--unit) * 4);
+  box-shadow: 0 1px 2px rgb(16 24 40 / 4%);
+  transition: box-shadow var(--dur-fast) var(--ease-out-circ),
+              transform var(--dur-fast) var(--ease-out-circ),
+              border-color var(--dur-fast) var(--ease-out-circ);
+}
+.ov li > a:hover {
+  border-color: color-mix(in srgb, var(--accent) 26%, var(--border));
+  box-shadow: 0 8px 24px rgb(16 24 40 / 9%);
+  transform: translateY(-1px);
+}
+.ov__no { font-family: var(--f-mono); font-size: var(--fs-micro); color: var(--accent); padding-top: .2em; }
+.ov__detail { display: block; margin-top: calc(var(--unit) * 1.5); color: var(--muted-fg);
+              font-size: var(--fs-small); line-height: 1.6; }
+@media (prefers-reduced-motion: reduce) { .ov li > a, .ov li > a:hover { transition: none; transform: none; } }

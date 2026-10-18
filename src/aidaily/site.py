@@ -430,13 +430,21 @@ def render_item(
         if not rows:
             continue
         lis = "".join(f'<li data-kind="{kind}">{esc(r)}</li>' for r in rows[:5])
-        blocks.append(f'<p class="facts__label" data-kind="{kind}">{name}</p><ul>{lis}</ul>')
+        # One rounded panel per block. The reference layout puts every factual block in its own
+        # card inside the story card, which is what makes a long entry scannable: each block has a
+        # visible boundary, so "how much is established" is legible at a glance instead of being
+        # inferred from a paragraph.
+        blocks.append(
+            f'<div class="factcard" data-kind="{kind}">'
+            f'<p class="facts__label" data-kind="{kind}">{name}</p><ul>{lis}</ul></div>'
+        )
     evidence = f'<div class="facts">{"".join(blocks)}</div>' if blocks else ""
 
     if insight is None or getattr(insight, "rule_based", False):
         evidence += (
-            '<div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p>'
-            '<ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>'
+            '<div class="facts"><div class="factcard" data-kind="fact">'
+            '<p class="facts__label" data-kind="fact">来源摘录</p>'
+            '<ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div></div>'
         )
 
     others = event.all_urls[1:5]
@@ -671,10 +679,10 @@ def render_day(
             if item is not None:
                 lead = (item.summary or "")[:200]
 
+    # 本期说明 was removed on request: the run metadata (key counts, provider list, rubric
+    # calibration) is operator information, not something a reader of the day's news wants above
+    # the first headline. It stays in the archived JSON, where `check` and the audit tools read it.
     warnings = ""
-    if digest.warnings:
-        lis = "".join(f"<li>{esc(w)}</li>" for w in digest.warnings)
-        warnings = f'<div class="notice"><strong>本期说明</strong><ul>{lis}</ul></div>'
 
     llm = digest.llm_usage or {}
     coverage = digest.source_coverage
@@ -863,9 +871,9 @@ def render_index(ctx: SiteContext, latest: Digest | None) -> str:
       <p class="issue__date enter">全部往期</p>
       <h1 class="issue__title enter">AI 日报</h1>
       <p class="issue__lead enter">每日自动聚合 AI 领域的信息源，去重、交叉验证，并区分事实与推断。</p>
-      <div class="stats enter">
-        <div><b>{len(ctx.archive)}</b><span>期</span></div>
-        <div><b>{sum(c for _, c in ctx.archive)}</b><span>事件</span></div>
+      <div class="stats stats--pair enter">
+        <div><b>{len(ctx.archive)}</b><span>期已发布</span></div>
+        <div><b>{sum(c for _, c in ctx.archive)}</b><span>条事件</span></div>
       </div>
     </header>
     {''.join(groups) or '<p>还没有已发布的期数。</p>'}

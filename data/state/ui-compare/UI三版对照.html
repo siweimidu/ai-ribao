@@ -1,0 +1,3187 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gemini 4 Argon 向 Google AI Pro 开放 · AI 日报</title>
+<meta name="description" content="">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0065fd">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1530 1530'%3E%3Cstyle%3E:root{color-scheme:light dark}rect{fill:%23FEFEFE}g{fill:%23231A15}@media(prefers-color-scheme:dark){rect{fill:%230B0D10}g{fill:%23F2F4F7}}%3C/style%3E%3Crect width='1530' height='1530' rx='765'/%3E%3Cg transform='translate(765 765) scale(2.65) translate(-765 -765)'%3E%3Cpath fill-rule='evenodd' d='M 494,818 L 626,504 L 711,503 L 800,711 L 803,711 L 1018,546 L 1032,538 L 1027,544 L 745,795 L 740,795 L 726,765 L 610,765 L 586,820 Z M 669,614 L 701,694 L 636,694 Z'/%3E%3Cpath d='M 871,713 L 867,712 L 560,989 L 587,971 L 781,825 L 783,1025 L 871,1024 Z'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="canonical" href="https://siweimidu.github.io/ai-ribao/2026-10-17.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gemini 4 Argon 向 Google AI Pro 开放">
+<meta property="og:description" content="">
+<link rel="alternate" type="application/rss+xml" title="AI 日报" href="https://siweimidu.github.io/ai-ribao/feed/zh.xml">
+<link rel="alternate" type="application/feed+json" title="AI 日报" href="https://siweimidu.github.io/ai-ribao/feed/zh.json">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Regular.min.css"><style>/* ---- tokens.css ---- */
+/* ============================================================================
+   AI 日报 · 设计令牌
+   ----------------------------------------------------------------------------
+   三条外部依据，按优先级：
+   1. frontend-design 的 slop 清单（必须避开）
+   2. Doubao 设计系统的令牌值（圆角、间距、单一强调色）
+   3. juya 的实测结构（双栏轨道、暖白底、中文优先字体）
+
+   刻意改掉的两处「AI 味」（frontend-design 点名）：
+   · **等宽字体做小标签** —— 之前 .eyebrow / .fact-label / .evidence 全用
+     JetBrains Mono。规范说这是模板化特征：字体应该承担个性，而不是给
+     小数据贴一层「技术感」的皮。现在正文与标签同族，层级靠字号和字重。
+   · **中间点连接的 meta 串**（`A · B · C`）—— 之前页脚和统计里满是。
+     现在改成真实的分隔结构或换行。
+
+   保留的：编号（内容确实是序号化的当日要闻，不是装饰）、
+   单一强调色（Doubao 的 #0065fd）。
+   ========================================================================= */
+
+:root {
+  /* --- 语义色：4 种 ------------------------------------------------------------------ */
+  /* 底色取 juya 实测的暖白 rgb(253,252,250) 而非纯白：纯白在长时间阅读下过亮，
+     而暖白与中性灰阶搭配不会引入第二个色相。 */
+  --bg:          #fdfcfa;
+  --surface:     #ffffff;
+  --fg:          #16181c;
+  --muted-fg:    #6b7280;
+  --muted:       #f2f1ee;
+  --border:      #e6e4df;
+  --accent:      #0065fd;
+  --accent-soft: #e8efff;
+
+  /* --- 圆角与间距：单一来源，全局缩放 --------------------------------------------- */
+  --radius:    0.75rem;
+  --radius-sm: 0.4rem;
+  --rail-w:    15rem;     /* 240px，与 juya 的实测 240px 一致 */
+  --toc-w:     15rem;
+  --unit:      0.25rem;
+
+  /* --- 字体：中文优先 ----------------------------------------------------------- */
+  /* 之前把 Inter 放在最前，中文靠系统回退，不同机器上字形与度量都不可控。
+     juya 实测用 Sarasa Gothic SC（更纱黑体），它的中英文度量统一。
+     拉丁部分回退到 Inter（有"更纱黑体"时英文也走它，统一性更好）。 */
+  --font-sans: "Sarasa Gothic SC", "更纱黑体 SC", "Noto Sans CJK SC",
+               "Noto Sans SC", "PingFang SC", "Microsoft YaHei",
+               Inter, ui-sans-serif, system-ui, sans-serif;
+  /* 等宽只用于真正的代码/数字对齐场景，不再当小标签的装饰字体。 */
+  --font-mono: "Sarasa Mono SC", "Noto Sans Mono CJK SC", ui-monospace, monospace;
+
+  /* --- 字阶 ---------------------------------------------------------------------- */
+  /* 三栏版式下正文列变窄（约 700px），但**尺度对比仍必须成立**：
+     规范给的实测下限是 4×，低于它页面就没有尺度对比。
+     第一版降到 44px 让比值掉到 2.9× —— 窄列不是放弃对比的理由，
+     而是把正文也一起收小（15px）来守住比值。这里 60 ÷ 15 = 4.0×。
+     中文长标题在窄列里会换到 3 行，用 measure 限制避免它铺满整行。 */
+  --fs-display: clamp(2.5rem, 4.6vw, 3.75rem);   /* 40 → 60px */
+  --fs-h2:      clamp(1.25rem, 1.6vw, 1.5rem);
+  --fs-h3:      1.0625rem;                        /* 17px */
+  --fs-body:    0.9375rem;                        /* 15px */
+  --fs-small:   0.8125rem;
+  --fs-micro:   0.75rem;                          /* 12px */
+  --lh-tight:   1.24;
+  --lh-body:    1.75;
+
+  /* --- 动效令牌 -------------------------------------------------------------------- */
+  --dur-instant:  90ms;
+  --dur-fast:     170ms;
+  --dur-standard: 320ms;
+  --dur-medium:   460ms;
+  --dur-slow:     700ms;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-circ: cubic-bezier(0, 0.55, 0.45, 1);
+  --spring-bouncy: linear(0, 0.32 8%, 0.79 20%, 1.03 30%, 1.01 46%, 1);
+  --spring-jelly:  linear(0, 0.18 6%, 0.62 18%, 0.94 32%, 1.06 46%, 1.02 62%, 1);
+
+  --ring: 0 0 0 3px color-mix(in srgb, var(--accent) 26%, transparent);
+}
+
+/* 深色取值集中在一处，两个入口共用：
+   1. 系统偏好（@media prefers-color-scheme）
+   2. 读者手动选择（[data-theme="dark"]）
+   分开写会导致「手动切了但颜色没变」——初版就是这样：JS 设了 data-theme，
+   而 CSS 只监听系统媒体查询，开关看起来生效、页面纹丝不动。 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:          #101215;
+    --surface:     #171a1f;
+    --fg:          #e9ecef;
+    --muted-fg:    #9aa4b2;
+    --muted:       #1c2027;
+    --border:      #282d36;
+    --accent:      #6ba1ff;
+    --accent-soft: #12233f;
+  }
+}
+
+/* 手动强制暗色：即使用户系统是亮色也要暗。 */
+:root[data-theme="dark"] {
+  --bg:          #101215;
+  --surface:     #171a1f;
+  --fg:          #e9ecef;
+  --muted-fg:    #9aa4b2;
+  --muted:       #1c2027;
+  --border:      #282d36;
+  --accent:      #6ba1ff;
+  --accent-soft: #12233f;
+}
+
+/* 手动强制亮色：即使用户系统是暗色也要亮。 */
+:root[data-theme="light"] {
+  --bg:          #fdfcfa;
+  --surface:     #ffffff;
+  --fg:          #16181c;
+  --muted-fg:    #6b7280;
+  --muted:       #f2f1ee;
+  --border:      #e6e4df;
+  --accent:      #0065fd;
+  --accent-soft: #e8efff;
+}
+
+/* --- Claude 配色 ------------------------------------------------------------------
+   Claude 的界面用的是暖色纸面而不是中性灰，强调色是陶土橙而不是蓝。
+   这套色值单独成组，因为它的价值就在"暖"这个属性上 —— 把橙色调进默认的冷灰里
+   会得到一套既不像默认也不像 Claude 的配色。
+
+   亮色：纸面 #faf9f5，正文近黑 #1f1e1d，强调 #c15f3c。
+   暗色：暖灰底 #262624（不是纯黑，纯黑会让暖色显得脏），强调提亮到 #d97757。
+   ============================================================================== */
+:root[data-theme="claude-light"] {
+  --bg:          #faf9f5;
+  --surface:     #ffffff;
+  --fg:          #1f1e1d;
+  --muted-fg:    #6b6862;
+  --muted:       #f0eee6;
+  --border:      #e5e2d9;
+  --accent:      #c15f3c;
+  --accent-soft: #f7ece6;
+}
+
+:root[data-theme="claude-dark"] {
+  --bg:          #262624;
+  --surface:     #30302e;
+  --fg:          #f0eee6;
+  --muted-fg:    #a8a49b;
+  --muted:       #33322f;
+  --border:      #3f3e3a;
+  --accent:      #d97757;
+  --accent-soft: #3b2c25;
+}
+
+/* --- 基础 ------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-feature-settings: "kern" 1;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+  border-radius: var(--radius-sm);
+}
+
+.sr {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* 「跳到正文」：键盘用户的第一站。侧栏有 8 项时，这个链接是必需品而非装饰。 */
+.skip {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  background: var(--accent); color: #fff;
+  padding: calc(var(--unit) * 2.5) calc(var(--unit) * 4);
+  border-radius: 0 0 var(--radius-sm) 0;
+}
+.skip:focus { left: 0; }
+
+/* ============================================================================
+   骨架：三轨道
+   ----------------------------------------------------------------------------
+   左轨是常驻导航（工作台），中列是内容，右轨是目录。
+   中列设 min-width: 0 —— 没有它，长标题会把网格列撑破，右轨被挤出视口。
+   ========================================================================= */
+.shell {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  max-width: 1560px;
+  margin-inline: auto;
+  padding-inline: calc(var(--unit) * 5);
+}
+
+@media (min-width: 1080px) {
+  .shell {
+    grid-template-columns: var(--rail-w) minmax(0, 1fr);
+    gap: calc(var(--unit) * 12);
+    padding-inline: calc(var(--unit) * 8);
+  }
+}
+
+@media (min-width: 1400px) {
+  .shell { grid-template-columns: var(--rail-w) minmax(0, 1fr) var(--toc-w); }
+}
+
+/* --- 左侧栏 ---------------------------------------------------------------------- */
+.rail {
+  padding-block: calc(var(--unit) * 8);
+  /* Positioning context for the resize grip, which sits on the rail's inner edge. */
+  position: relative;
+}
+
+@media (min-width: 1080px) {
+  .rail {
+    position: sticky;
+    top: 0;
+    /* 侧栏比视口高时（日历 + 8 项）必须能自己滚，否则底部的按钮永远点不到。 */
+    max-height: 100vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+/* ============================================================================
+   滚动条
+   ----------------------------------------------------------------------------
+   侧栏与目录各有一个滚动条（内容比视口高时必须能滚）。默认样式在深色模式下
+   是一条亮轨，在本来就安静的侧栏里非常刺眼 —— 它是结构，不是内容。
+
+   **现在完全隐藏**（用户要求）。可滚动性没有取消：两个侧栏仍然是
+   overflow-y: auto，鼠标滚轮、触控板、键盘翻页、以及锚点跳转都照常工作，
+   只是不再画那条滑块。这是有意的取舍 —— 读者已经知道长列表可以滚，
+   而滑块在两个窄栏里每天都占着视觉位置却没有提供信息。
+
+   两条声明缺一不可：scrollbar-width: none 管 Firefox 与新 Chrome，
+   ::-webkit-scrollbar { display: none } 管 WebKit/Safari。
+   只写其中一条会在某个浏览器里留下一条丑轨道。
+   ========================================================================= */
+.rail,
+.toc {
+  scrollbar-width: none;          /* Firefox / 新 Chrome */
+  -ms-overflow-style: none;       /* 旧 Edge/IE */
+}
+
+.rail::-webkit-scrollbar,
+.toc::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;                  /* WebKit / Safari */
+}
+
+/* --- 拖拽调宽 -------------------------------------------------------------------- */
+/* 手柄贴在轨道**内侧**边缘，是一条 6px 的命中区，视觉上只在悬停时显现。
+
+   注意 `right: 0` / `left: 0` 而不是负值：轨道是 `overflow-y: auto`，
+   负偏移会被滚动容器裁掉，手柄虽然存在于 DOM、`getBoundingClientRect()` 也返回位置，
+   但那个位置上真正的元素是 `.shell` —— 指针事件永远到不了它。
+   （实测：`elementFromPoint` 返回 `shell`，`pointerdown` 一次都没触发。）
+
+   宽度可调是读者的排版偏好，所以存 localStorage —— 和主题同类，不是内容。 */
+.rail__grip,
+.toc__grip {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  cursor: col-resize;
+  z-index: 5;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  touch-action: none;
+}
+
+.rail__grip { right: 0; }
+.toc__grip { left: 0; }
+
+/* 只有在能真正拖拽的视口里才显示手柄 —— 窄屏下轨道是抽屉或不存在。 */
+@media (max-width: 1079px) {
+  .rail__grip { display: none; }
+}
+@media (max-width: 1399px) {
+  .toc__grip { display: none; }
+}
+
+.rail__grip::after,
+.toc__grip::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-out-circ);
+}
+
+.rail__grip:hover::after,
+.rail__grip:focus-visible::after,
+.toc__grip:hover::after,
+.toc__grip:focus-visible::after,
+.rail__grip[data-active="true"]::after,
+.toc__grip[data-active="true"]::after {
+  opacity: 0.55;
+}
+
+/* 拖拽期间：禁用文本选择与过渡，否则会选中文字、且列宽动画跟不上指针。 */
+body[data-resizing="true"] {
+  cursor: col-resize;
+  user-select: none;
+}
+body[data-resizing="true"] .shell,
+body[data-resizing="true"] .rail {
+  transition: none;
+}
+
+/* 触屏设备没有 hover，手柄做宽一点并常显细分隔线，否则不知道可以拖。 */
+@media (hover: none) {
+  .rail__grip, .toc__grip { width: 14px; }
+  .rail__grip::after, .toc__grip::after { opacity: 0.22; }
+}
+
+/* 移动端：侧栏变成顶部抽屉，由按钮展开。*/
+@media (max-width: 1079px) {
+  .rail {
+    border-bottom: 1px solid var(--border);
+    padding-block: calc(var(--unit) * 5);
+  }
+  .rail__body { display: none; padding-top: calc(var(--unit) * 4); }
+  .rail[data-open="true"] .rail__body { display: block; }
+  .rail__head { display: flex; align-items: center; justify-content: space-between; gap: calc(var(--unit) * 4); }
+}
+
+/* 桌面端没有抽屉，所以展开按钮必须消失。
+   注意：这里**不能**只写 `.rail__toggle { display: none }` ——
+   `.rail__item { display: flex }` 在 components.css（后加载），
+   同特异度下后者胜出，按钮会留在桌面端。这是 frontend-design 明确警告的
+   「选择器互相抵消」。所以选择器提到两个类，特异度压过 .rail__item。 */
+@media (min-width: 1080px) {
+  .rail .rail__toggle { display: none; }
+  .rail__body { display: block; }
+}
+
+/* ---- components.css ---- */
+/* ============================================================================
+   组件层
+   ----------------------------------------------------------------------------
+   版式来自 juya 的实测结构，但刻意避开 frontend-design 点名的模板特征：
+   · 不给每个标题加全大写小标签
+   · 不用等宽字体装饰小数据
+   · 不用 `A · B · C` 中间点串接的 meta
+   · 不给每张卡片同一套圆角 + 同一层灰阴影
+   ========================================================================= */
+
+/* --- 侧栏结构 -------------------------------------------------------------------- */
+.rail__brand {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--unit) * 2.5);
+  font-weight: 640;
+  font-size: var(--fs-h3);
+  letter-spacing: -0.01em;
+  margin-bottom: calc(var(--unit) * 6);
+}
+
+.rail__mark {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex: none;
+}
+
+.rail__group { display: grid; gap: calc(var(--unit) * 1); }
+
+.rail__sep {
+  height: 1px;
+  background: var(--border);
+  margin-block: calc(var(--unit) * 5);
+  border: 0;
+}
+
+/* 按钮与导航项共用一个造型：侧栏里它们是同级的东西，读者不该去分辨
+   「这是链接还是按钮」。 */
+.rail__item {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--unit) * 2.5);
+  width: 100%;
+  padding: calc(var(--unit) * 2.25) calc(var(--unit) * 3);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--fg);
+  font: inherit;
+  font-size: var(--fs-body);
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-circ);
+}
+
+.rail__item:hover { background: var(--muted); }
+
+.rail__item[aria-current="page"] {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.rail__item svg { width: 16px; height: 16px; flex: none; opacity: 0.75; }
+.rail__item[aria-current="page"] svg { opacity: 1; }
+
+.rail__hint {
+  margin-left: auto;
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+
+/* 展开式（主题四选一、下载二选一）：用原生 <details>，
+   键盘可用、无 JS 也能开合。 */
+.rail__fold > summary {
+  list-style: none;
+  cursor: pointer;
+}
+.rail__fold > summary::-webkit-details-marker { display: none; }
+.rail__fold > summary::after {
+  content: "";
+  width: 6px; height: 6px;
+  margin-left: auto;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  opacity: 0.5;
+  transition: transform var(--dur-fast) var(--ease-out-circ);
+}
+.rail__fold[open] > summary::after { transform: rotate(-135deg) translateY(-2px); }
+
+.rail__sub {
+  display: grid;
+  gap: calc(var(--unit) * 0.5);
+  padding: calc(var(--unit) * 1) 0 calc(var(--unit) * 2) calc(var(--unit) * 6);
+}
+
+.rail__sub button {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--unit) * 2);
+  padding: calc(var(--unit) * 1.5) calc(var(--unit) * 2.5);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--muted-fg);
+  font: inherit;
+  font-size: var(--fs-small);
+  text-align: left;
+  cursor: pointer;
+}
+.rail__sub button:hover { background: var(--muted); color: var(--fg); }
+.rail__sub button[aria-checked="true"] { color: var(--accent); font-weight: 600; }
+.rail__sub button[aria-checked="true"]::before { content: "✓"; }
+
+/* ============================================================================
+   日历
+   ----------------------------------------------------------------------------
+   规范要求：当日高亮 + 圆形强调。这里当日的圆是**实心强调色圆**，
+   有链接的其它日期是**浅底可点**，两者视觉权重清楚不同 ——
+   「今天」是位置，「有内容的日子」是可去的地方，不是同一件事。
+   ========================================================================= */
+.cal { margin-top: calc(var(--unit) * 1); }
+
+.cal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--unit) * 2);
+  margin-bottom: calc(var(--unit) * 2);
+}
+
+.cal__month {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.cal__nav {
+  display: flex;
+  gap: calc(var(--unit) * 0.5);
+}
+
+.cal__nav button {
+  width: 22px; height: 22px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--muted-fg);
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-circ);
+}
+.cal__nav button:hover { background: var(--muted); color: var(--fg); }
+.cal__nav button:disabled { opacity: 0.35; cursor: default; }
+
+.cal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.cal__dow {
+  font-size: 10px;
+  color: var(--muted-fg);
+  text-align: center;
+  padding-bottom: calc(var(--unit) * 0.5);
+}
+
+.cal__day {
+  position: relative;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;          /* 圆形：规范要求 */
+  background: transparent;
+  color: var(--muted-fg);
+  font: inherit;
+  font-size: var(--fs-small);
+  font-variant-numeric: tabular-nums;
+  cursor: default;
+}
+
+/* 有归档的日期：可点，浅底 */
+.cal__day[data-has="true"] {
+  background: var(--muted);
+  color: var(--fg);
+  cursor: pointer;
+  font-weight: 600;
+  transition:
+    background var(--dur-fast) var(--ease-out-circ),
+    transform var(--dur-fast) var(--spring-bouncy);
+}
+.cal__day[data-has="true"]:hover { background: var(--accent-soft); color: var(--accent); }
+.cal__day[data-has="true"]:active { transform: scale(0.9); }
+
+/* 今天：实心强调色圆 + 圆形光晕（规范的「圆形阴影」） */
+.cal__day[data-today="true"] {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.cal__day[data-today="true"]:hover { background: var(--accent); color: #fff; }
+
+/* 正在看的这一期 */
+.cal__day[data-current="true"]:not([data-today="true"]) {
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+}
+
+.cal__day[aria-disabled="true"] { opacity: 0.3; }
+
+.cal__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--unit) * 3);
+  margin-top: calc(var(--unit) * 3);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+.cal__legend span { display: flex; align-items: center; gap: calc(var(--unit) * 1.5); }
+.cal__legend i {
+  width: 9px; height: 9px; border-radius: 50%; flex: none;
+  background: var(--muted);
+  border: 1px solid var(--border);
+}
+.cal__legend i[data-k="today"] { background: var(--accent); border-color: var(--accent); }
+.cal__legend i[data-k="has"] { background: var(--muted); }
+
+/* ============================================================================
+   事件日历卡片（Tibo 重置监控）
+   ----------------------------------------------------------------------------
+   与左侧栏的小日历同一套视觉语言，但是内容主体而不是导航：
+   月份网格 + 右侧当日详情。有记录的日期可点，点开在右边看当天发生了什么。
+
+   与导航日历的区别是有意为之：那个是"去哪一天"，这个是"那天发生了什么"，
+   所以格子更大、带事件标记、右侧有详情面板。
+   ========================================================================= */
+.ecal {
+  display: grid;
+  gap: calc(var(--unit) * 8);
+}
+
+@media (min-width: 900px) {
+  .ecal { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: start; }
+}
+
+.ecal__card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: calc(var(--unit) * 6);
+}
+
+.ecal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--unit) * 3);
+  margin-bottom: calc(var(--unit) * 4);
+}
+
+.ecal__month { font-size: 1.125rem; font-weight: 640; letter-spacing: -0.01em; }
+
+.ecal__nav { display: flex; gap: calc(var(--unit) * 1); }
+.ecal__nav button {
+  width: 28px; height: 28px;
+  display: grid; place-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--muted-fg);
+  font: inherit;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-circ);
+}
+.ecal__nav button:hover { background: var(--muted); color: var(--fg); }
+.ecal__nav button:disabled { opacity: 0.3; cursor: default; }
+
+.ecal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: calc(var(--unit) * 1.5);
+}
+
+.ecal__dow {
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  text-align: center;
+  padding-bottom: calc(var(--unit) * 1.5);
+}
+
+.ecal__day {
+  position: relative;
+  min-height: 3.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2px;
+  padding: calc(var(--unit) * 1.5) 2px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--muted-fg);
+  font: inherit;
+  font-size: var(--fs-small);
+  font-variant-numeric: tabular-nums;
+  cursor: default;
+}
+
+/* 有记录的日期：可点，浅底 */
+.ecal__day[data-count] {
+  background: var(--muted);
+  color: var(--fg);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-circ),
+              transform var(--dur-fast) var(--spring-bouncy);
+}
+.ecal__day[data-count]:hover { background: var(--accent-soft); color: var(--accent); }
+.ecal__day[data-count]:active { transform: scale(0.94); }
+
+/* 选中：强调色描边，不用实心 —— 实心留给"今天" */
+.ecal__day[aria-selected="true"] {
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 640;
+}
+
+/* 今天：实心强调色圆，与左侧导航日历一致 */
+.ecal__day[data-today="true"] .ecal__num {
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  width: 1.6em; height: 1.6em;
+  display: grid; place-items: center;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.ecal__day--pad { background: transparent; }
+
+/* 事件标记：每个事件一个小点，颜色区分类型 */
+.ecal__marks { display: flex; gap: 2px; flex-wrap: wrap; justify-content: center; }
+.ecal__marks i {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--muted-fg);
+}
+.ecal__marks i[data-kind="direct_reset"] { background: var(--accent); }
+.ecal__marks i[data-kind="reset_credit"] { background: #d97706; }
+
+/* 右侧详情面板 */
+.ecal__panel { min-width: 0; }
+
+.ecal__panel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: calc(var(--unit) * 3);
+  padding-bottom: calc(var(--unit) * 3);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: calc(var(--unit) * 4);
+}
+
+.ecal__panel-date { font-size: 1.0625rem; font-weight: 640; }
+.ecal__panel-sub { font-size: var(--fs-small); color: var(--muted-fg); }
+
+.ecal__entries { list-style: none; margin: 0; padding: 0; display: grid; gap: calc(var(--unit) * 5); }
+
+.ecal__entry {
+  padding-left: calc(var(--unit) * 4);
+  border-left: 2px solid var(--accent);
+}
+.ecal__entry[data-kind="reset_credit"] { border-left-color: #d97706; }
+
+.ecal__entry-title { font-weight: 620; line-height: 1.5; }
+.ecal__entry-meta {
+  display: flex; flex-wrap: wrap; gap: calc(var(--unit) * 2);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  margin-top: calc(var(--unit) * 1);
+}
+
+.ecal__quote {
+  margin-top: calc(var(--unit) * 2.5);
+  padding-left: calc(var(--unit) * 3);
+  border-left: 2px solid var(--border);
+  font-size: var(--fs-small);
+  line-height: 1.7;
+}
+.ecal__quote em { display: block; color: var(--muted-fg); font-style: normal; font-size: var(--fs-micro); }
+
+.ecal__empty {
+  padding: calc(var(--unit) * 8) calc(var(--unit) * 4);
+  text-align: center;
+  color: var(--muted-fg);
+  font-size: var(--fs-small);
+}
+
+.ecal__legend {
+  display: flex; flex-wrap: wrap; gap: calc(var(--unit) * 4);
+  margin-top: calc(var(--unit) * 4);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+.ecal__legend span { display: flex; align-items: center; gap: calc(var(--unit) * 1.5); }
+.ecal__legend i { width: 6px; height: 6px; border-radius: 50%; background: var(--muted-fg); flex: none; }
+.ecal__legend i[data-kind="direct_reset"] { background: var(--accent); }
+.ecal__legend i[data-kind="reset_credit"] { background: #d97706; }
+.ecal__legend i[data-kind="today"] { background: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent); }
+
+/* ============================================================================
+   内容列
+   ========================================================================= */
+.content { padding-block: calc(var(--unit) * 10) calc(var(--unit) * 16); min-width: 0; }
+
+.issue__head { margin-bottom: calc(var(--unit) * 8); }
+
+.issue__date {
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+  margin-bottom: calc(var(--unit) * 2);
+}
+
+.issue__title {
+  margin: 0;
+  font-size: var(--fs-display);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.015em;
+  font-weight: 660;
+  /* 60px 中文在 700px 列里一行约 11 字，不限 measure 会长标题铺满整行。 */
+  max-width: 20ch;
+  text-wrap: balance;
+}
+
+.issue__lead {
+  margin: calc(var(--unit) * 4) 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--muted-fg);
+  max-width: 60ch;
+}
+
+/* 统计条：真实数字，横排一条，不是卡片组 */
+/* Equal columns, not flex + gap.
+   With flex each cell was exactly as wide as its own number, so 60 / 32 / 9 / 16 produced four
+   unequal blocks at a constant gap -- the row read as misaligned even though nothing overflowed.
+   Equal tracks put the numbers on a rhythm, which is what a stats row is for. */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr));
+  gap: calc(var(--unit) * 5) calc(var(--unit) * 4);
+  margin-top: calc(var(--unit) * 7);
+  padding-top: calc(var(--unit) * 5);
+  border-top: 1px solid var(--border);
+}
+
+.stats div { min-width: 0; }
+.stats b {
+  display: block;
+  font-size: 1.375rem;
+  font-weight: 660;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+/* `display: block` matters: `b` is block and this was left inline, so the label rendered
+   on the same line as the number ("23近 90 天重置") instead of beneath it. */
+.stats span { display: block; font-size: var(--fs-micro); color: var(--muted-fg); }
+
+/* --- 章节 ---------------------------------------------------------------------- */
+.section { margin-top: calc(var(--unit) * 12); scroll-margin-top: calc(var(--unit) * 6); }
+
+.section__title {
+  display: flex;
+  align-items: baseline;
+  gap: calc(var(--unit) * 3);
+  margin: 0 0 calc(var(--unit) * 5);
+  font-size: var(--fs-h2);
+  font-weight: 640;
+  letter-spacing: -0.01em;
+  padding-bottom: calc(var(--unit) * 2.5);
+  border-bottom: 1px solid var(--border);
+}
+
+.section__count {
+  font-size: var(--fs-small);
+  font-weight: 400;
+  color: var(--muted-fg);
+}
+
+/* --- 条目 ---------------------------------------------------------------------- */
+.stream { list-style: none; margin: 0; padding: 0; }
+
+.item {
+  padding-block: calc(var(--unit) * 6);
+  border-bottom: 1px solid var(--border);
+  scroll-margin-top: calc(var(--unit) * 6);
+}
+.item:last-child { border-bottom: 0; }
+
+.item__head {
+  display: flex;
+  align-items: baseline;
+  gap: calc(var(--unit) * 3);
+}
+
+/* 序号：内容确实是按顺序编出来的当日要闻，编号承载信息。
+   不用等宽字体（规范点名的 AI 味），用同族的半粗数字。 */
+.item__no {
+  flex: none;
+  font-size: var(--fs-small);
+  font-weight: 640;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  min-width: 1.6em;
+}
+
+.item__title {
+  margin: 0;
+  font-size: var(--fs-h3);
+  font-weight: 620;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  text-wrap: pretty;
+}
+.item__title a:hover { color: var(--accent); }
+
+.item__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--unit) * 2.5);
+  margin-top: calc(var(--unit) * 2);
+  padding-left: calc(1.6em + var(--unit) * 3);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+
+.badge {
+  padding: calc(var(--unit) * 0.25) calc(var(--unit) * 2);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+.badge[data-level="multi_source"] {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* 事实 / 推断 / 不确定：三栏分离，用左侧色条区分，
+   标签用普通字号而非等宽小字。 */
+.facts {
+  margin: calc(var(--unit) * 3) 0 0;
+  padding-left: calc(1.6em + var(--unit) * 3);
+  display: grid;
+  gap: calc(var(--unit) * 2);
+}
+
+.facts__label {
+  font-size: var(--fs-micro);
+  font-weight: 620;
+  color: var(--muted-fg);
+  margin-top: calc(var(--unit) * 2);
+}
+.facts__label[data-kind="fact"] { color: var(--fg); }
+
+.facts ul { margin: 0; padding: 0; list-style: none; display: grid; gap: calc(var(--unit) * 1.5); }
+
+.facts li {
+  padding-left: calc(var(--unit) * 4);
+  border-left: 2px solid var(--border);
+  line-height: 1.7;
+}
+.facts li[data-kind="inference"] { color: var(--muted-fg); }
+.facts li[data-kind="uncertain"] { color: var(--muted-fg); border-left-style: dashed; }
+
+.item__links {
+  margin-top: calc(var(--unit) * 2.5);
+  padding-left: calc(1.6em + var(--unit) * 3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--unit) * 1.5) calc(var(--unit) * 4);
+  font-size: var(--fs-small);
+}
+.item__links a { color: var(--muted-fg); word-break: break-all; }
+.item__links a:hover { color: var(--accent); }
+
+/* 无日期：明确标注，不假装是今天的 */
+.when-unknown { font-style: italic; }
+
+/* --- 右侧目录 ------------------------------------------------------------------- */
+.toc { display: none; }
+
+@media (min-width: 1400px) {
+  .toc {
+    display: block;
+    /* `sticky` also establishes the containing block for the absolutely positioned resize
+       grip, so no `position: relative` is needed here -- and adding one would override
+       `sticky` and break the rail. */
+    position: sticky;
+    top: 0;
+    align-self: start;
+    max-height: 100vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    /* Scrollbar styling lives in tokens.css, next to the dark-mode treatment, so the two
+       rails cannot drift apart. */
+    padding-block: calc(var(--unit) * 10);
+    font-size: var(--fs-small);
+  }
+}
+
+.toc__title {
+  font-size: var(--fs-micro);
+  font-weight: 640;
+  color: var(--muted-fg);
+  margin-bottom: calc(var(--unit) * 3);
+}
+
+.toc__nav { display: grid; gap: 1px; }
+
+.toc__nav a {
+  display: block;
+  /* Roomier than it looks like it needs to be: the TOC is scanned, not read, and a tight
+     list of 60 near-identical lines is hard to pick from. The vertical padding is what
+     separates one target from the next. */
+  padding: calc(var(--unit) * 2.5) calc(var(--unit) * 3);
+  border-left: 2px solid transparent;
+  color: var(--muted-fg);
+  line-height: 1.55;
+  transition: color var(--dur-fast) var(--ease-out-circ),
+              border-color var(--dur-fast) var(--ease-out-circ);
+}
+
+.toc__nav a:hover { color: var(--fg); }
+
+/* 滚动高亮：当前阅读位置。这是页面上唯一「活」的东西。 */
+.toc__nav a[aria-current="true"] {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  font-weight: 600;
+}
+
+.toc__nav a[data-level="2"] { padding-left: calc(var(--unit) * 6); font-size: var(--fs-micro); }
+
+/* --- 上一条 / 下一条 ----------------------------------------------------------------- */
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: calc(var(--unit) * 4);
+  margin-top: calc(var(--unit) * 12);
+  padding-top: calc(var(--unit) * 6);
+  border-top: 1px solid var(--border);
+}
+.pager a {
+  display: grid;
+  gap: calc(var(--unit) * 0.5);
+  font-size: var(--fs-small);
+}
+.pager a:hover { color: var(--accent); }
+.pager span { color: var(--muted-fg); font-size: var(--fs-micro); }
+.pager a:last-child { text-align: right; }
+
+/* --- 搜索对话框 ------------------------------------------------------------------- */
+.search {
+  width: min(100% - 2rem, 46rem);
+  max-height: 80vh;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--fg);
+  box-shadow: 0 18px 48px rgb(0 0 0 / 0.14);
+  overflow: hidden;
+}
+.search::backdrop { background: rgb(0 0 0 / 0.35); }
+
+.search__form {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--unit) * 3);
+  padding: calc(var(--unit) * 4) calc(var(--unit) * 5);
+  border-bottom: 1px solid var(--border);
+}
+.search__form input {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 1.0625rem;
+  outline: none;
+}
+.search__form kbd {
+  font-family: var(--font-sans);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1px 6px;
+}
+
+.search__results {
+  list-style: none;
+  margin: 0;
+  padding: calc(var(--unit) * 2);
+  overflow-y: auto;
+  max-height: 62vh;
+}
+.search__results li a {
+  display: block;
+  padding: calc(var(--unit) * 3) calc(var(--unit) * 4);
+  border-radius: var(--radius-sm);
+}
+.search__results li a:hover,
+.search__results li a:focus-visible { background: var(--muted); }
+.search__results b { display: block; font-weight: 620; margin-bottom: calc(var(--unit) * 0.5); }
+.search__results small { color: var(--muted-fg); }
+.search__empty { padding: calc(var(--unit) * 6); text-align: center; color: var(--muted-fg); }
+
+/* --- 归档列表 ------------------------------------------------------------------- */
+/* Each issue is a row with its own columns. The previous markup was two inline spans inside
+   one link -- `2026-10-14224 条` -- because `section__count` is a heading ornament, not a
+   layout primitive. A grid gives the date a fixed start and the count a fixed end, so the
+   numbers line up down the list. */
+.issue-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: calc(var(--unit) * 1);
+}
+
+.issue-row {
+  /* Fixed tracks, not auto auto 1fr auto.
+     auto sized the date and weekday to their own content, so the right-hand count landed at a
+     slightly different x on every row and the column looked ragged. Both strings are fixed width,
+     so they are declared as tracks. */
+  display: grid;
+  grid-template-columns: 7.5rem 2.5rem 1fr auto;
+  align-items: baseline;
+  gap: calc(var(--unit) * 3);
+  padding: calc(var(--unit) * 3) calc(var(--unit) * 4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  transition: background var(--dur-fast) var(--ease-out-circ),
+              border-color var(--dur-fast) var(--ease-out-circ);
+}
+
+.issue-row:hover { background: var(--muted); border-color: var(--border); }
+
+.issue-row__date {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+.issue-row__week { font-size: var(--fs-micro); color: var(--muted-fg); }
+
+.issue-row__badge {
+  justify-self: start;
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: var(--radius-sm);
+  padding: 1px calc(var(--unit) * 2);
+}
+
+.issue-row__count {
+  justify-self: end;
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* On a narrow screen the badge column has nowhere to go; stack the row rather than
+   squeezing the date and count back into contact. */
+@media (max-width: 560px) {
+  .issue-row { grid-template-columns: auto 1fr auto; row-gap: calc(var(--unit) * 0.5); }
+  .issue-row__badge { grid-column: 2; }
+}
+
+/* --- 信息源页面 ------------------------------------------------------------------ */
+.source-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.source-list li { background: var(--bg); }
+
+.source-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: calc(var(--unit) * 2) calc(var(--unit) * 4);
+  padding: calc(var(--unit) * 3.5) calc(var(--unit) * 5);
+  align-items: baseline;
+}
+
+.source-row:hover { background: var(--muted); }
+
+.source-row__name { font-weight: 620; }
+
+.source-row__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--unit) * 1.5) calc(var(--unit) * 3);
+  margin-top: calc(var(--unit) * 1);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+
+.source-row__url {
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  word-break: break-all;
+  margin-top: calc(var(--unit) * 1);
+}
+
+.source-row__state {
+  justify-self: end;
+  display: flex;
+  align-items: baseline;
+  gap: calc(var(--unit) * 2);
+  font-size: var(--fs-micro);
+  white-space: nowrap;
+  padding: 1px calc(var(--unit) * 2);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  color: var(--muted-fg);
+}
+
+/* The item count inside a state badge is secondary to the state itself. */
+.source-row__items { opacity: 0.75; }
+
+.source-row__state[data-state="ok"] { border-color: var(--accent); color: var(--accent); }
+.source-row__state[data-state="failed"] { border-color: #b45309; color: #b45309; }
+.source-row__state[data-state="credential"] { border-style: dashed; }
+.source-row__state[data-state="disabled"] { opacity: 0.6; }
+
+@media (max-width: 620px) {
+  .source-row { grid-template-columns: minmax(0, 1fr); }
+  .source-row__state { justify-self: start; }
+}
+
+/* --- 复制按钮的反馈 -------------------------------------------------------------- */
+/* A copy button that gives no feedback is indistinguishable from a broken one. The label
+   swaps for a moment and the button takes the accent colour. */
+.rail__sub button[data-copy] { position: relative; }
+.rail__sub button[data-copy][data-copied="true"] { color: var(--accent); font-weight: 600; }
+
+/* --- 订阅面板：两个按钮 + 一行小字 ------------------------------------------------
+   原来是四行等重的内容（两个复制按钮 + 两个在浏览器中查看），挤在 15rem 的栏里。
+   现在分层：复制是主要动作，给整行和足够的内边距；查看是罕用动作，压成一行小字。
+   层级而不是等分，是这一处拥挤的根源。 */
+.rail__sub--rss { display: grid; gap: calc(var(--unit) * 1.5); }
+
+.rail__btn {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: calc(var(--unit) * 2);
+  width: 100%;
+  padding: calc(var(--unit) * 2.5) calc(var(--unit) * 3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  text-align: left;
+  line-height: 1.4;
+}
+
+.rail__btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* 协议名做成一个短标签，让两个按钮在同一位置对齐，扫一眼就能分清。 */
+.rail__btn-k {
+  font-size: var(--fs-micro);
+  font-weight: 640;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 3px;
+  padding: 1px calc(var(--unit) * 1.2);
+}
+
+.rail__fine {
+  margin: 0;
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  line-height: 1.8;
+}
+
+.rail__fine a { color: var(--muted-fg); text-decoration: underline; text-underline-offset: 2px; }
+.rail__fine a:hover { color: var(--accent); }
+
+/* --- 概览 ----------------------------------------------------------------------- */
+/* The day at a glance. Deliberately a numbered list of real headlines rather than a
+   generated paragraph: a summary here would be a second, unchecked claim about the day,
+   and it would drift from the list below it. */
+.ov { list-style: none; margin: 0; padding: 0; display: grid; gap: calc(var(--unit) * 1); }
+
+.ov a {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: calc(var(--unit) * 3);
+  align-items: baseline;
+  padding: calc(var(--unit) * 2.5) calc(var(--unit) * 3);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: background var(--dur-fast) var(--ease-out-circ),
+              border-color var(--dur-fast) var(--ease-out-circ);
+}
+
+.ov a:hover { background: var(--muted); border-color: var(--border); }
+
+.ov__no {
+  font-size: var(--fs-small);
+  font-weight: 640;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.ov b { font-weight: 620; line-height: 1.5; }
+
+.ov__detail {
+  display: block;
+  margin-top: calc(var(--unit) * 0.5);
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+  line-height: 1.6;
+}
+
+.ov__foot {
+  margin: calc(var(--unit) * 4) 0 0;
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+}
+
+/* --- TOC 序号与概览项 ------------------------------------------------------------ */
+.toc__no {
+  display: inline-block;
+  min-width: 1.9em;
+  color: var(--muted-fg);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--fs-micro);
+}
+
+.toc__overview {
+  font-weight: 640;
+  color: var(--fg);
+}
+
+/* --- 待翻译条目 ------------------------------------------------------------------ */
+/* Items whose source is foreign and which the model did not reach -- usually because the
+   quota ran out mid-run. Collapsed by default and labelled: present so nothing is lost,
+   separated so an English line never reads as the digest's own writing. */
+.untranslated {
+  margin-top: calc(var(--unit) * 12);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: calc(var(--unit) * 4) calc(var(--unit) * 5);
+  background: var(--muted);
+}
+
+.untranslated summary {
+  cursor: pointer;
+  font-weight: 620;
+  color: var(--muted-fg);
+}
+
+.untranslated p {
+  margin: calc(var(--unit) * 3) 0;
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+  line-height: 1.7;
+  max-width: 70ch;
+}
+
+.untranslated ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: calc(var(--unit) * 2);
+}
+
+.untranslated li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: calc(var(--unit) * 3);
+  align-items: baseline;
+  font-size: var(--fs-small);
+}
+
+.untranslated__no {
+  color: var(--muted-fg);
+  font-variant-numeric: tabular-nums;
+}
+
+.untranslated a { word-break: break-word; }
+.untranslated a:hover { color: var(--accent); }
+.untranslated__src { color: var(--muted-fg); font-size: var(--fs-micro); white-space: nowrap; }
+
+@media (max-width: 620px) {
+  .untranslated li { grid-template-columns: auto minmax(0, 1fr); }
+  .untranslated__src { grid-column: 2; }
+}
+
+/* --- 页脚 ------------------------------------------------------------------------ */
+.foot {
+  margin-top: calc(var(--unit) * 14);
+  padding-top: calc(var(--unit) * 6);
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+}
+.foot p { max-width: 68ch; line-height: 1.7; }
+.foot a { color: var(--fg); }
+.foot a:hover { color: var(--accent); }
+
+/* --- 提示条 ---------------------------------------------------------------------- */
+.notice {
+  border-left: 3px solid var(--accent);
+  background: var(--muted);
+  border-radius: var(--radius-sm);
+  padding: calc(var(--unit) * 3.5) calc(var(--unit) * 5);
+  margin-block: calc(var(--unit) * 6);
+  font-size: var(--fs-small);
+}
+.notice p { margin: 0; }
+.notice ul { margin: calc(var(--unit) * 1.5) 0 0; padding-left: 1.1em; }
+.notice strong { font-weight: 620; }
+
+/* ============================================================================
+   入场
+   ----------------------------------------------------------------------------
+   frontend-design：「单次编排的一个瞬间胜过零散效果」。
+   所以整个页面只有**一次**入场：标题 + 首屏统计。
+   条目不参与 —— 一页 60 条各自淡入正是规范点名的通用默认。
+   同样地，隐藏必须由 JS 开启（B8 闸门的失败模式）。
+   ========================================================================= */
+.js-motion .enter:not(.is-in) { opacity: 0; transform: translate3d(0, 10px, 0); }
+.js-motion .enter.is-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--dur-slow) var(--ease-out-expo),
+    transform var(--dur-slow) var(--ease-out-expo);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .js-motion .enter { opacity: 1 !important; transform: none !important; }
+}
+
+@media print {
+  .rail, .toc, .pager, .search, .stats { display: none; }
+  .shell { display: block; }
+  .item { break-inside: avoid; }
+  body { background: #fff; }
+}
+
+/* --- 日历：侧栏月历与事件日历共用一套视觉语言 ------------------------------------
+   两个日历此前各写各的：侧栏用「有日报就填满整格」，事件日历用「数字下面点一个点」。
+   同一个概念两套画法，而读者是在这两页之间来回走的。
+
+   填满整格的版本尤其糟：见方格里有的填有的不填，看起来像棋盘格，而只有两期归档时
+   那个图案完全是偶然的；它还和「今天」的实心圆抢注意力，而后者才是全月唯一该响的地方。
+
+   现在：
+   · 有内容 → 数字下方一个点（两个日历一致）。格子保持安静，点是信号。
+   · 今天 → 唯一的实心形状：强调色圆 + 柔和光环。
+   · 正在阅读的这一期 → 描边圆环，不用第二种颜色就能和今天区分。
+   · 无内容的日期 → 降透明度而不是保持正常字重，让这个月的「哪里有事」一眼可见。
+   ============================================================================== */
+
+/* 共用：日期格与点 */
+.cal__day,
+.ecal__day {
+  position: relative;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted-fg);
+  font: inherit;
+  font-size: var(--fs-small);
+  font-variant-numeric: tabular-nums;
+  cursor: default;
+  transition: background var(--dur-fast) var(--ease-out-circ),
+              color var(--dur-fast) var(--ease-out-circ),
+              box-shadow var(--dur-fast) var(--ease-out-circ);
+}
+
+/* 网格留出呼吸：格与格之间不留缝时，点会挤在一起看不出属于哪一天。 */
+.cal__grid,
+.ecal__grid { gap: calc(var(--unit) * 0.6); }
+
+/* 有内容的日期：安静的字重，点来做标记 */
+.cal__day[data-has="true"],
+.ecal__day[data-count] {
+  color: var(--fg);
+  font-weight: 620;
+  cursor: pointer;
+}
+
+/* 数字下方的小点。用 ::after 而不是额外元素，因为它是装饰，不该出现在无障碍树里。 */
+.cal__day[data-has="true"]::after,
+.ecal__day[data-count]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.55;
+  transform: translateX(-50%);
+}
+
+/* 悬停：底色提示可点，但不变形、不换色相，避免整片闪动 */
+.cal__day[data-has="true"]:hover,
+.ecal__day[data-count]:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.cal__day[data-has="true"]:active,
+.ecal__day[data-count]:active { transform: scale(0.92); }
+
+/* 今天：全月唯一的实心形状 + 柔和光环 */
+.cal__day[data-today="true"],
+.ecal__day[data-today="true"] {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.cal__day[data-today="true"]:hover,
+.ecal__day[data-today="true"]:hover { background: var(--accent); color: #fff; }
+
+/* 今天同时有内容时，点要用白色才看得见 */
+.cal__day[data-today="true"][data-has="true"]::after,
+.ecal__day[data-today="true"][data-count]::after { background: #fff; opacity: 0.85; }
+
+/* 正在阅读的这一期：描边圆环。
+   和今天用同色系但不填满 —— 不引入第二种颜色就能区分「今天」和「我在看的这天」。 */
+.cal__day[data-current="true"]:not([data-today="true"]),
+.ecal__day[aria-selected="true"]:not([data-today="true"]) {
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+}
+
+/* 无内容的日期：降透明度，让这个月的活动分布显出来 */
+.cal__day[aria-disabled="true"],
+.ecal__day[aria-disabled="true"] { opacity: 0.28; }
+
+/* 空位（月初补齐与月末留白）完全隐形，但保留占位以保证列对齐 */
+.cal__day[aria-hidden="true"],
+.ecal__day--pad { opacity: 0; pointer-events: none; }
+
+/* 星期表头与月份标题：两者统一 */
+.cal__dow,
+.ecal__dow {
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  font-weight: 600;
+  text-align: center;
+  padding-bottom: calc(var(--unit) * 0.5);
+}
+
+.cal__month,
+.ecal__month {
+  font-size: var(--fs-small);
+  font-weight: 640;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+
+/* 上/下月按钮：做成一个安静的方形按钮，而不是裸箭头字符 */
+.cal__nav button,
+.ecal__nav button {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--muted-fg);
+  font-size: 0.9rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-circ),
+              color var(--dur-fast) var(--ease-out-circ),
+              border-color var(--dur-fast) var(--ease-out-circ);
+}
+
+.cal__nav button:hover:not(:disabled),
+.ecal__nav button:hover:not(:disabled) {
+  background: var(--muted);
+  border-color: var(--border);
+  color: var(--fg);
+}
+
+.cal__nav button:disabled,
+.ecal__nav button:disabled { opacity: 0.3; cursor: default; }
+
+/* 图例：点和圆环要跟日历里画的一模一样，否则图例本身在骗人 */
+.cal__legend,
+.ecal__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--unit) * 2) calc(var(--unit) * 3);
+  margin-top: calc(var(--unit) * 2);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+
+.cal__legend span,
+.ecal__legend span { display: flex; align-items: center; gap: calc(var(--unit) * 1.2); }
+
+.cal__legend i,
+.ecal__legend i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+  background: var(--muted-fg);
+}
+
+/* 事件日历按类型上色，因为在那里「类型」就是信息本身 */
+.ecal__marks { display: none; }   /* 点数移到 ::after 之后不再需要独立元素 */
+
+.ecal__legend i[data-kind="direct_reset"] { background: var(--accent); }
+.ecal__legend i[data-kind="reset_credit"] { background: #d97706; }
+.ecal__legend i[data-kind="today"] {
+  background: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+
+/* --- 日历：日期格尺寸与不重叠 ------------------------------------------------------
+   上一版给日期格加了 `aspect-ratio: 1`，而事件日历的列宽是 `1fr` —— 于是容器一宽，
+   格子就跟着一宽，行高却由内容决定，**圆圈溢出并在垂直方向压住相邻日期**。
+   读者点 15 号，命中的是盖在上面的另一个圆圈，看起来就是「切换不了」。
+
+   这一版把尺寸**钉死**而不是跟着列走：固定 2.25rem 的圆，在自己的格子里居中。
+   这样任何容器宽度下它都还是个日历，圆圈之间也不会互相覆盖。
+   ============================================================================== */
+.cal__grid,
+.ecal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: calc(var(--unit) * 0.5);
+  justify-items: center;
+}
+
+.cal__day,
+.ecal__day {
+  /* 钉死，不跟随列宽 */
+  width: 2.25rem;
+  height: 2.25rem;
+  min-height: 0;
+  aspect-ratio: auto;
+  padding: 0 !important;
+  display: grid !important;
+  place-items: center !important;
+  flex-direction: row !important;
+  border: 0 !important;
+  border-radius: 50%;
+  font-size: var(--fs-small);
+  line-height: 1;
+}
+
+/* 上一版的点仍保留，但要贴着圆的下沿内侧，不能溢出 */
+.cal__day[data-has="true"]::after,
+.ecal__day[data-count]::after {
+  bottom: 3px;
+}
+
+
+/* ==============================================================================
+   终版覆盖 —— 本块是日历与布局的**唯一权威**，文件里更早的日历规则作废。
+   （此前三个日历块叠了三层规则互相打架：aspect-ratio 跟列宽走、min-height 残留、
+   flex/grid 互相覆盖，才有了截图里数字漂在圆外的样子。这里一次性钉死。）
+   ============================================================================== */
+
+/* --- 一、版心：把两侧的大空隙收掉 ------------------------------------------------
+   shell 中列与两轨之间是 3rem，两侧内边距 2rem，宽屏再居中收进 1560px ——
+   三层空隙叠出来，正文在 1100px 的窗口里只剩 600px。现在：缝隙减半、
+   内边距减到 0.5rem、上限放宽到 1880px。正文优先，导航贴边。 */
+.shell {
+  max-width: 1880px;
+  padding-inline: calc(var(--unit) * 2);
+}
+@media (min-width: 1080px) {
+  .shell { gap: calc(var(--unit) * 6); padding-inline: calc(var(--unit) * 2); }
+}
+@media (min-width: 1400px) {
+  .shell { gap: calc(var(--unit) * 8); }
+}
+
+/* --- 二、侧栏过窄时日历不得挤作一团 ----------------------------------------------
+   侧栏宽度是读者可拖的，拖到 180px 时七个 15rem 列会互相压字。
+   给日历一个最小宽度，窄了就在侧栏内部横向滚动（滚动条已隐藏，功能在）；
+   格子本身用 min() 随可用宽度收缩，但数字永不小于可读字号。 */
+.cal { min-width: 12.25rem; }
+/* No horizontal scrollbar. It was added so a calendar narrower than its minimum could be
+   scrolled to, but the rail's content now fits at its minimum width -- so the bar had nothing to
+   scroll and only appeared while the rail was being dragged, which reads as a defect.
+   `hidden` is wrong here: it would clip the calendar instead of showing it. */
+.rail__body { overflow-x: visible; overflow-y: auto; }
+.cal__grid,
+.ecal__grid {
+  display: grid !important;
+  grid-template-columns: repeat(7, minmax(26px, 34px));
+  justify-content: space-between;
+  gap: calc(var(--unit) * 1);
+}
+.cal__day,
+.ecal__day {
+  width: 30px;
+  height: 30px;
+  min-height: 0;
+  aspect-ratio: auto;
+  padding: 0;
+  place-content: center;
+  display: grid !important;
+  place-items: center !important;
+  justify-self: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  font-size: 0.78rem;
+  line-height: 1;
+}
+/* 数字必须在圆心里。此前 ecal 的格子里数字 + 标记行用了 flex-column 加内边距，
+   数字被顶到圆外。marks 已隐藏，数字用 place-items 居中。 */
+.ecal__day .ecal__num { display: block; line-height: 1; }
+.ecal__marks { display: none !important; }
+
+/* 有内容：数字下方内侧一个点 */
+.cal__day[data-has="true"]::after,
+.ecal__day[data-count]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.6;
+  transform: translateX(-50%);
+}
+.cal__day[data-has="true"],
+.ecal__day[data-count] { color: var(--fg); font-weight: 620; cursor: pointer; }
+.cal__day[data-has="true"]:hover,
+.ecal__day[data-count]:hover { background: var(--accent-soft); color: var(--accent); }
+.cal__day[data-has="true"]:active,
+.ecal__day[data-count]:active { transform: scale(0.9); }
+
+/* 今天：全月唯一实心圆 + 柔和光环 */
+.cal__day[data-today="true"],
+.ecal__day[data-today="true"] {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.cal__day[data-today="true"]::after,
+.ecal__day[data-today="true"][data-count]::after { background: #fff; opacity: 0.9; }
+
+/* 正在阅读的这一期：描边圆环 */
+.cal__day[data-current="true"]:not([data-today="true"]),
+.ecal__day[aria-selected="true"]:not([data-today="true"]) {
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+}
+.cal__day[aria-disabled="true"],
+.ecal__day[aria-disabled="true"] { opacity: 0.28; }
+.cal__day[aria-hidden="true"],
+.ecal__day--pad { opacity: 0; pointer-events: none; }
+
+/* --- 三、Q弹动效 ------------------------------------------------------------------
+   手感配方（motion-web handfeel §1）：欠阻尼弹簧，STIFFNESS 80–90，DAMPING 0.86，
+   落地会过冲一点再回稳 —— 读作「有重量地落」，而不是「匀速滑过去」。
+   CSS 侧用带过冲的贝塞尔近似；JS 侧对悬停抬升用真弹簧（帧率无关写法）。 */
+
+:root {
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);      /* 过冲 12% 的落弹 */
+  --spring-soft: cubic-bezier(0.22, 1.28, 0.5, 1);  /* 轻一点，用于大块面 */
+}
+
+/* 条目入场：整列瀑布式浮现。只动 opacity/transform，走合成层。 */
+.js-motion .item {
+  opacity: 0;
+  transform: translateY(10px) scale(0.995);
+  animation: item-in 0.5s var(--spring-soft) forwards;
+}
+.js-motion .item:nth-child(2) { animation-delay: 0.03s; }
+.js-motion .item:nth-child(3) { animation-delay: 0.06s; }
+.js-motion .item:nth-child(4) { animation-delay: 0.09s; }
+.js-motion .item:nth-child(5) { animation-delay: 0.12s; }
+.js-motion .item:nth-child(n+6) { animation-delay: 0.15s; }
+@keyframes item-in {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* 卡片悬停：抬升 + 阴影，用弹簧曲线放手时有回弹 */
+.item {
+  transition: transform 0.45s var(--spring), box-shadow 0.45s var(--spring-soft),
+              border-color 0.2s ease;
+  will-change: transform;
+}
+.item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px -14px color-mix(in srgb, var(--fg) 26%, transparent);
+}
+
+/* 日历格按下：缩到 0.88 再弹回（--spring 带过冲） */
+.cal__day:active,
+.ecal__day:active { transform: scale(0.88); transition: transform 0.35s var(--spring); }
+
+/* 侧栏条目悬停：向右探 2px，弹簧回位 */
+.rail__item { transition: transform 0.4s var(--spring), background 0.2s ease, color 0.2s ease; }
+.rail__item:hover { transform: translateX(2px); }
+
+/* 主题切换：颜色 0.25s、变换 0.4s 弹簧，避免整页闪变 */
+html { transition: none; }
+body, .rail, .toc, .item, .ecal__card {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.25s;
+  transition-timing-function: ease;
+}
+
+/* 尊重系统减少动效设置（文件前部已有全局块，这里只补弹簧相关） */
+@media (prefers-reduced-motion: reduce) {
+  .js-motion .item { animation: none; opacity: 1; transform: none; }
+  .item, .rail__item { transition: none; }
+}
+
+.ecal__num {
+  /* 嵌套小圆清场：旧规则给数字套了 1.6em 的强调色圆 + 3px 光环，
+     于是「今天」看起来有两个实心圆、「阅读中」有两层环。数字就是数字。 */
+  width: auto; height: auto;
+  background: none; border-radius: 0; box-shadow: none;
+  display: block; font-weight: inherit; color: inherit;
+  margin: 0; padding: 0;
+}
+
+.ecal__day .ecal__num { justify-self: center; align-self: center; }
+.cal__day { justify-self: center; }
+
+
+/* ==============================================================================
+   终版覆盖（二）—— 动效与版心。本块在文件末尾，优先级最高。
+   ============================================================================== */
+
+/* --- 一、版心：把两侧的大空隙交给内容 --------------------------------------------
+   实测 1440px 下：左轨 240 + 缝 32 + 正文 880 + 缝 32 + 右栏 240，
+   右侧还剩约 248px 空白而左侧只有 32px —— 版心没有居中，空隙全堆在一边。
+   上限放大、内边距收小、缝收小，让正文列吸收掉多余宽度。 */
+.shell {
+  max-width: none;
+  padding-inline: calc(var(--unit) * 2);
+}
+@media (min-width: 1080px) {
+  .shell { gap: calc(var(--unit) * 5); padding-inline: calc(var(--unit) * 3); }
+}
+@media (min-width: 1400px) {
+  .shell { gap: calc(var(--unit) * 7); padding-inline: calc(var(--unit) * 3); }
+}
+/* 超宽屏才收边，且收得晚、收得宽 —— 1899px 之前一直用满窗口。 */
+@media (min-width: 2000px) {
+  .shell { max-width: 1880px; margin-inline: auto; padding-inline: calc(var(--unit) * 6); }
+}
+
+/* --- 二、日历：Tibo 页的事件日历与侧栏日历共用同一套几何 ------------------------
+   数字居中靠 place-content（grid 隐式轨道默认从左上排，这是数字偏左的真正原因）。
+   侧栏可拖窄，所以格子用固定值 + 网格居中，窄到放不下时侧栏内部横向滚动。 */
+.cal__grid,
+.ecal__grid {
+  display: grid !important;
+  /* **A capped, centred grid.** It used to be `width: 100%` with `space-between`, which pushed
+     seven 32px tracks across a 437px card and produced a 68px column pitch for a 28px circle --
+     the sparse, scattered look. A max-width bounds the pitch; `1fr` tracks let the rail's narrower
+     grid shrink instead of overlapping. */
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  justify-content: center;
+  justify-items: center;
+  gap: calc(var(--unit) * 0.5);
+  width: 100%;
+  /* 网格宽度决定「列距 / 圆」的比例。19rem 时列距 44px 而圆只有 26px，仍然发空；
+     收到 16rem 并把圆放大到 30px 后，视觉间隙约 7px —— 这才像一本日历。 */
+  max-width: 16rem;
+  margin-inline: auto;
+}
+.cal__day,
+.ecal__day {
+  width: min(30px, 100%);
+  height: 30px;
+  min-height: 0;
+  aspect-ratio: auto;
+  padding: 0 !important;
+  display: grid !important;
+  place-content: center !important;
+  place-items: center !important;
+  justify-self: center;
+  flex-direction: row !important;
+  border: 0 !important;
+  border-radius: 50%;
+  font-size: 0.76rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.ecal__num {
+  width: auto; height: auto; background: none; border-radius: 0; box-shadow: none;
+  display: block; font-weight: inherit; color: inherit; margin: 0; padding: 0;
+}
+.ecal__day .ecal__num { justify-self: center; align-self: center; }
+.ecal__marks { display: none !important; }
+
+.cal__day[data-has="true"]::after,
+.ecal__day[data-count]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 3px;
+  width: 3.5px;
+  height: 3.5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.6;
+  transform: translateX(-50%);
+}
+.cal__day[data-has="true"],
+.ecal__day[data-count] { color: var(--fg); font-weight: 620; cursor: pointer; }
+.cal__day[data-has="true"]:hover,
+.ecal__day[data-count]:hover { background: var(--accent-soft); color: var(--accent); }
+
+.cal__day[data-today="true"],
+.ecal__day[data-today="true"] {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.cal__day[data-current="true"]:not([data-today="true"]),
+.ecal__day[aria-selected="true"]:not([data-today="true"]) {
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+}
+.cal__day[aria-disabled="true"],
+.ecal__day[aria-disabled="true"] { opacity: 0.26; }
+.cal__day[aria-hidden="true"],
+.ecal__day--pad { opacity: 0; pointer-events: none; }
+
+/* 窄侧栏：日历给最小宽度，放不下时在侧栏内横向滚动（滚动条仍隐藏，功能在）。 */
+/* **No floor on the calendar, and no horizontal scrolling.**
+   `overflow-x: visible` beside `overflow-y: auto` computes to `auto`, so a horizontal bar appears
+   whenever the rail's content is wider than the rail -- and `.cal`'s 13rem (208px) floor could be
+   dragged below, because a saved rail preference from an earlier build can be narrower than the
+   current 212px minimum. Removing the floor lets the calendar contract instead: measured with no
+   scrollbar at 160 / 180 / 190 / 200 / 212px, with day cells shrinking 29px -> 21px rather than
+   overflowing. The grid tracks are already `minmax(0, 1fr)`, so they do this unaided. */
+.cal { min-width: 0; }
+.rail__body { overflow-x: hidden; }
+
+/* --- 三、Q弹动效（motion-web handfeel §1 / §6）---------------------------------
+   入场用欠阻尼弹簧的 CSS 近似（过冲 12%），悬停抬升与日历高亮用 JS 真弹簧。
+   所有动效只碰 transform / opacity，不触发布局。 */
+
+:root {
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --spring-soft: cubic-bezier(0.22, 1.28, 0.5, 1);
+}
+
+.js-motion .item {
+  opacity: 0;
+  transform: translateY(12px) scale(0.994);
+  animation: item-in 0.52s var(--spring-soft) forwards;
+}
+.js-motion .item:nth-child(2) { animation-delay: 0.035s; }
+.js-motion .item:nth-child(3) { animation-delay: 0.07s; }
+.js-motion .item:nth-child(4) { animation-delay: 0.105s; }
+.js-motion .item:nth-child(n+5) { animation-delay: 0.14s; }
+@keyframes item-in {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.item {
+  transition: box-shadow 0.45s var(--spring-soft), border-color 0.2s ease;
+  will-change: transform;
+}
+.item:hover {
+  box-shadow: 0 12px 30px -16px color-mix(in srgb, var(--fg) 28%, transparent);
+}
+
+/* 日历按下：缩到 0.86 再由 JS 弹簧弹回 */
+.cal__day:active, .ecal__day:active { transform: scale(0.86); }
+.rail__item { transition: transform 0.42s var(--spring), background 0.2s ease, color 0.2s ease; }
+.rail__item:hover { transform: translateX(2px); }
+
+/* 品牌标记的空闲呼吸（§6）：两个不同频率，绝不同步。 */
+@media (prefers-reduced-motion: no-preference) {
+  .rail__mark { animation: breathe 4.6s ease-in-out infinite; }
+}
+@keyframes breathe {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-1.4px) rotate(-1.1deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js-motion .item { animation: none; opacity: 1; transform: none; }
+  .item, .rail__item, .rail__mark { transition: none; animation: none; }
+}
+
+
+/* ==============================================================================
+   终版覆盖（三）—— 移动端留白 + 品牌标记
+   ============================================================================== */
+
+/* --- 一、窄屏必须给足边距 ------------------------------------------------------
+   实测 390px 下 padding-inline 只有 8px，标题和正文几乎贴着屏幕边。
+   桌面收窄留白是对的，但这个值不该在所有宽度生效 —— 手机上它是缺陷不是节省。 */
+@media (max-width: 900px) {
+  .shell { padding-inline: calc(var(--unit) * 5); }
+}
+@media (max-width: 560px) {
+  .shell { padding-inline: calc(var(--unit) * 4); }
+  /* 卡片是全宽出血的，所以正文自己也要有内边距，否则文字仍然贴边。 */
+  .content { padding-inline: calc(var(--unit) * 1); }
+  .item__title, .issue__title, .issue__lead, .section__title {
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
+}
+
+/* --- 二、品牌标记：把「AI」两个字母换成真正设计的图标 --------------------------
+   broadcast / feed：一个点 + 两道向外扩散的弧 —— 多路来源汇成一个信号，
+   正是这个产品在做的事。用 currentColor，跟随主题，无网络请求。 */
+.rail__mark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  /* 圆形边框：用户要求页头图标与标签页图标都是圆的。用 50% 而不是固定半径，
+     这样侧栏宽度变化时它仍然是正圆。 */
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-fg, #fff);
+  flex: none;
+  overflow: hidden;
+}
+.rail__mark .brand-mark__svg { display: block; }
+/* 「A」比弧形图标视觉重心更高，稍微下移一点让它居中。 */
+.rail__mark svg { transform: translateY(0.5px); }
+.rail__brand { gap: calc(var(--unit) * 2.5); }
+
+/* 首页大标题区的标记（如果用到）同样处理 */
+.brand-mark__svg { vertical-align: middle; }
+
+
+/* ==============================================================================
+   终版覆盖（四）—— 字体
+   ----------------------------------------------------------------------------
+   标题宋体（模板 ai-daily-deck 自己的选择）、正文与侧栏 MiSans、数字与元信息等宽。
+   三者的分工依据是各自的强项：
+
+   · 宋体（Noto Serif SC）笔画有横细竖粗的对比，大字号下有"刊物感"，适合标题。
+     小字号时笔画偏细，所以**不用**于正文。
+   · MiSans 笔画均匀、字腔开，是小米为界面做的字，小字号下清晰，适合正文与控件。
+   · IBM Plex Mono 等宽，数字位宽一致，统计行与时间戳不会跳动。
+
+   实测代价：MiSans 走官方分片 CSS，浏览器按 unicode-range 只取用到的分片 ——
+   整期日报实测 500 KB / 38 个文件；思源宋体 1.1 MB。合计 1.6 MB，可缓存。
+   两个 CDN 都不可达时退回系统字体栈，不会乱码、不会撑破布局。
+   ============================================================================== */
+
+:root {
+  --f-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", Georgia, serif;
+  --f-sans:  "MiSans", "Noto Sans SC", "PingFang SC", "Hiragino Sans GB",
+             "Microsoft YaHei", system-ui, sans-serif;
+  --f-mono:  "IBM Plex Mono", "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+/* 标题：宋体 */
+.issue__title,
+.item__title,
+.section__title,
+.issue__head h1,
+.cover__title,
+h1, h2, h3 {
+  font-family: var(--f-serif);
+}
+
+/* 正文与控件：MiSans。正文行高比黑体略松一点，字腔开、行距紧会显得密。 */
+.facts, .inferences, .opinions, .uncertainties,
+.item__body, .item p, p, li,
+.facts li, .inferences li, .opinions li, .uncertainties li,
+.rail__item, .rail__sub button, .rail__btn, .toc__nav a,
+.rail__brand, .section__count, .issue__date,
+button, input, select, summary {
+  font-family: var(--f-sans);
+}
+
+.facts li, .inferences li, .opinions li, .uncertainties li { line-height: 1.85; }
+
+/* 数字与元信息：等宽，等宽数字让统计行不跳动 */
+.stats b, .stats span,
+.item__meta, .item__meta span,
+.cal__month, .ecal__month,
+[data-theme-summary], time {
+  font-family: var(--f-mono);
+  font-feature-settings: "tnum";
+}
+
+/* 界面正文的最后一道兜底：没有 --f-sans 声明的元素也走 MiSans，避免混排出两种黑体。 */
+body { font-family: var(--f-sans); }
+
+/* Two figures on the index page: they belong together, so they must not be spread across the
+   full column. `auto-fit 1fr` stretched them to the edges -- "4" at the left margin and "160" at
+   the far right, which reads as two unrelated numbers rather than one summary line. */
+.stats--pair {
+  grid-template-columns: repeat(2, max-content);
+  gap: calc(var(--unit) * 4) calc(var(--unit) * 10);
+}
+
+/* The archive list is a short table, not a full-width bar. Left to fill the column, the count
+   landed at the far edge, ~640px away from its own date, and the eye could not pair them.
+   Capping the measure keeps each row readable as one line of information. */
+.issue-list { max-width: 44rem; }
+
+
+html[data-ui="a"] body { background: #fbfaf7; }
+html[data-ui="a"] .content { max-width: 46rem; }
+html[data-ui="a"] .issue__head { border-top: 3px double var(--fg); padding-top: 1.5rem; }
+html[data-ui="a"] .issue__date { letter-spacing: .18em; text-transform: uppercase; font-size: .72rem; }
+html[data-ui="a"] .issue__title { font-weight: 800; letter-spacing: -.035em; line-height: 1.05; }
+html[data-ui="a"] .stats { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  padding-block: 1.1rem; margin-block: 2rem; }
+html[data-ui="a"] .stats b { font-size: 1.1rem; font-weight: 600; }
+html[data-ui="a"] .stats span { letter-spacing: .1em; text-transform: uppercase; font-size: .68rem; }
+html[data-ui="a"] .section { margin-top: 3.25rem; }
+html[data-ui="a"] .section__title { font-family: var(--f-serif); font-size: 1.6rem;
+  letter-spacing: -.02em; border-bottom: 1px solid var(--border); padding-bottom: .5rem; }
+html[data-ui="a"] .section__count { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; }
+html[data-ui="a"] .item { padding: 1.15rem 0; border-bottom: 1px solid var(--border); }
+html[data-ui="a"] .item__title { font-family: var(--f-serif); font-weight: 700; line-height: 1.35; }
+html[data-ui="a"] .item__no { font-family: var(--f-mono); font-size: .8rem; color: var(--accent);
+  padding-top: .22rem; }
+
+html[data-ui="b"] body { background: #f6f7f9; }
+html[data-ui="b"] .issue__head { padding-bottom: 1.5rem; }
+html[data-ui="b"] .stats { background: #fff; border: 1px solid var(--border); border-radius: 1rem;
+  padding: 1.25rem 1.5rem; margin-block: 1.85rem; box-shadow: 0 1px 2px rgba(16,24,40,.04); }
+html[data-ui="b"] .section { margin-top: 2.5rem; }
+html[data-ui="b"] .section__title { font-size: 1.05rem; font-weight: 650; letter-spacing: 0; }
+html[data-ui="b"] .item { background: #fff; border: 1px solid var(--border); border-radius: .9rem;
+  padding: 1.15rem 1.35rem; margin-bottom: .7rem; box-shadow: 0 1px 2px rgba(16,24,40,.04);
+  transition: box-shadow .18s, transform .18s; }
+html[data-ui="b"] .item:hover { box-shadow: 0 6px 20px rgba(16,24,40,.09); transform: translateY(-1px); }
+html[data-ui="b"] .item__title { font-weight: 650; line-height: 1.4; }
+html[data-ui="b"] .item__no { width: 1.35rem; height: 1.35rem; border-radius: 50%;
+  background: var(--accent-soft); color: var(--accent); display: grid; place-items: center;
+  font-family: var(--f-mono); font-size: .68rem; font-weight: 600; flex: none; }
+
+html[data-ui="c"] body { background: #fdfcf9; }
+html[data-ui="c"] .content { max-width: 52rem; }
+html[data-ui="c"] .issue__title { font-weight: 800; letter-spacing: -.04em; line-height: 1.02;
+  border-bottom: 2px solid var(--fg); padding-bottom: .4rem; }
+html[data-ui="c"] .stats { gap: 0; margin-block: 1.25rem; padding-block: .8rem;
+  border-top: 1px solid var(--fg); border-bottom: 1px solid var(--fg); }
+html[data-ui="c"] .stats div { border-right: 1px solid var(--border); padding-right: 1.1rem; }
+html[data-ui="c"] .stats div:last-child { border-right: 0; }
+html[data-ui="c"] .stats b { font-size: .95rem; }
+html[data-ui="c"] .section { margin-top: 2.15rem; }
+html[data-ui="c"] .section__title { font-family: var(--f-sans); font-size: .78rem; font-weight: 700;
+  letter-spacing: .16em; text-transform: uppercase; border-bottom: 1px solid var(--fg);
+  padding-bottom: .35rem; }
+html[data-ui="c"] .item { padding: .62rem 0; border-bottom: 1px dotted var(--border); }
+html[data-ui="c"] .item__title { font-size: .96rem; line-height: 1.45; }
+html[data-ui="c"] .item__meta { display: none; }
+html[data-ui="c"] .item__no { font-family: var(--f-mono); font-size: .72rem; color: var(--muted-fg); }
+
+#uibar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 2147483647; background: #16181c;
+  color: #fff; padding: 12px 20px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  font: 500 14px/1.4 system-ui, sans-serif; box-shadow: 0 -2px 16px rgba(0,0,0,.3); }
+#uibar b { font-weight: 600; opacity: .6; margin-right: 6px; letter-spacing: .04em; }
+#uibar button { background: #2a2a2e; color: #eee; border: 1px solid #3a3a40; border-radius: 999px;
+  padding: 7px 18px; font: inherit; cursor: pointer; transition: .15s; }
+#uibar button:hover { background: #3a3a42; }
+#uibar button[aria-pressed="true"] { background: #0065fd; border-color: #0065fd; color: #fff; }
+#uibar .hint { opacity: .5; margin-left: auto; font-size: 13px; }
+body { padding-bottom: 64px; }
+</style></head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+
+<div class="shell">
+      <aside class="rail" aria-label="站点导航">
+        <button class="rail__grip" type="button" data-resize="rail"
+                aria-label="拖动调整左栏宽度" title="拖动调整宽度（双击恢复默认）"></button>
+        <div class="rail__head">
+          <a class="rail__brand" href="https://siweimidu.github.io/ai-ribao/index.html">
+            <span class="rail__mark" aria-hidden="true"><svg viewBox="0 0 18 18" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g transform="translate(9 9) scale(0.0314) translate(-765 -765)" fill="currentColor"><path fill-rule="evenodd" d="M 494,818 L 626,504 L 711,503 L 800,711 L 803,711 L 1018,546 L 1032,538 L 1027,544 L 745,795 L 740,795 L 726,765 L 610,765 L 586,820 Z M 669,614 L 701,694 L 636,694 Z"/><path d="M 871,713 L 867,712 L 560,989 L 587,971 L 781,825 L 783,1025 L 871,1024 Z"/></g></svg></span>
+            <span>AI 日报</span>
+          </a>
+          <button class="rail__toggle rail__item" type="button" aria-expanded="false"
+                  aria-controls="rail-body" style="width:auto">
+            <span class="sr">展开导航</span>
+            <span aria-hidden="true">☰</span>
+          </button>
+        </div>
+
+        <div class="rail__body" id="rail-body">
+          <!-- 1. 搜索往期内容 -->
+          <div class="rail__group">
+            <button class="rail__item" type="button" data-open-search>
+              <span>搜索往期内容</span>
+            </button>
+          </div>
+
+          <!-- 2. 首页 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <a class="rail__item" href="https://siweimidu.github.io/ai-ribao/index.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5 9 3l6 5.5V15H3z"/><path d="M7.5 15v-4h3v4"/></svg><span>首页</span></a>
+          </div>
+
+          <hr class="rail__sep">
+
+          <!-- 3. 日历 -->
+          <div class="cal" aria-label="按日期浏览">
+            <div class="cal__head">
+              <span class="cal__month">—</span>
+              <span class="cal__nav">
+                <button type="button" data-nav="prev" aria-label="上个月">‹</button>
+                <button type="button" data-nav="next" aria-label="下个月">›</button>
+              </span>
+            </div>
+            <div class="cal__grid" role="grid">
+              <span class="cal__dow">日</span><span class="cal__dow">一</span>
+              <span class="cal__dow">二</span><span class="cal__dow">三</span>
+              <span class="cal__dow">四</span><span class="cal__dow">五</span>
+              <span class="cal__dow">六</span>
+            </div>
+            <div class="cal__legend">
+              <span><i data-k="today"></i>今天</span>
+              <span><i data-k="has"></i>有日报</span>
+            </div>
+          </div>
+
+          <hr class="rail__sep">
+
+          <!-- 4. Tibo 重置监控 -->
+          <div class="rail__group">
+            <a class="rail__item" href="https://siweimidu.github.io/ai-ribao/tibo.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6.5"/><path d="M9 5.5V9l2.5 1.5"/></svg><span>Tibo 重置监控</span></a>
+          </div>
+
+          <!-- 微信公众号：暂无账号，先不放入口。留一个不能用的按钮比没有更糟。 -->
+
+          <!-- 6. 订阅 RSS -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <details class="rail__fold">
+              <summary class="rail__item"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M3 4.5A8.5 8.5 0 0 1 11.5 13"/><path d="M3 8A5 5 0 0 1 8 13"/></svg><span>订阅 RSS</span></summary>
+              <div class="rail__sub rail__sub--rss" role="menu">
+                <button type="button" class="rail__btn" data-copy="https://siweimidu.github.io/ai-ribao/feed/zh.xml">
+                  <span class="rail__btn-k">RSS</span>复制订阅地址
+                </button>
+                <button type="button" class="rail__btn" data-copy="https://siweimidu.github.io/ai-ribao/feed/zh.json">
+                  <span class="rail__btn-k">JSON</span>复制订阅地址
+                </button>
+                <p class="rail__fine">
+                  或在浏览器中查看
+                  <a href="https://siweimidu.github.io/ai-ribao/feed/zh.xml">RSS</a>
+                  <a href="https://siweimidu.github.io/ai-ribao/feed/zh.json">JSON</a>
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <!-- 7. 主题 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <details class="rail__fold">
+              <summary class="rail__item">
+                <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M9 3v12"/><path d="M9 3a6 6 0 0 1 0 12"/></svg><span>主题</span>
+                <span class="rail__hint" data-theme-summary>自动</span>
+              </summary>
+              <div class="rail__sub" role="menu"><button type="button" data-theme-choice="light" aria-checked="false">亮色</button><button type="button" data-theme-choice="dark" aria-checked="false">暗色</button><button type="button" data-theme-choice="claude-light" aria-checked="false">Claude 亮色</button><button type="button" data-theme-choice="claude-dark" aria-checked="false">Claude 暗色</button></div>
+            </details>
+          </div>
+
+          <!-- 8. 下载 markdown（仅在有具体日期的页面上显示）
+               首页的 rail 用的是最新一期，在这里放下载按钮等于让读者先猜自己要看哪一天。
+               先把日期选出来，日期页再给出那一天的 markdown。 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)"><a class="rail__item" href="https://siweimidu.github.io/ai-ribao/2026-10-17.md" download><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v8"/><path d="M5.5 8 9 11.5 12.5 8"/><path d="M3.5 13.5h11"/></svg><span>下载 Markdown</span></a></div>
+
+          <hr class="rail__sep">
+
+          <div class="rail__group">
+            <a class="rail__item" href="https://siweimidu.github.io/ai-ribao/sources.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M3 4.5A8.5 8.5 0 0 1 11.5 13"/><path d="M3 8A5 5 0 0 1 8 13"/></svg><span>信息源</span></a>
+            <a class="rail__item" href="https://github.com/siweimidu/ai-ribao" rel="noopener noreferrer">
+              <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2.5a6.5 6.5 0 0 0-2 12.7c-.1-.5-.1-1.2 0-1.7.2-.8 1.4-5 1.4-5s-.3-.7-.3-1.7c0-1.6.9-2.7 2-2.7.9 0 1.4.7 1.4 1.6 0 1-.6 2.4-.9 3.8-.3 1 .5 1.9 1.6 1.9 1.9 0 3.3-2.5 3.3-5.4 0-2.3-1.6-3.9-4-3.9-2.7 0-4.3 2-4.3 4.1 0 .9.3 1.8.8 2.3.1.1.1.2.1.3l-.3 1.1c0 .2-.2.2-.4.1-1.3-.6-2.1-2.5-2.1-4C5.3 3.4 7.5 2.5 9 2.5z"/></svg><span>源码与说明</span>
+            </a>
+          </div>
+        </div>
+      </aside>
+
+  <main class="content" id="main">
+    <header class="issue__head">
+      <p class="issue__date enter">2026-10-17　第 4 期</p>
+      <h1 class="issue__title enter">DeepSeek 开放自研搜索 API</h1>
+      
+      <div class="stats enter"><div><b class="count-up" data-to="60">60</b><span>事件</span></div><div><b class="count-up" data-to="32">32</b><span>有内容的源</span></div><div><b class="count-up" data-to="9">9</b><span>多源验证</span></div><div><b class="count-up" data-to="16">16</b><span>头条覆盖来源</span></div></div>
+    </header>
+
+    
+
+          <section class="section overview" id="overview">
+        <h2 class="section__title">概览<span class="section__count">今日要闻</span></h2>
+        <ol class="ov"><li><a href="#e-late-abfd7"><span class="ov__no">01</span><span><b>DeepSeek 开放自研搜索 API</b></span></a></li><li><a href="#e-late-1dd2c"><span class="ov__no">02</span><span><b>OpenAI 升级 GPT-6 Astra Pro，DeepSeek 发布 V4.1-Flash</b></span></a></li><li><a href="#e-late-b0439"><span class="ov__no">03</span><span><b>DeepSeek 发布 V4.1-Flash-1017，Nathan Lambert 称其或凭内置视觉强于 GLM 5.3</b></span></a></li><li><a href="#e-late-988e5"><span class="ov__no">04</span><span><b>deepseek-v4.1-flash-1017 发布了</b></span></a></li><li><a href="#e-ec0534c0f0"><span class="ov__no">05</span><span><b>微软完成 MAI-Base-2 预训练，参数达2.8T</b><span class="ov__detail">微软宣布新一代基础模型 MAI-Base-2 完成预训练。</span></span></a></li><li><a href="#e-late-41640"><span class="ov__no">06</span><span><b>WorkBuddy Intl 更新支持 DeepSeek-V4.1-Flash-1017，10 月 31 日前免费</b></span></a></li><li><a href="#e-ed6473d677"><span class="ov__no">07</span><span><b>Gemini 4 Argon 向 Google AI Pro 开放</b><span class="ov__detail">Google AI Studio 已向 Google AI Pro 订阅用户开放 Gemini 4 Argon。</span></span></a></li><li><a href="#e-ee1d619367"><span class="ov__no">08</span><span><b>DeepSeek 开源昇腾支持以适配多种芯片</b><span class="ov__detail">DeepSeek 于9月30日开源了面向华为昇腾平台的编程基础设施。</span></span></a></li></ol>
+        <p class="ov__foot">今日共 60 条事件，
+        其中 9 条经多个独立来源交叉验证。下面是完整列表。</p>
+      </section>
+
+      <section class="section" id="all">
+        <h2 class="section__title">全部消息<span class="section__count">52 条</span></h2>
+        <ol class="stream">
+        <li class="item" id="e-late-abfd7">
+          <div class="item__head">
+            <span class="item__no">01</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/x7hxr1lvyddc8hrbrugfx4uyg" target="_blank" rel="noopener noreferrer">DeepSeek 开放自研搜索 API</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            <span>3 个独立来源</span>
+            <span>10-16 16:00 UTC</span>
+            <a href="https://aihot.news/items/x7hxr1lvyddc8hrbrugfx4uyg" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-1dd2c">
+          <div class="item__head">
+            <span class="item__no">02</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/ivatvasklri5wxuvipyld8veh" target="_blank" rel="noopener noreferrer">OpenAI 升级 GPT-6 Astra Pro，DeepSeek 发布 V4.1-Flash</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 10:49 UTC</span>
+            <a href="https://aihot.news/items/ivatvasklri5wxuvipyld8veh" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-b0439">
+          <div class="item__head">
+            <span class="item__no">03</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/ua39ly8afnr06q06b9tuk7yhy" target="_blank" rel="noopener noreferrer">DeepSeek 发布 V4.1-Flash-1017，Nathan Lambert 称其或凭内置视觉强于 GLM 5.3</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 10:33 UTC</span>
+            <a href="https://aihot.news/items/ua39ly8afnr06q06b9tuk7yhy" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          <div class="item__links"><a href="https://aihot.news/items/skccm7zeft49lqkbm0wla8yua" rel="noopener noreferrer">aihot.news</a><a href="https://aihot.news/items/s6ad9vu3fmlbioz0kdomylfcc" rel="noopener noreferrer">aihot.news</a></div>
+        </li>
+        <li class="item" id="e-late-988e5">
+          <div class="item__head">
+            <span class="item__no">04</span>
+            <h3 class="item__title"><a href="https://www.v2ex.com/t/1249603" target="_blank" rel="noopener noreferrer">deepseek-v4.1-flash-1017 发布了</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 08:34 UTC</span>
+            <a href="https://www.v2ex.com/t/1249603" rel="noopener noreferrer">v2ex.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-ec0534c0f0">
+          <div class="item__head">
+            <span class="item__no">05</span>
+            <h3 class="item__title"><a href="https://www.aibase.com/zh/news/31691" target="_blank" rel="noopener noreferrer">微软完成 MAI-Base-2 预训练，参数达2.8T</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-16 11:46 UTC</span>
+            <a href="https://www.aibase.com/zh/news/31691" rel="noopener noreferrer">aibase.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">微软宣布新一代基础模型 MAI-Base-2 完成预训练。</li><li data-kind="fact">微软称 MAI-Base-2 的性能强于所有参测开源权重模型。</li><li data-kind="fact">MAI-Base-2 总参数为2.8T，活跃参数为80B。</li><li data-kind="fact">MAI-Base-2 使用6000块英伟达 GB200 GPU 训练38天。</li><li data-kind="fact">训练期间平均浮点算力利用率为21%，有效吞吐量为89%。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">如果双方采用一致的测量口径，MAI-Base-2 的算力效率可能高于 DeepSeek 4至12倍。</li><li data-kind="inference">从总参数与活跃参数的差异看，MAI-Base-2 运行时可能不会同时激活全部参数。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明参测的开源权重模型名单。</li><li data-kind="uncertain">材料没有说明性能比较使用的指标、数据集和测试条件。</li><li data-kind="uncertain">材料没有说明算力效率对比的具体计算方法和口径。</li><li data-kind="uncertain">材料没有解释有效吞吐量的定义。</li><li data-kind="uncertain">材料没有说明 MAI-Base-2 是否已经对外发布或开放使用。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-41640">
+          <div class="item__head">
+            <span class="item__no">06</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/xgj246drlw70qbgypibz6atla" target="_blank" rel="noopener noreferrer">WorkBuddy Intl 更新支持 DeepSeek-V4.1-Flash-1017，10 月 31 日前免费</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            <span>8 个独立来源</span>
+            <span>10-16 16:00 UTC</span>
+            <a href="https://aihot.news/items/xgj246drlw70qbgypibz6atla" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          <div class="item__links"><a href="https://aihot.news/items/u10wb9lknsrn2hx85ilsyldy5" rel="noopener noreferrer">aihot.news</a><a href="https://aihot.news/items/s3ft7zg3cpnmuk0xht19gtj5v" rel="noopener noreferrer">aihot.news</a><a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017" rel="noopener noreferrer">huggingface.co</a><a href="https://huggingface.co/models/deepseek-ai/DeepSeek-V4.1-Flash-1017" rel="noopener noreferrer">huggingface.co</a><span style="color:var(--muted-fg)">另有 1 个来源</span></div>
+        </li>
+        <li class="item" id="e-ed6473d677">
+          <div class="item__head">
+            <span class="item__no">07</span>
+            <h3 class="item__title"><a href="https://x.com/GoogleAIStudio/status/2111240722426802258" target="_blank" rel="noopener noreferrer">Gemini 4 Argon 向 Google AI Pro 开放</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 01:50 UTC</span>
+            <a href="https://x.com/GoogleAIStudio/status/2111240722426802258" rel="noopener noreferrer">x.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Google AI Studio 已向 Google AI Pro 订阅用户开放 Gemini 4 Argon。</li><li data-kind="fact">Gemini 4 Argon 可在 AI Studio 的 Build 和 Playground 中使用。</li><li data-kind="fact">官方文档显示，Google AI Pro 和 Ultra 订阅方案均可访问该模型，免费方案不提供访问权限。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这表明 Gemini 4 Argon 的访问权限按订阅方案区分。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明开放的具体时间。</li><li data-kind="uncertain">材料未说明 Google AI Pro 和 Ultra 订阅方案的具体访问额度或限制。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-ee1d619367">
+          <div class="item__head">
+            <span class="item__no">08</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/hbvfpex76ecwu9amvds2er8o0" target="_blank" rel="noopener noreferrer">DeepSeek 开源昇腾支持以适配多种芯片</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-16 22:39 UTC</span>
+            <a href="https://aihot.news/items/hbvfpex76ecwu9amvds2er8o0" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">DeepSeek 于9月30日开源了面向华为昇腾平台的编程基础设施。</li><li data-kind="fact">该基础设施包括计算库和通信库。</li><li data-kind="fact">TileKernels 仓库新增了昇腾后端，使同一套 Python 接口可在 Nvidia 图形处理器和华为神经网络处理器上运行。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这可能降低开发者对 Nvidia 硬件的单一依赖。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明昇腾后端的性能表现。</li><li data-kind="uncertain">材料未说明该基础设施的实际采用范围。</li><li data-kind="uncertain">材料未说明这一支持是否已经削弱了 Nvidia 的不可替代性。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-bf164">
+          <div class="item__head">
+            <span class="item__no">09</span>
+            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE13Wk5iOU9UQ2N5RGZ0N1NUMy1vRkNRbmY1Y1Zidk0yTVRTN2FvNXlGZ01Bd0syMmZtOGVBR0xRZmZZSTFMT2tyVVdQVFQtelFOaC02cEhCd2RZRjJ1Y0wxcG9YRGFkUEhCWktmaVg2ZHA?oc=5" target="_blank" rel="noopener noreferrer">DeepSeek发布AI模型更新，向所有用户开放搜索API 提供者 Investing.com - 英为财情 Investing.com</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 14:33 UTC</span>
+            <a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE13Wk5iOU9UQ2N5RGZ0N1NUMy1vRkNRbmY1Y1Zidk0yTVRTN2FvNXlGZ01Bd0syMmZtOGVBR0xRZmZZSTFMT2tyVVdQVFQtelFOaC02cEhCd2RZRjJ1Y0wxcG9YRGFkUEhCWktmaVg2ZHA?oc=5" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e183e6daa8">
+          <div class="item__head">
+            <span class="item__no">10</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/w2fjvdthiw750rgrq0xfb39dz" target="_blank" rel="noopener noreferrer">阿里 Qwen 开源 BlenderWorld 三维建模基准</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 00:43 UTC</span>
+            <a href="https://aihot.news/items/w2fjvdthiw750rgrq0xfb39dz" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">阿里 Qwen 团队于 10 月 14 日开源 BlenderWorld。</li><li data-kind="fact">BlenderWorld 包含 223 道题和 2651 条标准。</li><li data-kind="fact">BlenderWorld 用于评测视觉智能体在 Blender 中完成真实三维创作任务的能力。</li><li data-kind="fact">BlenderWorld 采用 MIT 许可证，代码与数据集已发布至 GitHub、Hugging Face 和 ModelScope。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">BlenderWorld 可用于评估视觉智能体在 Blender 三维创作任务中的表现。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明 2651 条标准的具体含义。</li><li data-kind="uncertain">材料没有提供任何模型的评测结果。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e7e92fd8f1">
+          <div class="item__head">
+            <span class="item__no">12</span>
+            <h3 class="item__title"><a href="https://www.anthropic.com/research/designing-efficient-quantum-circuits" target="_blank" rel="noopener noreferrer">Claude 在 8 项量子电路任务中优化设计</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>3 个独立来源</span>
+            <span>10-17 01:50 UTC</span>
+            <a href="https://www.anthropic.com/research/designing-efficient-quantum-circuits" rel="noopener noreferrer">anthropic.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Anthropic 公布了 Claude 参与量子电路设计的研究成果。</li><li data-kind="fact">研究人员为 Claude 提供 8 项量子电路任务的自然语言要求和自动评估程序。</li><li data-kind="fact">自动评估程序检查设计正确性并对资源使用评分。</li><li data-kind="fact">Claude 找到优于已发表最佳方案的电路设计，部分改进达到一个数量级以上。</li><li data-kind="fact">研究整体仍包含少量人工引导。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">自动评估程序与反复改进流程可能减少了每轮设计对人工介入的需求。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明 8 项任务各自的具体设计结果。</li><li data-kind="uncertain">材料没有说明少量人工引导的具体方式和范围。</li><li data-kind="uncertain">材料没有说明量子电路设计改进对实际量子计算机可用性的影响。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-571fc">
+          <div class="item__head">
+            <span class="item__no">13</span>
+            <h3 class="item__title"><a href="https://mp.weixin.qq.com/s?__biz=Mzk0OTYwNzc3NQ==&amp;mid=2247485876&amp;idx=1&amp;sn=2606d3fa9ac085f94290ddd1d94649cc" target="_blank" rel="noopener noreferrer">DeepSeek V4.1 Flash 新版本：许愿式编程一键成真</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 08:11 UTC</span>
+            <a href="https://mp.weixin.qq.com/s?__biz=Mzk0OTYwNzc3NQ==&amp;mid=2247485876&amp;idx=1&amp;sn=2606d3fa9ac085f94290ddd1d94649cc" rel="noopener noreferrer">mp.weixin.qq.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e663d1c7ea">
+          <div class="item__head">
+            <span class="item__no">14</span>
+            <h3 class="item__title"><a href="https://api-docs.deepseek.com/zh-cn/guides/search/" target="_blank" rel="noopener noreferrer">DeepSeek新增搜索与抓取接口并按次收费</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 01:50 UTC</span>
+            <a href="https://api-docs.deepseek.com/zh-cn/guides/search/" rel="noopener noreferrer">api-docs.deepseek.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">DeepSeek为网页搜索和抓取提供独立的搜索接口和抓取接口。</li><li data-kind="fact">搜索接口按关键词返回搜索结果，抓取接口抓取单个网页并返回正文。</li><li data-kind="fact">两种接口均按每千次成功请求收费5元。</li><li data-kind="fact">成功返回且产生结果的请求计费，失败、无搜索结果和超时请求不计费。</li><li data-kind="fact">返回结果条数不影响单次请求价格。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这意味着搜索和抓取接口的收费单位是成功请求次数，而不是返回结果数量。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">具体开始计费时间尚未公布。</li><li data-kind="uncertain">材料未说明通过Claude Code或Codex发起的抓取请求是否享受免费期。</li><li data-kind="uncertain">材料未说明搜索接口和抓取接口的具体上线时间。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-55dd8">
+          <div class="item__head">
+            <span class="item__no">15</span>
+            <h3 class="item__title"><a href="https://mp.weixin.qq.com/s/dGd6Nz03MF4-1ua1CMmZxA" target="_blank" rel="noopener noreferrer">WorkBuddy 公布 DeepSeek 故障补偿</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 01:50 UTC</span>
+            <a href="https://mp.weixin.qq.com/s/dGd6Nz03MF4-1ua1CMmZxA" rel="noopener noreferrer">mp.weixin.qq.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-75d67">
+          <div class="item__head">
+            <span class="item__no">16</span>
+            <h3 class="item__title"><a href="https://mp.weixin.qq.com/s/oHvOQB8QfOS_FKieyPgQAg" target="_blank" rel="noopener noreferrer">DeepSeek 整合多支团队成立产品部</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 01:50 UTC</span>
+            <a href="https://mp.weixin.qq.com/s/oHvOQB8QfOS_FKieyPgQAg" rel="noopener noreferrer">mp.weixin.qq.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-ee1c2a2949">
+          <div class="item__head">
+            <span class="item__no">17</span>
+            <h3 class="item__title"><a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes" target="_blank" rel="noopener noreferrer">OpenAI 向符合条件用户推出 ChatGPT Slides</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 01:50 UTC</span>
+            <a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes" rel="noopener noreferrer">help.openai.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OpenAI 开始在 ChatGPT 网页版和桌面 App 中逐步推出 Slides 功能，面向符合条件且可使用 Space 的 Pro、Business 和 Enterprise 用户。</li><li data-kind="fact">用户可从对话、文件或大纲创建演示文稿，也可提供示例文稿引导样式和布局。</li><li data-kind="fact">Slides 支持编辑文字、图片、形状和图表，也支持邀请同事实时编辑同一份文稿并留下共享评论。</li><li data-kind="fact">用户可在 ChatGPT 中演示文稿；网页版支持导出为 PowerPoint、PDF 或 Google Slides。</li><li data-kind="fact">桌面 App 可在已安装 PowerPoint 或 Keynote 时用相应应用打开文稿。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Slides 将演示文稿的创建、协作和演示整合到 ChatGPT 工作流程中。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明 Slides 向符合条件用户推出的具体时间表。</li><li data-kind="uncertain">材料未说明可使用 Space 的用户范围及判定条件。</li><li data-kind="uncertain">材料未说明桌面 App 支持的导出格式。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e947326fbd">
+          <div class="item__head">
+            <span class="item__no">20</span>
+            <h3 class="item__title"><a href="https://x.com/thsottiaux/status/2111244596131111253" target="_blank" rel="noopener noreferrer">OpenAI优化Codex提升有效使用量</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 01:50 UTC</span>
+            <a href="https://x.com/thsottiaux/status/2111244596131111253" rel="noopener noreferrer">x.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OpenAI的Codex负责人Tibo表示，Codex和Work已完成改进。</li><li data-kind="fact">改进措施包括在子代理之间复用上下文、延长上下文缓存时间和优化请求路由。</li><li data-kind="fact">优化请求路由的目的是提高缓存命中率。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这些改进可能使用户在现有资源下获得更多有效使用量。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明有效使用量的具体提升幅度。</li><li data-kind="uncertain">材料没有说明这些改进的具体上线时间。</li><li data-kind="uncertain">材料没有说明Codex和Work分别获得了哪些改进。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-7d83f">
+          <div class="item__head">
+            <span class="item__no">22</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/o29h52bjq5lgan97a69yf5c2j" target="_blank" rel="noopener noreferrer">Meta 开源权重模型竞争力展望</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 14:15 UTC</span>
+            <a href="https://aihot.news/items/o29h52bjq5lgan97a69yf5c2j" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-0bfae">
+          <div class="item__head">
+            <span class="item__no">23</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/p4mq9t7wyzlxritu15i6d8dtv" target="_blank" rel="noopener noreferrer">Anthropic 如何在 Claude 写下 Claude Code 约 90% 代码后重新设计代码评审</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            <span>3 个独立来源</span>
+            <span>10-17 01:52 UTC</span>
+            <a href="https://aihot.news/items/p4mq9t7wyzlxritu15i6d8dtv" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-b64ce">
+          <div class="item__head">
+            <span class="item__no">24</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/bjzjg5k7af07c1c20bc1a8gxp" target="_blank" rel="noopener noreferrer">Muse Spark Open (Max) 登顶 Code Arena: WebDev 美国开源模型第一</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            <span>3 个独立来源</span>
+            <span>10-16 22:22 UTC</span>
+            <a href="https://aihot.news/items/bjzjg5k7af07c1c20bc1a8gxp" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-eb96d39e14">
+          <div class="item__head">
+            <span class="item__no">26</span>
+            <h3 class="item__title"><a href="https://www.kimi.com/membership/pricing" target="_blank" rel="noopener noreferrer">Kimi新增Ultra会员，月费1399元</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 01:50 UTC</span>
+            <a href="https://www.kimi.com/membership/pricing" rel="noopener noreferrer">kimi.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Kimi新增Ultra会员订阅方案，月费为1399元。</li><li data-kind="fact">Ultra是Kimi五档付费会员中的最高档。</li><li data-kind="fact">Ultra提供28倍Agent额度，Max提供14倍Agent额度。</li><li data-kind="fact">Ultra与Max均支持百万token超长对话、4个Agent任务并行和调用Kimi Code。</li><li data-kind="fact">Kimi另有Go、Plus和Pro三档付费订阅方案，月费分别为49元、99元和199元。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Ultra的Agent额度是Max的两倍。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明Ultra会员方案的上线时间。</li><li data-kind="uncertain">材料未说明Ultra会员是否包含Max未提及的其他权益。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-ebff09d9d9">
+          <div class="item__head">
+            <span class="item__no">27</span>
+            <h3 class="item__title"><a href="https://github.com/siweimidu/ai-ribao/commit/57bd309573da1f5ba1299d26c4d9330c42172718" target="_blank" rel="noopener noreferrer">小米开源空间音频大模型MiDashengLM-Spatial</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>2 个独立来源</span>
+            <span>10-16 10:11 UTC</span>
+            <a href="https://github.com/siweimidu/ai-ribao/commit/57bd309573da1f5ba1299d26c4d9330c42172718" rel="noopener noreferrer">github.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">10月15日，小米宣布全面开源MiDashengLM-Spatial。</li><li data-kind="fact">小米称MiDashengLM-Spatial是业界首个开源端到端空间音频理解大模型。</li><li data-kind="fact">MiDashengLM-Spatial保留基础音频理解能力，并具备空间感知与推理能力。</li><li data-kind="fact">小米公开了MiDashengLM-Spatial的模型权重和推理代码。</li><li data-kind="fact">MiDashengLM-Spatial采用Apache2.0许可证开源。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">由于模型同时具备空间感知和推理能力，MiDashengLM-Spatial可能支持对声音来源及其空间关系的分析。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明MiDashengLM-Spatial的具体参数、训练数据和评测结果。</li><li data-kind="uncertain">材料没有说明MiDashengLM-Spatial接入智能家居和汽车座舱的具体时间及功能。</li><li data-kind="uncertain">“业界首个开源端到端空间音频理解大模型”是小米的表述，材料没有提供外部验证。</li><li data-kind="uncertain">材料没有列出相关技术已落地的超过30项具体应用。</li></ul></div>
+          <div class="item__links"><a href="https://www.aibase.com/zh/news/31684" rel="noopener noreferrer">aibase.com</a><a href="https://www.aibase.com/zh/news/31686" rel="noopener noreferrer">aibase.com</a><a href="https://www.aibase.com/zh/news/31687" rel="noopener noreferrer">aibase.com</a><a href="https://www.aibase.com/zh/news/31689" rel="noopener noreferrer">aibase.com</a><span style="color:var(--muted-fg)">另有 1 个来源</span></div>
+        </li>
+        <li class="item" id="e-late-c5b8d">
+          <div class="item__head">
+            <span class="item__no">28</span>
+            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQQjNvUy1UNWNud1M5Q1N4Wm01WkFHME9iYTRxT3pmclJTUFE3OTducGpiOUZMX3B5czlQWlpIU09ianhZU3c3ckdzR3hsUzhlUFlpNnlzR2ZrVzM1TGwtME80dlhxWXd0eFBFS1dOYk8wa2hDUUZKanRFN2FzTTBobV9pZU9Rc2NOMElfWFIxaFZRNm1ibVdRYQ?oc=5" target="_blank" rel="noopener noreferrer">邱县“AI夜校”第三期专题学习进行中|DeepSeek|数据分析|党校|河北省|邯郸市 - finance.sina.com.cn</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 12:45 UTC</span>
+            <a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQQjNvUy1UNWNud1M5Q1N4Wm01WkFHME9iYTRxT3pmclJTUFE3OTducGpiOUZMX3B5czlQWlpIU09ianhZU3c3ckdzR3hsUzhlUFlpNnlzR2ZrVzM1TGwtME80dlhxWXd0eFBFS1dOYk8wa2hDUUZKanRFN2FzTTBobV9pZU9Rc2NOMElfWFIxaFZRNm1ibVdRYQ?oc=5" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-ef38e9300c">
+          <div class="item__head">
+            <span class="item__no">29</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/ueqic1dy2hdx4ua7yipobons6" target="_blank" rel="noopener noreferrer">Meta发布Muse Spark Open：816B开源模型，1M上下文</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 00:06 UTC</span>
+            <a href="https://aihot.news/items/ueqic1dy2hdx4ua7yipobons6" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Meta 发布 Muse Spark Open。</li><li data-kind="fact">Muse Spark Open 是一个拥有 816B 参数、采用开源权重的混合专家模型，支持 1M 上下文。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">据此推断，开源权重和 1M 上下文是 Muse Spark Open 的主要发布特征。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明 Muse Spark Open 的具体开源许可证。</li><li data-kind="uncertain">材料未说明 Muse Spark Open 的性能表现和适用场景。</li><li data-kind="uncertain">材料未说明 Muse Spark Open 的具体发布时间和获取方式。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-ea75537a47">
+          <div class="item__head">
+            <span class="item__no">30</span>
+            <h3 class="item__title"><a href="https://www.mercor.com/research/labor-index/benchmark-map/" target="_blank" rel="noopener noreferrer">美国90%工作时间用于 AI 基准未覆盖的任务</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-16 17:08 UTC</span>
+            <a href="https://www.mercor.com/research/labor-index/benchmark-map/" rel="noopener noreferrer">mercor.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">90% of US working hours are spent on tasks not covered well by AI benchmarks.</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">AI benchmarks cover only about 10% of tasks.</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">具体哪些任务未被 AI 基准覆盖</li><li data-kind="uncertain">为何这些任务未被覆盖</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e052edd317">
+          <div class="item__head">
+            <span class="item__no">31</span>
+            <h3 class="item__title"><a href="https://www.aibase.com/zh/news/31694" target="_blank" rel="noopener noreferrer">OpenAI升级ChatGPT扩展支持多标签页协作</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-16 13:58 UTC</span>
+            <a href="https://www.aibase.com/zh/news/31694" rel="noopener noreferrer">aibase.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OpenAI升级了ChatGPT浏览器扩展。</li><li data-kind="fact">用户在对话中提及Chrome时，扩展可读取多个已打开标签页作为上下文。</li><li data-kind="fact">新版可进行跨页面内容比对、资料整理和浏览器端任务协助。</li><li data-kind="fact">官方称新版可汇总不同供应商产品的价格与功能，并协助整理表格。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">ChatGPT可基于多个网页的内容整合信息并协助处理浏览器任务。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明该扩展支持的具体浏览器范围。</li><li data-kind="uncertain">材料未说明读取标签页内容所需的授权方式及数据处理方式。</li><li data-kind="uncertain">材料未说明网页任务协助支持的具体操作范围。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-fb3f7">
+          <div class="item__head">
+            <span class="item__no">32</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/v27j8fnpclhpwv5blr21n4650" target="_blank" rel="noopener noreferrer">Arena 对齐指数更新：Meta、Reflection、StepFun 三款新模型上榜</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 15:13 UTC</span>
+            <a href="https://aihot.news/items/v27j8fnpclhpwv5blr21n4650" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-edbb727715">
+          <div class="item__head">
+            <span class="item__no">33</span>
+            <h3 class="item__title"><a href="https://www.aibase.com/zh/news/31693" target="_blank" rel="noopener noreferrer">WorkBuddy因DeepSeek故障退积分并送500</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-16 13:47 UTC</span>
+            <a href="https://www.aibase.com/zh/news/31693" rel="noopener noreferrer">aibase.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">腾讯WorkBuddy团队发布服务异常补偿公告。</li><li data-kind="fact">10月15日8时11分至13时04分，WorkBuddy内的DeepSeek模型因DeepSeek服务故障无法正常调用，持续约4小时53分钟。</li><li data-kind="fact">故障影响了部分用户体验。</li><li data-kind="fact">WorkBuddy宣布退还积分，全量用户可领取500积分。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">积分补偿可能是为了缓解故障对用户体验的影响。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">受影响用户的数量未说明。</li><li data-kind="uncertain">积分退还的范围和具体规则未说明。</li><li data-kind="uncertain">领取500积分的条件和期限未说明。</li><li data-kind="uncertain">DeepSeek服务故障的具体原因未说明。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e1fcfaba9e">
+          <div class="item__head">
+            <span class="item__no">34</span>
+            <h3 class="item__title"><a href="https://memory.hunyuan.tencent.com/" target="_blank" rel="noopener noreferrer">腾讯混元开源 Hy Memory 2.0</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 01:50 UTC</span>
+            <a href="https://memory.hunyuan.tencent.com/" rel="noopener noreferrer">memory.hunyuan.tencent.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">腾讯混元发布并开源 Hy Memory 2.0。</li><li data-kind="fact">Hy Memory 2.0包括专用模型 Hy-Memory-30B-A3B、hy-memory SDK和本地记忆管理应用 MemHub。</li><li data-kind="fact">Hy-Memory-30B-A3B、hy-memory SDK和 MemHub可以独立使用或组合使用。</li><li data-kind="fact">Hy Memory 2.0支持聊天、工作和代码三类记忆。</li><li data-kind="fact">新版新增工作记忆和代码记忆，并支持整理跨会话信息、任务进度及可复用经验。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">由于三个组件可以独立使用或组合使用，用户可以根据需求选择 Hy Memory 2.0 的使用方式。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明四项基准的具体名称和评测结果。</li><li data-kind="uncertain">材料没有说明十种人工智能工具的完整名单。</li><li data-kind="uncertain">材料没有说明 MemHub 不支持 Windows 的具体原因和后续支持计划。</li><li data-kind="uncertain">材料没有说明官方固定百分之二十基准子样本的具体构成。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e47974436f">
+          <div class="item__head">
+            <span class="item__no">36</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/x4dbtd92z0qi0hyu9y3zkf301" target="_blank" rel="noopener noreferrer">OpenAI dot 上线 iOS 小组件与操作按钮</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-16 22:32 UTC</span>
+            <a href="https://aihot.news/items/x4dbtd92z0qi0hyu9y3zkf301" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">我从来不用 iPhone 的相机按钮。所以我把它改成了呼叫我的 dot。
+我们刚刚在 iOS 上推出了 dot 小组件和操作按钮支持。下面是如何设置它们，以及我在相机按钮上用的快捷指令技巧。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">本次未调用大模型，内容为来源原文摘录</li></ul></div><div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e5be3806e3">
+          <div class="item__head">
+            <span class="item__no">37</span>
+            <h3 class="item__title"><a href="https://www.anthropic.com/research/expectations-for-the-future" target="_blank" rel="noopener noreferrer">Anthropic调查显示员工与公众的人工智能预期存在差距</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>2 个独立来源</span>
+            <span>10-17 01:50 UTC</span>
+            <a href="https://www.anthropic.com/research/expectations-for-the-future" rel="noopener noreferrer">anthropic.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Anthropic发布了两份研究报告，分别研究内部就业变化，以及员工与美国公众对人工智能影响工作和经济的预期差异。</li><li data-kind="fact">员工指挥的交互式人工智能代理运行时长达到估算员工工时的6倍。</li><li data-kind="fact">技术部门新招员工中的初级岗位占比从27%降至9%。</li><li data-kind="fact">超过半数Anthropic员工预计到2030年人工智能将能完成自己至少80%的现有工作，而美国在职受访者中这一比例为5%。</li><li data-kind="fact">两组中，预计自身工作可被人工智能完成得越多的人，也预计未来失业率越高。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这表明Anthropic员工对人工智能进步速度和工作替代程度的预期高于美国公众。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明两份报告的具体名称。</li><li data-kind="uncertain">材料没有说明调查的受访者数量和调查时间。</li><li data-kind="uncertain">材料没有说明内部就业数据覆盖的具体时间范围。</li><li data-kind="uncertain">材料没有说明初级岗位占比下降对应的具体招聘数量。</li><li data-kind="uncertain">材料没有说明员工采用人工智能工具后各类岗位产出上升的具体幅度。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-5333a">
+          <div class="item__head">
+            <span class="item__no">38</span>
+            <h3 class="item__title"><a href="https://x.com/TencentHunyuan/status/2110885021280268664" target="_blank" rel="noopener noreferrer">腾讯混元回应 Agent 异常网页浏览事件</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 01:50 UTC</span>
+            <a href="https://x.com/TencentHunyuan/status/2110885021280268664" rel="noopener noreferrer">x.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e15222c4f7">
+          <div class="item__head">
+            <span class="item__no">39</span>
+            <h3 class="item__title"><a href="https://x.com/opencode/status/2110986357539754114" target="_blank" rel="noopener noreferrer">OpenCode 免费提供 GLM 5.3 Flash 模型</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 01:50 UTC</span>
+            <a href="https://x.com/opencode/status/2110986357539754114" rel="noopener noreferrer">x.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OpenCode 宣布 GLM 5.3 Flash 模型现已在其平台免费提供。</li><li data-kind="fact">用户可在 OpenCode 中免费使用该模型。</li><li data-kind="fact">OpenCode 是一个开源编程 Agent。</li><li data-kind="fact">免费使用范围为 OpenCode 平台内。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该模型的使用仅限于 OpenCode 平台。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">未说明 GLM 5.3 Flash 的功能或性能。</li><li data-kind="uncertain">未说明是否有使用限制或配额。</li><li data-kind="uncertain">未说明是否需要注册或登录。</li><li data-kind="uncertain">未说明是否适用于所有 OpenCode 用户。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-651a5">
+          <div class="item__head">
+            <span class="item__no">41</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/ez4pa2y3jrxwqi6it5lim9r6l" target="_blank" rel="noopener noreferrer">Arena Alignment Index 更新：Meta Muse Wonder、Reflection Beam 1.0 和 StepFun Step 5 Preview 入榜</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 15:25 UTC</span>
+            <a href="https://aihot.news/items/ez4pa2y3jrxwqi6it5lim9r6l" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-ed8cee7741">
+          <div class="item__head">
+            <span class="item__no">42</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/nompyounwe7lalc3ap0076xww" target="_blank" rel="noopener noreferrer">Perplexity 开源 SPACE 沙箱平台</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 00:09 UTC</span>
+            <a href="https://aihot.news/items/nompyounwe7lalc3ap0076xww" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Perplexity 开源了 SPACE，即 Perplexity Computer 每个代理任务背后的沙箱平台。</li><li data-kind="fact">每个任务运行在独立的 Firecracker 微型虚拟机中。</li><li data-kind="fact">凭证和出站流量控制在虚拟机之外。</li><li data-kind="fact">代码以 Apache 2.0 协议发布在 GitHub。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这意味着 SPACE 可能为每个任务提供虚拟机级别的隔离。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明凭证和出站流量在虚拟机之外的具体控制机制。</li><li data-kind="uncertain">材料未说明 SPACE 的具体使用方式和性能。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-e293f">
+          <div class="item__head">
+            <span class="item__no">44</span>
+            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiZkFVX3lxTE41Q3FETzJ4SnNyMlYwVFE2OHJqTW41SkNaN0pDRDc2YWh2WEg2UWpMLXZRWWttbEh0VHB1RVJFNzlZdEpCRVZYemxtSTlpRGdVVkZpVDFRd0VFb0N5aUpvOUxNRE5ldw?oc=5" target="_blank" rel="noopener noreferrer">智谱唐杰：以前AI从数据中学习，现在AI要向人类学习 - 东方财富</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 06:53 UTC</span>
+            <a href="https://news.google.com/rss/articles/CBMiZkFVX3lxTE41Q3FETzJ4SnNyMlYwVFE2OHJqTW41SkNaN0pDRDc2YWh2WEg2UWpMLXZRWWttbEh0VHB1RVJFNzlZdEpCRVZYemxtSTlpRGdVVkZpVDFRd0VFb0N5aUpvOUxNRE5ldw?oc=5" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-c783a">
+          <div class="item__head">
+            <span class="item__no">45</span>
+            <h3 class="item__title"><a href="https://github.com/siweimidu/ai-ribao/commit/201fa4cd382a11f33763e1d4caab0940f0515c59" target="_blank" rel="noopener noreferrer">feat(focus,sources): 44 个模型族进入关注词表 + 7 个实测可用的新信息源</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 06:35 UTC</span>
+            <a href="https://github.com/siweimidu/ai-ribao/commit/201fa4cd382a11f33763e1d4caab0940f0515c59" rel="noopener noreferrer">github.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-e45bc82f99">
+          <div class="item__head">
+            <span class="item__no">46</span>
+            <h3 class="item__title"><a href="https://www.liquid.ai/blog/d1-ultra" target="_blank" rel="noopener noreferrer">d1-ultra 发布，决策模型榜首</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 01:50 UTC</span>
+            <a href="https://www.liquid.ai/blog/d1-ultra" rel="noopener noreferrer">liquid.ai</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Liquid AI 发布多模态决策模型 d1-ultra。</li><li data-kind="fact">d1-ultra 支持读取文本、图像或两者组合。</li><li data-kind="fact">d1-ultra 为预设答案返回概率，不生成文本词元。</li><li data-kind="fact">Artificial Analysis 的 Decision Index v1.0 结果显示，d1-ultra 以 65 分排名第一。</li><li data-kind="fact">d1-ultra 领先 Jev 1.14 的 57 分。</li></ul><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">d1-ultra 在 Decision Index v1.0 中的排名高于 Jev 1.14。</li><li data-kind="inference">d1-ultra 相比 d1 更常选择“不知道”，但答题准确率更低。</li></ul><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明 d1-ultra 的输出概率覆盖哪些预设答案。</li><li data-kind="uncertain">材料未说明 d1-ultra 的具体模型规模和训练数据。</li><li data-kind="uncertain">材料未说明 Liquid API 和 Vercel AI Gateway 上线的具体时间。</li><li data-kind="uncertain">材料未说明除输入费用外是否存在其他费用。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-02ee5">
+          <div class="item__head">
+            <span class="item__no">47</span>
+            <h3 class="item__title"><a href="https://claude.dev/blog/solving-code-review-at-anthropic/" target="_blank" rel="noopener noreferrer">Claude Code 团队发文披露内部代码审查流程</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 01:50 UTC</span>
+            <a href="https://claude.dev/blog/solving-code-review-at-anthropic/" rel="noopener noreferrer">claude.dev</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-382b9">
+          <div class="item__head">
+            <span class="item__no">48</span>
+            <h3 class="item__title"><a href="https://openmoss.ai/MOSS-Image/" target="_blank" rel="noopener noreferrer">OpenMOSS 发布文生图模型 MOSS-Image</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 01:50 UTC</span>
+            <a href="https://openmoss.ai/MOSS-Image/" rel="noopener noreferrer">openmoss.ai</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-58680">
+          <div class="item__head">
+            <span class="item__no">49</span>
+            <h3 class="item__title"><a href="https://perplexity.ai/hub/blog/open-sourcing-space" target="_blank" rel="noopener noreferrer">Perplexity 开源沙箱平台 SPACE</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 01:50 UTC</span>
+            <a href="https://perplexity.ai/hub/blog/open-sourcing-space" rel="noopener noreferrer">perplexity.ai</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-60045">
+          <div class="item__head">
+            <span class="item__no">50</span>
+            <h3 class="item__title"><a href="https://x.com/perplexitydevs/status/2111166029539758120" target="_blank" rel="noopener noreferrer">Perplexity 发布并开源两款决策模型</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 01:50 UTC</span>
+            <a href="https://x.com/perplexitydevs/status/2111166029539758120" rel="noopener noreferrer">x.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-9a16f">
+          <div class="item__head">
+            <span class="item__no">51</span>
+            <h3 class="item__title"><a href="https://blog.jetbrains.com/ai/2026/10/mellum2-1-gets-to-work-a-fast-open-model-for-coding-agents/" target="_blank" rel="noopener noreferrer">JetBrains 开源12B编程模型 Mellum2.1</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 01:50 UTC</span>
+            <a href="https://blog.jetbrains.com/ai/2026/10/mellum2-1-gets-to-work-a-fast-open-model-for-coding-agents/" rel="noopener noreferrer">blog.jetbrains.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-c4702">
+          <div class="item__head">
+            <span class="item__no">52</span>
+            <h3 class="item__title"><a href="https://x.com/arthurmensch/status/2110990492930314712" target="_blank" rel="noopener noreferrer">Mistral CEO呼吁欧洲自主研发前沿 AI</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 01:50 UTC</span>
+            <a href="https://x.com/arthurmensch/status/2110990492930314712" rel="noopener noreferrer">x.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-f24a3">
+          <div class="item__head">
+            <span class="item__no">53</span>
+            <h3 class="item__title"><a href="https://elorian.ai/blog/introducing-glimpse" target="_blank" rel="noopener noreferrer">Glimpse 发布，支持边推理边回看画面</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 01:50 UTC</span>
+            <a href="https://elorian.ai/blog/introducing-glimpse" rel="noopener noreferrer">elorian.ai</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-ec872">
+          <div class="item__head">
+            <span class="item__no">54</span>
+            <h3 class="item__title"><a href="https://daily.ai225.com/daily/2026-10-17" target="_blank" rel="noopener noreferrer">2026-10-17 AI 日报 · 中国拟收紧大模型出口管制，Reflection开源501B参数模型</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 00:52 UTC</span>
+            <a href="https://daily.ai225.com/daily/2026-10-17" rel="noopener noreferrer">daily.ai225.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-6d9a8">
+          <div class="item__head">
+            <span class="item__no">55</span>
+            <h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxPWmprVDJtTmNkUGNiU3lDaUNIRTJqWEhrV25ybWhQNm9IMVZEOEVmTDNpa05POTUwQXVGT2UtcV9oV2RkdTZhd0VSeU5fSDhUcTZkeDE0TXZoSWQ5UVVRNnp3VFB5SDNkM1VlbW5CbHZUVkVUamd4clV5WC1ZOVB4a2tnbmlaREt6RDh5bDFrR21XUXhYRUprRjRnNlFZb3c5c0hUTTFzMA?oc=5" target="_blank" rel="noopener noreferrer">清华开源！智能体操作系统任务成本降83%，AI记忆可查可改|AI Agent|面壁智能|清华大学|Token|Minimax - finance.sina.com.cn</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 12:33 UTC</span>
+            <a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxPWmprVDJtTmNkUGNiU3lDaUNIRTJqWEhrV25ybWhQNm9IMVZEOEVmTDNpa05POTUwQXVGT2UtcV9oV2RkdTZhd0VSeU5fSDhUcTZkeDE0TXZoSWQ5UVVRNnp3VFB5SDNkM1VlbW5CbHZUVkVUamd4clV5WC1ZOVB4a2tnbmlaREt6RDh5bDFrR21XUXhYRUprRjRnNlFZb3c5c0hUTTFzMA?oc=5" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-60efa">
+          <div class="item__head">
+            <span class="item__no">56</span>
+            <h3 class="item__title"><a href="https://aihot.news/daily/2026-10-17" target="_blank" rel="noopener noreferrer">AIHOT 日报 · 2026-10-17 — Reflection 开源权重模型 Beam 上架 Ollama，限时免费可用</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 00:00 UTC</span>
+            <a href="https://aihot.news/daily/2026-10-17" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-29081">
+          <div class="item__head">
+            <span class="item__no">57</span>
+            <h3 class="item__title"><a href="https://x.com/ChatGPT/status/2111210005617889406" target="_blank" rel="noopener noreferrer">ChatGPT 为 dot 推出 iOS 小组件与快捷指令支持</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 01:50 UTC</span>
+            <a href="https://x.com/ChatGPT/status/2111210005617889406" rel="noopener noreferrer">x.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-5136d">
+          <div class="item__head">
+            <span class="item__no">58</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/ib3axwzp3wkqdd8teu8zpj7c9" target="_blank" rel="noopener noreferrer">Meta 删除可被解读为允许抓取新闻网站训练 AI 的条款措辞</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 15:04 UTC</span>
+            <a href="https://aihot.news/items/ib3axwzp3wkqdd8teu8zpj7c9" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-0cb88">
+          <div class="item__head">
+            <span class="item__no">59</span>
+            <h3 class="item__title"><a href="https://x.com/ClaudeDevs/status/2111209208012210409" target="_blank" rel="noopener noreferrer">Claude Code 压缩对话，缩短响应等待</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 01:50 UTC</span>
+            <a href="https://x.com/ClaudeDevs/status/2111209208012210409" rel="noopener noreferrer">x.com</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        <li class="item" id="e-late-6ec7c">
+          <div class="item__head">
+            <span class="item__no">60</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/tzywwoch4ro3juykrqlmk1gwe" target="_blank" rel="noopener noreferrer">国内多家 AI 团队超 3 个月未发新模型</a></h3>
+          </div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-17 13:17 UTC</span>
+            <a href="https://aihot.news/items/tzywwoch4ro3juykrqlmk1gwe" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div>
+          
+        </li>
+        </ol>
+      </section>
+
+          <details class="untranslated" id="untranslated">
+        <summary>本期待翻译条目（8 条）</summary>
+        <p>这些条目的来源是外文，且本期模型额度用完、未能逐条译成中文，
+        因此只在这里保留原文与出处，不混进上面的正文。
+        <strong>点开即离开本站、前往原文</strong>。</p>
+        <ol><li><span class="untranslated__no">11</span><a href="https://openrouter.ai/deepseek/deepseek-v4.1-flash-1017" target="_blank" rel="noopener noreferrer">DeepSeek: DeepSeek v4.1 Flash 1017</a><span class="untranslated__src">openrouter.ai</span></li><li><span class="untranslated__no">18</span><a href="https://www.anthropic.com/research/ecdsa-curve-origins" target="_blank" rel="noopener noreferrer">Claude reveals ECDSA curve origins</a><span class="untranslated__src">anthropic.com</span></li><li><span class="untranslated__no">19</span><a href="https://alexwang.ai/posts/associative-memory/" target="_blank" rel="noopener noreferrer">You could have invented transformers from memory</a><span class="untranslated__src">alexwang.ai</span></li><li><span class="untranslated__no">21</span><a href="https://github.com/cobanov/PS5LM" target="_blank" rel="noopener noreferrer">Llama.cpp on a jailbroken PS5: run any GGUF model natively on the console</a><span class="untranslated__src">github.com</span></li><li><span class="untranslated__no">25</span><a href="https://llmspeed.dev/" target="_blank" rel="noopener noreferrer">Show HN: Llmspeed – feel how fast a local LLM runs before you buy the hardware</a><span class="untranslated__src">llmspeed.dev</span></li><li><span class="untranslated__no">35</span><a href="https://www.ft.com/content/5a310aee-f555-4266-874c-b1b4db20186d" target="_blank" rel="noopener noreferrer">Anthropic assigned highest junk credit rating in June</a><span class="untranslated__src">ft.com</span></li><li><span class="untranslated__no">40</span><a href="https://bfl.ai/blog/flux-3-image-klein" target="_blank" rel="noopener noreferrer">FLUX 3 Image Klein</a><span class="untranslated__src">bfl.ai</span></li><li><span class="untranslated__no">43</span><a href="https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web" target="_blank" rel="noopener noreferrer">Websites are closing their doors to AI agents</a><span class="untranslated__src">theverge.com</span></li></ol>
+      </details>
+
+    <nav class="pager"><a href="https://siweimidu.github.io/ai-ribao/2026-10-16.html"><span>上一期</span>2026-10-16</a><span></span></nav>
+
+    <footer class="foot">
+      <p>本期从 124 个已注册信息源采集，
+      32 个源提供了窗口内的内容，
+      0 个失败，0 个跳过。
+      共 344 条条目进入分析，
+      48 条被判定为重复。</p>
+      <p>大模型：114 次调用 / 353,834 token。
+      摘要由 AI 从原始来源整理，事实、推断与不确定项已分列；
+      <strong>每个条目的链接都来自采集记录，未经模型生成</strong>。请以原始来源为准。</p>
+      <p>生成于 2026-10-17 06:38 UTC</p>
+    </footer>
+  </main>
+
+      <nav class="toc" aria-label="目录">
+        <button class="toc__grip" type="button" data-resize="toc"
+                aria-label="拖动调整目录宽度" title="拖动调整宽度（双击恢复默认）"></button>
+        <p class="toc__title">今日目录</p>
+        <div class="toc__nav">
+          <a href="#overview" class="toc__overview">概览</a>
+          <a href="#e-late-abfd7"><span class="toc__no">01</span>DeepSeek 开放自研搜索 API</a>
+          <a href="#e-late-1dd2c"><span class="toc__no">02</span>OpenAI 升级 GPT-6 Astra Pro，DeepSeek 发布 V4…</a>
+          <a href="#e-late-b0439"><span class="toc__no">03</span>DeepSeek 发布 V4.1-Flash-1017，Nathan Lambe…</a>
+          <a href="#e-late-988e5"><span class="toc__no">04</span>deepseek-v4.1-flash-1017 发布了</a>
+          <a href="#e-ec0534c0f0"><span class="toc__no">05</span>微软完成 MAI-Base-2 预训练，参数达2.8T</a>
+          <a href="#e-late-41640"><span class="toc__no">06</span>WorkBuddy Intl 更新支持 DeepSeek-V4.1-Flash-…</a>
+          <a href="#e-ed6473d677"><span class="toc__no">07</span>Gemini 4 Argon 向 Google AI Pro 开放</a>
+          <a href="#e-ee1d619367"><span class="toc__no">08</span>DeepSeek 开源昇腾支持以适配多种芯片</a>
+          <a href="#e-late-bf164"><span class="toc__no">09</span>DeepSeek发布AI模型更新，向所有用户开放搜索API 提供者 Invest…</a>
+          <a href="#e-e183e6daa8"><span class="toc__no">10</span>阿里 Qwen 开源 BlenderWorld 三维建模基准</a>
+          <a href="#e-e7e92fd8f1"><span class="toc__no">12</span>Claude 在 8 项量子电路任务中优化设计</a>
+          <a href="#e-late-571fc"><span class="toc__no">13</span>DeepSeek V4.1 Flash 新版本：许愿式编程一键成真</a>
+          <a href="#e-e663d1c7ea"><span class="toc__no">14</span>DeepSeek新增搜索与抓取接口并按次收费</a>
+          <a href="#e-late-55dd8"><span class="toc__no">15</span>WorkBuddy 公布 DeepSeek 故障补偿</a>
+          <a href="#e-late-75d67"><span class="toc__no">16</span>DeepSeek 整合多支团队成立产品部</a>
+          <a href="#e-ee1c2a2949"><span class="toc__no">17</span>OpenAI 向符合条件用户推出 ChatGPT Slides</a>
+          <a href="#e-e947326fbd"><span class="toc__no">20</span>OpenAI优化Codex提升有效使用量</a>
+          <a href="#e-late-7d83f"><span class="toc__no">22</span>Meta 开源权重模型竞争力展望</a>
+          <a href="#e-late-0bfae"><span class="toc__no">23</span>Anthropic 如何在 Claude 写下 Claude Code 约 90…</a>
+          <a href="#e-late-b64ce"><span class="toc__no">24</span>Muse Spark Open (Max) 登顶 Code Arena: Web…</a>
+          <a href="#e-eb96d39e14"><span class="toc__no">26</span>Kimi新增Ultra会员，月费1399元</a>
+          <a href="#e-ebff09d9d9"><span class="toc__no">27</span>小米开源空间音频大模型MiDashengLM-Spatial</a>
+          <a href="#e-late-c5b8d"><span class="toc__no">28</span>邱县“AI夜校”第三期专题学习进行中|DeepSeek|数据分析|党校|河北省|…</a>
+          <a href="#e-ef38e9300c"><span class="toc__no">29</span>Meta发布Muse Spark Open：816B开源模型，1M上下文</a>
+          <a href="#e-ea75537a47"><span class="toc__no">30</span>美国90%工作时间用于 AI 基准未覆盖的任务</a>
+          <a href="#e-e052edd317"><span class="toc__no">31</span>OpenAI升级ChatGPT扩展支持多标签页协作</a>
+          <a href="#e-late-fb3f7"><span class="toc__no">32</span>Arena 对齐指数更新：Meta、Reflection、StepFun 三款新…</a>
+          <a href="#e-edbb727715"><span class="toc__no">33</span>WorkBuddy因DeepSeek故障退积分并送500</a>
+          <a href="#e-e1fcfaba9e"><span class="toc__no">34</span>腾讯混元开源 Hy Memory 2.0</a>
+          <a href="#e-e47974436f"><span class="toc__no">36</span>OpenAI dot 上线 iOS 小组件与操作按钮</a>
+          <a href="#e-e5be3806e3"><span class="toc__no">37</span>Anthropic调查显示员工与公众的人工智能预期存在差距</a>
+          <a href="#e-late-5333a"><span class="toc__no">38</span>腾讯混元回应 Agent 异常网页浏览事件</a>
+          <a href="#e-e15222c4f7"><span class="toc__no">39</span>OpenCode 免费提供 GLM 5.3 Flash 模型</a>
+          <a href="#e-late-651a5"><span class="toc__no">41</span>Arena Alignment Index 更新：Meta Muse Wonde…</a>
+          <a href="#e-ed8cee7741"><span class="toc__no">42</span>Perplexity 开源 SPACE 沙箱平台</a>
+          <a href="#e-late-e293f"><span class="toc__no">44</span>智谱唐杰：以前AI从数据中学习，现在AI要向人类学习 - 东方财富</a>
+          <a href="#e-late-c783a"><span class="toc__no">45</span>feat(focus,sources): 44 个模型族进入关注词表 + 7 个…</a>
+          <a href="#e-e45bc82f99"><span class="toc__no">46</span>d1-ultra 发布，决策模型榜首</a>
+          <a href="#e-late-02ee5"><span class="toc__no">47</span>Claude Code 团队发文披露内部代码审查流程</a>
+          <a href="#e-late-382b9"><span class="toc__no">48</span>OpenMOSS 发布文生图模型 MOSS-Image</a>
+          <a href="#e-late-58680"><span class="toc__no">49</span>Perplexity 开源沙箱平台 SPACE</a>
+          <a href="#e-late-60045"><span class="toc__no">50</span>Perplexity 发布并开源两款决策模型</a>
+          <a href="#e-late-9a16f"><span class="toc__no">51</span>JetBrains 开源12B编程模型 Mellum2.1</a>
+          <a href="#e-late-c4702"><span class="toc__no">52</span>Mistral CEO呼吁欧洲自主研发前沿 AI</a>
+          <a href="#e-late-f24a3"><span class="toc__no">53</span>Glimpse 发布，支持边推理边回看画面</a>
+          <a href="#e-late-ec872"><span class="toc__no">54</span>2026-10-17 AI 日报 · 中国拟收紧大模型出口管制，Reflecti…</a>
+          <a href="#e-late-6d9a8"><span class="toc__no">55</span>清华开源！智能体操作系统任务成本降83%，AI记忆可查可改|AI Agent|面…</a>
+          <a href="#e-late-60efa"><span class="toc__no">56</span>AIHOT 日报 · 2026-10-17 — Reflection 开源权重模…</a>
+          <a href="#e-late-29081"><span class="toc__no">57</span>ChatGPT 为 dot 推出 iOS 小组件与快捷指令支持</a>
+          <a href="#e-late-5136d"><span class="toc__no">58</span>Meta 删除可被解读为允许抓取新闻网站训练 AI 的条款措辞</a>
+          <a href="#e-late-0cb88"><span class="toc__no">59</span>Claude Code 压缩对话，缩短响应等待</a>
+          <a href="#e-late-6ec7c"><span class="toc__no">60</span>国内多家 AI 团队超 3 个月未发新模型</a>
+        </div>
+      </nav>
+</div>
+
+<dialog class="search" id="search-dialog" aria-label="搜索往期内容">
+  <div class="search__form">
+    <input type="search" placeholder="搜索往期内容…" aria-label="搜索关键词" autocomplete="off">
+    <kbd>Esc</kbd>
+  </div>
+  <ul class="search__results"></ul>
+</dialog>
+
+<script type="application/json" id="calendar-data">{"dates": ["2026-10-17", "2026-10-16", "2026-10-15", "2026-10-14"], "current": "2026-10-17", "today": "2026-10-18"}</script>
+<script type="application/json" id="search-index">[{"date": "2026-10-17", "items": [{"t": "DeepSeek 开放自研搜索 API", "s": "rss:aihot-news-full, rss:aihot-news-picks"}, {"t": "OpenAI 升级 GPT-6 Astra Pro，DeepSeek 发布 V4.1-Flash", "s": "rss:aihot-news"}, {"t": "DeepSeek 发布 V4.1-Flash-1017，Nathan Lambert 称其或凭内置视觉强于 GLM 5.3", "s": "rss:aihot-news"}, {"t": "deepseek-v4.1-flash-1017 发布了", "s": "api:v2ex-com-topics-hot"}, {"t": "微软完成 MAI-Base-2 预训练：2.8T 参数碾压开源对手，算力效率超 DeepSeek 数倍", "s": "api:aibase-ai-news"}, {"t": "WorkBuddy Intl 更新支持 DeepSeek-V4.1-Flash-1017，10 月 31 日前免费", "s": "rss:aihot-news-full, rss:aihot-news-picks"}, {"t": "Google AI Studio 向 Pro 订阅用户开放 Gemini 4 Argon", "s": "rss:daily-juya-uk"}, {"t": "DeepSeek 开源 TileLang 与 Ascend 支持，试图削弱 Nvidia 不可或缺性", "s": "rss:aihot-news"}, {"t": "DeepSeek发布AI模型更新，向所有用户开放搜索API 提供者 Investing.com - 英为财情 Investing.com", "s": "api:news-google-com-search"}, {"t": "阿里 Qwen 开源 BlenderWorld：223 道题、2651 条标准的 3D 建模基准", "s": "rss:aihot-news"}, {"t": "DeepSeek: DeepSeek v4.1 Flash 1017", "s": "api:hn-algolia-com-search"}, {"t": "Anthropic 公布研究：Claude 优化 8 项量子电路任务", "s": "api:hn-algolia-com-search, rss:daily-juya-uk"}, {"t": "DeepSeek V4.1 Flash 新版本：许愿式编程一键成真", "s": "rss:wechat-deepseek"}, {"t": "DeepSeek 新增搜索与抓取 API 并按次收费", "s": "rss:daily-juya-uk"}, {"t": "WorkBuddy 公布 DeepSeek 故障补偿", "s": "rss:daily-juya-uk"}, {"t": "DeepSeek 整合多支团队成立产品部", "s": "rss:daily-juya-uk"}, {"t": "OpenAI 上线 ChatGPT Slides", "s": "rss:daily-juya-uk"}, {"t": "Claude reveals ECDSA curve origins", "s": "api:hn-algolia-com-search, rss:raw-githubusercontent-com-ai-rss-feeds-anthropic-research"}, {"t": "You could have invented transformers from memory", "s": "api:hn-algolia-com-search, rss:hnrss-org-frontpage"}, {"t": "OpenAI 宣布优化 Codex 提升用户有效使用量", "s": "rss:daily-juya-uk"}, {"t": "Llama.cpp on a jailbroken PS5: run any GGUF model natively on the console", "s": "api:hn-algolia-com-search, rss:hnrss-org-frontpage"}, {"t": "Meta 开源权重模型竞争力展望", "s": "rss:aihot-news"}, {"t": "Anthropic 如何在 Claude 写下 Claude Code 约 90% 代码后重新设计代码评审", "s": "rss:aihot-news-full, rss:aihot-news-picks"}, {"t": "Muse Spark Open (Max) 登顶 Code Arena: WebDev 美国开源模型第一", "s": "rss:aihot-news-full, rss:aihot-news-picks"}, {"t": "Show HN: Llmspeed – feel how fast a local LLM runs before you buy the hardware", "s": "api:hn-algolia-com-search, rss:hnrss-org-frontpage"}, {"t": "Kimi 新增 Ultra 会员，月费 1399 元", "s": "rss:daily-juya-uk"}, {"t": "小米重磅开源首个端到端空间音频理解大模型 MiDashengLM-Spatial", "s": "api:aibase-ai-news, atom:github-ai-ribao-commits"}, {"t": "邱县“AI夜校”第三期专题学习进行中|DeepSeek|数据分析|党校|河北省|邯郸市 - finance.sina.com.cn", "s": "api:news-google-com-search"}, {"t": "Meta 发布 Muse Spark Open：816B 开源 MoE，1M 上下文", "s": "rss:aihot-news"}, {"t": "90% of US working hours are spent on tasks not covered well by AI benchmarks", "s": "api:hn-algolia-com-search, rss:hnrss-org-frontpage"}, {"t": "​OpenAI 升级 ChatGPT 扩展：多标签页联动与网页智能代办全面上线", "s": "api:aibase-ai-news"}, {"t": "Arena 对齐指数更新：Meta、Reflection、StepFun 三款新模型上榜", "s": "rss:aihot-news"}, {"t": "DeepSeek 突发故障 4 小时 53 分，腾讯 WorkBuddy 补偿：积分全退再送 500", "s": "api:aibase-ai-news"}, {"t": "腾讯混元开源 Hy Memory 2.0：AI 记忆模型、框架与应用", "s": "rss:daily-juya-uk"}, {"t": "Anthropic assigned highest junk credit rating in June", "s": "api:hn-algolia-com-search"}, {"t": "OpenAI dot 上线 iOS 小组件与操作按钮", "s": "rss:aihot-news"}, {"t": "Anthropic 调查揭示员工与公众的 AI 预期差距", "s": "rss:daily-juya-uk, rss:raw-githubusercontent-com-ai-rss-feeds-anthropic-research"}, {"t": "腾讯混元回应 Agent 异常网页浏览事件", "s": "rss:daily-juya-uk"}, {"t": "OpenCode 免费提供 GLM 5.3 Flash", "s": "rss:daily-juya-uk"}, {"t": "FLUX 3 Image Klein", "s": "api:hn-algolia-com-search"}, {"t": "Arena Alignment Index 更新：Meta Muse Wonder、Reflection Beam 1.0 和 StepFun Step 5 Preview 入榜", "s": "rss:aihot-news"}, {"t": "Perplexity 开源 SPACE：面向 AI Agent 的 Firecracker microVM 沙箱平台", "s": "rss:aihot-news"}, {"t": "Websites are closing their doors to AI agents", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "智谱唐杰：以前AI从数据中学习，现在AI要向人类学习 - 东方财富", "s": "api:news-google-com-search"}, {"t": "feat(focus,sources): 44 个模型族进入关注词表 + 7 个实测可用的新信息源", "s": "atom:github-ai-ribao-commits"}, {"t": "d1-ultra 发布，登顶决策模型榜", "s": "rss:daily-juya-uk"}, {"t": "Claude Code 团队发文披露内部代码审查流程", "s": "rss:daily-juya-uk"}, {"t": "OpenMOSS 发布文生图模型 MOSS-Image", "s": "rss:daily-juya-uk"}, {"t": "Perplexity 开源沙箱平台 SPACE", "s": "rss:daily-juya-uk"}, {"t": "Perplexity 发布并开源两款决策模型", "s": "rss:daily-juya-uk"}, {"t": "JetBrains 开源12B编程模型 Mellum2.1", "s": "rss:daily-juya-uk"}, {"t": "Mistral CEO呼吁欧洲自主研发前沿 AI", "s": "rss:daily-juya-uk"}, {"t": "Glimpse 发布，支持边推理边回看画面", "s": "rss:daily-juya-uk"}, {"t": "2026-10-17 AI 日报 · 中国拟收紧大模型出口管制，Reflection开源501B参数模型", "s": "rss:daily-ai225"}, {"t": "清华开源！智能体操作系统任务成本降83%，AI记忆可查可改|AI Agent|面壁智能|清华大学|Token|Minimax - finance.sina.com.cn", "s": "api:news-google-com-search"}, {"t": "AIHOT 日报 · 2026-10-17 — Reflection 开源权重模型 Beam 上架 Ollama，限时免费可用", "s": "rss:aihot-news-daily"}, {"t": "ChatGPT 为 dot 推出 iOS 小组件与快捷指令支持", "s": "rss:daily-juya-uk"}, {"t": "Meta 删除可被解读为允许抓取新闻网站训练 AI 的条款措辞", "s": "rss:aihot-news"}, {"t": "Claude Code 压缩对话，缩短响应等待", "s": "rss:daily-juya-uk"}, {"t": "国内多家 AI 团队超 3 个月未发新模型", "s": "rss:aihot-news"}]}]</script>
+<script src="https://siweimidu.github.io/ai-ribao/assets/motion.js" defer></script>
+
+<div id="uibar">
+  <b>UI 方案</b>
+  <button data-ui="a">A · 编辑部</button>
+  <button data-ui="b">B · 卡片</button>
+  <button data-ui="c">C · 报纸</button>
+  <span class="hint">点按钮切换，内容是同一份 2026-10-17</span>
+</div>
+<script>
+(function(){
+  var root = document.documentElement;
+  var btns = document.querySelectorAll("#uibar button");
+  function apply(v){
+    root.setAttribute("data-ui", v);
+    btns.forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.ui === v ? "true" : "false"); });
+  }
+  btns.forEach(function(b){ b.addEventListener("click", function(){ apply(b.dataset.ui); }); });
+  apply("a");
+})();
+</script>
+</body>
+</html>
