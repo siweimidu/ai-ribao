@@ -8,6 +8,53 @@
   "headline": "Gemini 4 Argon 向 Google AI Pro 开放",
   "top_events": [
    {
+    "event_id": "late-988e5e355900e990",
+    "title": "deepseek-v4.1-flash-1017 发布了",
+    "member_item_ids": [
+     "50bee5f463351d60",
+     "4204786658b3c30c",
+     "049902519b96e5ee",
+     "d5d7495a6cdfb670",
+     "23e1b19376da36dc",
+     "6eb1802a8a14e9d2"
+    ],
+    "primary_item_id": "50bee5f463351d60",
+    "source_ids": [
+     "api:v2ex-com-topics-hot",
+     "rss:aihot-news",
+     "rss:wechat-deepseek",
+     "api:hn-algolia-com-search"
+    ],
+    "all_urls": [
+     "https://www.v2ex.com/t/1249603",
+     "https://aihot.news/items/ua39ly8afnr06q06b9tuk7yhy",
+     "https://aihot.news/items/skccm7zeft49lqkbm0wla8yua",
+     "https://aihot.news/items/s6ad9vu3fmlbioz0kdomylfcc",
+     "https://mp.weixin.qq.com/s?__biz=Mzk0OTYwNzc3NQ==&mid=2247485876&idx=1&sn=2606d3fa9ac085f94290ddd1d94649cc",
+     "https://openrouter.ai/deepseek/deepseek-v4.1-flash-1017"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-17T08:11:00Z",
+    "last_updated_at": "2026-10-17T12:55:16Z",
+    "published_range": [
+     "2026-10-17T08:34:54Z",
+     "2026-10-17T08:34:54Z"
+    ],
+    "unique_facts": {
+     "merged_titles": [
+      "deepseek-v4.1-flash-1017 发布了",
+      "DeepSeek 发布 V4.1-Flash-1017，Nathan Lambert 称其或凭内置视觉强于 GLM 5.3",
+      "DeepSeek V4.1 Flash 新版本：许愿式编程一键成真",
+      "DeepSeek: DeepSeek v4.1 Flash 1017"
+     ]
+    },
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 93.841825,
+    "rank_components": {}
+   },
+   {
     "event_id": "late-abfd70933913874a",
     "title": "DeepSeek 开放自研搜索 API",
     "member_item_ids": [
@@ -2094,7 +2141,7 @@
    "rubric 评分 105 条已打分 / 11 次调用（标准来源：/home/runner/work/ai-ribao/ai-ribao/config/profiles/ai-daily）"
   ],
   "counts": {
-   "events": 51,
+   "events": 52,
    "events_considered": 272,
    "multi_source_events": 9,
    "items_after_window": 344,
@@ -2111,6 +2158,7 @@
  },
  "sections": {
   "other": [
+   "late-988e5e355900e990",
    "late-abfd70933913874a",
    "late-41640a50d192f546",
    "late-1dd2ca527a1262d1",
@@ -2254,315 +2302,6 @@
    ],
    "rule_based": false
   },
-  "ebc40bf2519a84c": {
-   "event_id": "ebc40bf2519a84c",
-   "title": "OpenAI 更新 ChatGPT for Chrome 扩展",
-   "facts": [
-    "OpenAI 于10月15日更新了 ChatGPT for Chrome 扩展，版本号为1.26.1005.11759。",
-    "ChatGPT 可读取已打开的多个标签页，并基于网页内容回答问题、整理信息或完成跨页面任务。",
-    "这项功能面向所有用户开放，无需付费订阅。",
-    "事件标题称 ChatGPT 可在 Work 模式下操作浏览器。"
-   ],
-   "inferences": [
-    "这意味着 ChatGPT for Chrome 可用于整合多个网页的信息并处理跨页面任务。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料未说明 Work 模式下可执行哪些具体浏览器操作。",
-    "材料未说明该扩展是否能修改网页内容或提交表单。"
-   ],
-   "key_points": [
-    "ChatGPT for Chrome 新增读取多个已打开标签页的能力。",
-    "用户可让 ChatGPT 基于多个网页内容回答问题、整理信息或完成跨页面任务。",
-    "功能面向所有用户开放，无需付费订阅。"
-   ],
-   "rule_based": false
-  },
-  "e6953cb7eb93a19": {
-   "event_id": "e6953cb7eb93a19",
-   "title": "Anthropic向美国国会推介人工智能监管草案",
-   "facts": [
-    "Anthropic代表向美国国会议员推介了一份前沿人工智能安全与防务监管法案草案。",
-    "草案规定，只有当模型可预见地造成超过10亿美元经济损失，或导致50人以上死亡或重伤，且风险特定源自生物武器、模型失控或严重网络攻击时，政府才可叫停模型。"
-   ],
-   "inferences": [
-    "由此可推断，草案将政府叫停模型限定在特定的高损害风险情形。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "尚不清楚美国国会是否接受或通过该草案。",
-    "材料未说明草案中如何判断经济损失是否可预见。"
-   ],
-   "key_points": [
-    "Anthropic向美国国会议员推介前沿人工智能安全与防务监管法案草案。",
-    "政府仅可在达到损失、伤亡及特定风险条件时叫停模型。"
-   ],
-   "rule_based": false
-  },
-  "eaad692f0aecdb7": {
-   "event_id": "eaad692f0aecdb7",
-   "title": "OpenAI升级Chrome版ChatGPT扩展，可读取标签页",
-   "facts": [
-    "OpenAI于当地时间10月16日宣布升级Chrome浏览器的ChatGPT扩展程序。",
-    "升级后的扩展程序可以读取用户打开的标签页，并据此提供更有针对性的回答。"
-   ],
-   "inferences": [
-    "读取用户打开的标签页可能会让ChatGPT的回答更贴合用户当前浏览内容。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料没有说明升级后的扩展程序是否可以代用户操作。",
-    "材料没有说明扩展程序读取标签页的具体范围和数据处理方式。"
-   ],
-   "key_points": [
-    "OpenAI升级了Chrome浏览器的ChatGPT扩展程序。",
-    "扩展程序新增读取用户打开标签页的能力。"
-   ],
-   "rule_based": false
-  },
-  "e2a9688027aabb3": {
-   "event_id": "e2a9688027aabb3",
-   "title": "Anthropic 优化 Claude Code 响应等待",
-   "facts": [
-    "Anthropic 为 Claude Code 加入两项提速措施：每轮发送对话时先对内容进行 gzip 压缩，并在用户开始输入时就启动云端会话。",
-    "官方数据显示，本地会话首个 token 前等待时间从 4.07 秒降至 1.33 秒，云端会话从 16.99 秒降至 6.00 秒。",
-    "上述两组数据均为 p90 指标，且不包含模型耗时。"
-   ],
-   "inferences": [
-    "压缩对话内容可减少传输数据量，从而加快数据到达模型的速度。",
-    "提前启动云端会话能缩短用户开始输入到模型开始响应之间的准备时间。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料仅来自单一来源，未提供官方公告或完整测试环境说明。",
-    "p90 指标的统计样本规模、测试条件及是否覆盖不同网络环境尚不清楚。"
-   ],
-   "key_points": [
-    "Claude Code 采用 gzip 压缩每轮对话内容以加速传输。",
-    "用户在开始输入时即启动云端会话，减少响应前等待。",
-    "本地会话首 token 等待从 4.07 秒降至 1.33 秒，云端从 16.99 秒降至 6.00 秒（p90，不含模型耗时）。"
-   ],
-   "rule_based": false
-  },
-  "efe3c60e15f697a": {
-   "event_id": "efe3c60e15f697a",
-   "title": "Claude 用自然语言配置智能家居自动化",
-   "facts": [
-    "Claude 能通过自然语言为智能家居应用添加自动化。",
-    "使用该功能后灯会亮。"
-   ],
-   "inferences": [
-    "用户可以用自然语言描述想要的动作，Claude 会自动生成相应规则。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "支持的智能家居设备范围不明。",
-    "规则的复杂度限制不明。"
-   ],
-   "key_points": [
-    "Claude 通过自然语言配置智能家居自动化。",
-    "用户只需描述想要的结果，Claude 会自动设置规则。",
-    "使用后灯会亮，验证功能有效。"
-   ],
-   "rule_based": false
-  },
-  "e976c4d697dee42": {
-   "event_id": "e976c4d697dee42",
-   "title": "Meta发布Muse Spark Open，称美国最强开源",
-   "facts": [
-    "Meta发布了开放权重模型Muse Spark Open。",
-    "Muse Spark Open采用原生多模态架构。",
-    "Muse Spark Open总参数为816B，激活参数为42B。",
-    "Muse Spark Open的上下文窗口为1M令牌。",
-    "Muse Spark Open面向代码构建与智能体协作优化。",
-    "Muse Spark Open依托MLX框架运行。",
-    "Muse Spark Open可在两台搭载M5 Ultra芯片的设备上运行。"
-   ],
-   "inferences": [
-    "根据其参数规模和上下文窗口，Muse Spark Open可能适合处理长程任务、复杂软件工程和多步推理。",
-    "根据其运行条件，Muse Spark Open的本地部署设备数量可能低于同级模型。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "Muse Spark Open是否确实是迄今最强的美国开放权重模型，材料没有提供独立验证依据。",
-    "材料没有提供长程任务、复杂软件工程和多步推理表现的具体测试数据。",
-    "材料没有说明两台设备的具体型号配置和运行限制。",
-    "材料没有说明Muse Spark Open的开放权重获取方式和使用许可。"
-   ],
-   "key_points": [
-    "Meta发布开放权重模型Muse Spark Open，参数规模为816B，激活参数为42B。",
-    "该模型采用原生多模态架构，支持1M令牌上下文，并可依托MLX在两台M5 Ultra设备上运行。"
-   ],
-   "rule_based": false
-  },
-  "ecae1fbd96156c9": {
-   "event_id": "ecae1fbd96156c9",
-   "title": "ChatGPT 为 dot 推出 iOS 小组件与快捷指令支持",
-   "facts": [
-    "ChatGPT 在 iOS 上为 dot 推出主屏幕小组件，并支持通过苹果快捷指令和操作按钮打开对话或通话。",
-    "小组件显示 dot 的名称和外观，点击后可进入对话。",
-    "开启默认关闭的快捷按钮后，可使用消息和通话入口。",
-    "苹果快捷指令提供文字消息、语音转文字和实时语音通话三种模式。",
-    "这些功能随 ChatGPT iOS 1.2026.279 逐步推出。",
-    "使用这些功能需要登录已开通 dot 权限的账号，添加小组件不会获得使用权限。"
-   ],
-   "inferences": [
-    "这些入口可能让已有 dot 权限的用户更快开始对话或通话。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "功能逐步推出的具体时间和覆盖范围没有说明。",
-    "材料没有说明哪些账号已开通 dot 权限。"
-   ],
-   "key_points": [
-    "iOS 小组件和操作按钮可用于进入 dot 对话或通话。",
-    "快捷指令支持文字消息、语音转文字和实时语音通话。"
-   ],
-   "rule_based": false
-  },
-  "e9b40be08638c16": {
-   "event_id": "e9b40be08638c16",
-   "title": "Grok 用 X 账号生成随机图像",
-   "facts": [
-    "用户在 X 上向 Grok 发送请求",
-    "Grok 根据该 X 账号创作随机图像"
-   ],
-   "inferences": [
-    "Grok 生成图像时使用了用户 X 账号"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "图像具体内容未说明",
-    "图像是否已公开发布不确定"
-   ],
-   "key_points": [
-    "Grok 根据 X 账号生成随机图像",
-    "用户在 X 上向 Grok 发送请求"
-   ],
-   "rule_based": false
-  },
-  "e028026061d4d76": {
-   "event_id": "e028026061d4d76",
-   "title": "OpenAI介绍ChatGPT Space",
-   "facts": [
-    "OpenAI介绍了ChatGPT Space。",
-    "材料提出了ChatGPT Space是什么的问题。",
-    "材料称ChatGPT Space有时会显得可爱地笨拙，因为团队正在真正做这件事。",
-    "材料询问接下来希望看到什么。"
-   ],
-   "inferences": [
-    "ChatGPT Space可能仍处于由团队推进的阶段。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "ChatGPT Space的具体功能尚未说明。",
-    "ChatGPT Space的发布时间尚未说明。",
-    "团队的具体身份尚未说明。",
-    "接下来将展示哪些内容尚未确定。"
-   ],
-   "key_points": [
-    "OpenAI介绍ChatGPT Space。",
-    "材料未说明ChatGPT Space的具体功能。"
-   ],
-   "rule_based": false
-  },
-  "e9a7a236ef82da1": {
-   "event_id": "e9a7a236ef82da1",
-   "title": "OpenAI 优化 Codex 与 Work 用量效率",
-   "facts": [
-    "OpenAI 对 Codex 和 Work 做了改进",
-    "这些改进提升了你能获得的实际可用用量",
-    "改进方式包括在子智能体之间复用上下文",
-    "改进方式包括让上下文缓存保持更久",
-    "改进方式包括改进请求路由以提高缓存命中率"
-   ],
-   "inferences": [
-    "这些改进旨在提高 Codex 与 Work 的用量效率"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "未说明子智能体具体指什么",
-    "未给出改进后提升的具体数值",
-    "未说明改进对所有用户的影响"
-   ],
-   "key_points": [
-    "OpenAI 优化 Codex 与 Work 用量效率",
-    "通过子智能体上下文复用、延长缓存、改进请求路由实现提升"
-   ],
-   "rule_based": false
-  },
-  "e41618a12a7592e": {
-   "event_id": "e41618a12a7592e",
-   "title": "哈萨比斯：人工智能智能体攻击是前哨预警",
-   "facts": [
-    "谷歌 DeepMind 联合创始人兼董事长哈萨比斯称，近期人工智能智能体发起的网络攻击是前哨预警。",
-    "哈萨比斯称，若全行业与各国政府不加大系统安全投入，未来一至两年很可能演变为灾难性重大事件。",
-    "微软总裁史密斯称，人工智能失控行为让2026年成为令人警醒的一年。",
-    "史密斯呼吁出台合理平衡的人工智能安全法律与监管。",
-    "哈萨比斯主张建立张弛有度、反应敏捷的国际标准机构，并动态构建与风险匹配的认证机制。"
-   ],
-   "inferences": [
-    "哈萨比斯认为，近期网络攻击可能预示人工智能安全风险将进一步扩大。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "灾难性重大事件是否会在未来一至两年发生，材料无法确认。",
-    "材料没有说明国际标准机构和认证机制是否会建立及其具体形式。",
-    "材料没有说明近期网络攻击的具体方式、规模和造成的影响。"
-   ],
-   "key_points": [
-    "哈萨比斯将近期人工智能智能体网络攻击视为前哨预警。",
-    "他呼吁加大系统安全投入，并建立国际标准与动态认证机制。"
-   ],
-   "rule_based": false
-  },
-  "eec05c63327ed19": {
-   "event_id": "eec05c63327ed19",
-   "title": "ChatGPT扩展可读取标签页并协助处理浏览器任务",
-   "facts": [
-    "OpenAI近日升级了ChatGPT浏览器扩展。",
-    "新版允许用户在对话中点名Chrome，让助手读取已打开的网页标签作为上下文。",
-    "官方场景包括比较页面、归整资料、整理表格、预填表单，以及依据网页信息起草邮件。",
-    "用户浏览网页时可以随时呼出侧边栏中的ChatGPT。"
-   ],
-   "inferences": [
-    "这项升级意味着用户可以让ChatGPT利用已打开网页的信息协助处理多种浏览器任务。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料没有说明新版扩展何时或向哪些用户开放。",
-    "材料没有说明助手是否能够提交表单或发送邮件；材料提到的是预填表单和起草邮件。",
-    "材料没有说明读取网页和执行浏览器操作所需的权限及具体范围。"
-   ],
-   "key_points": [
-    "ChatGPT可以读取已打开的网页标签，并据此比较页面或整理资料。",
-    "扩展可协助整理表格、预填表单和起草邮件，侧边栏也可在浏览网页时呼出。"
-   ],
-   "rule_based": false
-  },
-  "ecf93a24b73a8d2": {
-   "event_id": "ecf93a24b73a8d2",
-   "title": "xAI 波兰经销商持续打磨 Grok Bot",
-   "facts": [
-    "一则消息称，Grok Bot 更新涉及质量、速度与卡片设计。",
-    "一则消息称，xAI 的波兰经销商 @shaoruu 一直在工作。",
-    "一则消息称，Grok Bot 的速度快了许多。"
-   ],
-   "inferences": [
-    "这些消息显示，Grok Bot 的更新可能包含质量、速度和卡片设计方面的改进。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料没有说明质量和卡片设计具体有哪些变化。",
-    "材料没有提供速度提升的量化数据。",
-    "材料没有说明相关更新何时上线或面向哪些用户。"
-   ],
-   "key_points": [
-    "更新涉及质量、速度与卡片设计。",
-    "消息称 Grok Bot 的速度快了许多。"
-   ],
-   "rule_based": false
-  },
   "ee1d619367aa152": {
    "event_id": "ee1d619367aa152",
    "title": "DeepSeek 开源昇腾支持以适配多种芯片",
@@ -2661,48 +2400,6 @@
    ],
    "rule_based": false
   },
-  "e9af74129af6410": {
-   "event_id": "e9af74129af6410",
-   "title": "Llama.cpp 在越狱 PS5 上本地运行任何 GGUF 模型",
-   "facts": [
-    "Llama.cpp 可以在越狱的 PS5 上本地运行任何 GGUF 模型",
-    "该文章获得 255 分，64 条评论"
-   ],
-   "inferences": [
-    "越狱的 PS5 能够执行 Llama.cpp 并运行本地机器学习模型"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "GGUF 模型具体指什么",
-    "Llama.cpp 在 PS5 上的运行细节"
-   ],
-   "key_points": [
-    "Llama.cpp 在越狱 PS5 上本地运行任何 GGUF 模型",
-    "文章获得 255 分，64 条评论"
-   ],
-   "rule_based": false
-  },
-  "ebb67302ab88029": {
-   "event_id": "ebb67302ab88029",
-   "title": "Antigravity 重置 Argon 与 Gemini 模型用量限额",
-   "facts": [
-    "Antigravity 已为所有用户重置 Argon 和 Gemini 模型用量限额",
-    "Antigravity 鼓励用户在周末继续使用"
-   ],
-   "inferences": [
-    "用户在周末可继续使用 Argon 与 Gemini 模型"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "新限额数值未说明",
-    "重置后限额持续时间未说明"
-   ],
-   "key_points": [
-    "Antigravity 重置 Argon 与 Gemini 模型用量限额",
-    "鼓励用户在周末继续使用"
-   ],
-   "rule_based": false
-  },
   "ed8cee77417c7ea": {
    "event_id": "ed8cee77417c7ea",
    "title": "Perplexity 开源 SPACE 沙箱平台",
@@ -2723,122 +2420,6 @@
    "key_points": [
     "SPACE 是 Perplexity Computer 代理任务使用的沙箱平台。",
     "平台通过独立的 Firecracker 微型虚拟机运行任务，并将代码以 Apache 2.0 协议开源。"
-   ],
-   "rule_based": false
-  },
-  "ef8e6517c8fad4b": {
-   "event_id": "ef8e6517c8fad4b",
-   "title": "Vercel 开发者可在 AI Gateway 使用 Perplexity Decider",
-   "facts": [
-    "Vercel 开发者现在可以在 AI Gateway 上使用 Perplexity Decider"
-   ],
-   "inferences": [
-    "此前 Vercel 开发者无法在 AI Gateway 上使用 Perplexity Decider"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "功能的具体使用方式未说明",
-    "是否所有 Vercel 开发者均可使用未说明"
-   ],
-   "key_points": [
-    "Vercel 开发者可在 AI Gateway 使用 Perplexity Decider",
-    "此功能扩展了 AI Gateway 的功能"
-   ],
-   "rule_based": false
-  },
-  "e00de689a3f28ce": {
-   "event_id": "e00de689a3f28ce",
-   "title": "Perplexity 开源沙箱平台 SPACE",
-   "facts": [
-    "Perplexity 开源了内部使用的沙箱平台 SPACE。",
-    "SPACE 采用 Apache 2.0 许可证，供开发者部署自己的智能体代码执行环境。",
-    "SPACE 使用 Firecracker 微型虚拟机隔离运行代码，支持暂停、恢复和会话分支。",
-    "SPACE 在沙箱外管理网络访问及平台持有的凭证。",
-    "SPACE 已支撑 Perplexity 的所有 Computer 会话，每天处理数百万次沙箱创建。",
-    "在相同生产流量下，SPACE 的创建速度为此前供应商的 3—5 倍。"
-   ],
-   "inferences": [
-    "据此可推断，SPACE 面向需要隔离代码执行、文件处理和访问控制的智能体场景。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料未说明 SPACE 的具体部署步骤。",
-    "材料未说明每天处理的数百万次沙箱创建对应的具体数量。",
-    "材料未说明此前供应商的具体名称。"
-   ],
-   "key_points": [
-    "SPACE 使用 Firecracker 微型虚拟机隔离运行代码。",
-    "SPACE 支持暂停、恢复、会话分支以及网络访问和凭证控制。",
-    "SPACE 已用于所有 Computer 会话，沙箱创建速度为此前供应商的 3—5 倍。"
-   ],
-   "rule_based": false
-  },
-  "e273e669a61d317": {
-   "event_id": "e273e669a61d317",
-   "title": "Show HN: Llmspeed – 体验本地 LLM 速度",
-   "facts": [
-    "标题为 Show HN: Llmspeed – 体验本地 LLM 速度",
-    "文章获得 9 分",
-    "评论数为 0"
-   ],
-   "inferences": [
-    "文章介绍 Llmspeed 工具用于测量本地 LLM 速度"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "文章具体内容未提供",
-    "文章链接不可访问"
-   ],
-   "key_points": [
-    "Llmspeed 是测量本地 LLM 速度的工具",
-    "Show HN 形式发布"
-   ],
-   "rule_based": false
-  },
-  "ec1a763c4d06d2b": {
-   "event_id": "ec1a763c4d06d2b",
-   "title": "摩尔线程完成Step5Preview Day-0适配",
-   "facts": [
-    "10月15日，阶跃星辰开源新一代大模型Step5Preview。",
-    "同日，摩尔线程宣布MTT S5000智算卡及MUSA软件栈完成Day-0适配。",
-    "Step5Preview采用稀疏专家混合架构，总参数量为600B，每个令牌激活27B。",
-    "Step5Preview原生支持100万令牌超长上下文。",
-    "摩尔线程率先完成Step5Preview大模型Day-0适配。"
-   ],
-   "inferences": [
-    "这可能表明国产大模型与国产硬件的软件适配周期正在缩短。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料未说明“率先”所对比的其他厂商或适配时间范围。",
-    "材料未说明Day-0适配的具体测试结果和可用范围。",
-    "材料未说明Step5Preview的开源许可和获取方式。"
-   ],
-   "key_points": [
-    "阶跃星辰于10月15日开源Step5Preview。",
-    "摩尔线程同日完成MTT S5000智算卡及MUSA软件栈的Day-0适配。"
-   ],
-   "rule_based": false
-  },
-  "e67a6834d92110c": {
-   "event_id": "e67a6834d92110c",
-   "title": "Hy Memory 2.0三层全开源，打造私人记忆管家",
-   "facts": [
-    "Hy Memory 2.0已发布。",
-    "Hy Memory 2.0的模型、框架和应用三层均开源。"
-   ],
-   "inferences": [
-    "Hy Memory 2.0试图覆盖从模型到应用的完整私人记忆管家体系。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料未说明Hy Memory 2.0的具体模型、框架和应用名称。",
-    "材料未说明开源代码的获取方式和许可协议。",
-    "材料未说明私人记忆管家的具体功能。"
-   ],
-   "key_points": [
-    "Hy Memory 2.0已发布。",
-    "模型、框架、应用三层全开源。"
    ],
    "rule_based": false
   },
@@ -2929,34 +2510,6 @@
    ],
    "rule_based": false
   },
-  "e2d37afc1a65e09": {
-   "event_id": "e2d37afc1a65e09",
-   "title": "Perplexity开源两款决策模型",
-   "facts": [
-    "Perplexity发布了27B参数的pplx-decider-v1.2和4B参数的pplx-decider-flash-v1.2两款开源多模态决策模型。",
-    "两款模型通过Hugging Face提供开放权重，并接入Decisions API和Vercel AI Gateway。",
-    "两款模型支持文本和图片，可返回是非判断、选项选择或评分及相应概率。",
-    "官方称两款模型的文本和视觉评分有所提升，推理速度最高提升5倍。",
-    "Decisions API对两款模型分别按每百万输入令牌0.02美元和0.01美元收费，输出令牌免费。",
-    "两款模型均提供256K令牌上下文窗口。",
-    "官方建议Flash默认每次请求只放一个问题，因为合并问题可能影响准确率。"
-   ],
-   "inferences": [
-    "由于两款模型提供开放权重，用户可以在Hugging Face获取模型权重。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料未说明两款模型采用的开源许可证。",
-    "材料未说明文本和视觉评分提升的具体幅度。",
-    "材料未说明推理速度最高提升5倍对应的具体测试条件。"
-   ],
-   "key_points": [
-    "Perplexity开源了27B参数和4B参数两款多模态决策模型。",
-    "模型支持文本图片输入、概率输出，并提供开放权重及API接入。",
-    "两款模型均提供256K令牌上下文窗口，输入按量计费且输出令牌免费。"
-   ],
-   "rule_based": false
-  },
   "e45bc82f9911e3b": {
    "event_id": "e45bc82f9911e3b",
    "title": "d1-ultra 发布，决策模型榜首",
@@ -2988,133 +2541,6 @@
    ],
    "rule_based": false
   },
-  "e3a00be1d69a606": {
-   "event_id": "e3a00be1d69a606",
-   "title": "OpenMOSS发布文生图模型MOSS-Image",
-   "facts": [
-    "OpenMOSS发布了MOSS-Image基础版和监督微调版，并公开相关代码与权重。",
-    "MOSS-Image-Base和MOSS-Image-SFT共用架构和推理接口。",
-    "MOSS-Image-SFT由MOSS-Image-Base使用精选数据进行监督微调而来。",
-    "该系列采用5B主干，支持最长4K令牌提示词。",
-    "该系列支持通过JSON指定画面中的文字、物体及其位置，并支持动漫和写实风格。",
-    "模型权重及独立推理代码采用Apache 2.0许可，权重已在Hugging Face和ModelScope提供。"
-   ],
-   "inferences": [
-    "由于两个版本共用架构和推理接口，使用者或可在相同接口下切换两个版本。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料未说明两个版本在生成质量和适用场景上的具体差异。",
-    "材料未提供该系列的评测结果或性能对比。",
-    "材料未说明精选数据的来源、规模和构成。"
-   ],
-   "key_points": [
-    "OpenMOSS同时发布MOSS-Image-Base和MOSS-Image-SFT。",
-    "模型支持长提示词、文字与物体定位，以及动漫和写实风格生成。",
-    "代码和权重已公开，并采用Apache 2.0许可。"
-   ],
-   "rule_based": false
-  },
-  "e52256fe4aee39c": {
-   "event_id": "e52256fe4aee39c",
-   "title": "JetBrains开源12B编程模型Mellum2.1",
-   "facts": [
-    "JetBrains开源了编程模型Mellum2.1。",
-    "Mellum2.1采用12B MoE架构，激活参数为2.5B。",
-    "Mellum2.1通过真实环境中的强化学习学习探索代码库、编辑文件和检查修改。",
-    "Mellum2.1面向编程 Agent 和本地部署。",
-    "JetBrains称，Mellum2.1在本地 PyCharm 工作流测试场景中的速度超过每秒140个词元。",
-    "Mellum2.1已在 Hugging Face 提供，采用 Apache 2.0 许可证。",
-    "Mellum2.1的 GGUF 版本支持 llama.cpp、Ollama 和 LM Studio。"
-   ],
-   "inferences": [
-    "据此，Mellum2.1可能有助于减少本地 PyCharm 工作流的云端开销。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "每秒超过140个词元的测试硬件、对比对象和测量条件未说明。",
-    "真实环境强化学习使用的具体训练数据和方法未说明。",
-    "材料未说明Mellum2.1在其他编程任务或工作流中的表现。"
-   ],
-   "key_points": [
-    "12B MoE架构，激活参数为2.5B。",
-    "通过真实环境强化学习学习代码库探索、文件编辑和结果检查。",
-    "面向编程 Agent 和本地部署，并提供 GGUF 版本。"
-   ],
-   "rule_based": false
-  },
-  "e9970f635abefe3": {
-   "event_id": "e9970f635abefe3",
-   "title": "Glimpse发布，支持边推理边回看画面",
-   "facts": [
-    "Elorian 发布了视觉思考模型 Glimpse。",
-    "Glimpse 可在推理过程中重新查看图像或视频，并通过局部放大、提高片段采样帧率和运行代码检查画面。",
-    "Glimpse 目前以预览形式通过接口和聊天界面提供。",
-    "Elorian 的评测显示，Glimpse 在科学图表推理、开放词汇计数、短视频描述和操作事件理解四项评测中超过 GPT-6 Astra。",
-    "Elorian 的评测显示，Glimpse 在具身空间推理评测中与 GPT-6 Astra 持平。",
-    "Glimpse 每百万输入词元收费零点六美元，每百万输出词元收费三美元。",
-    "材料称，Glimpse 的输入和输出价格均比 GPT-6 Astra 低百分之九十四。"
-   ],
-   "inferences": [
-    "根据已公布的评测结果和价格，Glimpse 可能成为 GPT-6 Astra 的低价替代选项。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料未说明上述评测的具体数据、测试条件和评测方法。",
-    "材料未说明 Glimpse 预览形式的开放范围和持续时间。",
-    "材料未说明局部放大、提高采样帧率和运行代码是否适用于所有图像与视频任务。",
-    "材料未说明价格是否会在预览结束后调整。"
-   ],
-   "key_points": [
-    "Glimpse 可在推理过程中回看图像和视频。",
-    "Glimpse 在五项列出的评测中四项超过 GPT-6 Astra、一项持平。",
-    "Glimpse 的输入和输出价格均比 GPT-6 Astra 低百分之九十四。"
-   ],
-   "rule_based": false
-  },
-  "e49f45847a7fe8c": {
-   "event_id": "e49f45847a7fe8c",
-   "title": "可灵4.0将上线fal平台，内容称无需厨房喷枪",
-   "facts": [
-    "一则内容以“可灵4.0无需厨房喷枪”为标题，并带有“Kling4”和“KlingAI”标签。",
-    "另一则内容称可灵4.0即将上线fal平台，并写有“游走于幻想与怀旧之间”及相同标签。"
-   ],
-   "inferences": [
-    "两则内容合并来看，可灵4.0可能正在为上线fal平台进行预告。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料未说明“无需厨房喷枪”的具体含义。",
-    "材料未说明可灵4.0上线fal平台的具体时间。",
-    "材料未说明fal平台的具体性质。"
-   ],
-   "key_points": [
-    "可灵4.0被描述为无需厨房喷枪。",
-    "可灵4.0即将上线fal平台。"
-   ],
-   "rule_based": false
-  },
-  "eda50f0585a21d9": {
-   "event_id": "eda50f0585a21d9",
-   "title": "出现名为 FLUX 3 Image Klein 的条目",
-   "facts": [
-    "两个来源的标题均为 FLUX 3 Image Klein。",
-    "一个来源显示该条目有 147 个积分和 40 条评论。"
-   ],
-   "inferences": [
-    "该条目可能引发了一定讨论。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料没有说明 FLUX 3 Image Klein 是什么。",
-    "材料没有提供相关内容或评论的具体信息。"
-   ],
-   "key_points": [
-    "两个来源均列出 FLUX 3 Image Klein。",
-    "一个来源显示该条目有 147 个积分和 40 条评论。"
-   ],
-   "rule_based": false
-  },
   "edbb72771532dc1": {
    "event_id": "edbb72771532dc1",
    "title": "WorkBuddy因DeepSeek故障退积分并送500",
@@ -3140,49 +2566,6 @@
    ],
    "rule_based": false
   },
-  "e01e52336079368": {
-   "event_id": "e01e52336079368",
-   "title": "WorkBuddy公布DeepSeek故障补偿",
-   "facts": [
-    "WorkBuddy针对DeepSeek服务故障公布积分返还及赠送方案。",
-    "国内版受影响用户可获得10月8日至14日使用DeepSeek模型消耗积分的全额返还，积分将在7个工作日内到账。",
-    "国内版全量用户可额外获赠500积分，需在10月22日24点前进入“用量管理”页面手动领取，积分有效期为1个月。"
-   ],
-   "inferences": [
-    "补偿方案同时覆盖使用DeepSeek模型并受影响的用户和国内版全量用户。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料未说明DeepSeek服务故障的具体原因。",
-    "材料未说明DeepSeek服务故障的具体发生时间。"
-   ],
-   "key_points": [
-    "受影响用户可返还10月8日至14日消耗的积分。",
-    "国内版全量用户可领取500积分，领取截止时间为10月22日24点。"
-   ],
-   "rule_based": false
-  },
-  "e47ebd7e34bbd1e": {
-   "event_id": "e47ebd7e34bbd1e",
-   "title": "Muse 与 Grok Bot 处理生活与工作",
-   "facts": [
-    "Muse 管生活",
-    "Grok Bot 管工作"
-   ],
-   "inferences": [
-    "Muse 与 Grok Bot 共同管理生活与工作"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "围墙太高的具体含义不明",
-    "Personal Agent 指代不清"
-   ],
-   "key_points": [
-    "Muse 管生活",
-    "Grok Bot 管工作"
-   ],
-   "rule_based": false
-  },
   "eb96d39e14e90fc": {
    "event_id": "eb96d39e14e90fc",
    "title": "Kimi新增Ultra会员，月费1399元",
@@ -3204,159 +2587,6 @@
    "key_points": [
     "Ultra月费1399元，是Kimi目前最高档付费会员。",
     "Ultra提供28倍Agent额度，并支持百万token超长对话、4个Agent任务并行和调用Kimi Code。"
-   ],
-   "rule_based": false
-  },
-  "e764440adb2057c": {
-   "event_id": "e764440adb2057c",
-   "title": "Perplexity 推出 Roadster 物理解析页面",
-   "facts": [
-    "Perplexity 推出 Roadster 物理解析页面",
-    "页面内容是 roadster 背后的物理学"
-   ],
-   "inferences": [
-    "页面可能解释了 Roadster 的物理原理"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "页面具体讨论哪些物理概念不明确"
-   ],
-   "key_points": [
-    "Perplexity 推出 Roadster 物理解析页面",
-    "页面内容涉及 Roadster 的物理学"
-   ],
-   "rule_based": false
-  },
-  "e5f2c8ea688ac66": {
-   "event_id": "e5f2c8ea688ac66",
-   "title": "新华语典AI赋能高校发展座谈会举行",
-   "facts": [
-    "“新华语典”权威AI时政资讯智能体赋能高校高质量发展座谈会举行",
-    "新华网报道该会议"
-   ],
-   "inferences": [
-    "会议旨在探讨AI智能体如何支持高校高质量发展"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "会议具体时间、地点、参与者、议程及结果未说明"
-   ],
-   "key_points": [
-    "“新华语典”AI智能体用于高校发展赋能",
-    "会议聚焦高校高质量发展议题"
-   ],
-   "rule_based": false
-  },
-  "ea01c34e3e65e63": {
-   "event_id": "ea01c34e3e65e63",
-   "title": "行业首个确定性网络智能体平台AXP在南京发布",
-   "facts": [
-    "紫金山实验室联合中国移动、江苏未来网络集团等发布智能体互联平台AXP。",
-    "AXP支持百万级智能体注册接入和十万级智能体同时在线运行。",
-    "AXP可实现秒级故障感知切换和百毫秒级语义寻址响应。",
-    "AXP依托CENI完成四千公里以上跨域智能体寻址访问，并降低百分之二十以上端到端任务执行耗时。"
-   ],
-   "inferences": [
-    "AXP面向大规模智能体接入、运行和跨域访问场景。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料未说明AXP的具体发布时间。",
-    "材料未说明参与发布的其他机构名称。",
-    "材料未说明端到端任务执行耗时的具体测量条件。"
-   ],
-   "key_points": [
-    "AXP支持百万级智能体注册接入。",
-    "AXP支持十万级智能体同时在线运行。",
-    "AXP提供故障感知切换和语义寻址能力。",
-    "AXP支持跨域智能体寻址访问并降低任务执行耗时。"
-   ],
-   "rule_based": false
-  },
-  "ebb0ea99e5bf315": {
-   "event_id": "ebb0ea99e5bf315",
-   "title": "马斯克建议用 Grok Bot 连接 X 私信",
-   "facts": [
-    "马斯克建议用 Grok Bot 连接 X 私信",
-    "Grok @Bot 连接到 X 私信被认为是最好用的方式"
-   ],
-   "inferences": [
-    "这是一种推荐使用的方法"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "未说明是否已实现或可用"
-   ],
-   "key_points": [
-    "推荐使用 Grok Bot 连接 X 私信",
-    "认为这是最佳使用方式"
-   ],
-   "rule_based": false
-  },
-  "e1b44a90062f7a8": {
-   "event_id": "e1b44a90062f7a8",
-   "title": "Anthropic 官方管理的 Claude 插件目录",
-   "facts": [
-    "该目录为官方发布",
-    "由 Anthropic 管理",
-    "包含高质量 Claude Code 插件"
-   ],
-   "inferences": [
-    "该目录面向开发者使用"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "发布日期未知",
-    "插件数量不明",
-    "高质量标准不详"
-   ],
-   "key_points": [
-    "官方 Anthropic 管理的 Claude Code 插件目录",
-    "包含高质量插件"
-   ],
-   "rule_based": false
-  },
-  "e42c23609a6ce32": {
-   "event_id": "e42c23609a6ce32",
-   "title": "本地千亿大模型落地国产PC",
-   "facts": [
-    "本地千亿大模型落地国产PC。",
-    "标题将AIPC生产力描述为进入深水区。"
-   ],
-   "inferences": [
-    "据标题可推断，本地大模型与国产PC的结合被用于讨论AIPC生产力。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料未说明大模型的名称、开发方和具体规模。",
-    "材料未说明涉及的国产PC品牌、型号和芯片。",
-    "材料未说明大模型的部署方式、运行效果和适用场景。",
-    "材料未说明AIPC生产力进入深水区的具体依据。"
-   ],
-   "key_points": [
-    "本地千亿大模型落地国产PC。",
-    "事件涉及AIPC生产力。"
-   ],
-   "rule_based": false
-  },
-  "ee963cfab6a3db5": {
-   "event_id": "ee963cfab6a3db5",
-   "title": "Muse能带火国内个人人工智能体吗？",
-   "facts": [
-    "材料标题为《Muse能带火国内个人人工智能体吗？》。"
-   ],
-   "inferences": [
-    "仅根据标题无法判断Muse能否推动国内个人人工智能体发展。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料未说明Muse是什么产品。",
-    "材料未说明国内个人人工智能体的现状。",
-    "材料未说明Muse是否会带动国内个人人工智能体发展。"
-   ],
-   "key_points": [
-    "核心问题是Muse能否带动国内个人人工智能体。",
-    "现有材料仅提供标题，缺少事件细节。"
    ],
    "rule_based": false
   },
@@ -3431,81 +2661,6 @@
    ],
    "rule_based": false
   },
-  "e8b18a8e6d0b0f5": {
-   "event_id": "e8b18a8e6d0b0f5",
-   "title": "Claude Code团队披露按风险分级的代码审查流程",
-   "facts": [
-    "Anthropic披露了Claude Code团队的代码审查流程。",
-    "大部分代码阅读由机器完成，人工审批按照变更风险分级。",
-    "Claude编写了Claude Code约90%的代码。",
-    "6月至9月，合并的代码变更请求数量增加1倍以上，需要回退的代码变更请求比例下降超过40%。",
-    "每个代码变更请求都会先经过Claude审查，漏洞与安全审查中未解决的问题会阻止合并。",
-    "简化审批仅适用于受信任的作者，高风险变更仍需2人审批，人工智能的批准不能替代必需的人工批准。"
-   ],
-   "inferences": [
-    "据此可推断，Claude Code团队将自动化审查用于大部分代码阅读，并将人工审批集中于高风险变更。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料未说明机器审查所覆盖的具体检查项目。",
-    "材料未说明简化审批的具体条件。",
-    "材料未说明变更风险分级的具体标准。",
-    "材料未说明代码变更请求数量和回退比例的具体基数。"
-   ],
-   "key_points": [
-    "大部分代码阅读由机器完成，人工审批按风险分级。",
-    "Claude编写了Claude Code约90%的代码。",
-    "6月至9月，代码变更请求数量增加1倍以上，回退比例下降超过40%。",
-    "高风险变更仍需2人审批，人工智能批准不能替代人工批准。"
-   ],
-   "rule_based": false
-  },
-  "e0dbfd5b8545b05": {
-   "event_id": "e0dbfd5b8545b05",
-   "title": "Anthropic 重新设计 Claude Code 代码评审",
-   "facts": [
-    "Claude 写了约 90% 的代码",
-    "2026 年 6 月到 9 月合并 PR 翻倍以上而 revert 率下降超 40%"
-   ],
-   "inferences": [
-    "代码评审重构导致合并 PR 翻倍以上并降低 revert 率"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "代码评审重构的具体实施细节不明",
-    "其他可能影响合并 PR 和 revert 率的因素未说明"
-   ],
-   "key_points": [
-    "Claude 负责约 90% 代码",
-    "代码评审重构后合并 PR 翻倍以上 revert 率下降超 40%"
-   ],
-   "rule_based": false
-  },
-  "ee7bc402eb3660f": {
-   "event_id": "ee7bc402eb3660f",
-   "title": "Claude追溯出NIST五条曲线种子来源",
-   "facts": [
-    "Anthropic称，其一个内部研究模型在不到30分钟内追溯出NIST的P-192、P-224、P-256、P-384和P-521共5条标准椭圆曲线的种子来源。",
-    "这些种子来自以Unix时间戳初始化的C语言库伪随机数生成器lrand48。",
-    "Anthropic已公开复现代码。",
-    "Anthropic表示，这项研究没有破解椭圆曲线数字签名算法ECDSA，也没有发现新的攻击方式。",
-    "Anthropic表示，用户无需采取措施。"
-   ],
-   "inferences": [
-    "根据Anthropic的说法，这项研究降低了相关曲线参数被刻意植入后门的疑虑。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "B-163的种子来源仍未确定。",
-    "部分曲线基点的生成方式仍未确定。",
-    "一些可用候选曲线被跳过的原因仍未确定。"
-   ],
-   "key_points": [
-    "Claude在不到30分钟内追溯出NIST五条标准椭圆曲线的种子来源。",
-    "种子来源指向以Unix时间戳初始化的lrand48伪随机数生成器。"
-   ],
-   "rule_based": false
-  },
   "e5be3806e3d7658": {
    "event_id": "e5be3806e3d7658",
    "title": "Anthropic调查显示员工与公众的人工智能预期存在差距",
@@ -3530,48 +2685,6 @@
    "key_points": [
     "Anthropic技术部门新招员工中的初级岗位占比从27%降至9%。",
     "超过半数Anthropic员工预计到2030年人工智能可完成其至少80%的现有工作。"
-   ],
-   "rule_based": false
-  },
-  "ea0b9f7f3ea6649": {
-   "event_id": "ea0b9f7f3ea6649",
-   "title": "Muse Spark Open (Max)登顶WebDev美国开源模型榜",
-   "facts": [
-    "Arena公布，Meta发布的Muse Spark Open (Max)在Code Arena: WebDev中获得1511分。",
-    "Muse Spark Open (Max)位居美国开源模型第一，并在开源模型总榜排名第13。"
-   ],
-   "inferences": [
-    "据此可推断，Muse Spark Open (Max)在Code Arena: WebDev的美国开源模型比较中排名最高。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料未说明Code Arena: WebDev的评测标准。",
-    "材料未说明开源模型总榜包含哪些模型。"
-   ],
-   "key_points": [
-    "Muse Spark Open (Max)获得1511分。",
-    "Muse Spark Open (Max)位居美国开源模型第一和开源模型总榜第13。"
-   ],
-   "rule_based": false
-  },
-  "ece1cecb2522877": {
-   "event_id": "ece1cecb2522877",
-   "title": "Gemini 4 Argon玩StarCraft",
-   "facts": [
-    "StarSkirmish Bench更新了用编写代码方式让大型语言模型进行StarCraft BW对局的基准测试。",
-    "更新内容包含OpenAI、Anthropic、Google和Muse旗舰模型的测试结果。"
-   ],
-   "inferences": [
-    "此次更新可用于比较不同公司旗舰模型在StarCraft BW代码操控任务中的表现。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料未说明各模型的具体测试结果、对局表现和评测方法。",
-    "材料未说明Gemini 4 Argon在测试中的排名或得分。"
-   ],
-   "key_points": [
-    "StarSkirmish Bench更新StarCraft BW大型语言模型测试。",
-    "测试结果涵盖OpenAI、Anthropic、Google和Muse的旗舰模型。"
    ],
    "rule_based": false
   }

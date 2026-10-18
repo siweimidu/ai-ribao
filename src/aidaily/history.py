@@ -52,6 +52,31 @@ def _fold(text: str) -> str:
     return low
 
 
+#: Hosts whose article identity lives in the query string. Stripping the query collapses every
+#: article on the host to one key.
+#:
+#: This shipped as a real bug: `mp.weixin.qq.com/s?__biz=...&mid=...&idx=...&sn=...` reduced to
+#: `mp.weixin.qq.com/s` for every WeChat article, so an unrelated Meta story from 10-16 and the
+#: DeepSeek V4.1 launch from 10-17 shared a URL fingerprint. The launch was then dropped as a
+#: "repeat" -- the single most important story of the day, deleted by its own deduplicator.
+_QUERY_IS_IDENTITY = (
+    "mp.weixin.qq.com",
+    "youtu.be",
+    "arxiv.org",
+)
+
+
+def _canonical_url(url: str) -> str:
+    """A comparable form of a URL: no scheme, no tracking parameters, stable trailing slash."""
+    bare = re.sub(r"^https?://", "", (url or "").strip().lower())
+    host = bare.split("/", 1)[0]
+    if any(host == h or host.endswith("." + h) for h in _QUERY_IS_IDENTITY):
+        # Keep the query: it *is* the identity. Only the fragment is dropped.
+        return bare.split("#", 1)[0].rstrip("/")
+    return bare.split("?", 1)[0].split("#", 1)[0].rstrip("/")
+
+
+
 def fingerprint(event: Event) -> set[str]:
     """Two keys per event, as daily-briefing does: a title key and a URL key.
 
@@ -64,10 +89,7 @@ def fingerprint(event: Event) -> set[str]:
     if len(folded) >= 6:
         keys.add("t:" + hashlib.sha1(folded.encode()).hexdigest()[:16])
     for url in event.all_urls or ():
-        # Canonical form: strip the scheme, the query and a trailing slash, so tracking
-        # parameters and http/https do not read as different pages.
-        bare = re.sub(r"^https?://", "", (url or "").strip().lower())
-        bare = bare.split("?", 1)[0].split("#", 1)[0].rstrip("/")
+        bare = _canonical_url(url)
         if len(bare) > 10:
             keys.add("u:" + hashlib.sha1(bare.encode()).hexdigest()[:16])
     # Not hashed: the key is already a short normalised product name, and keeping it legible

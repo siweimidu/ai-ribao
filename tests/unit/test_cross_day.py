@@ -157,3 +157,44 @@ def test_a_real_story_is_not_mistaken_for_a_digest() -> None:
     assert not is_roundup("DeepSeek发布V4.1-Flash-1017并开放搜索接口")
     assert not is_roundup("Gemini 4 Argon 向 Google AI Pro 开放")
     assert not is_roundup("华尔街拟转让380亿美元AI数据中心债务，多州起诉OpenAI")
+
+def test_a_query_string_that_carries_the_article_id_is_kept() -> None:
+    """WeChat article identity lives in the query string, and stripping it collapsed the host.
+
+    This shipped as a real failure: every `mp.weixin.qq.com/s?...` URL reduced to
+    `mp.weixin.qq.com/s`, so an unrelated Meta story from 10-16 and the DeepSeek V4.1 launch
+    from 10-17 shared a URL fingerprint. The launch was then dropped as a repeat -- the most
+    important story of the day, deleted by its own deduplicator.
+    """
+    from aidaily.history import _canonical_url
+
+    a = _canonical_url("https://mp.weixin.qq.com/s?__biz=MzA3&mid=265&idx=3&sn=d54")
+    b = _canonical_url("https://mp.weixin.qq.com/s?__biz=MzI3&mid=2652&idx=1&sn=7da")
+    assert a != b, "two WeChat articles collapsed to one identity"
+    assert "mid=265" in a and "mid=2652" in b
+
+
+def test_tracking_parameters_are_still_dropped() -> None:
+    """The fix must not stop ordinary canonicalisation working."""
+    from aidaily.history import _canonical_url
+
+    assert _canonical_url("https://example.com/a?utm_source=x&utm_medium=y") == "example.com/a"
+    assert _canonical_url("http://example.com/a/") == "example.com/a"
+
+
+def test_a_release_and_an_earlier_promo_about_it_are_different_events(tmp_path) -> None:
+    """The launch must survive even though a promotion mentioned the same model the day before.
+
+    10-16 carried "DeepSeek V4.1 Flash 在 OpenCode 限时免费" and 10-17 carried the launch itself.
+    They share a designation but are not the same story, and the launch is the one that matters.
+    """
+    h = history_with(
+        ("2026-10-16", ["DeepSeek V4.1 Flash 在 OpenCode 限时免费"]),
+        path=tmp_path / "h.jsonl",
+    )
+    repeat = h.find_repeat(
+        event("DeepSeek 发布 V4.1-Flash-1017，性能更强", event_id="launch"),
+        today="2026-10-17",
+        now=NOW,
+    )
+    assert repeat is None, "the launch was treated as a repeat of a promotion"
