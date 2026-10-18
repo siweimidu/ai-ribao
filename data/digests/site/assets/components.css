@@ -1879,14 +1879,14 @@ body { font-family: var(--f-sans); }
 
 @media (min-width: 1080px) {
   .shell {
-    grid-template-columns: minmax(0, 13rem) minmax(0, 1fr) minmax(0, 12rem);
+    grid-template-columns: minmax(0, var(--rail-w)) minmax(0, 1fr) minmax(0, var(--toc-w));
   }
 }
 
 /* 超宽屏：两侧不再继续变宽，多出来的宽度整列给正文。 */
 @media (min-width: 1600px) {
   .shell {
-    grid-template-columns: minmax(0, 13rem) minmax(0, 1fr) minmax(0, 12rem);
+    grid-template-columns: minmax(0, var(--rail-w)) minmax(0, 1fr) minmax(0, var(--toc-w));
   }
   .content { max-width: 62rem; }
 }
@@ -1894,5 +1894,29 @@ body { font-family: var(--f-sans); }
 /* 正文在某段宽度以上不该再无限拉长：一行超过约 78 个汉字，眼睛回行会吃力。
    上限之后多出的空间留白，而不是把正文撑满。 */
 @media (min-width: 1080px) {
-  .content { max-width: 56rem; }
+  .content { max-width: 68rem; }
+}
+
+/* An empty badge is a layout cell, not a badge: it must occupy the track (so the count column
+   stays aligned) while drawing nothing. Without this it kept the badge background and radius,
+   which rendered as a small blue rectangle on every row that has no 最新 marker -- measured
+   16x2px of rgb(232,239,255) with a 6.4px radius, four of them down the column. */
+.issue-row__badge:empty {
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding-inline: 0;
+}
+
+/* Centre the shell. With `margin-inline: 0` the grid was pinned to the left edge and all the
+   slack sat on the right -- measured at 1440px: shell x=0..1440 while the content column ended
+   at 1144, leaving ~300px of dead space on one side only. */
+.shell { margin-inline: auto; }
+
+/* Centre the reading column by centring its grid track, not the item.
+   `margin-inline: auto` on a `max-width` grid item shrinks it to its content (measured: a 960px
+   track produced a 535px box), because the auto margins claim the free space before the item is
+   sized. `justify-self: center` asks the grid to size the item from its track and then centre it. */
+@media (min-width: 1080px) {
+  .content { justify-self: center; width: 100%; }
 }

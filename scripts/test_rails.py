@@ -91,7 +91,10 @@ async def main() -> int:
         base_rail = await rail_width(page)
         base_toc = await toc_width(page)
         check("左栏初始宽约 240px", 200 <= base_rail <= 280, f"{base_rail:.0f}px")
-        check("目录初始宽约 240px", 200 <= base_toc <= 280, f"{base_toc:.0f}px")
+        # The TOC default dropped from 240px to 192px on purpose: it only shows "01 title…",
+        # and the width it gave up went to the reading column. The range still proves it is a
+        # full TOC rather than a collapsed strip.
+        check("目录初始宽约 192px", 160 <= base_toc <= 280, f"{base_toc:.0f}px")
 
         # The grip must be on the rail's inner edge: right for the rail, left for the TOC.
         sides = await page.evaluate(
