@@ -1575,6 +1575,67 @@ def _load_archive_from_html(site_dir: Path) -> list[tuple[str, int]]:
     return out
 
 
+def _rerender_archived_issue(site: Path, out_dir: Path, date: str, ctx: SiteContext) -> int:
+    """Rebuild one past issue page from its archived JSON. Returns 1 when written.
+
+    The archive stores the digest with `sections` excluded and the layout beside it as
+    `{category: [event_id]}`; validating `digest` alone yields a Digest whose sections are empty,
+    which would silently move every story to 「其它」. That reattachment is the reason this helper
+    exists rather than a one-line model_validate.
+
+    A missing or unreadable archive is skipped, not raised: one damaged file must not stop the
+    day's publish. The count is reported in the manifest so the skip is visible.
+    """
+    path = out_dir / f"{date}.json"
+    if not path.exists():
+        return 0
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        doc = dict(payload["digest"])
+        by_id = {e["event_id"]: e for e in doc.get("top_events", [])}
+        doc["sections"] = {
+            category: [by_id[eid] for eid in ids if eid in by_id]
+            for category, ids in (payload.get("sections") or {}).items()
+        }
+        past = Digest.model_validate(doc)
+        # The archived insights carry the model-written title, the facts and the evidence level.
+        # Passing {} (as the first version did) left every headline empty, and the renderer then
+        # skipped the stories it could not title -- measured: 2026-10-14 went from 21 stories to 6.
+        archived_insights = {
+            event_id: EventInsight(**raw)
+            for event_id, raw in (payload.get("insights") or {}).items()
+        }
+    except Exception:
+        return 0
+
+    # `items_by_id` must not be empty: `render_day` looks each event's members up there and drops
+    # those it cannot find, so passing {} silently shrank 2026-10-14 from 21 stories to 6. A
+    # placeholder item per member is enough for rendering -- the page only reads title, url and
+    # summary from them -- and keeps the archive the single source of truth.
+    items_by_id: dict[str, NormalizedItem] = {}
+    for event in past.top_events:
+        for member_id in event.member_item_ids:
+            if member_id in items_by_id:
+                continue
+            url = event.all_urls[0] if event.all_urls else ""
+            items_by_id[member_id] = NormalizedItem(
+                item_id=member_id,
+                source_id=event.source_ids[0] if event.source_ids else "unknown",
+                title=event.title,
+                title_norm=event.title.lower(),
+                url=url,
+                fetched_at=event.first_seen_at,
+                first_seen_at=event.first_seen_at,
+                updated_at=event.last_updated_at,
+                content_sha256="0" * 64,
+                simhash=0,
+            )
+
+    (site / f"{date}.html").write_text(
+        render_day(past, archived_insights, items_by_id, ctx), encoding="utf-8"
+    )
+    return 1
+
 def write_site(
     digest: Digest,
     insights: dict[str, EventInsight],
@@ -1615,6 +1676,22 @@ def write_site(
     day_html = render_day(digest, insights, items_by_id, ctx)
     (site / f"{digest.date}.html").write_text(day_html, encoding="utf-8")
 
+    # **Re-render every earlier issue too.**
+    #
+    # Only the current day was ever written, so a change to the template reached that day and
+    # nothing else: 2026-10-14..16 kept a 「本期说明」 block long after it was removed, and kept a
+    # calendar built before the fix. The page is generated from the archived digest, not from the
+    # live one, so each past issue can be rebuilt exactly -- `load_archived_issue` does that.
+    #
+    # Cost is bounded by the archive (a few pages per run); the alternative is stale pages, which
+    # is what this bug was.
+    rebuilt = 0
+    for past_date, _ in ctx.archive:
+        if past_date == digest.date:
+            continue
+        rebuilt += _rerender_archived_issue(site, out_dir, past_date, ctx)
+
+
     (site / "index.html").write_text(render_index(ctx, digest), encoding="utf-8")
     (site / "tibo.html").write_text(render_tibo(ctx, tibo), encoding="utf-8")
     (site / "sources.html").write_text(
@@ -1626,6 +1703,7 @@ def write_site(
     manifest = {
         "date": digest.date,
         "pages": len(ctx.archive),
+        "rebuilt_archived": rebuilt,
         "bytes": len(day_html.encode("utf-8")),
         "assets": sorted(p.name for p in (site / "assets").glob("*")) if (site / "assets").exists() else [],
     }
