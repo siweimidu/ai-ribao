@@ -92,7 +92,7 @@ jobs:
         # asserting that git history happened to be quiescent at checkout time.
         run: |
           set -e
-          latest=$(ls -1 data/digests/*.json | grep -v '/site/' | sort | tail -1)
+          latest=$(find data/digests -maxdepth 1 -name '????-??-??.json' | sort | tail -1)
           echo "rebuilding feeds from $latest"
           python scripts/rerender_site.py "$latest"
           python scripts/test_feeds.py
@@ -119,7 +119,8 @@ jobs:
           go install github.com/rhysd/actionlint/cmd/actionlint@latest
           # actionlint takes file paths, not globs, and it sits inside a command
           # substitution here, so the shell must expand them.
-          "$(go env GOPATH)/bin/actionlint" -color $(ls .github/workflows/*.yml)
+          mapfile -t files < <(find .github/workflows -maxdepth 1 -name "*.yml" | sort)
+          "$(go env GOPATH)/bin/actionlint" -color "${files[@]}"
       - name: No secrets in the repository
         run: |
           set -e

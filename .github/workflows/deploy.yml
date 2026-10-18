@@ -47,7 +47,7 @@ jobs:
         # 404 site.
         run: |
           test -f data/digests/site/index.html || { echo "::error::data/digests/site/index.html missing"; exit 1; }
-          echo "pages: $(ls data/digests/site/*.html | wc -l)"
+          echo "pages: $(find data/digests/site -maxdepth 1 -name "*.html" | wc -l)"
 
       - uses: actions/upload-pages-artifact@v5
         with:

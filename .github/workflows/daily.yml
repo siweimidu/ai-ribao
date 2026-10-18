@@ -134,21 +134,24 @@ jobs:
           esac
       - name: Report
         run: |
-          echo "### Gate" >> "$GITHUB_STEP_SUMMARY"
-          echo '```json' >> "$GITHUB_STEP_SUMMARY"
-          cat gate.json >> "$GITHUB_STEP_SUMMARY"
-          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          # One redirect rather than four: shellcheck flags repeated appends to the same
+          # file (SC2129), and a single block is easier to read in the summary.
+          {
+            echo "### Gate"
+            echo '```json'
+            cat gate.json
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
 
   # ---------------------------------------------------------------------------
-  # 2. Collect. One job rather than a matrix: 34 live sources finish in under a minute,
-  #    so sharding would add moving parts without buying anything. Sharding becomes
-  #    worthwhile past roughly 150 sources.
+  # 2. Collect. One job rather than a matrix: the sources are I/O bound and a single
+  #    runner already saturates them, while a matrix would duplicate the rate limits.
   # ---------------------------------------------------------------------------
   collect:
     needs: gate
-    if: needs.gate.outputs.run == 'true' && inputs.skip_collect != true
+    if: needs.gate.outputs.run == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7

@@ -53,12 +53,21 @@ jobs:
             exit 0
           fi
           git commit -m "chore(health): weekly source probe"
+          # Same reasoning as the digest commit step: a rebase conflict here means two runs
+          # wrote the same generated report, not that a human edit needs merging. Keep this
+          # run's version. `attempt` is used in the log line, so it is not an unused variable
+          # (shellcheck SC2034).
           for attempt in 1 2 3; do
-            if git push; then exit 0; fi
+            if git push; then
+              echo "pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "push rejected; rebasing (attempt $attempt)"
             git fetch origin "$GITHUB_REF_NAME"
-            git rebase "origin/$GITHUB_REF_NAME" || { git rebase --abort; exit 1; }
+            git rebase -X theirs "origin/$GITHUB_REF_NAME" || git rebase --abort || true
             sleep 3
           done
+          echo "::error::failed to push after 3 attempts"
           exit 1
 
       - name: Summarise
