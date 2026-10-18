@@ -37,7 +37,6 @@ RELEASES = [
     "DeepSeek 发布 DeepSeek-V4.1-Flash-1017，性能更强且输出更省 token",
     "OpenAI 发布 GPT-6 Astra Pro",
     "Google 发布 Gemini 4 Argon",
-    "DeepSeek 开放自研搜索 API",
 ]
 
 

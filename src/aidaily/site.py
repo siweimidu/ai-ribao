@@ -381,7 +381,13 @@ def _display_title(
     reported by a Chinese outlet. Choosing that title shows the reader the story in their own
     language, using a headline a real publisher wrote rather than one this code invented.
     """
-    candidates: list[str] = []
+    # A merged event records every headline it absorbed; prefer the longest one first, because
+    # it is the phrasing that names what happened rather than a bare product string.
+    merged = (event.unique_facts or {}).get("merged_titles") or []
+    # Longest first: absorbed headlines are recorded in merge order, and the first is
+    # often a bare product string while a later one says what happened. Length is a crude
+    # but reliable proxy here, because every candidate describes the same release.
+    candidates: list[str] = sorted((t for t in merged if t), key=len, reverse=True)
     if insight and insight.title:
         candidates.append(insight.title)
     candidates.append(event.title)

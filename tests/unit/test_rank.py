@@ -331,18 +331,23 @@ def test_a_shared_url_is_treated_as_a_duplicate_not_a_second_source() -> None:
     """A URL in both events means L2 let the same article through twice."""
     shared = "https://example.com/story"
     sources = [spec("rss:a", "media"), spec("rss:b", "media")]
-    items = [item("i1", "rss:a", body="z" * 300, title="A story about OpenAI GPT-6"),
-             item("i2", "rss:b", body="z" * 300, title="A story about OpenAI GPT-6")]
+    items = [item("i1", "rss:a", body="z" * 300, title="OpenAI ships GPT-6 to all users"),
+             item("i2", "rss:b", body="z" * 300, title="GPT-6 rollout reaches every account")]
     events = [
         event("e1", ["i1"], items[0].title, source_ids=["rss:a"], urls=[shared]),
         event("e2", ["i2"], items[1].title, source_ids=["rss:b"], urls=[shared]),
     ]
 
     ranked = rank_events(events, items, sources, weights=WEIGHTS, now=NOW)
-    chosen = select_diverse(ranked, 2, sources, rank=RankWeights(max_per_source=2, max_per_group=3))
 
-    second = chosen[1]
-    assert second.components["topic_penalty"] <= 0.10, second.components
+    # Two events sharing one URL and one model designation are the same article seen twice.
+    # The ranker now collapses them before diversity selection, which is a stronger answer than
+    # the original assertion: the duplicate cannot reach the digest at all, so the reader never
+    # sees one story counted as two independent sources.
+    assert len(ranked) == 1, [r.event.title for r in ranked]
+    only = ranked[0]
+    assert len(only.event.source_ids) == 2, only.event.source_ids
+    assert len(only.event.all_urls) == 1, only.event.all_urls
 
 
 def test_entity_overlap_is_the_decisive_signal_not_string_similarity() -> None:

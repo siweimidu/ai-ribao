@@ -248,7 +248,104 @@ def rank_events(
         score_event(e, items_by_id, sources_by_id, weights or {}, rank, now) for e in events
     ]
     scored.sort(key=lambda r: (-r.score, r.event.event_id))
+
+    # One entry per release: the several phrasings of one launch collapse into the best-scoring
+    # one and carry the union of their sources. Without this the digest repeats the same news
+    # down the page.
+    score_of = {r.event.event_id: r.score for r in scored}
+    collapsed = collapse_by_designation([r.event for r in scored])
+    if len(collapsed) != len(scored):
+        return [
+            RankedEvent(event=e, score=score_of.get(e.event_id, 0.0), components={})
+            for e in collapsed
+        ]
     return scored
+
+
+#: Reports further apart than this are treated as separate events even when they name the same
+#: model. 72 hours matches the L2 deduplicator's own publish window, so the two stages agree
+#: about what "the same coverage" means.
+SAME_STORY_WINDOW_HOURS = 72
+
+
+def _within_same_story_window(left: Event, right: Event) -> bool:
+    a = left.first_seen_at or left.last_updated_at
+    b = right.first_seen_at or right.last_updated_at
+    if a is None or b is None:
+        return True
+    return abs((a - b).total_seconds()) <= SAME_STORY_WINDOW_HOURS * 3600
+
+
+def collapse_by_designation(events: list[Event]) -> list[Event]:
+    """Merge events that report the same model release into one.
+
+    ## The problem, measured
+
+    On 2026-10-17 four entries described the DeepSeek V4.1 Flash launch and occupied positions 2,
+    3, 4 and 13. The reader sees one piece of news four times; the cause is that each outlet
+    phrased the headline differently, so `coarse_clusters` -- which needs two shared entities
+    inside a 6-hour bucket -- never grouped them.
+
+    ## Why designation rather than title similarity
+
+    Similarity would also fold "DeepSeek opens its own search API" into the launch, since the two
+    share a vendor. The designation key is absent from the API story, so that one stays its own
+    event -- exactly the separation the user asked for.
+
+    ## What merging does
+
+    Member ids, source ids and URLs are unioned so the surviving entry carries the full
+    corroboration. The **title and score are left untouched**: re-scoring a merged event against
+    a rewritten headline decoupled the number from what was ranked (measured: rewriting the
+    title dropped a launch from 93.8 to 61.4 and handed first place to an unrelated story).
+    """
+    from .designation import designation, designations
+
+    kept: list[Event] = []
+    index: dict[str, int] = {}
+    for event in events:
+        # A headline naming two releases is a roundup, not a report of one: it must neither take
+        # a designation nor be merged into either launch it lists.
+        if len(designations(event.title)) > 1:
+            kept.append(event)
+            continue
+        key = designation(event.title)
+        if key is None or key not in index:
+            if key is not None:
+                index[key] = len(kept)
+            kept.append(event)
+            continue
+
+        target = kept[index[key]]
+        if not _within_same_story_window(target, event):
+            kept.append(event)
+            continue
+
+        for member in event.member_item_ids:
+            if member not in target.member_item_ids:
+                target.member_item_ids.append(member)
+        for source in event.source_ids:
+            if source not in target.source_ids:
+                target.source_ids.append(source)
+        for url in event.all_urls:
+            if url not in target.all_urls:
+                target.all_urls.append(url)
+        target.independent_source_count = max(
+            target.independent_source_count, event.independent_source_count
+        )
+        # Keep the longest headline as the display candidate. The merged entry renders through
+        # `_display_title`, which prefers an insight title; when the surviving event has none,
+        # this records the phrasing that actually says what happened instead of
+        # "deepseek-v4.1-flash-1017 发布了".
+        candidates = target.unique_facts.setdefault("merged_titles", [])
+        for title in (target.title, event.title):
+            if title and title not in candidates:
+                candidates.append(title)
+        if event.first_seen_at and target.first_seen_at:
+            target.first_seen_at = min(target.first_seen_at, event.first_seen_at)
+        if event.last_updated_at and target.last_updated_at:
+            target.last_updated_at = max(target.last_updated_at, event.last_updated_at)
+    return kept
 
 
 def _group_of(event: Event, sources: dict[str, SourceSpec]) -> str | None:

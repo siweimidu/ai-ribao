@@ -38,9 +38,20 @@ FRONTIER_LABS = (
 #: A model release. `GPT-6`, `Gemini 4 Argon`, `Claude Opus 5.5`, `Llama 4`, `Qwen3`.
 _MODEL_NAME = re.compile(
     r"\b(?:gpt|claude|gemini|llama|qwen|grok|mistral|mixtral|deepseek|kimi|ernie|"
-    r"phi|gemma|command|nova|o[1-9])\b[\s\-]?[\d.]*",
+    r"phi|gemma|command|nova|o[1-9])"
+    # A vendor name is not a model name: the version is required. Matching the bare vendor
+    # made "DeepSeek opens its own search API" take the frontier-release score, tie with the
+    # real model launch, and then beat it on corroboration.
+    #
+    # A tier word or a release verb may sit between the two. Written as escapes so no console
+    # encoding can corrupt them: \u53d1\u5e03 (release), \u63a8\u51fa (launch),
+    # \u4e0a\u7ebf (go live), \u5f00\u6e90 (open-source).
+    r"(?:[\s\-]*(?:opus|sonnet|haiku|flash|pro|max|mini|lite|turbo|ultra|"
+    "\\u53d1\\u5e03|\\u63a8\\u51fa|\\u4e0a\\u7ebf|\\u5f00\\u6e90))*"
+    r"[\s\-]*v?\d[\w.\-]*",
     re.IGNORECASE,
 )
+
 
 #: Verbs that mean "this is a release", in both languages.
 _RELEASE_VERBS = (
@@ -270,7 +281,13 @@ def significance(
             "sig_first_party": float(first_party),
         }
 
-    if has_model and has_release and (lab_hits or first_party):
+    # A headline that names **more than one** model is a roundup of the day, not a report of one
+    # release. Measured on 2026-10-17: "OpenAI upgrades GPT-6 Astra Pro, DeepSeek ships
+    # V4.1-Flash" scored 3.2 as a frontier release and led the issue, ahead of both launches it
+    # merely listed -- and it carried no analysis at all (no insight was produced for it).
+    multi_release = len(set(_MODEL_NAME.findall(text))) > 1
+
+    if has_model and has_release and (lab_hits or first_party) and not multi_release:
         score = 3.2
         reasons["frontier_model_release"] = 3.2
     elif has_model and has_release and has_new:
