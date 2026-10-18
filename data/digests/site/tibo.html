@@ -12,14 +12,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Regular.min.css">
-  <!-- Theme read before first paint.
-       `motion.js` is deferred, so it runs after the document parses -- which means the
-       browser has already painted the default light theme and then repaints with the saved
-       one. That repaint is the flash seen on every navigation. This inline block runs while
-       the head is still parsing, so the attribute is set before anything is drawn. It is
-       intentionally duplicated by motion.js (which owns the UI); here it only needs to be
-       fast and to survive JS being disabled afterwards. -->
-  <script>(function(){try{var t=localStorage.getItem('aidaily-theme');if(t&&t!=='auto'&&t!=='default'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
@@ -51,7 +43,7 @@
         以上数字由本站根据 47 条事件记录计算，
         不是 AIHOT 直出的统计（其 <code>monitor</code> 字段报告的是采集器健康状态）。<br>
         覆盖自 2026-06-12，数据检查于
-        2026-10-18 13:10（Asia/Shanghai）。
+        2026-10-18 13:40（Asia/Shanghai）。
       </p>
           <section class="section" id="sec-source">
         <h2 class="section__title">数据来源与使用边界</h2>
