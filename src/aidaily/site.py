@@ -734,6 +734,14 @@ def render_day(
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Regular.min.css">
+  <!-- Theme read before first paint.
+       `motion.js` is deferred, so it runs after the document parses -- which means the
+       browser has already painted the default light theme and then repaints with the saved
+       one. That repaint is the flash seen on every navigation. This inline block runs while
+       the head is still parsing, so the attribute is set before anything is drawn. It is
+       intentionally duplicated by motion.js (which owns the UI); here it only needs to be
+       fast and to survive JS being disabled afterwards. -->
+  <script>(function(){{try{{var t=localStorage.getItem('aidaily-theme');if(t&&t!=='auto'&&t!=='default'){{document.documentElement.setAttribute('data-theme',t);}}}}catch(e){{}}}})();</script>
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
@@ -808,7 +816,15 @@ def _archive_row(date: str, count: int, *, latest: bool = False) -> str:
     except ValueError:
         weekday = ""
 
-    badge = '<span class="issue-row__badge">最新</span>' if latest else ""
+    # The badge cell is always emitted, empty when there is no badge.
+    #
+    # It used to be conditional, which meant a row with a badge had five children and a row
+    # without had four. With a four-track grid the count then landed in an implicit fifth track
+    # on the badge row and in the fourth on every other row -- visible as a ragged right edge.
+    # Reserving the cell costs no width (`auto` collapses) and keeps every count aligned.
+    # `hidden` would not work: a hidden element is not a grid item at all, so the cell
+    # disappears and the count slides into its place.
+    badge = '<span class="issue-row__badge">最新</span>' if latest else '<span class="issue-row__badge"></span>'
     return (
         f'<li><a class="issue-row" href="{esc(date)}.html">'
         f'<span class="issue-row__date">{esc(date)}</span>'
@@ -861,6 +877,14 @@ def render_index(ctx: SiteContext, latest: Digest | None) -> str:
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Regular.min.css">
+  <!-- Theme read before first paint.
+       `motion.js` is deferred, so it runs after the document parses -- which means the
+       browser has already painted the default light theme and then repaints with the saved
+       one. That repaint is the flash seen on every navigation. This inline block runs while
+       the head is still parsing, so the attribute is set before anything is drawn. It is
+       intentionally duplicated by motion.js (which owns the UI); here it only needs to be
+       fast and to survive JS being disabled afterwards. -->
+  <script>(function(){{try{{var t=localStorage.getItem('aidaily-theme');if(t&&t!=='auto'&&t!=='default'){{document.documentElement.setAttribute('data-theme',t);}}}}catch(e){{}}}})();</script>
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
@@ -1119,6 +1143,14 @@ def render_tibo(ctx: SiteContext, monitor: dict | None = None) -> str:
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Regular.min.css">
+  <!-- Theme read before first paint.
+       `motion.js` is deferred, so it runs after the document parses -- which means the
+       browser has already painted the default light theme and then repaints with the saved
+       one. That repaint is the flash seen on every navigation. This inline block runs while
+       the head is still parsing, so the attribute is set before anything is drawn. It is
+       intentionally duplicated by motion.js (which owns the UI); here it only needs to be
+       fast and to survive JS being disabled afterwards. -->
+  <script>(function(){{try{{var t=localStorage.getItem('aidaily-theme');if(t&&t!=='auto'&&t!=='default'){{document.documentElement.setAttribute('data-theme',t);}}}}catch(e){{}}}})();</script>
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
@@ -1375,6 +1407,14 @@ def render_sources(
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Regular.min.css">
+  <!-- Theme read before first paint.
+       `motion.js` is deferred, so it runs after the document parses -- which means the
+       browser has already painted the default light theme and then repaints with the saved
+       one. That repaint is the flash seen on every navigation. This inline block runs while
+       the head is still parsing, so the attribute is set before anything is drawn. It is
+       intentionally duplicated by motion.js (which owns the UI); here it only needs to be
+       fast and to survive JS being disabled afterwards. -->
+  <script>(function(){{try{{var t=localStorage.getItem('aidaily-theme');if(t&&t!=='auto'&&t!=='default'){{document.documentElement.setAttribute('data-theme',t);}}}}catch(e){{}}}})();</script>
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
@@ -1443,6 +1483,14 @@ def render_404(ctx: SiteContext) -> str:
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Regular.min.css">
+  <!-- Theme read before first paint.
+       `motion.js` is deferred, so it runs after the document parses -- which means the
+       browser has already painted the default light theme and then repaints with the saved
+       one. That repaint is the flash seen on every navigation. This inline block runs while
+       the head is still parsing, so the attribute is set before anything is drawn. It is
+       intentionally duplicated by motion.js (which owns the UI); here it only needs to be
+       fast and to survive JS being disabled afterwards. -->
+  <script>(function(){{try{{var t=localStorage.getItem('aidaily-theme');if(t&&t!=='auto'&&t!=='default'){{document.documentElement.setAttribute('data-theme',t);}}}}catch(e){{}}}})();</script>
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>

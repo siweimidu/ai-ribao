@@ -750,7 +750,13 @@
      slightly different x on every row and the column looked ragged. Both strings are fixed width,
      so they are declared as tracks. */
   display: grid;
-  grid-template-columns: 7.5rem 2.5rem 1fr auto;
+  /* FIVE tracks for FOUR children when there is no badge, and five when there is.
+     The rule declared four columns while a row with a badge has five children, so the
+     count fell into a 31.5px implicit track and sat at x=928 instead of x=914 -- the
+     column looked ragged because it was, by exactly one unaccounted-for cell. Declaring
+     the badge track explicitly (and letting it collapse when empty) keeps every count on
+     the same vertical line. */
+  grid-template-columns: 7.5rem 2.5rem 3.5rem 1fr auto;
   align-items: baseline;
   gap: calc(var(--unit) * 3);
   padding: calc(var(--unit) * 3) calc(var(--unit) * 4);
@@ -780,8 +786,14 @@
   padding: 1px calc(var(--unit) * 2);
 }
 
+/* The count is the last grid track; a fixed width and right alignment make every row identical.
+   Left to auto it was exactly as wide as its own text, so 60 条 began 2px left of 19 条 --
+   both right edges matched while the left edges did not, which reads as "not aligned" even
+   though nothing overflowed. */
 .issue-row__count {
   justify-self: end;
+  min-width: 4.5rem;
+  text-align: right;
   font-size: var(--fs-small);
   color: var(--muted-fg);
   font-variant-numeric: tabular-nums;
@@ -1846,3 +1858,41 @@ body { font-family: var(--f-sans); }
 .ov__detail { display: block; margin-top: calc(var(--unit) * 1.5); color: var(--muted-fg);
               font-size: var(--fs-small); line-height: 1.6; }
 @media (prefers-reduced-motion: reduce) { .ov li > a, .ov li > a:hover { transition: none; transform: none; } }
+
+.issue-row__badge { justify-self: start; white-space: nowrap; }
+
+/* The empty cell of a row without a badge is still a track; it costs nothing because
+   `auto` collapses to zero for an absent element. */
+
+/* ==============================================================================
+   侧栏宽度上限
+   ------------------------------------------------------------------------------
+   两个侧栏各 15rem（240px），在 1240px 的窗口里吃掉了 480px，正文只剩 760px ——
+   正文是这份日报的主体，导航不该和它平起平坐。
+
+   所以：**侧栏只占它需要的宽度**，余量全部给正文。
+   · 左栏 13rem（208px）：搜索框、导航项、月历都放得下（日历已是 16rem 上限的弹性网格，
+     208px 时自动按 min(30px,100%) 收格子）；
+   · 右栏 12rem（192px）：目录只有「01 标题…」，208→192 只影响换行，不影响可读；
+   · 读者手动拖宽仍尊重（这是偏好，存在 localStorage），这里只改默认值。
+   ============================================================================== */
+
+@media (min-width: 1080px) {
+  .shell {
+    grid-template-columns: minmax(0, 13rem) minmax(0, 1fr) minmax(0, 12rem);
+  }
+}
+
+/* 超宽屏：两侧不再继续变宽，多出来的宽度整列给正文。 */
+@media (min-width: 1600px) {
+  .shell {
+    grid-template-columns: minmax(0, 13rem) minmax(0, 1fr) minmax(0, 12rem);
+  }
+  .content { max-width: 62rem; }
+}
+
+/* 正文在某段宽度以上不该再无限拉长：一行超过约 78 个汉字，眼睛回行会吃力。
+   上限之后多出的空间留白，而不是把正文撑满。 */
+@media (min-width: 1080px) {
+  .content { max-width: 56rem; }
+}
