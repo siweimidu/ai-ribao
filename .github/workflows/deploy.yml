@@ -1,0 +1,57 @@
+name: Deploy site
+
+# Publish the already-committed site without re-collecting anything.
+#
+# Why this exists: `daily.yml` is a four-job pipeline (gate -> collect -> publish -> deploy),
+# and `deploy` can only run after `publish`. So *any* change to the HTML or CSS -- a card
+# layout, a theme fix -- waits for a full collection first, which takes ten to twenty minutes
+# because it waits on slow critical sources. Measured: a pure styling change sat behind a
+# 16-minute collect before the site updated.
+#
+# The site is generated output that is committed to the repository, so publishing it needs no
+# Python at all: upload `data/digests/site/` as the Pages artifact and deploy it. This does not
+# replace `daily.yml` -- that one still produces the content. This one only ships what is
+# already produced.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "data/digests/site/**"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time, and a newer commit supersedes an older run rather than queueing behind it.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # Pages deploys from the commit that triggered the run, so the checkout must contain it.
+          ref: main
+
+      - name: Check the site directory is present
+        # Failing here with a clear message beats uploading an empty artifact and deploying a
+        # 404 site.
+        run: |
+          test -f data/digests/site/index.html || { echo "::error::data/digests/site/index.html missing"; exit 1; }
+          echo "pages: $(ls data/digests/site/*.html | wc -l)"
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: data/digests/site
+
+      - id: deployment
+        uses: actions/deploy-pages@v5
