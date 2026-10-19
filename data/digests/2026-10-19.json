@@ -2,60 +2,3185 @@
  "digest": {
   "date": "2026-10-19",
   "kind": "deep",
-  "generated_at": "2026-10-19T11:05:27.845811Z",
-  "window_start": "2026-10-18T09:05:27.845811Z",
-  "window_end": "2026-10-19T11:05:27.845811Z",
-  "headline": "",
-  "top_events": [],
+  "generated_at": "2026-10-19T11:29:57.413028Z",
+  "window_start": "2026-10-18T09:29:57.413028Z",
+  "window_end": "2026-10-19T11:29:57.413028Z",
+  "headline": "豆包登顶通用大模型人气周榜第5位 ChatGPT回落",
+  "top_events": [
+   {
+    "event_id": "e31ca2ec5e8c555",
+    "title": "《通用大模型人气周榜TOP20》NO.5：豆包强势登顶 ChatGPT回落 - 潮新闻客户端",
+    "member_item_ids": [
+     "a64c7649ab9e0616"
+    ],
+    "primary_item_id": "a64c7649ab9e0616",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMic0FVX3lxTE9aSC1nYzVPNVBHaUNjSVpZbVRNaXhpd0hQdnpIWnpscVNNUkdrczJTcGlMNTFhdGx5MWdRazlGT25xOXd0bEJqU0dNRDJNcmVrU1lZR0NnMzh4S1Q5SEdMd2Yybnk0dlI3LUhCMHduQkdIa3M?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T09:13:27Z",
+     "2026-10-19T09:13:27Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 29.563044,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.073,
+     "substance_chars": 44.0,
+     "title_quality": 1.0,
+     "heat": 0.251017,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.11,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9539,
+     "significance": 1.0,
+     "application_not_model": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.15,
+     "vendor_subject": "doubao",
+     "score": 29.563044,
+     "section": "要闻"
+    }
+   },
+   {
+    "event_id": "ef5543b310c9bc4",
+    "title": "腾讯 WorkBuddy 教育公益版上线：全国教师每月可领 2000 积分，连续 12 个月",
+    "member_item_ids": [
+     "bad615ba27f1a099"
+    ],
+    "primary_item_id": "bad615ba27f1a099",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/l1a1k5z9s7oak2qa677z3dhww"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T03:49:22Z",
+     "2026-10-19T03:49:22Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 28.708155,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.395,
+     "substance_chars": 237.0,
+     "title_quality": 1.0,
+     "heat": 0.27429,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.5925,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8592,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 28.708155,
+     "section": "开发生态"
+    }
+   },
+   {
+    "event_id": "e48eaa6d10eb28e",
+    "title": "AI 公司 HUMXN 免费上门修水电，录制技师作业收集数据训练 AI 机器人",
+    "member_item_ids": [
+     "a946f773f9fb6cde"
+    ],
+    "primary_item_id": "a946f773f9fb6cde",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/wo7b4ix2i9i5g07itxwowx8xe"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T04:11:18Z",
+     "2026-10-19T04:11:18Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 28.571883,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.377,
+     "substance_chars": 226.0,
+     "title_quality": 1.0,
+     "heat": 0.272988,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.565,
+     "h_velocity": 1.0,
+     "h_freshness": 0.865,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 28.571883,
+     "section": "开发生态"
+    }
+   },
+   {
+    "event_id": "eabc0ef722c7a6e",
+    "title": "Git 被换掉，LLM 被替代：AI 编码开始反噬传统工具链？ - 雷峰网",
+    "member_item_ids": [
+     "81f65e9c698f55f2"
+    ],
+    "primary_item_id": "81f65e9c698f55f2",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiakFVX3lxTE1JdVg1RmZwN1c0ancxd0lua1pLNTRTaGhZT1lVUjh1RVI1R2lRVG82LTZjNzVwS0s5a1o2T21idEZfb0N3MzAzRWJVbmE2d0FyMDBwSjFMRkMyVjExelB3dzZ1a0hNN2xvbnc?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T04:27:00Z",
+     "2026-10-19T04:27:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 25.048797,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.058,
+     "substance_chars": 35.0,
+     "title_quality": 1.0,
+     "heat": 0.24459,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0875,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8692,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 25.048797,
+     "section": "开发生态"
+    }
+   },
+   {
+    "event_id": "ee5205e1bfe0b0d",
+    "title": "成本砍掉90%！DeepSeek-V4.1-Flash 重磅升级：逆袭成为 WebDev 榜首开源模型",
+    "member_item_ids": [
+     "f9b9af3d8a3dd0a9",
+     "2c9de1621b01f5b1",
+     "b864f102a998c699"
+    ],
+    "primary_item_id": "f9b9af3d8a3dd0a9",
+    "source_ids": [
+     "api:aibase-ai-news",
+     "api:hn-algolia-com-search",
+     "rss:hnrss-org-frontpage"
+    ],
+    "all_urls": [
+     "https://www.aibase.com/zh/news/31712",
+     "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T10:29:53Z",
+     "2026-10-19T10:29:53Z"
+    ],
+    "unique_facts": {
+     "merged_titles": [
+      "成本砍掉90%！DeepSeek-V4.1-Flash 重磅升级：逆袭成为 WebDev 榜首开源模型",
+      "DeepSeek V4.1 Flash 1017 (Max)"
+     ]
+    },
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 118.864778,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.273,
+     "substance_chars": 164.0,
+     "title_quality": 1.0,
+     "heat": 0.783231,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 1.0,
+     "h_engagement": 0.7292,
+     "h_reach": 0.6826,
+     "h_substance": 0.41,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9792,
+     "significance": 3.2,
+     "frontier_model_release": 3.2,
+     "sig_model": 1.0,
+     "sig_release": 1.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 1.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.45,
+     "vendor_subject": "deepseek",
+     "score": 118.864778,
+     "section": "模型发布"
+    }
+   },
+   {
+    "event_id": "ed80a78b8b7cef0",
+    "title": "MiniMax 将发布 M3.1-Flash",
+    "member_item_ids": [
+     "c55dd35087515510"
+    ],
+    "primary_item_id": "c55dd35087515510",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/itrihwhnlkd38ygjosgw059ok"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T10:27:39Z",
+     "2026-10-19T10:27:39Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 33.459842,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.357,
+     "substance_chars": 214.0,
+     "title_quality": 1.0,
+     "heat": 0.277991,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.535,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9784,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.15,
+     "vendor_subject": "minimax",
+     "score": 33.459842,
+     "section": "模型发布"
+    }
+   },
+   {
+    "event_id": "e1885cfb6b9c04e",
+    "title": "MiniMax-M3.1-Flash 即将发布",
+    "member_item_ids": [
+     "2d257d6ced4a2d3e"
+    ],
+    "primary_item_id": "2d257d6ced4a2d3e",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/n20nkoljnfqhbpvnthe4mjkf1"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T09:21:38Z",
+     "2026-10-19T09:21:38Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 31.369738,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.178,
+     "substance_chars": 107.0,
+     "title_quality": 1.0,
+     "heat": 0.260626,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.2675,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9565,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.15,
+     "vendor_subject": "minimax",
+     "score": 31.369738,
+     "section": "模型发布"
+    }
+   },
+   {
+    "event_id": "efb440a20726e47",
+    "title": "开源模型背后的训练算力：Wolf 估算累计已近 10 亿美元",
+    "member_item_ids": [
+     "3648d757613b764b"
+    ],
+    "primary_item_id": "3648d757613b764b",
+    "source_ids": [
+     "rss:daily-juya-uk"
+    ],
+    "all_urls": [
+     "https://x.com/Thom_Wolf/status/2111828314851598745"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T00:54:00Z",
+     "2026-10-19T00:54:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 30.993588,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 1.0,
+     "substance_chars": 685.0,
+     "title_quality": 1.0,
+     "heat": 0.296126,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8157,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 30.993588,
+     "section": "模型发布"
+    }
+   },
+   {
+    "event_id": "efbe6b4a6c61ef3",
+    "title": "AIHOT 周报 · 2026-W42 — Google 发布 Gemini 4 Argon：面向复杂工程与科研任务的前沿模型",
+    "member_item_ids": [
+     "3af0281c9e7c8965"
+    ],
+    "primary_item_id": "3af0281c9e7c8965",
+    "source_ids": [
+     "rss:aihot-news-weekly"
+    ],
+    "all_urls": [
+     "https://aihot.news/weekly/2026-W42"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T02:00:16Z",
+     "2026-10-19T02:00:16Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 30.424267,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 1.0,
+     "substance_chars": 1215.0,
+     "title_quality": 1.0,
+     "heat": 0.297079,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8316,
+     "significance": 1.0,
+     "minor": 1.0,
+     "sig_model": 1.0,
+     "sig_release": 1.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 30.424267,
+     "section": "模型发布"
+    }
+   },
+   {
+    "event_id": "e5e8c73d7b87cb6",
+    "title": "面壁智能发布大监督智能体，以 MiniCPM 底座落地企业监督场景",
+    "member_item_ids": [
+     "668772edca5e84fd"
+    ],
+    "primary_item_id": "668772edca5e84fd",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/ya54rkusy7qvy0f5yg0xpyxgj"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T06:28:06Z",
+     "2026-10-19T06:28:06Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 29.47042,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.447,
+     "substance_chars": 268.0,
+     "title_quality": 1.0,
+     "heat": 0.281573,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.67,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9031,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 29.47042,
+     "section": "模型发布"
+    }
+   },
+   {
+    "event_id": "edbfdae7e152866",
+    "title": "奇瑞 10 月 20 日举办全球创新大会，发布首个汽车行业垂域大模型与人形机器人“墨宝”",
+    "member_item_ids": [
+     "8ba314469da91e5e"
+    ],
+    "primary_item_id": "8ba314469da91e5e",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/p1pa6lwvtvniw1rf4gl65fs0b"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T08:39:33Z",
+     "2026-10-19T08:39:33Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 28.621913,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.33,
+     "substance_chars": 198.0,
+     "title_quality": 1.0,
+     "heat": 0.273466,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.495,
+     "h_velocity": 1.0,
+     "h_freshness": 0.943,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 28.621913,
+     "section": "模型发布"
+    }
+   },
+   {
+    "event_id": "ed5984b9e208612",
+    "title": "可灵AI新一代模型Kling 4.0正式上线！专业影像模型“卷”出新高度 - 国际科技创新中心",
+    "member_item_ids": [
+     "6b7d4267be7da964"
+    ],
+    "primary_item_id": "6b7d4267be7da964",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiggFBVV95cUxOS0xuVlZvVTJYWmItbzVQUm9Hc3Fqbi1GaFRJTVpzZ1N0QmtUQWxaMjNudWNmb0hScldyVVpuQ2w3VW9rOXUyWHJkMUlhLXRmbHpMTkxRNUNxcS1nOXhybkNWeDkxZnlaTVlabjlDQ2NjQ3loN2tHRlpIOGl3LWF0aVVn?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T02:00:10Z",
+     "2026-10-19T02:00:10Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 24.970759,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.075,
+     "substance_chars": 45.0,
+     "title_quality": 1.0,
+     "heat": 0.243828,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.1125,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8315,
+     "significance": 1.0,
+     "application_not_model": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 24.970759,
+     "section": "模型发布"
+    }
+   },
+   {
+    "event_id": "e4ea579331bf2d9",
+    "title": "DeepSeek-V4.1-Flash-20261017 登顶 Code Arena: WebDev 开源模型榜首",
+    "member_item_ids": [
+     "02ccc54f40bab596",
+     "1a1ad46f13b698b3",
+     "cae89a670cae4252"
+    ],
+    "primary_item_id": "cae89a670cae4252",
+    "source_ids": [
+     "rss:aihot-cat-models",
+     "rss:aihot-news-full",
+     "rss:aihot-news-picks"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/bm95oliei5mcgy2tau7e22d59"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-18T18:56:03Z",
+     "2026-10-18T18:56:03Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 102.703436,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 1.0,
+     "substance_chars": 716.0,
+     "title_quality": 1.0,
+     "heat": 0.691622,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 1.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7406,
+     "significance": 3.2,
+     "frontier_model_release": 3.2,
+     "sig_model": 1.0,
+     "sig_release": 1.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 1.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 1.0,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.45,
+     "vendor_subject": "deepseek",
+     "score": 102.703436,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "eaa61f76e932f50",
+    "title": "DeepSeek发布API网页搜索与抓取服务:每1000次成功请求收费5元",
+    "member_item_ids": [
+     "1f332de2ba899f39"
+    ],
+    "primary_item_id": "1f332de2ba899f39",
+    "source_ids": [
+     "api:aibase-ai-news"
+    ],
+    "all_urls": [
+     "https://www.aibase.com/zh/news/31711"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T10:11:15Z",
+     "2026-10-19T10:11:15Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 59.174773,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.282,
+     "substance_chars": 169.0,
+     "title_quality": 1.0,
+     "heat": 0.389918,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.2975,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.4225,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9729,
+     "significance": 2.2,
+     "lab_announcement": 2.2,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.5455,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.45,
+     "vendor_subject": "deepseek",
+     "score": 59.174773,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "e7333d0e52fe520",
+    "title": "Grok bot 开放 X 上的任务调用，作者分享用例",
+    "member_item_ids": [
+     "8b0aed3c901fa9ed"
+    ],
+    "primary_item_id": "8b0aed3c901fa9ed",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/ug2zo7jelx7uo26i8lqmk31qo"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T05:03:00Z",
+     "2026-10-19T05:03:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 40.754507,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.338,
+     "substance_chars": 203.0,
+     "title_quality": 1.0,
+     "heat": 0.389386,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.2975,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.5075,
+     "h_velocity": 1.0,
+     "h_freshness": 0.879,
+     "significance": 2.2,
+     "lab_announcement": 2.2,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.5455,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 40.754507,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "eecf54c4b9317dd",
+    "title": "Grok Bot 上线 @bot 标签功能",
+    "member_item_ids": [
+     "674e63f1e448350c"
+    ],
+    "primary_item_id": "674e63f1e448350c",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/dg4e6t6zz2ivy905hpsu5fw48"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T03:25:37Z",
+     "2026-10-19T03:25:37Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 39.539364,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.227,
+     "substance_chars": 136.0,
+     "title_quality": 1.0,
+     "heat": 0.377776,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.2975,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.34,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8531,
+     "significance": 2.2,
+     "lab_announcement": 2.2,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.5455,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 39.539364,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "e46a432cf6cd6eb",
+    "title": "Arena 2026 年第 42 周 AI 大模型周榜：kimi-k3-max 首进代码榜前十，mimo-v2.6-pro 入前端开发榜前 20",
+    "member_item_ids": [
+     "737938d2e7f02190"
+    ],
+    "primary_item_id": "737938d2e7f02190",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/urzj309t9aqpz4i82l75ag688"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T08:03:03Z",
+     "2026-10-19T08:03:03Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 37.14748,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.287,
+     "substance_chars": 172.0,
+     "title_quality": 1.0,
+     "heat": 0.268881,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.43,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9316,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.32,
+     "vendor_subject": "kimi",
+     "score": 37.14748,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "ed9cfe1c3a05a97",
+    "title": "Grok Bot 也学会请客送礼啦？ 😂 中国文化融入的这么自然吗？ 刚刚准备一些硬件概念，Grok Bot 突如其来的给我支招请前同事吃顿饭，着实惊到我了。。",
+    "member_item_ids": [
+     "05f0fad97cfee1cf"
+    ],
+    "primary_item_id": "05f0fad97cfee1cf",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/ies77b1vclael3thbt58kuh50"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T03:55:17Z",
+     "2026-10-19T03:55:17Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 27.383429,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.253,
+     "substance_chars": 152.0,
+     "title_quality": 1.0,
+     "heat": 0.261633,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.38,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8608,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 27.383429,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "e4255f31f2362f6",
+    "title": "东西问丨穆罕默德·贾布里：中国开源AI为何是全球南方“刚需”？ - 中国新闻网",
+    "member_item_ids": [
+     "1ed0614cb142e5b2"
+    ],
+    "primary_item_id": "1ed0614cb142e5b2",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiakFVX3lxTE1fVUl6Q1dxNy1QUjFGMHAyQUZITVA5d0dXMWN1cXo3R2lxc1hXdmNla01NN1FwcVoxbnAyRm5maDJQM29MTG1GeVQ0SmkzSmo0azc5YlVtcWdzelFtTV9zZ0l6QlNwb0NXSHc?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T09:20:10Z",
+     "2026-10-19T09:20:10Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 25.612776,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.062,
+     "substance_chars": 37.0,
+     "title_quality": 1.0,
+     "heat": 0.250097,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0925,
+     "h_velocity": 1.0,
+     "h_freshness": 0.956,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 25.612776,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "e20807045baddaf",
+    "title": "实测 Lovart 2.0 个人设计 Agent Arti：记忆、画布巡检与设计委托",
+    "member_item_ids": [
+     "16681fdb8db23c67"
+    ],
+    "primary_item_id": "16681fdb8db23c67",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/s0f2bkdrcrpoff1rg1bxgpbdp"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T10:26:00Z",
+     "2026-10-19T10:26:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 29.343253,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.383,
+     "substance_chars": 230.0,
+     "title_quality": 1.0,
+     "heat": 0.280358,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.575,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9779,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 29.343253,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "ea2177fa888b75e",
+    "title": "Amazon 论文提出 FEB-30 基准：仅靠 QA 分数无法评估智能体记忆系统",
+    "member_item_ids": [
+     "8d9ec400ac95a0b2"
+    ],
+    "primary_item_id": "8d9ec400ac95a0b2",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/lmnwkdofrf31idmqgfn3rgy7w"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T06:02:18Z",
+     "2026-10-19T06:02:18Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 29.172443,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.42,
+     "substance_chars": 252.0,
+     "title_quality": 1.0,
+     "heat": 0.278726,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.63,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8957,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 29.172443,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "e2ba4f6717bd50a",
+    "title": "AIHOT 日报 · 2026-10-19 — Anthropic 内部研究显示初级技术岗位占比下降，AI Agent 工时达员工六倍",
+    "member_item_ids": [
+     "0486d14fa5288e01"
+    ],
+    "primary_item_id": "0486d14fa5288e01",
+    "source_ids": [
+     "rss:aihot-news-daily"
+    ],
+    "all_urls": [
+     "https://aihot.news/daily/2026-10-19"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T00:00:14Z",
+     "2026-10-19T00:00:14Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 28.22273,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.447,
+     "substance_chars": 268.0,
+     "title_quality": 1.0,
+     "heat": 0.275582,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.67,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8033,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 28.22273,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "ec63a35c29e12b6",
+    "title": "Cohere 论文：多智能体编码团队宜由强模型领队、便宜模型只做规划",
+    "member_item_ids": [
+     "5adc36d4aa9e24b9"
+    ],
+    "primary_item_id": "5adc36d4aa9e24b9",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/eifytvp1ne0ivhqwu5m8py6it"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T05:10:44Z",
+     "2026-10-19T05:10:44Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 28.108015,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.317,
+     "substance_chars": 190.0,
+     "title_quality": 1.0,
+     "heat": 0.268556,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.475,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8812,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 28.108015,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "ee42bdb2423b3f9",
+    "title": "Princeton 与 Google 论文提出 JevAgentHarness，用 4B 决策模型分担 LLM 智能体例行决策",
+    "member_item_ids": [
+     "526123bb13f699c9"
+    ],
+    "primary_item_id": "526123bb13f699c9",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/rv2gymgzw7h624dxhy098r2uo"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T09:04:00Z",
+     "2026-10-19T09:04:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 27.980116,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.257,
+     "substance_chars": 154.0,
+     "title_quality": 1.0,
+     "heat": 0.267334,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.385,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9508,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 27.980116,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "eb9032b0670975f",
+    "title": "DeepSeek 合并团队成立产品部",
+    "member_item_ids": [
+     "c4ce594b79611d59"
+    ],
+    "primary_item_id": "c4ce594b79611d59",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/hdymmkxhqhudn0cb7fi0kmsqp"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T10:00:43Z",
+     "2026-10-19T10:00:43Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 41.26381,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.295,
+     "substance_chars": 177.0,
+     "title_quality": 1.0,
+     "heat": 0.271898,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.4425,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9694,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.45,
+     "vendor_subject": "deepseek",
+     "score": 41.26381,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "edbc1f3d55eda6e",
+    "title": "a16z 与 Chamath 谈 OpenAI、Anthropic 对投资组合的威胁",
+    "member_item_ids": [
+     "2d8779d9f92819df"
+    ],
+    "primary_item_id": "2d8779d9f92819df",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/inulsnohuhvz8czjh651emajm"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T03:26:59Z",
+     "2026-10-19T03:26:59Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 28.498724,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.377,
+     "substance_chars": 226.0,
+     "title_quality": 1.0,
+     "heat": 0.272289,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.565,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8534,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 28.498724,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e50888d8e59bd26",
+    "title": "Nebius AI Builder Program 扩展至欧洲，提供 1000 万美元算力资助",
+    "member_item_ids": [
+     "77edca0105216af3"
+    ],
+    "primary_item_id": "77edca0105216af3",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/ojrfrutuqbfj8sv7wh8nqojcj"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T10:37:14Z",
+     "2026-10-19T10:37:14Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 28.283954,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.268,
+     "substance_chars": 161.0,
+     "title_quality": 1.0,
+     "heat": 0.270237,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.4025,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9817,
+     "significance": 1.0,
+     "application_not_model": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 28.283954,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e1646658274eaca",
+    "title": "工程师因模型解释合理就合并修复",
+    "member_item_ids": [
+     "6634c4396a02006c"
+    ],
+    "primary_item_id": "6634c4396a02006c",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/g2jxungspgfuv7b9nyj478hda"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T07:46:31Z",
+     "2026-10-19T07:46:31Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 27.026841,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.172,
+     "substance_chars": 103.0,
+     "title_quality": 1.0,
+     "heat": 0.258226,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.2575,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9265,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 27.026841,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e82a6933b3ab2ab",
+    "title": "xAI 推广 Grok Bot 招聘功能",
+    "member_item_ids": [
+     "5e68f3a47aa589ae"
+    ],
+    "primary_item_id": "5e68f3a47aa589ae",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/kcnubawl1ofbxbmtv3kjfxpl7"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T07:29:25Z",
+     "2026-10-19T07:29:25Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 26.899988,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.162,
+     "substance_chars": 97.0,
+     "title_quality": 1.0,
+     "heat": 0.257014,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.2425,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9213,
+     "significance": 1.0,
+     "minor": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 26.899988,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "eb539793dcd0914",
+    "title": "网宿科技与Sand.ai达成战略合作 共推视频生成模型创新与产业落地 - 搜狐网",
+    "member_item_ids": [
+     "7dc2bf62bd84eedf"
+    ],
+    "primary_item_id": "7dc2bf62bd84eedf",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOcDdMeDloQTBfd1IyT0FzTFJQbF9PcEtFWDMzTVdNazMzYWUzelB4b2xYNERxQ1NyMjA4YnNOdnpJbHVqbGY0Ym9RMmRvc09LZjhwLXU4NTJaamQxTEFLWXU2Nm1DV2s1cC04amxRbnNOTWl2c0czUjF1OGIxenR3ZEhHVWxRS2dvNU5F?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T10:59:00Z",
+     "2026-10-19T10:59:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 25.831834,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.063,
+     "substance_chars": 38.0,
+     "title_quality": 1.0,
+     "heat": 0.252236,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.095,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9892,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 25.831834,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "eea4b717be04a07",
+    "title": "OpenAI 据称出现 3 个新模型 ID",
+    "member_item_ids": [
+     "bc5efeb665909ca0",
+     "daf2196e857f04c3"
+    ],
+    "primary_item_id": "daf2196e857f04c3",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:daily-juya-uk"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/o0lb19v9c6dja1z1w0v2aqbp3",
+     "https://x.com/testingcatalog/status/2111724606927028578"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T00:54:00Z",
+     "2026-10-19T04:12:15Z"
+    ],
+    "unique_facts": {},
+    "confidence": 0.9,
+    "evidence_level": "multi_source",
+    "needs_review": false,
+    "rank_score": 39.126675,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 1.0,
+     "substance_chars": 627.0,
+     "title_quality": 1.0,
+     "heat": 0.373833,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0517,
+     "h_engagement": 0.0,
+     "h_reach": 0.6826,
+     "h_substance": 1.0,
+     "h_velocity": 0.9293,
+     "h_freshness": 0.8157,
+     "significance": 1.5,
+     "lab_new_thing": 1.5,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.2273,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 39.126675,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e232e487548e58f",
+    "title": "Hybrid Reasoning Agents: LLM agents that think in latent space, act through text",
+    "member_item_ids": [
+     "7e6c2a03ad43276a",
+     "9e30c93ba3bbd39f"
+    ],
+    "primary_item_id": "9e30c93ba3bbd39f",
+    "source_ids": [
+     "api:hn-algolia-com-search",
+     "rss:hnrss-org-frontpage"
+    ],
+    "all_urls": [
+     "https://arxiv.org/abs/2610.18861"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-18T20:48:14Z",
+     "2026-10-18T20:48:14Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 38.2946,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.503,
+     "substance_chars": 302.0,
+     "title_quality": 1.0,
+     "heat": 0.382946,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.8727,
+     "h_reach": 0.4307,
+     "h_substance": 0.755,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7623,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 38.2946,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "ec0d8da04ffd829",
+    "title": "DeepSeek上新AI模型，称部分性能超OpenAI等 - 日经中文网",
+    "member_item_ids": [
+     "b98a00ae3eeac330"
+    ],
+    "primary_item_id": "b98a00ae3eeac330",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMidkFVX3lxTFBHV1NKZkNfbmVYTHdPdzhLUk15RngxdE1jeFhseTczZHFiLWI3cEIxeF94RkprQk5HaVQwQUVhcmVwZ01na3NoQ1JLeEx4ak96ODJHbW1kb0wxZDRLVzkwb3BrbnVMYmtXTnFWbW05MjhHZ1JNZEE?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T06:49:44Z",
+     "2026-10-19T06:49:44Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 36.656803,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.057,
+     "substance_chars": 34.0,
+     "title_quality": 1.0,
+     "heat": 0.246853,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.085,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9095,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.45,
+     "vendor_subject": "deepseek",
+     "score": 36.656803,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e23f8b35666e63c",
+    "title": "If you don't run your own LLM proxy, how do you know whats going on?",
+    "member_item_ids": [
+     "ce21fc70896a0726",
+     "e2c92e5d048c3b1e"
+    ],
+    "primary_item_id": "ce21fc70896a0726",
+    "source_ids": [
+     "api:hn-algolia-com-search",
+     "rss:hnrss-org-frontpage"
+    ],
+    "all_urls": [
+     "https://jrdsgl.com/if-you-dont-run-your-own-llm-proxy-how-the-fuck-do-you-even-know-whats-going-on/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-18T21:09:12Z",
+     "2026-10-18T21:09:12Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 35.4315,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.338,
+     "substance_chars": 203.0,
+     "title_quality": 1.0,
+     "heat": 0.354315,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.7557,
+     "h_reach": 0.4307,
+     "h_substance": 0.5075,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7666,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 35.4315,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e0a8f2949bede26",
+    "title": "豆包刘星回应“国内超一半算力在造爽剧”：字节总算力仅约 10% 用于视频生成模型",
+    "member_item_ids": [
+     "96a3aec32ca6a00d"
+    ],
+    "primary_item_id": "96a3aec32ca6a00d",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/k5pgpte4odom481lop8mw3qws"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T03:30:25Z",
+     "2026-10-19T03:30:25Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 32.545324,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.355,
+     "substance_chars": 213.0,
+     "title_quality": 1.0,
+     "heat": 0.270393,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.5325,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8543,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.15,
+     "vendor_subject": "doubao",
+     "score": 32.545324,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e93ef48ab6984f3",
+    "title": "直播中｜Claude垫底，GPT表现不佳，PhAI Labs用DiscoveryRSI探索科研Agent自我进化",
+    "member_item_ids": [
+     "1c575a581d4b4e9c",
+     "f310f1ce91dac711"
+    ],
+    "primary_item_id": "f310f1ce91dac711",
+    "source_ids": [
+     "rss:wechat-jiqizhixin-bestblogs",
+     "rss:wechat-jiqizhixin-xlab"
+    ],
+    "all_urls": [
+     "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651068408&idx=1&sn=3d762a23bad4d8ea4a1ddd3d23e6ae50"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T04:02:00Z",
+     "2026-10-19T04:02:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 31.288006,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 1.0,
+     "substance_chars": 6196.0,
+     "title_quality": 1.0,
+     "heat": 0.298939,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8626,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 31.288006,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "ecd053b59390742",
+    "title": "Anthropic designs a pay package for the public",
+    "member_item_ids": [
+     "82267c8d6b85b7c6"
+    ],
+    "primary_item_id": "82267c8d6b85b7c6",
+    "source_ids": [
+     "rss:rss-beehiiv-com-2r3c6bt5wj"
+    ],
+    "all_urls": [
+     "https://therundownai.beehiiv.com/p/anthropic-designs-a-pay-package-for-the-public"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T09:00:00Z",
+     "2026-10-19T09:00:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 31.149135,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 1.0,
+     "substance_chars": 10287.0,
+     "title_quality": 1.0,
+     "heat": 0.304157,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9495,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 31.149135,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e751a4c30a9e26d",
+    "title": "当Coding Agent开始动态并行，软件开发变得更好了吗？",
+    "member_item_ids": [
+     "a6fe1cfc87dab8f5"
+    ],
+    "primary_item_id": "a6fe1cfc87dab8f5",
+    "source_ids": [
+     "rss:wechat-xinzhiyuan-xlab"
+    ],
+    "all_urls": [
+     "https://mp.weixin.qq.com/s?__biz=MzI3MTA0MTk1MA==&mid=2652735857&idx=3&sn=a925b721541c36e911ad286af24c2919"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T02:36:00Z",
+     "2026-10-19T02:36:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 31.148908,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 1.0,
+     "substance_chars": 9287.0,
+     "title_quality": 1.0,
+     "heat": 0.29761,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8404,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 31.148908,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "ec20a6f0614b292",
+    "title": "Claude Code「自产自审」：九成代码不再经过人类",
+    "member_item_ids": [
+     "0924914828d71ce3"
+    ],
+    "primary_item_id": "0924914828d71ce3",
+    "source_ids": [
+     "rss:wechat-xinzhiyuan-xlab"
+    ],
+    "all_urls": [
+     "https://mp.weixin.qq.com/s?__biz=MzI3MTA0MTk1MA==&mid=2652735857&idx=2&sn=080a2d5531a5d51a3afe813509c04e82"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T02:36:00Z",
+     "2026-10-19T02:36:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 31.148908,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 1.0,
+     "substance_chars": 2400.0,
+     "title_quality": 1.0,
+     "heat": 0.29761,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8404,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 31.148908,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "ee9922d25e03ad5",
+    "title": "报道称 Anthropic 正与律所商讨 AI 谈判规范",
+    "member_item_ids": [
+     "dd8e5cb6479df3d8"
+    ],
+    "primary_item_id": "dd8e5cb6479df3d8",
+    "source_ids": [
+     "rss:daily-juya-uk"
+    ],
+    "all_urls": [
+     "https://the-decoder.com/anthropic-consults-law-firms-to-set-fair-negotiation-norms-before-ai-agents-start-cutting-deals/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T00:54:00Z",
+     "2026-10-19T00:54:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 30.993588,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.695,
+     "substance_chars": 417.0,
+     "title_quality": 1.0,
+     "heat": 0.296126,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8157,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 30.993588,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "ef878aad80de440",
+    "title": "AVRI 工具降低安全智能体 token 成本",
+    "member_item_ids": [
+     "a8369afd8c8c634f"
+    ],
+    "primary_item_id": "a8369afd8c8c634f",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/jknws5rlgqsvzqs86rg9jo621"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T07:59:29Z",
+     "2026-10-19T07:59:29Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 29.469582,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.428,
+     "substance_chars": 257.0,
+     "title_quality": 1.0,
+     "heat": 0.281565,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.6425,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9305,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 29.469582,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "eeb0db7b4f55c1a",
+    "title": "央视总台《红色密码》《峨眉》携手火山引擎 Seedance 探索真人实拍加 AI 制作模式",
+    "member_item_ids": [
+     "5b7a0521a6ef161f"
+    ],
+    "primary_item_id": "5b7a0521a6ef161f",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/hlpco1c6mgqsgauec3sn6y5mz"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T09:54:49Z",
+     "2026-10-19T09:54:49Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 29.41882,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.398,
+     "substance_chars": 239.0,
+     "title_quality": 1.0,
+     "heat": 0.28108,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.5975,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9674,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 29.41882,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "efbd4d2d363d235",
+    "title": "国内一半算力在造AI短剧？豆包高管回怼！ - 新浪财经",
+    "member_item_ids": [
+     "2801f058d19d081a",
+     "54634527acda1327"
+    ],
+    "primary_item_id": "2801f058d19d081a",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMidkFVX3lxTE5CNlZEQ0ZZU1p6dE11dy1rUVZCeFpfN3pWYnZ1MHlnc050aHJ5VHJ1eHFlNjVXV0FicXhrSFpyY1ZCWDFZYmJMR25ucEo5TWx5Y1VVbjJjZGtlMDcybHdlS3pjeDN4dlV5T3A1Si1yUXRWRndZZWc?oc=5",
+     "https://news.google.com/rss/articles/CBMif0FVX3lxTE5jWmIxa2ZsWV9kZ1BDZFd6MldCM0l1eDNoNElUYmt1X0FqUVFXVVNxVE9TWlBKeU1YQ2JqVHJVbTkyTGpaNVlrMWNOMUlYZFdyZmpwZ1FmZHVJbGY0bzAxRnpfb2o3d21SQmdRTFFmTUU1NV9RTkFrcnQwaXhwamc?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T08:20:28Z",
+     "2026-10-19T08:20:28Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 29.108322,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.042,
+     "substance_chars": 25.0,
+     "title_quality": 1.0,
+     "heat": 0.247156,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0625,
+     "h_velocity": 1.0,
+     "h_freshness": 0.937,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.15,
+     "vendor_subject": "doubao",
+     "score": 29.108322,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e81400a33493f91",
+    "title": "MiniCPM-V 4.7 升至 Hugging Face 趋势榜第二",
+    "member_item_ids": [
+     "2139f3ed45a6c3db"
+    ],
+    "primary_item_id": "2139f3ed45a6c3db",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/phlwqnzbpbi1uwqojoo7tzup7"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T03:33:16Z",
+     "2026-10-19T03:33:16Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 28.634577,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.39,
+     "substance_chars": 234.0,
+     "title_quality": 1.0,
+     "heat": 0.273587,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.585,
+     "h_velocity": 1.0,
+     "h_freshness": 0.855,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 28.634577,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "ec785d1b08ae0d0",
+    "title": "火山引擎 Seedance 精品 AI 剧激励计划：单部作品最高 20 万元",
+    "member_item_ids": [
+     "a34697a04231f1f5"
+    ],
+    "primary_item_id": "a34697a04231f1f5",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/tb3096fihqr3ft1y9iud4sq6x"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T06:05:29Z",
+     "2026-10-19T06:05:29Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 28.299026,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.327,
+     "substance_chars": 196.0,
+     "title_quality": 1.0,
+     "heat": 0.270381,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.49,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8966,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 28.299026,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e45c3b3d029f028",
+    "title": "Meshy 模型在 Blender 中打造起飞场景",
+    "member_item_ids": [
+     "fd7761fc8e6ad6ed"
+    ],
+    "primary_item_id": "fd7761fc8e6ad6ed",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/andb7mmza3w87h6c2205nqrk1"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T09:45:02Z",
+     "2026-10-19T09:45:02Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 28.016957,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.252,
+     "substance_chars": 151.0,
+     "title_quality": 1.0,
+     "heat": 0.267686,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.3775,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9642,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 28.016957,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e4a6781b1e1a837",
+    "title": "亚马逊等企业封禁AI智能体",
+    "member_item_ids": [
+     "369151c938a4c192"
+    ],
+    "primary_item_id": "369151c938a4c192",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/wtpj86fxoh4a6fcn0mv0ihvkh"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T03:59:20Z",
+     "2026-10-19T03:59:20Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 27.845414,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.302,
+     "substance_chars": 181.0,
+     "title_quality": 1.0,
+     "heat": 0.266047,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.4525,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8619,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 27.845414,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e55c6749215c9e4",
+    "title": "算力相当于全人类不吃不喝算 200 年！我国首个全国产十万卡 AI 超集群“曙光 8000”真机震撼亮相",
+    "member_item_ids": [
+     "f9c1c7196c60f0e3"
+    ],
+    "primary_item_id": "f9c1c7196c60f0e3",
+    "source_ids": [
+     "api:aibase-ai-news"
+    ],
+    "all_urls": [
+     "https://www.aibase.com/zh/news/31714"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T10:42:46Z",
+     "2026-10-19T10:42:46Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 27.809096,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.217,
+     "substance_chars": 130.0,
+     "title_quality": 1.0,
+     "heat": 0.2657,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.325,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9836,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 27.809096,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e2d885fe4ed7d38",
+    "title": "OpenAI 的 Vaibhav 高空体验 Starlink",
+    "member_item_ids": [
+     "478bae450a582964"
+    ],
+    "primary_item_id": "478bae450a582964",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/gaw8lah9tvsm3j2ive4j1vsjk"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T06:44:55Z",
+     "2026-10-19T06:44:55Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 27.523155,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.237,
+     "substance_chars": 142.0,
+     "title_quality": 1.0,
+     "heat": 0.262968,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.355,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9081,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 27.523155,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "ec9797cb75ad697",
+    "title": "OpenAI 的 Vaibhav 结束印度行飞往柏林",
+    "member_item_ids": [
+     "564c9e092de9d920"
+    ],
+    "primary_item_id": "564c9e092de9d920",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/sh6gydudxu1ppp33rthqhoyho"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T04:43:28Z",
+     "2026-10-19T04:43:28Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 27.495838,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.257,
+     "substance_chars": 154.0,
+     "title_quality": 1.0,
+     "heat": 0.262707,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.385,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8737,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 27.495838,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "ea7821bf067c729",
+    "title": "TreeOPSD：长程智能体强化学习新方法",
+    "member_item_ids": [
+     "830a2069b559e879"
+    ],
+    "primary_item_id": "830a2069b559e879",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/l6biyez0jj5wtgwadeohi3h1y"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T07:44:20Z",
+     "2026-10-19T07:44:20Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 27.116851,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.182,
+     "substance_chars": 109.0,
+     "title_quality": 1.0,
+     "heat": 0.259086,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.2725,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9259,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 27.116851,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "ed34dcc7e914ef1",
+    "title": "Tmux and Claude Code: Sessions, Send-Keys, and the Ceiling",
+    "member_item_ids": [
+     "1f9e453a437aaecb"
+    ],
+    "primary_item_id": "1f9e453a437aaecb",
+    "source_ids": [
+     "rss:hnrss-org-frontpage"
+    ],
+    "all_urls": [
+     "https://crystl.dev/guides/tmux-for-ai-agents/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T05:55:31Z",
+     "2026-10-19T05:55:31Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 26.286,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.245,
+     "substance_chars": 147.0,
+     "title_quality": 1.0,
+     "heat": 0.26286,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.3675,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8938,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 26.286,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "ec9d0a15ab5b48a",
+    "title": "llm-echo 0.5",
+    "member_item_ids": [
+     "9944b4ffed95dc06"
+    ],
+    "primary_item_id": "9944b4ffed95dc06",
+    "source_ids": [
+     "rss:simonwillison-net-everything"
+    ],
+    "all_urls": [
+     "https://simonwillison.net/2026/Oct/18/llm-echo/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-18T23:16:16Z",
+     "2026-10-18T23:16:16Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 25.94499,
+    "rank_components": {
+     "source_weight": 0.6,
+     "source_damped": 0.8801,
+     "substance": 1.0,
+     "substance_chars": 678.0,
+     "title_quality": 1.0,
+     "heat": 0.294792,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7934,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.35,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 25.94499,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "ef4d3e13ee02b58",
+    "title": "【理事动态】格创东智重磅入围IDC 工业AI及智能体平台领导者象限，引领工业AI 迈向工厂自主治理 - 同花顺财经",
+    "member_item_ids": [
+     "eab41b4b017124a1"
+    ],
+    "primary_item_id": "eab41b4b017124a1",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1Hdkh1cmVubWJ3MFVKMDN6VnluZWZkYUg5Z0ZUMmc2QnFhT2pZd1NXTHpDbm9SOFc0czRISURncjF1UEhzcU5pUnFmYWEyOVR4aVN4Z01DNkIxZUpYcDFDY1lB?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T09:32:25Z",
+     "2026-10-19T09:32:25Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 25.913866,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.092,
+     "substance_chars": 55.0,
+     "title_quality": 1.0,
+     "heat": 0.253037,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.1375,
+     "h_velocity": 1.0,
+     "h_freshness": 0.96,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 25.913866,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e0c1ce1bd370ffb",
+    "title": "前沿Claude和GPT，居然被国产AI联手超越？Scaling Law新解法来了 - 智源社区",
+    "member_item_ids": [
+     "4229a0811d59b7b8"
+    ],
+    "primary_item_id": "4229a0811d59b7b8",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9lNUt3TEszT2I3NnBMY21fNFhmVlZQMVVwd2ZKTTlTVVljWFJnWGprQ0dOZFFVbzBHZFQyMG5pcWcxazM3NnVmUg?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T10:20:00Z",
+     "2026-10-19T10:20:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 25.872799,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.077,
+     "substance_chars": 46.0,
+     "title_quality": 1.0,
+     "heat": 0.252636,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.115,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9759,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 25.872799,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e734238217a1f87",
+    "title": "将地球AI投入实战：应对地球重大挑战的地理空间智能体-人工智能 - 至顶网",
+    "member_item_ids": [
+     "330a1eb3d5803f0a"
+    ],
+    "primary_item_id": "330a1eb3d5803f0a",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBlU3BrVkJ3eW9PNnRBQVNoTkM2eGQ4Q2g0Q1FlUHRGb2RWTjZYcFVUU0drMkdIVm16N0xkMkRzbUJwQ3J6SW1sSDdzTTJMWHhqUHpSeUI1TURYdUVQRUE?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-19T11:12:39.249698Z",
+    "last_updated_at": "2026-10-19T11:12:39.249698Z",
+    "published_range": [
+     "2026-10-19T10:03:37Z",
+     "2026-10-19T10:03:37Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 25.670024,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.058,
+     "substance_chars": 35.0,
+     "title_quality": 1.0,
+     "heat": 0.250656,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0875,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9704,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 25.670024,
+     "section": "其他"
+    }
+   }
+  ],
   "trend_notes": [],
   "source_coverage": {
    "total": 124,
-   "active": 28,
+   "active": 29,
    "failed": 0,
    "degraded": 0,
    "blocked": 0,
    "skipped": 0
   },
   "llm_usage": {
-   "calls": 36,
-   "prompt_tokens": 16471,
-   "completion_tokens": 3726,
-   "tokens": 20197,
+   "calls": 107,
+   "prompt_tokens": 107475,
+   "completion_tokens": 67607,
+   "tokens": 175082,
    "max_calls": 400,
    "max_tokens": 2000000,
    "dead_providers": {
     "gemini": "rate_limited(daily=True): gemini: HTTP 429",
     "relay:tokenrhythm.studio#0": "auth: relay:tokenrhythm.studio#0: HTTP 403",
     "relay:api.supxh.xin#0": "auth: relay:api.supxh.xin#0: HTTP 403",
-    "relay:new.sharedchat.cc#0": "auth: relay:new.sharedchat.cc#0: HTTP 403"
+    "relay:new.sharedchat.cc#0": "auth: relay:new.sharedchat.cc#0: HTTP 403",
+    "relay:ai.soulecho.cc#0": "auth: relay:ai.soulecho.cc#0: HTTP 403",
+    "relay:api.gemai.cc#0": "auth: relay:api.gemai.cc#0: HTTP 401",
+    "groq": "rate_limited(daily=True): groq: HTTP 429"
    },
    "provider_failures": {
-    "groq": "groq: empty completion (finish_reason=length, max_tokens likely consumed by reasoning tokens)",
+    "groq": "rate_limited: groq: HTTP 429",
     "relay:api.stepfun.com#0": "relay:api.stepfun.com#0: HTTP 402 {\"error\":{\"message\":\"You exceeded your current quota, please check your plan and billing details\",\"type\":\"quota_exceeded",
     "relay:api.minimaxi.com#0": "relay:api.minimaxi.com#0: HTTP 402 {\"type\":\"error\",\"error\":{\"type\":\"insufficient_balance_error\",\"message\":\"insufficient balance (1008)\",\"http_code\":\"402\"},",
     "relay:api.camel-hub.cn#0": "relay:api.camel-hub.cn#0: HTTP 503"
    },
    "calls_per_provider": {
-    "gemini": 24,
-    "groq": 11,
-    "relay:ai.soulecho.cc#0": 1
+    "gemini": 18,
+    "groq": 36,
+    "relay:ai.soulecho.cc#0": 24,
+    "relay:suoxie.codes#0": 29
    }
   },
   "warnings": [
    "中转密钥已读取：112 条",
    "模型供应商 114 个（gemini, groq, relay:tokenrhythm.studio#0, relay:api.stepfun.com#0…）",
-   "rubric 评分 0 条已打分 / 0 次调用（标准来源：/home/runner/work/ai-ribao/ai-ribao/config/profiles/ai-daily）"
+   "rubric 评分 63 条已打分 / 7 次调用（标准来源：/home/runner/work/ai-ribao/ai-ribao/config/profiles/ai-daily）"
   ],
   "counts": {
-   "events": 0,
-   "events_considered": 217,
-   "multi_source_events": 0,
-   "items_after_window": 258,
+   "events": 56,
+   "events_considered": 224,
+   "multi_source_events": 6,
+   "items_after_window": 264,
    "items_merged_away": 25,
-   "distinct_sources_in_head": 0,
-   "head_max_source_share": 0,
+   "distinct_sources_in_head": 16,
+   "head_max_source_share": 44,
    "dropped_unknown": 97,
-   "late_or_ignored": 4138
+   "late_or_ignored": 4135
   }
  },
  "sections": {
@@ -77,17 +3202,18 @@
    "efb4307fa32dd32"
   ],
   "dev": [
-   "e05caf7793ae54e",
    "e02fe2b264fc481",
-   "e70e495b2cd9bf1",
-   "e749c748693b309",
+   "e05caf7793ae54e",
+   "e5bb5e7e6b9fef1",
    "e74b3d701b232de",
+   "e8018d7643e01d5",
    "e86fa3512795ab9",
    "e89fd1813cd32c8",
    "e92fdccfa49f3ec",
    "ea07ef32198c3e8",
    "eaa5d03feab1e64",
    "eafa7d756fa4ade",
+   "eb01ed3deb92d88",
    "eb5c1d96e9d9945",
    "ebb8fbf4d37be4d",
    "ed0d9e70682c63b",
@@ -98,48 +3224,54 @@
   ],
   "digest": [
    "e4ea579331bf2d9",
-   "e2ba4f6717bd50a",
-   "ec7a0c1d93c7764",
    "ecd053b59390742",
+   "efbe6b4a6c61ef3",
+   "e2ba4f6717bd50a",
    "ecf53add20f87c1",
-   "efbe6b4a6c61ef3"
+   "ec7a0c1d93c7764"
   ],
   "media": [
+   "ec0d8da04ffd829",
+   "e31ca2ec5e8c555",
+   "efbd4d2d363d235",
+   "ef4d3e13ee02b58",
+   "e0c1ce1bd370ffb",
+   "eb539793dcd0914",
+   "e734238217a1f87",
+   "e1096e4dc811f5b",
+   "e4255f31f2362f6",
+   "e490b6722dbebd1",
+   "e4196cb4e7a9d38",
+   "effe7744222e550",
+   "eabc0ef722c7a6e",
+   "e47240f24ddbceb",
+   "e208300395772d4",
+   "ed5984b9e208612",
+   "e8cd21d70197a8c",
+   "e5c89fb0cba8be6",
+   "e0280be0eadb630",
    "e070e3582d0dec4",
    "e07cdaa68e308c9",
-   "e0c1ce1bd370ffb",
-   "e0c98c326a6a43a",
-   "e1246013fc4f292",
    "e145ebd8c71c96e",
    "e1c2aa051f1cb1d",
-   "e208300395772d4",
    "e244b8a63b7d12f",
    "e25d8bc95a1fbd6",
    "e26b3350bd9564b",
-   "e2e566db141902e",
    "e313f26150e31b8",
-   "e31ca2ec5e8c555",
    "e39e0462d41c3cf",
    "e3bfaba8d51b9ba",
    "e3cdf7151ba5914",
    "e3d7712862fad15",
-   "e410b4939168068",
-   "e4196cb4e7a9d38",
-   "e4255f31f2362f6",
    "e428c70b9012726",
    "e44efc6dd976d3b",
-   "e47240f24ddbceb",
-   "e490b6722dbebd1",
    "e4d740e5f1ef97c",
    "e4f3f1a09d94c65",
    "e56652b26f97357",
    "e5950fb74c7ea38",
    "e5b451ad872c9cf",
-   "e5c89fb0cba8be6",
    "e5d704507a50854",
    "e62c99dc6d17d39",
    "e671a707f63c755",
-   "e67b2092c5b0aa9",
    "e6ef6bd28251df2",
    "e6f0a2ced0f431a",
    "e71a4465d50ce7d",
@@ -147,30 +3279,28 @@
    "e7923551091eb26",
    "e799595b79d71bc",
    "e7a5737fab43cf6",
+   "e7c8cb2d4b9f858",
    "e7d497f0b65a64b",
    "e7ffd91999c96ab",
    "e8438fd099a8a3c",
    "e8621e2a65a00f5",
    "e865619bf5c6e8d",
-   "e8cd21d70197a8c",
    "e93cbfcf27a22af",
    "e94a63cbcb67b40",
    "e9a4d4555f9311f",
    "ea7cb69494b4d52",
-   "eaa3ffad5148ce8",
-   "eabc0ef722c7a6e",
    "eacec012100f74c",
+   "ead820dc7112aba",
    "eb0a61fa493e4d5",
    "eb0bcb77f9c79e3",
    "eb3fb5a9cf58531",
    "eb429b85d4c70b1",
    "eb6e5add6039b59",
+   "eb79e543a0243f6",
    "eb7dca036f75448",
    "ebbd528234d2c52",
    "ebc0cece77d25d4",
    "ebce64ed394a343",
-   "ebee38d2e2c6185",
-   "ec0d8da04ffd829",
    "ec0db3a451d88b9",
    "ec0ebc5c3cb3aef",
    "ec2dde1fd648338",
@@ -178,32 +3308,31 @@
    "ec716fb7d2645be",
    "eca58a8f4f1be17",
    "ecd926bf8575ed3",
+   "ecef7e0ee102303",
    "ed161c584cf3133",
+   "ed282b765d116ef",
    "ed4a301a011ad03",
-   "ed5984b9e208612",
    "ed8ffe3d3152c19",
    "ed9c801a0fb523d",
    "ede155764cd651d",
    "ee1b7608f553013",
    "ee22fa233af9a4e",
    "ee3518c20f5c682",
-   "ee4296a1e39927f",
+   "ee401046dbe628e",
+   "ee4afe9328387cf",
    "eec5efb12d63bfc",
-   "ef030b512aef34b",
    "ef26746b3a64c6e",
-   "ef4d3e13ee02b58",
    "ef577a784826fde",
    "ef956ddf3472b97",
    "ef9fb398740c6ea",
-   "efa5c233321e531",
-   "efbd4d2d363d235",
-   "effe7744222e550"
+   "efa5c233321e531"
   ],
   "mixed": [
-   "ec7c930a70ec07b",
-   "e1bf82c223defe9",
    "e232e487548e58f",
    "e23f8b35666e63c",
+   "ed34dcc7e914ef1",
+   "ec7c930a70ec07b",
+   "e1bf82c223defe9",
    "e2b528a441c7ccc",
    "e34f535f7a172e7",
    "e7204682821f073",
@@ -211,80 +3340,1166 @@
    "ed181c945b7cdf7",
    "ee5676e6b6d1c04",
    "e45eb7e253f8c49",
-   "e74202f11916cad",
-   "ed34dcc7e914ef1"
+   "e74202f11916cad"
   ],
   "preset": [
-   "e48934748f5c663",
-   "ec9d0a15ab5b48a"
+   "ec9d0a15ab5b48a",
+   "e48934748f5c663"
   ],
   "zh-media": [
-   "e16227ba3cd8e8f",
-   "e61042c66eb0033",
-   "eea4b717be04a07",
-   "e8b8fdaf0825aaf",
-   "e93ef48ab6984f3",
-   "ea3f575db181ea1",
-   "e0a8f2949bede26",
-   "e0de2d20f115ddc",
-   "e1646658274eaca",
-   "e175a743e1e73e1",
-   "e240137d307f158",
-   "e2d885fe4ed7d38",
-   "e3ccbcb602199e6",
-   "e45c3b3d029f028",
-   "e46a432cf6cd6eb",
-   "e48eaa6d10eb28e",
-   "e4a6781b1e1a837",
-   "e50888d8e59bd26",
-   "e55c6749215c9e4",
-   "e58b5d45c537a46",
-   "e5e8c73d7b87cb6",
-   "e60d5f0b999ff9c",
-   "e671ec717c7eb7f",
-   "e6c6cd9b574fd59",
-   "e7333d0e52fe520",
-   "e7b0bc1ecae7e3d",
-   "e7cd0e7b3803725",
-   "e81400a33493f91",
-   "e82a6933b3ab2ab",
-   "e9635e11332abc5",
-   "e97950931f6c932",
-   "ea2177fa888b75e",
-   "ea7821bf067c729",
-   "ea792c6348ca7c0",
+   "ee5205e1bfe0b0d",
    "eaa61f76e932f50",
-   "eaf109d06172368",
-   "eb72baee917e1e7",
-   "eb735650d6ee859",
    "eb9032b0670975f",
-   "ebb045994a6e1d1",
-   "ebd97bdcc1c4458",
-   "ebf89261cf6ee20",
-   "ec63a35c29e12b6",
+   "e7333d0e52fe520",
+   "eecf54c4b9317dd",
+   "eea4b717be04a07",
+   "e46a432cf6cd6eb",
+   "ed80a78b8b7cef0",
+   "e0a8f2949bede26",
+   "e1885cfb6b9c04e",
+   "e93ef48ab6984f3",
+   "e751a4c30a9e26d",
+   "ec20a6f0614b292",
+   "ee9922d25e03ad5",
+   "efb440a20726e47",
+   "e5e8c73d7b87cb6",
+   "ef878aad80de440",
+   "eeb0db7b4f55c1a",
+   "e20807045baddaf",
+   "ea2177fa888b75e",
+   "ef5543b310c9bc4",
+   "e81400a33493f91",
+   "edbfdae7e152866",
+   "e48eaa6d10eb28e",
+   "edbc1f3d55eda6e",
    "ec785d1b08ae0d0",
+   "e50888d8e59bd26",
+   "ec63a35c29e12b6",
+   "e45c3b3d029f028",
+   "ee42bdb2423b3f9",
+   "e4a6781b1e1a837",
+   "e55c6749215c9e4",
+   "e2d885fe4ed7d38",
    "ec9797cb75ad697",
    "ed9cfe1c3a05a97",
-   "edbc1f3d55eda6e",
-   "edbfdae7e152866",
+   "ea7821bf067c729",
+   "e1646658274eaca",
+   "e82a6933b3ab2ab",
+   "eb735650d6ee859",
+   "e16227ba3cd8e8f",
+   "e61042c66eb0033",
+   "e8b8fdaf0825aaf",
+   "ea3f575db181ea1",
+   "e0de2d20f115ddc",
+   "e175a743e1e73e1",
+   "e240137d307f158",
+   "e3ccbcb602199e6",
+   "e58b5d45c537a46",
+   "e60d5f0b999ff9c",
+   "e6c6cd9b574fd59",
+   "e7b0bc1ecae7e3d",
+   "e7cd0e7b3803725",
+   "e88e26a6cecbebc",
+   "e9635e11332abc5",
+   "e97950931f6c932",
+   "ea792c6348ca7c0",
+   "eaf109d06172368",
+   "eb72baee917e1e7",
+   "ebb045994a6e1d1",
+   "ebb5df368bbf306",
+   "ebd97bdcc1c4458",
+   "ebf89261cf6ee20",
    "ee2956e92a38e74",
-   "ee42bdb2423b3f9",
-   "ee5205e1bfe0b0d",
-   "ee9922d25e03ad5",
-   "eea4eb1ee063ad3",
-   "eeb0db7b4f55c1a",
-   "eecf54c4b9317dd",
-   "eef787fdc06c25b",
-   "ef5543b310c9bc4",
-   "ef878aad80de440",
-   "efb440a20726e47"
+   "eef787fdc06c25b"
   ]
  },
- "insights": {},
+ "insights": {
+  "e82a6933b3ab2ab": {
+   "event_id": "e82a6933b3ab2ab",
+   "title": "xAI 推广 Grok Bot 招聘功能",
+   "facts": [
+    "xAI 推广 Grok Bot 招聘功能",
+    "文章鼓励雇佣 Grok @Bot"
+   ],
+   "inferences": [
+    "xAI 认为雇佣 Grok @Bot 能带来好处"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "Grok @Bot 的功能细节未说明",
+    "该推广是否为正式功能尚未确认"
+   ],
+   "key_points": [
+    "xAI 推广 Grok Bot 招聘功能",
+    "鼓励雇佣 Grok @Bot"
+   ],
+   "rule_based": false
+  },
+  "ec0d8da04ffd829": {
+   "event_id": "ec0d8da04ffd829",
+   "title": "DeepSeek发布新AI模型，称性能超OpenAI",
+   "facts": [
+    "DeepSeek 上新 AI 模型",
+    "该模型称部分性能超 OpenAI 等"
+   ],
+   "inferences": [
+    "DeepSeek 声称其新模型在部分性能上优于 OpenAI"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "具体性能指标未说明",
+    "是否有第三方验证该性能超越声明",
+    "模型的技术细节和应用场景"
+   ],
+   "key_points": [
+    "DeepSeek 发布新 AI 模型",
+    "模型声称部分性能超 OpenAI"
+   ],
+   "rule_based": false
+  },
+  "eea4b717be04a07": {
+   "event_id": "eea4b717be04a07",
+   "title": "OpenAI接口短暂出现三个模型标识",
+   "facts": [
+    "多位 X 用户发现，OpenAI 接口曾短暂出现 aurora-red-alpha、aurora-green-alpha 和 aurora-blue-alpha 三个新模型标识。",
+    "TestingCatalog 称，这些模型引用随后已从接口移除。",
+    "Lumina 称自己在 Arena 遇到 aurora-red-alpha，并表示三个模型正在 Arena 测试，似乎是图像生成模型。",
+    "Lumina 分享的截图显示，aurora-red-alpha 和 aurora-green-alpha 根据猫咪提示词生成了图像。",
+    "Lumina 后续表示，自己仍未遇到蓝色版本。",
+    "OpenAI 官方尚未确认相关模型身份及开放安排。"
+   ],
+   "inferences": [
+    "从模型标识短暂出现后被移除，以及用户称其正在 Arena 测试来看，这些模型可能仍处于测试阶段。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "这三个标识对应的模型身份尚未得到 OpenAI 官方确认。",
+    "三个模型是否都在 Arena 测试、是否属于图像生成模型，尚未得到官方确认。",
+    "aurora-blue-alpha 是否能生成图像，材料没有提供相关体验或截图。",
+    "这些模型是否会开放以及开放安排如何，尚不明确。"
+   ],
+   "key_points": [
+    "OpenAI 接口短暂出现三个以 aurora 命名的模型标识，随后相关引用被移除。",
+    "用户称这些模型正在 Arena 测试，截图展示了两个模型生成的猫咪图像，但 OpenAI 尚未确认其身份及开放安排。"
+   ],
+   "rule_based": false
+  },
+  "ed80a78b8b7cef0": {
+   "event_id": "ed80a78b8b7cef0",
+   "title": "MiniMax 正准备发布 MiniMax-M3.1-Flash",
+   "facts": [
+    "MiniMax 正准备发布 MiniMax-M3.1-Flash，接口参考文档中已有相关说明。",
+    "文档将 MiniMax-M3.1-Flash 描述为具备一百万上下文窗口和可调思考深度的多模态编程模型。"
+   ],
+   "inferences": [
+    "可调思考深度可能会成为 3.1 系列的新特性。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明 MiniMax-M3.1-Flash 的具体发布日期。",
+    "材料未说明可调思考深度的具体调节方式。",
+    "材料未说明一百万上下文窗口及模型能力是否已经可用。"
+   ],
+   "key_points": [
+    "MiniMax 正准备发布 MiniMax-M3.1-Flash。",
+    "文档提及一百万上下文窗口和可调思考深度。"
+   ],
+   "rule_based": false
+  },
+  "ed5984b9e208612": {
+   "event_id": "ed5984b9e208612",
+   "title": "可灵AI新一代模型Kling 4.0正式上线",
+   "facts": [
+    "可灵AI新一代模型Kling 4.0正式上线",
+    "专业影像模型“卷”出新高度"
+   ],
+   "inferences": [
+    "该模型为专业影像模型"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "“卷”与“新高度”具体含义不明"
+   ],
+   "key_points": [
+    "可灵AI推出Kling 4.0",
+    "专业影像模型取得新进展"
+   ],
+   "rule_based": false
+  },
+  "e1885cfb6b9c04e": {
+   "event_id": "e1885cfb6b9c04e",
+   "title": "MiniMax-M3.1-Flash 即将发布",
+   "facts": [
+    "MiniMax-M3.1-Flash 即将到来。"
+   ],
+   "inferences": [
+    "根据“即将到来”的表述，MiniMax-M3.1-Flash 尚未发布。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明 MiniMax-M3.1-Flash 的具体发布日期。",
+    "材料未说明 MiniMax-M3.1-Flash 的功能和性能信息。"
+   ],
+   "key_points": [
+    "MiniMax-M3.1-Flash 即将发布。",
+    "具体发布日期和产品信息尚未披露。"
+   ],
+   "rule_based": false
+  },
+  "edbfdae7e152866": {
+   "event_id": "edbfdae7e152866",
+   "title": "奇瑞10月20日办全球创新大会并发布大模型、墨宝",
+   "facts": [
+    "奇瑞将于10月20日在芜湖举办2026奇瑞全球创新大会。",
+    "大会将发布首个汽车行业垂域大模型，并展示专为物理人工智能世界模型设计的车规级芯片。",
+    "大会期间，墨甲首款消费级家庭陪伴人形机器人“墨宝”将全球首发并开启全球预订。",
+    "奇瑞智慧农机产品矩阵将在大会上公开亮相。"
+   ],
+   "inferences": [
+    "从已公布的安排看，大会内容将涉及大模型、芯片、人形机器人和智慧农机。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明大模型的名称、能力和具体应用场景。",
+    "材料未说明车规级芯片的型号和具体参数。",
+    "材料未说明“墨宝”的售价和预订条件。"
+   ],
+   "key_points": [
+    "奇瑞将发布首个汽车行业垂域大模型，并展示车规级芯片。",
+    "“墨宝”将全球首发并开启全球预订，智慧农机产品矩阵也将亮相。"
+   ],
+   "rule_based": false
+  },
+  "eecf54c4b9317dd": {
+   "event_id": "eecf54c4b9317dd",
+   "title": "Grok Bot 上线 @bot 标签功能",
+   "facts": [
+    "Grok Bot 上线 @bot 标签功能",
+    "如果 X 和 Grok 账号已与你的 bot 关联，现在就可以在 X 上使用此功能",
+    "大门已开启"
+   ],
+   "inferences": [
+    "用户需要先关联 X 和 Grok 账号与 bot 才能使用 @bot 功能"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "功能是否已完全稳定"
+   ],
+   "key_points": [
+    "Grok Bot 新增 @bot 标签功能",
+    "需先关联 X 与 Grok 账号后才能在 X 上使用"
+   ],
+   "rule_based": false
+  },
+  "e7333d0e52fe520": {
+   "event_id": "e7333d0e52fe520",
+   "title": "Grok bot 开放 X 任务调用并分享用例",
+   "facts": [
+    "X 与 Grok 账号已连接的用户现在可以在 X 上使用 @bot。",
+    "Grok bot 只响应用户给出的实际任务。",
+    "作者表示自己用 Grok bot 做反馈转发、调查和创建代码合并请求。"
+   ],
+   "inferences": [
+    "这表明 Grok bot 可根据用户指令在 X 上执行任务。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料没有说明 Grok bot 支持的完整任务范围。",
+    "材料没有说明 X 与 Grok 账号的具体连接方式。"
+   ],
+   "key_points": [
+    "连接 X 与 Grok 账号后，用户可在 X 上使用 @bot。",
+    "作者分享了反馈转发、调查和创建代码合并请求等用例。"
+   ],
+   "rule_based": false
+  },
+  "e81400a33493f91": {
+   "event_id": "e81400a33493f91",
+   "title": "MiniCPM-V 4.7 升至 Hugging Face 趋势榜第二",
+   "facts": [
+    "面壁智能 OpenBMB 宣布 MiniCPM-V 4.7 升至 Hugging Face 趋势榜第二名。",
+    "材料称 35B-A3B MoE 版本可在 iOS 和 Android 上以约 3GB 内存流畅运行。",
+    "材料称 1B 模型在 OCR、数学和视频理解上的表现较强。",
+    "模型和代码已在 Hugging Face 和 GitHub 开放。"
+   ],
+   "inferences": [
+    "35B-A3B MoE 版本在移动设备上的运行能力可能拓展其使用场景。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "趋势榜的排名统计口径和更新时间未说明。",
+    "约 3GB 内存对应的设备型号和运行测试条件未说明。",
+    "1B 模型在 OCR、数学和视频理解上的表现依据未说明。",
+    "模型和代码的授权方式未说明。"
+   ],
+   "key_points": [
+    "MiniCPM-V 4.7 升至 Hugging Face 趋势榜第二名。",
+    "35B-A3B MoE 版本可在 iOS 和 Android 上以约 3GB 内存运行，模型和代码已开放。"
+   ],
+   "rule_based": false
+  },
+  "e5e8c73d7b87cb6": {
+   "event_id": "e5e8c73d7b87cb6",
+   "title": "面壁智能发布大监督智能体落地企业监督",
+   "facts": [
+    "面壁智能于10月16日在北京发布大监督智能体。",
+    "大监督智能体由面壁智能与星火明智联合共创。",
+    "大监督智能体覆盖风险、内控、合规、审计、纪检五项监督能力。",
+    "产品提供50多项监督技能，覆盖九大业务域。",
+    "产品支持从预警、疑点、立项、定性、整改到销号的全链条闭环。",
+    "产品支持7×24预警巡航、云端与端侧算力协同以及数据不出域。",
+    "产品底座为面壁智能 MiniCPM 系列高知识密度基座模型。",
+    "大监督智能体是“面壁+”行业伙伴计划7月发布后的落地成果之一。"
+   ],
+   "inferences": [
+    "由产品覆盖五类监督能力并贯穿监督全链条可推断，其定位是综合企业监督工具。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明五项智能体能力具体分别是什么。",
+    "材料未说明九大业务域具体包括哪些领域。",
+    "材料未说明面壁智能与星火明智在联合共创中的具体分工。",
+    "材料未说明产品已落地的具体企业或项目。"
+   ],
+   "key_points": [
+    "面壁智能与星火明智联合发布大监督智能体。",
+    "产品以 MiniCPM 系列模型为底座，覆盖企业监督全链条。"
+   ],
+   "rule_based": false
+  },
+  "eeb0db7b4f55c1a": {
+   "event_id": "eeb0db7b4f55c1a",
+   "title": "《红色密码》《峨眉》携手 Seedance 探索影视制作",
+   "facts": [
+    "中央广播电视总台于10月18日在上海浦东举行的全国中短剧大会上亮相《红色密码》和《峨眉》两部中短剧。",
+    "《红色密码》和《峨眉》将与火山引擎合作，探索真人实拍结合 Seedance 大模型的制作模式。",
+    "这是火山引擎“Seedance 影视合作计划”的首个落地项目。",
+    "“Seedance 影视合作计划”于今年9月面向全球专业影视项目发布，提供代币补贴、宣发资源以及技术与工具支持。"
+   ],
+   "inferences": [
+    "这表明 Seedance 正被用于探索专业影视项目中的真人实拍与人工智能制作结合方式。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明两部中短剧与火山引擎合作的具体制作内容和分工。",
+    "材料未说明两部中短剧的上线时间及制作结果。"
+   ],
+   "key_points": [
+    "《红色密码》和《峨眉》将与火山引擎合作。",
+    "合作方向是真人实拍结合 Seedance 大模型的制作模式。"
+   ],
+   "rule_based": false
+  },
+  "ef5543b310c9bc4": {
+   "event_id": "ef5543b310c9bc4",
+   "title": "腾讯 WorkBuddy 教育公益版上线，教师每月可领 2000 积分",
+   "facts": [
+    "腾讯 SSV 宣布 WorkBuddy 教育公益版正式上线。",
+    "全国教师不限地区、不限学段，每人每月可领取 2000 积分，连续领取 12 个月。",
+    "该版本联合北京大学、北京师范大学等高校，将教育研究拆分为 100 多位教育专家，相关内容陆续上线。",
+    "该版本上线创意教学、剧本课堂、课件制作、动画演示、素材加工 5 个工具。"
+   ],
+   "inferences": [
+    "由于领取范围不限地区和学段，符合条件的教师可在全国范围内申请领取积分。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料没有说明教师领取积分的申请方式和资格核验办法。",
+    "材料没有说明连续领取 12 个月的起始时间。",
+    "材料没有说明 100 多位教育专家将全部上线的具体时间。"
+   ],
+   "key_points": [
+    "全国教师每月可领取 2000 积分，连续领取 12 个月。",
+    "版本包含陆续上线的教育专家内容和 5 个教学工具。"
+   ],
+   "rule_based": false
+  },
+  "e48eaa6d10eb28e": {
+   "event_id": "e48eaa6d10eb28e",
+   "title": "HUMXN免费上门修水电换取作业数据",
+   "facts": [
+    "人工智能实验室 HUMXN 宣布补贴管道、电工和暖通空调等居家服务。",
+    "居民可免费获得服务，条件是允许佩戴可穿戴采集设备的人员录制技师作业。",
+    "录制作业将用于训练人工智能机器人。",
+    "项目首批落地明尼阿波利斯、芝加哥和迈阿密。",
+    "创始人 Thomas Unise 表示，机器人需要理解专业人员与物理世界交互的方式。"
+   ],
+   "inferences": [
+    "项目可能希望通过不同城市收集不同气候环境下的居家服务作业数据。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明可穿戴采集设备具体采集哪些数据。",
+    "材料未说明录制作业的时长和覆盖范围。",
+    "材料未说明居民是否可以限制或撤回录制许可。",
+    "材料未说明收集的数据是否会用于训练人工智能机器人之外的用途。"
+   ],
+   "key_points": [
+    "居民以允许录制作业为条件获得免费居家服务。",
+    "HUMXN 将录制的技师作业用于训练人工智能机器人。"
+   ],
+   "rule_based": false
+  },
+  "e232e487548e58f": {
+   "event_id": "e232e487548e58f",
+   "title": "LLM代理在潜在空间推理并通过文本行动",
+   "facts": [
+    "文章标题为 Hybrid Reasoning Agents: LLM agents that think in latent space, act through text",
+    "该文章在 Hacker News 上获得 407 分和 199 条评论"
+   ],
+   "inferences": [
+    "文章讨论 LLM 代理在潜在空间中进行推理并通过文本执行动作"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "文章具体内容细节未知",
+    "作者身份不明"
+   ],
+   "key_points": [
+    "LLM 代理在潜在空间推理",
+    "通过文本执行动作",
+    "在 Hacker News 获得 407 分和 199 条评论"
+   ],
+   "rule_based": false
+  },
+  "ed34dcc7e914ef1": {
+   "event_id": "ed34dcc7e914ef1",
+   "title": "Tmux与Claude Code：会话、按键与上限",
+   "facts": [
+    "条目标题为《Tmux and Claude Code: Sessions, Send-Keys, and the Ceiling》。",
+    "条目显示有39个积分和21条评论。",
+    "条目时间为2026年10月19日05:55协调世界时。"
+   ],
+   "inferences": [
+    "根据标题，内容可能涉及Tmux与Claude Code中的会话、发送按键和使用上限。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料没有提供文章正文。",
+    "材料没有说明会话、发送按键和上限的具体内容。",
+    "材料没有提供文章链接和评论内容。"
+   ],
+   "key_points": [
+    "主题涉及Tmux与Claude Code。",
+    "条目有39个积分和21条评论。"
+   ],
+   "rule_based": false
+  },
+  "ec9d0a15ab5b48a": {
+   "event_id": "ec9d0a15ab5b48a",
+   "title": "llm-echo 0.5更新模拟令牌用量",
+   "facts": [
+    "llm-echo 0.5已发布。",
+    "llm-echo调试插件提供了一个不调用大语言模型、只重复输入提示词的模型。",
+    "新版本更新了模拟令牌用量的计算，使其纳入工具调用、系统提示词和推理令牌。",
+    "示例输出显示输入令牌用量为2，输出令牌用量为24。"
+   ],
+   "inferences": [
+    "这意味着llm-echo的模拟用量统计覆盖了更多类型的提示和调用内容。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明新版本具体如何计算工具调用、系统提示词和推理令牌。",
+    "材料未说明llm-echo 0.5的发布日期。"
+   ],
+   "key_points": [
+    "llm-echo 0.5更新了模拟令牌用量统计。",
+    "调试插件仍通过重复提示词来模拟模型响应。"
+   ],
+   "rule_based": false
+  },
+  "e0a8f2949bede26": {
+   "event_id": "e0a8f2949bede26",
+   "title": "豆包刘星否认算力数据不准，字节仅10%用于视频生成",
+   "facts": [
+    "刘星回应“国内超一半算力在造爽剧”的说法不靠谱。",
+    "字节总算力中约10%用于视频生成模型训练和推理。",
+    "中文在线披露国内AI Token消耗55%用于短剧和视频生成，24%用于电商广告，15%用于研发。"
+   ],
+   "inferences": [
+    "字节算力在视频生成上的占比低于国内平均水平55%。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "算力数据的具体来源不明。",
+    "字节算力总量未给出。"
+   ],
+   "key_points": [
+    "刘星否认算力数据不靠谱。",
+    "字节算力10%用于视频生成。"
+   ],
+   "rule_based": false
+  },
+  "ec20a6f0614b292": {
+   "event_id": "ec20a6f0614b292",
+   "title": "Claude Code约九成代码由人工智能完成",
+   "facts": [
+    "Claude Code目前约九成代码由Claude自己编写。",
+    "Claude Code合并的拉取请求在六月至九月增加了一倍多。",
+    "同期需要回滚的改动减少了四成多。",
+    "两个人工智能曾互相审查和修改代码，一晚完成了五十多轮。",
+    "Anthropic开发团队表示，人类是否审查过改动不是准确的替代指标。",
+    "Anthropic开发团队提出，应根据改动出问题的可能后果选择测试、人工智能或人类检查。",
+    "Claude Code现在会在编写代码的同时进行检查。",
+    "Anthropic的大型代码仓库五月份每天合并约两千五百个改动，九月份每天合并三万多个改动。"
+   ],
+   "inferences": [
+    "随着改动数量增加，单靠人类逐行审查难以覆盖全部改动。",
+    "Claude Code的代码检查从提交后的人工等待转向了编写过程中的持续检查。",
+    "代码审查的重点可能从是否经过人类查看转向是否由合适的检查方式拦截风险。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料没有说明约九成代码中具体有多少比例经过人类审查。",
+    "材料没有说明两个互相审查的人工智能是否属于Claude Code。",
+    "材料没有说明回滚减少四成多对应的具体数量。",
+    "材料没有说明自动检查发现问题后的具体处理流程。",
+    "材料没有说明Anthropic博客中介绍的完整审查机制。"
+   ],
+   "key_points": [
+    "Claude Code约九成代码由自己编写，大部分代码审查也由人工智能完成。",
+    "六月至九月，Claude Code合并的拉取请求增加一倍多，需要回滚的改动减少四成多。",
+    "Anthropic认为应根据改动风险选择测试、人工智能或人类检查。",
+    "Claude Code已从提交后等待审查转向边编写边检查。"
+   ],
+   "rule_based": false
+  },
+  "ee42bdb2423b3f9": {
+   "event_id": "ee42bdb2423b3f9",
+   "title": "Princeton 与 Google 论文提出 JevAgentHarness，用 4B 决策模型分担 LLM 智能体例行决策",
+   "facts": [
+    "Princeton 与 Google 等机构的论文提出 JevAgentHarness",
+    "JevAgentHarness 用小型决策模型回答智能体中的多选例行决策",
+    "仅在置信度低于阈值时交给 LLM"
+   ],
+   "inferences": [
+    "JevAgentHarness 的决策模型参数量为 4B",
+    "该系统旨在减少 LLM 的使用"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "阈值的具体数值",
+    "决策模型的具体架构与训练数据",
+    "系统在不同任务上的性能表现"
+   ],
+   "key_points": [
+    "JevAgentHarness 用 4B 决策模型处理例行决策",
+    "仅在置信度低于阈值时才交给 LLM"
+   ],
+   "rule_based": false
+  },
+  "e55c6749215c9e4": {
+   "event_id": "e55c6749215c9e4",
+   "title": "曙光8000十万卡人工智能超集群首次亮相",
+   "facts": [
+    "我国首个全国产十万卡人工智能超集群“曙光8000”在深圳举行的2026全国高性能计算学术大会上首次公开亮相。",
+    "“曙光8000”将集中发布十大重要应用成果。",
+    "“曙光8000”通过高速互联技术整合十万张国产人工智能加速卡。",
+    "“曙光8000”的算力可构建“数字孪生大脑”，模拟百亿光年宇宙演化。"
+   ],
+   "inferences": [
+    "可以推断，高速互联技术是“曙光8000”实现十万卡规模整合的基础。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "十大重要应用成果的具体内容尚未说明。",
+    "十万张国产人工智能加速卡的具体型号尚未说明。",
+    "“曙光8000”的具体算力指标尚未说明。",
+    "“数字孪生大脑”模拟百亿光年宇宙演化的具体方式尚未说明。"
+   ],
+   "key_points": [
+    "“曙光8000”首次公开亮相。",
+    "集群整合十万张国产人工智能加速卡。",
+    "其算力可用于构建“数字孪生大脑”。"
+   ],
+   "rule_based": false
+  },
+  "ea2177fa888b75e": {
+   "event_id": "ea2177fa888b75e",
+   "title": "Amazon论文提出FEB-30评估智能体记忆系统",
+   "facts": [
+    "Amazon论文提出FEB-30基准，使用30条脚本化事实轨迹生成147篇文档。",
+    "FEB-30在每一步已知正确记忆状态的前提下，直接对比存储事实与问答分数。",
+    "在类Mem0和Hindsight的记忆系统上，两种评估平均相差16.8分。",
+    "21%的事实轨迹在通过或失败判定上不一致。",
+    "系统选对更新、强化等记忆操作的比例为20.1%，问答评估无法发现这一点。"
+   ],
+   "inferences": [
+    "仅靠问答分数可能无法完整评估智能体记忆系统。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明FEB-30名称的具体含义。",
+    "材料未说明参与评估的记忆系统是否仅包括类Mem0和Hindsight系统。"
+   ],
+   "key_points": [
+    "FEB-30通过已知正确记忆状态对比存储事实与问答分数。",
+    "问答评估可能遗漏记忆操作选择和事实轨迹判定差异。"
+   ],
+   "rule_based": false
+  },
+  "e23f8b35666e63c": {
+   "event_id": "e23f8b35666e63c",
+   "title": "如何监控未运行的 LLM 代理",
+   "facts": [
+    "文章标题为 \"If you don't run your own LLM proxy, how do you know whats going on?\"",
+    "文章内容为 \"If you don't run your own LLM proxy, how do you know whats going on?\"",
+    "文章发布于 2026-10-18 21:09 UTC"
+   ],
+   "inferences": [
+    "文章讨论了如果不运行自己的 LLM 代理，如何了解其运行情况"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "文章内容是否包含除标题和一句话之外的其他信息",
+    "文章是否提供了解决方案或进一步讨论"
+   ],
+   "key_points": [
+    "标题：If you don't run your own LLM proxy, how do you know whats going on?",
+    "内容：If you don't run your own LLM proxy, how do you know whats going on?"
+   ],
+   "rule_based": false
+  },
+  "ef878aad80de440": {
+   "event_id": "ef878aad80de440",
+   "title": "AVRI降低安全智能体令牌成本",
+   "facts": [
+    "在针对安全漏洞的人工智能智能体的200次运行中，60.4%的令牌用于理解代码和推理漏洞触发方式。",
+    "现有省钱方法中，只有24.4%的对比能在降低成本的同时保持成功率。",
+    "AVRI将相关代码一并返回并保留程序输入与不安全操作之间的链接，在20个新任务上使Codex总成本降低18.0%、OpenCode总成本降低23.7%，且成功率和召回率未降低。"
+   ],
+   "inferences": [
+    "降低代码理解和漏洞触发推理的令牌消耗，可能是AVRI降低总成本的主要原因。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明20个新任务的具体类型。",
+    "材料未说明成功率和召回率的具体数值。",
+    "材料未说明200次运行所使用的具体任务和智能体配置。",
+    "材料未说明AVRI与现有省钱方法的具体对比方式。"
+   ],
+   "key_points": [
+    "安全漏洞智能体的大部分令牌消耗用于理解代码和推理漏洞触发方式。",
+    "AVRI在20个新任务上降低了Codex和OpenCode的总成本，同时保持成功率和召回率。"
+   ],
+   "rule_based": false
+  },
+  "e20807045baddaf": {
+   "event_id": "e20807045baddaf",
+   "title": "Lovart 2.0上线个人设计智能体 Arti",
+   "facts": [
+    "Lovart 2.0新上线了个人设计智能体 Arti。",
+    "Arti能读取用户历史项目的审美记忆。",
+    "Arti能在生成过程中自动调研视觉方向并自主纠错。",
+    "Arti支持画布巡检以及通过分享链接在画布上直接评论。",
+    "实测使用广东文创品牌和奶茶秋季海报项目验证了记忆复用。",
+    "实测还试运行了一个每日饮品节点的设计委托任务。",
+    "Lovart 2.0中文版已全量上线。"
+   ],
+   "inferences": [
+    "根据这些功能，Arti可能将个性化记忆、设计执行和反馈协作整合到同一流程中。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明Arti读取历史项目审美记忆的具体范围和方式。",
+    "材料未说明Arti自动调研视觉方向和自主纠错的具体效果。",
+    "材料未说明画布巡检支持的检查项目。",
+    "材料未说明设计委托任务的执行周期和完成结果。"
+   ],
+   "key_points": [
+    "Arti支持审美记忆复用、视觉方向调研和自主纠错。",
+    "Arti支持画布巡检、画布评论和设计委托任务。"
+   ],
+   "rule_based": false
+  },
+  "e93ef48ab6984f3": {
+   "event_id": "e93ef48ab6984f3",
+   "title": "PhAI Labs探索科研智能体自我进化",
+   "facts": [
+    "标题称Claude排名垫底，GPT表现不佳。",
+    "标题称PhAI Labs使用DiscoveryRSI探索科研智能体自我进化。",
+    "PhAI Labs是一家面向下一代智能系统的新型研究组织。",
+    "PhAI Labs长期关注人工智能与科学发现深度融合的前沿方向。"
+   ],
+   "inferences": [
+    "根据标题，DiscoveryRSI可能被用于科研智能体的自我进化探索。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明Claude和GPT表现评估所采用的标准。",
+    "材料未说明Claude排名垫底和GPT表现不佳的具体数据。",
+    "材料未说明DiscoveryRSI的具体方法和功能。",
+    "材料未说明科研智能体自我进化探索的实验结果。"
+   ],
+   "key_points": [
+    "Claude排名垫底，GPT表现不佳。",
+    "PhAI Labs使用DiscoveryRSI探索科研智能体自我进化。",
+    "PhAI Labs关注人工智能与科学发现的融合。"
+   ],
+   "rule_based": false
+  },
+  "e751a4c30a9e26d": {
+   "event_id": "e751a4c30a9e26d",
+   "title": "动态并发能否提升软件开发效果",
+   "facts": [
+    "编码智能体过去主要用于修复缺陷、解决GitHub问题或实现相对独立的功能。",
+    "Codex、Claude Code和Kimi Code等编码智能体开始支持动态并发。",
+    "动态并发允许主智能体在执行过程中自主决定是否创建子智能体、何时创建以及如何协调其工作。",
+    "南京大学和UIUC的研究人员对三种编码智能体开展了配对实验，覆盖354个软件工程任务和2124次执行。",
+    "研究发现，动态并发在部分长周期任务中能带来收益，但并不稳定，在部分短周期任务中会降低成功率。",
+    "研究归纳出4大类、13个子类别和28种具体并发失败模式，以及三类并发发挥作用的典型机制。"
+   ],
+   "inferences": [
+    "动态并发的效果可能取决于任务周期和智能体之间的协调方式。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料没有说明三种编码智能体的具体名称及其分别完成了哪些任务。",
+    "材料没有说明动态并发在长周期和短周期任务中的具体成功率变化。",
+    "材料没有列出4大类并发失败模式、13个子类别和28种具体模式的内容。",
+    "材料没有说明并发真正发挥作用的三类典型机制分别是什么。",
+    "材料没有说明实验中不同任务类型的数量分布。"
+   ],
+   "key_points": [
+    "编码智能体开始通过动态并发处理更大规模的软件工程任务。",
+    "动态并发可能提升部分长周期任务的表现，但也可能降低部分短周期任务的成功率。",
+    "多智能体并行带来的重复调查、文件修改冲突和工作整合问题可能影响执行结果。"
+   ],
+   "rule_based": false
+  },
+  "ea7821bf067c729": {
+   "event_id": "ea7821bf067c729",
+   "title": "TreeOPSD：长程智能体强化学习新方法",
+   "facts": [
+    "TreeOPSD 是一种长程智能体强化学习的新方法",
+    "TreeOPSD 是树感知后验蒸馏"
+   ],
+   "inferences": [
+    "该方法可能用于改进强化学习的长程决策"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "具体实现细节未说明"
+   ],
+   "key_points": [
+    "TreeOPSD 关注长程智能体强化学习",
+    "采用树感知后验蒸馏技术"
+   ],
+   "rule_based": false
+  },
+  "ec63a35c29e12b6": {
+   "event_id": "ec63a35c29e12b6",
+   "title": "Cohere论文：多智能体团队成本高",
+   "facts": [
+    "Cohere Labs论文研究了多智能体编码团队的算力分配。",
+    "多智能体编码团队的表现超过单个智能体，但成本高出三到七倍。"
+   ],
+   "inferences": [
+    "多智能体编码团队可能需要在性能提升与成本增加之间进行权衡。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明论文中强模型领队和便宜模型规划的具体配置。",
+    "材料未说明多智能体团队和单个智能体的评测任务与性能差异。"
+   ],
+   "key_points": [
+    "研究主题是多智能体编码团队的算力分配。",
+    "团队表现超过单个智能体，但成本增加三到七倍。"
+   ],
+   "rule_based": false
+  },
+  "efb440a20726e47": {
+   "event_id": "efb440a20726e47",
+   "title": "Wolf估算开源模型训练算力近10亿美元",
+   "facts": [
+    "Hugging Face联合创始人Thomas Wolf称，约35家机构在Hugging Face Hub上开源的模型，其训练算力按当前图形处理器租用价格折算后累计接近10亿美元。",
+    "这些模型全部免费下载。",
+    "统计覆盖72个模型家族，中心估值约为9.5亿美元。",
+    "约一半估值依据机构自行公布的算力数据，其余为有依据的推算。",
+    "2023年底，这一数字还不到4000万美元。",
+    "Wolf表示，这一估算未计入约90万个社区微调、失败的训练运行、研发团队开支和数据集。",
+    "Wolf将这些开源模型比作Wikipedia，并称人工智能时代的公共资源由图形处理器小时和数据写成。"
+   ],
+   "inferences": [
+    "由于估算未计入多项训练和研发成本，实际投入可能高于近10亿美元的估值。",
+    "从2023年底不到4000万美元到目前接近10亿美元，可以推断相关模型训练算力估值增长明显。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明约35家机构分别贡献了多少训练算力。",
+    "材料未说明72个模型家族分别对应哪些模型。",
+    "9.5亿美元中心估值的具体计算方法未被说明。",
+    "材料未给出约90万个社区微调所对应的算力规模。",
+    "材料未说明估算所采用的具体图形处理器租用价格和时间范围。"
+   ],
+   "key_points": [
+    "约35家机构开源模型的训练算力估值接近10亿美元。",
+    "估值覆盖72个模型家族，且未计入多项训练与研发成本。"
+   ],
+   "rule_based": false
+  },
+  "e45c3b3d029f028": {
+   "event_id": "e45c3b3d029f028",
+   "title": "Meshy模型在Blender中打造起飞场景",
+   "facts": [
+    "模型在Meshy中生成并完成贴图。",
+    "场景在Blender中搭建。",
+    "场景包含沙发、浴缸和购物车。"
+   ],
+   "inferences": [
+    "这个场景可能用于展示日常物品起飞的创意。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料没有说明场景是否包含实际飞行动画。",
+    "材料没有说明使用Meshy生成了哪些具体模型。"
+   ],
+   "key_points": [
+    "使用Meshy生成并贴图模型。",
+    "使用Blender搭建包含沙发、浴缸和购物车的起飞场景。"
+   ],
+   "rule_based": false
+  },
+  "e1646658274eaca": {
+   "event_id": "e1646658274eaca",
+   "title": "工程师仅凭模型解释合并修复",
+   "facts": [
+    "很多工程师仅仅因为模型的解释听起来合理，就合并了一个修复。"
+   ],
+   "inferences": [
+    "工程师可能未充分评估修复的影响。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "修复的具体内容和影响不明确。"
+   ],
+   "key_points": [
+    "工程师仅凭模型解释合并修复。",
+    "缺乏充分评估可能导致风险。"
+   ],
+   "rule_based": false
+  },
+  "e734238217a1f87": {
+   "event_id": "e734238217a1f87",
+   "title": "地理空间智能体应对地球重大挑战",
+   "facts": [
+    "材料标题提到将地球人工智能投入实战。",
+    "材料标题提到地理空间智能体用于应对地球重大挑战。"
+   ],
+   "inferences": [
+    "据标题推断，内容可能聚焦地理空间智能体在应对地球重大挑战中的应用。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明地理空间智能体的具体名称。",
+    "材料未说明地球人工智能投入实战的具体方式。",
+    "材料未说明涉及哪些地球重大挑战。"
+   ],
+   "key_points": [
+    "将地球人工智能投入实战。",
+    "利用地理空间智能体应对地球重大挑战。"
+   ],
+   "rule_based": false
+  },
+  "e31ca2ec5e8c555": {
+   "event_id": "e31ca2ec5e8c555",
+   "title": "豆包登顶通用大模型人气周榜第5位 ChatGPT回落",
+   "facts": [
+    "豆包在通用大模型人气周榜TOP20中排名第5",
+    "ChatGPT在该榜单中排名下降"
+   ],
+   "inferences": [
+    "豆包受欢迎程度提升导致排名上升"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "具体原因导致ChatGPT回落"
+   ],
+   "key_points": [
+    "豆包排名第5",
+    "ChatGPT回落"
+   ],
+   "rule_based": false
+  },
+  "e4255f31f2362f6": {
+   "event_id": "e4255f31f2362f6",
+   "title": "中国开源AI是全球南方的必需品",
+   "facts": [
+    "文章标题为“东西问丨穆罕默德·贾布里：中国开源AI为何是全球南方‘刚需’？”",
+    "文章来源为中国新闻网"
+   ],
+   "inferences": [
+    "文章讨论中国开源AI在全球南方的必要性"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "文章具体内容未提供"
+   ],
+   "key_points": [
+    "中国开源AI被视为全球南方的必需品",
+    "穆罕默德·贾布里提出此问题"
+   ],
+   "rule_based": false
+  },
+  "eabc0ef722c7a6e": {
+   "event_id": "eabc0ef722c7a6e",
+   "title": "Git 被换掉，LLM 被替代：AI 编码开始反噬传统工具链？",
+   "facts": [
+    "Git 被换掉",
+    "LLM 被替代"
+   ],
+   "inferences": [
+    "AI 编码正在取代传统工具链"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "是否真的 Git 被换掉",
+    "是否真的 LLM 被替代"
+   ],
+   "key_points": [
+    "Git 被换掉",
+    "LLM 被替代"
+   ],
+   "rule_based": false
+  },
+  "e0c1ce1bd370ffb": {
+   "event_id": "e0c1ce1bd370ffb",
+   "title": "国产人工智能联手超越Claude和GPT？",
+   "facts": [
+    "标题称，前沿Claude和GPT被国产人工智能联手超越。",
+    "标题称，缩放定律出现了新解法。"
+   ],
+   "inferences": [
+    "据标题推断，材料关注国产人工智能与Claude、GPT的能力比较，以及缩放定律的新方法。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料没有说明参与联手的国产人工智能具体是哪些模型。",
+    "材料没有说明超越比较使用了哪些指标和数据。",
+    "材料没有说明缩放定律的新解法具体是什么。",
+    "材料没有提供支持超越结论的实验结果或证据。"
+   ],
+   "key_points": [
+    "国产人工智能被称为联手超越前沿Claude和GPT。",
+    "材料提出缩放定律存在新解法。"
+   ],
+   "rule_based": false
+  },
+  "e50888d8e59bd26": {
+   "event_id": "e50888d8e59bd26",
+   "title": "Nebius AI Builder Program 扩展至欧洲",
+   "facts": [
+    "Nebius 将 AI Builder Program 扩展至欧洲",
+    "Nebius 与 NVIDIA、Accel 及其他欧洲 VC 合作",
+    "提供总计 1000 万美元算力资助、资金和社区项目支持"
+   ],
+   "inferences": [
+    "该扩展旨在支持欧洲 AI 开发者"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "具体参与的欧洲 VC 名单",
+    "计算资源分配方式",
+    "资金发放时间表"
+   ],
+   "key_points": [
+    "Nebius AI Builder Program 扩展至欧洲",
+    "与 NVIDIA、Accel 及其他欧洲 VC 合作提供 1000 万美元算力资助、资金和社区项目支持"
+   ],
+   "rule_based": false
+  },
+  "ecd053b59390742": {
+   "event_id": "ecd053b59390742",
+   "title": "Anthropic为公众设计薪酬方案",
+   "facts": [
+    "Anthropic正在为公众设计一套薪酬方案。",
+    "材料提到可以将内容电子表格转换为可运行的应用。"
+   ],
+   "inferences": [
+    "这项方案的目标对象可能包括公众。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明薪酬方案的具体内容。",
+    "材料未说明方案的实施时间。",
+    "材料未说明方案面向公众的具体范围。",
+    "材料未说明内容电子表格转换应用与薪酬方案之间的关系。"
+   ],
+   "key_points": [
+    "Anthropic正在设计面向公众的薪酬方案。",
+    "材料还提到将内容电子表格转换为可运行的应用。"
+   ],
+   "rule_based": false
+  },
+  "ee9922d25e03ad5": {
+   "event_id": "ee9922d25e03ad5",
+   "title": "Anthropic与律所商讨人工智能谈判规范",
+   "facts": [
+    "Anthropic正与律所等法律机构磋商未来替用户砍价、处理纠纷或协商薪酬的人工智能代理谈判规范。",
+    "Anthropic希望了解律师如何在代表客户利益的同时兼顾公平结果。",
+    "Anthropic正在权衡代理谈判时寻求人类反馈的程度，以及面对其他人工智能对手时应保持的警惕程度。",
+    "Anthropic探讨过让用户签署文件确认委托事项和需要遵守的全部规则。"
+   ],
+   "inferences": [
+    "Anthropic正在为人工智能代理代表用户谈判时的行为边界寻求法律和伦理规范。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "参与磋商的具体律所和法律机构尚未说明。",
+    "谈判规范是否已经形成尚未确定。",
+    "人工智能代理应在多大程度上寻求人类反馈尚未确定。",
+    "人工智能代理面对其他人工智能对手时应保持多高警惕尚未确定。",
+    "用户签署文件的做法是否会被采用尚未确定。"
+   ],
+   "key_points": [
+    "Anthropic与法律机构磋商人工智能代理谈判规范。",
+    "讨论重点包括用户利益、公平结果、人类反馈和用户授权。"
+   ],
+   "rule_based": false
+  },
+  "e4a6781b1e1a837": {
+   "event_id": "e4a6781b1e1a837",
+   "title": "亚马逊等企业封禁人工智能智能体",
+   "facts": [
+    "亚马逊、达美航空和摩根大通正在封禁人工智能智能体。",
+    "史蒂夫·乔布斯最初拒绝允许第三方应用进入iPhone。",
+    "苹果后来推出了App Store。",
+    "App Store让苹果生态取得了成功。"
+   ],
+   "inferences": [
+    "这些企业当前对人工智能智能体的限制，未来可能转变为对相关技术的适应或平台化接纳。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料没有说明封禁人工智能智能体的具体范围。",
+    "材料没有说明封禁人工智能智能体的原因。",
+    "材料没有说明封禁措施的开始时间和持续时间。",
+    "材料没有说明这些企业是否会推出人工智能智能体相关平台或产品。"
+   ],
+   "key_points": [
+    "亚马逊、达美航空和摩根大通正在封禁人工智能智能体。",
+    "材料将这一做法与苹果早期限制第三方iPhone应用及后来推出App Store进行类比。"
+   ],
+   "rule_based": false
+  },
+  "edbc1f3d55eda6e": {
+   "event_id": "edbc1f3d55eda6e",
+   "title": "a16z与Chamath谈人工智能投资威胁",
+   "facts": [
+    "a16z联合创始人Ben Horowitz在All-In Podcast中称，OpenAI和Anthropic的产品是智能，而智能处于每项业务之下。",
+    "Chamath称，人工智能领域除OpenAI和Anthropic外可投资的标的不多，这两家公司将获得绝大部分关注。"
+   ],
+   "inferences": [
+    "据此可推断，OpenAI和Anthropic可能对a16z投资组合中的多数标的形成竞争压力。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明a16z投资组合中具体哪些标的受到威胁。",
+    "材料未说明OpenAI和Anthropic将获得的关注比例。"
+   ],
+   "key_points": [
+    "Ben Horowitz认为OpenAI和Anthropic的产品能力涉及各项业务。",
+    "Chamath认为人工智能领域可投资标的不多，关注将集中于两家公司。"
+   ],
+   "rule_based": false
+  },
+  "ec785d1b08ae0d0": {
+   "event_id": "ec785d1b08ae0d0",
+   "title": "火山引擎推出 Seedance 精品人工智能剧计划",
+   "facts": [
+    "火山引擎发起精品人工智能剧激励计划。",
+    "计划面向使用 Seedance 制作并在红果短剧应用上线的精品人工智能漫短剧。",
+    "单部作品最高可获二十万元激励。",
+    "报名入口在抖音集团短剧版权中心及火山引擎官方渠道同步发布。",
+    "相关咨询可通过火山引擎官网联系官方客服。"
+   ],
+   "inferences": [
+    "作品需要使用 Seedance 制作并在红果短剧应用上线，才符合计划公布的面向范围。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明激励评定标准。",
+    "材料未说明报名截止时间。",
+    "材料未说明激励发放时间和方式。",
+    "材料未说明计划入选作品数量。"
+   ],
+   "key_points": [
+    "火山引擎面向 Seedance 制作并在红果短剧应用上线的精品人工智能漫短剧提供激励。",
+    "单部作品最高可获二十万元，报名入口通过抖音集团短剧版权中心和火山引擎官方渠道发布。"
+   ],
+   "rule_based": false
+  },
+  "efbd4d2d363d235": {
+   "event_id": "efbd4d2d363d235",
+   "title": "豆包高管回应国内一半算力造人工智能短剧说法",
+   "facts": [
+    "标题提出国内一半算力用于制作人工智能短剧的说法。",
+    "标题称豆包高管对此进行了回应。"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明国内一半算力说法的来源和依据。",
+    "材料未说明豆包高管的具体回应内容。",
+    "材料无法确认国内是否有一半算力用于制作人工智能短剧。"
+   ],
+   "key_points": [
+    "国内一半算力用于制作人工智能短剧的说法受到关注。",
+    "豆包高管对此作出回应。"
+   ],
+   "rule_based": false
+  },
+  "ef4d3e13ee02b58": {
+   "event_id": "ef4d3e13ee02b58",
+   "title": "格创东智入围IDC工业人工智能领导者象限",
+   "facts": [
+    "格创东智入围IDC工业人工智能及智能体平台领导者象限。",
+    "材料将格创东智与工厂自主治理联系起来。"
+   ],
+   "inferences": [
+    "格创东智可能在工业人工智能及智能体平台领域具备一定市场定位。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明IDC评估的具体标准。",
+    "材料未说明格创东智入围的时间。",
+    "材料未说明格创东智相关平台的具体功能和客户情况。",
+    "材料未说明工厂自主治理的具体含义。"
+   ],
+   "key_points": [
+    "格创东智入围IDC工业人工智能及智能体平台领导者象限。",
+    "事件关注工业人工智能向工厂自主治理发展。"
+   ],
+   "rule_based": false
+  },
+  "eb539793dcd0914": {
+   "event_id": "eb539793dcd0914",
+   "title": "网宿科技与Sand.ai达成战略合作",
+   "facts": [
+    "网宿科技与Sand.ai达成战略合作。",
+    "双方将共同推进视频生成模型创新与产业落地。"
+   ],
+   "inferences": [
+    "双方合作方向涉及视频生成模型研发及应用推广。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "具体合作内容未在材料中说明。",
+    "涉及的视频生成模型名称未在材料中说明。",
+    "产业落地的具体行业和项目未在材料中说明。",
+    "合作时间和期限未在材料中说明。"
+   ],
+   "key_points": [
+    "网宿科技与Sand.ai建立战略合作。",
+    "双方聚焦视频生成模型创新与产业落地。"
+   ],
+   "rule_based": false
+  }
+ },
  "factcheck": {
   "ok": true,
-  "checked_events": 206,
-  "checked_urls": 229,
+  "checked_events": 214,
+  "checked_urls": 236,
   "violations": 0,
   "by_kind": {}
  }
