@@ -287,6 +287,13 @@ jobs:
             echo "::notice::too early to build a digest (exit 11) -- nothing to publish yet"
             exit 0
           fi
+          # 12 = the candidate pool was non-empty but selection produced nothing. This is a
+          #      bug, not a quiet day, and it must fail the run: on 2026-10-19 an empty digest
+          #      shipped with every step green, and the gap was invisible for hours.
+          if [ "$code" = "12" ]; then
+            echo "::error::empty selection from a non-empty pool (exit 12) -- this is a bug, not a quiet day"
+            exit 1
+          fi
           if [ "$code" != "0" ]; then
             echo "::error::publish failed with exit code $code"
           fi

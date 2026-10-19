@@ -55,6 +55,10 @@ from .state import (
 #: "Too early to build today's digest." Its own code, like `EXIT_ALREADY_PUBLISHED`, so that
 #: neither condition can ever be read as a failure by the workflow.
 EXIT_TOO_EARLY = 11
+#: The candidate pool was non-empty but selection produced nothing. Distinct from exit 11
+#: ("not yet") and from 10 ("already published"): this one is a bug, and the workflow must
+#: not report it as success -- on 2026-10-19 an empty digest shipped with every step green.
+EXIT_EMPTY_SELECTION = 12
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -356,6 +360,25 @@ def cmd_run(args: argparse.Namespace) -> int:
             print(f"   {v.kind}: {v.detail}", file=sys.stderr)
         _record_run(digest, {}, "failed", "factcheck failed")
         return 2
+
+    # An empty digest is a failure, not a quiet day.
+    #
+    # This is the check whose absence let 2026-10-19 ship nothing while every job reported
+    # success: selection returned 0 of 220 events, the fact-check had nothing to object to,
+    # and the run went green with an empty page. A pipeline that can silently publish zero
+    # stories is worse than one that fails loudly -- the failure is invisible for days.
+    #
+    # The threshold is 1, not a fraction of `max_items`: `max_items` is an upper bound and a
+    # genuine quiet day may legitimately carry few stories. Zero is never legitimate on a day
+    # with a non-empty pool, so the pool size distinguishes "nothing happened" from "we broke".
+    pool_size = int((digest.counts or {}).get("events_considered") or 0)
+    if not digest.top_events and pool_size:
+        print(
+            f"\n!! 事件池有 {pool_size} 条，却选出 0 条 —— 视为故障，不发布",
+            file=sys.stderr,
+        )
+        _record_run(digest, {}, "failed", "empty selection from a non-empty pool")
+        return EXIT_EMPTY_SELECTION
 
     if args.no_deliver:
         print("--no-deliver：跳过分发")
