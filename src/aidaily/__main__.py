@@ -289,7 +289,7 @@ def cmd_run(args: argparse.Namespace) -> int:
     digest = build_digest(
         stage, events, sources, cfg,
         report=report, insights=insights, warnings=warnings, llm_usage=llm_usage,
-        history=history, rubric_scores=rubric_scores, now=run_now,
+        # `rubric_sections` must travel with the scores: the section is the ranking's        # primary key, and a second selection pass without it re-classifies every row.        history=history, rubric_scores=rubric_scores,        rubric_sections=rubric_sections, now=run_now,
         pre_date_ignored=split.ignored,
     )
 

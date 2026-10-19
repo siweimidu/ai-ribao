@@ -498,7 +498,13 @@ def build_digest(
         # would see -- and it is the exact failure `select_for_digest`'s own docstring warns
         # about, reintroduced by adding a second selection pass without threading the scores
         # through. Selection happens in two places and they must agree.
+        # `rubric_sections` matters as much as the scores: the section is the ranking's
+        # primary key, so a pass holding the scores but not the sections re-classifies every
+        # row with the rule-based fallback and orders them differently. On 2026-10-19 that
+        # divergence emptied the issue: the caller selected 200+ events, this call selected
+        # none, and the digest published 0 while reporting 219 considered.
         rubric_scores=rubric_scores,
+        rubric_sections=rubric_sections,
     )
 
     # The headline comes from the top-ranked event that actually has an insight.
