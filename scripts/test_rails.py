@@ -209,7 +209,12 @@ async def main() -> int:
             }"""
         )
         check("左栏仍可滚动", scrollable["railOverflow"] == "auto", scrollable["railOverflow"])
-        check("目录仍可滚动", scrollable["tocOverflow"] == "auto", scrollable["tocOverflow"])
+        # The TOC scrolls with the page rather than in its own box. It used to be capped at
+        # 100vh with overflow-y:auto, which put 44 entries in a 900px frame and gave the
+        # sidebar a second scrollbar; the reader had to scroll it separately from the
+        # article. `visible` is the assertion now: no inner scrollbar, and the whole outline
+        # moves with the document.
+        check("目录随页面滚动（无独立滚动条）", scrollable["tocOverflow"] == "visible", scrollable["tocOverflow"])
         check("左栏滚动条已隐藏", scrollable["railBar"] == "none", scrollable["railBar"])
         check("目录滚动条已隐藏", scrollable["tocBar"] == "none", scrollable["tocBar"])
         # A rail whose content is shorter than the viewport cannot demonstrate scrollability,

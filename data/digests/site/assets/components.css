@@ -1920,3 +1920,31 @@ body { font-family: var(--f-sans); }
 @media (min-width: 1080px) {
   .content { justify-self: center; width: 100%; }
 }
+
+@media (min-width: 1400px) {
+  /* The TOC scrolls with the page, exactly like the article -- not pinned to the viewport and
+     not in its own scroll box.
+     
+     Two changes from the original:
+     
+     1. No `max-height: 100vh` + `overflow-y: auto`. With 44 entries that produced a 2841px
+        list squeezed into 900px, so the sidebar had its own scrollbar and the visible slice of
+        the outline never matched the section being read.
+     2. No `position: sticky`. Sticky pins the element to the viewport top, which is the
+        opposite of "move together with the page": the outline stayed put while the article
+        scrolled past it, and the highlighted entry drifted away from what was on screen.
+     
+     `align-self: start` is kept so the column does not stretch to the shell height, which would
+     otherwise push the grip and the padding to the bottom of a 25000px page. */
+  .toc {
+    /* `relative`, not `static`. The resize grip is absolutely positioned inside the TOC, and an
+       absolutely positioned child is placed against its nearest *positioned* ancestor. With
+       `static` there is none, so the grip fell back to the page box: measured at left=0 while
+       the TOC itself starts at x=1396. `relative` restores the containing block without
+       bringing back the viewport pinning that `sticky` caused. */
+    position: relative;
+    max-height: none;
+    overflow-y: visible;
+    overscroll-behavior: auto;
+  }
+}
