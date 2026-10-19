@@ -790,6 +790,23 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
             now=run_now, today=run_date,
         )
 
+        # Print what selection decided, not only what it returned. A run that publishes 0 of
+        # 218 events has to say why in its own log; on 2026-10-19 the archive recorded
+        # "events: 0, considered: 219" and nothing else, so the cause had to be guessed at from
+        # the source. The report already carries every reason -- it was simply never shown.
+        print("选择：%d / %d 事件" % (len(selected), len(events)))
+        for key in (
+            "relevance_floor",
+            "relevance_floor_dropped",
+            "relevance_missing_dropped",
+            "pool_size",
+        ):
+            if key in (selection_report or {}):
+                print("  %-26s %s" % (key, selection_report[key]))
+        for example in (selection_report or {}).get("relevance_dropped_examples") or []:
+            print("  · focus=%s %s  %s" % (
+                example.get("focus"), example.get("reason"), str(example.get("title"))[:52]))
+
         # The limit must cover everything that will be published, not just "the first N".
         # When it did not, the items past the cut fell back to the source's own headline --
         # and for an English feed that put English sentences on a Chinese page. Defaulting
