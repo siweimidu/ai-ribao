@@ -362,6 +362,45 @@ def select_for_digest(
     # max_items is an upper bound, not a target. Preserve that complete eligible pool, ranked
     # by the already-applied section-first order and score. Source caps are not allowed to
     # exclude/replace a high-relevance item with a weaker one.
+    # One message, one entry -- inside the issue too.
+    #
+    # `history` only compares against *previous* days. Two outlets reporting the same news on the
+    # same day stayed as two entries: on 2026-10-19 the digest carried both "MiniMax 正准备发布
+    # MiniMax-M3.1-Flash" and "MiniMax-M3.1-Flash 即将发布". The reader sees one piece of news
+    # twice, which is exactly what the cross-day rule exists to prevent.
+    #
+    # Ranked first, so the survivor is the best-scoring phrasing; the others are merged into it
+    # by unioning their member ids, sources and URLs. `same_message` decides, so wording and
+    # language do not matter -- only who did what.
+    from .samestory import same_message as _same_message
+
+    deduped: list = []
+    for row in ranked:
+        target = None
+        for kept_row in deduped:
+            if _same_message(kept_row.event.title, row.event.title):
+                target = kept_row
+                break
+        if target is None:
+            deduped.append(row)
+            continue
+        for member in row.event.member_item_ids:
+            if member not in target.event.member_item_ids:
+                target.event.member_item_ids.append(member)
+        for source in row.event.source_ids:
+            if source not in target.event.source_ids:
+                target.event.source_ids.append(source)
+        for url in row.event.all_urls:
+            if url not in target.event.all_urls:
+                target.event.all_urls.append(url)
+        target.event.independent_source_count = max(
+            target.event.independent_source_count, row.event.independent_source_count
+        )
+    same_issue_merged = len(ranked) - len(deduped)
+    if same_issue_merged:
+        print("同一条消息合并：%d 条" % same_issue_merged)
+    ranked = deduped
+
     chosen = list(ranked[:cfg.output.deep.max_items])
     # Copied *after* selection: `select_diverse` adds `topic_penalty` and `final_score` to
     # the same dict, and Pydantic snapshots the mapping on assignment. Doing this before
