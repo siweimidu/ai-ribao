@@ -261,43 +261,65 @@ jobs:
           SITE_URL: ${{ vars.SITE_URL || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
         run: |
           set +e
-          python -m aidaily run \
-            --from-items data/raw/items.jsonl \
-            --site-url "$SITE_URL" \
-            --analyze-limit 0 | tee publish.log
-          # `${PIPESTATUS[0]}`, not `$?`. GitHub Actions runs a `run:` block as
-          # `bash -e {0}` with **pipefail off**, so `$?` after a pipeline is `tee`'s status
-          # -- and tee succeeds because it dutifully wrote the output. A crash therefore
-          # came back as 0, the job reported success, and the only symptom was that the site
-          # did not update: indistinguishable from "nothing to publish today".
+          # Retry the publish when it fails for a transient reason.
           #
-          # It also silently defeated the gate below: exit 10 read as 0, so an
-          # already-published day looked like a normal success.
-          code=${PIPESTATUS[0]}
-          echo "code=$code" >> "$GITHUB_OUTPUT"
-          # 10 = the gate inside `run` decided today was already delivered.
-          # 11 = "too early": the target date is not complete yet, so no digest was built.
-          #      `__main__` gives this its own exit code precisely so it is never confused
-          #      with a failure (see the comment there), but this step only recognised 10, so
-          #      a manual trigger at 00:57 -- before the 07:00 collection window, when there
-          #      is genuinely nothing to build -- turned the whole run red. The code did the
-          #      right thing; the workflow called it an error.
-          if [ "$code" = "10" ]; then exit 0; fi
-          if [ "$code" = "11" ]; then
-            echo "::notice::too early to build a digest (exit 11) -- nothing to publish yet"
-            exit 0
-          fi
-          # 12 = the candidate pool was non-empty but selection produced nothing. This is a
-          #      bug, not a quiet day, and it must fail the run: on 2026-10-19 an empty digest
-          #      shipped with every step green, and the gap was invisible for hours.
-          if [ "$code" = "12" ]; then
-            echo "::error::empty selection from a non-empty pool (exit 12) -- this is a bug, not a quiet day"
-            exit 1
-          fi
-          if [ "$code" != "0" ]; then
-            echo "::error::publish failed with exit code $code"
-          fi
-          exit "$code"
+          # The three scheduled slots are the product. A single failure there means no
+          # digest for that slot, and the measured record is 10 successes out of 20 scheduled
+          # triggers -- half the slots produced nothing. The causes were external: model
+          # providers rate-limiting (HTTP 429), relays returning 403, a fetch timing out, the
+          # network dropping mid-request. None of those is a reason to lose the day.
+          #
+          # The decision codes are NOT retried, because repeating them cannot help:
+          #   10 already published  11 too early  12 empty selection (a bug, must stay red)
+          # Everything else is a runtime failure, and a second attempt routinely succeeds --
+          # the provider that was rate-limited a minute ago has moved on.
+          attempt=1
+          max_attempts=3
+          while true; do
+            echo "::group::publish attempt $attempt / $max_attempts"
+            python -m aidaily run \
+              --from-items data/raw/items.jsonl \
+              --site-url "$SITE_URL" \
+              --analyze-limit 0 | tee "publish.log" | tee "publish-$attempt.log"
+            # `${PIPESTATUS[0]}`, not `$?`. GitHub Actions runs a `run:` block as
+            # `bash -e {0}` with **pipefail off**, so `$?` after a pipeline is `tee`'s status
+            # -- and tee succeeds because it dutifully wrote the output. A crash therefore
+            # came back as 0, the job reported success, and the only symptom was that the site
+            # did not update: indistinguishable from "nothing to publish today".
+            code=${PIPESTATUS[0]}
+            echo "::endgroup::"
+            echo "code=$code" >> "$GITHUB_OUTPUT"
+            # 10 = the gate inside `run` decided today was already delivered.
+            # 11 = "too early": the target date is not complete yet, so no digest was built.
+            #      `__main__` gives this its own exit code precisely so it is never confused
+            #      with a failure, but this step once only recognised 10, so a manual trigger
+            #      at 00:57 -- before the collection window, when there is genuinely nothing to
+            #      build -- turned the whole run red. The code did the right thing; the
+            #      workflow called it an error.
+            if [ "$code" = "10" ]; then exit 0; fi
+            if [ "$code" = "11" ]; then
+              echo "::notice::too early to build a digest (exit 11) -- nothing to publish yet"
+              exit 0
+            fi
+            # 12 = the candidate pool was non-empty but selection produced nothing. This is a
+            #      bug, not a quiet day, and it must fail the run: on 2026-10-19 an empty
+            #      digest shipped with every step green, and the gap was invisible for hours.
+            #      Retrying cannot fix it, so it goes straight to red.
+            if [ "$code" = "12" ]; then
+              echo "::error::empty selection from a non-empty pool (exit 12) -- this is a bug, not a quiet day"
+              exit 1
+            fi
+            if [ "$code" = "0" ]; then
+              exit 0
+            fi
+            if [ "$attempt" -ge "$max_attempts" ]; then
+              echo "::error::publish failed with exit code $code after $max_attempts attempts"
+              exit "$code"
+            fi
+            echo "::warning::publish failed with exit code $code; retrying after a pause"
+            attempt=$((attempt + 1))
+            sleep $((30 * attempt))
+          done
 
       - name: Run summary
         if: always()
