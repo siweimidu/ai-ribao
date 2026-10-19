@@ -1,4 +1,4 @@
-generated_at: '2026-10-17T06:29:13.576124+00:00'
+generated_at: '2026-10-19T15:42:50.697159+00:00'
 generated_by: scripts/build_registry.py
 source_of_truth: audit/sources_ledger.json (static audit of six repositories) + sources/local.yaml (later additions)
 policy:
@@ -6,15 +6,15 @@ policy:
   coverage_guard: tests/contract/test_source_coverage.py asserts every provenance entry survives.
 stats:
   url_level_rows_before_merge: 100
-  parameter_rows_merged: -24
+  parameter_rows_merged: -36
   merge_breakdown:
     google_trends: 21
-  unique_sources: 124
-  provenance_rows: 152
+  unique_sources: 136
+  provenance_rows: 164
   by_repository:
     CloudFlare-AI-Insight-Daily: 11
     Horizon: 45
-    KKKKhazix/AIHOT: 1
+    KKKKhazix/AIHOT: 13
     ai-daily-sources: 4
     daily-briefing: 1
     dailydawn: 19
@@ -26,12 +26,12 @@ stats:
     daily-briefing: 1
     dailydawn: 19
     daybrief: 5
-  added_locally: 44
+  added_locally: 56
   by_source_type:
     api: 34
     atom: 4
     jsonfeed: 1
-    rss: 80
+    rss: 92
     scrape: 5
   by_category:
     community: 22
@@ -40,8 +40,8 @@ stats:
     digest: 15
     example: 5
     lab-blog: 4
-    lab-official: 10
-    media: 2
+    lab-official: 16
+    media: 8
     mixed: 3
     model: 2
     news: 2
@@ -53,6 +53,198 @@ stats:
     trend: 1
     zh-media: 24
 sources:
+- source_id: rss:aihot-demo-aws-machine-learning-blog
+  name: AWS Machine Learning Blog
+  url: https://aws.amazon.com/blogs/machine-learning/feed/
+  normalized_url: https://aws.amazon.com/blogs/machine-learning/feed/
+  domain: aws.amazon.com
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 2h
+  timeout_s: 25
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 来自 AIHOT 示范源，实测可达。等级 T1。
+  why: AWS 官方 ML 博客；Bedrock 与自研芯片的实际做法，工程细节强于新闻稿。
+  license_note: null
+  found_in:
+  - KKKKhazix/AIHOT:industry/sources.json#sources[]
+  provenance_count: 1
+  repositories:
+  - KKKKhazix/AIHOT
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:aihot-demo-github-blog-ai-and-ml
+  name: GitHub Blog · AI & ML
+  url: https://github.blog/ai-and-ml/feed/
+  normalized_url: https://github.blog/ai-and-ml/feed/
+  domain: github.blog
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 2h
+  timeout_s: 25
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 来自 AIHOT 示范源，实测可达。等级 T1。
+  why: GitHub 官方 AI 板块；Copilot 与平台能力变更的原始公告。
+  license_note: null
+  found_in:
+  - KKKKhazix/AIHOT:industry/sources.json#sources[]
+  provenance_count: 1
+  repositories:
+  - KKKKhazix/AIHOT
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:aihot-demo-google-research
+  name: Google Research
+  url: https://research.google/blog/rss/
+  normalized_url: https://research.google/blog/rss/
+  domain: research.google
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 2h
+  timeout_s: 25
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 来自 AIHOT 示范源，实测可达。等级 T1。
+  why: Google 研究博客，方法论文而非产品公告；补的是 DeepMind 博客不覆盖的基础研究线。
+  license_note: null
+  found_in:
+  - KKKKhazix/AIHOT:industry/sources.json#sources[]
+  provenance_count: 1
+  repositories:
+  - KKKKhazix/AIHOT
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:aihot-demo-microsoft-research
+  name: Microsoft Research
+  url: https://www.microsoft.com/en-us/research/feed/
+  normalized_url: https://www.microsoft.com/en-us/research/feed/
+  domain: www.microsoft.com
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 2h
+  timeout_s: 25
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 来自 AIHOT 示范源，实测可达。等级 T1。
+  why: 微软研究院一手发布；MAI 系列与 Azure/Phi 工作的原始出处，比媒体转述早。
+  license_note: null
+  found_in:
+  - KKKKhazix/AIHOT:industry/sources.json#sources[]
+  provenance_count: 1
+  repositories:
+  - KKKKhazix/AIHOT
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:aihot-demo-mistral-ai
+  name: Mistral AI
+  url: https://mistral.ai/news/rss
+  normalized_url: https://mistral.ai/news/rss
+  domain: mistral.ai
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 2h
+  timeout_s: 25
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 来自 AIHOT 示范源，实测可达。等级 T1。
+  why: Mistral 官方新闻源（实测 90 条）；欧洲前沿实验室，模型发布常早于中文媒体。
+  license_note: null
+  found_in:
+  - KKKKhazix/AIHOT:industry/sources.json#sources[]
+  provenance_count: 1
+  repositories:
+  - KKKKhazix/AIHOT
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:aihot-demo-nvidia-blog
+  name: NVIDIA Blog
+  url: https://blogs.nvidia.com/feed/
+  normalized_url: https://blogs.nvidia.com/feed/
+  domain: blogs.nvidia.com
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 2h
+  timeout_s: 25
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 来自 AIHOT 示范源，实测可达。等级 T1。
+  why: 英伟达官方博客；芯片、Nemotron 模型与推理栈变动的第一手来源。
+  license_note: null
+  found_in:
+  - KKKKhazix/AIHOT:industry/sources.json#sources[]
+  provenance_count: 1
+  repositories:
+  - KKKKhazix/AIHOT
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: rss:deepmind-google-blog
   name: Google DeepMind
   url: https://deepmind.google/blog/rss.xml
@@ -713,6 +905,134 @@ sources:
   - Horizon
   params: null
   merged_parameter_rows: 1
+- source_id: rss:aihot-demo-ars-technica-ai
+  name: Ars Technica · AI
+  url: https://arstechnica.com/ai/feed/
+  normalized_url: https://arstechnica.com/ai/feed/
+  domain: arstechnica.com
+  category: media
+  categories_all:
+  - media
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 来自 AIHOT 示范源，实测可达。等级 T2。
+  why: Ars Technica AI 板块；技术质疑与事故报道深度较好，能对冲厂商口径。
+  license_note: null
+  found_in:
+  - KKKKhazix/AIHOT:industry/sources.json#sources[]
+  provenance_count: 1
+  repositories:
+  - KKKKhazix/AIHOT
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:aihot-demo-mit-technology-review-ai
+  name: MIT Technology Review · AI
+  url: https://www.technologyreview.com/topic/artificial-intelligence/feed
+  normalized_url: https://www.technologyreview.com/topic/artificial-intelligence/feed
+  domain: www.technologyreview.com
+  category: media
+  categories_all:
+  - media
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 来自 AIHOT 示范源，实测可达。等级 T2。
+  why: MIT 科技评论 AI 主题；长文分析与趋势判断，补齐日报缺的「为什么重要」。
+  license_note: null
+  found_in:
+  - KKKKhazix/AIHOT:industry/sources.json#sources[]
+  provenance_count: 1
+  repositories:
+  - KKKKhazix/AIHOT
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:aihot-demo-techcrunch-ai
+  name: TechCrunch · AI
+  url: https://techcrunch.com/category/artificial-intelligence/feed/
+  normalized_url: https://techcrunch.com/category/artificial-intelligence/feed/
+  domain: techcrunch.com
+  category: media
+  categories_all:
+  - media
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 来自 AIHOT 示范源，实测可达。等级 T2。
+  why: TechCrunch AI 频道；融资、收购与商业动向上比技术媒体全。
+  license_note: null
+  found_in:
+  - KKKKhazix/AIHOT:industry/sources.json#sources[]
+  provenance_count: 1
+  repositories:
+  - KKKKhazix/AIHOT
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:aihot-demo-the-decoder
+  name: The Decoder
+  url: https://the-decoder.com/feed/
+  normalized_url: https://the-decoder.com/feed/
+  domain: the-decoder.com
+  category: media
+  categories_all:
+  - media
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 来自 AIHOT 示范源，实测可达。等级 T2。
+  why: 专注 AI 的德系英文媒体；欧洲视角与开源生态报道比美系媒体细。
+  license_note: null
+  found_in:
+  - KKKKhazix/AIHOT:industry/sources.json#sources[]
+  provenance_count: 1
+  repositories:
+  - KKKKhazix/AIHOT
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: rss:theverge-com-ai-artificial-intelligence
   name: The Verge AI
   url: https://theverge.com/rss/ai-artificial-intelligence/index.xml
@@ -2221,6 +2541,70 @@ sources:
   - Horizon
   params: null
   merged_parameter_rows: 1
+- source_id: rss:aihot-demo-import-ai
+  name: Import AI
+  url: https://importai.substack.com/feed
+  normalized_url: https://importai.substack.com/feed
+  domain: importai.substack.com
+  category: media
+  categories_all:
+  - media
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 3
+  polling_interval: 2h
+  timeout_s: 25
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 来自 AIHOT 示范源，实测可达。等级 T2。
+  why: Jack Clark 的周报（实测 20 条）；对政策与研究趋势的判断有独立价值，属观点源。
+  license_note: null
+  found_in:
+  - KKKKhazix/AIHOT:industry/sources.json#sources[]
+  provenance_count: 1
+  repositories:
+  - KKKKhazix/AIHOT
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:aihot-demo-latent-space
+  name: Latent Space
+  url: https://www.latent.space/feed
+  normalized_url: https://www.latent.space/feed
+  domain: www.latent.space
+  category: media
+  categories_all:
+  - media
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 3
+  polling_interval: 2h
+  timeout_s: 25
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 来自 AIHOT 示范源，实测可达。等级 T2。
+  why: 工程向播客与长文；推理栈、Agent 实践的细节，一般媒体不写。
+  license_note: null
+  found_in:
+  - KKKKhazix/AIHOT:industry/sources.json#sources[]
+  provenance_count: 1
+  repositories:
+  - KKKKhazix/AIHOT
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: jsonfeed:dailydawn-dev
   name: DailyDawn 中文
   url: https://dailydawn.dev/zh.json

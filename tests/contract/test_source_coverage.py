@@ -57,28 +57,29 @@ def test_provenance_count_is_not_shrinking() -> None:
     # the local count is checked exactly so an addition has to be deliberate.
     assert all(actual[k] >= v for k, v in expected.items()), "provenance rows were lost"
 
-    # 2 from AIHOT's curated feed; 36 from the user-supplied list of 2026-10-15
+    # 2 from AIHOT's curated feed; 36 from the user-supplied list of 2026-10-15;
+    # 12 from AIHOT's demo sources of 2026-10-19
     # (`user-list:2026-10-15#用户提供的信息源清单`). Bumping this number is the point at which
     # a human confirms a new source was added on purpose.
     local_rows = sum(v for k, v in actual.items() if k not in expected)
-    assert local_rows == 45, f"unexpected local provenance rows: {local_rows}"
-    assert actual.total() == expected.total() + 45
+    assert local_rows == 57, f"unexpected local provenance rows: {local_rows}"
+    assert actual.total() == expected.total() + 57
 
 
 def test_registry_shape_is_stable() -> None:
-    """124 endpoint-level sources: 80 audited + 45 local additions.
+    """136 endpoint-level sources: 80 audited + 57 local additions.
 
     The audited 80 come from collapsing Google Trends' 20 keyword rows (counting them as
     separate sources would inflate completeness; dropping them would lose information, so
     they live in the parent source's `params`).
 
-    The 37 local ones are AIHOT's curated feed plus the 36 sources the user supplied on
-    2026-10-15, each verified before being added (`scripts/verify_sources.py`, results in
-    `data/state/source_verification.json`). The number here changes only when a source is
+    The 49 local ones are AIHOT's curated feed, the 36 sources the user supplied on 2026-10-15,
+    and the 12 taken from AIHOT's demo list on 2026-10-19 (`industry/sources.json`), each verified
+    for reachability before being added. The number here changes only when a source is
     deliberately added -- which is exactly what this test is for.
     """
     sources = load_registry(REGISTRY)
-    assert len(sources) == 124
+    assert len(sources) == 136
 
     trend = [s for s in sources if s.domain == "trends.google.com"]
     assert len(trend) == 1, "the 20 trend keywords must be one source, not twenty"
@@ -93,7 +94,7 @@ def test_no_source_was_silently_enabled_or_deleted() -> None:
     Counts are asserted exactly on purpose: a drop means a source was deleted (forbidden),
     and an unexplained rise means something was enabled without review.
 
-    Current shape: 124 total = 97 collectable + 20 present-but-not-wired-up (Horizon
+    Current shape: 136 total = 109 collectable + 20 present-but-not-wired-up (Horizon
     presets/examples + Cloudflare's unregistered adapters) + 7 needing credentials.
 
     AIHOT's curated feed and the 36 user-supplied sources are local additions; see
@@ -102,8 +103,8 @@ def test_no_source_was_silently_enabled_or_deleted() -> None:
     """
     sources = load_registry(REGISTRY)
     stats = registry_stats(sources)
-    assert stats["total"] == 124
-    assert stats["enabled"] == 97
+    assert stats["total"] == 136
+    assert stats["enabled"] == 109
     assert stats["disabled"] == 20, "Horizon presets/examples and unwired adapters are kept, not dropped"
     assert stats["needs_credential"] == 7
 

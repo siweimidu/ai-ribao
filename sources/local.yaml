@@ -965,3 +965,304 @@ sources:
   #   我方 RSS  https://siweimidu.github.io/ai-ribao/feed/zh.xml
   #       这是本流水线自己的输出。喂回自己会让日报引用自己 —— 循环引用，
   #       而且会把「已发布的内容」当成新素材再发一次。已从采集侧排除。
+
+  # ══════════════════════════════════════════════════════════════════════════════
+  # 来自 AIHOT 示范信源的增补（2026-10-19 逐个实测）
+  #
+  # 来源：KKKKhazix/AIHOT 的 industry/sources.json，共 18 条示范源。
+  # 其中 6 条本站已有（OpenAI News / Google DeepMind / Hugging Face / BAIR /
+  # The Verge / Simon Willison），按 URL 或同域名判定为重复，未重复登记。
+  # 其余 12 条逐条实测可达性与条目数，结果记录在下方的 why 与 notes 里。
+  #
+  # 未收录的说明：AIHOT 线上的 885 个信源**没有开源**，仓库只带这 18 条示范源。
+  # 其中 X 账号（510）走 SocialData、公众号（23）走极致了，都是付费接口，
+  # 需要各自的 key 才能接入，本次不登记以免留下永远失败的源。
+  # ══════════════════════════════════════════════════════════════════════════════
+
+  - source_id: "rss:aihot-demo-google-research"
+    name: "Google Research"
+    url: "https://research.google/blog/rss/"
+    category: "lab-official"
+    language: "en"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 1
+    polling_interval: "2h"
+    timeout_s: 25
+    dedup_group: null
+    notes: >-
+      来自 AIHOT 示范源，实测可达。等级 T1。
+    why: >-
+      Google 研究博客，方法论文而非产品公告；补的是 DeepMind 博客不覆盖的基础研究线。
+    found_in:
+      - "KKKKhazix/AIHOT:industry/sources.json#sources[]"
+    repositories:
+      - "KKKKhazix/AIHOT"
+    tags:
+      - "method"
+
+  - source_id: "rss:aihot-demo-microsoft-research"
+    name: "Microsoft Research"
+    url: "https://www.microsoft.com/en-us/research/feed/"
+    category: "lab-official"
+    language: "en"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 1
+    polling_interval: "2h"
+    timeout_s: 25
+    dedup_group: null
+    notes: >-
+      来自 AIHOT 示范源，实测可达。等级 T1。
+    why: >-
+      微软研究院一手发布；MAI 系列与 Azure/Phi 工作的原始出处，比媒体转述早。
+    found_in:
+      - "KKKKhazix/AIHOT:industry/sources.json#sources[]"
+    repositories:
+      - "KKKKhazix/AIHOT"
+    tags:
+      - "method"
+
+  - source_id: "rss:aihot-demo-nvidia-blog"
+    name: "NVIDIA Blog"
+    url: "https://blogs.nvidia.com/feed/"
+    category: "lab-official"
+    language: "en"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 1
+    polling_interval: "2h"
+    timeout_s: 25
+    dedup_group: null
+    notes: >-
+      来自 AIHOT 示范源，实测可达。等级 T1。
+    why: >-
+      英伟达官方博客；芯片、Nemotron 模型与推理栈变动的第一手来源。
+    found_in:
+      - "KKKKhazix/AIHOT:industry/sources.json#sources[]"
+    repositories:
+      - "KKKKhazix/AIHOT"
+    tags:
+      - "release"
+
+  - source_id: "rss:aihot-demo-aws-machine-learning-blog"
+    name: "AWS Machine Learning Blog"
+    url: "https://aws.amazon.com/blogs/machine-learning/feed/"
+    category: "lab-official"
+    language: "en"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 1
+    polling_interval: "2h"
+    timeout_s: 25
+    dedup_group: null
+    notes: >-
+      来自 AIHOT 示范源，实测可达。等级 T1。
+    why: >-
+      AWS 官方 ML 博客；Bedrock 与自研芯片的实际做法，工程细节强于新闻稿。
+    found_in:
+      - "KKKKhazix/AIHOT:industry/sources.json#sources[]"
+    repositories:
+      - "KKKKhazix/AIHOT"
+    tags:
+      - "method"
+
+  - source_id: "rss:aihot-demo-github-blog-ai-and-ml"
+    name: "GitHub Blog · AI & ML"
+    url: "https://github.blog/ai-and-ml/feed/"
+    category: "lab-official"
+    language: "en"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 1
+    polling_interval: "2h"
+    timeout_s: 25
+    dedup_group: null
+    notes: >-
+      来自 AIHOT 示范源，实测可达。等级 T1。
+    why: >-
+      GitHub 官方 AI 板块；Copilot 与平台能力变更的原始公告。
+    found_in:
+      - "KKKKhazix/AIHOT:industry/sources.json#sources[]"
+    repositories:
+      - "KKKKhazix/AIHOT"
+    tags:
+      - "product"
+
+  - source_id: "rss:aihot-demo-mistral-ai"
+    name: "Mistral AI"
+    url: "https://mistral.ai/news/rss"
+    category: "lab-official"
+    language: "en"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 1
+    polling_interval: "2h"
+    timeout_s: 25
+    dedup_group: null
+    notes: >-
+      来自 AIHOT 示范源，实测可达。等级 T1。
+    why: >-
+      Mistral 官方新闻源（实测 90 条）；欧洲前沿实验室，模型发布常早于中文媒体。
+    found_in:
+      - "KKKKhazix/AIHOT:industry/sources.json#sources[]"
+    repositories:
+      - "KKKKhazix/AIHOT"
+    tags:
+      - "release"
+
+  - source_id: "rss:aihot-demo-techcrunch-ai"
+    name: "TechCrunch · AI"
+    url: "https://techcrunch.com/category/artificial-intelligence/feed/"
+    category: "media"
+    language: "en"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 2
+    polling_interval: "2h"
+    timeout_s: 25
+    dedup_group: null
+    notes: >-
+      来自 AIHOT 示范源，实测可达。等级 T2。
+    why: >-
+      TechCrunch AI 频道；融资、收购与商业动向上比技术媒体全。
+    found_in:
+      - "KKKKhazix/AIHOT:industry/sources.json#sources[]"
+    repositories:
+      - "KKKKhazix/AIHOT"
+    tags:
+      - "business"
+
+  - source_id: "rss:aihot-demo-ars-technica-ai"
+    name: "Ars Technica · AI"
+    url: "https://arstechnica.com/ai/feed/"
+    category: "media"
+    language: "en"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 2
+    polling_interval: "2h"
+    timeout_s: 25
+    dedup_group: null
+    notes: >-
+      来自 AIHOT 示范源，实测可达。等级 T2。
+    why: >-
+      Ars Technica AI 板块；技术质疑与事故报道深度较好，能对冲厂商口径。
+    found_in:
+      - "KKKKhazix/AIHOT:industry/sources.json#sources[]"
+    repositories:
+      - "KKKKhazix/AIHOT"
+    tags:
+      - "analysis"
+
+  - source_id: "rss:aihot-demo-mit-technology-review-ai"
+    name: "MIT Technology Review · AI"
+    url: "https://www.technologyreview.com/topic/artificial-intelligence/feed"
+    category: "media"
+    language: "en"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 2
+    polling_interval: "2h"
+    timeout_s: 25
+    dedup_group: null
+    notes: >-
+      来自 AIHOT 示范源，实测可达。等级 T2。
+    why: >-
+      MIT 科技评论 AI 主题；长文分析与趋势判断，补齐日报缺的「为什么重要」。
+    found_in:
+      - "KKKKhazix/AIHOT:industry/sources.json#sources[]"
+    repositories:
+      - "KKKKhazix/AIHOT"
+    tags:
+      - "analysis"
+
+  - source_id: "rss:aihot-demo-the-decoder"
+    name: "The Decoder"
+    url: "https://the-decoder.com/feed/"
+    category: "media"
+    language: "en"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 2
+    polling_interval: "2h"
+    timeout_s: 25
+    dedup_group: null
+    notes: >-
+      来自 AIHOT 示范源，实测可达。等级 T2。
+    why: >-
+      专注 AI 的德系英文媒体；欧洲视角与开源生态报道比美系媒体细。
+    found_in:
+      - "KKKKhazix/AIHOT:industry/sources.json#sources[]"
+    repositories:
+      - "KKKKhazix/AIHOT"
+    tags:
+      - "news"
+
+  - source_id: "rss:aihot-demo-import-ai"
+    name: "Import AI"
+    url: "https://importai.substack.com/feed"
+    category: "media"
+    language: "en"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 3
+    polling_interval: "2h"
+    timeout_s: 25
+    dedup_group: null
+    notes: >-
+      来自 AIHOT 示范源，实测可达。等级 T2。
+    why: >-
+      Jack Clark 的周报（实测 20 条）；对政策与研究趋势的判断有独立价值，属观点源。
+    found_in:
+      - "KKKKhazix/AIHOT:industry/sources.json#sources[]"
+    repositories:
+      - "KKKKhazix/AIHOT"
+    tags:
+      - "analysis"
+
+  - source_id: "rss:aihot-demo-latent-space"
+    name: "Latent Space"
+    url: "https://www.latent.space/feed"
+    category: "media"
+    language: "en"
+    source_type: "rss"
+    fetch_method: "feedparser"
+    adapter: "RssFetcher"
+    enabled: true
+    priority: 3
+    polling_interval: "2h"
+    timeout_s: 25
+    dedup_group: null
+    notes: >-
+      来自 AIHOT 示范源，实测可达。等级 T2。
+    why: >-
+      工程向播客与长文；推理栈、Agent 实践的细节，一般媒体不写。
+    found_in:
+      - "KKKKhazix/AIHOT:industry/sources.json#sources[]"
+    repositories:
+      - "KKKKhazix/AIHOT"
+    tags:
+      - "analysis"

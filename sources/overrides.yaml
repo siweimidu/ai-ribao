@@ -311,3 +311,55 @@ overrides:
       Authorization 头（不放 URL，避免密钥进日志）。返回的是搜索结果而非已发布条目，
       因此 published_date 缺失时留空，由流水线按「未知新鲜度」处理，
       而不是盖上抓取时间冒充当天发布。
+
+  # ── 同一 feed 的两个登记：归到同一 dedup_group ────────────────────────────
+  #
+  # 2026-10-19 核对 registry 发现 5 组 URL 完全相同的启用源：同一个 feed 被审计仓库
+  # (Horizon) 和用户清单各登记了一次，source_id 不同、URL 相同。
+  # 流水线会抓两遍，同一条新闻被算成两个独立来源 —— 而 independent_source_count
+  # 是热度排序里最重的信号，也是「多源验证」徽标的依据。它不能是流水线自己
+  # 制造出来的数字。
+  #
+  # 处理方式：不删除（删除会丢溯源），改用 dedup_group 把它们标记为同一发布者。
+  # 归组之后，同一条新闻只计一次独立来源，两个 id 仍各自保留抓取记录。
+  "rss:wechat2rss-xlab-app-51e92aad2728acdd1fda7314be32b16639353001":
+    dedup_group: "jiqizhixin"
+    reason: >-
+      与 rss:wechat-jiqizhixin-xlab 是同一个 feed（URL 完全相同），只是登记来源不同。
+      归入同一 dedup_group，避免机器之心的同一篇文章被算成两个独立来源。
+
+  "rss:decemberpei-cyou-rssbox-wechat-liangziwei":
+    dedup_group: "liangziwei"
+    reason: >-
+      与 rss:wechat-liangziwei 是同一个 feed（URL 完全相同）。归入同一 dedup_group。
+
+  "rss:wechat-liangziwei":
+    dedup_group: "liangziwei"
+    reason: >-
+      与 rss:decemberpei-cyou-rssbox-wechat-liangziwei 是同一 feed，见上条。
+      这条原先 dedup_group 为空，同一篇文章因此会被计两次独立来源。
+
+  "rss:wechat2rss-xlab-app-ede30346413ea70dbef5d485ea5cbb95cca446e7":
+    dedup_group: "xinzhiyuan"
+    reason: >-
+      与 rss:wechat-xinzhiyuan-xlab 是同一个 feed（URL 完全相同）。归入同一 dedup_group。
+
+  "rss:decemberpei-cyou-rssbox-wechat-paperweekly":
+    dedup_group: "paperweekly"
+    reason: >-
+      与 rss:wechat-paperweekly 是同一个 feed（URL 完全相同）。归入同一 dedup_group。
+
+  "rss:wechat-paperweekly":
+    dedup_group: "paperweekly"
+    reason: >-
+      与 rss:decemberpei-cyou-rssbox-wechat-paperweekly 是同一 feed，见上条。
+
+  "rss:wechat-aiqianxian":
+    dedup_group: "aiqianxian"
+    reason: >-
+      与 rss:decemberpei-cyou-rssbox-wechat-aiqianxian 是同一个 feed（URL 完全相同）。
+
+  "rss:decemberpei-cyou-rssbox-wechat-aiqianxian":
+    dedup_group: "aiqianxian"
+    reason: >-
+      与 rss:wechat-aiqianxian 是同一 feed，见上条。
