@@ -60,8 +60,30 @@ jobs:
 
       - name: Does this slot still need publishing?
         id: decide
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set +e
+          # Is a run already in flight? Then this kick is redundant whatever the gate says.
+          #
+          # The gate answers "should this slot rebuild", and it answers *yes* for a later slot
+          # of the same day by design -- the evening edition re-merges the morning's news. That
+          # is right for a scheduled run and wrong for a kick: two kicks arriving minutes apart
+          # would start two full runs, the second discarding the first's work. Measured: a
+          # second kick five minutes after the first started a second AI Daily run.
+          #
+          # Queue-pending counts as in flight. Anything started in the last 90 minutes counts
+          # too, because a run can be queued without appearing as "in_progress" yet.
+          busy=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow=daily.yml --limit 10 \
+            --json status,createdAt --jq \
+            '[.[] | select(.status == "in_progress" or .status == "queued" or .status == "pending")] | length')
+          echo "in_flight=$busy"
+          if [ "${busy:-0}" -gt 0 ]; then
+            echo "::notice::a daily run is already in flight -- this kick is redundant"
+            echo "go=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
           python -m aidaily gate | tee gate.json
           code=${PIPESTATUS[0]}
           echo "gate_exit=$code"
