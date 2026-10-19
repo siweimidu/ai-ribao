@@ -1,8 +1,8 @@
-"""橘鸦's section taxonomy and priority, reverse-engineered from its own numbering.
+"""the reference's section taxonomy and priority, reverse-engineered from its own numbering.
 
 ## What the data showed
 
-Every story in a 橘鸦 issue carries a rank (`... ↗ #17`) running 1..N across the issue, and the
+Every story in a reference issue carries a rank (`... ↗ #17`) running 1..N across the issue, and the
 ranks are handed out **by section, in contiguous blocks**:
 
     2026-10-15  要闻 #1-2 | 模型发布 #3-6 | 开发生态 #7-10 | 产品应用 #11-13 |
@@ -16,11 +16,11 @@ below 0.35 for every candidate and the signs flipped between sections (`含数�
 
 ## Why this is worth reproducing
 
-Getting the section right reproduces the coarse order deterministically -- a story 橘鸦 put in
+Getting the section right reproduces the coarse order deterministically -- a story 参考站 put in
 要闻 and this pipeline ranked 47th cannot be fixed by tuning a weight, because the difference is
 categorical. The section is therefore the ranking's primary key, ahead of heat.
 
-## The categories, as 橘鸦 uses them
+## The categories, as 参考站 uses them
 
 Read off its own examples rather than invented; each boundary below is one that actually occurs.
 
@@ -47,7 +47,7 @@ from __future__ import annotations
 
 import re
 
-#: Section ids in 橘鸦's order. The order **is** the ranking key, so it is a list rather than a
+#: Section ids in the reference's order. The order **is** the ranking key, so it is a list rather than a
 #: dict: the position in this tuple is the priority.
 SECTIONS: tuple[str, ...] = (
     "要闻",
@@ -63,7 +63,7 @@ SECTIONS: tuple[str, ...] = (
 #: 5:4 pair (开发生态 over 模型发布) resolved by median rank, which agrees.
 SECTION_RANK: dict[str, int] = {name: i for i, name in enumerate(SECTIONS)}
 
-#: Section labels for the page, since a bare 要闻 in a heading is what 橘鸦 uses and reads well.
+#: Section labels for the page, since a bare 要闻 in a heading is what 参考站 uses and reads well.
 SECTION_LABELS: dict[str, str] = {
     "要闻": "要闻",
     "开发生态": "开发生态",
@@ -77,10 +77,10 @@ SECTION_LABELS: dict[str, str] = {
 #: Labs whose product changes are 要闻.
 #:
 #: **US frontier labs only.** The first version included 豆包/千问/文心/混元/元宝 and scored 8%
-#: on 产品应用 because every Chinese vendor product became 要闻. All forty of 橘鸦's 要闻 items
+#: on 产品应用 because every Chinese vendor product became 要闻. All forty of the reference's 要闻 items
 #: across ten issues are OpenAI / Anthropic / Google / Meta / Microsoft / xAI -- `豆包工作上线
 #: 数据导入` and `千问推出个人 Agent` are 产品应用. The distinction is not "how big is the
-#: vendor" but which vendors 橘鸦 leads with, and the data is unambiguous about that.
+#: vendor" but which vendors 参考站 leads with, and the data is unambiguous about that.
 _HEADLINE_LABS = re.compile(
     r"(?<![a-z])(openai|anthropic|google|deepmind|meta|microsoft|xai|x\.ai|"
     r"claude|chatgpt|gemini|copilot|codex|gpt-?\d)(?![a-z])|"
@@ -146,7 +146,7 @@ _RELEASE_VERB = re.compile(
 
 
 def classify(title: str) -> str:
-    """The section 橘鸦 would most likely file this headline under.
+    """The section 参考站 would most likely file this headline under.
 
     Ordered rules, most specific first. The order encodes the boundary decisions that actually
     occur in the data:
@@ -222,10 +222,10 @@ def rank_of(section: str) -> int:
 
 
 def sort_key(title: str, score: float) -> tuple[int, float]:
-    """`(section_priority, -score)` -- the sort key that reproduces 橘鸦's structure.
+    """`(section_priority, -score)` -- the sort key that reproduces the reference's structure.
 
     Section first and score second, which is the reverse of a pure score ranking. That is the
-    whole finding: a story 橘鸦 put in 要闻 and a pure score put 47th differs by category, and no
+    whole finding: a story 参考站 put in 要闻 and a pure score put 47th differs by category, and no
     weighting of a continuous score can move it.
     """
     return (rank_of(classify(title)), -score)

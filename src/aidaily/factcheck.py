@@ -35,6 +35,44 @@ class FactCheckReport:
     def ok(self) -> bool:
         return not self.violations
 
+    #: Violations that belong to one event rather than to the digest as a whole. An event
+    #: carrying one of these is dropped; the rest of the issue still publishes.
+    #:
+    #: Why this distinction exists: on 2026-10-19 four AllenAI entries arrived with a
+    #: published_at of 2026-10-31 (the feed emits a placeholder date). They produced 27
+    #: future_date violations, the report said "not ok", and **220 perfectly good events were
+    #: never published** -- the digest was empty for the whole day. One bad input must not cost
+    #: the day's news.
+    EVENT_SCOPED = frozenset({
+        "event_without_url",
+        "fabricated_url",
+        "unknown_member",
+        "future_date",
+        "fabricated_date",
+        "date_order",
+        "event_without_source",
+    })
+
+    @property
+    def blocking(self) -> list[Violation]:
+        """Violations that concern the digest as a whole and must stop publishing."""
+        return [v for v in self.violations if v.kind not in self.EVENT_SCOPED]
+
+    @property
+    def offending_event_ids(self) -> set[str]:
+        """Events to drop, each with a violation of its own."""
+        return {
+            v.event_id
+            for v in self.violations
+            if v.kind in self.EVENT_SCOPED and v.event_id
+        }
+
+    @property
+    def ok_to_publish(self) -> bool:
+        """Whether the issue may go out after dropping the offending events."""
+        return not self.blocking
+
+
     def summary(self) -> dict[str, object]:
         by_kind: dict[str, int] = {}
         for v in self.violations:

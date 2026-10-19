@@ -290,7 +290,7 @@ def select_for_digest(
     # Within a section, no title feature predicts position (Spearman below 0.35 for every
     # candidate, signs flipping between sections), so that part stays with the score.
     #
-    # The consequence worth stating: a story 橘鸦 led with and a pure score put 47th differs by
+    # The consequence worth stating: a story 参考站 led with and a pure score put 47th differs by
     # *category*, and no weighting of a continuous score can move it across a category boundary.
     # **The relevance floor is a hard filter, applied before the section sort.**
     #
@@ -340,7 +340,7 @@ def select_for_digest(
     section_of: dict[str, str] = {}
     for row in kept:
         # The model's judgement first -- it reads the story, and measured 41.8% accuracy is what
-        # the rule-based classifier reaches on 橘鸦's own 478 examples, which is not enough on
+        # the rule-based classifier reaches on the reference's own 478 examples, which is not enough on
         # its own. The rules are the fallback for a row the model did not classify.
         section = (rubric_sections or {}).get(row.event.event_id) or classify(row.event.title)
         section_of[row.event.event_id] = section
@@ -403,7 +403,7 @@ def select_for_digest(
     #
     # A stable sort, so `select_diverse`'s judgement still decides the order *within* a section,
     # which is exactly where the analysis said it belongs: outside a section, no title feature
-    # predicts 橘鸦's order; within one, the score is the only signal available.
+    # predicts the reference's order; within one, the score is the only signal available.
     chosen.sort(key=lambda r: (
         rank_of(r.components.get("section") or classify(r.event.title)),
         -r.score,

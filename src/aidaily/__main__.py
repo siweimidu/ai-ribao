@@ -162,6 +162,30 @@ def cmd_dedup(args: argparse.Namespace) -> int:
     return 0
 
 
+def _drop_events(digest: Digest, event_ids: set[str]) -> Digest:
+    """A copy of the digest with the given events removed from both sections and the list.
+
+    Used when fact-check finds an event that cannot be published (a date in the future, a URL
+    that is not in the source data). The alternative was discarding the whole issue, which on
+    2026-10-19 meant four bad AllenAI entries cost the day's 220 stories.
+    """
+    keep = [e for e in digest.top_events if e.event_id not in event_ids]
+    sections = {
+        name: [e for e in events if e.event_id not in event_ids]
+        for name, events in (digest.sections or {}).items()
+    }
+    counts = dict(digest.counts or {})
+    counts["events"] = len(keep)
+    counts["multi_source_events"] = sum(1 for e in keep if len(e.source_ids) > 1)
+    return digest.model_copy(
+        update={
+            "top_events": keep,
+            "sections": {k: v for k, v in sections.items() if v},
+            "counts": counts,
+        }
+    )
+
+
 def cmd_run(args: argparse.Namespace) -> int:
     """The full chain: collect -> window -> L2 -> L3 -> analyze -> factcheck -> render."""
     cfg = load_config(env={} if args.no_env else None)
@@ -270,7 +294,20 @@ def cmd_run(args: argparse.Namespace) -> int:
     )
 
     # 6) fact check -- a failing digest is not published
+    # 6) fact check. Violations that belong to a single event drop that event; only
+    #    violations about the digest as a whole stop the issue.
+    #
+    #    This used to be all-or-nothing, and on 2026-10-19 four AllenAI entries arrived
+    #    with a published_at of 2026-10-31 (a placeholder date from the feed). They raised
+    #    27 future_date violations, the report said "not ok", and 220 good events were
+    #    never published -- the whole day was empty. One bad input must not cost the day.
     check = check_digest(digest, stage.window.kept)
+    offending = check.offending_event_ids
+    if offending:
+        print(f"事实校验：剔除 {len(offending)} 条问题事件", file=sys.stderr)
+        digest = _drop_events(digest, offending)
+        insights = {k: v for k, v in insights.items() if k in {e.event_id for e in digest.top_events}}
+        check = check_digest(digest, stage.window.kept)
     print(json.dumps(check.summary(), ensure_ascii=False))
 
     # 7) render
@@ -312,9 +349,10 @@ def cmd_run(args: argparse.Namespace) -> int:
     print(f"deep          : {_rel(deep_path)}  ({len(deep)} chars)")
     print(f"machine json  : {_rel(json_path)}")
 
-    if not check.ok:
+    if not check.ok_to_publish:
+        # Only digest-wide problems reach here; per-event ones were dropped above.
         print("\n!! 事实校验未通过，不发布：", file=sys.stderr)
-        for v in check.violations[:10]:
+        for v in check.blocking[:10]:
             print(f"   {v.kind}: {v.detail}", file=sys.stderr)
         _record_run(digest, {}, "failed", "factcheck failed")
         return 2

@@ -17,22 +17,42 @@ from __future__ import annotations
 import calendar
 import hashlib
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from ..http import HttpClient
 from ..models import RawItem, SourceSpec
 from .base import BaseFetcher, SourceResult
 
 
+#: How far ahead of "now" a feed date may be before it is treated as a placeholder.
+#:
+#: Publishers do emit these: on 2026-10-19 the AllenAI feed dated four posts 2026-10-31, twelve
+#: days ahead. Those items then failed the digest's own future_date check, and before that check
+#: was made per-event they cost the entire day's issue.
+#:
+#: The tolerance is generous on purpose: timezone sloppiness routinely puts an item a few hours
+#: into the future, and that is harmless.
+_MAX_FUTURE_SKEW = timedelta(hours=36)
+
+
 def _entry_datetime(entry: dict) -> datetime | None:
-    """Earliest trustworthy date for an entry, or None -- never the fetch time."""
+    """Earliest trustworthy date for an entry, or None -- never the fetch time.
+
+    A date more than _MAX_FUTURE_SKEW ahead of now is a placeholder, not a publication date.
+    Returning None is the honest answer: the item has no usable date, and callers already treat
+    a missing date as "cannot be proven new" rather than inventing one.
+    """
+    now = datetime.now(timezone.utc)
     for field in ("published_parsed", "updated_parsed", "created_parsed"):
         parsed = entry.get(field)
         if parsed:
             try:
-                return datetime.fromtimestamp(calendar.timegm(parsed), tz=timezone.utc)
+                when = datetime.fromtimestamp(calendar.timegm(parsed), tz=timezone.utc)
             except (TypeError, ValueError, OverflowError):
                 continue
+            if when - now > _MAX_FUTURE_SKEW:
+                continue
+            return when
     return None
 
 
