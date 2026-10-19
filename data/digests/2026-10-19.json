@@ -2,9 +2,9 @@
  "digest": {
   "date": "2026-10-19",
   "kind": "deep",
-  "generated_at": "2026-10-19T10:49:44.512135Z",
-  "window_start": "2026-10-18T08:49:44.512135Z",
-  "window_end": "2026-10-19T10:49:44.512135Z",
+  "generated_at": "2026-10-19T11:05:27.845811Z",
+  "window_start": "2026-10-18T09:05:27.845811Z",
+  "window_end": "2026-10-19T11:05:27.845811Z",
   "headline": "",
   "top_events": [],
   "trend_notes": [],
@@ -18,9 +18,9 @@
   },
   "llm_usage": {
    "calls": 36,
-   "prompt_tokens": 18175,
-   "completion_tokens": 4538,
-   "tokens": 22713,
+   "prompt_tokens": 16471,
+   "completion_tokens": 3726,
+   "tokens": 20197,
    "max_calls": 400,
    "max_tokens": 2000000,
    "dead_providers": {
@@ -30,16 +30,15 @@
     "relay:new.sharedchat.cc#0": "auth: relay:new.sharedchat.cc#0: HTTP 403"
    },
    "provider_failures": {
-    "groq": "rate_limited: groq: HTTP 429",
+    "groq": "groq: empty completion (finish_reason=length, max_tokens likely consumed by reasoning tokens)",
     "relay:api.stepfun.com#0": "relay:api.stepfun.com#0: HTTP 402 {\"error\":{\"message\":\"You exceeded your current quota, please check your plan and billing details\",\"type\":\"quota_exceeded",
     "relay:api.minimaxi.com#0": "relay:api.minimaxi.com#0: HTTP 402 {\"type\":\"error\",\"error\":{\"type\":\"insufficient_balance_error\",\"message\":\"insufficient balance (1008)\",\"http_code\":\"402\"},",
-    "relay:api.camel-hub.cn#0": "relay:api.camel-hub.cn#0: HTTP 503",
-    "gemini": "gemini: ReadTimeout: "
+    "relay:api.camel-hub.cn#0": "relay:api.camel-hub.cn#0: HTTP 503"
    },
    "calls_per_provider": {
-    "gemini": 19,
-    "groq": 14,
-    "relay:ai.soulecho.cc#0": 3
+    "gemini": 24,
+    "groq": 11,
+    "relay:ai.soulecho.cc#0": 1
    }
   },
   "warnings": [
@@ -49,10 +48,10 @@
   ],
   "counts": {
    "events": 0,
-   "events_considered": 218,
+   "events_considered": 217,
    "multi_source_events": 0,
-   "items_after_window": 254,
-   "items_merged_away": 21,
+   "items_after_window": 258,
+   "items_merged_away": 25,
    "distinct_sources_in_head": 0,
    "head_max_source_share": 0,
    "dropped_unknown": 97,
@@ -80,7 +79,7 @@
   "dev": [
    "e05caf7793ae54e",
    "e02fe2b264fc481",
-   "e0d06de1009d99f",
+   "e70e495b2cd9bf1",
    "e749c748693b309",
    "e74b3d701b232de",
    "e86fa3512795ab9",
@@ -89,6 +88,7 @@
    "ea07ef32198c3e8",
    "eaa5d03feab1e64",
    "eafa7d756fa4ade",
+   "eb5c1d96e9d9945",
    "ebb8fbf4d37be4d",
    "ed0d9e70682c63b",
    "edb45e672667261",
@@ -111,20 +111,14 @@
    "e0c98c326a6a43a",
    "e1246013fc4f292",
    "e145ebd8c71c96e",
-   "e180591ad60b7d1",
-   "e198e5144e83086",
    "e1c2aa051f1cb1d",
-   "e1e84142c3accca",
    "e208300395772d4",
    "e244b8a63b7d12f",
    "e25d8bc95a1fbd6",
    "e26b3350bd9564b",
-   "e287df509f979fa",
-   "e2d3f8bca550673",
    "e2e566db141902e",
    "e313f26150e31b8",
    "e31ca2ec5e8c555",
-   "e37b061cfc338a8",
    "e39e0462d41c3cf",
    "e3bfaba8d51b9ba",
    "e3cdf7151ba5914",
@@ -141,11 +135,11 @@
    "e56652b26f97357",
    "e5950fb74c7ea38",
    "e5b451ad872c9cf",
+   "e5c89fb0cba8be6",
    "e5d704507a50854",
    "e62c99dc6d17d39",
    "e671a707f63c755",
    "e67b2092c5b0aa9",
-   "e69db782c22276f",
    "e6ef6bd28251df2",
    "e6f0a2ced0f431a",
    "e71a4465d50ce7d",
@@ -153,6 +147,7 @@
    "e7923551091eb26",
    "e799595b79d71bc",
    "e7a5737fab43cf6",
+   "e7d497f0b65a64b",
    "e7ffd91999c96ab",
    "e8438fd099a8a3c",
    "e8621e2a65a00f5",
@@ -161,7 +156,7 @@
    "e93cbfcf27a22af",
    "e94a63cbcb67b40",
    "e9a4d4555f9311f",
-   "e9ac0f936163942",
+   "ea7cb69494b4d52",
    "eaa3ffad5148ce8",
    "eabc0ef722c7a6e",
    "eacec012100f74c",
@@ -171,6 +166,7 @@
    "eb429b85d4c70b1",
    "eb6e5add6039b59",
    "eb7dca036f75448",
+   "ebbd528234d2c52",
    "ebc0cece77d25d4",
    "ebce64ed394a343",
    "ebee38d2e2c6185",
@@ -180,7 +176,6 @@
    "ec2dde1fd648338",
    "ec5e4a5b0bc73ea",
    "ec716fb7d2645be",
-   "ec7bdb58caf0331",
    "eca58a8f4f1be17",
    "ecd926bf8575ed3",
    "ed161c584cf3133",
@@ -190,8 +185,10 @@
    "ed9c801a0fb523d",
    "ede155764cd651d",
    "ee1b7608f553013",
+   "ee22fa233af9a4e",
    "ee3518c20f5c682",
    "ee4296a1e39927f",
+   "eec5efb12d63bfc",
    "ef030b512aef34b",
    "ef26746b3a64c6e",
    "ef4d3e13ee02b58",
@@ -199,6 +196,7 @@
    "ef956ddf3472b97",
    "ef9fb398740c6ea",
    "efa5c233321e531",
+   "efbd4d2d363d235",
    "effe7744222e550"
   ],
   "mixed": [
@@ -238,6 +236,7 @@
    "e46a432cf6cd6eb",
    "e48eaa6d10eb28e",
    "e4a6781b1e1a837",
+   "e50888d8e59bd26",
    "e55c6749215c9e4",
    "e58b5d45c537a46",
    "e5e8c73d7b87cb6",
@@ -277,7 +276,6 @@
    "eecf54c4b9317dd",
    "eef787fdc06c25b",
    "ef5543b310c9bc4",
-   "ef6617ea498d2a0",
    "ef878aad80de440",
    "efb440a20726e47"
   ]
@@ -285,8 +283,8 @@
  "insights": {},
  "factcheck": {
   "ok": true,
-  "checked_events": 207,
-  "checked_urls": 225,
+  "checked_events": 206,
+  "checked_urls": 229,
   "violations": 0,
   "by_kind": {}
  }
