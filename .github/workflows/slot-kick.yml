@@ -1,0 +1,112 @@
+name: Slot kick
+
+# The entry point an *external* scheduler calls. Nothing else.
+#
+# Why this exists
+#
+# GitHub's own `schedule` event is best-effort. The docs say it is delayed under load and that
+# queued jobs "may be dropped", and this repository's record agrees: of the last 20 scheduled
+# triggers, 10 published and 3 never created a job at all. In-process retries and the watchdog
+# cannot help with a trigger that never happened -- both of them run *inside* GitHub.
+#
+# So a third party is the backstop: a free cron service calls this workflow three times a day,
+# at the same slots. If GitHub dropped its own trigger, this one still arrives.
+#
+# Why not point the external service at daily.yml
+#
+# It would need a token with `actions: write`, and a leaked one could start any workflow at will.
+# This file is the only thing exposed, and it does one thing: decide whether the slot still needs
+# publishing, and if so, dispatch.
+#
+# Idempotency
+#
+# Calling this ten times in a row must publish at most once. It reuses the same `aidaily gate`
+# the scheduled run starts with -- the one place that knows about date, slot and what has been
+# delivered -- rather than inventing a second notion of "already done".
+
+on:
+  repository_dispatch:
+    # POST /repos/{owner}/{repo}/dispatches  with  {"event_type": "slot-kick"}
+    types: [slot-kick]
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  # Serialised: two kicks arriving together must not start two runs.
+  group: slot-kick
+  cancel-in-progress: false
+
+jobs:
+  kick:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      # Only the gate is needed, and it imports the config layer; the fetcher extras are not
+      # required, which keeps this job under a minute.
+      - name: Install
+        run: pip install -e .
+
+      - name: Does this slot still need publishing?
+        id: decide
+        run: |
+          set +e
+          python -m aidaily gate | tee gate.json
+          code=${PIPESTATUS[0]}
+          echo "gate_exit=$code"
+
+          if [ ! -s gate.json ]; then
+            echo "::error::gate produced no output (exit $code)"
+            exit 1
+          fi
+          cat gate.json
+
+          case "$code" in
+            0)
+              echo "go=true" >> "$GITHUB_OUTPUT"
+              ;;
+            10)
+              echo "::notice::this slot has already been delivered -- nothing to do"
+              echo "go=false" >> "$GITHUB_OUTPUT"
+              ;;
+            11)
+              echo "::notice::too early for this slot -- nothing to do"
+              echo "go=false" >> "$GITHUB_OUTPUT"
+              ;;
+            *)
+              # A crashing gate is a real problem and must not read as "all good".
+              echo "::error::gate failed with exit $code"
+              exit "$code"
+              ;;
+          esac
+
+      - name: Dispatch the daily workflow
+        id: dispatch
+        if: steps.decide.outputs.go == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run daily.yml --repo "$GITHUB_REPOSITORY"
+          echo "::notice::dispatched daily.yml"
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "### Slot kick"
+            echo "| item | value |"
+            echo "|---|---|"
+            echo "| gate says go | ${{ steps.decide.outputs.go }} |"
+            echo "| dispatch | ${{ steps.dispatch.outcome }} |"
+          } >> "$GITHUB_STEP_SUMMARY"
