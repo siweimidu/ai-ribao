@@ -165,7 +165,7 @@ def score_event(
     and a long aggregator post is not more important than a terse launch announcement --
     which is exactly the error it produced.
     """
-    # ocus_multiplier needs a lookup by id, and the caller passes a list.
+    # `focus_multiplier` needs a lookup by id, and the caller passes a list.
     source_index = {s.source_id: s for s in sources} if not isinstance(sources, dict) else sources
     members = [items_by_id[i] for i in event.member_item_ids if i in items_by_id]
     source_weight = max(
@@ -256,13 +256,17 @@ def rank_events(
     # One entry per release: the several phrasings of one launch collapse into the best-scoring
     # one and carry the union of their sources. Without this the digest repeats the same news
     # down the page.
-    score_of = {r.event.event_id: r.score for r in scored}
+    # The surviving row keeps its **own** components. Returning empty ones wiped `focus`
+    # for every event, and `select_for_digest` then dropped all of them as
+    # `missing_or_invalid_focus` -- on 2026-10-19 that published 0 of 220 events while the
+    # titles were plainly AI ("MiniMax 将发布 M3.1-Flash", "DeepSeek上新AI模型").
+    #
+    # The merge only unions member ids, sources and URLs onto the survivor; its score and
+    # components were computed from its own text and remain valid for it.
+    by_id = {r.event.event_id: r for r in scored}
     collapsed = collapse_by_designation([r.event for r in scored])
     if len(collapsed) != len(scored):
-        return [
-            RankedEvent(event=e, score=score_of.get(e.event_id, 0.0), components={})
-            for e in collapsed
-        ]
+        return [by_id[e.event_id] for e in collapsed if e.event_id in by_id]
     return scored
 
 
