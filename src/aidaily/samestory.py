@@ -139,6 +139,14 @@ SUBJECTS: tuple[str, ...] = (
     r"nemotron[\s\d.]*",
     r"mai-base-\d+",
     r"deepseek[\s-]?v?\d[\w.\-]*",
+    r"minimax[\s-]?(?:m|h|speech|music|agent)?[\s-]?\d[\w.\-]*"
+    r"(?:[\s\-]+(?:flash|pro|max|mini|lite|turbo|ultra))?",
+    r"step[\s-]?\d[\w.\-]*",
+    r"hunyuan[\s-]?[\w.\-]*",
+    r"mimo[\s-]?v?\d[\w.\-]*",
+    r"manus[\s-]?\d[\w.\-]*",
+    r"ling[\s-]?\d[\w.\-]*",
+    r"kling[\s-]?\d[\w.\-]*",
     r"v\d+(?:\.\d+)*(?:[\s\-]?(?:flash|pro|max|mini|lite|turbo|ultra|argon))?(?:[\s\-]?\d{2,4})?",
 )
 
