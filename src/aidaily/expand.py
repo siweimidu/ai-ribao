@@ -84,7 +84,7 @@ async def expand_issue(
     try:
         result = await http.get(url)
     except Exception as exc:  # noqa: BLE001 - a page that will not load is not fatal
-        _NOTE.append((item.source_id, f"expand: {type(exc).__name__}"))
+        _NOTE.append((item.source_id, f"expand: {type(exc).__name__}: {exc}"[:160]))
         return [item]
 
     if not getattr(result, "ok", False):

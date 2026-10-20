@@ -101,6 +101,25 @@ async def collect(
 
         results = await asyncio.gather(*(run(s) for s in collectable))
 
+        # **Expand inside the client block.**
+        #
+        # The expansion fetches article pages, so it needs a live `HttpClient`. Calling it after
+        # this block closed raised `RuntimeError: HttpClient must be used as an async context
+        # manager` on every item; the handler kept the original and the run looked clean, so a
+        # whole day passed with 0 of 488 issues expanded and no error surfaced.
+        for result in results:
+            if not result.items:
+                continue
+            try:
+                result.items = await expand_all(result.items, http)
+            except Exception as exc:  # noqa: BLE001 - one bad page must not kill a run
+                report.skipped.append(
+                    (result.source_id, f"expand failed: {type(exc).__name__}")
+                )
+            else:
+                for src, note in _drain_expand_notes():
+                    report.skipped.append((src, note))
+
     now = datetime.now(timezone.utc)
     by_id = {s.source_id: s for s in specs}
     for result in results:
@@ -121,18 +140,7 @@ async def collect(
         # splitter works on the body it is given, so it cannot help when that body is a
         # 46-character summary -- measured on `ainewslog`: 480 such items, while one article
         # page held 21 stories. Fetching the page is what turns one line a day into twenty.
-        try:
-            expanded = await expand_all(result.items, http)
-            if len(expanded) == len(result.items) and result.items:
-                # Nothing expanded. Say why: an unreachable page and a page the splitter could
-                # not parse both look like "no change" otherwise.
-                for src, note in _drain_expand_notes():
-                    report.skipped.append((src, note))
-        except Exception as exc:  # noqa: BLE001 - one bad page must not kill a run
-            expanded = list(result.items)
-            report.skipped.append((spec.source_id, f"expand failed: {type(exc).__name__}"))
-
-        for raw in split_all(expanded):
+        for raw in split_all(result.items):
             report.items.append(normalize_raw(raw, spec, now))
 
     report.finished_at = datetime.now(timezone.utc)
