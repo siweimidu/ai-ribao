@@ -107,7 +107,15 @@ def write_rss(
         insight = insights.get(event.event_id)
         title = (insight.title if insight and insight.title else event.title) or event.title
         when = (
-            event.published_range[0].strftime("%a, %d %b %Y %H:%M:%S +0000")
+            # `astimezone(timezone.utc)` first: `strftime` formats a datetime in whatever
+            # zone it carries, and the literal `+0000` in the format string does not convert
+            # it. Formatting a Beijing value directly therefore emitted "Tue, 20 Oct 2026
+            # 05:47:00 +0000" for an instant that is really "Mon, 19 Oct 2026 21:47:00
+            # +0000" -- eight hours wrong, and a day wrong across midnight. Every RSS
+            # reader, and n8n through it, saw the wrong date.
+            event.published_range[0]
+            .astimezone(timezone.utc)
+            .strftime("%a, %d %b %Y %H:%M:%S +0000")
             if event.published_range else ""
         )
         iso = (

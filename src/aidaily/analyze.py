@@ -164,7 +164,15 @@ def fallback_insight(event: Event, members: list[NormalizedItem]) -> EventInsigh
 def _materials(members: list[NormalizedItem], per_item: int = 700) -> str:
     blocks: list[str] = []
     for idx, item in enumerate(members[:6], start=1):
-        when = item.published_at.strftime("%Y-%m-%d %H:%M UTC") if item.published_at else "时间未知"
+        # Beijing time, and said so.
+        #
+        # The model is told the publish time so it can write "who did what, when". Handing it a
+        # UTC clock while the digest is filed by Beijing date invites it to state the wrong day
+        # in a fact -- and a fact is the part a reader trusts.
+        when = (
+            item.published_at.astimezone(_DISPLAY_TZ).strftime("%Y-%m-%d %H:%M 北京时间")
+            if item.published_at else "时间未知"
+        )
         body = (item.summary or item.content_text or "").strip()[:per_item]
         blocks.append(f"[材料{idx}] 来源={item.source_id} 时间={when}\n标题：{item.title}\n内容：{body}")
     return "\n\n".join(blocks)

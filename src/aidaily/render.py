@@ -16,6 +16,7 @@ import html as html_mod
 import json
 import re
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 
 from .analyze import EventInsight
 from .models import Digest, Event, NormalizedItem
@@ -48,11 +49,19 @@ def _label(category: str) -> str:
     return CATEGORY_LABELS.get(category, _DEFAULT_LABEL)
 
 
+#: Every date the reader sees is a Beijing date, because the digest dates are.
+#:
+#: These two formatters printed UTC, so a story published at 05:47 Beijing on the 20th
+#: appeared as "10-19 21:47 UTC" inside the 20th's issue -- a correct archive that
+#: looked like it had filed yesterday's news under today.
+_DISPLAY_TZ = ZoneInfo("Asia/Shanghai")
+
+
 def _when(event: Event) -> str:
     if not event.published_range:
         return "时间未知"
     start = event.published_range[0]
-    return start.strftime("%Y-%m-%d %H:%M UTC")
+    return start.astimezone(_DISPLAY_TZ).strftime("%Y-%m-%d %H:%M")
 
 
 def _links(event: Event, limit: int = 8) -> str:
@@ -128,8 +137,9 @@ def render_deep(
 
     cov = digest.source_coverage
     lines += [
-        f"*生成于 {digest.generated_at.strftime('%Y-%m-%d %H:%M UTC')}　"
-        f"窗口 {digest.window_start.strftime('%m-%d %H:%M')} – {digest.window_end.strftime('%m-%d %H:%M')} UTC*",
+        f"*生成于 {digest.generated_at.astimezone(_DISPLAY_TZ).strftime('%Y-%m-%d %H:%M')}　"
+        f"窗口 {digest.window_start.astimezone(_DISPLAY_TZ).strftime('%m-%d %H:%M')} – "
+        f"{digest.window_end.astimezone(_DISPLAY_TZ).strftime('%m-%d %H:%M')} 北京时间*",
         "",
         f"**来源覆盖**：{cov.total} 个源中 {cov.active} 个有内容、{cov.failed} 个失败、"
         f"{cov.skipped} 个跳过（未启用或需凭证）。",

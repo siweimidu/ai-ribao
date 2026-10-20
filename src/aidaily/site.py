@@ -805,7 +805,7 @@ def render_day(
       <p>{esc(f"大模型：{llm.get('calls', 0)} 次调用 / {llm.get('tokens', 0):,} token" if llm.get('calls') else '本期未调用大模型')}。
       摘要由 AI 从原始来源整理，事实、推断与不确定项已分列；
       <strong>每个条目的链接都来自采集记录，未经模型生成</strong>。请以原始来源为准。</p>
-      <p>生成于 {digest.generated_at.astimezone(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}</p>
+<p>生成于 {digest.generated_at.astimezone(_SITE_TZ).strftime('%Y-%m-%d %H:%M')} 北京时间</p>
     </footer>
   </main>
 
