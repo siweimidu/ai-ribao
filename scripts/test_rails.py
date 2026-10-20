@@ -213,8 +213,8 @@ async def main() -> int:
         # 100vh with overflow-y:auto, which put 44 entries in a 900px frame and gave the
         # sidebar a second scrollbar; the reader had to scroll it separately from the
         # article. `visible` is the assertion now: no inner scrollbar, and the whole outline
-        # moves with the document.
-        check("目录随页面滚动（无独立滚动条）", scrollable["tocOverflow"] == "visible", scrollable["tocOverflow"])
+        # The outline is pinned and pages itself; see test_toc_scrolling.py for the contract.
+        check("目录内部可滚动（由 motion.js 自动翻页）",              scrollable["tocOverflow"] == "auto", scrollable["tocOverflow"])
         check("左栏滚动条已隐藏", scrollable["railBar"] == "none", scrollable["railBar"])
         check("目录滚动条已隐藏", scrollable["tocBar"] == "none", scrollable["tocBar"])
         # A rail whose content is shorter than the viewport cannot demonstrate scrollability,
