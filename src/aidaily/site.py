@@ -490,7 +490,7 @@ def render_item(
     return f"""        <li class="item" id="{esc(anchor)}">
           <div class="item__head">
             <span class="item__no">{index:02d}</span>
-            <h3 class="item__title"><a href="{esc(first_url)}" target="_blank" rel="noopener noreferrer">{esc(title)}</a></h3>
+            <h3 class="item__title"><a href="{esc(first_url)}" rel="noopener noreferrer">{esc(title)}</a></h3>
           </div>
           <div class="item__meta">
             <span class="badge" data-level="{esc(level)}">{esc(label)}</span>
@@ -672,7 +672,7 @@ def render_day(
     if untranslated:
         items = "".join(
             f'<li><span class="untranslated__no">{n:02d}</span>'
-            f'<a href="{esc((e.all_urls or ["#"])[0])}" target="_blank" rel="noopener noreferrer">{esc(e.title)}</a>'
+            f'<a href="{esc((e.all_urls or ["#"])[0])}" rel="noopener noreferrer">{esc(e.title)}</a>'
             f'<span class="untranslated__src">{esc(_domain((e.all_urls or [""])[0]))}</span></li>'
             for n, e in untranslated
         )
@@ -1386,8 +1386,9 @@ def render_sources(
                 meta_bits.append(f"需要 {cred}")
             # The whole row is the link. A source row exists to be visited, and making the
             # reader hunt for the URL text (which is one line of 10px grey type) is the
-            # difference between a list and a doorway. `target="_blank"` because the reader is
-            # browsing a digest: opening a feed in the same tab throws away their place.
+            # difference between a list and a doorway. Links open in the current tab, as the
+            # reader asked: a new tab per click leaves a trail of tabs on a phone, and the back
+            # button stops being a way to return to the digest.
             link = spec.get("url") or ""
             inner = (
                 f'<div>'
@@ -1402,7 +1403,7 @@ def render_sources(
             if link.startswith(("http://", "https://")):
                 items.append(
                     f'<li><a class="source-row" href="{esc(link)}"'
-                    f' target="_blank" rel="noopener noreferrer">{inner}</a></li>'
+                    f' rel="noopener noreferrer">{inner}</a></li>'
                 )
             else:
                 # A source with no http URL (an `external` push, say) is not clickable; keep it

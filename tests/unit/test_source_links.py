@@ -55,9 +55,14 @@ def test_a_source_row_is_a_link() -> None:
     assert '<a class="source-row" href="https://example.com/feed.xml"' in html
 
 
-def test_it_opens_in_a_new_tab() -> None:
+def test_it_opens_in_the_current_tab() -> None:
+    """The reader asked for this: a new tab per click buries the digest under tabs.
+
+    `rel="noopener"` stays -- it protects this page from the linked one regardless of how the
+    navigation happens.
+    """
     html = _render([_source("https://example.com/feed.xml")])
-    assert 'target="_blank"' in html
+    assert "target=" not in html
     assert "noopener" in html
 
 
