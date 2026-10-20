@@ -19,10 +19,16 @@ from __future__ import annotations
 import asyncio
 import re
 from dataclasses import dataclass, field
+from zoneinfo import ZoneInfo
 from typing import Iterable
 
 from .llm import LLMError, LLMUnavailable, Router
 from .models import Event, NormalizedItem
+
+#: The digest is filed by Beijing date, and the model is shown publish times so it can write
+#: "who did what, when". A UTC clock is eight hours behind and names the previous day after
+#: 16:00, which is enough for the model to state the wrong date in a fact.
+_DISPLAY_TZ = ZoneInfo("Asia/Shanghai")
 
 SYSTEM_PROMPT = (
     "你是 AI 日报的编辑。你只能使用给定的材料，**不得补充任何材料之外的信息**。\n"
