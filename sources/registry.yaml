@@ -1783,16 +1783,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-devops-top
   name: reddit r/devops
-  url: https://reddit.com/r/devops/top.json?limit=15&t=day
-  normalized_url: https://reddit.com/r/devops/top.json?limit=15&t=day
+  url: https://old.reddit.com/r/devops/top/?t=day
+  normalized_url: https://old.reddit.com/r/devops/top/?t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: api
-  fetch_method: httpx_json
-  adapter: ApiFetcher
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -1802,7 +1802,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: ups>=20；REDDIT_CLIENT_ID 可选
+  notes: null
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[devops]
   provenance_count: 1
@@ -1812,16 +1812,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-indiehackers-top
   name: reddit r/indiehackers
-  url: https://reddit.com/r/indiehackers/top.json?limit=15&t=day
-  normalized_url: https://reddit.com/r/indiehackers/top.json?limit=15&t=day
+  url: https://old.reddit.com/r/indiehackers/top/?t=day
+  normalized_url: https://old.reddit.com/r/indiehackers/top/?t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: api
-  fetch_method: httpx_json
-  adapter: ApiFetcher
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -1831,7 +1831,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: ups>=20；REDDIT_CLIENT_ID 可选
+  notes: null
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[indiehackers]
   provenance_count: 1
@@ -1841,26 +1841,26 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-localllama-top
   name: reddit r/LocalLLaMA
-  url: https://reddit.com/r/LocalLLaMA/top.json?limit=15&t=day
-  normalized_url: https://reddit.com/r/LocalLLaMA/top.json?limit=15&t=day
+  url: https://old.reddit.com/r/LocalLLaMA/top/?t=day
+  normalized_url: https://old.reddit.com/r/LocalLLaMA/top/?t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: api
-  fetch_method: httpx_json
-  adapter: ApiFetcher
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
   enabled: true
   priority: 3
-  polling_interval: 2h
+  polling_interval: 6h
   timeout_s: 20
   needs_credential: null
   dedup_group: null
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: ups>=20；REDDIT_CLIENT_ID 可选
+  notes: null
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[LocalLLaMA]
   provenance_count: 1
@@ -1870,26 +1870,26 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-machinelearning-top
   name: reddit r/MachineLearning
-  url: https://reddit.com/r/MachineLearning/top.json?limit=15&t=day
-  normalized_url: https://reddit.com/r/MachineLearning/top.json?limit=15&t=day
+  url: https://old.reddit.com/r/MachineLearning/top/?t=day
+  normalized_url: https://old.reddit.com/r/MachineLearning/top/?t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: api
-  fetch_method: httpx_json
-  adapter: ApiFetcher
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
   enabled: true
   priority: 3
-  polling_interval: 2h
+  polling_interval: 6h
   timeout_s: 20
   needs_credential: null
   dedup_group: null
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: ups>=20；REDDIT_CLIENT_ID 可选
+  notes: null
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[MachineLearning]
   provenance_count: 1
@@ -1899,16 +1899,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-opensource-top
   name: reddit r/opensource
-  url: https://reddit.com/r/opensource/top.json?limit=15&t=day
-  normalized_url: https://reddit.com/r/opensource/top.json?limit=15&t=day
+  url: https://old.reddit.com/r/opensource/top/?t=day
+  normalized_url: https://old.reddit.com/r/opensource/top/?t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: api
-  fetch_method: httpx_json
-  adapter: ApiFetcher
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -1918,7 +1918,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: ups>=20；REDDIT_CLIENT_ID 可选
+  notes: null
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[opensource]
   provenance_count: 1
@@ -1928,16 +1928,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-programming-top
   name: reddit r/programming
-  url: https://reddit.com/r/programming/top.json?limit=15&t=day
-  normalized_url: https://reddit.com/r/programming/top.json?limit=15&t=day
+  url: https://old.reddit.com/r/programming/top/?t=day
+  normalized_url: https://old.reddit.com/r/programming/top/?t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: api
-  fetch_method: httpx_json
-  adapter: ApiFetcher
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -1947,7 +1947,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: ups>=20；REDDIT_CLIENT_ID 可选
+  notes: null
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[programming]
   provenance_count: 1
@@ -1957,16 +1957,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-rust-top
   name: reddit r/rust
-  url: https://reddit.com/r/rust/top.json?limit=15&t=day
-  normalized_url: https://reddit.com/r/rust/top.json?limit=15&t=day
+  url: https://old.reddit.com/r/rust/top/?t=day
+  normalized_url: https://old.reddit.com/r/rust/top/?t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: api
-  fetch_method: httpx_json
-  adapter: ApiFetcher
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -1976,7 +1976,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: ups>=20；REDDIT_CLIENT_ID 可选
+  notes: null
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[rust]
   provenance_count: 1
@@ -1986,16 +1986,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-saas-top
   name: reddit r/SaaS
-  url: https://reddit.com/r/SaaS/top.json?limit=15&t=day
-  normalized_url: https://reddit.com/r/SaaS/top.json?limit=15&t=day
+  url: https://old.reddit.com/r/SaaS/top/?t=day
+  normalized_url: https://old.reddit.com/r/SaaS/top/?t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: api
-  fetch_method: httpx_json
-  adapter: ApiFetcher
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -2005,7 +2005,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: ups>=20；REDDIT_CLIENT_ID 可选
+  notes: null
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[SaaS]
   provenance_count: 1
@@ -2015,16 +2015,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-selfhosted-top
   name: reddit r/selfhosted
-  url: https://reddit.com/r/selfhosted/top.json?limit=15&t=day
-  normalized_url: https://reddit.com/r/selfhosted/top.json?limit=15&t=day
+  url: https://old.reddit.com/r/selfhosted/top/?t=day
+  normalized_url: https://old.reddit.com/r/selfhosted/top/?t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: api
-  fetch_method: httpx_json
-  adapter: ApiFetcher
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -2034,7 +2034,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: ups>=20；REDDIT_CLIENT_ID 可选
+  notes: null
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[selfhosted]
   provenance_count: 1
@@ -2044,16 +2044,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-sideproject-top
   name: reddit r/SideProject
-  url: https://reddit.com/r/SideProject/top.json?limit=15&t=day
-  normalized_url: https://reddit.com/r/SideProject/top.json?limit=15&t=day
+  url: https://old.reddit.com/r/SideProject/top/?t=day
+  normalized_url: https://old.reddit.com/r/SideProject/top/?t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: api
-  fetch_method: httpx_json
-  adapter: ApiFetcher
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -2063,7 +2063,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: ups>=20；REDDIT_CLIENT_ID 可选
+  notes: null
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[SideProject]
   provenance_count: 1
@@ -2073,16 +2073,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-startups-top
   name: reddit r/startups
-  url: https://reddit.com/r/startups/top.json?limit=15&t=day
-  normalized_url: https://reddit.com/r/startups/top.json?limit=15&t=day
+  url: https://old.reddit.com/r/startups/top/?t=day
+  normalized_url: https://old.reddit.com/r/startups/top/?t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: api
-  fetch_method: httpx_json
-  adapter: ApiFetcher
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -2092,7 +2092,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: ups>=20；REDDIT_CLIENT_ID 可选
+  notes: null
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[startups]
   provenance_count: 1
@@ -2102,16 +2102,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-webdev-top
   name: reddit r/webdev
-  url: https://reddit.com/r/webdev/top.json?limit=15&t=day
-  normalized_url: https://reddit.com/r/webdev/top.json?limit=15&t=day
+  url: https://old.reddit.com/r/webdev/top/?t=day
+  normalized_url: https://old.reddit.com/r/webdev/top/?t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: api
-  fetch_method: httpx_json
-  adapter: ApiFetcher
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -2121,7 +2121,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: ups>=20；REDDIT_CLIENT_ID 可选
+  notes: null
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[webdev]
   provenance_count: 1
@@ -2191,26 +2191,26 @@ sources:
   added_locally: true
 - source_id: scrape:old-reddit-com-artificial-hot
   name: r/artificial
-  url: https://old.reddit.com/r/artificial/hot
-  normalized_url: https://old.reddit.com/r/artificial/hot
+  url: https://www.reddit.com/r/artificial/top/.rss?t=day
+  normalized_url: https://www.reddit.com/r/artificial/top/.rss?t=day
   domain: old.reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: scrape
-  fetch_method: bs4
-  adapter: HtmlFetcher
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
   enabled: true
   priority: 3
-  polling_interval: 2h
+  polling_interval: 6h
   timeout_s: 20
   needs_credential: null
   dedup_group: null
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: min_score=80
+  notes: null
   found_in:
   - Horizon:data/config.github.json#sources.reddit.subreddits[2]
   provenance_count: 1
@@ -2220,16 +2220,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: scrape:old-reddit-com-localllama-hot
   name: r/LocalLLaMA
-  url: https://old.reddit.com/r/LocalLLaMA/hot
-  normalized_url: https://old.reddit.com/r/LocalLLaMA/hot
+  url: https://www.reddit.com/r/LocalLLaMA/top/.rss?t=day
+  normalized_url: https://www.reddit.com/r/LocalLLaMA/top/.rss?t=day
   domain: old.reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: scrape
-  fetch_method: bs4
-  adapter: HtmlFetcher
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -2239,7 +2239,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: min_score=80
+  notes: null
   found_in:
   - Horizon:data/config.github.json#sources.reddit.subreddits[1]
   provenance_count: 1
@@ -2249,16 +2249,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: scrape:old-reddit-com-machinelearning-hot
   name: r/MachineLearning
-  url: https://old.reddit.com/r/MachineLearning/hot
-  normalized_url: https://old.reddit.com/r/MachineLearning/hot
+  url: https://www.reddit.com/r/MachineLearning/top/.rss?t=day
+  normalized_url: https://www.reddit.com/r/MachineLearning/top/.rss?t=day
   domain: old.reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: scrape
-  fetch_method: bs4
-  adapter: HtmlFetcher
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -2268,7 +2268,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: min_score=80, time_filter=day
+  notes: null
   found_in:
   - Horizon:data/config.github.json#sources.reddit.subreddits[0]
   provenance_count: 1
