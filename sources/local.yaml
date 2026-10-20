@@ -1242,3 +1242,39 @@ sources:
   found_in:
   - user-list:2026-10-20#cross-source-coverage
   repositories: []
+- source_id: rss:axios
+  name: Axios
+  url: https://www.axios.com/feeds/feed.rss
+  domain: axios.com
+  category: media
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  notes: 为交叉验证新增；实测可达且有 AI 内容（2026-10-20）。
+  why: 美国政治与商业媒体；AI 政策、监管与头部公司动向的快讯，100 条里 29 条与 AI 相关。
+  found_in:
+  - user-list:2026-10-20#cross-source-coverage
+  repositories: []
+- source_id: rss:semafor
+  name: Semafor
+  url: https://www.semafor.com/rss.xml
+  domain: semafor.com
+  category: media
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  notes: 为交叉验证新增；实测可达且有 AI 内容（2026-10-20）。
+  why: 国际商业媒体；AI 产业与地缘政治的交叉报道，208 条里 68 条与 AI 相关（需按相关性过滤）。
+  found_in:
+  - user-list:2026-10-20#cross-source-coverage
+  repositories: []
