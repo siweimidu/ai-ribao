@@ -1188,3 +1188,57 @@ sources:
   found_in:
   - user-list:2026-10-20#cross-source-coverage
   repositories: []
+- source_id: rss:siliconangle
+  name: SiliconANGLE
+  url: https://siliconangle.com/feed/
+  domain: siliconangle.com
+  category: media
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  notes: 为提升交叉验证覆盖率而新增；实测 feed 可达且有 AI 内容（2026-10-20）。
+  why: 企业 AI 与云基础设施媒体；30 条里 22 条是 AI 新闻，覆盖面广，常就同一发布给出独立报道。
+  found_in:
+  - user-list:2026-10-20#cross-source-coverage
+  repositories: []
+- source_id: rss:the-information
+  name: The Information
+  url: https://www.theinformation.com/feed
+  domain: theinformation.com
+  category: media
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  notes: 为提升交叉验证覆盖率而新增；实测 feed 可达且有 AI 内容（2026-10-20）。
+  why: 付费科技媒体；AI 产业链的深度独家，标题本身就是独立判断，是交叉验证的高价值第二来源。
+  found_in:
+  - user-list:2026-10-20#cross-source-coverage
+  repositories: []
+- source_id: rss:zdnet-ai
+  name: ZDNet · AI
+  url: https://www.zdnet.com/topic/artificial-intelligence/rss.xml
+  domain: zdnet.com
+  category: media
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  notes: 为提升交叉验证覆盖率而新增；实测 feed 可达且有 AI 内容（2026-10-20）。
+  why: 企业技术媒体；AI 落地与企业采购视角，补充官方稿缺的使用侧观察。
+  found_in:
+  - user-list:2026-10-20#cross-source-coverage
+  repositories: []
