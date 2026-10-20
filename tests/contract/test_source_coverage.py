@@ -62,12 +62,12 @@ def test_provenance_count_is_not_shrinking() -> None:
     # (`user-list:2026-10-15#用户提供的信息源清单`). Bumping this number is the point at which
     # a human confirms a new source was added on purpose.
     local_rows = sum(v for k, v in actual.items() if k not in expected)
-    assert local_rows == 57, f"unexpected local provenance rows: {local_rows}"
-    assert actual.total() == expected.total() + 57
+    assert local_rows == 59, f"unexpected local provenance rows: {local_rows}"
+    assert actual.total() == expected.total() + 59
 
 
 def test_registry_shape_is_stable() -> None:
-    """136 endpoint-level sources: 80 audited + 57 local additions.
+    """138 endpoint-level sources: 80 audited + 58 local additions.
 
     The audited 80 come from collapsing Google Trends' 20 keyword rows (counting them as
     separate sources would inflate completeness; dropping them would lose information, so
@@ -79,7 +79,7 @@ def test_registry_shape_is_stable() -> None:
     deliberately added -- which is exactly what this test is for.
     """
     sources = load_registry(REGISTRY)
-    assert len(sources) == 136
+    assert len(sources) == 138
 
     trend = [s for s in sources if s.domain == "trends.google.com"]
     assert len(trend) == 1, "the 20 trend keywords must be one source, not twenty"
@@ -94,7 +94,7 @@ def test_no_source_was_silently_enabled_or_deleted() -> None:
     Counts are asserted exactly on purpose: a drop means a source was deleted (forbidden),
     and an unexplained rise means something was enabled without review.
 
-    Current shape: 136 total = 109 collectable + 20 present-but-not-wired-up (Horizon
+    Current shape: 138 total = 111 collectable + 20 present-but-not-wired-up (Horizon
     presets/examples + Cloudflare's unregistered adapters) + 7 needing credentials.
 
     AIHOT's curated feed and the 36 user-supplied sources are local additions; see
@@ -103,8 +103,8 @@ def test_no_source_was_silently_enabled_or_deleted() -> None:
     """
     sources = load_registry(REGISTRY)
     stats = registry_stats(sources)
-    assert stats["total"] == 136
-    assert stats["enabled"] == 109
+    assert stats["total"] == 138
+    assert stats["enabled"] == 111
     assert stats["disabled"] == 20, "Horizon presets/examples and unwired adapters are kept, not dropped"
     assert stats["needs_credential"] == 7
 

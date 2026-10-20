@@ -35,6 +35,49 @@ from .base import BaseFetcher, SourceResult
 _CONTENT_SUBDOMAINS = {"", "www", "app", "blog", "news", "m", "mobile", "cn", "en"}
 
 
+#: Trailing UI badges a listing page renders inside the link: `MiniMax M3.1 Flash NEW`.
+_TITLE_BADGE = re.compile(r"\s+(?:NEW|新|HOT|更新|置顶)\s*$", re.I)
+
+#: A date prefix and/or a category chip a listing page puts before the headline:
+#: `Oct 18, 2026 Announcements Investing in the public benefit fund`,
+#: `Product · Oct 12, 2026 Introducing The X Subscription`.
+_TITLE_DATE = re.compile(
+    r"^(?:[A-Z][a-z]{2,8}\.?\s+\d{1,2},\s*20\d\d|20\d\d-\d\d-\d\d)\s*(?:·\s*)?"
+)
+_TITLE_CHIP = re.compile(
+    r"^(?:Announcements?|Product|Policy|Research|News|Company|Update|Blog)\s*(?:·\s*)?",
+    re.I,
+)
+
+
+def clean_listing_title(text: str) -> str:
+    """Strip listing-page chrome from a headline.
+
+    A news index renders the date and a category chip inside the same anchor as the headline,
+    and sometimes a NEW badge after it. Left in place they become part of the title, which then
+    fails to match the same story from any other source -- the deduplicator never sees two
+    headlines about one event because one of them starts with a date.
+
+    Applied only to the HTML listing fetcher: RSS and JSON items carry a title field of their
+    own and are not wrapped in page chrome.
+    """
+    title = " ".join((text or "").split())
+    if not title:
+        return ""
+    title = _TITLE_BADGE.sub("", title)
+    # Either a date or a chip may come first, and they may alternate; strip whichever matches
+    # at the current position until neither does.
+    for _ in range(4):
+        before = title
+        title = _TITLE_DATE.sub("", title)
+        title = _TITLE_CHIP.sub("", title)
+        title = _TITLE_DATE.sub("", title)
+        title = _TITLE_CHIP.sub("", title)
+        if title == before:
+            break
+    return title.strip()
+
+
 def _same_site(a: str, b: str) -> bool:
     """Whether two hosts belong to one publisher's site tree.
 
@@ -126,15 +169,24 @@ class HtmlFetcher(BaseFetcher):
         limit = int(params.get("limit") or 30)
 
         out: list[RawItem] = []
+        seen_urls: set[str] = set()
         for node in soup.select(item_sel)[:limit]:
+            # `select_one` searches **descendants only**, so an `item_selector` that is itself
+            # an anchor (a[href^='/blog/']) matches the node but then finds no link inside it,
+            # and the source silently yields zero items. Fall back to the node itself.
             link_el = node.select_one(link_sel)
+            if link_el is None and node.name == "a" and node.get("href"):
+                link_el = node
             if link_el is None or not link_el.get("href"):
                 continue
             title_el = node.select_one(title_sel) if title_sel else link_el
-            title = title_el.get_text(" ", strip=True) if title_el else ""
+            title = clean_listing_title(title_el.get_text(" ", strip=True)) if title_el else ""
             if not title:
                 continue
             url = urljoin(spec.url, str(link_el["href"]))
+            if url in seen_urls:
+                continue
+            seen_urls.add(url)
             summary = ""
             if summary_sel:
                 summary_el = node.select_one(summary_sel)

@@ -1,4 +1,4 @@
-generated_at: '2026-10-19T15:42:50.697159+00:00'
+generated_at: '2026-10-20T04:43:50.352254+00:00'
 generated_by: scripts/build_registry.py
 source_of_truth: audit/sources_ledger.json (static audit of six repositories) + sources/local.yaml (later additions)
 policy:
@@ -6,11 +6,11 @@ policy:
   coverage_guard: tests/contract/test_source_coverage.py asserts every provenance entry survives.
 stats:
   url_level_rows_before_merge: 100
-  parameter_rows_merged: -36
+  parameter_rows_merged: -38
   merge_breakdown:
     google_trends: 21
-  unique_sources: 136
-  provenance_rows: 164
+  unique_sources: 138
+  provenance_rows: 166
   by_repository:
     CloudFlare-AI-Insight-Daily: 11
     Horizon: 45
@@ -26,13 +26,13 @@ stats:
     daily-briefing: 1
     dailydawn: 19
     daybrief: 5
-  added_locally: 56
+  added_locally: 58
   by_source_type:
     api: 34
     atom: 4
     jsonfeed: 1
-    rss: 92
-    scrape: 5
+    rss: 93
+    scrape: 6
   by_category:
     community: 22
     dataset: 1
@@ -40,7 +40,7 @@ stats:
     digest: 15
     example: 5
     lab-blog: 4
-    lab-official: 16
+    lab-official: 18
     media: 8
     mixed: 3
     model: 2
@@ -274,6 +274,37 @@ sources:
   - Horizon
   params: null
   merged_parameter_rows: 1
+- source_id: rss:official-googleai
+  name: Google AI Blog
+  url: https://blog.google/technology/ai/rss/
+  normalized_url: https://blog.google/technology/ai/rss/
+  domain: blog.google
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 2h
+  timeout_s: 20
+  needs_credential: null
+  dedup_group: google
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: Google 官方 AI 博客。实测 20 条，最新 2026-10-13。Gemini 的一手消息先出现在这里。
+  why: 此前只有 DeepMind 与 Google Research 两个 Google 源，缺了覆盖面最广的官方 AI 博客；Gemini 的发布与能力更新都先发在这里。
+  license_note: RSS 由 Google 公开发布，仅取标题与摘要并回链原文。
+  found_in:
+  - user-list:2026-10-19#官方博客 RSS，实测 20 条，最新 2026-10-13
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: rss:openai-com-news
   name: OpenAI News
   url: https://openai.com/news/rss.xml
@@ -539,6 +570,39 @@ sources:
   provenance_count: 1
   repositories: []
   params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: scrape:official-minimax
+  name: MiniMax News
+  url: https://www.minimax.io/news
+  normalized_url: https://www.minimax.io/news
+  domain: www.minimax.io
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: scrape
+  fetch_method: httpx
+  adapter: HtmlFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 2h
+  timeout_s: 25
+  needs_credential: null
+  dedup_group: minimax
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: MiniMax 没有 RSS。2026-10-19 的 M3.1-Flash 正式发布在 https://www.minimax.io/blog/minimax-m31f，而本站当天只抓到转载的「即将发布」，正是因为没有直连官网。选择器取新闻列表容器内的链接，避开侧边栏重复项。
+  why: 这家的正式发布只发官网博客，没有 RSS、没有 API。不抓网页就会系统性漏掉它的发布会。
+  license_note: 仅抓标题与链接，正文回链原文。
+  found_in:
+  - user-list:2026-10-19#官网新闻页，实测 2 条，含 M3.1-Flash 发布
+  provenance_count: 1
+  repositories: []
+  params:
+    item_selector: div.flex.flex-col.gap-\[6px\] a[href^='/blog/']
+    limit: 30
   merged_parameter_rows: 1
   added_locally: true
 - source_id: rss:wechat-jiqizhixin-xlab
