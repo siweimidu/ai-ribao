@@ -133,7 +133,21 @@ _BUSINESS_NOUN = re.compile(
     r"监管|罚款|政策|法案|立法|合规|合作|签约|份额|裁员|破产|ipo|"
     r"离职|任命|出任|加入|卸任|辞职|挖角|招聘|"
     r"资助|捐赠|拨款|补贴|专项资金|"
+    # 排名与榜单的升降是格局新闻，不是某个模型的发布。放在 _RESEARCH_NOUN 之前，
+    # 否则 `豆包登顶人气周榜` 会因为含「榜」被归到技术与洞察。
+    r"周榜|月榜|年榜|排行榜|榜首|登顶|排名第|位列第|首进|名次|榜单排名|"
+    r"ranking|leaderboard|tops? the chart|climbs to|ranks? #|"
     r"revenue|funding|valuation|acquisition|lawsuit|regulat|resign|appoint|grant",
+    re.I,
+)
+
+#: `即将发布` / `准备发布` / `预告` name a release that has not happened yet. The verb matcher
+#: sees 发布 and files them under 模型发布, putting an announcement of a future launch beside the
+#: launches themselves -- on 2026-10-19 two such items outranked the real releases.
+_FORWARD_LOOKING = re.compile(
+    r"即将(?:发布|推出|上线|开源|到来)|准备(?:发布|推出)|预告|预热|定档|将于"
+    r"|(?:将|拟|计划)于?[^，。]{0,12}(?:发布|推出|上线)"
+    r"|coming soon|will (?:be )?(?:release|launch|ship)|expected to (?:release|launch)",
     re.I,
 )
 
@@ -170,6 +184,11 @@ def classify(title: str) -> str:
         return "其他"
 
     # 1. Money, law, org.
+    # 前瞻：「即将 / 准备 / 预告 / 将于」+ 发布，是宣布而不是发生。
+    # 先于发布动词判断，否则「MiniMax 正准备发布 M3.1-Flash」会被算成一次模型发布。
+    if _FORWARD_LOOKING.search(text):
+        return "行业动态"
+
     if _BUSINESS_NOUN.search(text):
         return "行业动态"
 
