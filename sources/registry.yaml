@@ -4423,37 +4423,6 @@ sources:
   params: null
   merged_parameter_rows: 1
   added_locally: true
-- source_id: rss:jiqizhixin
-  name: 机器之心
-  url: https://www.jiqizhixin.com/rss
-  normalized_url: https://www.jiqizhixin.com/rss
-  domain: jiqizhixin.com
-  category: zh-media
-  categories_all:
-  - zh-media
-  language: zh
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
-  enabled: true
-  priority: 2
-  polling_interval: 2h
-  timeout_s: 25
-  needs_credential: null
-  dedup_group: null
-  health_status: unverified
-  last_success_at: null
-  last_failure_at: null
-  notes: 为提升多源交叉验证而新增；实测 feed 可达。
-  why: 中文 AI 头部媒体；对海外发布的跟进报道，是中文侧的第二来源。
-  license_note: null
-  found_in:
-  - user-list:2026-10-20#cross-source-coverage
-  provenance_count: 0
-  repositories: []
-  params: null
-  merged_parameter_rows: 1
-  added_locally: true
 - source_id: rss:qbitai
   name: 量子位
   url: https://www.qbitai.com/feed
