@@ -828,9 +828,44 @@
   gap: calc(var(--unit) * 2) calc(var(--unit) * 4);
   padding: calc(var(--unit) * 3.5) calc(var(--unit) * 5);
   align-items: baseline;
+  /* The row is an `<a>` now. An anchor is `inline` by default, which would collapse the
+     grid and stack the state chip under the name; `color: inherit` keeps the link from
+     turning the whole row blue, and `text-decoration: none` stops the URL line being
+     underlined on top of its own muted styling. */
+  color: inherit;
+  text-decoration: none;
+  position: relative;
 }
 
 .source-row:hover { background: var(--muted); }
+
+.source-row:focus-visible {
+  background: var(--muted);
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+/* The arrow marks the row as somewhere to go. It only appears on hover or keyboard focus,
+   so a list of 136 rows does not read as 136 call-to-actions. */
+/* The arrow marks the row as somewhere to go, and only appears on hover or keyboard focus
+   so a list of 136 rows does not read as 136 call-to-actions.
+   
+   It must not become a third grid item: `.source-row` declares two columns
+   (`minmax(0,1fr) auto`), so an extra child lands on a new row and the arrow appears under
+   the URL instead of beside it. Pinned to the right edge of the row instead. */
+.source-row::after {
+  content: "↗";
+  position: absolute;
+  top: calc(var(--unit) * 3.5);
+  right: calc(var(--unit) * 5);
+  color: var(--muted-fg);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+}
+
+.source-row:hover::after,
+.source-row:focus-visible::after { opacity: 1; }
 
 .source-row__name { font-weight: 620; }
 

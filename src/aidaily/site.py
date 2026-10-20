@@ -1377,18 +1377,30 @@ def render_sources(
                 # The variable *name* only. A value here would be a credential leak on a
                 # public page, which is the one thing this project forbids outright.
                 meta_bits.append(f"需要 {cred}")
-            items.append(
-                f'<li><div class="source-row">'
+            # The whole row is the link. A source row exists to be visited, and making the
+            # reader hunt for the URL text (which is one line of 10px grey type) is the
+            # difference between a list and a doorway. `target="_blank"` because the reader is
+            # browsing a digest: opening a feed in the same tab throws away their place.
+            link = spec.get("url") or ""
+            inner = (
                 f'<div>'
                 f'<div class="source-row__name">{esc(spec.get("name") or spec.get("source_id"))}</div>'
                 f'<div class="source-row__meta">'
                 + "".join(f"<span>{esc(b)}</span>" for b in meta_bits)
                 + "</div>"
-                f'<div class="source-row__url">{esc(spec.get("url") or "")}</div>'
+                f'<div class="source-row__url">{esc(link)}</div>'
                 f"</div>"
                 + state_html(state_label)
-                + "</div></li>"
             )
+            if link.startswith(("http://", "https://")):
+                items.append(
+                    f'<li><a class="source-row" href="{esc(link)}"'
+                    f' target="_blank" rel="noopener noreferrer">{inner}</a></li>'
+                )
+            else:
+                # A source with no http URL (an `external` push, say) is not clickable; keep it
+                # as a row rather than rendering a dead link.
+                items.append(f'<li><div class="source-row">{inner}</div></li>')
         groups_html.append(
             f'<section class="section" id="src-{esc(key)}">'
             f'<h2 class="section__title">{esc(label)}'
