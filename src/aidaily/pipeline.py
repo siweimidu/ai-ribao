@@ -189,30 +189,33 @@ def select_for_digest(
     )
 
     repeats: list[dict] = []
+    # Used by both the roundup report below and the history lookup inside the guard, so it is
+    # computed once here rather than at the first of the two uses.
+    now_ref = now or datetime.now(timezone.utc)
+    stamp = today or now_ref.astimezone().date().isoformat()
+    # Another outlet's digest is not a story: it restates events this issue already carries,
+    # which reads as duplication no matter how the ranking works. Removed before the repeat
+    # check, because a roundup usually matches several events and would otherwise be counted
+    # as a repeat of whichever one it happened to resemble.
+    roundups = [r for r in ranked if is_roundup(r.event.title)]
+    if roundups:
+        ranked = [r for r in ranked if not is_roundup(r.event.title)]
+        for r in roundups:
+            repeats.append({
+                "event_id": r.event.event_id,
+                "title": r.event.title[:120],
+                "matched_on": "roundup",
+                "days_ago": 0,
+                "first_seen": stamp,
+            })
+
     if history is not None:
         # `dedup.cross_day_window_days` was declared in the config and read by nothing --
         # dead configuration that looked like a working feature. It is wired up here.
         history.window_days = cfg.dedup.l3.cross_day_window_days
-        now_ref = now or datetime.now(timezone.utc)
-        stamp = today or now_ref.astimezone().date().isoformat()
 
         survivors: list = []
         dropped = 0
-        # Another outlet's digest is not a story: it restates events this issue already carries,
-        # which reads as duplication no matter how the ranking works. Removed before the repeat
-        # check, because a roundup usually matches several events and would otherwise be counted
-        # as a repeat of whichever one it happened to resemble.
-        roundups = [r for r in ranked if is_roundup(r.event.title)]
-        if roundups:
-            ranked = [r for r in ranked if not is_roundup(r.event.title)]
-            for r in roundups:
-                repeats.append({
-                    "event_id": r.event.event_id,
-                    "title": r.event.title[:120],
-                    "matched_on": "roundup",
-                    "days_ago": 0,
-                    "first_seen": stamp,
-                })
         for row in ranked:
             repeat = history.find_repeat(row.event, today=stamp, now=now_ref)
             if repeat is None:
