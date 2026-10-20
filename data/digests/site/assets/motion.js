@@ -65,7 +65,22 @@
     } catch { /* 数据坏了就退化成空日历，不要整页报错 */ }
 
     const have = new Set(data.dates || []);
-    const today = data.today;
+    // Computed in the browser, not read from the inlined data.
+    //
+    // `data.today` is the *build* time, baked into a static file. A page built at 20:00 on the
+    // 19th still says "today is the 19th" when it is opened on the 20th -- the reader sees the
+    // wrong day circled, and the wrong day marked as "today" in the legend.
+    //
+    // The newer calendar further down already used `new Date()`; two calendars on one page
+    // disagreeing is precisely the sort of thing nobody notices until a reader does.
+    const nowLocal = new Date();
+    const pad2 = (n) => String(n).padStart(2, "0");
+    const today = (() => {
+      const y = nowLocal.getFullYear();
+      const m = nowLocal.getMonth() + 1;
+      const d = nowLocal.getDate();
+      return `${y}-${pad2(m)}-${pad2(d)}`;
+    })();
     const current = data.current;
     const grid = cal.querySelector('.cal__grid');
     const label = cal.querySelector('.cal__month');
@@ -337,6 +352,7 @@
      而这里需要的正是"哪个最近"，那是个几何问题，观察器算不了。
      ========================================================================= */
   const tocLinks = [...document.querySelectorAll('.toc__nav a')];
+  const tocRoot = document.querySelector('.toc');
   const tocTargets = tocLinks
     .map((a) => ({ a, el: document.getElementById(decodeURIComponent(a.hash.slice(1))) }))
     .filter((x) => x.el);
@@ -347,6 +363,27 @@
         if (a.hash.slice(1) === id) a.setAttribute('aria-current', 'true');
         else a.removeAttribute('aria-current');
       });
+    };
+
+    /* ============================================================================
+       **目录自己要翻页。**
+
+       目录比视口高（实测一期 44 条 = 2841px，可见只有 900px），所以它内部有滚动条。
+       如果只是高亮跟着变、但内部滚动位置不动，读到第 30 条时目录还停在 1–15 条，
+       高亮就在可视区外面 —— 看起来像"目录不跟着动"。
+
+       这里在每次高亮变化时把当前项**带进可视区**，代价可控：只在越界时才滚，
+       且用 `block: "nearest"` 让它尽量少动，避免每滚一点目录就跳一下。
+       ========================================================================= */
+    const syncTocScroll = (link) => {
+      if (!tocRoot || tocRoot.scrollHeight <= tocRoot.clientHeight + 2) return;
+      const box = tocRoot.getBoundingClientRect();
+      const it = link.getBoundingClientRect();
+      const pad = 28;
+      // Already comfortably inside: leave it alone, so small page scrolls do not nudge the
+      // outline every frame.
+      if (it.top >= box.top + pad && it.bottom <= box.bottom - pad) return;
+      tocRoot.scrollTop += it.top - box.top - (box.height - it.height) / 2;
     };
 
     // The reading line: a target is "current" when its top has passed this offset but the
@@ -370,6 +407,7 @@
       // Above the first target nothing qualifies, and an empty highlight reads as broken.
       if (bestTop === -Infinity) best = tocTargets[0];
       setCurrent(best.a.hash.slice(1));
+      syncTocScroll(best.a);
     };
 
     const onScroll = () => {

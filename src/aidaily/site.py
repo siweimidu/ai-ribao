@@ -27,6 +27,7 @@ import json
 import re
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 from pathlib import Path
 
 from .analyze import EventInsight
@@ -114,6 +115,21 @@ def _when(event: Event) -> tuple[str, bool]:
     if not event.published_range:
         return "时间未知", False
     return event.published_range[0].astimezone(timezone.utc).strftime("%m-%d %H:%M UTC"), True
+
+
+#: The site is Chinese and the digest dates are Beijing dates, so "today" must be a Beijing
+#: date. `datetime.now(timezone.utc).astimezone()` uses the *build machine's* zone, which on a
+#: GitHub runner is UTC -- eight hours behind. A build between 16:00 and 24:00 UTC produced a
+#: page whose "today" was the previous day.
+#:
+#: The browser recomputes this anyway (see the calendars in `motion.js`); this is the value used
+#: when scripting is off, and it must not disagree with the live one.
+_SITE_TZ = ZoneInfo("Asia/Shanghai")
+
+
+def _site_today() -> str:
+    return datetime.now(_SITE_TZ).date().isoformat()
+
 
 
 @dataclass
@@ -712,7 +728,7 @@ def render_day(
     calendar_data = {
         "dates": ctx.dates,
         "current": digest.date,
-        "today": datetime.now(timezone.utc).astimezone().date().isoformat(),
+        "today": _site_today(),
     }
     search_index = [
         {"date": digest.date, "items": [{"t": e.title, "s": ", ".join(e.source_ids[:2])} for e in digest.top_events]}
@@ -864,7 +880,7 @@ def render_index(ctx: SiteContext, latest: Digest | None) -> str:
     calendar_data = {
         "dates": ctx.dates,
         "current": latest.date if latest else None,
-        "today": datetime.now(timezone.utc).astimezone().date().isoformat(),
+        "today": _site_today(),
     }
     search_index = []
 
@@ -1025,7 +1041,7 @@ def render_tibo(ctx: SiteContext, monitor: dict | None = None) -> str:
     calendar_data = {
         "dates": ctx.dates,
         "current": None,
-        "today": datetime.now(timezone.utc).astimezone().date().isoformat(),
+        "today": _site_today(),
     }
 
     event_calendar = render_event_calendar(events) if events else ""
@@ -1395,7 +1411,7 @@ def render_sources(
     calendar_data = {
         "dates": ctx.dates,
         "current": None,
-        "today": datetime.now(timezone.utc).astimezone().date().isoformat(),
+        "today": _site_today(),
     }
 
     return f"""<!doctype html>

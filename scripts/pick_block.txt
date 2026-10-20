@@ -1,0 +1,58 @@
+  const tocLinks = [...document.querySelectorAll('.toc__nav a')];
+  const tocRoot = document.querySelector('.toc');
+  const tocTargets = tocLinks
+    .map((a) => ({ a, el: document.getElementById(decodeURIComponent(a.hash.slice(1))) }))
+    .filter((x) => x.el);
+
+  if (tocTargets.length) {
+    const setCurrent = (id) => {
+      tocLinks.forEach((a) => {
+        if (a.hash.slice(1) === id) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
+      });
+    };
+
+    /* ============================================================================
+       **目录自己要翻页。**
+
+       目录比视口高（实测一期 44 条 = 2841px，可见只有 900px），所以它内部有滚动条。
+       如果只是高亮跟着变、但内部滚动位置不动，读到第 30 条时目录还停在 1–15 条，
+       高亮就在可视区外面 —— 看起来像"目录不跟着动"。
+
+       这里在每次高亮变化时把当前项**带进可视区**，代价可控：只在越界时才滚，
+       且用 `block: "nearest"` 让它尽量少动，避免每滚一点目录就跳一下。
+       ========================================================================= */
+    const syncTocScroll = (link) => {
+      if (!tocRoot || tocRoot.scrollHeight <= tocRoot.clientHeight + 2) return;
+      const box = tocRoot.getBoundingClientRect();
+      const it = link.getBoundingClientRect();
+      const pad = 28;
+      // Already comfortably inside: leave it alone, so small page scrolls do not nudge the
+      // outline every frame.
+      if (it.top >= box.top + pad && it.bottom <= box.bottom - pad) return;
+      tocRoot.scrollTop += it.top - box.top - (box.height - it.height) / 2;
+    };
+
+    // The reading line: a target is "current" when its top has passed this offset but the
+    // next target has not. 88px clears the sticky rail's height.
+    const READING_LINE = 88;
+    let ticking = false;
+
+    const pick = () => {
+      ticking = false;
+      const line = READING_LINE;
+      let best = tocTargets[0];
+      let bestTop = -Infinity;
+      for (const t of tocTargets) {
+        const top = t.el.getBoundingClientRect().top;
+        // The last target whose top is above the reading line is the one being read.
+        if (top <= line && top > bestTop) {
+          bestTop = top;
+          best = t;
+        }
+      }
+      // Above the first target nothing qualifies, and an empty highlight reads as broken.
+      if (bestTop === -Infinity) best = tocTargets[0];
+      setCurrent(best.a.hash.slice(1));
+      syncTocScroll(best.a);
+    };
