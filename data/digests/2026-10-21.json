@@ -2,50 +2,82 @@
  "digest": {
   "date": "2026-10-21",
   "kind": "deep",
-  "generated_at": "2026-10-20T23:38:39.518037Z",
-  "window_start": "2026-10-19T21:38:39.518037Z",
-  "window_end": "2026-10-20T23:38:39.518037Z",
-  "headline": "Google 开源 TorchTPU 支持原生 PyTorch 后端",
+  "generated_at": "2026-10-20T23:47:53.820138Z",
+  "window_start": "2026-10-19T21:47:53.820138Z",
+  "window_end": "2026-10-20T23:47:53.820138Z",
+  "headline": "Google 开源 TorchTPU 提供原生 PyTorch 后端",
   "top_events": [
    {
-    "event_id": "ea2be6c48ba4ff2",
+    "event_id": "ee4f45ca1eced83",
     "title": "Gemini 车载个人智能上线",
     "member_item_ids": [
-     "58904188d69b859d"
+     "267564cb3b641641",
+     "58904188d69b859d",
+     "7241de8d7349a3e9",
+     "72b2276dd56c0f60",
+     "809be787cefb514d",
+     "91b29768f4e66ad7",
+     "93f5c9588deceb6a",
+     "989fbd097dc6890a",
+     "c0c887b3fcf21aa7",
+     "d6c56e705251822c",
+     "dca9996e63574da5",
+     "e2f1ddf34a547bf5",
+     "e814c045c377f2d0",
+     "fad27689e53b8e87"
     ],
     "primary_item_id": "58904188d69b859d",
     "source_ids": [
-     "rss:aihot-news"
+     "api:news-google-com-search",
+     "rss:aihot-cat-industry",
+     "rss:aihot-demo-ars-technica-ai",
+     "rss:aihot-news",
+     "rss:aihot-news-full",
+     "rss:aihot-news-picks",
+     "rss:engadget",
+     "rss:siliconangle",
+     "rss:theverge-com-ai-artificial-intelligence",
+     "rss:zdnet-ai"
     ],
     "all_urls": [
-     "https://aihot.news/items/duhjb2yq1x0tlcxiwgqwyrjxm"
+     "https://aihot.news/items/duhjb2yq1x0tlcxiwgqwyrjxm",
+     "https://aihot.news/items/hg4871n0h9vld6vcpaha81rbb",
+     "https://aihot.news/items/ov4nfafvbhe7d8mj1uirkgsxb",
+     "https://aihot.news/items/wxpr6eo777vyhfdz8mrzkb4mj",
+     "https://aihot.news/items/zgg5xo96yfry81y6k4h4zsjhw",
+     "https://arstechnica.com/google/2026/10/geminis-personal-intelligence-is-coming-to-cars/",
+     "https://news.google.com/rss/articles/CBMieEFVX3lxTE1BOFlHVUJJWlBybjB2Mmc3SDE3dlE5X1lZa3VYQUNZNEFUbXJYTl95VExxaWljZVpwTVNHbGxlOVVfMmFoajhtWXhKdkxYZ21sT3dLMkp0aldtM3BjLXRiMkY5eG9jT0I2eE14N1pSdkN6aVhhQUI3dw?oc=5",
+     "https://siliconangle.com/2026/10/20/deepseek-open-sources-deepinfer-the-inference-framework-behind-its-production-services/",
+     "https://www.engadget.com/2292027/google-brings-gemini-personal-intelligence-to-android-auto/",
+     "https://www.theverge.com/tech/1014999/google-gemini-ai-cars-android-auto",
+     "https://www.zdnet.com/tech/gemini-on-android-auto-can-look-through-my-photos-emails-and-calendar-now-im-cautiously-optimistic/"
     ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "independent_source_count": 7,
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
-     "2026-10-20T21:22:04Z",
-     "2026-10-20T21:22:04Z"
+     "2026-10-20T19:59:33Z",
+     "2026-10-20T23:11:43Z"
     ],
     "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
+    "confidence": 0.9,
+    "evidence_level": "multi_source",
     "needs_review": false,
-    "rank_score": 42.558592,
+    "rank_score": 62.223506,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
-     "substance": 0.48,
-     "substance_chars": 288.0,
+     "substance": 1.0,
+     "substance_chars": 1381.0,
      "title_quality": 1.0,
-     "heat": 0.406623,
-     "h_corroboration": 0.3562,
+     "heat": 0.59451,
+     "h_corroboration": 1.0,
      "h_magnitude": 0.2975,
      "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.72,
+     "h_reach": 1.0,
+     "h_substance": 1.0,
      "h_velocity": 1.0,
-     "h_freshness": 0.9538,
+     "h_freshness": 0.925,
      "significance": 2.2,
      "lab_announcement": 2.2,
      "sig_model": 0.0,
@@ -59,7 +91,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 42.558592,
+     "score": 62.223506,
      "section": "要闻"
     }
    },
@@ -77,8 +109,8 @@
      "https://techcrunch.com/2026/10/20/anthropics-cloud-partnerships-are-getting-messy/"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T21:25:22Z",
      "2026-10-20T21:25:22Z"
@@ -87,21 +119,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 40.313006,
+    "rank_score": 40.294572,
     "rank_components": {
      "source_weight": 1.1,
      "source_damped": 1.0241,
      "substance": 0.335,
      "substance_chars": 201.0,
      "title_quality": 1.0,
-     "heat": 0.393638,
+     "heat": 0.393458,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.2975,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.5025,
      "h_velocity": 1.0,
-     "h_freshness": 0.9549,
+     "h_freshness": 0.9519,
      "significance": 2.2,
      "lab_announcement": 2.2,
      "sig_model": 0.0,
@@ -115,7 +147,63 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 40.313006,
+     "score": 40.294572,
+     "section": "要闻"
+    }
+   },
+   {
+    "event_id": "ed44274c0571072",
+    "title": "为什么不能让ChatGPT当医生？|AI智能|网络攻击|上海市|DeepSeek|Agent_手机新浪网 - 新浪财经",
+    "member_item_ids": [
+     "48c2629e1600f0bb"
+    ],
+    "primary_item_id": "48c2629e1600f0bb",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMinAFBVV95cUxORkdhQTIwRlNhMnFEcjAtVkZXVjUtUE5zek9kdWRVQjJqbENteGtuTEIxZ2xJNDBJWGxIS2JPN2lXQXRjd1M2cGUyTnVjeWFMRlY1RmtKRWxaR01nRmEwalF0ekthOE8wNk03dUxiVi12U2EweVFsbnZseVh0X25ET19tRExCV0xwV0h2WkZ4N2JCbngyUDFoQ2t4UkI?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
+    "published_range": [
+     "2026-10-20T18:09:12Z",
+     "2026-10-20T18:09:12Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 32.513253,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.095,
+     "substance_chars": 57.0,
+     "title_quality": 1.0,
+     "heat": 0.249288,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.1425,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8925,
+     "significance": 1.0,
+     "minor": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.844,
+     "focus_headline": 0.808,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.8783,
+     "vendor_priority": 1.45,
+     "vendor_subject": "deepseek",
+     "score": 32.513253,
      "section": "要闻"
     }
    },
@@ -133,8 +221,8 @@
      "https://aihot.news/items/j6nlcaiwdip4eazwpmqb9g2te"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T19:31:43Z",
      "2026-10-20T19:31:43Z"
@@ -143,21 +231,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 29.588166,
+    "rank_score": 29.570792,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
      "substance": 0.448,
      "substance_chars": 269.0,
      "title_quality": 1.0,
-     "heat": 0.282698,
+     "heat": 0.282532,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.6725,
      "h_velocity": 1.0,
-     "h_freshness": 0.9194,
+     "h_freshness": 0.9166,
      "significance": 1.0,
      "not_ai": 1.0,
      "sig_model": 0.0,
@@ -171,7 +259,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 29.588166,
+     "score": 29.570792,
      "section": "要闻"
     }
    },
@@ -179,42 +267,18 @@
     "event_id": "e6e2d1965ac8141",
     "title": "Google 将 Personal Intelligence 个性化功能引入车载 Gemini",
     "member_item_ids": [
-     "8c30125a9b04790e",
-     "fad27689e53b8e87",
-     "0d6cc899e5d0fd6c",
-     "312beb748abc4a8d",
-     "54912cdb953123e6",
-     "7241de8d7349a3e9",
-     "93f5c9588deceb6a",
-     "c0c887b3fcf21aa7",
-     "d6c56e705251822c",
-     "dca9996e63574da5",
-     "e2f1ddf34a547bf5"
+     "8c30125a9b04790e"
     ],
     "primary_item_id": "8c30125a9b04790e",
     "source_ids": [
-     "rss:aihot-news",
-     "api:news-google-com-search",
-     "rss:aihot-cat-industry",
-     "rss:aihot-demo-ars-technica-ai",
-     "rss:aihot-news-full",
-     "rss:aihot-news-picks",
-     "rss:engadget",
-     "rss:search-cnbc-com-combinedcms-view"
+     "rss:aihot-news"
     ],
     "all_urls": [
-     "https://aihot.news/items/c8jq05dsf8zby3d0ggbkq6cmo",
-     "https://aihot.news/items/zgg5xo96yfry81y6k4h4zsjhw",
-     "https://aihot.news/items/ov4nfafvbhe7d8mj1uirkgsxb",
-     "https://arstechnica.com/google/2026/10/geminis-personal-intelligence-is-coming-to-cars/",
-     "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1nY2NJUnpnOTFrQnZoSy1TWkRNOWlIeElQU19CYlpNajlMOU1SOHk4aTY3YkJoN2NPdVBRQjZHenB1YlR2aG84Um9NT2dLaHdpT2QzOUZsWkN3VjA1Zl9YZw?oc=5",
-     "https://news.google.com/rss/articles/CBMigAFBVV95cUxQWGdjZ1Qza0YzZUtYRVAtM29KWFUxWDNRdGNyRF92ODM0NjIxOWRjZjRXSFZuT3ppNkNzU1BPQUZId2tpNE9qdi1TOGZodW9SRnljQnBPUnZJYzh5NmUwMnRSdkN2MzhOMkdiNDFTTXM3eUF6T183YWY2MS1qSXNOMA?oc=5",
-     "https://www.cnbc.com/2026/10/20/stocks-making-the-biggest-moves-after-hours-isrg-nflx-spcx.html",
-     "https://www.engadget.com/2292027/google-brings-gemini-personal-intelligence-to-android-auto/"
+     "https://aihot.news/items/c8jq05dsf8zby3d0ggbkq6cmo"
     ],
-    "independent_source_count": 5,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T22:11:34Z",
      "2026-10-20T22:11:34Z"
@@ -223,21 +287,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 29.545568,
+    "rank_score": 29.52631,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
      "substance": 0.41,
      "substance_chars": 246.0,
      "title_quality": 1.0,
-     "heat": 0.282291,
+     "heat": 0.282107,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.615,
      "h_velocity": 1.0,
-     "h_freshness": 0.9701,
+     "h_freshness": 0.967,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -250,63 +314,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 29.545568,
-     "section": "要闻"
-    }
-   },
-   {
-    "event_id": "e493c883d7b6769",
-    "title": "Google 开源 TorchTPU，与 Amazon TorchNeuron 争夺 Nvidia 的 PyTorch 阵地",
-    "member_item_ids": [
-     "d7421367b93fcb80"
-    ],
-    "primary_item_id": "d7421367b93fcb80",
-    "source_ids": [
-     "rss:aihot-news"
-    ],
-    "all_urls": [
-     "https://aihot.news/items/ms112ly3g01lfv5qpy2k9aiyp"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
-    "published_range": [
-     "2026-10-20T18:38:24Z",
-     "2026-10-20T18:38:24Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 27.966196,
-    "rank_components": {
-     "source_weight": 1.2,
-     "source_damped": 1.0466,
-     "substance": 0.287,
-     "substance_chars": 172.0,
-     "title_quality": 1.0,
-     "heat": 0.267201,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.43,
-     "h_velocity": 1.0,
-     "h_freshness": 0.9036,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 1.0,
-     "sig_lab": 1.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0,
-     "vendor_priority": 1.0,
-     "vendor_subject": "",
-     "score": 27.966196,
+     "score": 29.52631,
      "section": "要闻"
     }
    },
@@ -326,8 +334,8 @@
      "https://aihot.news/items/t1xyj7mscxt8xv788gxmj5gsd"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T19:48:32Z",
      "2026-10-20T19:48:32Z"
@@ -336,21 +344,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 27.642053,
+    "rank_score": 27.624469,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
      "substance": 0.238,
      "substance_chars": 143.0,
      "title_quality": 1.0,
-     "heat": 0.264104,
+     "heat": 0.263936,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.3575,
      "h_velocity": 1.0,
-     "h_freshness": 0.9245,
+     "h_freshness": 0.9217,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -363,105 +371,49 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 27.642053,
+     "score": 27.624469,
      "section": "要闻"
     }
    },
    {
-    "event_id": "e4ca2026f73eeb9",
-    "title": "Gemini on Android Auto can access my photos, emails, and calendar now – why I’m OK with that (mostly)",
+    "event_id": "e8fc934f90dcfbb",
+    "title": "DeepSeek开源推理引擎，以降低AI运行成本 - 华尔街日报中文网",
     "member_item_ids": [
-     "91b29768f4e66ad7"
+     "dc8cf83b29026a2c"
     ],
-    "primary_item_id": "91b29768f4e66ad7",
+    "primary_item_id": "dc8cf83b29026a2c",
     "source_ids": [
-     "rss:zdnet-ai"
+     "api:news-google-com-search"
     ],
     "all_urls": [
-     "https://www.zdnet.com/tech/gemini-on-android-auto-can-look-through-my-photos-emails-and-calendar-now-im-cautiously-optimistic/"
+     "https://news.google.com/rss/articles/CBMitAFBVV95cUxNQmFoWlZienJEempGdG5SMEhJTVpnRDdiSmFSMlBaNS1oS3JUWjJsYzJFeTFRLTYyZFJrbXBBbVJZSkZTWXRzcUJZV29RbWUyRGM2cDNkUERvM0FHTTIzN2pwRWR6YmJ3Tk5VMm5Yd0pPMllJb2c4azRvNFRaNkR6dXJXd1hjaEJjVVVKem5rNkEyODNranFUekdwVVpTVWo0U09XbkJrV2FNSlU4VTFISmRGM0w?oc=5"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
-     "2026-10-20T20:00:00Z",
-     "2026-10-20T20:00:00Z"
+     "2026-10-20T23:21:00Z",
+     "2026-10-20T23:21:00Z"
     ],
     "unique_facts": {},
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 26.577184,
+    "rank_score": 55.02953,
     "rank_components": {
      "source_weight": 1.1,
      "source_damped": 1.0241,
-     "substance": 0.185,
-     "substance_chars": 111.0,
+     "substance": 0.055,
+     "substance_chars": 33.0,
      "title_quality": 1.0,
-     "heat": 0.259514,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.2775,
-     "h_velocity": 1.0,
-     "h_freshness": 0.928,
-     "significance": 1.0,
-     "minor": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 1.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0,
-     "vendor_priority": 1.0,
-     "vendor_subject": "",
-     "score": 26.577184,
-     "section": "要闻"
-    }
-   },
-   {
-    "event_id": "e30077b48871658",
-    "title": "DeepSeek 开源推理框架 DeepInfer，采用 Apache License 2.0",
-    "member_item_ids": [
-     "9e14a0226ef13982"
-    ],
-    "primary_item_id": "9e14a0226ef13982",
-    "source_ids": [
-     "rss:aihot-news"
-    ],
-    "all_urls": [
-     "https://aihot.news/items/q7sy38nan6ypdxhq57axgmmf6"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
-    "published_range": [
-     "2026-10-20T18:56:15Z",
-     "2026-10-20T18:56:15Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 58.318076,
-    "rank_components": {
-     "source_weight": 1.2,
-     "source_damped": 1.0466,
-     "substance": 0.262,
-     "substance_chars": 157.0,
-     "title_quality": 1.0,
-     "heat": 0.384273,
+     "heat": 0.370578,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.2975,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
-     "h_substance": 0.3925,
+     "h_substance": 0.0825,
      "h_velocity": 1.0,
-     "h_freshness": 0.9088,
+     "h_freshness": 0.9906,
      "significance": 2.2,
      "lab_announcement": 2.2,
      "sig_model": 0.0,
@@ -475,62 +427,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.45,
      "vendor_subject": "deepseek",
-     "score": 58.318076,
-     "section": "开发生态"
-    }
-   },
-   {
-    "event_id": "e9e017acc516a8e",
-    "title": "FastVideo 开源 MiniMax FastH3 Omni，附训练代码",
-    "member_item_ids": [
-     "bf838b7f38e3b3d7"
-    ],
-    "primary_item_id": "bf838b7f38e3b3d7",
-    "source_ids": [
-     "rss:aihot-news"
-    ],
-    "all_urls": [
-     "https://aihot.news/items/qfob7upx06bfl015na9tj8udn"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
-    "published_range": [
-     "2026-10-20T19:22:31Z",
-     "2026-10-20T19:22:31Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 33.645322,
-    "rank_components": {
-     "source_weight": 1.2,
-     "source_damped": 1.0466,
-     "substance": 0.415,
-     "substance_chars": 249.0,
-     "title_quality": 1.0,
-     "heat": 0.279532,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.6225,
-     "h_velocity": 1.0,
-     "h_freshness": 0.9166,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 1.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0,
-     "vendor_priority": 1.15,
-     "vendor_subject": "minimax",
-     "score": 33.645322,
+     "score": 55.02953,
      "section": "开发生态"
     }
    },
@@ -548,8 +445,8 @@
      "https://aws.amazon.com/blogs/machine-learning/securing-ai-agent-identity-with-x-509-pki-on-aws/"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T16:03:48Z",
      "2026-10-20T16:03:48Z"
@@ -558,21 +455,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 33.070976,
+    "rank_score": 33.054818,
     "rank_components": {
      "source_weight": 1.5,
      "source_damped": 1.1067,
      "substance": 1.0,
      "substance_chars": 24508.0,
      "title_quality": 1.0,
-     "heat": 0.29883,
+     "heat": 0.298684,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 1.0,
      "h_velocity": 1.0,
-     "h_freshness": 0.8608,
+     "h_freshness": 0.8583,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -585,7 +482,66 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 33.070976,
+     "score": 33.054818,
+     "section": "开发生态"
+    }
+   },
+   {
+    "event_id": "e188024fceeb4cb",
+    "title": "FastVideo 开源 MiniMax FastH3 Omni，附训练代码",
+    "member_item_ids": [
+     "05c17bea2b3ea928",
+     "44a1c3068322ffae",
+     "bf838b7f38e3b3d7"
+    ],
+    "primary_item_id": "bf838b7f38e3b3d7",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/qfob7upx06bfl015na9tj8udn",
+     "https://aihot.news/items/u3mpv8saolgxqr5vzhb3yv0ti",
+     "https://aihot.news/items/ujm2ycqzztfv7larjkichy33c"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
+    "published_range": [
+     "2026-10-20T19:22:31Z",
+     "2026-10-20T21:37:13Z"
+    ],
+    "unique_facts": {},
+    "confidence": 0.9,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 29.931159,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.415,
+     "substance_chars": 249.0,
+     "title_quality": 1.0,
+     "heat": 0.248674,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.6225,
+     "h_velocity": 0.6163,
+     "h_freshness": 0.9139,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.15,
+     "vendor_subject": "minimax",
+     "score": 29.931159,
      "section": "开发生态"
     }
    },
@@ -632,8 +588,8 @@
      "https://www.aibase.com/zh/news/31760"
     ],
     "independent_source_count": 3,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T16:00:30Z",
      "2026-10-20T17:55:30Z"
@@ -642,21 +598,21 @@
     "confidence": 0.9,
     "evidence_level": "multi_source",
     "needs_review": false,
-    "rank_score": 66.125021,
+    "rank_score": 66.103016,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
      "substance": 1.0,
      "substance_chars": 2489.0,
      "title_quality": 1.0,
-     "heat": 0.435715,
+     "heat": 0.43557,
      "h_corroboration": 0.7124,
      "h_magnitude": 0.0744,
      "h_engagement": 0.0,
      "h_reach": 0.8614,
      "h_substance": 1.0,
      "h_velocity": 1.0,
-     "h_freshness": 0.8599,
+     "h_freshness": 0.8575,
      "significance": 1.6,
      "widely_reported": 1.6,
      "sig_model": 0.0,
@@ -670,7 +626,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.45,
      "vendor_subject": "deepseek",
-     "score": 66.125021,
+     "score": 66.103016,
      "section": "模型发布"
     }
    },
@@ -688,8 +644,8 @@
      "https://the-decoder.com/deepseek-open-sources-the-inference-engine-that-powers-its-fastest-and-cheapest-ai-model/"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T18:56:15Z",
      "2026-10-20T18:56:15Z"
@@ -698,21 +654,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 62.34224,
+    "rank_score": 62.318035,
     "rank_components": {
      "source_weight": 1.1,
      "source_damped": 1.0241,
      "substance": 0.657,
      "substance_chars": 394.0,
      "title_quality": 1.0,
-     "heat": 0.419823,
+     "heat": 0.41966,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.2975,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.985,
      "h_velocity": 1.0,
-     "h_freshness": 0.9088,
+     "h_freshness": 0.9061,
      "significance": 2.2,
      "lab_announcement": 2.2,
      "sig_model": 0.0,
@@ -726,7 +682,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.45,
      "vendor_subject": "deepseek",
-     "score": 62.34224,
+     "score": 62.318035,
      "section": "模型发布"
     }
    },
@@ -744,8 +700,8 @@
      "https://aihot.news/items/louiwium4hkwsmarkxedogf20"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T20:48:08Z",
      "2026-10-20T20:48:08Z"
@@ -754,21 +710,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 42.03517,
+    "rank_score": 42.016854,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
      "substance": 0.432,
      "substance_chars": 259.0,
      "title_quality": 1.0,
-     "heat": 0.401622,
+     "heat": 0.401447,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.2975,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.6475,
      "h_velocity": 1.0,
-     "h_freshness": 0.943,
+     "h_freshness": 0.9401,
      "significance": 2.2,
      "lab_announcement": 2.2,
      "sig_model": 0.0,
@@ -782,7 +738,63 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 42.03517,
+     "score": 42.016854,
+     "section": "模型发布"
+    }
+   },
+   {
+    "event_id": "ef23df5d1659377",
+    "title": "Anthropic 向国会推 AI 安全草案：可造成50人以上死亡或超10亿美元损失时或禁止模型发布",
+    "member_item_ids": [
+     "a391ad87c8ae29e9"
+    ],
+    "primary_item_id": "a391ad87c8ae29e9",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/t5wf5m4aa1d1pkjekvhejdwsj"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
+    "published_range": [
+     "2026-10-20T23:01:23Z",
+     "2026-10-20T23:01:23Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 41.192733,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.315,
+     "substance_chars": 189.0,
+     "title_quality": 1.0,
+     "heat": 0.393573,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.2975,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.4725,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9838,
+     "significance": 2.2,
+     "lab_announcement": 2.2,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.5455,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 41.192733,
      "section": "模型发布"
     }
    },
@@ -800,8 +812,8 @@
      "https://aihot.news/items/vjy8hjzyxn2u6dcnh97xx3ygv"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T22:02:03Z",
      "2026-10-20T22:02:03Z"
@@ -810,21 +822,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 29.58848,
+    "rank_score": 29.569327,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
      "substance": 0.417,
      "substance_chars": 250.0,
      "title_quality": 1.0,
-     "heat": 0.282701,
+     "heat": 0.282518,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.625,
      "h_velocity": 1.0,
-     "h_freshness": 0.9669,
+     "h_freshness": 0.9639,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 1.0,
@@ -837,7 +849,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 29.58848,
+     "score": 29.569327,
      "section": "模型发布"
     }
    },
@@ -855,8 +867,8 @@
      "https://aihot.news/items/bhudwz5ortr8tpyn937zqpgp0"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T20:02:17Z",
      "2026-10-20T20:02:17Z"
@@ -865,21 +877,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 29.473874,
+    "rank_score": 29.456081,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
      "substance": 0.43,
      "substance_chars": 258.0,
      "title_quality": 1.0,
-     "heat": 0.281606,
+     "heat": 0.281436,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.645,
      "h_velocity": 1.0,
-     "h_freshness": 0.9287,
+     "h_freshness": 0.9259,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 1.0,
@@ -892,7 +904,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 29.473874,
+     "score": 29.456081,
      "section": "模型发布"
     }
    },
@@ -910,8 +922,8 @@
      "https://aihot.news/items/it0rrk1d6vpt8nls36egkfufs"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T20:13:39Z",
      "2026-10-20T20:13:39Z"
@@ -920,21 +932,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 28.91497,
+    "rank_score": 28.897073,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
      "substance": 0.368,
      "substance_chars": 221.0,
      "title_quality": 1.0,
-     "heat": 0.276266,
+     "heat": 0.276095,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.5525,
      "h_velocity": 1.0,
-     "h_freshness": 0.9322,
+     "h_freshness": 0.9293,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 1.0,
@@ -947,52 +959,52 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 28.91497,
+     "score": 28.897073,
      "section": "模型发布"
     }
    },
    {
-    "event_id": "ebf08dbd8869a38",
-    "title": "ElevenLabs 发布两款面向实时 AI 对话的语音到语音模型 Eleven Realtime",
+    "event_id": "e963393e51d8450",
+    "title": "Flatkey 网关接入 Codex 与 Claude Code 多模态模型",
     "member_item_ids": [
-     "a0731b74f9a72da7"
+     "ad29f6899a47e5fd"
     ],
-    "primary_item_id": "a0731b74f9a72da7",
+    "primary_item_id": "ad29f6899a47e5fd",
     "source_ids": [
      "rss:aihot-news"
     ],
     "all_urls": [
-     "https://aihot.news/items/vg2g905g13k2ui53rjubag8x1"
+     "https://aihot.news/items/r7lc1x1hjkywsm0hzru8ahr2q"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
-     "2026-10-20T19:03:15Z",
-     "2026-10-20T19:03:15Z"
+     "2026-10-20T23:32:09Z",
+     "2026-10-20T23:32:09Z"
     ],
     "unique_facts": {},
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 27.226957,
+    "rank_score": 28.819413,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
-     "substance": 0.203,
-     "substance_chars": 122.0,
+     "substance": 0.317,
+     "substance_chars": 190.0,
      "title_quality": 1.0,
-     "heat": 0.260138,
+     "heat": 0.275353,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
-     "h_substance": 0.305,
+     "h_substance": 0.475,
      "h_velocity": 1.0,
-     "h_freshness": 0.9109,
+     "h_freshness": 0.9945,
      "significance": 1.0,
      "sig_model": 0.0,
-     "sig_release": 1.0,
+     "sig_release": 0.0,
      "sig_lab": 0.0,
      "sig_first_party": 0.0,
      "magnitude_linear": 0.0,
@@ -1002,49 +1014,49 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 27.226957,
+     "score": 28.819413,
      "section": "模型发布"
     }
    },
    {
-    "event_id": "ed90f0eddeecf44",
-    "title": "奇瑞发布垂类基础大模型CheryMind和紫微芯片 - 搜狐",
+    "event_id": "e32e3572eca93a5",
+    "title": "微软警示前沿AI模型不可信：AI智能体堪比内部威胁，推出Guardian Agents防护方案 - 新浪财经",
     "member_item_ids": [
-     "bb285e95068c4926"
+     "3a810d59e5963d82"
     ],
-    "primary_item_id": "bb285e95068c4926",
+    "primary_item_id": "3a810d59e5963d82",
     "source_ids": [
      "api:news-google-com-search"
     ],
     "all_urls": [
-     "https://news.google.com/rss/articles/CBMijAFBVV95cUxQRFdFSzF3UVItbFN1VXU2elZaUHBZbzdWMlQ2S0I4ZnREUEhjQ1JXdElXYnhuRHAyeThNQVhMTWdsU3dPSmJrZmpJakY1a1VTSFVlUjJMWHplS0pldW5fQ3dlNkhNTnRrNDhpaGtmN3kyenhLbEYtRFhzb2xCNjFrMU5YWEszR2w4WTg5RA?oc=5"
+     "https://news.google.com/rss/articles/CBMisgFBVV95cUxQMXJTbWtHM0cwSGx3WVMwUU5xLXdhbmNYVDhHQ05LSHcwWUgwblpYUWx2M2tBUWtRamgydDVYMnBfTXJRVjR3amFlSUlScVNOZTVmWTF3cExZRXVaOFRGbFQ2N2tyMFBaSk5OSnpnVkd6c1g0VWVKX2piQUFWdVl3V19Ed0dqby1tZmo3RkxzU19ZNVJocWg4Q2RGY1ZKX3JMcUxiMlFlWkdMc3Uybk4tcHRn?oc=5"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
-     "2026-10-20T22:43:47Z",
-     "2026-10-20T22:43:47Z"
+     "2026-10-20T20:27:45Z",
+     "2026-10-20T20:27:45Z"
     ],
     "unique_facts": {},
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 25.627728,
+    "rank_score": 25.70597,
     "rank_components": {
      "source_weight": 1.1,
      "source_damped": 1.0241,
-     "substance": 0.047,
-     "substance_chars": 28.0,
+     "substance": 0.087,
+     "substance_chars": 52.0,
      "title_quality": 1.0,
-     "heat": 0.250243,
+     "heat": 0.251007,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
-     "h_substance": 0.07,
+     "h_substance": 0.13,
      "h_velocity": 1.0,
-     "h_freshness": 0.981,
+     "h_freshness": 0.9337,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 1.0,
@@ -1057,7 +1069,64 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 25.627728,
+     "score": 25.70597,
+     "section": "模型发布"
+    }
+   },
+   {
+    "event_id": "ee2a2835f60390b",
+    "title": "奇瑞发布垂类基础大模型CheryMind和紫微芯片 - 新浪财经",
+    "member_item_ids": [
+     "1112efd977d77f46",
+     "4aa2521a63f4409e"
+    ],
+    "primary_item_id": "4aa2521a63f4409e",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMieEFVX3lxTFA3aWFKS003aTlNWTY3NDE5VnF4UU9WSEpzWDA3MWtwdVRRVl9NZEZBOHNGaEc1YU16eXBrTVgxOFJhUjRQUkNOVDJrZDhMMVhNbENaeXJIMFRnSlVRRmlIQ0I5c2ZHaGpxRWtrREpHQ0Vtbk5ndEhWag?oc=5",
+     "https://news.google.com/rss/articles/CBMijwFBVV95cUxPbFBnWUIzNmZlMnFrY2UzelEwdUhOUjBRQU1zdnk3R25xRE9TaDRzVExBSFg1RUljaGFVRjR2YnJOd0RvVzlJZTh5ZGJjaU96cW9RR21ZZVVqRjRUN3RScXJLbElDU2ZvN0swZXpHQmoxSmk5QmtWYnlTVkhiQlZwMS11TGVCS1hYS19XTzNRdw?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
+    "published_range": [
+     "2026-10-20T22:43:00Z",
+     "2026-10-20T22:43:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 25.63756,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.05,
+     "substance_chars": 30.0,
+     "title_quality": 1.0,
+     "heat": 0.250339,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.075,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9776,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 25.63756,
      "section": "模型发布"
     }
    },
@@ -1075,8 +1144,8 @@
      "https://the-decoder.com/mistral-ai-launches-voxtral-3-a-full-voice-agent-stack-that-listens-thinks-and-talks-in-real-time/"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T17:17:55Z",
      "2026-10-20T17:17:55Z"
@@ -1085,21 +1154,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 42.914358,
+    "rank_score": 42.898689,
     "rank_components": {
      "source_weight": 1.1,
      "source_damped": 1.0241,
      "substance": 0.855,
      "substance_chars": 513.0,
      "title_quality": 1.0,
-     "heat": 0.419039,
+     "heat": 0.418886,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.2975,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 1.0,
      "h_velocity": 1.0,
-     "h_freshness": 0.8808,
+     "h_freshness": 0.8782,
      "significance": 2.2,
      "lab_announcement": 2.2,
      "sig_model": 0.0,
@@ -1113,63 +1182,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 42.914358,
-     "section": "产品应用"
-    }
-   },
-   {
-    "event_id": "e1af61254e7a6a3",
-    "title": "Perplexity Computer macOS 桌面端上线完全本地模式，基于 Qwen 3.8 后训练版本",
-    "member_item_ids": [
-     "d9ebe794cf0d645b"
-    ],
-    "primary_item_id": "d9ebe794cf0d645b",
-    "source_ids": [
-     "rss:aihot-news"
-    ],
-    "all_urls": [
-     "https://aihot.news/items/tb9vlrbxts00gg5l5i1mdrzi7"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
-    "published_range": [
-     "2026-10-20T18:59:44Z",
-     "2026-10-20T18:59:44Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 41.936995,
-    "rank_components": {
-     "source_weight": 1.2,
-     "source_damped": 1.0466,
-     "substance": 0.443,
-     "substance_chars": 266.0,
-     "title_quality": 1.0,
-     "heat": 0.400684,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.2975,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.665,
-     "h_velocity": 1.0,
-     "h_freshness": 0.9099,
-     "significance": 2.2,
-     "lab_announcement": 2.2,
-     "sig_model": 0.0,
-     "sig_release": 1.0,
-     "sig_lab": 1.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.5455,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0,
-     "vendor_priority": 1.0,
-     "vendor_subject": "",
-     "score": 41.936995,
+     "score": 42.898689,
      "section": "产品应用"
     }
    },
@@ -1187,8 +1200,8 @@
      "https://the-decoder.com/elevenlabs-releases-two-new-speech-to-speech-models-designed-for-real-time-ai-conversations/"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T19:03:15Z",
      "2026-10-20T19:03:15Z"
@@ -1197,21 +1210,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 30.911643,
+    "rank_score": 30.89495,
     "rank_components": {
      "source_weight": 1.1,
      "source_damped": 1.0241,
      "substance": 0.705,
      "substance_chars": 423.0,
      "title_quality": 1.0,
-     "heat": 0.301838,
+     "heat": 0.301675,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 1.0,
      "h_velocity": 1.0,
-     "h_freshness": 0.9109,
+     "h_freshness": 0.9082,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 1.0,
@@ -1224,49 +1237,49 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 30.911643,
+     "score": 30.89495,
      "section": "产品应用"
     }
    },
    {
-    "event_id": "edf48d27b4282c5",
-    "title": "ComfyUI 支持 Hao AI Lab 的 FastH3 OmniRef 多模态参考视频生成",
+    "event_id": "ed90cd213f1a41f",
+    "title": "Agentic 互联网转型开启，NET 成今年最佳回报之一",
     "member_item_ids": [
-     "05c17bea2b3ea928"
+     "15ceb573547cd7df"
     ],
-    "primary_item_id": "05c17bea2b3ea928",
+    "primary_item_id": "15ceb573547cd7df",
     "source_ids": [
      "rss:aihot-news"
     ],
     "all_urls": [
-     "https://aihot.news/items/ujm2ycqzztfv7larjkichy33c"
+     "https://aihot.news/items/apgyilgtiejw239mn3lwj57ng"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
-     "2026-10-20T21:37:13Z",
-     "2026-10-20T21:37:13Z"
+     "2026-10-20T22:38:26Z",
+     "2026-10-20T22:38:26Z"
     ],
     "unique_facts": {},
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 28.548125,
+    "rank_score": 28.37386,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
-     "substance": 0.312,
-     "substance_chars": 187.0,
+     "substance": 0.282,
+     "substance_chars": 169.0,
      "title_quality": 1.0,
-     "heat": 0.272761,
+     "heat": 0.271096,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
-     "h_substance": 0.4675,
+     "h_substance": 0.4225,
      "h_velocity": 1.0,
-     "h_freshness": 0.9588,
+     "h_freshness": 0.976,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -1279,7 +1292,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 28.548125,
+     "score": 28.37386,
      "section": "产品应用"
     }
    },
@@ -1297,8 +1310,8 @@
      "https://aihot.news/items/ax1oq7zaa1qjshufma207ktci"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T20:42:00Z",
      "2026-10-20T20:42:00Z"
@@ -1307,21 +1320,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 27.918783,
+    "rank_score": 27.900572,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
      "substance": 0.257,
      "substance_chars": 154.0,
      "title_quality": 1.0,
-     "heat": 0.266748,
+     "heat": 0.266574,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.385,
      "h_velocity": 1.0,
-     "h_freshness": 0.941,
+     "h_freshness": 0.9381,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -1334,7 +1347,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 27.918783,
+     "score": 27.900572,
      "section": "产品应用"
     }
    },
@@ -1352,8 +1365,8 @@
      "https://aihot.news/items/fckhelnjwg95t4b4wllqss9kz"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T21:17:49Z",
      "2026-10-20T21:17:49Z"
@@ -1362,21 +1375,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 27.048506,
+    "rank_score": 27.029876,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
      "substance": 0.157,
      "substance_chars": 94.0,
      "title_quality": 1.0,
-     "heat": 0.258433,
+     "heat": 0.258255,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.235,
      "h_velocity": 1.0,
-     "h_freshness": 0.9525,
+     "h_freshness": 0.9495,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -1389,7 +1402,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 27.048506,
+     "score": 27.029876,
      "section": "产品应用"
     }
    },
@@ -1407,8 +1420,8 @@
      "https://aihot.news/items/tf0u3atlxazjiyp2r06xyrduk"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T19:21:51Z",
      "2026-10-20T19:21:51Z"
@@ -1417,21 +1430,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 26.79072,
+    "rank_score": 26.77345,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
      "substance": 0.153,
      "substance_chars": 92.0,
      "title_quality": 1.0,
-     "heat": 0.25597,
+     "heat": 0.255805,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.23,
      "h_velocity": 1.0,
-     "h_freshness": 0.9164,
+     "h_freshness": 0.9137,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -1444,7 +1457,70 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 26.79072,
+     "score": 26.77345,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "ed8b9d88e64b8b2",
+    "title": "元宝搜索全面开放！AI搜索一夜成巨头必争之地？|WorkBuddy|腾讯AI|腾讯云|大模型|腾讯_手机新浪网 - 新浪财经",
+    "member_item_ids": [
+     "07dfcd9f6b6eae0e",
+     "5f2ea3cf54d03f81",
+     "75f7457f3dcfb060",
+     "baf689950af4878a",
+     "f7e96cadc4c0d328"
+    ],
+    "primary_item_id": "f7e96cadc4c0d328",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMidkFVX3lxTE5nZkRMd20xTmQtdGR1eHFnVFQ0UWJlWmw4TlFBdWdMdGI3ZFZTdXlKVWdHUFZLLVgtZ2ZDSjhGZDBYYkpxUWdyMUpYX2lzNl8yVk45QnkzaTRlQTJUWW9HUHdMbUdoUTZqZnRGald5V19zcEZKemc?oc=5",
+     "https://news.google.com/rss/articles/CBMidkFVX3lxTE9BT2N2US11cWw0LWJ3WTFtamtLT0tjMVJkd3dhXzRoSFNhUWtrM085VVYxcE1CQkhSczRjYVF2MEtsWkNmUF95LThuaThubjlNcjJ0cnVOakNrYjdvZVNBbC1EQTB0aDZOYzRWYWRKcEYyVW1RMnc?oc=5",
+     "https://news.google.com/rss/articles/CBMidkFVX3lxTFBFMEp2T3IyYVdtM3Rha0ttNE9mWmxoYnRtZ2ZoS2FZUDhDcExSQkFucm5zeEVHbk9GVUJ6ay1kZFc3X05QelRPOUQzVnlSemVmZmZKX0pseXdBN1dKSGs2bkJIeE1lMlpfMnRQUEJvemx5Q0Uyd2c?oc=5",
+     "https://news.google.com/rss/articles/CBMidkFVX3lxTFBPWWJiaGpDZUVxMkhpUC13WXJ3Vzh1dWp1WlpZaTVfRmNkcDVUZkQ0X1RPQ3RfSzRSdWstUEtJUjlhVElfeE1CclBDWnFSRVhIbldCZ3JBejR2RXdDSkxjMFJtU0xhQnl6NDRwWG9EWVpkOFVZUEE?oc=5",
+     "https://news.google.com/rss/articles/CBMipwFBVV95cUxOV2dBSlBBWDQ2ek5NdVE4YlU1NlZjanFGZElseW1tQ1B0SDJSV0FCbXBRQTloakdHcElPUGRTaVlKZndOOWxKT3JiVHZSaTAyWE1SM0U1ZTAxS0xaWTlSblRScXFJb3UxanJ6SWc1SkZLUFB1b2UtNTlsWlpBeUxpVTJWTGZEbFp0cUhMdHlpN3RHbl9GbERLMktJcUZqSXNxLTgwblJ0aw?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
+    "published_range": [
+     "2026-10-20T18:46:00Z",
+     "2026-10-20T22:01:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 0.9,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 19.954466,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.1,
+     "substance_chars": 60.0,
+     "title_quality": 1.0,
+     "heat": 0.208019,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.15,
+     "h_velocity": 0.4706,
+     "h_freshness": 0.9031,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.7622,
+     "focus_headline": 0.7073,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.8145,
+     "vendor_priority": 1.15,
+     "vendor_subject": "yuanbao",
+     "score": 19.954466,
      "section": "产品应用"
     }
    },
@@ -1462,8 +1538,8 @@
      "https://aihot.news/items/ktyyrcwz3mkl2h9wkxhzejt3y"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T20:17:47Z",
      "2026-10-20T20:17:47Z"
@@ -1472,21 +1548,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 40.68815,
+    "rank_score": 40.670148,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
      "substance": 0.295,
      "substance_chars": 177.0,
      "title_quality": 1.0,
-     "heat": 0.388752,
+     "heat": 0.38858,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.2975,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.4425,
      "h_velocity": 1.0,
-     "h_freshness": 0.9335,
+     "h_freshness": 0.9306,
      "significance": 2.2,
      "lab_announcement": 2.2,
      "sig_model": 0.0,
@@ -1500,131 +1576,123 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 40.68815,
+     "score": 40.670148,
      "section": "技术与洞察"
     }
    },
    {
-    "event_id": "eaee6aa9b4acce3",
-    "title": "Google DeepMind 论文发现自我进化智能体边学习边遗忘，学得最快的 GEPA 遗忘也最多",
+    "event_id": "ef6818bc29a5345",
+    "title": "DeepSeek-V4.1-Flash-20261017 (Max) 登顶 Arena 的 Agent 和 Code 两大榜单开源模型第一",
     "member_item_ids": [
-     "e002475b73859fd4"
+     "5097e6484adc7105"
     ],
-    "primary_item_id": "e002475b73859fd4",
+    "primary_item_id": "5097e6484adc7105",
     "source_ids": [
      "rss:aihot-news"
     ],
     "all_urls": [
-     "https://aihot.news/items/lls7o046whtejucmcgt9957su"
+     "https://aihot.news/items/pwdldfnta3ut27a749j2wen17"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
-     "2026-10-20T18:47:08Z",
-     "2026-10-20T18:47:08Z"
+     "2026-10-20T23:11:23Z",
+     "2026-10-20T23:11:23Z"
     ],
     "unique_facts": {},
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 28.657289,
+    "rank_score": 103.224176,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
-     "substance": 0.358,
-     "substance_chars": 215.0,
+     "substance": 0.375,
+     "substance_chars": 225.0,
      "title_quality": 1.0,
-     "heat": 0.273804,
+     "heat": 0.680171,
      "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
+     "h_magnitude": 1.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
-     "h_substance": 0.5375,
+     "h_substance": 0.5625,
      "h_velocity": 1.0,
-     "h_freshness": 0.9061,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
+     "h_freshness": 0.9873,
+     "significance": 3.2,
+     "frontier_model_release": 3.2,
+     "sig_model": 1.0,
+     "sig_release": 1.0,
      "sig_lab": 1.0,
      "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
+     "magnitude_linear": 1.0,
      "focus": 1.0,
      "focus_headline": 1.0,
      "focus_source": 0.75,
      "focus_multiplier": 1.0,
-     "vendor_priority": 1.0,
-     "vendor_subject": "",
-     "score": 28.657289,
-     "section": "技术与洞察"
+     "vendor_priority": 1.45,
+     "vendor_subject": "deepseek",
+     "score": 103.224176,
+     "section": "行业动态"
     }
    },
    {
-    "event_id": "ea9e8a57d13d161",
-    "title": "OpenAI 收购 Orchestra Bio，其 AI 智能体负责追踪药物项目进展",
+    "event_id": "e4851a758914132",
+    "title": "OpenAI 收购 AI 生物科技初创公司 Orchestra Bio",
     "member_item_ids": [
-     "045ba2c6bc86fa79",
-     "099a3dfb2c3558a6",
-     "1e9a98936e7278b9",
      "215a4c8b8e470f34",
-     "50a770f12622c812",
-     "6c0f2a048f50ea5a",
-     "9832bf4c3fd08771",
+     "4f5ac6695e11fa4e",
+     "7b787cdeb6702cb4",
      "ba753d70e035df23",
+     "dcd1680f9c974b5a",
      "f727ad7c9311616c",
      "f88410f6d37d425e",
-     "f9d15633f2167427",
      "83587cc985b27c7e"
     ],
-    "primary_item_id": "1e9a98936e7278b9",
+    "primary_item_id": "f727ad7c9311616c",
     "source_ids": [
      "api:news-google-com-search",
      "rss:aihot-demo-techcrunch-ai",
      "rss:aihot-news",
-     "rss:siliconangle",
      "rss:the-information",
      "rss:axios"
     ],
     "all_urls": [
-     "https://aihot.news/items/a7c3epixtkg8hc53pi8en7gpt",
-     "https://aihot.news/items/j6mzypumo4ur6i8ukv335n0co",
      "https://aihot.news/items/lw4y3k93rtxrbhibtk3d6ewhd",
-     "https://aihot.news/items/rw0afbayo9am7i3zmolfwliqo",
      "https://aihot.news/items/t0uhf5f98oxupf63vkhdr32zh",
-     "https://aihot.news/items/zzvpyya0h3hrxwvw0bp0azbhm",
-     "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBvbkZKWlhvaV8yVnhSRGhGR3NhUTF5bWswWVg1N3MxNzQwZ0NlcGNVSDY3cUt5bEFyZmlzVkJkZWZ5Yl9PYXptZlVkUDVlRHR1b0tF?oc=5",
-     "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9BSHpwdEcxc2o5YWd3TnRENkktczVWUXFMQ3Uwd0w5QUJ2ZzB6dWdySEJlWWVsV0VkWFdsem5tMWZZSXE0RUd0QkZ4bnotUURSSnpZUDVIODlGUmlTemFhQg?oc=5",
-     "https://siliconangle.com/2026/10/20/inception-says-mercury-3-beats-gpt-6-luna-and-claude-haiku-5-5-at-up-to-8x-the-speed/",
+     "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9VMmxlQWNHXzk1WkpHblNYV3ZMcy1GejFfVkJGYWMyeVdIMkZTNUIybFFiYy11VXZmNG1GcUVfZ29ZNVQ2REJTbzloTEMwLVZReXB6MERSMWs5aHUyRkcybQ?oc=5",
+     "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9zNk42YV9KRGJMLTZtZDl0bi0xTVEwQXVpVDhkT3dIT3JtMFZ6WGFhVXZ2R1M4QzZXTFhWTDJ5RTR2WTVVZVd5SE9GLXNlZEJURlVoUWtXQ3NMRERaUTNDVg?oc=5",
+     "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBxcHFQZTEyOWloWXgwQl9ySWljNkd0VEp0eS13Sjc2WjlxeDlQTWp1NTh3ZFZoaUxnQXQ3ZHh4R2tiUDBSYkdyWHNiWHhhbnFUQUlhN1VkdllOTG4yTl93ZUx3?oc=5",
      "https://techcrunch.com/2026/10/20/openai-acquires-startup-orchestra-bio%e2%81%a0-to-beef-up-its-biotech-business/",
      "https://www.theinformation.com/briefings/openai-buys-drug-development-company-orchestra-bio",
      "https://www.axios.com/2026/10/20/exclusive-openai-biotech-startup-drug-development"
     ],
-    "independent_source_count": 5,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "independent_source_count": 4,
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
-     "2026-10-20T18:54:29Z",
-     "2026-10-20T22:45:09Z"
+     "2026-10-20T19:33:08Z",
+     "2026-10-20T23:03:59Z"
     ],
     "unique_facts": {},
     "confidence": 0.9,
     "evidence_level": "multi_source",
     "needs_review": false,
-    "rank_score": 51.28418,
+    "rank_score": 47.941123,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
-     "substance": 0.758,
-     "substance_chars": 455.0,
+     "substance": 0.493,
+     "substance_chars": 296.0,
      "title_quality": 1.0,
-     "heat": 0.489991,
-     "h_corroboration": 0.9208,
+     "heat": 0.45805,
+     "h_corroboration": 0.8271,
      "h_magnitude": 0.0744,
      "h_engagement": 0.0,
      "h_reach": 1.0,
-     "h_substance": 1.0,
+     "h_substance": 0.74,
      "h_velocity": 1.0,
-     "h_freshness": 0.9083,
+     "h_freshness": 0.917,
      "significance": 1.6,
      "widely_reported": 1.6,
      "sig_model": 0.0,
@@ -1638,7 +1706,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 51.28418,
+     "score": 47.941123,
      "section": "行业动态"
     }
    },
@@ -1656,8 +1724,8 @@
      "https://aihot.news/items/keby8ihorkwnztf3py23qpab6"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T20:14:56Z",
      "2026-10-20T20:14:56Z"
@@ -1666,21 +1734,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 32.117674,
+    "rank_score": 32.097092,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
      "substance": 0.263,
      "substance_chars": 158.0,
      "title_quality": 1.0,
-     "heat": 0.26684,
+     "heat": 0.266669,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.395,
      "h_velocity": 1.0,
-     "h_freshness": 0.9326,
+     "h_freshness": 0.9297,
      "significance": 1.0,
      "not_ai": 1.0,
      "sig_model": 0.0,
@@ -1694,7 +1762,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.15,
      "vendor_subject": "minimax",
-     "score": 32.117674,
+     "score": 32.097092,
      "section": "行业动态"
     }
    },
@@ -1718,8 +1786,8 @@
      "https://aihot.news/items/cbzvuf1atk51l7i5c2dpgboao"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T21:25:22Z",
      "2026-10-20T21:25:22Z"
@@ -1728,21 +1796,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 27.990059,
+    "rank_score": 27.971324,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
      "substance": 0.255,
      "substance_chars": 153.0,
      "title_quality": 1.0,
-     "heat": 0.267429,
+     "heat": 0.26725,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.3825,
      "h_velocity": 1.0,
-     "h_freshness": 0.9549,
+     "h_freshness": 0.9519,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -1755,7 +1823,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 27.990059,
+     "score": 27.971324,
      "section": "行业动态"
     }
    },
@@ -1773,8 +1841,8 @@
      "https://aihot.news/items/vl5p72hpnflbg0hu4nupgxlht"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T19:39:01Z",
      "2026-10-20T19:39:01Z"
@@ -1783,21 +1851,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 27.906537,
+    "rank_score": 27.888954,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
      "substance": 0.268,
      "substance_chars": 161.0,
      "title_quality": 1.0,
-     "heat": 0.266631,
+     "heat": 0.266463,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.4025,
      "h_velocity": 1.0,
-     "h_freshness": 0.9216,
+     "h_freshness": 0.9188,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 1.0,
@@ -1810,7 +1878,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 27.906537,
+     "score": 27.888954,
      "section": "行业动态"
     }
    },
@@ -1828,8 +1896,8 @@
      "https://huggingface.co/blog/allenai/fairstress"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T16:09:19Z",
      "2026-10-20T16:09:19Z"
@@ -1838,21 +1906,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 26.042062,
+    "rank_score": 26.026781,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
      "substance": 0.11,
      "substance_chars": 66.0,
      "title_quality": 1.0,
-     "heat": 0.248817,
+     "heat": 0.248671,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.165,
      "h_velocity": 1.0,
-     "h_freshness": 0.8622,
+     "h_freshness": 0.8598,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -1865,49 +1933,49 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 26.042062,
+     "score": 26.026781,
      "section": "行业动态"
     }
    },
    {
-    "event_id": "ee5128a3ac59c72",
-    "title": "2026物理AI与世界模型大会在南京开幕，超60亿元项目集中签约 - 新浪财经",
+    "event_id": "eb2865783ad8a34",
+    "title": "AI算力投资热 普通人就业体感冰凉 - 新浪网",
     "member_item_ids": [
-     "e67d2069db08bfb9"
+     "0d6cc899e5d0fd6c"
     ],
-    "primary_item_id": "e67d2069db08bfb9",
+    "primary_item_id": "0d6cc899e5d0fd6c",
     "source_ids": [
      "api:news-google-com-search"
     ],
     "all_urls": [
-     "https://news.google.com/rss/articles/CBMi2ARBVV95cUxPLUtYTmkzNWxfYVozZjdQb29JRlJkZ0FmVFlHVllfVFN4N0ZvNUJYTGV4YXhkQkFpSkdkWGRvVW5VbTBjMDJpMmR2UUhPdUNmay1WWno2OFZ5aGdXMkNTRHFtS0FBbXFBUjIxdmRTY0hSRmRsa2JnYmRBNElKYnZwdklJakJuYmlTZTZQX2hOY1dVNkNwYWZMVDN3MVZyVWtYWXV2S04tMHJ5VUE5Tkg2WEU2aUhWTVV3VUk3MDlOWjk5cENQYk5oNm5Qc0YtaGlJcXI3SlFWVWRjVzJ4cU01d1luZkVzR3h2NGFWN1pzVmdsVkhJMk81dzE3Tkhzel8xM21YR1ZMUmVIejdVS0dRWXNnU2wyZ1htQWVGVVQ4THA5SXVBREtuSW95bnFmano5QXJKSW1XYnFhTXJwOE9PRXBiQ0NUdGFsUTd1UlZLbGtieEhmTWxPcjVYZ2JNUTVnandJUWt5ZktRcTB2S3I2RHVqVjl5aFlGTnpUMTlzVXFjbjlENnNYX0dpYld0LWwwLUo0TUwyaENDR3hreEdfZTBheThZaXVUS2x0NFhqTGJwbWl1YjAzanJoeHJNMDA5WE1Kd01qeFFXMXc4cU5CTFM5LWhXcThMVU1HMHphY2dXcU00dkdwMFV2Z3puRjQ1bkJfNF80RFozOS1HTllNVG1pNFROMENUZXRGYmdMSXczUWkwb2lkWEdJaGVxUkJSSFVJazBYbEltcS1ON0R6TDZRaU5QcVd1RzF1X3JGZFZjZER1ZUpWb0FXaHFrNkpvRGNnUUI1Nm4?oc=5"
+     "https://news.google.com/rss/articles/CBMigAFBVV95cUxQWGdjZ1Qza0YzZUtYRVAtM29KWFUxWDNRdGNyRF92ODM0NjIxOWRjZjRXSFZuT3ppNkNzU1BPQUZId2tpNE9qdi1TOGZodW9SRnljQnBPUnZJYzh5NmUwMnRSdkN2MzhOMkdiNDFTTXM3eUF6T183YWY2MS1qSXNOMA?oc=5"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
-     "2026-10-20T16:38:02Z",
-     "2026-10-20T16:38:02Z"
+     "2026-10-20T21:42:34Z",
+     "2026-10-20T21:42:34Z"
     ],
     "unique_facts": {},
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 25.083412,
+    "rank_score": 25.375899,
     "rank_components": {
      "source_weight": 1.1,
      "source_damped": 1.0241,
-     "substance": 0.062,
-     "substance_chars": 37.0,
+     "substance": 0.035,
+     "substance_chars": 21.0,
      "title_quality": 1.0,
-     "heat": 0.244928,
+     "heat": 0.247784,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
-     "h_substance": 0.0925,
+     "h_substance": 0.0525,
      "h_velocity": 1.0,
-     "h_freshness": 0.8699,
+     "h_freshness": 0.9575,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -1920,70 +1988,8 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 25.083412,
+     "score": 25.375899,
      "section": "行业动态"
-    }
-   },
-   {
-    "event_id": "e522dbc9396f0df",
-    "title": "Hugging Face CEO 批评 Netflix 的 OpenAI Agent 入侵纪录片不够准确",
-    "member_item_ids": [
-     "437a11ebbcaa4d10",
-     "8c38eb131f784e8d",
-     "b0507c7ef29f9e95"
-    ],
-    "primary_item_id": "437a11ebbcaa4d10",
-    "source_ids": [
-     "rss:aihot-demo-techcrunch-ai",
-     "rss:aihot-news",
-     "rss:engadget"
-    ],
-    "all_urls": [
-     "https://aihot.news/items/x3xlkfj3icn62170bu2l1gk2f",
-     "https://techcrunch.com/2026/10/20/hugging-face-ceo-warns-that-netflixs-openai-hack-documentary-isnt-accurate/",
-     "https://www.engadget.com/2292346/judge-tosses-sexual-abuse-lawsuit-from-sam-altmans-sister/"
-    ],
-    "independent_source_count": 3,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
-    "published_range": [
-     "2026-10-20T20:53:25Z",
-     "2026-10-20T22:24:02Z"
-    ],
-    "unique_facts": {},
-    "confidence": 0.9,
-    "evidence_level": "multi_source",
-    "needs_review": false,
-    "rank_score": 37.144392,
-    "rank_components": {
-     "source_weight": 1.2,
-     "source_damped": 1.0466,
-     "substance": 0.358,
-     "substance_chars": 215.0,
-     "title_quality": 1.0,
-     "heat": 0.413051,
-     "h_corroboration": 0.7124,
-     "h_magnitude": 0.0744,
-     "h_engagement": 0.0,
-     "h_reach": 0.8614,
-     "h_substance": 0.5375,
-     "h_velocity": 1.0,
-     "h_freshness": 0.9447,
-     "significance": 1.6,
-     "widely_reported": 1.6,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 1.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.2727,
-     "focus": 0.8194,
-     "focus_headline": 0.7778,
-     "focus_source": 0.75,
-     "focus_multiplier": 0.8592,
-     "vendor_priority": 1.0,
-     "vendor_subject": "",
-     "score": 37.144392,
-     "section": "其他"
     }
    },
    {
@@ -2003,8 +2009,8 @@
      "https://www.engadget.com/2292365/chatgpt-now-lets-you-lock-sensitive-chats-behind-a-pin/"
     ],
     "independent_source_count": 2,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T18:36:53Z",
      "2026-10-20T21:05:00Z"
@@ -2013,21 +2019,21 @@
     "confidence": 0.9,
     "evidence_level": "multi_source",
     "needs_review": false,
-    "rank_score": 35.15004,
+    "rank_score": 35.133551,
     "rank_components": {
      "source_weight": 1.1,
      "source_damped": 1.0241,
      "substance": 0.435,
      "substance_chars": 261.0,
      "title_quality": 1.0,
-     "heat": 0.343224,
+     "heat": 0.343063,
      "h_corroboration": 0.5646,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.6826,
      "h_substance": 0.6525,
      "h_velocity": 1.0,
-     "h_freshness": 0.9032,
+     "h_freshness": 0.9005,
      "significance": 1.0,
      "not_ai": 1.0,
      "sig_model": 0.0,
@@ -2041,7 +2047,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 35.15004,
+     "score": 35.133551,
      "section": "其他"
     }
    },
@@ -2059,8 +2065,8 @@
      "https://aws.amazon.com/blogs/machine-learning/work-management-context-for-ai-agents-with-smartsheet-mcp-on-aws/"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T17:59:07Z",
      "2026-10-20T17:59:07Z"
@@ -2069,21 +2075,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 33.280471,
+    "rank_score": 33.263096,
     "rank_components": {
      "source_weight": 1.5,
      "source_damped": 1.1067,
      "substance": 1.0,
      "substance_chars": 13982.0,
      "title_quality": 1.0,
-     "heat": 0.300723,
+     "heat": 0.300566,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 1.0,
      "h_velocity": 1.0,
-     "h_freshness": 0.8923,
+     "h_freshness": 0.8897,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -2096,7 +2102,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 33.280471,
+     "score": 33.263096,
      "section": "其他"
     }
    },
@@ -2114,8 +2120,8 @@
      "https://aws.amazon.com/blogs/machine-learning/from-data-to-decisions-conversational-supply-chain-intelligence-with-amazon-quick-and-amazon-bedrock-agentcore/"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T17:52:50Z",
      "2026-10-20T17:52:50Z"
@@ -2124,21 +2130,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 33.268629,
+    "rank_score": 33.251365,
     "rank_components": {
      "source_weight": 1.5,
      "source_damped": 1.1067,
      "substance": 1.0,
      "substance_chars": 25199.0,
      "title_quality": 1.0,
-     "heat": 0.300616,
+     "heat": 0.30046,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 1.0,
      "h_velocity": 1.0,
-     "h_freshness": 0.8905,
+     "h_freshness": 0.8879,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -2151,7 +2157,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 33.268629,
+     "score": 33.251365,
      "section": "其他"
     }
    },
@@ -2169,8 +2175,8 @@
      "https://aws.amazon.com/blogs/machine-learning/fine-tuning-gpt-oss-20b-for-multilingual-reasoning-on-amazon-sagemaker-hyperpod/"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T17:48:27Z",
      "2026-10-20T17:48:27Z"
@@ -2179,21 +2185,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 33.26044,
+    "rank_score": 33.243176,
     "rank_components": {
      "source_weight": 1.5,
      "source_damped": 1.1067,
      "substance": 1.0,
      "substance_chars": 17673.0,
      "title_quality": 1.0,
-     "heat": 0.300542,
+     "heat": 0.300386,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 1.0,
      "h_velocity": 1.0,
-     "h_freshness": 0.8893,
+     "h_freshness": 0.8867,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -2206,7 +2212,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 33.26044,
+     "score": 33.243176,
      "section": "其他"
     }
    },
@@ -2224,8 +2230,8 @@
      "https://aws.amazon.com/blogs/machine-learning/access-openai-gpt-models-on-amazon-bedrock-from-canada-with-cross-region-inference/"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T16:42:53Z",
      "2026-10-20T16:42:53Z"
@@ -2234,21 +2240,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 33.140254,
+    "rank_score": 33.123765,
     "rank_components": {
      "source_weight": 1.5,
      "source_damped": 1.1067,
      "substance": 1.0,
      "substance_chars": 21615.0,
      "title_quality": 1.0,
-     "heat": 0.299456,
+     "heat": 0.299307,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 1.0,
      "h_velocity": 1.0,
-     "h_freshness": 0.8712,
+     "h_freshness": 0.8687,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -2261,7 +2267,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 33.140254,
+     "score": 33.123765,
      "section": "其他"
     }
    },
@@ -2279,8 +2285,8 @@
      "https://aws.amazon.com/blogs/machine-learning/discover-tools-at-runtime-with-aws-agent-registry/"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T16:22:24Z",
      "2026-10-20T16:22:24Z"
@@ -2289,21 +2295,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 33.103734,
+    "rank_score": 33.087465,
     "rank_components": {
      "source_weight": 1.5,
      "source_damped": 1.1067,
      "substance": 1.0,
      "substance_chars": 19447.0,
      "title_quality": 1.0,
-     "heat": 0.299126,
+     "heat": 0.298979,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 1.0,
      "h_velocity": 1.0,
-     "h_freshness": 0.8657,
+     "h_freshness": 0.8632,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -2316,7 +2322,62 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 33.103734,
+     "score": 33.087465,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "ebc82f822df6d8c",
+    "title": "Inception says Mercury 3 beats GPT-6 Luna and Claude Haiku 5.5 at up to 8x the speed",
+    "member_item_ids": [
+     "50a770f12622c812"
+    ],
+    "primary_item_id": "50a770f12622c812",
+    "source_ids": [
+     "rss:siliconangle"
+    ],
+    "all_urls": [
+     "https://siliconangle.com/2026/10/20/inception-says-mercury-3-beats-gpt-6-luna-and-claude-haiku-5-5-at-up-to-8x-the-speed/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
+    "published_range": [
+     "2026-10-20T22:45:02Z",
+     "2026-10-20T22:45:02Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 31.32559,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.762,
+     "substance_chars": 457.0,
+     "title_quality": 1.0,
+     "heat": 0.30588,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9783,
+     "significance": 1.0,
+     "sig_model": 1.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 31.32559,
      "section": "其他"
     }
    },
@@ -2334,8 +2395,8 @@
      "https://siliconangle.com/2026/10/20/grafana-labs-leans-on-ai-agents-to-automate-ai-agent-observability/"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T17:00:41Z",
      "2026-10-20T17:00:41Z"
@@ -2344,21 +2405,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 30.697398,
+    "rank_score": 30.681934,
     "rank_components": {
      "source_weight": 1.1,
      "source_damped": 1.0241,
      "substance": 0.813,
      "substance_chars": 488.0,
      "title_quality": 1.0,
-     "heat": 0.299746,
+     "heat": 0.299595,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 1.0,
      "h_velocity": 1.0,
-     "h_freshness": 0.876,
+     "h_freshness": 0.8735,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -2371,7 +2432,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 30.697398,
+     "score": 30.681934,
      "section": "其他"
     }
    },
@@ -2389,8 +2450,8 @@
      "https://the-decoder.com/openai-says-gpt-6-is-much-better-with-legacy-programming-languages-such-as-cobol-and-fortran/"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T16:40:29Z",
      "2026-10-20T16:40:29Z"
@@ -2399,21 +2460,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 30.663705,
+    "rank_score": 30.648446,
     "rank_components": {
      "source_weight": 1.1,
      "source_damped": 1.0241,
      "substance": 0.915,
      "substance_chars": 549.0,
      "title_quality": 1.0,
-     "heat": 0.299417,
+     "heat": 0.299268,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 1.0,
      "h_velocity": 1.0,
-     "h_freshness": 0.8705,
+     "h_freshness": 0.8681,
      "significance": 1.0,
      "sig_model": 1.0,
      "sig_release": 0.0,
@@ -2426,7 +2487,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 30.663705,
+     "score": 30.648446,
      "section": "其他"
     }
    },
@@ -2444,8 +2505,8 @@
      "https://siliconangle.com/2026/10/20/agents-are-breaking-ai-economics-and-the-fix-starts-in-the-data-layer/"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T16:25:50Z",
      "2026-10-20T16:25:50Z"
@@ -2454,21 +2515,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 30.639536,
+    "rank_score": 30.624379,
     "rank_components": {
      "source_weight": 1.1,
      "source_damped": 1.0241,
      "substance": 0.722,
      "substance_chars": 433.0,
      "title_quality": 1.0,
-     "heat": 0.299181,
+     "heat": 0.299033,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 1.0,
      "h_velocity": 1.0,
-     "h_freshness": 0.8666,
+     "h_freshness": 0.8641,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -2481,7 +2542,63 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 30.639536,
+     "score": 30.624379,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e48c5fba18cd9f0",
+    "title": "OpenRouter：智能体用量自 2026 年 2 月以来增长 34 倍",
+    "member_item_ids": [
+     "6c0f2a048f50ea5a"
+    ],
+    "primary_item_id": "6c0f2a048f50ea5a",
+    "source_ids": [
+     "rss:aihot-news"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/rw0afbayo9am7i3zmolfwliqo"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
+    "published_range": [
+     "2026-10-20T21:00:27Z",
+     "2026-10-20T21:00:27Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 29.506947,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.423,
+     "substance_chars": 254.0,
+     "title_quality": 1.0,
+     "heat": 0.281922,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.635,
+     "h_velocity": 1.0,
+     "h_freshness": 0.944,
+     "significance": 1.0,
+     "application_not_model": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 29.506947,
      "section": "其他"
     }
    },
@@ -2499,8 +2616,8 @@
      "https://aihot.news/items/x54vbqkugv2x0hn63gan8w9cf"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T19:26:02Z",
      "2026-10-20T19:26:02Z"
@@ -2509,21 +2626,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 28.996608,
+    "rank_score": 28.979234,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
      "substance": 0.387,
      "substance_chars": 232.0,
      "title_quality": 1.0,
-     "heat": 0.277046,
+     "heat": 0.27688,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.58,
      "h_velocity": 1.0,
-     "h_freshness": 0.9177,
+     "h_freshness": 0.9149,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -2536,7 +2653,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 28.996608,
+     "score": 28.979234,
      "section": "其他"
     }
    },
@@ -2554,8 +2671,8 @@
      "https://aihot.news/items/nlo05yq3qck4mm6n548q2wnz8"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T21:10:45Z",
      "2026-10-20T21:10:45Z"
@@ -2564,21 +2681,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 28.27443,
+    "rank_score": 28.255904,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
      "substance": 0.288,
      "substance_chars": 173.0,
      "title_quality": 1.0,
-     "heat": 0.270146,
+     "heat": 0.269969,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.4325,
      "h_velocity": 1.0,
-     "h_freshness": 0.9502,
+     "h_freshness": 0.9472,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -2591,49 +2708,49 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 28.27443,
+     "score": 28.255904,
      "section": "其他"
     }
    },
    {
-    "event_id": "ecfd48df330c33e",
-    "title": "Sam Altman 欢迎 Aleksander 回归 OpenAI",
+    "event_id": "e705662d32f1149",
+    "title": "Anthropic pitches AI safety bill that may block a model if 50+ people could be killed",
     "member_item_ids": [
-     "72b2276dd56c0f60"
+     "313b4d10f13d18e6"
     ],
-    "primary_item_id": "72b2276dd56c0f60",
+    "primary_item_id": "313b4d10f13d18e6",
     "source_ids": [
-     "rss:aihot-news"
+     "rss:aihot-demo-techcrunch-ai"
     ],
     "all_urls": [
-     "https://aihot.news/items/wxpr6eo777vyhfdz8mrzkb4mj"
+     "https://techcrunch.com/2026/10/20/anthropic-pitches-ai-safety-bill-that-may-block-a-model-if-50-people-could-be-killed/"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
-     "2026-10-20T21:10:19Z",
-     "2026-10-20T21:10:19Z"
+     "2026-10-20T23:01:23Z",
+     "2026-10-20T23:01:23Z"
     ],
     "unique_facts": {},
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 27.959602,
+    "rank_score": 27.841964,
     "rank_components": {
-     "source_weight": 1.2,
-     "source_damped": 1.0466,
-     "substance": 0.255,
-     "substance_chars": 153.0,
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.285,
+     "substance_chars": 171.0,
      "title_quality": 1.0,
-     "heat": 0.267138,
+     "heat": 0.271864,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
-     "h_substance": 0.3825,
+     "h_substance": 0.4275,
      "h_velocity": 1.0,
-     "h_freshness": 0.9501,
+     "h_freshness": 0.9838,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -2646,7 +2763,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 27.959602,
+     "score": 27.841964,
      "section": "其他"
     }
    },
@@ -2664,8 +2781,8 @@
      "https://aihot.news/items/mmr19z106ldw2dtpqqiocym0d"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T20:52:34Z",
      "2026-10-20T20:52:34Z"
@@ -2674,21 +2791,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 26.730852,
+    "rank_score": 26.712536,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
      "substance": 0.128,
      "substance_chars": 77.0,
      "title_quality": 1.0,
-     "heat": 0.255398,
+     "heat": 0.255223,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.1925,
      "h_velocity": 1.0,
-     "h_freshness": 0.9444,
+     "h_freshness": 0.9415,
      "significance": 1.0,
      "sig_model": 1.0,
      "sig_release": 0.0,
@@ -2701,7 +2818,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 26.730852,
+     "score": 26.712536,
      "section": "其他"
     }
    },
@@ -2719,8 +2836,8 @@
      "https://aihot.news/items/i38j4hnbsyqpy0farv2xa5q7d"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T20:07:36Z",
      "2026-10-20T20:07:36Z"
@@ -2729,21 +2846,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 26.673915,
+    "rank_score": 26.656122,
     "rank_components": {
      "source_weight": 1.2,
      "source_damped": 1.0466,
      "substance": 0.132,
      "substance_chars": 79.0,
      "title_quality": 1.0,
-     "heat": 0.254854,
+     "heat": 0.254684,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.1975,
      "h_velocity": 1.0,
-     "h_freshness": 0.9303,
+     "h_freshness": 0.9275,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -2756,7 +2873,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 26.673915,
+     "score": 26.656122,
      "section": "其他"
     }
    },
@@ -2774,8 +2891,8 @@
      "https://www.anthropic.com/research/claude-scorpion-toxin-binder-design"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T17:48:29Z",
      "2026-10-20T17:48:29Z"
@@ -2784,21 +2901,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 26.6343,
+    "rank_score": 26.6187,
     "rank_components": {
      "source_weight": 1.0,
      "source_damped": 1.0,
      "substance": 0.287,
      "substance_chars": 172.0,
      "title_quality": 1.0,
-     "heat": 0.266343,
+     "heat": 0.266187,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.43,
      "h_velocity": 1.0,
-     "h_freshness": 0.8893,
+     "h_freshness": 0.8867,
      "significance": 1.0,
      "not_ai": 1.0,
      "sig_model": 0.0,
@@ -2812,7 +2929,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 26.6343,
+     "score": 26.6187,
      "section": "其他"
     }
    },
@@ -2830,8 +2947,8 @@
      "https://techcrunch.com/2026/10/20/eric-schmidt-reportedly-owns-about-half-as-much-of-anthropic-as-ceo-dario-amodei/"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T17:55:12Z",
      "2026-10-20T17:55:12Z"
@@ -2840,21 +2957,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 25.936396,
+    "rank_score": 25.920317,
     "rank_components": {
      "source_weight": 1.1,
      "source_damped": 1.0241,
      "substance": 0.14,
      "substance_chars": 84.0,
      "title_quality": 1.0,
-     "heat": 0.253257,
+     "heat": 0.2531,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.21,
      "h_velocity": 1.0,
-     "h_freshness": 0.8912,
+     "h_freshness": 0.8886,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -2867,7 +2984,63 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 25.936396,
+     "score": 25.920317,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e930ff15bcf2e6e",
+    "title": "马斯克：预计AI智能体3至5年内推动带宽需求增长1000倍 - 观点网",
+    "member_item_ids": [
+     "e436f383a9123c5d"
+    ],
+    "primary_item_id": "e436f383a9123c5d",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiYkFVX3lxTE0xbnM3c2lpdGRNOXlUbUJhNjlqZng5UVlxYm1Tcm5vdUxWQk5ySWRGRTJCczlhdGczMy1mdnlHYmhWV0RmRTRZNUI4dGlpT0V2NE9hNWNqRXlQbkZoQ3VPYUln?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
+    "published_range": [
+     "2026-10-20T23:22:43Z",
+     "2026-10-20T23:22:43Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "needs_review": false,
+    "rank_score": 25.767315,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.055,
+     "substance_chars": 33.0,
+     "title_quality": 1.0,
+     "heat": 0.251606,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0825,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9912,
+     "significance": 1.0,
+     "minor": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 25.767315,
      "section": "其他"
     }
    },
@@ -2885,8 +3058,8 @@
      "https://news.google.com/rss/articles/CBMic0FVX3lxTE9RNzVEdHZjQkx1WER0cVNfaUpXOThfdWd0a3oxSVlCTElITWF3R1VaWV8ySmtTamQ5Y0JCOUNzaUpJRm95OTVBVmNKbWQ2R3Ftb09tbjFRTzRkWE9PLWJHNnpidFJ6MDlYdnBlZmozV05Bd2s?oc=5"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": [
      "2026-10-20T22:29:24Z",
      "2026-10-20T22:29:24Z"
@@ -2895,21 +3068,21 @@
     "confidence": 1.0,
     "evidence_level": "single_source",
     "needs_review": false,
-    "rank_score": 25.659168,
+    "rank_score": 25.64012,
     "rank_components": {
      "source_weight": 1.1,
      "source_damped": 1.0241,
      "substance": 0.053,
      "substance_chars": 32.0,
      "title_quality": 1.0,
-     "heat": 0.25055,
+     "heat": 0.250364,
      "h_corroboration": 0.3562,
      "h_magnitude": 0.0,
      "h_engagement": 0.0,
      "h_reach": 0.4307,
      "h_substance": 0.08,
      "h_velocity": 1.0,
-     "h_freshness": 0.9761,
+     "h_freshness": 0.973,
      "significance": 1.0,
      "sig_model": 0.0,
      "sig_release": 0.0,
@@ -2922,7 +3095,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 25.659168,
+     "score": 25.64012,
      "section": "其他"
     }
    },
@@ -2940,8 +3113,8 @@
      "https://github.com/msitarzewski/agency-agents"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": null,
     "unique_facts": {},
     "confidence": 1.0,
@@ -2992,8 +3165,8 @@
      "https://github.com/vllm-project/vllm"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T22:51:29.992681Z",
-    "last_updated_at": "2026-10-20T22:51:29.992681Z",
+    "first_seen_at": "2026-10-20T23:39:57.111095Z",
+    "last_updated_at": "2026-10-20T23:39:57.111095Z",
     "published_range": null,
     "unique_facts": {},
     "confidence": 1.0,
@@ -3042,10 +3215,10 @@
    "skipped": 0
   },
   "llm_usage": {
-   "calls": 51,
-   "prompt_tokens": 74483,
-   "completion_tokens": 18661,
-   "tokens": 93144,
+   "calls": 49,
+   "prompt_tokens": 64793,
+   "completion_tokens": 18122,
+   "tokens": 82915,
    "max_calls": 400,
    "max_tokens": 2000000,
    "dead_providers": {
@@ -3063,26 +3236,26 @@
     "relay:api.camel-hub.cn#0": "relay:api.camel-hub.cn#0: HTTP 503"
    },
    "calls_per_provider": {
-    "gemini": 18,
-    "groq": 8,
-    "relay:suoxie.codes#0": 25
+    "gemini": 16,
+    "groq": 2,
+    "relay:suoxie.codes#0": 31
    }
   },
   "warnings": [
    "中转密钥已读取：112 条",
    "模型供应商 114 个（gemini, groq, relay:tokenrhythm.studio#0, relay:api.stepfun.com#0…）",
-   "rubric 评分 51 条已打分 / 12 次调用 / 51 条打了两次（均差 0.25）（标准来源：/home/runner/work/ai-ribao/ai-ribao/config/profiles/ai-daily）"
+   "rubric 评分 49 条已打分 / 10 次调用 / 49 条打了两次（均差 0.31）（标准来源：/home/runner/work/ai-ribao/ai-ribao/config/profiles/ai-daily）"
   ],
   "counts": {
-   "events": 53,
-   "events_considered": 173,
-   "multi_source_events": 7,
-   "items_after_window": 226,
-   "items_merged_away": 20,
+   "events": 56,
+   "events_considered": 197,
+   "multi_source_events": 6,
+   "items_after_window": 257,
+   "items_merged_away": 21,
    "distinct_sources_in_head": 22,
-   "head_max_source_share": 38,
+   "head_max_source_share": 33,
    "dropped_unknown": 104,
-   "late_or_ignored": 4000
+   "late_or_ignored": 4635
   }
  },
  "sections": {
@@ -3096,6 +3269,7 @@
    "e86fa3512795ab9",
    "e92fdccfa49f3ec",
    "ea07ef32198c3e8",
+   "ea8bac7f690cd06",
    "eaa5d03feab1e64",
    "ebb8fbf4d37be4d",
    "ec06bc01fe9bdd9",
@@ -3125,20 +3299,27 @@
   ],
   "media": [
    "e5922f0048f4335",
+   "e8fc934f90dcfbb",
    "e69bf241d4e32a3",
    "e0872d0da419ae7",
    "e8a894c891a1e19",
+   "ed44274c0571072",
+   "ebc82f822df6d8c",
    "ef731206ec07520",
    "e4df9373ab8cf47",
    "e7e67c70512f31a",
    "e511ed6206d1fcf",
-   "e4ca2026f73eeb9",
+   "e705662d32f1149",
    "e0b4e6a7e6a24ca",
+   "e930ff15bcf2e6e",
+   "e32e3572eca93a5",
    "e9f63e60fb7f6cd",
-   "ed90f0eddeecf44",
-   "ee5128a3ac59c72",
-   "e25cece63763697",
+   "ee2a2835f60390b",
+   "eb2865783ad8a34",
+   "ed8b9d88e64b8b2",
+   "eab10026f3c2a2d",
    "e542d72d5fd25e7",
+   "e01cb8c1905934f",
    "e06473a9cf860af",
    "e076574a56bf251",
    "e0c10570a97a388",
@@ -3146,8 +3327,12 @@
    "e123eaf3a5ac3d7",
    "e12ce51828f3c4e",
    "e13ac54e8864211",
-   "e173fcd2ff485be",
+   "e14d9cfd2c01f79",
+   "e154f8789b1edfc",
+   "e176af9e54d93ee",
    "e18f5c8446e65fc",
+   "e1b3d56190d29a2",
+   "e1d0dd1d014ff8c",
    "e21f435a6baea4d",
    "e24effc094755aa",
    "e279c4a009975f0",
@@ -3163,35 +3348,43 @@
    "e394c87944c5e41",
    "e3a2376fe94055a",
    "e3c02942030aaeb",
+   "e3c4ea562787613",
    "e3ce15f5b23c45a",
    "e3f34b061440623",
+   "e42933220d902ba",
    "e45e47b9b6d8c7a",
-   "e49d9ecfe5a693c",
-   "e4abfc9950acfc1",
+   "e471dfce5ebdc7c",
    "e4d79a00debef4b",
    "e50245fc9558f56",
+   "e50341e0f7d4de9",
    "e553c4738867247",
+   "e58c476870ad878",
    "e5a21c5ec4e73be",
-   "e5aaef101fe975a",
    "e5f1a889dc65df5",
    "e5ffde0dd59057a",
+   "e60f0856ee79ac7",
    "e622593705b16e2",
    "e62f2e7d4fc33b2",
+   "e637944d7539155",
    "e657c2321f19545",
    "e6a5ba54a106460",
    "e6de2ef36f0822d",
    "e6e02bc2ca5aff1",
+   "e74556a06ef1405",
    "e7506af7eb995b1",
    "e809e9894abde4f",
    "e81da554f5e3991",
    "e8e6f001bdddbde",
    "e8e9692ff9e7562",
+   "e964f78c3def60b",
    "ea711db09615fd7",
-   "ea7a8c107f8a21b",
-   "ea9c5beaf2f9055",
    "eaa842dcdaf702d",
+   "eae5d7454a75d60",
    "eaf72bfdb88068a",
    "eb0e724693e54f1",
+   "eb2f6513f3ae0b2",
+   "eb9ab020c19ca8c",
+   "ebb5d2a0e1e9601",
    "ebedb05db93cdd3",
    "ec2050af888db1d",
    "ec3ab37ac64bb60",
@@ -3199,21 +3392,26 @@
    "ec51c6ab06c88ca",
    "ecd92f55dadd011",
    "ecefa048146fe31",
+   "ed3c1f245d5fdf5",
    "ed43de8b17fb174",
+   "ed5a0442aa5a3ab",
+   "ed7b24c74f5fcb8",
+   "eda53ad7e45c614",
    "eddaf6eb56dea37",
    "ee1a4bcb2b0acf6",
    "ee29ea881f3d523",
    "ee47c839a0bc1bc",
    "ee4fbc5f603649d",
+   "ee5d3d994bc9b2f",
    "ee7866680d54274",
+   "ee8808c71d0cc05",
    "eea07f0758404cf",
    "eea63cbec1017f1",
+   "eee39fad024c179",
    "ef044c32641628c",
    "ef3a09e5bd6d777",
-   "ef6c77e9115571c",
    "ef87e27211fb5e9",
-   "efad4a4a0d653ea",
-   "efde9d908599985"
+   "efad4a4a0d653ea"
   ],
   "mixed": [
    "ed8678716a1b8a9",
@@ -3222,199 +3420,195 @@
    "ece8415b39bab4f",
    "efedeebad524558",
    "e736cb8cb86e051",
-   "ecc935369f81d60"
+   "e987b799a423e59",
+   "ec4e76834ba058d"
   ],
   "preset": [
-   "e4c87b7f8652c53"
+   "eeb46626c29180c"
   ],
   "zh-media": [
+   "ef6818bc29a5345",
    "ee9cf7169484fb2",
-   "e30077b48871658",
-   "ea9e8a57d13d161",
-   "ea2be6c48ba4ff2",
+   "ee4f45ca1eced83",
+   "e4851a758914132",
    "e3601c0e53a0410",
-   "e1af61254e7a6a3",
+   "ef23df5d1659377",
    "ec69104220a9801",
-   "e522dbc9396f0df",
-   "e9e017acc516a8e",
    "ee580bbd5c3400a",
-   "e6200fd5449ffcc",
+   "e188024fceeb4cb",
    "e90a93e0440cea9",
+   "e6200fd5449ffcc",
    "e6e2d1965ac8141",
+   "e48c5fba18cd9f0",
    "e8573c3cc21ea72",
    "ecdfdf790f4d21d",
    "ee02b539666a2a6",
-   "eaee6aa9b4acce3",
-   "edf48d27b4282c5",
+   "e963393e51d8450",
+   "ed90cd213f1a41f",
    "e4309ab741c1874",
-   "e493c883d7b6769",
-   "ecfd48df330c33e",
    "e660363769f99e6",
    "ec48da3bcddc653",
    "e75c7470b927c00",
-   "ebf08dbd8869a38",
    "efdd490ff0ca57a",
    "e3f47897204480c",
    "ed4ee265bb213f6",
    "e58a11669c07edb",
+   "e0f55a2d61d3249",
    "e10bf3a7ee93ca8",
+   "e12c5c540d3eee4",
    "e46cf72f1dcdd46",
    "e4f9969c33bca3c",
    "e532eb28655353c",
    "e553f2114886b66",
    "e5baca41964ed57",
    "e63786de7c247ec",
+   "e6491490aa78ae5",
    "e7e7cd151ca82e7",
    "e8aff0ad353817b",
    "eb3ff7f7802c908",
-   "ec1ad11e297fd2b",
    "ec44c600a981796",
    "ed783cd8ffe617b",
    "ee5fb6adf8a479b",
    "ee8b707979f1f3e",
-   "ee943e08c8754dc",
    "ef1a981afbc2293"
   ]
  },
  "insights": {
   "ed8678716a1b8a9": {
    "event_id": "ed8678716a1b8a9",
-   "title": "Claude设计针对蝎神经毒素的蛋白质结合剂",
+   "title": "Claude设计针对蝎毒神经毒素的蛋白结合剂",
    "facts": [
-    "Claude设计了针对蝎神经毒素的蛋白质结合剂。"
+    "Claude设计了针对蝎毒神经毒素的蛋白结合剂。"
    ],
    "inferences": [],
    "opinions": [],
    "uncertainties": [
-    "材料未说明蛋白质结合剂的具体设计方式。",
-    "材料未说明蛋白质结合剂的效果和用途。"
+    "材料未说明蛋白结合剂的具体名称。",
+    "材料未说明蛋白结合剂是否经过实验验证。",
+    "材料未说明设计所使用的方法。",
+    "材料未说明相关成果由谁发布。"
    ],
    "key_points": [
-    "Claude设计了针对蝎神经毒素的蛋白质结合剂。"
+    "Claude参与设计蛋白结合剂。",
+    "设计对象是蝎毒神经毒素。"
    ],
    "rule_based": false
   },
-  "ee9cf7169484fb2": {
-   "event_id": "ee9cf7169484fb2",
-   "title": "材料未提供 Strata 0.2 发布信息",
+  "ec48da3bcddc653": {
+   "event_id": "ec48da3bcddc653",
+   "title": "SoMark 开源 1.3B 文档解析模型 OXR",
    "facts": [
-    "六份材料中未陈述 Strata 0.2 的发布信息。",
-    "材料2称 DeepSeek 宣布全面开源推理框架 DeepInfer。",
-    "材料3称 Perplexity Computer 可在 Mac 上完全本地运行。",
-    "材料5称 Google 与 Meta 发布开源项目 TorchTPU。"
+    "SoMark 团队发布了开源文档解析模型 OXR，参数量为 1.3B。",
+    "OXR 可将 PDF 和文档图像转换为含布局坐标的 Markdown 或 JSON 数据。",
+    "OXR 登顶了 olmOCR-Bench 等三个榜单。"
    ],
    "inferences": [
-    "根据给定材料，无法确认 Strata 0.2 是否已发布及其具体能力。"
+    "OXR 的输出格式可被推断为面向智能体处理场景设计。"
    ],
    "opinions": [],
    "uncertainties": [
-    "无法确认 Strata 0.2 是否支持 16GB 硬件。",
-    "无法确认 Strata 0.2 是否能在本地流畅运行千亿级大模型。",
-    "无法确认 Strata 0.2 的版本、发布时间和发布方。",
-    "无法确认 Strata 0.2 的开源许可、硬件要求和性能数据。"
+    "材料未说明另外两个榜单的名称。",
+    "材料未说明 OXR 在三个榜单中的具体评测结果。"
    ],
    "key_points": [
-    "给定材料没有提供 Strata 0.2 的发布内容。",
-    "材料主要涉及 DeepInfer、Perplexity Computer 和 TorchTPU 等其他项目。"
+    "SoMark 开源了 1.3B 参数的文档解析模型 OXR。",
+    "OXR 支持输出含布局坐标的 Markdown 或 JSON 数据。",
+    "OXR 登顶 olmOCR-Bench 等三个榜单。"
    ],
    "rule_based": false
   },
-  "e9e017acc516a8e": {
-   "event_id": "e9e017acc516a8e",
-   "title": "FastVideo 开源 MiniMax FastH3 Omni并附训练代码",
+  "ef731206ec07520": {
+   "event_id": "ef731206ec07520",
+   "title": "Elevenlabs发布两款实时语音转换模型",
+   "facts": [
+    "Elevenlabs发布了两款面向实时人工智能对话的语音到语音模型。",
+    "Eleven Realtime模型结合了速度和准确性。",
+    "v1 Max在Big Bench Audio基准测试中的得分为98.8%，响应时间为0.57秒。",
+    "Elevenlabs表示，Artificial Analysis排行榜上没有模型同时具备更快速度和更高准确性。"
+   ],
+   "inferences": [
+    "v1 Max可能适合对响应速度和准确性都有要求的实时对话场景。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料没有说明另一款模型的名称和具体性能。",
+    "材料没有说明Artificial Analysis排行榜比较所使用的具体时间范围和评测条件。",
+    "材料没有说明Big Bench Audio基准测试的具体评测方法。"
+   ],
+   "key_points": [
+    "Elevenlabs推出两款面向实时人工智能对话的语音到语音模型。",
+    "v1 Max得分为98.8%，响应时间为0.57秒。"
+   ],
+   "rule_based": false
+  },
+  "e69bf241d4e32a3": {
+   "event_id": "e69bf241d4e32a3",
+   "title": "Mistral AI发布实时语音代理系统Voxtral 3",
+   "facts": [
+    "Mistral AI发布了面向实时语音代理的新语言模型系列Voxtral 3。",
+    "Voxtral 3结合了语音转文字、文字转语音和语音代理软件开发工具包。",
+    "Voxtral 3支持超过50种语言，并允许代理在实时对话中调用外部工具。",
+    "Voxtral 3可以运行在用户自有基础设施上，也可以通过欧盟托管的接口使用。"
+   ],
+   "inferences": [
+    "Voxtral 3可用于构建能够实时听取、处理和回应语音的代理。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明Voxtral 3包含哪些具体模型版本。",
+    "材料未说明Voxtral 3的定价和可用范围。",
+    "材料未说明Voxtral 3支持的具体语言列表。"
+   ],
+   "key_points": [
+    "Voxtral 3整合语音识别、语音合成和语音代理开发工具。",
+    "系统支持多语言实时对话、外部工具调用及自有基础设施部署。"
+   ],
+   "rule_based": false
+  },
+  "ec69104220a9801": {
+   "event_id": "ec69104220a9801",
+   "title": "Meta 的 Muse Wonder Full (Max)升至第7名",
+   "facts": [
+    "Meta 的 Muse Wonder Full (Max) 在 Agent Arena 排名第7。",
+    "该排名基于超过6500次真实智能体会话，净提升11.3%，并使 Meta 位列实验室第4位。"
+   ],
+   "inferences": [
+    "基于净提升11.3%和排名变化，可以推断 Muse Wonder Full (Max) 的 Agent Arena 表现有所提升。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料没有说明净提升11.3%的比较基准。",
+    "材料没有说明实验室第4位对应的完整实验室名称。",
+    "材料没有说明 Muse Wonder Full (Max) 发布的具体时间。"
+   ],
+   "key_points": [
+    "Muse Wonder Full (Max) 在 Agent Arena 排名第7。",
+    "Meta 位列实验室第4位。"
+   ],
+   "rule_based": false
+  },
+  "e188024fceeb4cb": {
+   "event_id": "e188024fceeb4cb",
+   "title": "FastVideo 开源 MiniMax FastH3 Omni 并附训练代码",
    "facts": [
     "FastVideo（Hao AI Lab）宣布开源与 MiniMax 合作的 FastH3 Omni，并附带训练代码。",
-    "项目在 NVIDIA Blackwell 上实现了原速度 12 倍的实时生成。",
-    "项目支持 NVFP4 和 FP8，用于 Spark 与 RTX 设备。",
-    "ComfyUI 首日可用。",
+    "FastH3 Omni 在 NVIDIA Blackwell 上实现原速度12倍的实时生成。",
+    "FastH3 Omni 支持 NVFP4 和 FP8，用于 Spark 与 RTX 设备。",
+    "ComfyUI 在项目发布首日提供支持。",
     "合作方包括 NVIDIA AI、Nuva Lab 和 Reactor。"
    ],
    "inferences": [
-    "FastH3 Omni 的开源内容同时覆盖模型项目和训练代码。"
+    "据材料，FastH3 Omni 面向 NVIDIA Blackwell、Spark 和 RTX 设备提供部署支持。"
    ],
    "opinions": [],
    "uncertainties": [
-    "材料未说明原速度的具体数值和测试条件。",
-    "材料未说明训练代码的具体功能和使用方式。",
-    "材料未说明 Spark 与 RTX 设备的具体型号。",
-    "材料未说明 FastH3 Omni 的具体任务和生成内容。"
+    "材料没有说明原速度的具体数值。",
+    "材料没有说明训练代码的具体许可方式。",
+    "材料没有说明 FastH3 Omni 的权重是否一并开放。"
    ],
    "key_points": [
-    "FastVideo 与 MiniMax 合作开源 FastH3 Omni，并提供训练代码。",
-    "项目支持 NVIDIA Blackwell、Spark 和 RTX 相关硬件配置，并可在 ComfyUI 首日使用。"
-   ],
-   "rule_based": false
-  },
-  "e6200fd5449ffcc": {
-   "event_id": "e6200fd5449ffcc",
-   "title": "Eagle Corp 开源 EAGLE-4 推理加速模型",
-   "facts": [
-    "Eagle Corp 发布了开源草稿模型 EAGLE-4。",
-    "EAGLE-4 可根据批大小、硬件和工作负载自适应调整投机解码策略。",
-    "EAGLE-4 保持目标模型的输出分布。",
-    "EAGLE-4 搭配 Qwen3.8-27B 在四块 NVIDIA B300 上实测达到每秒 961.6 个令牌。",
-    "Eagle 是服务 NVIDIA、Meta、Intel、AMD 和 Perplexity 等公司的人工智能推理平台。"
-   ],
-   "inferences": [
-    "根据材料，EAGLE-4 旨在适配不同推理环境和工作负载。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料未说明 EAGLE-4 的开源许可证。",
-    "材料未说明 EAGLE-4 的具体投机解码实现方式。",
-    "材料未说明每秒 961.6 个令牌对应的具体测试条件。"
-   ],
-   "key_points": [
-    "EAGLE-4 支持根据运行条件自适应调整投机解码策略。",
-    "EAGLE-4 搭配 Qwen3.8-27B 在四块 NVIDIA B300 上达到每秒 961.6 个令牌。"
-   ],
-   "rule_based": false
-  },
-  "e295079bc7533b1": {
-   "event_id": "e295079bc7533b1",
-   "title": "AWS Agent Registry支持运行时发现工具",
-   "facts": [
-    "代理的工具目录从少量工具扩展到数百个工具时，硬编码工具连接会失效。",
-    "方案基于 AWS Agent Registry 构建运行时发现、实例化和执行循环。",
-    "编排器通过语义搜索在运行时发现 MCP 服务器和 A2A 代理，而不是在构建时编译每个工具。"
-   ],
-   "inferences": [
-    "该方案可能减少工具数量增长后对预先配置工具连接的依赖。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料没有说明 AWS Agent Registry 支持的具体工具数量。",
-    "材料没有说明语义搜索使用的具体方法和评估结果。",
-    "材料没有说明运行时发现、实例化和执行循环的具体实现细节。"
-   ],
-   "key_points": [
-    "从硬编码工具连接转向运行时发现。",
-    "通过语义搜索发现 MCP 服务器和 A2A 代理。"
-   ],
-   "rule_based": false
-  },
-  "e90a93e0440cea9": {
-   "event_id": "e90a93e0440cea9",
-   "title": "Google 开源 TorchTPU 支持原生 PyTorch 后端",
-   "facts": [
-    "Google 开源了 TorchTPU，为 TPU 提供原生 PyTorch 后端。",
-    "TorchTPU 用于替代此前的 PyTorch/XLA 层。",
-    "TorchTPU 按写入顺序逐个运行算子，以便像显卡一样逐步调试，并可切换 torch.compile 获得生产速度。",
-    "训练 Qwen 3 8B 时，TorchTPU 最高使用了峰值 TPU 算力的 52%。",
-    "Amazon 也提供原生 PyTorch 后端，使代码可以脱离 Nvidia 显卡运行。"
-   ],
-   "inferences": [
-    "TorchTPU 可能支持开发者在逐步调试与生产运行之间切换。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料未说明 TorchTPU 的开源许可证。",
-    "材料未说明 52% 峰值 TPU 算力数据对应的具体测试条件。",
-    "材料未说明 Amazon 原生 PyTorch 后端的具体实现和性能。"
-   ],
-   "key_points": [
-    "TorchTPU 为 TPU 引入原生 PyTorch 后端并替代 PyTorch/XLA 层。",
-    "TorchTPU 支持逐算子调试，并可通过 torch.compile 获取生产速度。"
+    "FastVideo 开源与 MiniMax 合作的 FastH3 Omni，并附带训练代码。",
+    "项目在 NVIDIA Blackwell 上实现原速度12倍的实时生成，并支持 NVFP4 和 FP8。"
    ],
    "rule_based": false
   },
@@ -3422,147 +3616,60 @@
    "event_id": "e3601c0e53a0410",
    "title": "Mistral 发布 Voxtral 3 语音模型家族",
    "facts": [
-    "Mistral 发布 Voxtral 3 语音模型家族，包含语音转文本和文本转语音模型。",
-    "Voxtral 3 为 Mistral 新的 voice agents API 提供能力。",
-    "Voxtral Small Transcribe 3 在 Artificial Analysis 语音转文本排行榜排名第三，在文本转语音排行榜排名前十二。",
-    "Voxtral Small Transcribe 3 支持五十多种语言的准确转录。",
-    "Voxtral 3 可通过 Mistral 欧盟托管的 API 或自托管使用。"
+    "Mistral 发布 Voxtral 3 语音模型家族，包括语音转文本和文本转语音模型。",
+    "Voxtral 3 为新的 voice agents API 提供能力。",
+    "Voxtral Small Transcribe 3 在 Artificial Analysis 语音转文本排行榜中排名第三，文本转语音排名前十二。",
+    "Voxtral Small Transcribe 3 支持超过五十种语言的准确转录。",
+    "Voxtral 3 可通过 Mistral 在欧盟托管的接口或自托管使用。"
    ],
    "inferences": [
-    "Voxtral 3 可能覆盖语音转文本和文本转语音应用场景。"
+    "Voxtral 3 同时覆盖语音识别和语音合成场景。"
    ],
    "opinions": [],
    "uncertainties": [
-    "材料未说明 Voxtral 3 各模型的参数。",
-    "材料未说明文本转语音模型支持的语言数量。"
+    "Voxtral 3 家族中其他模型的名称和性能未说明。",
+    "Artificial Analysis 排行榜的评测条件和具体分数未说明。",
+    "Mistral 欧盟托管接口和自托管方式的具体使用条件未说明。"
    ],
    "key_points": [
-    "Voxtral 3 同时提供语音转文本和文本转语音模型。",
-    "Voxtral Small Transcribe 3 支持五十多种语言转录，并提供托管和自托管方式。"
+    "Voxtral 3 包含语音转文本和文本转语音模型。",
+    "Voxtral Small Transcribe 3 支持超过五十种语言，并提供托管或自托管使用方式。"
    ],
    "rule_based": false
   },
-  "ec69104220a9801": {
-   "event_id": "ec69104220a9801",
-   "title": "Muse Wonder Full (Max) 升至第7名",
+  "e90a93e0440cea9": {
+   "event_id": "e90a93e0440cea9",
+   "title": "Google 开源 TorchTPU 提供原生 PyTorch 后端",
    "facts": [
-    "Arena 宣布 Meta 的 Muse Wonder Full (Max) 在 Agent Arena 排名第7。",
-    "该排名净提升11.3%，基于超过6.5K次真实智能体会话，并使 Meta 位列实验室第4位。"
+    "Google 开源 TorchTPU，为 TPU 提供原生 PyTorch 后端。",
+    "TorchTPU 替代此前的 PyTorch/XLA 层。",
+    "TorchTPU 按写入顺序逐个运行算子，支持像 GPU 一样逐步调试，并可切换 torch.compile 获得生产速度。",
+    "训练 Qwen 3 8B 时，TorchTPU 最高使用了峰值 TPU 算力的 52%。",
+    "Amazon 也提供原生 PyTorch 后端，使代码可以脱离 Nvidia GPU 运行。"
    ],
    "inferences": [
-    "这表明 Muse Wonder Full (Max) 在 Agent Arena 的排名较此前有所提升。"
+    "这表明 TorchTPU 的使用流程可以在逐步调试和生产运行之间切换。"
    ],
    "opinions": [],
    "uncertainties": [
-    "材料没有说明排名提升前的具体名次。",
-    "材料没有说明实验室排名的完整评估范围。"
+    "材料未说明 TorchTPU 支持的具体 TPU 型号。",
+    "材料未说明 TorchTPU 与 PyTorch/XLA 的具体性能差异。",
+    "材料未说明 TorchTPU 的开源许可。",
+    "材料未说明 Amazon 原生 PyTorch 后端的具体产品和实现方式。"
    ],
    "key_points": [
-    "Muse Wonder Full (Max) 在 Agent Arena 排名第7。",
-    "Meta 位列实验室第4位，排名净提升11.3%。"
-   ],
-   "rule_based": false
-  },
-  "ebf08dbd8869a38": {
-   "event_id": "ebf08dbd8869a38",
-   "title": "ElevenLabs发布两款Eleven Realtime模型",
-   "facts": [
-    "ElevenLabs于10月20日发布两款语音到语音模型Eleven Realtime。",
-    "这两款模型面向实时人工智能对话。"
-   ],
-   "inferences": [
-    "ElevenLabs此次发布的模型可用于实时人工智能对话场景。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "两款模型的具体名称和差异未说明。",
-    "模型的技术能力、适用范围和开放方式未说明。"
-   ],
-   "key_points": [
-    "ElevenLabs发布Eleven Realtime。",
-    "Eleven Realtime包含两款面向实时人工智能对话的语音到语音模型。"
-   ],
-   "rule_based": false
-  },
-  "eaee6aa9b4acce3": {
-   "event_id": "eaee6aa9b4acce3",
-   "title": "GEPA学习最快但遗忘最多",
-   "facts": [
-    "自我进化智能体通过编辑系统提示词、记忆或技能文件来改进。",
-    "任务流变化时，自我进化智能体会出现遗忘。",
-    "GEPA学习新任务最快，但对旧任务的破坏也最多。"
-   ],
-   "inferences": [
-    "这表明自我进化智能体的学习速度与旧任务保持能力之间可能存在权衡。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料未说明GEPA与其他方法在学习速度和遗忘程度上的具体差距。",
-    "材料未说明实验使用了哪些任务和任务流。",
-    "材料未说明遗忘是否可以通过其他机制减轻。"
-   ],
-   "key_points": [
-    "自我进化智能体会通过修改提示词、记忆或技能文件进行改进。",
-    "任务变化可能导致智能体遗忘旧任务，GEPA的学习速度最快但遗忘最多。"
-   ],
-   "rule_based": false
-  },
-  "ec48da3bcddc653": {
-   "event_id": "ec48da3bcddc653",
-   "title": "SoMark开源1.3B文档解析模型OXR",
-   "facts": [
-    "SoMark团队发布了开源文档解析模型OXR，模型包含1.3B参数。",
-    "OXR可将PDF和文档图像转换为带布局坐标的Markdown或JSON数据。",
-    "OXR登顶olmOCR-Bench等三个榜单。"
-   ],
-   "inferences": [
-    "OXR的输出同时包含文档内容和版面位置信息。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料未说明除olmOCR-Bench外另外两个榜单的名称。",
-    "材料未说明OXR在三个榜单上的具体成绩。",
-    "材料未说明OXR支持的具体文档类型范围。"
-   ],
-   "key_points": [
-    "SoMark开源了1.3B参数文档解析模型OXR。",
-    "OXR可输出带布局坐标的Markdown或JSON数据，并登顶olmOCR-Bench等三个榜单。"
-   ],
-   "rule_based": false
-  },
-  "ea9e8a57d13d161": {
-   "event_id": "ea9e8a57d13d161",
-   "title": "OpenAI收购Orchestra Bio，整合药物研发工具",
-   "facts": [
-    "OpenAI收购Orchestra Bio，其团队和技术将与生命科学研究工具Rosalind整合。",
-    "Orchestra Bio的平台帮助生物制药团队协调药物开发流程。",
-    "Orchestra的智能体监控研究进展和项目时间线。",
-    "生产批次失败时，Orchestra的智能体可映射受影响的试验并汇总应对选项。",
-    "新药从靶点发现到获得美国审批平均仍需10到15年。"
-   ],
-   "inferences": [
-    "这笔收购可能使Rosalind覆盖药物开发流程协调、项目进度追踪和生产失败影响分析。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "交易金额未被材料说明。",
-    "交易完成时间未被材料说明。",
-    "Orchestra Bio团队和技术与Rosalind的具体整合方式未被材料说明。"
-   ],
-   "key_points": [
-    "OpenAI将Orchestra Bio的团队和技术纳入Rosalind。",
-    "Orchestra的智能体可追踪药物项目进展并分析生产批次失败的影响。"
+    "Google 开源 TorchTPU，提供原生 PyTorch 后端。",
+    "TorchTPU 支持逐步调试，并可通过 torch.compile 获得生产速度。",
+    "训练 Qwen 3 8B 时最高使用 52% 的峰值 TPU 算力。"
    ],
    "rule_based": false
   }
  },
  "factcheck": {
-  "ok": false,
-  "checked_events": 173,
-  "checked_urls": 219,
-  "violations": 1,
-  "by_kind": {
-   "wrong_evidence_level": 1
-  }
+  "ok": true,
+  "checked_events": 197,
+  "checked_urls": 243,
+  "violations": 0,
+  "by_kind": {}
  }
 }
