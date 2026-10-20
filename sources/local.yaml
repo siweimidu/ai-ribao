@@ -19,8 +19,7 @@ sources:
   - KKKKhazix/AIHOT:docs/sources.md#六种信源
   repositories:
   - KKKKhazix/AIHOT
-  license_note: 数据使用受 https://aihot.news/terms 约束，非 MIT；其代码为 MIT。 页面须保留署名与原文/canonical
-    链接。
+  license_note: 数据使用受 https://aihot.news/terms 约束，非 MIT；其代码为 MIT。 页面须保留署名与原文/canonical 链接。
 - source_id: rss:aihot-news-daily
   name: AIHOT 日报
   url: https://aihot.news/feed/daily.xml
@@ -1044,4 +1043,148 @@ sources:
   found_in:
   - user-list:2026-10-19#官网新闻页，实测 2 条，含 M3.1-Flash 发布
   license_note: 仅抓标题与链接，正文回链原文。
+  repositories: []
+- source_id: rss:wired-ai
+  name: Wired
+  url: https://www.wired.com/feed/rss
+  domain: wired.com
+  category: media
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  notes: 为提升交叉验证覆盖率而新增；实测 feed 可达（2026-10-20）。
+  why: 科技媒体头部；AI 产品与政策的深度报道，常比官方发布更早给出独立判断。
+  found_in:
+  - user-list:2026-10-20#cross-source-coverage
+  repositories: []
+- source_id: rss:engadget
+  name: Engadget
+  url: https://www.engadget.com/rss.xml
+  domain: engadget.com
+  category: media
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  notes: 为提升交叉验证覆盖率而新增；实测 feed 可达（2026-10-20）。
+  why: 消费科技媒体；硬件与 AI 功能落地的实测报道，补充官方稿缺的使用视角。
+  found_in:
+  - user-list:2026-10-20#cross-source-coverage
+  repositories: []
+- source_id: rss:marktechpost
+  name: MarkTechPost
+  url: https://www.marktechpost.com/feed/
+  domain: marktechpost.com
+  category: media
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  notes: 为提升交叉验证覆盖率而新增；实测 feed 可达（2026-10-20）。
+  why: AI 垂直媒体；论文与模型发布的快速摘要，覆盖面广。
+  found_in:
+  - user-list:2026-10-20#cross-source-coverage
+  repositories: []
+- source_id: rss:ieee-spectrum-ai
+  name: IEEE Spectrum · AI
+  url: https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss
+  domain: spectrum.ieee.org
+  category: paper
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  notes: 为提升交叉验证覆盖率而新增；实测 feed 可达（2026-10-20）。
+  why: IEEE 旗舰刊的 AI 栏目；工程与学术视角，可交叉验证技术类消息。
+  found_in:
+  - user-list:2026-10-20#cross-source-coverage
+  repositories: []
+- source_id: rss:qbitai
+  name: 量子位
+  url: https://www.qbitai.com/feed
+  domain: qbitai.com
+  category: zh-media
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  notes: 为提升交叉验证覆盖率而新增；实测 feed 可达（2026-10-20）。
+  why: 中文 AI 头部媒体；与机器之心互补，常就同一发布给出不同角度。
+  found_in:
+  - user-list:2026-10-20#cross-source-coverage
+  repositories: []
+- source_id: rss:36kr
+  name: 36氪
+  url: https://36kr.com/feed
+  domain: 36kr.com
+  category: zh-media
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  notes: 为提升交叉验证覆盖率而新增；实测 feed 可达（2026-10-20）。
+  why: 中文科技商业媒体；国内厂商动态与融资消息的一手来源。
+  found_in:
+  - user-list:2026-10-20#cross-source-coverage
+  repositories: []
+- source_id: rss:infoq-cn
+  name: InfoQ 中文
+  url: https://www.infoq.cn/feed
+  domain: infoq.cn
+  category: dev
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  notes: 为提升交叉验证覆盖率而新增；实测 feed 可达（2026-10-20）。
+  why: 面向开发者的技术媒体；框架、工具链与工程实践，补齐开发者视角。
+  found_in:
+  - user-list:2026-10-20#cross-source-coverage
+  repositories: []
+- source_id: rss:sspai
+  name: 少数派
+  url: https://sspai.com/feed
+  domain: sspai.com
+  category: product
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  notes: 为提升交叉验证覆盖率而新增；实测 feed 可达（2026-10-20）。
+  why: 中文产品与效率媒体；AI 工具的实际使用评测，覆盖产品侧。
+  found_in:
+  - user-list:2026-10-20#cross-source-coverage
   repositories: []

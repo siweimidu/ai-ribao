@@ -1,4 +1,4 @@
-generated_at: '2026-10-20T04:43:50.352254+00:00'
+generated_at: '2026-10-20T08:53:30.572381+00:00'
 generated_by: scripts/build_registry.py
 source_of_truth: audit/sources_ledger.json (static audit of six repositories) + sources/local.yaml (later additions)
 policy:
@@ -6,11 +6,11 @@ policy:
   coverage_guard: tests/contract/test_source_coverage.py asserts every provenance entry survives.
 stats:
   url_level_rows_before_merge: 100
-  parameter_rows_merged: -38
+  parameter_rows_merged: -46
   merge_breakdown:
     google_trends: 21
-  unique_sources: 138
-  provenance_rows: 166
+  unique_sources: 146
+  provenance_rows: 174
   by_repository:
     CloudFlare-AI-Insight-Daily: 11
     Horizon: 45
@@ -26,32 +26,32 @@ stats:
     daily-briefing: 1
     dailydawn: 19
     daybrief: 5
-  added_locally: 58
+  added_locally: 66
   by_source_type:
     api: 34
     atom: 4
     jsonfeed: 1
-    rss: 93
+    rss: 101
     scrape: 6
   by_category:
     community: 22
     dataset: 1
-    dev: 9
+    dev: 10
     digest: 15
     example: 5
     lab-blog: 4
     lab-official: 18
-    media: 8
+    media: 11
     mixed: 3
     model: 2
     news: 2
-    paper: 9
+    paper: 10
     preset: 11
-    product: 2
+    product: 3
     search: 1
     social: 1
     trend: 1
-    zh-media: 24
+    zh-media: 26
 sources:
 - source_id: rss:aihot-demo-aws-machine-learning-blog
   name: AWS Machine Learning Blog
@@ -729,6 +729,37 @@ sources:
   params: null
   merged_parameter_rows: 1
   added_locally: true
+- source_id: rss:infoq-cn
+  name: InfoQ 中文
+  url: https://www.infoq.cn/feed
+  normalized_url: https://www.infoq.cn/feed
+  domain: www.infoq.cn
+  category: dev
+  categories_all:
+  - dev
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 为提升交叉验证覆盖率而新增；实测 feed 可达（2026-10-20）。
+  why: 面向开发者的技术媒体；框架、工具链与工程实践，补齐开发者视角。
+  license_note: null
+  found_in:
+  - user-list:2026-10-20#cross-source-coverage
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: rss:aihot-news-daily
   name: AIHOT 日报
   url: https://aihot.news/feed/daily.xml
@@ -1097,6 +1128,68 @@ sources:
   params: null
   merged_parameter_rows: 1
   added_locally: true
+- source_id: rss:engadget
+  name: Engadget
+  url: https://www.engadget.com/rss.xml
+  normalized_url: https://www.engadget.com/rss.xml
+  domain: www.engadget.com
+  category: media
+  categories_all:
+  - media
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 为提升交叉验证覆盖率而新增；实测 feed 可达（2026-10-20）。
+  why: 消费科技媒体；硬件与 AI 功能落地的实测报道，补充官方稿缺的使用视角。
+  license_note: null
+  found_in:
+  - user-list:2026-10-20#cross-source-coverage
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:marktechpost
+  name: MarkTechPost
+  url: https://www.marktechpost.com/feed/
+  normalized_url: https://www.marktechpost.com/feed/
+  domain: www.marktechpost.com
+  category: media
+  categories_all:
+  - media
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 为提升交叉验证覆盖率而新增；实测 feed 可达（2026-10-20）。
+  why: AI 垂直媒体；论文与模型发布的快速摘要，覆盖面广。
+  license_note: null
+  found_in:
+  - user-list:2026-10-20#cross-source-coverage
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: rss:theverge-com-ai-artificial-intelligence
   name: The Verge AI
   url: https://theverge.com/rss/ai-artificial-intelligence/index.xml
@@ -1126,6 +1219,37 @@ sources:
   - Horizon
   params: null
   merged_parameter_rows: 1
+- source_id: rss:wired-ai
+  name: Wired
+  url: https://www.wired.com/feed/rss
+  normalized_url: https://www.wired.com/feed/rss
+  domain: www.wired.com
+  category: media
+  categories_all:
+  - media
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 为提升交叉验证覆盖率而新增；实测 feed 可达（2026-10-20）。
+  why: 科技媒体头部；AI 产品与政策的深度报道，常比官方发布更早给出独立判断。
+  license_note: null
+  found_in:
+  - user-list:2026-10-20#cross-source-coverage
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: rss:aihot-cat-models
   name: AIHOT 模型分类
   url: https://aihot.news/feed/category/ai-models.xml
@@ -1186,6 +1310,37 @@ sources:
   - CloudFlare-AI-Insight-Daily
   params: null
   merged_parameter_rows: 1
+- source_id: rss:ieee-spectrum-ai
+  name: IEEE Spectrum · AI
+  url: https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss
+  normalized_url: https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss
+  domain: spectrum.ieee.org
+  category: paper
+  categories_all:
+  - paper
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 为提升交叉验证覆盖率而新增；实测 feed 可达（2026-10-20）。
+  why: IEEE 旗舰刊的 AI 栏目；工程与学术视角，可交叉验证技术类消息。
+  license_note: null
+  found_in:
+  - user-list:2026-10-20#cross-source-coverage
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: rss:wechat-paperweekly
   name: PaperWeekly
   url: https://decemberpei.cyou/rssbox/wechat-paperweekly.xml
@@ -1212,6 +1367,37 @@ sources:
   license_note: null
   found_in:
   - user-list:2026-10-15#用户提供的信息源清单
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:sspai
+  name: 少数派
+  url: https://sspai.com/feed
+  normalized_url: https://sspai.com/feed
+  domain: sspai.com
+  category: product
+  categories_all:
+  - product
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 为提升交叉验证覆盖率而新增；实测 feed 可达（2026-10-20）。
+  why: 中文产品与效率媒体；AI 工具的实际使用评测，覆盖产品侧。
+  license_note: null
+  found_in:
+  - user-list:2026-10-20#cross-source-coverage
   provenance_count: 1
   repositories: []
   params: null
@@ -1362,6 +1548,37 @@ sources:
   - CloudFlare-AI-Insight-Daily
   params: null
   merged_parameter_rows: 1
+- source_id: rss:36kr
+  name: 36氪
+  url: https://36kr.com/feed
+  normalized_url: https://36kr.com/feed
+  domain: 36kr.com
+  category: zh-media
+  categories_all:
+  - zh-media
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 为提升交叉验证覆盖率而新增；实测 feed 可达（2026-10-20）。
+  why: 中文科技商业媒体；国内厂商动态与融资消息的一手来源。
+  license_note: null
+  found_in:
+  - user-list:2026-10-20#cross-source-coverage
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: rss:aihot-news
   name: AIHOT 全站
   url: https://aihot.news/feed/all.xml
@@ -1512,6 +1729,37 @@ sources:
   - ai-daily-sources
   params: null
   merged_parameter_rows: 1
+- source_id: rss:qbitai
+  name: 量子位
+  url: https://www.qbitai.com/feed
+  normalized_url: https://www.qbitai.com/feed
+  domain: www.qbitai.com
+  category: zh-media
+  categories_all:
+  - zh-media
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 2h
+  timeout_s: 25
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 为提升交叉验证覆盖率而新增；实测 feed 可达（2026-10-20）。
+  why: 中文 AI 头部媒体；与机器之心互补，常就同一发布给出不同角度。
+  license_note: null
+  found_in:
+  - user-list:2026-10-20#cross-source-coverage
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: rss:wechat-aiqianxian
   name: AI前线
   url: https://decemberpei.cyou/rssbox/wechat-aiqianxian.xml
@@ -1783,16 +2031,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-devops-top
   name: reddit r/devops
-  url: https://old.reddit.com/r/devops/top/?t=day
-  normalized_url: https://old.reddit.com/r/devops/top/?t=day
+  url: https://reddit.com/r/devops/top.json?limit=15&t=day
+  normalized_url: https://reddit.com/r/devops/top.json?limit=15&t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
+  source_type: api
+  fetch_method: httpx_json
+  adapter: ApiFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -1802,7 +2050,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: null
+  notes: ups>=20；REDDIT_CLIENT_ID 可选
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[devops]
   provenance_count: 1
@@ -1812,16 +2060,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-indiehackers-top
   name: reddit r/indiehackers
-  url: https://old.reddit.com/r/indiehackers/top/?t=day
-  normalized_url: https://old.reddit.com/r/indiehackers/top/?t=day
+  url: https://reddit.com/r/indiehackers/top.json?limit=15&t=day
+  normalized_url: https://reddit.com/r/indiehackers/top.json?limit=15&t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
+  source_type: api
+  fetch_method: httpx_json
+  adapter: ApiFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -1831,7 +2079,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: null
+  notes: ups>=20；REDDIT_CLIENT_ID 可选
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[indiehackers]
   provenance_count: 1
@@ -1841,26 +2089,26 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-localllama-top
   name: reddit r/LocalLLaMA
-  url: https://old.reddit.com/r/LocalLLaMA/top/?t=day
-  normalized_url: https://old.reddit.com/r/LocalLLaMA/top/?t=day
+  url: https://reddit.com/r/LocalLLaMA/top.json?limit=15&t=day
+  normalized_url: https://reddit.com/r/LocalLLaMA/top.json?limit=15&t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
+  source_type: api
+  fetch_method: httpx_json
+  adapter: ApiFetcher
   enabled: true
   priority: 3
-  polling_interval: 6h
+  polling_interval: 2h
   timeout_s: 20
   needs_credential: null
   dedup_group: null
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: null
+  notes: ups>=20；REDDIT_CLIENT_ID 可选
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[LocalLLaMA]
   provenance_count: 1
@@ -1870,26 +2118,26 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-machinelearning-top
   name: reddit r/MachineLearning
-  url: https://old.reddit.com/r/MachineLearning/top/?t=day
-  normalized_url: https://old.reddit.com/r/MachineLearning/top/?t=day
+  url: https://reddit.com/r/MachineLearning/top.json?limit=15&t=day
+  normalized_url: https://reddit.com/r/MachineLearning/top.json?limit=15&t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
+  source_type: api
+  fetch_method: httpx_json
+  adapter: ApiFetcher
   enabled: true
   priority: 3
-  polling_interval: 6h
+  polling_interval: 2h
   timeout_s: 20
   needs_credential: null
   dedup_group: null
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: null
+  notes: ups>=20；REDDIT_CLIENT_ID 可选
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[MachineLearning]
   provenance_count: 1
@@ -1899,16 +2147,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-opensource-top
   name: reddit r/opensource
-  url: https://old.reddit.com/r/opensource/top/?t=day
-  normalized_url: https://old.reddit.com/r/opensource/top/?t=day
+  url: https://reddit.com/r/opensource/top.json?limit=15&t=day
+  normalized_url: https://reddit.com/r/opensource/top.json?limit=15&t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
+  source_type: api
+  fetch_method: httpx_json
+  adapter: ApiFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -1918,7 +2166,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: null
+  notes: ups>=20；REDDIT_CLIENT_ID 可选
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[opensource]
   provenance_count: 1
@@ -1928,16 +2176,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-programming-top
   name: reddit r/programming
-  url: https://old.reddit.com/r/programming/top/?t=day
-  normalized_url: https://old.reddit.com/r/programming/top/?t=day
+  url: https://reddit.com/r/programming/top.json?limit=15&t=day
+  normalized_url: https://reddit.com/r/programming/top.json?limit=15&t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
+  source_type: api
+  fetch_method: httpx_json
+  adapter: ApiFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -1947,7 +2195,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: null
+  notes: ups>=20；REDDIT_CLIENT_ID 可选
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[programming]
   provenance_count: 1
@@ -1957,16 +2205,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-rust-top
   name: reddit r/rust
-  url: https://old.reddit.com/r/rust/top/?t=day
-  normalized_url: https://old.reddit.com/r/rust/top/?t=day
+  url: https://reddit.com/r/rust/top.json?limit=15&t=day
+  normalized_url: https://reddit.com/r/rust/top.json?limit=15&t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
+  source_type: api
+  fetch_method: httpx_json
+  adapter: ApiFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -1976,7 +2224,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: null
+  notes: ups>=20；REDDIT_CLIENT_ID 可选
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[rust]
   provenance_count: 1
@@ -1986,16 +2234,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-saas-top
   name: reddit r/SaaS
-  url: https://old.reddit.com/r/SaaS/top/?t=day
-  normalized_url: https://old.reddit.com/r/SaaS/top/?t=day
+  url: https://reddit.com/r/SaaS/top.json?limit=15&t=day
+  normalized_url: https://reddit.com/r/SaaS/top.json?limit=15&t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
+  source_type: api
+  fetch_method: httpx_json
+  adapter: ApiFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -2005,7 +2253,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: null
+  notes: ups>=20；REDDIT_CLIENT_ID 可选
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[SaaS]
   provenance_count: 1
@@ -2015,16 +2263,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-selfhosted-top
   name: reddit r/selfhosted
-  url: https://old.reddit.com/r/selfhosted/top/?t=day
-  normalized_url: https://old.reddit.com/r/selfhosted/top/?t=day
+  url: https://reddit.com/r/selfhosted/top.json?limit=15&t=day
+  normalized_url: https://reddit.com/r/selfhosted/top.json?limit=15&t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
+  source_type: api
+  fetch_method: httpx_json
+  adapter: ApiFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -2034,7 +2282,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: null
+  notes: ups>=20；REDDIT_CLIENT_ID 可选
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[selfhosted]
   provenance_count: 1
@@ -2044,16 +2292,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-sideproject-top
   name: reddit r/SideProject
-  url: https://old.reddit.com/r/SideProject/top/?t=day
-  normalized_url: https://old.reddit.com/r/SideProject/top/?t=day
+  url: https://reddit.com/r/SideProject/top.json?limit=15&t=day
+  normalized_url: https://reddit.com/r/SideProject/top.json?limit=15&t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
+  source_type: api
+  fetch_method: httpx_json
+  adapter: ApiFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -2063,7 +2311,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: null
+  notes: ups>=20；REDDIT_CLIENT_ID 可选
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[SideProject]
   provenance_count: 1
@@ -2073,16 +2321,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-startups-top
   name: reddit r/startups
-  url: https://old.reddit.com/r/startups/top/?t=day
-  normalized_url: https://old.reddit.com/r/startups/top/?t=day
+  url: https://reddit.com/r/startups/top.json?limit=15&t=day
+  normalized_url: https://reddit.com/r/startups/top.json?limit=15&t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
+  source_type: api
+  fetch_method: httpx_json
+  adapter: ApiFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -2092,7 +2340,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: null
+  notes: ups>=20；REDDIT_CLIENT_ID 可选
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[startups]
   provenance_count: 1
@@ -2102,16 +2350,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: api:reddit-com-webdev-top
   name: reddit r/webdev
-  url: https://old.reddit.com/r/webdev/top/?t=day
-  normalized_url: https://old.reddit.com/r/webdev/top/?t=day
+  url: https://reddit.com/r/webdev/top.json?limit=15&t=day
+  normalized_url: https://reddit.com/r/webdev/top.json?limit=15&t=day
   domain: reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
+  source_type: api
+  fetch_method: httpx_json
+  adapter: ApiFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -2121,7 +2369,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: null
+  notes: ups>=20；REDDIT_CLIENT_ID 可选
   found_in:
   - dailydawn:scripts/fetchers/reddit.py#SUBREDDITS[webdev]
   provenance_count: 1
@@ -2191,26 +2439,26 @@ sources:
   added_locally: true
 - source_id: scrape:old-reddit-com-artificial-hot
   name: r/artificial
-  url: https://www.reddit.com/r/artificial/top/.rss?t=day
-  normalized_url: https://www.reddit.com/r/artificial/top/.rss?t=day
+  url: https://old.reddit.com/r/artificial/hot
+  normalized_url: https://old.reddit.com/r/artificial/hot
   domain: old.reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
+  source_type: scrape
+  fetch_method: bs4
+  adapter: HtmlFetcher
   enabled: true
   priority: 3
-  polling_interval: 6h
+  polling_interval: 2h
   timeout_s: 20
   needs_credential: null
   dedup_group: null
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: null
+  notes: min_score=80
   found_in:
   - Horizon:data/config.github.json#sources.reddit.subreddits[2]
   provenance_count: 1
@@ -2220,16 +2468,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: scrape:old-reddit-com-localllama-hot
   name: r/LocalLLaMA
-  url: https://www.reddit.com/r/LocalLLaMA/top/.rss?t=day
-  normalized_url: https://www.reddit.com/r/LocalLLaMA/top/.rss?t=day
+  url: https://old.reddit.com/r/LocalLLaMA/hot
+  normalized_url: https://old.reddit.com/r/LocalLLaMA/hot
   domain: old.reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
+  source_type: scrape
+  fetch_method: bs4
+  adapter: HtmlFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -2239,7 +2487,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: null
+  notes: min_score=80
   found_in:
   - Horizon:data/config.github.json#sources.reddit.subreddits[1]
   provenance_count: 1
@@ -2249,16 +2497,16 @@ sources:
   merged_parameter_rows: 1
 - source_id: scrape:old-reddit-com-machinelearning-hot
   name: r/MachineLearning
-  url: https://www.reddit.com/r/MachineLearning/top/.rss?t=day
-  normalized_url: https://www.reddit.com/r/MachineLearning/top/.rss?t=day
+  url: https://old.reddit.com/r/MachineLearning/hot
+  normalized_url: https://old.reddit.com/r/MachineLearning/hot
   domain: old.reddit.com
   category: community
   categories_all:
   - community
   language: en
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
+  source_type: scrape
+  fetch_method: bs4
+  adapter: HtmlFetcher
   enabled: true
   priority: 3
   polling_interval: 2h
@@ -2268,7 +2516,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: null
+  notes: min_score=80, time_filter=day
   found_in:
   - Horizon:data/config.github.json#sources.reddit.subreddits[0]
   provenance_count: 1
@@ -4299,251 +4547,3 @@ sources:
   - Horizon
   params: null
   merged_parameter_rows: 1
-- source_id: rss:wired-ai
-  name: Wired
-  url: https://www.wired.com/feed/rss
-  normalized_url: https://www.wired.com/feed/rss
-  domain: wired.com
-  category: media
-  categories_all:
-  - media
-  language: en
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
-  enabled: true
-  priority: 2
-  polling_interval: 2h
-  timeout_s: 25
-  needs_credential: null
-  dedup_group: null
-  health_status: unverified
-  last_success_at: null
-  last_failure_at: null
-  notes: 为提升多源交叉验证而新增；实测 feed 可达。
-  why: 科技媒体头部；AI 产品与政策的深度报道，常比官方发布更早给出独立判断。
-  license_note: null
-  found_in:
-  - user-list:2026-10-20#cross-source-coverage
-  provenance_count: 0
-  repositories: []
-  params: null
-  merged_parameter_rows: 1
-  added_locally: true
-- source_id: rss:engadget
-  name: Engadget
-  url: https://www.engadget.com/rss.xml
-  normalized_url: https://www.engadget.com/rss.xml
-  domain: engadget.com
-  category: media
-  categories_all:
-  - media
-  language: en
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
-  enabled: true
-  priority: 2
-  polling_interval: 2h
-  timeout_s: 25
-  needs_credential: null
-  dedup_group: null
-  health_status: unverified
-  last_success_at: null
-  last_failure_at: null
-  notes: 为提升多源交叉验证而新增；实测 feed 可达。
-  why: 消费科技媒体；硬件与 AI 功能落地的实测报道，补充官方稿缺的使用视角。
-  license_note: null
-  found_in:
-  - user-list:2026-10-20#cross-source-coverage
-  provenance_count: 0
-  repositories: []
-  params: null
-  merged_parameter_rows: 1
-  added_locally: true
-- source_id: rss:marktechpost
-  name: MarkTechPost
-  url: https://www.marktechpost.com/feed/
-  normalized_url: https://www.marktechpost.com/feed/
-  domain: marktechpost.com
-  category: media
-  categories_all:
-  - media
-  language: en
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
-  enabled: true
-  priority: 2
-  polling_interval: 2h
-  timeout_s: 25
-  needs_credential: null
-  dedup_group: null
-  health_status: unverified
-  last_success_at: null
-  last_failure_at: null
-  notes: 为提升多源交叉验证而新增；实测 feed 可达。
-  why: AI 垂直媒体；论文与模型发布的快速摘要，覆盖面广。
-  license_note: null
-  found_in:
-  - user-list:2026-10-20#cross-source-coverage
-  provenance_count: 0
-  repositories: []
-  params: null
-  merged_parameter_rows: 1
-  added_locally: true
-- source_id: rss:ieee-spectrum-ai
-  name: IEEE Spectrum · AI
-  url: https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss
-  normalized_url: https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss
-  domain: spectrum.ieee.org
-  category: paper
-  categories_all:
-  - paper
-  language: en
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
-  enabled: true
-  priority: 2
-  polling_interval: 2h
-  timeout_s: 25
-  needs_credential: null
-  dedup_group: null
-  health_status: unverified
-  last_success_at: null
-  last_failure_at: null
-  notes: 为提升多源交叉验证而新增；实测 feed 可达。
-  why: IEEE 旗舰刊的 AI 栏目；工程与学术视角，可交叉验证技术类消息。
-  license_note: null
-  found_in:
-  - user-list:2026-10-20#cross-source-coverage
-  provenance_count: 0
-  repositories: []
-  params: null
-  merged_parameter_rows: 1
-  added_locally: true
-- source_id: rss:qbitai
-  name: 量子位
-  url: https://www.qbitai.com/feed
-  normalized_url: https://www.qbitai.com/feed
-  domain: qbitai.com
-  category: zh-media
-  categories_all:
-  - zh-media
-  language: zh
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
-  enabled: true
-  priority: 2
-  polling_interval: 2h
-  timeout_s: 25
-  needs_credential: null
-  dedup_group: null
-  health_status: unverified
-  last_success_at: null
-  last_failure_at: null
-  notes: 为提升多源交叉验证而新增；实测 feed 可达。
-  why: 中文 AI 头部媒体；与机器之心互补，常就同一发布给出不同角度。
-  license_note: null
-  found_in:
-  - user-list:2026-10-20#cross-source-coverage
-  provenance_count: 0
-  repositories: []
-  params: null
-  merged_parameter_rows: 1
-  added_locally: true
-- source_id: rss:36kr
-  name: 36氪
-  url: https://36kr.com/feed
-  normalized_url: https://36kr.com/feed
-  domain: 36kr.com
-  category: zh-media
-  categories_all:
-  - zh-media
-  language: zh
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
-  enabled: true
-  priority: 2
-  polling_interval: 2h
-  timeout_s: 25
-  needs_credential: null
-  dedup_group: null
-  health_status: unverified
-  last_success_at: null
-  last_failure_at: null
-  notes: 为提升多源交叉验证而新增；实测 feed 可达。
-  why: 中文科技商业媒体；国内厂商动态与融资消息的一手来源。
-  license_note: null
-  found_in:
-  - user-list:2026-10-20#cross-source-coverage
-  provenance_count: 0
-  repositories: []
-  params: null
-  merged_parameter_rows: 1
-  added_locally: true
-- source_id: rss:infoq-cn
-  name: InfoQ 中文
-  url: https://www.infoq.cn/feed
-  normalized_url: https://www.infoq.cn/feed
-  domain: infoq.cn
-  category: dev
-  categories_all:
-  - dev
-  language: zh
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
-  enabled: true
-  priority: 2
-  polling_interval: 2h
-  timeout_s: 25
-  needs_credential: null
-  dedup_group: null
-  health_status: unverified
-  last_success_at: null
-  last_failure_at: null
-  notes: 为提升多源交叉验证而新增；实测 feed 可达。
-  why: 面向开发者的技术媒体；框架、工具链与工程实践，补齐开发者视角。
-  license_note: null
-  found_in:
-  - user-list:2026-10-20#cross-source-coverage
-  provenance_count: 0
-  repositories: []
-  params: null
-  merged_parameter_rows: 1
-  added_locally: true
-- source_id: rss:sspai
-  name: 少数派
-  url: https://sspai.com/feed
-  normalized_url: https://sspai.com/feed
-  domain: sspai.com
-  category: product
-  categories_all:
-  - product
-  language: zh
-  source_type: rss
-  fetch_method: feedparser
-  adapter: RssFetcher
-  enabled: true
-  priority: 2
-  polling_interval: 2h
-  timeout_s: 25
-  needs_credential: null
-  dedup_group: null
-  health_status: unverified
-  last_success_at: null
-  last_failure_at: null
-  notes: 为提升多源交叉验证而新增；实测 feed 可达。
-  why: 中文产品与效率媒体；AI 工具的实际使用评测，覆盖产品侧。
-  license_note: null
-  found_in:
-  - user-list:2026-10-20#cross-source-coverage
-  provenance_count: 0
-  repositories: []
-  params: null
-  merged_parameter_rows: 1
-  added_locally: true
