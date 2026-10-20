@@ -143,12 +143,26 @@ async def expand_all(
     """
     issues = [i for i in items if looks_like_issue(i)]
     issues.sort(key=lambda i: (i.published_at or datetime.min.replace(tzinfo=timezone.utc), i.url), reverse=True)
-    chosen = {id(i) for i in issues[:max_issues]}
+    targets = issues[:max_issues]
+    chosen = {id(i) for i in targets}
+
+    # Fetch the pages concurrently. Serially this was 12 requests spanning minutes on a job
+    # with a 20-minute cap; the pages are independent, and `HttpClient` already spaces calls
+    # to one host, so the bound here is deliberately small.
+    sem = asyncio.Semaphore(4)
+
+    async def one(item: RawItem) -> list[RawItem]:
+        async with sem:
+            return await expand_issue(item, http, min_stories=min_stories)
+
+    expanded_by_id: dict[int, list[RawItem]] = {}
+    for item, result in zip(targets, await asyncio.gather(*(one(i) for i in targets))):
+        expanded_by_id[id(item)] = result
 
     out: list[RawItem] = []
     for item in items:
         if id(item) in chosen:
-            out.extend(await expand_issue(item, http, min_stories=min_stories))
+            out.extend(expanded_by_id.get(id(item), [item]))
         else:
             out.append(item)
     return out
