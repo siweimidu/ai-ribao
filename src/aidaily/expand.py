@@ -29,6 +29,14 @@ from datetime import datetime, timezone
 from .article import split_article
 from .models import RawItem
 
+#: Why an expansion did not happen, drained by the caller into the run log.
+#:
+#: A silent `return [item]` made a blocked page and a page the splitter could not
+#: parse look identical -- the first production run expanded 0 of 488 issues and
+#: said nothing at all.
+_NOTE: list[tuple[str, str]] = []
+
+
 #: Titles that mark an item as a daily issue rather than a single article.
 #: `AI 日报 — 2026-10-19`, `AI Daily — 2026-10-19`, `AI 日报 2026-10-19`.
 _ISSUE_TITLE = re.compile(
@@ -75,18 +83,24 @@ async def expand_issue(
     await asyncio.sleep(delay_s)
     try:
         result = await http.get(url)
-    except Exception:
+    except Exception as exc:  # noqa: BLE001 - a page that will not load is not fatal
+        _NOTE.append((item.source_id, f"expand: {type(exc).__name__}"))
         return [item]
 
     if not getattr(result, "ok", False):
+        _NOTE.append(
+            (item.source_id, f"expand: HTTP {getattr(result, 'status', None)} {getattr(result, 'verdict', '')}")
+        )
         return [item]
 
     html = result.body.decode("utf-8", "replace") if getattr(result, "body", b"") else ""
     if not html:
+        _NOTE.append((item.source_id, "expand: empty body"))
         return [item]
 
     stories = split_article(html, min_stories=min_stories)
     if not stories:
+        _NOTE.append((item.source_id, f"expand: split found no stories in {len(html)} chars"))
         return [item]
 
     expanded: list[RawItem] = []
@@ -138,3 +152,14 @@ async def expand_all(
         else:
             out.append(item)
     return out
+
+
+def drain_notes() -> list[tuple[str, str]]:
+    """Take the accumulated expansion notes, clearing them.
+
+    The caller appends these to the run log, so a run that expanded nothing can be told apart
+    from a run that had nothing to expand.
+    """
+    notes = list(_NOTE)
+    _NOTE.clear()
+    return notes

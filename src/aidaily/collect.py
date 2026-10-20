@@ -13,7 +13,7 @@ from .config import AppConfig
 from .fetchers import get_fetcher, resolve_adapter
 from .fetchers.base import SourceResult
 from .http import HttpClient
-from .expand import expand_all
+from .expand import expand_all, drain_notes as _drain_expand_notes
 from .ingest import normalize_raw
 from .roundup import split_all
 from .models import NormalizedItem, RawItem, SourceSpec
@@ -122,7 +122,12 @@ async def collect(
         # 46-character summary -- measured on `ainewslog`: 480 such items, while one article
         # page held 21 stories. Fetching the page is what turns one line a day into twenty.
         try:
-            expanded: list[RawItem] = await expand_all(result.items, http)
+            expanded = await expand_all(result.items, http)
+            if len(expanded) == len(result.items) and result.items:
+                # Nothing expanded. Say why: an unreachable page and a page the splitter could
+                # not parse both look like "no change" otherwise.
+                for src, note in _drain_expand_notes():
+                    report.skipped.append((src, note))
         except Exception as exc:  # noqa: BLE001 - one bad page must not kill a run
             expanded = list(result.items)
             report.skipped.append((spec.source_id, f"expand failed: {type(exc).__name__}"))
