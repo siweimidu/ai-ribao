@@ -34,6 +34,7 @@ from .entities import KNOWN_ENTITIES, extract_entities
 from .llm import LLMError, LLMUnavailable, Router
 from .models import Event, NormalizedItem
 from .normalize import title_similarity
+from .samestory import same_message
 
 #: Re-exported so existing callers keep working; the implementation moved to entities.py
 #: when ranking also needed it (ranking a list should not import the clustering module).
@@ -123,7 +124,18 @@ def coarse_clusters(
             for other in bucket:
                 if other.item_id == seed.item_id or other.item_id in claimed:
                     continue
-                if len(seed_entities & entity_map[other.item_id]) >= entity_overlap_min:
+                # Entity overlap is the main signal, but it cannot see two spellings of one
+                # name: `DeepSeek参与塑造Huawei人工智能芯片设计` and `…华为…` share one entity
+                # (`deepseek`) and nothing else, so they never landed in one cluster and the
+                # same Huawei chip story was published twice, from two publishers.
+                #
+                # `same_message` compares actor + event type + wording, which is what joins
+                # the Latin and the Chinese spelling. It is a narrow, rule-based check, so it
+                # cannot chain unrelated items the way a lowered entity threshold would.
+                if (
+                    len(seed_entities & entity_map[other.item_id]) >= entity_overlap_min
+                    or same_message(seed.title, other.title)
+                ):
                     members.append(other.item_id)
 
             if len(members) < 2:

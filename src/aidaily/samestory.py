@@ -331,7 +331,18 @@ def same_message(left: str, right: str) -> bool:
         noun_side = right if left_subjects else left
         return (            len(noun_side) <= SHORTHAND_MAX_CHARS            and not _has_own_verb(noun_side)            and _has_concrete_noun(noun_side)        )
 
-    if not (left_events & right_events):
+    if left_events and right_events and not (left_events & right_events):
+        # Both sides named a type and they disagree: two stories.
         return False
 
+    # Either the types agree, or one (or both) named none. Falling through to the wording is
+    # what catches the same story spelled two ways:
+    #
+    #   DeepSeek参与塑造Huawei人工智能芯片设计
+    #   DeepSeek参与塑造华为人工智能芯片设计
+    #
+    # share an actor and no event type, and their content overlaps 0.90 -- but the empty
+    # intersection used to return False before the wording was ever compared, so the same
+    # Huawei chip story was published as two entries from two publishers. Requiring a *shared*
+    # type instead of a *non-contradicting* one turned that into a false negative.
     return _content_overlap(left, right) >= CONTENT_OVERLAP_MIN
