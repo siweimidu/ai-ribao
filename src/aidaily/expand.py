@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import asyncio
 import re
+from datetime import datetime, timezone
 
 from .article import split_article
 from .models import RawItem
@@ -68,6 +69,10 @@ async def expand_issue(
     if not url.startswith(("http://", "https://")):
         return [item]
 
+    # `HttpClient` already spaces requests to one host, but a burst of 488 issue pages still
+    # trips the host's own rate limit. This delay is ours, and it is paid before every request
+    # so a run that is failing slows down instead of hammering.
+    await asyncio.sleep(delay_s)
     try:
         result = await http.get(url)
     except Exception:
@@ -83,8 +88,6 @@ async def expand_issue(
     stories = split_article(html, min_stories=min_stories)
     if not stories:
         return [item]
-
-    await asyncio.sleep(delay_s)
 
     expanded: list[RawItem] = []
     for index, story in enumerate(stories, start=1):
@@ -103,9 +106,35 @@ async def expand_issue(
     return expanded
 
 
-async def expand_all(items: list[RawItem], http, *, min_stories: int = 3) -> list[RawItem]:
-    """Expand every issue in `items`, leaving ordinary items untouched."""
+#: How many issues one source may expand in a single run.
+#:
+#: `ainewslog` publishes 488 issues; fetching all of them every run is 488 requests to one host,
+#: which its rate limit refuses -- measured: every request after the first few came back blocked
+#: and nothing expanded. The newest issues are the ones a daily digest needs, and older ones are
+#: already in the archive, so a cap loses nothing that matters and keeps the run polite.
+MAX_ISSUES_PER_SOURCE = 12
+
+
+async def expand_all(
+    items: list[RawItem],
+    http,
+    *,
+    min_stories: int = 3,
+    max_issues: int = MAX_ISSUES_PER_SOURCE,
+) -> list[RawItem]:
+    """Expand issues in `items`, newest first, up to `max_issues` of them.
+
+    Ordinary items pass through untouched, and anything past the cap passes through as well --
+    an unexpanded issue is still a valid item, just a thin one.
+    """
+    issues = [i for i in items if looks_like_issue(i)]
+    issues.sort(key=lambda i: (i.published_at or datetime.min.replace(tzinfo=timezone.utc), i.url), reverse=True)
+    chosen = {id(i) for i in issues[:max_issues]}
+
     out: list[RawItem] = []
     for item in items:
-        out.extend(await expand_issue(item, http, min_stories=min_stories))
+        if id(item) in chosen:
+            out.extend(await expand_issue(item, http, min_stories=min_stories))
+        else:
+            out.append(item)
     return out

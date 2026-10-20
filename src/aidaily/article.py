@@ -103,6 +103,63 @@ def _story_from_group(group: list[str]) -> Story | None:
     return Story(title=title, summary=body.strip(), source="")
 
 
+#: A bare date line: `Feb 13, 2026`.
+_DATE_ONLY = re.compile(r"^[A-Z][a-z]{2}\s+\d{1,2},\s+\d{4}$")
+
+#: Old-format section names. They are short, contain no verb, and end with a topic noun.
+_OLD_SECTION = re.compile(
+    r"^(生物信息学|LLM 推理|开源大模型|多模态|具身|推理与效率|开源与工具|AI 科学|模型竞争|社区|行业)[^。，]{0,20}$"
+)
+
+
+#: Old-format markers. An issue from early 2026 opens each story with `简介与背景：` and closes
+#: it with `链接：`; there is no `来源-` line anywhere on the page.
+_OLD_BODY = re.compile(r"^(简介与背景|影响与分析|背景与分析|影响|背景|简介)[:：]")
+_OLD_LINK = re.compile(r"^链接[:：]\s*$")
+
+
+def _split_old_format(lines: list[str], *, min_stories: int) -> list[Story]:
+    """Stories from an issue that uses `简介与背景：` / `链接：` instead of `来源-`.
+
+    Measured 2026-10-20: 2026-02 issues have this shape and 2026-10 issues do not. Without this
+    branch the whole archive before the format change expanded to nothing.
+    """
+    stories: list[Story] = []
+    title: str | None = None
+    body: list[str] = []
+
+    def flush() -> None:
+        nonlocal title, body
+        if title and len(title) >= 6:
+            stories.append(Story(title=title, summary=" ".join(body).strip(), source=""))
+        title, body = None, []
+
+    for line in lines:
+        if _CHROME.match(line) or _DATELINE.match(line) or _SECTION_MARK.match(line):
+            continue
+        if line in ("重点新闻", "今日焦点") or line.startswith("涵盖"):
+            continue
+        if _OLD_LINK.match(line):
+            flush()
+            continue
+        if line.startswith("http"):
+            continue
+        if _OLD_BODY.match(line):
+            body.append(_OLD_BODY.sub("", line).strip())
+            continue
+        if _DATE_ONLY.match(line) or _OLD_SECTION.match(line):
+            continue
+        if title is None:
+            title = line.strip()
+        else:
+            body.append(line.strip())
+
+    flush()
+    # The issue summary (`A · B · C`) is not a story: no body, and it joins topics with `·`.
+    stories = [s for s in stories if s.title.count("·") < 2]
+    return stories if len(stories) >= min_stories else []
+
+
 def split_article(html: str, *, min_stories: int = 3) -> list[Story]:
     """One `Story` per news item inside a roundup article.
 
@@ -140,4 +197,6 @@ def split_article(html: str, *, min_stories: int = 3) -> list[Story]:
     if story:
         stories.append(story)
 
+    if not stories:
+        return _split_old_format(lines, min_stories=min_stories)
     return stories if len(stories) >= min_stories else []

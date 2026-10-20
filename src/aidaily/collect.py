@@ -13,7 +13,7 @@ from .config import AppConfig
 from .fetchers import get_fetcher, resolve_adapter
 from .fetchers.base import SourceResult
 from .http import HttpClient
-from .expand import expand_issue
+from .expand import expand_all
 from .ingest import normalize_raw
 from .roundup import split_all
 from .models import NormalizedItem, RawItem, SourceSpec
@@ -121,13 +121,11 @@ async def collect(
         # splitter works on the body it is given, so it cannot help when that body is a
         # 46-character summary -- measured on `ainewslog`: 480 such items, while one article
         # page held 21 stories. Fetching the page is what turns one line a day into twenty.
-        expanded: list[RawItem] = []
-        for raw in result.items:
-            try:
-                expanded.extend(await expand_issue(raw, http))
-            except Exception as exc:  # noqa: BLE001 - one bad page must not kill a run
-                expanded.append(raw)
-                report.skipped.append((raw.source_id, f"expand failed: {type(exc).__name__}"))
+        try:
+            expanded: list[RawItem] = await expand_all(result.items, http)
+        except Exception as exc:  # noqa: BLE001 - one bad page must not kill a run
+            expanded = list(result.items)
+            report.skipped.append((spec.source_id, f"expand failed: {type(exc).__name__}"))
 
         for raw in split_all(expanded):
             report.items.append(normalize_raw(raw, spec, now))
