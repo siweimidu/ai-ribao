@@ -106,7 +106,22 @@ MAX_RETRY_ROUNDS = 1
 class RubricResult:
     """Scores by event id, plus what happened while getting them."""
 
+    #: The averaged score, which is what the rest of the pipeline consumes.
     scores: dict[str, float] = field(default_factory=dict)
+
+    #: Per-event first and second pass, kept separately so a disagreement is visible.
+    #:
+    #: Why two passes at all: a single call is one sample of a noisy judgement, and the model
+    #: is asked for a number on a headline it sees once. Measuring the same set twice makes
+    #: the noise measurable -- `disagreement` is how far apart the two passes landed -- and the
+    #: average is a better estimate than either pass alone. AIHOT does the same and selects on
+    #: the sum of two passes; the average is used here because the rest of this pipeline
+    #: already speaks one score per event.
+    pair: dict[str, tuple[float, float]] = field(default_factory=dict)
+
+    #: How many events were scored twice. Compared against `len(scores)` to see whether the
+    #: second pass actually ran or fell back to a single sample.
+    double_scored: int = 0
     #: Section id per event, the ranking's **primary** key. Separate from `scores`
     #: because "important" and "filed under 行业动态" are different judgements, and
     #: folding one into the other loses the distinction the ordering depends on.
@@ -123,8 +138,20 @@ class RubricResult:
     profile_source: str = "default"
 
     @property
+    def disagreement(self) -> float:
+        """Mean absolute gap between the two passes, in score points.
+
+        Zero when nothing was double-scored. A large value means the rubric is ambiguous
+        rather than that the events are hard: the same text produced two different verdicts.
+        """
+        gaps = [abs(a - b) for a, b in self.pair.values()]
+        return round(sum(gaps) / len(gaps), 2) if gaps else 0.0
+
+    @property
     def coverage(self) -> str:
         parts = [f"{len(self.scores)} 条已打分", f"{self.calls} 次调用"]
+        if self.double_scored:
+            parts.append(f"{self.double_scored} 条打了两次（均差 {self.disagreement}）")
         if self.unscored:
             parts.append(f"{self.unscored} 条未打分（保留公式分）")
         return " / ".join(parts)
@@ -239,6 +266,7 @@ async def score_events(
     batch_size: int = 10,
     concurrency: int = 2,
     profile_path: Path | None = None,
+    passes: int = 2,
 ) -> RubricResult:
     """Score events against the profile rubric. Never raises.
 
@@ -265,7 +293,8 @@ async def score_events(
     sem = asyncio.Semaphore(max(1, concurrency))
     lock = asyncio.Lock()
 
-    async def run(batch: list[Event]) -> None:
+    async def score_once(batch, pass_index: int):
+        """One independent scoring pass over a batch. Returns {} on any failure."""
         listing = "\n".join(f"- id={e.event_id} | {e.title[:160]}" for e in batch)
         messages = [
             {"role": "system", "content": SYSTEM},
@@ -274,8 +303,7 @@ async def score_events(
         ]
         # Broad on purpose. This stage is optional by design, so any unforeseen failure --
         # a transport error, a missing attribute, a response shape nobody expected -- must
-        # cost the batch rather than the run. The narrow catches below document what is
-        # expected; this is the guarantee that the docstring's "never raises" holds.
+        # cost the batch rather than the run.
         try:
             async with sem:
                 response = await router.complete(
@@ -288,24 +316,55 @@ async def score_events(
             async with lock:
                 result.failed_batches += 1
                 result.calls += 1
-            return
+            return {}
         except Exception:  # noqa: BLE001
             async with lock:
                 result.failed_batches += 1
                 result.calls += 1
-            return
+            return {}
 
+        sent = {e.event_id for e in batch}
         async with lock:
             result.calls += 1
-            sent = {e.event_id for e in batch}
             result.unknown_ids += sum(1 for rid in got if rid not in sent)
-            for event_id, value in got.items():
-                if event_id in sent:
-                    result.scores[event_id] = value
-            for event_id, section in got_sections.items():
-                if event_id in sent:
-                    result.sections[event_id] = section
+            # The section is a *categorical* judgement, not a measurement: two passes that
+            # disagree on the section disagree about what the story is, and an average cannot
+            # express that. The first pass wins; a model vote would be less stable than the
+            # rule-based fallback the pipeline already has.
+            if pass_index == 0:
+                for event_id, section in got_sections.items():
+                    if event_id in sent:
+                        result.sections[event_id] = section
+        return {k: v for k, v in got.items() if k in sent}
 
+    async def run(batch: list[Event]) -> None:
+        # Two independent passes over the same batch, averaged.
+        #
+        # `temperature=0.0` is not a determinism guarantee: providers differ, batching differs,
+        # and a reasoning model resamples its own thinking. The second pass measures that noise
+        # instead of pretending it away. `disagreement` reports it, and an event scored by only
+        # one pass keeps that pass rather than being dropped.
+        first = await score_once(batch, 0)
+        if passes < 2:
+            # One pass configured. The pipeline calls it "two independent scores" in the docs,
+            # so this is only for comparing cost against quality; `disagreement` stays 0 and
+            # the coverage line says nothing was double-scored.
+            async with lock:
+                for event_id, value in first.items():
+                    result.scores[event_id] = value
+            return
+        second = await score_once(batch, 1)
+
+        async with lock:
+            for event_id in set(first) | set(second):
+                a = first.get(event_id)
+                b = second.get(event_id)
+                if a is not None and b is not None:
+                    result.scores[event_id] = round((a + b) / 2.0, 2)
+                    result.pair[event_id] = (a, b)
+                    result.double_scored += 1
+                else:
+                    result.scores[event_id] = a if a is not None else b
     await asyncio.gather(*(run(b) for b in batches))
 
     # Retry whatever came back unscored, in **smaller** batches.
@@ -327,6 +386,13 @@ async def score_events(
 
     result.unscored = sum(1 for e in events if e.event_id not in result.scores)
     return result
+
+
+def to_percent(score: float | None) -> float | None:
+    """Convert a 0-10 rubric score to the 0-100 scale `tiers.py` thresholds use."""
+    if score is None:
+        return None
+    return max(0.0, min(100.0, float(score) * 10.0))
 
 
 def rubric_multiplier(score: float | None, *, floor: float = 0.30) -> float:

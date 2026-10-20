@@ -276,27 +276,35 @@ def test_gate_command_exit_codes(isolated_env, capsys, tmp_path: Path):
     out_dir = tmp_path / "digests"
     out_dir.mkdir()
 
-    assert run_cli("gate", "--date", TODAY, "--no-env", "--out-dir", str(out_dir)) == 0
+    # A date in the past, not today: the gate answers "too early" (11) for today before the
+    # 04:00 collection hour, which made this test fail whenever the suite ran at night.
+    # The ledger/archive rule under test has nothing to do with the clock.
+    past = "2026-01-02"
+    assert run_cli(        "gate", "--date", past, "--no-env", "--out-dir", str(out_dir)    ) == 0
     capsys.readouterr()
 
     from aidaily.state import RunRecord, append_record
 
-    append_record(RunRecord(date=TODAY, status="published", at="t"))
+    append_record(RunRecord(date=past, status="published", at="t"))
 
     # A ledger row with no archive is not a publication -- the gate must rebuild.
-    assert run_cli("gate", "--date", TODAY, "--no-env", "--out-dir", str(out_dir)) == 0
+    # A date in the past, not today: the gate answers "too early" (11) for today before the
+    # 04:00 collection hour, which made this test fail whenever the suite ran at night.
+    # The ledger/archive rule under test has nothing to do with the clock.
+    past = "2026-01-02"
+    assert run_cli(        "gate", "--date", past, "--no-env", "--out-dir", str(out_dir)    ) == 0
     reason = json.loads(capsys.readouterr().out)
     assert reason["publish"] is True
     assert "不存在" in reason["reason"]
 
     # With the archive present, the same row is honoured.
-    (out_dir / f"{TODAY}.json").write_text("{}", encoding="utf-8")
+    (out_dir / f"{past}.json").write_text("{}", encoding="utf-8")
     assert run_cli(
-        "gate", "--date", TODAY, "--no-env", "--out-dir", str(out_dir)
+        "gate", "--date", past, "--no-env", "--out-dir", str(out_dir)
     ) == EXIT_ALREADY_PUBLISHED
 
     assert run_cli(
-        "gate", "--date", TODAY, "--no-env", "--out-dir", str(out_dir), "--force"
+        "gate", "--date", past, "--no-env", "--out-dir", str(out_dir), "--force"
     ) == 0
 
 

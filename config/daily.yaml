@@ -77,6 +77,20 @@ quality:
   topic_similarity_penalty: 0.35   # 与已选标题高度相似时的分数折扣
   topic_similarity_threshold: 0.55
   topic_overlap_min: 2             # 共享几个实体算同一话题（1 个通常只是「Google」）
+  # 入选门槛：按信源分级不同，官方一手更容易进，媒体要更好才行。
+  #
+  # 这两组数配合使用：先把两条独立评分取平均得到 0-100 的分，再按来源分级决定要过
+  # 哪条线。分级由 sources/registry.yaml 的 category 推出（见 src/aidaily/tiers.py），
+  # 不需要给每个源单独填。
+  #
+  # 默认值在 112 条已发布事件上校准：模型的分数集中在 70，所以 70 是自然分界。
+  # 改评分提示词后请跑 python scripts/calibrate.py 重新看分布。
+  tier_thresholds:
+    T1: 65          # 官方一手：厂商自己的博客、实验室、发布源
+    T1_5: 70        # 准官方：项目自己的渠道、工程团队
+    T2: 75          # 媒体报道、社区、个人
+  # 评分跑两遍取平均；两遍差距会记进日志，用于判断标准是否含糊。
+  score_passes: 2
   topic_overlap_penalty: 0.45      # 同一话题再来一条的折扣
   duplicate_url_penalty: 0.10      # 不仅同话题、还共享 URL：那是同一篇文章（L2 漏网的），
                                    # 应重罚而不是当第二个来源

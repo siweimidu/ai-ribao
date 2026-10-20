@@ -791,6 +791,9 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
             pool, router,
             batch_size=cfg.llm.batch_size.rubric,
             concurrency=cfg.llm.batch_size.rubric_concurrency,
+            # Two independent samples, averaged (see `rubric.py`). Configurable so the cost of
+            # the second pass can be weighed against the stability it buys.
+            passes=cfg.quality.score_passes,
         )
         rubric_scores = rubric_result.scores
 

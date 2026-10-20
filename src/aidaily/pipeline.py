@@ -22,7 +22,8 @@ from .models import Digest, Event, NormalizedItem, SourceCoverage, SourceSpec
 from .rank import RankWeights, diversity_report, rank_events, select_diverse
 from .sections import classify, rank_of
 from .focus import focus_multiplier
-from .rubric import band, rubric_multiplier
+from .rubric import band, rubric_multiplier, to_percent
+from .tiers import DEFAULT_THRESHOLDS, threshold_for, tier_of
 from .select import WindowResult, select_window
 
 if TYPE_CHECKING:  # pragma: no cover - typing only
@@ -340,6 +341,58 @@ def select_for_digest(
         "relevance_dropped_examples": dropped_focus_examples,
     }
 
+    # **Tier gates.** The bar a story must clear depends on who published it.
+    #
+    # A multiplier cannot separate two stories that are close in score; a threshold can. The
+    # complaint this answers is concrete: promotions and re-reported rumours kept reaching the
+    # issue because every source competed at one bar, while a first-party announcement -- the
+    # strongest evidence a story is real -- had to win on the same terms.
+    #
+    # Thresholds live in `tiers.py` and are derived from the source's category, so the 124
+    # registry rows needed no migration. An unscored event is not gated: the rubric stage is
+    # optional by design, and a failed model call must cost ordering, not content.
+    tier_dropped = 0
+    tier_examples: list[dict[str, object]] = []
+    if rubric_scores:
+        gated: list = []
+        for row in kept:
+            raw = rubric_scores.get(row.event.event_id)
+            if raw is None:
+                gated.append(row)
+                continue
+            percent = to_percent(raw)
+            categories = [
+                src.category for src in sources if src.source_id in row.event.source_ids
+            ]
+            # The best tier among the sources covering this event: an announcement carried by
+            # an official blog and three media outlets is first-party evidence, not media.
+            best = min(
+                categories or [""],
+                key=lambda c: ("T1", "T1_5", "T2").index(tier_of(c)),
+            )
+            bar = threshold_for(best, cfg.quality.tier_thresholds)
+            row.components["tier"] = tier_of(best)
+            row.components["tier_threshold"] = bar
+            if percent is not None and percent < bar:
+                tier_dropped += 1
+                if len(tier_examples) < 12:
+                    tier_examples.append({
+                        "title": row.event.title[:100],
+                        "tier": tier_of(best),
+                        "score": percent,
+                        "threshold": bar,
+                    })
+                continue
+            gated.append(row)
+        kept = gated
+
+    report_extra.update({
+        "tier_dropped": tier_dropped,
+        "tier_dropped_examples": tier_examples,
+        "tier_thresholds": dict(cfg.quality.tier_thresholds),
+    })
+
+    section_of: dict[str, str] = {}
     section_of: dict[str, str] = {}
     for row in kept:
         # The model's judgement first -- it reads the story, and measured 41.8% accuracy is what

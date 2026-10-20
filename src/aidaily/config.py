@@ -157,6 +157,18 @@ class QualityConfig(BaseModel):
     #: heavier penalty when the shared topic also shares a URL -- the same article, not a
     #: second source reporting it
     duplicate_url_penalty: float = 0.10
+    #: The bar a story must clear, by source tier. Tiers are derived from the source category
+    #: (`tiers.py`); these numbers are what each tier must score.
+    #:
+    #: A multiplier cannot separate two stories that are close; a threshold can. Defaults are
+    #: calibrated on 112 archived events -- the model scores cluster at 70, so the three tiers
+    #: straddle it. Re-measure with `scripts/calibrate.py` after changing the scoring prompt.
+    tier_thresholds: dict[str, float] = Field(
+        default_factory=lambda: {"T1": 65.0, "T1_5": 70.0, "T2": 75.0}
+    )
+    #: Independent scoring passes per batch, averaged. One call is a single sample of a noisy
+    #: judgement, and the gap between passes is itself informative.
+    score_passes: int = 2
 
 
 class DeliveryConfig(BaseModel):

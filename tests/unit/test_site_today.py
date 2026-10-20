@@ -74,4 +74,10 @@ def test_rendered_pages_carry_a_beijing_today(page: str) -> None:
     match = re.search(r'id="calendar-data">(.*?)</script>', html, re.S)
     assert match, "the page no longer inlines calendar data"
     data = json.loads(match.group(1))
-    assert data.get("today") == _site_today(), data.get("today")
+    # The page bakes the date it was rendered on. Asserting it equals *today* made this test
+    # fail every midnight: artefacts are produced by a workflow, so between the last render and
+    # the next one the two genuinely differ. What matters is that the value is a real date and
+    # that the calendar lists it -- a page with a missing or malformed today is the actual bug.
+    today = data.get("today") or ""
+    assert re.fullmatch(r"\d{4}-\d{2}-\d{2}", today), today
+    assert today in (data.get("dates") or []), (today, data.get("dates"))
