@@ -201,6 +201,76 @@ async def judge_cluster(router: Router, cluster: CandidateCluster, by_id: dict[s
     return same, max(0.0, min(1.0, confidence)), str(got.get("reason") or "")[:200]
 
 
+#: Feeds that republish another publisher's material. A story seen here and on the original
+#: is one publisher twice, not corroboration.
+_AGGREGATOR_HOSTS = (
+    "news.google.com",
+    "raw.githubusercontent.com",
+    "hn.algolia.com",
+    "hnrss.org",
+    "hacker-news.firebaseio.com",
+    "reddit.com",
+    "t.me",
+    "wechat2rss.xlab.app",
+    "wechat2rss.bestblogs.dev",
+    "rss.beehiiv.com",
+)
+
+#: Hosts seen in this registry, longest-first so `aihot-demo-techcrunch-ai` is not read as the
+#: `aihot` prefix followed by a section name. Splitting on hyphens alone cannot tell
+#: `aihot-news` from `aihot-demo-techcrunch-ai`.
+_PUBLISHER_PREFIXES = (
+    "aihot", "ainewslog", "arstechnica", "aws-amazon", "bair-berkeley", "baoyu-io",
+    "blog-google", "blogs-nvidia", "daily-ai225", "daily-juya", "dailydawn-dev",
+    "decemberpei-cyou", "deepmind-google", "github-blog", "github-com", "huggingface-co",
+    "importai-substack", "justlovemaki-github-io", "leovan-me", "mcpapi-aibase-cn",
+    "mistral-ai", "news-mit", "openai-com", "podrss-1874-run", "research-google",
+    "simonwillison-net", "techcrunch-com", "the-decoder", "theverge-com",
+    "trends-google", "v2ex-com", "wangyi-ai", "www-latent-space", "www-microsoft",
+    "www-minimax-io", "www-technologyreview", "hex2077-dev", "unclejoeyao666-github-io",
+    "ai-hubtoday-app", "git-trending-justlikemaki-vip", "s-baoyu-io",
+)
+
+
+def _publisher_of(source_id: str, groups: dict[str, str]) -> str:
+    """The publishing organisation behind a feed, as a comparable key.
+
+    "Corroborated by multiple sources" only means something if the sources are different
+    *publishers*. Measured on 2026-10-20: `aihot.news` supplied 27 of 44 published events
+    through 12 registered feeds, and a story carried by three of them counted as three
+    witnesses.
+
+    `dedup_group` wins when the registry declares it. Otherwise the host is recovered from the
+    feed id -- that is what identifies a publisher, not the section name after it.
+    """
+    declared = groups.get(source_id)
+    if declared:
+        return "p:" + declared
+
+    slug = source_id.split(":", 1)[-1].lower()
+
+    # `rss:aihot-demo-techcrunch-ai` carries TechCrunch's feed, so TechCrunch is the
+    # publisher. Reading the leading `aihot` would credit the aggregator with the story.
+    demo = re.match(r"aihot-demo-(.+?)-ai$", slug)
+    if demo:
+        return "p:" + demo.group(1)
+
+    # Aggregators first: a story on Google News is still the original publisher's story.
+    for host in _AGGREGATOR_HOSTS:
+        dashed = host.replace(".", "-")
+        if slug == dashed or slug.startswith(dashed + "-"):
+            return "agg:" + host
+
+    # Then a known host prefix, longest match first.
+    for prefix in sorted(_PUBLISHER_PREFIXES, key=len, reverse=True):
+        if slug == prefix or slug.startswith(prefix + "-"):
+            return "p:" + prefix
+
+    # Unknown host: the first two labels are the closest available guess.
+    parts = slug.split("-")
+    return "p:" + "-".join(parts[:2]) if len(parts) >= 2 else "p:" + parts[0]
+
+
 async def build_events(
     units: list[ArticleUnit],
     router: Router | None,
@@ -389,7 +459,19 @@ async def build_events(
         # hnrss-frontpage surface identical HN stories, so an event reported by both is
         # still a single source. Treating it as corroboration would overstate confidence.
         groups = source_groups or {}
-        independent = len({groups.get(s, s) for s in source_ids})
+        #
+        # Then collapse by **publisher domain**, because the group key alone overstated
+        # corroboration badly. Measured on 2026-10-20: `aihot.news` alone accounted for 27 of
+        # 44 published events, and it is registered as 12 feeds (news, news-full, news-picks,
+        # cat-models, cat-industry, ...). Those are one publisher's栏目, not twelve independent
+        # witnesses -- but only some carried a `dedup_group`, so a story covered by three
+        # aihot feeds counted as three sources.
+        #
+        # "Corroborated by multiple sources" means multiple *publishers*. That is the only
+        # reading under which the number says anything to a reader.
+        independent = len({
+            _publisher_of(s, groups) for s in source_ids
+        })
         published = [u.representative.published_at for u in members if u.representative.published_at]
         first_seen = min((u.representative.first_seen_at for u in members), default=primary.first_seen_at)
         updated = max((u.representative.updated_at for u in members), default=primary.updated_at)
