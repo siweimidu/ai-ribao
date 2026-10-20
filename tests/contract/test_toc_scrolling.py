@@ -40,17 +40,22 @@ def _toc_override() -> str:
     return re.sub(r"/\*[\s\S]*?\*/", " ", blocks[-1])
 
 
-def test_the_toc_has_no_inner_scrollbar() -> None:
+def test_the_toc_keeps_an_inner_scroll() -> None:
+    """44 entries do not fit in one screen, so the box scrolls -- and pages itself."""
     rule = _toc_override()
-    assert "max-height: none" in rule, "a height cap re-introduces the inner scrollbar"
-    assert "overflow-y: visible" in rule
+    assert "overflow-y: auto" in rule
+    assert "max-height" in rule
+    assert "overscroll-behavior: contain" in rule, (
+        "without `contain`, the inner scroll chains into the page: one wheel gesture would",
+        "move both the article and the outline",
+    )
 
 
-def test_the_toc_is_not_pinned_to_the_viewport() -> None:
-    """`sticky` would keep the outline still while the article scrolls past it."""
+def test_the_toc_is_pinned_to_the_viewport() -> None:
+    """The outline stays on screen; the paging inside it is what follows the article."""
     rule = _toc_override()
-    assert "position: sticky" not in rule
-    assert "position: relative" in rule
+    assert "position: sticky" in rule
+    assert "top:" in rule
 
 
 def test_the_resize_grip_keeps_a_positioned_ancestor() -> None:
