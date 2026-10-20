@@ -137,7 +137,7 @@ class HtmlFetcher(BaseFetcher):
     name = "HtmlFetcher"
 
     async def fetch(self, spec: SourceSpec) -> SourceResult:
-        res = await self.http.get(spec.url)
+        res = await self.http.get(spec.url, timeout_s=getattr(spec, "timeout_s", None) or None)
         base = self.from_http(spec, res)
         if not base.ok or res.verdict == "not_modified":
             return base

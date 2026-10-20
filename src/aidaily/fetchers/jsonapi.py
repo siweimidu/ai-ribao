@@ -38,7 +38,7 @@ class JsonApiFetcher(BaseFetcher):
 
     async def fetch(self, spec: SourceSpec) -> SourceResult:
         url = _with_runtime_params(spec, datetime.now(timezone.utc))
-        res = await self.http.get(url)
+        res = await self.http.get(url, timeout_s=getattr(spec, "timeout_s", None) or None)
         base = self.from_http(spec, res)
         if not base.ok or res.verdict == "not_modified":
             return base

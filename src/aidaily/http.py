@@ -169,7 +169,10 @@ class HttpClient:
 
         return HttpResult(False, url, None, b"", "", "error", last_detail or "exhausted", self.retries + 1)
 
-    async def get(self, url: str, *, conditional: bool = True) -> HttpResult:
+    async def get(
+        self, url: str, *, conditional: bool = True, timeout_s: float | None = None
+    ) -> HttpResult:
+        """Fetch one URL. `timeout_s` overrides the client default for this request."""
         if self._client is None:
             raise RuntimeError("HttpClient must be used as an async context manager")
 
@@ -181,7 +184,11 @@ class HttpClient:
         for attempt in range(1, self.retries + 2):
             await self.limiter.wait(url)
             try:
-                resp = await self._client.get(url, headers=req_headers)
+                # `timeout` is per request, so a source that declared 20s cannot silently
+                # borrow the client's 30s three times over.
+                resp = await self._client.get(
+                    url, headers=req_headers, timeout=timeout_s or self.timeout_s
+                )
             except (httpx.TimeoutException, httpx.TransportError) as exc:
                 last_detail = f"{type(exc).__name__}: {exc}"[:200]
             except Exception as exc:  # noqa: BLE001 - one bad source must not kill a run

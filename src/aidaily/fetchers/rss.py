@@ -80,7 +80,9 @@ class RssFetcher(BaseFetcher):
     name = "RssFetcher"
 
     async def fetch(self, spec: SourceSpec) -> SourceResult:
-        res = await self.http.get(spec.url)
+        # The source's own timeout, not the client default: a Chinese host can take two
+        # minutes on a GitHub runner while the client allows 30s per attempt.
+        res = await self.http.get(spec.url, timeout_s=getattr(spec, "timeout_s", None) or None)
         base = self.from_http(spec, res)
         if not base.ok:
             return base
