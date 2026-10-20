@@ -497,7 +497,7 @@
             ${p.stage ? `<em>${esc(p.stage)}</em>` : ''}
             <div>${esc(p.text)}</div>
             ${p.orig ? `<div style="color:var(--muted-fg)">${esc(p.orig)}</div>` : ''}
-            ${p.url ? `<a href="${esc(p.url)}" rel="noopener noreferrer" style="font-size:var(--fs-micro);color:var(--muted-fg)">在原站查看 ↗</a>` : ''}
+            ${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener noreferrer" style="font-size:var(--fs-micro);color:var(--muted-fg)">在原站查看 ↗</a>` : ''}
           </div>`).join('');
         return `<li class="ecal__entry" data-kind="${esc(e.k)}">
           <div class="ecal__entry-title">${esc(e.t)}</div>

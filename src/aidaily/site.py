@@ -318,7 +318,7 @@ def render_rail(ctx: SiteContext, digest: Digest, *, dated: bool = True) -> str:
 
           <div class="rail__group">
             <a class="rail__item" href="sources.html">{icon("rss")}<span>信息源</span></a>
-            <a class="rail__item" href="https://github.com/siweimidu/ai-ribao" rel="noopener noreferrer">
+            <a class="rail__item" href="https://github.com/siweimidu/ai-ribao" target="_blank" rel="noopener noreferrer">
               {icon("github")}<span>源码与说明</span>
             </a>
           </div>
@@ -478,7 +478,7 @@ def render_item(
 
     others = event.all_urls[1:5]
     links = "".join(
-        f'<a href="{esc(u)}" rel="noopener noreferrer">{esc(_domain(u))}</a>' for u in others
+        f'<a href="{esc(u)}" target="_blank" rel="noopener noreferrer">{esc(_domain(u))}</a>' for u in others
     )
     extra = len(event.all_urls) - 1 - len(others)
     if extra > 0:
@@ -490,13 +490,13 @@ def render_item(
     return f"""        <li class="item" id="{esc(anchor)}">
           <div class="item__head">
             <span class="item__no">{index:02d}</span>
-            <h3 class="item__title"><a href="{esc(first_url)}" rel="noopener noreferrer">{esc(title)}</a></h3>
+            <h3 class="item__title"><a href="{esc(first_url)}" target="_blank" rel="noopener noreferrer">{esc(title)}</a></h3>
           </div>
           <div class="item__meta">
             <span class="badge" data-level="{esc(level)}">{esc(label)}</span>
             {count_note}
             <span{when_cls}>{esc(when_text)}</span>
-            <a href="{esc(first_url)}" rel="noopener noreferrer">{esc(_domain(first_url))}</a>
+            <a href="{esc(first_url)}" target="_blank" rel="noopener noreferrer">{esc(_domain(first_url))}</a>
           </div>
           {evidence}
           {links}
@@ -672,7 +672,7 @@ def render_day(
     if untranslated:
         items = "".join(
             f'<li><span class="untranslated__no">{n:02d}</span>'
-            f'<a href="{esc((e.all_urls or ["#"])[0])}" rel="noopener noreferrer">{esc(e.title)}</a>'
+            f'<a href="{esc((e.all_urls or ["#"])[0])}" target="_blank" rel="noopener noreferrer">{esc(e.title)}</a>'
             f'<span class="untranslated__src">{esc(_domain((e.all_urls or [""])[0]))}</span></li>'
             for n, e in untranslated
         )
@@ -1088,7 +1088,7 @@ def render_tibo(ctx: SiteContext, monitor: dict | None = None) -> str:
                 f'<span class="facts__label">{esc(p.get("stage") or "动态")}</span>'
                 f'<div>{esc(p.get("text") or "")}</div>'
                 + (f'<div style="color:var(--muted-fg);font-size:var(--fs-small)">{esc(p.get("original") or "")}</div>' if p.get("original") else "")
-                + (f'<a href="{esc(p.get("url"))}" rel="noopener noreferrer" style="font-size:var(--fs-small);color:var(--muted-fg)">在原站查看 ↗</a>' if p.get("url") else "")
+                + (f'<a href="{esc(p.get("url"))}" target="_blank" rel="noopener noreferrer" style="font-size:var(--fs-small);color:var(--muted-fg)">在原站查看 ↗</a>' if p.get("url") else "")
                 + "</li>"
                 for p in (e.get("posts") or [])[:3]
             )
@@ -1121,7 +1121,7 @@ def render_tibo(ctx: SiteContext, monitor: dict | None = None) -> str:
             f'{esc((a.get("at") or "")[:16].replace("T", " "))}</span>'
             f'<div><div>{esc(a.get("text") or "")}</div>'
             + (f'<div style="color:var(--muted-fg);font-size:var(--fs-small)">{esc(a.get("original") or "")}</div>' if a.get("original") else "")
-            + (f'<a href="{esc(a.get("url"))}" rel="noopener noreferrer" style="font-size:var(--fs-small);color:var(--muted-fg)">在原站查看 ↗</a>' if a.get("url") else "")
+            + (f'<a href="{esc(a.get("url"))}" target="_blank" rel="noopener noreferrer" style="font-size:var(--fs-small);color:var(--muted-fg)">在原站查看 ↗</a>' if a.get("url") else "")
             + '</div></div></li>'
             for a in acts[:20]
         )
@@ -1151,10 +1151,10 @@ def render_tibo(ctx: SiteContext, monitor: dict | None = None) -> str:
         <h2 class="section__title">数据来源与使用边界</h2>
         <div class="notice">
           <p>事件记录与 Tibo 原帖来自
-          <a href="{esc(attribution.get('url') or '')}" rel="noopener noreferrer">{esc(attribution.get('name') or '')}</a>
+          <a href="{esc(attribution.get('url') or '')}" target="_blank" rel="noopener noreferrer">{esc(attribution.get('name') or '')}</a>
           的公开接口。{esc(attribution.get('note') or '')}</p>
           {policy_note}
-          <p><a href="{esc(str(policy.get('terms_url') or 'https://aihot.news/terms'))}" rel="noopener noreferrer">完整使用规则</a></p>
+          <p><a href="{esc(str(policy.get('terms_url') or 'https://aihot.news/terms'))}" target="_blank" rel="noopener noreferrer">完整使用规则</a></p>
         </div>
       </section>"""
 
@@ -1386,9 +1386,9 @@ def render_sources(
                 meta_bits.append(f"需要 {cred}")
             # The whole row is the link. A source row exists to be visited, and making the
             # reader hunt for the URL text (which is one line of 10px grey type) is the
-            # difference between a list and a doorway. Links open in the current tab, as the
-            # reader asked: a new tab per click leaves a trail of tabs on a phone, and the back
-            # button stops being a way to return to the digest.
+            # difference between a list and a doorway. Links open in a new tab: the reader is
+            # browsing a digest, and replacing it with a source page throws away their place --
+            # the back button is not the same as never having left.
             link = spec.get("url") or ""
             inner = (
                 f'<div>'
@@ -1403,7 +1403,7 @@ def render_sources(
             if link.startswith(("http://", "https://")):
                 items.append(
                     f'<li><a class="source-row" href="{esc(link)}"'
-                    f' rel="noopener noreferrer">{inner}</a></li>'
+                    f' target="_blank" rel="noopener noreferrer">{inner}</a></li>'
                 )
             else:
                 # A source with no http URL (an `external` push, say) is not clickable; keep it
