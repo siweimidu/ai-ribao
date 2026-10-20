@@ -114,7 +114,14 @@ def _domain(url: str) -> str:
 def _when(event: Event) -> tuple[str, bool]:
     if not event.published_range:
         return "时间未知", False
-    return event.published_range[0].astimezone(timezone.utc).strftime("%m-%d %H:%M UTC"), True
+    # Beijing time, matching the archive's own dates.
+    #
+    # This printed UTC, so a story published at 05:47 Beijing on the 20th was labelled
+    # "10-19 21:47 UTC". The reader sees "10-19" and concludes that the 20th's issue is full of
+    # yesterday's news -- when every event in it is a Beijing-20th event. A date shown to a
+    # Chinese reader has to be the date that reader would call it.
+    when = event.published_range[0].astimezone(_SITE_TZ)
+    return when.strftime("%m-%d %H:%M"), True
 
 
 #: The site is Chinese and the digest dates are Beijing dates, so "today" must be a Beijing
