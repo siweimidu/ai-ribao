@@ -135,6 +135,13 @@ def to_items(spec: SourceSpec, tweets: list[dict]) -> list[RawItem]:
     return out
 
 
+#: Serialises every X request in the process.
+#:
+#: The endpoint rate-limits the aggregate, so ten concurrent fetches -- one per source --
+#: all fail. A lock plus the per-request gap keeps the whole run inside the budget.
+_ENDPOINT_LOCK = asyncio.Lock()
+
+
 class XTimelineFetcher(BaseFetcher):
     """Handles source_type `x_timeline`."""
 
@@ -148,19 +155,18 @@ class XTimelineFetcher(BaseFetcher):
         if not handle:
             return SourceResult(spec.source_id, "skipped", detail="no handle in url")
 
-        # The gap is paid before the request so a run that is being rate-limited slows down
-        # instead of hammering.
-        await asyncio.sleep(self.request_gap_s)
-
         url = (
             "https://syndication.twitter.com/srv/timeline-profile/screen-name/"
             + handle
         )
-        res = await self.http.get(
-            url,
-            timeout_s=getattr(spec, "timeout_s", None) or 30,
-            retries=0,
-        )
+        # One at a time, gap included. See `_ENDPOINT_LOCK`.
+        async with _ENDPOINT_LOCK:
+            await asyncio.sleep(self.request_gap_s)
+            res = await self.http.get(
+                url,
+                timeout_s=getattr(spec, "timeout_s", None) or 30,
+                retries=0,
+            )
         if res.status == 429:
             return SourceResult(
                 spec.source_id, "blocked", detail="HTTP 429 from syndication endpoint", status=429
