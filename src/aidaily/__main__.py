@@ -733,6 +733,11 @@ def cmd_gate(args: argparse.Namespace) -> int:
 
 
 
+#: A picture used by this many stories is site furniture, not a story picture.
+#: Measured: two AWS decorations each appeared under five unrelated articles.
+SHARED_IMAGE_LIMIT = 3
+
+
 async def _fetch_images(
     digest: "Digest", cfg: "AppConfig", *, limit: int = 40, concurrency: int = 12
 ) -> dict[str, list[bytes]]:
@@ -780,6 +785,33 @@ async def _fetch_images(
 
         for event_id, images in await asyncio.gather(*(one(e) for e in events)):
             out[event_id] = images
+
+    # **Cross-story de-duplication: a picture shared by many stories is site furniture.**
+    #
+    # Measured on the 2026-10-21 issue: two AWS blog images appeared under *five* different
+    # articles. Both were brand decoration -- a wireframe-cube motif and a gradient-orb banner --
+    # and neither had anything to do with any of those stories. They passed every per-image
+    # check because they are real, large, well-shaped photographs; they are simply not *about*
+    # the article they sit next to.
+    #
+    # A per-story hash comparison cannot catch this, because the bytes differ per page. What
+    # gives it away is the reuse: no genuine article image appears under three unrelated
+    # headlines. So any hash used by `SHARED_IMAGE_LIMIT` or more stories is dropped everywhere.
+    #
+    # The cost is real and worth stating: a publisher whose every article carries the same hero
+    # banner loses all of them. That is the right trade -- a banner repeated five times tells the
+    # reader nothing, while an empty slot at least admits there is no picture.
+    counts: dict[str, int] = {}
+    for images in out.values():
+        for data in images:
+            digest_of = media.content_hash(data)
+            counts[digest_of] = counts.get(digest_of, 0) + 1
+
+    shared = {h for h, n in counts.items() if n >= SHARED_IMAGE_LIMIT}
+    if shared:
+        print(f"配图：丢弃 {len(shared)} 张被多篇文章共用的站点装饰图", file=sys.stderr)
+        for event_id, images in list(out.items()):
+            out[event_id] = [d for d in images if media.content_hash(d) not in shared]
 
     # **No picture is better than a fake one.**
     #

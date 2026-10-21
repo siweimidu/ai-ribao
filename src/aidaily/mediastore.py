@@ -141,12 +141,28 @@ def _push(root: Path, date: str) -> bool:
                 return False
             if git("remote", "add", "origin", remote_url()).returncode != 0:
                 return False
-            if git("fetch", "-q", "--depth", "1", "origin", MEDIA_BRANCH).returncode != 0:
-                return False
-            # Keep the files already written; adopt the remote history so the push is a fast-forward.
-            git("reset", "-q", "--soft", "FETCH_HEAD")
         elif token:
             git("remote", "set-url", "origin", remote_url())
+
+        # **Re-fetch on every push, not only the first.**
+        #
+        # `store_images` runs twice per issue -- once for article pictures, once for repository
+        # cards -- and each call pushes. The first version only fetched when `.git` was absent,
+        # so the second call kept a HEAD that no longer matched the remote. Its push was
+        # rejected as non-fast-forward, `store_images` returned `{}`, and the cards silently
+        # lost their images while the article pictures stayed.
+        #
+        # Measured on 2026-10-21: 52 image URLs written to the archive, 49 files in the media
+        # repository, 13 missing -- all of them from the second batch and from a partial first.
+        #
+        # `--depth 1` keeps it cheap; `reset --soft` keeps the files already written to disk.
+        fetched = git("fetch", "-q", "--depth", "1", "origin", MEDIA_BRANCH)
+        if fetched.returncode == 0:
+            git("reset", "-q", "--soft", "FETCH_HEAD")
+        else:
+            # Nothing on the remote yet (first ever push for this repository).
+            if not (root / ".git").exists():
+                return False
 
         git("add", "-A")
         if not git("status", "--porcelain").stdout.strip():
@@ -156,7 +172,16 @@ def _push(root: Path, date: str) -> bool:
             "commit", "-q", "-m", f"media: {date}",
         ).returncode != 0:
             return False
-        return git("push", "-q", "origin", f"HEAD:{MEDIA_BRANCH}").returncode == 0
+
+        # Retry once: a concurrent run may have pushed between our fetch and our push.
+        for attempt in range(2):
+            if git("push", "-q", "origin", f"HEAD:{MEDIA_BRANCH}").returncode == 0:
+                return True
+            if attempt == 0:
+                if git("fetch", "-q", "--depth", "1", "origin", MEDIA_BRANCH).returncode != 0:
+                    return False
+                git("rebase", "-q", "FETCH_HEAD")
+        return False
     except Exception:
         return False
 
