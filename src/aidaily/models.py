@@ -165,6 +165,11 @@ class Event(BaseModel):
     unique_facts: dict[str, list[str]] = Field(default_factory=dict)
     confidence: float = 1.0
     evidence_level: EvidenceLevel = "single_source"
+    #: Absolute URL of the story image, or None. Set by the image stage *after* selection, so
+    #: only published stories are ever fetched. Absolute rather than relative on purpose: the
+    #: media repository can roll over to a new one, and an old page must keep pointing at the
+    #: repository that actually holds its picture.
+    image_url: str | None = None
     needs_review: bool = False
     #: ranking result, kept so a placement can be explained after the fact
     rank_score: float = 0.0

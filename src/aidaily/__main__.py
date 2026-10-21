@@ -319,6 +319,23 @@ def cmd_run(args: argparse.Namespace) -> int:
         check = check_digest(digest, stage.window.kept)
     print(json.dumps(check.summary(), ensure_ascii=False))
 
+    # 6.5) images
+    #
+    #     Fetching happens here, after selection and fact-check, so it only ever runs for the
+    #     stories that will actually be published -- thirty candidates instead of three hundred.
+    #
+    #     It is skippable and it never raises: `cfg.output.images` gates it, and every fetch
+    #     inside `media` returns None on failure. An issue without pictures is the same issue.
+    images_by_event: dict[str, bytes] = {}
+    if cfg.output.images:
+        images_by_event = asyncio.run(
+            _fetch_images(digest, cfg, limit=cfg.output.images_max)
+        )
+        print(
+            f"配图：{len(images_by_event)} / {len(digest.top_events)} 条拿到图",
+            file=sys.stderr,
+        )
+
     # 7) render
     brief = render_brief(digest, insights, by_id, max_items=cfg.output.brief.max_items)
     deep = render_deep(digest, insights, by_id, max_items=cfg.output.deep.max_items)
@@ -698,6 +715,59 @@ def cmd_gate(args: argparse.Namespace) -> int:
     return 0 if should else EXIT_ALREADY_PUBLISHED
 
 
+
+
+async def _fetch_images(
+    digest: "Digest", cfg: "AppConfig", *, limit: int = 40, concurrency: int = 6
+) -> dict[str, bytes]:
+    """WebP bytes for as many published events as can be found. Never raises.
+
+    The URL tried for each event is the most *direct* one -- the original publisher rather than
+    an aggregator, because a picture taken from a page that copied the story is a picture of a
+    copy. `_url_directness` already ranks them for the title link; the same order applies here.
+
+    Bounded concurrency and a per-run cap: forty articles means forty page fetches plus forty
+    image fetches, and firing them all at once gets a run rate-limited by the more careful
+    publishers.
+    """
+    from . import media, mediastore
+    from .l3 import _url_directness
+
+    events = digest.top_events[:limit]
+    if not events:
+        return {}
+
+    out: dict[str, bytes] = {}
+    semaphore = asyncio.Semaphore(max(1, concurrency))
+
+    async with media.default_client() as client:
+        async def one(event) -> tuple[str, bytes | None]:
+            urls = sorted(event.all_urls or [], key=lambda u: (_url_directness(u), u))
+            if not urls:
+                return event.event_id, None
+            async with semaphore:
+                # Two candidates at most: the direct source, then the next one. Beyond that the
+                # gain stops justifying the extra requests.
+                for candidate in urls[:2]:
+                    data = await media.image_for(client, candidate)
+                    if data:
+                        return event.event_id, data
+            return event.event_id, None
+
+        for event_id, data in await asyncio.gather(*(one(e) for e in events)):
+            if data:
+                out[event_id] = data
+
+    if not out:
+        return {}
+
+    urls = mediastore.store_images(out, date=digest.date)
+    if urls:
+        for event in digest.top_events:
+            url = urls.get(event.event_id)
+            if url:
+                event.image_url = url
+    return out
 async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str):
     """L3 + analysis in one event loop, with the HTTP client closed on the way out.
 

@@ -44,6 +44,10 @@ SRC = ROOT / "src"
 DIST_TO_IMPORT = {
     "beautifulsoup4": "bs4",
     "pyyaml": "yaml",
+    # Pillow installs the `PIL` package, which has nothing in common with its
+    # distribution name. Without this the coverage check reports a missing dependency
+    # for an import that is declared correctly.
+    "pillow": "PIL",
 }
 
 #: Imported from the stdlib but not always in `sys.stdlib_module_names` on every version.

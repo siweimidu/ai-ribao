@@ -112,6 +112,19 @@ def _domain(url: str) -> str:
     return host[4:] if host.startswith("www.") else host
 
 
+def _og_image(digest: Digest) -> str:
+    """The image a shared link should show: the lead story one, else empty.
+
+    Only published stories carry `image_url`, so this cannot leak an unfetched URL. An empty
+    string is correct rather than a placeholder: a wrong card is worse than no card, and every
+    consumer falls back to the title when the property is absent or blank.
+    """
+    for event in digest.top_events:
+        if event.image_url:
+            return event.image_url
+    return ""
+
+
 def _when(event: Event) -> tuple[str, bool]:
     if not event.published_range:
         return "时间未知", False
@@ -444,6 +457,16 @@ def render_item(
     # regenerated, and the link can never disagree with the sources listed underneath.
     ordered_urls = sorted(event.all_urls or [], key=lambda u: (_url_directness(u), u))
     first_url = ordered_urls[0] if ordered_urls else "#"
+
+    # The story image, when one was fetched. `loading=lazy` because a long issue has dozens
+    # and none of the below-the-fold ones should block the first paint. Width and height are
+    # not set: the aspect ratio varies per publisher, and a wrong pair causes layout shift.
+    image_html = (
+        f'<a class="item__image" href="{esc(first_url)}" target="_blank" rel="noopener noreferrer">'
+        f'<img src="{esc(event.image_url)}" alt="" loading="lazy" decoding="async"></a>'
+        if event.image_url
+        else ""
+    )
     when_text, known = _when(event)
 
     # Recompute the publisher count from `source_ids` rather than trusting the archived number.
@@ -528,6 +551,7 @@ def render_item(
             <span class="item__no">{index:02d}</span>
             <h3 class="item__title"><a href="{esc(first_url)}" target="_blank" rel="noopener noreferrer">{esc(title)}</a></h3>
           </div>
+          {image_html}
           <div class="item__meta">
             <span class="badge" data-level="{esc(level)}">{esc(label)}</span>
             {count_note}
@@ -791,6 +815,9 @@ def render_day(
 <meta property="og:type" content="article">
 <meta property="og:title" content="{esc(digest.headline or digest.date)}">
 <meta property="og:description" content="{esc(lead[:150])}">
+<link rel="image_src" href="{esc(_og_image(digest))}">
+<meta property="og:image" content="{esc(_og_image(digest))}">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" type="application/rss+xml" title="AI 日报" href="feed/zh.xml">
 <link rel="alternate" type="application/feed+json" title="AI 日报" href="feed/zh.json">
 <link rel="stylesheet" href="assets/tokens.css">

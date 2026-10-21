@@ -93,6 +93,10 @@ class OutputConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
     brief: OutputVariant = OutputVariant()
     deep: OutputVariant = OutputVariant(max_items=60)
+    #: Fetch a picture for each story. Off is byte-identical to the feature not existing.
+    images: bool = True
+    #: How many stories to try. Each costs one page GET plus one image GET.
+    images_max: int = 40
 
 
 class L2Config(BaseModel):

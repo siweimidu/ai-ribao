@@ -276,6 +276,12 @@ jobs:
           max_attempts=3
           while true; do
             echo "::group::publish attempt $attempt / $max_attempts"
+            # The media repository is a *separate* repository, so the workflow GITHUB_TOKEN
+            # (scoped to this one) cannot push to it. MEDIA_TOKEN is a fine-grained PAT with
+            # Contents: Read and write on siweimidu/ai-daily-media only. When it is absent the
+            # image stage stores locally and returns no URLs, so the issue publishes without
+            # pictures rather than failing -- decoration must not break the run.
+            export MEDIA_TOKEN="${{ secrets.MEDIA_TOKEN }}"
             python -m aidaily run \
               --from-items data/raw/items.jsonl \
               --site-url "$SITE_URL" \
