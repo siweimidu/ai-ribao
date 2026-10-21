@@ -533,9 +533,20 @@ def render_item(
     # One link per distinct host, first occurrence wins: that is what a reader can act on. URLs
     # are de-duplicated too, because one publisher often surfaces the same story through several
     # of its own feeds.
+    # **Mirrors are not sources.**
+    #
+    # A story carried by arstechnica, cnbc and engadget, plus aihot.news relaying it, has three
+    # sources and one copy. Listing the aggregator among them credits it with reporting it did
+    # not do -- and its page is not where a reader who wants the original should land.
+    #
+    # `_url_directness` already ranks these for the title link; the same judgement applies here.
+    # When every URL is a mirror the row stays empty, which is honest: there is no publisher to
+    # name.
     seen_hosts: set[str] = set()
     per_host: list[str] = []
     for url in ordered_urls:
+        if _url_directness(url) != 0:
+            continue
         host = _domain(url)
         if host in seen_hosts:
             continue
@@ -547,9 +558,19 @@ def render_item(
         f'<a href="{esc(u)}" target="_blank" rel="noopener noreferrer">{esc(_domain(u))}</a>'
         for u in others
     )
-    extra = len(per_host) - 1 - len(others)
-    if extra > 0:
-        links += f'<span style="color:var(--muted-fg)">另有 {extra} 家其他来源</span>'
+    extra_urls = per_host[5:]
+    if extra_urls:
+        # The remainder used to be a dead `<span>`, so "另有 3 家其他来源" was a claim a reader
+        # could neither verify nor click. A `<details>` keeps the row short by default and makes
+        # the rest reachable: one line per hidden publisher, each a real link.
+        hidden = "".join(
+            f'<li><a href="{esc(u)}" target="_blank" rel="noopener noreferrer">{esc(_domain(u))}</a></li>'
+            for u in extra_urls
+        )
+        links += (
+            f'<details class="item__more"><summary>另有 {len(extra_urls)} 家其他来源</summary>'
+            f'<ul>{hidden}</ul></details>'
+        )
     links = f'<div class="item__links">{links}</div>' if links else ""
 
     when_cls = "" if known else ' class="when-unknown"'
