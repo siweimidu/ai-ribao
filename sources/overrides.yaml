@@ -14,6 +14,18 @@
 
 overrides:
 
+  # ── 本项目自身的仓库不是新闻源 ────────────────────────────────────────────
+  "atom:github-ai-ribao-commits":
+    enabled: false
+    reason: >-
+      2026-10-21 实测：该源在 26 小时窗口内产出 20 条，全部是本项目自己的提交
+      （chore(daily): 2026-10-21 digest、feat(selection): 两次独立评分…），作为普通
+      条目进入新闻池，并被合并进真实事件——Strata 0.2 那条的 3 个来源里就有一个
+      chore(daily) 提交。日报在引用自己。保留配置，仅停用。
+  "atom:github-ai-ribao-releases":
+    enabled: false
+    reason: >-
+      同上。本项目自身的发布记录属于构建事件，不是行业新闻；出现在日报里是自引。
   # ── 探测确认失效，且有在册替代品 ──────────────────────────────────────────
   "api:git-trending-justlikemaki-vip-topone":
     enabled: false

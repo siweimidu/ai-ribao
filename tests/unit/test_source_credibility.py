@@ -101,5 +101,7 @@ def test_genuinely_different_publishers_are_all_listed() -> None:
     html = render_item(1, event, None, None)
     assert "3 个独立来源" in html
     row = html.split('<div class="item__links">')[-1]
+    # Links are ordered by directness, and the aggregator is last: a reader who clicks the
+    # title must reach the original report, not the aggregator page that copied it.
     assert "theverge.com" in row
-    assert "techcrunch.com" in row
+    assert row.index("theverge.com") < row.index("aihot.news")

@@ -213,6 +213,44 @@ async def judge_cluster(router: Router, cluster: CandidateCluster, by_id: dict[s
     return same, max(0.0, min(1.0, confidence)), str(got.get("reason") or "")[:200]
 
 
+#: Hosts that republish someone else's reporting. A link to one of these is the aggregator's
+#: page, not the story: the reader who clicks it lands on a site that already copied the
+#: original, and usually behind its own layout. `aihot.news` belongs here for exactly that
+#: reason -- it is a curated feed, and this project reads it as a source.
+_MIRROR_HOSTS = (
+    "aihot.news",
+    "news.google.com",
+    "raw.githubusercontent.com",
+    "hn.algolia.com",
+    "hnrss.org",
+    "hacker-news.firebaseio.com",
+    "reddit.com",
+    "t.me",
+    "wechat2rss.xlab.app",
+)
+
+
+def _url_directness(url: str) -> int:
+    """0 for an original publisher, 1 for a mirror or aggregator. Lower sorts first.
+
+    Used to pick the link a reader clicks on the title. Alphabetical order was the previous
+    rule and it made the aggregator win every time its name sorted early.
+    """
+    try:
+        host = url.split("//", 1)[1].split("/", 1)[0].lower()
+    except IndexError:
+        return 2
+    host = host[4:] if host.startswith("www.") else host
+    # This project's own repository is never a primary source. It is not a mirror -- it is
+    # us -- and a reader clicking a title must never land on our commit page.
+    if "siweimidu/ai-ribao" in url:
+        return 2
+    for mirror in _MIRROR_HOSTS:
+        if host == mirror or host.endswith("." + mirror):
+            return 1
+    return 0
+
+
 #: Feeds that republish another publisher's material. A story seen here and on the original
 #: is one publisher twice, not corroboration.
 _AGGREGATOR_HOSTS = (
@@ -465,7 +503,21 @@ async def build_events(
 
         # Expand back to every underlying item, URL and source across the whole event.
         item_ids = sorted({i for u in members for i in u.item_ids})
-        urls = sorted({url for u in members for url in u.urls})
+        item_ids = sorted({i for u in members for i in u.item_ids})
+        # Order by *directness*, not alphabetically.
+        #
+        # This was `sorted({...})`, which is a plain string sort -- so `aihot.news` beat
+        # `github.com` and `aibase.com` on every event it carried, and the title link on the
+        # page led to the aggregator's own item page instead of the original source. Measured
+        # on 2026-10-21: "开源工具 Strata 0.2 重磅发布" linked to aihot.news/items/... while the
+        # real story was a GitHub release and an aibase report.
+        #
+        # The reader wants the primary source. Aggregators and mirrors go last; ties keep the
+        # alphabetical order so the result is still deterministic.
+        urls = sorted(
+            {url for u in members for url in u.urls},
+            key=lambda url: (_url_directness(url), url),
+        )
         source_ids = sorted({s for u in members for s in u.source_ids})
         # Independent sources: collapse feeds that carry the same content. hn-algolia and
         # hnrss-frontpage surface identical HN stories, so an event reported by both is

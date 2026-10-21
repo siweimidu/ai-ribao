@@ -643,7 +643,10 @@ sources:
   language: en
   source_type: atom
   adapter: RssFetcher
-  enabled: true
+  # Disabled 2026-10-21: this is our own commit feed, not industry news.
+  # It was collected as news and merged into real events -- the Strata 0.2
+  # release listed a chore(daily) commit among its sources. Self-referential.
+  enabled: false
   priority: 5
   polling_interval: 12h
   timeout_s: 30
@@ -677,7 +680,10 @@ sources:
   language: en
   source_type: atom
   adapter: RssFetcher
-  enabled: true
+  # Disabled 2026-10-21: this is our own commit feed, not industry news.
+  # It was collected as news and merged into real events -- the Strata 0.2
+  # release listed a chore(daily) commit among its sources. Self-referential.
+  enabled: false
   priority: 5
   polling_interval: 12h
   timeout_s: 30

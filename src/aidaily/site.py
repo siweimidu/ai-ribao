@@ -31,7 +31,7 @@ from zoneinfo import ZoneInfo
 from pathlib import Path
 
 from .analyze import EventInsight
-from .l3 import _publisher_of
+from .l3 import _publisher_of, _url_directness
 from .models import Digest, Event, NormalizedItem
 from .render import CATEGORY_LABELS, _label
 
@@ -437,7 +437,13 @@ def render_item(
 ) -> str:
     title = _display_title(event, insight, items_by_id)
     anchor = f"e-{event.event_id[:10]}"
-    first_url = event.all_urls[0] if event.all_urls else "#"
+    # The archived `all_urls` was written by whatever ordering the pipeline used at the time,
+    # and until 2026-10-21 that was a plain string sort -- which put the aggregator first on
+    # every event it carried, so the title link opened `aihot.news/items/...` instead of the
+    # original report. Sorting again here means an old issue renders correctly without being
+    # regenerated, and the link can never disagree with the sources listed underneath.
+    ordered_urls = sorted(event.all_urls or [], key=lambda u: (_url_directness(u), u))
+    first_url = ordered_urls[0] if ordered_urls else "#"
     when_text, known = _when(event)
 
     # Recompute the publisher count from `source_ids` rather than trusting the archived number.
@@ -498,7 +504,7 @@ def render_item(
     # of its own feeds.
     seen_hosts: set[str] = set()
     per_host: list[str] = []
-    for url in event.all_urls:
+    for url in ordered_urls:
         host = _domain(url)
         if host in seen_hosts:
             continue
