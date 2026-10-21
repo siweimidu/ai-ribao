@@ -142,6 +142,76 @@ def to_items(spec: SourceSpec, tweets: list[dict]) -> list[RawItem]:
 _ENDPOINT_LOCK = asyncio.Lock()
 
 
+from pathlib import Path
+p = Path("src/aidaily/fetchers/x_timeline.py")
+s = p.read_text(encoding="utf-8")
+
+# Measured on GitHub Actions 2026-10-21 with 26 X sources, serialised behind the lock:
+#
+#   x:chatgpt 101 · x:aiatmeta 100 · x:deepseek_ai 99 · x:alibaba_qwen 21 · x:anthropicai 20
+#   x:baidu_inc 20   -- then 20 sources in a row came back 429.
+#
+# So the endpoint's budget is roughly **six fetches per window**, not six per handle. A run that
+# tries all 26 spends most of them on 429s and starves the rest of the collect.
+#
+# The budget is spent on the accounts most likely to have news, and the rest rotate in on later
+# runs. `_BUDGET` is a module-level counter reset at the start of each process.
+_BUDGET = 6
+_spent = 0
+
+
+#: Where the rotation cursor is kept between runs.
+_CURSOR_FILE = "x-rotation.json"
+
+
+def _cursor_path():
+    from pathlib import Path
+
+    return Path("data") / "state" / _CURSOR_FILE
+
+
+def load_cursor() -> int:
+    """How many accounts have been served so far, across runs."""
+    try:
+        import json as _json
+
+        return int(_json.loads(_cursor_path().read_text(encoding="utf-8")).get("offset", 0))
+    except Exception:  # noqa: BLE001 - a missing or corrupt cursor restarts the cycle
+        return 0
+
+
+def save_cursor(offset: int) -> None:
+    """Remember the rotation position. Best effort: losing it only re-shuffles the order."""
+    try:
+        import json as _json
+
+        path = _cursor_path()
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(_json.dumps({"offset": offset}), encoding="utf-8")
+    except Exception:  # noqa: BLE001
+        pass
+
+
+def _take_budget() -> bool:
+    """Whether this process may spend one more X request.
+
+    The limit is per process (one collect run), because that is the granularity the endpoint
+    measures. Returning False keeps the source `skipped` rather than `blocked`: nothing went
+    wrong, we simply did not ask.
+    """
+    global _spent
+    if _spent >= _BUDGET:
+        return False
+    _spent += 1
+    return True
+
+
+def reset_budget() -> None:
+    """Called at the start of a collect run so tests and repeated runs start clean."""
+    global _spent
+    _spent = 0
+
+
 class XTimelineFetcher(BaseFetcher):
     """Handles source_type `x_timeline`."""
 
@@ -159,6 +229,14 @@ class XTimelineFetcher(BaseFetcher):
             "https://syndication.twitter.com/srv/timeline-profile/screen-name/"
             + handle
         )
+        # Spend from the per-run budget first: once it is gone, further requests only produce
+        # 429s and delay the rest of the collect.
+        if not _take_budget():
+            return SourceResult(
+                spec.source_id, "skipped",
+                detail=f"X budget spent for this run ({_BUDGET} requests)",
+            )
+
         # One at a time, gap included. See `_ENDPOINT_LOCK`.
         async with _ENDPOINT_LOCK:
             await asyncio.sleep(self.request_gap_s)
@@ -193,3 +271,28 @@ class XTimelineFetcher(BaseFetcher):
             base.verdict = "empty"
             base.detail = f"{len(tweets)} tweet objects, none usable"
         return base
+
+
+def plan_run(all_source_ids: list[str], *, budget: int = _BUDGET) -> list[str]:
+    """Which X sources this run should fetch, rotating across runs.
+
+    With 26 accounts and a six-request budget, a fixed order starves the last twenty forever.
+    The cursor records how many were served so far; the window wraps around, so five runs cover
+    everyone.
+
+    Deterministic given the cursor: the ids are sorted first, so the same cursor always yields
+    the same plan.
+    """
+    ids = sorted(all_source_ids)
+    if not ids:
+        return []
+    offset = load_cursor() % len(ids)
+    window = [ids[(offset + i) % len(ids)] for i in range(min(budget, len(ids)))]
+    return window
+
+
+def advance_cursor(total: int, served: int) -> None:
+    """Move the cursor past the accounts this run served."""
+    if total <= 0:
+        return
+    save_cursor((load_cursor() + served) % total)

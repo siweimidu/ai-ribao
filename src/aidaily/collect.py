@@ -84,6 +84,20 @@ async def collect(
     if limit:
         collectable = collectable[:limit]
 
+    # Plan the X rotation before any fetch runs: see `x_timeline.plan_run`.
+    x_ids = [s.source_id for s in collectable if s.source_type == "x_timeline"]
+    if x_ids:
+        from .fetchers import x_timeline as _x
+
+        chosen = set(_x.plan_run(x_ids))
+        skipped += [
+            (sid, "X rotation: not this run") for sid in x_ids if sid not in chosen
+        ]
+        collectable = [
+            s for s in collectable
+            if s.source_type != "x_timeline" or s.source_id in chosen
+        ]
+
     report = CollectReport(skipped=skipped)
     timeout = timeout_s or cfg.llm.request_timeout_s
     sem = asyncio.Semaphore(concurrency)

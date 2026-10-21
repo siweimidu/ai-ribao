@@ -173,3 +173,26 @@ def test_a_retry_would_burn_the_next_window() -> None:
 
     source = inspect.getsource(XTimelineFetcher.fetch)
     assert "retries=0" in source, "the X fetch must opt out of the client's retries"
+
+
+def test_the_budget_stops_after_six_requests() -> None:
+    """The endpoint's budget is per run, not per handle.
+
+    Measured on GitHub Actions 2026-10-21 with 26 sources serialised: six succeeded
+    (chatgpt 101, aiatmeta 100, deepseek_ai 99, alibaba_qwen 21, anthropicai 20, baidu_inc 20)
+    and the next twenty all came back 429. Spending the rest on 429s only delays the collect.
+    """
+    from aidaily.fetchers import x_timeline
+
+    x_timeline.reset_budget()
+    granted = [x_timeline._take_budget() for _ in range(x_timeline._BUDGET + 3)]
+    assert granted[: x_timeline._BUDGET] == [True] * x_timeline._BUDGET
+    assert not any(granted[x_timeline._BUDGET :])
+
+
+def test_a_spent_budget_is_skipped_not_blocked() -> None:
+    """`skipped` says "we did not ask"; `blocked` would blame the source for our own pacing."""
+    import inspect
+
+    source = inspect.getsource(XTimelineFetcher.fetch)
+    assert '"skipped"' in source
