@@ -781,17 +781,19 @@ async def _fetch_images(
         for event_id, images in await asyncio.gather(*(one(e) for e in events)):
             out[event_id] = images
 
-    # Every entry gets a picture, one way or another. A story whose page yielded nothing --
-    # blocked, no og:image, or an aggregator card that was correctly rejected -- gets a
-    # deterministic gradient instead of a hole in the layout. It is obviously a placeholder,
-    # which is the honest outcome: a stock photo beside a specific headline would claim something
-    # about the story that nobody verified.
-    for event in events:
-        if out.get(event.event_id):
-            continue
-        fallback = media.placeholder(event.event_id)
-        if fallback:
-            out[event.event_id] = [fallback]
+    # **No picture is better than a fake one.**
+    #
+    # An earlier version filled every gap with a deterministic gradient so the layout would never
+    # show a hole. Seen on a real page it reads as a broken image: a large coloured rectangle
+    # above a headline looks like a failed load, not like a design decision, and it pushes the
+    # text the reader came for below the fold.
+    #
+    # So the rule is simply: a story with a real picture shows it, a story without one shows
+    # nothing. The page handles both -- `image_html` is empty and the item closes up.
+    #
+    # `media.placeholder` is kept for the cases where a bitmap is genuinely required (a share
+    # card needs *something*), but it is no longer used to pad the article list.
+    out = {k: v for k, v in out.items() if v}
 
     urls = mediastore.store_images(out, date=digest.date)
     for event in digest.top_events:

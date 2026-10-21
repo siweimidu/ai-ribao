@@ -346,7 +346,7 @@ async def best_images(
     if not candidates:
         return []
 
-    scored: list[tuple[int, bytes]] = []
+    scored: list[tuple[int, bytes, str]] = []
     for candidate in candidates[:max_tries]:
         raw = await fetch_bytes(client, candidate.url)
         if raw is None or len(raw) < 2_000:
@@ -364,11 +364,24 @@ async def best_images(
         if candidate.source in ("og", "twitter"):
             score += 6
         webp = to_webp(raw, width=1080)
-        if webp:
-            scored.append((score, webp))
-
+        if not webp:
+            continue
+        # **Content-addressed de-duplication.**
+        #
+        # Measured on the 2026-10-21 issue: four AWS blog posts each carried the same two
+        # footer images (`f841b50b`, `3be6a336`) as their third and fourth pictures -- a
+        # site-wide banner and a logo strip that every post on that domain includes. They
+        # passed the size and shape checks because they *are* real images, just not this
+        # article.
+        #
+        # The same bytes appearing twice is the signal: a story never needs two copies of
+        # one picture, and the hash is already computed for the filename.
+        digest = content_hash(webp)
+        if any(existing[2] == digest for existing in scored):
+            continue
+        scored.append((score, webp, digest))
     scored.sort(key=lambda pair: -pair[0])
-    return [data for _, data in scored[:keep]]
+    return [data for _, data, _ in scored[:keep]]
 
 
 async def best_image(
@@ -472,16 +485,21 @@ async def image_for_x_post(client: httpx.AsyncClient, status_url: str) -> bytes 
     return to_webp(raw)
 
 
-async def images_for(client: httpx.AsyncClient, article_url: str) -> list[bytes]:
+async def images_for(
+    client: httpx.AsyncClient, article_url: str, *, keep: int = 4
+) -> list[bytes]:
     """Every usable picture for a URL. X posts yield their attachments; articles their body.
 
-    Returns a list so the layout can show them side by side. An empty list means the caller
-    should draw a placeholder -- never an empty slot.
+    Returns a list so the layout can show them side by side. An empty list means there is no
+    picture, and the item renders without one.
+
+    `keep` bounds how many pictures a single story may carry. The caller passes a smaller number
+    than the default when a run has many stories and the image stage is the slow part.
     """
     if _X_STATUS.search(article_url or ""):
         single = await image_for_x_post(client, article_url)
         return [single] if single else []
-    return await best_images(client, article_url)
+    return await best_images(client, article_url, keep=keep)
 
 
 def default_client() -> httpx.AsyncClient:
