@@ -110,8 +110,22 @@ def fixture_items(tmp_path: Path) -> Path:
 
 @pytest.fixture
 def isolated_env(tmp_path: Path, monkeypatch):
-    """Keep the real publication ledger out of reach."""
+    """Keep the real publication ledger *and history* out of reach.
+
+    The history file is the cross-day memory: it decides whether a story has already been
+    published. Pointing at the real one made these tests depend on what the live site had
+    published that week -- measured on 2026-10-21, `OpenAI ships a reasoning model` matched a
+    real archived event as "the same message" and was dropped, so the digest contained one
+    event instead of two and the test failed for a reason that had nothing to do with the code
+    under test.
+    """
     monkeypatch.setenv("AIDAILY_RUN_LEDGER", str(tmp_path / "runs.jsonl"))
+    # Empty, not absent: an absent path would make the loader rebuild from `data/digests/`,
+    # which is exactly the real history this fixture exists to escape.
+    empty = tmp_path / "published_history.jsonl"
+    empty.write_text("", encoding="utf-8")
+    monkeypatch.setenv("AIDAILY_HISTORY_FILE", str(empty))
+    # `cmd_run` resolves the path from args, so give it a default that honours the env.
     monkeypatch.delenv("GEMINI_API_KEY", raising=False)
     monkeypatch.delenv("GROQ_API_KEY", raising=False)
     return tmp_path

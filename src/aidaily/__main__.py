@@ -293,7 +293,12 @@ def cmd_run(args: argparse.Namespace) -> int:
     digest = build_digest(
         stage, events, sources, cfg,
         report=report, insights=insights, warnings=warnings, llm_usage=llm_usage,
-        # `rubric_sections` must travel with the scores: the section is the ranking's        # primary key, and a second selection pass without it re-classifies every row.        history=history, rubric_scores=rubric_scores,        rubric_sections=rubric_sections, now=run_now,
+        # `rubric_sections` must travel with the scores: the section is the ranking primary
+        # key, and a second selection pass without it re-classifies every row. The tier gate in
+        # `select_for_digest` also needs the scores, so omitting them here would publish events
+        # the caller never analysed.
+        history=history, rubric_scores=rubric_scores,
+        rubric_sections=rubric_sections, now=run_now,
         pre_date_ignored=split.ignored,
     )
 
@@ -762,8 +767,14 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
         # is authoritative and the history file is only a cache over it. Starting from empty
         # would silently re-publish a week of old news.
         archive_dir = Path(args.out_dir) if args.out_dir else ROOT / "data" / "digests"
+        # Resolution order: the flag, then `AIDAILY_HISTORY_FILE`, then the committed path.
+        #
+        # The environment variable exists for tests: a fixture story matched a real archived
+        # event as "the same message" and was dropped from the digest, so the suite failed for
+        # a reason unrelated to the code under test. An isolated run needs an isolated memory.
+        history_path = getattr(args, "history_file", None) or os.environ.get("AIDAILY_HISTORY_FILE")
         history = PublishedHistory(
-            Path(args.history_file) if getattr(args, "history_file", None)
+            Path(history_path) if history_path
             else ROOT / "data" / "state" / "published_history.jsonl",
             window_days=cfg.dedup.l3.cross_day_window_days,
         )
@@ -975,6 +986,11 @@ def build_parser() -> argparse.ArgumentParser:
     r = sub.add_parser("run", help="完整链路：采集 → 时间窗 → L2 → L3 → 分析 → 校验 → 渲染")
     r.add_argument("--from-items", help="跳过采集，直接重放已存储的 items.jsonl")
     r.add_argument("--out-dir", help="日报输出目录（默认 data/digests）")
+    # The cross-day memory. Exposed as a flag because tests must be able to point it at an
+    # empty file: reading the real history made a fixture story match a genuine archived
+    # event as "the same message" and vanish from the digest, so the suite failed for a
+    # reason unrelated to the code under test.
+    r.add_argument("--history-file", help="跨天去重记录（默认 data/state/published_history.jsonl）")
     r.add_argument("--concurrency", type=int, default=10)
     r.add_argument("--limit", type=int, help="采集阶段只跑前 N 个源")
     # Defaults to 0 = "no cap", i.e. analyse everything that will be published. A cap below

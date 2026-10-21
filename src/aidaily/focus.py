@@ -194,7 +194,13 @@ _OFF_TOPIC = re.compile(
     r"(?![a-z])|"
     r"音箱|耳机|眼镜|手表|手机|电视|笔记本|平板|游戏|剧集|综艺|电影|票房|"
     r"房价|楼市|割肉|止损|股票|股价|基金|理财|彩票|"
-    r"Wi-?Fi|路由器|记谱法|键盘|沙发|旅行|美食|减肥",
+    r"Wi-?Fi|路由器|记谱法|键盘|沙发|旅行|美食|减肥|"
+    # Sports. Measured on 2026-10-21: a Sina headline of football hashtags -- `#斯图加特
+    # #马德里竞技 #ai足球 #ai模型 #欧冠` -- scored focus 1.00 and reached the digest, because
+    # the tag `#ai模型` contains 模型. It is a football result; the `ai` in the tags is
+    # something the poster typed, not the subject. 足球/欧冠/赛季 alone is enough to dilute it.
+    r"足球|篮球|欧冠|世界杯|联赛|球队|球员|转会|球迷|赛程|比分|夺冠|"
+    r"斯图加特|马德里竞技|皇马|巴萨|曼联|利物浦|拜仁",
     re.IGNORECASE,
 )
 
@@ -232,6 +238,15 @@ def _headline_focus(title: str) -> float:
 
     # Off-topic terms dilute rather than veto: "Xbox's AI upscaler" is genuinely ambiguous and
     # belongs in the middle, not at the bottom next to "网友将家中 Wi-Fi 拆分".
+    # A named lab outranks the topic words.
+    #
+    # Measured: `Google DeepMind 用 AI 分析足球战术` is a real AI story and scored 0.63 once 足球
+    # was added as a diluting term -- below the 0.7 floor, so it would have been dropped. The
+    # sports words exist to catch a football result that happens to carry `#ai模型` in its tags;
+    # they must not outvote the lab that is the actual subject of the sentence.
+    if labs and off:
+        off = 0
+
     score = ai_hits / (ai_hits + off * 1.2)
 
     # A bare `AI` cannot carry a story on its own, so when it is the *only* evidence the score
