@@ -98,16 +98,26 @@ def store_images(
             written += 1
         urls[event_id] = public_url(repo, date, filename)
 
-    if dry_run or written == 0:
+    if dry_run:
         return urls
 
+    # Push even when nothing was written: a previous run may have stored the files and failed to
+    # push them, and a re-run must repair that rather than report success with pictures that
+    # exist only on local disk.
     if not _push(root, date):
         return {}
     return urls
 
 
 def _push(root: Path, date: str) -> bool:
-    """Commit and push the day directory. True when the remote accepted it."""
+    """Commit and push the day directory. True when the remote accepted it.
+
+    `store_images` creates the date directory before this runs, so the target is never empty and
+    `git clone ... .` refuses with exit 128 ("destination path already exists and is not an empty
+    directory"). The first version did exactly that, the broad except swallowed it, and every
+    run reported "push failed" with no cause. `init` + `fetch` + `reset --soft` keeps the files
+    that are already on disk and makes the working tree match the remote.
+    """
     token = os.environ.get("MEDIA_TOKEN", "").strip()
     repo = repo_for(date)
 
@@ -116,14 +126,25 @@ def _push(root: Path, date: str) -> bool:
             ["git", *args], cwd=str(root), capture_output=True, text=True, encoding="utf-8"
         )
 
+    def remote_url() -> str:
+        if token:
+            return f"https://x-access-token:{token}@github.com/{repo}.git"
+        return f"https://github.com/{repo}.git"
+
     try:
+        root.mkdir(parents=True, exist_ok=True)
         if not (root / ".git").exists():
-            if token:
-                url = f"https://x-access-token:{token}@github.com/{repo}.git"
-            else:
-                url = f"https://github.com/{repo}.git"
-            if git("clone", "--depth", "1", "--branch", MEDIA_BRANCH, url, ".").returncode != 0:
+            if git("init", "-q", "-b", MEDIA_BRANCH).returncode != 0:
                 return False
+            if git("remote", "add", "origin", remote_url()).returncode != 0:
+                return False
+            if git("fetch", "-q", "--depth", "1", "origin", MEDIA_BRANCH).returncode != 0:
+                return False
+            # Keep the files already written; adopt the remote history so the push is a fast-forward.
+            git("reset", "-q", "--soft", "FETCH_HEAD")
+        elif token:
+            git("remote", "set-url", "origin", remote_url())
+
         git("add", "-A")
         if not git("status", "--porcelain").stdout.strip():
             return True
@@ -132,10 +153,7 @@ def _push(root: Path, date: str) -> bool:
             "commit", "-q", "-m", f"media: {date}",
         ).returncode != 0:
             return False
-        if token:
-            git("remote", "set-url", "origin",
-                f"https://x-access-token:{token}@github.com/{repo}.git")
-        return git("push", "-q", "origin", MEDIA_BRANCH).returncode == 0
+        return git("push", "-q", "origin", f"HEAD:{MEDIA_BRANCH}").returncode == 0
     except Exception:
         return False
 
