@@ -31,6 +31,7 @@ from zoneinfo import ZoneInfo
 from pathlib import Path
 
 from .analyze import EventInsight
+from .l3 import _publisher_of
 from .models import Digest, Event, NormalizedItem
 from .render import CATEGORY_LABELS, _label
 
@@ -439,14 +440,22 @@ def render_item(
     first_url = event.all_urls[0] if event.all_urls else "#"
     when_text, known = _when(event)
 
-    level = event.evidence_level
+    # Recompute the publisher count from `source_ids` rather than trusting the archived number.
+    #
+    # The stored `independent_source_count` was computed by whatever version of the pipeline
+    # produced that issue. Before 2026-10-20 it counted **feeds**, so an event carried by three
+    # AIHOT sections claimed three independent sources -- and the page printed that claim next to
+    # a list of links that were all `aihot.news`. A reader could see the contradiction.
+    #
+    # Recomputing here means an old issue renders honestly without being regenerated, and the
+    # badge can never again disagree with the links underneath it.
+    independent = len({_publisher_of(s, {}) for s in event.source_ids}) or event.independent_source_count
+
+    level = event.evidence_level if independent > 1 else "single_source"
     label = "多源交叉验证" if level == "multi_source" else "单一来源"
     # Two facts, two elements. Joining them with a middle dot produced the `A · B` chrome
     # that reads as generated, and the separator was carrying no meaning anyway.
-    count_note = (
-        f'<span>{event.independent_source_count} 个独立来源</span>'
-        if event.independent_source_count > 1 else ""
-    )
+    count_note = f"<span>{independent} 个独立来源</span>" if independent > 1 else ""
 
     # Facts, inferences and uncertainties are rendered as separate labelled blocks rather
     # than as one paragraph, because that separation is the anti-hallucination contract.
@@ -476,13 +485,34 @@ def render_item(
             '<ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div></div>'
         )
 
-    others = event.all_urls[1:5]
+    # Sources are shown by **publisher**, not by URL.
+    #
+    # The previous version listed `event.all_urls[1:5]` and called the remainder "另有 N 个来源".
+    # Measured on 2026-10-21 that produced six `aihot.news` links followed by "另有 6 个来源" --
+    # one publisher, twelve feeds, presented as if twelve outlets had corroborated the story.
+    # The count that matters (`independent_source_count`) already collapses feeds by publisher;
+    # the label did not, so the page contradicted its own evidence badge.
+    #
+    # One link per distinct host, first occurrence wins: that is what a reader can act on. URLs
+    # are de-duplicated too, because one publisher often surfaces the same story through several
+    # of its own feeds.
+    seen_hosts: set[str] = set()
+    per_host: list[str] = []
+    for url in event.all_urls:
+        host = _domain(url)
+        if host in seen_hosts:
+            continue
+        seen_hosts.add(host)
+        per_host.append(url)
+
+    others = per_host[1:5]
     links = "".join(
-        f'<a href="{esc(u)}" target="_blank" rel="noopener noreferrer">{esc(_domain(u))}</a>' for u in others
+        f'<a href="{esc(u)}" target="_blank" rel="noopener noreferrer">{esc(_domain(u))}</a>'
+        for u in others
     )
-    extra = len(event.all_urls) - 1 - len(others)
+    extra = len(per_host) - 1 - len(others)
     if extra > 0:
-        links += f'<span style="color:var(--muted-fg)">另有 {extra} 个来源</span>'
+        links += f'<span style="color:var(--muted-fg)">另有 {extra} 家其他来源</span>'
     links = f'<div class="item__links">{links}</div>' if links else ""
 
     when_cls = "" if known else ' class="when-unknown"'
