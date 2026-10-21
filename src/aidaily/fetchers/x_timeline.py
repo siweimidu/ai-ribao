@@ -218,7 +218,7 @@ class XTimelineFetcher(BaseFetcher):
     name = "XTimelineFetcher"
 
     #: Seconds between requests. See the module docstring: 0.6s earned a 429 on every call.
-    request_gap_s: float = 6.0
+    request_gap_s: float = 20.0
 
     async def fetch(self, spec: SourceSpec) -> SourceResult:
         handle = _handle(spec)
