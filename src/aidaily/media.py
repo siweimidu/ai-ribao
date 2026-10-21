@@ -61,6 +61,11 @@ _TW_IMAGE = (
 )
 _IMG_TAG = re.compile(r'<img[^>]+src=["\']([^"\']+)', re.I)
 
+#: Blocks whose images belong to the article. A bare <img> anywhere on the page is how site
+#: furniture got in: an author portrait, a logo strip, a brand banner repeated under five
+#: unrelated stories.
+_ARTICLE_BODY = re.compile(r"<(article|figure|picture)\b[^>]*>(.*?)</\1>", re.S | re.I)
+
 #: X/Twitter status URLs, which need the syndication path rather than the article path.
 _X_STATUS = re.compile(r"https?://(?:www\.)?(?:x|twitter)\.com/([A-Za-z0-9_]+)/status/(\d+)")
 
@@ -128,14 +133,33 @@ def find_image_url(html: str, page_url: str) -> ArticleImage | None:
 
 
 def find_image_candidates(html: str, page_url: str, *, limit: int = 6) -> list[ArticleImage]:
-    """Every plausible story image on a page, best-first by *kind* rather than by size.
+    """Every image on the page that is *provably* about this story, best-first.
 
-    A declared social card goes first because it is the publisher own choice of what represents
-    the story. Body images follow, because a topic index and an article share one og:image while
-    the article carries the only picture that is actually specific to it.
+    **The rule: only trust what the publisher declared about this page.**
 
-    Size is not known here -- that requires downloading -- so this orders by provenance and lets
-    `best_image` make the final call on the bytes.
+    An earlier version took every `<img>` on the page. Measured on the 2026-10-21 issue that
+    produced:
+
+      - two AWS brand decorations (a wireframe-cube motif, a gradient-orb banner) under five
+        unrelated articles
+      - an author portrait, a site banner and an unrelated chart under a single story
+      - four pictures where two were the same footer strip
+
+    Every one of those was a real, large, well-shaped photograph that passed every size check.
+    None of them belonged to the article. Size cannot tell you provenance; only the markup can.
+
+    So a candidate must be one of:
+
+      1. `og:image` -- the publisher own statement of what represents this page.
+      2. `twitter:image` -- the same statement for cards.
+      3. An `<img>` inside `<figure>`, `<picture>` or `<article>`, where the publisher is saying
+         "this picture belongs to this piece".
+
+    Everything else is dropped, however large it is. A story with no qualifying picture shows no
+    picture -- an empty slot is honest, a wrong picture is a lie.
+
+    The trade is real: fewer stories will carry images. That is the correct direction when the
+    alternative is decoration masquerading as reporting.
     """
     out: list[ArticleImage] = []
     seen: set[str] = set()
@@ -158,10 +182,16 @@ def find_image_candidates(html: str, page_url: str, *, limit: int = 6) -> list[A
     for pattern in _TW_IMAGE:
         for match in pattern.finditer(html):
             add(match.group(1), "twitter")
-    for raw in _IMG_TAG.findall(html):
-        add(raw, "img")
-        if len(out) >= limit:
-            break
+
+    # Body images only when the markup places them inside the article. A bare `<img>` anywhere on
+    # the page is exactly how site furniture got in.
+    # `findall` with groups returns tuples; the body is the second group.
+    for block in (m[1] for m in _ARTICLE_BODY.findall(html)):
+        for raw in _IMG_TAG.findall(block):
+            add(raw, "body")
+            if len(out) >= limit:
+                return out[:limit]
+
 
     return out[:limit]
 
