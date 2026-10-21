@@ -1,4 +1,4 @@
-generated_at: '2026-10-21T16:17:06.158634+00:00'
+generated_at: '2026-10-21T16:47:51.846603+00:00'
 generated_by: scripts/build_registry.py
 source_of_truth: audit/sources_ledger.json (static audit of six repositories) + sources/local.yaml (later additions)
 policy:
@@ -6,11 +6,11 @@ policy:
   coverage_guard: tests/contract/test_source_coverage.py asserts every provenance entry survives.
 stats:
   url_level_rows_before_merge: 100
-  parameter_rows_merged: -63
+  parameter_rows_merged: -88
   merge_breakdown:
     google_trends: 21
-  unique_sources: 163
-  provenance_rows: 191
+  unique_sources: 188
+  provenance_rows: 216
   by_repository:
     CloudFlare-AI-Insight-Daily: 11
     Horizon: 45
@@ -26,13 +26,14 @@ stats:
     daily-briefing: 1
     dailydawn: 19
     daybrief: 5
-  added_locally: 83
+  added_locally: 108
   by_source_type:
     api: 34
     atom: 4
     jsonfeed: 1
     rss: 118
     scrape: 6
+    x_timeline: 25
   by_category:
     community: 22
     dataset: 1
@@ -41,13 +42,14 @@ stats:
     example: 5
     lab: 2
     lab-blog: 4
-    lab-official: 18
+    lab-official: 34
     media: 17
     mixed: 3
     model: 2
     news: 2
     newsletter: 2
     paper: 10
+    person: 9
     podcast: 4
     preset: 11
     product: 3
@@ -607,6 +609,781 @@ sources:
   params:
     item_selector: div.flex.flex-col.gap-\[6px\] a[href^='/blog/']
     limit: 30
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:aiatmeta
+  name: Meta AI
+  url: https://x.com/AIatMeta
+  normalized_url: https://x.com/AIatMeta
+  domain: x.com
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: Meta AI 官方；开源权重模型与 Llama 系。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:alibaba_qwen
+  name: Alibaba Qwen
+  url: https://x.com/Alibaba_Qwen
+  normalized_url: https://x.com/Alibaba_Qwen
+  domain: x.com
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: 通义千问官方；Qwen 开源模型发布。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:anthropicai
+  name: Anthropic
+  url: https://x.com/AnthropicAI
+  normalized_url: https://x.com/AnthropicAI
+  domain: x.com
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: Anthropic 官方；Claude 模型发布与安全研究。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:baidu_inc
+  name: Baidu
+  url: https://x.com/Baidu_Inc
+  normalized_url: https://x.com/Baidu_Inc
+  domain: x.com
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: 百度官方；文心与国产大模型动态。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:chatgpt
+  name: ChatGPT
+  url: https://x.com/ChatGPT
+  normalized_url: https://x.com/ChatGPT
+  domain: x.com
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: ChatGPT 产品账号；功能上线与灰度节奏。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:deepseek_ai
+  name: DeepSeek
+  url: https://x.com/deepseek_ai
+  normalized_url: https://x.com/deepseek_ai
+  domain: x.com
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: DeepSeek 官方；V 系列模型与 API 变动。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:googleai
+  name: Google AI
+  url: https://x.com/GoogleAI
+  normalized_url: https://x.com/GoogleAI
+  domain: x.com
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: Google AI 官方；消费级 AI 功能与产品。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:googledeepmind
+  name: Google DeepMind
+  url: https://x.com/GoogleDeepMind
+  normalized_url: https://x.com/GoogleDeepMind
+  domain: x.com
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: DeepMind 官方；Gemini 与前沿研究。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:huggingface
+  name: Hugging Face
+  url: https://x.com/huggingface
+  normalized_url: https://x.com/huggingface
+  domain: x.com
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: HF 官方；开源模型与数据集动态。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:kimi_moonshot
+  name: Moonshot / Kimi
+  url: https://x.com/Kimi_Moonshot
+  normalized_url: https://x.com/Kimi_Moonshot
+  domain: x.com
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: 月之暗面官方；Kimi 模型与权重开放。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:minimax_ai
+  name: MiniMax
+  url: https://x.com/MiniMax_AI
+  normalized_url: https://x.com/MiniMax_AI
+  domain: x.com
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: MiniMax 官方；M 系列模型与产品。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:mistralai
+  name: Mistral
+  url: https://x.com/MistralAI
+  normalized_url: https://x.com/MistralAI
+  domain: x.com
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: Mistral 官方；欧洲开源模型路线。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:nvidiaaidev
+  name: NVIDIA AI Dev
+  url: https://x.com/NVIDIAAIDev
+  normalized_url: https://x.com/NVIDIAAIDev
+  domain: x.com
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: NVIDIA 开发者账号；推理栈与 Nemotron 模型。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:openai
+  name: OpenAI
+  url: https://x.com/OpenAI
+  normalized_url: https://x.com/OpenAI
+  domain: x.com
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: OpenAI 官方账号；产品发布与模型更新的第一手公告。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:openaidevs
+  name: OpenAI Devs
+  url: https://x.com/OpenAIDevs
+  normalized_url: https://x.com/OpenAIDevs
+  domain: x.com
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: OpenAI 开发者账号；API、Codex 与工具链变动。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:stepfun_ai
+  name: StepFun 阶跃星辰
+  url: https://x.com/stepfun_ai
+  normalized_url: https://x.com/stepfun_ai
+  domain: x.com
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: 阶跃星辰官方；国产多模态模型。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:demishassabis
+  name: Demis Hassabis
+  url: https://x.com/demishassabis
+  normalized_url: https://x.com/demishassabis
+  domain: x.com
+  category: person
+  categories_all:
+  - person
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: DeepMind CEO；前沿模型与研究进展。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:hwchase17
+  name: Harrison Chase
+  url: https://x.com/hwchase17
+  normalized_url: https://x.com/hwchase17
+  domain: x.com
+  category: person
+  categories_all:
+  - person
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: LangChain 创始人；Agent 工程实践。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:jeffdean
+  name: Jeff Dean
+  url: https://x.com/JeffDean
+  normalized_url: https://x.com/JeffDean
+  domain: x.com
+  category: person
+  categories_all:
+  - person
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: Google 首席科学家；基础设施与研究动态。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:jietang
+  name: 唐杰 (智谱)
+  url: https://x.com/jietang
+  normalized_url: https://x.com/jietang
+  domain: x.com
+  category: person
+  categories_all:
+  - person
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: 智谱 AI 创始人；GLM 系列模型的第一手发布。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:karpathy
+  name: Andrej Karpathy
+  url: https://x.com/karpathy
+  normalized_url: https://x.com/karpathy
+  domain: x.com
+  category: person
+  categories_all:
+  - person
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: 前 Tesla AI 负责人；对模型能力的独立评测与判断。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:sama
+  name: Sam Altman
+  url: https://x.com/sama
+  normalized_url: https://x.com/sama
+  domain: x.com
+  category: person
+  categories_all:
+  - person
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: OpenAI CEO；产品方向与公司决策。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:simonw
+  name: Simon Willison
+  url: https://x.com/simonw
+  normalized_url: https://x.com/simonw
+  domain: x.com
+  category: person
+  categories_all:
+  - person
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: 独立开发者；LLM 工具链的实测与批评。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:thsottiaux
+  name: Tibo (OpenAI Codex)
+  url: https://x.com/thsottiaux
+  normalized_url: https://x.com/thsottiaux
+  domain: x.com
+  category: person
+  categories_all:
+  - person
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: OpenAI Codex 负责人；额度重置与模型节奏的一手消息。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:ylecun
+  name: Yann LeCun
+  url: https://x.com/ylecun
+  normalized_url: https://x.com/ylecun
+  domain: x.com
+  category: person
+  categories_all:
+  - person
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: Meta 首席 AI 科学家；开源路线与学界观点。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
   merged_parameter_rows: 1
   added_locally: true
 - source_id: rss:wechat-jiqizhixin-xlab

@@ -643,9 +643,6 @@ sources:
   language: en
   source_type: atom
   adapter: RssFetcher
-  # Disabled 2026-10-21: this is our own commit feed, not industry news.
-  # It was collected as news and merged into real events -- the Strata 0.2
-  # release listed a chore(daily) commit among its sources. Self-referential.
   enabled: false
   priority: 5
   polling_interval: 12h
@@ -680,9 +677,6 @@ sources:
   language: en
   source_type: atom
   adapter: RssFetcher
-  # Disabled 2026-10-21: this is our own commit feed, not industry news.
-  # It was collected as news and merged into real events -- the Strata 0.2
-  # release listed a chore(daily) commit among its sources. Self-referential.
   enabled: false
   priority: 5
   polling_interval: 12h
@@ -1474,3 +1468,453 @@ sources:
   why: 研究者访谈为主，常有一手论文作者讲解。
   found_in:
   - user-list:2026-10-21#Xuan酱 AI 优质信息源
+- source_id: x:openai
+  name: OpenAI
+  url: https://x.com/OpenAI
+  domain: x.com
+  category: lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: OpenAI 官方账号；产品发布与模型更新的第一手公告。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:openaidevs
+  name: OpenAI Devs
+  url: https://x.com/OpenAIDevs
+  domain: x.com
+  category: lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: OpenAI 开发者账号；API、Codex 与工具链变动。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:chatgpt
+  name: ChatGPT
+  url: https://x.com/ChatGPT
+  domain: x.com
+  category: lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: ChatGPT 产品账号；功能上线与灰度节奏。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:anthropicai
+  name: Anthropic
+  url: https://x.com/AnthropicAI
+  domain: x.com
+  category: lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: Anthropic 官方；Claude 模型发布与安全研究。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:googledeepmind
+  name: Google DeepMind
+  url: https://x.com/GoogleDeepMind
+  domain: x.com
+  category: lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: DeepMind 官方；Gemini 与前沿研究。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:googleai
+  name: Google AI
+  url: https://x.com/GoogleAI
+  domain: x.com
+  category: lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: Google AI 官方；消费级 AI 功能与产品。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:aiatmeta
+  name: Meta AI
+  url: https://x.com/AIatMeta
+  domain: x.com
+  category: lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: Meta AI 官方；开源权重模型与 Llama 系。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:mistralai
+  name: Mistral
+  url: https://x.com/MistralAI
+  domain: x.com
+  category: lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: Mistral 官方；欧洲开源模型路线。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:deepseek_ai
+  name: DeepSeek
+  url: https://x.com/deepseek_ai
+  domain: x.com
+  category: lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: DeepSeek 官方；V 系列模型与 API 变动。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:kimi_moonshot
+  name: Moonshot / Kimi
+  url: https://x.com/Kimi_Moonshot
+  domain: x.com
+  category: lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: 月之暗面官方；Kimi 模型与权重开放。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:minimax_ai
+  name: MiniMax
+  url: https://x.com/MiniMax_AI
+  domain: x.com
+  category: lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: MiniMax 官方；M 系列模型与产品。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:alibaba_qwen
+  name: Alibaba Qwen
+  url: https://x.com/Alibaba_Qwen
+  domain: x.com
+  category: lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: 通义千问官方；Qwen 开源模型发布。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:baidu_inc
+  name: Baidu
+  url: https://x.com/Baidu_Inc
+  domain: x.com
+  category: lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: 百度官方；文心与国产大模型动态。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:stepfun_ai
+  name: StepFun 阶跃星辰
+  url: https://x.com/stepfun_ai
+  domain: x.com
+  category: lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: 阶跃星辰官方；国产多模态模型。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:huggingface
+  name: Hugging Face
+  url: https://x.com/huggingface
+  domain: x.com
+  category: lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: HF 官方；开源模型与数据集动态。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:nvidiaaidev
+  name: NVIDIA AI Dev
+  url: https://x.com/NVIDIAAIDev
+  domain: x.com
+  category: lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: NVIDIA 开发者账号；推理栈与 Nemotron 模型。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:thsottiaux
+  name: Tibo (OpenAI Codex)
+  url: https://x.com/thsottiaux
+  domain: x.com
+  category: person
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: OpenAI Codex 负责人；额度重置与模型节奏的一手消息。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:jietang
+  name: 唐杰 (智谱)
+  url: https://x.com/jietang
+  domain: x.com
+  category: person
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: 智谱 AI 创始人；GLM 系列模型的第一手发布。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:karpathy
+  name: Andrej Karpathy
+  url: https://x.com/karpathy
+  domain: x.com
+  category: person
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: 前 Tesla AI 负责人；对模型能力的独立评测与判断。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:sama
+  name: Sam Altman
+  url: https://x.com/sama
+  domain: x.com
+  category: person
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: OpenAI CEO；产品方向与公司决策。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:ylecun
+  name: Yann LeCun
+  url: https://x.com/ylecun
+  domain: x.com
+  category: person
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: Meta 首席 AI 科学家；开源路线与学界观点。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:demishassabis
+  name: Demis Hassabis
+  url: https://x.com/demishassabis
+  domain: x.com
+  category: person
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: DeepMind CEO；前沿模型与研究进展。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:jeffdean
+  name: Jeff Dean
+  url: https://x.com/JeffDean
+  domain: x.com
+  category: person
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: Google 首席科学家；基础设施与研究动态。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:hwchase17
+  name: Harrison Chase
+  url: https://x.com/hwchase17
+  domain: x.com
+  category: person
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: LangChain 创始人；Agent 工程实践。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: x:simonw
+  name: Simon Willison
+  url: https://x.com/simonw
+  domain: x.com
+  category: person
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: 独立开发者；LLM 工具链的实测与批评。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []

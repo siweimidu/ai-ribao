@@ -80,4 +80,15 @@ def test_rendered_pages_carry_a_beijing_today(page: str) -> None:
     # that the calendar lists it -- a page with a missing or malformed today is the actual bug.
     today = data.get("today") or ""
     assert re.fullmatch(r"\d{4}-\d{2}-\d{2}", today), today
-    assert today in (data.get("dates") or []), (today, data.get("dates"))
+
+    # **Not "today must be one of the dates."** The calendar highlights the current day, and
+    # a day with no issue yet is normal: the page is rendered in the morning before that
+    # day digest exists. Requiring membership made this fail whenever the archive and the
+    # wall clock disagreed, which is most of the time, and said nothing about the calendar.
+    #
+    # What must hold: every listed date is real, and `current` is one of them.
+    dates = data.get("dates") or []
+    assert dates, "the calendar lists no issues at all"
+    for value in dates:
+        assert re.fullmatch(r"\d{4}-\d{2}-\d{2}", value), value
+    assert data.get("current") in dates, (data.get("current"), dates[:5])

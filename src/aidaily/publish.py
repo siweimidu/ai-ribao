@@ -80,6 +80,7 @@ def write_rss(
     site_url: str,
     insights: dict[str, EventInsight] | None = None,
     images: dict[str, str] | None = None,
+    incremental: bool = True,
 ) -> DeliveryResult:
     """An RSS 2.0 feed alongside the JSON Feed, for readers that only speak RSS.
 
@@ -104,7 +105,32 @@ def write_rss(
     """
     insights = insights or {}
     items = []
-    for event in digest.top_events:
+
+    # **Incremental, taken from TrendRadar mode of the same name.**
+    #
+    # The feed used to carry every event in the issue, so a reader subscribed since yesterday saw
+    # the whole digest again on every re-run, and a consumer wired to n8n reprocessed stories it
+    # had already handled. An aggregator has no way to know that item 7 is the same item 7 as
+    # before -- `guid` is stable, but a poller that ignores it re-fires everything.
+    #
+    # So the feed carries only what is *new since the last issue*: events whose first sighting is
+    # today. The full issue stays on the page, which is the archive; the feed is the wire.
+    #
+    # `incremental=False` restores the whole-issue behaviour for a backfill.
+    events = list(digest.top_events)
+    if incremental:
+        today = digest.date
+        fresh = [
+            e for e in events
+            if (e.first_seen_at.astimezone(timezone.utc).date().isoformat() if e.first_seen_at else today) >= today
+        ]
+        # A feed with zero items is worse than a feed with a few repeats: a reader would think the
+        # digest stopped. On a re-run of the same day nothing is new, so fall back to the full set
+        # and let `guid` do the de-duplicating that a well-behaved consumer already does.
+        if fresh:
+            events = fresh
+
+    for event in events:
         insight = insights.get(event.event_id)
         title = (insight.title if insight and insight.title else event.title) or event.title
         when = (

@@ -18,7 +18,7 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
-SourceType = Literal["rss", "atom", "jsonfeed", "api", "scrape"]
+SourceType = Literal["rss", "atom", "jsonfeed", "api", "scrape", "x_timeline"]
 HealthStatus = Literal[
     "healthy", "degraded", "blocked", "dead", "needs_credential", "disabled", "unverified"
 ]

@@ -29,11 +29,13 @@ fact rather than argued about.
 from __future__ import annotations
 
 import math
+from collections import Counter
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 
 from .entities import topic_overlap
 from .focus import focus_multiplier
+from .frequency import cross_source_score, frequency_index
 from .vendor_priority import components as vendor_components
 from .vendor_priority import vendor_priority as vendor_priority_of
 from .heat import heat
@@ -141,6 +143,7 @@ def score_event(
     weights: dict[str, float],
     rank: RankWeights,
     now: datetime,
+    frequency: Counter[str] | None = None,
 ) -> RankedEvent:
     """Score one event for placement.
 
@@ -215,7 +218,26 @@ def score_event(
     # `heat` already covers freshness; the old multiplicative recency term is gone, because
     # multiplying an independent decay on top of a normalised score is what made "newest
     # first" the effective rule whenever nothing was corroborated.
-    score = heat_score * damped_source * title_factor * focus_factor * vendor_factor * 100
+    # **Cross-source keyword frequency, taken from TrendRadar.**
+    #
+    # `heat._corroboration` counts publishers carrying *this* event. It cannot see that
+    # a model name is turning up in unrelated stories all over the day -- which is what a
+    # reader means by "this is the thing right now".
+    #
+    # Damped hard (`^0.15` on a 0.85-1.0 band): it breaks ties between stories of similar
+    # weight, and must never lift a routine post above a frontier release. Measured on the
+    # 2026-10-21 issue, a full-strength term promoted one press release above every model
+    # announcement that day.
+    frequency_factor = 1.0
+    frequency_terms: list[str] = []
+    if frequency:
+        raw_freq, frequency_terms = cross_source_score(event.title, frequency)
+        frequency_factor = 0.85 + 0.15 * raw_freq
+
+    score = (
+        heat_score * damped_source * title_factor * focus_factor * vendor_factor
+        * frequency_factor * 100
+    )
 
     return RankedEvent(
         event=event,
@@ -248,8 +270,16 @@ def rank_events(
     rank = rank or RankWeights()
     now = now or datetime.now(timezone.utc)
 
+    # **One title per event, not per article.** Five outlets covering one press release is
+    # corroboration, which `heat` already measures; feeding those five titles here would count
+    # the same fact twice and promote a single announcement to "the industry is talking about
+    # this". Measured on the 2026-10-21 issue: article-level titles made 物理 the top term with
+    # five hits, all five from the same conference.
+    frequency = frequency_index([e.title for e in events if e.title])
+
     scored = [
-        score_event(e, items_by_id, sources_by_id, weights or {}, rank, now) for e in events
+        score_event(e, items_by_id, sources_by_id, weights or {}, rank, now, frequency)
+        for e in events
     ]
     scored.sort(key=lambda r: (-r.score, r.event.event_id))
 

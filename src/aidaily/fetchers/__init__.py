@@ -17,6 +17,7 @@ from .jsonapi import JsonApiFetcher
 from .reddit import RedditFetcher, json_url_to_html
 from .rss import RssFetcher
 from .tavily import TavilyFetcher
+from .x_timeline import XTimelineFetcher
 
 #: adapter name (as written in sources/registry.yaml) -> implementation
 ADAPTERS: dict[str, type[BaseFetcher]] = {
@@ -27,6 +28,7 @@ ADAPTERS: dict[str, type[BaseFetcher]] = {
     "GitHubTrendingFetcher": GitHubTrendingFetcher,
     "HtmlFetcher": HtmlFetcher,
     "TavilyFetcher": TavilyFetcher,
+    "XTimelineFetcher": XTimelineFetcher,
 }
 
 #: fallback when the registry names an adapter we do not have yet
@@ -40,6 +42,8 @@ _BY_SOURCE_TYPE = {
     # looked healthy.
     "scrape": "HtmlFetcher",
     "web": "HtmlFetcher",
+    # An X account timeline: no API key, one request per handle.
+    "x_timeline": "XTimelineFetcher",
 }
 
 #: Names the *registry generator* assigns in bulk, i.e. "no specific adapter chosen".

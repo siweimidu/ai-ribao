@@ -46,10 +46,15 @@ def test_a_relative_url_is_resolved_against_the_page() -> None:
     assert find_image_url(html, "https://x.com/a/story").url == "https://x.com/img/hero.png"
 
 
-def test_logos_and_icons_are_not_the_story() -> None:
+def test_a_page_without_an_og_image_has_no_story_picture() -> None:
+    """Body `<img>` tags are no longer candidates.
+
+    Only `og:image` survives: it is the one declaration a publisher makes about this page.
+    A bare `<img>` produced brand decorations under five unrelated AWS articles and a bin
+    photograph beside a story about enterprise AI agents.
+    """
     html = '<img src="https://x.com/logo.png"><img src="https://x.com/story.jpg">'
-    found = find_image_url(html, "https://x.com/s")
-    assert found is not None and found.url.endswith("story.jpg")
+    assert find_image_url(html, "https://x.com/s") is None
 
 
 def test_no_image_at_all_is_none_not_an_exception() -> None:

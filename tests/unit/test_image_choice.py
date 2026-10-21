@@ -87,15 +87,21 @@ def test_an_ordinary_article_image_is_not_refused() -> None:
 # --- candidates ------------------------------------------------------------------
 
 
-def test_the_social_card_comes_first_but_the_body_images_are_kept() -> None:
-    """Size is unknown until download, so provenance orders the list and scoring decides."""
+def test_only_the_social_card_survives() -> None:
+    """Body images were tried and removed.
+
+    A ZDNet story about an enterprise agent carried a stock photo of a bin and one of a
+    hard-disk platter, both from `<img>` tags inside the article. The markup said "this
+    belongs to the article"; the picture said nothing about the story. `og:image` is the
+    only declaration a publisher makes *about this page*.
+    """
     html = (
         '<meta property="og:image" content="https://x.com/card.jpg">'
         '<img src="https://x.com/body1.jpg">'
         '<img src="https://x.com/body2.jpg">'
     )
     got = find_image_candidates(html, "https://x.com/story")
-    assert [c.source for c in got] == ["og", "img", "img"]
+    assert [c.source for c in got] == ["og"]
 
 
 def test_duplicate_urls_appear_once() -> None:

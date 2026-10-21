@@ -498,13 +498,28 @@ def render_item(
     # The metadata is optional. `repo_meta` is filled when the run could reach the API; when it
     # is missing the item falls back to the ordinary headline, which is exactly what it looked
     # like before this feature existed.
+    # **Only when the story *is* the repository.**
+    #
+    # Scanning every URL meant any story that merely *linked* to GitHub was rendered as that
+    # repository: measured on 2026-10-21, `OpenAI: Patch the Planet` -- a coordinated-disclosure
+    # write-up -- carried one `github.com/php/php-src/releases/tag/php-8.2.35` link among nine
+    # sources, and the page showed it as a PHP repo card with the OpenAI headline gone.
+    #
+    # The repository has to be the primary subject: its URL must be the first (most direct) one,
+    # or the title must name the repository itself, which is what the trending fetcher emits
+    # (`vllm-project/vllm`). A bare link in the reference list does not qualify.
     repo = None
     card = ""
-    for candidate in ordered_urls:
-        slug = repo_of(candidate)
-        if slug:
-            repo = slug
-            break
+    primary_url = ordered_urls[0] if ordered_urls else ""
+    repo = repo_of(primary_url) if primary_url else None
+    if repo is None:
+        # The trending fetcher titles a repository story with its own slug (`vllm-project/vllm`)
+        # and links to it, but a rewrite can leave the title as the bare slug while the first URL
+        # points at a release page. Accept that form only when the metadata confirms it is a
+        # repository we actually fetched -- otherwise `OpenAI/vLLM` style titles would match.
+        candidate = repo_of(f"https://github.com/{title.strip()}")
+        if candidate and (not repo_meta or candidate in repo_meta):
+            repo = candidate
     if repo and repo_meta and repo in repo_meta:
         data = repo_meta[repo]
         card = ghcard_html(
