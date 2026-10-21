@@ -90,6 +90,7 @@ async def collect(
         from .fetchers import x_timeline as _x
 
         chosen = set(_x.plan_run(x_ids))
+        _x_rotation = (_x, x_ids, chosen)
         skipped += [
             (sid, "X rotation: not this run") for sid in x_ids if sid not in chosen
         ]
@@ -156,6 +157,12 @@ async def collect(
         # page held 21 stories. Fetching the page is what turns one line a day into twenty.
         for raw in split_all(result.items):
             report.items.append(normalize_raw(raw, spec, now))
+
+    # Move the rotation cursor past the accounts this run actually served.
+    if "_x_rotation" in dir():
+        _xmod, _all_ids, _planned = _x_rotation
+        _served = sum(1 for r in report.results if r.source_id in _planned and r.verdict == "ok")
+        _xmod.advance_cursor(len(_all_ids), max(_served, 0))
 
     report.finished_at = datetime.now(timezone.utc)
     return report
