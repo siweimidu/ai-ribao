@@ -68,12 +68,12 @@ def public_url(repo: str, date: str, filename: str) -> str:
 
 
 def store_images(
-    images: dict[str, bytes],
+    images: dict[str, list[bytes]],
     *,
     date: str,
     workdir: Path | None = None,
     dry_run: bool = False,
-) -> dict[str, str]:
+) -> dict[str, list[str]]:
     """Write images into the media repository and return event_id to public URL.
 
     A failure to push returns an empty mapping rather than raising: pictures are decoration, and
@@ -86,17 +86,20 @@ def store_images(
     date_dir.mkdir(parents=True, exist_ok=True)
 
     repo = repo_for(date)
-    urls: dict[str, str] = {}
-    written = 0
-    for event_id, data in images.items():
-        if not data:
+    urls: dict[str, list[str]] = {}
+    for event_id, group in images.items():
+        if not group:
             continue
-        filename = f"{event_id}-{content_hash(data)}.webp"
-        path = date_dir / filename
-        if not path.exists():
-            path.write_bytes(data)
-            written += 1
-        urls[event_id] = public_url(repo, date, filename)
+        # `m001`, `m002` ... mirrors how the reference site names its image rows, and keeps
+        # the reading order stable when a story has several pictures.
+        for index, data in enumerate(group, 1):
+            if not data:
+                continue
+            filename = f"{event_id}-m{index:03d}-{content_hash(data)}.webp"
+            path = date_dir / filename
+            if not path.exists():
+                path.write_bytes(data)
+            urls.setdefault(event_id, []).append(public_url(repo, date, filename))
 
     if dry_run:
         return urls

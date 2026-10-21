@@ -167,38 +167,29 @@ def find_image_candidates(html: str, page_url: str, *, limit: int = 6) -> list[A
 
 
 def score_image(data: bytes, *, width: int, height: int) -> int:
-    """How suitable an image is as a story thumbnail. Higher is better; <0 rejects it.
+    """How suitable an image is as a story picture. Higher is better; <0 rejects it.
 
-    URL alone cannot pick a good picture. Measured on live pages:
+    **Aspect ratio is not a rejection criterion.** The reference layout stacks a story images
+    side by side in a horizontally scrolling row and gives each one its own proportions --
+    measured on its 2026-10-21 issue, the four pictures of one entry are 1080x720, 1080x227,
+    1080x1017 and 1080x351, from 1.06 to 4.76. A cropped 16:9 frame would destroy three of those
+    four: the long terminal screenshot, the tall diagram, the wide banner.
 
-    * cloud.google.com declares `AI_infrastructure_default.max-300x300.jpg` as its og:image --
-      a 300px category tile that is the same for every post in that topic.
-    * aws.amazon.com renders twenty marketing banners before the article image.
-    * aihot.news, an aggregator, has no og:image at all; the card it shows elsewhere carries its
-      own logo and score badge, which has no business on someone else story.
-
-    So the decision is made on the *pixels*: a hero image is wide, reasonably large, and not a
-    square tile or a tall banner. These thresholds are deliberately loose -- they exist to reject
-    avatars, icons, letterboxes and 1px spacers, not to curate.
+    What this rejects is what is never a story picture: an icon, a spacer, a topic tile that is
+    byte-identical across unrelated posts. Size and provenance carry that, not shape.
     """
-    if width < 400 or height < 200:
+    if width < 400 or height < 180:
         return -1
-    ratio = width / height
-    #: 16:9 through 2.4:1 is the range every hero image lands in. A square is a tile; taller
-    #: than 3:2 portrait is a poster, and both look wrong in a card.
-    if not 1.2 <= ratio <= 2.6:
-        return -1
-    score = 0
-    # Bigger is better up to a point: past 1600px the browser is downscaling anyway.
-    score += min(width, 1600) // 100
-    # Prefer the middle of the wide range over its edges: 1.7-2.1 fits a 16:9 card cleanly.
-    if 1.6 <= ratio <= 2.2:
-        score += 8
-    # A 300px tile upscaled to 1200 is visibly soft; reject anything narrower than the target.
+    score = min(width, 1600) // 100
+    # Very wide images are usually banners. A nudge, not a filter: a 4.7:1 banner still beats no
+    # image at all.
+    if width / height > 3.5:
+        score -= 6
+    # Narrower than the target renders soft when upscaled. A penalty, not a veto: a 640px
+    # image is still better than the placeholder, and plenty of publishers only ship that.
     if width < 800:
-        score -= 12
+        score -= 4
     return score
-
 
 def to_webp(data: bytes, *, width: int = 1200, quality: int = 82) -> bytes | None:
     """Re-encode to WebP at the given width. None when Pillow cannot read the bytes.
@@ -331,6 +322,55 @@ async def fetch_page(client: httpx.AsyncClient, url: str) -> str | None:
         return None
 
 
+async def best_images(
+    client: httpx.AsyncClient, page_url: str, *, max_tries: int = 8, keep: int = 4
+) -> list[bytes]:
+    """Download the candidates and return the usable ones, best-first, as WebP.
+
+    **A story often has more than one picture, and all of them belong on the page.** The
+    reference layout puts them side by side in a horizontally scrolling row; measured on its
+    2026-10-21 issue the first entry carries four, at 1080x720, 1080x227, 1080x1017 and
+    1080x351. Showing only the first throws away the diagram, the terminal screenshot and the
+    benchmark table -- exactly the parts a reader wants after the summary.
+
+    So this returns a list rather than one image, and it does not crop: each keeps its own
+    proportions and the CSS gives it `width: auto`.
+    """
+    from PIL import Image
+
+    page = await fetch_page(client, page_url)
+    if not page:
+        return []
+
+    candidates = find_image_candidates(page, page_url, limit=max_tries)
+    if not candidates:
+        return []
+
+    scored: list[tuple[int, bytes]] = []
+    for candidate in candidates[:max_tries]:
+        raw = await fetch_bytes(client, candidate.url)
+        if raw is None or len(raw) < 2_000:
+            continue
+        try:
+            with Image.open(io.BytesIO(raw)) as probe:
+                width, height = probe.size
+        except Exception:
+            continue
+        score = score_image(raw, width=width, height=height)
+        if score < 0:
+            continue
+        # The social card already describes the story; a small tie-break keeps it first without
+        # letting it displace a genuinely better body image.
+        if candidate.source in ("og", "twitter"):
+            score += 6
+        webp = to_webp(raw, width=1080)
+        if webp:
+            scored.append((score, webp))
+
+    scored.sort(key=lambda pair: -pair[0])
+    return [data for _, data in scored[:keep]]
+
+
 async def best_image(
     client: httpx.AsyncClient, page_url: str, *, max_tries: int = 8
 ) -> bytes | None:
@@ -432,11 +472,16 @@ async def image_for_x_post(client: httpx.AsyncClient, status_url: str) -> bytes 
     return to_webp(raw)
 
 
-async def image_for(client: httpx.AsyncClient, article_url: str) -> bytes | None:
-    """The best image for a URL: the X path first, then the ordinary article path."""
+async def images_for(client: httpx.AsyncClient, article_url: str) -> list[bytes]:
+    """Every usable picture for a URL. X posts yield their attachments; articles their body.
+
+    Returns a list so the layout can show them side by side. An empty list means the caller
+    should draw a placeholder -- never an empty slot.
+    """
     if _X_STATUS.search(article_url or ""):
-        return await image_for_x_post(client, article_url)
-    return await best_image(client, article_url)
+        single = await image_for_x_post(client, article_url)
+        return [single] if single else []
+    return await best_images(client, article_url)
 
 
 def default_client() -> httpx.AsyncClient:

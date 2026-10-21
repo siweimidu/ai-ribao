@@ -120,8 +120,8 @@ def _og_image(digest: Digest) -> str:
     consumer falls back to the title when the property is absent or blank.
     """
     for event in digest.top_events:
-        if event.image_url:
-            return event.image_url
+        if event.image_urls:
+            return event.image_urls[0]
     return ""
 
 
@@ -461,12 +461,20 @@ def render_item(
     # The story image, when one was fetched. `loading=lazy` because a long issue has dozens
     # and none of the below-the-fold ones should block the first paint. Width and height are
     # not set: the aspect ratio varies per publisher, and a wrong pair causes layout shift.
-    image_html = (
-        f'<a class="item__image" href="{esc(first_url)}" target="_blank" rel="noopener noreferrer">'
-        f'<img src="{esc(event.image_url)}" alt="" loading="lazy" decoding="async"></a>'
-        if event.image_url
-        else ""
-    )
+    # Pictures in a horizontally scrolling row, each at its own proportions.
+    #
+    # The reference layout does exactly this and it is the right call: a story often has a wide
+    # hero, a tall diagram and a long terminal screenshot, and cropping all three into one 16:9
+    # frame destroys the information the reader wanted. `width:auto` plus a max-height keeps each
+    # one legible; the row scrolls when they do not fit.
+    image_html = ""
+    if event.image_urls:
+        thumbs = "".join(
+            f'<a href="{esc(url)}" target="_blank" rel="noopener noreferrer">'
+            f'<img src="{esc(url)}" alt="" loading="lazy" decoding="async"></a>'
+            for url in event.image_urls
+        )
+        image_html = f'<div class="item__images">{thumbs}</div>'
     when_text, known = _when(event)
 
     # Recompute the publisher count from `source_ids` rather than trusting the archived number.

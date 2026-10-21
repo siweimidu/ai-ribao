@@ -30,28 +30,40 @@ def test_a_wide_hero_image_scores_well() -> None:
     assert score_image(b"", width=1600, height=900) > score_image(b"", width=700, height=400)
 
 
-def test_a_square_tile_is_rejected() -> None:
-    """A category tile is square and repeats across unrelated posts."""
-    assert score_image(b"", width=1200, height=1200) < 0
+def test_a_square_image_is_not_rejected_by_shape() -> None:
+    """Aspect ratio is not a filter.
+
+    The reference layout gives each picture its own proportions -- measured on one entry of its
+    2026-10-21 issue: 1080x720, 1080x227, 1080x1017, 1080x351. A square diagram is legitimate.
+    What gets rejected is *small*: a 1200x1200 picture is fine, a 192x192 icon is not.
+    """
+    assert score_image(b"", width=1200, height=1200) > 0
+    assert score_image(b"", width=192, height=192) < 0
 
 
-def test_a_thumbnail_is_rejected_by_size() -> None:
-    """300x300 upscaled to 1200 is visibly soft; better to draw a placeholder."""
-    assert score_image(b"", width=300, height=300) < 0
-    assert score_image(b"", width=512, height=512) < 0
+def test_a_tall_image_is_kept() -> None:
+    """A tall diagram is one of the four pictures in that same entry (1080x1017)."""
+    assert score_image(b"", width=1080, height=1017) > 0
 
 
-def test_a_portrait_poster_is_rejected() -> None:
-    """Taller than 3:2 looks wrong in a landscape card."""
-    assert score_image(b"", width=800, height=1200) < 0
+def test_a_long_banner_is_penalised_but_still_usable() -> None:
+    """4.76:1 is a real case; it scores lower than a hero but is not thrown away."""
+    banner = score_image(b"", width=1080, height=227)
+    hero = score_image(b"", width=1080, height=720)
+    assert banner > 0
+    assert banner < hero
 
 
-def test_a_small_but_landscape_image_is_kept_and_penalised() -> None:
-    """640x360 is usable as a last resort; it just should not win against a 1200."""
+def test_a_small_image_is_penalised_rather_than_rejected_outright() -> None:
+    """640x360 upscaled looks soft; it should still beat no picture at all.
+
+    Below 400px wide there is nothing to work with, so that is a hard floor.
+    """
     small = score_image(b"", width=640, height=360)
     large = score_image(b"", width=1200, height=630)
     assert small > 0
     assert small < large
+    assert score_image(b"", width=300, height=300) < 0
 
 
 # --- excluding aggregator cards ---------------------------------------------------

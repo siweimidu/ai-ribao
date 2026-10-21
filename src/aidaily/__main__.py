@@ -718,17 +718,20 @@ def cmd_gate(args: argparse.Namespace) -> int:
 
 
 async def _fetch_images(
-    digest: "Digest", cfg: "AppConfig", *, limit: int = 40, concurrency: int = 6
-) -> dict[str, bytes]:
-    """WebP bytes for as many published events as can be found. Never raises.
+    digest: "Digest", cfg: "AppConfig", *, limit: int = 40, concurrency: int = 5
+) -> dict[str, list[bytes]]:
+    """WebP bytes for every published event, one to four pictures each. Never raises.
 
-    The URL tried for each event is the most *direct* one -- the original publisher rather than
-    an aggregator, because a picture taken from a page that copied the story is a picture of a
-    copy. `_url_directness` already ranks them for the title link; the same order applies here.
+    The URL tried first is the most *direct* one -- the original publisher rather than an
+    aggregator, because a picture taken from a page that copied the story is a picture of a copy.
 
-    Bounded concurrency and a per-run cap: forty articles means forty page fetches plus forty
-    image fetches, and firing them all at once gets a run rate-limited by the more careful
-    publishers.
+    A story often has more than one picture and the layout shows them side by side: a wide hero,
+    a tall diagram, a long terminal screenshot. Cropping those to a single frame would throw away
+    what the reader came for, so `images_for` returns all usable ones and the page keeps each in
+    its own proportions.
+
+    Bounded concurrency: forty articles means forty page fetches plus a few hundred image fetches,
+    and firing them all at once gets the run rate-limited by the more careful publishers.
     """
     from . import media, mediastore
     from .l3 import _url_directness
@@ -737,45 +740,44 @@ async def _fetch_images(
     if not events:
         return {}
 
-    out: dict[str, bytes] = {}
+    out: dict[str, list[bytes]] = {}
     semaphore = asyncio.Semaphore(max(1, concurrency))
 
     async with media.default_client() as client:
-        async def one(event) -> tuple[str, bytes | None]:
+
+        async def one(event) -> tuple[str, list[bytes]]:
             urls = sorted(event.all_urls or [], key=lambda u: (_url_directness(u), u))
             if not urls:
-                return event.event_id, None
+                return event.event_id, []
             async with semaphore:
-                # Two candidates at most: the direct source, then the next one. Beyond that the
-                # gain stops justifying the extra requests.
+                # Two candidates: the direct source, then the next one. Beyond that the gain
+                # stops justifying the extra requests.
                 for candidate in urls[:2]:
-                    data = await media.image_for(client, candidate)
-                    if data:
-                        return event.event_id, data
-            return event.event_id, None
+                    images = await media.images_for(client, candidate)
+                    if images:
+                        return event.event_id, images
+            return event.event_id, []
 
-        for event_id, data in await asyncio.gather(*(one(e) for e in events)):
-            out[event_id] = data
+        for event_id, images in await asyncio.gather(*(one(e) for e in events)):
+            out[event_id] = images
 
     # Every entry gets a picture, one way or another. A story whose page yielded nothing --
     # blocked, no og:image, or an aggregator card that was correctly rejected -- gets a
     # deterministic gradient instead of a hole in the layout. It is obviously a placeholder,
-    # which is the honest outcome: a stock photo beside a specific headline would claim
-    # something about the story that nobody verified.
+    # which is the honest outcome: a stock photo beside a specific headline would claim something
+    # about the story that nobody verified.
     for event in events:
         if out.get(event.event_id):
             continue
         fallback = media.placeholder(event.event_id)
         if fallback:
-            out[event.event_id] = fallback
+            out[event.event_id] = [fallback]
 
     urls = mediastore.store_images(out, date=digest.date)
-    if urls:
-        for event in digest.top_events:
-            url = urls.get(event.event_id)
-            if url:
-                event.image_url = url
+    for event in digest.top_events:
+        event.image_urls = urls.get(event.event_id, [])
     return out
+
 async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str):
     """L3 + analysis in one event loop, with the HTTP client closed on the way out.
 

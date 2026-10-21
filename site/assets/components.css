@@ -1983,3 +1983,44 @@ body { font-family: var(--f-sans); }
     overscroll-behavior: contain;
   }
 }
+
+/* --- 新闻配图 ---------------------------------------------------------------------
+ *
+ * 一条新闻常有不止一张图：宽幅主视觉、竖版示意图、长条终端截图。参考站把它们横排、
+ * 允许横向滚动，每张保持自己的宽高比 —— 实测它某一期的四张图是 1080x720、1080x227、
+ * 1080x1017、1080x351，从 1.06 到 4.76。
+ *
+ * 强行裁成统一的 16:9 会毁掉其中三张：终端截图只剩中间一段，示意图被截断上下。
+ * `width: auto` 保证不裁切，`max-height` 防止竖图占满整屏，行内滚动处理放不下的情况。
+ */
+.item__images {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  margin: 14px 0 12px;
+  padding: 2px 2px 8px;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+}
+
+.item__images a {
+  flex: 0 0 auto;
+  line-height: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface-2, #eef2f1);
+  scroll-snap-align: start;
+}
+
+.item__images img {
+  width: auto;
+  max-width: none;
+  max-height: 340px;
+  margin: 0;
+  border-radius: 8px;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .item__images img { max-height: 220px; }
+}

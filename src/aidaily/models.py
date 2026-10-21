@@ -169,7 +169,10 @@ class Event(BaseModel):
     #: only published stories are ever fetched. Absolute rather than relative on purpose: the
     #: media repository can roll over to a new one, and an old page must keep pointing at the
     #: repository that actually holds its picture.
-    image_url: str | None = None
+    #: Absolute URLs of the story pictures, best first. A story often has several -- a hero, a
+    #: diagram, a screenshot -- and the layout shows them side by side, each in its own
+    #: proportions. Empty means the renderer draws a placeholder.
+    image_urls: list[str] = Field(default_factory=list)
     needs_review: bool = False
     #: ranking result, kept so a placement can be explained after the fact
     rank_score: float = 0.0
