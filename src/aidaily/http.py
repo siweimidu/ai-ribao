@@ -126,7 +126,7 @@ class HttpClient:
 
         req_headers = {"Content-Type": "application/json", **(headers or {})}
         last_detail = ""
-        for attempt in range(1, self.retries + 2):
+        for attempt in range(1, attempts + 1):
             await self.limiter.wait(url)
             try:
                 resp = await self._client.post(url, json=payload, headers=req_headers)
@@ -170,11 +170,22 @@ class HttpClient:
         return HttpResult(False, url, None, b"", "", "error", last_detail or "exhausted", self.retries + 1)
 
     async def get(
-        self, url: str, *, conditional: bool = True, timeout_s: float | None = None
+        self,
+        url: str,
+        *,
+        conditional: bool = True,
+        timeout_s: float | None = None,
+        retries: int | None = None,
     ) -> HttpResult:
-        """Fetch one URL. `timeout_s` overrides the client default for this request."""
+        """Fetch one URL.
+
+        `timeout_s` overrides the client default for this request. `retries` overrides the
+        client's retry count -- pass 0 for an endpoint where a retry makes things worse, such
+        as one that answers 429 when a rate-limit window is exhausted.
+        """
         if self._client is None:
             raise RuntimeError("HttpClient must be used as an async context manager")
+        attempts = (self.retries if retries is None else retries) + 1
 
         req_headers: dict[str, str] = {}
         if conditional and (v := self.validators.get(url)):

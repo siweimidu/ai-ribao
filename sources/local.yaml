@@ -1918,3 +1918,21 @@ sources:
   found_in:
   - user-list:2026-10-21#x-accounts
   repositories: []
+- source_id: x:xiaomimimo
+  name: Xiaomi MiMo
+  url: https://x.com/XiaomiMiMo
+  domain: x.com
+  category: lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: 小米 MiMo 官方；MiMo 系列模型发布与权重开放。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []

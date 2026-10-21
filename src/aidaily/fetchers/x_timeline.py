@@ -156,7 +156,11 @@ class XTimelineFetcher(BaseFetcher):
             "https://syndication.twitter.com/srv/timeline-profile/screen-name/"
             + handle
         )
-        res = await self.http.get(url, timeout_s=getattr(spec, "timeout_s", None) or 30)
+        res = await self.http.get(
+            url,
+            timeout_s=getattr(spec, "timeout_s", None) or 30,
+            retries=0,
+        )
         if res.status == 429:
             return SourceResult(
                 spec.source_id, "blocked", detail="HTTP 429 from syndication endpoint", status=429

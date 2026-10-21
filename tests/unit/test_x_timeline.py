@@ -160,3 +160,16 @@ def test_the_request_gap_is_slow_on_purpose() -> None:
     assert XTimelineFetcher.request_gap_s >= 3.0, (
         "a fast gap earns 429 on every request; see the module docstring"
     )
+
+
+def test_a_retry_would_burn_the_next_window() -> None:
+    """The X fetch must not use the client's retries.
+
+    Measured 2026-10-21: a single direct request to the endpoint returned 20 tweets while the
+    same URL through the shared `HttpClient` (retries=2) came back 429 three times in a row.
+    A 429 means the *window* is spent, so retrying spends the next one too.
+    """
+    import inspect
+
+    source = inspect.getsource(XTimelineFetcher.fetch)
+    assert "retries=0" in source, "the X fetch must opt out of the client's retries"

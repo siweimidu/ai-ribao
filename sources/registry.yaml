@@ -1,4 +1,4 @@
-generated_at: '2026-10-21T16:47:51.846603+00:00'
+generated_at: '2026-10-21T17:09:58.230496+00:00'
 generated_by: scripts/build_registry.py
 source_of_truth: audit/sources_ledger.json (static audit of six repositories) + sources/local.yaml (later additions)
 policy:
@@ -6,11 +6,11 @@ policy:
   coverage_guard: tests/contract/test_source_coverage.py asserts every provenance entry survives.
 stats:
   url_level_rows_before_merge: 100
-  parameter_rows_merged: -88
+  parameter_rows_merged: -89
   merge_breakdown:
     google_trends: 21
-  unique_sources: 188
-  provenance_rows: 216
+  unique_sources: 189
+  provenance_rows: 217
   by_repository:
     CloudFlare-AI-Insight-Daily: 11
     Horizon: 45
@@ -26,14 +26,14 @@ stats:
     daily-briefing: 1
     dailydawn: 19
     daybrief: 5
-  added_locally: 108
+  added_locally: 109
   by_source_type:
     api: 34
     atom: 4
     jsonfeed: 1
     rss: 118
     scrape: 6
-    x_timeline: 25
+    x_timeline: 26
   by_category:
     community: 22
     dataset: 1
@@ -42,7 +42,7 @@ stats:
     example: 5
     lab: 2
     lab-blog: 4
-    lab-official: 34
+    lab-official: 35
     media: 17
     mixed: 3
     model: 2
@@ -1099,6 +1099,37 @@ sources:
   last_failure_at: null
   notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
   why: 阶跃星辰官方；国产多模态模型。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: x:xiaomimimo
+  name: Xiaomi MiMo
+  url: https://x.com/XiaomiMiMo
+  normalized_url: https://x.com/XiaomiMiMo
+  domain: x.com
+  category: lab-official
+  categories_all:
+  - lab-official
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  why: 小米 MiMo 官方；MiMo 系列模型发布与权重开放。
   license_note: null
   found_in:
   - user-list:2026-10-21#x-accounts
