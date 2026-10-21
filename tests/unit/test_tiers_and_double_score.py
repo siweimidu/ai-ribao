@@ -35,8 +35,9 @@ def test_first_party_and_media_have_different_bars() -> None:
 
 def test_a_score_between_the_bars_separates_the_two() -> None:
     """A concrete case, so the ordering is not just arithmetic."""
-    score = 68.0
-    assert passes(score, "lab-official"), "a lab announcement at 68 should enter"
+    # Between the lab bar (55) and the media bar (68).
+    score = 62.0
+    assert passes(score, "lab-official"), "a lab announcement at 62 should enter"
     assert not passes(score, "media"), "the same score from a repost should not"
 
 

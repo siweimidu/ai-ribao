@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>图文并茂方案 · AI 日报</title>
+<style>
+:root{--ink:#12211f;--muted:#5b6b68;--line:#dfe5e3;--bg:#fbfcfb;--accent:#0f6b5c;--warn:#a8442a;--ok:#1f7a4d;--card:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.75 -apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:940px;margin:0 auto;padding:56px 24px 120px}
+h1{font-size:34px;line-height:1.25;margin:0 0 10px;letter-spacing:-.5px}
+.sub{color:var(--muted);font-size:15px;margin:0 0 36px}
+h2{font-size:22px;margin:52px 0 14px;padding-top:22px;border-top:1px solid var(--line);letter-spacing:-.2px}
+h3{font-size:17px;margin:28px 0 10px}
+p{margin:0 0 14px}
+.lede{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:20px 22px;margin:0 0 30px}
+.lede p:last-child{margin:0}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14.5px;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#f4f7f6;font-weight:600;font-size:13px;letter-spacing:.3px;color:var(--muted)}
+tr:last-child td{border-bottom:none}
+code{background:#eef2f1;padding:1px 6px;border-radius:4px;font:13px/1.5 "JetBrains Mono",Consolas,monospace}
+pre{background:#12221f;color:#d6e6e2;padding:16px 18px;border-radius:10px;overflow-x:auto;font:13px/1.65 "JetBrains Mono",Consolas,monospace;margin:14px 0}
+pre code{background:none;padding:0;color:inherit}
+.yes{color:var(--ok);font-weight:600}
+.no{color:var(--warn);font-weight:600}
+.tag{display:inline-block;font-size:12px;padding:2px 9px;border-radius:20px;background:#e6f0ed;color:var(--accent);font-weight:600;margin-right:6px}
+.tag.p2{background:#fdf0e9;color:var(--warn)}
+.step{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:16px 0}
+.step h3{margin-top:0}
+.step .meta{font-size:13px;color:var(--muted);margin-bottom:10px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+.ev{font-size:13.5px;color:var(--muted);border-left:2px solid var(--line);padding-left:12px;margin:12px 0}
+.big{font-size:19px;font-weight:600;color:var(--accent)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+@media(max-width:680px){.grid{grid-template-columns:1fr}}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.box h4{margin:0 0 8px;font-size:14px;color:var(--muted);letter-spacing:.4px}
+.box p{margin:0;font-size:14.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>让 AI 日报变成「图文并茂」</h1>
+<p class="sub">基于两篇拆解文章的分析 + 我这边 8 项实测验证 · 2026-10-21</p>
+
+<div class="lede">
+<p><strong>核心结论：这件事不需要 AI 生图，也不需要设计师。</strong>橘鸦的封面是程序模板渲染的，正文图是抓来源网站自带的 <code>og:image</code>。整条管线零 API 成本，我今天实测跑通了。</p>
+<p>我这边现在是真的 <span class="no">0% 配图</span>：<code>og:image</code>、<code>&lt;img&gt;</code>、<code>enclosure</code>、数据模型里的 <code>images</code> 字段，一个都没有。文章说的问题全部属实。</p>
+</div>
+
+<h2>一、两篇文章说了什么</h2>
+
+<h3>第一篇《差异诊断与补全方案》</h3>
+<p>它把我的项目和橘鸦做了逐项对比，结论是：<strong>骨架我更完整（去重、聚类、四栏分析、事实核查、多通道分发），差的是「内容素材面」</strong>——图、X 一手信源、封面、og:image。定位不是一类产品：我做的是「日报引擎」，它是「图文杂志」。</p>
+<p>它列了 4 个缺口，按收益排序：</p>
+<table>
+<tr><th style="width:26%">缺口</th><th>它的说法</th><th style="width:20%">我的核实</th></tr>
+<tr><td>一手 X 信源</td><td>橘鸦 68 个外链里 x.com 占 32 个，20 条新闻中 12 条直接源是 X；我只有 1 个 X 相关源且被禁用</td><td class="yes">属实</td></tr>
+<tr><td>抓图管线</td><td>它 90% 配图，我 0%</td><td class="yes">属实，实测确认</td></tr>
+<tr><td>封面 + og:image</td><td>我只有 og:type/title/description，没有 og:image，也没 twitter:card</td><td class="yes">属实</td></tr>
+<tr><td>带图 RSS</td><td>我有 content:encoded 全文但没有 enclosure / media:content</td><td class="yes">属实</td></tr>
+</table>
+
+<h3>第二篇《完整拆解与复刻指南》</h3>
+<p>这篇更有价值，它把橘鸦的机制拆到了工程细节：</p>
+<div class="grid">
+<div class="box"><h4>封面怎么来的</h4><p>程序模板渲染：暖色渐变 + 点阵纹理 + 超大日期「10.21」+ 期号 + 头条品牌 logo 圆徽。每个部件都是变量替换，几秒出一张。</p></div>
+<div class="box"><h4>正文配图怎么来的</h4><p>抓来源网页自带的图：og:image、GitHub 社交预览图、官网截图、论文配图、X 推文附图。<strong>没有一张是 AI 生成的</strong>（它逐张人眼比对过）。</p></div>
+<div class="box"><h4>图片目录规律</h4><p>封面 <code>cover/{YYYYMMDD}/{uuid}.png</code><br>正文 <code>imagehub/aidaily/{期UUID}/{源UUID}/m00N_{hash}.png</code><br>按「期」和「条」两级归档。</p></div>
+<div class="box"><h4>时间节奏</h4><p>图片 <code>Last-Modified</code> 是发刊前一天下午——流水线在凌晨发布前就把素材备好了。</p></div>
+</div>
+
+<h2>二、我的实测验证（8 项）</h2>
+<p>文章里的说法我没有直接采信，逐条跑了一遍：</p>
+
+<table>
+<tr><th style="width:30%">验证项</th><th>结果</th></tr>
+<tr><td>我的代码有 og:image 吗</td><td class="no">✗ site.py / publish.py 都没有</td></tr>
+<tr><td>数据模型有 images 字段吗</td><td class="no">✗ models.py 没有 image / images / thumbnail</td></tr>
+<tr><td>vxtwitter API（文章推荐方案 A）</td><td class="no">✗ 403 Forbidden —— 文章说它可用，实测不行</td></tr>
+<tr><td>fxtwitter API</td><td class="yes">✓ 可用，返回 <code>media.photos</code> 原图直链</td></tr>
+<tr><td>X 原图能否真下载</td><td class="yes">✓ 226,458 bytes，<code>image/jpeg</code>，文件头 ffd8ffe0 合法</td></tr>
+<tr><td>blog.google 的 og:image</td><td class="yes">✓ 可取到</td></tr>
+<tr><td>theverge.com 的 og:image</td><td class="yes">✓ 可取到</td></tr>
+<tr><td>openai.com 直接抓</td><td class="no">✗ 403 —— 需要走代理或降级</td></tr>
+</table>
+
+<div class="ev">
+<strong>实测代码与输出：</strong><br>
+<code>GET https://api.fxtwitter.com/OpenAIDevs/status/2112565702552940794</code><br>
+→ <code>tweet.media.photos[0].url = https://pbs.twimg.com/media/HVFW82pXEAATBsd.jpg?name=orig</code><br>
+带 <code>Referer: https://x.com/</code> 下载 → 226,458 bytes，合法 JPEG。
+</div>
+
+<h2>三、一个文章没说的关键发现</h2>
+<p>我查了当前 54 条事件的主链接域名：</p>
+<table>
+<tr><th>主域</th><th style="width:12%">条数</th><th>对抓图的影响</th></tr>
+<tr><td>aihot.news</td><td class="no">27</td><td>聚合站。但实测它的页面用了 <code>/api/img-proxy</code> 转发<strong>真实的 X 原图</strong>，所以照样能取到原图</td></tr>
+<tr><td>news.google.com</td><td>7</td><td>跳转页，需要跟随到原始出处</td></tr>
+<tr><td>aws.amazon.com</td><td>6</td><td>可取 og:image</td></tr>
+<tr><td>techcrunch / the-decoder / siliconangle</td><td>10</td><td>可取 og:image</td></tr>
+<tr><td>github.com</td><td>2</td><td>用 OpenGraph 接口，<code>https://opengraph.githubassets.com/1/{owner}/{repo}</code>，稳定免鉴权</td></tr>
+</table>
+<p><strong>结论：即使一半内容来自聚合站，图片依然拿得到。</strong>这是方案能成立的前提。</p>
+
+<h2>四、我建议的方案（四步，从便宜到贵）</h2>
+
+<div class="step">
+<h3><span class="tag">第 1 步</span>og:image 抓取 —— 一天就能上</h3>
+<p class="meta">收益：约 60-70% 的条目前有图 · 成本 0 · 无需 API Key</p>
+<p>每条事件的原始 URL 抓一次 HTML，正则取 <code>og:image</code>，下载存到 <code>data/media/{date}/{event_id}.jpg</code>。失败就留空，不阻塞。</p>
+<pre><code># 我实测可用的降级顺序
+1. og:image        （blog.google / theverge / techcrunch 都能取）
+2. twitter:image
+3. &lt;img&gt; 里最大的一张（排除 icon/logo/1x1）
+4. 该域名的 favicon 兜底
+拒绝：403 → 换 UA → 仍失败就跳过</code></pre>
+<p>需要在 <code>NormalizedItem</code> 加 <code>image_url</code> 字段，在 <code>Event</code> 加 <code>images</code>，渲染时插 <code>&lt;img&gt;</code>。</p>
+</div>
+
+<div class="step">
+<h3><span class="tag">第 2 步</span>X 推文原图 —— 免费，实测通过</h3>
+<p class="meta">收益：补齐 X 一手内容 · 成本 0</p>
+<p><code>api.fxtwitter.com</code> 免登录、免 Key，返回 <code>media.photos[]</code> 原图直链。只要采集阶段拿到推文 URL，就能取图。</p>
+<pre><code>GET https://api.fxtwitter.com/{screen_name}/status/{id}
+→ tweet.media.photos[*].url  → https://pbs.twimg.com/media/xxx.jpg?name=orig
+
+下载时带 Referer: https://x.com/ + 浏览器 UA</code></pre>
+<p class="ev">注意：文章推荐的 vxtwitter 我实测 403，别照抄。</p>
+</div>
+
+<div class="step">
+<h3><span class="tag p2">第 3 步</span>封面模板 —— 需要写渲染器</h3>
+<p class="meta">收益：分享卡片从灰变彩 · 成本 0（本地渲染）</p>
+<p>不用设计师，也不要用 AI 生图。做法：一个 HTML 模板 + Playwright 截图，变量是「日期 / 期号 / 头条实体 / 背景渐变」。你项目里已经有 Playwright（<code>test_site_interactions.py</code> 在用），直接复用。</p>
+<pre><code>cover.html 模板
+  ├─ 背景：CSS 线性渐变 + radial-gradient 点阵
+  ├─ 中央：日期「10.21」（大号衬线/手写体）
+  ├─ 右上：期号「第 054 期」
+  └─ 底部：头条品牌圆徽
+
+playwright 截图 → data/media/covers/{YYYYMMDD}.png
+→ 同时写进 og:image 和 twitter:card</code></pre>
+</div>
+
+<div class="step">
+<h3><span class="tag p2">第 4 步</span>带图 RSS + 分享卡</h3>
+<p class="meta">收益：阅读器里直接看到图 · 改动很小</p>
+<p>我已经输出 <code>content:encoded</code> 全文，只要加两行：</p>
+<pre><code>&lt;enclosure url="{封面或首图}" type="image/jpeg" length="0"/&gt;
+&lt;media:content url="{首图}" medium="image"/&gt;</code></pre>
+<p>页面上再加 <code>og:image</code> 与 <code>twitter:card=summary_large_image</code>。</p>
+</div>
+
+<h2>五、我不建议照抄的地方</h2>
+<table>
+<tr><th style="width:32%">文章的建议</th><th>我的判断</th></tr>
+<tr><td>技术栈换 Astro / Cloudflare Pages</td><td class="no">不建议。我现在是 Python + GitHub Pages，为了配图换掉整个渲染层，投入产出比极差。</td></tr>
+<tr><td>用 vxtwitter API</td><td class="no">实测 403，用 fxtwitter。</td></tr>
+<tr><td>X API 付费</td><td class="no">暂时不需要。先做 og:image，X 只取「已经出现在聚合站里的推文链接」，用 fxtwitter 免 Key 取图。</td></tr>
+<tr><td>把图放仓库 public/</td><td>要算清楚：一天 20-60 张图 × 200KB ≈ 4-12MB/天，一年 1.5-4GB。GitHub 仓库会越来越重。<strong>建议只存最近 30 天，更早的删文件但保留外链。</strong></td></tr>
+</table>
+
+<h2>六、我建议的执行顺序</h2>
+<table>
+<tr><th style="width:14%">顺序</th><th style="width:30%">做什么</th><th>为什么是这个顺序</th></tr>
+<tr><td><strong>1</strong></td><td>og:image 抓取 + 渲染 &lt;img&gt;</td><td>覆盖 60-70% 条目，当天可见效果，零成本</td></tr>
+<tr><td><strong>2</strong></td><td>带图 RSS + og:image meta</td><td>改动最小（各 2 行），分享卡立刻不灰</td></tr>
+<tr><td><strong>3</strong></td><td>封面模板渲染</td><td>需要写模板 + Playwright，工作量中等</td></tr>
+<tr><td><strong>4</strong></td><td>X 推文原图</td><td>依赖第 1 步的下载器，单独加一个取图器即可</td></tr>
+</table>
+
+<h2>七、需要你决定的三件事</h2>
+<ol>
+<li><strong>图片存哪？</strong>存仓库（简单，但一年 1.5-4GB）／只存 30 天（推荐）／换图床（复杂）。</li>
+<li><strong>封面要不要做？</strong>不做也能「图文并茂」（正文有图就够），做了分享出去更专业。</li>
+<li><strong>先做哪个？</strong>我建议按上面 1→2→3→4 走，第 1、2 步我一次就能做完。</li>
+</ol>
+
+<p style="margin-top:44px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px">
+本文所有「实测」数据均来自今天在本机对真实接口的调用；所有「我这边」的状态均来自实际读源码与归档，不是推测。
+</p>
+
+</div>
+</body>
+</html>

@@ -158,6 +158,21 @@ _CORE = re.compile(
     r"大模型|新模型|模型权重|模型发布|发布模型|开源权重|智能体|多模态|微调|推理|训练|"
     r"预训练|算力|提示词|上下文|向量|基准测试|参数规模|端侧|蒸馏|对齐|神经网络|"
     r"机器学习|深度学习|"
+      # Added 2026-10-21: the vocabulary was missing the products this digest writes about most.
+      # Measured on a real 670-item window, these headlines all scored 0.18 ("no AI at all"):
+      #
+      #     Devin 推出按使用效率自动提额机制
+      #     MPS in PyTorch 2.15
+      #     TRAE 公布程序员节活动，设百万积分大奖
+      #
+      # A vocabulary that does not contain `pytorch` cannot judge a PyTorch story. The list below
+      # is the coding-agent and ML-framework layer -- the products whose *names alone* mean AI.
+      r"devin|cursor|copilot|codex|windsurf|replit|cline|aider|bolt\.new|lovable|"
+      r"pytorch|tensorflow|jax|onnx|vllm|sglang|ollama|llama\.cpp|safetensors|"
+      r"perplexity|character\.ai|midjourney|runway|suno|elevenlabs|synthesia|"
+      r"trae|qoder|comfyui|langchain|llamaindex|autogen|crewai|n8n|dify|"
+      r"mcp|function calling|tool use|"
+      r"推理框架|推理引擎|提示词缓存|上下文长度|智能体框架|编程智能体|"
     # Added after the 0.70 floor started rejecting real AI news. Measured misses:
     # `可灵AI新一代模型Kling 4.0正式上线` and `范式智能…开源推出 AI 部署平台模域ModelSphere`
     # both scored 0.50 -- below the floor -- because bare `模型` and `开源` were absent from this

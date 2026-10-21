@@ -56,17 +56,20 @@ CATEGORY_TIER: dict[str, str] = {
 
 #: Tier -> the selection threshold a model score must clear.
 #:
-#: Calibrated on 112 scored events from the 2026-10-16..18 archives. The model's scores
-#: cluster at 70 (31 events) and 80 (22), with very little between 40 and 59 (22). So 70 is
-#: the natural cut, and the three tiers straddle it: a lab clears 65, a project channel 70,
-#: reported news 75. Anything stricter starts discarding stories a reader would want.
+#: Calibrated on 118 archived events. The model scores cluster at 70 (median), with a quartile at
+#: 50, and very little between 55 and 68: a bar of 75 keeps only 25% of what was actually
+#: published, which on 2026-10-21 turned 88 candidates into 6.
 #:
-#: Re-measure with `scripts/calibrate.py` after changing the scoring prompt: the
-#: distribution, not the number in this table, is what decides the right value.
+#:     bar 65 -> 53% kept     bar 70 -> 51% kept     bar 75 -> 25% kept
+#:
+#: The three tiers sit around the median rather than above it: a tier decides *which bar* a
+#: story must clear, not whether real news gets in at all. Re-measure with
+#: `scripts/calibrate.py` after changing the scoring prompt -- the distribution decides the
+#: number, not the other way round.
 DEFAULT_THRESHOLDS: dict[str, float] = {
-    "T1": 65.0,
-    "T1_5": 70.0,
-    "T2": 75.0,
+    "T1": 55.0,
+    "T1_5": 60.0,
+    "T2": 68.0,
 }
 
 Tiers = ("T1", "T1_5", "T2")
