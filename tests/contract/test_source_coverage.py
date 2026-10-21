@@ -71,7 +71,7 @@ def test_provenance_count_is_not_shrinking() -> None:
 
 
 def test_registry_shape_is_stable() -> None:
-    """151 endpoint-level sources: 80 audited + 71 local additions.
+    """188 endpoint-level sources: 80 audited + 108 local additions.
 
     The audited 80 come from collapsing Google Trends' 20 keyword rows (counting them as
     separate sources would inflate completeness; dropping them would lose information, so
@@ -102,7 +102,7 @@ def test_no_source_was_silently_enabled_or_deleted() -> None:
     Counts are asserted exactly on purpose: a drop means a source was deleted (forbidden),
     and an unexplained rise means something was enabled without review.
 
-    Current shape: 151 total = 124 collectable + 27 present-but-not-wired-up (Horizon
+    Current shape: 188 total = 159 collectable + 27 present-but-not-wired-up (Horizon
     presets/examples + Cloudflare's unregistered adapters) + 7 needing credentials.
 
     AIHOT's curated feed and the 36 user-supplied sources are local additions; see
