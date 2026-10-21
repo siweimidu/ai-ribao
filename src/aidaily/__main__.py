@@ -810,17 +810,19 @@ async def _fetch_images(
     # The cost is real and worth stating: a publisher whose every article carries the same hero
     # banner loses all of them. That is the right trade -- a banner repeated five times tells the
     # reader nothing, while an empty slot at least admits there is no picture.
+    # Perceptual fingerprints, not byte hashes: the same decoration is served at several sizes,
+    # so a byte comparison misses it while the picture is visibly identical.
     counts: dict[str, int] = {}
     for images in out.values():
         for data in images:
-            digest_of = media.content_hash(data)
+            digest_of = media.perceptual_hash(data)
             counts[digest_of] = counts.get(digest_of, 0) + 1
 
     shared = {h for h, n in counts.items() if n >= SHARED_IMAGE_LIMIT}
     if shared:
         print(f"配图：丢弃 {len(shared)} 张被多篇文章共用的站点装饰图", file=sys.stderr)
         for event_id, images in list(out.items()):
-            out[event_id] = [d for d in images if media.content_hash(d) not in shared]
+            out[event_id] = [d for d in images if media.perceptual_hash(d) not in shared]
 
     # **No picture is better than a fake one.**
     #

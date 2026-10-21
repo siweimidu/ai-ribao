@@ -472,9 +472,18 @@ def render_item(
     # one legible; the row scrolls when they do not fit.
     image_html = ""
     if event.image_urls:
+        # **Click opens the picture in place, not a new tab.**
+        #
+        # The row used to be anchors that opened a new browser tab, so reading an issue
+        # meant a pile of tabs and a back button per picture. A `<button>` that the lightbox
+        # keeps the reader on the page and keeps the scroll position.
+        #
+        # The `src` is still the real image, so nothing changes for a reader with JavaScript off
+        # beyond the click doing nothing -- the pictures are already visible in the row.
         thumbs = "".join(
-            f'<a href="{esc(url)}" target="_blank" rel="noopener noreferrer">'
-            f'<img src="{esc(url)}" alt="" loading="lazy" decoding="async"></a>'
+            f'<button type="button" class="item__thumb" data-full="{esc(url)}" '
+            f'aria-label="放大图片">'
+            f'<img src="{esc(url)}" alt="" loading="lazy" decoding="async"></button>'
             for url in event.image_urls
         )
         image_html = f'<div class="item__images">{thumbs}</div>'
@@ -967,6 +976,37 @@ def render_day(
 <script type="application/json" id="calendar-data">{json.dumps(calendar_data, ensure_ascii=False)}</script>
 <script type="application/json" id="search-index">{json.dumps(search_index, ensure_ascii=False)}</script>
 <script src="assets/motion.js" defer></script>
+<div class="lightbox" id="lightbox" hidden>
+  <button type="button" class="lightbox__close" aria-label="关闭">×</button>
+  <img class="lightbox__img" alt="">
+</div>
+<script>
+// Click a picture and it opens in place. No new tab, no scroll jump, no history entry.
+// Escape, the close button, or a click on the backdrop dismisses it.
+(function () {{
+  var box = document.getElementById("lightbox");
+  if (!box) return;
+  var img = box.querySelector(".lightbox__img");
+  function open(src) {{
+    img.src = src;
+    box.hidden = false;
+    document.body.classList.add("is-lightbox");
+  }}
+  function close() {{
+    box.hidden = true;
+    img.removeAttribute("src");
+    document.body.classList.remove("is-lightbox");
+  }}
+  document.addEventListener("click", function (e) {{
+    var thumb = e.target.closest(".item__thumb");
+    if (thumb) {{ e.preventDefault(); open(thumb.dataset.full); return; }}
+    if (e.target === box || e.target.closest(".lightbox__close")) close();
+  }});
+  document.addEventListener("keydown", function (e) {{
+    if (e.key === "Escape" && !box.hidden) close();
+  }});
+}})();
+</script>
 </body>
 </html>
 """

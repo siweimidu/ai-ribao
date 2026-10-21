@@ -77,7 +77,10 @@ _X_STATUS = re.compile(r"https?://(?:www\.)?(?:x|twitter)\.com/([A-Za-z0-9_]+)/s
 #: carrying the aggregator logo and its own score badge. Publishing that as the picture for
 #: a story the aggregator merely relayed is worse than publishing nothing.
 _JUNK_IMAGE = re.compile(
-    r"(sprite|favicon|logo|icon|avatar|placeholder|spacer|pixel|1x1|blank|badge|emoji|"    r"/og/|/og-image|social-preview|share-card|default-share)",    re.I,
+    r"(author|portrait|headshot|staff-photo|byline|profile-photo|bio-photo|"
+    r"sprite|favicon|logo|icon|avatar|placeholder|spacer|pixel|1x1|blank|badge|emoji|"
+    r"/og/|/og-image|social-preview|share-card|default-share)",
+    re.I,
 )
 
 #: CDN resize parameters. Stripped so the stored URL points at the full-size image.
@@ -179,20 +182,21 @@ def find_image_candidates(html: str, page_url: str, *, limit: int = 6) -> list[A
     for pattern in _OG_IMAGE:
         for match in pattern.finditer(html):
             add(match.group(1), "og")
-    for pattern in _TW_IMAGE:
-        for match in pattern.finditer(html):
-            add(match.group(1), "twitter")
 
-    # Body images only when the markup places them inside the article. A bare `<img>` anywhere on
-    # the page is exactly how site furniture got in.
-    # `findall` with groups returns tuples; the body is the second group.
-    for block in (m[1] for m in _ARTICLE_BODY.findall(html)):
-        for raw in _IMG_TAG.findall(block):
-            add(raw, "body")
-            if len(out) >= limit:
-                return out[:limit]
-
-
+    # **`og:image` and nothing else.**
+    #
+    # Every looser rule produced a wrong picture on a real issue:
+    #
+    #   · any `<img>` anywhere  -> AWS brand decorations under five unrelated articles
+    #   · `<img>` inside `<article>` -> a stock photo of a bin and one of a hard-disk platter
+    #     beside a story about an enterprise agent
+    #   · `twitter:image` -> a grey blur on a Mistral announcement
+    #
+    # `og:image` is the single declaration a publisher makes *about this page*, written for the
+    # express purpose of representing it. Nothing else carries that guarantee.
+    #
+    # The cost is accepted and real: a story whose publisher ships no `og:image` shows no
+    # picture. An empty slot is honest; a wrong picture is a lie about the story.
     return out[:limit]
 
 
@@ -324,6 +328,47 @@ def content_hash(data: bytes) -> str:
     return hashlib.sha1(data).hexdigest()[:8]
 
 
+def perceptual_hash(data: bytes, *, size: int = 16) -> str:
+    """A hash that ignores re-encoding, so the same picture cannot appear twice.
+
+    **Why `content_hash` is not enough.** The 2026-10-21 issue carried the same Gemini press
+    photo twice under one story: one was the full-size original, the other a downscaled copy from
+    a different URL. Different bytes, identical picture. `content_hash` saw two images and the
+    page showed the same photograph side by side.
+
+    This resizes to a fixed grid, converts to greyscale and compares each cell against the mean.
+    Two encodings of one photograph land on the same bits; two genuinely different photographs
+    almost never do.
+    """
+    from PIL import Image
+
+    try:
+        with Image.open(io.BytesIO(data)) as im:
+            small = im.convert("L").resize((size, size), Image.Resampling.LANCZOS)
+            pixels = list(small.getdata())
+    except Exception:
+        return ""
+
+    if not pixels:
+        return ""
+    mean = sum(pixels) / len(pixels)
+    bits = "".join("1" if p >= mean else "0" for p in pixels)
+    return hashlib.sha1(bits.encode("ascii")).hexdigest()[:12]
+
+
+def _near_duplicate(a: str, b: str, *, tolerance: int = 12) -> bool:
+    """True when two perceptual hashes describe the same picture.
+
+    Compared bit by bit: `tolerance` of 256 cells may differ. Re-encoding shifts a handful of
+    cells; two different photographs differ across dozens.
+    """
+    if not a or not b or len(a) != len(b):
+        return False
+    left = bin(int(a, 16))[2:].zfill(len(a) * 4)
+    right = bin(int(b, 16))[2:].zfill(len(b) * 4)
+    return sum(1 for x, y in zip(left, right) if x != y) <= tolerance
+
+
 async def fetch_bytes(
     client: httpx.AsyncClient, url: str, *, extra_headers: dict[str, str] | None = None
 ) -> bytes | None:
@@ -406,10 +451,14 @@ async def best_images(
         #
         # The same bytes appearing twice is the signal: a story never needs two copies of
         # one picture, and the hash is already computed for the filename.
-        digest = content_hash(webp)
-        if any(existing[2] == digest for existing in scored):
+        # **Perceptual, not byte-exact.** One story carried the same Gemini press photo twice:
+        # the original at 1080x607 and a 780x438 copy from another URL. Different bytes, same
+        # picture, shown side by side. A byte hash cannot see that; a downscaled greyscale
+        # comparison can.
+        fingerprint = perceptual_hash(webp)
+        if any(_near_duplicate(fingerprint, existing[2]) for existing in scored):
             continue
-        scored.append((score, webp, digest))
+        scored.append((score, webp, fingerprint))
     scored.sort(key=lambda pair: -pair[0])
     return [data for _, data, _ in scored[:keep]]
 
