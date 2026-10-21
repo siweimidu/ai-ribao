@@ -65,9 +65,14 @@ _IMG_TAG = re.compile(r'<img[^>]+src=["\']([^"\']+)', re.I)
 _X_STATUS = re.compile(r"https?://(?:www\.)?(?:x|twitter)\.com/([A-Za-z0-9_]+)/status/(\d+)")
 
 #: Anything matching this is a logo, an icon, a tracking pixel or a spacer -- never the story.
+#: Anything matching this is a logo, an icon, a tracking pixel or a spacer -- never the story.
+#:
+#: `/og/` and `social-preview` catch the cards aggregators generate for themselves. Measured
+#: 2026-10-21: every aihot item declares `aihot.news/og/items/<id>.png`, a branded panel
+#: carrying the aggregator logo and its own score badge. Publishing that as the picture for
+#: a story the aggregator merely relayed is worse than publishing nothing.
 _JUNK_IMAGE = re.compile(
-    r"(sprite|favicon|logo|icon|avatar|placeholder|spacer|pixel|1x1|blank|badge|emoji)",
-    re.I,
+    r"(sprite|favicon|logo|icon|avatar|placeholder|spacer|pixel|1x1|blank|badge|emoji|"    r"/og/|/og-image|social-preview|share-card|default-share)",    re.I,
 )
 
 #: CDN resize parameters. Stripped so the stored URL points at the full-size image.
@@ -113,34 +118,86 @@ def _drop_resize(url: str) -> str:
 
 
 def find_image_url(html: str, page_url: str) -> ArticleImage | None:
-    """The best candidate image on a page, or None.
+    """The best candidate image on a page, or None. First match wins, no scoring.
 
-    Order is deliberate: a declared social card is the publisher own choice of what represents
-    the story. Only when no card exists does the first img become a guess.
+    Kept for callers that only need a URL (the tests, and the no-download path). The pipeline
+    uses `find_image_candidates`, which ranks by the pixels it actually downloads.
     """
-    for pattern in _OG_IMAGE:
-        match = pattern.search(html)
-        if match:
-            url = _absolute(page_url, match.group(1))
-            if not _JUNK_IMAGE.search(url):
-                return ArticleImage(_drop_resize(url), "og")
+    candidates = find_image_candidates(html, page_url)
+    return candidates[0] if candidates else None
 
-    for pattern in _TW_IMAGE:
-        match = pattern.search(html)
-        if match:
-            url = _absolute(page_url, match.group(1))
-            if not _JUNK_IMAGE.search(url):
-                return ArticleImage(_drop_resize(url), "twitter")
 
-    for raw in _IMG_TAG.findall(html):
+def find_image_candidates(html: str, page_url: str, *, limit: int = 6) -> list[ArticleImage]:
+    """Every plausible story image on a page, best-first by *kind* rather than by size.
+
+    A declared social card goes first because it is the publisher own choice of what represents
+    the story. Body images follow, because a topic index and an article share one og:image while
+    the article carries the only picture that is actually specific to it.
+
+    Size is not known here -- that requires downloading -- so this orders by provenance and lets
+    `best_image` make the final call on the bytes.
+    """
+    out: list[ArticleImage] = []
+    seen: set[str] = set()
+
+    def add(raw: str, kind: str) -> None:
         url = _absolute(page_url, raw)
         if not url.startswith(("http://", "https://")):
-            continue
+            return
         if _JUNK_IMAGE.search(url):
-            continue
-        return ArticleImage(_drop_resize(url), "img")
+            return
+        url = _drop_resize(url)
+        if url in seen:
+            return
+        seen.add(url)
+        out.append(ArticleImage(url, kind))
 
-    return None
+    for pattern in _OG_IMAGE:
+        for match in pattern.finditer(html):
+            add(match.group(1), "og")
+    for pattern in _TW_IMAGE:
+        for match in pattern.finditer(html):
+            add(match.group(1), "twitter")
+    for raw in _IMG_TAG.findall(html):
+        add(raw, "img")
+        if len(out) >= limit:
+            break
+
+    return out[:limit]
+
+
+def score_image(data: bytes, *, width: int, height: int) -> int:
+    """How suitable an image is as a story thumbnail. Higher is better; <0 rejects it.
+
+    URL alone cannot pick a good picture. Measured on live pages:
+
+    * cloud.google.com declares `AI_infrastructure_default.max-300x300.jpg` as its og:image --
+      a 300px category tile that is the same for every post in that topic.
+    * aws.amazon.com renders twenty marketing banners before the article image.
+    * aihot.news, an aggregator, has no og:image at all; the card it shows elsewhere carries its
+      own logo and score badge, which has no business on someone else story.
+
+    So the decision is made on the *pixels*: a hero image is wide, reasonably large, and not a
+    square tile or a tall banner. These thresholds are deliberately loose -- they exist to reject
+    avatars, icons, letterboxes and 1px spacers, not to curate.
+    """
+    if width < 400 or height < 200:
+        return -1
+    ratio = width / height
+    #: 16:9 through 2.4:1 is the range every hero image lands in. A square is a tile; taller
+    #: than 3:2 portrait is a poster, and both look wrong in a card.
+    if not 1.2 <= ratio <= 2.6:
+        return -1
+    score = 0
+    # Bigger is better up to a point: past 1600px the browser is downscaling anyway.
+    score += min(width, 1600) // 100
+    # Prefer the middle of the wide range over its edges: 1.7-2.1 fits a 16:9 card cleanly.
+    if 1.6 <= ratio <= 2.2:
+        score += 8
+    # A 300px tile upscaled to 1200 is visibly soft; reject anything narrower than the target.
+    if width < 800:
+        score -= 12
+    return score
 
 
 def to_webp(data: bytes, *, width: int = 1200, quality: int = 82) -> bytes | None:
@@ -171,6 +228,74 @@ def to_webp(data: bytes, *, width: int = 1200, quality: int = 82) -> bytes | Non
     except Exception:
         return None
     return buffer.getvalue()
+
+
+def placeholder(seed: str, *, width: int = 1200, height: int = 630) -> bytes | None:
+    """A deterministic abstract image for a story whose own page yielded nothing.
+
+    Two decisions are baked in here.
+
+    **Why a generated fallback at all.** The requirement is that every entry carries a picture.
+    A page with no `og:image`, a publisher that blocks the request, an aggregator card that was
+    correctly rejected -- each leaves a gap, and a gap in a picture-per-story layout reads as
+    broken rather than as sparse.
+
+    **Why it is not a stock photo or an AI illustration.** A generic photograph next to a specific
+    headline is a false claim about the story. This draws nothing figurative: a soft gradient in
+    the accent colour plus the entry own initial. It is obviously a placeholder, which is honest,
+    and it is derived from the event id, so the same story always gets the same one.
+    """
+    from PIL import Image, ImageDraw
+
+    # The hue is stable per story: hashing the seed means two stories never share a background,
+    # and a re-run never changes the one a published page already shows.
+    digest = hashlib.sha1((seed or "x").encode()).digest()
+    hue = digest[0] / 255.0
+    top = _hsv_to_rgb(hue, 0.28, 0.96)
+    bottom = _hsv_to_rgb((hue + 0.06) % 1.0, 0.42, 0.66)
+
+    image = Image.new("RGB", (width, height), bottom)
+    draw = ImageDraw.Draw(image)
+    # A vertical gradient, drawn row by row: cheapest way to get a smooth wash with no dependency.
+    for y in range(height):
+        t = y / max(1, height - 1)
+        draw.line(
+            [(0, y), (width, y)],
+            fill=tuple(round(top[i] + (bottom[i] - top[i]) * t) for i in range(3)),
+        )
+
+    # A few translucent circles, placed from the same digest: texture, not a picture.
+    overlay = Image.new("RGBA", (width, height), (255, 255, 255, 0))
+    odraw = ImageDraw.Draw(overlay)
+    for index in range(5):
+        cx = int(digest[1 + index] / 255.0 * width)
+        cy = int(digest[6 + index] / 255.0 * height)
+        radius = 60 + digest[11 + index] % 180
+        odraw.ellipse(
+            [cx - radius, cy - radius, cx + radius, cy + radius],
+            fill=(255, 255, 255, 18),
+        )
+    image = Image.alpha_composite(image.convert("RGBA"), overlay).convert("RGB")
+
+    buffer = io.BytesIO()
+    try:
+        image.save(buffer, "WEBP", quality=82, method=6)
+    except Exception:
+        return None
+    return buffer.getvalue()
+
+
+def _hsv_to_rgb(h: float, s: float, v: float) -> tuple[int, int, int]:
+    """Minimal HSV to RGB, so a placeholder needs no colour library."""
+    i = int(h * 6)
+    f = h * 6 - i
+    p = v * (1 - s)
+    q = v * (1 - f * s)
+    t = v * (1 - (1 - f) * s)
+    r, g, b = (
+        (v, t, p), (q, v, p), (p, v, t), (p, q, v), (t, p, v), (v, p, q),
+    )[i % 6]
+    return round(r * 255), round(g * 255), round(b * 255)
 
 
 def content_hash(data: bytes) -> str:
@@ -204,6 +329,56 @@ async def fetch_page(client: httpx.AsyncClient, url: str) -> str | None:
         return response.text
     except Exception:
         return None
+
+
+async def best_image(
+    client: httpx.AsyncClient, page_url: str, *, max_tries: int = 8
+) -> bytes | None:
+    """Download the candidates and keep the best-looking one, as WebP.
+
+    The reason this exists rather than taking the first URL: measured across live pages, the
+    first image is often the worst.
+
+    * cloud.google.com declares `AI_infrastructure_default.max-300x300.jpg` as its og:image --
+      a 300px topic tile, byte-identical for every post in that category.
+    * aws.amazon.com puts twenty marketing banners ahead of the article picture.
+
+    So the bytes decide. Each candidate is fetched, opened, scored by `score_image`, and the
+    highest score wins. Everything is capped at `max_tries` so a bad page cannot spend a run.
+    """
+    from PIL import Image
+
+    page = await fetch_page(client, page_url)
+    if not page:
+        return None
+
+    candidates = find_image_candidates(page, page_url)
+    if not candidates:
+        return None
+
+    best: tuple[int, bytes] | None = None
+    for candidate in candidates[:max_tries]:
+        raw = await fetch_bytes(client, candidate.url)
+        if raw is None or len(raw) < 2_000:
+            continue
+        try:
+            with Image.open(io.BytesIO(raw)) as probe:
+                width, height = probe.size
+        except Exception:
+            continue
+        score = score_image(raw, width=width, height=height)
+        if score < 0:
+            continue
+        # The social card already describes the story; give it a small tie-break so an equally
+        # good body image never displaces it, but a much better one does.
+        if candidate.source in ("og", "twitter"):
+            score += 6
+        if best is None or score > best[0]:
+            webp = to_webp(raw)
+            if webp:
+                best = (score, webp)
+
+    return best[1] if best else None
 
 
 async def image_for_article(client: httpx.AsyncClient, article_url: str) -> bytes | None:
@@ -258,10 +433,10 @@ async def image_for_x_post(client: httpx.AsyncClient, status_url: str) -> bytes 
 
 
 async def image_for(client: httpx.AsyncClient, article_url: str) -> bytes | None:
-    """The image for any URL: the X path first, then the ordinary article path."""
+    """The best image for a URL: the X path first, then the ordinary article path."""
     if _X_STATUS.search(article_url or ""):
         return await image_for_x_post(client, article_url)
-    return await image_for_article(client, article_url)
+    return await best_image(client, article_url)
 
 
 def default_client() -> httpx.AsyncClient:

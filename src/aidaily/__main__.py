@@ -755,11 +755,19 @@ async def _fetch_images(
             return event.event_id, None
 
         for event_id, data in await asyncio.gather(*(one(e) for e in events)):
-            if data:
-                out[event_id] = data
+            out[event_id] = data
 
-    if not out:
-        return {}
+    # Every entry gets a picture, one way or another. A story whose page yielded nothing --
+    # blocked, no og:image, or an aggregator card that was correctly rejected -- gets a
+    # deterministic gradient instead of a hole in the layout. It is obviously a placeholder,
+    # which is the honest outcome: a stock photo beside a specific headline would claim
+    # something about the story that nobody verified.
+    for event in events:
+        if out.get(event.event_id):
+            continue
+        fallback = media.placeholder(event.event_id)
+        if fallback:
+            out[event.event_id] = fallback
 
     urls = mediastore.store_images(out, date=digest.date)
     if urls:
