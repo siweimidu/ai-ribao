@@ -170,9 +170,45 @@ def subjects(text: str) -> frozenset[str]:
     return frozenset(found)
 
 
+#: Newsletter and roundup mastheads that prefix a headline without changing the story:
+#: `AI 日报：OpenAI 发布 GPT-6` is the same news as `OpenAI 发布 GPT-6`. Stripped before the
+#: identity is derived, or the prefix alone would make a repeat look new.
+_MASTHEAD = re.compile(
+    r"^\s*(?:AI\s*日报|AI\s*周报|AI\s*月报|AI\s*早报|AI\s*晚报|每日\s*AI|AI\s*快讯|"
+    r"科技\s*早报|行业\s*日报)\s*[：:|·\-—]\s*",
+    re.IGNORECASE,
+)
+
+
+def _strip_masthead(text: str) -> str:
+    """Drop a newsletter masthead so a prefixed headline hashes like the bare one."""
+    return _MASTHEAD.sub("", text or "").strip() or (text or "")
+
 def message_key(text: str) -> tuple[frozenset[str], frozenset[str]]:
-    """The identity of a news item: who, and what kind of thing happened."""
-    return actors(text), event_types(text)
+    """The identity of a news item: who, what kind of event, and *about what*.
+
+    The first version returned only `(actors, event_types)`, which was far too coarse to be a
+    key at all. Measured on the committed history: `m:61e7a9a44ec34ad4` carried **31 distinct
+    DeepSeek stories** -- a five-hour outage, a ban by US Homeland Security, a search API, a
+    model launch, a Times award. Everything one company did, for a week, shared a key.
+
+    That broke cross-day deduplication in both directions:
+
+    * it let repeats through, because `find_repeat` had to re-compare the title against 31
+      stored headlines and the comparison is a fuzzy match;
+    * it could not distinguish "DeepSeek ships an inference engine" from "DeepSeek is banned",
+      so the key itself carried no information.
+
+    Subjects and content tokens are now part of the key. Two headlines share it only if they name
+    the same actor, describe the same kind of event, and are about the same thing.
+    """
+    text = _strip_masthead(text)
+    return (
+        actors(text),
+        event_types(text),
+        subjects(text),
+        _content_tokens(text),
+    )
 
 
 #: Event types that never describe the same news as each other, even for the same actor. A
@@ -236,6 +272,50 @@ SHORTHAND_MAX_CHARS = 30
 #: about one event share most of their distinctive words; two headlines about one vendor share
 #: almost none once the vendor name is removed.
 CONTENT_OVERLAP_MIN = 0.34
+
+
+#: Content tokens that describe *how* something happened rather than *what* it was.
+#:
+#: Two headlines sharing only one of these are not about the same event: "开源自研推理框架" and
+#: "开放自研搜索 API" share 自研 and are two different products. A shared word outside this set
+#: is a topic, and a shared topic is what "same message" means.
+_MODIFIER_TOKENS = frozenset({
+    "自研", "开源", "发布", "推出", "上线", "更新", "支持", "新增", "整合",
+    "开放", "宣布", "正式", "首次", "重磅", "官方", "中国", "美国",
+    # Platform and vendor names that say *where* a story happened, not *what* happened.
+    # "Access OpenAI GPT models on Amazon Bedrock" and "Fine-tuning GPT-OSS-20B on Amazon
+    # SageMaker" share amazon and are a region launch and a tutorial.
+    "amazon", "bedrock", "sagemaker", "azure", "google", "microsoft", "aws", "github",
+})
+
+
+def _shared_topical(left: str, right: str) -> bool:
+    """Whether the two headlines share a *subject* word rather than a mere modifier.
+
+    A threshold on the whole-token overlap cannot separate these two cases, measured on
+    2026-10-21:
+
+        0.15  DeepSeek 开源自研推理框架 DeepInfer
+              DeepSeek 以 Apache 2.0 开源生产推理引擎 DeepInfer      <- one event
+        0.09  DeepSeek 开源自研推理框架 DeepInfer
+              DeepSeek 开放自研搜索 API                              <- two events
+
+    The margin is too thin to tune a number into. What separates them is *which* word is
+    shared: 推理 is the subject of the sentence, 自研 ("in-house") is a modifier that appears in
+    half the headlines about any vendor.
+
+    Two guards keep the rule from over-merging. A single shared word is not enough on its own --
+    "Microsoft 推出针对失控 AI 代理的新安全控制" and "Microsoft称人工智能代理类似内部威胁" share
+    代理 and are a product launch and an opinion piece -- so either two words must be shared, or
+    one of them must be long enough to be a name (DeepInfer) rather than a category (代理).
+    """
+    shared = _content_tokens(left) & _content_tokens(right) - _MODIFIER_TOKENS
+    if len(shared) >= 2:
+        return True
+    # One shared word is enough only when it is specific: a product or technology name. Chinese
+    # words of four or more characters, Latin words of six or more. 代理 / 推理 are two, so they
+    # need a second witness; deepinfer is nine and stands alone.
+    return any(len(token) >= 6 and token.isascii() or len(token) >= 4 for token in shared)
 
 
 def _content_overlap(left: str, right: str) -> float:
@@ -345,4 +425,9 @@ def same_message(left: str, right: str) -> bool:
     # intersection used to return False before the wording was ever compared, so the same
     # Huawei chip story was published as two entries from two publishers. Requiring a *shared*
     # type instead of a *non-contradicting* one turned that into a false negative.
-    return _content_overlap(left, right) >= CONTENT_OVERLAP_MIN
+    # Either the overlap is high enough on the whole vocabulary, or the two headlines share a
+    # *subject* word. The second test exists because the ratio alone cannot separate the two
+    # cases at the margin -- see `_shared_topical` for the measured pair (0.15 vs 0.09).
+    if _content_overlap(left, right) >= CONTENT_OVERLAP_MIN:
+        return True
+    return _shared_topical(left, right)

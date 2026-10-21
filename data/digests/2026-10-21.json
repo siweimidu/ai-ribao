@@ -1131,62 +1131,6 @@
     }
    },
    {
-    "event_id": "e69bf241d4e32a3",
-    "title": "Mistral AI launches Voxtral 3, a full voice agent stack that listens, thinks, and talks in real time",
-    "member_item_ids": [
-     "25637898e0b8cc16"
-    ],
-    "primary_item_id": "25637898e0b8cc16",
-    "source_ids": [
-     "rss:aihot-demo-the-decoder"
-    ],
-    "all_urls": [
-     "https://the-decoder.com/mistral-ai-launches-voxtral-3-a-full-voice-agent-stack-that-listens-thinks-and-talks-in-real-time/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-20T23:39:57.111095Z",
-    "last_updated_at": "2026-10-20T23:39:57.111095Z",
-    "published_range": [
-     "2026-10-20T17:17:55Z",
-     "2026-10-20T17:17:55Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "needs_review": false,
-    "rank_score": 42.898689,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 0.855,
-     "substance_chars": 513.0,
-     "title_quality": 1.0,
-     "heat": 0.418886,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.2975,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.8782,
-     "significance": 2.2,
-     "lab_announcement": 2.2,
-     "sig_model": 0.0,
-     "sig_release": 1.0,
-     "sig_lab": 1.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.5455,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0,
-     "vendor_priority": 1.0,
-     "vendor_subject": "",
-     "score": 42.898689,
-     "section": "产品应用"
-    }
-   },
-   {
     "event_id": "ef731206ec07520",
     "title": "Elevenlabs releases two new speech-to-speech models designed for real-time AI conversations",
     "member_item_ids": [
@@ -3192,7 +3136,7 @@
    "rubric 评分 49 条已打分 / 10 次调用 / 49 条打了两次（均差 0.31）（标准来源：/home/runner/work/ai-ribao/ai-ribao/config/profiles/ai-daily）"
   ],
   "counts": {
-   "events": 55,
+   "events": 54,
    "events_considered": 197,
    "multi_source_events": 6,
    "items_after_window": 257,
@@ -3245,7 +3189,6 @@
   "media": [
    "e5922f0048f4335",
    "e8fc934f90dcfbb",
-   "e69bf241d4e32a3",
    "e0872d0da419ae7",
    "e8a894c891a1e19",
    "ed44274c0571072",
@@ -3482,30 +3425,6 @@
    "key_points": [
     "Elevenlabs推出两款面向实时人工智能对话的语音到语音模型。",
     "v1 Max得分为98.8%，响应时间为0.57秒。"
-   ],
-   "rule_based": false
-  },
-  "e69bf241d4e32a3": {
-   "event_id": "e69bf241d4e32a3",
-   "title": "Mistral AI发布实时语音代理系统Voxtral 3",
-   "facts": [
-    "Mistral AI发布了面向实时语音代理的新语言模型系列Voxtral 3。",
-    "Voxtral 3结合了语音转文字、文字转语音和语音代理软件开发工具包。",
-    "Voxtral 3支持超过50种语言，并允许代理在实时对话中调用外部工具。",
-    "Voxtral 3可以运行在用户自有基础设施上，也可以通过欧盟托管的接口使用。"
-   ],
-   "inferences": [
-    "Voxtral 3可用于构建能够实时听取、处理和回应语音的代理。"
-   ],
-   "opinions": [],
-   "uncertainties": [
-    "材料未说明Voxtral 3包含哪些具体模型版本。",
-    "材料未说明Voxtral 3的定价和可用范围。",
-    "材料未说明Voxtral 3支持的具体语言列表。"
-   ],
-   "key_points": [
-    "Voxtral 3整合语音识别、语音合成和语音代理开发工具。",
-    "系统支持多语言实时对话、外部工具调用及自有基础设施部署。"
    ],
    "rule_based": false
   },

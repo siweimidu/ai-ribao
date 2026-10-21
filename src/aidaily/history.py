@@ -93,15 +93,22 @@ def fingerprint(event: Event) -> set[str]:
         bare = _canonical_url(url)
         if len(bare) > 10:
             keys.add("u:" + hashlib.sha1(bare.encode()).hexdigest()[:16])
-    # The *message* key: who did what, independent of language and wording.
+    # The *message* key: who did what, about what, independent of language and wording.
     #
     # The previous third key was the model designation, which is the wrong unit --
     # "DeepSeek ships V4.1-Flash" and "WorkBuddy offers it free" name one model and are two
     # different stories, while the same launch written in Chinese and in English is one story.
     # See `samestory.py` for the pair that shipped twice and why.
-    who, what = message_key(event.title)
-    if who:
-        keys.add("m:" + hashlib.sha1(",".join(sorted(who)).encode()).hexdigest()[:16])
+    #
+    # `message_key` now returns actors, event types, subjects and content tokens. All four are
+    # folded into the digest: the earlier two-part version put 31 distinct DeepSeek stories under
+    # one key, which made the key useless as an identity (see `samestory.message_key`).
+    # Folded first: newsletters prefix their own name to every headline, so
+    # `AI 日报：OpenAI 发布 GPT-6` must hash the same as `OpenAI 发布 GPT-6`.
+    message = message_key(event.title)
+    if message and message[0]:
+        payload = "|".join(",".join(sorted(part)) for part in message)
+        keys.add("m:" + hashlib.sha1(payload.encode()).hexdigest()[:16])
     return keys
 
 
@@ -220,6 +227,20 @@ class PublishedHistory:
         if not self._loaded:
             self.load()
 
+    def _titles_flat(self) -> list[tuple[str, str]]:
+        """Every (date, title) the index holds, de-duplicated. Used by the fuzzy fallback."""
+        seen: set[tuple[str, str]] = set()
+        out: list[tuple[str, str]] = []
+        for entries in self._titles.values():
+            for date_str, title in entries:
+                key = (date_str, title)
+                if key in seen:
+                    continue
+                seen.add(key)
+                out.append(key)
+        return out
+
+
     def find_repeat(self, event: Event, *, today: str, now: datetime) -> Repeat | None:
         """Whether this event was published inside the window, and how long it has run.
 
@@ -292,6 +313,41 @@ class PublishedHistory:
                         matched_on=kind,
                         days_ago=days_ago,
                     )
+
+        if best is not None:
+            return best
+
+        # **Fallback: fuzzy scan over the window.**
+        #
+        # The message key is now specific (actors + event types + subjects + content tokens),
+        # which is what stopped 31 different DeepSeek stories sharing one identity. But a
+        # reworded repeat hashes differently by construction: `deepseek-v4.1-flash-1017 发布了`
+        # and `DeepSeek发布V4.1-Flash-1017并开放搜索接口` share no content-token set.
+        #
+        # So when no key matched, compare against every stored headline inside the window and
+        # let `same_message` decide. That is the rule that reads the *meaning*; the key is only
+        # the fast path to a candidate. Bounded by the window (7 days by default), so this is a
+        # few hundred string comparisons, not a corpus scan.
+        seen_titles: set[str] = set()
+        for date_str, title in self._titles_flat():
+            if date_str == today or title in seen_titles:
+                continue
+            seen_titles.add(title)
+            try:
+                when = datetime.fromisoformat(date_str).date()
+            except ValueError:
+                continue
+            if when < cutoff or when > today_date:
+                continue
+            if not _same_message_as(event.title, [(date_str, title)]):
+                continue
+            days_ago = (today_date - when).days
+            if best is None or days_ago > best.days_ago:
+                best = Repeat(
+                    event_id=event.event_id, first_seen=date_str,
+                    matched_on="message",
+                    days_ago=days_ago,
+                )
         return best
 
     def record(self, events: list[Event], *, date: str) -> int:

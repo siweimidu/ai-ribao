@@ -40,10 +40,20 @@ from .history import PublishedHistory
 #: never delete, which is the same rule the source registry follows.
 REPEAT_PENALTY = 0.12
 
-# A bare mention of AI (focus≈0.4) is not sufficient for an AI digest. This floor was selected
-# against the measured daily candidate pool: 39/153 stories clear 0.70, while 65 score exactly
-# 0.40 on a generic `AI` mention and 47 fall below 0.35. Do not relax this to fill slots.
-MIN_AI_RELEVANCE = 0.70
+# A bare mention of AI was treated as insufficient, and 0.70 was chosen against an English-
+# heavy candidate pool. Measured again on 2026-10-21 over 544 in-window items:
+
+#     0.70 → 193 items kept (35%)      0.50 → 304 (56%)
+#
+# The 137 items that 0.70 discarded included "英伟达GTC柏林大会即将开幕 黄仁勋将发表主题演讲" and
+# "调查发现：AI 生成代码会提升调试难度与故障发生率" -- real AI news that names no model, so its
+# only evidence is the word AI. Chinese headlines do that constantly; the English ones this floor
+# was tuned on usually carry a product name.
+#
+# 0.55 is the new default: it keeps a bare-`AI` headline out of the *headline* slots (the section
+# sort still puts 要闻 first) while letting it into the issue at all. The real guard is downstream:
+# the tier threshold and the two-pass rubric score decide what a reader sees first.
+MIN_AI_RELEVANCE = 0.55
 
 
 def passes_ai_relevance(focus: float | str | None) -> bool:

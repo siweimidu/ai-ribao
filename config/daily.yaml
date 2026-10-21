@@ -26,7 +26,9 @@ output:
     languages: [zh]
   deep:                         # → GitHub Pages + RSS + n8n + 归档
     enabled: true
-    max_items: 60
+    # 上限不是目标：放宽 AI 相关度门槛后候选变多，这里放到 120，
+    # 让好内容不被截断。实际发多少由门槛和排序决定，不由这个数字决定。
+    max_items: 120
     languages: [zh]
     english_on_demand: false    # 免费额度约束：深度版默认纯中文
 

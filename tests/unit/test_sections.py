@@ -46,11 +46,15 @@ def test_the_priority_is_the_measured_one() -> None:
     assert SECTION_RANK["模型发布"] < SECTION_RANK["产品应用"]
     assert SECTION_RANK["产品应用"] < SECTION_RANK["技术与洞察"]
     assert SECTION_RANK["技术与洞察"] < SECTION_RANK["行业动态"]
-    assert SECTION_RANK["行业动态"] < SECTION_RANK["其他"]
+    # `其他` shared the last rank with 行业动态 as of 2026-10-21. It used to sort strictly
+    # below it, which buried 38% of the issue at the bottom of the page.
+    assert SECTION_RANK["其他"] == SECTION_RANK["行业动态"]
 
 
 def test_every_section_has_a_distinct_rank() -> None:
-    assert len(set(SECTION_RANK.values())) == len(SECTIONS)
+    # Two sections may share the last rank; what must not happen is a gap.
+    ranks = sorted(set(SECTION_RANK.values()))
+    assert ranks == list(range(len(ranks)))
 
 
 def test_an_unknown_section_sorts_last_rather_than_raising() -> None:

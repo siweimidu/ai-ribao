@@ -61,7 +61,19 @@ SECTIONS: tuple[str, ...] = (
 
 #: The rank each section gets. Lower sorts first. Derived from the pairwise tally, with the one
 #: 5:4 pair (开发生态 over 模型发布) resolved by median rank, which agrees.
-SECTION_RANK: dict[str, int] = {name: i for i, name in enumerate(SECTIONS)}
+#:
+#: `其他` shares the last slot with `行业动态` rather than sitting strictly below it.
+#:
+#: Measured on 2026-10-21: 21 of 55 published stories (38%) landed in `其他`, and because that
+#: section sorted last they formed a block at the bottom of the page regardless of merit --
+#: "Claude 设计针对蝎毒神经毒素的蛋白结合剂" sat at position 51 while lesser 要闻 items led.
+#: The section is a coarse filing decision, not a verdict on quality, so within the two
+#: catch-all sections the score decides; the taxonomy only separates the clearly-titled ones.
+SECTION_RANK: dict[str, int] = {
+    name: i for i, name in enumerate(SECTIONS)
+}
+#: Collapse the two catch-all sections onto one rank so neither is a dumping ground.
+SECTION_RANK["其他"] = SECTION_RANK["行业动态"]
 
 #: Section labels for the page, since a bare 要闻 in a heading is what 参考站 uses and reads well.
 SECTION_LABELS: dict[str, str] = {
