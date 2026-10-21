@@ -32,6 +32,8 @@ from pathlib import Path
 
 from .analyze import EventInsight
 from .l3 import _publisher_of, _url_directness
+from .ghcard import card_html as ghcard_html, STYLE as GHCARD_STYLE
+from .github_meta import repo_of
 from .models import Digest, Event, NormalizedItem
 from .render import CATEGORY_LABELS, _label
 
@@ -447,6 +449,7 @@ def render_item(
     event: Event,
     insight: EventInsight | None,
     items_by_id: dict[str, NormalizedItem] | None = None,
+    repo_meta: dict[str, dict] | None = None,
 ) -> str:
     title = _display_title(event, insight, items_by_id)
     anchor = f"e-{event.event_id[:10]}"
@@ -475,6 +478,38 @@ def render_item(
             for url in event.image_urls
         )
         image_html = f'<div class="item__images">{thumbs}</div>'
+    # **A repository story gets a repository card instead of a headline and a picture.**
+    #
+    # The card already carries the name, the description, the figures and the language bar, so
+    # repeating a title above it would say the same thing twice. It also solves a real problem:
+    # GitHub own Social Preview is a fixed grey template that ignores the site theme, and the
+    # `og:image` on a repository page is often a generic banner rather than anything about the
+    # project.
+    #
+    # The metadata is optional. `repo_meta` is filled when the run could reach the API; when it
+    # is missing the item falls back to the ordinary headline, which is exactly what it looked
+    # like before this feature existed.
+    repo = None
+    card = ""
+    for candidate in ordered_urls:
+        slug = repo_of(candidate)
+        if slug:
+            repo = slug
+            break
+    if repo and repo_meta and repo in repo_meta:
+        data = repo_meta[repo]
+        card = ghcard_html(
+            full_name=data["full_name"],
+            description=data["description"],
+            stars=data["stars"],
+            forks=data["forks"],
+            contributors=data.get("contributors"),
+            discussions=data.get("discussions"),
+            languages=data.get("languages"),
+            license_=data.get("license", ""),
+            href=f"https://github.com/{repo}",
+        )
+
     when_text, known = _when(event)
 
     # Recompute the publisher count from `source_ids` rather than trusting the archived number.
@@ -573,13 +608,29 @@ def render_item(
         )
     links = f'<div class="item__links">{links}</div>' if links else ""
 
+    # A repository story is rendered as the card itself: repeating a headline above it would say
+    # the same thing twice, and the card already carries the name, the description and the
+    # figures. The number stays so the reader can still count entries and follow anchors.
+    if card:
+        head_html = (
+            f'<div class="item__head item__head--card">'
+            f'<span class="item__no">{index:02d}</span>'
+            f'<div class="item__cardwrap">{card}</div>'
+            '</div>'
+        )
+        image_html = ""
+    else:
+        head_html = (
+            '<div class="item__head">'
+            f'<span class="item__no">{index:02d}</span>'
+            f'<h3 class="item__title"><a href="{esc(first_url)}" target="_blank" rel="noopener noreferrer">{esc(title)}</a></h3>'
+            '</div>'
+        )
+
     when_cls = "" if known else ' class="when-unknown"'
 
     return f"""        <li class="item" id="{esc(anchor)}">
-          <div class="item__head">
-            <span class="item__no">{index:02d}</span>
-            <h3 class="item__title"><a href="{esc(first_url)}" target="_blank" rel="noopener noreferrer">{esc(title)}</a></h3>
-          </div>
+          {head_html}
           {image_html}
           <div class="item__meta">
             <span class="badge" data-level="{esc(level)}">{esc(label)}</span>
@@ -711,6 +762,7 @@ def render_day(
     insights: dict[str, EventInsight],
     items_by_id: dict[str, NormalizedItem],
     ctx: SiteContext,
+    repo_meta: dict[str, dict] | None = None,
 ) -> str:
     toc = render_toc(digest.top_events, insights, items_by_id)
 
@@ -744,7 +796,7 @@ def render_day(
             untranslated.append((counter, event))
             continue
         translated_ids.add(event.event_id)
-        rows.append(render_item(counter, event, insight, items_by_id))
+        rows.append(render_item(counter, event, insight, items_by_id, repo_meta))
 
     body: list[str] = []
     if rows:
@@ -1709,7 +1761,10 @@ def _load_archive_from_html(site_dir: Path) -> list[tuple[str, int]]:
     return out
 
 
-def _rerender_archived_issue(site: Path, out_dir: Path, date: str, ctx: SiteContext) -> int:
+def _rerender_archived_issue(
+    site: Path, out_dir: Path, date: str, ctx: SiteContext,
+    repo_meta: dict[str, dict] | None = None,
+) -> int:
     """Rebuild one past issue page from its archived JSON. Returns 1 when written.
 
     The archive stores the digest with `sections` excluded and the layout beside it as
@@ -1766,7 +1821,7 @@ def _rerender_archived_issue(site: Path, out_dir: Path, date: str, ctx: SiteCont
             )
 
     (site / f"{date}.html").write_text(
-        render_day(past, archived_insights, items_by_id, ctx), encoding="utf-8"
+        render_day(past, archived_insights, items_by_id, ctx, repo_meta), encoding="utf-8"
     )
     return 1
 
@@ -1780,6 +1835,7 @@ def write_site(
     assets_dir: Path | None = None,
     tibo: dict | None = None,
     sources: list[dict] | None = None,
+    repo_meta: dict[str, dict] | None = None,
 ) -> dict[str, object]:
     site = out_dir / "site"
     site.mkdir(parents=True, exist_ok=True)
@@ -1807,7 +1863,7 @@ def write_site(
         generated_at=digest.generated_at,
     )
 
-    day_html = render_day(digest, insights, items_by_id, ctx)
+    day_html = render_day(digest, insights, items_by_id, ctx, repo_meta)
     (site / f"{digest.date}.html").write_text(day_html, encoding="utf-8")
 
     # **Re-render every earlier issue too.**
@@ -1823,7 +1879,7 @@ def write_site(
     for past_date, _ in ctx.archive:
         if past_date == digest.date:
             continue
-        rebuilt += _rerender_archived_issue(site, out_dir, past_date, ctx)
+        rebuilt += _rerender_archived_issue(site, out_dir, past_date, ctx, repo_meta)
 
 
     (site / "index.html").write_text(render_index(ctx, digest), encoding="utf-8")

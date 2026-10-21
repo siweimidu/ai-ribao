@@ -210,6 +210,7 @@ def write_site(
     items_by_id: dict[str, object] | None = None,
     tibo: dict | None = None,
     sources: list[dict] | None = None,
+    repo_meta: dict[str, dict] | None = None,
 ) -> DeliveryResult:
     """Render the designed site (see aidaily/site.py), keeping the markdown alongside.
 
@@ -239,6 +240,7 @@ def write_site(
         assets_dir=assets,
         tibo=tibo,
         sources=sources,
+        repo_meta=repo_meta,
     )
 
     site = out_dir / "site"
@@ -313,13 +315,33 @@ async def deliver_all(
             record(DeliveryResult("rss", False, f"{type(exc).__name__}: {exc}"[:200]))
 
     if cfg.delivery.pages:
+        # Repository metadata for the GitHub cards. Fetched once and cached; a failure here costs
+        # the cards, not the page -- `fetch_many` never raises and returns {} instead.
+        repo_meta: dict[str, dict] = {}
+        try:
+            import asyncio as _asyncio
+
+            from .github_meta import fetch_many, repo_of
+
+            slugs = {
+                repo_of(url)
+                for event in digest.top_events
+                for url in (event.all_urls or [])[:3]
+            }
+            slugs.discard(None)
+            if slugs:
+                repo_meta = _asyncio.run(fetch_many(sorted(slugs)))
+        except Exception:
+            repo_meta = {}
         try:
             record(
                 write_site(
                     digest, deep_md, out_dir, site_url=site_url,
                     insights=insights, items_by_id=items_by_id, tibo=tibo, sources=sources,
+                    repo_meta=repo_meta,
                 )
             )
+
         except Exception as exc:  # noqa: BLE001
             record(DeliveryResult("pages", False, f"{type(exc).__name__}: {exc}"[:200]))
 

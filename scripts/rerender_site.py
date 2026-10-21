@@ -113,10 +113,30 @@ def main() -> int:
     from aidaily.tibo import load_tibo
 
     tibo = load_tibo(ROOT)
+    # Repository metadata for the GitHub cards. Re-rendering is an offline operation, so this
+    # is best-effort: without it the repository stories fall back to a plain headline, which is
+    # exactly what they looked like before the cards existed.
+    repo_meta: dict[str, dict] = {}
+    try:
+        import asyncio as _asyncio
+
+        from aidaily.github_meta import fetch_many, repo_of
+
+        slugs = {
+            repo_of(url)
+            for event in digest.top_events
+            for url in (event.all_urls or [])[:3]
+        }
+        slugs.discard(None)
+        if slugs:
+            repo_meta = _asyncio.run(fetch_many(sorted(slugs)))
+    except Exception:
+        repo_meta = {}
+
     site = write_site(
         digest, deep, out_dir,
         site_url=site_url, insights=insights, items_by_id=items, tibo=tibo,
-        sources=load_sources(),
+        sources=load_sources(), repo_meta=repo_meta,
     )
 
     # Keep the downloads the sidebar links next to the pages that link them: the deploy

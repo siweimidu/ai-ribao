@@ -61,7 +61,7 @@ STYLE = """
 .ghm{
   font-family:var(--font-sans); color:var(--fg); background:var(--surface);
   border:1px solid var(--border); border-radius:var(--radius);
-  padding:calc(var(--unit) * 8) calc(var(--unit) * 9);
+  padding:calc(var(--unit) * 7) calc(var(--unit) * 7);
   text-decoration:none; display:block;
   transition:border-color var(--dur-fast) ease, box-shadow var(--dur-fast) ease;
 }
@@ -78,11 +78,14 @@ STYLE = """
 .ghm__desc{font-family:Georgia,"Songti SC",serif; font-size:1.0625rem; line-height:1.62;
   color:color-mix(in srgb, var(--fg) 78%, var(--muted-fg)); margin:calc(var(--unit) * 4) 0 0; max-width:62ch}
 .ghm__rule{height:1px; background:var(--border); margin:calc(var(--unit) * 7) 0 0}
-.ghm__stats{display:flex; flex-wrap:wrap; margin-top:calc(var(--unit) * 5); gap:0}
-.ghm__stat{padding-right:calc(var(--unit) * 11); margin-right:calc(var(--unit) * 11);
-  border-right:1px solid var(--border)}
+.ghm__stats{display:flex; flex-wrap:nowrap; overflow-x:auto; margin-top:calc(var(--unit) * 5);
+  gap:0; scrollbar-width:none}
+.ghm__stats::-webkit-scrollbar{display:none}
+.ghm__stat{padding-right:calc(var(--unit) * 5); margin-right:calc(var(--unit) * 5);
+  border-right:1px solid var(--border); flex:0 1 auto}
 .ghm__stat:last-child{border-right:0; margin-right:0; padding-right:0}
-.ghm__stat b{display:block; font-family:Georgia,"Songti SC",serif; font-size:1.75rem;
+.ghm__stat b{display:block; font-family:Georgia,"Songti SC",serif;
+  font-size:clamp(1.25rem, 2.2vw, 1.6rem);
   line-height:1; letter-spacing:-.03em; font-variant-numeric:tabular-nums}
 .ghm__stat i{display:block; font-style:normal; margin-top:calc(var(--unit) * 2);
   font-size:var(--fs-micro); letter-spacing:.1em; text-transform:uppercase; color:var(--muted-fg)}
@@ -137,7 +140,11 @@ def card_html(
 ) -> str:
     """The card as HTML, themed by whichever `[data-theme]` is active on the page."""
     owner, _, name = full_name.partition("/")
-    kicker = "Open source" + (f" · {license_}" if license_ else "")
+    # `NOASSERTION` is what GitHub reports when it cannot identify the licence. Printing it
+    # reads as "this project has no licence", which is a claim about the project rather than
+    # about GitHub parser. Omit it and say nothing.
+    shown_license = "" if license_.upper() in ("", "NOASSERTION", "NONE") else license_
+    kicker = "Open source" + (f" · {shown_license}" if shown_license else "")
 
     stats_html = "".join(
         f'<div class="ghm__stat"><b>{v}</b><i>{label}</i></div>'
@@ -181,7 +188,8 @@ def _png_document(theme: str, **kwargs) -> str:
     """A standalone HTML document for one card, with the theme resolved to concrete colours."""
     palette = THEMES.get(theme, THEMES["light"])
     owner, _, name = str(kwargs["full_name"]).partition("/")
-    kicker = "Open source" + (f" · {kwargs['license_']}" if kwargs.get("license_") else "")
+    shown_license = "" if str(kwargs.get("license_") or "").upper() in ("", "NOASSERTION", "NONE") else kwargs["license_"]
+    kicker = "Open source" + (f" · {shown_license}" if shown_license else "")
     stats = _stats(
         stars=kwargs["stars"], forks=kwargs["forks"],
         contributors=kwargs.get("contributors"), discussions=kwargs.get("discussions"),
