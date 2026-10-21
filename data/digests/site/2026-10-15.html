@@ -366,5 +366,36 @@
 <script type="application/json" id="calendar-data">{"dates": ["2026-10-21", "2026-10-20", "2026-10-19", "2026-10-18", "2026-10-17", "2026-10-16", "2026-10-15", "2026-10-14"], "current": "2026-10-15", "today": "2026-10-21"}</script>
 <script type="application/json" id="search-index">[{"date": "2026-10-15", "items": [{"t": "库克：苹果智能接入阿里千问大模型，10月底在中国发布测试版本|苹果 AI(Apple Intelligence)|Siri AI|蒂姆·库克|Qwen|阿里云 - 新浪新闻", "s": "api:news-google-com-search"}, {"t": "Announcing Day 0 Support for NVIDIA Nemotron 3.5 Super VL on vLLM", "s": "rss:vllm-ai-blog"}, {"t": "DeepSeek Suffers Nearly Five-Hour AI Service Outage, One of Its Worst This Year - Yicai", "s": "api:news-google-com-search"}, {"t": "Linus Torvalds's first LLM-assisted patch series", "s": "api:hn-algolia-com-search, rss:lwn-net-headlines"}, {"t": "直击工博会｜工业AI突围“试点陷阱”：上层Agent攻坚生产决策，端侧底座直面算力瓶颈 - 每日经济新闻", "s": "api:news-google-com-search"}, {"t": "Anthropic tells investors quarterly revenue up nearly 50% to $16.8bn ahead of IPO", "s": "rss:simonwillison-net-everything"}, {"t": "Rogue AI agents sit for their first interview", "s": "rss:rss-beehiiv-com-2r3c6bt5wj"}, {"t": "EMNLP 2026 | 大模型推理如何再快一步？SpecTr-GBV统一多草稿与块验证，加速推测解码", "s": "rss:wechat-jiqizhixin-bestblogs, rss:wechat-jiqizhixin-xlab"}, {"t": "通用大模型要「降维打击」具身智能？首个AA-Robotics榜单来了", "s": "rss:wechat-jiqizhixin-bestblogs, rss:wechat-jiqizhixin-xlab"}, {"t": "2026-10-15 AI 日报 · 华尔街银团拟转让380亿美元AI数据中心债务，多州加码OpenAI合规监管", "s": "rss:daily-ai225"}, {"t": "Jev 1.14 ⚡, Grok Voice 3 🎙️, RSI 🔁", "s": "rss:raw-githubusercontent-com-ai-rss-feeds-tldr-ai"}, {"t": "Eight states sue OpenAI, saying ChatGPT isn’t safe for kids", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "Bank of America hired 1,000 contractors to patch software flaws exposed by Anthropic's Mythos", "s": "rss:search-cnbc-com-combinedcms-view"}, {"t": "K-Dense-AI/scientific-agent-skills", "s": "scrape:github-com-trending"}, {"t": "How Windows is being optimized for Nvidia’s RTX Spark laptops", "s": "rss:theverge-com-ai-artificial-intelligence"}]}]</script>
 <script src="assets/motion.js" defer></script>
+<div class="lightbox" id="lightbox" hidden>
+  <button type="button" class="lightbox__close" aria-label="关闭">×</button>
+  <img class="lightbox__img" alt="">
+</div>
+<script>
+// Click a picture and it opens in place. No new tab, no scroll jump, no history entry.
+// Escape, the close button, or a click on the backdrop dismisses it.
+(function () {
+  var box = document.getElementById("lightbox");
+  if (!box) return;
+  var img = box.querySelector(".lightbox__img");
+  function open(src) {
+    img.src = src;
+    box.hidden = false;
+    document.body.classList.add("is-lightbox");
+  }
+  function close() {
+    box.hidden = true;
+    img.removeAttribute("src");
+    document.body.classList.remove("is-lightbox");
+  }
+  document.addEventListener("click", function (e) {
+    var thumb = e.target.closest(".item__thumb");
+    if (thumb) { e.preventDefault(); open(thumb.dataset.full); return; }
+    if (e.target === box || e.target.closest(".lightbox__close")) close();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !box.hidden) close();
+  });
+})();
+</script>
 </body>
 </html>
