@@ -231,12 +231,37 @@ jobs:
       #
       # The Python package alone is not enough: the browser binaries are a separate download,
       # and without them `card_png` returns None -- silently, by design, because a missing
-      # picture must never fail an issue. The failure mode is a feed with no images and no
-      # error, which is exactly the kind of thing that goes unnoticed for a week.
+      # picture must never fail an issue.
+      #
+      # **The download is not reliable.** Run 39589942598 failed it with
+      # `getaddrinfo ENOTFOUND playwright.download.prss.microsoft.com` -- a DNS failure on the
+      # runner, not a version problem. A retry usually works, and the two steps are marked
+      # `continue-on-error` because a missing browser costs the card images, not the issue.
       #
       # `--with-deps` pulls the system libraries Chromium needs on a bare ubuntu-latest.
-      - run: python -m playwright install --with-deps chromium
-      - run: python -c "from playwright.sync_api import sync_playwright; print('playwright ready')"
+      - name: Install Playwright Chromium
+        continue-on-error: true
+        run: |
+          for attempt in 1 2 3; do
+            echo "attempt $attempt"
+            python -m playwright install --with-deps chromium && break
+            sleep $((attempt * 10))
+          done
+
+      # Report what actually happened instead of assuming. A missing browser is not fatal, but it
+      # must be visible in the log rather than inferred from a page with no cards.
+      - name: Check Playwright
+        run: |
+          python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          try:
+              with sync_playwright() as p:
+                  p.chromium.launch().close()
+              print("playwright: chromium ready")
+          except Exception as exc:
+              print(f"playwright: chromium unavailable -- {type(exc).__name__}: {exc}")
+              print("playwright: repository cards will fall back to plain headlines")
+          PY
 
       - uses: actions/download-artifact@v8
         if: inputs.skip_collect != true

@@ -348,6 +348,15 @@ def cmd_run(args: argparse.Namespace) -> int:
         except Exception:
             github_cards = {}
         if github_cards:
+            # **Write the card back onto the event, not only into a local map.**
+            #
+            # The page renders the HTML card from `repo_meta`, and the RSS needs the PNG URL on
+            # the event. An earlier version kept the URLs in `github_cards` alone, so five cards
+            # were rendered, uploaded and reported -- and the page showed none of them.
+            for event in digest.top_events:
+                url = github_cards.get(event.event_id)
+                if url and url not in event.image_urls:
+                    event.image_urls = [*event.image_urls, url]
             print(f"仓库卡片：{len(github_cards)} 张", file=sys.stderr)
 
     # 7) render
