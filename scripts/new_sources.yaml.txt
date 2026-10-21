@@ -1,0 +1,208 @@
+- source_id: rss:arxiv-cs-ai
+  name: arXiv cs.AI
+  url: http://export.arxiv.org/rss/cs.AI
+  category: research
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 30
+  notes: 2026-10-21 实测：HTTP 200，1.03 MB，RSS 可用。
+  why: 人工智能主分类的最新预印本，每天更新。这是顶级论文进入公共视野的第一站，日报里缺了它就只能报道二手解读。
+  found_in:
+  - user-list:2026-10-21#Xuan酱 AI 优质信息源
+- source_id: rss:arxiv-cs-cl
+  name: arXiv cs.CL
+  url: http://export.arxiv.org/rss/cs.CL
+  category: research
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 30
+  notes: 2026-10-21 实测：HTTP 200，505 KB，RSS 可用。
+  why: 计算语言学分类。大模型的语言能力进展几乎全部先出现在这里。
+  found_in:
+  - user-list:2026-10-21#Xuan酱 AI 优质信息源
+- source_id: rss:arxiv-cs-lg
+  name: arXiv cs.LG
+  url: http://export.arxiv.org/rss/cs.LG
+  category: research
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 30
+  notes: 2026-10-21 实测：HTTP 200，881 KB，RSS 可用。
+  why: 机器学习分类。训练方法、架构、缩放律的原始出处。
+  found_in:
+  - user-list:2026-10-21#Xuan酱 AI 优质信息源
+- source_id: rss:huggingface-blog
+  name: Hugging Face Blog
+  url: https://huggingface.co/blog/feed.xml
+  category: lab
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 30
+  notes: 2026-10-21 实测：HTTP 200，262 KB，RSS 可用。
+  why: 开源模型与工具的一手发布渠道。许多模型先在这里发，再被媒体转述。
+  found_in:
+  - user-list:2026-10-21#Xuan酱 AI 优质信息源
+- source_id: rss:openai-blog
+  name: OpenAI Blog
+  url: https://openai.com/blog/rss.xml
+  category: lab
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 30
+  notes: 2026-10-21 实测：HTTP 200，797 KB，RSS 可用。
+  why: OpenAI 官方发布。第一手，不等转述。
+  found_in:
+  - user-list:2026-10-21#Xuan酱 AI 优质信息源
+- source_id: rss:mit-tech-review-ai
+  name: MIT Technology Review · AI
+  url: https://www.technologyreview.com/topic/artificial-intelligence/feed
+  category: media
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 30
+  notes: 2026-10-21 实测：HTTP 200，128 KB，RSS 可用。
+  why: 深度报道而非快讯，对技术趋势的判断值得单独列出。
+  found_in:
+  - user-list:2026-10-21#Xuan酱 AI 优质信息源
+- source_id: rss:wired-ai
+  name: Wired · AI
+  url: https://www.wired.com/feed/tag/ai/latest/rss
+  category: media
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 30
+  notes: 2026-10-21 实测：HTTP 200，10.6 KB，RSS 可用。
+  why: 科技媒体里对 AI 社会影响的报道最系统的之一。
+  found_in:
+  - user-list:2026-10-21#Xuan酱 AI 优质信息源
+- source_id: rss:ahead-of-ai
+  name: Ahead of AI (Sebastian Raschka)
+  url: https://magazine.sebastianraschka.com/feed
+  category: newsletter
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 30
+  notes: 2026-10-21 实测：HTTP 200，2.71 MB，RSS 可用。
+  why: 把论文讲成可操作的工程判断，是论文与工程之间的翻译层。
+  found_in:
+  - user-list:2026-10-21#Xuan酱 AI 优质信息源
+- source_id: rss:interconnects
+  name: Interconnects (Nathan Lambert)
+  url: https://www.interconnects.ai/feed
+  category: newsletter
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 30
+  notes: 2026-10-21 实测：HTTP 200，557 KB，RSS 可用。
+  why: 对开放模型生态与对齐研究的持续跟踪，判断有独立价值。
+  found_in:
+  - user-list:2026-10-21#Xuan酱 AI 优质信息源
+- source_id: rss:lex-fridman
+  name: Lex Fridman Podcast
+  url: https://lexfridman.com/feed/podcast/
+  category: podcast
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 30
+  notes: 2026-10-21 实测：HTTP 200，2.12 MB，RSS 可用。
+  why: 长访谈，适合补充深度观点。注：不是每日资讯源，命中频率低。
+  found_in:
+  - user-list:2026-10-21#Xuan酱 AI 优质信息源
+- source_id: rss:latent-space
+  name: Latent Space
+  url: https://www.latent.space/feed
+  category: podcast
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 30
+  notes: 2026-10-21 实测：HTTP 200，1.02 MB，RSS 可用。
+  why: 面向 AI 工程师的访谈，讲实现细节而不是概念。
+  found_in:
+  - user-list:2026-10-21#Xuan酱 AI 优质信息源
+- source_id: rss:practical-ai
+  name: Practical AI
+  url: https://changelog.com/practicalai/feed
+  category: podcast
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 30
+  notes: 2026-10-21 实测：HTTP 200，3.83 MB，RSS 可用。
+  why: 工程实践向，与新闻类源互补。
+  found_in:
+  - user-list:2026-10-21#Xuan酱 AI 优质信息源
+- source_id: rss:twiml-ai
+  name: The TWIML AI Podcast
+  url: https://twimlai.com/feed/podcast/
+  category: podcast
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 30
+  notes: 2026-10-21 实测：HTTP 200，3.00 MB，RSS 可用。
+  why: 研究者访谈为主，常有一手论文作者讲解。
+  found_in:
+  - user-list:2026-10-21#Xuan酱 AI 优质信息源
