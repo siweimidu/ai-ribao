@@ -40,20 +40,25 @@ from .history import PublishedHistory
 #: never delete, which is the same rule the source registry follows.
 REPEAT_PENALTY = 0.12
 
-# A bare mention of AI was treated as insufficient, and 0.70 was chosen against an English-
-# heavy candidate pool. Measured again on 2026-10-21 over 544 in-window items:
-
-#     0.70 → 193 items kept (35%)      0.50 → 304 (56%)
+# **The relevance floor is a noise gate, not a taste filter.**
 #
-# The 137 items that 0.70 discarded included "英伟达GTC柏林大会即将开幕 黄仁勋将发表主题演讲" and
-# "调查发现：AI 生成代码会提升调试难度与故障发生率" -- real AI news that names no model, so its
-# only evidence is the word AI. Chinese headlines do that constantly; the English ones this floor
-# was tuned on usually carry a product name.
+# It used to be 0.70, then 0.55. Both were too strict for the same reason: `_headline_focus`
+# scores in bands, not on a continuum. Measured on 657 in-window items:
 #
-# 0.55 is the new default: it keeps a bare-`AI` headline out of the *headline* slots (the section
-# sort still puts 要闻 first) while letting it into the issue at all. The real guard is downstream:
-# the tier threshold and the two-pass rubric score decide what a reader sees first.
-MIN_AI_RELEVANCE = 0.55
+#     0.18   255 items   (no AI term at all)
+#     0.50   131 items   (the word AI, nothing more specific)
+#     1.00   258 items   (a named model, lab or technique)
+#
+# A floor of 0.55 therefore keeps *only* the 1.00 band and discards all 131 of the 0.50 band --
+# and that band is roughly half real news: "Notion 升级 AI：自动选模降成本", "英伟达GTC柏林大会即将开幕",
+# "RISC-V 加速进入 AI 与高性能计算". The other half is noise ("AI赋能场馆思政教学研讨会").
+#
+# A threshold cannot separate those halves; they score identically. So the floor drops to 0.40,
+# which admits the whole 0.50 band, and telling the halves apart becomes the rubric stage job --
+# it reads the story and has an opinion. The floor now only removes items with no AI signal at all.
+#
+# The cost is more candidates reaching the model: a few more batched calls, not a redesign.
+MIN_AI_RELEVANCE = 0.50
 
 
 def passes_ai_relevance(focus: float | str | None) -> bool:
@@ -351,31 +356,26 @@ def select_for_digest(
         "relevance_dropped_examples": dropped_focus_examples,
     }
 
-    # **Tier gates.** The bar a story must clear depends on who published it.
+    # **Tier decides the order, not admission.**
     #
-    # A multiplier cannot separate two stories that are close in score; a threshold can. The
-    # complaint this answers is concrete: promotions and re-reported rumours kept reaching the
-    # issue because every source competed at one bar, while a first-party announcement -- the
-    # strongest evidence a story is real -- had to win on the same terms.
+    # This was a hard gate: a media source needed 68 points, and on 2026-10-21 that dropped 91% of
+    # the candidates -- 308 considered, 26 published. The reader asked for the opposite: put
+    # everything in, ordered by importance.
     #
-    # Thresholds live in `tiers.py` and are derived from the source's category, so the 124
-    # registry rows needed no migration. An unscored event is not gated: the rubric stage is
-    # optional by design, and a failed model call must cost ordering, not content.
-    tier_dropped = 0
-    tier_examples: list[dict[str, object]] = []
+    # So the bar is recorded and used as a *sort term* instead. A first-party story that scores
+    # below its tier bar is demoted relative to one that clears it, but it still appears.
+    #
+    # What still filters is the relevance floor above: an item with no AI signal at all is not
+    # news for this digest, and no amount of ordering makes it so.
     if rubric_scores:
-        gated: list = []
         for row in kept:
             raw = rubric_scores.get(row.event.event_id)
             if raw is None:
-                gated.append(row)
                 continue
             percent = to_percent(raw)
             categories = [
                 src.category for src in sources if src.source_id in row.event.source_ids
             ]
-            # The best tier among the sources covering this event: an announcement carried by
-            # an official blog and three media outlets is first-party evidence, not media.
             best = min(
                 categories or [""],
                 key=lambda c: ("T1", "T1_5", "T2").index(tier_of(c)),
@@ -383,26 +383,17 @@ def select_for_digest(
             bar = threshold_for(best, cfg.quality.tier_thresholds)
             row.components["tier"] = tier_of(best)
             row.components["tier_threshold"] = bar
-            if percent is not None and percent < bar:
-                tier_dropped += 1
-                if len(tier_examples) < 12:
-                    tier_examples.append({
-                        "title": row.event.title[:100],
-                        "tier": tier_of(best),
-                        "score": percent,
-                        "threshold": bar,
-                    })
-                continue
-            gated.append(row)
-        kept = gated
+            row.components["tier_shortfall"] = bool(percent is not None and percent < bar)
 
     report_extra.update({
-        "tier_dropped": tier_dropped,
-        "tier_dropped_examples": tier_examples,
+        # The tier bar no longer drops anything, so the interesting count is how many stories fell
+        # below theirs and were demoted rather than removed.
+        "tier_shortfall": sum(
+            1 for row in kept if row.components.get("tier_shortfall")
+        ),
         "tier_thresholds": dict(cfg.quality.tier_thresholds),
     })
 
-    section_of: dict[str, str] = {}
     section_of: dict[str, str] = {}
     for row in kept:
         # The model's judgement first -- it reads the story, and measured 41.8% accuracy is what
@@ -411,7 +402,19 @@ def select_for_digest(
         section = (rubric_sections or {}).get(row.event.event_id) or classify(row.event.title)
         section_of[row.event.event_id] = section
         row.components["section"] = section
-    kept.sort(key=lambda r: (rank_of(section_of[r.event.event_id]), -r.score, r.event.event_id))
+    # Section first, then whether the story clears its tier bar, then score.
+    #
+    # `tier_shortfall` is a *demotion*, not a filter: since the tier bar no longer drops anything,
+    # a story that scores below its source bar sorts after the ones that clear theirs. That is how
+    # a first-party announcement still leads even when the model rated it a point lower.
+    kept.sort(
+        key=lambda r: (
+            rank_of(section_of[r.event.event_id]),
+            bool(r.components.get("tier_shortfall")),
+            -r.score,
+            r.event.event_id,
+        )
+    )
     ranked = kept
 
     if pool_only is not None:

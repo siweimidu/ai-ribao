@@ -746,13 +746,17 @@ async def _fetch_images(
     async with media.default_client() as client:
 
         async def one(event) -> tuple[str, list[bytes]]:
-            urls = sorted(event.all_urls or [], key=lambda u: (_url_directness(u), u))
-            if not urls:
+            # **Only the publisher own page.** Fetching a picture off an aggregator would mean
+            # republishing someone else copied-and-redistributed asset -- the aggregator does not
+            # own it, and neither do we. When an event has no direct publisher URL it gets the
+            # generated placeholder instead, which claims nothing about the story.
+            direct = [u for u in (event.all_urls or []) if _url_directness(u) == 0]
+            if not direct:
                 return event.event_id, []
             async with semaphore:
-                # Two candidates: the direct source, then the next one. Beyond that the gain
+                # Two candidates: the first direct source, then the next. Beyond that the gain
                 # stops justifying the extra requests.
-                for candidate in urls[:2]:
+                for candidate in direct[:2]:
                     images = await media.images_for(client, candidate)
                     if images:
                         return event.event_id, images
