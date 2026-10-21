@@ -1993,12 +1993,19 @@ body { font-family: var(--f-sans); }
  * 强行裁成统一的 16:9 会毁掉其中三张：终端截图只剩中间一段，示意图被截断上下。
  * `width: auto` 保证不裁切，`max-height` 防止竖图占满整屏，行内滚动处理放不下的情况。
  */
+/*
+ * 缩进必须和 `.facts` 一致：那一块为了让「事实 / 推断 / 不确定」的标题与正文缩排，
+ * 用了 padding-left: calc(1.6em + var(--unit) * 3)。配图行原本没有这个内距，于是图片比
+ * 事实块靠左一截，整列看起来是歪的。
+ *
+ * 用同一个表达式而不是写死像素：两者必须永远相等，共用一处定义才不会在改字号时漂移。
+ */
 .item__images {
   display: flex;
   gap: 10px;
   overflow-x: auto;
   margin: 14px 0 12px;
-  padding: 2px 2px 8px;
+  padding: 2px 0 8px calc(1.6em + var(--unit) * 3);
   scroll-snap-type: x mandatory;
   overscroll-behavior-x: contain;
 }

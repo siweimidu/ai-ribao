@@ -1,0 +1,3010 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gemini Personal Intelligence将进入汽车 · AI 日报</title>
+<meta name="description" content="Google将把Personal Intelligence引入Android Auto中的Gemini。">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0065fd">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1530 1530'%3E%3Cstyle%3E:root{color-scheme:light dark}rect{fill:%23FEFEFE}g{fill:%23231A15}@media(prefers-color-scheme:dark){rect{fill:%230B0D10}g{fill:%23F2F4F7}}%3C/style%3E%3Crect width='1530' height='1530' rx='765'/%3E%3Cg transform='translate(765 765) scale(2.65) translate(-765 -765)'%3E%3Cpath fill-rule='evenodd' d='M 494,818 L 626,504 L 711,503 L 800,711 L 803,711 L 1018,546 L 1032,538 L 1027,544 L 745,795 L 740,795 L 726,765 L 610,765 L 586,820 Z M 669,614 L 701,694 L 636,694 Z'/%3E%3Cpath d='M 871,713 L 867,712 L 560,989 L 587,971 L 781,825 L 783,1025 L 871,1024 Z'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="canonical" href="https://siweimidu.github.io/ai-ribao/2026-10-21.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gemini Personal Intelligence将进入汽车">
+<meta property="og:description" content="Google将把Personal Intelligence引入Android Auto中的Gemini。">
+<link rel="image_src" href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e69d620c0e4f79c-9eb57b31.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e69d620c0e4f79c-9eb57b31.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="AI 日报" href="feed/zh.xml">
+<link rel="alternate" type="application/feed+json" title="AI 日报" href="feed/zh.json">
+<style>/* ============================================================================
+   AI 日报 · 设计令牌
+   ----------------------------------------------------------------------------
+   三条外部依据，按优先级：
+   1. frontend-design 的 slop 清单（必须避开）
+   2. Doubao 设计系统的令牌值（圆角、间距、单一强调色）
+   3. juya 的实测结构（双栏轨道、暖白底、中文优先字体）
+
+   刻意改掉的两处「AI 味」（frontend-design 点名）：
+   · **等宽字体做小标签** —— 之前 .eyebrow / .fact-label / .evidence 全用
+     JetBrains Mono。规范说这是模板化特征：字体应该承担个性，而不是给
+     小数据贴一层「技术感」的皮。现在正文与标签同族，层级靠字号和字重。
+   · **中间点连接的 meta 串**（`A · B · C`）—— 之前页脚和统计里满是。
+     现在改成真实的分隔结构或换行。
+
+   保留的：编号（内容确实是序号化的当日要闻，不是装饰）、
+   单一强调色（Doubao 的 #0065fd）。
+   ========================================================================= */
+
+:root {
+  /* --- 语义色：4 种 ------------------------------------------------------------------ */
+  /* 底色取 juya 实测的暖白 rgb(253,252,250) 而非纯白：纯白在长时间阅读下过亮，
+     而暖白与中性灰阶搭配不会引入第二个色相。 */
+  --bg:          #fdfcfa;
+  --surface:     #ffffff;
+  --fg:          #16181c;
+  --muted-fg:    #6b7280;
+  --muted:       #f2f1ee;
+  --border:      #e6e4df;
+  --accent:      #0065fd;
+  --accent-soft: #e8efff;
+
+  /* --- 圆角与间距：单一来源，全局缩放 --------------------------------------------- */
+  --radius:    0.75rem;
+  --radius-sm: 0.4rem;
+  --rail-w:    13rem;     /* 208px：导航不需要和正文平起平坐，余量留给正文 */
+  --toc-w:     12rem;     /* 192px：目录只显示「01 标题…」 */
+  --unit:      0.25rem;
+
+  /* --- 字体：中文优先 ----------------------------------------------------------- */
+  /* 之前把 Inter 放在最前，中文靠系统回退，不同机器上字形与度量都不可控。
+     juya 实测用 Sarasa Gothic SC（更纱黑体），它的中英文度量统一。
+     拉丁部分回退到 Inter（有"更纱黑体"时英文也走它，统一性更好）。 */
+  --font-sans: "Sarasa Gothic SC", "更纱黑体 SC", "Noto Sans CJK SC",
+               "Noto Sans SC", "PingFang SC", "Microsoft YaHei",
+               Inter, ui-sans-serif, system-ui, sans-serif;
+  /* 等宽只用于真正的代码/数字对齐场景，不再当小标签的装饰字体。 */
+  --font-mono: "Sarasa Mono SC", "Noto Sans Mono CJK SC", ui-monospace, monospace;
+
+  /* --- 字阶 ---------------------------------------------------------------------- */
+  /* 三栏版式下正文列变窄（约 700px），但**尺度对比仍必须成立**：
+     规范给的实测下限是 4×，低于它页面就没有尺度对比。
+     第一版降到 44px 让比值掉到 2.9× —— 窄列不是放弃对比的理由，
+     而是把正文也一起收小（15px）来守住比值。这里 60 ÷ 15 = 4.0×。
+     中文长标题在窄列里会换到 3 行，用 measure 限制避免它铺满整行。 */
+  --fs-display: clamp(2.5rem, 4.6vw, 3.75rem);   /* 40 → 60px */
+  --fs-h2:      clamp(1.25rem, 1.6vw, 1.5rem);
+  --fs-h3:      1.0625rem;                        /* 17px */
+  --fs-body:    0.9375rem;                        /* 15px */
+  --fs-small:   0.8125rem;
+  --fs-micro:   0.75rem;                          /* 12px */
+  --lh-tight:   1.24;
+  --lh-body:    1.75;
+
+  /* --- 动效令牌 -------------------------------------------------------------------- */
+  --dur-instant:  90ms;
+  --dur-fast:     170ms;
+  --dur-standard: 320ms;
+  --dur-medium:   460ms;
+  --dur-slow:     700ms;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-circ: cubic-bezier(0, 0.55, 0.45, 1);
+  --spring-bouncy: linear(0, 0.32 8%, 0.79 20%, 1.03 30%, 1.01 46%, 1);
+  --spring-jelly:  linear(0, 0.18 6%, 0.62 18%, 0.94 32%, 1.06 46%, 1.02 62%, 1);
+
+  --ring: 0 0 0 3px color-mix(in srgb, var(--accent) 26%, transparent);
+}
+
+/* 深色取值集中在一处，两个入口共用：
+   1. 系统偏好（@media prefers-color-scheme）
+   2. 读者手动选择（[data-theme="dark"]）
+   分开写会导致「手动切了但颜色没变」——初版就是这样：JS 设了 data-theme，
+   而 CSS 只监听系统媒体查询，开关看起来生效、页面纹丝不动。 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:          #101215;
+    --surface:     #171a1f;
+    --fg:          #e9ecef;
+    --muted-fg:    #9aa4b2;
+    --muted:       #1c2027;
+    --border:      #282d36;
+    --accent:      #6ba1ff;
+    --accent-soft: #12233f;
+  }
+}
+
+/* 手动强制暗色：即使用户系统是亮色也要暗。 */
+:root[data-theme="dark"] {
+  --bg:          #101215;
+  --surface:     #171a1f;
+  --fg:          #e9ecef;
+  --muted-fg:    #9aa4b2;
+  --muted:       #1c2027;
+  --border:      #282d36;
+  --accent:      #6ba1ff;
+  --accent-soft: #12233f;
+}
+
+/* 手动强制亮色：即使用户系统是暗色也要亮。 */
+:root[data-theme="light"] {
+  --bg:          #fdfcfa;
+  --surface:     #ffffff;
+  --fg:          #16181c;
+  --muted-fg:    #6b7280;
+  --muted:       #f2f1ee;
+  --border:      #e6e4df;
+  --accent:      #0065fd;
+  --accent-soft: #e8efff;
+}
+
+/* --- Claude 配色 ------------------------------------------------------------------
+   Claude 的界面用的是暖色纸面而不是中性灰，强调色是陶土橙而不是蓝。
+   这套色值单独成组，因为它的价值就在"暖"这个属性上 —— 把橙色调进默认的冷灰里
+   会得到一套既不像默认也不像 Claude 的配色。
+
+   亮色：纸面 #faf9f5，正文近黑 #1f1e1d，强调 #c15f3c。
+   暗色：暖灰底 #262624（不是纯黑，纯黑会让暖色显得脏），强调提亮到 #d97757。
+   ============================================================================== */
+:root[data-theme="claude-light"] {
+  --bg:          #faf9f5;
+  --surface:     #ffffff;
+  --fg:          #1f1e1d;
+  --muted-fg:    #6b6862;
+  --muted:       #f0eee6;
+  --border:      #e5e2d9;
+  --accent:      #c15f3c;
+  --accent-soft: #f7ece6;
+}
+
+:root[data-theme="claude-dark"] {
+  --bg:          #262624;
+  --surface:     #30302e;
+  --fg:          #f0eee6;
+  --muted-fg:    #a8a49b;
+  --muted:       #33322f;
+  --border:      #3f3e3a;
+  --accent:      #d97757;
+  --accent-soft: #3b2c25;
+}
+
+/* --- 基础 ------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-feature-settings: "kern" 1;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+  border-radius: var(--radius-sm);
+}
+
+.sr {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* 「跳到正文」：键盘用户的第一站。侧栏有 8 项时，这个链接是必需品而非装饰。 */
+.skip {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  background: var(--accent); color: #fff;
+  padding: calc(var(--unit) * 2.5) calc(var(--unit) * 4);
+  border-radius: 0 0 var(--radius-sm) 0;
+}
+.skip:focus { left: 0; }
+
+/* ============================================================================
+   骨架：三轨道
+   ----------------------------------------------------------------------------
+   左轨是常驻导航（工作台），中列是内容，右轨是目录。
+   中列设 min-width: 0 —— 没有它，长标题会把网格列撑破，右轨被挤出视口。
+   ========================================================================= */
+.shell {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  max-width: 1560px;
+  margin-inline: auto;
+  padding-inline: calc(var(--unit) * 5);
+}
+
+@media (min-width: 1080px) {
+  .shell {
+    grid-template-columns: var(--rail-w) minmax(0, 1fr);
+    gap: calc(var(--unit) * 12);
+    padding-inline: calc(var(--unit) * 8);
+  }
+}
+
+@media (min-width: 1400px) {
+  .shell { grid-template-columns: var(--rail-w) minmax(0, 1fr) var(--toc-w); }
+}
+
+/* --- 左侧栏 ---------------------------------------------------------------------- */
+.rail {
+  padding-block: calc(var(--unit) * 8);
+  /* Positioning context for the resize grip, which sits on the rail's inner edge. */
+  position: relative;
+}
+
+@media (min-width: 1080px) {
+  .rail {
+    position: sticky;
+    top: 0;
+    /* 侧栏比视口高时（日历 + 8 项）必须能自己滚，否则底部的按钮永远点不到。 */
+    max-height: 100vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+/* ============================================================================
+   滚动条
+   ----------------------------------------------------------------------------
+   侧栏与目录各有一个滚动条（内容比视口高时必须能滚）。默认样式在深色模式下
+   是一条亮轨，在本来就安静的侧栏里非常刺眼 —— 它是结构，不是内容。
+
+   **现在完全隐藏**（用户要求）。可滚动性没有取消：两个侧栏仍然是
+   overflow-y: auto，鼠标滚轮、触控板、键盘翻页、以及锚点跳转都照常工作，
+   只是不再画那条滑块。这是有意的取舍 —— 读者已经知道长列表可以滚，
+   而滑块在两个窄栏里每天都占着视觉位置却没有提供信息。
+
+   两条声明缺一不可：scrollbar-width: none 管 Firefox 与新 Chrome，
+   ::-webkit-scrollbar { display: none } 管 WebKit/Safari。
+   只写其中一条会在某个浏览器里留下一条丑轨道。
+   ========================================================================= */
+.rail,
+.toc {
+  scrollbar-width: none;          /* Firefox / 新 Chrome */
+  -ms-overflow-style: none;       /* 旧 Edge/IE */
+}
+
+.rail::-webkit-scrollbar,
+.toc::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;                  /* WebKit / Safari */
+}
+
+/* --- 拖拽调宽 -------------------------------------------------------------------- */
+/* 手柄贴在轨道**内侧**边缘，是一条 6px 的命中区，视觉上只在悬停时显现。
+
+   注意 `right: 0` / `left: 0` 而不是负值：轨道是 `overflow-y: auto`，
+   负偏移会被滚动容器裁掉，手柄虽然存在于 DOM、`getBoundingClientRect()` 也返回位置，
+   但那个位置上真正的元素是 `.shell` —— 指针事件永远到不了它。
+   （实测：`elementFromPoint` 返回 `shell`，`pointerdown` 一次都没触发。）
+
+   宽度可调是读者的排版偏好，所以存 localStorage —— 和主题同类，不是内容。 */
+.rail__grip,
+.toc__grip {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  cursor: col-resize;
+  z-index: 5;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  touch-action: none;
+}
+
+.rail__grip { right: 0; }
+.toc__grip { left: 0; }
+
+/* 只有在能真正拖拽的视口里才显示手柄 —— 窄屏下轨道是抽屉或不存在。 */
+@media (max-width: 1079px) {
+  .rail__grip { display: none; }
+}
+@media (max-width: 1399px) {
+  .toc__grip { display: none; }
+}
+
+.rail__grip::after,
+.toc__grip::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-out-circ);
+}
+
+.rail__grip:hover::after,
+.rail__grip:focus-visible::after,
+.toc__grip:hover::after,
+.toc__grip:focus-visible::after,
+.rail__grip[data-active="true"]::after,
+.toc__grip[data-active="true"]::after {
+  opacity: 0.55;
+}
+
+/* 拖拽期间：禁用文本选择与过渡，否则会选中文字、且列宽动画跟不上指针。 */
+body[data-resizing="true"] {
+  cursor: col-resize;
+  user-select: none;
+}
+body[data-resizing="true"] .shell,
+body[data-resizing="true"] .rail {
+  transition: none;
+}
+
+/* 触屏设备没有 hover，手柄做宽一点并常显细分隔线，否则不知道可以拖。 */
+@media (hover: none) {
+  .rail__grip, .toc__grip { width: 14px; }
+  .rail__grip::after, .toc__grip::after { opacity: 0.22; }
+}
+
+/* 移动端：侧栏变成顶部抽屉，由按钮展开。*/
+@media (max-width: 1079px) {
+  .rail {
+    border-bottom: 1px solid var(--border);
+    padding-block: calc(var(--unit) * 5);
+  }
+  .rail__body { display: none; padding-top: calc(var(--unit) * 4); }
+  .rail[data-open="true"] .rail__body { display: block; }
+  .rail__head { display: flex; align-items: center; justify-content: space-between; gap: calc(var(--unit) * 4); }
+}
+
+/* 桌面端没有抽屉，所以展开按钮必须消失。
+   注意：这里**不能**只写 `.rail__toggle { display: none }` ——
+   `.rail__item { display: flex }` 在 components.css（后加载），
+   同特异度下后者胜出，按钮会留在桌面端。这是 frontend-design 明确警告的
+   「选择器互相抵消」。所以选择器提到两个类，特异度压过 .rail__item。 */
+@media (min-width: 1080px) {
+  .rail .rail__toggle { display: none; }
+  .rail__body { display: block; }
+}
+</style>
+<style>/* ============================================================================
+   组件层
+   ----------------------------------------------------------------------------
+   版式来自 juya 的实测结构，但刻意避开 frontend-design 点名的模板特征：
+   · 不给每个标题加全大写小标签
+   · 不用等宽字体装饰小数据
+   · 不用 `A · B · C` 中间点串接的 meta
+   · 不给每张卡片同一套圆角 + 同一层灰阴影
+   ========================================================================= */
+
+/* --- 侧栏结构 -------------------------------------------------------------------- */
+.rail__brand {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--unit) * 2.5);
+  font-weight: 640;
+  font-size: var(--fs-h3);
+  letter-spacing: -0.01em;
+  margin-bottom: calc(var(--unit) * 6);
+}
+
+.rail__mark {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex: none;
+}
+
+.rail__group { display: grid; gap: calc(var(--unit) * 1); }
+
+.rail__sep {
+  height: 1px;
+  background: var(--border);
+  margin-block: calc(var(--unit) * 5);
+  border: 0;
+}
+
+/* 按钮与导航项共用一个造型：侧栏里它们是同级的东西，读者不该去分辨
+   「这是链接还是按钮」。 */
+.rail__item {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--unit) * 2.5);
+  width: 100%;
+  padding: calc(var(--unit) * 2.25) calc(var(--unit) * 3);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--fg);
+  font: inherit;
+  font-size: var(--fs-body);
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-circ);
+}
+
+.rail__item:hover { background: var(--muted); }
+
+.rail__item[aria-current="page"] {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.rail__item svg { width: 16px; height: 16px; flex: none; opacity: 0.75; }
+.rail__item[aria-current="page"] svg { opacity: 1; }
+
+.rail__hint {
+  margin-left: auto;
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+
+/* 展开式（主题四选一、下载二选一）：用原生 <details>，
+   键盘可用、无 JS 也能开合。 */
+.rail__fold > summary {
+  list-style: none;
+  cursor: pointer;
+}
+.rail__fold > summary::-webkit-details-marker { display: none; }
+.rail__fold > summary::after {
+  content: "";
+  width: 6px; height: 6px;
+  margin-left: auto;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  opacity: 0.5;
+  transition: transform var(--dur-fast) var(--ease-out-circ);
+}
+.rail__fold[open] > summary::after { transform: rotate(-135deg) translateY(-2px); }
+
+.rail__sub {
+  display: grid;
+  gap: calc(var(--unit) * 0.5);
+  padding: calc(var(--unit) * 1) 0 calc(var(--unit) * 2) calc(var(--unit) * 6);
+}
+
+.rail__sub button {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--unit) * 2);
+  padding: calc(var(--unit) * 1.5) calc(var(--unit) * 2.5);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--muted-fg);
+  font: inherit;
+  font-size: var(--fs-small);
+  text-align: left;
+  cursor: pointer;
+}
+.rail__sub button:hover { background: var(--muted); color: var(--fg); }
+.rail__sub button[aria-checked="true"] { color: var(--accent); font-weight: 600; }
+.rail__sub button[aria-checked="true"]::before { content: "✓"; }
+
+/* ============================================================================
+   日历
+   ----------------------------------------------------------------------------
+   规范要求：当日高亮 + 圆形强调。这里当日的圆是**实心强调色圆**，
+   有链接的其它日期是**浅底可点**，两者视觉权重清楚不同 ——
+   「今天」是位置，「有内容的日子」是可去的地方，不是同一件事。
+   ========================================================================= */
+.cal { margin-top: calc(var(--unit) * 1); }
+
+.cal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--unit) * 2);
+  margin-bottom: calc(var(--unit) * 2);
+}
+
+.cal__month {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.cal__nav {
+  display: flex;
+  gap: calc(var(--unit) * 0.5);
+}
+
+.cal__nav button {
+  width: 22px; height: 22px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--muted-fg);
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-circ);
+}
+.cal__nav button:hover { background: var(--muted); color: var(--fg); }
+.cal__nav button:disabled { opacity: 0.35; cursor: default; }
+
+.cal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.cal__dow {
+  font-size: 10px;
+  color: var(--muted-fg);
+  text-align: center;
+  padding-bottom: calc(var(--unit) * 0.5);
+}
+
+.cal__day {
+  position: relative;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;          /* 圆形：规范要求 */
+  background: transparent;
+  color: var(--muted-fg);
+  font: inherit;
+  font-size: var(--fs-small);
+  font-variant-numeric: tabular-nums;
+  cursor: default;
+}
+
+/* 有归档的日期：可点，浅底 */
+.cal__day[data-has="true"] {
+  background: var(--muted);
+  color: var(--fg);
+  cursor: pointer;
+  font-weight: 600;
+  transition:
+    background var(--dur-fast) var(--ease-out-circ),
+    transform var(--dur-fast) var(--spring-bouncy);
+}
+.cal__day[data-has="true"]:hover { background: var(--accent-soft); color: var(--accent); }
+.cal__day[data-has="true"]:active { transform: scale(0.9); }
+
+/* 今天：实心强调色圆 + 圆形光晕（规范的「圆形阴影」） */
+.cal__day[data-today="true"] {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.cal__day[data-today="true"]:hover { background: var(--accent); color: #fff; }
+
+/* 正在看的这一期 */
+.cal__day[data-current="true"]:not([data-today="true"]) {
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+}
+
+.cal__day[aria-disabled="true"] { opacity: 0.3; }
+
+.cal__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--unit) * 3);
+  margin-top: calc(var(--unit) * 3);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+.cal__legend span { display: flex; align-items: center; gap: calc(var(--unit) * 1.5); }
+.cal__legend i {
+  width: 9px; height: 9px; border-radius: 50%; flex: none;
+  background: var(--muted);
+  border: 1px solid var(--border);
+}
+.cal__legend i[data-k="today"] { background: var(--accent); border-color: var(--accent); }
+.cal__legend i[data-k="has"] { background: var(--muted); }
+
+/* ============================================================================
+   事件日历卡片（Tibo 重置监控）
+   ----------------------------------------------------------------------------
+   与左侧栏的小日历同一套视觉语言，但是内容主体而不是导航：
+   月份网格 + 右侧当日详情。有记录的日期可点，点开在右边看当天发生了什么。
+
+   与导航日历的区别是有意为之：那个是"去哪一天"，这个是"那天发生了什么"，
+   所以格子更大、带事件标记、右侧有详情面板。
+   ========================================================================= */
+.ecal {
+  display: grid;
+  gap: calc(var(--unit) * 8);
+}
+
+@media (min-width: 900px) {
+  .ecal { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: start; }
+}
+
+.ecal__card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: calc(var(--unit) * 6);
+}
+
+.ecal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--unit) * 3);
+  margin-bottom: calc(var(--unit) * 4);
+}
+
+.ecal__month { font-size: 1.125rem; font-weight: 640; letter-spacing: -0.01em; }
+
+.ecal__nav { display: flex; gap: calc(var(--unit) * 1); }
+.ecal__nav button {
+  width: 28px; height: 28px;
+  display: grid; place-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--muted-fg);
+  font: inherit;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-circ);
+}
+.ecal__nav button:hover { background: var(--muted); color: var(--fg); }
+.ecal__nav button:disabled { opacity: 0.3; cursor: default; }
+
+.ecal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: calc(var(--unit) * 1.5);
+}
+
+.ecal__dow {
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  text-align: center;
+  padding-bottom: calc(var(--unit) * 1.5);
+}
+
+.ecal__day {
+  position: relative;
+  min-height: 3.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2px;
+  padding: calc(var(--unit) * 1.5) 2px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--muted-fg);
+  font: inherit;
+  font-size: var(--fs-small);
+  font-variant-numeric: tabular-nums;
+  cursor: default;
+}
+
+/* 有记录的日期：可点，浅底 */
+.ecal__day[data-count] {
+  background: var(--muted);
+  color: var(--fg);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-circ),
+              transform var(--dur-fast) var(--spring-bouncy);
+}
+.ecal__day[data-count]:hover { background: var(--accent-soft); color: var(--accent); }
+.ecal__day[data-count]:active { transform: scale(0.94); }
+
+/* 选中：强调色描边，不用实心 —— 实心留给"今天" */
+.ecal__day[aria-selected="true"] {
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 640;
+}
+
+/* 今天：实心强调色圆，与左侧导航日历一致 */
+.ecal__day[data-today="true"] .ecal__num {
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  width: 1.6em; height: 1.6em;
+  display: grid; place-items: center;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.ecal__day--pad { background: transparent; }
+
+/* 事件标记：每个事件一个小点，颜色区分类型 */
+.ecal__marks { display: flex; gap: 2px; flex-wrap: wrap; justify-content: center; }
+.ecal__marks i {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--muted-fg);
+}
+.ecal__marks i[data-kind="direct_reset"] { background: var(--accent); }
+.ecal__marks i[data-kind="reset_credit"] { background: #d97706; }
+
+/* 右侧详情面板 */
+.ecal__panel { min-width: 0; }
+
+.ecal__panel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: calc(var(--unit) * 3);
+  padding-bottom: calc(var(--unit) * 3);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: calc(var(--unit) * 4);
+}
+
+.ecal__panel-date { font-size: 1.0625rem; font-weight: 640; }
+.ecal__panel-sub { font-size: var(--fs-small); color: var(--muted-fg); }
+
+.ecal__entries { list-style: none; margin: 0; padding: 0; display: grid; gap: calc(var(--unit) * 5); }
+
+.ecal__entry {
+  padding-left: calc(var(--unit) * 4);
+  border-left: 2px solid var(--accent);
+}
+.ecal__entry[data-kind="reset_credit"] { border-left-color: #d97706; }
+
+.ecal__entry-title { font-weight: 620; line-height: 1.5; }
+.ecal__entry-meta {
+  display: flex; flex-wrap: wrap; gap: calc(var(--unit) * 2);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  margin-top: calc(var(--unit) * 1);
+}
+
+.ecal__quote {
+  margin-top: calc(var(--unit) * 2.5);
+  padding-left: calc(var(--unit) * 3);
+  border-left: 2px solid var(--border);
+  font-size: var(--fs-small);
+  line-height: 1.7;
+}
+.ecal__quote em { display: block; color: var(--muted-fg); font-style: normal; font-size: var(--fs-micro); }
+
+.ecal__empty {
+  padding: calc(var(--unit) * 8) calc(var(--unit) * 4);
+  text-align: center;
+  color: var(--muted-fg);
+  font-size: var(--fs-small);
+}
+
+.ecal__legend {
+  display: flex; flex-wrap: wrap; gap: calc(var(--unit) * 4);
+  margin-top: calc(var(--unit) * 4);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+.ecal__legend span { display: flex; align-items: center; gap: calc(var(--unit) * 1.5); }
+.ecal__legend i { width: 6px; height: 6px; border-radius: 50%; background: var(--muted-fg); flex: none; }
+.ecal__legend i[data-kind="direct_reset"] { background: var(--accent); }
+.ecal__legend i[data-kind="reset_credit"] { background: #d97706; }
+.ecal__legend i[data-kind="today"] { background: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent); }
+
+/* ============================================================================
+   内容列
+   ========================================================================= */
+.content { padding-block: calc(var(--unit) * 10) calc(var(--unit) * 16); min-width: 0; }
+
+.issue__head { margin-bottom: calc(var(--unit) * 8); }
+
+.issue__date {
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+  margin-bottom: calc(var(--unit) * 2);
+}
+
+.issue__title {
+  margin: 0;
+  font-size: var(--fs-display);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.015em;
+  font-weight: 660;
+  /* 60px 中文在 700px 列里一行约 11 字，不限 measure 会长标题铺满整行。 */
+  max-width: 20ch;
+  text-wrap: balance;
+}
+
+.issue__lead {
+  margin: calc(var(--unit) * 4) 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--muted-fg);
+  max-width: 60ch;
+}
+
+/* 统计条：真实数字，横排一条，不是卡片组 */
+/* Equal columns, not flex + gap.
+   With flex each cell was exactly as wide as its own number, so 60 / 32 / 9 / 16 produced four
+   unequal blocks at a constant gap -- the row read as misaligned even though nothing overflowed.
+   Equal tracks put the numbers on a rhythm, which is what a stats row is for. */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr));
+  gap: calc(var(--unit) * 5) calc(var(--unit) * 4);
+  margin-top: calc(var(--unit) * 7);
+  padding-top: calc(var(--unit) * 5);
+  border-top: 1px solid var(--border);
+}
+
+.stats div { min-width: 0; }
+.stats b {
+  display: block;
+  font-size: 1.375rem;
+  font-weight: 660;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+/* `display: block` matters: `b` is block and this was left inline, so the label rendered
+   on the same line as the number ("23近 90 天重置") instead of beneath it. */
+.stats span { display: block; font-size: var(--fs-micro); color: var(--muted-fg); }
+
+/* --- 章节 ---------------------------------------------------------------------- */
+.section { margin-top: calc(var(--unit) * 12); scroll-margin-top: calc(var(--unit) * 6); }
+
+.section__title {
+  display: flex;
+  align-items: baseline;
+  gap: calc(var(--unit) * 3);
+  margin: 0 0 calc(var(--unit) * 5);
+  font-size: var(--fs-h2);
+  font-weight: 640;
+  letter-spacing: -0.01em;
+  padding-bottom: calc(var(--unit) * 2.5);
+  border-bottom: 1px solid var(--border);
+}
+
+.section__count {
+  font-size: var(--fs-small);
+  font-weight: 400;
+  color: var(--muted-fg);
+}
+
+/* --- 条目 ---------------------------------------------------------------------- */
+.stream { list-style: none; margin: 0; padding: 0; }
+
+.item {
+  padding-block: calc(var(--unit) * 6);
+  border-bottom: 1px solid var(--border);
+  scroll-margin-top: calc(var(--unit) * 6);
+}
+.item:last-child { border-bottom: 0; }
+
+.item__head {
+  display: flex;
+  align-items: baseline;
+  gap: calc(var(--unit) * 3);
+}
+
+/* 序号：内容确实是按顺序编出来的当日要闻，编号承载信息。
+   不用等宽字体（规范点名的 AI 味），用同族的半粗数字。 */
+.item__no {
+  flex: none;
+  font-size: var(--fs-small);
+  font-weight: 640;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  min-width: 1.6em;
+}
+
+.item__title {
+  margin: 0;
+  font-size: var(--fs-h3);
+  font-weight: 620;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  text-wrap: pretty;
+}
+.item__title a:hover { color: var(--accent); }
+
+.item__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--unit) * 2.5);
+  margin-top: calc(var(--unit) * 2);
+  padding-left: calc(1.6em + var(--unit) * 3);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+
+.badge {
+  padding: calc(var(--unit) * 0.25) calc(var(--unit) * 2);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+.badge[data-level="multi_source"] {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* 事实 / 推断 / 不确定：三栏分离，用左侧色条区分，
+   标签用普通字号而非等宽小字。 */
+.facts {
+  margin: calc(var(--unit) * 3) 0 0;
+  padding-left: calc(1.6em + var(--unit) * 3);
+  display: grid;
+  gap: calc(var(--unit) * 2);
+}
+
+.facts__label {
+  font-size: var(--fs-micro);
+  font-weight: 620;
+  color: var(--muted-fg);
+  margin-top: calc(var(--unit) * 2);
+}
+.facts__label[data-kind="fact"] { color: var(--fg); }
+
+.facts ul { margin: 0; padding: 0; list-style: none; display: grid; gap: calc(var(--unit) * 1.5); }
+
+.facts li {
+  padding-left: calc(var(--unit) * 4);
+  border-left: 2px solid var(--border);
+  line-height: 1.7;
+}
+.facts li[data-kind="inference"] { color: var(--muted-fg); }
+.facts li[data-kind="uncertain"] { color: var(--muted-fg); border-left-style: dashed; }
+
+.item__links {
+  margin-top: calc(var(--unit) * 2.5);
+  padding-left: calc(1.6em + var(--unit) * 3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--unit) * 1.5) calc(var(--unit) * 4);
+  font-size: var(--fs-small);
+}
+.item__links a { color: var(--muted-fg); word-break: break-all; }
+.item__links a:hover { color: var(--accent); }
+
+/* 无日期：明确标注，不假装是今天的 */
+.when-unknown { font-style: italic; }
+
+/* --- 右侧目录 ------------------------------------------------------------------- */
+.toc { display: none; }
+
+@media (min-width: 1400px) {
+  .toc {
+    display: block;
+    /* `sticky` also establishes the containing block for the absolutely positioned resize
+       grip, so no `position: relative` is needed here -- and adding one would override
+       `sticky` and break the rail. */
+    position: sticky;
+    top: 0;
+    align-self: start;
+    max-height: 100vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    /* Scrollbar styling lives in tokens.css, next to the dark-mode treatment, so the two
+       rails cannot drift apart. */
+    padding-block: calc(var(--unit) * 10);
+    font-size: var(--fs-small);
+  }
+}
+
+.toc__title {
+  font-size: var(--fs-micro);
+  font-weight: 640;
+  color: var(--muted-fg);
+  margin-bottom: calc(var(--unit) * 3);
+}
+
+.toc__nav { display: grid; gap: 1px; }
+
+.toc__nav a {
+  display: block;
+  /* Roomier than it looks like it needs to be: the TOC is scanned, not read, and a tight
+     list of 60 near-identical lines is hard to pick from. The vertical padding is what
+     separates one target from the next. */
+  padding: calc(var(--unit) * 2.5) calc(var(--unit) * 3);
+  border-left: 2px solid transparent;
+  color: var(--muted-fg);
+  line-height: 1.55;
+  transition: color var(--dur-fast) var(--ease-out-circ),
+              border-color var(--dur-fast) var(--ease-out-circ);
+}
+
+.toc__nav a:hover { color: var(--fg); }
+
+/* 滚动高亮：当前阅读位置。这是页面上唯一「活」的东西。 */
+.toc__nav a[aria-current="true"] {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  font-weight: 600;
+}
+
+.toc__nav a[data-level="2"] { padding-left: calc(var(--unit) * 6); font-size: var(--fs-micro); }
+
+/* --- 上一条 / 下一条 ----------------------------------------------------------------- */
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: calc(var(--unit) * 4);
+  margin-top: calc(var(--unit) * 12);
+  padding-top: calc(var(--unit) * 6);
+  border-top: 1px solid var(--border);
+}
+.pager a {
+  display: grid;
+  gap: calc(var(--unit) * 0.5);
+  font-size: var(--fs-small);
+}
+.pager a:hover { color: var(--accent); }
+.pager span { color: var(--muted-fg); font-size: var(--fs-micro); }
+.pager a:last-child { text-align: right; }
+
+/* --- 搜索对话框 ------------------------------------------------------------------- */
+.search {
+  width: min(100% - 2rem, 46rem);
+  max-height: 80vh;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--fg);
+  box-shadow: 0 18px 48px rgb(0 0 0 / 0.14);
+  overflow: hidden;
+}
+.search::backdrop { background: rgb(0 0 0 / 0.35); }
+
+.search__form {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--unit) * 3);
+  padding: calc(var(--unit) * 4) calc(var(--unit) * 5);
+  border-bottom: 1px solid var(--border);
+}
+.search__form input {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 1.0625rem;
+  outline: none;
+}
+.search__form kbd {
+  font-family: var(--font-sans);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1px 6px;
+}
+
+.search__results {
+  list-style: none;
+  margin: 0;
+  padding: calc(var(--unit) * 2);
+  overflow-y: auto;
+  max-height: 62vh;
+}
+.search__results li a {
+  display: block;
+  padding: calc(var(--unit) * 3) calc(var(--unit) * 4);
+  border-radius: var(--radius-sm);
+}
+.search__results li a:hover,
+.search__results li a:focus-visible { background: var(--muted); }
+.search__results b { display: block; font-weight: 620; margin-bottom: calc(var(--unit) * 0.5); }
+.search__results small { color: var(--muted-fg); }
+.search__empty { padding: calc(var(--unit) * 6); text-align: center; color: var(--muted-fg); }
+
+/* --- 归档列表 ------------------------------------------------------------------- */
+/* Each issue is a row with its own columns. The previous markup was two inline spans inside
+   one link -- `2026-10-14224 条` -- because `section__count` is a heading ornament, not a
+   layout primitive. A grid gives the date a fixed start and the count a fixed end, so the
+   numbers line up down the list. */
+.issue-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: calc(var(--unit) * 1);
+}
+
+.issue-row {
+  /* Fixed tracks, not auto auto 1fr auto.
+     auto sized the date and weekday to their own content, so the right-hand count landed at a
+     slightly different x on every row and the column looked ragged. Both strings are fixed width,
+     so they are declared as tracks. */
+  display: grid;
+  /* FIVE tracks for FOUR children when there is no badge, and five when there is.
+     The rule declared four columns while a row with a badge has five children, so the
+     count fell into a 31.5px implicit track and sat at x=928 instead of x=914 -- the
+     column looked ragged because it was, by exactly one unaccounted-for cell. Declaring
+     the badge track explicitly (and letting it collapse when empty) keeps every count on
+     the same vertical line. */
+  grid-template-columns: 7.5rem 2.5rem 3.5rem 1fr auto;
+  align-items: baseline;
+  gap: calc(var(--unit) * 3);
+  padding: calc(var(--unit) * 3) calc(var(--unit) * 4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  transition: background var(--dur-fast) var(--ease-out-circ),
+              border-color var(--dur-fast) var(--ease-out-circ);
+}
+
+.issue-row:hover { background: var(--muted); border-color: var(--border); }
+
+.issue-row__date {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+.issue-row__week { font-size: var(--fs-micro); color: var(--muted-fg); }
+
+.issue-row__badge {
+  justify-self: start;
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: var(--radius-sm);
+  padding: 1px calc(var(--unit) * 2);
+}
+
+/* The count is the last grid track; a fixed width and right alignment make every row identical.
+   Left to auto it was exactly as wide as its own text, so 60 条 began 2px left of 19 条 --
+   both right edges matched while the left edges did not, which reads as "not aligned" even
+   though nothing overflowed. */
+.issue-row__count {
+  justify-self: end;
+  min-width: 4.5rem;
+  text-align: right;
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* On a narrow screen the badge column has nowhere to go; stack the row rather than
+   squeezing the date and count back into contact. */
+@media (max-width: 560px) {
+  .issue-row { grid-template-columns: auto 1fr auto; row-gap: calc(var(--unit) * 0.5); }
+  .issue-row__badge { grid-column: 2; }
+}
+
+/* --- 信息源页面 ------------------------------------------------------------------ */
+.source-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.source-list li { background: var(--bg); }
+
+.source-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: calc(var(--unit) * 2) calc(var(--unit) * 4);
+  padding: calc(var(--unit) * 3.5) calc(var(--unit) * 5);
+  align-items: baseline;
+  /* The row is an `<a>` now. An anchor is `inline` by default, which would collapse the
+     grid and stack the state chip under the name; `color: inherit` keeps the link from
+     turning the whole row blue, and `text-decoration: none` stops the URL line being
+     underlined on top of its own muted styling. */
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+}
+
+.source-row:hover { background: var(--muted); }
+
+.source-row:focus-visible {
+  background: var(--muted);
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+/* The arrow marks the row as somewhere to go. It only appears on hover or keyboard focus,
+   so a list of 136 rows does not read as 136 call-to-actions. */
+/* The arrow marks the row as somewhere to go, and only appears on hover or keyboard focus
+   so a list of 136 rows does not read as 136 call-to-actions.
+   
+   It must not become a third grid item: `.source-row` declares two columns
+   (`minmax(0,1fr) auto`), so an extra child lands on a new row and the arrow appears under
+   the URL instead of beside it. Pinned to the right edge of the row instead. */
+.source-row::after {
+  content: "↗";
+  position: absolute;
+  top: calc(var(--unit) * 3.5);
+  right: calc(var(--unit) * 5);
+  color: var(--muted-fg);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+}
+
+.source-row:hover::after,
+.source-row:focus-visible::after { opacity: 1; }
+
+.source-row__name { font-weight: 620; }
+
+.source-row__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--unit) * 1.5) calc(var(--unit) * 3);
+  margin-top: calc(var(--unit) * 1);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+
+.source-row__url {
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  word-break: break-all;
+  margin-top: calc(var(--unit) * 1);
+}
+
+.source-row__state {
+  justify-self: end;
+  display: flex;
+  align-items: baseline;
+  gap: calc(var(--unit) * 2);
+  font-size: var(--fs-micro);
+  white-space: nowrap;
+  padding: 1px calc(var(--unit) * 2);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  color: var(--muted-fg);
+}
+
+/* The item count inside a state badge is secondary to the state itself. */
+.source-row__items { opacity: 0.75; }
+
+.source-row__state[data-state="ok"] { border-color: var(--accent); color: var(--accent); }
+.source-row__state[data-state="failed"] { border-color: #b45309; color: #b45309; }
+.source-row__state[data-state="credential"] { border-style: dashed; }
+.source-row__state[data-state="disabled"] { opacity: 0.6; }
+
+@media (max-width: 620px) {
+  .source-row { grid-template-columns: minmax(0, 1fr); }
+  .source-row__state { justify-self: start; }
+}
+
+/* --- 复制按钮的反馈 -------------------------------------------------------------- */
+/* A copy button that gives no feedback is indistinguishable from a broken one. The label
+   swaps for a moment and the button takes the accent colour. */
+.rail__sub button[data-copy] { position: relative; }
+.rail__sub button[data-copy][data-copied="true"] { color: var(--accent); font-weight: 600; }
+
+/* --- 订阅面板：两个按钮 + 一行小字 ------------------------------------------------
+   原来是四行等重的内容（两个复制按钮 + 两个在浏览器中查看），挤在 15rem 的栏里。
+   现在分层：复制是主要动作，给整行和足够的内边距；查看是罕用动作，压成一行小字。
+   层级而不是等分，是这一处拥挤的根源。 */
+.rail__sub--rss { display: grid; gap: calc(var(--unit) * 1.5); }
+
+.rail__btn {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: calc(var(--unit) * 2);
+  width: 100%;
+  padding: calc(var(--unit) * 2.5) calc(var(--unit) * 3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  text-align: left;
+  line-height: 1.4;
+}
+
+.rail__btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* 协议名做成一个短标签，让两个按钮在同一位置对齐，扫一眼就能分清。 */
+.rail__btn-k {
+  font-size: var(--fs-micro);
+  font-weight: 640;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 3px;
+  padding: 1px calc(var(--unit) * 1.2);
+}
+
+.rail__fine {
+  margin: 0;
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  line-height: 1.8;
+}
+
+.rail__fine a { color: var(--muted-fg); text-decoration: underline; text-underline-offset: 2px; }
+.rail__fine a:hover { color: var(--accent); }
+
+/* --- 概览 ----------------------------------------------------------------------- */
+/* The day at a glance. Deliberately a numbered list of real headlines rather than a
+   generated paragraph: a summary here would be a second, unchecked claim about the day,
+   and it would drift from the list below it. */
+.ov { list-style: none; margin: calc(var(--unit) * 4) 0 0; padding: 0; display: grid; gap: calc(var(--unit) * 3); }
+
+.ov a {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: calc(var(--unit) * 3);
+  align-items: baseline;
+  padding: calc(var(--unit) * 4);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: 0 1px 2px rgb(16 24 40 / 4%);
+  transition: box-shadow var(--dur-fast) var(--ease-out-circ),
+              transform var(--dur-fast) var(--ease-out-circ),
+              border-color var(--dur-fast) var(--ease-out-circ);
+}
+
+.ov a:hover { border-color: color-mix(in srgb, var(--accent) 26%, var(--border)); box-shadow: 0 8px 24px rgb(16 24 40 / 9%); transform: translateY(-1px); }
+
+.ov__no {
+  font-size: var(--fs-small);
+  font-weight: 640;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.ov b { font-weight: 620; line-height: 1.5; }
+
+.ov__detail {
+  display: block;
+  margin-top: calc(var(--unit) * 0.5);
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+  line-height: 1.6;
+}
+
+.ov__foot {
+  margin: calc(var(--unit) * 4) 0 0;
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+}
+
+/* --- TOC 序号与概览项 ------------------------------------------------------------ */
+.toc__no {
+  display: inline-block;
+  min-width: 1.9em;
+  color: var(--muted-fg);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--fs-micro);
+}
+
+.toc__overview {
+  font-weight: 640;
+  color: var(--fg);
+}
+
+/* --- 待翻译条目 ------------------------------------------------------------------ */
+/* Items whose source is foreign and which the model did not reach -- usually because the
+   quota ran out mid-run. Collapsed by default and labelled: present so nothing is lost,
+   separated so an English line never reads as the digest's own writing. */
+.untranslated {
+  margin-top: calc(var(--unit) * 12);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: calc(var(--unit) * 4) calc(var(--unit) * 5);
+  background: var(--muted);
+}
+
+.untranslated summary {
+  cursor: pointer;
+  font-weight: 620;
+  color: var(--muted-fg);
+}
+
+.untranslated p {
+  margin: calc(var(--unit) * 3) 0;
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+  line-height: 1.7;
+  max-width: 70ch;
+}
+
+.untranslated ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: calc(var(--unit) * 2);
+}
+
+.untranslated li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: calc(var(--unit) * 3);
+  align-items: baseline;
+  font-size: var(--fs-small);
+}
+
+.untranslated__no {
+  color: var(--muted-fg);
+  font-variant-numeric: tabular-nums;
+}
+
+.untranslated a { word-break: break-word; }
+.untranslated a:hover { color: var(--accent); }
+.untranslated__src { color: var(--muted-fg); font-size: var(--fs-micro); white-space: nowrap; }
+
+@media (max-width: 620px) {
+  .untranslated li { grid-template-columns: auto minmax(0, 1fr); }
+  .untranslated__src { grid-column: 2; }
+}
+
+/* --- 页脚 ------------------------------------------------------------------------ */
+.foot {
+  margin-top: calc(var(--unit) * 14);
+  padding-top: calc(var(--unit) * 6);
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+}
+.foot p { max-width: 68ch; line-height: 1.7; }
+.foot a { color: var(--fg); }
+.foot a:hover { color: var(--accent); }
+
+/* --- 提示条 ---------------------------------------------------------------------- */
+.notice {
+  border-left: 3px solid var(--accent);
+  background: var(--muted);
+  border-radius: var(--radius-sm);
+  padding: calc(var(--unit) * 3.5) calc(var(--unit) * 5);
+  margin-block: calc(var(--unit) * 6);
+  font-size: var(--fs-small);
+}
+.notice p { margin: 0; }
+.notice ul { margin: calc(var(--unit) * 1.5) 0 0; padding-left: 1.1em; }
+.notice strong { font-weight: 620; }
+
+/* ============================================================================
+   入场
+   ----------------------------------------------------------------------------
+   frontend-design：「单次编排的一个瞬间胜过零散效果」。
+   所以整个页面只有**一次**入场：标题 + 首屏统计。
+   条目不参与 —— 一页 60 条各自淡入正是规范点名的通用默认。
+   同样地，隐藏必须由 JS 开启（B8 闸门的失败模式）。
+   ========================================================================= */
+.js-motion .enter:not(.is-in) { opacity: 0; transform: translate3d(0, 10px, 0); }
+.js-motion .enter.is-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--dur-slow) var(--ease-out-expo),
+    transform var(--dur-slow) var(--ease-out-expo);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .js-motion .enter { opacity: 1 !important; transform: none !important; }
+}
+
+@media print {
+  .rail, .toc, .pager, .search, .stats { display: none; }
+  .shell { display: block; }
+  .item { break-inside: avoid; }
+  body { background: #fff; }
+}
+
+/* --- 日历：侧栏月历与事件日历共用一套视觉语言 ------------------------------------
+   两个日历此前各写各的：侧栏用「有日报就填满整格」，事件日历用「数字下面点一个点」。
+   同一个概念两套画法，而读者是在这两页之间来回走的。
+
+   填满整格的版本尤其糟：见方格里有的填有的不填，看起来像棋盘格，而只有两期归档时
+   那个图案完全是偶然的；它还和「今天」的实心圆抢注意力，而后者才是全月唯一该响的地方。
+
+   现在：
+   · 有内容 → 数字下方一个点（两个日历一致）。格子保持安静，点是信号。
+   · 今天 → 唯一的实心形状：强调色圆 + 柔和光环。
+   · 正在阅读的这一期 → 描边圆环，不用第二种颜色就能和今天区分。
+   · 无内容的日期 → 降透明度而不是保持正常字重，让这个月的「哪里有事」一眼可见。
+   ============================================================================== */
+
+/* 共用：日期格与点 */
+.cal__day,
+.ecal__day {
+  position: relative;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted-fg);
+  font: inherit;
+  font-size: var(--fs-small);
+  font-variant-numeric: tabular-nums;
+  cursor: default;
+  transition: background var(--dur-fast) var(--ease-out-circ),
+              color var(--dur-fast) var(--ease-out-circ),
+              box-shadow var(--dur-fast) var(--ease-out-circ);
+}
+
+/* 网格留出呼吸：格与格之间不留缝时，点会挤在一起看不出属于哪一天。 */
+.cal__grid,
+.ecal__grid { gap: calc(var(--unit) * 0.6); }
+
+/* 有内容的日期：安静的字重，点来做标记 */
+.cal__day[data-has="true"],
+.ecal__day[data-count] {
+  color: var(--fg);
+  font-weight: 620;
+  cursor: pointer;
+}
+
+/* 数字下方的小点。用 ::after 而不是额外元素，因为它是装饰，不该出现在无障碍树里。 */
+.cal__day[data-has="true"]::after,
+.ecal__day[data-count]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.55;
+  transform: translateX(-50%);
+}
+
+/* 悬停：底色提示可点，但不变形、不换色相，避免整片闪动 */
+.cal__day[data-has="true"]:hover,
+.ecal__day[data-count]:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.cal__day[data-has="true"]:active,
+.ecal__day[data-count]:active { transform: scale(0.92); }
+
+/* 今天：全月唯一的实心形状 + 柔和光环 */
+.cal__day[data-today="true"],
+.ecal__day[data-today="true"] {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.cal__day[data-today="true"]:hover,
+.ecal__day[data-today="true"]:hover { background: var(--accent); color: #fff; }
+
+/* 今天同时有内容时，点要用白色才看得见 */
+.cal__day[data-today="true"][data-has="true"]::after,
+.ecal__day[data-today="true"][data-count]::after { background: #fff; opacity: 0.85; }
+
+/* 正在阅读的这一期：描边圆环。
+   和今天用同色系但不填满 —— 不引入第二种颜色就能区分「今天」和「我在看的这天」。 */
+.cal__day[data-current="true"]:not([data-today="true"]),
+.ecal__day[aria-selected="true"]:not([data-today="true"]) {
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+}
+
+/* 无内容的日期：降透明度，让这个月的活动分布显出来 */
+.cal__day[aria-disabled="true"],
+.ecal__day[aria-disabled="true"] { opacity: 0.28; }
+
+/* 空位（月初补齐与月末留白）完全隐形，但保留占位以保证列对齐 */
+.cal__day[aria-hidden="true"],
+.ecal__day--pad { opacity: 0; pointer-events: none; }
+
+/* 星期表头与月份标题：两者统一 */
+.cal__dow,
+.ecal__dow {
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  font-weight: 600;
+  text-align: center;
+  padding-bottom: calc(var(--unit) * 0.5);
+}
+
+.cal__month,
+.ecal__month {
+  font-size: var(--fs-small);
+  font-weight: 640;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+
+/* 上/下月按钮：做成一个安静的方形按钮，而不是裸箭头字符 */
+.cal__nav button,
+.ecal__nav button {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--muted-fg);
+  font-size: 0.9rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-circ),
+              color var(--dur-fast) var(--ease-out-circ),
+              border-color var(--dur-fast) var(--ease-out-circ);
+}
+
+.cal__nav button:hover:not(:disabled),
+.ecal__nav button:hover:not(:disabled) {
+  background: var(--muted);
+  border-color: var(--border);
+  color: var(--fg);
+}
+
+.cal__nav button:disabled,
+.ecal__nav button:disabled { opacity: 0.3; cursor: default; }
+
+/* 图例：点和圆环要跟日历里画的一模一样，否则图例本身在骗人 */
+.cal__legend,
+.ecal__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--unit) * 2) calc(var(--unit) * 3);
+  margin-top: calc(var(--unit) * 2);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+
+.cal__legend span,
+.ecal__legend span { display: flex; align-items: center; gap: calc(var(--unit) * 1.2); }
+
+.cal__legend i,
+.ecal__legend i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+  background: var(--muted-fg);
+}
+
+/* 事件日历按类型上色，因为在那里「类型」就是信息本身 */
+.ecal__marks { display: none; }   /* 点数移到 ::after 之后不再需要独立元素 */
+
+.ecal__legend i[data-kind="direct_reset"] { background: var(--accent); }
+.ecal__legend i[data-kind="reset_credit"] { background: #d97706; }
+.ecal__legend i[data-kind="today"] {
+  background: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+
+/* --- 日历：日期格尺寸与不重叠 ------------------------------------------------------
+   上一版给日期格加了 `aspect-ratio: 1`，而事件日历的列宽是 `1fr` —— 于是容器一宽，
+   格子就跟着一宽，行高却由内容决定，**圆圈溢出并在垂直方向压住相邻日期**。
+   读者点 15 号，命中的是盖在上面的另一个圆圈，看起来就是「切换不了」。
+
+   这一版把尺寸**钉死**而不是跟着列走：固定 2.25rem 的圆，在自己的格子里居中。
+   这样任何容器宽度下它都还是个日历，圆圈之间也不会互相覆盖。
+   ============================================================================== */
+.cal__grid,
+.ecal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: calc(var(--unit) * 0.5);
+  justify-items: center;
+}
+
+.cal__day,
+.ecal__day {
+  /* 钉死，不跟随列宽 */
+  width: 2.25rem;
+  height: 2.25rem;
+  min-height: 0;
+  aspect-ratio: auto;
+  padding: 0 !important;
+  display: grid !important;
+  place-items: center !important;
+  flex-direction: row !important;
+  border: 0 !important;
+  border-radius: 50%;
+  font-size: var(--fs-small);
+  line-height: 1;
+}
+
+/* 上一版的点仍保留，但要贴着圆的下沿内侧，不能溢出 */
+.cal__day[data-has="true"]::after,
+.ecal__day[data-count]::after {
+  bottom: 3px;
+}
+
+
+/* ==============================================================================
+   终版覆盖 —— 本块是日历与布局的**唯一权威**，文件里更早的日历规则作废。
+   （此前三个日历块叠了三层规则互相打架：aspect-ratio 跟列宽走、min-height 残留、
+   flex/grid 互相覆盖，才有了截图里数字漂在圆外的样子。这里一次性钉死。）
+   ============================================================================== */
+
+/* --- 一、版心：把两侧的大空隙收掉 ------------------------------------------------
+   shell 中列与两轨之间是 3rem，两侧内边距 2rem，宽屏再居中收进 1560px ——
+   三层空隙叠出来，正文在 1100px 的窗口里只剩 600px。现在：缝隙减半、
+   内边距减到 0.5rem、上限放宽到 1880px。正文优先，导航贴边。 */
+.shell {
+  max-width: 1880px;
+  padding-inline: calc(var(--unit) * 2);
+}
+@media (min-width: 1080px) {
+  .shell { gap: calc(var(--unit) * 6); padding-inline: calc(var(--unit) * 2); }
+}
+@media (min-width: 1400px) {
+  .shell { gap: calc(var(--unit) * 8); }
+}
+
+/* --- 二、侧栏过窄时日历不得挤作一团 ----------------------------------------------
+   侧栏宽度是读者可拖的，拖到 180px 时七个 15rem 列会互相压字。
+   给日历一个最小宽度，窄了就在侧栏内部横向滚动（滚动条已隐藏，功能在）；
+   格子本身用 min() 随可用宽度收缩，但数字永不小于可读字号。 */
+.cal { min-width: 12.25rem; }
+/* No horizontal scrollbar. It was added so a calendar narrower than its minimum could be
+   scrolled to, but the rail's content now fits at its minimum width -- so the bar had nothing to
+   scroll and only appeared while the rail was being dragged, which reads as a defect.
+   `hidden` is wrong here: it would clip the calendar instead of showing it. */
+.rail__body { overflow-x: visible; overflow-y: auto; }
+.cal__grid,
+.ecal__grid {
+  display: grid !important;
+  grid-template-columns: repeat(7, minmax(26px, 34px));
+  justify-content: space-between;
+  gap: calc(var(--unit) * 1);
+}
+.cal__day,
+.ecal__day {
+  width: 30px;
+  height: 30px;
+  min-height: 0;
+  aspect-ratio: auto;
+  padding: 0;
+  place-content: center;
+  display: grid !important;
+  place-items: center !important;
+  justify-self: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  font-size: 0.78rem;
+  line-height: 1;
+}
+/* 数字必须在圆心里。此前 ecal 的格子里数字 + 标记行用了 flex-column 加内边距，
+   数字被顶到圆外。marks 已隐藏，数字用 place-items 居中。 */
+.ecal__day .ecal__num { display: block; line-height: 1; }
+.ecal__marks { display: none !important; }
+
+/* 有内容：数字下方内侧一个点 */
+.cal__day[data-has="true"]::after,
+.ecal__day[data-count]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.6;
+  transform: translateX(-50%);
+}
+.cal__day[data-has="true"],
+.ecal__day[data-count] { color: var(--fg); font-weight: 620; cursor: pointer; }
+.cal__day[data-has="true"]:hover,
+.ecal__day[data-count]:hover { background: var(--accent-soft); color: var(--accent); }
+.cal__day[data-has="true"]:active,
+.ecal__day[data-count]:active { transform: scale(0.9); }
+
+/* 今天：全月唯一实心圆 + 柔和光环 */
+.cal__day[data-today="true"],
+.ecal__day[data-today="true"] {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.cal__day[data-today="true"]::after,
+.ecal__day[data-today="true"][data-count]::after { background: #fff; opacity: 0.9; }
+
+/* 正在阅读的这一期：描边圆环 */
+.cal__day[data-current="true"]:not([data-today="true"]),
+.ecal__day[aria-selected="true"]:not([data-today="true"]) {
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+}
+.cal__day[aria-disabled="true"],
+.ecal__day[aria-disabled="true"] { opacity: 0.28; }
+.cal__day[aria-hidden="true"],
+.ecal__day--pad { opacity: 0; pointer-events: none; }
+
+/* --- 三、Q弹动效 ------------------------------------------------------------------
+   手感配方（motion-web handfeel §1）：欠阻尼弹簧，STIFFNESS 80–90，DAMPING 0.86，
+   落地会过冲一点再回稳 —— 读作「有重量地落」，而不是「匀速滑过去」。
+   CSS 侧用带过冲的贝塞尔近似；JS 侧对悬停抬升用真弹簧（帧率无关写法）。 */
+
+:root {
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);      /* 过冲 12% 的落弹 */
+  --spring-soft: cubic-bezier(0.22, 1.28, 0.5, 1);  /* 轻一点，用于大块面 */
+}
+
+/* 条目入场：整列瀑布式浮现。只动 opacity/transform，走合成层。 */
+.js-motion .item {
+  opacity: 0;
+  transform: translateY(10px) scale(0.995);
+  animation: item-in 0.5s var(--spring-soft) forwards;
+}
+.js-motion .item:nth-child(2) { animation-delay: 0.03s; }
+.js-motion .item:nth-child(3) { animation-delay: 0.06s; }
+.js-motion .item:nth-child(4) { animation-delay: 0.09s; }
+.js-motion .item:nth-child(5) { animation-delay: 0.12s; }
+.js-motion .item:nth-child(n+6) { animation-delay: 0.15s; }
+@keyframes item-in {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* 卡片悬停：抬升 + 阴影，用弹簧曲线放手时有回弹 */
+.item {
+  transition: transform 0.45s var(--spring), box-shadow 0.45s var(--spring-soft),
+              border-color 0.2s ease;
+  will-change: transform;
+}
+.item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px -14px color-mix(in srgb, var(--fg) 26%, transparent);
+}
+
+/* 日历格按下：缩到 0.88 再弹回（--spring 带过冲） */
+.cal__day:active,
+.ecal__day:active { transform: scale(0.88); transition: transform 0.35s var(--spring); }
+
+/* 侧栏条目悬停：向右探 2px，弹簧回位 */
+.rail__item { transition: transform 0.4s var(--spring), background 0.2s ease, color 0.2s ease; }
+.rail__item:hover { transform: translateX(2px); }
+
+/* 主题切换：颜色 0.25s、变换 0.4s 弹簧，避免整页闪变 */
+html { transition: none; }
+body, .rail, .toc, .item, .ecal__card {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.25s;
+  transition-timing-function: ease;
+}
+
+/* 尊重系统减少动效设置（文件前部已有全局块，这里只补弹簧相关） */
+@media (prefers-reduced-motion: reduce) {
+  .js-motion .item { animation: none; opacity: 1; transform: none; }
+  .item, .rail__item { transition: none; }
+}
+
+.ecal__num {
+  /* 嵌套小圆清场：旧规则给数字套了 1.6em 的强调色圆 + 3px 光环，
+     于是「今天」看起来有两个实心圆、「阅读中」有两层环。数字就是数字。 */
+  width: auto; height: auto;
+  background: none; border-radius: 0; box-shadow: none;
+  display: block; font-weight: inherit; color: inherit;
+  margin: 0; padding: 0;
+}
+
+.ecal__day .ecal__num { justify-self: center; align-self: center; }
+.cal__day { justify-self: center; }
+
+
+/* ==============================================================================
+   终版覆盖（二）—— 动效与版心。本块在文件末尾，优先级最高。
+   ============================================================================== */
+
+/* --- 一、版心：把两侧的大空隙交给内容 --------------------------------------------
+   实测 1440px 下：左轨 240 + 缝 32 + 正文 880 + 缝 32 + 右栏 240，
+   右侧还剩约 248px 空白而左侧只有 32px —— 版心没有居中，空隙全堆在一边。
+   上限放大、内边距收小、缝收小，让正文列吸收掉多余宽度。 */
+.shell {
+  max-width: none;
+  padding-inline: calc(var(--unit) * 2);
+}
+@media (min-width: 1080px) {
+  .shell { gap: calc(var(--unit) * 5); padding-inline: calc(var(--unit) * 3); }
+}
+@media (min-width: 1400px) {
+  .shell { gap: calc(var(--unit) * 7); padding-inline: calc(var(--unit) * 3); }
+}
+/* 超宽屏才收边，且收得晚、收得宽 —— 1899px 之前一直用满窗口。 */
+@media (min-width: 2000px) {
+  .shell { max-width: 1880px; margin-inline: auto; padding-inline: calc(var(--unit) * 6); }
+}
+
+/* --- 二、日历：Tibo 页的事件日历与侧栏日历共用同一套几何 ------------------------
+   数字居中靠 place-content（grid 隐式轨道默认从左上排，这是数字偏左的真正原因）。
+   侧栏可拖窄，所以格子用固定值 + 网格居中，窄到放不下时侧栏内部横向滚动。 */
+.cal__grid,
+.ecal__grid {
+  display: grid !important;
+  /* **A capped, centred grid.** It used to be `width: 100%` with `space-between`, which pushed
+     seven 32px tracks across a 437px card and produced a 68px column pitch for a 28px circle --
+     the sparse, scattered look. A max-width bounds the pitch; `1fr` tracks let the rail's narrower
+     grid shrink instead of overlapping. */
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  justify-content: center;
+  justify-items: center;
+  gap: calc(var(--unit) * 0.5);
+  width: 100%;
+  /* 网格宽度决定「列距 / 圆」的比例。19rem 时列距 44px 而圆只有 26px，仍然发空；
+     收到 16rem 并把圆放大到 30px 后，视觉间隙约 7px —— 这才像一本日历。 */
+  max-width: 16rem;
+  margin-inline: auto;
+}
+.cal__day,
+.ecal__day {
+  width: min(30px, 100%);
+  height: 30px;
+  min-height: 0;
+  aspect-ratio: auto;
+  padding: 0 !important;
+  display: grid !important;
+  place-content: center !important;
+  place-items: center !important;
+  justify-self: center;
+  flex-direction: row !important;
+  border: 0 !important;
+  border-radius: 50%;
+  font-size: 0.76rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.ecal__num {
+  width: auto; height: auto; background: none; border-radius: 0; box-shadow: none;
+  display: block; font-weight: inherit; color: inherit; margin: 0; padding: 0;
+}
+.ecal__day .ecal__num { justify-self: center; align-self: center; }
+.ecal__marks { display: none !important; }
+
+.cal__day[data-has="true"]::after,
+.ecal__day[data-count]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 3px;
+  width: 3.5px;
+  height: 3.5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.6;
+  transform: translateX(-50%);
+}
+.cal__day[data-has="true"],
+.ecal__day[data-count] { color: var(--fg); font-weight: 620; cursor: pointer; }
+.cal__day[data-has="true"]:hover,
+.ecal__day[data-count]:hover { background: var(--accent-soft); color: var(--accent); }
+
+.cal__day[data-today="true"],
+.ecal__day[data-today="true"] {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.cal__day[data-current="true"]:not([data-today="true"]),
+.ecal__day[aria-selected="true"]:not([data-today="true"]) {
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+}
+.cal__day[aria-disabled="true"],
+.ecal__day[aria-disabled="true"] { opacity: 0.26; }
+.cal__day[aria-hidden="true"],
+.ecal__day--pad { opacity: 0; pointer-events: none; }
+
+/* 窄侧栏：日历给最小宽度，放不下时在侧栏内横向滚动（滚动条仍隐藏，功能在）。 */
+/* **No floor on the calendar, and no horizontal scrolling.**
+   `overflow-x: visible` beside `overflow-y: auto` computes to `auto`, so a horizontal bar appears
+   whenever the rail's content is wider than the rail -- and `.cal`'s 13rem (208px) floor could be
+   dragged below, because a saved rail preference from an earlier build can be narrower than the
+   current 212px minimum. Removing the floor lets the calendar contract instead: measured with no
+   scrollbar at 160 / 180 / 190 / 200 / 212px, with day cells shrinking 29px -> 21px rather than
+   overflowing. The grid tracks are already `minmax(0, 1fr)`, so they do this unaided. */
+.cal { min-width: 0; }
+.rail__body { overflow-x: hidden; }
+
+/* --- 三、Q弹动效（motion-web handfeel §1 / §6）---------------------------------
+   入场用欠阻尼弹簧的 CSS 近似（过冲 12%），悬停抬升与日历高亮用 JS 真弹簧。
+   所有动效只碰 transform / opacity，不触发布局。 */
+
+:root {
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --spring-soft: cubic-bezier(0.22, 1.28, 0.5, 1);
+}
+
+.js-motion .item {
+  opacity: 0;
+  transform: translateY(12px) scale(0.994);
+  animation: item-in 0.52s var(--spring-soft) forwards;
+}
+.js-motion .item:nth-child(2) { animation-delay: 0.035s; }
+.js-motion .item:nth-child(3) { animation-delay: 0.07s; }
+.js-motion .item:nth-child(4) { animation-delay: 0.105s; }
+.js-motion .item:nth-child(n+5) { animation-delay: 0.14s; }
+@keyframes item-in {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.item {
+  transition: box-shadow 0.45s var(--spring-soft), border-color 0.2s ease;
+  will-change: transform;
+}
+.item:hover {
+  box-shadow: 0 12px 30px -16px color-mix(in srgb, var(--fg) 28%, transparent);
+}
+
+/* 日历按下：缩到 0.86 再由 JS 弹簧弹回 */
+.cal__day:active, .ecal__day:active { transform: scale(0.86); }
+.rail__item { transition: transform 0.42s var(--spring), background 0.2s ease, color 0.2s ease; }
+.rail__item:hover { transform: translateX(2px); }
+
+/* 品牌标记的空闲呼吸（§6）：两个不同频率，绝不同步。 */
+@media (prefers-reduced-motion: no-preference) {
+  .rail__mark { animation: breathe 4.6s ease-in-out infinite; }
+}
+@keyframes breathe {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-1.4px) rotate(-1.1deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js-motion .item { animation: none; opacity: 1; transform: none; }
+  .item, .rail__item, .rail__mark { transition: none; animation: none; }
+}
+
+
+/* ==============================================================================
+   终版覆盖（三）—— 移动端留白 + 品牌标记
+   ============================================================================== */
+
+/* --- 一、窄屏必须给足边距 ------------------------------------------------------
+   实测 390px 下 padding-inline 只有 8px，标题和正文几乎贴着屏幕边。
+   桌面收窄留白是对的，但这个值不该在所有宽度生效 —— 手机上它是缺陷不是节省。 */
+@media (max-width: 900px) {
+  .shell { padding-inline: calc(var(--unit) * 5); }
+}
+@media (max-width: 560px) {
+  .shell { padding-inline: calc(var(--unit) * 4); }
+  /* 卡片是全宽出血的，所以正文自己也要有内边距，否则文字仍然贴边。 */
+  .content { padding-inline: calc(var(--unit) * 1); }
+  .item__title, .issue__title, .issue__lead, .section__title {
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
+}
+
+/* --- 二、品牌标记：把「AI」两个字母换成真正设计的图标 --------------------------
+   broadcast / feed：一个点 + 两道向外扩散的弧 —— 多路来源汇成一个信号，
+   正是这个产品在做的事。用 currentColor，跟随主题，无网络请求。 */
+.rail__mark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  /* 圆形边框：用户要求页头图标与标签页图标都是圆的。用 50% 而不是固定半径，
+     这样侧栏宽度变化时它仍然是正圆。 */
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-fg, #fff);
+  flex: none;
+  overflow: hidden;
+}
+.rail__mark .brand-mark__svg { display: block; }
+/* 「A」比弧形图标视觉重心更高，稍微下移一点让它居中。 */
+.rail__mark svg { transform: translateY(0.5px); }
+.rail__brand { gap: calc(var(--unit) * 2.5); }
+
+/* 首页大标题区的标记（如果用到）同样处理 */
+.brand-mark__svg { vertical-align: middle; }
+
+
+/* ==============================================================================
+   终版覆盖（四）—— 字体
+   ----------------------------------------------------------------------------
+   标题宋体（模板 ai-daily-deck 自己的选择）、正文与侧栏 MiSans、数字与元信息等宽。
+   三者的分工依据是各自的强项：
+
+   · 宋体（Noto Serif SC）笔画有横细竖粗的对比，大字号下有"刊物感"，适合标题。
+     小字号时笔画偏细，所以**不用**于正文。
+   · MiSans 笔画均匀、字腔开，是小米为界面做的字，小字号下清晰，适合正文与控件。
+   · IBM Plex Mono 等宽，数字位宽一致，统计行与时间戳不会跳动。
+
+   实测代价：MiSans 走官方分片 CSS，浏览器按 unicode-range 只取用到的分片 ——
+   整期日报实测 500 KB / 38 个文件；思源宋体 1.1 MB。合计 1.6 MB，可缓存。
+   两个 CDN 都不可达时退回系统字体栈，不会乱码、不会撑破布局。
+   ============================================================================== */
+
+:root {
+  --f-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", Georgia, serif;
+  --f-sans:  "MiSans", "Noto Sans SC", "PingFang SC", "Hiragino Sans GB",
+             "Microsoft YaHei", system-ui, sans-serif;
+  --f-mono:  "IBM Plex Mono", "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+/* 标题：宋体 */
+.issue__title,
+.item__title,
+.section__title,
+.issue__head h1,
+.cover__title,
+h1, h2, h3 {
+  font-family: var(--f-serif);
+}
+
+/* 正文与控件：MiSans。正文行高比黑体略松一点，字腔开、行距紧会显得密。 */
+.facts, .inferences, .opinions, .uncertainties,
+.item__body, .item p, p, li,
+.facts li, .inferences li, .opinions li, .uncertainties li,
+.rail__item, .rail__sub button, .rail__btn, .toc__nav a,
+.rail__brand, .section__count, .issue__date,
+button, input, select, summary {
+  font-family: var(--f-sans);
+}
+
+.facts li, .inferences li, .opinions li, .uncertainties li { line-height: 1.85; }
+
+/* 数字与元信息：等宽，等宽数字让统计行不跳动 */
+.stats b, .stats span,
+.item__meta, .item__meta span,
+.cal__month, .ecal__month,
+[data-theme-summary], time {
+  font-family: var(--f-mono);
+  font-feature-settings: "tnum";
+}
+
+/* 界面正文的最后一道兜底：没有 --f-sans 声明的元素也走 MiSans，避免混排出两种黑体。 */
+body { font-family: var(--f-sans); }
+
+/* Two figures on the index page: they belong together, so they must not be spread across the
+   full column. `auto-fit 1fr` stretched them to the edges -- "4" at the left margin and "160" at
+   the far right, which reads as two unrelated numbers rather than one summary line. */
+.stats--pair {
+  grid-template-columns: repeat(2, max-content);
+  gap: calc(var(--unit) * 4) calc(var(--unit) * 10);
+}
+
+/* The archive list is a short table, not a full-width bar. Left to fill the column, the count
+   landed at the far edge, ~640px away from its own date, and the eye could not pair them.
+   Capping the measure keeps each row readable as one line of information. */
+.issue-list { max-width: 44rem; }
+
+/* ==============================================================================
+   卡片：大卡片里套小卡片
+   ------------------------------------------------------------------------------
+   每条新闻是一个圆角外卡片，每个「事实 / 推断 / 不确定」块是它内部的一个浅色圆角
+   小卡片。这样做的理由是**可见的边界**：读者一眼就能看出这件事有多少是已确立的、
+   多少是推断。原来它们只是一串 li，靠缩进区分，长条目里分不清读到哪一块。
+
+   参考实现：外卡片 1px 描边 + 白底；内卡片用 muted 底色、无描边、圆角略小 ——
+   两层都用描边会显得像表格。
+   ============================================================================== */
+
+.item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: calc(var(--unit) * 5) calc(var(--unit) * 5) calc(var(--unit) * 4);
+  margin-bottom: calc(var(--unit) * 4);
+  box-shadow: 0 1px 2px rgb(16 24 40 / 4%);
+  transition: box-shadow var(--dur-fast) var(--ease-out-circ),
+              transform var(--dur-fast) var(--ease-out-circ),
+              border-color var(--dur-fast) var(--ease-out-circ);
+}
+
+/* The lift is the affordance: without it a bordered box reads as a static panel, and the
+   whole row is a link. 1px is enough to feel it; 4px looked like a wobble on scroll. */
+.item:hover {
+  border-color: color-mix(in srgb, var(--accent) 26%, var(--border));
+  box-shadow: 0 8px 24px rgb(16 24 40 / 9%);
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item, .item:hover { transition: none; transform: none; }
+}
+
+/* 内卡片：每个事实块 */
+.factcard {
+  background: var(--muted);
+  border-radius: var(--radius-sm);
+  padding: calc(var(--unit) * 3) calc(var(--unit) * 4);
+  margin-top: calc(var(--unit) * 3);
+}
+
+/* 块之间不再需要额外的段间距，卡片本身已经分开了 */
+.facts { margin-top: calc(var(--unit) * 1); }
+.facts__label { margin-top: 0; }
+
+/* 元信息行在卡片里需要和标题对齐 */
+.item__meta { margin-top: calc(var(--unit) * 2); }
+
+/* 来源链接行 */
+.item__links { margin-top: calc(var(--unit) * 3); }
+
+/* 概览条目：也是卡片，但更轻 —— 它是目录，不是正文。
+   每条一个白底圆角卡，内部不再分块：概览只引一条事实，套小卡片会显得比正文还重。 */
+.ov { display: grid; gap: calc(var(--unit) * 3); margin-top: calc(var(--unit) * 4);
+      list-style: none; padding-inline-start: 0; }
+.ov li > a {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: calc(var(--unit) * 3);
+  align-items: start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: calc(var(--unit) * 4);
+  box-shadow: 0 1px 2px rgb(16 24 40 / 4%);
+  transition: box-shadow var(--dur-fast) var(--ease-out-circ),
+              transform var(--dur-fast) var(--ease-out-circ),
+              border-color var(--dur-fast) var(--ease-out-circ);
+}
+.ov li > a:hover {
+  border-color: color-mix(in srgb, var(--accent) 26%, var(--border));
+  box-shadow: 0 8px 24px rgb(16 24 40 / 9%);
+  transform: translateY(-1px);
+}
+.ov__no { font-family: var(--f-mono); font-size: var(--fs-micro); color: var(--accent); padding-top: .2em; }
+.ov__detail { display: block; margin-top: calc(var(--unit) * 1.5); color: var(--muted-fg);
+              font-size: var(--fs-small); line-height: 1.6; }
+@media (prefers-reduced-motion: reduce) { .ov li > a, .ov li > a:hover { transition: none; transform: none; } }
+
+.issue-row__badge { justify-self: start; white-space: nowrap; }
+
+/* The empty cell of a row without a badge is still a track; it costs nothing because
+   `auto` collapses to zero for an absent element. */
+
+/* ==============================================================================
+   侧栏宽度上限
+   ------------------------------------------------------------------------------
+   两个侧栏各 15rem（240px），在 1240px 的窗口里吃掉了 480px，正文只剩 760px ——
+   正文是这份日报的主体，导航不该和它平起平坐。
+
+   所以：**侧栏只占它需要的宽度**，余量全部给正文。
+   · 左栏 13rem（208px）：搜索框、导航项、月历都放得下（日历已是 16rem 上限的弹性网格，
+     208px 时自动按 min(30px,100%) 收格子）；
+   · 右栏 12rem（192px）：目录只有「01 标题…」，208→192 只影响换行，不影响可读；
+   · 读者手动拖宽仍尊重（这是偏好，存在 localStorage），这里只改默认值。
+   ============================================================================== */
+
+@media (min-width: 1080px) {
+  .shell {
+    grid-template-columns: minmax(0, var(--rail-w)) minmax(0, 1fr) minmax(0, var(--toc-w));
+  }
+}
+
+/* 超宽屏：两侧不再继续变宽，多出来的宽度整列给正文。 */
+@media (min-width: 1600px) {
+  .shell {
+    grid-template-columns: minmax(0, var(--rail-w)) minmax(0, 1fr) minmax(0, var(--toc-w));
+  }
+  .content { max-width: 62rem; }
+}
+
+/* 正文在某段宽度以上不该再无限拉长：一行超过约 78 个汉字，眼睛回行会吃力。
+   上限之后多出的空间留白，而不是把正文撑满。 */
+@media (min-width: 1080px) {
+  .content { max-width: 68rem; }
+}
+
+/* An empty badge is a layout cell, not a badge: it must occupy the track (so the count column
+   stays aligned) while drawing nothing. Without this it kept the badge background and radius,
+   which rendered as a small blue rectangle on every row that has no 最新 marker -- measured
+   16x2px of rgb(232,239,255) with a 6.4px radius, four of them down the column. */
+.issue-row__badge:empty {
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding-inline: 0;
+}
+
+/* Centre the shell. With `margin-inline: 0` the grid was pinned to the left edge and all the
+   slack sat on the right -- measured at 1440px: shell x=0..1440 while the content column ended
+   at 1144, leaving ~300px of dead space on one side only. */
+.shell { margin-inline: auto; }
+
+/* Centre the reading column by centring its grid track, not the item.
+   `margin-inline: auto` on a `max-width` grid item shrinks it to its content (measured: a 960px
+   track produced a 535px box), because the auto margins claim the free space before the item is
+   sized. `justify-self: center` asks the grid to size the item from its track and then centre it. */
+@media (min-width: 1080px) {
+  .content { justify-self: center; width: 100%; }
+}
+
+}
+
+@media (min-width: 1400px) {
+  /* The TOC stays in the viewport and *pages itself* to follow the article.
+     
+     Three properties have to hold together; changing one without the others broke this twice:
+     
+     1. `sticky` so the outline stays on screen while the article scrolls past. Without it the
+        outline drifts off the top and the reader loses it.
+     2. An inner scroll, because 44 entries do not fit in 900px (measured: 2841px of entries).
+        `overscroll-behavior: contain` stops that inner scroll from chaining into the page,
+        which would make one wheel gesture move both the article and the outline.
+     3. `position: relative` as the containing block for the absolutely positioned resize grip.
+        `sticky` provides one too, but the explicit declaration survives a future change of
+        positioning mode and documents why it is needed. Switching to `static` once dropped the
+        grip at x=0 while the TOC itself started at x=1396.
+     
+     The paging itself is in motion.js: `syncTocScroll` keeps the highlighted entry inside the
+     visible slice, so the outline turns pages by itself as the article is read. */
+  .toc {
+    position: sticky;
+    top: calc(var(--unit) * 10);
+    max-height: calc(100vh - var(--unit) * 20);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+/* --- 新闻配图 ---------------------------------------------------------------------
+ *
+ * 一条新闻常有不止一张图：宽幅主视觉、竖版示意图、长条终端截图。参考站把它们横排、
+ * 允许横向滚动，每张保持自己的宽高比 —— 实测它某一期的四张图是 1080x720、1080x227、
+ * 1080x1017、1080x351，从 1.06 到 4.76。
+ *
+ * 强行裁成统一的 16:9 会毁掉其中三张：终端截图只剩中间一段，示意图被截断上下。
+ * `width: auto` 保证不裁切，`max-height` 防止竖图占满整屏，行内滚动处理放不下的情况。
+ */
+/*
+ * 缩进必须和 `.facts` 一致：那一块为了让「事实 / 推断 / 不确定」的标题与正文缩排，
+ * 用了 padding-left: calc(1.6em + var(--unit) * 3)。配图行原本没有这个内距，于是图片比
+ * 事实块靠左一截，整列看起来是歪的。
+ *
+ * 用同一个表达式而不是写死像素：两者必须永远相等，共用一处定义才不会在改字号时漂移。
+ */
+.item__images {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  margin: 14px 0 12px;
+  padding: 2px 0 8px calc(1.6em + var(--unit) * 3);
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+}
+
+.item__images a {
+  flex: 0 0 auto;
+  line-height: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface-2, #eef2f1);
+  scroll-snap-align: start;
+}
+
+.item__images img {
+  width: auto;
+  max-width: none;
+  max-height: 340px;
+  margin: 0;
+  border-radius: 8px;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .item__images img { max-height: 220px; }
+}
+</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Regular.min.css">
+  <!-- Theme read before first paint.
+       `motion.js` is deferred, so it runs after the document parses -- which means the
+       browser has already painted the default light theme and then repaints with the saved
+       one. That repaint is the flash seen on every navigation. This inline block runs while
+       the head is still parsing, so the attribute is set before anything is drawn. It is
+       intentionally duplicated by motion.js (which owns the UI); here it only needs to be
+       fast and to survive JS being disabled afterwards. -->
+  <script>(function(){try{var t=localStorage.getItem('aidaily-theme');if(t&&t!=='auto'&&t!=='default'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+
+<div class="shell">
+      <aside class="rail" aria-label="站点导航">
+        <button class="rail__grip" type="button" data-resize="rail"
+                aria-label="拖动调整左栏宽度" title="拖动调整宽度（双击恢复默认）"></button>
+        <div class="rail__head">
+          <a class="rail__brand" href="index.html">
+            <span class="rail__mark" aria-hidden="true"><svg viewBox="0 0 18 18" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g transform="translate(9 9) scale(0.0314) translate(-765 -765)" fill="currentColor"><path fill-rule="evenodd" d="M 494,818 L 626,504 L 711,503 L 800,711 L 803,711 L 1018,546 L 1032,538 L 1027,544 L 745,795 L 740,795 L 726,765 L 610,765 L 586,820 Z M 669,614 L 701,694 L 636,694 Z"/><path d="M 871,713 L 867,712 L 560,989 L 587,971 L 781,825 L 783,1025 L 871,1024 Z"/></g></svg></span>
+            <span>AI 日报</span>
+          </a>
+          <button class="rail__toggle rail__item" type="button" aria-expanded="false"
+                  aria-controls="rail-body" style="width:auto">
+            <span class="sr">展开导航</span>
+            <span aria-hidden="true">☰</span>
+          </button>
+        </div>
+
+        <div class="rail__body" id="rail-body">
+          <!-- 1. 搜索往期内容 -->
+          <div class="rail__group">
+            <button class="rail__item" type="button" data-open-search>
+              <span>搜索往期内容</span>
+            </button>
+          </div>
+
+          <!-- 2. 首页 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <a class="rail__item" href="index.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5 9 3l6 5.5V15H3z"/><path d="M7.5 15v-4h3v4"/></svg><span>首页</span></a>
+          </div>
+
+          <hr class="rail__sep">
+
+          <!-- 3. 日历 -->
+          <div class="cal" aria-label="按日期浏览">
+            <div class="cal__head">
+              <span class="cal__month">—</span>
+              <span class="cal__nav">
+                <button type="button" data-nav="prev" aria-label="上个月">‹</button>
+                <button type="button" data-nav="next" aria-label="下个月">›</button>
+              </span>
+            </div>
+            <div class="cal__grid" role="grid">
+              <span class="cal__dow">日</span><span class="cal__dow">一</span>
+              <span class="cal__dow">二</span><span class="cal__dow">三</span>
+              <span class="cal__dow">四</span><span class="cal__dow">五</span>
+              <span class="cal__dow">六</span>
+            </div>
+            <div class="cal__legend">
+              <span><i data-k="today"></i>今天</span>
+              <span><i data-k="has"></i>有日报</span>
+            </div>
+          </div>
+
+          <hr class="rail__sep">
+
+          <!-- 4. Tibo 重置监控 -->
+          <div class="rail__group">
+            <a class="rail__item" href="tibo.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6.5"/><path d="M9 5.5V9l2.5 1.5"/></svg><span>Tibo 重置监控</span></a>
+          </div>
+
+          <!-- 微信公众号：暂无账号，先不放入口。留一个不能用的按钮比没有更糟。 -->
+
+          <!-- 6. 订阅 RSS -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <details class="rail__fold">
+              <summary class="rail__item"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M3 4.5A8.5 8.5 0 0 1 11.5 13"/><path d="M3 8A5 5 0 0 1 8 13"/></svg><span>订阅 RSS</span></summary>
+              <div class="rail__sub rail__sub--rss" role="menu">
+                <button type="button" class="rail__btn" data-copy="https://siweimidu.github.io/ai-ribao/feed/zh.xml">
+                  <span class="rail__btn-k">RSS</span>复制订阅地址
+                </button>
+                <button type="button" class="rail__btn" data-copy="https://siweimidu.github.io/ai-ribao/feed/zh.json">
+                  <span class="rail__btn-k">JSON</span>复制订阅地址
+                </button>
+                <p class="rail__fine">
+                  或在浏览器中查看
+                  <a href="feed/zh.xml">RSS</a>
+                  <a href="feed/zh.json">JSON</a>
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <!-- 7. 主题 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <details class="rail__fold">
+              <summary class="rail__item">
+                <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M9 3v12"/><path d="M9 3a6 6 0 0 1 0 12"/></svg><span>主题</span>
+                <span class="rail__hint" data-theme-summary>自动</span>
+              </summary>
+              <div class="rail__sub" role="menu"><button type="button" data-theme-choice="light" aria-checked="false">亮色</button><button type="button" data-theme-choice="dark" aria-checked="false">暗色</button><button type="button" data-theme-choice="claude-light" aria-checked="false">Claude 亮色</button><button type="button" data-theme-choice="claude-dark" aria-checked="false">Claude 暗色</button></div>
+            </details>
+          </div>
+
+          <!-- 8. 下载 markdown（仅在有具体日期的页面上显示）
+               首页的 rail 用的是最新一期，在这里放下载按钮等于让读者先猜自己要看哪一天。
+               先把日期选出来，日期页再给出那一天的 markdown。 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)"><a class="rail__item" href="2026-10-21.md" download><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v8"/><path d="M5.5 8 9 11.5 12.5 8"/><path d="M3.5 13.5h11"/></svg><span>下载 Markdown</span></a></div>
+
+          <hr class="rail__sep">
+
+          <div class="rail__group">
+            <a class="rail__item" href="sources.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M3 4.5A8.5 8.5 0 0 1 11.5 13"/><path d="M3 8A5 5 0 0 1 8 13"/></svg><span>信息源</span></a>
+            <a class="rail__item" href="https://github.com/siweimidu/ai-ribao" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2.5a6.5 6.5 0 0 0-2 12.7c-.1-.5-.1-1.2 0-1.7.2-.8 1.4-5 1.4-5s-.3-.7-.3-1.7c0-1.6.9-2.7 2-2.7.9 0 1.4.7 1.4 1.6 0 1-.6 2.4-.9 3.8-.3 1 .5 1.9 1.6 1.9 1.9 0 3.3-2.5 3.3-5.4 0-2.3-1.6-3.9-4-3.9-2.7 0-4.3 2-4.3 4.1 0 .9.3 1.8.8 2.3.1.1.1.2.1.3l-.3 1.1c0 .2-.2.2-.4.1-1.3-.6-2.1-2.5-2.1-4C5.3 3.4 7.5 2.5 9 2.5z"/></svg><span>源码与说明</span>
+            </a>
+          </div>
+        </div>
+      </aside>
+
+  <main class="content" id="main">
+    <header class="issue__head">
+      <p class="issue__date enter">2026-10-21　第 8 期</p>
+      <h1 class="issue__title enter">Gemini Personal Intelligence将进入汽车</h1>
+      <p class="issue__lead enter">Google将把Personal Intelligence引入Android Auto中的Gemini。</p>
+      <div class="stats enter"><div><b class="count-up" data-to="26">26</b><span>事件</span></div><div><b class="count-up" data-to="44">44</b><span>有内容的源</span></div><div><b class="count-up" data-to="3">3</b><span>多源验证</span></div><div><b class="count-up" data-to="19">19</b><span>头条覆盖来源</span></div></div>
+    </header>
+
+    
+
+          <section class="section overview" id="overview">
+        <h2 class="section__title">概览<span class="section__count">今日要闻</span></h2>
+        <ol class="ov"><li><a href="#e-e69d620c0e"><span class="ov__no">01</span><span><b>Gemini Personal Intelligence将进入汽车</b><span class="ov__detail">Google将把Personal Intelligence引入Android Auto中的Gemini。</span></span></a></li><li><a href="#e-eccbf66125"><span class="ov__no">02</span><span><b>Google 为 Gemini 推出小企业主工具</b><span class="ov__detail">Google 为 Gemini 推出面向全球小企业主的新工具。</span></span></a></li><li><a href="#e-ed803d3160"><span class="ov__no">03</span><span><b>Google 向 Android Auto 推出 Gemini 个性化功能</b><span class="ov__detail">Google 开始向 Android Auto 推出 Gemini 的 Personal Intelligence。</span></span></a></li><li><a href="#e-e931724576"><span class="ov__no">04</span><span><b>OpenAI 为 ChatGPT 推出团队定期任务</b><span class="ov__detail">OpenAI 面向企业用户在 ChatGPT 中推出团队任务功能。</span></span></a></li><li><a href="#e-e30308f39f"><span class="ov__no">05</span><span><b>Google开源TorchTPU支持PyTorch运行于TPU</b><span class="ov__detail">Google已在GitHub开源TorchTPU。</span></span></a></li><li><a href="#e-e295079bc7"><span class="ov__no">06</span><span><b>AWS Agent Registry支持运行时发现工具</b><span class="ov__detail">工具目录从少量工具扩展到数百个时，硬编码工具连接会失效。</span></span></a></li><li><a href="#e-ea06aaadc1"><span class="ov__no">07</span><span><b>蚂蚁集团与 vLLM 社区开源 Humming</b><span class="ov__detail">蚂蚁集团与 vLLM 社区共同开源了 Humming。</span></span></a></li><li><a href="#e-e7f6fefd62"><span class="ov__no">08</span><span><b>Ant Group与vLLM社区发布Humming</b><span class="ov__detail">Ant Group与vLLM社区推出了量化推理内核库Humming。</span></span></a></li></ol>
+        <p class="ov__foot">今日共 26 条事件，
+        其中 3 条经多个独立来源交叉验证。下面是完整列表。</p>
+      </section>
+
+      <section class="section" id="all">
+        <h2 class="section__title">全部消息<span class="section__count">26 条</span></h2>
+        <ol class="stream">
+        <li class="item" id="e-e69d620c0e">
+          <div class="item__head">
+            <span class="item__no">01</span>
+            <h3 class="item__title"><a href="https://arstechnica.com/google/2026/10/geminis-personal-intelligence-is-coming-to-cars/" target="_blank" rel="noopener noreferrer">Gemini Personal Intelligence将进入汽车</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e69d620c0e4f79c-9eb57b31.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e69d620c0e4f79c-9eb57b31.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>6 个独立来源</span>
+            <span>10-21 04:00</span>
+            <a href="https://arstechnica.com/google/2026/10/geminis-personal-intelligence-is-coming-to-cars/" target="_blank" rel="noopener noreferrer">arstechnica.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Google将把Personal Intelligence引入Android Auto中的Gemini。</li><li data-kind="fact">搭载Google built-in的汽车也将获得这一功能。</li><li data-kind="fact">Gemini可调用Gmail、Calendar、Maps、Photos、YouTube和Search中的用户信息。</li><li data-kind="fact">该功能将在未来几个月推广到搭载Google built-in的汽车。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">驾驶者可能可以在车内向Gemini提出需要结合个人Google信息的问题。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">具体上线日期尚未确定。</li><li data-kind="uncertain">支持的具体车型和地区尚未说明。</li><li data-kind="uncertain">Personal Intelligence的具体隐私设置和用户授权方式尚未说明。</li><li data-kind="uncertain">尚不清楚各项Google应用的信息是否都能在所有支持的汽车中使用。</li></ul></div></div>
+          <div class="item__links"><a href="https://siliconangle.com/2026/10/20/deepseek-open-sources-deepinfer-the-inference-framework-behind-its-production-services/" target="_blank" rel="noopener noreferrer">siliconangle.com</a><a href="https://www.cnbc.com/2026/10/20/stocks-making-the-biggest-moves-after-hours-isrg-nflx-spcx.html" target="_blank" rel="noopener noreferrer">cnbc.com</a><a href="https://www.engadget.com/2292027/google-brings-gemini-personal-intelligence-to-android-auto/" target="_blank" rel="noopener noreferrer">engadget.com</a><a href="https://www.theverge.com/tech/1014999/google-gemini-ai-cars-android-auto" target="_blank" rel="noopener noreferrer">theverge.com</a><span style="color:var(--muted-fg)">另有 1 家其他来源</span></div>
+        </li>
+        <li class="item" id="e-eccbf66125">
+          <div class="item__head">
+            <span class="item__no">02</span>
+            <h3 class="item__title"><a href="https://blog.google/innovation-and-ai/products/gemini-app/new-tools-small-business-owners/" target="_blank" rel="noopener noreferrer">Google 为 Gemini 推出小企业主工具</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/eccbf66125a2fe3-47e3454c.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/eccbf66125a2fe3-47e3454c.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 09:28</span>
+            <a href="https://blog.google/innovation-and-ai/products/gemini-app/new-tools-small-business-owners/" target="_blank" rel="noopener noreferrer">blog.google</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Google 为 Gemini 推出面向全球小企业主的新工具。</li><li data-kind="fact">新工具包括企业落地页、品牌风格图像生成能力和财务分析功能。</li><li data-kind="fact">Gemini 可连接 Google Business Profile、Google Ads、Google Workspace、Adobe、Canva 和 Shopify。</li><li data-kind="fact">业主上传网站、品牌套件、字体或配色后，Nano Banana 2.1 可以生成风格统一的品牌视觉素材。</li><li data-kind="fact">Gemini 可以把表格、收据和采购记录转换为财务图表和交互模型。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">由此可以推断，Gemini 正被用于覆盖小企业主的品牌、财务和客户洞察事务。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明这些功能具体在哪一天开放。</li><li data-kind="uncertain">材料没有说明各项功能是否会同时开放。</li><li data-kind="uncertain">材料没有说明第三方应用连接后的具体操作范围。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ed803d3160">
+          <div class="item__head">
+            <span class="item__no">03</span>
+            <h3 class="item__title"><a href="https://blog.google/products-and-platforms/platforms/android/android-auto-cars-with-google-built-in-gemini-personal-intelligence/" target="_blank" rel="noopener noreferrer">Google 向 Android Auto 推出 Gemini 个性化功能</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/ed803d3160954e0-5a8a6c9e.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/ed803d3160954e0-5a8a6c9e.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 09:28</span>
+            <a href="https://blog.google/products-and-platforms/platforms/android/android-auto-cars-with-google-built-in-gemini-personal-intelligence/" target="_blank" rel="noopener noreferrer">blog.google</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Google 开始向 Android Auto 推出 Gemini 的 Personal Intelligence。</li><li data-kind="fact">用户授权后可在车内通过语音调用个人信息并获取个性化帮助。</li><li data-kind="fact">该功能可在用户许可下连接 Gmail、Google Calendar、Google Photos、Google Maps、YouTube 和 Search 等应用中的信息。</li><li data-kind="fact">用户可通过语音查询航班登机口及延误情况，或根据照片寻找地点并导航。</li><li data-kind="fact">Google 计划在未来几个月将该功能引入搭载 Google built-in 的汽车。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这项功能可根据多个应用中的个人信息综合回答问题。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明 Android Auto 上该功能的具体覆盖范围。</li><li data-kind="uncertain">材料没有说明该功能向搭载 Google built-in 的汽车推出的具体时间。</li><li data-kind="uncertain">材料没有说明支持该功能的具体车型。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e931724576">
+          <div class="item__head">
+            <span class="item__no">04</span>
+            <h3 class="item__title"><a href="https://help.openai.com/en/articles/20001540-creating-and-managing-team-tasks-in-chatgpt" target="_blank" rel="noopener noreferrer">OpenAI 为 ChatGPT 推出团队定期任务</a></h3>
+          </div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 09:28</span>
+            <a href="https://help.openai.com/en/articles/20001540-creating-and-managing-team-tasks-in-chatgpt" target="_blank" rel="noopener noreferrer">help.openai.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OpenAI 面向企业用户在 ChatGPT 中推出团队任务功能。</li><li data-kind="fact">团队任务可自动执行定期工程工作，例如每周汇总已发布内容和受阻事项。</li><li data-kind="fact">同事可以共同查看任务结果并修改后续任务指令。</li><li data-kind="fact">任务在云端运行，支持定时执行或由受支持的应用事件触发，无需保持 ChatGPT 打开。</li><li data-kind="fact">该功能适用于 Business 和 Enterprise 工作区，创建及管理能力受工作区权限控制。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该功能可用于由多人协作管理重复执行的工程流程。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明目前支持触发任务的具体应用。</li><li data-kind="uncertain">材料未说明不同工作区权限对应的具体创建和管理范围。</li><li data-kind="uncertain">材料未说明团队任务的具体发布时间和可用地区。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e30308f39f">
+          <div class="item__head">
+            <span class="item__no">05</span>
+            <h3 class="item__title"><a href="https://cloud.google.com/blog/topics/ai-infrastructure/torchtpu-is-now-open-source-run-native-pytorch-on-tpus" target="_blank" rel="noopener noreferrer">Google开源TorchTPU支持PyTorch运行于TPU</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e30308f39fee971-7aca28a1.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e30308f39fee971-7aca28a1.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            <span>3 个独立来源</span>
+            <span>10-21 09:28</span>
+            <a href="https://cloud.google.com/blog/topics/ai-infrastructure/torchtpu-is-now-open-source-run-native-pytorch-on-tpus" target="_blank" rel="noopener noreferrer">cloud.google.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Google已在GitHub开源TorchTPU。</li><li data-kind="fact">TorchTPU由Google与Meta的PyTorch团队共同开发。</li><li data-kind="fact">TorchTPU支持标准PyTorch接口，可使用即时模式调试，并通过torch.compile优化TPU利用率和减少内存开销。</li><li data-kind="fact">TorchTPU已与Hugging Face、vLLM、SGLang、TorchTitan和Ray集成，覆盖模型训练、推理服务与部署。</li><li data-kind="fact">在Hugging Face Transformers v5中，开发者可通过设置device_map=&quot;tpu&quot;将模型部署到TPU。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">TorchTPU可能降低现有PyTorch工作负载迁移到TPU时的代码改动成本。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明TorchTPU采用的具体开源许可证。</li><li data-kind="uncertain">材料未说明少量代码修改的具体范围。</li><li data-kind="uncertain">材料未说明TorchTPU支持哪些具体TPU芯片型号。</li></ul></div></div>
+          <div class="item__links"><a href="https://github.com/google-pytorch/torch_tpu" target="_blank" rel="noopener noreferrer">github.com</a></div>
+        </li>
+        <li class="item" id="e-e295079bc7">
+          <div class="item__head">
+            <span class="item__no">06</span>
+            <h3 class="item__title"><a href="https://aws.amazon.com/blogs/machine-learning/discover-tools-at-runtime-with-aws-agent-registry/" target="_blank" rel="noopener noreferrer">AWS Agent Registry支持运行时发现工具</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e295079bc7533b1-2e878fef.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e295079bc7533b1-2e878fef.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 00:22</span>
+            <a href="https://aws.amazon.com/blogs/machine-learning/discover-tools-at-runtime-with-aws-agent-registry/" target="_blank" rel="noopener noreferrer">aws.amazon.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">工具目录从少量工具扩展到数百个时，硬编码工具连接会失效。</li><li data-kind="fact">AWS Agent Registry支持运行时的发现、实例化和执行流程。</li><li data-kind="fact">协调器通过语义搜索在运行时发现MCP服务器和A2A代理，而不是在构建时编译每个工具。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">AWS Agent Registry可用于减少构建时逐一接入工具的需求。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明AWS Agent Registry支持的工具数量上限。</li><li data-kind="uncertain">材料未说明语义搜索的实现方式和效果。</li><li data-kind="uncertain">材料未说明发现、实例化和执行流程的具体步骤。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ea06aaadc1">
+          <div class="item__head">
+            <span class="item__no">07</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/afv7us0zbvzo789rghqkfhq5q" target="_blank" rel="noopener noreferrer">蚂蚁集团与 vLLM 社区开源 Humming</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/ea06aaadc195493-54b15959.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/ea06aaadc195493-54b15959.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 08:00</span>
+            <a href="https://aihot.news/items/afv7us0zbvzo789rghqkfhq5q" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">蚂蚁集团与 vLLM 社区共同开源了 Humming。</li><li data-kind="fact">Humming 是通用高性能量化推理内核库。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Humming 的定位覆盖通用量化推理场景，而非单一应用场景。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明 Humming 支持的具体硬件和模型。</li><li data-kind="uncertain">材料未提供 Humming 的性能指标。</li><li data-kind="uncertain">材料未说明 Humming 的具体使用方式和适用范围。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e7f6fefd62">
+          <div class="item__head">
+            <span class="item__no">08</span>
+            <h3 class="item__title"><a href="https://vllm.ai/blog/2026-10-21-humming" target="_blank" rel="noopener noreferrer">Ant Group与vLLM社区发布Humming</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e7f6fefd62ca50d-1c39c2c8.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e7f6fefd62ca50d-1c39c2c8.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 08:00</span>
+            <a href="https://vllm.ai/blog/2026-10-21-humming" target="_blank" rel="noopener noreferrer">vllm.ai</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Ant Group与vLLM社区推出了量化推理内核库Humming。</li><li data-kind="fact">Humming支持多种GPU和量化方案，并公布了密集模型与混合专家模型的性能结果。</li><li data-kind="fact">Humming已集成到vLLM中。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Humming可能面向多种GPU和量化推理场景。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明Humming具体支持哪些GPU型号。</li><li data-kind="uncertain">材料未说明Humming具体支持哪些量化方案。</li><li data-kind="uncertain">材料未提供密集模型与混合专家模型的具体性能数据。</li><li data-kind="uncertain">材料未说明Humming与vLLM的具体集成方式。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-eae4024518">
+          <div class="item__head">
+            <span class="item__no">09</span>
+            <h3 class="item__title"><a href="https://aws.amazon.com/blogs/machine-learning/access-openai-gpt-models-on-amazon-bedrock-from-canada-with-cross-region-inference/" target="_blank" rel="noopener noreferrer">加拿大可在Amazon Bedrock访问OpenAI GPT模型</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/eae402451850779-86325cea.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/eae402451850779-86325cea.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 00:42</span>
+            <a href="https://aws.amazon.com/blogs/machine-learning/access-openai-gpt-models-on-amazon-bedrock-from-canada-with-cross-region-inference/" target="_blank" rel="noopener noreferrer">aws.amazon.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">加拿大组织现在可以通过跨区域推理，在加拿大（中部）和加拿大西部（卡尔加里）区域的Amazon Bedrock上访问OpenAI GPT-5.6、GPT-6和GPT-6.1模型。</li><li data-kind="fact">材料介绍了相关模型和推理配置文件、权限设置方式，以及使用Responses、Chat Completions和Converse API调用模型的方法。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这表明跨区域推理为加拿大组织访问这些OpenAI模型提供了路径。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明跨区域推理实际使用的目标区域。</li><li data-kind="uncertain">材料未说明这些模型的具体定价、配额和性能。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ec257a18d9">
+          <div class="item__head">
+            <span class="item__no">10</span>
+            <h3 class="item__title"><a href="https://github.com/vllm-project/vllm" target="_blank" rel="noopener noreferrer">vllm-project/vllm：大语言模型推理与服务引擎</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/ec257a18d9e7639-a306980d.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/ec257a18d9e7639-a306980d.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span class="when-unknown">时间未知</span>
+            <a href="https://github.com/vllm-project/vllm" target="_blank" rel="noopener noreferrer">github.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">vllm-project/vllm 是一个用于大语言模型推理和服务的引擎。</li><li data-kind="fact">vllm-project/vllm 的描述提到高吞吐量和内存高效。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">据材料描述，vllm-project/vllm 旨在兼顾推理吞吐量和内存使用效率。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明 vllm-project/vllm 支持的具体模型。</li><li data-kind="uncertain">材料未提供 vllm-project/vllm 的性能数据。</li><li data-kind="uncertain">材料未说明 vllm-project/vllm 的具体部署方式。</li><li data-kind="uncertain">材料未提供事件发生时间。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e69bf241d4">
+          <div class="item__head">
+            <span class="item__no">11</span>
+            <h3 class="item__title"><a href="https://the-decoder.com/mistral-ai-launches-voxtral-3-a-full-voice-agent-stack-that-listens-thinks-and-talks-in-real-time/" target="_blank" rel="noopener noreferrer">Mistral AI发布Voxtral 3实时语音代理栈</a></h3>
+          </div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 01:17</span>
+            <a href="https://the-decoder.com/mistral-ai-launches-voxtral-3-a-full-voice-agent-stack-that-listens-thinks-and-talks-in-real-time/" target="_blank" rel="noopener noreferrer">the-decoder.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Mistral AI发布了面向实时语音代理的新语言模型系列Voxtral 3。</li><li data-kind="fact">Voxtral 3结合了语音转文本、文本转语音和语音代理软件开发工具包。</li><li data-kind="fact">Voxtral 3支持超过50种语言。</li><li data-kind="fact">Voxtral 3允许代理在实时对话期间调用外部工具。</li><li data-kind="fact">Voxtral 3可以运行在用户自有基础设施上，也可以通过欧盟托管的接口使用。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Voxtral 3被设计为覆盖语音输入、处理和输出环节的完整语音代理方案。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明Voxtral 3的具体模型数量和型号。</li><li data-kind="uncertain">材料未说明Voxtral 3的性能、价格和可用时间。</li><li data-kind="uncertain">材料未说明欧盟托管接口的具体服务范围。</li><li data-kind="uncertain">材料未说明Voxtral 3支持的具体语言列表。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e6901ee8b4">
+          <div class="item__head">
+            <span class="item__no">12</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/hpbyy2di6bqltejy6pqrquplq" target="_blank" rel="noopener noreferrer">ElevenLabs 发布两款实时语音模型</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e6901ee8b43aebe-dc773f37.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e6901ee8b43aebe-dc773f37.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 13:28</span>
+            <a href="https://aihot.news/items/hpbyy2di6bqltejy6pqrquplq" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">ElevenLabs 发布了 Eleven Realtime Max 和 Eleven Realtime Mini 两个语音到语音模型。</li><li data-kind="fact">Eleven Realtime Max 在 Big Bench Audio 上得分 98.8%。</li><li data-kind="fact">Eleven Realtime Max 的起播延迟为 0.57 秒。</li><li data-kind="fact">Eleven Realtime Mini 面向低成本自然对话场景优化。</li><li data-kind="fact">两个模型均已在 ElevenAgents 平台和接口上提供。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">根据产品定位，Eleven Realtime Max 侧重表现和响应速度，Eleven Realtime Mini 侧重成本与自然对话。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明两个模型的具体价格。</li><li data-kind="uncertain">材料未说明 Eleven Realtime Mini 的评测得分和起播延迟。</li><li data-kind="uncertain">材料未说明两个模型支持的语言和部署方式。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ef731206ec">
+          <div class="item__head">
+            <span class="item__no">13</span>
+            <h3 class="item__title"><a href="https://the-decoder.com/elevenlabs-releases-two-new-speech-to-speech-models-designed-for-real-time-ai-conversations/" target="_blank" rel="noopener noreferrer">Elevenlabs发布两款实时语音转换模型</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/ef731206ec07520-13419a83.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/ef731206ec07520-13419a83.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 03:03</span>
+            <a href="https://the-decoder.com/elevenlabs-releases-two-new-speech-to-speech-models-designed-for-real-time-ai-conversations/" target="_blank" rel="noopener noreferrer">the-decoder.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Elevenlabs发布了两款名为Eleven Realtime的语音转换模型。</li><li data-kind="fact">Eleven Realtime v1 Max在Big Bench Audio基准测试中的得分为98.8%。</li><li data-kind="fact">Eleven Realtime v1 Max的响应时间为0.57秒。</li><li data-kind="fact">Elevenlabs表示，Artificial Analysis排行榜上没有同时具备更快速度和更高准确率的模型。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">根据材料，Eleven Realtime v1 Max旨在兼顾响应速度和准确率。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">另一款Eleven Realtime模型的具体名称、得分和响应时间尚未说明。</li><li data-kind="uncertain">材料没有说明两款模型的发布时间是否相同。</li><li data-kind="uncertain">材料没有说明Artificial Analysis排行榜的具体评测范围和比较标准。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-eaea81f7d8">
+          <div class="item__head">
+            <span class="item__no">14</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/m2tzliyljme6vzta895ehk253" target="_blank" rel="noopener noreferrer">小米 MiMo-V2.5-Pro 下线并切换至新模型</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/eaea81f7d89c640-decd0803.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/eaea81f7d89c640-decd0803.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 10:55</span>
+            <a href="https://aihot.news/items/m2tzliyljme6vzta895ehk253" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">小米 MiMo-V2.5-Pro 与 MiMo-V2.5 已于 10 月 21 日上午 10 时正式下线。</li><li data-kind="fact">请求自 10 月 14 日 18 时起自动路由至 MiMo-V2.6-Pro 和 MiMo-V2.6-Flash。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">MiMo-V2.6-Pro 和 MiMo-V2.6-Flash 将承接 MiMo-V2.5-Pro 与 MiMo-V2.5 的请求。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明 MiMo-V2.6-Flash 是否支持多模态理解。</li><li data-kind="uncertain">材料未说明自动路由是否覆盖所有请求类型。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ec8e272f9f">
+          <div class="item__head">
+            <span class="item__no">15</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/kusx9r764s4ez8x7y7mfqvvr2" target="_blank" rel="noopener noreferrer">腾讯云宣布元宝搜索开放，千亿级索引每千次14元起</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/ec8e272f9f3ac4f-f02675da.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/ec8e272f9f3ac4f-f02675da.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 11:00</span>
+            <a href="https://aihot.news/items/kusx9r764s4ez8x7y7mfqvvr2" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">腾讯云于10月20日宣布元宝搜索正式对外开放。</li><li data-kind="fact">元宝搜索已构建千亿级索引规模。</li><li data-kind="fact">元宝搜索日均调用量达数亿次。</li><li data-kind="fact">元宝搜索支撑WorkBuddy、ima、腾讯视频等50多个核心业务。</li><li data-kind="fact">元宝搜索价格为每千次14元起。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">元宝搜索已被用于腾讯云的多个核心业务场景。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明千亿级索引的具体数量。</li><li data-kind="uncertain">材料未说明日均调用量的具体数值。</li><li data-kind="uncertain">材料未说明每千次14元起对应的具体服务范围和计费规则。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ef72560ab6">
+          <div class="item__head">
+            <span class="item__no">16</span>
+            <h3 class="item__title"><a href="https://aws.amazon.com/blogs/machine-learning/from-data-to-decisions-conversational-supply-chain-intelligence-with-amazon-quick-and-amazon-bedrock-agentcore/" target="_blank" rel="noopener noreferrer">Amazon Quick 打造供应链对话式智能</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/ef72560ab63b906-746c5f7e.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/ef72560ab63b906-746c5f7e.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 01:52</span>
+            <a href="https://aws.amazon.com/blogs/machine-learning/from-data-to-decisions-conversational-supply-chain-intelligence-with-amazon-quick-and-amazon-bedrock-agentcore/" target="_blank" rel="noopener noreferrer">aws.amazon.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">企业供应链数据分散在企业资源计划、监控、采购和电子邮件系统中。</li><li data-kind="fact">Amazon Bedrock AgentCore 将这些系统作为受治理的工具层开放。</li><li data-kind="fact">Amazon Quick 将这些系统整合为面向业务用户的对话式体验。</li><li data-kind="fact">材料提供了可自行部署的操作 walkthrough。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">业务用户可能可以通过对话方式访问分散在多个系统中的供应链信息。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明具体支持哪些企业资源计划、监控、采购和电子邮件系统。</li><li data-kind="uncertain">材料没有说明受治理的工具层包含哪些具体工具和权限机制。</li><li data-kind="uncertain">材料没有说明可自行部署的操作 walkthrough 的具体步骤。</li><li data-kind="uncertain">材料没有说明该方案的实际部署效果和使用限制。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e8c5f5f640">
+          <div class="item__head">
+            <span class="item__no">17</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/nmxe1z86mnekqrzyitvq7sax0" target="_blank" rel="noopener noreferrer">Databricks 发布 MemCurrent 持久记忆架构</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e8c5f5f640d6b77-cef84aec.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e8c5f5f640d6b77-cef84aec.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 10:05</span>
+            <a href="https://aihot.news/items/nmxe1z86mnekqrzyitvq7sax0" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Databricks 发布了 MemCurrent 持久记忆架构。</li><li data-kind="fact">MemCurrent 通过情景记忆与派生记忆配合插件、工具和离线做梦三种接入方式，让生产代理跨会话保留用户偏好、纠错与工作流。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">据此可推断，MemCurrent 旨在支持生产代理在不同会话之间持续使用记忆。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明情景记忆与派生记忆的具体定义。</li><li data-kind="uncertain">材料未说明插件、工具和离线做梦三种接入方式各自的工作流程。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e22f8bf70b">
+          <div class="item__head">
+            <span class="item__no">18</span>
+            <h3 class="item__title"><a href="https://aws.amazon.com/blogs/machine-learning/beyond-the-kv-cache-training-and-serving-i14s-laplace-3b-linear-attention-model-on-aws-trainium2-with-native-pytorch/" target="_blank" rel="noopener noreferrer">i14训练部署Laplace3B，状态固定29.5MB</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e22f8bf70b64c80-2874d04a.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e22f8bf70b64c80-2874d04a.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 05:14</span>
+            <a href="https://aws.amazon.com/blogs/machine-learning/beyond-the-kv-cache-training-and-serving-i14s-laplace-3b-linear-attention-model-on-aws-trainium2-with-native-pytorch/" target="_blank" rel="noopener noreferrer">aws.amazon.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">i14使用原生PyTorch在AWS Trainium2上训练并部署了线性注意力模型Laplace 3B。</li><li data-kind="fact">Laplace 3B的循环状态在每个序列中固定为29.5 MB，与上下文长度无关。</li><li data-kind="fact">Laplace 3B避免了变压器模型不断增长的键值缓存，并使服务内存保持可预测。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">由于循环状态大小不随上下文长度变化，Laplace 3B的服务内存需求可能比依赖增长型键值缓存的变压器模型更稳定。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明Laplace 3B的训练数据、训练时长和训练结果。</li><li data-kind="uncertain">材料未说明Laplace 3B的服务性能、延迟和吞吐量。</li><li data-kind="uncertain">材料未说明29.5 MB循环状态是否包含服务运行所需的其他内存。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e27d608236">
+          <div class="item__head">
+            <span class="item__no">19</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/j9eei4ezmunsocp3s9mkfd7or" target="_blank" rel="noopener noreferrer">Lauren Tan分享用智能体状态图和pstack找漏洞</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e27d608236f2b4f-a3e0cc41.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e27d608236f2b4f-a3e0cc41.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 10:44</span>
+            <a href="https://aihot.news/items/j9eei4ezmunsocp3s9mkfd7or" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Grok Bot工程负责人Lauren Tan分享了一种寻找漏洞的工作流。</li><li data-kind="fact">该工作流先让智能体画出用户流程状态图，再使用pstack的/create-formal-verification-skill生成的技能，通过TLA+等方式进行验证。</li><li data-kind="fact">pstack v0.15.27更新介绍称，该元技能可以按需创建形式化验证套件，作者实验中已用它发现多个漏洞。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">从材料看，这种工作流可能同时用于理解代码与用户流程，并辅助发现和修复用户会遇到的问题。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明已发现的多个漏洞分别是什么。</li><li data-kind="uncertain">材料没有说明这些漏洞是否都已完成修复。</li><li data-kind="uncertain">材料没有说明该工作流适用的项目范围和验证效果。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e907bcecb0">
+          <div class="item__head">
+            <span class="item__no">20</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/vyhlnqjwfhfjhln913qxytxe5" target="_blank" rel="noopener noreferrer">Uber用AutoClean清理过期功能开关与死代码</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e907bcecb0c5664-e006f832.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e907bcecb0c5664-e006f832.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 09:50</span>
+            <a href="https://aihot.news/items/vyhlnqjwfhfjhln913qxytxe5" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Uber发布了AutoClean系统的工程实践解读。</li><li data-kind="fact">AutoClean使用人工智能代理和确定性工具，累计清理了1.6万多个过期功能开关和超过100万行死代码。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这表明AutoClean的清理流程可能结合了人工智能代理的处理能力与确定性工具的约束。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明AutoClean如何保证删除代码的安全性。</li><li data-kind="uncertain">材料没有说明人工智能代理和确定性工具在清理流程中的具体分工。</li><li data-kind="uncertain">材料没有说明被清理的功能开关和死代码涉及哪些项目。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e0978a34ba">
+          <div class="item__head">
+            <span class="item__no">21</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/pwkk6v9brk1rae4fg7atoh1or" target="_blank" rel="noopener noreferrer">Devin Fusion 双模型组合评测得分 68.1</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e0978a34bad6500-3e3cb13a.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e0978a34bad6500-3e3cb13a.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 13:10</span>
+            <a href="https://aihot.news/items/pwkk6v9brk1rae4fg7atoh1or" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Artificial Analysis 使用 Claude Opus 5.5 (max) 作为主模型、GPT-6 Luna (high) 作为副模型测试 Cognition 的 Devin Fusion CLI。</li><li data-kind="fact">Devin Fusion CLI 在 Coding Agent Index 上获得 68.1 分。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这次测试将 Claude Opus 5.5 (max) 和 GPT-6 Luna (high) 分别配置为主模型和副模型。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明 Coding Agent Index 的评分标准。</li><li data-kind="uncertain">材料未说明 68.1 分在 Coding Agent Index 中的排名或等级。</li><li data-kind="uncertain">材料未说明 Devin Fusion CLI 使用主模型和副模型的具体分工。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e1ba63fd4e">
+          <div class="item__head">
+            <span class="item__no">22</span>
+            <h3 class="item__title"><a href="https://aihot.news/items/m1k5f7te2w0qkpp3da7buhaep" target="_blank" rel="noopener noreferrer">大语言模型评测：阈值调优与概率校准</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e1ba63fd4eaeee0-d5d7648f.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e1ba63fd4eaeee0-d5d7648f.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 09:38</span>
+            <a href="https://aihot.news/items/m1k5f7te2w0qkpp3da7buhaep" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">大多数从业者直接沿用0.50默认阈值。</li><li data-kind="fact">文章使用98条真实生产轨迹，对比了五个决策模型。</li><li data-kind="fact">文章指出，阈值调优、概率校准和成本—性能帕累托分析能带来可量化提升。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这表明沿用默认阈值可能无法获得最佳评测效果。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明五个决策模型的名称。</li><li data-kind="uncertain">材料没有说明阈值调优、概率校准和成本—性能帕累托分析分别带来的提升幅度。</li><li data-kind="uncertain">材料没有说明评测使用的具体指标。</li><li data-kind="uncertain">材料没有说明98条真实生产轨迹的来源和任务类型。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ea593ec625">
+          <div class="item__head">
+            <span class="item__no">23</span>
+            <h3 class="item__title"><a href="https://aws.amazon.com/blogs/machine-learning/fine-tuning-gpt-oss-20b-for-multilingual-reasoning-on-amazon-sagemaker-hyperpod/" target="_blank" rel="noopener noreferrer">GPT-OSS-20B在HyperPod上实现多语言推理微调</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/ea593ec625ba860-e874a788.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/ea593ec625ba860-e874a788.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 01:48</span>
+            <a href="https://aws.amazon.com/blogs/machine-learning/fine-tuning-gpt-oss-20b-for-multilingual-reasoning-on-amazon-sagemaker-hyperpod/" target="_blank" rel="noopener noreferrer">aws.amazon.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">GPT-OSS-20B在Amazon SageMaker HyperPod上进行了多语言推理微调。</li><li data-kind="fact">材料介绍了在监督微调（SFT）和使用GRPO的强化学习之间进行选择的方法。</li><li data-kind="fact">监督微调将推理语言准确率从22%提升至100%。</li><li data-kind="fact">在仍有提升空间的情况下，GRPO带来了可测量的增益。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">监督微调适合用于显著提升推理语言准确率，GRPO适合用于进一步优化仍有提升空间的情况。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明参与评测的具体语言。</li><li data-kind="uncertain">材料没有说明训练数据、评测数据和评测规模。</li><li data-kind="uncertain">材料没有说明GRPO带来的具体增益数值。</li><li data-kind="uncertain">材料没有说明何种标准用于判断是否仍有提升空间。</li><li data-kind="uncertain">材料没有说明微调所使用的具体配置和资源规模。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ea74423292">
+          <div class="item__head">
+            <span class="item__no">24</span>
+            <h3 class="item__title"><a href="https://aws.amazon.com/blogs/machine-learning/securing-ai-agent-identity-with-x-509-pki-on-aws/" target="_blank" rel="noopener noreferrer">AWS上用X.509 PKI保护人工智能代理身份</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/ea74423292af0a4-77c6cdbd.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/ea74423292af0a4-77c6cdbd.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 00:03</span>
+            <a href="https://aws.amazon.com/blogs/machine-learning/securing-ai-agent-identity-with-x-509-pki-on-aws/" target="_blank" rel="noopener noreferrer">aws.amazon.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">该参考架构使用 Keyfactor EJBCA 和 AWS 服务，为多代理人工智能系统提供加密身份。</li><li data-kind="fact">该架构结合签名请求封装、用户签名的委托断言、按受众限定的 RFC 8693 令牌和实时 OCSP 撤销，以验证代理身份并防止代理间及 MCP 工具调用中的请求伪造。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这些机制组合起来，意味着请求验证涉及代理身份、授权范围和撤销状态。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明该参考架构的具体部署步骤。</li><li data-kind="uncertain">材料未说明该架构的性能、成本和适用限制。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ec69462daf">
+          <div class="item__head">
+            <span class="item__no">25</span>
+            <h3 class="item__title"><a href="https://huggingface.co/blog/allenai/fairstress" target="_blank" rel="noopener noreferrer">FairStress：深入评估大语言模型决策公平性</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/ec69462daf36b96-23cca5c2.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/ec69462daf36b96-23cca5c2.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 00:09</span>
+            <a href="https://huggingface.co/blog/allenai/fairstress" target="_blank" rel="noopener noreferrer">huggingface.co</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">FairStress聚焦大语言模型决策公平性的深入评估。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明评估使用的方法。</li><li data-kind="uncertain">材料未说明评估结果。</li><li data-kind="uncertain">材料未说明涉及哪些模型或决策场景。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e92e54e33b">
+          <div class="item__head">
+            <span class="item__no">26</span>
+            <h3 class="item__title"><a href="https://siliconangle.com/2026/10/20/openai-acquires-orchestra-bio-to-bring-ai-agents-into-drug-development/" target="_blank" rel="noopener noreferrer">OpenAI收购Orchestra Bio进军药物开发</a></h3>
+          </div>
+          <div class="item__images"><a href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e92e54e33b4f974-35fa30cf.webp" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-21/e92e54e33b4f974-35fa30cf.webp" alt="" loading="lazy" decoding="async"></a></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-21 07:40</span>
+            <a href="https://siliconangle.com/2026/10/20/openai-acquires-orchestra-bio-to-bring-ai-agents-into-drug-development/" target="_blank" rel="noopener noreferrer">siliconangle.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OpenAI Group PBC宣布收购药物开发软件初创公司Orchestra Bio Inc.。</li><li data-kind="fact">Orchestra Bio开发帮助制药团队推进开发项目的人工智能代理。</li><li data-kind="fact">Orchestra Bio的员工和技术将并入OpenAI的Rosalind生命科学部门。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">此次收购可能使OpenAI能够将人工智能代理应用于药物开发流程。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明交易金额和具体条款。</li><li data-kind="uncertain">材料未说明Orchestra Bio人工智能代理的具体功能和部署方式。</li><li data-kind="uncertain">材料未说明收购完成的具体时间。</li></ul></div></div>
+          
+        </li>
+        </ol>
+      </section>
+
+    
+
+    <nav class="pager"><a href="2026-10-20.html"><span>上一期</span>2026-10-20</a><span></span></nav>
+
+    <footer class="foot">
+      <p>本期从 151 个已注册信息源采集，
+      44 个源提供了窗口内的内容，
+      0 个失败，0 个跳过。
+      共 415 条条目进入分析，
+      45 条被判定为重复。</p>
+      <p>大模型：97 次调用 / 163,326 token。
+      摘要由 AI 从原始来源整理，事实、推断与不确定项已分列；
+      <strong>每个条目的链接都来自采集记录，未经模型生成</strong>。请以原始来源为准。</p>
+<p>生成于 2026-10-21 14:34 北京时间</p>
+    </footer>
+  </main>
+
+      <nav class="toc" aria-label="目录">
+        <button class="toc__grip" type="button" data-resize="toc"
+                aria-label="拖动调整目录宽度" title="拖动调整宽度（双击恢复默认）"></button>
+        <p class="toc__title">今日目录</p>
+        <div class="toc__nav">
+          <a href="#overview" class="toc__overview">概览</a>
+          <a href="#e-e69d620c0e"><span class="toc__no">01</span>Gemini Personal Intelligence将进入汽车</a>
+          <a href="#e-eccbf66125"><span class="toc__no">02</span>Google 为 Gemini 推出小企业主工具</a>
+          <a href="#e-ed803d3160"><span class="toc__no">03</span>Google 向 Android Auto 推出 Gemini 个性化功能</a>
+          <a href="#e-e931724576"><span class="toc__no">04</span>OpenAI 为 ChatGPT 推出团队定期任务</a>
+          <a href="#e-e30308f39f"><span class="toc__no">05</span>Google开源TorchTPU支持PyTorch运行于TPU</a>
+          <a href="#e-e295079bc7"><span class="toc__no">06</span>AWS Agent Registry支持运行时发现工具</a>
+          <a href="#e-ea06aaadc1"><span class="toc__no">07</span>蚂蚁集团与 vLLM 社区开源 Humming</a>
+          <a href="#e-e7f6fefd62"><span class="toc__no">08</span>Ant Group与vLLM社区发布Humming</a>
+          <a href="#e-eae4024518"><span class="toc__no">09</span>加拿大可在Amazon Bedrock访问OpenAI GPT模型</a>
+          <a href="#e-ec257a18d9"><span class="toc__no">10</span>vllm-project/vllm：大语言模型推理与服务引擎</a>
+          <a href="#e-e69bf241d4"><span class="toc__no">11</span>Mistral AI发布Voxtral 3实时语音代理栈</a>
+          <a href="#e-e6901ee8b4"><span class="toc__no">12</span>ElevenLabs 发布两款实时语音模型</a>
+          <a href="#e-ef731206ec"><span class="toc__no">13</span>Elevenlabs发布两款实时语音转换模型</a>
+          <a href="#e-eaea81f7d8"><span class="toc__no">14</span>小米 MiMo-V2.5-Pro 下线并切换至新模型</a>
+          <a href="#e-ec8e272f9f"><span class="toc__no">15</span>腾讯云宣布元宝搜索开放，千亿级索引每千次14元起</a>
+          <a href="#e-ef72560ab6"><span class="toc__no">16</span>Amazon Quick 打造供应链对话式智能</a>
+          <a href="#e-e8c5f5f640"><span class="toc__no">17</span>Databricks 发布 MemCurrent 持久记忆架构</a>
+          <a href="#e-e22f8bf70b"><span class="toc__no">18</span>i14训练部署Laplace3B，状态固定29.5MB</a>
+          <a href="#e-e27d608236"><span class="toc__no">19</span>Lauren Tan分享用智能体状态图和pstack找漏洞</a>
+          <a href="#e-e907bcecb0"><span class="toc__no">20</span>Uber用AutoClean清理过期功能开关与死代码</a>
+          <a href="#e-e0978a34ba"><span class="toc__no">21</span>Devin Fusion 双模型组合评测得分 68.1</a>
+          <a href="#e-e1ba63fd4e"><span class="toc__no">22</span>大语言模型评测：阈值调优与概率校准</a>
+          <a href="#e-ea593ec625"><span class="toc__no">23</span>GPT-OSS-20B在HyperPod上实现多语言推理微调</a>
+          <a href="#e-ea74423292"><span class="toc__no">24</span>AWS上用X.509 PKI保护人工智能代理身份</a>
+          <a href="#e-ec69462daf"><span class="toc__no">25</span>FairStress：深入评估大语言模型决策公平性</a>
+          <a href="#e-e92e54e33b"><span class="toc__no">26</span>OpenAI收购Orchestra Bio进军药物开发</a>
+        </div>
+      </nav>
+</div>
+
+<dialog class="search" id="search-dialog" aria-label="搜索往期内容">
+  <div class="search__form">
+    <input type="search" placeholder="搜索往期内容…" aria-label="搜索关键词" autocomplete="off">
+    <kbd>Esc</kbd>
+  </div>
+  <ul class="search__results"></ul>
+</dialog>
+
+<script type="application/json" id="calendar-data">{"dates": ["2026-10-21", "2026-10-20", "2026-10-19", "2026-10-18", "2026-10-17", "2026-10-16", "2026-10-15", "2026-10-14"], "current": "2026-10-21", "today": "2026-10-21"}</script>
+<script type="application/json" id="search-index">[{"date": "2026-10-21", "items": [{"t": "Gemini's Personal Intelligence is coming to cars", "s": "rss:aihot-cat-industry, rss:aihot-demo-ars-technica-ai"}, {"t": "Google 为 Gemini 推出小企业主新工具", "s": "rss:daily-juya-uk"}, {"t": "Google 向安卓车载推出 Gemini 个性化功能", "s": "rss:daily-juya-uk"}, {"t": "OpenAI 为 ChatGPT 引入多人共管的定期任务", "s": "rss:daily-juya-uk"}, {"t": "Google 开源原生 PyTorch 软件栈 TorchTPU", "s": "rss:daily-juya-uk, api:hn-algolia-com-search"}, {"t": "Discover tools at runtime with AWS Agent Registry", "s": "rss:aihot-demo-aws-machine-learning-blog"}, {"t": "蚂蚁集团与 vLLM 社区开源量化推理内核库 Humming", "s": "rss:aihot-cat-products, rss:aihot-news"}, {"t": "Announcing Humming: Fast, Flexible Kernels for Quantized Inference", "s": "rss:vllm-ai-blog"}, {"t": "Access OpenAI GPT models on Amazon Bedrock from Canada with cross-Region inference", "s": "rss:aihot-demo-aws-machine-learning-blog"}, {"t": "vllm-project/vllm", "s": "scrape:github-com-trending"}, {"t": "Mistral AI launches Voxtral 3, a full voice agent stack that listens, thinks, and talks in real time", "s": "rss:aihot-demo-the-decoder"}, {"t": "ElevenLabs 发布 Eleven Realtime Max 和 Mini 语音到语音模型", "s": "rss:aihot-news"}, {"t": "Elevenlabs releases two new speech-to-speech models designed for real-time AI conversations", "s": "rss:aihot-demo-the-decoder"}, {"t": "小米 MiMo-V2.5-Pro 模型今日下线，替换为 V2.6-Pro 后支持多模态理解", "s": "rss:aihot-news"}, {"t": "腾讯云宣布元宝搜索对外开放：千亿级索引规模，每千次 14 元起", "s": "rss:aihot-news"}, {"t": "From data to decisions: Conversational supply chain intelligence with Amazon Quick and Amazon Bedrock AgentCore", "s": "rss:aihot-demo-aws-machine-learning-blog"}, {"t": "Databricks 发布 MemCurrent：用在线读写加离线做梦给生产 Agent 装上长期记忆", "s": "rss:aihot-news"}, {"t": "Beyond the KV cache: Training and serving i14’s Laplace 3B linear attention model on AWS Trainium2 with native PyTorch", "s": "rss:aihot-demo-aws-machine-learning-blog"}, {"t": "工程师分享用 Agent 状态图配合 pstack 形式化验证技能找 bug 的实践", "s": "rss:aihot-news"}, {"t": "Uber 如何让 AI 安全地删代码：AutoClean 清理 1.6 万个过期 Flag 与百万行死代码的 Agent 工程实践", "s": "rss:aihot-news"}, {"t": "Devin Fusion 双模型组合 Coding Agent 评测得分 68.1", "s": "rss:aihot-news"}, {"t": "如何用决策模型做 LLM Evals：从阈值调优到概率校准的实践解读", "s": "rss:aihot-news"}, {"t": "Fine-tuning GPT-OSS-20B for multilingual reasoning on Amazon SageMaker HyperPod", "s": "rss:aihot-demo-aws-machine-learning-blog"}, {"t": "Securing AI agent identity with X.509 PKI on AWS", "s": "rss:aihot-demo-aws-machine-learning-blog"}, {"t": "FairStress: A deeper evaluation of fairness in LLM decision-making", "s": "rss:huggingface-co-blog"}, {"t": "OpenAI acquires Orchestra Bio to bring AI agents into drug development", "s": "rss:siliconangle"}]}]</script>
+<script src="assets/motion.js" defer></script>
+</body>
+</html>
