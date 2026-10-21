@@ -734,7 +734,7 @@ def cmd_gate(args: argparse.Namespace) -> int:
 
 
 async def _fetch_images(
-    digest: "Digest", cfg: "AppConfig", *, limit: int = 40, concurrency: int = 5
+    digest: "Digest", cfg: "AppConfig", *, limit: int = 40, concurrency: int = 12
 ) -> dict[str, list[bytes]]:
     """WebP bytes for every published event, one to four pictures each. Never raises.
 
@@ -773,7 +773,7 @@ async def _fetch_images(
                 # Two candidates: the first direct source, then the next. Beyond that the gain
                 # stops justifying the extra requests.
                 for candidate in direct[:2]:
-                    images = await media.images_for(client, candidate)
+                    images = await media.images_for(client, candidate, keep=3)
                     if images:
                         return event.event_id, images
             return event.event_id, []

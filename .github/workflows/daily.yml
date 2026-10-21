@@ -208,6 +208,11 @@ jobs:
     if: needs.gate.outputs.run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 40
+    env:
+      # `github_meta` reads this to lift the REST quota from 60/h (anonymous) to 1000/h.
+      # Without it, the shared runner IP is usually already rate-limited and every
+      # repository fetch returns None -- the cards silently disappear.
+      GITHUB_TOKEN: ${{ secrets.GH_API_TOKEN }}
     permissions:
       contents: write
       pages: write
