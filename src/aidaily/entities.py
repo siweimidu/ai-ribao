@@ -53,6 +53,34 @@ _STOP_CAPS = {
 }
 
 
+#: Chinese function words. Splitting a CJK run on these yields the noun phrases between them,
+#: which is what an entity actually is.
+#:
+#: Measured on the 2026-10-21 issue: 物理AI与世界模型大会 was sliced into 与世 / 界模 / 型大 by
+#: fixed-width bigrams. Six reports of that one conference shared only those fragments, so
+#: `merge_unambiguous` saw shared_entities = [模型, 生成] -- generic words -- and the six stayed
+#: as six separate events.
+_CJK_BOUNDARY = re.compile("[与和及的在为对从到把被让使以于而或但也都还就又很更最上下内外前后中里]")
+
+
+def _cjk_segments(run: str, *, min_len: int = 2, max_len: int = 12) -> list[str]:
+    """Noun-like runs inside one CJK string, cut at function words.
+
+    Deliberately not a segmenter: no dictionary, no model, and the failure mode is a slightly
+    wrong boundary rather than a wrong story. A fragment shorter than `min_len` is dropped -- a
+    lone character matches too much.
+    """
+    out: list[str] = []
+    for piece in _CJK_BOUNDARY.split(run):
+        piece = piece.strip()
+        if min_len <= len(piece) <= max_len:
+            out.append(piece)
+            continue
+        # Still too long: non-overlapping bigrams, so the term is not lost entirely.
+        for start in range(0, len(piece) - 1, 2):
+            out.append(piece[start : start + 2])
+    return out
+
 def extract_entities(text: str, extra_lexicon: set[str] | None = None) -> set[str]:
     """Cheap entity bag: known names + capitalised latin tokens + CJK bigrams."""
     if not text:
@@ -85,8 +113,8 @@ def extract_entities(text: str, extra_lexicon: set[str] | None = None) -> set[st
         #
         # Stepping by two keeps Chinese usable without a segmenter while removing the
         # overlap that let a single word count as two.
-        for idx in range(0, len(run) - 1, 2):
-            found.add(run[idx:idx + 2])
+        for segment in _cjk_segments(run):
+            found.add(segment)
 
     if extra_lexicon:
         for entity in extra_lexicon:
