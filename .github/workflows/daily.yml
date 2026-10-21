@@ -17,28 +17,27 @@ on:
   # **UTC, with no `timezone` key.** GitHub Actions runs POSIX cron in UTC and does not document
   # a `timezone` field on a schedule entry; carrying one left the actual fire time impossible to
   # predict from the file. The UTC hour is written directly instead, so the schedule means exactly
-  # one thing. 07:00 Beijing = 23:00 UTC the day before; 19:00 Beijing = 11:00 UTC.
+  # one thing. 04:00 Beijing = 20:00 UTC the day before; 12:00 = 04:00 UTC; 20:00 = 12:00 UTC.
   #
-  # Two triggers per slot, 17 minutes apart and off the hour: GitHub's schedule event is delayed
-  # under load and the docs say queued jobs may be *dropped*, so one trigger per slot is not
-  # enough. Within a slot the first successful publish wins and the retry is a no-op.
+  # **Six triggers per slot, every 10 minutes.** Measured on 2026-10-21: over 100 runs of this
+  # workflow, only 15 were `schedule` (61 were `push`), and the observed fire times were
+  # 01:56, 06:50, 07:10, 07:50 Beijing -- everything clustered in the small hours, with the
+  # 12:00 and 20:00 slots producing *no run at all*. GitHub delays scheduled events by hours
+  # under load and the docs state queued jobs may be dropped; two triggers per slot, 17 minutes
+  # apart, assumed the delay was minutes.
   #
-  # **Three slots a day: 04:00 / 12:00 / 20:00 Beijing.** Two was not enough. Measured on the
-  # 2026-10-17 issue: its window closed at 06:38 UTC (14:38 Beijing), so anything published in
-  # the afternoon -- including DeepSeek V4.1 Flash becoming the day's main story -- could not
-  # appear until the next morning, by which time it was no longer news. Three slots, four hours
-  # apart at the tightest, means the day's afternoon burst lands in that evening's issue.
+  # Six attempts spread over an hour costs nothing when it works -- the gate inside the run
+  # makes every attempt after the first a no-op that exits in seconds, because the ledger already
+  # records the slot as published. When the trigger is dropped, the next one ten minutes later
+  # catches it. This is the only lever that acts on the *trigger* rather than on its consequences.
   #
-  # Keep these in step with `run.slots` in config/daily.yaml: that list drives the
-  # critical-source wait window and the "too early" gate, and a mismatch makes the gate refuse
-  # a run the cron just started.
+  # Keep in step with `run.slots` in config/daily.yaml: that list drives the critical-source wait
+  # window and the "too early" gate, and a mismatch makes the gate refuse a run the cron started.
   schedule:
-    - cron: "0 20 * * *"     # 04:00 北京（前一天 UTC 20:00）
-    - cron: "17 20 * * *"    # 04:17 北京（重试）
-    - cron: "0 4 * * *"      # 12:00 北京
-    - cron: "17 4 * * *"     # 12:17 北京（重试）
-    - cron: "0 12 * * *"     # 20:00 北京
-    - cron: "17 12 * * *"    # 20:17 北京（重试）
+    - cron: "0,10,20,30,40,50 20 * * *"   # 04:00–04:50 北京
+    - cron: "0,10,20,30,40,50 4 * * *"    # 12:00–12:50 北京
+    - cron: "0,10,20,30,40,50 12 * * *"   # 20:00–20:50 北京
+
   workflow_dispatch:
     inputs:
       force:

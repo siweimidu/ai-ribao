@@ -1,25 +1,37 @@
 name: Slot watchdog
 
-# Re-trigger the daily workflow when a scheduled slot produced nothing.
-#
-# Measured over the last 20 scheduled triggers: 10 published, 7 failed. Half the slots produced
-# no digest. `daily.yml` now retries a transient publish failure three times, which removes most
-# of them, but not all -- a run can still die from a provider outage that outlasts the retries,
-# or from an infrastructure hiccup that never reaches the Python code at all.
-#
-# This is the second line. It does not try to be clever: it checks whether today has a digest,
-# and if the last scheduled run failed, it fires the workflow again. The gate inside `daily.yml`
-# makes a redundant trigger harmless -- a slot that already published is a no-op.
-#
-# Cron is deliberately *after* each slot: 05:10, 13:10, 21:10 Beijing. Ten minutes is enough
-# for the run to finish and for its own retries to play out.
+# The third line of defence, and the only one that survives GitHub dropping a trigger.
+
+# **Why the previous version did not work.** It ran three times a day at "10 past" each slot and
+# asked "has today published yet, and was the last scheduled run a failure?". Both halves were
+# wrong for the failure that actually happens:
+
+#   Measured 2026-10-21. daily.yml is crons at UTC 20:00 / 04:00 / 12:00. Over eight scheduled
+#   triggers the observed fire times were 23:10, 17:15, 16:12, 22:50 -- a drift of two to four
+#   hours, and two slots produced no run at all. The watchdog itself, crons at 21:10 / 05:10 /
+#   13:10, actually fired at 23:50, 17:56, 10:00 and 00:17. GitHub does not honour the minute;
+#   under load it delays by hours and the docs say queued jobs may be dropped.
+
+#   So "check ten minutes after the slot" was checking at a time nothing could be relied on.
+#   And "was the last scheduled run a failure?" is false for a slot that never ran at all -- at
+#   23:50 the last run was the 23:10 success, so the watchdog concluded there was nothing to do
+#   while the 12:00 Beijing slot silently never happened. That is exactly what the digest showed:
+#   juya published 14 stories at 01:28 UTC that never reached the issue.
+
+# **What it does now.** It no longer reasons about individual triggers. It runs every two hours,
+# works out which slots *should* have published by now (Beijing 05:00 / 13:00 / 21:00 -- one hour
+# of grace after each), and compares that against what the ledger says was published. A missing
+# slot is re-triggered regardless of what the last run reported, because "no run" and "failed run"
+# are the same problem from the reader’s side.
+
+# Every two hours rather than three times a day because the drift is hours: a single check at the
+# wrong moment proves nothing, and four extra cheap runs a day cost only the seconds it takes to
+# read the ledger.
 
 on:
   schedule:
-    # UTC. 05:10 Beijing = 21:10 UTC the day before; 13:10 = 05:10 UTC; 21:10 = 13:10 UTC.
-    - cron: "10 21 * * *"
-    - cron: "10 5 * * *"
-    - cron: "10 13 * * *"
+    # UTC. Every two hours, off the hour so it does not contend with the collection itself.
+    - cron: "23 */2 * * *"
   workflow_dispatch:
 
 permissions:
@@ -33,51 +45,28 @@ concurrency:
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
         with:
-          # The digest this checks is committed by `daily.yml` on the default branch. A scheduled
-          # trigger already checks out that branch, but naming it removes the ambiguity for a
-          # manual run from a feature branch, where the archive would be missing.
           ref: main
           fetch-depth: 1
 
-      - name: Does today have a digest?
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Which slots are missing?
         id: decide
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set +e
-          today=$(TZ=Asia/Shanghai date +%F)
-          echo "today=$today" >> "$GITHUB_OUTPUT"
-
-          count=$(python scripts/digest_events.py "data/digests/$today.json")
-          echo "events=$count"
-
-          if [ "${count:-0}" -gt 0 ]; then
-            echo "::notice::$today already has $count events -- nothing to do"
-            echo "retry=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          # No digest yet. Only re-trigger when a scheduled run actually failed: a slot that has
-          # not run yet is not a failure, and re-triggering then would race the real schedule.
-          status=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow=daily.yml --limit 5 \
-            --json conclusion,event --jq '[.[] | select(.event == "schedule")][0].conclusion')
-          echo "last_scheduled=$status"
-
-          if [ "$status" = "failure" ] || [ "$status" = "cancelled" ]; then
-            echo "::warning::$today has no digest and the last scheduled run was $status -- re-triggering"
-            echo "retry=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "::notice::$today has no digest yet, last scheduled run was $status -- leaving it alone"
-            echo "retry=false" >> "$GITHUB_OUTPUT"
-          fi
+        run: python scripts/missing_slots.py
 
       - name: Re-trigger the daily workflow
         if: steps.decide.outputs.retry == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh workflow run daily.yml --repo "$GITHUB_REPOSITORY" -f force=true
-          echo "::notice::re-triggered daily.yml for ${{ steps.decide.outputs.today }}"
+          echo "::warning::${{ steps.decide.outputs.reason }}"
+          gh workflow run daily.yml --repo "$GITHUB_REPOSITORY" -f force=false
+          echo "::notice::re-triggered daily.yml"

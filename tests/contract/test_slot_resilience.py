@@ -65,12 +65,35 @@ def test_the_summary_still_finds_its_log() -> None:
     assert 'tee "publish.log"' in script
 
 
-def test_a_watchdog_exists_with_one_trigger_per_slot() -> None:
+def test_the_watchdog_runs_often_enough_to_catch_a_dropped_trigger() -> None:
+    """Every two hours, not three times a day.
+
+    The old version had one trigger per slot, ten minutes after it. Measured 2026-10-21, its
+    crons at 21:10 / 05:10 / 13:10 UTC actually fired at 23:50, 17:56, 10:00 and 00:17 -- a drift
+    of two to four hours. A check scheduled ten minutes after a slot therefore proved nothing
+    about that slot, and at 23:50 it saw the 23:10 success and concluded there was nothing to do
+    while the 12:00 Beijing slot had silently never happened.
+    """
     spec = yaml.safe_load((ROOT / ".github" / "workflows" / "watchdog.yml").read_text(encoding="utf-8"))
     crons = [e["cron"] for e in spec[True]["schedule"]]
-    assert len(crons) == 3, crons
+    assert crons, "the watchdog has no schedule"
+    # A step of at most two hours: `*/N` with N <= 2, or an explicit list covering the day.
+    step_ok = any("*/2" in c or "*/1" in c for c in crons)
+    assert step_ok, crons
     assert spec["jobs"]["check"]["steps"][-1].get("if", "").find("retry") >= 0
 
+
+def test_the_watchdog_judges_slots_not_the_last_run_status() -> None:
+    """The old rule -- re-trigger only if the last scheduled run failed -- was the bug.
+
+    A slot that never fired has no failed run to find, so that rule reported "nothing to do"
+    while an entire collection was missing. The check must work from what the ledger says was
+    published, against which slots are due.
+    """
+    script = (ROOT / "scripts" / "missing_slots.py").read_text(encoding="utf-8")
+    assert "SLOT_DEADLINES" in script
+    assert "published_dates" in script
+    assert "last" not in script.lower() or "last_scheduled" not in script
 
 def test_the_watchdog_counts_events_not_files() -> None:
     """A digest file can exist from a failed run; the event count is what matters."""
