@@ -79,6 +79,7 @@ def write_rss(
     *,
     site_url: str,
     insights: dict[str, EventInsight] | None = None,
+    images: dict[str, str] | None = None,
 ) -> DeliveryResult:
     """An RSS 2.0 feed alongside the JSON Feed, for readers that only speak RSS.
 
@@ -128,6 +129,16 @@ def write_rss(
 
         # One `<category>` per source rather than a comma-joined blob: RSS says a category
         # element is a single category, and consumers filter on them.
+        # `<enclosure>` is how an RSS reader learns there is a picture. `media:content` repeats it
+        # for readers that only understand the Media RSS namespace -- Feedly, Inoreader and most
+        # n8n RSS nodes read one or the other, not both.
+        image_url = (images or {}).get(event.event_id, "")
+        enclosure = (
+            f'<enclosure url="{_xml_escape(image_url)}" type="image/png" length="0"/>'
+            f'<media:content url="{_xml_escape(image_url)}" medium="image" type="image/png"/>'
+            if image_url
+            else ""
+        )
         categories = "".join(
             f"<category>{_xml_escape(s)}</category>" for s in sorted(set(event.source_ids))
         )
@@ -141,6 +152,7 @@ def write_rss(
             f"<description>{_xml_escape(summary)}</description>"
             f'<content:encoded><![CDATA[{body}]]></content:encoded>'
             f"{categories}"
+            f"{enclosure}"
             f'<source url="{_xml_escape(first_url)}">{_xml_escape(_domain(first_url))}</source>'
             "</item>"
         )
@@ -151,7 +163,7 @@ def write_rss(
         '<rss version="2.0" '
         'xmlns:atom="http://www.w3.org/2005/Atom" '
         'xmlns:content="http://purl.org/rss/1.0/modules/content/" '
-        'xmlns:dc="http://purl.org/dc/elements/1.1/">'
+        'xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/">'
         "<channel>"
         "<title>AI 日报</title>"
         f"<link>{_xml_escape(site_url)}</link>"
@@ -284,6 +296,7 @@ async def deliver_all(
     items_by_id: dict[str, object] | None = None,
     tibo: dict | None = None,
     sources: list[dict] | None = None,
+    images: dict[str, str] | None = None,
 ) -> DeliveryReport:
     """Attempt every enabled channel, independently."""
     done = set((already_done or {}).keys())
@@ -295,7 +308,7 @@ async def deliver_all(
     # --- local artefacts first: they always succeed and other channels link to them ---
     if cfg.delivery.rss:
         try:
-            record(write_rss(digest, out_dir, site_url=site_url, insights=insights))
+            record(write_rss(digest, out_dir, site_url=site_url, insights=insights, images=images))
         except Exception as exc:  # noqa: BLE001
             record(DeliveryResult("rss", False, f"{type(exc).__name__}: {exc}"[:200]))
 

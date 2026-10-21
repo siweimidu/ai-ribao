@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GitHub 仓库卡片 · 10 种风格</title>
+<style>
+:root{--bg:#0e1116;--card:#161b22;--line:#21262d;--fg:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--fg);font:15px/1.75 -apple-system,"Segoe UI","PingFang SC",sans-serif;padding:48px 24px 100px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1160px;margin:0 auto}
+h1{font-size:28px;font-weight:700;letter-spacing:-.5px;margin-bottom:8px}
+.sub{color:var(--muted);font-size:14.5px;margin-bottom:16px}
+.fact{background:#0d1117;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:16px 20px;font-size:14px;color:#c9d1d9;margin-bottom:40px;line-height:1.72}
+.fact b{color:var(--accent)}
+.fact code{background:#161b22;padding:1px 6px;border-radius:4px;font-family:ui-monospace,Consolas,monospace;font-size:13px}
+.grid{display:grid;gap:30px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+figcaption{padding:13px 20px;border-bottom:1px solid var(--line);font:600 13px/1 ui-monospace,Consolas,monospace;letter-spacing:.1em;color:var(--muted);background:#0d1117}
+.card img{width:100%;display:block}
+</style></head><body><div class="wrap">
+<h1>GitHub 仓库卡片 · 10 种风格</h1>
+<p class="sub">同一个仓库 vllm-project/vllm，十种排版。全部由代码生成，不是截图。</p>
+<div class="fact"><b>先说可行性：</b>任何公开 GitHub 仓库都能拿到这些数据 —— <code>api.github.com/repos/{owner}/{repo}</code> 给星数、fork、语言、许可证、topics、日期。官方还有一个 <code>opengraph.githubassets.com/1/{owner}/{repo}</code>，直接返回 1200×600 的 Social Preview PNG，免鉴权。下面十种是用前者自己渲染的，不依赖后者。注意 API 匿名配额每小时 60 次，生产要缓存。</div>
+<div class="grid">
+<figure class="card"><figcaption>01 · 终端</figcaption><img src="gh-styles/01_-_终端.png" alt="" loading="lazy"></figure>
+<figure class="card"><figcaption>02 · 杂志排版</figcaption><img src="gh-styles/02_-_杂志排版.png" alt="" loading="lazy"></figure>
+<figure class="card"><figcaption>03 · 渐变微粒</figcaption><img src="gh-styles/03_-_渐变微粒.png" alt="" loading="lazy"></figure>
+<figure class="card"><figcaption>04 · 工程蓝图</figcaption><img src="gh-styles/04_-_工程蓝图.png" alt="" loading="lazy"></figure>
+<figure class="card"><figcaption>05 · 报纸</figcaption><img src="gh-styles/05_-_报纸.png" alt="" loading="lazy"></figure>
+<figure class="card"><figcaption>06 · 粗野主义</figcaption><img src="gh-styles/06_-_粗野主义.png" alt="" loading="lazy"></figure>
+<figure class="card"><figcaption>07 · 数据面板</figcaption><img src="gh-styles/07_-_数据面板.png" alt="" loading="lazy"></figure>
+<figure class="card"><figcaption>08 · 霓虹描边</figcaption><img src="gh-styles/08_-_霓虹描边.png" alt="" loading="lazy"></figure>
+<figure class="card"><figcaption>09 · 瑞士网格</figcaption><img src="gh-styles/09_-_瑞士网格.png" alt="" loading="lazy"></figure>
+<figure class="card"><figcaption>10 · 毛玻璃</figcaption><img src="gh-styles/10_-_毛玻璃.png" alt="" loading="lazy"></figure>
+</div>
+</div></body></html>

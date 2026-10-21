@@ -8,6 +8,8 @@ license = "MIT"
 dependencies = [
     "httpx>=0.27",
     "Pillow>=10.0",
+    # ghcard.py imports this to rasterise a repository card for the RSS enclosure.
+    "playwright>=1.44",
     "feedparser>=6.0.11",
     "pydantic>=2.9",
     "PyYAML>=6.0",

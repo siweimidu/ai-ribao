@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>仓库卡片 · 主题适配</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#e9e9e6;color:#16181c;font:15px/1.7 -apple-system,"Segoe UI","PingFang SC",sans-serif;padding:44px 24px 90px}
+.wrap{max-width:1200px;margin:0 auto}
+h1{font-size:27px;font-weight:680;letter-spacing:-.5px;margin-bottom:8px}
+.sub{color:#5b615e;font-size:14.5px;margin-bottom:16px}
+.fact{background:#fff;border:1px solid #ddd;border-left:3px solid #0065fd;border-radius:10px;padding:16px 20px;font-size:14px;margin-bottom:34px;line-height:1.72}
+.fact b{color:#0065fd}
+.fact code{background:#f1f3f2;padding:1px 6px;border-radius:4px;font-family:ui-monospace,Consolas,monospace;font-size:12.5px}
+section{margin-bottom:30px}
+.cap{font:600 11px/1 ui-monospace,Consolas,monospace;letter-spacing:.16em;text-transform:uppercase;color:#6b7280;margin-bottom:10px;padding-left:2px}
+.shot{border-radius:12px;overflow:hidden;border:1px solid #d5d5d0;box-shadow:0 8px 28px -20px rgba(0,0,0,.4)}
+.shot img{width:100%;display:block}
+</style></head><body><div class="wrap">
+<h1>仓库卡片 · 跟随站点主题</h1>
+<p class="sub">同一个组件，四种主题。没有一份固定配色。</p>
+<div class="fact"><b>做法：</b>卡片只用 <code>var(--...)</code> 令牌，不写死任何颜色。你的 <code>tokens.css</code> 已经在 <code>:root[data-theme]</code> 上定义了四套值，所以卡片自动跟随，没有一行 JavaScript，也不需要重新渲染。<br>另外 Claude 主题是暖纸底 + 陶土强调色，卡片在那里改成<b>左侧色条的编辑体例</b>（衬线标题、方形描边徽章）；默认主题是冷灰平涂，用<b>紧凑统计条</b>。布局差异只有一个 <code>[data-theme]</code> 选择器，组件不复制。</div>
+<section><div class="cap">默认浅色</div><div class="shot"><img src="theme-light.png" alt=""></div></section>
+<section><div class="cap">默认深色</div><div class="shot"><img src="theme-dark.png" alt=""></div></section>
+<section><div class="cap">Claude 浅色</div><div class="shot"><img src="theme-claude-light.png" alt=""></div></section>
+<section><div class="cap">Claude 深色</div><div class="shot"><img src="theme-claude-dark.png" alt=""></div></section>
+</div></body></html>

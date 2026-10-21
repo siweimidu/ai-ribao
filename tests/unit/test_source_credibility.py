@@ -87,8 +87,13 @@ def test_the_links_list_one_entry_per_domain() -> None:
     assert "另有" not in row, "one domain is one source, so there is nothing in reserve"
 
 
-def test_genuinely_different_publishers_are_all_listed() -> None:
-    """The fix must not hide real corroboration."""
+def test_mirrors_are_not_listed_as_sources() -> None:
+    """An aggregator is a copy, not a witness.
+
+    The story was carried by theverge and techcrunch; aihot merely relayed it. Listing aihot in
+    the source row credits it with reporting it did not do, and sends a reader who wants the
+    original to a page that copied it. Only direct publishers are named.
+    """
     event = _event(
         ["rss:aihot-news", "rss:theverge-com-ai", "rss:techcrunch-com-ai"],
         [
@@ -101,7 +106,5 @@ def test_genuinely_different_publishers_are_all_listed() -> None:
     html = render_item(1, event, None, None)
     assert "3 个独立来源" in html
     row = html.split('<div class="item__links">')[-1]
-    # Links are ordered by directness, and the aggregator is last: a reader who clicks the
-    # title must reach the original report, not the aggregator page that copied it.
     assert "theverge.com" in row
-    assert row.index("theverge.com") < row.index("aihot.news")
+    assert "aihot.news" not in row, "the aggregator must not be presented as a source"

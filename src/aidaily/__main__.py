@@ -335,6 +335,20 @@ def cmd_run(args: argparse.Namespace) -> int:
             f"配图：{len(images_by_event)} / {len(digest.top_events)} 条拿到图",
             file=sys.stderr,
         )
+    # GitHub repositories get their own card: the metadata is rich enough to lay out, and the
+    # official Social Preview is a fixed grey template that ignores the site theme.
+    #
+    # One PNG per repository, stored beside the article images and referenced from the feed
+    # `<enclosure>` and the download link. The page itself renders `ghcard.card_html` inline, so
+    # the bitmap is only produced for repositories -- a dozen per issue, not hundreds.
+    github_cards: dict[str, str] = {}
+    if cfg.output.images:
+        try:
+            github_cards = asyncio.run(_render_github_cards(digest, cfg))
+        except Exception:
+            github_cards = {}
+        if github_cards:
+            print(f"仓库卡片：{len(github_cards)} 张", file=sys.stderr)
 
     # 7) render
     brief = render_brief(digest, insights, by_id, max_items=cfg.output.brief.max_items)
@@ -440,6 +454,8 @@ def cmd_run(args: argparse.Namespace) -> int:
             # And the source registry, for the "信息源" page. Passed as plain dicts so the
             # site layer does not depend on the registry's model.
             sources=[s.model_dump() for s in sources],
+            # Repository cards, for the RSS enclosure and the download link.
+            images=github_cards,
         )
     )
     # Recorded only after delivery, so a run that crashed before publishing does not
@@ -782,6 +798,57 @@ async def _fetch_images(
         event.image_urls = urls.get(event.event_id, [])
     return out
 
+
+
+async def _render_github_cards(digest: "Digest", cfg: "AppConfig") -> dict[str, str]:
+    """PNG card URL for every GitHub repository among the published events. Never raises.
+
+    The page uses HTML cards, so this exists only for the two consumers that cannot read HTML: the
+    RSS `<enclosure>` and the download link. Rendering is therefore limited to repositories --
+    a handful per issue rather than every story.
+    """
+    from . import ghcard, github_meta, mediastore
+
+    # Which events are about a repository? The first direct URL decides; an aggregator page that
+    # happens to mention GitHub is not a repository story.
+    targets: dict[str, str] = {}
+    for event in digest.top_events:
+        for url in event.all_urls or []:
+            repo = github_meta.repo_of(url)
+            if repo:
+                targets[event.event_id] = repo
+                break
+    if not targets:
+        return {}
+
+    meta = await github_meta.fetch_many(sorted(set(targets.values())))
+    if not meta:
+        return {}
+
+    pngs: dict[str, bytes] = {}
+    for event_id, repo in targets.items():
+        data = meta.get(repo)
+        if not data:
+            continue
+        png = await ghcard.card_png(
+            "light",
+            full_name=data["full_name"],
+            description=data["description"],
+            stars=data["stars"],
+            forks=data["forks"],
+            contributors=data.get("contributors"),
+            discussions=data.get("discussions"),
+            languages=data.get("languages"),
+            license_=data.get("license", ""),
+        )
+        if png:
+            pngs[event_id] = png
+
+    if not pngs:
+        return {}
+
+    urls = mediastore.store_images({k: [v] for k, v in pngs.items()}, date=digest.date)
+    return {k: v[0] for k, v in urls.items() if v}
 async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str):
     """L3 + analysis in one event loop, with the HTTP client closed on the way out.
 
