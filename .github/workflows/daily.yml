@@ -60,7 +60,7 @@ concurrency:
 
 env:
   PYTHONUNBUFFERED: "1"
-  AIDAILY_RUN__CRITICAL_WAIT_MINUTES: "20"
+  AIDAILY_RUN__CRITICAL_WAIT_MINUTES: "8"
 
 jobs:
   # ---------------------------------------------------------------------------
@@ -169,7 +169,7 @@ jobs:
         run: |
           python -m aidaily collect \
             --concurrency 10 \
-            --wait-critical 20 \
+            --wait-critical 8 \
             --show-failures \
             --out data/raw/items.jsonl | tee collect.log
 

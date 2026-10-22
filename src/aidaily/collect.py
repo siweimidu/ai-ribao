@@ -1,6 +1,7 @@
 """Collection orchestration: run every enabled source, isolate every failure."""
 
 from __future__ import annotations
+import sys
 
 import asyncio
 import json
@@ -326,12 +327,31 @@ def write_source_report_jsonl(path: Path | str, results: list[SourceResult], *, 
 
 
 def read_items_jsonl(path: Path | str) -> list[NormalizedItem]:
+    """Parse a JSONL dump, skipping any line that is not a complete record.
+
+    **One truncated line must not cost the whole run.** Measured on 2026-10-22: a collect job
+    wrote `items.jsonl` and was cut off mid-line, leaving `Invalid JSON: EOF while parsing a
+    string at column 2067`. This function raised, publish failed, the workflow retried three
+    times, and all three failed the same way -- so the day produced no issue at all. The bad
+    line was one item out of several thousand.
+
+    A partially written file is an ordinary outcome of an interrupted job, not a bug to
+    propagate. Skipping the damaged tail loses at most the records that were never fully
+    written.
+    """
     p = Path(path)
     if not p.exists():
         return []
     out: list[NormalizedItem] = []
+    skipped = 0
     for line in p.read_text(encoding="utf-8").splitlines():
         line = line.strip()
-        if line:
+        if not line:
+            continue
+        try:
             out.append(NormalizedItem.model_validate_json(line))
+        except Exception:  # noqa: BLE001
+            skipped += 1
+    if skipped:
+        print(f"items.jsonl: skipped {skipped} unparseable line(s)", file=sys.stderr)
     return out
