@@ -7,6 +7,8 @@ network -- which is how the numbers in docs/ROADMAP.md were produced.
 
 from __future__ import annotations
 
+import re
+
 from collections import Counter
 
 import json
@@ -60,6 +62,38 @@ REPEAT_PENALTY = 0.12
 # The cost is more candidates reaching the model: a few more batched calls, not a redesign.
 MIN_AI_RELEVANCE = 0.50
 
+
+#: A title that names a *container* rather than a story: a bare date, a period label, an issue
+#: number. Measured on 2026-10-22, `2026-10-22日刊` -- hex2077 own table of contents -- entered
+#: the digest. Clicking it leaves the site and lands on someone else issue.
+#:
+#: The rubric had already called it 噪音 and its heat was 0.31, but both of those are demotions,
+#: and nothing applied a structural test. This is that test, and it reads the string rather than
+#: a score so no ranking can override it.
+#:
+#: Deliberately narrow: a headline that merely *contains* a date is a story ("OpenAI ships on
+#: 2026-10-22"); only a title that is *nothing but* the container is rejected.
+_CONTAINER_TITLE = re.compile(
+    r"""^\s*(?:
+        \d{4}[-/年.]\d{1,2}(?:[-/月.]\d{1,2}日?)?
+        |第?\s*\d+\s*[期刊号]
+    )
+    \s*(?:日刊|周报|周刊|月报|月刊|年报|年鉴|日报|晚报|早报|特刊|专刊)?
+    \s*$""",
+    re.I | re.X,
+)
+
+
+def is_container_title(title: str) -> bool:
+    """True when the title names a container (a date, a period, an issue number).
+
+    Returns False for anything with real words in it, so a story that carries a date still
+    publishes.
+    """
+    text = (title or "").strip()
+    if not text or len(text) > 40:
+        return False
+    return bool(_CONTAINER_TITLE.match(text))
 
 def passes_ai_relevance(focus: float | str | None) -> bool:
     """Fail closed: missing scores and scores under the high-relevance floor never publish."""
@@ -323,6 +357,8 @@ def select_for_digest(
     dropped_focus = 0
     missing_focus = 0
     dropped_focus_examples: list[dict[str, object]] = []
+    dropped_container = 0
+    dropped_container_examples: list[dict[str, object]] = []
     for row in ranked:
         focus = row.components.get("focus")
         # Missing relevance is not permission to publish. This used to be `if focus is not
@@ -345,6 +381,27 @@ def select_for_digest(
                     "reason": "missing_or_invalid_focus" if missing or focus_value == 0.0 else "below_floor",
                 })
             continue
+
+        # **An index page is not a story.**
+        #
+        # Measured on 2026-10-22: `2026-10-22日刊` from hex2077 entered the digest. It is the
+        # table of contents for that site own issue -- clicking it leaves this site and lands on
+        # someone else digest. The rubric had already called it 噪音 (multiplier 0.30) and its
+        # heat was 0.31, yet it published, because both of those are *demotions* and nothing
+        # here was a structural test.
+        #
+        # The test is on the title, not the score: a container names a date or a period, never a
+        # subject. That is a fact about the string, and it cannot be talked out of by a
+        # favourable ranking.
+        if is_container_title(row.event.title):
+            dropped_container += 1
+            if len(dropped_container_examples) < 8:
+                dropped_container_examples.append({
+                    "event_id": row.event.event_id,
+                    "title": row.event.title[:100],
+                })
+            continue
+
         kept.append(row)
 
     # No relaxation and no slot-filling exceptions. `select_diverse` must not reinsert rejected
@@ -352,6 +409,8 @@ def select_for_digest(
     report_extra = {
         "relevance_floor": focus_floor,
         "relevance_floor_dropped": dropped_focus,
+        "container_titles_dropped": dropped_container,
+        "container_titles_examples": dropped_container_examples,
         "relevance_missing_dropped": missing_focus,
         "relevance_dropped_examples": dropped_focus_examples,
     }
