@@ -221,6 +221,9 @@ class XTimelineFetcher(BaseFetcher):
     #: Seconds between requests. See the module docstring: 0.6s earned a 429 on every call.
     request_gap_s: float = 20.0
 
+    #: How long to wait before the single retry a 429 earns.
+    retry_pause_s: float = 90.0
+
     async def fetch(self, spec: SourceSpec) -> SourceResult:
         handle = _handle(spec)
         if not handle:
@@ -243,9 +246,19 @@ class XTimelineFetcher(BaseFetcher):
             await asyncio.sleep(self.request_gap_s)
             res = await self.http.get(
                 url,
-                timeout_s=getattr(spec, "timeout_s", None) or 30,
+                timeout_s=getattr(spec, "timeout_s", None) or 45,
                 retries=0,
             )
+            if res.status == 429:
+                # A 429 here is transient, not a spent budget: the same URL answered 200 a few
+                # minutes later on 2026-10-22. One longer-pause retry recovers the request
+                # without hammering -- an immediate second attempt would only prolong the block.
+                await asyncio.sleep(self.retry_pause_s)
+                res = await self.http.get(
+                    url,
+                    timeout_s=getattr(spec, "timeout_s", None) or 45,
+                    retries=0,
+                )
         if res.status == 429:
             return SourceResult(
                 spec.source_id, "blocked", detail="HTTP 429 from syndication endpoint", status=429

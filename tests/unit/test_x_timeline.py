@@ -196,3 +196,19 @@ def test_a_spent_budget_is_skipped_not_blocked() -> None:
 
     source = inspect.getsource(XTimelineFetcher.fetch)
     assert '"skipped"' in source
+
+
+def test_a_single_429_earns_one_slower_retry() -> None:
+    """A 429 here is transient, not a spent budget.
+
+    Measured 2026-10-22: the collect job got 429 on the only enabled account, and the same URL
+    returned 200 with 21 tweets a few minutes later. One retry after a longer pause recovers the
+    request; an immediate second attempt would only prolong the block, which is why the shared
+    client's three-immediate-retries are disabled for this endpoint.
+    """
+    import inspect
+
+    source = inspect.getsource(XTimelineFetcher.fetch)
+    assert "429" in source
+    assert "retry_pause_s" in source
+    assert XTimelineFetcher.retry_pause_s >= 30.0
