@@ -19,6 +19,7 @@ import hashlib
 import json
 from datetime import datetime, timedelta, timezone
 
+from ..digest_split import is_digest_feed, is_digest_title, split_digest
 from ..http import HttpClient
 from ..models import RawItem, SourceSpec
 from .base import BaseFetcher, SourceResult
@@ -101,20 +102,58 @@ class RssFetcher(BaseFetcher):
         import feedparser
 
         feed = feedparser.parse(body)      # bytes: the XML prolog is authoritative
+        params = spec.params or {}
         out: list[RawItem] = []
         for entry in feed.entries:
             link = entry.get("link") or ""
             if not link and not entry.get("title"):
                 continue
             published = _entry_datetime(entry)
+            title = (entry.get("title") or "").strip()
+            body = _entry_content(entry)
+
+            # **A digest issue is not a story; it is a container of stories.**
+            #
+            # `AI 早报 2026-10-22` arrives as one entry whose body lists thirty stories. Kept whole
+            # it is filtered as a roundup and every story inside is lost; the page then shows a
+            # digest link rather than the publisher it came from. Split it and each story becomes
+            # its own candidate carrying the ORIGINAL publisher URL.
+            #
+            # `max_items_per_digest` bounds the fan-out: one weekly issue can carry forty stories,
+            # and letting all of them in at once would drown that day in one source.
+            if is_digest_feed(spec.url) and is_digest_title(title):
+                split = split_digest(body)
+                limit = int(params.get("max_items_per_digest") or 60)
+                for story in split[:limit]:
+                    out.append(
+                        RawItem(
+                            source_id=spec.source_id,
+                            title=story.title,
+                            url=story.url,
+                            published_at=published,
+                            summary=story.summary or "",
+                            content_text=None,
+                            author=None,
+                            language=spec.language,
+                            # The section travels with the story: it is the digest author's own
+                            # judgement and a useful prior when this project has none.
+                            metrics={"digest_section": story.section, "digest_title": title[:120]},
+                            native_id=f"{_entry_id(entry, link)}#{story.url}",
+                        )
+                    )
+                if split:
+                    continue
+                # Unrecognised layout: fall through and keep the item whole rather than
+                # dropping the issue entirely.
+
             out.append(
                 RawItem(
                     source_id=spec.source_id,
-                    title=(entry.get("title") or "").strip(),
+                    title=title,
                     url=link,
                     published_at=published,
                     summary=(entry.get("summary") or "").strip()[:2000],
-                    content_text=_entry_content(entry)[:200_000] or None,
+                    content_text=body[:200_000] or None,
                     author=entry.get("author") or None,
                     language=spec.language,
                     metrics={"tags": [t.get("term") for t in entry.get("tags", []) if t.get("term")][:8]},

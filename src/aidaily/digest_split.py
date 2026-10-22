@@ -102,6 +102,29 @@ def _is_self_link(url: str) -> bool:
     return any(host in url for host in _SELF_HOSTS)
 
 
+#: Feeds that publish one entry per ISSUE rather than per story, recognised by host.
+#:
+#: Configured here rather than in `sources/local.yaml` because two of the three are audited
+#: sources: `build_registry.py` refuses a local row that shadows an audited one ("增补源必须用新的
+#: source_id"), and the audit ledger carries no `params` field to hold the flag. Keying off the
+#: host also means a feed that moves to a new path on the same site keeps working.
+DIGEST_HOSTS = (
+    "daily.juya.uk",
+    "hex2077.dev",
+)
+
+
+def is_digest_feed(url: str) -> bool:
+    host = (url or "").lower()
+    if any(h in host for h in DIGEST_HOSTS):
+        return True
+    # AIHOT publishes both: `/feed/full.xml` is one entry per story and must NOT be split,
+    # while `/feed/daily.xml`, `/weekly.xml`, `/monthly.xml` are issues.
+    if "aihot.news/feed/" in host:
+        return any(k in host for k in ("daily", "weekly", "monthly"))
+    return False
+
+
 def is_digest_title(title: str) -> bool:
     """Whether this entry is an issue of a digest rather than a single story.
 

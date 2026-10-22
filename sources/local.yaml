@@ -19,7 +19,8 @@ sources:
   - KKKKhazix/AIHOT:docs/sources.md#六种信源
   repositories:
   - KKKKhazix/AIHOT
-  license_note: 数据使用受 https://aihot.news/terms 约束，非 MIT；其代码为 MIT。 页面须保留署名与原文/canonical 链接。
+  license_note: 数据使用受 https://aihot.news/terms 约束，非 MIT；其代码为 MIT。 页面须保留署名与原文/canonical
+    链接。
 - source_id: rss:aihot-news-daily
   name: AIHOT 日报
   url: https://aihot.news/feed/daily.xml
@@ -37,6 +38,9 @@ sources:
   - user-list:2026-10-15#用户提供的信息源清单
   why: AIHOT 是人工编辑过的中文精选；这些是它的日/周/月报与分类视图，覆盖「精选」之外的选题分面。与 all.xml 同属一个 dedup_group，因此不会重复计入独立来源数。
   notes: 2026-10-15 核验：实测可用，实测 30 条。
+  params:
+    split_digest: true
+    max_items_per_digest: 40
 - source_id: rss:aihot-news-full
   name: AIHOT 全文
   url: https://aihot.news/feed/full.xml
