@@ -1,0 +1,35 @@
+fix(media): fetch 失败时不该继续 commit —— 那会造出孤立提交
+
+一、本地复现时看到的
+
+用真实 token 跑完整推送，本地网络超时，结果：
+
+  fetch    rc=128  fatal: unable to access ...
+  checkout rc=128  fatal: invalid reference: FETCH_HEAD
+  reset    rc=128  ambiguous argument FETCH_HEAD
+  待提交 1 项（新增 1，删除 0）      <- 竟然还继续了
+  commit   rc=0
+  PUSH     rc=128
+
+fetch 失败了，后面的步骤全部基于一个不存在的 FETCH_HEAD，最后还是 commit 了。
+造出来的是一个和远程毫无关系的孤立提交，推的时候当然 non-fast-forward。
+
+CI 里很可能就是这条路径：fetch 偶发超时 -> checkout 失败 -> 仍然 commit -> push 被拒。
+日志里只有一行 rc=128，看不出是哪一步断的。
+
+二、修法
+
+fetch 失败重试两次，仍然失败就直接返回 False，不再往下走：
+
+  配图上传：fetch 失败 rc=128 fatal: unable to access ...
+
+store_images 收到 False 会返回 {}，于是 event.image_urls 为空 ——
+页面没有图，但也不会有指向不存在文件的 URL。
+
+三、这条链上一共三个 bug，都已修
+
+  1. reset --soft 让工作区显得删了兄弟文件
+  2. checkout 之后 HEAD 没跟上，全部 non-fast-forward
+  3. fetch 失败后继续执行，造出孤立提交   <- 本次
+
+前两个各自只修一半，第三个是本地复现时才发现的。

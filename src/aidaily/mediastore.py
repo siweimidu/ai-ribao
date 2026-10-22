@@ -167,6 +167,27 @@ def _push(root: Path, date: str) -> bool:
         # Fetch on every push: `store_images` runs twice per issue (article pictures, then
         # repository cards) and each call pushes.
         fetched = git("fetch", "-q", "--depth", "1", "origin", MEDIA_BRANCH)
+        if fetched.returncode != 0:
+            # **A failed fetch must not fall through to a commit.**
+            #
+            # Measured while debugging 2026-10-22: when `fetch` failed on a network timeout,
+            # execution continued, `checkout FETCH_HEAD` failed too ("invalid reference"), and the
+            # function still staged the local files and committed them on top of an unrelated
+            # history. The push then failed as non-fast-forward and the images were lost, with
+            # only a one-line rc=128 in the log.
+            #
+            # One retry first, because a transient failure is worth it.
+            for _ in range(2):
+                fetched = git("fetch", "-q", "--depth", "1", "origin", MEDIA_BRANCH)
+                if fetched.returncode == 0:
+                    break
+            if fetched.returncode != 0:
+                print(
+                    f"配图上传：fetch 失败 rc={fetched.returncode} {(fetched.stderr or '')[:120]}",
+                    file=sys.stderr,
+                )
+                return False
+
         if fetched.returncode == 0:
             # **Materialise the remote tree.** `reset --soft` only moved the index; checkout
             # brings the files onto disk so nothing looks deleted.
