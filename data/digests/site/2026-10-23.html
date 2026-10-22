@@ -1,0 +1,1142 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Google以Agent Compute Engine隔离Gemini代理 · AI 日报</title>
+<meta name="description" content="Agent Compute Engine为每个Gemini代理提供硬件隔离的微型虚拟机。">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0065fd">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1530 1530'%3E%3Cstyle%3E:root{color-scheme:light dark}rect{fill:%23FEFEFE}g{fill:%23231A15}@media(prefers-color-scheme:dark){rect{fill:%230B0D10}g{fill:%23F2F4F7}}%3C/style%3E%3Crect width='1530' height='1530' rx='765'/%3E%3Cg transform='translate(765 765) scale(2.65) translate(-765 -765)'%3E%3Cpath fill-rule='evenodd' d='M 494,818 L 626,504 L 711,503 L 800,711 L 803,711 L 1018,546 L 1032,538 L 1027,544 L 745,795 L 740,795 L 726,765 L 610,765 L 586,820 Z M 669,614 L 701,694 L 636,694 Z'/%3E%3Cpath d='M 871,713 L 867,712 L 560,989 L 587,971 L 781,825 L 783,1025 L 871,1024 Z'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="canonical" href="https://siweimidu.github.io/ai-ribao/2026-10-23.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google以Agent Compute Engine隔离Gemini代理">
+<meta property="og:description" content="Agent Compute Engine为每个Gemini代理提供硬件隔离的微型虚拟机。">
+<link rel="image_src" href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/efe9fbd682bf9e0-m001-5f9e7053.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/efe9fbd682bf9e0-m001-5f9e7053.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="AI 日报" href="feed/zh.xml">
+<link rel="alternate" type="application/feed+json" title="AI 日报" href="feed/zh.json">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/components.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Regular.min.css">
+  <!-- Theme read before first paint.
+       `motion.js` is deferred, so it runs after the document parses -- which means the
+       browser has already painted the default light theme and then repaints with the saved
+       one. That repaint is the flash seen on every navigation. This inline block runs while
+       the head is still parsing, so the attribute is set before anything is drawn. It is
+       intentionally duplicated by motion.js (which owns the UI); here it only needs to be
+       fast and to survive JS being disabled afterwards. -->
+  <script>(function(){try{var t=localStorage.getItem('aidaily-theme');if(t&&t!=='auto'&&t!=='default'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+
+<div class="shell">
+      <aside class="rail" aria-label="站点导航">
+        <button class="rail__grip" type="button" data-resize="rail"
+                aria-label="拖动调整左栏宽度" title="拖动调整宽度（双击恢复默认）"></button>
+        <div class="rail__head">
+          <a class="rail__brand" href="index.html">
+            <span class="rail__mark" aria-hidden="true"><svg viewBox="0 0 18 18" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g transform="translate(9 9) scale(0.0314) translate(-765 -765)" fill="currentColor"><path fill-rule="evenodd" d="M 494,818 L 626,504 L 711,503 L 800,711 L 803,711 L 1018,546 L 1032,538 L 1027,544 L 745,795 L 740,795 L 726,765 L 610,765 L 586,820 Z M 669,614 L 701,694 L 636,694 Z"/><path d="M 871,713 L 867,712 L 560,989 L 587,971 L 781,825 L 783,1025 L 871,1024 Z"/></g></svg></span>
+            <span>AI 日报</span>
+          </a>
+          <button class="rail__toggle rail__item" type="button" aria-expanded="false"
+                  aria-controls="rail-body" style="width:auto">
+            <span class="sr">展开导航</span>
+            <span aria-hidden="true">☰</span>
+          </button>
+        </div>
+
+        <div class="rail__body" id="rail-body">
+          <!-- 1. 搜索往期内容 -->
+          <div class="rail__group">
+            <button class="rail__item" type="button" data-open-search>
+              <span>搜索往期内容</span>
+            </button>
+          </div>
+
+          <!-- 2. 首页 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <a class="rail__item" href="index.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5 9 3l6 5.5V15H3z"/><path d="M7.5 15v-4h3v4"/></svg><span>首页</span></a>
+          </div>
+
+          <hr class="rail__sep">
+
+          <!-- 3. 日历 -->
+          <div class="cal" aria-label="按日期浏览">
+            <div class="cal__head">
+              <span class="cal__month">—</span>
+              <span class="cal__nav">
+                <button type="button" data-nav="prev" aria-label="上个月">‹</button>
+                <button type="button" data-nav="next" aria-label="下个月">›</button>
+              </span>
+            </div>
+            <div class="cal__grid" role="grid">
+              <span class="cal__dow">日</span><span class="cal__dow">一</span>
+              <span class="cal__dow">二</span><span class="cal__dow">三</span>
+              <span class="cal__dow">四</span><span class="cal__dow">五</span>
+              <span class="cal__dow">六</span>
+            </div>
+            <div class="cal__legend">
+              <span><i data-k="today"></i>今天</span>
+              <span><i data-k="has"></i>有日报</span>
+            </div>
+          </div>
+
+          <hr class="rail__sep">
+
+          <!-- 4. Tibo 重置监控 -->
+          <div class="rail__group">
+            <a class="rail__item" href="tibo.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6.5"/><path d="M9 5.5V9l2.5 1.5"/></svg><span>Tibo 重置监控</span></a>
+          </div>
+
+          <!-- 微信公众号：暂无账号，先不放入口。留一个不能用的按钮比没有更糟。 -->
+
+          <!-- 6. 订阅 RSS -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <details class="rail__fold">
+              <summary class="rail__item"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M3 4.5A8.5 8.5 0 0 1 11.5 13"/><path d="M3 8A5 5 0 0 1 8 13"/></svg><span>订阅 RSS</span></summary>
+              <div class="rail__sub rail__sub--rss" role="menu">
+                <button type="button" class="rail__btn" data-copy="https://siweimidu.github.io/ai-ribao/feed/zh.xml">
+                  <span class="rail__btn-k">RSS</span>复制订阅地址
+                </button>
+                <button type="button" class="rail__btn" data-copy="https://siweimidu.github.io/ai-ribao/feed/zh.json">
+                  <span class="rail__btn-k">JSON</span>复制订阅地址
+                </button>
+                <p class="rail__fine">
+                  或在浏览器中查看
+                  <a href="feed/zh.xml">RSS</a>
+                  <a href="feed/zh.json">JSON</a>
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <!-- 7. 主题 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <details class="rail__fold">
+              <summary class="rail__item">
+                <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M9 3v12"/><path d="M9 3a6 6 0 0 1 0 12"/></svg><span>主题</span>
+                <span class="rail__hint" data-theme-summary>自动</span>
+              </summary>
+              <div class="rail__sub" role="menu"><button type="button" data-theme-choice="light" aria-checked="false">亮色</button><button type="button" data-theme-choice="dark" aria-checked="false">暗色</button><button type="button" data-theme-choice="claude-light" aria-checked="false">Claude 亮色</button><button type="button" data-theme-choice="claude-dark" aria-checked="false">Claude 暗色</button></div>
+            </details>
+          </div>
+
+          <!-- 8. 下载 markdown（仅在有具体日期的页面上显示）
+               首页的 rail 用的是最新一期，在这里放下载按钮等于让读者先猜自己要看哪一天。
+               先把日期选出来，日期页再给出那一天的 markdown。 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)"><a class="rail__item" href="2026-10-23.md" download><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v8"/><path d="M5.5 8 9 11.5 12.5 8"/><path d="M3.5 13.5h11"/></svg><span>下载 Markdown</span></a></div>
+
+          <hr class="rail__sep">
+
+          <div class="rail__group">
+            <a class="rail__item" href="sources.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M3 4.5A8.5 8.5 0 0 1 11.5 13"/><path d="M3 8A5 5 0 0 1 8 13"/></svg><span>信息源</span></a>
+            <a class="rail__item" href="https://github.com/siweimidu/ai-ribao" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2.5a6.5 6.5 0 0 0-2 12.7c-.1-.5-.1-1.2 0-1.7.2-.8 1.4-5 1.4-5s-.3-.7-.3-1.7c0-1.6.9-2.7 2-2.7.9 0 1.4.7 1.4 1.6 0 1-.6 2.4-.9 3.8-.3 1 .5 1.9 1.6 1.9 1.9 0 3.3-2.5 3.3-5.4 0-2.3-1.6-3.9-4-3.9-2.7 0-4.3 2-4.3 4.1 0 .9.3 1.8.8 2.3.1.1.1.2.1.3l-.3 1.1c0 .2-.2.2-.4.1-1.3-.6-2.1-2.5-2.1-4C5.3 3.4 7.5 2.5 9 2.5z"/></svg><span>源码与说明</span>
+            </a>
+          </div>
+        </div>
+      </aside>
+
+  <main class="content" id="main">
+    <header class="issue__head">
+      <p class="issue__date enter">2026-10-23　第 10 期</p>
+      <h1 class="issue__title enter">Google以Agent Compute Engine隔离Gemini代理</h1>
+      <p class="issue__lead enter">Agent Compute Engine为每个Gemini代理提供硬件隔离的微型虚拟机。</p>
+      <div class="stats enter"><div><b class="count-up" data-to="74">74</b><span>事件</span></div><div><b class="count-up" data-to="34">34</b><span>有内容的源</span></div><div><b class="count-up" data-to="7">7</b><span>多源验证</span></div><div><b class="count-up" data-to="26">26</b><span>头条覆盖来源</span></div></div>
+    </header>
+
+    
+
+          <section class="section overview" id="overview">
+        <h2 class="section__title">概览<span class="section__count">今日要闻</span></h2>
+        <ol class="ov"><li><a href="#e-ed245401c6"><span class="ov__no">01</span><span><b>Google以Agent Compute Engine隔离Gemini代理</b><span class="ov__detail">Agent Compute Engine为每个Gemini代理提供硬件隔离的微型虚拟机。</span></span></a></li><li><a href="#e-efe9fbd682"><span class="ov__no">02</span><span><b>OpenAI拟以1.25万亿美元估值融资300亿美元</b><span class="ov__detail">OpenAI正在筹备一轮300亿美元的新融资。</span></span></a></li><li><a href="#e-e0837f3a15"><span class="ov__no">03</span><span><b>Claude多端将默认启用自动模式</b><span class="ov__detail">Anthropic宣布从下周起，Claude网页、桌面和移动端在Pro、Max和Team套餐中的会话默认运行自动模式。</span></span></a></li><li><a href="#e-ef677a3cdd"><span class="ov__no">04</span><span><b>Microsoft 与 Hugging Face 发布 ThinkingBox-Training 用数据库评分训练 RL 智能体</b><span class="ov__detail">Microsoft 与 Hugging Face 发布 ThinkingBox-Training。</span></span></a></li><li><a href="#e-e2f1060c54"><span class="ov__no">05</span><span><b>OpenAI支持AI强制监管并致信加州州长</b><span class="ov__detail">OpenAI支持AI强制监管</span></span></a></li><li><a href="#e-e5f334bc36"><span class="ov__no">06</span><span><b>xAI 内部实现 Pumpkin Bot</b><span class="ov__detail">xAI 已在内部实现 Pumpkin Bot。</span></span></a></li><li><a href="#e-e97d04be5a"><span class="ov__no">07</span><span><b>OpenAI发布面向小决策的Decisions API</b><span class="ov__detail">OpenAI宣布基于GPT-6 Luna的Decisions API正式可用。</span></span></a></li><li><a href="#e-eb547085e7"><span class="ov__no">08</span><span><b>Anthropic 在 Google Cloud 开放完整 Claude API</b><span class="ov__detail">Anthropic 宣布可通过 Google Cloud 账号使用完整 Claude API。</span></span></a></li></ol>
+        <p class="ov__foot">今日共 74 条事件，
+        其中 7 条经多个独立来源交叉验证。下面是完整列表。</p>
+      </section>
+
+      <section class="section" id="all">
+        <h2 class="section__title">全部消息<span class="section__count">69 条</span></h2>
+        <ol class="stream">
+        <li class="item" id="e-ed245401c6">
+          <div class="item__head"><span class="item__no">01</span><h3 class="item__title"><a href="https://the-decoder.com/googles-agent-compute-engine-gives-every-gemini-agent-its-own-hardware-isolated-micro-virtual-machine/" target="_blank" rel="noopener noreferrer">Google以Agent Compute Engine隔离Gemini代理</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 01:50</span>
+            <a href="https://the-decoder.com/googles-agent-compute-engine-gives-every-gemini-agent-its-own-hardware-isolated-micro-virtual-machine/" target="_blank" rel="noopener noreferrer">the-decoder.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Agent Compute Engine为每个Gemini代理提供硬件隔离的微型虚拟机。</li><li data-kind="fact">Google推出了专为人工智能代理设计的运行环境。</li><li data-kind="fact">Google扩展了治理能力，使企业能够在云、混合和本地环境中管理代理。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">每个Gemini代理拥有独立的硬件隔离环境，可能有助于降低代理之间的相互影响。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明硬件隔离微型虚拟机的具体技术实现。</li><li data-kind="uncertain">材料没有说明治理能力包含哪些具体功能。</li><li data-kind="uncertain">材料没有说明Agent Compute Engine是否支持Gemini代理以外的代理。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-efe9fbd682">
+          <div class="item__head"><span class="item__no">02</span><h3 class="item__title"><a href="https://techcrunch.com/2026/10/22/openai-working-on-new-30b-raise-at-1-25t-valuation-ahead-of-ipo/" target="_blank" rel="noopener noreferrer">OpenAI拟以1.25万亿美元估值融资300亿美元</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/efe9fbd682bf9e0-m001-5f9e7053.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/efe9fbd682bf9e0-m001-5f9e7053.webp" alt="" loading="lazy" decoding="async"></button></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 06:08</span>
+            <a href="https://techcrunch.com/2026/10/22/openai-working-on-new-30b-raise-at-1-25t-valuation-ahead-of-ipo/" target="_blank" rel="noopener noreferrer">techcrunch.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OpenAI正在筹备一轮300亿美元的新融资。</li><li data-kind="fact">这轮融资的估值为1.25万亿美元。</li><li data-kind="fact">这轮融资计划在首次公开募股前进行。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">若融资达到超过1万亿美元的估值，OpenAI可能成为有史以来估值最高的私人公司。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">融资是否最终完成尚未明确。</li><li data-kind="uncertain">OpenAI是否会以1.25万亿美元估值完成融资尚未明确。</li><li data-kind="uncertain">首次公开募股的具体时间尚未明确。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e0837f3a15">
+          <div class="item__head"><span class="item__no">03</span><h3 class="item__title"><a href="https://aihot.news/items/a0e6wk9v2dt62mogoqlbzc9dh" target="_blank" rel="noopener noreferrer">Claude多端将默认启用自动模式</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 04:04</span>
+            <a href="https://aihot.news/items/a0e6wk9v2dt62mogoqlbzc9dh" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Anthropic宣布从下周起，Claude网页、桌面和移动端在Pro、Max和Team套餐中的会话默认运行自动模式。</li><li data-kind="fact">自动模式不再逐步请求用户批准，而是由自动检查拦截高风险操作。</li><li data-kind="fact">用户可以随时切回手动模式。</li><li data-kind="fact">Claude Code更新提到，自动模式使用独立分类器审查命令，测试中拦截了89%的危险命令，手动批准比例为14%。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Pro、Max和Team套餐用户在相关终端中的默认操作确认流程将从逐步批准转为自动检查高风险操作。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">自动模式具体从下周哪一天开始启用尚未说明。</li><li data-kind="uncertain">89%和14%的测试统计口径及测试范围尚未说明。</li><li data-kind="uncertain">自动检查覆盖的高风险操作类型尚未说明。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ef677a3cdd">
+          <div class="item__head"><span class="item__no">04</span><h3 class="item__title"><a href="https://aihot.news/items/c1wb4w4ehhq5ig4m4hwv3kbbp" target="_blank" rel="noopener noreferrer">Microsoft 与 Hugging Face 发布 ThinkingBox-Training 用数据库评分训练 RL 智能体</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 06:24</span>
+            <a href="https://aihot.news/items/c1wb4w4ehhq5ig4m4hwv3kbbp" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Microsoft 与 Hugging Face 发布 ThinkingBox-Training。</li><li data-kind="fact">ThinkingBox-Training 将智能体任务终态数据库的可执行检查用作 RL 奖励。</li><li data-kind="fact">代码已在 GitHub 开源。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">ThinkingBox-Training 将数据库评分转化为 RL 奖励。</li><li data-kind="inference">该方法可公开使用。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">智能体任务终态数据库的具体内容不明。</li><li data-kind="uncertain">可执行检查如何转化为奖励的细节不详。</li><li data-kind="uncertain">该方法的训练效果如何未知。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e2f1060c54">
+          <div class="item__head"><span class="item__no">05</span><h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTFBpTzF0VzVRRlhMVjBIbHZDcUx6LTc5anJ1UzBEVFhxZDdMOGJHR3VQM1dJUEo3aWNBc3c5Sm05ZU9ZV3cyZjRUaA?oc=5" target="_blank" rel="noopener noreferrer">OpenAI支持AI强制监管并致信加州州长</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 05:54</span>
+            <a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTFBpTzF0VzVRRlhMVjBIbHZDcUx6LTc5anJ1UzBEVFhxZDdMOGJHR3VQM1dJUEo3aWNBc3c5Sm05ZU9ZV3cyZjRUaA?oc=5" target="_blank" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OpenAI支持AI强制监管</li><li data-kind="fact">OpenAI致信加州州长</li><li data-kind="fact">OpenAI建议强化AI透明度法案</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">OpenAI认为强化AI透明度法案有助于实现AI强制监管</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">OpenAI致信的具体内容和建议细节未披露</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e5f334bc36">
+          <div class="item__head"><span class="item__no">06</span><h3 class="item__title"><a href="https://aihot.news/items/yfdklmmufd6cltyzgrxgovf0i" target="_blank" rel="noopener noreferrer">xAI 内部实现 Pumpkin Bot</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 03:45</span>
+            <a href="https://aihot.news/items/yfdklmmufd6cltyzgrxgovf0i" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">xAI 已在内部实现 Pumpkin Bot。</li><li data-kind="fact">相关消息提示用户重启应用。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">重启应用可能是使用 Pumpkin Bot 的必要步骤。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明 Pumpkin Bot 的具体功能。</li><li data-kind="uncertain">材料未说明 Pumpkin Bot 是否已向公众开放。</li><li data-kind="uncertain">材料未说明 Pumpkin Bot 的发布时间。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e97d04be5a">
+          <div class="item__head"><span class="item__no">07</span><h3 class="item__title"><a href="https://openai.com/index/decisions-api" target="_blank" rel="noopener noreferrer">OpenAI发布面向小决策的Decisions API</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>3 个独立来源</span>
+            <span>10-23 03:00</span>
+            <a href="https://openai.com/index/decisions-api" target="_blank" rel="noopener noreferrer">openai.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OpenAI宣布基于GPT-6 Luna的Decisions API正式可用。</li><li data-kind="fact">Decisions API用于分类、路由、评分等有界答案问题。</li><li data-kind="fact">通过Decisions API使用GPT-6 Luna的速度最高比通过Responses API使用GPT-6 Luna快10倍。</li><li data-kind="fact">OpenAI Codex演示了Decisions API。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Decisions API主要面向需要低延迟和低成本的有限选项决策任务。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明Decisions API的具体定价。</li><li data-kind="uncertain">材料未说明速度提升的测试条件。</li><li data-kind="uncertain">材料未说明Decisions API的具体可用范围。</li><li data-kind="uncertain">材料未说明OpenAI Codex演示的具体内容。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-eb547085e7">
+          <div class="item__head"><span class="item__no">08</span><h3 class="item__title"><a href="https://aihot.news/items/fu0zzp1ubxilmzo3n5lz12w7s" target="_blank" rel="noopener noreferrer">Anthropic 在 Google Cloud 开放完整 Claude API</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 05:27</span>
+            <a href="https://aihot.news/items/fu0zzp1ubxilmzo3n5lz12w7s" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Anthropic 宣布可通过 Google Cloud 账号使用完整 Claude API。</li><li data-kind="fact">完整 Claude API 包括 Claude Managed Agents、代码执行和 Opus 5.5 fast mode，并支持后续新功能。</li><li data-kind="fact">Claude Models on Google Cloud (Anthropic managed) 已正式可用。</li><li data-kind="fact">Anthropic 托管版支持 Google Cloud IAM 凭证、计费和承诺消费抵扣。</li><li data-kind="fact">Google Cloud 提供 Google 托管版和 Anthropic 托管版两种使用 Claude 模型的方式。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">可推断，Anthropic 托管版面向需要完整 Claude Platform 功能的使用场景。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明完整 Claude API 的具体价格。</li><li data-kind="uncertain">材料未说明不同地区的具体可用范围。</li><li data-kind="uncertain">材料未说明后续新功能的发布时间。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e51776f323">
+          <div class="item__head"><span class="item__no">09</span><h3 class="item__title"><a href="https://aws.amazon.com/blogs/machine-learning/announcing-new-ways-to-customize-models-with-sagemaker-ai-without-managing-gpus/" target="_blank" rel="noopener noreferrer">Amazon SageMaker AI推出训练会话接口</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/e51776f32355f75-m001-f5918eca.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/e51776f32355f75-m001-f5918eca.webp" alt="" loading="lazy" decoding="async"></button></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 02:00</span>
+            <a href="https://aws.amazon.com/blogs/machine-learning/announcing-new-ways-to-customize-models-with-sagemaker-ai-without-managing-gpus/" target="_blank" rel="noopener noreferrer">aws.amazon.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Amazon SageMaker AI训练会话接口允许用户在 Python 脚本中编写大语言模型训练循环。</li><li data-kind="fact">Amazon SageMaker AI负责 GPU 分配、分布式执行、故障恢复和检查点存储。</li><li data-kind="fact">训练会话支持监督微调、强化学习和自定义目标。</li><li data-kind="fact">相关内容介绍了编程模型和三种软件开发工具包客户端，并演示了基于 GSM8K 的 GRPO 循环及竞争性编程强化学习工作负载。</li><li data-kind="fact">Amazon SageMaker AI的无服务器模型定制现已包含训练会话，并已正式可用。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">用户可以在不管理 GPU 的情况下自行控制模型训练或后训练循环。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明训练会话支持的具体模型范围。</li><li data-kind="uncertain">材料未说明训练会话的费用和可用区域。</li><li data-kind="uncertain">材料未说明三种软件开发工具包客户端的具体名称和功能差异。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e430a0f101">
+          <div class="item__head"><span class="item__no">10</span><h3 class="item__title"><a href="https://aihot.news/items/aa6s745ratqhavzx26l44c32i" target="_blank" rel="noopener noreferrer">Amazon 开源 TorchNeuron 支持 AWS Trainium</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 03:36</span>
+            <a href="https://aihot.news/items/aa6s745ratqhavzx26l44c32i" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Amazon 本周开源 TorchNeuron。</li><li data-kind="fact">TorchNeuron 可将 PyTorch 代码转换为 AWS Trainium 上可执行的操作。</li><li data-kind="fact">已有 PyTorch 代码几乎无需改动即可运行。</li><li data-kind="fact">自适应即时模式可将操作分组编译并进行多级缓存。</li><li data-kind="fact">在跨加速器的大语言模型测试中，该模式将首次训练步时间缩短约三分之一。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这表明 TorchNeuron 可能降低已有 PyTorch 代码迁移到 AWS Trainium 的改造成本。</li><li data-kind="inference">自适应即时模式可能有助于减少首次训练步骤的耗时。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明 TorchNeuron 的开源许可证。</li><li data-kind="uncertain">材料未说明 TorchNeuron 支持的具体 AWS Trainium 型号。</li><li data-kind="uncertain">材料未说明首次训练步时间缩短约三分之一对应的具体测试条件。</li><li data-kind="uncertain">材料未说明 TorchNeuron 对全部 PyTorch 代码的兼容范围。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ebddd0e2ac">
+          <div class="item__head"><span class="item__no">12</span><h3 class="item__title"><a href="https://aihot.news/items/btejiqir3mhmknjnzus99m2gu" target="_blank" rel="noopener noreferrer">Perplexity Agent API上线Batch API</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 04:35</span>
+            <a href="https://aihot.news/items/btejiqir3mhmknjnzus99m2gu" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Batch API已在Perplexity Agent API上线。</li><li data-kind="fact">每个文件最多支持5万个请求。</li><li data-kind="fact">每个请求都会运行完整的智能体循环。</li><li data-kind="fact">批处理模式完整支持web_search和fetch_url。</li><li data-kind="fact">Batch API可用于大规模运行数据丰富化工作负载。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这项能力可用于批量处理包含大量公司的电子表格。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明Batch API的计费方式。</li><li data-kind="uncertain">材料未说明请求的处理时长和并发限制。</li><li data-kind="uncertain">材料未说明支持的文件格式。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e9e27fbd91">
+          <div class="item__head"><span class="item__no">13</span><h3 class="item__title"><a href="https://aws.amazon.com/blogs/machine-learning/amazon-polly-delivers-a-major-upgrade-to-its-generative-engine/" target="_blank" rel="noopener noreferrer">Amazon Polly生成式引擎升级并新增14种声音</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/e9e27fbd91332e2-m001-c26f9b0a.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/e9e27fbd91332e2-m001-c26f9b0a.webp" alt="" loading="lazy" decoding="async"></button></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 02:06</span>
+            <a href="https://aws.amazon.com/blogs/machine-learning/amazon-polly-delivers-a-major-upgrade-to-its-generative-engine/" target="_blank" rel="noopener noreferrer">aws.amazon.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Amazon Polly的生成式引擎新增14种声音，覆盖9个地区。</li><li data-kind="fact">生成式引擎支持印地语和芬兰语正式可用。</li><li data-kind="fact">升级提供更具表现力、更准确且低延迟的语音。</li><li data-kind="fact">升级无需修改代码，并已在生产环境正式可用。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">由于升级无需修改代码，现有接入可能可以直接使用新能力。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明新增声音分别对应哪些语言和地区。</li><li data-kind="uncertain">材料未说明低延迟、准确度和表现力的具体指标。</li><li data-kind="uncertain">材料未说明此次升级的具体发布日期。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e3518f2de7">
+          <div class="item__head"><span class="item__no">14</span><h3 class="item__title"><a href="https://www.theinformation.com/articles/salesforce-customers-brace-new-fees-use-claude-apps" target="_blank" rel="noopener noreferrer">Salesforce拟向外部人工智能代理收费</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 02:04</span>
+            <a href="https://www.theinformation.com/articles/salesforce-customers-brace-new-fees-use-claude-apps" target="_blank" rel="noopener noreferrer">theinformation.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Salesforce正推动软件行业向使用Claude及其他外部人工智能工具的企业收取费用。</li><li data-kind="fact">Salesforce计划最早下月要求企业登记外部人工智能代理。</li><li data-kind="fact">登记外部人工智能代理是Salesforce按代理更新或分析其存储数据次数收费的前置步骤。</li><li data-kind="fact">相关费用可让Salesforce从使用外部人工智能而非内置人工智能产品的客户处获得收入。</li><li data-kind="fact">人工智能代理可能比人类更高效地使用软件公司的应用。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Salesforce可能会把外部人工智能代理接入其应用的行为纳入收费范围。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明具体收费金额。</li><li data-kind="uncertain">材料未说明收费的具体计算方式。</li><li data-kind="uncertain">材料未说明登记要求的确切生效时间。</li><li data-kind="uncertain">材料未说明哪些外部人工智能代理需要登记。</li><li data-kind="uncertain">材料未说明收费是否会覆盖所有使用外部人工智能代理的客户。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e6d89e769d">
+          <div class="item__head"><span class="item__no">15</span><h3 class="item__title"><a href="https://aihot.news/items/bb4wiphkc5v8pp00tnxjeliuo" target="_blank" rel="noopener noreferrer">Cognition 开源网络威胁防护插件</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 03:46</span>
+            <a href="https://aihot.news/items/bb4wiphkc5v8pp00tnxjeliuo" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Cognition 开源了一个用于帮助系统防御近期网络安全威胁的智能体插件。</li><li data-kind="fact">该插件可安装到任意智能体中使用，也可在 Devin 中直接使用。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该插件的使用场景不局限于 Devin。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明插件名称、代码仓库和许可证。</li><li data-kind="uncertain">材料未说明近期网络安全威胁的具体类型。</li><li data-kind="uncertain">材料未说明支持哪些智能体及插件的具体安装方式。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e6244338a3">
+          <div class="item__head"><span class="item__no">16</span><h3 class="item__title"><a href="https://aihot.news/items/v3ivem5lx28fje6g3tzmg2y3h" target="_blank" rel="noopener noreferrer">NVIDIA推出OpenShell智能体安全架构</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 04:22</span>
+            <a href="https://aihot.news/items/v3ivem5lx28fje6g3tzmg2y3h" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">NVIDIA推出OpenShell参考架构。</li><li data-kind="fact">OpenShell帮助企业为人工智能智能体划定边界，并在智能体越界时将其停止。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">OpenShell可能侧重于对人工智能智能体行为进行边界控制。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明OpenShell参考架构的具体技术实现。</li><li data-kind="uncertain">材料未说明OpenShell的发布时间和适用范围。</li><li data-kind="uncertain">材料未说明智能体越界的具体判定标准。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ef24ab9433">
+          <div class="item__head"><span class="item__no">17</span><h3 class="item__title"><a href="https://aihot.news/items/u7tpqfjh9sthd98g48yheypuk" target="_blank" rel="noopener noreferrer">Codex计算机使用实用提示词</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 04:06</span>
+            <a href="https://aihot.news/items/u7tpqfjh9sthd98g48yheypuk" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">材料称，具备计算机使用能力的 Codex 适用一个实用提示词。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未提供该提示词的具体内容。</li><li data-kind="uncertain">材料未说明该提示词的具体用途。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ed4280c2a7">
+          <div class="item__head item__head--card"><span class="item__no">18</span><div class="item__cardwrap"><a class="ghm" href="https://github.com/anthropics/knowledge-work-plugins" target="_blank" rel="noopener noreferrer"><div class="ghm__kicker">Open source · Apache-2.0</div><div class="ghm__title">knowledge-work-plugins<span class="ghm__owner"> / anthropics</span></div><p class="ghm__desc">Open source repository of plugins primarily intended for knowledge workers to use in Claude Cowork</p><div class="ghm__rule"></div><div class="ghm__stats"><div class="ghm__stat"><b>31.6k</b><i>Stars</i></div><div class="ghm__stat"><b>3.5k</b><i>Forks</i></div><div class="ghm__stat"><b>32</b><i>Contributors</i></div></div><div class="ghm__langs"><div class="ghm__bar"><span style="width:74.14%;background:#3572A5"></span><span style="width:25.86%;background:#e34c26"></span></div><div class="ghm__legend"><span><em style="background:#3572A5"></em>Python 74%</span><span><em style="background:#e34c26"></em>HTML 26%</span></div></div></a></div></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span class="when-unknown">时间未知</span>
+            <a href="https://github.com/anthropics/knowledge-work-plugins" target="_blank" rel="noopener noreferrer">github.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">anthropics/knowledge-work-plugins 是一个开源仓库。</li><li data-kind="fact">仓库中的插件主要供知识工作者在 Claude Cowork 中使用。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该仓库面向知识工作者提供可在 Claude Cowork 中使用的插件。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">未说明仓库包含哪些具体插件。</li><li data-kind="uncertain">无法确认这些插件的具体功能。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ee20e9e0a5">
+          <div class="item__head"><span class="item__no">19</span><h3 class="item__title"><a href="https://www.marktechpost.com/2026/10/22/cohere-rerank-5-context-focus/" target="_blank" rel="noopener noreferrer">Cohere发布Rerank 5，聚焦段落上下文</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 00:31</span>
+            <a href="https://www.marktechpost.com/2026/10/22/cohere-rerank-5-context-focus/" target="_blank" rel="noopener noreferrer">marktechpost.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Cohere Rerank 5提供Pro和Fast两个档位，支持32K上下文窗口、Context Focus段落提取和校准后的相关性分数。</li><li data-kind="fact">Pro版本在BRIGHT上得分82.2，价格为每百万令牌0.05美元。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">据此可推断，Cohere Rerank 5将段落信息提取与相关性评分结合在同一产品中。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明Fast版本的评分和价格。</li><li data-kind="uncertain">材料未说明校准后的相关性分数具体采用何种校准方式。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e4c341aea3">
+          <div class="item__head"><span class="item__no">20</span><h3 class="item__title"><a href="https://www.marktechpost.com/2026/10/22/gradium-phonon-31m-on-device-tts/" target="_blank" rel="noopener noreferrer">Gradium开源Phonon端侧语音模型</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 00:56</span>
+            <a href="https://www.marktechpost.com/2026/10/22/gradium-phonon-31m-on-device-tts/" target="_blank" rel="noopener noreferrer">marktechpost.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Gradium开源了Phonon端侧文本转语音模型家族。</li><li data-kind="fact">英文版Phonon 31m采用Apache 2.0许可证，大小为64.5 MB。</li><li data-kind="fact">Phonon 31m在笔记本电脑处理器上约7毫秒后开始发声。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">据此可推断，Phonon面向本地部署并强调较低的启动延迟。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明Phonon其他模型的参数规模和许可证。</li><li data-kind="uncertain">材料未说明约7毫秒的测试环境和测量口径。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ebcee3c748">
+          <div class="item__head"><span class="item__no">21</span><h3 class="item__title"><a href="https://techcrunch.com/2026/10/22/openai-makes-its-jev-competitor-widely-available-as-decision-model-competition-heats-up/" target="_blank" rel="noopener noreferrer">OpenAI广泛推出Jev竞品，决策模型竞争升温</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/ebcee3c7484ac31-m001-f8c3e3e7.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/ebcee3c7484ac31-m001-f8c3e3e7.webp" alt="" loading="lazy" decoding="async"></button></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 03:00</span>
+            <a href="https://techcrunch.com/2026/10/22/openai-makes-its-jev-competitor-widely-available-as-decision-model-competition-heats-up/" target="_blank" rel="noopener noreferrer">techcrunch.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OpenAI正在向全球推出其决策模型。</li><li data-kind="fact">材料称决策模型竞争正在升温。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">OpenAI将其决策模型定位为Jev的竞品。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明该决策模型的名称。</li><li data-kind="uncertain">材料没有说明该决策模型面向哪些地区或用户开放。</li><li data-kind="uncertain">材料没有说明该决策模型是否能够与Jev竞争。</li><li data-kind="uncertain">材料没有说明Jev的具体信息。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ecd0abb508">
+          <div class="item__head"><span class="item__no">22</span><h3 class="item__title"><a href="https://huggingface.co/blog/allenai/olmoearth-v1-3" target="_blank" rel="noopener noreferrer">OlmoEarth v1.3提供全球最先进嵌入</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/ecd0abb508d40c4-m001-fcf06e35.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/ecd0abb508d40c4-m001-fcf06e35.webp" alt="" loading="lazy" decoding="async"></button></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 00:11</span>
+            <a href="https://huggingface.co/blog/allenai/olmoearth-v1-3" target="_blank" rel="noopener noreferrer">huggingface.co</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OlmoEarth v1.3面向整个地球提供嵌入表示。</li><li data-kind="fact">标题将其嵌入表示称为当前最先进。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明嵌入表示使用的数据和方法。</li><li data-kind="uncertain">材料未说明最先进这一说法依据的评测标准。</li><li data-kind="uncertain">材料未说明OlmoEarth v1.3的发布方式和使用条件。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ed02fa1def">
+          <div class="item__head"><span class="item__no">23</span><h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE9SSkFSX3NrdTZaOFNEdkVPSjhuRnJENHF4WkNVLWt1N01ReWZGNEIzVXc2WkEteFFVQVdCNFpfT0xQVi1xYjBqOXh5ZHZhb3h2YWdGYkQzUVgyNU5wcWdZZA?oc=5" target="_blank" rel="noopener noreferrer">科大讯飞发布新一代国产大模型</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 05:43</span>
+            <a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE9SSkFSX3NrdTZaOFNEdkVPSjhuRnJENHF4WkNVLWt1N01ReWZGNEIzVXc2WkEteFFVQVdCNFpfT0xQVi1xYjBqOXh5ZHZhb3h2YWdGYkQzUVgyNU5wcWdZZA?oc=5" target="_blank" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">科大讯飞发布新一代国产大模型。</li><li data-kind="fact">刘庆峰发表了最新言论。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">新一代国产大模型的具体名称未说明。</li><li data-kind="uncertain">模型的发布时间未说明。</li><li data-kind="uncertain">刘庆峰发言的具体内容未说明。</li><li data-kind="uncertain">模型的技术 características和应用范围未说明。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e7d29745dc">
+          <div class="item__head"><span class="item__no">24</span><h3 class="item__title"><a href="https://aihot.news/items/h1d0qu9nsy86fmfqns5f3pkjb" target="_blank" rel="noopener noreferrer">Replit 发布 Monitoring Agent 值班智能体</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 04:24</span>
+            <a href="https://aihot.news/items/h1d0qu9nsy86fmfqns5f3pkjb" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Replit 发布了 Monitoring Agent。</li><li data-kind="fact">Monitoring Agent 可以读取生产日志和指标，调查错误、变慢和部署失败。</li><li data-kind="fact">启用 autofix 后，Monitoring Agent 可以验证修复并通过邮件汇报。</li><li data-kind="fact">启用 auto-publish 后，Monitoring Agent 可以自动部署修复。</li><li data-kind="fact">Monitoring Agent 建立在 App Monitoring 之上。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Monitoring Agent 可以参与从问题调查到修复部署的流程。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明 autofix 和 auto-publish 的默认状态。</li><li data-kind="uncertain">材料未说明自动修复和自动部署的适用范围。</li><li data-kind="uncertain">材料未说明 Monitoring Agent 的收费方式和开放范围。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e4ad6fcad0">
+          <div class="item__head"><span class="item__no">25</span><h3 class="item__title"><a href="https://aihot.news/items/ssj56jg29d5yh3ijwgxbk9nia" target="_blank" rel="noopener noreferrer">1Password 联合多家推出 Agents 平台</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 03:50</span>
+            <a href="https://aihot.news/items/ssj56jg29d5yh3ijwgxbk9nia" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">1Password 宣布推出 Agents 平台。</li><li data-kind="fact">合作方包括 Meta、Anthropic、OpenAI 和 SpaceXSI 等机构。</li><li data-kind="fact">候补名单已开放选择加入。</li><li data-kind="fact">1Password 表示，Agents 平台将连接一个或多个个人智能体，使其无需看到密码即可工作。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">据此可推断，Agents 平台旨在让个人智能体在不直接获取密码的情况下执行工作。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明 Agents 平台的具体功能和上线时间。</li><li data-kind="uncertain">材料未说明 Meta、Anthropic、OpenAI 和 SpaceXSI 在合作中的具体分工。</li><li data-kind="uncertain">材料未说明候补名单开放后的正式发布安排。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e6eab09249">
+          <div class="item__head"><span class="item__no">26</span><h3 class="item__title"><a href="https://aihot.news/items/hr9sktgreeon0wpwin4v3o2ue" target="_blank" rel="noopener noreferrer">Grok Bot 接入 1Password，可代用户登录网站</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 03:38</span>
+            <a href="https://aihot.news/items/hr9sktgreeon0wpwin4v3o2ue" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Grok Bot现在可以使用用户的1Password账户。</li><li data-kind="fact">用户批准要共享的登录信息后，Grok Bot可以代用户登录网站。</li><li data-kind="fact">这项集成将在未来几天内逐步向用户推出。</li><li data-kind="fact">参与开发的作者表示，用户不再需要自己操控Grok Bot的电脑来登录网站。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这项集成可能减少用户手动完成网站登录的步骤。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明这项集成何时完成面向所有用户的推出。</li><li data-kind="uncertain">材料未说明支持哪些具体网站或登录类型。</li><li data-kind="uncertain">材料未说明共享登录信息的具体保护方式。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e843589f22">
+          <div class="item__head"><span class="item__no">27</span><h3 class="item__title"><a href="https://aihot.news/items/z3r218n71nxssf75wpv4qim1q" target="_blank" rel="noopener noreferrer">Suno 另类用法演示</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 05:10</span>
+            <a href="https://aihot.news/items/z3r218n71nxssf75wpv4qim1q" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">材料称，用户一直在使用 Suno。</li><li data-kind="fact">材料询问用户是否以这种方式使用过 Suno。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这表明内容意在展示 Suno 的一种不同用法。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明 Suno 的具体另类用法。</li><li data-kind="uncertain">材料没有说明演示的具体内容。</li><li data-kind="uncertain">材料没有说明提问中的这种方式具体指什么。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e29bc651f1">
+          <div class="item__head"><span class="item__no">28</span><h3 class="item__title"><a href="https://www.theverge.com/news/1017012/discord-markdown-previews-organize-servers-channels" target="_blank" rel="noopener noreferrer">Discord 改进 Markdown 预览显示</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/e29bc651f1bb6fe-m001-c8a2cf37.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/e29bc651f1bb6fe-m001-c8a2cf37.webp" alt="" loading="lazy" decoding="async"></button></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 02:58</span>
+            <a href="https://www.theverge.com/news/1017012/discord-markdown-previews-organize-servers-channels" target="_blank" rel="noopener noreferrer">theverge.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Discord 于当天发布的更新改进了 Markdown 预览功能。</li><li data-kind="fact">公司称 Markdown 预览现在应能正确渲染，不再显示大量符号。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这项改进可能有助于用户分享人工智能项目的信息。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明此次更新适用的具体平台。</li><li data-kind="uncertain">材料没有说明 Markdown 预览支持的具体文件类型。</li><li data-kind="uncertain">材料没有说明更新是否已经对所有用户生效。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e072004868">
+          <div class="item__head"><span class="item__no">29</span><h3 class="item__title"><a href="https://techcrunch.com/2026/10/22/1password-launches-a-way-for-ai-agents-to-log-in-on-your-behalf-without-seeing-your-password/" target="_blank" rel="noopener noreferrer">1Password推出代理代登录功能</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/e072004868694b8-m001-0c210564.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/e072004868694b8-m001-0c210564.webp" alt="" loading="lazy" decoding="async"></button></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 03:07</span>
+            <a href="https://techcrunch.com/2026/10/22/1password-launches-a-way-for-ai-agents-to-log-in-on-your-behalf-without-seeing-your-password/" target="_blank" rel="noopener noreferrer">techcrunch.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">新功能允许代理登录客户的个人账户。</li><li data-kind="fact">新功能保护用于保障这些账户安全的私密凭据。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">代理可在不直接查看密码的情况下完成账户登录。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明该功能的具体实现方式。</li><li data-kind="uncertain">材料未说明支持哪些代理或账户。</li><li data-kind="uncertain">材料未说明该功能的上线范围和使用条件。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e226ade572">
+          <div class="item__head"><span class="item__no">30</span><h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE80MVFBSGpUZ21IWWhwQ0xjYUJLX184VDNhQTBMajYtTDZCOEhsTllFZmVSYU9LYTYzeXhONVpoa2txNXcxWC1fag?oc=5" target="_blank" rel="noopener noreferrer">Grok加速商业化，SpaceX联合英伟达打造人工智能网络</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 05:31</span>
+            <a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE80MVFBSGpUZ21IWWhwQ0xjYUJLX184VDNhQTBMajYtTDZCOEhsTllFZmVSYU9LYTYzeXhONVpoa2txNXcxWC1fag?oc=5" target="_blank" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">标题称Grok加速商业化。</li><li data-kind="fact">标题称SpaceX联合英伟达等打造人工智能合作网络。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">据此可推断，Grok的商业化推进涉及SpaceX、英伟达等方面的合作。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明合作网络的具体成员。</li><li data-kind="uncertain">材料未说明合作网络的具体内容。</li><li data-kind="uncertain">材料未说明Grok商业化的具体产品或服务。</li><li data-kind="uncertain">材料未说明合作网络的建设时间表。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e98bafe888">
+          <div class="item__head"><span class="item__no">31</span><h3 class="item__title"><a href="https://aihot.news/items/zg900ei8ko5eq0ixspsw4o6r3" target="_blank" rel="noopener noreferrer">Kylon 推出 Annotations 视频重制功能</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 06:10</span>
+            <a href="https://aihot.news/items/zg900ei8ko5eq0ixspsw4o6r3" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Kylon 上线 Annotations，可分析用户选中的视频并拆解为组件，再围绕自有品牌重建新版本。</li><li data-kind="fact">用户可在 X 任意视频帖下 @kylon_ai 调用智能体，调整预设提示词后启动生成并查看完整流程拆解。</li><li data-kind="fact">团队可对视频组件发表评论并协作调整制作方向。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Annotations 将视频分析、组件拆解、生成和协作调整整合在同一流程中。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明 Annotations 是否支持 X 以外的平台。</li><li data-kind="uncertain">材料未说明自有品牌的具体定义。</li><li data-kind="uncertain">材料未说明视频组件的具体类型和数量。</li><li data-kind="uncertain">材料未说明生成新版本的处理时长和使用限制。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e7a640ce8d">
+          <div class="item__head"><span class="item__no">32</span><h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE1McEdSeFpYeG1BOEpzUVlaNGVBMDh2X1NOQWxvOGkzMHlIaENoS2Z1MFNFYnhRVEctSmdwYW5qRDlUYnU5RFo0MmF4N0hCS1IzN3R2UVFrbFVDbUV6WFFRaUdaZEZPNHgtZzJuSWZ3?oc=5" target="_blank" rel="noopener noreferrer">人工智能智能体从概念走进应用场景</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 06:08</span>
+            <a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE1McEdSeFpYeG1BOEpzUVlaNGVBMDh2X1NOQWxvOGkzMHlIaENoS2Z1MFNFYnhRVEctSmdwYW5qRDlUYnU5RFo0MmF4N0hCS1IzN3R2UVFrbFVDbUV6WFFRaUdaZEZPNHgtZzJuSWZ3?oc=5" target="_blank" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">人民网财经发布了题为《人工智能智能体从概念走进场景》的内容。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">标题表明人工智能智能体正从概念讨论转向场景应用。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明涉及哪些应用场景。</li><li data-kind="uncertain">材料未提供人工智能智能体落地的具体案例。</li><li data-kind="uncertain">材料未说明相关进展涉及哪些公司或产品。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e6b5b246fc">
+          <div class="item__head"><span class="item__no">33</span><h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE1aVThESWZXaEp2RnVpb0lmV2plTGRVUWJlb0cwNWlVdkhBWVlTcDQydTdSZHlGUEhpYmkzUWRzSElUcmlHNnJkTkY0bVpxZw?oc=5" target="_blank" rel="noopener noreferrer">四川“AI超市”上线，算力购买像逛淘宝</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 06:08</span>
+            <a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE1aVThESWZXaEp2RnVpb0lmV2plTGRVUWJlb0cwNWlVdkhBWVlTcDQydTdSZHlGUEhpYmkzUWRzSElUcmlHNnJkTkY0bVpxZw?oc=5" target="_blank" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">标题称四川“AI超市”上线。</li><li data-kind="fact">标题将购买算力比作逛淘宝。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">据标题推断，四川“AI超市”与算力购买有关。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明“AI超市”的运营方。</li><li data-kind="uncertain">材料未说明“AI超市”提供的算力类型。</li><li data-kind="uncertain">材料未说明算力的购买方式和价格。</li><li data-kind="uncertain">材料未说明“AI超市”的具体上线时间。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e7924bb903">
+          <div class="item__head"><span class="item__no">34</span><h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiXkFVX3lxTE1IX3J4M2NuYm5mVDhnM3J6NmFMNVoydFc1Q2hnaGxBU0tRS1FRWWNhNDJKVl9HS3RqaHU4ckNDZmUxcG9UcXZHWnNHalRpcEpfT1pQS19oSWFLNXVUNmc?oc=5" target="_blank" rel="noopener noreferrer">专为人工智能智能体设计的电脑会改变个人电脑吗</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 00:16</span>
+            <a href="https://news.google.com/rss/articles/CBMiXkFVX3lxTE1IX3J4M2NuYm5mVDhnM3J6NmFMNVoydFc1Q2hnaGxBU0tRS1FRWWNhNDJKVl9HS3RqaHU4ckNDZmUxcG9UcXZHWnNHalRpcEpfT1pQS19oSWFLNXVUNmc?oc=5" target="_blank" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">DoNews提出了专为人工智能智能体设计的电脑是否会改变个人电脑的问题。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">内容可能关注人工智能智能体专用电脑对个人电脑行业的影响。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明这台电脑的制造商、产品名称、配置和实际影响。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e8f4479294">
+          <div class="item__head"><span class="item__no">35</span><h3 class="item__title"><a href="https://aihot.news/items/r38g0g28fniyn20zhfwgwi31g" target="_blank" rel="noopener noreferrer">Suno 邀请分享本月创作歌曲</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 03:15</span>
+            <a href="https://aihot.news/items/r38g0g28fniyn20zhfwgwi31g" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Suno 邀请用户分享本月创作的歌曲。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这条消息可能是在征集用户本月创作的歌曲。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">未说明分享渠道。</li><li data-kind="uncertain">未说明参与规则和截止时间。</li><li data-kind="uncertain">未说明歌曲是否需要满足其他条件。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-eef7694748">
+          <div class="item__head"><span class="item__no">36</span><h3 class="item__title"><a href="https://aws.amazon.com/blogs/machine-learning/how-rescale-built-an-ai-triage-agent-with-strands-agents-and-ai-dlc/" target="_blank" rel="noopener noreferrer">Rescale用AI-DLC构建智能测试分流代理</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/eef7694748eb38a-m001-9a4af6d4.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/eef7694748eb38a-m001-9a4af6d4.webp" alt="" loading="lazy" decoding="async"></button></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 00:25</span>
+            <a href="https://aws.amazon.com/blogs/machine-learning/how-rescale-built-an-ai-triage-agent-with-strands-agents-and-ai-dlc/" target="_blank" rel="noopener noreferrer">aws.amazon.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Rescale在AWS上使用AI-DLC框架、Strands Agents和Amazon Bedrock构建了智能测试分流代理。</li><li data-kind="fact">Rescale在数周内完成了该智能测试分流代理的构建。</li><li data-kind="fact">AI-DLC用于组织人工智能辅助开发流程，Rescale正在其工程组织中扩大这一实践。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">材料显示，Rescale将AI-DLC、Strands Agents和Amazon Bedrock结合用于测试分流代理开发。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明智能测试分流代理的具体功能。</li><li data-kind="uncertain">材料没有说明该代理的测试分流效果。</li><li data-kind="uncertain">材料没有说明Rescale工程组织的规模及实践扩大的具体范围。</li><li data-kind="uncertain">材料没有说明AI-DLC的具体开发步骤。</li><li data-kind="uncertain">材料没有说明该代理使用的具体模型。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-eac38d8e36">
+          <div class="item__head"><span class="item__no">37</span><h3 class="item__title"><a href="https://huggingface.co/blog/microsoft/thinkingbox-training" target="_blank" rel="noopener noreferrer">ThinkingBox将数据库评分转为强化学习奖励</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/eac38d8e3681334-m001-8ac077f9.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/eac38d8e3681334-m001-8ac077f9.webp" alt="" loading="lazy" decoding="async"></button></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 06:24</span>
+            <a href="https://huggingface.co/blog/microsoft/thinkingbox-training" target="_blank" rel="noopener noreferrer">huggingface.co</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">事件涉及将数据库评分转化为强化学习奖励。</li><li data-kind="fact">事件涉及使用 ThinkingBox 对智能体进行后训练。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">根据标题推断，数据库评分被用于智能体后训练中的强化学习过程。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明 ThinkingBox 的具体功能。</li><li data-kind="uncertain">材料未说明数据库评分的具体方式。</li><li data-kind="uncertain">材料未说明后训练智能体的模型、任务和效果。</li><li data-kind="uncertain">材料未说明强化学习奖励的构建过程。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ef41861572">
+          <div class="item__head"><span class="item__no">38</span><h3 class="item__title"><a href="https://aihot.news/items/h8lba02r9bze1iel8e6ltf63s" target="_blank" rel="noopener noreferrer">Google DeepMind 与 UPenn提出可审计的文本检测器</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 04:04</span>
+            <a href="https://aihot.news/items/h8lba02r9bze1iel8e6ltf63s" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Google DeepMind 与 UPenn的论文提出使用稀疏自编码器解析 Gemma-2-2B 检测器的内部激活。</li><li data-kind="fact">论文使用大语言模型标注特征后训练简单分类器，构建可解释的人工智能文本检测器。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">据此可推断，检测器的判断依据能够通过特征标注和分类器进行审计。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明该检测器的检测效果。</li><li data-kind="uncertain">材料未说明稀疏自编码器解析了哪些具体特征。</li><li data-kind="uncertain">材料未说明论文使用的训练数据和评测数据。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e9948b57df">
+          <div class="item__head"><span class="item__no">39</span><h3 class="item__title"><a href="https://aws.amazon.com/blogs/machine-learning/how-iskaypet-unified-corporate-knowledge-with-amazon-bedrock-managed-knowledge-bases/" target="_blank" rel="noopener noreferrer">IskayPet用Amazon Bedrock统一企业知识</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/e9948b57df823a8-m001-2ef49293.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/e9948b57df823a8-m001-2ef49293.webp" alt="" loading="lazy" decoding="async"></button></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 02:01</span>
+            <a href="https://aws.amazon.com/blogs/machine-learning/how-iskaypet-unified-corporate-knowledge-with-amazon-bedrock-managed-knowledge-bases/" target="_blank" rel="noopener noreferrer">aws.amazon.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">IskayPet在Amazon Bedrock Managed Knowledge Bases上构建了多语言企业知识助手。</li><li data-kind="fact">该助手可回答零售、兽医服务、入职和采购相关的员工问题。</li><li data-kind="fact">该助手支持四种语言，覆盖三个国家。</li><li data-kind="fact">使用方无需管理检索增强生成基础设施。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该助手可用于统一不同业务领域的企业知识访问。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明该助手支持的具体语言。</li><li data-kind="uncertain">材料未说明覆盖的三个国家。</li><li data-kind="uncertain">材料未说明该助手的部署时间和使用规模。</li><li data-kind="uncertain">材料未说明该助手的回答准确率。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-eab2c5a8ab">
+          <div class="item__head"><span class="item__no">40</span><h3 class="item__title"><a href="https://aihot.news/items/noo52cgxyont1qlxymsybuetm" target="_blank" rel="noopener noreferrer">黄仁勋介绍Vera Rubin智能体系统</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 05:01</span>
+            <a href="https://aihot.news/items/noo52cgxyont1qlxymsybuetm" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">黄仁勋完整阐述了Vera Rubin智能体系统。</li><li data-kind="fact">NVL72用于模型，MGX用于安全智能体处理，CMX用于知识服务，RTX用于CUDA-X工具。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Vera Rubin智能体系统由模型、安全智能体处理、知识服务和工具支持等部分组成。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明Vera Rubin智能体系统的发布时间和部署方式。</li><li data-kind="uncertain">材料未说明NVL72、MGX、CMX和RTX之间的具体协作方式。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e2b49425e2">
+          <div class="item__head"><span class="item__no">41</span><h3 class="item__title"><a href="https://www.marktechpost.com/2026/10/22/omniparsebench-document-parsing-leaderboard-guide/" target="_blank" rel="noopener noreferrer">OmniParseBench：基准审计与 OCR 测试指南</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 00:11</span>
+            <a href="https://www.marktechpost.com/2026/10/22/omniparsebench-document-parsing-leaderboard-guide/" target="_blank" rel="noopener noreferrer">marktechpost.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">内容介绍了如何审计和重建 Datalab 的 OmniParseBench。</li><li data-kind="fact">内容介绍了如何使用文档级自助法测试解析器排名的确定性。</li><li data-kind="fact">内容介绍了如何在自定义样本上评估 Tesseract 和 Indra OCR 的性能。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这份指南涉及基准复核、排名确定性测试和 OCR 性能评估。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明 OmniParseBench 的审计或重建结果。</li><li data-kind="uncertain">材料没有说明解析器排名确定性的测试结果。</li><li data-kind="uncertain">材料没有说明 Tesseract 和 Indra OCR 的性能评估结果。</li><li data-kind="uncertain">材料没有说明自定义样本的规模和构成。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e5e4816477">
+          <div class="item__head"><span class="item__no">42</span><h3 class="item__title"><a href="https://aihot.news/items/wwarbgcgx3nw4isf2y5w8w9jv" target="_blank" rel="noopener noreferrer">指令微调如何改变模型行为</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 06:17</span>
+            <a href="https://aihot.news/items/wwarbgcgx3nw4isf2y5w8w9jv" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Dongxi 东锡发布了后训练系列第二篇，主题是指令微调。</li><li data-kind="fact">文章以斯坦福使用52,000条数据、成本不到600美元将LLaMA 7B训练成Alpaca为例。</li><li data-kind="fact">指令微调与预训练共用交叉熵损失，但数据和任务不同。</li><li data-kind="fact">指令微调能够改变模型的行为方式并泛化到新任务。</li><li data-kind="fact">指令微调难以补充知识或判断回答优劣。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">指令微调的主要作用可能是调整模型行为方式，而不是补充知识或评价回答质量。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明损失掩码的具体实现细节。</li><li data-kind="uncertain">材料没有说明指令微调泛化到新任务的具体条件。</li><li data-kind="uncertain">材料没有说明52,000条数据的具体内容和任务类型。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e772a1d7c7">
+          <div class="item__head"><span class="item__no">43</span><h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiZkFVX3lxTE5fOWxtQV9icFVYU21UbGM2LWtJZXdmVDJnTklwQV9YWUdaN2s1V240a2U2dHdPQVRPcWJaZkN0TjIwZ2dQYzJ4VThNMVY4SWotT21URFBScmozaDBZV0FaSFZzZW1VZw?oc=5" target="_blank" rel="noopener noreferrer">邓中翰：将CPU规则约束嵌入大模型可减少幻觉</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 00:53</span>
+            <a href="https://news.google.com/rss/articles/CBMiZkFVX3lxTE5fOWxtQV9icFVYU21UbGM2LWtJZXdmVDJnTklwQV9YWUdaN2s1V240a2U2dHdPQVRPcWJaZkN0TjIwZ2dQYzJ4VThNMVY4SWotT21URFBScmozaDBZV0FaSFZzZW1VZw?oc=5" target="_blank" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">邓中翰是中国工程院院士。</li><li data-kind="fact">邓中翰表示，将CPU所承载的规则约束嵌入大模型底层，可减少人工智能幻觉。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">按照邓中翰的说法，CPU承载的规则约束可能被用于降低大模型产生幻觉的情况。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明将规则约束嵌入大模型底层的具体方法。</li><li data-kind="uncertain">材料没有说明这一方法减少人工智能幻觉的实际效果。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ea807e3142">
+          <div class="item__head"><span class="item__no">44</span><h3 class="item__title"><a href="https://www.infoq.cn/article/Ei2spcFKComKqkPv6osN?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">企业AI如何用Gateway管理模型、智能体和成本</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 02:00</span>
+            <a href="https://www.infoq.cn/article/Ei2spcFKComKqkPv6osN?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">infoq.cn</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">材料提出企业AI使用日益复杂的问题。</li><li data-kind="fact">材料提出使用一个Gateway管理模型、智能体和成本的做法。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">企业AI使用复杂化可能增加模型、智能体和成本的统一管理需求。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明Gateway的具体产品或实现方式。</li><li data-kind="uncertain">材料没有说明Gateway如何管理模型、智能体和成本。</li><li data-kind="uncertain">材料没有说明企业AI复杂化的具体原因和表现。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ea22e722a7">
+          <div class="item__head"><span class="item__no">45</span><h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMib0FVX3lxTE9LekE3LXg1aGc2Q3dXUDRHWlhHNHV0bDZDUHE4d2lfLW8tcFFud1VCRDdac0RsRVltMWVGakZ2Rjl5RDdESEdjRHBudEtzamdpVThjaElvOG91TmJOV1pURVJzWWhGQ3NVT2stODBPUQ?oc=5" target="_blank" rel="noopener noreferrer">用人工智能让宏观模型运行</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 06:20</span>
+            <a href="https://news.google.com/rss/articles/CBMib0FVX3lxTE9LekE3LXg1aGc2Q3dXUDRHWlhHNHV0bDZDUHE4d2lfLW8tcFFud1VCRDdac0RsRVltMWVGakZ2Rjl5RDdESEdjRHBudEtzamdpVThjaElvOG91TmJOV1pURVJzWWhGQ3NVT2stODBPUQ?oc=5" target="_blank" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">标题称将使用人工智能让宏观模型运行。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这表明人工智能被用于宏观模型相关工作。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明所使用的人工智能工具或模型。</li><li data-kind="uncertain">材料未说明宏观模型的具体类型。</li><li data-kind="uncertain">材料未说明让宏观模型运行的具体方法和结果。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e420cfde48">
+          <div class="item__head"><span class="item__no">46</span><h3 class="item__title"><a href="https://siliconangle.com/2026/10/22/ex-openai-science-chief-kevin-weil-launches-warp-sciences-with-215m-for-drug-chemistry/" target="_blank" rel="noopener noreferrer">Kevin Weil创办Warp Sciences获2.15亿美元融资</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 06:08</span>
+            <a href="https://siliconangle.com/2026/10/22/ex-openai-science-chief-kevin-weil-launches-warp-sciences-with-215m-for-drug-chemistry/" target="_blank" rel="noopener noreferrer">siliconangle.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Warp Sciences Inc.宣布成立并获得2.15亿美元新融资。</li><li data-kind="fact">联合创始人兼首席执行官Kevin Weil在离开OpenAI Group PBC科学事务负责人职位六个月后推出Warp Sciences。</li><li data-kind="fact">Warp Sciences正在美国建设一家化学合同研究机构，为生物技术和制药公司提供分子。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Warp Sciences计划通过化学合同研究业务服务生物技术和制药公司。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">融资投资方和融资轮次未说明。</li><li data-kind="uncertain">公司将提供的分子类型未说明。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e91976d346">
+          <div class="item__head"><span class="item__no">47</span><h3 class="item__title"><a href="https://siliconangle.com/2026/10/22/agentic-ai-foundation-adds-four-more-open-source-ai-tools/" target="_blank" rel="noopener noreferrer">Anthropic将Agent Skills捐赠给Agentic AI Foundation</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>3 个独立来源</span>
+            <span>10-23 02:09</span>
+            <a href="https://siliconangle.com/2026/10/22/agentic-ai-foundation-adds-four-more-open-source-ai-tools/" target="_blank" rel="noopener noreferrer">siliconangle.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Anthropic将Agent Skills标准捐赠给Linux Foundation旗下的Agentic AI Foundation。</li><li data-kind="fact">Agentic AI Foundation由Anthropic、Block和OpenAI共同创立。</li><li data-kind="fact">Anthropic此前已将Model Context Protocol捐赠给Agentic AI Foundation。</li><li data-kind="fact">Agentic AI Foundation新增了四个开源人工智能项目。</li><li data-kind="fact">这四个项目由OpenAI Group PBC、Anthropic PBC、Hugging Face Inc.和Alibaba Group Holding Ltd.捐赠。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Agent Skills后续将由Agentic AI Foundation负责维护或管理。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明四个新增项目的具体名称。</li><li data-kind="uncertain">材料未说明Agent Skills是否属于新增的四个项目之一。</li><li data-kind="uncertain">材料未说明Agent Skills捐赠的具体生效时间和法律安排。</li><li data-kind="uncertain">材料未说明Agentic AI Foundation维护项目的具体治理方式。</li></ul></div></div>
+          <div class="item__links"><a href="https://simonwillison.net/2026/Oct/22/donating-agent-skills/" target="_blank" rel="noopener noreferrer">simonwillison.net</a></div>
+        </li>
+        <li class="item" id="e-ec8e2cd090">
+          <div class="item__head item__head--card"><span class="item__no">48</span><div class="item__cardwrap"><a class="ghm" href="https://github.com/NVIDIA/OpenShell" target="_blank" rel="noopener noreferrer"><div class="ghm__kicker">Open source · Apache-2.0</div><div class="ghm__title">OpenShell<span class="ghm__owner"> / NVIDIA</span></div><p class="ghm__desc">OpenShell is the safe, private runtime for autonomous AI agents.</p><div class="ghm__rule"></div><div class="ghm__stats"><div class="ghm__stat"><b>17.7k</b><i>Stars</i></div><div class="ghm__stat"><b>1.8k</b><i>Forks</i></div><div class="ghm__stat"><b>135</b><i>Contributors</i></div></div><div class="ghm__langs"><div class="ghm__bar"><span style="width:88.26%;background:#dea584"></span><span style="width:4.85%;background:#00ADD8"></span><span style="width:3.39%;background:#89e051"></span><span style="width:2.58%;background:#3572A5"></span><span style="width:0.92%;background:#3178c6"></span></div><div class="ghm__legend"><span><em style="background:#dea584"></em>Rust 88%</span><span><em style="background:#00ADD8"></em>Go 5%</span><span><em style="background:#89e051"></em>Shell 3%</span><span><em style="background:#3572A5"></em>Python 3%</span><span><em style="background:#3178c6"></em>TypeScript 1%</span></div></div></a></div></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            <span>2 个独立来源</span>
+            <span>10-23 01:44</span>
+            <a href="https://github.com/NVIDIA/OpenShell" target="_blank" rel="noopener noreferrer">github.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OpenShell被描述为面向自主人工智能代理集群的安全私有运行时。</li><li data-kind="fact">该条目获得239个积分并有125条评论。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">OpenShell可能用于运行多个自主人工智能代理。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明OpenShell的实现方式。</li><li data-kind="uncertain">材料未说明其安全和隐私机制。</li><li data-kind="uncertain">材料未说明OpenShell是否已经发布或可用。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e821de751b">
+          <div class="item__head"><span class="item__no">49</span><h3 class="item__title"><a href="https://www.axios.com/2026/10/22/php-vulnerability-security-update-websites" target="_blank" rel="noopener noreferrer">OpenAI发现PHP漏洞引发网络安全应急</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>2 个独立来源</span>
+            <span>10-23 02:01</span>
+            <a href="https://www.axios.com/2026/10/22/php-vulnerability-security-update-websites" target="_blank" rel="noopener noreferrer">axios.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">PHP为数百万个网站提供支持。</li><li data-kind="fact">OpenAI的模型在八月帮助发现了PHP中的两个漏洞。</li><li data-kind="fact">这些漏洞在PHP于周三发布修复程序前一直未公开。</li><li data-kind="fact">周三出现了利用PHP漏洞的潜在攻击，促使政府和公司暂时下线网站并安装安全补丁。</li><li data-kind="fact">漏洞可能被用于窃取密码和数据，或控制受影响的服务器。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">人工智能发现漏洞后，漏洞公开和修复可能引发了网站集中采取防御措施。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明潜在攻击是否成功利用了这些漏洞。</li><li data-kind="uncertain">材料未说明哪些网站受到实际影响。</li><li data-kind="uncertain">材料未说明两个漏洞的具体技术细节。</li><li data-kind="uncertain">材料未说明受影响网站的确切数量。</li></ul></div></div>
+          <div class="item__links"><a href="https://x.com/TheRundownAI/status/2113344155300553132" target="_blank" rel="noopener noreferrer">x.com</a></div>
+        </li>
+        <li class="item" id="e-e8f7e7815b">
+          <div class="item__head"><span class="item__no">50</span><h3 class="item__title"><a href="https://www.theinformation.com/briefings/openai-fundraising-round-set-close-soon-uae-investors-coatue-leading-investment" target="_blank" rel="noopener noreferrer">OpenAI拟以最高1.25万亿美元估值融资300亿美元</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>2 个独立来源</span>
+            <span>10-23 06:08</span>
+            <a href="https://www.theinformation.com/briefings/openai-fundraising-round-set-close-soon-uae-investors-coatue-leading-investment" target="_blank" rel="noopener noreferrer">theinformation.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OpenAI计划在下周结束前完成一轮300亿美元融资。</li><li data-kind="fact">这轮融资对应的OpenAI估值最高为1.25万亿美元，且不包括新投资。</li><li data-kind="fact">Coatue Management和阿联酋投资方领投这轮融资。</li><li data-kind="fact">融资条款仍在谈判中。</li><li data-kind="fact">阿联酋资金可能附带为OpenAI提供更多算力的协议。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">如果融资按计划完成，OpenAI将获得一笔300亿美元规模的资金。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">融资最终金额是否达到300亿美元尚未确定。</li><li data-kind="uncertain">OpenAI最终估值是否达到1.25万亿美元尚未确定。</li><li data-kind="uncertain">这轮融资能否在下周结束前完成尚未确定。</li><li data-kind="uncertain">阿联酋资金是否会附带提供更多算力的协议尚未确定。</li><li data-kind="uncertain">Coatue Management和阿联酋投资方各自的投资金额尚未披露。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e8cd45e110">
+          <div class="item__head"><span class="item__no">52</span><h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE9QOXNpbThPX3c0Q2pKS1ZqbFpXRWxHNUpxMzVnLXV3ZE9YUEx3a3A2SUxuSi1qRXl6QUdRenl6RFlETHRvaFRCM1BEd1J2ZVFfSnd5empGUy0zYmxkdVBUN0liTkZ5bkdod05nVnhia1RfNlVnNnc?oc=5" target="_blank" rel="noopener noreferrer">真相来了丨AI大模型付费权益“低价共享”靠谱吗？ - 新浪新闻</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 02:50</span>
+            <a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE9QOXNpbThPX3c0Q2pKS1ZqbFpXRWxHNUpxMzVnLXV3ZE9YUEx3a3A2SUxuSi1qRXl6QUdRenl6RFlETHRvaFRCM1BEd1J2ZVFfSnd5empGUy0zYmxkdVBUN0liTkZ5bkdod05nVnhia1RfNlVnNnc?oc=5" target="_blank" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e9e4861237">
+          <div class="item__head"><span class="item__no">53</span><h3 class="item__title"><a href="https://the-decoder.com/major-us-banks-are-locking-out-ai-agents-that-log-in-with-customer-credentials/" target="_blank" rel="noopener noreferrer">美国大行限制人工智能代理登录账户</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 02:26</span>
+            <a href="https://the-decoder.com/major-us-banks-are-locking-out-ai-agents-that-log-in-with-customer-credentials/" target="_blank" rel="noopener noreferrer">the-decoder.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">客户让人工智能代理使用其凭据访问 Morgan Stanley、JPMorgan 等美国大型银行的账户，有时没有直接指示。</li><li data-kind="fact">Morgan Stanley 已阻止人工智能代理访问，其他银行正在限制此类访问。</li><li data-kind="fact">多数银行计划将人工智能代理的访问权限限制为只读。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">多数银行的计划表明，人工智能代理可能被允许查看账户信息，但不能进行写入操作。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明其他正在限制访问的银行名称。</li><li data-kind="uncertain">材料没有说明银行限制人工智能代理访问的具体原因。</li><li data-kind="uncertain">材料没有说明客户在没有直接指示时如何授权人工智能代理访问账户。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ecf55c3ed1">
+          <div class="item__head"><span class="item__no">54</span><h3 class="item__title"><a href="https://www.engadget.com/2294523/unauthorized-ai-agents-are-reportedly-already-accessing-us-bank-accounts/" target="_blank" rel="noopener noreferrer">据称未经授权的人工智能代理已访问美国银行账户</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 02:02</span>
+            <a href="https://www.engadget.com/2294523/unauthorized-ai-agents-are-reportedly-already-accessing-us-bank-accounts/" target="_blank" rel="noopener noreferrer">engadget.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">消息人士称，几家美国银行发现未经授权的人工智能代理正在访问银行账户。</li><li data-kind="fact">这些人工智能代理被指在没有用户指示的情况下采取行动。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这可能表明部分人工智能代理能够在未获用户指示的情况下执行账户相关操作。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明涉及哪些银行。</li><li data-kind="uncertain">材料未说明这些人工智能代理采取了哪些具体行动。</li><li data-kind="uncertain">材料未说明受影响的账户数量。</li><li data-kind="uncertain">材料未说明这些代理如何获得账户访问权限。</li><li data-kind="uncertain">材料未说明银行采取了哪些应对措施。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ebc7f05ac9">
+          <div class="item__head"><span class="item__no">55</span><h3 class="item__title"><a href="https://aihot.news/items/bw9sz0kx1l5ousd589zo3ficm" target="_blank" rel="noopener noreferrer">多家厂商48小时内曝高危漏洞</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 06:21</span>
+            <a href="https://aihot.news/items/bw9sz0kx1l5ousd589zo3ficm" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">过去约48小时内集中披露了多起安全漏洞。</li><li data-kind="fact">PHP存在未认证远程代码执行漏洞。</li><li data-kind="fact">GitLab存在评分为CVSS 10.0的远程代码执行漏洞。</li><li data-kind="fact">Node.js Brotli解码器存在远程代码执行漏洞及另外9个缺陷。</li><li data-kind="fact">Chrome发布了353项安全修复。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">由于漏洞涉及多个厂商和产品，集中排查可能更有必要。</li><li data-kind="inference">Codex可能被用于辅助排查这些漏洞。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明各漏洞对应的具体版本和受影响范围。</li><li data-kind="uncertain">材料未说明各漏洞的修复方式和截止时间。</li><li data-kind="uncertain">材料未说明如何使用Codex排查漏洞。</li><li data-kind="uncertain">材料未说明这些漏洞是否已被实际利用。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e9fe8d173e">
+          <div class="item__head"><span class="item__no">56</span><h3 class="item__title"><a href="https://www.aibase.com/zh/news/31810" target="_blank" rel="noopener noreferrer">Anthropic上市前将控制权交给外部受托人</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 01:55</span>
+            <a href="https://www.aibase.com/zh/news/31810" target="_blank" rel="noopener noreferrer">aibase.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Anthropic正在筹备首次公开募股。</li><li data-kind="fact">Anthropic将公司实际控制权交给不持股且不分享利润的外部受托人。</li><li data-kind="fact">前美联储主席伯南克是外部受托人之一。</li><li data-kind="fact">Anthropic的治理安排不采用双层股权，也不把权力交给投资人。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这意味着Anthropic将公司的控制权与股权和收益分离。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">外部受托人的完整名单、人数和任期尚未说明。</li><li data-kind="uncertain">Anthropic的上市时间及是否完成上市尚未说明。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e7240d1b0a">
+          <div class="item__head"><span class="item__no">57</span><h3 class="item__title"><a href="https://aihot.news/items/xsr2pzw7pmv6jprymby8fch1f" target="_blank" rel="noopener noreferrer">SubQ Snap 1.1登顶决策指数并列第一</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 04:02</span>
+            <a href="https://aihot.news/items/xsr2pzw7pmv6jprymby8fch1f" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Subquadratic发布了决策模型SubQ Snap 1.1。</li><li data-kind="fact">SubQ Snap 1.1在Artificial Analysis Decision Index v1.0上得分65，与d1-ultra、Elephant 9B并列第一。</li><li data-kind="fact">SubQ Snap 1.1领先第三名Jev 1.14的57分8分。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">从该指数排名看，SubQ Snap 1.1的得分与d1-ultra、Elephant 9B相同。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明Artificial Analysis Decision Index v1.0的评分维度。</li><li data-kind="uncertain">材料未说明SubQ Snap 1.1的具体发布方式和可用范围。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e4664b7bfe">
+          <div class="item__head"><span class="item__no">58</span><h3 class="item__title"><a href="https://x.com/TheRundownAI/status/2113324291307811158" target="_blank" rel="noopener noreferrer">Kevin Weil为Warp Sciences筹得2.15亿美元</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 01:39</span>
+            <a href="https://x.com/TheRundownAI/status/2113324291307811158" target="_blank" rel="noopener noreferrer">x.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">前OpenAI产品负责人Kevin Weil为Warp Sciences筹得2.15亿美元。</li><li data-kind="fact">Warp Sciences正在建设由人工智能设计实验、机器人全天候执行实验的实验室。</li><li data-kind="fact">Warp Sciences首先聚焦药物发现，长期目标是实现科学超级智能。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Warp Sciences可能计划通过人工智能和机器人自动化实验设计与执行流程。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明这笔资金的投资方、融资轮次和具体用途。</li><li data-kind="uncertain">材料未说明实验室的地点、建设进度和正式投入运行时间。</li><li data-kind="uncertain">材料未说明科学超级智能的具体定义和实现路径。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ec0db086b6">
+          <div class="item__head"><span class="item__no">59</span><h3 class="item__title"><a href="https://siliconangle.com/2026/10/22/mave-raises-34m-to-pull-existing-security-tools-into-one-agentic-system/" target="_blank" rel="noopener noreferrer">Mave获3400万美元整合安全工具</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 06:37</span>
+            <a href="https://siliconangle.com/2026/10/22/mave-raises-34m-to-pull-existing-security-tools-into-one-agentic-system/" target="_blank" rel="noopener noreferrer">siliconangle.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">以色列安全运营初创公司Mave Security Ltd.宣布获得3400万美元新融资。</li><li data-kind="fact">Mave Security Ltd.表示，新融资将用于加速前沿人工智能研究。</li><li data-kind="fact">Mave提供代理式平台，将企业现有安全工具整合到一个系统中。</li><li data-kind="fact">该平台用于处理从首次警报到响应阶段的威胁。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Mave试图通过整合现有安全工具来覆盖威胁处理流程。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明融资轮次和投资方。</li><li data-kind="uncertain">材料未说明Mave平台具体整合了哪些安全工具。</li><li data-kind="uncertain">材料未说明此次融资后的估值和公司股权安排。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e8fb216e45">
+          <div class="item__head"><span class="item__no">60</span><h3 class="item__title"><a href="https://siliconangle.com/2026/10/22/robotics-startup-enact-intelligence-nabs-30m-funding-round/" target="_blank" rel="noopener noreferrer">Enact Intelligence获3000万美元种子前融资</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 04:31</span>
+            <a href="https://siliconangle.com/2026/10/22/robotics-startup-enact-intelligence-nabs-30m-funding-round/" target="_blank" rel="noopener noreferrer">siliconangle.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">瑞士机器人初创公司Enact Intelligence宣布获得3000万美元种子前融资。</li><li data-kind="fact">资金由一个包括Yann LeCun在内的财团提供。</li><li data-kind="fact">Mistral AI SAS首席执行官Arthur Mensch和Hugging Face Inc.联合创始人Thomas Wolf参与了该财团。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该轮融资获得了多位人工智能领域人士的参与。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明融资资金的具体用途。</li><li data-kind="uncertain">材料未披露财团中其他参与者的身份。</li><li data-kind="uncertain">材料未说明公司的估值和融资条款。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e1a6d98fce">
+          <div class="item__head"><span class="item__no">62</span><h3 class="item__title"><a href="https://aihot.news/items/y4gy5kxlqmwd6mydc4nj6wsr9" target="_blank" rel="noopener noreferrer">Anthropic、OpenAI与Musk公益承诺超盖茨基金会三倍</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 04:23</span>
+            <a href="https://aihot.news/items/y4gy5kxlqmwd6mydc4nj6wsr9" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Anthropic、OpenAI和Musk三方的公益承诺总额已超过盖茨基金会的三倍。</li><li data-kind="fact">三方分别采用公司基金、非营利基金会和直接向儿童派发股票的模式。</li><li data-kind="fact">Anthropic约将20%的股份拨作公共用途。</li><li data-kind="fact">Anthropic联合创始人各自承诺捐出80%的股权。</li><li data-kind="fact">Musk计划向约7200万名美国儿童每人赠送1股SpaceX股票。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">三方的公益承诺规模合计可能明显高于盖茨基金会。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明三方公益承诺总额的具体金额。</li><li data-kind="uncertain">材料没有说明盖茨基金会用于比较的具体金额。</li><li data-kind="uncertain">材料没有明确三种公益模式分别对应哪一方。</li><li data-kind="uncertain">材料没有说明相关承诺是否已经完成。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e5045eb7f3">
+          <div class="item__head"><span class="item__no">63</span><h3 class="item__title"><a href="https://www.aibase.com/zh/news/31809" target="_blank" rel="noopener noreferrer">王兴兴提出宇树未来三条发展路线</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 01:20</span>
+            <a href="https://www.aibase.com/zh/news/31809" target="_blank" rel="noopener noreferrer">aibase.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">2026世界物理AI大会暨宇树合作伙伴生态大会在杭州召开。</li><li data-kind="fact">王兴兴将宇树未来打法拆为三条线，其中一条强调提升机器人规模量产能力，另一条采用自研与合作相结合的路径。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">宇树可能将机器人产能规模视为竞争优势。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明三条路线的完整内容。</li><li data-kind="uncertain">材料未说明小模型和大算力分别对应哪些具体计划。</li><li data-kind="uncertain">材料未说明自研与合作路径涉及的具体对象和项目。</li><li data-kind="uncertain">材料未说明宇树实现规模量产的时间安排。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e7a52af78f">
+          <div class="item__head"><span class="item__no">64</span><h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE5ZNHBSV2tiZ2w0UUJrNTFJRmIzZkRTNXZrYk5nV2I2cFNqU1hoU25JREpkMU9sVzl3Y0RuSjZZTTA1UHdnR0h6eXUzSUY4SHNrZDRkalg4S2lkWFI3OHVjVTRKMS1rR0dJOUhPNXNOTGhDWW82NXc?oc=5" target="_blank" rel="noopener noreferrer">AI算力走进大众消费</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 03:24</span>
+            <a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE5ZNHBSV2tiZ2w0UUJrNTFJRmIzZkRTNXZrYk5nV2I2cFNqU1hoU25JREpkMU9sVzl3Y0RuSjZZTTA1UHdnR0h6eXUzSUY4SHNrZDRkalg4S2lkWFI3OHVjVTRKMS1rR0dJOUhPNXNOTGhDWW82NXc?oc=5" target="_blank" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">材料标题为“AI算力走进大众消费”。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">材料表明，AI算力可能从专业领域扩展至大众消费领域。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明AI算力对应的具体产品。</li><li data-kind="uncertain">材料未说明涉及的具体消费场景。</li><li data-kind="uncertain">材料未说明相关产品或服务的提供方。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e17e6e25af">
+          <div class="item__head"><span class="item__no">67</span><h3 class="item__title"><a href="https://siliconangle.com/2026/10/22/cloudera-agentic-workflows-evolve26/" target="_blank" rel="noopener noreferrer">EVOLVE26将于10月27日讨论企业人工智能代理</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 06:24</span>
+            <a href="https://siliconangle.com/2026/10/22/cloudera-agentic-workflows-evolve26/" target="_blank" rel="noopener noreferrer">siliconangle.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">企业在运行人工智能代理时，除计算能力外，还需要管理云端和本地部署系统中的数据安全、治理和性能。</li><li data-kind="fact">随着代理工作流投入生产，企业对数据安全、治理和性能的管理需求更加重要。</li><li data-kind="fact">在去年的EVOLVE25活动上，Cloudera Inc.将自身定位为混合工作负载平台，并提出人工智能无处不在。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">EVOLVE26可能会继续关注企业人工智能代理进入生产环境后的管理问题。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有说明EVOLVE26的具体议程。</li><li data-kind="uncertain">材料没有说明theCUBE在EVOLVE26中的具体参与方式。</li><li data-kind="uncertain">材料没有说明Cloudera Inc.将在EVOLVE26上发布或展示哪些内容。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-eaae006ffa">
+          <div class="item__head"><span class="item__no">68</span><h3 class="item__title"><a href="https://aihot.news/items/qcm8rhcwrzsh186j6aiq50l47" target="_blank" rel="noopener noreferrer">Demis Hassabis 登上 WSJ 创新者特刊</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 03:30</span>
+            <a href="https://aihot.news/items/qcm8rhcwrzsh186j6aiq50l47" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Demis Hassabis 表示很荣幸登上 WSJ 创新者特刊。</li><li data-kind="fact">Demis Hassabis 表示相信人类创造力能够解决最棘手的问题。</li><li data-kind="fact">Demis Hassabis 表示有信心共同应对前沿模型带来的潜在挑战。</li><li data-kind="fact">Demis Hassabis 表示前沿模型可能开启科学发现的新黄金时代。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Demis Hassabis 将人类创造力视为应对前沿模型潜在挑战的重要因素。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明特刊的具体名称和出版形式。</li><li data-kind="uncertain">材料未说明前沿模型潜在挑战的具体内容。</li><li data-kind="uncertain">材料未说明科学发现新黄金时代的具体表现。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e3aea0ce02">
+          <div class="item__head"><span class="item__no">69</span><h3 class="item__title"><a href="https://www.theinformation.com/articles/sb-energy-considers-waiting-december-later-ipo" target="_blank" rel="noopener noreferrer">SB Energy考虑将上市推迟至12月或更晚</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 01:51</span>
+            <a href="https://www.theinformation.com/articles/sb-energy-considers-waiting-december-later-ipo" target="_blank" rel="noopener noreferrer">theinformation.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">SB Energy由SoftBank Group控制，是OpenAI计划在Ohio建设的大型数据中心项目的开发商。</li><li data-kind="fact">SB Energy正在考虑于12月上市，或将上市推迟至明年。</li><li data-kind="fact">SB Energy此前曾以最早于9月上市为目标。</li><li data-kind="fact">市场对数据中心和人工智能云公司的首次公开募股转趋冷淡。</li><li data-kind="fact">澳大利亚云计算公司Firmus本月早些时候撤回了首次公开募股计划。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">数据中心和人工智能云公司首次公开募股市场转弱，可能促使SB Energy重新考虑上市时间。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">SB Energy是否会在12月上市尚未确定。</li><li data-kind="uncertain">SB Energy是否会将上市推迟至明年尚未确定。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e51368cfdd">
+          <div class="item__head"><span class="item__no">70</span><h3 class="item__title"><a href="https://www.axios.com/2026/10/22/trump-noncitizen-voting-investigation-restricted-judge" target="_blank" rel="noopener noreferrer">法官限制Trump政府非公民投票调查</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 03:24</span>
+            <a href="https://www.axios.com/2026/10/22/trump-noncitizen-voting-investigation-restricted-judge" target="_blank" rel="noopener noreferrer">axios.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">一名联邦法官限制DHS在九个州针对疑似非公民投票的调查。</li><li data-kind="fact">法官称，DHS的做法可能会恐吓有资格投票的选民。</li><li data-kind="fact">裁决禁止政府依据Unlawful Voter Initiative开展涉及或可能涉及美国公民的选举相关现场行动和访谈。</li><li data-kind="fact">加利福尼亚州联邦地区法官Araceli Martínez-Olguín还禁止政府在这些州针对可能是美国公民的人开展行动。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这项裁决缩小了Trump政府调查疑似非公民投票的行动范围。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料没有列出受影响的九个州。</li><li data-kind="uncertain">材料没有说明裁决限制的全部行动类型。</li><li data-kind="uncertain">材料没有说明这些调查涉及的疑似非公民人数。</li><li data-kind="uncertain">材料中关于政府在这些州开展行动所依据的内容不完整。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e237d4627d">
+          <div class="item__head"><span class="item__no">71</span><h3 class="item__title"><a href="https://www.semafor.com/article/10/22/2026/the-fight-for-mahas-soul" target="_blank" rel="noopener noreferrer">MAHA运动开始分裂</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 01:44</span>
+            <a href="https://www.semafor.com/article/10/22/2026/the-fight-for-mahas-soul" target="_blank" rel="noopener noreferrer">semafor.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">特朗普总统多年来与卫生部长 Robert F. Kennedy Jr. 联手培育了 MAHA 运动。</li><li data-kind="fact">MAHA 运动为特朗普吸引了选民，并开始出现分裂。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">MAHA 运动内部的团结程度可能正在下降。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明 MAHA 运动分裂的具体原因。</li><li data-kind="uncertain">材料未说明参与分裂的具体人物或派别。</li><li data-kind="uncertain">材料未说明分裂将对 MAHA 运动产生何种影响。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ea1084ae7b">
+          <div class="item__head"><span class="item__no">72</span><h3 class="item__title"><a href="https://www.theinformation.com/articles/datadog-offered-buy-security-startup-upwind-nearly-4-billion" target="_blank" rel="noopener noreferrer">Datadog拟以近40亿美元收购Upwind</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 01:27</span>
+            <a href="https://www.theinformation.com/articles/datadog-offered-buy-security-startup-upwind-nearly-4-billion" target="_blank" rel="noopener noreferrer">theinformation.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Datadog近期向以色列云网络安全初创公司Upwind Security提出了近40亿美元的收购报价。</li><li data-kind="fact">Upwind近几个月收到多个竞购方的收购尝试，但尚未接受任何报价。</li><li data-kind="fact">Upwind正在敲定一轮3亿美元融资，估值约为38亿美元。</li><li data-kind="fact">Upwind销售用于监测云端应用的软件，其中包括人工智能代理。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">由于报价接近Upwind的私募估值，这笔报价的估值溢价可能有限。</li><li data-kind="inference">由于Upwind尚未接受任何报价，Datadog的收购尚未完成。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">尚不清楚Upwind是否会接受Datadog的报价。</li><li data-kind="uncertain">尚不清楚3亿美元融资是否已经完成。</li><li data-kind="uncertain">材料未说明Upwind用于检测云端应用的具体内容。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ed0556334d">
+          <div class="item__head"><span class="item__no">73</span><h3 class="item__title"><a href="https://www.microsoft.com/en-us/research/blog/flint-interactive-a-language-for-creating-interactive-data-visualizations/" target="_blank" rel="noopener noreferrer">Flint-interactive为AI代理创建交互式可视化</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 00:00</span>
+            <a href="https://www.microsoft.com/en-us/research/blog/flint-interactive-a-language-for-creating-interactive-data-visualizations/" target="_blank" rel="noopener noreferrer">microsoft.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Flint-interactive为AI代理提供一种创建交互式可视化的语言。</li><li data-kind="fact">使用者可以点击图表、筛选数据并突出显示相关内容。</li><li data-kind="fact">使用者可以探索超出作者最初选择视图的内容。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Flint-interactive可能支持使用者通过交互操作从多个角度查看数据。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明Flint-interactive的具体语法和使用方式。</li><li data-kind="uncertain">材料未说明Flint-interactive支持哪些数据源和图表类型。</li><li data-kind="uncertain">材料未说明Flint-interactive是否已经公开发布。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e254f200fb">
+          <div class="item__head"><span class="item__no">74</span><h3 class="item__title"><a href="https://techcrunch.com/2026/10/22/chinese-hackers-spied-on-thousands-of-companies-after-breaching-it-giant-connectwise/" target="_blank" rel="noopener noreferrer">ConnectWise遭入侵后数千企业被监视</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 00:47</span>
+            <a href="https://techcrunch.com/2026/10/22/chinese-hackers-spied-on-thousands-of-companies-after-breaching-it-giant-connectwise/" target="_blank" rel="noopener noreferrer">techcrunch.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Microsoft将ConnectWise遭入侵归咎于一名与中国立场一致的黑客。</li><li data-kind="fact">这名黑客利用人工智能代理快速入侵ConnectWise的数千家客户。</li><li data-kind="fact">数千家企业在ConnectWise遭入侵后受到监视。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">人工智能代理可能帮助这名黑客扩大了入侵范围并提升了入侵速度。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明这名黑客的具体身份或所属组织。</li><li data-kind="uncertain">材料未说明人工智能代理使用的具体方式。</li><li data-kind="uncertain">材料未说明受影响客户的具体名单和数量。</li></ul></div></div>
+          
+        </li>
+        </ol>
+      </section>
+
+          <details class="untranslated" id="untranslated">
+        <summary>本期待翻译条目（5 条）</summary>
+        <p>这些条目的来源是外文，且本期模型额度用完、未能逐条译成中文，
+        因此只在这里保留原文与出处，不混进上面的正文。
+        <strong>点开即离开本站、前往原文</strong>。</p>
+        <ol><li><span class="untranslated__no">11</span><a href="https://www.marktechpost.com/2026/10/22/liquid-ai-ripl-real-time-inference-engine/" target="_blank" rel="noopener noreferrer">Liquid AI Launches RIPL, a Real-Time Inference Engine for Sub-50 ms LFMs</a><span class="untranslated__src">marktechpost.com</span></li><li><span class="untranslated__no">51</span><a href="https://techcrunch.com/2026/10/22/uber-puts-all-30000-employees-on-chatgpt-work/" target="_blank" rel="noopener noreferrer">Uber puts all 30,000 employees on ChatGPT Work</a><span class="untranslated__src">techcrunch.com</span></li><li><span class="untranslated__no">61</span><a href="https://github.com/Graphify-Labs/graphify" target="_blank" rel="noopener noreferrer">Graphify-Labs/graphify</a><span class="untranslated__src">github.com</span></li><li><span class="untranslated__no">65</span><a href="https://github.com/DietrichGebert/ponytail" target="_blank" rel="noopener noreferrer">DietrichGebert/ponytail</a><span class="untranslated__src">github.com</span></li><li><span class="untranslated__no">66</span><a href="https://github.com/cloudflare/security-audit-skill" target="_blank" rel="noopener noreferrer">cloudflare/security-audit-skill</a><span class="untranslated__src">github.com</span></li></ol>
+      </details>
+
+    <nav class="pager"><a href="2026-10-22.html"><span>上一期</span>2026-10-22</a><span></span></nav>
+
+    <footer class="foot">
+      <p>本期从 191 个已注册信息源采集，
+      34 个源提供了窗口内的内容，
+      0 个失败，0 个跳过。
+      共 223 条条目进入分析，
+      28 条被判定为重复。</p>
+      <p>大模型：110 次调用 / 198,980 token。
+      摘要由 AI 从原始来源整理，事实、推断与不确定项已分列；
+      <strong>每个条目的链接都来自采集记录，未经模型生成</strong>。请以原始来源为准。</p>
+<p>生成于 2026-10-23 07:05 北京时间</p>
+    </footer>
+  </main>
+
+      <nav class="toc" aria-label="目录">
+        <button class="toc__grip" type="button" data-resize="toc"
+                aria-label="拖动调整目录宽度" title="拖动调整宽度（双击恢复默认）"></button>
+        <p class="toc__title">今日目录</p>
+        <div class="toc__nav">
+          <a href="#overview" class="toc__overview">概览</a>
+          <a href="#e-ed245401c6"><span class="toc__no">01</span>Google以Agent Compute Engine隔离Gemini代理</a>
+          <a href="#e-efe9fbd682"><span class="toc__no">02</span>OpenAI拟以1.25万亿美元估值融资300亿美元</a>
+          <a href="#e-e0837f3a15"><span class="toc__no">03</span>Claude多端将默认启用自动模式</a>
+          <a href="#e-ef677a3cdd"><span class="toc__no">04</span>Microsoft 与 Hugging Face 发布 ThinkingBox-…</a>
+          <a href="#e-e2f1060c54"><span class="toc__no">05</span>OpenAI支持AI强制监管并致信加州州长</a>
+          <a href="#e-e5f334bc36"><span class="toc__no">06</span>xAI 内部实现 Pumpkin Bot</a>
+          <a href="#e-e97d04be5a"><span class="toc__no">07</span>OpenAI发布面向小决策的Decisions API</a>
+          <a href="#e-eb547085e7"><span class="toc__no">08</span>Anthropic 在 Google Cloud 开放完整 Claude API</a>
+          <a href="#e-e51776f323"><span class="toc__no">09</span>Amazon SageMaker AI推出训练会话接口</a>
+          <a href="#e-e430a0f101"><span class="toc__no">10</span>Amazon 开源 TorchNeuron 支持 AWS Trainium</a>
+          <a href="#e-ebddd0e2ac"><span class="toc__no">12</span>Perplexity Agent API上线Batch API</a>
+          <a href="#e-e9e27fbd91"><span class="toc__no">13</span>Amazon Polly生成式引擎升级并新增14种声音</a>
+          <a href="#e-e3518f2de7"><span class="toc__no">14</span>Salesforce拟向外部人工智能代理收费</a>
+          <a href="#e-e6d89e769d"><span class="toc__no">15</span>Cognition 开源网络威胁防护插件</a>
+          <a href="#e-e6244338a3"><span class="toc__no">16</span>NVIDIA推出OpenShell智能体安全架构</a>
+          <a href="#e-ef24ab9433"><span class="toc__no">17</span>Codex计算机使用实用提示词</a>
+          <a href="#e-ed4280c2a7"><span class="toc__no">18</span>anthropics/knowledge-work-plugins 开源插件仓库</a>
+          <a href="#e-ee20e9e0a5"><span class="toc__no">19</span>Cohere发布Rerank 5，聚焦段落上下文</a>
+          <a href="#e-e4c341aea3"><span class="toc__no">20</span>Gradium开源Phonon端侧语音模型</a>
+          <a href="#e-ebcee3c748"><span class="toc__no">21</span>OpenAI广泛推出Jev竞品，决策模型竞争升温</a>
+          <a href="#e-ecd0abb508"><span class="toc__no">22</span>OlmoEarth v1.3提供全球最先进嵌入</a>
+          <a href="#e-ed02fa1def"><span class="toc__no">23</span>科大讯飞发布新一代国产大模型</a>
+          <a href="#e-e7d29745dc"><span class="toc__no">24</span>Replit 发布 Monitoring Agent 值班智能体</a>
+          <a href="#e-e4ad6fcad0"><span class="toc__no">25</span>1Password 联合多家推出 Agents 平台</a>
+          <a href="#e-e6eab09249"><span class="toc__no">26</span>Grok Bot 接入 1Password，可代用户登录网站</a>
+          <a href="#e-e843589f22"><span class="toc__no">27</span>Suno 另类用法演示</a>
+          <a href="#e-e29bc651f1"><span class="toc__no">28</span>Discord 改进 Markdown 预览显示</a>
+          <a href="#e-e072004868"><span class="toc__no">29</span>1Password推出代理代登录功能</a>
+          <a href="#e-e226ade572"><span class="toc__no">30</span>Grok加速商业化，SpaceX联合英伟达打造人工智能网络</a>
+          <a href="#e-e98bafe888"><span class="toc__no">31</span>Kylon 推出 Annotations 视频重制功能</a>
+          <a href="#e-e7a640ce8d"><span class="toc__no">32</span>人工智能智能体从概念走进应用场景</a>
+          <a href="#e-e6b5b246fc"><span class="toc__no">33</span>四川“AI超市”上线，算力购买像逛淘宝</a>
+          <a href="#e-e7924bb903"><span class="toc__no">34</span>专为人工智能智能体设计的电脑会改变个人电脑吗</a>
+          <a href="#e-e8f4479294"><span class="toc__no">35</span>Suno 邀请分享本月创作歌曲</a>
+          <a href="#e-eef7694748"><span class="toc__no">36</span>Rescale用AI-DLC构建智能测试分流代理</a>
+          <a href="#e-eac38d8e36"><span class="toc__no">37</span>ThinkingBox将数据库评分转为强化学习奖励</a>
+          <a href="#e-ef41861572"><span class="toc__no">38</span>Google DeepMind 与 UPenn提出可审计的文本检测器</a>
+          <a href="#e-e9948b57df"><span class="toc__no">39</span>IskayPet用Amazon Bedrock统一企业知识</a>
+          <a href="#e-eab2c5a8ab"><span class="toc__no">40</span>黄仁勋介绍Vera Rubin智能体系统</a>
+          <a href="#e-e2b49425e2"><span class="toc__no">41</span>OmniParseBench：基准审计与 OCR 测试指南</a>
+          <a href="#e-e5e4816477"><span class="toc__no">42</span>指令微调如何改变模型行为</a>
+          <a href="#e-e772a1d7c7"><span class="toc__no">43</span>邓中翰：将CPU规则约束嵌入大模型可减少幻觉</a>
+          <a href="#e-ea807e3142"><span class="toc__no">44</span>企业AI如何用Gateway管理模型、智能体和成本</a>
+          <a href="#e-ea22e722a7"><span class="toc__no">45</span>用人工智能让宏观模型运行</a>
+          <a href="#e-e420cfde48"><span class="toc__no">46</span>Kevin Weil创办Warp Sciences获2.15亿美元融资</a>
+          <a href="#e-e91976d346"><span class="toc__no">47</span>Anthropic将Agent Skills捐赠给Agentic AI Foun…</a>
+          <a href="#e-ec8e2cd090"><span class="toc__no">48</span>OpenShell：自主人工智能代理集群的安全私有运行时</a>
+          <a href="#e-e821de751b"><span class="toc__no">49</span>OpenAI发现PHP漏洞引发网络安全应急</a>
+          <a href="#e-e8f7e7815b"><span class="toc__no">50</span>OpenAI拟以最高1.25万亿美元估值融资300亿美元</a>
+          <a href="#e-e8cd45e110"><span class="toc__no">52</span>真相来了丨AI大模型付费权益“低价共享”靠谱吗？ - 新浪新闻</a>
+          <a href="#e-e9e4861237"><span class="toc__no">53</span>美国大行限制人工智能代理登录账户</a>
+          <a href="#e-ecf55c3ed1"><span class="toc__no">54</span>据称未经授权的人工智能代理已访问美国银行账户</a>
+          <a href="#e-ebc7f05ac9"><span class="toc__no">55</span>多家厂商48小时内曝高危漏洞</a>
+          <a href="#e-e9fe8d173e"><span class="toc__no">56</span>Anthropic上市前将控制权交给外部受托人</a>
+          <a href="#e-e7240d1b0a"><span class="toc__no">57</span>SubQ Snap 1.1登顶决策指数并列第一</a>
+          <a href="#e-e4664b7bfe"><span class="toc__no">58</span>Kevin Weil为Warp Sciences筹得2.15亿美元</a>
+          <a href="#e-ec0db086b6"><span class="toc__no">59</span>Mave获3400万美元整合安全工具</a>
+          <a href="#e-e8fb216e45"><span class="toc__no">60</span>Enact Intelligence获3000万美元种子前融资</a>
+          <a href="#e-e1a6d98fce"><span class="toc__no">62</span>Anthropic、OpenAI与Musk公益承诺超盖茨基金会三倍</a>
+          <a href="#e-e5045eb7f3"><span class="toc__no">63</span>王兴兴提出宇树未来三条发展路线</a>
+          <a href="#e-e7a52af78f"><span class="toc__no">64</span>AI算力走进大众消费</a>
+          <a href="#e-e17e6e25af"><span class="toc__no">67</span>EVOLVE26将于10月27日讨论企业人工智能代理</a>
+          <a href="#e-eaae006ffa"><span class="toc__no">68</span>Demis Hassabis 登上 WSJ 创新者特刊</a>
+          <a href="#e-e3aea0ce02"><span class="toc__no">69</span>SB Energy考虑将上市推迟至12月或更晚</a>
+          <a href="#e-e51368cfdd"><span class="toc__no">70</span>法官限制Trump政府非公民投票调查</a>
+          <a href="#e-e237d4627d"><span class="toc__no">71</span>MAHA运动开始分裂</a>
+          <a href="#e-ea1084ae7b"><span class="toc__no">72</span>Datadog拟以近40亿美元收购Upwind</a>
+          <a href="#e-ed0556334d"><span class="toc__no">73</span>Flint-interactive为AI代理创建交互式可视化</a>
+          <a href="#e-e254f200fb"><span class="toc__no">74</span>ConnectWise遭入侵后数千企业被监视</a>
+        </div>
+      </nav>
+</div>
+
+<dialog class="search" id="search-dialog" aria-label="搜索往期内容">
+  <div class="search__form">
+    <input type="search" placeholder="搜索往期内容…" aria-label="搜索关键词" autocomplete="off">
+    <kbd>Esc</kbd>
+  </div>
+  <ul class="search__results"></ul>
+</dialog>
+
+<script type="application/json" id="calendar-data">{"dates": ["2026-10-23", "2026-10-22", "2026-10-21", "2026-10-20", "2026-10-19", "2026-10-18", "2026-10-17", "2026-10-16", "2026-10-15", "2026-10-14"], "current": "2026-10-23", "today": "2026-10-23"}</script>
+<script type="application/json" id="search-index">[{"date": "2026-10-23", "items": [{"t": "Google's Agent Compute Engine gives every Gemini agent its own hardware-isolated micro virtual machine", "s": "rss:aihot-demo-the-decoder"}, {"t": "OpenAI working on new $30B raise at $1.25T valuation ahead of IPO", "s": "rss:aihot-demo-techcrunch-ai"}, {"t": "Claude 网页、桌面和移动端将默认启用 auto mode", "s": "rss:aihot-cat-products, rss:aihot-news"}, {"t": "Microsoft 与 Hugging Face 用 ThinkingBox 把数据库评分变成 RL 奖励训练 Agent", "s": "rss:aihot-news"}, {"t": "OpenAI支持AI强制监管：致信加州州长 建议强化AI透明度法案 - 财联社", "s": "api:news-google-com-search"}, {"t": "xAI 内部实现 Pumpkin Bot", "s": "rss:aihot-news"}, {"t": "OpenAI 正式发布 Decisions API，面向低延迟低成本小决策", "s": "rss:aihot-cat-products, rss:aihot-news"}, {"t": "Anthropic 在 Google Cloud 开放完整 Claude API 接入", "s": "rss:aihot-news"}, {"t": "Write your own training loop — without managing GPUs — with Amazon SageMaker training session APIs", "s": "rss:aihot-demo-aws-machine-learning-blog"}, {"t": "Amazon 开源 PyTorch 后端 TorchNeuron，支持 AWS Trainium 芯片", "s": "rss:aihot-news"}, {"t": "Liquid AI Launches RIPL, a Real-Time Inference Engine for Sub-50 ms LFMs", "s": "rss:marktechpost"}, {"t": "Perplexity Agent API 上线 Batch API", "s": "rss:aihot-news"}, {"t": "Amazon Polly delivers a major upgrade to its Generative engine", "s": "rss:aihot-demo-aws-machine-learning-blog"}, {"t": "Salesforce Customers Brace For New Fees to Use Claude in Its Apps", "s": "rss:the-information"}, {"t": "Cognition 开源防护网络安全威胁的 agent 插件", "s": "rss:aihot-news"}, {"t": "英伟达推出OpenShell智能体安全架构", "s": "rss:aihot-news"}, {"t": "Codex 计算机使用实用提示词", "s": "rss:aihot-news"}, {"t": "anthropics/knowledge-work-plugins", "s": "scrape:github-com-trending"}, {"t": "Cohere Releases Rerank 5 With Passage-Level Context Focus and Calibrated Scores", "s": "rss:marktechpost"}, {"t": "Gradium Open-Sources Phonon, a 31M-Parameter On-Device TTS Model Under Apache 2.0", "s": "rss:marktechpost"}, {"t": "OpenAI makes its Jev competitor widely available as decision model competition heats up", "s": "rss:aihot-demo-techcrunch-ai"}, {"t": "OlmoEarth v1.3: State-of-the-art embeddings for the whole planet", "s": "rss:huggingface-blog"}, {"t": "科大讯飞发布新一代国产大模型，刘庆峰最新发声 - 证券之星", "s": "api:news-google-com-search"}, {"t": "Replit 发布 Monitoring Agent，为应用提供可自动修复并部署的值班智能体", "s": "rss:aihot-cat-products, rss:aihot-news"}, {"t": "1Password 联合多家推出 Agents 平台", "s": "rss:aihot-news"}, {"t": "Grok Bot 接入 1Password，可代用户登录网站", "s": "rss:aihot-news"}, {"t": "Suno 的另类用法演示", "s": "rss:aihot-news"}, {"t": "Discord now formats Markdown previews right", "s": "rss:theverge-com-ai-artificial-intelligence"}, {"t": "1Password launches a way for AI agents to log in on your behalf without seeing your password", "s": "rss:aihot-demo-techcrunch-ai"}, {"t": "Grok加速商业化：SpaceX联合英伟达等打造AI合作网络 - 东方财富", "s": "api:news-google-com-search"}, {"t": "Kylon 推出 Annotations 视频重制功能", "s": "rss:aihot-news"}, {"t": "AI智能体从概念走进场景--经济·科技 - 人民网财经", "s": "api:news-google-com-search"}, {"t": "买算力就像逛淘宝 四川“AI超市”上线丨川报早读 - 川观新闻", "s": "api:news-google-com-search"}, {"t": "一台专为AI智能体设计的电脑，会革PC的命吗？ - DoNews", "s": "api:news-google-com-search"}, {"t": "Suno 邀你分享本月创作歌曲", "s": "rss:aihot-news"}, {"t": "How Rescale built an AI triage agent with Strands Agents and AI-DLC", "s": "rss:aihot-demo-aws-machine-learning-blog"}, {"t": "Turning Database Grading into RL Rewards: Post-Training Agents with ThinkingBox", "s": "rss:huggingface-blog"}, {"t": "Google DeepMind 与 UPenn 论文用稀疏自编码器构建可审计的 AI 文本检测器", "s": "rss:aihot-news"}, {"t": "How IskayPet unified corporate knowledge with Amazon Bedrock Managed Knowledge Bases", "s": "rss:aihot-demo-aws-machine-learning-blog"}, {"t": "黄仁勋详解 Vera Rubin 智能体系统", "s": "rss:aihot-news"}, {"t": "A Developer’s Guide to OmniParseBench: Leaderboard Benchmarks and OCR Testing", "s": "rss:marktechpost"}, {"t": "指令微调详解：从 Alpaca 案例到损失掩码的实现细节", "s": "rss:aihot-news"}, {"t": "中国工程院院士邓中翰：将CPU所承载的规则约束嵌入大模型底层，可减少AI幻觉 - 每日经济新闻", "s": "api:news-google-com-search"}, {"t": "企业 AI 越用越复杂，如何用一个 Gateway 管好模型、Agent 和成本？｜ 技术趋势", "s": "rss:infoq-cn"}, {"t": "用AI让宏观模型“跑起来” - 上观新闻", "s": "api:news-google-com-search"}, {"t": "Ex-OpenAI science chief Kevin Weil launches Warp Sciences with $215M for drug chemistry", "s": "rss:siliconangle"}, {"t": "Donating Agent Skills to the Agentic AI Foundation", "s": "rss:aihot-news, rss:siliconangle"}, {"t": "OpenShell – A safe, private runtime for fleets of autonomous AI agents", "s": "api:hn-algolia-com-search, rss:hnrss-org-frontpage"}, {"t": "Black October: why bugs discovered by OpenAI tech are creating a cyber emergency", "s": "rss:axios, x:therundownai"}, {"t": "OpenAI Fundraising Round Set to Close Soon With UAE Investors, Coatue Leading Investment", "s": "rss:aihot-news, rss:the-information"}, {"t": "Uber puts all 30,000 employees on ChatGPT Work", "s": "rss:aihot-demo-techcrunch-ai"}, {"t": "真相来了丨AI大模型付费权益“低价共享”靠谱吗？ - 新浪新闻", "s": "api:news-google-com-search"}, {"t": "Major US banks are locking out AI agents that log in with customer credentials", "s": "rss:aihot-demo-the-decoder"}, {"t": "Unauthorized AI agents are reportedly already accessing US bank accounts", "s": "rss:engadget"}, {"t": "48小时内多家厂商曝高危漏洞，建议用Codex排查", "s": "rss:aihot-news"}, {"t": "Anthropic 上市前亮出特殊治理架构：把控制权交给不持股的外部受托人", "s": "api:aibase-ai-news"}, {"t": "SubQ Snap 1.1 登顶决策指数，与 d1-ultra 并列第一", "s": "rss:aihot-news"}, {"t": "NEW: Ex-OpenAI product chief Kevin Weil raised $215M for Warp Sciences, which is building labs where AI designs experiments and robots run them 24/7.", "s": "x:therundownai"}, {"t": "Mave raises $34M to pull existing security tools into one agentic system", "s": "rss:siliconangle"}, {"t": "Robotics startup Enact Intelligence nabs $30M funding round", "s": "rss:siliconangle"}, {"t": "Graphify-Labs/graphify", "s": "scrape:github-com-trending"}, {"t": "Anthropic、OpenAI 与 Musk 的公益承诺总额已超盖茨基金会三倍", "s": "rss:aihot-news"}, {"t": "王兴兴给宇树画了三条线：量产、小模型、大算力", "s": "api:aibase-ai-news"}, {"t": "AI算力走进大众消费 - 广州日报", "s": "api:news-google-com-search"}, {"t": "DietrichGebert/ponytail", "s": "scrape:github-com-trending"}, {"t": "cloudflare/security-audit-skill", "s": "scrape:github-com-trending"}, {"t": "What to expect during EVOLVE26: Join theCUBE on Oct. 27", "s": "rss:siliconangle"}, {"t": "Demis Hassabis 登上 WSJ 创新者特刊", "s": "rss:aihot-news"}, {"t": "SB Energy Considers Waiting Until December or Later for an IPO", "s": "rss:the-information"}, {"t": "Judge curbs Trump administration's noncitizen voting probes", "s": "rss:axios"}, {"t": "The fight for MAHA's soul", "s": "rss:semafor"}, {"t": "Datadog Offered $4 Billion to Buy Cloud Security Startup ‘Upwind’", "s": "rss:the-information"}, {"t": "Flint-interactive: A language for creating interactive data visualizations", "s": "rss:aihot-demo-microsoft-research"}, {"t": "Chinese hackers spied on thousands of companies after breaching IT giant ConnectWise", "s": "rss:aihot-demo-techcrunch-ai"}]}]</script>
+<script src="assets/motion.js" defer></script>
+<div class="lightbox" id="lightbox" hidden>
+  <button type="button" class="lightbox__close" aria-label="关闭">×</button>
+  <img class="lightbox__img" alt="">
+</div>
+<script>
+// Click a picture and it opens in place. No new tab, no scroll jump, no history entry.
+// Escape, the close button, or a click on the backdrop dismisses it.
+(function () {
+  var box = document.getElementById("lightbox");
+  if (!box) return;
+  var img = box.querySelector(".lightbox__img");
+  function open(src) {
+    img.src = src;
+    box.hidden = false;
+    document.body.classList.add("is-lightbox");
+  }
+  function close() {
+    box.hidden = true;
+    img.removeAttribute("src");
+    document.body.classList.remove("is-lightbox");
+  }
+  document.addEventListener("click", function (e) {
+    var thumb = e.target.closest(".item__thumb");
+    if (thumb) { e.preventDefault(); open(thumb.dataset.full); return; }
+    if (e.target === box || e.target.closest(".lightbox__close")) close();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !box.hidden) close();
+  });
+})();
+</script>
+</body>
+</html>
