@@ -164,9 +164,26 @@ def _push(root: Path, date: str) -> bool:
             if not (root / ".git").exists():
                 return False
 
-        git("add", "-A")
-        if not git("status", "--porcelain").stdout.strip():
+        # **Report what git actually sees.** The card PNGs were built, uploaded and logged while
+        # the page showed none of them, and there was no way to tell from outside whether the
+        # files were never written, were written and then staged away, or were staged and never
+        # pushed. Printing the counts makes the next failure diagnosable in one line.
+        staged = git("add", "-A")
+        status = git("status", "--porcelain").stdout.strip()
+        on_disk = len(list((root / date).glob("*")))
+        print(
+            f"配图上传：磁盘 {on_disk} 个文件，git 待提交 {len(status.splitlines()) if status else 0} 项",
+            file=sys.stderr,
+        )
+        if not status:
+            print(
+                f"配图上传：没有可提交的内容（磁盘 {on_disk} 个文件但 git 无差异）",
+                file=sys.stderr,
+            )
             return True
+        if staged.returncode != 0:
+            print(f"配图上传：git add 失败 rc={staged.returncode}", file=sys.stderr)
+            return False
         if git(
             "-c", "user.name=ai-daily", "-c", "user.email=ai-daily@local",
             "commit", "-q", "-m", f"media: {date}",
