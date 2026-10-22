@@ -197,7 +197,12 @@ def score_event(
     # precondition than to a peer of "how many outlets covered it". It never reaches zero:
     # demote, never delete, so a quiet day still prints and a borderline item can still lead
     # if it is genuinely the day's biggest thing.
-    focus_factor, focus_components = focus_multiplier(event, source_index)
+    # `items_by_id` lets the focus score read the body when the title carries no signal.
+    # Digest feeds title an issue by its date (`DailyDawn · 2026-10-15`), which measured 0.18
+    # against the 0.70 relevance floor while the body held 20941 characters of AI text.
+    focus_factor, focus_components = focus_multiplier(
+        event, source_index, items_by_id=items_by_id
+    )
 
     # **Editorial priority for Chinese model vendors** (explicit user instruction):
     # DeepSeek > Kimi > GLM > MiniMax/Qwen/豆包/阶跃星辰/元宝, all above the rest.

@@ -274,6 +274,26 @@ def _headline_focus(title: str) -> float:
     return max(0.08, min(1.0, score))
 
 
+#: How much of a body to read when the title says nothing. The first paragraphs name the subject;
+#: reading the whole thing would score an opinion column on every term it mentions in passing.
+_BODY_PROBE_CHARS = 1200
+
+
+def _body_opening(event: Event, items_by_id: dict[str, object] | None) -> str:
+    """The opening of the event's body text, or "" when there is none."""
+    if not items_by_id:
+        return ""
+    best = ""
+    for item_id in event.member_item_ids:
+        item = items_by_id.get(item_id)
+        if item is None:
+            continue
+        text = (getattr(item, "content_text", None) or getattr(item, "summary", None) or "")
+        if len(text) > len(best):
+            best = text
+    return best[:_BODY_PROBE_CHARS].strip()
+
+
 def _source_focus(event: Event, sources: dict[str, SourceSpec]) -> float:
     """How likely the sources are to be carrying AI news.
 
@@ -300,6 +320,7 @@ def focus_multiplier(
     sources: dict[str, SourceSpec] | None = None,
     *,
     floor: float = 0.22,
+    items_by_id: dict[str, object] | None = None,
 ) -> tuple[float, dict]:
     """The multiplier to apply, plus the components that produced it.
 
@@ -320,6 +341,25 @@ def focus_multiplier(
     from an AI-only source is lifted a little; a certain headline is left exactly alone.
     """
     headline = _headline_focus(event.title)
+
+    # **A title with no AI vocabulary is not the same as a story with no AI content.**
+    #
+    # Digest feeds title an issue by its date: `DailyDawn · 2026-10-15`. That title contains no
+    # lab, no model, no technique word, so it measured 0.18 and the relevance floor dropped the
+    # item -- while its body held 20941 characters of AI analysis. Measured across the archive:
+    # dailydawn had 30 items in the raw corpus and **zero** in any published issue.
+    #
+    # So when the title carries no signal, the opening of the body is consulted instead. This
+    # can only raise the score, and only for items whose own text says what they are about.
+    body_used = ""
+    if headline < 0.45:
+        body = _body_opening(event, items_by_id)
+        if body:
+            lifted = _headline_focus(body)
+            if lifted > headline:
+                headline = lifted
+                body_used = body
+
     source = _source_focus(event, sources or {}) if sources else 0.0
 
     combined = headline + (1.0 - headline) * source * 0.25
@@ -327,7 +367,14 @@ def focus_multiplier(
     # Evidence consisting only of a bare `AI` cannot be certified by the source either. The
     # cap is applied to the combined value, not to the headline: "a Mac budgeting app whose AI
     # models run on-device" is not AI news whether it appears on Hacker News or The Verge.
-    if not _CORE.search(event.title or "") and not _LABS.search(event.title or ""):
+    #
+    # The check has to look at the *same text the score came from*. Testing `event.title` alone
+    # re-capped every body-derived score: a dailydawn opening measured 0.758 and was cut back to
+    # 0.40, still below the 0.50 floor, so the body fallback above changed nothing.
+    evidence = event.title or ""
+    if body_used and not (_CORE.search(event.title or "") or _LABS.search(event.title or "")):
+        evidence = body_used
+    if not _CORE.search(evidence) and not _LABS.search(evidence):
         combined = min(combined, 0.40)
 
     multiplier = floor + (1.0 - floor) * combined
