@@ -486,3 +486,20 @@ overrides:
     dedup_group: "aiqianxian"
     reason: >-
       与 rss:wechat-aiqianxian 是同一 feed，见上条。
+
+  # ── 停用：dailydawn（用户 2026-10-22 要求）──────────────────────────────
+  #
+  # 该站一期就是一条 entry，正文约 2 万字。要让它进日报，必须先抓全文
+  # （site_fulltext），再送进打分——实测一期 20941 字符，20 期即 40 万字，
+  # token 消耗远超它带来的信息量。用户判定「太废 token」，停用。
+  #
+  # 停用而非删除：URL 与溯源仍在 registry.yaml 里，重新启用改回 true 即可。
+  "rss:dailydawn-feed-xml":
+    enabled: false
+    reason: >-
+      2026-10-22 用户要求停用：每期是一篇约 2 万字的长文，正文抓取与打分消耗的 token
+      远超产出价值。
+  "jsonfeed:dailydawn-dev":
+    enabled: false
+    reason: >-
+      2026-10-22 用户要求停用：与 rss:dailydawn-feed-xml 同一站点，同理。

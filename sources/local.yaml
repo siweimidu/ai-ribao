@@ -629,7 +629,7 @@ sources:
   language: en
   source_type: rss
   adapter: RssFetcher
-  enabled: true
+  enabled: false
   priority: 3
   polling_interval: 6h
   timeout_s: 30
@@ -638,8 +638,8 @@ sources:
   - user-list:2026-10-17#第二批清单
   why: DailyDawn 的 RSS 版本。与已有的 zh.json 同属一个发布者，因此归入同一 dedup_group —— 否则同一篇内容会被算成两个独立来源。
   notes: 2026-10-17 实测 HTTP 200，13.5 KB，合法 RSS。；RSS 只给 30-40 字摘要，正文在页面，开 site_fulltext
-    抓取。
-  site_fulltext: true
+    抓取。；2026-10-22 停用：每期是一篇 2 万字长文，正文抓取与打分消耗远超产出。
+  site_fulltext: false
 - source_id: atom:github-ai-ribao-releases
   name: ai-ribao Releases
   url: https://github.com/siweimidu/ai-ribao/releases.atom

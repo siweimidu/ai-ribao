@@ -1,4 +1,4 @@
-generated_at: '2026-10-22T06:11:21.530780+00:00'
+generated_at: '2026-10-22T06:41:05.639427+00:00'
 generated_by: scripts/build_registry.py
 source_of_truth: audit/sources_ledger.json (static audit of six repositories) + sources/local.yaml (later additions)
 policy:
@@ -4235,17 +4235,17 @@ sources:
   source_type: rss
   fetch_method: feedparser
   adapter: RssFetcher
-  enabled: true
+  enabled: false
   priority: 3
   polling_interval: 6h
   timeout_s: 30
   needs_credential: null
   dedup_group: dailydawn
-  site_fulltext: true
+  site_fulltext: false
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-17 实测 HTTP 200，13.5 KB，合法 RSS。；RSS 只给 30-40 字摘要，正文在页面，开 site_fulltext 抓取。
+  notes: 2026-10-17 实测 HTTP 200，13.5 KB，合法 RSS。；RSS 只给 30-40 字摘要，正文在页面，开 site_fulltext 抓取。；2026-10-22 停用：每期是一篇 2 万字长文，正文抓取与打分消耗远超产出。
   why: DailyDawn 的 RSS 版本。与已有的 zh.json 同属一个发布者，因此归入同一 dedup_group —— 否则同一篇内容会被算成两个独立来源。
   license_note: null
   found_in:
