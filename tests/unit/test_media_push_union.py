@@ -1,18 +1,17 @@
-"""The media push must add files, never remove a sibling.
+"""The media push uses the GitHub Contents API, not a local clone.
 
-Measured on 2026-10-22. Three commits one minute apart:
+The git implementation failed four ways in one day:
 
-    removed 19 files    <- this call only had its own 2 on disk
-    added    2 files
-    added   21 files    <- the 10-21 set came back, the 10-22 set did not
+  1. `reset --soft FETCH_HEAD` left the working tree holding only this call files, so every
+     sibling on the remote showed up as deleted and the commit removed them.
+  2. `checkout FETCH_HEAD -- .` fixed that but left HEAD behind, so every push was rejected as
+     non-fast-forward (38 images, 38 rejections).
+  3. Adding `reset --soft` after the checkout fixed that, but a failed `fetch` fell through to
+     `checkout`, then to `commit`, producing an orphan commit on unrelated history.
+  4. The working copy carried state between the two `store_images` calls in one issue.
 
-`reset --soft FETCH_HEAD` moved the index to the remote while the working tree held only the
-files this call had written, so every other file looked deleted. Fifteen article images were
-written, reported and URL-logged, then removed from the repository minutes later. The page
-pointed at 404s.
-
-`git checkout FETCH_HEAD -- .` materialises the remote tree instead: local files survive, remote
-files arrive, and `git add -A` commits a union.
+All four are properties of maintaining a local clone. The Contents API has no clone, so these
+tests assert the API shape rather than git mechanics.
 """
 
 from __future__ import annotations
@@ -23,11 +22,7 @@ from aidaily import mediastore
 
 
 def _code_only(source: str) -> str:
-    """The function with comments and the docstring removed.
-
-    Comments here explain why `reset --soft` was wrong; asserting on raw source would fail on the
-    explanation itself.
-    """
+    """The function with comments and the docstring removed."""
     body = source
     if '"""' in body:
         head, _, rest = body.partition('"""')
@@ -36,34 +31,40 @@ def _code_only(source: str) -> str:
     return "\n".join(line.split("#")[0] for line in body.splitlines())
 
 
-def test_push_materialises_the_remote_and_moves_head() -> None:
-    """Two steps, both required.
-
-    `checkout FETCH_HEAD -- .` brings the remote files onto disk. On its own it leaves HEAD
-    behind, so the commit built on top is not a descendant of the remote tip and the push is
-    rejected as non-fast-forward -- measured 2026-10-22, 38 images uploaded and 38 rejections.
-
-    `reset --soft` alone moves HEAD but leaves the working tree holding only this call files,
-    which is what deleted the siblings in the first place.
-
-    Together: files arrive, HEAD advances, and the commit is a fast-forward.
-    """
+def test_push_uses_the_contents_api() -> None:
+    """One PUT per file, keyed by path. No clone, so nothing to get out of sync."""
     code = _code_only(inspect.getsource(mediastore._push))
-    assert "checkout" in code, "the remote tree must be checked out onto disk"
-    assert "reset" in code and "--soft" in code, "HEAD must advance to the remote tip"
-    # checkout must come first: reset --soft before checkout would keep the stale tree.
-    assert code.index("checkout") < code.index("--soft")
+    assert "api.github.com" in code
+    assert "contents" in code
+    assert "base64" in code
 
 
-def test_push_reports_what_git_sees() -> None:
-    """A silent push that commits nothing is indistinguishable from one that worked."""
+def test_push_does_not_use_git_at_all() -> None:
+    """Every git-based failure mode is gone with the clone."""
+    code = _code_only(inspect.getsource(mediastore._push))
+    for forbidden in ("subprocess", "git(", "FETCH_HEAD", "reset", "checkout"):
+        assert forbidden not in code, f"{forbidden} must not appear: the API path has no clone"
+
+
+def test_push_requires_a_token() -> None:
+    """The workflow token is scoped to the digest repository and cannot write here."""
+    code = _code_only(inspect.getsource(mediastore._push))
+    assert "MEDIA_TOKEN" in code
+
+
+def test_push_reports_counts() -> None:
+    """A silent push that uploads nothing is indistinguishable from one that worked."""
     source = inspect.getsource(mediastore._push)
-    assert "磁盘" in source and "待提交" in source
-    assert "推送成功" in source
-    assert "推送失败" in source
+    assert "上传" in source and "失败" in source
 
 
 def test_a_failed_push_returns_false_so_no_url_survives_its_file() -> None:
     source = inspect.getsource(mediastore.store_images)
     assert "if not _push(root, date):" in source
     assert "return {}" in source
+
+
+def test_an_unchanged_file_is_not_uploaded_twice() -> None:
+    """A re-run must not churn the repository with identical blobs."""
+    code = _code_only(inspect.getsource(mediastore._push))
+    assert "unchanged" in code

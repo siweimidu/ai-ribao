@@ -114,155 +114,118 @@ def store_images(
 
 
 def _push(root: Path, date: str) -> bool:
-    """Commit and push the day directory. True when the remote accepted it.
+    """Upload the day directory through the GitHub Contents API. True when every file landed.
 
-    ## What this used to do, and why it lost images
+    ## Why the API and not git
 
-    `reset --soft FETCH_HEAD` made the index match the remote while leaving the working tree
-    exactly as it was on disk. Since the working tree here holds *only the files this call
-    wrote*, every other file on the remote showed up as deleted. The commit that followed
-    therefore removed its siblings.
+    The git implementation was replaced after it failed four different ways in one day:
 
-    Measured on 2026-10-22, three consecutive commits one minute apart:
+      1. `reset --soft FETCH_HEAD` left the working tree holding only this call files, so every
+         sibling on the remote showed up as deleted and the commit removed them.
+      2. `checkout FETCH_HEAD -- .` fixed the deletions but left HEAD behind, so every push was
+         rejected as non-fast-forward (38 images, 38 rejections).
+      3. Adding `reset --soft` after the checkout fixed that, but a failed `fetch` fell through
+         to `checkout`, then to `commit`, producing an orphan commit on unrelated history.
+      4. Even when all of that lined up, the working copy carried state between the two
+         `store_images` calls in one issue (article pictures, then repository cards), and the
+         second call could still re-point the tree.
 
-        removed 19 files    <- this call only had its own 2
-        added    2 files
-        added   21 files    <- the 10-21 set came back, the 10-22 set did not
+    Every one of those is a property of *maintaining a local clone*. The Contents API has no
+    clone: each file is a PUT against a path, keyed by the current blob sha. There is no index,
+    no HEAD, no fast-forward, and no shared state between calls. Uploading the same bytes twice
+    is a no-op; uploading after someone else changed the branch still applies.
 
-    Fifteen article images were written, reported, URL-logged and never survived. The page
-    pointed at files that had been deleted from the repository minutes after they landed.
-
-    ## What it does now
-
-    `git checkout FETCH_HEAD -- .` **populates** the working tree from the remote instead of
-    merely re-pointing the index. Everything the remote has is present on disk, this call
-    adds its own files on top, and `git add -A` therefore commits a union rather than a
-    replacement. Deletions cannot happen because nothing is missing.
-
-    Same cost as before (`--depth 1`), and the working copy stays useful between calls.
+    Cost is one request per file instead of one per batch, which at a few dozen images a day is
+    well inside the 5000/hour authenticated quota. `MEDIA_TOKEN` is required: the workflow
+    `GITHUB_TOKEN` is scoped to the digest repository and cannot write here.
     """
+    import base64
+    import json as _json
+    import urllib.error
+    import urllib.request
+
     token = os.environ.get("MEDIA_TOKEN", "").strip()
+    if not token:
+        print("配图上传：缺少 MEDIA_TOKEN，跳过上传", file=sys.stderr)
+        return False
+
     repo = repo_for(date)
+    day_dir = root / date
+    if not day_dir.exists():
+        print(f"配图上传：{day_dir} 不存在", file=sys.stderr)
+        return False
 
-    def git(*args: str) -> subprocess.CompletedProcess:
-        return subprocess.run(
-            ["git", *args], cwd=str(root), capture_output=True, text=True, encoding="utf-8"
-        )
+    files = sorted(p for p in day_dir.glob("*") if p.is_file())
+    if not files:
+        print(f"配图上传：{day_dir} 是空的", file=sys.stderr)
+        return False
 
-    def remote_url() -> str:
-        if token:
-            return f"https://x-access-token:{token}@github.com/{repo}.git"
-        return f"https://github.com/{repo}.git"
+    api = f"https://api.github.com/repos/{repo}/contents"
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "ai-daily",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
 
-    try:
-        root.mkdir(parents=True, exist_ok=True)
-        if not (root / ".git").exists():
-            if git("init", "-q", "-b", MEDIA_BRANCH).returncode != 0:
-                return False
-            if git("remote", "add", "origin", remote_url()).returncode != 0:
-                return False
-        elif token:
-            git("remote", "set-url", "origin", remote_url())
+    def call(method: str, url: str, payload: dict | None = None) -> tuple[int, dict]:
+        body = _json.dumps(payload).encode("utf-8") if payload is not None else None
+        request = urllib.request.Request(url, data=body, headers=headers, method=method)
+        try:
+            with urllib.request.urlopen(request, timeout=30) as response:
+                return response.status, _json.loads(response.read() or b"{}")
+        except urllib.error.HTTPError as exc:
+            raw = exc.read()
+            try:
+                detail = _json.loads(raw or b"{}")
+            except ValueError:
+                detail = {"message": raw[:120].decode("utf-8", "replace")}
+            return exc.code, detail
+        except Exception as exc:  # noqa: BLE001
+            return 0, {"message": f"{type(exc).__name__}: {exc}"}
 
-        # Fetch on every push: `store_images` runs twice per issue (article pictures, then
-        # repository cards) and each call pushes.
-        fetched = git("fetch", "-q", "--depth", "1", "origin", MEDIA_BRANCH)
-        if fetched.returncode != 0:
-            # **A failed fetch must not fall through to a commit.**
-            #
-            # Measured while debugging 2026-10-22: when `fetch` failed on a network timeout,
-            # execution continued, `checkout FETCH_HEAD` failed too ("invalid reference"), and the
-            # function still staged the local files and committed them on top of an unrelated
-            # history. The push then failed as non-fast-forward and the images were lost, with
-            # only a one-line rc=128 in the log.
-            #
-            # One retry first, because a transient failure is worth it.
-            for _ in range(2):
-                fetched = git("fetch", "-q", "--depth", "1", "origin", MEDIA_BRANCH)
-                if fetched.returncode == 0:
-                    break
-            if fetched.returncode != 0:
-                print(
-                    f"配图上传：fetch 失败 rc={fetched.returncode} {(fetched.stderr or '')[:120]}",
-                    file=sys.stderr,
-                )
-                return False
+    uploaded = 0
+    unchanged = 0
+    failed: list[str] = []
 
-        if fetched.returncode == 0:
-            # **Materialise the remote tree.** `reset --soft` only moved the index; checkout
-            # brings the files onto disk so nothing looks deleted.
-            # **Move HEAD as well as the files.**
-            #
-            # `checkout FETCH_HEAD -- .` brings the remote tree onto disk but leaves HEAD where it
-            # was, so the commit built on top is not a descendant of the remote tip and the push
-            # is rejected as non-fast-forward. Measured 2026-10-22: 38 images uploaded, 38
-            # failures, every one `! [rejected] HEAD -> main (non-fast-forward)`.
-            #
-            # `reset --soft` moves HEAD without touching the working tree, which after the
-            # checkout above already holds the union. Doing both is what makes the commit a
-            # fast-forward of the remote.
-            checkout = git("checkout", "-q", "-f", "FETCH_HEAD", "--", ".")
-            if checkout.returncode != 0:
-                print(
-                    f"配图上传：checkout 失败 rc={checkout.returncode} {(checkout.stderr or '')[:120]}",
-                    file=sys.stderr,
-                )
-                return False
-            reset = git("reset", "-q", "--soft", "FETCH_HEAD")
-            if reset.returncode != 0:
-                print(
-                    f"配图上传：reset 失败 rc={reset.returncode} {(reset.stderr or '')[:120]}",
-                    file=sys.stderr,
-                )
-                return False
+    for path in files:
+        target = f"{api}/{date}/{path.name}"
+
+        # Does it already exist with the same bytes? A re-run must not churn the repository.
+        status, existing = call("GET", target)
+        sha = existing.get("sha") if status == 200 else None
+
+        encoded = base64.b64encode(path.read_bytes()).decode("ascii")
+        if sha:
+            status, current = call("GET", f"{api}/{date}/{path.name}")
+            if status == 200 and current.get("content"):
+                on_remote = base64.b64decode(current["content"])
+                if on_remote == path.read_bytes():
+                    unchanged += 1
+                    continue
+
+        payload = {
+            "message": f"media: {date}/{path.name}",
+            "content": encoded,
+            "branch": MEDIA_BRANCH,
+        }
+        if sha:
+            payload["sha"] = sha
+
+        status, result = call("PUT", target, payload)
+        if status in (200, 201):
+            uploaded += 1
         else:
-            # Empty remote: the first push. Nothing to materialise.
-            pass
+            failed.append(f"{path.name}: {status} {str(result.get('message'))[:80]}")
 
-        staged = git("add", "-A")
-        status = git("status", "--porcelain").stdout.strip()
-        on_disk = len(list((root / date).glob("*")))
-        print(
-            f"配图上传：磁盘 {on_disk} 个文件，git 待提交 {len(status.splitlines()) if status else 0} 项",
-            file=sys.stderr,
-        )
-        if staged.returncode != 0:
-            print(f"配图上传：git add 失败 rc={staged.returncode}", file=sys.stderr)
-            return False
-        if not status:
-            print(f"配图上传：无差异，无需提交（磁盘 {on_disk} 个文件）", file=sys.stderr)
-            return True
+    print(
+        f"配图上传：{len(files)} 个文件，上传 {uploaded}，已存在 {unchanged}，失败 {len(failed)}",
+        file=sys.stderr,
+    )
+    for line in failed[:5]:
+        print(f"  ✗ {line}", file=sys.stderr)
 
-        if git(
-            "-c", "user.name=ai-daily", "-c", "user.email=ai-daily@local",
-            "commit", "-q", "-m", f"media: {date}",
-        ).returncode != 0:
-            return False
-
-        for attempt in range(2):
-            pushed = git("push", "-q", "origin", f"HEAD:{MEDIA_BRANCH}")
-            if pushed.returncode == 0:
-                print("配图上传：推送成功", file=sys.stderr)
-                return True
-            print(
-                f"配图上传：推送失败 rc={pushed.returncode} {(pushed.stderr or '')[:120]}",
-                file=sys.stderr,
-            )
-            if attempt == 0:
-                if git("fetch", "-q", "--depth", "1", "origin", MEDIA_BRANCH).returncode != 0:
-                    return False
-                git("checkout", "-q", "-f", "FETCH_HEAD", "--", ".")
-                git("reset", "-q", "--soft", "FETCH_HEAD")
-                git("add", "-A")
-                git(
-                    "-c", "user.name=ai-daily", "-c", "user.email=ai-daily@local",
-                    "commit", "-q", "-m", f"media: {date}",
-                )
-        return False
-    except Exception as exc:  # noqa: BLE001
-        print(f"配图上传：异常 {type(exc).__name__}: {exc}"[:160], file=sys.stderr)
-        return False
-
+    return not failed
 
 def prune(keep_days: int = 90, *, workdir: Path | None = None, dry_run: bool = False) -> list[str]:
     """Delete day directories older than keep_days. Returns what would be (or was) removed.
