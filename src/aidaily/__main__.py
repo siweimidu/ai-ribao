@@ -758,10 +758,10 @@ IMAGE_STAGE_SECONDS = 300
 
 
 async def _fetch_images(
-    #: Concurrency 24, not 12: with 300 candidate stories at 12 in flight the stage spent
-    #: its whole budget queueing rather than fetching. Publishers resist being hammered, so
-    #: this is bounded by the per-host politeness in `media`, not by the pool size.
-    digest: "Digest", cfg: "AppConfig", *, limit: int = 300, concurrency: int = 24
+    #: Forty stories, twenty-four in flight. The count is the reader-visible top of the digest,
+    #: not the whole issue; the concurrency is high enough that forty page loads finish well
+    #: inside the stage budget, and low enough that no publisher sees a burst.
+    digest: "Digest", cfg: "AppConfig", *, limit: int = 40, concurrency: int = 24
 ) -> dict[str, list[bytes]]:
     """WebP bytes for every published event, one to four pictures each. Never raises.
 

@@ -97,12 +97,13 @@ class OutputConfig(BaseModel):
     images: bool = True
     #: How many stories to try. Each costs one page GET plus one image GET.
     #:
-    #: **Not 40 any more.** The cap applied to `digest.top_events[:40]` in published order, and
-    #: on 2026-10-22 the first forty were aggregator entries (`aihot.news`, `news.google.com`)
-    #: that the image policy rejects by design -- so a hundred-story issue produced zero
-    #: pictures while every source with a usable og:image sat below position forty, untried.
-    #: 300 covers a normal issue; the stage deadline, not this number, bounds the runtime.
-    images_max: int = 300
+    #: **Only the first forty, by explicit instruction.** The digest leads with the stories that
+    #: matter; a picture on position 90 is decoration nobody scrolls to, and fetching it costs a
+    #: page load and an image download. Forty is where the reader actually is.
+    #:
+    #: An entry in the first forty that has no usable og:image simply shows no picture -- that is
+    #: the accepted outcome, not a failure to fix.
+    images_max: int = 40
 
 
 class L2Config(BaseModel):
