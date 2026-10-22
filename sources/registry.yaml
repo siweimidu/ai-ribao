@@ -1,4 +1,4 @@
-generated_at: '2026-10-22T04:27:03.139105+00:00'
+generated_at: '2026-10-22T04:46:13.371306+00:00'
 generated_by: scripts/build_registry.py
 source_of_truth: audit/sources_ledger.json (static audit of six repositories) + sources/local.yaml (later additions)
 policy:
@@ -6,11 +6,11 @@ policy:
   coverage_guard: tests/contract/test_source_coverage.py asserts every provenance entry survives.
 stats:
   url_level_rows_before_merge: 100
-  parameter_rows_merged: -89
+  parameter_rows_merged: -90
   merge_breakdown:
     google_trends: 21
-  unique_sources: 189
-  provenance_rows: 217
+  unique_sources: 190
+  provenance_rows: 218
   by_repository:
     CloudFlare-AI-Insight-Daily: 11
     Horizon: 45
@@ -26,19 +26,19 @@ stats:
     daily-briefing: 1
     dailydawn: 19
     daybrief: 5
-  added_locally: 109
+  added_locally: 110
   by_source_type:
     api: 34
     atom: 4
     jsonfeed: 1
     rss: 118
     scrape: 6
-    x_timeline: 26
+    x_timeline: 27
   by_category:
     community: 22
     dataset: 1
     dev: 10
-    digest: 15
+    digest: 16
     example: 5
     lab: 2
     lab-blog: 4
@@ -59,6 +59,37 @@ stats:
     trend: 1
     zh-media: 26
 sources:
+- source_id: x:therundownai
+  name: The Rundown AI
+  url: https://x.com/TheRundownAI
+  normalized_url: https://x.com/TheRundownAI
+  domain: x.com
+  category: digest
+  categories_all:
+  - digest
+  language: en
+  source_type: x_timeline
+  fetch_method: syndication
+  adapter: XTimelineFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 45
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 实测 2026-10-21：21 条里 20 条是近三天，每天 5-9 条，真正的 AI 日报账号。
+  why: AI 新闻日报账号；每天多条，覆盖模型发布、产品上线与行业动态，时效性远好于各厂官方号。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: rss:aihot-demo-aws-machine-learning-blog
   name: AWS Machine Learning Blog
   url: https://aws.amazon.com/blogs/machine-learning/feed/
@@ -632,7 +663,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: Meta AI 官方；开源权重模型与 Llama 系。
   license_note: null
   found_in:
@@ -663,7 +694,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: 通义千问官方；Qwen 开源模型发布。
   license_note: null
   found_in:
@@ -694,7 +725,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: Anthropic 官方；Claude 模型发布与安全研究。
   license_note: null
   found_in:
@@ -725,7 +756,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: 百度官方；文心与国产大模型动态。
   license_note: null
   found_in:
@@ -756,7 +787,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: ChatGPT 产品账号；功能上线与灰度节奏。
   license_note: null
   found_in:
@@ -787,7 +818,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: DeepSeek 官方；V 系列模型与 API 变动。
   license_note: null
   found_in:
@@ -818,7 +849,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: Google AI 官方；消费级 AI 功能与产品。
   license_note: null
   found_in:
@@ -849,7 +880,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: DeepMind 官方；Gemini 与前沿研究。
   license_note: null
   found_in:
@@ -880,7 +911,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: HF 官方；开源模型与数据集动态。
   license_note: null
   found_in:
@@ -911,7 +942,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: 月之暗面官方；Kimi 模型与权重开放。
   license_note: null
   found_in:
@@ -942,7 +973,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: MiniMax 官方；M 系列模型与产品。
   license_note: null
   found_in:
@@ -973,7 +1004,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: Mistral 官方；欧洲开源模型路线。
   license_note: null
   found_in:
@@ -1004,7 +1035,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: NVIDIA 开发者账号；推理栈与 Nemotron 模型。
   license_note: null
   found_in:
@@ -1035,7 +1066,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: OpenAI 官方账号；产品发布与模型更新的第一手公告。
   license_note: null
   found_in:
@@ -1066,7 +1097,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: OpenAI 开发者账号；API、Codex 与工具链变动。
   license_note: null
   found_in:
@@ -1097,7 +1128,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: 阶跃星辰官方；国产多模态模型。
   license_note: null
   found_in:
@@ -1128,7 +1159,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: 小米 MiMo 官方；MiMo 系列模型发布与权重开放。
   license_note: null
   found_in:
@@ -1159,7 +1190,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: DeepMind CEO；前沿模型与研究进展。
   license_note: null
   found_in:
@@ -1190,7 +1221,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: LangChain 创始人；Agent 工程实践。
   license_note: null
   found_in:
@@ -1221,7 +1252,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: Google 首席科学家；基础设施与研究动态。
   license_note: null
   found_in:
@@ -1252,7 +1283,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: 智谱 AI 创始人；GLM 系列模型的第一手发布。
   license_note: null
   found_in:
@@ -1283,7 +1314,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: 前 Tesla AI 负责人；对模型能力的独立评测与判断。
   license_note: null
   found_in:
@@ -1314,7 +1345,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: OpenAI CEO；产品方向与公司决策。
   license_note: null
   found_in:
@@ -1345,7 +1376,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: 独立开发者；LLM 工具链的实测与批评。
   license_note: null
   found_in:
@@ -1376,7 +1407,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: OpenAI Codex 负责人；额度重置与模型节奏的一手消息。
   license_note: null
   found_in:
@@ -1407,7 +1438,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
+  notes: 2026-10-21 按要求停用：只保留 @TheRundownAI。此前实测多数账号最新推文是数月前，抓取内容进不了日报窗口。
   why: Meta 首席 AI 科学家；开源路线与学界观点。
   license_note: null
   found_in:

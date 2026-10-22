@@ -156,6 +156,7 @@ s = p.read_text(encoding="utf-8")
 #
 # The budget is spent on the accounts most likely to have news, and the rest rotate in on later
 # runs. `_BUDGET` is a module-level counter reset at the start of each process.
+#: Requests allowed per run. One account is enabled, so this only bounds a future change.
 _BUDGET = 6
 _spent = 0
 
