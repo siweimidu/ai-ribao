@@ -1477,11 +1477,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: OpenAI 官方账号；产品发布与模型更新的第一手公告。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1495,11 +1495,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: OpenAI 开发者账号；API、Codex 与工具链变动。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1513,11 +1513,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: ChatGPT 产品账号；功能上线与灰度节奏。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1531,11 +1531,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: Anthropic 官方；Claude 模型发布与安全研究。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1549,11 +1549,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: DeepMind 官方；Gemini 与前沿研究。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1567,11 +1567,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: Google AI 官方；消费级 AI 功能与产品。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1585,11 +1585,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: Meta AI 官方；开源权重模型与 Llama 系。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1603,11 +1603,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: Mistral 官方；欧洲开源模型路线。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1621,11 +1621,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: DeepSeek 官方；V 系列模型与 API 变动。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1639,11 +1639,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: 月之暗面官方；Kimi 模型与权重开放。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1657,11 +1657,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: MiniMax 官方；M 系列模型与产品。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1675,11 +1675,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: 通义千问官方；Qwen 开源模型发布。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1693,11 +1693,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: 百度官方；文心与国产大模型动态。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1711,11 +1711,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: 阶跃星辰官方；国产多模态模型。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1729,11 +1729,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: HF 官方；开源模型与数据集动态。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1747,11 +1747,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: NVIDIA 开发者账号；推理栈与 Nemotron 模型。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1765,11 +1765,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: OpenAI Codex 负责人；额度重置与模型节奏的一手消息。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1783,11 +1783,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: 智谱 AI 创始人；GLM 系列模型的第一手发布。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1801,11 +1801,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: 前 Tesla AI 负责人；对模型能力的独立评测与判断。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1819,11 +1819,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: OpenAI CEO；产品方向与公司决策。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1837,11 +1837,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: Meta 首席 AI 科学家；开源路线与学界观点。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1855,11 +1855,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: DeepMind CEO；前沿模型与研究进展。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1873,11 +1873,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: Google 首席科学家；基础设施与研究动态。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1891,11 +1891,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: LangChain 创始人；Agent 工程实践。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1909,11 +1909,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: 独立开发者；LLM 工具链的实测与批评。
   found_in:
   - user-list:2026-10-21#x-accounts
@@ -1927,11 +1927,11 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: X syndication 端点；无需 API key。限流严格，单轮间隔 6 秒。
+  notes: 2026-10-21 实测停用：端点返回「最近 100 条」而非「最近两天」，多数账号最新推文是几个月甚至一年前；507 条里只有 13 条落在窗口内。
   why: 小米 MiMo 官方；MiMo 系列模型发布与权重开放。
   found_in:
   - user-list:2026-10-21#x-accounts
