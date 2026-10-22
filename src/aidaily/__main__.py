@@ -746,6 +746,10 @@ def cmd_gate(args: argparse.Namespace) -> int:
 #: Measured: two AWS decorations each appeared under five unrelated articles.
 SHARED_IMAGE_LIMIT = 3
 
+#: Hard ceiling on the whole image stage. A picture is decoration; an issue that never
+#: ships is worse than an issue with fewer pictures.
+IMAGE_STAGE_SECONDS = 150
+
 
 async def _fetch_images(
     digest: "Digest", cfg: "AppConfig", *, limit: int = 40, concurrency: int = 12
@@ -770,12 +774,24 @@ async def _fetch_images(
     if not events:
         return {}
 
+    # **A hard deadline for the whole stage.**
+    #
+    # Measured on 2026-10-22: publish sat in this function for over thirty minutes and was killed
+    # by the job timeout. The per-request timeouts were fine; what was missing was a bound on the
+    # stage as a whole, so one slow publisher could hold the entire issue hostage.
+    #
+    # A picture is decoration. Twenty seconds of them is worth having; five minutes is not, and
+    # an issue that never ships is worse than an issue with fewer pictures.
+    deadline = asyncio.get_event_loop().time() + IMAGE_STAGE_SECONDS
+
     out: dict[str, list[bytes]] = {}
     semaphore = asyncio.Semaphore(max(1, concurrency))
 
     async with media.default_client() as client:
 
         async def one(event) -> tuple[str, list[bytes]]:
+            if asyncio.get_event_loop().time() > deadline:
+                return event.event_id, []
             # **Only the publisher own page.** Fetching a picture off an aggregator would mean
             # republishing someone else copied-and-redistributed asset -- the aggregator does not
             # own it, and neither do we. When an event has no direct publisher URL it gets the
@@ -787,12 +803,29 @@ async def _fetch_images(
                 # Two candidates: the first direct source, then the next. Beyond that the gain
                 # stops justifying the extra requests.
                 for candidate in direct[:2]:
+                    if asyncio.get_event_loop().time() > deadline:
+                        break
                     images = await media.images_for(client, candidate, keep=3)
                     if images:
                         return event.event_id, images
             return event.event_id, []
 
-        for event_id, images in await asyncio.gather(*(one(e) for e in events)):
+        # `wait_for` is the guarantee, not the per-request timeout. The inner guards stop new
+        # work; this stops work already in flight when the deadline passes.
+        tasks = [asyncio.ensure_future(one(e)) for e in events]
+        done, pending = await asyncio.wait(tasks, timeout=IMAGE_STAGE_SECONDS)
+        for task in pending:
+            task.cancel()
+        if pending:
+            print(
+                f"配图：{len(pending)} 条超时未完成，已放弃（上限 {IMAGE_STAGE_SECONDS}s）",
+                file=sys.stderr,
+            )
+        for task in done:
+            try:
+                event_id, images = task.result()
+            except Exception:
+                continue
             out[event_id] = images
 
     # **Cross-story de-duplication: a picture shared by many stories is site furniture.**

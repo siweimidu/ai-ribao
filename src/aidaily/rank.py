@@ -36,6 +36,7 @@ from datetime import datetime, timezone
 from .entities import topic_overlap
 from .focus import focus_multiplier
 from .frequency import cross_source_score, frequency_index
+from .source_boost import boost_for as source_boost_for
 from .vendor_priority import components as vendor_components
 from .vendor_priority import vendor_priority as vendor_priority_of
 from .heat import heat
@@ -233,6 +234,14 @@ def score_event(
     # weight, and must never lift a routine post above a frontier release. Measured on the
     # 2026-10-21 issue, a full-strength term promoted one press release above every model
     # announcement that day.
+    # **Per-source editorial boost** (reader request: surface one specific account).
+    #
+    # Kept below the vendor tiers: `DeepSeek 1.45` says a vendor announcement matters more than
+    # which outlet carried it. This term only reorders candidates that are already close, which
+    # is what it takes for a source publishing one story a day to win a slot against outlets
+    # that cover the same event.
+    boost_factor, boost_source = source_boost_for(event.source_ids or [])
+
     frequency_factor = 1.0
     frequency_terms: list[str] = []
     if frequency:
@@ -241,7 +250,7 @@ def score_event(
 
     score = (
         heat_score * damped_source * title_factor * focus_factor * vendor_factor
-        * frequency_factor * 100
+        * frequency_factor * boost_factor * 100
     )
 
     return RankedEvent(
@@ -253,6 +262,7 @@ def score_event(
             "substance": round(min(substance_raw / max(1, rank.substance_reference_chars), 1.0), 3),
             "substance_chars": float(substance_raw),
             "title_quality": round(title_factor, 3),
+        "source_boost": round(boost_factor, 3),
             **heat_components,
             **focus_components,
             **vendor_components_result,

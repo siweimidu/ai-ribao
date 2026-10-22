@@ -345,8 +345,6 @@ async def deliver_all(
         # the cards, not the page -- `fetch_many` never raises and returns {} instead.
         repo_meta: dict[str, dict] = {}
         try:
-            import asyncio as _asyncio
-
             from .github_meta import fetch_many, repo_of
 
             slugs = {
@@ -356,7 +354,15 @@ async def deliver_all(
             }
             slugs.discard(None)
             if slugs:
-                repo_meta = _asyncio.run(fetch_many(sorted(slugs)))
+                # **`await`, not `asyncio.run`.**
+                #
+                # `deliver_all` is itself a coroutine, so a loop is already running here.
+                # `asyncio.run()` raises `RuntimeError: asyncio.run() cannot be called from a
+                # running event loop`, the bare `except Exception` below swallowed it, and
+                # `repo_meta` stayed `{}` -- so the page never rendered a single repository card
+                # even though the PNGs were built and uploaded. Measured on 2026-10-22: the log
+                # reported two cards, the page showed none.
+                repo_meta = await fetch_many(sorted(slugs))
         except Exception:
             repo_meta = {}
         try:
