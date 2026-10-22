@@ -19,8 +19,7 @@ sources:
   - KKKKhazix/AIHOT:docs/sources.md#六种信源
   repositories:
   - KKKKhazix/AIHOT
-  license_note: 数据使用受 https://aihot.news/terms 约束，非 MIT；其代码为 MIT。 页面须保留署名与原文/canonical
-    链接。
+  license_note: 数据使用受 https://aihot.news/terms 约束，非 MIT；其代码为 MIT。 页面须保留署名与原文/canonical 链接。
 - source_id: rss:aihot-news-daily
   name: AIHOT 日报
   url: https://aihot.news/feed/daily.xml
@@ -1949,12 +1948,30 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 45
-  notes: 实测 2026-10-21：21 条里 20 条是近三天，每天 5-9 条，真正的 AI 日报账号。
+  notes: 2026-10-22 改用官方 RSS：X 端点对 GitHub runner 稳定返回 429（含 90 秒重试），而 therundown.ai/feed 返回 200 / 50 条，且每条有完整正文页。
   why: AI 新闻日报账号；每天多条，覆盖模型发布、产品上线与行业动态，时效性远好于各厂官方号。
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  repositories: []
+- source_id: rss:therundown-ai
+  name: The Rundown AI
+  url: https://www.therundown.ai/feed
+  domain: therundown.ai
+  category: digest
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  notes: 实测 2026-10-22：50 条，每日 1-2 篇，无速率限制。
+  why: AI 新闻日报；覆盖模型发布、产品上线与行业动态。改用官方 RSS 而非 X 账号，因为 X 端点对自动化访问稳定返回 429。
   found_in:
   - user-list:2026-10-21#x-accounts
   repositories: []

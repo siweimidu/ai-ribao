@@ -1,4 +1,4 @@
-generated_at: '2026-10-22T04:46:13.371306+00:00'
+generated_at: '2026-10-22T05:36:11.841596+00:00'
 generated_by: scripts/build_registry.py
 source_of_truth: audit/sources_ledger.json (static audit of six repositories) + sources/local.yaml (later additions)
 policy:
@@ -6,11 +6,11 @@ policy:
   coverage_guard: tests/contract/test_source_coverage.py asserts every provenance entry survives.
 stats:
   url_level_rows_before_merge: 100
-  parameter_rows_merged: -90
+  parameter_rows_merged: -91
   merge_breakdown:
     google_trends: 21
-  unique_sources: 190
-  provenance_rows: 218
+  unique_sources: 191
+  provenance_rows: 219
   by_repository:
     CloudFlare-AI-Insight-Daily: 11
     Horizon: 45
@@ -26,19 +26,19 @@ stats:
     daily-briefing: 1
     dailydawn: 19
     daybrief: 5
-  added_locally: 110
+  added_locally: 111
   by_source_type:
     api: 34
     atom: 4
     jsonfeed: 1
-    rss: 118
+    rss: 119
     scrape: 6
     x_timeline: 27
   by_category:
     community: 22
     dataset: 1
     dev: 10
-    digest: 16
+    digest: 17
     example: 5
     lab: 2
     lab-blog: 4
@@ -59,6 +59,37 @@ stats:
     trend: 1
     zh-media: 26
 sources:
+- source_id: rss:therundown-ai
+  name: The Rundown AI
+  url: https://www.therundown.ai/feed
+  normalized_url: https://www.therundown.ai/feed
+  domain: www.therundown.ai
+  category: digest
+  categories_all:
+  - digest
+  language: en
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 1
+  polling_interval: 3h
+  timeout_s: 30
+  needs_credential: null
+  dedup_group: null
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 实测 2026-10-22：50 条，每日 1-2 篇，无速率限制。
+  why: AI 新闻日报；覆盖模型发布、产品上线与行业动态。改用官方 RSS 而非 X 账号，因为 X 端点对自动化访问稳定返回 429。
+  license_note: null
+  found_in:
+  - user-list:2026-10-21#x-accounts
+  provenance_count: 1
+  repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
 - source_id: x:therundownai
   name: The Rundown AI
   url: https://x.com/TheRundownAI
@@ -71,7 +102,7 @@ sources:
   source_type: x_timeline
   fetch_method: syndication
   adapter: XTimelineFetcher
-  enabled: true
+  enabled: false
   priority: 1
   polling_interval: 3h
   timeout_s: 45
@@ -80,7 +111,7 @@ sources:
   health_status: unverified
   last_success_at: null
   last_failure_at: null
-  notes: 实测 2026-10-21：21 条里 20 条是近三天，每天 5-9 条，真正的 AI 日报账号。
+  notes: 2026-10-22 改用官方 RSS：X 端点对 GitHub runner 稳定返回 429（含 90 秒重试），而 therundown.ai/feed 返回 200 / 50 条，且每条有完整正文页。
   why: AI 新闻日报账号；每天多条，覆盖模型发布、产品上线与行业动态，时效性远好于各厂官方号。
   license_note: null
   found_in:
@@ -1631,7 +1662,9 @@ sources:
   - user-list:2026-10-15#用户提供的信息源清单
   provenance_count: 1
   repositories: []
-  params: null
+  params:
+    split_digest: true
+    max_items_per_digest: 40
   merged_parameter_rows: 1
   added_locally: true
 - source_id: rss:aihot-news-full
