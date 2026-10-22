@@ -170,10 +170,27 @@ def _push(root: Path, date: str) -> bool:
         if fetched.returncode == 0:
             # **Materialise the remote tree.** `reset --soft` only moved the index; checkout
             # brings the files onto disk so nothing looks deleted.
+            # **Move HEAD as well as the files.**
+            #
+            # `checkout FETCH_HEAD -- .` brings the remote tree onto disk but leaves HEAD where it
+            # was, so the commit built on top is not a descendant of the remote tip and the push
+            # is rejected as non-fast-forward. Measured 2026-10-22: 38 images uploaded, 38
+            # failures, every one `! [rejected] HEAD -> main (non-fast-forward)`.
+            #
+            # `reset --soft` moves HEAD without touching the working tree, which after the
+            # checkout above already holds the union. Doing both is what makes the commit a
+            # fast-forward of the remote.
             checkout = git("checkout", "-q", "-f", "FETCH_HEAD", "--", ".")
             if checkout.returncode != 0:
                 print(
                     f"配图上传：checkout 失败 rc={checkout.returncode} {(checkout.stderr or '')[:120]}",
+                    file=sys.stderr,
+                )
+                return False
+            reset = git("reset", "-q", "--soft", "FETCH_HEAD")
+            if reset.returncode != 0:
+                print(
+                    f"配图上传：reset 失败 rc={reset.returncode} {(reset.stderr or '')[:120]}",
                     file=sys.stderr,
                 )
                 return False
@@ -214,6 +231,7 @@ def _push(root: Path, date: str) -> bool:
                 if git("fetch", "-q", "--depth", "1", "origin", MEDIA_BRANCH).returncode != 0:
                     return False
                 git("checkout", "-q", "-f", "FETCH_HEAD", "--", ".")
+                git("reset", "-q", "--soft", "FETCH_HEAD")
                 git("add", "-A")
                 git(
                     "-c", "user.name=ai-daily", "-c", "user.email=ai-daily@local",

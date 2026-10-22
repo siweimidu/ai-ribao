@@ -36,11 +36,23 @@ def _code_only(source: str) -> str:
     return "\n".join(line.split("#")[0] for line in body.splitlines())
 
 
-def test_push_materialises_the_remote_instead_of_soft_resetting() -> None:
-    """The property that stops sibling files from being deleted."""
+def test_push_materialises_the_remote_and_moves_head() -> None:
+    """Two steps, both required.
+
+    `checkout FETCH_HEAD -- .` brings the remote files onto disk. On its own it leaves HEAD
+    behind, so the commit built on top is not a descendant of the remote tip and the push is
+    rejected as non-fast-forward -- measured 2026-10-22, 38 images uploaded and 38 rejections.
+
+    `reset --soft` alone moves HEAD but leaves the working tree holding only this call files,
+    which is what deleted the siblings in the first place.
+
+    Together: files arrive, HEAD advances, and the commit is a fast-forward.
+    """
     code = _code_only(inspect.getsource(mediastore._push))
     assert "checkout" in code, "the remote tree must be checked out onto disk"
-    assert "--soft" not in code, "reset --soft is what produced the deletions"
+    assert "reset" in code and "--soft" in code, "HEAD must advance to the remote tip"
+    # checkout must come first: reset --soft before checkout would keep the stale tree.
+    assert code.index("checkout") < code.index("--soft")
 
 
 def test_push_reports_what_git_sees() -> None:
