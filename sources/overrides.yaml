@@ -42,95 +42,94 @@ overrides:
     enabled: true
     reason: "2026-10-22 实测可用；科学深度报道，AI 研究的重要二手解释来源"
 
-  # ── X 账号：恢复启用 ──────────────────────────────────────────────────────
+  # ── X 账号：只启用 @TheRundownAI ──────────────────────────────────────────
   #
-  # 2026-10-21 曾按要求只保留 @TheRundownAI，把其余 26 个停用。2026-10-22 恢复：
-  # 这些是官方一手发布渠道，停掉就只能等媒体转述。
+  # 用户明确要求：X 平台只保留 @TheRundownAI 一个账号，其余全部停用。
   #
-  # 限流是真实存在的：实测 syndication 端点连续请求返回 429，封锁持续数分钟。
-  # XTimelineFetcher 已有每轮预算和请求间隔，超出预算的源报 skipped，不会拖垮整轮采集。
-  "x:openai":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:openaidevs":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:chatgpt":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:anthropicai":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:googledeepmind":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:googleai":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:aiatmeta":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:mistralai":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:deepseek_ai":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:kimi_moonshot":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:minimax_ai":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:alibaba_qwen":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:baidu_inc":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:stepfun_ai":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:huggingface":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:nvidiaaidev":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:thsottiaux":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:jietang":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:karpathy":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:sama":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:ylecun":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:demishassabis":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:jeffdean":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:hwchase17":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:simonw":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
-  "x:xiaomimimo":
-    enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  # 实测依据：syndication 端点限流严格，连续请求返回 429 且封锁持续数分钟。
+  # 27 个账号必然撞上限流，一个都抓不到；只留一个则能稳定拿到。
   "x:therundownai":
     enabled: true
-    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+    reason: "2026-10-22 用户指定：X 平台只保留这一个账号"
 
+  "x:openai":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:openaidevs":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:chatgpt":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:anthropicai":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:googledeepmind":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:googleai":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:aiatmeta":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:mistralai":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:deepseek_ai":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:kimi_moonshot":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:minimax_ai":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:alibaba_qwen":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:baidu_inc":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:stepfun_ai":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:huggingface":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:nvidiaaidev":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:thsottiaux":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:jietang":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:karpathy":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:sama":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:ylecun":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:demishassabis":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:jeffdean":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:hwchase17":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:simonw":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
+  "x:xiaomimimo":
+    enabled: false
+    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
   # ── Tavily：适配器指错了，且被当成缺凭证 ──────────────────────────────
   #
   # registry 生成器给所有 source_type=api 的源批量写 `adapter: ApiFetcher`，

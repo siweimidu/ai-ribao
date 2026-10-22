@@ -19,7 +19,8 @@ sources:
   - KKKKhazix/AIHOT:docs/sources.md#六种信源
   repositories:
   - KKKKhazix/AIHOT
-  license_note: 数据使用受 https://aihot.news/terms 约束，非 MIT；其代码为 MIT。 页面须保留署名与原文/canonical 链接。
+  license_note: 数据使用受 https://aihot.news/terms 约束，非 MIT；其代码为 MIT。 页面须保留署名与原文/canonical
+    链接。
 - source_id: rss:aihot-news-daily
   name: AIHOT 日报
   url: https://aihot.news/feed/daily.xml
@@ -636,7 +637,9 @@ sources:
   found_in:
   - user-list:2026-10-17#第二批清单
   why: DailyDawn 的 RSS 版本。与已有的 zh.json 同属一个发布者，因此归入同一 dedup_group —— 否则同一篇内容会被算成两个独立来源。
-  notes: 2026-10-17 实测 HTTP 200，13.5 KB，合法 RSS。
+  notes: 2026-10-17 实测 HTTP 200，13.5 KB，合法 RSS。；RSS 只给 30-40 字摘要，正文在页面，开 site_fulltext
+    抓取。
+  site_fulltext: true
 - source_id: atom:github-ai-ribao-releases
   name: ai-ribao Releases
   url: https://github.com/siweimidu/ai-ribao/releases.atom
@@ -1952,7 +1955,8 @@ sources:
   priority: 1
   polling_interval: 3h
   timeout_s: 45
-  notes: 2026-10-22 改用官方 RSS：X 端点对 GitHub runner 稳定返回 429（含 90 秒重试），而 therundown.ai/feed 返回 200 / 50 条，且每条有完整正文页。
+  notes: 2026-10-22 改用官方 RSS：X 端点对 GitHub runner 稳定返回 429（含 90 秒重试），而 therundown.ai/feed
+    返回 200 / 50 条，且每条有完整正文页。
   why: AI 新闻日报账号；每天多条，覆盖模型发布、产品上线与行业动态，时效性远好于各厂官方号。
   found_in:
   - user-list:2026-10-21#x-accounts
