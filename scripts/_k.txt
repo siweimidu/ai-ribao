@@ -1,0 +1,75 @@
+fix(collect): 配了凭证也不启用 + 启用被误停的 27 个 X 源 + 删悬浮箭头
+
+════════════════════════════════════════════════════════════════════════
+一、你问的「我不是给你 API 了嘛，为什么还要凭证」
+
+这是真 bug，不是配置问题。
+
+`select_sources` 原来这样判断：
+
+    elif spec.needs_credential:
+        skipped.append((spec.source_id, f"needs credential: {spec.needs_credential}"))
+
+**只要有 `needs_credential` 字段就跳过，根本不看环境变量里有没有这个 key。**
+
+所以你把 TAVILY_API_KEY 配好了，它照样报「待凭证」，而且从代码外部没法修。
+
+改成：
+
+    elif spec.needs_credential and not os.environ.get(spec.needs_credential, "").strip():
+
+`needs_credential` 现在的意思是「这个源需要名为 NAME 的变量」，不是「这个变量缺了」。
+
+验证：
+
+  无 TAVILY_API_KEY  → 可采集 0，跳过 1（needs credential: TAVILY_API_KEY）
+  有 TAVILY_API_KEY  → 可采集 1，跳过 0
+
+════════════════════════════════════════════════════════════════════════
+二、Tavily 的适配器也指错了
+
+registry 里写的是 `adapter: ApiFetcher` —— 那是生成器给所有 source_type=api 的源
+批量写的占位名。而 Tavily 是 POST 检索接口，没有可 GET 的 URL，通用 JSON 读取器
+对它发 GET 必然失败。
+
+`TavilyFetcher` 早就实现了（src/aidaily/fetchers/tavily.py），只是没人接上。
+已在 overrides 里改为 TavilyFetcher 并启用。
+
+════════════════════════════════════════════════════════════════════════
+三、启用被误停的 27 个 X 源
+
+2026-10-21 有一条指示「只保留 @TheRundownAI」，把其余 26 个 X 账号全停了，
+包括 @TheRundownAI 自己。
+
+已全部恢复。这些是官方一手发布渠道，停掉就只能等媒体转述。
+
+**限流是真实存在的**：实测 syndication 端点连续请求返回 429，封锁持续数分钟。
+适配器本身有每轮预算和请求间隔，超预算的源报 skipped，不会拖垮整轮采集。
+
+════════════════════════════════════════════════════════════════════════
+四、另外启用 Quanta Magazine
+
+实测 HTTP 200、11 KB、RSS 可用。科学深度报道，常是 AI 研究成果的第一篇长文解释。
+
+其余停用的预设源逐个测过，都不符合「与 AI 相关性高」：
+
+  LWN 全文          403
+  HuggingFace Papers 401
+  CSS-Tricks        前端
+  Krebs / Schneier  安全博客
+  Nature            综合科学期刊
+
+════════════════════════════════════════════════════════════════════════
+五、删掉信息源页面的悬浮箭头
+
+`.source-row::after { content: "↗" }` —— 悬浮在行上时右上角冒出的小箭头。
+整条规则删除。
+
+════════════════════════════════════════════════════════════════════════
+六、结果
+
+  可采集源：127 → 154
+  跳过：64 → 37
+
+剩下的 37 个里：14 个 Reddit 需要 OAuth（匿名访问已关闭，实测 403 + 登录墙），
+2 个适配器未实现，其余是不符合 AI 相关性的预设。

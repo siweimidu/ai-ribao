@@ -1970,8 +1970,9 @@ sources:
   priority: 1
   polling_interval: 3h
   timeout_s: 30
-  notes: 实测 2026-10-22：50 条，每日 1-2 篇，无速率限制。
+  notes: 实测 2026-10-22：RSS 只有一句 teaser，文章页 7700 字符；已开启 site_fulltext 抓正文，否则模型只能复述标题。
   why: AI 新闻日报；覆盖模型发布、产品上线与行业动态。改用官方 RSS 而非 X 账号，因为 X 端点对自动化访问稳定返回 429。
   found_in:
   - user-list:2026-10-21#x-accounts
   repositories: []
+  site_fulltext: true

@@ -1,6 +1,7 @@
 """Collection orchestration: run every enabled source, isolate every failure."""
 
 from __future__ import annotations
+import os
 import sys
 
 import asyncio
@@ -14,6 +15,7 @@ from .config import AppConfig
 from .fetchers import get_fetcher, resolve_adapter
 from .fetchers.base import SourceResult
 from .http import HttpClient
+from .fulltext import extract_body
 from .expand import expand_all, drain_notes as _drain_expand_notes
 from .ingest import normalize_raw
 from .roundup import split_all
@@ -53,13 +55,22 @@ def select_sources(specs: list[SourceSpec]) -> tuple[list[SourceSpec], list[tupl
 
     A skip always carries a reason. "Silently not collected" is indistinguishable from
     "collected and empty", and that ambiguity is what makes a digest untrustworthy.
+
+    **`needs_credential` names the variable, it does not mean the variable is missing.**
+    The old check skipped any source with that field set, so a source stayed unusable even
+    after its key was supplied -- the site reported 待凭证 forever and there was no way to
+    fix it from outside the code. Measured on 2026-10-22: TAVILY_API_KEY was configured and
+    the source was still skipped.
+
+    Now the field is read as "this source wants `NAME`", and the source is skipped only when
+    `NAME` is actually absent from the environment.
     """
     collectable: list[SourceSpec] = []
     skipped: list[tuple[str, str]] = []
     for spec in specs:
         if not spec.enabled:
             skipped.append((spec.source_id, f"disabled ({spec.health_status})"))
-        elif spec.needs_credential:
+        elif spec.needs_credential and not os.environ.get(spec.needs_credential, "").strip():
             skipped.append((spec.source_id, f"needs credential: {spec.needs_credential}"))
         elif resolve_adapter(spec) is None:
             skipped.append((spec.source_id, f"adapter not implemented yet: {spec.adapter}"))
@@ -104,6 +115,8 @@ async def collect(
     timeout = timeout_s or cfg.llm.request_timeout_s
     sem = asyncio.Semaphore(concurrency)
 
+    by_id = {s.source_id: s for s in specs}
+
     async with HttpClient(
         timeout_s=float(min(timeout, 30)), retries=2, min_host_interval=0.5
     ) as http:
@@ -136,8 +149,39 @@ async def collect(
                 for src, note in _drain_expand_notes():
                     report.skipped.append((src, note))
 
+        # Fill in the body for feeds that only carry a teaser. This runs inside the client
+        # block because it fetches pages, and before splitting so the splitter sees real text.
+        # Opt-in per source (`site_fulltext`).
+        for result in results:
+            spec = by_id.get(result.source_id)
+            if spec is None or not getattr(spec, "site_fulltext", False):
+                continue
+            if not result.items:
+                continue
+            filled = 0
+            for raw in result.items:
+                if len(raw.content_text or "") >= 1500:
+                    continue
+                if not (raw.url or "").startswith(("http://", "https://")):
+                    continue
+                try:
+                    page = await http.get(
+                        raw.url, timeout_s=getattr(spec, "timeout_s", None) or 30
+                    )
+                except Exception:  # noqa: BLE001 - a page that will not load leaves the teaser
+                    continue
+                if not getattr(page, "ok", False):
+                    continue
+                body = extract_body(page.body.decode("utf-8", "replace"))
+                if body:
+                    raw.content_text = body
+                    filled += 1
+            if filled:
+                report.skipped.append(
+                    (spec.source_id, f"full text filled for {filled} item(s)")
+                )
+
     now = datetime.now(timezone.utc)
-    by_id = {s.source_id: s for s in specs}
     for result in results:
         report.results.append(result)
         spec = by_id[result.source_id]
@@ -156,6 +200,7 @@ async def collect(
         # splitter works on the body it is given, so it cannot help when that body is a
         # 46-character summary -- measured on `ainewslog`: 480 such items, while one article
         # page held 21 stories. Fetching the page is what turns one line a day into twenty.
+
         for raw in split_all(result.items):
             report.items.append(normalize_raw(raw, spec, now))
 

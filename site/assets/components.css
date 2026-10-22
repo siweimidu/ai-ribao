@@ -845,28 +845,6 @@
   outline-offset: -2px;
 }
 
-/* The arrow marks the row as somewhere to go. It only appears on hover or keyboard focus,
-   so a list of 136 rows does not read as 136 call-to-actions. */
-/* The arrow marks the row as somewhere to go, and only appears on hover or keyboard focus
-   so a list of 136 rows does not read as 136 call-to-actions.
-   
-   It must not become a third grid item: `.source-row` declares two columns
-   (`minmax(0,1fr) auto`), so an extra child lands on a new row and the arrow appears under
-   the URL instead of beside it. Pinned to the right edge of the row instead. */
-.source-row::after {
-  content: "↗";
-  position: absolute;
-  top: calc(var(--unit) * 3.5);
-  right: calc(var(--unit) * 5);
-  color: var(--muted-fg);
-  opacity: 0;
-  transition: opacity 0.15s ease;
-  pointer-events: none;
-}
-
-.source-row:hover::after,
-.source-row:focus-visible::after { opacity: 1; }
-
 .source-row__name { font-weight: 620; }
 
 .source-row__meta {

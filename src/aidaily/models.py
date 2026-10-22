@@ -47,6 +47,8 @@ class SourceSpec(BaseModel):
     timeout_s: int = 20
     needs_credential: str | None = None
     dedup_group: str | None = None
+    #: Fetch the article page and keep its prose. For feeds whose body is a one-line teaser.
+    site_fulltext: bool = False
     health_status: HealthStatus = "unverified"
     last_success_at: datetime | None = None
     last_failure_at: datetime | None = None

@@ -231,6 +231,8 @@ def load_local_sources() -> list[dict]:
             "timeout_s": int(row.get("timeout_s", 20)),
             "needs_credential": row.get("needs_credential"),
             "dedup_group": row.get("dedup_group"),
+            # Fetch the article page and keep its prose. For feeds that only carry a teaser.
+            "site_fulltext": bool(row.get("site_fulltext", False)),
             "health_status": "unverified",
             "last_success_at": None,
             "last_failure_at": None,

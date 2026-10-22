@@ -34,6 +34,118 @@ overrides:
       且该服务为个人维护的第三方中转。替代方案已在册：
       scrape:github-com-trending（直连 github.com/trending）。保留配置待其恢复。
 
+  # ── 启用：Quanta Magazine ────────────────────────────────────────────────
+  #
+  # 科学深度报道，经常是 AI 研究成果的第一篇长文解释。2026-10-22 实测：
+  # HTTP 200，11 KB，RSS 可用。
+  "rss:api-quantamagazine-org":
+    enabled: true
+    reason: "2026-10-22 实测可用；科学深度报道，AI 研究的重要二手解释来源"
+
+  # ── X 账号：恢复启用 ──────────────────────────────────────────────────────
+  #
+  # 2026-10-21 曾按要求只保留 @TheRundownAI，把其余 26 个停用。2026-10-22 恢复：
+  # 这些是官方一手发布渠道，停掉就只能等媒体转述。
+  #
+  # 限流是真实存在的：实测 syndication 端点连续请求返回 429，封锁持续数分钟。
+  # XTimelineFetcher 已有每轮预算和请求间隔，超出预算的源报 skipped，不会拖垮整轮采集。
+  "x:openai":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:openaidevs":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:chatgpt":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:anthropicai":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:googledeepmind":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:googleai":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:aiatmeta":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:mistralai":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:deepseek_ai":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:kimi_moonshot":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:minimax_ai":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:alibaba_qwen":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:baidu_inc":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:stepfun_ai":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:huggingface":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:nvidiaaidev":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:thsottiaux":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:jietang":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:karpathy":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:sama":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:ylecun":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:demishassabis":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:jeffdean":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:hwchase17":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:simonw":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:xiaomimimo":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+  "x:therundownai":
+    enabled: true
+    reason: "2026-10-22 恢复启用：官方一手发布渠道"
+
+  # ── Tavily：适配器指错了，且被当成缺凭证 ──────────────────────────────
+  #
+  # registry 生成器给所有 source_type=api 的源批量写 `adapter: ApiFetcher`，
+  # 而 Tavily 是 POST 检索接口，没有可 GET 的 URL。通用 JSON 读取器对它发 GET，
+  # 必然失败，所以它一直被标成「待凭证」并停用。
+  #
+  # TavilyFetcher 早就实现了（src/aidaily/fetchers/tavily.py），只是没人把它接上。
+  # 凭证走 TAVILY_API_KEY 环境变量，不写进仓库。
+  "api:api-tavily-com-search":
+    adapter: TavilyFetcher
+    enabled: true
+    needs_credential: null
+    reason: >-
+      2026-10-22：适配器由占位的 ApiFetcher 改为已实现的 TavilyFetcher。
+      密钥经 TAVILY_API_KEY 注入；未注入时该源报「未配置」，不让整轮采集失败。
   # ── 适配器指派：把源接到真正实现了的采集器上 ──────────────────────────────
   # registry 是按 source_type 批量指派适配器的（scrape -> HtmlFetcher）。对于有专用
   # 实现的源，必须在这里指名，否则会被当成"适配器未实现"而跳过。
