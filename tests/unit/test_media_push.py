@@ -28,7 +28,9 @@ def test_push_retries_once_after_a_rejected_push() -> None:
     """A concurrent run may push between our fetch and our push."""
     source = inspect.getsource(mediastore._push)
     assert "for attempt in range(2)" in source
-    assert "rebase" in source
+    # The retry re-fetches and re-checkouts rather than rebasing: the working tree must still
+    # hold the local files after a rejected push.
+    assert "fetch" in source
 
 
 def test_a_failed_push_does_not_report_success() -> None:

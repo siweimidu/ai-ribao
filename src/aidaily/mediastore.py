@@ -30,6 +30,7 @@ the same content hash, so a re-run adds nothing.
 
 from __future__ import annotations
 
+import sys
 import os
 import shutil
 import subprocess
@@ -115,11 +116,30 @@ def store_images(
 def _push(root: Path, date: str) -> bool:
     """Commit and push the day directory. True when the remote accepted it.
 
-    `store_images` creates the date directory before this runs, so the target is never empty and
-    `git clone ... .` refuses with exit 128 ("destination path already exists and is not an empty
-    directory"). The first version did exactly that, the broad except swallowed it, and every
-    run reported "push failed" with no cause. `init` + `fetch` + `reset --soft` keeps the files
-    that are already on disk and makes the working tree match the remote.
+    ## What this used to do, and why it lost images
+
+    `reset --soft FETCH_HEAD` made the index match the remote while leaving the working tree
+    exactly as it was on disk. Since the working tree here holds *only the files this call
+    wrote*, every other file on the remote showed up as deleted. The commit that followed
+    therefore removed its siblings.
+
+    Measured on 2026-10-22, three consecutive commits one minute apart:
+
+        removed 19 files    <- this call only had its own 2
+        added    2 files
+        added   21 files    <- the 10-21 set came back, the 10-22 set did not
+
+    Fifteen article images were written, reported, URL-logged and never survived. The page
+    pointed at files that had been deleted from the repository minutes after they landed.
+
+    ## What it does now
+
+    `git checkout FETCH_HEAD -- .` **populates** the working tree from the remote instead of
+    merely re-pointing the index. Everything the remote has is present on disk, this call
+    adds its own files on top, and `git add -A` therefore commits a union rather than a
+    replacement. Deletions cannot happen because nothing is missing.
+
+    Same cost as before (`--depth 1`), and the working copy stays useful between calls.
     """
     token = os.environ.get("MEDIA_TOKEN", "").strip()
     repo = repo_for(date)
@@ -144,30 +164,23 @@ def _push(root: Path, date: str) -> bool:
         elif token:
             git("remote", "set-url", "origin", remote_url())
 
-        # **Re-fetch on every push, not only the first.**
-        #
-        # `store_images` runs twice per issue -- once for article pictures, once for repository
-        # cards -- and each call pushes. The first version only fetched when `.git` was absent,
-        # so the second call kept a HEAD that no longer matched the remote. Its push was
-        # rejected as non-fast-forward, `store_images` returned `{}`, and the cards silently
-        # lost their images while the article pictures stayed.
-        #
-        # Measured on 2026-10-21: 52 image URLs written to the archive, 49 files in the media
-        # repository, 13 missing -- all of them from the second batch and from a partial first.
-        #
-        # `--depth 1` keeps it cheap; `reset --soft` keeps the files already written to disk.
+        # Fetch on every push: `store_images` runs twice per issue (article pictures, then
+        # repository cards) and each call pushes.
         fetched = git("fetch", "-q", "--depth", "1", "origin", MEDIA_BRANCH)
         if fetched.returncode == 0:
-            git("reset", "-q", "--soft", "FETCH_HEAD")
-        else:
-            # Nothing on the remote yet (first ever push for this repository).
-            if not (root / ".git").exists():
+            # **Materialise the remote tree.** `reset --soft` only moved the index; checkout
+            # brings the files onto disk so nothing looks deleted.
+            checkout = git("checkout", "-q", "-f", "FETCH_HEAD", "--", ".")
+            if checkout.returncode != 0:
+                print(
+                    f"配图上传：checkout 失败 rc={checkout.returncode} {(checkout.stderr or '')[:120]}",
+                    file=sys.stderr,
+                )
                 return False
+        else:
+            # Empty remote: the first push. Nothing to materialise.
+            pass
 
-        # **Report what git actually sees.** The card PNGs were built, uploaded and logged while
-        # the page showed none of them, and there was no way to tell from outside whether the
-        # files were never written, were written and then staged away, or were staged and never
-        # pushed. Printing the counts makes the next failure diagnosable in one line.
         staged = git("add", "-A")
         status = git("status", "--porcelain").stdout.strip()
         on_disk = len(list((root / date).glob("*")))
@@ -175,31 +188,40 @@ def _push(root: Path, date: str) -> bool:
             f"配图上传：磁盘 {on_disk} 个文件，git 待提交 {len(status.splitlines()) if status else 0} 项",
             file=sys.stderr,
         )
-        if not status:
-            print(
-                f"配图上传：没有可提交的内容（磁盘 {on_disk} 个文件但 git 无差异）",
-                file=sys.stderr,
-            )
-            return True
         if staged.returncode != 0:
             print(f"配图上传：git add 失败 rc={staged.returncode}", file=sys.stderr)
             return False
+        if not status:
+            print(f"配图上传：无差异，无需提交（磁盘 {on_disk} 个文件）", file=sys.stderr)
+            return True
+
         if git(
             "-c", "user.name=ai-daily", "-c", "user.email=ai-daily@local",
             "commit", "-q", "-m", f"media: {date}",
         ).returncode != 0:
             return False
 
-        # Retry once: a concurrent run may have pushed between our fetch and our push.
         for attempt in range(2):
-            if git("push", "-q", "origin", f"HEAD:{MEDIA_BRANCH}").returncode == 0:
+            pushed = git("push", "-q", "origin", f"HEAD:{MEDIA_BRANCH}")
+            if pushed.returncode == 0:
+                print("配图上传：推送成功", file=sys.stderr)
                 return True
+            print(
+                f"配图上传：推送失败 rc={pushed.returncode} {(pushed.stderr or '')[:120]}",
+                file=sys.stderr,
+            )
             if attempt == 0:
                 if git("fetch", "-q", "--depth", "1", "origin", MEDIA_BRANCH).returncode != 0:
                     return False
-                git("rebase", "-q", "FETCH_HEAD")
+                git("checkout", "-q", "-f", "FETCH_HEAD", "--", ".")
+                git("add", "-A")
+                git(
+                    "-c", "user.name=ai-daily", "-c", "user.email=ai-daily@local",
+                    "commit", "-q", "-m", f"media: {date}",
+                )
         return False
-    except Exception:
+    except Exception as exc:  # noqa: BLE001
+        print(f"配图上传：异常 {type(exc).__name__}: {exc}"[:160], file=sys.stderr)
         return False
 
 
