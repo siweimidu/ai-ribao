@@ -311,7 +311,7 @@
     const summary = document.querySelector('[data-theme-summary]');
     if (summary) {
       const LABEL = {
-        auto: '自动', default: '默认', light: '亮色', dark: '暗色',
+        auto: '自动', default: '默认', light: '标准亮色', dark: '标准暗色',
         'claude-light': 'Claude 亮色', 'claude-dark': 'Claude 暗色',
         cinnabar: '宣纸朱砂', indigo: '冷白靛紫', midnight: '深蓝冷青',
       };

@@ -269,8 +269,11 @@ def render_rail(ctx: SiteContext, digest: Digest, *, dated: bool = True) -> str:
             # colours, because that is how someone asks for it.
             ("claude-light", "Claude 亮色"),
             ("claude-dark", "Claude 暗色"),
-            ("light", "亮色"),
-            ("dark", "暗色"),
+            # Named by what they are rather than by their lightness: "亮色" next to
+            # "Claude 亮色" reads as the same choice offered twice. This pair is the neutral
+            # one -- no warm paper, no terracotta -- so the name says so.
+            ("light", "标准亮色"),
+            ("dark", "标准暗色"),
             # Reviewed and chosen by the user from nine candidates. Each is a whole palette
             # rather than a hue rotation: a dark theme needs a different contrast ratio and a
             # different accent lightness to stay readable.

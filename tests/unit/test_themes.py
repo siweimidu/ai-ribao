@@ -86,3 +86,33 @@ def test_claude_leads_the_picker() -> None:
     order = re.findall(r'\("([a-z-]+)", "[^"]+"\)', SITE)
     assert order[:2] == ["claude-light", "claude-dark"]
     assert order[2:4] == ["light", "dark"]
+
+
+
+def _rgb(value: str) -> tuple[int, int, int]:
+    value = value.lstrip("#")
+    return tuple(int(value[i:i + 2], 16) for i in (0, 2, 4))
+
+
+def test_every_theme_is_visibly_different_from_the_default() -> None:
+    """A theme the eye cannot distinguish is a button that does nothing.
+
+    Measured before this test existed: 宣纸朱砂 had a background 6 points from Claude light and
+    冷白靛紫 was 8 points away, on a 0-765 scale where roughly 15-20 is the threshold of notice.
+    Both switched correctly and looked identical, which is exactly the report the user gave.
+    """
+    themes = _themes()
+    base = themes["claude-light"]
+    base_bg = _rgb(re.search(r"--bg:\s*#([0-9a-f]{6})", base).group(1))
+
+    for name, block in themes.items():
+        if name == "claude-light":
+            continue
+        match = re.search(r"--bg:\s*#([0-9a-f]{6})", block)
+        if not match:
+            continue
+        bg = _rgb(match.group(1))
+        distance = sum(abs(a - b) for a, b in zip(bg, base_bg))
+        assert distance >= 20, (
+            f"{name} 的底色与默认主题只差 {distance}，切换后看不出来"
+        )
