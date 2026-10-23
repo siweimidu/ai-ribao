@@ -595,6 +595,43 @@ def select_for_digest(
         report["relevance_floor_dropped"] = dropped_focus
         report.update(report_extra)
 
+    # **Last check before publication: did any entry merge stories that are not one story?**
+    #
+    # The dedup keys are what broke on 2026-10-23 -- twelve InfoQ articles shared a six-character
+    # template body and hashed identically, so one entry ended up carrying three unrelated
+    # stories and a link to an article it never described. Re-checking the hash would confirm the
+    # same wrong answer; this looks at the outcome instead, at the headlines that landed together.
+    #
+    # It reports, it does not drop. A wrong drop costs a real story, and the reader-visible
+    # damage here is a misleading entry -- worth surfacing, not worth silently deleting.
+    try:
+        from .mergeaudit import inspect as _inspect_merges, report as _merge_report
+
+        # Built here rather than reused from below: `by_id` is defined further down the
+        # function, and reaching for it before its line would raise NameError inside the
+        # guard -- which the except would swallow, leaving the audit silently off.
+        title_of = {i.item_id: i.title for i in stage.window.kept if i.title}
+        titles_by_event: dict[str, list[str]] = {
+            row.event.event_id: [
+                title_of[i] for i in row.event.member_item_ids if i in title_of
+            ]
+            for row in chosen
+        }
+        suspicions = _inspect_merges(
+            Digest(date=today or "", top_events=[row.event for row in chosen]),
+            titles_by_event,
+        )
+        report["merge_audit"] = _merge_report(suspicions)
+        # Keep the headlines the check looked at. Without them the audit cannot be re-run on an
+        # archive, and "we checked" becomes a claim about a past run rather than something a
+        # reader can verify -- the same reason `cross_day_examples` is carried out.
+        report["merge_audit_headlines"] = {
+            event_id: titles[:12] for event_id, titles in titles_by_event.items() if len(titles) > 1
+        }
+    except Exception as exc:  # noqa: BLE001
+        # A guard that can crash the publish is worse than no guard. Record that it did not run.
+        report["merge_audit"] = {"checked": False, "error": f"{type(exc).__name__}: {exc}"[:120]}
+
     return [row.event for row in chosen], report
 
 

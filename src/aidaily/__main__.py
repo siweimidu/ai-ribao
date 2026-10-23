@@ -1088,6 +1088,19 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
             print("  · focus=%s %s  %s" % (
                 example.get("focus"), example.get("reason"), str(example.get("title"))[:52]))
 
+        # The merge audit has to be visible in the run log, not only in the JSON. The failure it
+        # catches -- one entry carrying several unrelated stories -- is invisible from the
+        # outside until a reader clicks a link and lands somewhere else.
+        audit = (selection_report or {}).get("merge_audit") or {}
+        if audit.get("checked") is False:
+            print("  合并自检        未运行：%s" % audit.get("error"))
+        else:
+            count = int(audit.get("suspicious_events") or 0)
+            print("  合并自检        可疑 %d 条" % count)
+            for example in audit.get("examples") or []:
+                print("  · %s" % str(example.get("title"))[:64])
+                print("      %s" % "；".join(example.get("reasons") or []))
+
         # The limit must cover everything that will be published, not just "the first N".
         # When it did not, the items past the cut fell back to the source's own headline --
         # and for an English feed that put English sentences on a Chinese page. Defaulting

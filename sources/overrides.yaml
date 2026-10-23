@@ -1,505 +1,318 @@
-# 人工修正层
-#
-# 用途：在不改动 sources/registry.yaml 的前提下，覆盖 enabled / priority /
-# polling_interval / category / timeout_s / fetch_method / adapter / notes。
-#
-# 三条硬规则（由 src/aidaily/registry.py 强制，违反会直接报错）：
-#   1. 只能覆盖上面列出的字段。`source_id` / `url` / `found_in` 是**证据**，不可编辑
-#      —— 改写 `url` 等于把源悄悄指向了别的内容，改写 `found_in` 等于伪造溯源。
-#   2. 引用不存在的 source_id 会报错，而不是静默忽略。否则"我明明禁用了那个噪音源"
-#      会变成一句空话。
-#   3. 禁用任何源**必须写 reason**。下一个人要能分清这是深思熟虑还是手滑。
-#
-# 禁用 ≠ 删除：被禁用的源始终留在 registry.yaml 里，随时可以重新启用。
-
 overrides:
-
-  # ── 本项目自身的仓库不是新闻源 ────────────────────────────────────────────
-  "atom:github-ai-ribao-commits":
-    enabled: false
-    reason: >-
-      2026-10-21 实测：该源在 26 小时窗口内产出 20 条，全部是本项目自己的提交
-      （chore(daily): 2026-10-21 digest、feat(selection): 两次独立评分…），作为普通
-      条目进入新闻池，并被合并进真实事件——Strata 0.2 那条的 3 个来源里就有一个
-      chore(daily) 提交。日报在引用自己。保留配置，仅停用。
-  "atom:github-ai-ribao-releases":
-    enabled: false
-    reason: >-
-      同上。本项目自身的发布记录属于构建事件，不是行业新闻；出现在日报里是自引。
-  # ── 探测确认失效，且有在册替代品 ──────────────────────────────────────────
-  "api:git-trending-justlikemaki-vip-topone":
-    enabled: false
-    reason: >-
-      2026-10-13 探测返回 TLS 握手失败（SSL: UNEXPECTED_EOF_WHILE_READING），
-      且该服务为个人维护的第三方中转。替代方案已在册：
-      scrape:github-com-trending（直连 github.com/trending）。保留配置待其恢复。
-
-  # ── 启用：Quanta Magazine ────────────────────────────────────────────────
-  #
-  # 科学深度报道，经常是 AI 研究成果的第一篇长文解释。2026-10-22 实测：
-  # HTTP 200，11 KB，RSS 可用。
-  "rss:api-quantamagazine-org":
-    enabled: true
-    reason: "2026-10-22 实测可用；科学深度报道，AI 研究的重要二手解释来源"
-
-  # ── X 账号：只启用 @TheRundownAI ──────────────────────────────────────────
-  #
-  # 用户明确要求：X 平台只保留 @TheRundownAI 一个账号，其余全部停用。
-  #
-  # 实测依据：syndication 端点限流严格，连续请求返回 429 且封锁持续数分钟。
-  # 27 个账号必然撞上限流，一个都抓不到；只留一个则能稳定拿到。
-  "x:therundownai":
-    enabled: true
-    reason: "2026-10-22 用户指定：X 平台只保留这一个账号"
-
-  "x:openai":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:openaidevs":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:chatgpt":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:anthropicai":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:googledeepmind":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:googleai":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:aiatmeta":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:mistralai":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:deepseek_ai":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:kimi_moonshot":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:minimax_ai":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:alibaba_qwen":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:baidu_inc":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:stepfun_ai":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:huggingface":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:nvidiaaidev":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:thsottiaux":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:jietang":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:karpathy":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:sama":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:ylecun":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:demishassabis":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:jeffdean":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:hwchase17":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:simonw":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  "x:xiaomimimo":
-    enabled: false
-    reason: "2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用"
-  # ── Tavily：适配器指错了，且被当成缺凭证 ──────────────────────────────
-  #
-  # registry 生成器给所有 source_type=api 的源批量写 `adapter: ApiFetcher`，
-  # 而 Tavily 是 POST 检索接口，没有可 GET 的 URL。通用 JSON 读取器对它发 GET，
-  # 必然失败，所以它一直被标成「待凭证」并停用。
-  #
-  # TavilyFetcher 早就实现了（src/aidaily/fetchers/tavily.py），只是没人把它接上。
-  # 凭证走 TAVILY_API_KEY 环境变量，不写进仓库。
-  "api:api-tavily-com-search":
-    adapter: TavilyFetcher
-    enabled: true
-    needs_credential: null
-    reason: >-
-      2026-10-22：适配器由占位的 ApiFetcher 改为已实现的 TavilyFetcher。
-      密钥经 TAVILY_API_KEY 注入；未注入时该源报「未配置」，不让整轮采集失败。
-  # ── 适配器指派：把源接到真正实现了的采集器上 ──────────────────────────────
-  # registry 是按 source_type 批量指派适配器的（scrape -> HtmlFetcher）。对于有专用
-  # 实现的源，必须在这里指名，否则会被当成"适配器未实现"而跳过。
-  "scrape:github-com-trending":
-    adapter: GitHubTrendingFetcher
-    reason: "有专用实现（GitHubTrendingFetcher）；通用 HtmlFetcher 未实现"
-
-  # ── Reddit：匿名访问已被关闭，需要 OAuth 凭证 ──────────────────────────────
-  # 探测证据（2026-10-13 实测，两步）：
-  #   1) reddit.com/r/*/top.json  -> 12/12 返回 403 Blocked
-  #   2) old.reddit.com/r/*/     -> 返回 200，但 302 跳到 /login/?reason=lor2，
-  #      内容是一个 330KB 的登录页，dom.thing 选择器命中 0 个。
-  # 第 2 点曾被我自己的探测脚本误判为"健康"（只看了 HTTP 200 + 体积 > 2000 字节），
-  # 现已改为检查 DOM 结构。结论：Reddit 目前**无法匿名采集**，需要官方 OAuth
-  # （REDDIT_CLIENT_ID / REDDIT_CLIENT_SECRET，dailydawn 的 .env 里就留了这两个位置）。
-  # 因此这 15 个源不进入本次运行，但配置完整保留，补上凭证后把 needs_credential
-  # 置空即可启用。
-  "api:reddit-com-programming-top":
-    adapter: RedditFetcher
-    needs_credential: REDDIT_CLIENT_ID
-    reason: "匿名访问已关闭（JSON 403 / HTML 登录墙），需 OAuth"
-  "api:reddit-com-machinelearning-top":
-    adapter: RedditFetcher
-    needs_credential: REDDIT_CLIENT_ID
-    reason: "同上"
-  "api:reddit-com-localllama-top":
-    adapter: RedditFetcher
-    needs_credential: REDDIT_CLIENT_ID
-    reason: "同上"
-  "api:reddit-com-startups-top":
-    adapter: RedditFetcher
-    needs_credential: REDDIT_CLIENT_ID
-    reason: "同上"
-  "api:reddit-com-webdev-top":
-    adapter: RedditFetcher
-    needs_credential: REDDIT_CLIENT_ID
-    reason: "同上"
-  "api:reddit-com-saas-top":
-    adapter: RedditFetcher
-    needs_credential: REDDIT_CLIENT_ID
-    reason: "同上"
-  "api:reddit-com-opensource-top":
-    adapter: RedditFetcher
-    needs_credential: REDDIT_CLIENT_ID
-    reason: "同上"
-  "api:reddit-com-devops-top":
-    adapter: RedditFetcher
-    needs_credential: REDDIT_CLIENT_ID
-    reason: "同上"
-  "api:reddit-com-rust-top":
-    adapter: RedditFetcher
-    needs_credential: REDDIT_CLIENT_ID
-    reason: "同上"
-  "api:reddit-com-selfhosted-top":
-    adapter: RedditFetcher
-    needs_credential: REDDIT_CLIENT_ID
-    reason: "同上"
-  "api:reddit-com-indiehackers-top":
-    adapter: RedditFetcher
-    needs_credential: REDDIT_CLIENT_ID
-    reason: "同上"
-  "api:reddit-com-sideproject-top":
-    adapter: RedditFetcher
-    needs_credential: REDDIT_CLIENT_ID
-    reason: "同上"
-  "scrape:old-reddit-com-artificial-hot":
-    adapter: RedditFetcher
-    needs_credential: REDDIT_CLIENT_ID
-    reason: "同上（Horizon 使用的 HTML 入口，同样被登录墙拦截）"
-  "scrape:old-reddit-com-localllama-hot":
-    adapter: RedditFetcher
-    needs_credential: REDDIT_CLIENT_ID
-    reason: "同上"
-  "scrape:old-reddit-com-machinelearning-hot":
-    adapter: RedditFetcher
-    needs_credential: REDDIT_CLIENT_ID
-    reason: "同上"
-
-  # ── 需要专用采集器（当前未实现，明确跳过而不是静默零条）─────────────────────
-  "api:hacker-news-firebaseio-com-v0-topstories":
-    adapter: HackerNewsFirebaseFetcher
-    reason: >-
-      Firebase 端点只返回 ID 列表，需要 N 次额外请求才能取回内容。
-      HN 覆盖已由 api:hn-algolia-com-search 提供（单次请求返回完整字段），
-      待需要更完整的 HN 数据时再实现。
-  "api:trends-google-com-trends-explore":
-    adapter: PyTrendsFetcher
-    reason: "该 URL 是公开网页，pytrends 走的是内部接口；需专用采集器"
-
-  # ── 来源独立性：把承载同一内容的 feed 归为一组 ─────────────────────────────
-  # hn-algolia 与 hnrss-frontpage 呈现的是同一批 HN 首页内容（L2 实测：当日 6 组合并
-  # 全部来自这一对）。如果把它们算作"两个来源"，一条只有单一来源的新闻就会被标成
-  # "多源交叉验证"——那是虚假的可信度。归组后 independent_source_count 才说真话。
-  "api:hn-algolia-com-search":
-    dedup_group: hackernews
-    reason: "与 rss:hnrss-org-frontpage 承载同一批 HN 内容，不得计为两个独立来源"
-  "rss:hnrss-org-frontpage":
-    dedup_group: hackernews
-    reason: "与 api:hn-algolia-com-search 承载同一批 HN 内容，不得计为两个独立来源"
-
-  # ── 优先级修正（按读者价值，而非按发现顺序）────────────────────────────────
-  "rss:daily-juya-uk":
-    priority: 1
-    reason: "被 3 个仓库同时收录的最重要中文源，且是关键源（run.critical_sources）"
-  "rss:openai-com-news":
-    priority: 1
-    reason: "厂商一手官方公告，权威性最高"
-  "rss:deepmind-google-blog":
-    priority: 1
-    reason: "厂商一手官方公告"
-  "rss:raw-githubusercontent-com-ai-rss-feeds-anthropic-news":
-    priority: 1
-    reason: "厂商一手官方公告"
-
-  # ── AIHOT：两个 feed 是同一批内容的两种切分，必须归为一组 ──────────────────
-  # 审计源收录的是 /feed/all.xml（最近 7 天全站动态，来自 Horizon 的源清单）；
-  # 增补源补上 /feed.xml（编辑精选）。精选是全站动态的子集。
-  # 不归组的话，同一条新闻会以两个"独立来源"的身份进入 L3 聚类，
-  # 直接虚高「独立来源数」—— 那是本站排序与多源验证最核心的信号。
-  "rss:aihot-news":
-    dedup_group: "aihot"
-    reason: "与增补源 rss:aihot-news-picks 是同一批内容（全站动态 vs 编辑精选），归为一组避免重复计入独立来源数"
-
-  # ══ 全部启用：实测可用，并指到真正能读它的适配器 ═══════════════════════════════
-  #
-  # 这 2 个源此前被标成 map 到 JsonApiFetcher —— 而它们是 HTML 页面，JSON 解析器读不了，
-  # 于是「HTTP 200 但 0 条」：看起来采集成功，实际什么也没拿到。
-  # 现在 HtmlFetcher 已实现，它们指向正确的适配器。
-  #
-  # 实测（2026-10-14，curl -L --compressed）：
-  #   aibase.com      200 / 197KB HTML / HtmlFetcher 提取 40 条真实文章
-  #   xinzhiyuan.ai   200 / 1KB HTML（页面很薄，可能是 JS 渲染；启用后由采集结果说明）
-  "api:aibase-com":
-    enabled: true
+  api:aibase-com:
     adapter: HtmlFetcher
-    reason: >-
-      2026-10-14 实测 200，HtmlFetcher 提取 40 条文章（含标题与日期）。
-      此前被映射到 JsonApiFetcher 而读不出内容 —— 是适配器缺失，不是源的问题。
-  "api:xinzhiyuan-ai":
     enabled: true
-    adapter: HtmlFetcher
-    reason: >-
-      2026-10-14 实测 200。页面仅 1KB，可能是 JS 渲染；启用后以实际采集条数为准，
-      若长期为 0 再按证据禁用。
-
-  # ══ 实测不可用：保留但写明原因（附测量日期与结果）═══════════════════════════════
-  #
-  # 这些源是审计阶段带进来的，禁用时**没有记录任何理由** —— 下一个维护者无法分辨
-  # 「深思熟虑」还是「手滑」。补上证据。
-  "api:jiqizhixin-ai":
+    reason: 2026-10-14 实测 200，HtmlFetcher 提取 40 条文章（含标题与日期）。 此前被映射到 JsonApiFetcher 而读不出内容 —— 是适配器缺失，不是源的问题。
+  api:api-follow-is:
     enabled: false
-    reason: "2026-10-14 实测连接失败（curl 000），域名不可达"
-  "api:qbit-ai":
+    reason: 2026-10-14 实测 301 重定向且跟随後返回 0 字节，需要额外的鉴权或头部； 属「需要用户提供」的一类，按约定搁置
+  api:api-follow-is-53a9e3:
     enabled: false
-    reason: "2026-10-14 实测连接失败（curl 000），域名不可达"
-  "api:xiaohu-ai":
+    reason: 同 api:api-follow-is —— 2026-10-14 实测 301 + 0 字节，需鉴权（搁置）
+  api:api-follow-is-b0b06f:
     enabled: false
-    reason: "2026-10-14 实测 403 Forbidden，对方拒绝非浏览器访问"
-  "api:huggingface-co-papers":
+    reason: 同 api:api-follow-is —— 2026-10-14 实测 301 + 0 字节，需鉴权（搁置）
+  api:api-follow-is-b77cbe:
     enabled: false
-    reason: >-
-      2026-10-14 实测 curl 000。该源为 HTML 列表页，需换用 HtmlFetcher 并确认可达后重试
-  "api:api-producthunt-com-graphql":
+    reason: 同 api:api-follow-is —— 2026-10-14 实测 301 + 0 字节，需鉴权（搁置）
+  api:api-producthunt-com-graphql:
     enabled: false
-    reason: "2026-10-14 实测 404，GraphQL 端点已变更"
-  "api:api-follow-is":
-    enabled: false
-    reason: >-
-      2026-10-14 实测 301 重定向且跟随後返回 0 字节，需要额外的鉴权或头部；
-      属「需要用户提供」的一类，按约定搁置
-  "api:api-follow-is-53a9e3":
-    enabled: false
-    reason: "同 api:api-follow-is —— 2026-10-14 实测 301 + 0 字节，需鉴权（搁置）"
-  "api:api-follow-is-b0b06f":
-    enabled: false
-    reason: "同 api:api-follow-is —— 2026-10-14 实测 301 + 0 字节，需鉴权（搁置）"
-  "api:api-follow-is-b77cbe":
-    enabled: false
-    reason: "同 api:api-follow-is —— 2026-10-14 实测 301 + 0 字节，需鉴权（搁置）"
-  "api:api-tavily-com-search":
-    enabled: false
-    reason: "2026-10-14 实测 401，需要 TAVILY_API_KEY（需用户提供，搁置）"
-
-  # ══ Horizon preset/example 源：逐个实测后处理 ═════════════════════════════════════
-  #
-  # 这 15 个源来自 Horizon 的 preset 配置，被标成 `preset`/`example` —— 那是**审计来源**标签，
-  # 不是内容分类。这不只是命名问题：`source_weights` 给 preset 0.6、example 0.3，
-  # 于是一条真实的 NVIDIA 博客会被当成模板占位符来排序。所以下面同时修正了分类。
-  #
-  # 实测方式：curl -L --compressed，2026-10-14。
-
-  # 实测可用（8 个）：启用并归入真实分类
-  "rss:developer-nvidia-com-tag-cuda":
-    enabled: true
-    category: dev
-    language: en
-    reason: >-
-      2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example），
-      此处改为 dev，使其按真实来源权重参与排序。
-  "rss:vllm-ai-blog":
-    enabled: true
-    category: dev
-    language: en
-    reason: >-
-      2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example），
-      此处改为 dev，使其按真实来源权重参与排序。
-  "rss:brendangregg-com-blog":
-    enabled: true
-    category: dev
-    language: en
-    reason: >-
-      2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example），
-      此处改为 dev，使其按真实来源权重参与排序。
-  "rss:lwn-net-headlines":
-    enabled: true
-    category: dev
-    language: en
-    reason: >-
-      2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example），
-      此处改为 dev，使其按真实来源权重参与排序。
-  "rss:mshibanami-github-io-githubtrendingrss-daily":
-    enabled: true
-    category: dev
-    language: en
-    reason: >-
-      2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example），
-      此处改为 dev，使其按真实来源权重参与排序。
-  "rss:seangoedecke-com":
-    enabled: true
-    category: community
-    language: en
-    reason: >-
-      2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example），
-      此处改为 community，使其按真实来源权重参与排序。
-  "rss:search-cnbc-com-combinedcms-view":
-    enabled: true
-    category: media
-    language: en
-    reason: >-
-      2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example），
-      此处改为 media，使其按真实来源权重参与排序。
-  "rss:hackaday-com":
-    enabled: true
-    category: media
-    language: en
-    reason: >-
-      2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example），
-      此处改为 media，使其按真实来源权重参与排序。
-
-  # 实测不可用（7 个）：保留，写明测量结果
-  "rss:lwn-net-headlines-full-text":
-    enabled: false
-    reason: 2026-10-14 实测 403。URL 含 ${LWN_KEY} 订阅凭证 —— 属「需要用户提供」，按约定搁置
-  "rss:api-quantamagazine-org":
-    enabled: false
-    reason: 2026-10-14 实测连接失败（curl 000）
-  "rss:css-tricks-com":
-    enabled: false
-    reason: 2026-10-14 实测连接失败（curl 000）
-  "rss:krebsonsecurity-com":
-    enabled: false
-    reason: 2026-10-14 实测连接失败（curl 000）
-  "rss:nature-com-nature":
-    enabled: false
-    reason: 2026-10-14 实测 301 重定向后无内容，需确认新地址
-  "rss:schneier-com":
-    enabled: false
-    reason: 2026-10-14 实测连接失败（curl 000）
-  "rss:wechat2rss-xlab-app-7131b577c61365cb47e81000738c10d872685908":
-    enabled: false
-    reason: 2026-10-14 实测连接失败（curl 000）；该服务为第三方自建实例，稳定性无保证
-
-  # ══ Tavily 搜索：用户提供密钥后启用 ══════════════════════════════════════════════
-  #
-  # 此前适配器缺失：registry 生成器给所有 source_type=api 的源派 ApiFetcher，
-  # 而 Tavily 是**搜索 API**（query 与结果数在 POST body 里），没有可供 GET 的 URL。
-  # 通用 JSON 解析器对它发 GET，得到的自然是 401/405。
-  # 新增 TavilyFetcher（POST + 显式 skip 而非静默 0 条）。
-  #
-  # 密钥经 TAVILY_API_KEY 环境变量注入（GitHub Secret），**不写入本仓库**。
-  "api:api-tavily-com-search":
-    enabled: true
+    reason: 2026-10-14 实测 404，GraphQL 端点已变更
+  api:api-tavily-com-search:
     adapter: TavilyFetcher
     category: search
-    reason: >-
-      2026-10-16 用户提供密钥后启用。TavilyFetcher 走 POST，密钥只放在
-      Authorization 头（不放 URL，避免密钥进日志）。返回的是搜索结果而非已发布条目，
-      因此 published_date 缺失时留空，由流水线按「未知新鲜度」处理，
-      而不是盖上抓取时间冒充当天发布。
-
-  # ── 同一 feed 的两个登记：归到同一 dedup_group ────────────────────────────
-  #
-  # 2026-10-19 核对 registry 发现 5 组 URL 完全相同的启用源：同一个 feed 被审计仓库
-  # (Horizon) 和用户清单各登记了一次，source_id 不同、URL 相同。
-  # 流水线会抓两遍，同一条新闻被算成两个独立来源 —— 而 independent_source_count
-  # 是热度排序里最重的信号，也是「多源验证」徽标的依据。它不能是流水线自己
-  # 制造出来的数字。
-  #
-  # 处理方式：不删除（删除会丢溯源），改用 dedup_group 把它们标记为同一发布者。
-  # 归组之后，同一条新闻只计一次独立来源，两个 id 仍各自保留抓取记录。
-  "rss:wechat2rss-xlab-app-51e92aad2728acdd1fda7314be32b16639353001":
-    dedup_group: "jiqizhixin"
-    reason: >-
-      与 rss:wechat-jiqizhixin-xlab 是同一个 feed（URL 完全相同），只是登记来源不同。
-      归入同一 dedup_group，避免机器之心的同一篇文章被算成两个独立来源。
-
-  "rss:decemberpei-cyou-rssbox-wechat-liangziwei":
-    dedup_group: "liangziwei"
-    reason: >-
-      与 rss:wechat-liangziwei 是同一个 feed（URL 完全相同）。归入同一 dedup_group。
-
-  "rss:wechat-liangziwei":
-    dedup_group: "liangziwei"
-    reason: >-
-      与 rss:decemberpei-cyou-rssbox-wechat-liangziwei 是同一 feed，见上条。
-      这条原先 dedup_group 为空，同一篇文章因此会被计两次独立来源。
-
-  "rss:wechat2rss-xlab-app-ede30346413ea70dbef5d485ea5cbb95cca446e7":
-    dedup_group: "xinzhiyuan"
-    reason: >-
-      与 rss:wechat-xinzhiyuan-xlab 是同一个 feed（URL 完全相同）。归入同一 dedup_group。
-
-  "rss:decemberpei-cyou-rssbox-wechat-paperweekly":
-    dedup_group: "paperweekly"
-    reason: >-
-      与 rss:wechat-paperweekly 是同一个 feed（URL 完全相同）。归入同一 dedup_group。
-
-  "rss:wechat-paperweekly":
-    dedup_group: "paperweekly"
-    reason: >-
-      与 rss:decemberpei-cyou-rssbox-wechat-paperweekly 是同一 feed，见上条。
-
-  "rss:wechat-aiqianxian":
-    dedup_group: "aiqianxian"
-    reason: >-
-      与 rss:decemberpei-cyou-rssbox-wechat-aiqianxian 是同一个 feed（URL 完全相同）。
-
-  "rss:decemberpei-cyou-rssbox-wechat-aiqianxian":
-    dedup_group: "aiqianxian"
-    reason: >-
-      与 rss:wechat-aiqianxian 是同一 feed，见上条。
-
-  # ── 停用：dailydawn（用户 2026-10-22 要求）──────────────────────────────
-  #
-  # 该站一期就是一条 entry，正文约 2 万字。要让它进日报，必须先抓全文
-  # （site_fulltext），再送进打分——实测一期 20941 字符，20 期即 40 万字，
-  # token 消耗远超它带来的信息量。用户判定「太废 token」，停用。
-  #
-  # 停用而非删除：URL 与溯源仍在 registry.yaml 里，重新启用改回 true 即可。
-  "rss:dailydawn-feed-xml":
+    enabled: true
+    reason: 2026-10-16 用户提供密钥后启用。TavilyFetcher 走 POST，密钥只放在 Authorization 头（不放 URL，避免密钥进日志）。返回的是搜索结果而非已发布条目， 因此 published_date 缺失时留空，由流水线按「未知新鲜度」处理， 而不是盖上抓取时间冒充当天发布。
+  api:git-trending-justlikemaki-vip-topone:
     enabled: false
-    reason: >-
-      2026-10-22 用户要求停用：每期是一篇约 2 万字的长文，正文抓取与打分消耗的 token
-      远超产出价值。
-  "jsonfeed:dailydawn-dev":
+    reason: '2026-10-13 探测返回 TLS 握手失败（SSL: UNEXPECTED_EOF_WHILE_READING）， 且该服务为个人维护的第三方中转。替代方案已在册： scrape:github-com-trending（直连 github.com/trending）。保留配置待其恢复。'
+  api:hacker-news-firebaseio-com-v0-topstories:
+    adapter: HackerNewsFirebaseFetcher
+    reason: Firebase 端点只返回 ID 列表，需要 N 次额外请求才能取回内容。 HN 覆盖已由 api:hn-algolia-com-search 提供（单次请求返回完整字段）， 待需要更完整的 HN 数据时再实现。
+  api:hn-algolia-com-search:
+    dedup_group: hackernews
+    reason: 与 rss:hnrss-org-frontpage 承载同一批 HN 内容，不得计为两个独立来源
+  api:huggingface-co-papers:
     enabled: false
-    reason: >-
-      2026-10-22 用户要求停用：与 rss:dailydawn-feed-xml 同一站点，同理。
+    reason: 2026-10-14 实测 curl 000。该源为 HTML 列表页，需换用 HtmlFetcher 并确认可达后重试
+  api:jiqizhixin-ai:
+    enabled: false
+    reason: 2026-10-14 实测连接失败（curl 000），域名不可达
+  api:qbit-ai:
+    enabled: false
+    reason: 2026-10-14 实测连接失败（curl 000），域名不可达
+  api:reddit-com-devops-top:
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: 同上
+  api:reddit-com-indiehackers-top:
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: 同上
+  api:reddit-com-localllama-top:
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: 同上
+  api:reddit-com-machinelearning-top:
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: 同上
+  api:reddit-com-opensource-top:
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: 同上
+  api:reddit-com-programming-top:
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: 匿名访问已关闭（JSON 403 / HTML 登录墙），需 OAuth
+  api:reddit-com-rust-top:
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: 同上
+  api:reddit-com-saas-top:
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: 同上
+  api:reddit-com-selfhosted-top:
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: 同上
+  api:reddit-com-sideproject-top:
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: 同上
+  api:reddit-com-startups-top:
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: 同上
+  api:reddit-com-webdev-top:
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: 同上
+  api:trends-google-com-trends-explore:
+    adapter: PyTrendsFetcher
+    reason: 该 URL 是公开网页，pytrends 走的是内部接口；需专用采集器
+  api:xiaohu-ai:
+    enabled: false
+    reason: 2026-10-14 实测 403 Forbidden，对方拒绝非浏览器访问
+  api:xinzhiyuan-ai:
+    adapter: HtmlFetcher
+    enabled: true
+    reason: 2026-10-14 实测 200。页面仅 1KB，可能是 JS 渲染；启用后以实际采集条数为准， 若长期为 0 再按证据禁用。
+  atom:github-ai-ribao-commits:
+    enabled: false
+    reason: '2026-10-21 实测：该源在 26 小时窗口内产出 20 条，全部是本项目自己的提交 （chore(daily): 2026-10-21 digest、feat(selection): 两次独立评分…），作为普通 条目进入新闻池，并被合并进真实事件——Strata 0.2 那条的 3 个来源里就有一个 chore(daily) 提交。日报在引用自己。保留配置，仅停用。'
+  atom:github-ai-ribao-releases:
+    enabled: false
+    reason: 同上。本项目自身的发布记录属于构建事件，不是行业新闻；出现在日报里是自引。
+  jsonfeed:dailydawn-dev:
+    enabled: false
+    reason: 2026-10-22 用户要求停用：与 rss:dailydawn-feed-xml 同一站点，同理。
+  rss:aihot-news:
+    dedup_group: aihot
+    reason: 与增补源 rss:aihot-news-picks 是同一批内容（全站动态 vs 编辑精选），归为一组避免重复计入独立来源数
+  rss:api-quantamagazine-org:
+    enabled: false
+    reason: 2026-10-14 实测连接失败（curl 000）
+  rss:brendangregg-com-blog:
+    category: dev
+    enabled: true
+    language: en
+    reason: 2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example）， 此处改为 dev，使其按真实来源权重参与排序。
+  rss:css-tricks-com:
+    enabled: false
+    reason: 2026-10-14 实测连接失败（curl 000）
+  rss:daily-juya-uk:
+    priority: 1
+    reason: 被 3 个仓库同时收录的最重要中文源，且是关键源（run.critical_sources）
+  rss:dailydawn-feed-xml:
+    enabled: false
+    reason: 2026-10-22 用户要求停用：每期是一篇约 2 万字的长文，正文抓取与打分消耗的 token 远超产出价值。
+  rss:decemberpei-cyou-rssbox-wechat-aiqianxian:
+    dedup_group: aiqianxian
+    reason: 与 rss:wechat-aiqianxian 是同一 feed，见上条。
+  rss:decemberpei-cyou-rssbox-wechat-liangziwei:
+    dedup_group: liangziwei
+    reason: 与 rss:wechat-liangziwei 是同一个 feed（URL 完全相同）。归入同一 dedup_group。
+  rss:decemberpei-cyou-rssbox-wechat-paperweekly:
+    dedup_group: paperweekly
+    reason: 与 rss:wechat-paperweekly 是同一个 feed（URL 完全相同）。归入同一 dedup_group。
+  rss:deepmind-google-blog:
+    priority: 1
+    reason: 厂商一手官方公告
+  rss:developer-nvidia-com-tag-cuda:
+    category: dev
+    enabled: true
+    language: en
+    reason: 2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example）， 此处改为 dev，使其按真实来源权重参与排序。
+  rss:hackaday-com:
+    category: media
+    enabled: true
+    language: en
+    reason: 2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example）， 此处改为 media，使其按真实来源权重参与排序。
+  rss:hnrss-org-frontpage:
+    dedup_group: hackernews
+    reason: 与 api:hn-algolia-com-search 承载同一批 HN 内容，不得计为两个独立来源
+  rss:krebsonsecurity-com:
+    enabled: false
+    reason: 2026-10-14 实测连接失败（curl 000）
+  rss:lwn-net-headlines:
+    category: dev
+    enabled: true
+    language: en
+    reason: 2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example）， 此处改为 dev，使其按真实来源权重参与排序。
+  rss:lwn-net-headlines-full-text:
+    enabled: false
+    reason: 2026-10-14 实测 403。URL 含 ${LWN_KEY} 订阅凭证 —— 属「需要用户提供」，按约定搁置
+  rss:mshibanami-github-io-githubtrendingrss-daily:
+    category: dev
+    enabled: true
+    language: en
+    reason: 2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example）， 此处改为 dev，使其按真实来源权重参与排序。
+  rss:nature-com-nature:
+    enabled: false
+    reason: 2026-10-14 实测 301 重定向后无内容，需确认新地址
+  rss:openai-com-news:
+    priority: 1
+    reason: 厂商一手官方公告，权威性最高
+  rss:raw-githubusercontent-com-ai-rss-feeds-anthropic-news:
+    priority: 1
+    reason: 厂商一手官方公告
+  rss:rss-beehiiv-com-2r3c6bt5wj:
+    dedup_group: therundown
+    reason: 2026-10-22：同一个 Newsletter 的两个入口（beehiiv 官方源 + 站点源），同一篇文章被算成 2 个独立来源，虚增 corroboration 与多源率。归为一组后只算一次。
+  rss:schneier-com:
+    enabled: false
+    reason: 2026-10-14 实测连接失败（curl 000）
+  rss:seangoedecke-com:
+    category: community
+    enabled: true
+    language: en
+    reason: 2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example）， 此处改为 community，使其按真实来源权重参与排序。
+  rss:search-cnbc-com-combinedcms-view:
+    category: media
+    enabled: true
+    language: en
+    reason: 2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example）， 此处改为 media，使其按真实来源权重参与排序。
+  rss:therundown-ai:
+    dedup_group: therundown
+    reason: 2026-10-22：同一个 Newsletter 的两个入口（beehiiv 官方源 + 站点源），同一篇文章被算成 2 个独立来源，虚增 corroboration 与多源率。归为一组后只算一次。
+  rss:vllm-ai-blog:
+    category: dev
+    enabled: true
+    language: en
+    reason: 2026-10-14 实测返回真实 feed。原分类为审计来源标签（preset/example）， 此处改为 dev，使其按真实来源权重参与排序。
+  rss:wechat-aiqianxian:
+    dedup_group: aiqianxian
+    reason: 与 rss:decemberpei-cyou-rssbox-wechat-aiqianxian 是同一个 feed（URL 完全相同）。
+  rss:wechat-liangziwei:
+    dedup_group: liangziwei
+    reason: 与 rss:decemberpei-cyou-rssbox-wechat-liangziwei 是同一 feed，见上条。 这条原先 dedup_group 为空，同一篇文章因此会被计两次独立来源。
+  rss:wechat-paperweekly:
+    dedup_group: paperweekly
+    reason: 与 rss:decemberpei-cyou-rssbox-wechat-paperweekly 是同一 feed，见上条。
+  rss:wechat2rss-xlab-app-51e92aad2728acdd1fda7314be32b16639353001:
+    dedup_group: jiqizhixin
+    reason: 与 rss:wechat-jiqizhixin-xlab 是同一个 feed（URL 完全相同），只是登记来源不同。 归入同一 dedup_group，避免机器之心的同一篇文章被算成两个独立来源。
+  rss:wechat2rss-xlab-app-7131b577c61365cb47e81000738c10d872685908:
+    enabled: false
+    reason: 2026-10-14 实测连接失败（curl 000）；该服务为第三方自建实例，稳定性无保证
+  rss:wechat2rss-xlab-app-ede30346413ea70dbef5d485ea5cbb95cca446e7:
+    dedup_group: xinzhiyuan
+    reason: 与 rss:wechat-xinzhiyuan-xlab 是同一个 feed（URL 完全相同）。归入同一 dedup_group。
+  scrape:github-com-trending:
+    adapter: GitHubTrendingFetcher
+    reason: 有专用实现（GitHubTrendingFetcher）；通用 HtmlFetcher 未实现
+  scrape:old-reddit-com-artificial-hot:
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: 同上（Horizon 使用的 HTML 入口，同样被登录墙拦截）
+  scrape:old-reddit-com-localllama-hot:
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: 同上
+  scrape:old-reddit-com-machinelearning-hot:
+    adapter: RedditFetcher
+    needs_credential: REDDIT_CLIENT_ID
+    reason: 同上
+  x:aiatmeta:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:alibaba_qwen:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:anthropicai:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:baidu_inc:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:chatgpt:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:deepseek_ai:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:demishassabis:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:googleai:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:googledeepmind:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:huggingface:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:hwchase17:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:jeffdean:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:jietang:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:karpathy:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:kimi_moonshot:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:minimax_ai:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:mistralai:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:nvidiaaidev:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:openai:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:openaidevs:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:sama:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:simonw:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:stepfun_ai:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:therundownai:
+    enabled: true
+    reason: 2026-10-22 用户指定：X 平台只保留这一个账号
+  x:thsottiaux:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:xiaomimimo:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
+  x:ylecun:
+    enabled: false
+    reason: 2026-10-22 用户指定：X 平台只保留 @TheRundownAI，其余停用
