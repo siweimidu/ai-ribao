@@ -355,5 +355,33 @@
     "HTML": 25.857595986548638
    }
   }
+ },
+ "StartLuxLabs/StartLux-Prism": {
+  "fetched_at": "2026-10-23T09:22:19.252533+00:00",
+  "data": {
+   "full_name": "StartLuxLabs/StartLux-Prism",
+   "description": "Fast, exact inference for StartLux-Decision models on NVIDIA GPUs: the released GGUF files on int8 and 4-bit tensor cores, behind the /v1/systemone API, with up to 5.3× lower latency than vLLM in FP8 and bit-identical answers.",
+   "stars": 41,
+   "forks": 0,
+   "language": "Python",
+   "license": "",
+   "topics": [
+    "calibration",
+    "cuda",
+    "cuda-graphs",
+    "decision-making",
+    "gguf",
+    "h200"
+   ],
+   "created": "2026-10-13",
+   "pushed": "2026-10-22",
+   "contributors": 2,
+   "discussions": null,
+   "languages": {
+    "Python": 81.80066917683955,
+    "Cuda": 12.934440726795335,
+    "Shell": 5.264890096365112
+   }
+  }
  }
 }
