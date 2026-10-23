@@ -89,6 +89,7 @@ ICONS = {
     "theme": '<circle cx="9" cy="9" r="6"/><path d="M9 3v12"/><path d="M9 3a6 6 0 0 1 0 12"/>',
     "download": '<path d="M9 3v8"/><path d="M5.5 8 9 11.5 12.5 8"/><path d="M3.5 13.5h11"/>',
     "clock": '<circle cx="9" cy="9" r="6.5"/><path d="M9 5.5V9l2.5 1.5"/>',
+    "chart": '<path d="M3 15V9"/><path d="M7.5 15V5"/><path d="M12 15V7.5"/><path d="M16 15H2"/>',
     "github": '<path d="M9 2.5a6.5 6.5 0 0 0-2 12.7c-.1-.5-.1-1.2 0-1.7.2-.8 1.4-5 1.4-5s-.3-.7-.3-1.7c0-1.6.9-2.7 2-2.7.9 0 1.4.7 1.4 1.6 0 1-.6 2.4-.9 3.8-.3 1 .5 1.9 1.6 1.9 1.9 0 3.3-2.5 3.3-5.4 0-2.3-1.6-3.9-4-3.9-2.7 0-4.3 2-4.3 4.1 0 .9.3 1.8.8 2.3.1.1.1.2.1.3l-.3 1.1c0 .2-.2.2-.4.1-1.3-.6-2.1-2.5-2.1-4C5.3 3.4 7.5 2.5 9 2.5z"/>',
 }
 
@@ -302,6 +303,7 @@ def render_rail(ctx: SiteContext, digest: Digest, *, dated: bool = True) -> str:
           <!-- 4. Tibo 重置监控 -->
           <div class="rail__group">
             <a class="rail__item" href="tibo.html">{icon("clock")}<span>Tibo 重置监控</span></a>
+            <a class="rail__item" href="leaderboard.html">{icon("chart")}<span>模型榜</span></a>
           </div>
 
           <!-- 微信公众号：暂无账号，先不放入口。留一个不能用的按钮比没有更糟。 -->
@@ -1222,6 +1224,172 @@ def _ecal_event(event: dict) -> dict:
     }
 
 
+def _fmt_price(value: float | None) -> str:
+    """A price per million tokens, or an em dash.
+
+    "Not measured" and "free" are different facts and must not both render as 0.
+    """
+    if value is None:
+        return '<span class="lb__na">—</span>'
+    if value == 0:
+        return "免费"
+    return f"${value:,.2f}"
+
+
+def _fmt_ctx(tokens: int | None) -> str:
+    if not tokens:
+        return '<span class="lb__na">—</span>'
+    if tokens >= 1_000_000:
+        return f"{tokens / 1_000_000:.1f}M"
+    return f"{tokens // 1000}k"
+
+
+def _fmt_score(value: float | None) -> str:
+    if value is None:
+        return '<span class="lb__na">—</span>'
+    return f"{value:.1f}"
+
+def render_leaderboard(
+    ctx: "SiteContext",
+    models: list,
+    *,
+    fetched_at: str = "",
+    error: str = "",
+) -> str:
+    """The model leaderboard page.
+
+    Ranked by the intelligence index: that is the column the source treats as the headline
+    and the only one every model carries. Price and context sit beside it, because a
+    ranking that ignored cost would put a $10/M model above a $2/M one with no way to see
+    why.
+
+    The table is the page. The counts, the source note and the legend exist to make the
+    table readable, so they stay compact and the rows stay dense.
+    """
+    live = [m for m in models if not m.deprecated]
+    reasoning = sum(1 for m in live if m.reasoning)
+    open_weights = sum(1 for m in live if m.open_weights)
+    priced = sum(1 for m in live if m.price_input is not None)
+
+    if error:
+        body = (
+            '<div class="lb__empty">'
+            "<p>模型榜暂时取不到数据。</p>"
+            f'<p class="lb__err">{esc(error)}</p>'
+            "<p>数据来自 artificialanalysis.ai 的公开榜单；取不到时这一页留空，"
+            "不会用旧数据冒充新的。</p>"
+            "</div>"
+        )
+    elif not live:
+        body = '<div class="lb__empty"><p>还没有模型数据。</p></div>'
+    else:
+        rows = []
+        for index, model in enumerate(live, 1):
+            badges = []
+            if model.reasoning:
+                badges.append('<span class="lb__tag lb__tag--think">推理</span>')
+            if model.open_weights:
+                badges.append('<span class="lb__tag lb__tag--open">开源</span>')
+            if model.estimated:
+                badges.append('<span class="lb__tag lb__tag--est">估</span>')
+
+            color = model.creator_color or "var(--muted-fg)"
+            rows.append(
+                "<tr>"
+                f'<td class="lb__rank">{index}</td>'
+                '<td class="lb__model">'
+                f'<a href="{esc(model.href)}" target="_blank" rel="noopener noreferrer">'
+                f"{esc(model.name)}</a>"
+                # The variant in small type: it distinguishes two rows that would otherwise
+                # read as the same model, without widening the name column.
+                + (f'<span class="lb__variant">{esc(model.variant)}</span>' if model.variant else "")
+                + f'{"".join(badges)}'
+                "</td>"
+                f'<td class="lb__creator"><i style="background:{esc(color)}"></i>'
+                f"{esc(model.creator)}</td>"
+                f'<td class="lb__num lb__num--hero">{_fmt_score(model.intelligence)}</td>'
+                f'<td class="lb__num">{_fmt_ctx(model.context)}</td>'
+                f'<td class="lb__num">{_fmt_price(model.price_input)}</td>'
+                f'<td class="lb__num">{_fmt_price(model.price_output)}</td>'
+                "</tr>"
+            )
+
+        body = (
+            '<div class="lb__scroll">'
+            '<table class="lb">'
+            "<thead><tr>"
+            '<th class="lb__rank">#</th>'
+            "<th>模型</th><th>厂商</th>"
+            '<th class="lb__num">智能指数</th>'
+            '<th class="lb__num">上下文</th>'
+            '<th class="lb__num">输入 $/M</th>'
+            '<th class="lb__num">输出 $/M</th>'
+            "</tr></thead>"
+            f'<tbody>{"".join(rows)}</tbody>'
+            "</table>"
+            "</div>"
+        )
+    stats = (
+        '<div class="lb__stats">'
+        f"<div><b>{len(live)}</b><span>在榜模型</span></div>"
+        f"<div><b>{reasoning}</b><span>推理模型</span></div>"
+        f"<div><b>{open_weights}</b><span>开源权重</span></div>"
+        f"<div><b>{priced}</b><span>公开定价</span></div>"
+        "</div>"
+    )
+
+    fetched_note = f"抓取于 {esc(fetched_at)}。" if fetched_at else ""
+
+    return f"""<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>模型榜 · AI 日报</title>
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="{FAVICON}">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/components.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Regular.min.css">
+  <script>(function(){{try{{var t=localStorage.getItem('aidaily-theme');if(t&&t!=='auto'&&t!=='default'){{document.documentElement.setAttribute('data-theme',t);}}}}catch(e){{}}}})();</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<div class="shell">
+  <aside class="rail" aria-label="站点导航">
+    <button class="rail__grip" type="button" data-resize="rail"
+            aria-label="拖动调整左栏宽度" title="拖动调整宽度（双击恢复默认）"></button>
+    <a class="rail__brand" href="index.html"><span class="rail__mark" aria-hidden="true">{icon("brand", 18)}</span><span>AI 日报</span></a>
+    <hr class="rail__sep">
+    <div class="rail__group">
+      <a class="rail__item" href="index.html">{icon("home")}<span>首页</span></a>
+      <a class="rail__item" href="tibo.html">{icon("clock")}<span>Tibo 重置监控</span></a>
+      <a class="rail__item" href="leaderboard.html" aria-current="page">{icon("chart")}<span>模型榜</span></a>
+      {rail_rss_copy(ctx, compact=True)}
+    </div>
+  </aside>
+  <main class="content" id="main">
+    <header class="issue__head">
+      <p class="issue__date">Artificial Analysis · 智能指数排名</p>
+      <h1 class="issue__title">模型榜</h1>
+      <p class="issue__lead">按智能指数排序；价格与上下文并列，方便看清「更强」和「更贵」不是一回事。</p>
+      {stats}
+    </header>
+    {body}
+    <footer class="lb__foot">
+      <p>数据来自 <a href="https://artificialanalysis.ai/leaderboards/models" target="_blank" rel="noopener noreferrer">Artificial Analysis</a> 的公开榜单，每次构建抓取一次。{fetched_note}</p>
+      <p>「智能指数」是该站自建的合成指标，不是任何单一基准；「估」表示该分数为估算值。价格单位为每百万 token，以该站公布为准。</p>
+    </footer>
+  </main>
+</div>
+<script src="assets/motion.js" defer></script>
+</body>
+</html>
+"""
+
 def render_tibo(ctx: SiteContext, monitor: dict | None = None) -> str:
     """Codex quota-reset monitor.
 
@@ -1939,6 +2107,29 @@ def write_site(
 
     (site / "index.html").write_text(render_index(ctx, digest), encoding="utf-8")
     (site / "tibo.html").write_text(render_tibo(ctx, tibo), encoding="utf-8")
+
+    # **The leaderboard is fetched, not derived.** It is not part of the digest: no selection,
+    # no ranking of ours, just the public table rendered in this site clothes. A failed fetch
+    # renders the page with an explanation instead of a table, which is honest and keeps the
+    # navigation link from 404ing.
+    leaderboard_models = []
+    leaderboard_error = ""
+    leaderboard_at = ""
+    try:
+        from .leaderboard import load_models, snapshot_path
+
+        leaderboard_models = load_models(Path(__file__).resolve().parents[2])
+        snapshot = snapshot_path(Path(__file__).resolve().parents[2])
+        if snapshot.exists():
+            import json as _json
+
+            leaderboard_at = str(_json.loads(snapshot.read_text(encoding="utf-8")).get("fetched_at") or "")[:10]
+    except Exception as exc:  # noqa: BLE001
+        leaderboard_error = f"{type(exc).__name__}: {exc}"[:160]
+    (site / "leaderboard.html").write_text(
+        render_leaderboard(ctx, leaderboard_models, fetched_at=leaderboard_at, error=leaderboard_error),
+        encoding="utf-8",
+    )
     (site / "sources.html").write_text(
         render_sources(ctx, sources or [], digest, health=load_health(out_dir.parent / "state")),
         encoding="utf-8",
