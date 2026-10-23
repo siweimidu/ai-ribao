@@ -30,6 +30,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import subprocess
 import sys
 from datetime import datetime, timedelta
@@ -45,6 +46,61 @@ ARCHIVE = ROOT / "data" / "digests"
 #: and waits up to 20 minutes for critical sources, so one hour of grace is the point at which
 #: "it did not run" is a better explanation than "it is still running".
 SLOT_DEADLINES = (5, 13, 21)
+
+#: Pages that must exist in the built site. A digest that published but lost a page is still a
+#: broken site: the rail links every one of these, and a missing file turns a navigation item
+#: into a 404 nobody notices until a reader clicks it.
+#:
+#: `leaderboard.html` is listed for a second reason: it is the only page whose content comes from
+#: an outside service. When artificialanalysis.ai is unreachable the page still renders -- with an
+#: explanation instead of a table -- so a *missing* file means the build step itself did not run,
+#: which is a different failure from a failed fetch.
+REQUIRED_PAGES = ("index.html", "tibo.html", "sources.html", "leaderboard.html")
+
+#: A page smaller than this is not a page. The real ones are 100-200 KB; an error stub or a
+#: half-written file is a few hundred bytes.
+MIN_PAGE_BYTES = 8_000
+
+
+def page_problems(site_dir: Path) -> list[str]:
+    """Which required pages are missing or too small to be real."""
+    problems: list[str] = []
+    for name in REQUIRED_PAGES:
+        path = site_dir / name
+        if not path.exists():
+            problems.append(f"{name} 不存在")
+            continue
+        size = path.stat().st_size
+        if size < MIN_PAGE_BYTES:
+            problems.append(f"{name} 只有 {size} 字节")
+    return problems
+
+
+def leaderboard_problem(site_dir: Path, *, max_age_hours: float = 36.0) -> str | None:
+    """Why the leaderboard looks stale, or None when it looks current.
+
+    The page embeds its fetch date. A date older than `max_age_hours` means the leaderboard
+    stopped refreshing while the rest of the build kept working -- the kind of silent
+    degradation a "did it publish?" check cannot see.
+    """
+    path = site_dir / "leaderboard.html"
+    if not path.exists():
+        return None  # page_problems already reports this
+    try:
+        html = path.read_text(encoding="utf-8", errors="replace")
+    except Exception:
+        return None
+    match = re.search(r"抓取于 (\d{4}-\d{2}-\d{2})", html)
+    if not match:
+        return "模型榜没有抓取日期"
+    try:
+        fetched = datetime.strptime(match.group(1), "%Y-%m-%d")
+    except ValueError:
+        return f"模型榜抓取日期无法解析: {match.group(1)}"
+    age_hours = (beijing_now() - fetched).total_seconds() / 3600
+    if age_hours > max_age_hours:
+        return f"模型榜数据已是 {age_hours / 24:.1f} 天前"
+    return None
 
 
 def beijing_now() -> datetime:
@@ -86,8 +142,22 @@ def main() -> int:
 
     print(f"北京时间 {now:%Y-%m-%d %H:%M}，今天应已完成 {len(due)} 个时段：{due}")
 
+    # **Page completeness is checked even before the first slot.** A build that published nothing
+    # yet still left a broken site is worth reporting, and the rail links these pages from every
+    # issue -- a missing one is a 404 behind a navigation item.
+    site_dir = ARCHIVE / "site"
+    problems = page_problems(site_dir)
+    if problems:
+        _output("true", f"站点缺页面：{'；'.join(problems)}")
+        return 0
+
+    stale = leaderboard_problem(site_dir)
+    if stale:
+        _output("true", f"{stale} —— 重新构建会刷新模型榜")
+        return 0
+
     if not due:
-        print("第一个时段还没到，无需检查")
+        print("第一个时段还没到，页面完整，无需检查时段")
         return 0
 
     # The artifact is the thing itself: a ledger row saying "published" for a date whose archive
