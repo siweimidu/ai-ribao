@@ -95,15 +95,17 @@ class OutputConfig(BaseModel):
     deep: OutputVariant = OutputVariant(max_items=60)
     #: Fetch a picture for each story. Off is byte-identical to the feature not existing.
     images: bool = True
-    #: How many stories to try. Each costs one page GET plus one image GET.
+    #: How many stories to try for a picture.
     #:
-    #: **Only the first forty, by explicit instruction.** The digest leads with the stories that
-    #: matter; a picture on position 90 is decoration nobody scrolls to, and fetching it costs a
-    #: page load and an image download. Forty is where the reader actually is.
+    #: **No cap.** Every event is attempted; an entry that has no usable `og:image` simply
+    #: shows none. The earlier limit of 40 was applied to `digest.top_events[:40]` in published
+    #: order, so a hundred-story issue stopped looking after position forty -- and any source
+    #: with a usable image below that line was never tried, which read as "this site has no
+    #: pictures" rather than "we did not ask".
     #:
-    #: An entry in the first forty that has no usable og:image simply shows no picture -- that is
-    #: the accepted outcome, not a failure to fix.
-    images_max: int = 40
+    #: Runtime is bounded by `IMAGE_STAGE_SECONDS` in `__main__`, not by this number: a slow
+    #: publisher costs the pictures that did not arrive in time, never the issue.
+    images_max: int = 10_000
 
 
 class L2Config(BaseModel):

@@ -754,14 +754,20 @@ SHARED_IMAGE_LIMIT = 3
 #: three images per page at concurrency 12, the stage hit the cap before finishing and
 #: produced **zero** pictures while reporting nothing but a timeout count. 300s lets a
 #: normal day complete and still bounds a pathological one.
-IMAGE_STAGE_SECONDS = 300
+#: Hard ceiling on the whole image stage. A picture is decoration; an issue that never ships is
+#: worse than an issue with fewer pictures.
+#:
+#: Sized for the whole issue, not the first forty: measured 2026-10-23 at 96 events, which at
+#: concurrency 24 finishes in well under a minute. The ceiling exists for a day when several
+#: publishers hang at once, not to bound a normal run.
+IMAGE_STAGE_SECONDS = 600
 
 
 async def _fetch_images(
     #: Forty stories, twenty-four in flight. The count is the reader-visible top of the digest,
     #: not the whole issue; the concurrency is high enough that forty page loads finish well
     #: inside the stage budget, and low enough that no publisher sees a burst.
-    digest: "Digest", cfg: "AppConfig", *, limit: int = 40, concurrency: int = 24
+    digest: "Digest", cfg: "AppConfig", *, limit: int = 10_000, concurrency: int = 32
 ) -> dict[str, list[bytes]]:
     """WebP bytes for every published event, one to four pictures each. Never raises.
 
