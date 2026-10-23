@@ -93,6 +93,55 @@ def item_id_for(spec: SourceSpec, raw: RawItem) -> str:
 #: real lede -- the shortest genuine summary in the corpus is a 40-character sentence.
 _MIN_IDENTIFYING_BODY = 24
 
+#: Phrases that are a section label rather than a lede.
+#:
+#: Matched case-insensitively against the whole stripped body. Kept short and specific: a false
+#: positive only means the title decides the fingerprint, which is the safer of the two errors --
+#: the unsafe one is two different stories merging and the reader following a link to an article
+#: the entry never described.
+_BOILERPLATE_PHRASES = (
+    "these are the stocks posting the largest moves",
+    "this is a breaking news story",
+    "read more",
+    "click here",
+    "subscribe to our newsletter",
+    "sign up for our newsletter",
+    "本文为转载",
+    "点击查看原文",
+    "阅读全文",
+    "责任编辑",
+)
+
+#: A body that mostly repeats its own headline adds nothing to identity either: the headline
+#: already identifies it, so hashing both is the same as hashing the headline.
+#:
+#: Measured on the same CNBC feed: the body of `Stocks making the biggest moves premarket:
+#: CoreWeave, Rocket Lab` was one sentence naming no company, while four other entries shared it.
+
+
+def _is_boilerplate(body: str, title: str) -> bool:
+    """True when this body cannot tell one article from another.
+
+    Two tests, both cheap and both conservative:
+
+    * the body opens with a known section label, or
+    * the body is almost entirely contained in the title, so it restates it.
+    """
+    text = body.strip().lower()
+    if not text:
+        return True
+
+    for phrase in _BOILERPLATE_PHRASES:
+        if text.startswith(phrase):
+            return True
+
+    # Strip the title from the body. Whatever is left is the part that is new information.
+    folded_title = re.sub(r"[\W_]+", "", title.lower())
+    folded_body = re.sub(r"[\W_]+", "", text)
+    if folded_title and folded_body and folded_body in folded_title:
+        return True
+    return False
+
 
 def normalize_raw(
     raw: RawItem, spec: SourceSpec, now: datetime | None = None
@@ -111,11 +160,20 @@ def normalize_raw(
     # kernels, a DeepSeek funding round and a Huawei assistant review. The link the reader
     # clicked was one of the twelve, so it went to an article the entry never described.
     #
-    # The fix is to stop deriving an identity from a body that carries none. When the stripped
-    # body is shorter than `_MIN_IDENTIFYING_BODY`, fall back to the title: two items then share
-    # a fingerprint only when they share a headline, which is what the exact key is for.
-    if len(body) < _MIN_IDENTIFYING_BODY:
-        body_for_hash = strip_html(raw.title or "")
+    # The fix is to stop deriving an identity from a body that carries none. Two shapes of
+    # body carry none:
+    #
+    #   * too short -- `点击查看原文>` and friends (`_MIN_IDENTIFYING_BODY`),
+    #   * boilerplate -- long enough to pass the length test but identical across unrelated
+    #     articles. Measured on CNBC: 57 characters of "These are the stocks posting the
+    #     largest moves premarket." sat under four different headlines naming different
+    #     companies, so all four merged into one event about none of them.
+    #
+    # Both fall back to the title, so two items share a fingerprint only when they share a
+    # headline -- which is what an exact key is for.
+    title_body = strip_html(raw.title or "")
+    if len(body) < _MIN_IDENTIFYING_BODY or _is_boilerplate(body, raw.title or ""):
+        body_for_hash = title_body
     else:
         body_for_hash = body
     # Summary is display text: strip markup AND bare links so the digest never shows a
