@@ -200,11 +200,56 @@ def fetch_models(*, url: str = LEADERBOARD_URL, timeout: float = 50.0) -> list[M
     return models
 
 
+def refresh_site_page(root: Path, *, max_age_hours: float = 6.0) -> tuple[bool, str]:
+    """Rewrite `leaderboard.html` on its own, without building a digest.
+
+    ## Why this exists
+
+    The page used to be produced only inside `write_site`, which the `run` command calls only
+    when the gate says the day still needs publishing. On a three-slot day that means the
+    04:00 build writes the page and the 12:00 and 20:00 builds skip everything -- so the
+    leaderboard showed data from before dawn while the rest of the site was current.
+
+    This function is the escape hatch: it refreshes one page from the snapshot, touching
+    nothing else, so a workflow can call it on runs that publish nothing.
+
+    Returns `(changed, note)`. `changed` is False when the snapshot was already fresh enough,
+    which keeps a no-op run from rewriting the file and dirtying the working tree.
+    """
+    from .site import SiteContext, render_leaderboard
+
+    site = root / "data" / "digests" / "site"
+    page = site / "leaderboard.html"
+    if not site.exists():
+        return False, f"{site} 不存在，无法刷新"
+
+    snapshot = snapshot_path(root)
+    models = load_models(root, max_age_hours=max_age_hours)
+    if not models:
+        return False, "取不到模型数据，页面保持原样"
+
+    fetched_at = ""
+    try:
+        if snapshot.exists():
+            fetched_at = str(json.loads(snapshot.read_text(encoding="utf-8")).get("fetched_at") or "")[:10]
+    except Exception:
+        pass
+
+    # The rail needs a context; the archive is the only thing in it the page reads.
+    ctx = SiteContext(archive=[], site_url="")
+    html = render_leaderboard(ctx, models, fetched_at=fetched_at)
+
+    if page.exists() and page.read_text(encoding="utf-8") == html:
+        return False, "页面已是最新"
+    page.write_text(html, encoding="utf-8")
+    return True, f"已刷新 {page.name}（{len(models)} 个模型）"
+
+
 def snapshot_path(root: Path) -> Path:
     return root / "data" / "state" / "leaderboard.json"
 
 
-def load_models(root: Path, *, max_age_hours: float = 12.0) -> list[Model]:
+def load_models(root: Path, *, max_age_hours: float = 6.0) -> list[Model]:
     """Models from the on-disk snapshot when it is fresh, else fetched and re-saved."""
     path = snapshot_path(root)
     now = datetime.now(timezone.utc)

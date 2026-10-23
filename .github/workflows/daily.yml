@@ -460,11 +460,71 @@ jobs:
   # ---------------------------------------------------------------------------
   # 4. Deploy the archive to GitHub Pages.
   # ---------------------------------------------------------------------------
+
+  # ---------------------------------------------------------------------------
+  # Model leaderboard refresh.
+  #
+  # **Its own job, not a step in `publish`.** `publish` is gated on
+  # `needs.gate.outputs.run == true`, which is false for the second and third slot of a day --
+  # the gate exists so a day is published once. The leaderboard is not part of the digest: it
+  # is a page fed by an outside service, and it should follow that service, not our publish
+  # ledger. On a three-slot day the old arrangement refreshed it before dawn and then showed
+  # pre-dawn data until tomorrow.
+  #
+  # The command itself decides whether to act: it reads the snapshot, and rewrites the page
+  # only when the snapshot is older than `--max-age-hours` or the rendered HTML changed. A run
+  # that finds nothing to do prints "页面已是最新" and exits 0, which keeps the six redundant
+  # cron triggers per slot from churning the repository.
+  leaderboard:
+    needs: [gate]
+    if: always() && needs.gate.result != 'failure'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[fetchers]"
+      - name: Refresh the leaderboard page
+        run: python -m aidaily leaderboard --max-age-hours 6
+      - name: Commit if the page changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/digests/site/leaderboard.html data/state/leaderboard.json 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "leaderboard unchanged"
+            exit 0
+          fi
+          git commit -m "chore(leaderboard): $(TZ=Asia/Shanghai date +%F\ %H:%M) refresh"
+          for attempt in 1 2 3; do
+            if git push; then exit 0; fi
+            echo "push rejected; rebasing (attempt $attempt)"
+            git fetch origin "${GITHUB_REF_NAME}"
+            git rebase "origin/${GITHUB_REF_NAME}" || {
+              git rebase --abort 2>/dev/null || true
+              git reset --hard "origin/${GITHUB_REF_NAME}"
+              exit 1
+            }
+            sleep $((attempt * 5))
+          done
+          exit 1
+
   deploy:
-    needs: publish
-    # No `if:` on gate: `deploy` only needs `publish`, so `needs.gate` is out of scope and
-    # the expression made GitHub reject the entire file (zero jobs were created).
-    # `publish` already encodes "there was something to publish" in its own result.
+    # `leaderboard` is listed so its commit is on disk before the artifact is packaged: the
+    # job writes `data/digests/site/leaderboard.html`, and deploying without waiting would
+    # publish the previous build page.
+    #
+    # `always()` because the two dependencies now fail independently: a failed publish must
+    # not block deploying a refreshed leaderboard, and vice versa.
+    needs: [publish, leaderboard]
+    if: always() && (needs.publish.result == 'success' || needs.leaderboard.result == 'success')
+    # No `if:` on gate: `needs.gate` is out of scope here and referencing it made GitHub
+    # reject the entire file (zero jobs were created).
     runs-on: ubuntu-latest
     permissions:
       pages: write

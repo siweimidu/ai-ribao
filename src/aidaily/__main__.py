@@ -1198,6 +1198,22 @@ def _build_router(args: argparse.Namespace):
     return router, warnings, http
 
 
+def cmd_leaderboard(args) -> int:
+    """Refresh the leaderboard page without building a digest.
+
+    Exists so a workflow run that publishes nothing (the gate said today is already done) can
+    still update this one page. It reads the snapshot, rewrites one file, and touches nothing
+    else -- no collection, no analysis, no delivery.
+    """
+    from .leaderboard import refresh_site_page
+
+    changed, note = refresh_site_page(ROOT, max_age_hours=args.max_age_hours)
+    print(note)
+    # Exit 0 either way: "already fresh" is success, and a failed fetch must not paint a
+    # scheduled run red when every other channel worked.
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="aidaily", description="统一 AI 日报聚合平台")
     sub = p.add_subparsers(dest="command", required=True)
@@ -1257,6 +1273,11 @@ def build_parser() -> argparse.ArgumentParser:
     # The gate checks that the archive exists, so it needs to know where archives live.
     g.add_argument("--out-dir", help="归档目录（默认 data/digests）")
     g.set_defaults(func=cmd_gate)
+
+    lb = sub.add_parser("leaderboard", help="只刷新模型榜页面，不构建日报")
+    lb.add_argument("--max-age-hours", type=float, default=6.0,
+                    help="快照超过这个小时数才重新抓取（默认 6）")
+    lb.set_defaults(func=cmd_leaderboard)
 
     b = sub.add_parser(
         "backfill",
