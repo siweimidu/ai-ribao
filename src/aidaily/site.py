@@ -266,6 +266,14 @@ def render_rail(ctx: SiteContext, digest: Digest, *, dated: bool = True) -> str:
             # colours, because that is how someone asks for it.
             ("claude-light", "Claude 亮色"),
             ("claude-dark", "Claude 暗色"),
+            # Each is a whole palette rather than a hue rotation: a dark theme needs a
+            # different contrast ratio and a different accent lightness to stay readable, so
+            # they are written out in `tokens.css` rather than generated from one seed.
+            ("paper", "纸墨"),
+            ("rose", "玫瑰"),
+            ("slate", "石板"),
+            ("midnight", "午夜"),
+            ("forest", "森林"),
         )
     )
 

@@ -313,14 +313,20 @@
       const LABEL = {
         auto: '自动', default: '默认', light: '亮色', dark: '暗色',
         'claude-light': 'Claude 亮色', 'claude-dark': 'Claude 暗色',
+        paper: '纸墨', rose: '玫瑰', slate: '石板',
+        midnight: '午夜', forest: '森林',
       };
       summary.textContent = LABEL[choice] || '自动';
     }
   };
 
-  // First visit is light; after a choice is made it is stored and reused.
-  let savedTheme = 'light';
-  try { savedTheme = window.localStorage.getItem(THEME_KEY) || 'light'; } catch { /* 隐私模式 */ }
+  // First visit is Claude light; after a choice is made it is stored and reused.
+  //
+  // The warm paper tone reads as a document rather than a dashboard, which suits a digest of
+  // writing. It is also the palette the site's own serif headings were chosen against.
+  const DEFAULT_THEME = 'claude-light';
+  let savedTheme = DEFAULT_THEME;
+  try { savedTheme = window.localStorage.getItem(THEME_KEY) || DEFAULT_THEME; } catch { /* 隐私模式 */ }
   apply(savedTheme);
 
   if (themeButtons.length) {
