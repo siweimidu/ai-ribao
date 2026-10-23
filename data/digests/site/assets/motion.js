@@ -313,8 +313,6 @@
       const LABEL = {
         auto: '自动', default: '默认', light: '亮色', dark: '暗色',
         'claude-light': 'Claude 亮色', 'claude-dark': 'Claude 暗色',
-        paper: '纸墨', rose: '玫瑰', slate: '石板',
-        midnight: '午夜', forest: '森林',
       };
       summary.textContent = LABEL[choice] || '自动';
     }

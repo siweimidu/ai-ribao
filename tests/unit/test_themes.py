@@ -56,10 +56,11 @@ def test_every_offered_theme_has_a_label() -> None:
         assert f"{name}:" in MOTION or f"'{name}':" in MOTION, f"no label for {name}"
 
 
-def test_the_new_themes_are_present() -> None:
-    defined = set(_themes())
-    for name in ("paper", "rose", "slate", "midnight", "forest"):
-        assert name in defined, name
+def test_the_shipped_set_is_exactly_four() -> None:
+    """The palette list is the user's to decide. Five candidates were added, reviewed, and
+    removed; this pins the set that survived so a stray block cannot linger unnoticed.
+    """
+    assert set(_themes()) == {"dark", "light", "claude-light", "claude-dark"}
 
 
 def test_a_dark_theme_has_light_text() -> None:
