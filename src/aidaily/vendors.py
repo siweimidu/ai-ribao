@@ -75,7 +75,14 @@ VENDORS: tuple[Vendor, ...] = (
            ("ernie-speed-128k", "ernie-3.5-8k")),
     Vendor("siliconflow", "硅基流动", ("api.siliconflow.cn", "siliconflow.cn"),
            ("Qwen/Qwen2.5-7B-Instruct", "deepseek-ai/DeepSeek-V3")),
-    Vendor("groq", "Groq", ("api.groq.com",), ("openai/gpt-oss-20b", "llama-3.3-70b-versatile")),
+    Vendor("groq", "Groq", ("api.groq.com",),
+           ("openai/gpt-oss-120b", "openai/gpt-oss-20b", "qwen/qwen3.8-27b")),
+    # Agnes has two deployments with separate keys and separate model catalogues; both speak the
+    # OpenAI wire format. Measured 2026-10-23: 9 models each, and `agnes-3.0-flash` answers on
+    # both. Listed as one vendor because the caller only needs a working default, and the model
+    # that exists on both is the one to name.
+    Vendor("agnes", "Agnes", ("apihub.agnes-ai.com", "api.agnes-ai.cn", "agnes-ai.com"),
+           ("agnes-3.0-flash", "agnes-2.5-flash", "agnes-2.5-pro")),
     Vendor("cerebras", "Cerebras", ("api.cerebras.ai",), ("llama3.1-8b",)),
     Vendor("mistral", "Mistral", ("api.mistral.ai",), ("mistral-small-latest",)),
     Vendor("cohere", "Cohere", ("api.cohere.ai", "api.cohere.com"), ("command-r7b-12-2024",)),

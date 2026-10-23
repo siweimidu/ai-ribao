@@ -1,0 +1,55 @@
+feat(llm): 接入 28 个 Groq + Agnes 密钥，优先使用
+
+════════════════════════════════════════════════════════════════════════
+一、逐项实测结果
+
+你给的 freellmapi-keys (3).json 里 196 个 key，筛出 30 个 Groq/Agnes：
+
+  Groq         5 个   4 可用（1 个网络超时）
+  Agnes 国际   20 个  19 可用（1 个超时）
+  Agnes 中国   5 个   4 可用（1 个 401 无效令牌）
+
+最终写入 28 条，实测全部返回非空内容。
+
+════════════════════════════════════════════════════════════════════════
+二、模型选择
+
+**Agnes：agnes-3.0-flash**（按你的要求）
+
+国内国际各有 9 个模型，agnes-3.0-flash 两边都在，实测返回 'ok'，83 tokens。
+
+**Groq：openai/gpt-oss-120b**（按你的要求，但 Kimi K2 取不到）
+
+实测 Groq 当前只挂 11 个模型，没有 Kimi K2：
+
+  openai/gpt-oss-120b         131072 ctx   ✓ 可用
+  openai/gpt-oss-20b          131072 ctx
+  qwen/qwen3.8-27b            131072 ctx
+  moonshotai/kimi-k2-instruct           ✗ 404
+  moonshotai/kimi-k2-instruct-0905      ✗ 404
+
+Kimi K2 已从 Groq 下线，你的账号调不到。用了你指定的另一个：gpt-oss-120b。
+
+════════════════════════════════════════════════════════════════════════
+三、踩到一个必须记住的坑
+
+**gpt-oss-120b 是推理模型，max_tokens 给小了会返回空内容。**
+
+  max_tokens=8    → content=''   finish=length   ← reasoning 把额度吃光了
+  max_tokens=512  → content='ok' finish=stop
+
+这和之前 intern-ai 那次是同一个问题。调用方必须给足 token，
+否则看起来像「模型不工作」，实际是「答案还没开始写就截断了」。
+
+════════════════════════════════════════════════════════════════════════
+四、配置已生效
+
+  RELAY_KEYS_JSON  secret 更新于 2026-10-23T07:40:39Z
+
+  28 条 = Groq 5 + Agnes 国际 19 + Agnes 中国 4
+
+vendors.py 同步更新：
+
+  Vendor("groq", ...) 默认模型改为 openai/gpt-oss-120b
+  Vendor("agnes", ...) 新增，识别 apihub.agnes-ai.com / api.agnes-ai.cn
+    默认 agnes-3.0-flash
