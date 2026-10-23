@@ -1,0 +1,2608 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap"><style>/* ============================================================================
+   AI 日报 · 设计令牌
+   ----------------------------------------------------------------------------
+   三条外部依据，按优先级：
+   1. frontend-design 的 slop 清单（必须避开）
+   2. Doubao 设计系统的令牌值（圆角、间距、单一强调色）
+   3. juya 的实测结构（双栏轨道、暖白底、中文优先字体）
+
+   刻意改掉的两处「AI 味」（frontend-design 点名）：
+   · **等宽字体做小标签** —— 之前 .eyebrow / .fact-label / .evidence 全用
+     JetBrains Mono。规范说这是模板化特征：字体应该承担个性，而不是给
+     小数据贴一层「技术感」的皮。现在正文与标签同族，层级靠字号和字重。
+   · **中间点连接的 meta 串**（`A · B · C`）—— 之前页脚和统计里满是。
+     现在改成真实的分隔结构或换行。
+
+   保留的：编号（内容确实是序号化的当日要闻，不是装饰）、
+   单一强调色（Doubao 的 #0065fd）。
+   ========================================================================= */
+
+:root {
+  /* --- 语义色：4 种 ------------------------------------------------------------------ */
+  /* 底色取 juya 实测的暖白 rgb(253,252,250) 而非纯白：纯白在长时间阅读下过亮，
+     而暖白与中性灰阶搭配不会引入第二个色相。 */
+  --bg:          #fdfcfa;
+  --surface:     #ffffff;
+  --fg:          #16181c;
+  --muted-fg:    #6b7280;
+  --muted:       #f2f1ee;
+  --border:      #e6e4df;
+  --accent:      #0065fd;
+  --accent-soft: #e8efff;
+
+  /* --- 圆角与间距：单一来源，全局缩放 --------------------------------------------- */
+  --radius:    0.75rem;
+  --radius-sm: 0.4rem;
+  --rail-w:    13rem;     /* 208px：导航不需要和正文平起平坐，余量留给正文 */
+  --toc-w:     12rem;     /* 192px：目录只显示「01 标题…」 */
+  --unit:      0.25rem;
+
+  /* --- 字体：中文优先 ----------------------------------------------------------- */
+  /* 之前把 Inter 放在最前，中文靠系统回退，不同机器上字形与度量都不可控。
+     juya 实测用 Sarasa Gothic SC（更纱黑体），它的中英文度量统一。
+     拉丁部分回退到 Inter（有"更纱黑体"时英文也走它，统一性更好）。 */
+  --font-sans: "Sarasa Gothic SC", "更纱黑体 SC", "Noto Sans CJK SC",
+               "Noto Sans SC", "PingFang SC", "Microsoft YaHei",
+               Inter, ui-sans-serif, system-ui, sans-serif;
+  /* 等宽只用于真正的代码/数字对齐场景，不再当小标签的装饰字体。 */
+  --font-mono: "Sarasa Mono SC", "Noto Sans Mono CJK SC", ui-monospace, monospace;
+
+  /* --- 字阶 ---------------------------------------------------------------------- */
+  /* 三栏版式下正文列变窄（约 700px），但**尺度对比仍必须成立**：
+     规范给的实测下限是 4×，低于它页面就没有尺度对比。
+     第一版降到 44px 让比值掉到 2.9× —— 窄列不是放弃对比的理由，
+     而是把正文也一起收小（15px）来守住比值。这里 60 ÷ 15 = 4.0×。
+     中文长标题在窄列里会换到 3 行，用 measure 限制避免它铺满整行。 */
+  --fs-display: clamp(2.5rem, 4.6vw, 3.75rem);   /* 40 → 60px */
+  --fs-h2:      clamp(1.25rem, 1.6vw, 1.5rem);
+  --fs-h3:      1.0625rem;                        /* 17px */
+  --fs-body:    0.9375rem;                        /* 15px */
+  --fs-small:   0.8125rem;
+  --fs-micro:   0.75rem;                          /* 12px */
+  --lh-tight:   1.24;
+  --lh-body:    1.75;
+
+  /* --- 动效令牌 -------------------------------------------------------------------- */
+  --dur-instant:  90ms;
+  --dur-fast:     170ms;
+  --dur-standard: 320ms;
+  --dur-medium:   460ms;
+  --dur-slow:     700ms;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-circ: cubic-bezier(0, 0.55, 0.45, 1);
+  --spring-bouncy: linear(0, 0.32 8%, 0.79 20%, 1.03 30%, 1.01 46%, 1);
+  --spring-jelly:  linear(0, 0.18 6%, 0.62 18%, 0.94 32%, 1.06 46%, 1.02 62%, 1);
+
+  --ring: 0 0 0 3px color-mix(in srgb, var(--accent) 26%, transparent);
+}
+
+/* 深色取值集中在一处，两个入口共用：
+   1. 系统偏好（@media prefers-color-scheme）
+   2. 读者手动选择（[data-theme="dark"]）
+   分开写会导致「手动切了但颜色没变」——初版就是这样：JS 设了 data-theme，
+   而 CSS 只监听系统媒体查询，开关看起来生效、页面纹丝不动。 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:          #101215;
+    --surface:     #171a1f;
+    --fg:          #e9ecef;
+    --muted-fg:    #9aa4b2;
+    --muted:       #1c2027;
+    --border:      #282d36;
+    --accent:      #6ba1ff;
+    --accent-soft: #12233f;
+  }
+}
+
+/* 手动强制暗色：即使用户系统是亮色也要暗。 */
+:root[data-theme="dark"] {
+  --bg:          #101215;
+  --surface:     #171a1f;
+  --fg:          #e9ecef;
+  --muted-fg:    #9aa4b2;
+  --muted:       #1c2027;
+  --border:      #282d36;
+  --accent:      #6ba1ff;
+  --accent-soft: #12233f;
+}
+
+/* 手动强制亮色：即使用户系统是暗色也要亮。 */
+:root[data-theme="light"] {
+  --bg:          #fdfcfa;
+  --surface:     #ffffff;
+  --fg:          #16181c;
+  --muted-fg:    #6b7280;
+  --muted:       #f2f1ee;
+  --border:      #e6e4df;
+  --accent:      #0065fd;
+  --accent-soft: #e8efff;
+}
+
+/* --- Claude 配色 ------------------------------------------------------------------
+   Claude 的界面用的是暖色纸面而不是中性灰，强调色是陶土橙而不是蓝。
+   这套色值单独成组，因为它的价值就在"暖"这个属性上 —— 把橙色调进默认的冷灰里
+   会得到一套既不像默认也不像 Claude 的配色。
+
+   亮色：纸面 #faf9f5，正文近黑 #1f1e1d，强调 #c15f3c。
+   暗色：暖灰底 #262624（不是纯黑，纯黑会让暖色显得脏），强调提亮到 #d97757。
+   ============================================================================== */
+:root[data-theme="claude-light"] {
+  --bg:          #faf9f5;
+  --surface:     #ffffff;
+  --fg:          #1f1e1d;
+  --muted-fg:    #6b6862;
+  --muted:       #f0eee6;
+  --border:      #e5e2d9;
+  --accent:      #c15f3c;
+  --accent-soft: #f7ece6;
+}
+
+:root[data-theme="claude-dark"] {
+  --bg:          #262624;
+  --surface:     #30302e;
+  --fg:          #f0eee6;
+  --muted-fg:    #a8a49b;
+  --muted:       #33322f;
+  --border:      #3f3e3a;
+  --accent:      #d97757;
+  --accent-soft: #3b2c25;
+}
+
+
+
+
+
+
+/* --- 基础 ------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-feature-settings: "kern" 1;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+  border-radius: var(--radius-sm);
+}
+
+.sr {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* 「跳到正文」：键盘用户的第一站。侧栏有 8 项时，这个链接是必需品而非装饰。 */
+.skip {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  background: var(--accent); color: #fff;
+  padding: calc(var(--unit) * 2.5) calc(var(--unit) * 4);
+  border-radius: 0 0 var(--radius-sm) 0;
+}
+.skip:focus { left: 0; }
+
+/* ============================================================================
+   骨架：三轨道
+   ----------------------------------------------------------------------------
+   左轨是常驻导航（工作台），中列是内容，右轨是目录。
+   中列设 min-width: 0 —— 没有它，长标题会把网格列撑破，右轨被挤出视口。
+   ========================================================================= */
+.shell {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  max-width: 1560px;
+  margin-inline: auto;
+  padding-inline: calc(var(--unit) * 5);
+}
+
+@media (min-width: 1080px) {
+  .shell {
+    grid-template-columns: var(--rail-w) minmax(0, 1fr);
+    gap: calc(var(--unit) * 12);
+    padding-inline: calc(var(--unit) * 8);
+  }
+}
+
+@media (min-width: 1400px) {
+  .shell { grid-template-columns: var(--rail-w) minmax(0, 1fr) var(--toc-w); }
+}
+
+/* --- 左侧栏 ---------------------------------------------------------------------- */
+.rail {
+  padding-block: calc(var(--unit) * 8);
+  /* Positioning context for the resize grip, which sits on the rail's inner edge. */
+  position: relative;
+}
+
+@media (min-width: 1080px) {
+  .rail {
+    position: sticky;
+    top: 0;
+    /* 侧栏比视口高时（日历 + 8 项）必须能自己滚，否则底部的按钮永远点不到。 */
+    max-height: 100vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+/* ============================================================================
+   滚动条
+   ----------------------------------------------------------------------------
+   侧栏与目录各有一个滚动条（内容比视口高时必须能滚）。默认样式在深色模式下
+   是一条亮轨，在本来就安静的侧栏里非常刺眼 —— 它是结构，不是内容。
+
+   **现在完全隐藏**（用户要求）。可滚动性没有取消：两个侧栏仍然是
+   overflow-y: auto，鼠标滚轮、触控板、键盘翻页、以及锚点跳转都照常工作，
+   只是不再画那条滑块。这是有意的取舍 —— 读者已经知道长列表可以滚，
+   而滑块在两个窄栏里每天都占着视觉位置却没有提供信息。
+
+   两条声明缺一不可：scrollbar-width: none 管 Firefox 与新 Chrome，
+   ::-webkit-scrollbar { display: none } 管 WebKit/Safari。
+   只写其中一条会在某个浏览器里留下一条丑轨道。
+   ========================================================================= */
+.rail,
+.toc {
+  scrollbar-width: none;          /* Firefox / 新 Chrome */
+  -ms-overflow-style: none;       /* 旧 Edge/IE */
+}
+
+.rail::-webkit-scrollbar,
+.toc::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;                  /* WebKit / Safari */
+}
+
+/* --- 拖拽调宽 -------------------------------------------------------------------- */
+/* 手柄贴在轨道**内侧**边缘，是一条 6px 的命中区，视觉上只在悬停时显现。
+
+   注意 `right: 0` / `left: 0` 而不是负值：轨道是 `overflow-y: auto`，
+   负偏移会被滚动容器裁掉，手柄虽然存在于 DOM、`getBoundingClientRect()` 也返回位置，
+   但那个位置上真正的元素是 `.shell` —— 指针事件永远到不了它。
+   （实测：`elementFromPoint` 返回 `shell`，`pointerdown` 一次都没触发。）
+
+   宽度可调是读者的排版偏好，所以存 localStorage —— 和主题同类，不是内容。 */
+.rail__grip,
+.toc__grip {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  cursor: col-resize;
+  z-index: 5;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  touch-action: none;
+}
+
+.rail__grip { right: 0; }
+.toc__grip { left: 0; }
+
+/* 只有在能真正拖拽的视口里才显示手柄 —— 窄屏下轨道是抽屉或不存在。 */
+@media (max-width: 1079px) {
+  .rail__grip { display: none; }
+}
+@media (max-width: 1399px) {
+  .toc__grip { display: none; }
+}
+
+.rail__grip::after,
+.toc__grip::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-out-circ);
+}
+
+.rail__grip:hover::after,
+.rail__grip:focus-visible::after,
+.toc__grip:hover::after,
+.toc__grip:focus-visible::after,
+.rail__grip[data-active="true"]::after,
+.toc__grip[data-active="true"]::after {
+  opacity: 0.55;
+}
+
+/* 拖拽期间：禁用文本选择与过渡，否则会选中文字、且列宽动画跟不上指针。 */
+body[data-resizing="true"] {
+  cursor: col-resize;
+  user-select: none;
+}
+body[data-resizing="true"] .shell,
+body[data-resizing="true"] .rail {
+  transition: none;
+}
+
+/* 触屏设备没有 hover，手柄做宽一点并常显细分隔线，否则不知道可以拖。 */
+@media (hover: none) {
+  .rail__grip, .toc__grip { width: 14px; }
+  .rail__grip::after, .toc__grip::after { opacity: 0.22; }
+}
+
+/* 移动端：侧栏变成顶部抽屉，由按钮展开。*/
+@media (max-width: 1079px) {
+  .rail {
+    border-bottom: 1px solid var(--border);
+    padding-block: calc(var(--unit) * 5);
+  }
+  .rail__body { display: none; padding-top: calc(var(--unit) * 4); }
+  .rail[data-open="true"] .rail__body { display: block; }
+  .rail__head { display: flex; align-items: center; justify-content: space-between; gap: calc(var(--unit) * 4); }
+}
+
+/* 桌面端没有抽屉，所以展开按钮必须消失。
+   注意：这里**不能**只写 `.rail__toggle { display: none }` ——
+   `.rail__item { display: flex }` 在 components.css（后加载），
+   同特异度下后者胜出，按钮会留在桌面端。这是 frontend-design 明确警告的
+   「选择器互相抵消」。所以选择器提到两个类，特异度压过 .rail__item。 */
+@media (min-width: 1080px) {
+  .rail .rail__toggle { display: none; }
+  .rail__body { display: block; }
+}
+/* ============================================================================
+   组件层
+   ----------------------------------------------------------------------------
+   版式来自 juya 的实测结构，但刻意避开 frontend-design 点名的模板特征：
+   · 不给每个标题加全大写小标签
+   · 不用等宽字体装饰小数据
+   · 不用 `A · B · C` 中间点串接的 meta
+   · 不给每张卡片同一套圆角 + 同一层灰阴影
+   ========================================================================= */
+
+/* --- 侧栏结构 -------------------------------------------------------------------- */
+.rail__brand {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--unit) * 2.5);
+  font-weight: 640;
+  font-size: var(--fs-h3);
+  letter-spacing: -0.01em;
+  margin-bottom: calc(var(--unit) * 6);
+}
+
+.rail__mark {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex: none;
+}
+
+.rail__group { display: grid; gap: calc(var(--unit) * 1); }
+
+.rail__sep {
+  height: 1px;
+  background: var(--border);
+  margin-block: calc(var(--unit) * 5);
+  border: 0;
+}
+
+/* 按钮与导航项共用一个造型：侧栏里它们是同级的东西，读者不该去分辨
+   「这是链接还是按钮」。 */
+.rail__item {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--unit) * 2.5);
+  width: 100%;
+  padding: calc(var(--unit) * 2.25) calc(var(--unit) * 3);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--fg);
+  font: inherit;
+  font-size: var(--fs-body);
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-circ);
+}
+
+.rail__item:hover { background: var(--muted); }
+
+.rail__item[aria-current="page"] {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.rail__item svg { width: 16px; height: 16px; flex: none; opacity: 0.75; }
+.rail__item[aria-current="page"] svg { opacity: 1; }
+
+.rail__hint {
+  margin-left: auto;
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+
+/* 展开式（主题四选一、下载二选一）：用原生 <details>，
+   键盘可用、无 JS 也能开合。 */
+.rail__fold > summary {
+  list-style: none;
+  cursor: pointer;
+}
+.rail__fold > summary::-webkit-details-marker { display: none; }
+.rail__fold > summary::after {
+  content: "";
+  width: 6px; height: 6px;
+  margin-left: auto;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  opacity: 0.5;
+  transition: transform var(--dur-fast) var(--ease-out-circ);
+}
+.rail__fold[open] > summary::after { transform: rotate(-135deg) translateY(-2px); }
+
+.rail__sub {
+  display: grid;
+  gap: calc(var(--unit) * 0.5);
+  padding: calc(var(--unit) * 1) 0 calc(var(--unit) * 2) calc(var(--unit) * 6);
+}
+
+.rail__sub button {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--unit) * 2);
+  padding: calc(var(--unit) * 1.5) calc(var(--unit) * 2.5);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--muted-fg);
+  font: inherit;
+  font-size: var(--fs-small);
+  text-align: left;
+  cursor: pointer;
+}
+.rail__sub button:hover { background: var(--muted); color: var(--fg); }
+.rail__sub button[aria-checked="true"] { color: var(--accent); font-weight: 600; }
+.rail__sub button[aria-checked="true"]::before { content: "✓"; }
+
+/* ============================================================================
+   日历
+   ----------------------------------------------------------------------------
+   规范要求：当日高亮 + 圆形强调。这里当日的圆是**实心强调色圆**，
+   有链接的其它日期是**浅底可点**，两者视觉权重清楚不同 ——
+   「今天」是位置，「有内容的日子」是可去的地方，不是同一件事。
+   ========================================================================= */
+.cal { margin-top: calc(var(--unit) * 1); }
+
+.cal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--unit) * 2);
+  margin-bottom: calc(var(--unit) * 2);
+}
+
+.cal__month {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.cal__nav {
+  display: flex;
+  gap: calc(var(--unit) * 0.5);
+}
+
+.cal__nav button {
+  width: 22px; height: 22px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--muted-fg);
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-circ);
+}
+.cal__nav button:hover { background: var(--muted); color: var(--fg); }
+.cal__nav button:disabled { opacity: 0.35; cursor: default; }
+
+.cal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.cal__dow {
+  font-size: 10px;
+  color: var(--muted-fg);
+  text-align: center;
+  padding-bottom: calc(var(--unit) * 0.5);
+}
+
+.cal__day {
+  position: relative;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;          /* 圆形：规范要求 */
+  background: transparent;
+  color: var(--muted-fg);
+  font: inherit;
+  font-size: var(--fs-small);
+  font-variant-numeric: tabular-nums;
+  cursor: default;
+}
+
+/* 有归档的日期：可点，浅底 */
+.cal__day[data-has="true"] {
+  background: var(--muted);
+  color: var(--fg);
+  cursor: pointer;
+  font-weight: 600;
+  transition:
+    background var(--dur-fast) var(--ease-out-circ),
+    transform var(--dur-fast) var(--spring-bouncy);
+}
+.cal__day[data-has="true"]:hover { background: var(--accent-soft); color: var(--accent); }
+.cal__day[data-has="true"]:active { transform: scale(0.9); }
+
+/* 今天：实心强调色圆 + 圆形光晕（规范的「圆形阴影」） */
+.cal__day[data-today="true"] {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.cal__day[data-today="true"]:hover { background: var(--accent); color: #fff; }
+
+/* 正在看的这一期 */
+.cal__day[data-current="true"]:not([data-today="true"]) {
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+}
+
+.cal__day[aria-disabled="true"] { opacity: 0.3; }
+
+.cal__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--unit) * 3);
+  margin-top: calc(var(--unit) * 3);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+.cal__legend span { display: flex; align-items: center; gap: calc(var(--unit) * 1.5); }
+.cal__legend i {
+  width: 9px; height: 9px; border-radius: 50%; flex: none;
+  background: var(--muted);
+  border: 1px solid var(--border);
+}
+.cal__legend i[data-k="today"] { background: var(--accent); border-color: var(--accent); }
+.cal__legend i[data-k="has"] { background: var(--muted); }
+
+/* ============================================================================
+   事件日历卡片（Tibo 重置监控）
+   ----------------------------------------------------------------------------
+   与左侧栏的小日历同一套视觉语言，但是内容主体而不是导航：
+   月份网格 + 右侧当日详情。有记录的日期可点，点开在右边看当天发生了什么。
+
+   与导航日历的区别是有意为之：那个是"去哪一天"，这个是"那天发生了什么"，
+   所以格子更大、带事件标记、右侧有详情面板。
+   ========================================================================= */
+.ecal {
+  display: grid;
+  gap: calc(var(--unit) * 8);
+}
+
+@media (min-width: 900px) {
+  .ecal { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: start; }
+}
+
+.ecal__card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: calc(var(--unit) * 6);
+}
+
+.ecal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--unit) * 3);
+  margin-bottom: calc(var(--unit) * 4);
+}
+
+.ecal__month { font-size: 1.125rem; font-weight: 640; letter-spacing: -0.01em; }
+
+.ecal__nav { display: flex; gap: calc(var(--unit) * 1); }
+.ecal__nav button {
+  width: 28px; height: 28px;
+  display: grid; place-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--muted-fg);
+  font: inherit;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-circ);
+}
+.ecal__nav button:hover { background: var(--muted); color: var(--fg); }
+.ecal__nav button:disabled { opacity: 0.3; cursor: default; }
+
+.ecal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: calc(var(--unit) * 1.5);
+}
+
+.ecal__dow {
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  text-align: center;
+  padding-bottom: calc(var(--unit) * 1.5);
+}
+
+.ecal__day {
+  position: relative;
+  min-height: 3.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2px;
+  padding: calc(var(--unit) * 1.5) 2px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--muted-fg);
+  font: inherit;
+  font-size: var(--fs-small);
+  font-variant-numeric: tabular-nums;
+  cursor: default;
+}
+
+/* 有记录的日期：可点，浅底 */
+.ecal__day[data-count] {
+  background: var(--muted);
+  color: var(--fg);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-circ),
+              transform var(--dur-fast) var(--spring-bouncy);
+}
+.ecal__day[data-count]:hover { background: var(--accent-soft); color: var(--accent); }
+.ecal__day[data-count]:active { transform: scale(0.94); }
+
+/* 选中：强调色描边，不用实心 —— 实心留给"今天" */
+.ecal__day[aria-selected="true"] {
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 640;
+}
+
+/* 今天：实心强调色圆，与左侧导航日历一致 */
+.ecal__day[data-today="true"] .ecal__num {
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  width: 1.6em; height: 1.6em;
+  display: grid; place-items: center;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.ecal__day--pad { background: transparent; }
+
+/* 事件标记：每个事件一个小点，颜色区分类型 */
+.ecal__marks { display: flex; gap: 2px; flex-wrap: wrap; justify-content: center; }
+.ecal__marks i {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--muted-fg);
+}
+.ecal__marks i[data-kind="direct_reset"] { background: var(--accent); }
+.ecal__marks i[data-kind="reset_credit"] { background: #d97706; }
+
+/* 右侧详情面板 */
+.ecal__panel { min-width: 0; }
+
+.ecal__panel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: calc(var(--unit) * 3);
+  padding-bottom: calc(var(--unit) * 3);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: calc(var(--unit) * 4);
+}
+
+.ecal__panel-date { font-size: 1.0625rem; font-weight: 640; }
+.ecal__panel-sub { font-size: var(--fs-small); color: var(--muted-fg); }
+
+.ecal__entries { list-style: none; margin: 0; padding: 0; display: grid; gap: calc(var(--unit) * 5); }
+
+.ecal__entry {
+  padding-left: calc(var(--unit) * 4);
+  border-left: 2px solid var(--accent);
+}
+.ecal__entry[data-kind="reset_credit"] { border-left-color: #d97706; }
+
+.ecal__entry-title { font-weight: 620; line-height: 1.5; }
+.ecal__entry-meta {
+  display: flex; flex-wrap: wrap; gap: calc(var(--unit) * 2);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  margin-top: calc(var(--unit) * 1);
+}
+
+.ecal__quote {
+  margin-top: calc(var(--unit) * 2.5);
+  padding-left: calc(var(--unit) * 3);
+  border-left: 2px solid var(--border);
+  font-size: var(--fs-small);
+  line-height: 1.7;
+}
+.ecal__quote em { display: block; color: var(--muted-fg); font-style: normal; font-size: var(--fs-micro); }
+
+.ecal__empty {
+  padding: calc(var(--unit) * 8) calc(var(--unit) * 4);
+  text-align: center;
+  color: var(--muted-fg);
+  font-size: var(--fs-small);
+}
+
+.ecal__legend {
+  display: flex; flex-wrap: wrap; gap: calc(var(--unit) * 4);
+  margin-top: calc(var(--unit) * 4);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+.ecal__legend span { display: flex; align-items: center; gap: calc(var(--unit) * 1.5); }
+.ecal__legend i { width: 6px; height: 6px; border-radius: 50%; background: var(--muted-fg); flex: none; }
+.ecal__legend i[data-kind="direct_reset"] { background: var(--accent); }
+.ecal__legend i[data-kind="reset_credit"] { background: #d97706; }
+.ecal__legend i[data-kind="today"] { background: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent); }
+
+/* ============================================================================
+   内容列
+   ========================================================================= */
+.content { padding-block: calc(var(--unit) * 10) calc(var(--unit) * 16); min-width: 0; }
+
+.issue__head { margin-bottom: calc(var(--unit) * 8); }
+
+.issue__date {
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+  margin-bottom: calc(var(--unit) * 2);
+}
+
+.issue__title {
+  margin: 0;
+  font-size: var(--fs-display);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.015em;
+  font-weight: 660;
+  /* 60px 中文在 700px 列里一行约 11 字，不限 measure 会长标题铺满整行。 */
+  max-width: 20ch;
+  text-wrap: balance;
+}
+
+.issue__lead {
+  margin: calc(var(--unit) * 4) 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--muted-fg);
+  max-width: 60ch;
+}
+
+/* 统计条：真实数字，横排一条，不是卡片组 */
+/* Equal columns, not flex + gap.
+   With flex each cell was exactly as wide as its own number, so 60 / 32 / 9 / 16 produced four
+   unequal blocks at a constant gap -- the row read as misaligned even though nothing overflowed.
+   Equal tracks put the numbers on a rhythm, which is what a stats row is for. */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr));
+  gap: calc(var(--unit) * 5) calc(var(--unit) * 4);
+  margin-top: calc(var(--unit) * 7);
+  padding-top: calc(var(--unit) * 5);
+  border-top: 1px solid var(--border);
+}
+
+.stats div { min-width: 0; }
+.stats b {
+  display: block;
+  font-size: 1.375rem;
+  font-weight: 660;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+/* `display: block` matters: `b` is block and this was left inline, so the label rendered
+   on the same line as the number ("23近 90 天重置") instead of beneath it. */
+.stats span { display: block; font-size: var(--fs-micro); color: var(--muted-fg); }
+
+/* --- 章节 ---------------------------------------------------------------------- */
+.section { margin-top: calc(var(--unit) * 12); scroll-margin-top: calc(var(--unit) * 6); }
+
+.section__title {
+  display: flex;
+  align-items: baseline;
+  gap: calc(var(--unit) * 3);
+  margin: 0 0 calc(var(--unit) * 5);
+  font-size: var(--fs-h2);
+  font-weight: 640;
+  letter-spacing: -0.01em;
+  padding-bottom: calc(var(--unit) * 2.5);
+  border-bottom: 1px solid var(--border);
+}
+
+.section__count {
+  font-size: var(--fs-small);
+  font-weight: 400;
+  color: var(--muted-fg);
+}
+
+/* --- 条目 ---------------------------------------------------------------------- */
+.stream { list-style: none; margin: 0; padding: 0; }
+
+.item {
+  padding-block: calc(var(--unit) * 6);
+  border-bottom: 1px solid var(--border);
+  scroll-margin-top: calc(var(--unit) * 6);
+}
+.item:last-child { border-bottom: 0; }
+
+.item__head {
+  display: flex;
+  align-items: baseline;
+  gap: calc(var(--unit) * 3);
+}
+
+/* 序号：内容确实是按顺序编出来的当日要闻，编号承载信息。
+   不用等宽字体（规范点名的 AI 味），用同族的半粗数字。 */
+.item__no {
+  flex: none;
+  font-size: var(--fs-small);
+  font-weight: 640;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  min-width: 1.6em;
+}
+
+.item__title {
+  margin: 0;
+  font-size: var(--fs-h3);
+  font-weight: 620;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  text-wrap: pretty;
+}
+.item__title a:hover { color: var(--accent); }
+
+.item__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--unit) * 2.5);
+  margin-top: calc(var(--unit) * 2);
+  padding-left: calc(1.6em + var(--unit) * 3);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+
+.badge {
+  padding: calc(var(--unit) * 0.25) calc(var(--unit) * 2);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+.badge[data-level="multi_source"] {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* 事实 / 推断 / 不确定：三栏分离，用左侧色条区分，
+   标签用普通字号而非等宽小字。 */
+.facts {
+  margin: calc(var(--unit) * 3) 0 0;
+  padding-left: calc(1.6em + var(--unit) * 3);
+  display: grid;
+  gap: calc(var(--unit) * 2);
+}
+
+.facts__label {
+  font-size: var(--fs-micro);
+  font-weight: 620;
+  color: var(--muted-fg);
+  margin-top: calc(var(--unit) * 2);
+}
+.facts__label[data-kind="fact"] { color: var(--fg); }
+
+.facts ul { margin: 0; padding: 0; list-style: none; display: grid; gap: calc(var(--unit) * 1.5); }
+
+.facts li {
+  padding-left: calc(var(--unit) * 4);
+  border-left: 2px solid var(--border);
+  line-height: 1.7;
+}
+.facts li[data-kind="inference"] { color: var(--muted-fg); }
+.facts li[data-kind="uncertain"] { color: var(--muted-fg); border-left-style: dashed; }
+
+.item__links {
+  margin-top: calc(var(--unit) * 2.5);
+  padding-left: calc(1.6em + var(--unit) * 3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--unit) * 1.5) calc(var(--unit) * 4);
+  font-size: var(--fs-small);
+}
+.item__links a { color: var(--muted-fg); word-break: break-all; }
+.item__links a:hover { color: var(--accent); }
+
+/* 无日期：明确标注，不假装是今天的 */
+.when-unknown { font-style: italic; }
+
+/* --- 右侧目录 ------------------------------------------------------------------- */
+.toc { display: none; }
+
+@media (min-width: 1400px) {
+  .toc {
+    display: block;
+    /* `sticky` also establishes the containing block for the absolutely positioned resize
+       grip, so no `position: relative` is needed here -- and adding one would override
+       `sticky` and break the rail. */
+    position: sticky;
+    top: 0;
+    align-self: start;
+    max-height: 100vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    /* Scrollbar styling lives in tokens.css, next to the dark-mode treatment, so the two
+       rails cannot drift apart. */
+    padding-block: calc(var(--unit) * 10);
+    font-size: var(--fs-small);
+  }
+}
+
+.toc__title {
+  font-size: var(--fs-micro);
+  font-weight: 640;
+  color: var(--muted-fg);
+  margin-bottom: calc(var(--unit) * 3);
+}
+
+.toc__nav { display: grid; gap: 1px; }
+
+.toc__nav a {
+  display: block;
+  /* Roomier than it looks like it needs to be: the TOC is scanned, not read, and a tight
+     list of 60 near-identical lines is hard to pick from. The vertical padding is what
+     separates one target from the next. */
+  padding: calc(var(--unit) * 2.5) calc(var(--unit) * 3);
+  border-left: 2px solid transparent;
+  color: var(--muted-fg);
+  line-height: 1.55;
+  transition: color var(--dur-fast) var(--ease-out-circ),
+              border-color var(--dur-fast) var(--ease-out-circ);
+}
+
+.toc__nav a:hover { color: var(--fg); }
+
+/* 滚动高亮：当前阅读位置。这是页面上唯一「活」的东西。 */
+.toc__nav a[aria-current="true"] {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  font-weight: 600;
+}
+
+.toc__nav a[data-level="2"] { padding-left: calc(var(--unit) * 6); font-size: var(--fs-micro); }
+
+/* --- 上一条 / 下一条 ----------------------------------------------------------------- */
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: calc(var(--unit) * 4);
+  margin-top: calc(var(--unit) * 12);
+  padding-top: calc(var(--unit) * 6);
+  border-top: 1px solid var(--border);
+}
+.pager a {
+  display: grid;
+  gap: calc(var(--unit) * 0.5);
+  font-size: var(--fs-small);
+}
+.pager a:hover { color: var(--accent); }
+.pager span { color: var(--muted-fg); font-size: var(--fs-micro); }
+.pager a:last-child { text-align: right; }
+
+/* --- 搜索对话框 ------------------------------------------------------------------- */
+.search {
+  width: min(100% - 2rem, 46rem);
+  max-height: 80vh;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--fg);
+  box-shadow: 0 18px 48px rgb(0 0 0 / 0.14);
+  overflow: hidden;
+}
+.search::backdrop { background: rgb(0 0 0 / 0.35); }
+
+.search__form {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--unit) * 3);
+  padding: calc(var(--unit) * 4) calc(var(--unit) * 5);
+  border-bottom: 1px solid var(--border);
+}
+.search__form input {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 1.0625rem;
+  outline: none;
+}
+.search__form kbd {
+  font-family: var(--font-sans);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1px 6px;
+}
+
+.search__results {
+  list-style: none;
+  margin: 0;
+  padding: calc(var(--unit) * 2);
+  overflow-y: auto;
+  max-height: 62vh;
+}
+.search__results li a {
+  display: block;
+  padding: calc(var(--unit) * 3) calc(var(--unit) * 4);
+  border-radius: var(--radius-sm);
+}
+.search__results li a:hover,
+.search__results li a:focus-visible { background: var(--muted); }
+.search__results b { display: block; font-weight: 620; margin-bottom: calc(var(--unit) * 0.5); }
+.search__results small { color: var(--muted-fg); }
+.search__empty { padding: calc(var(--unit) * 6); text-align: center; color: var(--muted-fg); }
+
+/* --- 归档列表 ------------------------------------------------------------------- */
+/* Each issue is a row with its own columns. The previous markup was two inline spans inside
+   one link -- `2026-10-14224 条` -- because `section__count` is a heading ornament, not a
+   layout primitive. A grid gives the date a fixed start and the count a fixed end, so the
+   numbers line up down the list. */
+.issue-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: calc(var(--unit) * 1);
+}
+
+.issue-row {
+  /* Fixed tracks, not auto auto 1fr auto.
+     auto sized the date and weekday to their own content, so the right-hand count landed at a
+     slightly different x on every row and the column looked ragged. Both strings are fixed width,
+     so they are declared as tracks. */
+  display: grid;
+  /* FIVE tracks for FOUR children when there is no badge, and five when there is.
+     The rule declared four columns while a row with a badge has five children, so the
+     count fell into a 31.5px implicit track and sat at x=928 instead of x=914 -- the
+     column looked ragged because it was, by exactly one unaccounted-for cell. Declaring
+     the badge track explicitly (and letting it collapse when empty) keeps every count on
+     the same vertical line. */
+  grid-template-columns: 7.5rem 2.5rem 3.5rem 1fr auto;
+  align-items: baseline;
+  gap: calc(var(--unit) * 3);
+  padding: calc(var(--unit) * 3) calc(var(--unit) * 4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  transition: background var(--dur-fast) var(--ease-out-circ),
+              border-color var(--dur-fast) var(--ease-out-circ);
+}
+
+.issue-row:hover { background: var(--muted); border-color: var(--border); }
+
+.issue-row__date {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+.issue-row__week { font-size: var(--fs-micro); color: var(--muted-fg); }
+
+.issue-row__badge {
+  justify-self: start;
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: var(--radius-sm);
+  padding: 1px calc(var(--unit) * 2);
+}
+
+/* The count is the last grid track; a fixed width and right alignment make every row identical.
+   Left to auto it was exactly as wide as its own text, so 60 条 began 2px left of 19 条 --
+   both right edges matched while the left edges did not, which reads as "not aligned" even
+   though nothing overflowed. */
+.issue-row__count {
+  justify-self: end;
+  min-width: 4.5rem;
+  text-align: right;
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* On a narrow screen the badge column has nowhere to go; stack the row rather than
+   squeezing the date and count back into contact. */
+@media (max-width: 560px) {
+  .issue-row { grid-template-columns: auto 1fr auto; row-gap: calc(var(--unit) * 0.5); }
+  .issue-row__badge { grid-column: 2; }
+}
+
+/* --- 信息源页面 ------------------------------------------------------------------ */
+.source-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.source-list li { background: var(--bg); }
+
+.source-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: calc(var(--unit) * 2) calc(var(--unit) * 4);
+  padding: calc(var(--unit) * 3.5) calc(var(--unit) * 5);
+  align-items: baseline;
+  /* The row is an `<a>` now. An anchor is `inline` by default, which would collapse the
+     grid and stack the state chip under the name; `color: inherit` keeps the link from
+     turning the whole row blue, and `text-decoration: none` stops the URL line being
+     underlined on top of its own muted styling. */
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+}
+
+.source-row:hover { background: var(--muted); }
+
+.source-row:focus-visible {
+  background: var(--muted);
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.source-row__name { font-weight: 620; }
+
+.source-row__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--unit) * 1.5) calc(var(--unit) * 3);
+  margin-top: calc(var(--unit) * 1);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+
+.source-row__url {
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  word-break: break-all;
+  margin-top: calc(var(--unit) * 1);
+}
+
+.source-row__state {
+  justify-self: end;
+  display: flex;
+  align-items: baseline;
+  gap: calc(var(--unit) * 2);
+  font-size: var(--fs-micro);
+  white-space: nowrap;
+  padding: 1px calc(var(--unit) * 2);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  color: var(--muted-fg);
+}
+
+/* The item count inside a state badge is secondary to the state itself. */
+.source-row__items { opacity: 0.75; }
+
+.source-row__state[data-state="ok"] { border-color: var(--accent); color: var(--accent); }
+.source-row__state[data-state="failed"] { border-color: #b45309; color: #b45309; }
+.source-row__state[data-state="credential"] { border-style: dashed; }
+.source-row__state[data-state="disabled"] { opacity: 0.6; }
+
+@media (max-width: 620px) {
+  .source-row { grid-template-columns: minmax(0, 1fr); }
+  .source-row__state { justify-self: start; }
+}
+
+/* --- 复制按钮的反馈 -------------------------------------------------------------- */
+/* A copy button that gives no feedback is indistinguishable from a broken one. The label
+   swaps for a moment and the button takes the accent colour. */
+.rail__sub button[data-copy] { position: relative; }
+.rail__sub button[data-copy][data-copied="true"] { color: var(--accent); font-weight: 600; }
+
+/* --- 订阅面板：两个按钮 + 一行小字 ------------------------------------------------
+   原来是四行等重的内容（两个复制按钮 + 两个在浏览器中查看），挤在 15rem 的栏里。
+   现在分层：复制是主要动作，给整行和足够的内边距；查看是罕用动作，压成一行小字。
+   层级而不是等分，是这一处拥挤的根源。 */
+.rail__sub--rss { display: grid; gap: calc(var(--unit) * 1.5); }
+
+.rail__btn {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: calc(var(--unit) * 2);
+  width: 100%;
+  padding: calc(var(--unit) * 2.5) calc(var(--unit) * 3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  text-align: left;
+  line-height: 1.4;
+}
+
+.rail__btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* 协议名做成一个短标签，让两个按钮在同一位置对齐，扫一眼就能分清。 */
+.rail__btn-k {
+  font-size: var(--fs-micro);
+  font-weight: 640;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 3px;
+  padding: 1px calc(var(--unit) * 1.2);
+}
+
+.rail__fine {
+  margin: 0;
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  line-height: 1.8;
+}
+
+.rail__fine a { color: var(--muted-fg); text-decoration: underline; text-underline-offset: 2px; }
+.rail__fine a:hover { color: var(--accent); }
+
+/* --- 概览 ----------------------------------------------------------------------- */
+/* The day at a glance. Deliberately a numbered list of real headlines rather than a
+   generated paragraph: a summary here would be a second, unchecked claim about the day,
+   and it would drift from the list below it. */
+.ov { list-style: none; margin: calc(var(--unit) * 4) 0 0; padding: 0; display: grid; gap: calc(var(--unit) * 3); }
+
+.ov a {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: calc(var(--unit) * 3);
+  align-items: baseline;
+  padding: calc(var(--unit) * 4);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: 0 1px 2px rgb(16 24 40 / 4%);
+  transition: box-shadow var(--dur-fast) var(--ease-out-circ),
+              transform var(--dur-fast) var(--ease-out-circ),
+              border-color var(--dur-fast) var(--ease-out-circ);
+}
+
+.ov a:hover { border-color: color-mix(in srgb, var(--accent) 26%, var(--border)); box-shadow: 0 8px 24px rgb(16 24 40 / 9%); transform: translateY(-1px); }
+
+.ov__no {
+  font-size: var(--fs-small);
+  font-weight: 640;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.ov b { font-weight: 620; line-height: 1.5; }
+
+.ov__detail {
+  display: block;
+  margin-top: calc(var(--unit) * 0.5);
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+  line-height: 1.6;
+}
+
+.ov__foot {
+  margin: calc(var(--unit) * 4) 0 0;
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+}
+
+/* --- TOC 序号与概览项 ------------------------------------------------------------ */
+.toc__no {
+  display: inline-block;
+  min-width: 1.9em;
+  color: var(--muted-fg);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--fs-micro);
+}
+
+.toc__overview {
+  font-weight: 640;
+  color: var(--fg);
+}
+
+/* --- 待翻译条目 ------------------------------------------------------------------ */
+/* Items whose source is foreign and which the model did not reach -- usually because the
+   quota ran out mid-run. Collapsed by default and labelled: present so nothing is lost,
+   separated so an English line never reads as the digest's own writing. */
+.untranslated {
+  margin-top: calc(var(--unit) * 12);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: calc(var(--unit) * 4) calc(var(--unit) * 5);
+  background: var(--muted);
+}
+
+.untranslated summary {
+  cursor: pointer;
+  font-weight: 620;
+  color: var(--muted-fg);
+}
+
+.untranslated p {
+  margin: calc(var(--unit) * 3) 0;
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+  line-height: 1.7;
+  max-width: 70ch;
+}
+
+.untranslated ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: calc(var(--unit) * 2);
+}
+
+.untranslated li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: calc(var(--unit) * 3);
+  align-items: baseline;
+  font-size: var(--fs-small);
+}
+
+.untranslated__no {
+  color: var(--muted-fg);
+  font-variant-numeric: tabular-nums;
+}
+
+.untranslated a { word-break: break-word; }
+.untranslated a:hover { color: var(--accent); }
+.untranslated__src { color: var(--muted-fg); font-size: var(--fs-micro); white-space: nowrap; }
+
+@media (max-width: 620px) {
+  .untranslated li { grid-template-columns: auto minmax(0, 1fr); }
+  .untranslated__src { grid-column: 2; }
+}
+
+/* --- 页脚 ------------------------------------------------------------------------ */
+.foot {
+  margin-top: calc(var(--unit) * 14);
+  padding-top: calc(var(--unit) * 6);
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+}
+.foot p { max-width: 68ch; line-height: 1.7; }
+.foot a { color: var(--fg); }
+.foot a:hover { color: var(--accent); }
+
+/* --- 提示条 ---------------------------------------------------------------------- */
+.notice {
+  border-left: 3px solid var(--accent);
+  background: var(--muted);
+  border-radius: var(--radius-sm);
+  padding: calc(var(--unit) * 3.5) calc(var(--unit) * 5);
+  margin-block: calc(var(--unit) * 6);
+  font-size: var(--fs-small);
+}
+.notice p { margin: 0; }
+.notice ul { margin: calc(var(--unit) * 1.5) 0 0; padding-left: 1.1em; }
+.notice strong { font-weight: 620; }
+
+/* ============================================================================
+   入场
+   ----------------------------------------------------------------------------
+   frontend-design：「单次编排的一个瞬间胜过零散效果」。
+   所以整个页面只有**一次**入场：标题 + 首屏统计。
+   条目不参与 —— 一页 60 条各自淡入正是规范点名的通用默认。
+   同样地，隐藏必须由 JS 开启（B8 闸门的失败模式）。
+   ========================================================================= */
+.js-motion .enter:not(.is-in) { opacity: 0; transform: translate3d(0, 10px, 0); }
+.js-motion .enter.is-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--dur-slow) var(--ease-out-expo),
+    transform var(--dur-slow) var(--ease-out-expo);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .js-motion .enter { opacity: 1 !important; transform: none !important; }
+}
+
+@media print {
+  .rail, .toc, .pager, .search, .stats { display: none; }
+  .shell { display: block; }
+  .item { break-inside: avoid; }
+  body { background: #fff; }
+}
+
+/* --- 日历：侧栏月历与事件日历共用一套视觉语言 ------------------------------------
+   两个日历此前各写各的：侧栏用「有日报就填满整格」，事件日历用「数字下面点一个点」。
+   同一个概念两套画法，而读者是在这两页之间来回走的。
+
+   填满整格的版本尤其糟：见方格里有的填有的不填，看起来像棋盘格，而只有两期归档时
+   那个图案完全是偶然的；它还和「今天」的实心圆抢注意力，而后者才是全月唯一该响的地方。
+
+   现在：
+   · 有内容 → 数字下方一个点（两个日历一致）。格子保持安静，点是信号。
+   · 今天 → 唯一的实心形状：强调色圆 + 柔和光环。
+   · 正在阅读的这一期 → 描边圆环，不用第二种颜色就能和今天区分。
+   · 无内容的日期 → 降透明度而不是保持正常字重，让这个月的「哪里有事」一眼可见。
+   ============================================================================== */
+
+/* 共用：日期格与点 */
+.cal__day,
+.ecal__day {
+  position: relative;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted-fg);
+  font: inherit;
+  font-size: var(--fs-small);
+  font-variant-numeric: tabular-nums;
+  cursor: default;
+  transition: background var(--dur-fast) var(--ease-out-circ),
+              color var(--dur-fast) var(--ease-out-circ),
+              box-shadow var(--dur-fast) var(--ease-out-circ);
+}
+
+/* 网格留出呼吸：格与格之间不留缝时，点会挤在一起看不出属于哪一天。 */
+.cal__grid,
+.ecal__grid { gap: calc(var(--unit) * 0.6); }
+
+/* 有内容的日期：安静的字重，点来做标记 */
+.cal__day[data-has="true"],
+.ecal__day[data-count] {
+  color: var(--fg);
+  font-weight: 620;
+  cursor: pointer;
+}
+
+/* 数字下方的小点。用 ::after 而不是额外元素，因为它是装饰，不该出现在无障碍树里。 */
+.cal__day[data-has="true"]::after,
+.ecal__day[data-count]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.55;
+  transform: translateX(-50%);
+}
+
+/* 悬停：底色提示可点，但不变形、不换色相，避免整片闪动 */
+.cal__day[data-has="true"]:hover,
+.ecal__day[data-count]:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.cal__day[data-has="true"]:active,
+.ecal__day[data-count]:active { transform: scale(0.92); }
+
+/* 今天：全月唯一的实心形状 + 柔和光环 */
+.cal__day[data-today="true"],
+.ecal__day[data-today="true"] {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.cal__day[data-today="true"]:hover,
+.ecal__day[data-today="true"]:hover { background: var(--accent); color: #fff; }
+
+/* 今天同时有内容时，点要用白色才看得见 */
+.cal__day[data-today="true"][data-has="true"]::after,
+.ecal__day[data-today="true"][data-count]::after { background: #fff; opacity: 0.85; }
+
+/* 正在阅读的这一期：描边圆环。
+   和今天用同色系但不填满 —— 不引入第二种颜色就能区分「今天」和「我在看的这天」。 */
+.cal__day[data-current="true"]:not([data-today="true"]),
+.ecal__day[aria-selected="true"]:not([data-today="true"]) {
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+}
+
+/* 无内容的日期：降透明度，让这个月的活动分布显出来 */
+.cal__day[aria-disabled="true"],
+.ecal__day[aria-disabled="true"] { opacity: 0.28; }
+
+/* 空位（月初补齐与月末留白）完全隐形，但保留占位以保证列对齐 */
+.cal__day[aria-hidden="true"],
+.ecal__day--pad { opacity: 0; pointer-events: none; }
+
+/* 星期表头与月份标题：两者统一 */
+.cal__dow,
+.ecal__dow {
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+  font-weight: 600;
+  text-align: center;
+  padding-bottom: calc(var(--unit) * 0.5);
+}
+
+.cal__month,
+.ecal__month {
+  font-size: var(--fs-small);
+  font-weight: 640;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+
+/* 上/下月按钮：做成一个安静的方形按钮，而不是裸箭头字符 */
+.cal__nav button,
+.ecal__nav button {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--muted-fg);
+  font-size: 0.9rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-circ),
+              color var(--dur-fast) var(--ease-out-circ),
+              border-color var(--dur-fast) var(--ease-out-circ);
+}
+
+.cal__nav button:hover:not(:disabled),
+.ecal__nav button:hover:not(:disabled) {
+  background: var(--muted);
+  border-color: var(--border);
+  color: var(--fg);
+}
+
+.cal__nav button:disabled,
+.ecal__nav button:disabled { opacity: 0.3; cursor: default; }
+
+/* 图例：点和圆环要跟日历里画的一模一样，否则图例本身在骗人 */
+.cal__legend,
+.ecal__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--unit) * 2) calc(var(--unit) * 3);
+  margin-top: calc(var(--unit) * 2);
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+
+.cal__legend span,
+.ecal__legend span { display: flex; align-items: center; gap: calc(var(--unit) * 1.2); }
+
+.cal__legend i,
+.ecal__legend i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+  background: var(--muted-fg);
+}
+
+/* 事件日历按类型上色，因为在那里「类型」就是信息本身 */
+.ecal__marks { display: none; }   /* 点数移到 ::after 之后不再需要独立元素 */
+
+.ecal__legend i[data-kind="direct_reset"] { background: var(--accent); }
+.ecal__legend i[data-kind="reset_credit"] { background: #d97706; }
+.ecal__legend i[data-kind="today"] {
+  background: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+
+/* --- 日历：日期格尺寸与不重叠 ------------------------------------------------------
+   上一版给日期格加了 `aspect-ratio: 1`，而事件日历的列宽是 `1fr` —— 于是容器一宽，
+   格子就跟着一宽，行高却由内容决定，**圆圈溢出并在垂直方向压住相邻日期**。
+   读者点 15 号，命中的是盖在上面的另一个圆圈，看起来就是「切换不了」。
+
+   这一版把尺寸**钉死**而不是跟着列走：固定 2.25rem 的圆，在自己的格子里居中。
+   这样任何容器宽度下它都还是个日历，圆圈之间也不会互相覆盖。
+   ============================================================================== */
+.cal__grid,
+.ecal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: calc(var(--unit) * 0.5);
+  justify-items: center;
+}
+
+.cal__day,
+.ecal__day {
+  /* 钉死，不跟随列宽 */
+  width: 2.25rem;
+  height: 2.25rem;
+  min-height: 0;
+  aspect-ratio: auto;
+  padding: 0 !important;
+  display: grid !important;
+  place-items: center !important;
+  flex-direction: row !important;
+  border: 0 !important;
+  border-radius: 50%;
+  font-size: var(--fs-small);
+  line-height: 1;
+}
+
+/* 上一版的点仍保留，但要贴着圆的下沿内侧，不能溢出 */
+.cal__day[data-has="true"]::after,
+.ecal__day[data-count]::after {
+  bottom: 3px;
+}
+
+
+/* ==============================================================================
+   终版覆盖 —— 本块是日历与布局的**唯一权威**，文件里更早的日历规则作废。
+   （此前三个日历块叠了三层规则互相打架：aspect-ratio 跟列宽走、min-height 残留、
+   flex/grid 互相覆盖，才有了截图里数字漂在圆外的样子。这里一次性钉死。）
+   ============================================================================== */
+
+/* --- 一、版心：把两侧的大空隙收掉 ------------------------------------------------
+   shell 中列与两轨之间是 3rem，两侧内边距 2rem，宽屏再居中收进 1560px ——
+   三层空隙叠出来，正文在 1100px 的窗口里只剩 600px。现在：缝隙减半、
+   内边距减到 0.5rem、上限放宽到 1880px。正文优先，导航贴边。 */
+.shell {
+  max-width: 1880px;
+  padding-inline: calc(var(--unit) * 2);
+}
+@media (min-width: 1080px) {
+  .shell { gap: calc(var(--unit) * 6); padding-inline: calc(var(--unit) * 2); }
+}
+@media (min-width: 1400px) {
+  .shell { gap: calc(var(--unit) * 8); }
+}
+
+/* --- 二、侧栏过窄时日历不得挤作一团 ----------------------------------------------
+   侧栏宽度是读者可拖的，拖到 180px 时七个 15rem 列会互相压字。
+   给日历一个最小宽度，窄了就在侧栏内部横向滚动（滚动条已隐藏，功能在）；
+   格子本身用 min() 随可用宽度收缩，但数字永不小于可读字号。 */
+.cal { min-width: 12.25rem; }
+/* No horizontal scrollbar. It was added so a calendar narrower than its minimum could be
+   scrolled to, but the rail's content now fits at its minimum width -- so the bar had nothing to
+   scroll and only appeared while the rail was being dragged, which reads as a defect.
+   `hidden` is wrong here: it would clip the calendar instead of showing it. */
+.rail__body { overflow-x: visible; overflow-y: auto; }
+.cal__grid,
+.ecal__grid {
+  display: grid !important;
+  grid-template-columns: repeat(7, minmax(26px, 34px));
+  justify-content: space-between;
+  gap: calc(var(--unit) * 1);
+}
+.cal__day,
+.ecal__day {
+  width: 30px;
+  height: 30px;
+  min-height: 0;
+  aspect-ratio: auto;
+  padding: 0;
+  place-content: center;
+  display: grid !important;
+  place-items: center !important;
+  justify-self: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  font-size: 0.78rem;
+  line-height: 1;
+}
+/* 数字必须在圆心里。此前 ecal 的格子里数字 + 标记行用了 flex-column 加内边距，
+   数字被顶到圆外。marks 已隐藏，数字用 place-items 居中。 */
+.ecal__day .ecal__num { display: block; line-height: 1; }
+.ecal__marks { display: none !important; }
+
+/* 有内容：数字下方内侧一个点 */
+.cal__day[data-has="true"]::after,
+.ecal__day[data-count]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.6;
+  transform: translateX(-50%);
+}
+.cal__day[data-has="true"],
+.ecal__day[data-count] { color: var(--fg); font-weight: 620; cursor: pointer; }
+.cal__day[data-has="true"]:hover,
+.ecal__day[data-count]:hover { background: var(--accent-soft); color: var(--accent); }
+.cal__day[data-has="true"]:active,
+.ecal__day[data-count]:active { transform: scale(0.9); }
+
+/* 今天：全月唯一实心圆 + 柔和光环 */
+.cal__day[data-today="true"],
+.ecal__day[data-today="true"] {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.cal__day[data-today="true"]::after,
+.ecal__day[data-today="true"][data-count]::after { background: #fff; opacity: 0.9; }
+
+/* 正在阅读的这一期：描边圆环 */
+.cal__day[data-current="true"]:not([data-today="true"]),
+.ecal__day[aria-selected="true"]:not([data-today="true"]) {
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+}
+.cal__day[aria-disabled="true"],
+.ecal__day[aria-disabled="true"] { opacity: 0.28; }
+.cal__day[aria-hidden="true"],
+.ecal__day--pad { opacity: 0; pointer-events: none; }
+
+/* --- 三、Q弹动效 ------------------------------------------------------------------
+   手感配方（motion-web handfeel §1）：欠阻尼弹簧，STIFFNESS 80–90，DAMPING 0.86，
+   落地会过冲一点再回稳 —— 读作「有重量地落」，而不是「匀速滑过去」。
+   CSS 侧用带过冲的贝塞尔近似；JS 侧对悬停抬升用真弹簧（帧率无关写法）。 */
+
+:root {
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);      /* 过冲 12% 的落弹 */
+  --spring-soft: cubic-bezier(0.22, 1.28, 0.5, 1);  /* 轻一点，用于大块面 */
+}
+
+/* 条目入场：整列瀑布式浮现。只动 opacity/transform，走合成层。 */
+.js-motion .item {
+  opacity: 0;
+  transform: translateY(10px) scale(0.995);
+  animation: item-in 0.5s var(--spring-soft) forwards;
+}
+.js-motion .item:nth-child(2) { animation-delay: 0.03s; }
+.js-motion .item:nth-child(3) { animation-delay: 0.06s; }
+.js-motion .item:nth-child(4) { animation-delay: 0.09s; }
+.js-motion .item:nth-child(5) { animation-delay: 0.12s; }
+.js-motion .item:nth-child(n+6) { animation-delay: 0.15s; }
+@keyframes item-in {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* 卡片悬停：抬升 + 阴影，用弹簧曲线放手时有回弹 */
+.item {
+  transition: transform 0.45s var(--spring), box-shadow 0.45s var(--spring-soft),
+              border-color 0.2s ease;
+  will-change: transform;
+}
+.item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px -14px color-mix(in srgb, var(--fg) 26%, transparent);
+}
+
+/* 日历格按下：缩到 0.88 再弹回（--spring 带过冲） */
+.cal__day:active,
+.ecal__day:active { transform: scale(0.88); transition: transform 0.35s var(--spring); }
+
+/* 侧栏条目悬停：向右探 2px，弹簧回位 */
+.rail__item { transition: transform 0.4s var(--spring), background 0.2s ease, color 0.2s ease; }
+.rail__item:hover { transform: translateX(2px); }
+
+/* 主题切换：颜色 0.25s、变换 0.4s 弹簧，避免整页闪变 */
+html { transition: none; }
+body, .rail, .toc, .item, .ecal__card {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.25s;
+  transition-timing-function: ease;
+}
+
+/* 尊重系统减少动效设置（文件前部已有全局块，这里只补弹簧相关） */
+@media (prefers-reduced-motion: reduce) {
+  .js-motion .item { animation: none; opacity: 1; transform: none; }
+  .item, .rail__item { transition: none; }
+}
+
+.ecal__num {
+  /* 嵌套小圆清场：旧规则给数字套了 1.6em 的强调色圆 + 3px 光环，
+     于是「今天」看起来有两个实心圆、「阅读中」有两层环。数字就是数字。 */
+  width: auto; height: auto;
+  background: none; border-radius: 0; box-shadow: none;
+  display: block; font-weight: inherit; color: inherit;
+  margin: 0; padding: 0;
+}
+
+.ecal__day .ecal__num { justify-self: center; align-self: center; }
+.cal__day { justify-self: center; }
+
+
+/* ==============================================================================
+   终版覆盖（二）—— 动效与版心。本块在文件末尾，优先级最高。
+   ============================================================================== */
+
+/* --- 一、版心：把两侧的大空隙交给内容 --------------------------------------------
+   实测 1440px 下：左轨 240 + 缝 32 + 正文 880 + 缝 32 + 右栏 240，
+   右侧还剩约 248px 空白而左侧只有 32px —— 版心没有居中，空隙全堆在一边。
+   上限放大、内边距收小、缝收小，让正文列吸收掉多余宽度。 */
+.shell {
+  max-width: none;
+  padding-inline: calc(var(--unit) * 2);
+}
+@media (min-width: 1080px) {
+  .shell { gap: calc(var(--unit) * 5); padding-inline: calc(var(--unit) * 3); }
+}
+@media (min-width: 1400px) {
+  .shell { gap: calc(var(--unit) * 7); padding-inline: calc(var(--unit) * 3); }
+}
+/* 超宽屏才收边，且收得晚、收得宽 —— 1899px 之前一直用满窗口。 */
+@media (min-width: 2000px) {
+  .shell { max-width: 1880px; margin-inline: auto; padding-inline: calc(var(--unit) * 6); }
+}
+
+/* --- 二、日历：Tibo 页的事件日历与侧栏日历共用同一套几何 ------------------------
+   数字居中靠 place-content（grid 隐式轨道默认从左上排，这是数字偏左的真正原因）。
+   侧栏可拖窄，所以格子用固定值 + 网格居中，窄到放不下时侧栏内部横向滚动。 */
+.cal__grid,
+.ecal__grid {
+  display: grid !important;
+  /* **A capped, centred grid.** It used to be `width: 100%` with `space-between`, which pushed
+     seven 32px tracks across a 437px card and produced a 68px column pitch for a 28px circle --
+     the sparse, scattered look. A max-width bounds the pitch; `1fr` tracks let the rail's narrower
+     grid shrink instead of overlapping. */
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  justify-content: center;
+  justify-items: center;
+  gap: calc(var(--unit) * 0.5);
+  width: 100%;
+  /* 网格宽度决定「列距 / 圆」的比例。19rem 时列距 44px 而圆只有 26px，仍然发空；
+     收到 16rem 并把圆放大到 30px 后，视觉间隙约 7px —— 这才像一本日历。 */
+  max-width: 16rem;
+  margin-inline: auto;
+}
+.cal__day,
+.ecal__day {
+  width: min(30px, 100%);
+  height: 30px;
+  min-height: 0;
+  aspect-ratio: auto;
+  padding: 0 !important;
+  display: grid !important;
+  place-content: center !important;
+  place-items: center !important;
+  justify-self: center;
+  flex-direction: row !important;
+  border: 0 !important;
+  border-radius: 50%;
+  font-size: 0.76rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.ecal__num {
+  width: auto; height: auto; background: none; border-radius: 0; box-shadow: none;
+  display: block; font-weight: inherit; color: inherit; margin: 0; padding: 0;
+}
+.ecal__day .ecal__num { justify-self: center; align-self: center; }
+.ecal__marks { display: none !important; }
+
+.cal__day[data-has="true"]::after,
+.ecal__day[data-count]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 3px;
+  width: 3.5px;
+  height: 3.5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.6;
+  transform: translateX(-50%);
+}
+.cal__day[data-has="true"],
+.ecal__day[data-count] { color: var(--fg); font-weight: 620; cursor: pointer; }
+.cal__day[data-has="true"]:hover,
+.ecal__day[data-count]:hover { background: var(--accent-soft); color: var(--accent); }
+
+.cal__day[data-today="true"],
+.ecal__day[data-today="true"] {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.cal__day[data-current="true"]:not([data-today="true"]),
+.ecal__day[aria-selected="true"]:not([data-today="true"]) {
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+}
+.cal__day[aria-disabled="true"],
+.ecal__day[aria-disabled="true"] { opacity: 0.26; }
+.cal__day[aria-hidden="true"],
+.ecal__day--pad { opacity: 0; pointer-events: none; }
+
+/* 窄侧栏：日历给最小宽度，放不下时在侧栏内横向滚动（滚动条仍隐藏，功能在）。 */
+/* **No floor on the calendar, and no horizontal scrolling.**
+   `overflow-x: visible` beside `overflow-y: auto` computes to `auto`, so a horizontal bar appears
+   whenever the rail's content is wider than the rail -- and `.cal`'s 13rem (208px) floor could be
+   dragged below, because a saved rail preference from an earlier build can be narrower than the
+   current 212px minimum. Removing the floor lets the calendar contract instead: measured with no
+   scrollbar at 160 / 180 / 190 / 200 / 212px, with day cells shrinking 29px -> 21px rather than
+   overflowing. The grid tracks are already `minmax(0, 1fr)`, so they do this unaided. */
+.cal { min-width: 0; }
+.rail__body { overflow-x: hidden; }
+
+/* --- 三、Q弹动效（motion-web handfeel §1 / §6）---------------------------------
+   入场用欠阻尼弹簧的 CSS 近似（过冲 12%），悬停抬升与日历高亮用 JS 真弹簧。
+   所有动效只碰 transform / opacity，不触发布局。 */
+
+:root {
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --spring-soft: cubic-bezier(0.22, 1.28, 0.5, 1);
+}
+
+.js-motion .item {
+  opacity: 0;
+  transform: translateY(12px) scale(0.994);
+  animation: item-in 0.52s var(--spring-soft) forwards;
+}
+.js-motion .item:nth-child(2) { animation-delay: 0.035s; }
+.js-motion .item:nth-child(3) { animation-delay: 0.07s; }
+.js-motion .item:nth-child(4) { animation-delay: 0.105s; }
+.js-motion .item:nth-child(n+5) { animation-delay: 0.14s; }
+@keyframes item-in {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.item {
+  transition: box-shadow 0.45s var(--spring-soft), border-color 0.2s ease;
+  will-change: transform;
+}
+.item:hover {
+  box-shadow: 0 12px 30px -16px color-mix(in srgb, var(--fg) 28%, transparent);
+}
+
+/* 日历按下：缩到 0.86 再由 JS 弹簧弹回 */
+.cal__day:active, .ecal__day:active { transform: scale(0.86); }
+.rail__item { transition: transform 0.42s var(--spring), background 0.2s ease, color 0.2s ease; }
+.rail__item:hover { transform: translateX(2px); }
+
+/* 品牌标记的空闲呼吸（§6）：两个不同频率，绝不同步。 */
+@media (prefers-reduced-motion: no-preference) {
+  .rail__mark { animation: breathe 4.6s ease-in-out infinite; }
+}
+@keyframes breathe {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-1.4px) rotate(-1.1deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js-motion .item { animation: none; opacity: 1; transform: none; }
+  .item, .rail__item, .rail__mark { transition: none; animation: none; }
+}
+
+
+/* ==============================================================================
+   终版覆盖（三）—— 移动端留白 + 品牌标记
+   ============================================================================== */
+
+/* --- 一、窄屏必须给足边距 ------------------------------------------------------
+   实测 390px 下 padding-inline 只有 8px，标题和正文几乎贴着屏幕边。
+   桌面收窄留白是对的，但这个值不该在所有宽度生效 —— 手机上它是缺陷不是节省。 */
+@media (max-width: 900px) {
+  .shell { padding-inline: calc(var(--unit) * 5); }
+}
+@media (max-width: 560px) {
+  .shell { padding-inline: calc(var(--unit) * 4); }
+  /* 卡片是全宽出血的，所以正文自己也要有内边距，否则文字仍然贴边。 */
+  .content { padding-inline: calc(var(--unit) * 1); }
+  .item__title, .issue__title, .issue__lead, .section__title {
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
+}
+
+/* --- 二、品牌标记：把「AI」两个字母换成真正设计的图标 --------------------------
+   broadcast / feed：一个点 + 两道向外扩散的弧 —— 多路来源汇成一个信号，
+   正是这个产品在做的事。用 currentColor，跟随主题，无网络请求。 */
+.rail__mark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  /* 圆形边框：用户要求页头图标与标签页图标都是圆的。用 50% 而不是固定半径，
+     这样侧栏宽度变化时它仍然是正圆。 */
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-fg, #fff);
+  flex: none;
+  overflow: hidden;
+}
+.rail__mark .brand-mark__svg { display: block; }
+/* 「A」比弧形图标视觉重心更高，稍微下移一点让它居中。 */
+.rail__mark svg { transform: translateY(0.5px); }
+.rail__brand { gap: calc(var(--unit) * 2.5); }
+
+/* 首页大标题区的标记（如果用到）同样处理 */
+.brand-mark__svg { vertical-align: middle; }
+
+
+/* ==============================================================================
+   终版覆盖（四）—— 字体
+   ----------------------------------------------------------------------------
+   标题宋体（模板 ai-daily-deck 自己的选择）、正文与侧栏 MiSans、数字与元信息等宽。
+   三者的分工依据是各自的强项：
+
+   · 宋体（Noto Serif SC）笔画有横细竖粗的对比，大字号下有"刊物感"，适合标题。
+     小字号时笔画偏细，所以**不用**于正文。
+   · MiSans 笔画均匀、字腔开，是小米为界面做的字，小字号下清晰，适合正文与控件。
+   · IBM Plex Mono 等宽，数字位宽一致，统计行与时间戳不会跳动。
+
+   实测代价：MiSans 走官方分片 CSS，浏览器按 unicode-range 只取用到的分片 ——
+   整期日报实测 500 KB / 38 个文件；思源宋体 1.1 MB。合计 1.6 MB，可缓存。
+   两个 CDN 都不可达时退回系统字体栈，不会乱码、不会撑破布局。
+   ============================================================================== */
+
+:root {
+  --f-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", Georgia, serif;
+  --f-sans:  "MiSans", "Noto Sans SC", "PingFang SC", "Hiragino Sans GB",
+             "Microsoft YaHei", system-ui, sans-serif;
+  --f-mono:  "IBM Plex Mono", "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+/* 标题：宋体 */
+.issue__title,
+.item__title,
+.section__title,
+.issue__head h1,
+.cover__title,
+h1, h2, h3 {
+  font-family: var(--f-serif);
+}
+
+/* 正文与控件：MiSans。正文行高比黑体略松一点，字腔开、行距紧会显得密。 */
+.facts, .inferences, .opinions, .uncertainties,
+.item__body, .item p, p, li,
+.facts li, .inferences li, .opinions li, .uncertainties li,
+.rail__item, .rail__sub button, .rail__btn, .toc__nav a,
+.rail__brand, .section__count, .issue__date,
+button, input, select, summary {
+  font-family: var(--f-sans);
+}
+
+.facts li, .inferences li, .opinions li, .uncertainties li { line-height: 1.85; }
+
+/* 数字与元信息：等宽，等宽数字让统计行不跳动 */
+.stats b, .stats span,
+.item__meta, .item__meta span,
+.cal__month, .ecal__month,
+[data-theme-summary], time {
+  font-family: var(--f-mono);
+  font-feature-settings: "tnum";
+}
+
+/* 界面正文的最后一道兜底：没有 --f-sans 声明的元素也走 MiSans，避免混排出两种黑体。 */
+body { font-family: var(--f-sans); }
+
+/* Two figures on the index page: they belong together, so they must not be spread across the
+   full column. `auto-fit 1fr` stretched them to the edges -- "4" at the left margin and "160" at
+   the far right, which reads as two unrelated numbers rather than one summary line. */
+.stats--pair {
+  grid-template-columns: repeat(2, max-content);
+  gap: calc(var(--unit) * 4) calc(var(--unit) * 10);
+}
+
+/* The archive list is a short table, not a full-width bar. Left to fill the column, the count
+   landed at the far edge, ~640px away from its own date, and the eye could not pair them.
+   Capping the measure keeps each row readable as one line of information. */
+.issue-list { max-width: 44rem; }
+
+/* ==============================================================================
+   卡片：大卡片里套小卡片
+   ------------------------------------------------------------------------------
+   每条新闻是一个圆角外卡片，每个「事实 / 推断 / 不确定」块是它内部的一个浅色圆角
+   小卡片。这样做的理由是**可见的边界**：读者一眼就能看出这件事有多少是已确立的、
+   多少是推断。原来它们只是一串 li，靠缩进区分，长条目里分不清读到哪一块。
+
+   参考实现：外卡片 1px 描边 + 白底；内卡片用 muted 底色、无描边、圆角略小 ——
+   两层都用描边会显得像表格。
+   ============================================================================== */
+
+.item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: calc(var(--unit) * 5) calc(var(--unit) * 5) calc(var(--unit) * 4);
+  margin-bottom: calc(var(--unit) * 4);
+  box-shadow: 0 1px 2px rgb(16 24 40 / 4%);
+  transition: box-shadow var(--dur-fast) var(--ease-out-circ),
+              transform var(--dur-fast) var(--ease-out-circ),
+              border-color var(--dur-fast) var(--ease-out-circ);
+}
+
+/* The lift is the affordance: without it a bordered box reads as a static panel, and the
+   whole row is a link. 1px is enough to feel it; 4px looked like a wobble on scroll. */
+.item:hover {
+  border-color: color-mix(in srgb, var(--accent) 26%, var(--border));
+  box-shadow: 0 8px 24px rgb(16 24 40 / 9%);
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item, .item:hover { transition: none; transform: none; }
+}
+
+/* 内卡片：每个事实块 */
+.factcard {
+  background: var(--muted);
+  border-radius: var(--radius-sm);
+  padding: calc(var(--unit) * 3) calc(var(--unit) * 4);
+  margin-top: calc(var(--unit) * 3);
+}
+
+/* 块之间不再需要额外的段间距，卡片本身已经分开了 */
+.facts { margin-top: calc(var(--unit) * 1); }
+.facts__label { margin-top: 0; }
+
+/* 元信息行在卡片里需要和标题对齐 */
+.item__meta { margin-top: calc(var(--unit) * 2); }
+
+/* 来源链接行 */
+.item__links { margin-top: calc(var(--unit) * 3); }
+
+/* 概览条目：也是卡片，但更轻 —— 它是目录，不是正文。
+   每条一个白底圆角卡，内部不再分块：概览只引一条事实，套小卡片会显得比正文还重。 */
+.ov { display: grid; gap: calc(var(--unit) * 3); margin-top: calc(var(--unit) * 4);
+      list-style: none; padding-inline-start: 0; }
+.ov li > a {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: calc(var(--unit) * 3);
+  align-items: start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: calc(var(--unit) * 4);
+  box-shadow: 0 1px 2px rgb(16 24 40 / 4%);
+  transition: box-shadow var(--dur-fast) var(--ease-out-circ),
+              transform var(--dur-fast) var(--ease-out-circ),
+              border-color var(--dur-fast) var(--ease-out-circ);
+}
+.ov li > a:hover {
+  border-color: color-mix(in srgb, var(--accent) 26%, var(--border));
+  box-shadow: 0 8px 24px rgb(16 24 40 / 9%);
+  transform: translateY(-1px);
+}
+.ov__no { font-family: var(--f-mono); font-size: var(--fs-micro); color: var(--accent); padding-top: .2em; }
+.ov__detail { display: block; margin-top: calc(var(--unit) * 1.5); color: var(--muted-fg);
+              font-size: var(--fs-small); line-height: 1.6; }
+@media (prefers-reduced-motion: reduce) { .ov li > a, .ov li > a:hover { transition: none; transform: none; } }
+
+.issue-row__badge { justify-self: start; white-space: nowrap; }
+
+/* The empty cell of a row without a badge is still a track; it costs nothing because
+   `auto` collapses to zero for an absent element. */
+
+/* ==============================================================================
+   侧栏宽度上限
+   ------------------------------------------------------------------------------
+   两个侧栏各 15rem（240px），在 1240px 的窗口里吃掉了 480px，正文只剩 760px ——
+   正文是这份日报的主体，导航不该和它平起平坐。
+
+   所以：**侧栏只占它需要的宽度**，余量全部给正文。
+   · 左栏 13rem（208px）：搜索框、导航项、月历都放得下（日历已是 16rem 上限的弹性网格，
+     208px 时自动按 min(30px,100%) 收格子）；
+   · 右栏 12rem（192px）：目录只有「01 标题…」，208→192 只影响换行，不影响可读；
+   · 读者手动拖宽仍尊重（这是偏好，存在 localStorage），这里只改默认值。
+   ============================================================================== */
+
+@media (min-width: 1080px) {
+  .shell {
+    grid-template-columns: minmax(0, var(--rail-w)) minmax(0, 1fr) minmax(0, var(--toc-w));
+  }
+}
+
+/* 超宽屏：两侧不再继续变宽，多出来的宽度整列给正文。 */
+@media (min-width: 1600px) {
+  .shell {
+    grid-template-columns: minmax(0, var(--rail-w)) minmax(0, 1fr) minmax(0, var(--toc-w));
+  }
+  .content { max-width: 62rem; }
+}
+
+/* 正文在某段宽度以上不该再无限拉长：一行超过约 78 个汉字，眼睛回行会吃力。
+   上限之后多出的空间留白，而不是把正文撑满。 */
+@media (min-width: 1080px) {
+  .content { max-width: 68rem; }
+}
+
+/* An empty badge is a layout cell, not a badge: it must occupy the track (so the count column
+   stays aligned) while drawing nothing. Without this it kept the badge background and radius,
+   which rendered as a small blue rectangle on every row that has no 最新 marker -- measured
+   16x2px of rgb(232,239,255) with a 6.4px radius, four of them down the column. */
+.issue-row__badge:empty {
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding-inline: 0;
+}
+
+/* Centre the shell. With `margin-inline: 0` the grid was pinned to the left edge and all the
+   slack sat on the right -- measured at 1440px: shell x=0..1440 while the content column ended
+   at 1144, leaving ~300px of dead space on one side only. */
+.shell { margin-inline: auto; }
+
+/* Centre the reading column by centring its grid track, not the item.
+   `margin-inline: auto` on a `max-width` grid item shrinks it to its content (measured: a 960px
+   track produced a 535px box), because the auto margins claim the free space before the item is
+   sized. `justify-self: center` asks the grid to size the item from its track and then centre it. */
+@media (min-width: 1080px) {
+  .content { justify-self: center; width: 100%; }
+}
+
+}
+
+@media (min-width: 1400px) {
+  /* The TOC stays in the viewport and *pages itself* to follow the article.
+     
+     Three properties have to hold together; changing one without the others broke this twice:
+     
+     1. `sticky` so the outline stays on screen while the article scrolls past. Without it the
+        outline drifts off the top and the reader loses it.
+     2. An inner scroll, because 44 entries do not fit in 900px (measured: 2841px of entries).
+        `overscroll-behavior: contain` stops that inner scroll from chaining into the page,
+        which would make one wheel gesture move both the article and the outline.
+     3. `position: relative` as the containing block for the absolutely positioned resize grip.
+        `sticky` provides one too, but the explicit declaration survives a future change of
+        positioning mode and documents why it is needed. Switching to `static` once dropped the
+        grip at x=0 while the TOC itself started at x=1396.
+     
+     The paging itself is in motion.js: `syncTocScroll` keeps the highlighted entry inside the
+     visible slice, so the outline turns pages by itself as the article is read. */
+  .toc {
+    position: sticky;
+    top: calc(var(--unit) * 10);
+    max-height: calc(100vh - var(--unit) * 20);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+/* --- 新闻配图 ---------------------------------------------------------------------
+ *
+ * 一条新闻常有不止一张图：宽幅主视觉、竖版示意图、长条终端截图。参考站把它们横排、
+ * 允许横向滚动，每张保持自己的宽高比 —— 实测它某一期的四张图是 1080x720、1080x227、
+ * 1080x1017、1080x351，从 1.06 到 4.76。
+ *
+ * 强行裁成统一的 16:9 会毁掉其中三张：终端截图只剩中间一段，示意图被截断上下。
+ * `width: auto` 保证不裁切，`max-height` 防止竖图占满整屏，行内滚动处理放不下的情况。
+ */
+/*
+ * 缩进必须和 `.facts` 一致：那一块为了让「事实 / 推断 / 不确定」的标题与正文缩排，
+ * 用了 padding-left: calc(1.6em + var(--unit) * 3)。配图行原本没有这个内距，于是图片比
+ * 事实块靠左一截，整列看起来是歪的。
+ *
+ * 用同一个表达式而不是写死像素：两者必须永远相等，共用一处定义才不会在改字号时漂移。
+ */
+.item__images {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  margin: 14px 0 12px;
+  padding: 2px 0 8px calc(1.6em + var(--unit) * 3);
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+}
+
+.item__images a {
+  flex: 0 0 auto;
+  line-height: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface-2, #eef2f1);
+  scroll-snap-align: start;
+}
+
+.item__images img {
+  width: auto;
+  max-width: none;
+  max-height: 340px;
+  margin: 0;
+  border-radius: 8px;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .item__images img { max-height: 220px; }
+}
+
+/* “另有 N 家其他来源”：默认收起，展开后逐个可点。
+ *
+ * 之前这里是一个纯 <span>，读者既看不到是哪几家、也点不进去 —— “另有 3 家” 成了一句
+ * 无法核实的话。用 <details> 折叠：默认只占一行，展开后每家一行真实链接。
+ */
+.item__more {
+  display: inline-block;
+  position: relative;
+}
+
+.item__more > summary {
+  cursor: pointer;
+  color: var(--muted-fg, var(--muted));
+  list-style: none;
+  user-select: none;
+}
+
+.item__more > summary::-webkit-details-marker { display: none; }
+
+.item__more > summary::after {
+  content: "▾";
+  margin-left: 4px;
+  font-size: 0.85em;
+  opacity: 0.7;
+}
+
+.item__more[open] > summary::after { content: "▴"; }
+
+.item__more > summary:hover { color: var(--accent); }
+
+.item__more > ul {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 6px);
+  left: 0;
+  min-width: 180px;
+  margin: 0;
+  padding: 8px 12px;
+  list-style: none;
+  background: var(--surface, #fff);
+  border: 1px solid var(--border, #e0e6e4);
+  border-radius: 10px;
+  box-shadow: 0 10px 28px -14px rgb(0 0 0 / 22%);
+}
+
+.item__more > ul > li { margin: 4px 0; }
+
+.item__more > ul a { color: inherit; text-decoration: none; }
+
+.item__more > ul a:hover { color: var(--accent); text-decoration: underline; }
+
+
+/* --- GitHub 仓库卡片 --------------------------------------------------------------- */
+
+.ghm{
+  font-family:var(--font-sans); color:var(--fg); background:var(--surface);
+  border:1px solid var(--border); border-radius:var(--radius);
+  padding:calc(var(--unit) * 7) calc(var(--unit) * 7);
+  text-decoration:none; display:block;
+  transition:border-color var(--dur-fast) ease, box-shadow var(--dur-fast) ease;
+}
+.ghm:hover{
+  border-color:color-mix(in srgb, var(--accent) 40%, var(--border));
+  box-shadow:0 10px 30px -20px color-mix(in srgb, var(--fg) 40%, transparent);
+}
+.ghm__kicker{font-size:var(--fs-micro); letter-spacing:.18em; text-transform:uppercase;
+  color:var(--accent); font-weight:640}
+.ghm__title{font-family:Georgia,"Songti SC","Noto Serif CJK SC",serif;
+  font-size:clamp(1.9rem,3.4vw,2.6rem); line-height:1.08; letter-spacing:-.022em;
+  font-weight:700; margin:calc(var(--unit) * 3) 0 0}
+.ghm__owner{color:var(--muted-fg); font-weight:400}
+.ghm__desc{font-family:Georgia,"Songti SC",serif; font-size:1.0625rem; line-height:1.62;
+  color:color-mix(in srgb, var(--fg) 78%, var(--muted-fg)); margin:calc(var(--unit) * 4) 0 0; max-width:62ch}
+.ghm__rule{height:1px; background:var(--border); margin:calc(var(--unit) * 7) 0 0}
+.ghm__stats{display:flex; flex-wrap:nowrap; overflow-x:auto; margin-top:calc(var(--unit) * 5);
+  gap:0; scrollbar-width:none}
+.ghm__stats::-webkit-scrollbar{display:none}
+.ghm__stat{padding-right:calc(var(--unit) * 5); margin-right:calc(var(--unit) * 5);
+  border-right:1px solid var(--border); flex:0 1 auto}
+.ghm__stat:last-child{border-right:0; margin-right:0; padding-right:0}
+.ghm__stat b{display:block; font-family:Georgia,"Songti SC",serif;
+  font-size:clamp(1.25rem, 2.2vw, 1.6rem);
+  line-height:1; letter-spacing:-.03em; font-variant-numeric:tabular-nums}
+.ghm__stat i{display:block; font-style:normal; margin-top:calc(var(--unit) * 2);
+  font-size:var(--fs-micro); letter-spacing:.1em; text-transform:uppercase; color:var(--muted-fg)}
+.ghm__langs{margin-top:calc(var(--unit) * 7)}
+.ghm__bar{display:flex; height:8px; border-radius:4px; overflow:hidden; background:var(--muted)}
+.ghm__bar span{display:block; height:100%}
+.ghm__legend{display:flex; flex-wrap:wrap; gap:calc(var(--unit) * 5);
+  margin-top:calc(var(--unit) * 3); font-size:var(--fs-micro); color:var(--muted-fg)}
+.ghm__legend em{display:inline-block; width:8px; height:8px; border-radius:50%;
+  margin-right:5px; vertical-align:baseline; font-style:normal}
+
+
+/* --- 模型榜 ------------------------------------------------------------------------- */
+/*
+   A dense table, because the page exists to be compared rather than browsed. The rows are
+   tight, the numbers are tabular so columns line up, and the model name is the only element
+   that wraps. */
+.lb__stats {
+  display: flex; flex-wrap: wrap; gap: calc(var(--unit) * 3) calc(var(--unit) * 8);
+  margin-top: calc(var(--unit) * 5);
+}
+.lb__stats div { display: flex; align-items: baseline; gap: calc(var(--unit) * 2); }
+.lb__stats b {
+  font-family: Georgia, "Songti SC", serif; font-size: 1.5rem; line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.lb__stats span { font-size: var(--fs-micro); color: var(--muted-fg); letter-spacing: .04em; }
+
+.lb__scroll {
+  margin-top: calc(var(--unit) * 6);
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.lb { width: 100%; border-collapse: collapse; font-size: .9375rem; }
+.lb thead th {
+  position: sticky; top: 0; z-index: 1;
+  background: var(--surface); text-align: left; font-weight: 600;
+  font-size: var(--fs-micro); letter-spacing: .08em; text-transform: uppercase;
+  color: var(--muted-fg);
+  padding: calc(var(--unit) * 3) calc(var(--unit) * 3);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.lb tbody td {
+  padding: calc(var(--unit) * 2.5) calc(var(--unit) * 3);
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 55%, transparent);
+  vertical-align: middle;
+}
+.lb tbody tr:last-child td { border-bottom: 0; }
+.lb tbody tr:hover { background: var(--muted); }
+
+.lb__rank {
+  width: 3.5em; text-align: right; color: var(--muted-fg);
+  font-variant-numeric: tabular-nums; font-size: var(--fs-micro);
+}
+.lb { table-layout: auto; }
+/* The table must fit the column it lives in. `min-width` on the model cell pushed the
+   last column past the container edge, so the output price was clipped with no visible
+   cue that the table could be panned. */
+.lb__model { width: 30%; min-width: 10em; }
+.lb__model a { color: var(--fg); text-decoration: none; font-weight: 560; }
+.lb__model a:hover { color: var(--accent); text-decoration: underline; }
+
+.lb__creator {
+  color: var(--muted-fg); white-space: nowrap; font-size: .875rem;
+}
+.lb__creator i {
+  display: inline-block; width: 8px; height: 8px; border-radius: 2px;
+  margin-right: 6px; vertical-align: baseline;
+}
+
+.lb__num {
+  text-align: right; white-space: nowrap;
+  font-family: ui-monospace, "IBM Plex Mono", Consolas, monospace;
+  font-variant-numeric: tabular-nums; font-size: .875rem;
+}
+.lb__num--hero { font-weight: 620; color: var(--fg); font-size: .9375rem; }
+.lb__na { color: var(--muted-fg); opacity: .5; }
+
+.lb__tag {
+  display: inline-block; margin-left: 6px; padding: 1px 5px; border-radius: 3px;
+  font-size: 10px; line-height: 1.5; letter-spacing: .04em;
+  border: 1px solid var(--border); color: var(--muted-fg); vertical-align: middle;
+}
+.lb__tag--think { border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); color: var(--accent); }
+.lb__tag--open { border-color: #2f8f5b; color: #2f8f5b; }
+
+/* The reasoning-effort variant, e.g. "Max, Default Fallback". Small and muted so it
+   reads as a qualifier on the name rather than a second name. */
+/* The reasoning-effort variant, e.g. "Max, Default Fallback".
+   On its own line under the name rather than beside it: inline it widened the model column
+   until the price columns were pushed off the right edge. */
+.lb__variant {
+  display: block; margin-top: 1px;
+  font-size: 11px; color: var(--muted-fg); opacity: .8;
+}
+
+.lb__empty {
+  margin-top: calc(var(--unit) * 8); padding: calc(var(--unit) * 8);
+  border: 1px dashed var(--border); border-radius: var(--radius);
+  text-align: center; color: var(--muted-fg);
+}
+.lb__err { font-family: ui-monospace, monospace; font-size: var(--fs-micro); }
+
+.lb__foot {
+  margin-top: calc(var(--unit) * 8); padding-top: calc(var(--unit) * 4);
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-micro); color: var(--muted-fg); line-height: 1.7;
+}
+.lb__foot p + p { margin-top: calc(var(--unit) * 1.5); }
+
+@media (max-width: 720px) {
+  .lb__scroll { border-radius: 0; border-left: 0; border-right: 0; }
+  .lb__model { min-width: 12em; }
+  .lb thead th, .lb tbody td { padding-left: calc(var(--unit) * 2); padding-right: calc(var(--unit) * 2); }
+}
+</style><style>:root{--bg:#f6fafb;--surface:#ffffff;--fg:#182126;--muted-fg:#5d6d75;--muted:#ecf3f5;--border:#d9e6ea;--accent:#0e7490;--accent-soft:#e3f2f6;}body{margin:0} .shell{display:block!important} .rail{display:none!important}.content{padding:20px 22px!important;max-width:none!important}.issue__title{font-size:1.5rem!important;line-height:1.25!important}.item__title{font-size:1rem!important}</style></head><body>
+    <header class="issue__head">
+      <p class="issue__date enter">2026-10-23　第 10 期</p>
+      <h1 class="issue__title enter">OpenAI 以 1.25 万亿美元估值融资 300亿美元</h1>
+      <p class="issue__lead enter">OpenAI 正在进行一轮 300亿美元 的融资，估值为 1.25 万亿美元，计划在首次公开募股前完成。</p>
+      <div class="stats enter"><div><b class="count-up" data-to="96">96</b><span>事件</span></div><div><b class="count-up" data-to="48">48</b><span>有内容的源</span></div><div><b class="count-up" data-to="8">8</b><span>多源验证</span></div><div><b class="count-up" data-to="30">30</b><span>头条覆盖来源</span></div></div>
+    </header>
+
+    
+
+          <section class="section overview" id="overview">
+        <h2 class="section__title">概览<span class="section__count">今日要闻</span></h2>
+        <ol class="ov"><li><a href="#e-efe9fbd682"><span class="ov__no">01</span><span><b>OpenAI 以 1.25 万亿美元估值融资 300亿美元</b><span class="ov__detail">OpenAI 正在进行一轮 300亿美元 的融资，估值为 1.25 万亿美元，计划在首次公开募股前完成。</span></span></a></li><li><a href="#e-ebcee3c748"><span class="ov__no">02</span><span><b>OpenAI 将 Jev 竞争者全球发布</b><span class="ov__detail">OpenAI 将其 Jev 竞争者广泛提供。</span></span></a></li><li><a href="#e-e6aa257306"><span class="ov__no">04</span><span><b>OpenAI 发布基于 GPT-6 Luna 的 Decisions API</b><span class="ov__detail">OpenAI 正式发布基于 GPT-6 Luna 的 Decisions API。</span></span></a></li><li><a href="#e-e51776f323"><span class="ov__no">05</span><span><b>Amazon SageMaker AI 支持自定义 LLM 训练循环，无需管理 GPU</b><span class="ov__detail">Amazon SageMaker AI training session APIs 允许在 Python 脚本中编写自己的 LLM 训练循环（包括 SFT、RL 或自定义目标），服务负责 GPU 运行。</span></span></a></li><li><a href="#e-e3518f2de7"><span class="ov__no">06</span><span><b>Salesforce 将对使用 Claude 的企业收取新费用</b><span class="ov__detail">Salesforce 正在尝试向使用 Claude 等外部 AI 工具的企业收取费用。</span></span></a></li><li><a href="#e-e6ea6e13b2"><span class="ov__no">07</span><span><b>Claude 下周起为 Pro、Max 和 Team 订阅默认启用 auto mode</b><span class="ov__detail">Claude 官方宣布下周起 Pro、Max 和 Team 套餐在网页、桌面和移动端应用中的会话将默认以 auto mode 运行</span></span></a></li><li><a href="#e-e6f4c561ae"><span class="ov__no">08</span><span><b>Liquid AI 推出 RIPL，实现 LFMs 实时推理</b><span class="ov__detail">Liquid AI 发布了 RIPL，这是一款针对其 LFM 模型的实时推理引擎。</span></span></a></li><li><a href="#e-e8cf89aa53"><span class="ov__no">09</span><span><b>Agentic AI Foundation 新增四个开源 AI 工具</b><span class="ov__detail">Agentic AI Foundation 接纳了四个新项目</span></span></a></li></ol>
+        <p class="ov__foot">今日共 96 条事件，
+        其中 8 条经多个独立来源交叉验证。下面是完整列表。</p>
+      </section>
+
+      <section class="section" id="all">
+        <h2 class="section__title">全部消息<span class="section__count">96 条</span></h2>
+        <ol class="stream">
+        <li class="item" id="e-efe9fbd682">
+          <div class="item__head"><span class="item__no">01</span><h3 class="item__title"><a href="https://techcrunch.com/2026/10/22/openai-working-on-new-30b-raise-at-1-25t-valuation-ahead-of-ipo/" target="_blank" rel="noopener noreferrer">OpenAI 以 1.25 万亿美元估值融资 300亿美元</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/efe9fbd682bf9e0-m001-5f9e7053.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/efe9fbd682bf9e0-m001-5f9e7053.webp" alt="" loading="lazy" decoding="async"></button></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 06:08</span>
+            <a href="https://techcrunch.com/2026/10/22/openai-working-on-new-30b-raise-at-1-25t-valuation-ahead-of-ipo/" target="_blank" rel="noopener noreferrer">techcrunch.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OpenAI 正在进行一轮 300亿美元 的融资，估值为 1.25 万亿美元，计划在首次公开募股前完成。</li><li class="item" id="e-ebcee3c748">
+          <div class="item__head"><span class="item__no">02</span><h3 class="item__title"><a href="https://techcrunch.com/2026/10/22/openai-makes-its-jev-competitor-widely-available-as-decision-model-competition-heats-up/" target="_blank" rel="noopener noreferrer">OpenAI 将 Jev 竞争者全球发布</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/ebcee3c7484ac31-m001-f8c3e3e7.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-23/ebcee3c7484ac31-m001-f8c3e3e7.webp" alt="" loading="lazy" decoding="async"></button></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-23 03:00</span>
+            <a href="https://techcrunch.com/2026/10/22/openai-makes-its-jev-competitor-widely-available-as-decision-model-competition-heats-up/" target="_blank" rel="noopener noreferrer">techcrunch.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">OpenAI 将其 Jev 竞争者广泛提供。</li></body></html>

@@ -253,19 +253,30 @@ def render_rail(ctx: SiteContext, digest: Digest, *, dated: bool = True) -> str:
     """
     prev_date, next_date = ctx.neighbours(digest.date)
 
+    # **Order is the user's, and it is not alphabetical.**
+    #
+    # Claude light and Claude dark lead because Claude light is the default: the first button
+    # should be the one already in effect, so the list starts where the reader is. The plain
+    # light/dark pair follows, then the three additional palettes.
     theme_items = "".join(
         f'<button type="button" data-theme-choice="{key}" aria-checked="false">{label}</button>'
-        # 自动 and 默认 removed: a first visit is light, and after the reader picks a theme
-        # that choice is stored and reused. Four ways to say "let the site decide" were three
-        # too many.
+        # 自动 and 默认 removed: a first visit is Claude light, and after the reader picks a
+        # theme that choice is stored and reused. Four ways to say "let the site decide" were
+        # three too many.
         for key, label in (
-            ("light", "亮色"),
-            ("dark", "暗色"),
             # Claude's palette: a warm paper background rather than the usual neutral grey,
             # with its terracotta accent. Named after the product rather than described by its
             # colours, because that is how someone asks for it.
             ("claude-light", "Claude 亮色"),
             ("claude-dark", "Claude 暗色"),
+            ("light", "亮色"),
+            ("dark", "暗色"),
+            # Reviewed and chosen by the user from nine candidates. Each is a whole palette
+            # rather than a hue rotation: a dark theme needs a different contrast ratio and a
+            # different accent lightness to stay readable.
+            ("cinnabar", "宣纸朱砂"),
+            ("indigo", "冷白靛紫"),
+            ("midnight", "深蓝冷青"),
         )
     )
 

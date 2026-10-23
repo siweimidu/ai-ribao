@@ -56,11 +56,16 @@ def test_every_offered_theme_has_a_label() -> None:
         assert f"{name}:" in MOTION or f"'{name}':" in MOTION, f"no label for {name}"
 
 
-def test_the_shipped_set_is_exactly_four() -> None:
-    """The palette list is the user's to decide. Five candidates were added, reviewed, and
-    removed; this pins the set that survived so a stray block cannot linger unnoticed.
+def test_the_shipped_set_is_exactly_seven() -> None:
+    """The palette list is the user's to decide.
+
+    Nine candidates were rendered, the user picked three, and the rest were deleted. Pinning
+    the set means a stray block cannot linger in `tokens.css` where nobody would notice it.
     """
-    assert set(_themes()) == {"dark", "light", "claude-light", "claude-dark"}
+    assert set(_themes()) == {
+        "claude-light", "claude-dark", "light", "dark",
+        "cinnabar", "indigo", "midnight",
+    }
 
 
 def test_a_dark_theme_has_light_text() -> None:
@@ -74,3 +79,10 @@ def test_a_dark_theme_has_light_text() -> None:
         bg_lum = sum(int(bg.group(1)[i:i + 2], 16) for i in (0, 2, 4)) / 3
         fg_lum = sum(int(fg.group(1)[i:i + 2], 16) for i in (0, 2, 4)) / 3
         assert fg_lum > bg_lum + 80, f"{name}: text and background are too close"
+
+
+def test_claude_leads_the_picker() -> None:
+    """The default is Claude light, so the first button is the one already in effect."""
+    order = re.findall(r'\("([a-z-]+)", "[^"]+"\)', SITE)
+    assert order[:2] == ["claude-light", "claude-dark"]
+    assert order[2:4] == ["light", "dark"]
