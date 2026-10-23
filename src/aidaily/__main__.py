@@ -893,6 +893,52 @@ async def _fetch_images(
 
 
 
+async def _attach_repository_age(events: list, stage) -> int:
+    """Write each repository creation date onto the items that carry it. Returns how many.
+
+    Only repository stories are touched: an aggregator page that mentions GitHub is not a
+    repository, and asking the API about it would waste a request and attach a wrong date.
+
+    The date lands in `item.metrics["repo_created"]` because that is what `heat` reads. Putting
+    it on the event instead would mean a field that exists for one ranking rule and is
+    meaningless everywhere else.
+    """
+    from . import github_meta
+
+    by_id = {i.item_id: i for i in stage.window.kept}
+
+    # Which events are about a repository, and which repository.
+    targets: dict[str, str] = {}
+    for event in events:
+        for url in event.all_urls or []:
+            repo = github_meta.repo_of(url)
+            if repo:
+                targets[event.event_id] = repo
+                break
+    if not targets:
+        return 0
+
+    meta = await github_meta.fetch_many(sorted(set(targets.values())))
+    attached = 0
+    for event in events:
+        repo = targets.get(event.event_id)
+        if not repo:
+            continue
+        data = meta.get(repo) or {}
+        created = str(data.get("created") or "")
+        if not created:
+            continue
+        for item_id in event.member_item_ids:
+            item = by_id.get(item_id)
+            if item is None:
+                continue
+            item.metrics = {**(item.metrics or {}), "repo_created": created}
+            attached += 1
+    if attached:
+        print(f"仓库年龄：{len(targets)} 个仓库，{attached} 条记录已标注创建日期", file=sys.stderr)
+    return attached
+
+
 async def _render_github_cards(digest: "Digest", cfg: "AppConfig") -> dict[str, str]:
     """PNG card URL for every GitHub repository among the published events. Never raises.
 
@@ -1028,6 +1074,21 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
             # Kept in a local list: `analyze_warnings` is created further down, and a
             # warning about the history must reach the reader whether or not analysis runs.
             history_notes.append(f"跨天去重记录缺失，已从 {rebuilt} 条归档事件重建")
+
+        # --- Repository age, before anything is scored ---
+        #
+        # GitHub Trending has no publication date, so every repository there is scored as
+        # "unknown freshness". That conflates a project created last week with one created two
+        # years ago that merely had a busy afternoon. Measured 2026-10-23:
+        # `anthropics/knowledge-work-plugins` placed third; GitHub says it was created
+        # 2026-01-23, nine months earlier, and it trended because a commit landed that morning.
+        #
+        # The date is one API call per repository, and there are a handful per issue. Failure is
+        # silent: an entry with no age keeps the neutral freshness it had before.
+        try:
+            await _attach_repository_age(events, stage)
+        except Exception as exc:  # noqa: BLE001
+            print(f"仓库年龄：获取失败（{type(exc).__name__}），按未知处理", file=sys.stderr)
 
         # --- Rubric pass: two phases, so model calls land on candidates that can matter ---
         #

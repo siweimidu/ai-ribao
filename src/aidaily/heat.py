@@ -208,7 +208,50 @@ def _substance(items: list[NormalizedItem], weights: HeatWeights) -> float:
     return min(1.0, best / max(1, weights.substance_reference_chars))
 
 
-def _freshness(event: Event, now: datetime, weights: HeatWeights) -> float:
+#: How much of the neutral freshness an old repository keeps.
+#:
+#: Only consulted for undated entries, which in practice means GitHub Trending. The window is a
+#: star delta, so an old project can top it after one busy morning; the reader cannot tell that
+#: from a launch unless the age is carried through.
+#:
+#: Absent age keeps the neutral value. Guessing would silently bury genuinely new projects whose
+#: metadata the API declined to return.
+_REPO_AGE_FACTORS = (
+    (14, 1.0),      # two weeks: genuinely new
+    (60, 0.75),     # two months: recent
+    (365, 0.45),    # a year: an established project having a day
+    (10**6, 0.2),   # older: an old project trending again
+)
+
+
+def _repository_novelty(event: Event, items_by_id: dict[str, NormalizedItem]) -> float:
+    """A multiplier for undated entries, from the repository creation date."""
+    created = ""
+    for item_id in event.member_item_ids:
+        item = items_by_id.get(item_id)
+        if item is not None:
+            created = str((item.metrics or {}).get("repo_created") or "")
+            if created:
+                break
+    if not created:
+        return 1.0
+    try:
+        when = datetime.fromisoformat(created[:10]).replace(tzinfo=timezone.utc)
+    except ValueError:
+        return 1.0
+    age_days = max(0.0, (datetime.now(timezone.utc) - when).total_seconds() / 86400)
+    for limit, factor in _REPO_AGE_FACTORS:
+        if age_days <= limit:
+            return factor
+    return _REPO_AGE_FACTORS[-1][1]
+
+
+def _freshness(
+    event: Event,
+    now: datetime,
+    weights: HeatWeights,
+    items_by_id: dict[str, NormalizedItem],
+) -> float:
     """Mild decay with a floor.
 
     The previous model made this the dominant term and the digest degenerated to "newest
@@ -219,7 +262,15 @@ def _freshness(event: Event, now: datetime, weights: HeatWeights) -> float:
     if when is None:
         # Unknown freshness is neutral, not brand new. GitHub Trending has no dates, and
         # treating that as "just published" is how nine repositories reached the top nine.
-        return 0.5
+        #
+        # **Neutral is still too generous for an old repository.** "No date" hides two very
+        # different things: a project created last week, and one created two years ago that
+        # merely had a busy afternoon. Measured 2026-10-23:
+        # `anthropics/knowledge-work-plugins` placed third with heat 0.152; GitHub says it was
+        # created 2026-01-23 -- nine months earlier. It trended because a commit landed that
+        # morning, which is a star-delta window, not a release. The reader asked, reasonably,
+        # how old this news was.
+        return 0.5 * _repository_novelty(event, items_by_id)
     if when.tzinfo is None:
         when = when.replace(tzinfo=timezone.utc)
     now_cmp = now if now.tzinfo else now.replace(tzinfo=timezone.utc)
@@ -250,7 +301,7 @@ def heat(
     reach = _reach(event)
     substance = _substance(members, w)
     velocity = _velocity(event, now, w)
-    freshness = _freshness(event, now, w)
+    freshness = _freshness(event, now, w, items_by_id)
 
     total = (
         w.corroboration * contrib

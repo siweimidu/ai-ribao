@@ -20,6 +20,23 @@ from ..http import HttpClient
 from ..models import RawItem, SourceSpec
 from .base import BaseFetcher, SourceResult
 
+def _headline(full_name: str, description: str) -> str:
+    """`owner/repo — what it does`, or the slug alone when there is no description.
+
+    The em dash rather than a colon because repository descriptions frequently contain colons
+    themselves, and two colons in one line read as a mistake.
+    """
+    text = " ".join(description.split())
+    if not text:
+        return full_name
+    # A description long enough to wrap gets cut at a word boundary; the full text still
+    # reaches the reader through `summary`.
+    if len(text) > 90:
+        cut = text[:90].rsplit(" ", 1)[0]
+        text = (cut or text[:90]).rstrip(",.;:") + "…"
+    return f"{full_name} — {text}"
+
+
 _DIGITS = re.compile(r"\D+")
 
 
@@ -63,7 +80,14 @@ class GitHubTrendingFetcher(BaseFetcher):
             out.append(
                 RawItem(
                     source_id=spec.source_id,
-                    title=full_name,
+                    # **The title has to say what the repository is.**
+                    #
+                    # It used to be `full_name` alone, so the issue showed a row headed
+                    # `anthropics/knowledge-work-plugins` and nothing else -- a reader had to
+                    # open it to learn that it is a set of Claude Cowork plugins. The
+                    # description was already fetched and already went into `summary`; it just
+                    # was not in the one field a reader sees first.
+                    title=_headline(full_name, description),
                     url=f"https://github.com/{full_name}",
                     published_at=None,       # by design: a window, not a date
                     summary=description[:2000],

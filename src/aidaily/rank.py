@@ -120,7 +120,58 @@ def _engagement(items: list[NormalizedItem]) -> float:
     return min(math.log10(1.0 + best) / 3.0, 1.0)
 
 
-def _recency(event: Event, now: datetime, half_life_hours: float, floor: float) -> float:
+#: How much of the neutral recency an old repository keeps.
+#:
+#: A GitHub Trending entry has no publication date, so the neutral value above applies. But
+#: "no date" hides two very different things: a repository created last week (news) and one
+#: created two years ago that merely had a busy afternoon (not news). Measured 2026-10-23:
+#: `anthropics/knowledge-work-plugins` sat at position 3 with a score of 9.75; GitHub says it
+#: was created 2026-01-23 -- nine months earlier. It appeared on Trending because a commit
+#: landed that morning, which is a star-delta window, not a release.
+#:
+#: Keyed on the repository creation date carried in `metrics`, which the fetcher fills from the
+#: Trending page and `github_meta` fills from the API. Absent means unknown, and unknown keeps
+#: the neutral value: guessing here would silently bury new projects whose metadata the API
+#: declined to return.
+_REPO_AGE_FACTORS = (
+    (14, 1.0),      # two weeks: genuinely new
+    (60, 0.75),     # two months: recent
+    (365, 0.45),    # a year: an established project having a day
+    (10**6, 0.2),   # older than that: an old project trending again
+)
+
+
+def _repository_novelty(
+    event: Event, items_by_id: dict[str, NormalizedItem] | None
+) -> float:
+    """A multiplier for undated entries based on how old the repository itself is."""
+    created = ""
+    for item_id in event.member_item_ids:
+        item = (items_by_id or {}).get(item_id)
+        if item is not None:
+            created = str((item.metrics or {}).get("repo_created") or "")
+            if created:
+                break
+    if not created:
+        return 1.0
+    try:
+        when = datetime.fromisoformat(created[:10]).replace(tzinfo=timezone.utc)
+    except ValueError:
+        return 1.0
+    age_days = max(0.0, (datetime.now(timezone.utc) - when).total_seconds() / 86400)
+    for limit, factor in _REPO_AGE_FACTORS:
+        if age_days <= limit:
+            return factor
+    return _REPO_AGE_FACTORS[-1][1]
+
+
+def _recency(
+    event: Event,
+    now: datetime,
+    half_life_hours: float,
+    floor: float,
+    items_by_id: dict[str, NormalizedItem] | None = None,
+) -> float:
     """Fraction of the score an entry keeps for being fresh.
 
     Undated entries get a *neutral* value, not the maximum. GitHub Trending's items have
@@ -131,7 +182,7 @@ def _recency(event: Event, now: datetime, half_life_hours: float, floor: float) 
     """
     when = event.published_range[0] if event.published_range else None
     if when is None:
-        return floor + (1.0 - floor) * 0.5
+        return floor + (1.0 - floor) * 0.5 * _repository_novelty(event, items_by_id)
     age_hours = max(0.0, (now - when).total_seconds() / 3600.0)
     decayed = 0.5 ** (age_hours / max(0.5, half_life_hours))
     return floor + (1.0 - floor) * decayed

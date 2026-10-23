@@ -224,7 +224,10 @@ def test_github_trending_parses_and_has_no_date(spec_factory) -> None:
     items = GitHubTrendingFetcher(HttpClient())._parse(spec, GITHUB_TRENDING_HTML)
 
     assert len(items) == 2
-    assert items[0].title == "OpenBMB/MiniCPM-V"
+    # The title carries the description, not just the slug: a row headed
+    # `OpenBMB/MiniCPM-V` alone tells a reader nothing without opening it.
+    assert items[0].title.startswith("OpenBMB/MiniCPM-V — ")
+    assert "MLLM" in items[0].title
     assert items[0].url == "https://github.com/OpenBMB/MiniCPM-V"
     assert items[0].metrics["stars_today"] == 1234
     assert items[0].metrics["language"] == "Python"
