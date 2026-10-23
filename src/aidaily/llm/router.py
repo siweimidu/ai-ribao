@@ -272,6 +272,36 @@ class Router:
 
 
 # --- building a router from the environment --------------------------------------
+#: Model-name fragments that mark a reasoning model -- one that spends completion tokens on
+#: hidden thinking before writing an answer.
+#:
+#: Measured on Groq 2026-10-23: `openai/gpt-oss-120b` at `max_tokens=8` billed 83 tokens and
+#: returned an empty string with `finish_reason="length"`; at 512 the same prompt answered.
+#: `deepseek-r1`, `o1`, `o3` and the Qwen `qwq` line behave the same way.
+#:
+#: Matched as a substring on the lower-cased model id, because providers spell these names with
+#: a vendor prefix (`openai/gpt-oss-120b`, `moonshotai/kimi-k2-thinking`) and a suffix
+#: (`...-0905`). An exact-name table would miss every variant.
+_REASONING_MARKERS = (
+    "gpt-oss",          # both 20b and 120b think before answering
+    "deepseek-r",
+    "-r1",
+    "qwq",
+    "thinking",
+    "reasoning",
+    "o1-", "o1/", "o3-", "o3/", "o4-",
+)
+
+
+def is_reasoning_model(model: str) -> bool:
+    """True when this model needs a larger `max_tokens` to produce any answer at all.
+
+    The failure this prevents is not a bad answer, it is **no answer**: the budget is consumed
+    by reasoning and `content` comes back empty, which downstream looks like a dead provider.
+    """
+    lowered = (model or "").lower()
+    return any(marker in lowered for marker in _REASONING_MARKERS)
+
 def providers_from_env(
     env: Mapping[str, str] | None = None,
     *,
@@ -331,15 +361,17 @@ def providers_from_env(
             index = per_host.get(host, 0)
             per_host[host] = index + 1
             label = str(row.get("label") or "").strip()
+            model = str(row.get("model") or default_model)
             out.append(
                 ProviderSpec(
                     # `#n` rather than a hash of the key: a stable, readable position, and
                     # no fingerprint of a credential in a log line or a stats dict.
                     id=f"relay:{host}#{index}",
                     tier="relay", base_url=base,
-                    model=str(row.get("model") or default_model),
+                    model=model,
                     key_literal=key, weight=len(out),
                     note=label or None,
+                    reasoning=is_reasoning_model(model),
                 )
             )
     return out

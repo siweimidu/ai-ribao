@@ -91,6 +91,23 @@ class ProviderSpec:
     #: knows *which* of their accounts to look at. Never holds a key or a hash of one.
     note: str | None = None
 
+    #: True for models that spend completion tokens on hidden reasoning before writing an answer
+    #: (`openai/gpt-oss-120b`, DeepSeek R-series, most "thinking" variants).
+    #:
+    #: Measured 2026-10-23 on Groq: `openai/gpt-oss-120b` with `max_tokens=8` returns
+    #: content="" and finish_reason="length" while billing 83 tokens -- the whole budget went to
+    #: reasoning and not one character of the answer was written. With `max_tokens=512` the same
+    #: prompt answers "ok" in 109 tokens.
+    #:
+    #: The client already turns an empty completion into an error so the router can move on, but
+    #: that spends a call to learn something the spec could have stated. With this flag the
+    #: budget is raised before the request, not after it fails.
+    reasoning: bool = False
+
+    #: Floor applied to `max_tokens` when `reasoning` is set. From the measurement above: 512
+    #: answered cleanly where 8 produced nothing, and the rubric already runs at 4000.
+    reasoning_floor: int = 1024
+
     def resolve_key(self, env: Mapping[str, str]) -> str | None:
         if self.key_env and env.get(self.key_env):
             return env[self.key_env]
@@ -166,7 +183,20 @@ class OpenAICompatClient:
         drop = drop_params or set()
         payload: dict[str, Any] = {"model": spec.model, "messages": messages, "temperature": temperature}
         if max_tokens is not None:
-            payload["max_tokens"] = max_tokens
+            # **A reasoning model needs room to think before it answers.**
+            #
+            # Measured on Groq 2026-10-23: `openai/gpt-oss-120b` with `max_tokens=8` billed 83
+            # tokens and returned `content=""` with `finish_reason="length"` -- the budget went
+            # entirely to hidden reasoning and the answer was never started. The same prompt at
+            # 512 tokens answered "ok" in 109.
+            #
+            # The empty completion is caught downstream and turned into an error so the router
+            # can try the next provider, but that costs a request to learn what the spec already
+            # says. Raising the floor here means the first call succeeds.
+            effective = max_tokens
+            if spec.reasoning:
+                effective = max(max_tokens, spec.reasoning_floor)
+            payload["max_tokens"] = effective
         if json_mode and "json_object" in spec.capabilities and "response_format" not in drop:
             payload["response_format"] = {"type": "json_object"}
         if "system_role" not in spec.capabilities and messages and messages[0].get("role") == "system":
