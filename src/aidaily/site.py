@@ -128,8 +128,46 @@ def _og_image(digest: Digest) -> str:
     return ""
 
 
-def _when(event: Event) -> tuple[str, bool]:
+def _repository_age_label(
+    event: Event, items_by_id: dict[str, NormalizedItem] | None
+) -> str:
+    """`Trending · 9 个月前创建`, or empty when the age is unknown.
+
+    Returns empty rather than a guess: a wrong age on a repository card is worse than no age,
+    because the reader uses it to decide whether the story is news.
+    """
+    created = ""
+    for item_id in event.member_item_ids:
+        item = (items_by_id or {}).get(item_id)
+        if item is not None:
+            created = str((item.metrics or {}).get("repo_created") or "")
+            if created:
+                break
+    if not created:
+        return ""
+    try:
+        when = datetime.fromisoformat(created[:10]).replace(tzinfo=timezone.utc)
+    except ValueError:
+        return ""
+    days = max(0, (datetime.now(timezone.utc) - when).days)
+    if days < 30:
+        span = f"{max(1, days)} 天前"
+    elif days < 365:
+        span = f"{days // 30} 个月前"
+    else:
+        span = f"{days // 365} 年前"
+    return f"Trending，{span}创建"
+
+
+def _when(event: Event, items_by_id: dict[str, NormalizedItem] | None = None) -> tuple[str, bool]:
     if not event.published_range:
+        # "时间未知" is honest but useless on a repository story: the reader asks "how old is
+        # this news", and for GitHub Trending the answer is "the project is nine months old but
+        # it trended this morning". Saying the age is more informative than saying nothing, and
+        # it is the fact that decides whether the entry belongs in the issue at all.
+        age = _repository_age_label(event, items_by_id)
+        if age:
+            return age, True
         return "时间未知", False
     # Beijing time, matching the archive's own dates.
     #
@@ -401,6 +439,31 @@ def render_toc(
 
 
 # ============================== story ===========================================
+#: A GitHub repository URL, e.g. `https://github.com/owner/name`.
+#:
+#: Deliberately narrow. `github.com/trending`, `/topics/x` and `github.com/features/y` are not
+#: repositories, and treating them as one would suppress the rewrite for a story that merely
+#: links to GitHub.
+#: First path segments GitHub reserves for its own pages. `github.com/topics/llm` has the
+#: same two-segment shape as a repository but is a topic listing.
+_GITHUB_RESERVED = {
+    "topics", "features", "about", "pricing", "enterprise", "sponsors", "collections",
+    "trending", "explore", "marketplace", "login", "join", "site", "security", "settings",
+    "orgs", "users", "apps", "notifications", "issues", "pulls", "search", "readme",
+}
+
+_REPO_URL = re.compile(r"^https?://(?:www\.)?github\.com/([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+)/?$")
+
+
+def _is_repository_story(event: Event) -> bool:
+    """True when the event is about one repository rather than about news."""
+    for url in event.all_urls or []:
+        match = _REPO_URL.match((url or "").strip())
+        if match and match.group(1).lower() not in _GITHUB_RESERVED:
+            return True
+    return False
+
+
 def _display_title(
     event: Event,
     insight: EventInsight | None,
@@ -429,6 +492,19 @@ def _display_title(
     # often a bare product string while a later one says what happened. Length is a crude
     # but reliable proxy here, because every candidate describes the same release.
     candidates: list[str] = sorted((t for t in merged if t), key=len, reverse=True)
+
+    # **A repository story keeps its own title.**
+    #
+    # The model rewrites every headline into Chinese, and for a repository that produces
+    # `anthropics/knowledge-work-plugins：Claude Cowork 知识工作插件` -- the slug glued to a
+    # translation of the description with a full-width colon between them. It reads as a
+    # malformed label, not a headline, and it repeats what the card below already shows.
+    #
+    # The slug is the identity of a repository, so it stays; the description belongs in the
+    # summary, where it already is. Falling through to `event.title` gives exactly that.
+    if _is_repository_story(event):
+        return event.title.strip()
+
     if insight and insight.title:
         candidates.append(insight.title)
     candidates.append(event.title)
@@ -536,7 +612,15 @@ def render_item(
             href=f"https://github.com/{repo}",
         )
 
-    when_text, known = _when(event)
+    when_text, known = _when(event, items_by_id)
+    # **A repository is not an untranslated story.**
+    #
+    # The "待翻译" block exists for foreign-language reporting that the model had no quota to
+    # translate. A repository slug is not foreign reporting: `anthropics/knowledge-work-plugins`
+    # has no Chinese form and never will, so judging it by `_looks_chinese` moves the entry out
+    # of the issue body and into a collapsed block that reads as "we could not handle this".
+    # Measured 2026-10-23: the entry the reader asked about was in that block, not the body.
+    repository = _is_repository_story(event)
 
     # Recompute the publisher count from `source_ids` rather than trusting the archived number.
     #
@@ -818,7 +902,11 @@ def render_day(
         counter += 1
         insight = insights.get(event.event_id)
         title = _display_title(event, insight, items_by_id)
-        if not _looks_chinese(title):
+        # A repository slug is not foreign reporting: it has no Chinese form and never will, so
+        # routing it to the untranslated block reads as "we could not handle this" when the
+        # entry is complete. Measured 2026-10-23: the repository the reader asked about was in
+        # that collapsed block rather than the issue body.
+        if not _looks_chinese(title) and not _is_repository_story(event):
             untranslated.append((counter, event))
             continue
         translated_ids.add(event.event_id)
