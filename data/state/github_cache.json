@@ -133,26 +133,26 @@
   }
  },
  "php/php-src": {
-  "fetched_at": "2026-10-21T15:04:42.153796+00:00",
+  "fetched_at": "2026-10-23T21:42:05.847709+00:00",
   "data": {
    "full_name": "php/php-src",
    "description": "The PHP Interpreter",
-   "stars": 40536,
-   "forks": 8231,
+   "stars": 41538,
+   "forks": 8357,
    "language": "C",
    "license": "BSD-3-Clause",
    "topics": [],
    "created": "2011-06-16",
-   "pushed": "2026-10-21",
-   "contributors": 1668,
+   "pushed": "2026-10-23",
+   "contributors": 1674,
    "discussions": null,
    "languages": {
-    "C": 69.22806762106804,
-    "PHP": 28.28739626599291,
-    "C++": 0.8533224900406589,
-    "Shell": 0.37562367616162257,
-    "M4": 0.3497056180912137,
-    "Lua": 0.2296002340968509
+    "C": 69.16944810426457,
+    "PHP": 28.332608191967918,
+    "C++": 0.8679986304396274,
+    "Shell": 0.3752866271076642,
+    "M4": 0.34946332319088724,
+    "Lua": 0.22939421262748627
    }
   }
  },
@@ -313,41 +313,41 @@
   }
  },
  "NVIDIA/OpenShell": {
-  "fetched_at": "2026-10-22T23:16:22.027847+00:00",
+  "fetched_at": "2026-10-23T21:42:05.847709+00:00",
   "data": {
    "full_name": "NVIDIA/OpenShell",
    "description": "OpenShell is the safe, private runtime for autonomous AI agents.",
-   "stars": 17695,
-   "forks": 1832,
+   "stars": 18717,
+   "forks": 1878,
    "language": "Rust",
    "license": "Apache-2.0",
    "topics": [],
    "created": "2026-02-24",
-   "pushed": "2026-10-22",
+   "pushed": "2026-10-23",
    "contributors": 135,
    "discussions": null,
    "languages": {
-    "Rust": 87.11146402810341,
-    "Go": 4.78389646655975,
-    "Shell": 3.3470089686144684,
-    "Python": 2.543583114200084,
-    "TypeScript": 0.9108760525251145,
-    "PowerShell": 0.39065300950735016
+    "Rust": 87.10573088157513,
+    "Go": 4.783281694028228,
+    "Shell": 3.353968284804116,
+    "Python": 2.5432562415260653,
+    "TypeScript": 0.9107589969866788,
+    "PowerShell": 0.39060280717933565
    }
   }
  },
  "anthropics/knowledge-work-plugins": {
-  "fetched_at": "2026-10-22T23:16:22.027847+00:00",
+  "fetched_at": "2026-10-23T21:42:05.847709+00:00",
   "data": {
    "full_name": "anthropics/knowledge-work-plugins",
    "description": "Open source repository of plugins primarily intended for knowledge workers to use in Claude Cowork",
-   "stars": 31562,
-   "forks": 3530,
+   "stars": 32167,
+   "forks": 3566,
    "language": "Python",
    "license": "Apache-2.0",
    "topics": [],
    "created": "2026-01-23",
-   "pushed": "2026-10-22",
+   "pushed": "2026-10-23",
    "contributors": 32,
    "discussions": null,
    "languages": {
@@ -381,6 +381,119 @@
     "Python": 81.80066917683955,
     "Cuda": 12.934440726795335,
     "Shell": 5.264890096365112
+   }
+  }
+ },
+ "OpenBMB/VoxCPM": {
+  "fetched_at": "2026-10-23T21:42:05.847709+00:00",
+  "data": {
+   "full_name": "OpenBMB/VoxCPM",
+   "description": "VoxCPM2: Tokenizer-Free TTS for Multilingual Speech Generation, Creative Voice Design, and True-to-Life Cloning",
+   "stars": 40206,
+   "forks": 4572,
+   "language": "Python",
+   "license": "Apache-2.0",
+   "topics": [
+    "audio",
+    "deeplearning",
+    "minicpm",
+    "multilingual",
+    "python",
+    "pytorch"
+   ],
+   "created": "2025-09-16",
+   "pushed": "2026-10-08",
+   "contributors": 31,
+   "discussions": null,
+   "languages": {
+    "Python": 99.50771723753226,
+    "Dockerfile": 0.4922827624677344
+   }
+  }
+ },
+ "Renhuai123/ziwei-doushu": {
+  "fetched_at": "2026-10-23T21:42:05.847709+00:00",
+  "data": {
+   "full_name": "Renhuai123/ziwei-doushu",
+   "description": "紫微斗数开源排盘引擎 — 基于倪海厦《天纪》体系，含完整排盘算法、四化系统、格局知识库、古籍原文数据",
+   "stars": 6823,
+   "forks": 1403,
+   "language": "TypeScript",
+   "license": "MIT",
+   "topics": [
+    "bazi",
+    "chinese-astrology",
+    "divination",
+    "fortune-telling",
+    "nextjs",
+    "open-source"
+   ],
+   "created": "2026-05-01",
+   "pushed": "2026-10-20",
+   "contributors": 4,
+   "discussions": null,
+   "languages": {
+    "TypeScript": 98.41997665521917,
+    "CSS": 1.55020139933744,
+    "JavaScript": 0.02982194544338216
+   }
+  }
+ },
+ "SnailSploit/Claude-Red": {
+  "fetched_at": "2026-10-23T21:42:05.847709+00:00",
+  "data": {
+   "full_name": "SnailSploit/Claude-Red",
+   "description": "claude-red is a curated library of offensive security skills designed for the Claude skills system. Each skill is a structured SKILL.md file that primes Claude with expert-level methodology for a specific attack surface — from SQLi to shellcode, EDR evasion to exploit development.",
+   "stars": 8390,
+   "forks": 1091,
+   "language": "Python",
+   "license": "MIT",
+   "topics": [
+    "claude-ai",
+    "claude-pt",
+    "claude-skills",
+    "redteam",
+    "redteam-tools",
+    "skills"
+   ],
+   "created": "2026-03-04",
+   "pushed": "2026-10-12",
+   "contributors": 9,
+   "discussions": null,
+   "languages": {
+    "Python": 80.3957990998071,
+    "Shell": 19.604200900192897
+   }
+  }
+ },
+ "nodejs/node": {
+  "fetched_at": "2026-10-23T21:42:05.847709+00:00",
+  "data": {
+   "full_name": "nodejs/node",
+   "description": "Node.js JavaScript runtime ✨🐢🚀✨",
+   "stars": 122806,
+   "forks": 39871,
+   "language": "JavaScript",
+   "license": "NOASSERTION",
+   "topics": [
+    "javascript",
+    "js",
+    "linux",
+    "macos",
+    "mit",
+    "node"
+   ],
+   "created": "2014-11-26",
+   "pushed": "2026-10-23",
+   "contributors": 4531,
+   "discussions": null,
+   "languages": {
+    "JavaScript": 66.44683979340832,
+    "C++": 22.60863420676425,
+    "Python": 7.628710590761968,
+    "C": 1.8983484533286779,
+    "HTML": 0.4683772944080527,
+    "Shell": 0.4059279440274943
    }
   }
  }
