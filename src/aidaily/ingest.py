@@ -83,6 +83,17 @@ def item_id_for(spec: SourceSpec, raw: RawItem) -> str:
     return hashlib.sha256(f"{spec.source_id}|{basis}".encode("utf-8")).hexdigest()[:16]
 
 
+#: A stripped body shorter than this carries no identifying content.
+#:
+#: InfoQ RSS entries all end in `点击查看原文>` (six characters) after markup is removed, and
+#: plenty of feeds carry only a link line or a "read more" stub. Hashing those made every entry
+#: of the feed identical to every other one.
+#:
+#: 24 characters is above every stub seen (`点击查看原文>`, `阅读全文`, `Read more`) and below any
+#: real lede -- the shortest genuine summary in the corpus is a 40-character sentence.
+_MIN_IDENTIFYING_BODY = 24
+
+
 def normalize_raw(
     raw: RawItem, spec: SourceSpec, now: datetime | None = None
 ) -> NormalizedItem:
@@ -90,6 +101,23 @@ def normalize_raw(
     # Strip markup here rather than at render time: the text is passed to models, to the
     # dedup fingerprint and to the reader, and tag soup degrades all three.
     body = strip_html(raw.content_text or raw.summary or raw.title or "")
+    # **A body too short to identify anything must not become the identity.**
+    #
+    # `content_sha256` is an exact dedup key with no time window (see `dedup.cluster`), so two
+    # items with the same body are merged outright. Measured 2026-10-23: every InfoQ RSS entry
+    # carries the same template summary, which strips to the six characters `点击查看原文>`. All
+    # twelve of that day entries hashed identically, were merged into one unit, and the issue
+    # published a single event whose headline was about API gateways while its facts listed Qwen
+    # kernels, a DeepSeek funding round and a Huawei assistant review. The link the reader
+    # clicked was one of the twelve, so it went to an article the entry never described.
+    #
+    # The fix is to stop deriving an identity from a body that carries none. When the stripped
+    # body is shorter than `_MIN_IDENTIFYING_BODY`, fall back to the title: two items then share
+    # a fingerprint only when they share a headline, which is what the exact key is for.
+    if len(body) < _MIN_IDENTIFYING_BODY:
+        body_for_hash = strip_html(raw.title or "")
+    else:
+        body_for_hash = body
     # Summary is display text: strip markup AND bare links so the digest never shows a
     # URL we did not record and verify ourselves.
     summary = strip_text_urls(strip_html(raw.summary or "", limit=2000))
@@ -112,8 +140,8 @@ def normalize_raw(
         language=raw.language or spec.language or detect_language(text_for_lang),
         summary=summary,
         content_text=body or None,
-        content_sha256=content_fingerprint(body),
-        simhash=simhash(body),
+        content_sha256=content_fingerprint(body_for_hash),
+        simhash=simhash(body_for_hash),
         author=raw.author,
         metrics=raw.metrics or {},
         age_bucket=compute_age_bucket(
