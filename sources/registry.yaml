@@ -1,4 +1,4 @@
-generated_at: '2026-10-22T06:41:05.639427+00:00'
+generated_at: '2026-10-24T06:31:19.194113+00:00'
 generated_by: scripts/build_registry.py
 source_of_truth: audit/sources_ledger.json (static audit of six repositories) + sources/local.yaml (later additions)
 policy:
@@ -6,15 +6,15 @@ policy:
   coverage_guard: tests/contract/test_source_coverage.py asserts every provenance entry survives.
 stats:
   url_level_rows_before_merge: 100
-  parameter_rows_merged: -91
+  parameter_rows_merged: -92
   merge_breakdown:
     google_trends: 21
-  unique_sources: 191
-  provenance_rows: 219
+  unique_sources: 192
+  provenance_rows: 220
   by_repository:
     CloudFlare-AI-Insight-Daily: 11
     Horizon: 45
-    KKKKhazix/AIHOT: 13
+    KKKKhazix/AIHOT: 14
     ai-daily-sources: 4
     daily-briefing: 1
     dailydawn: 19
@@ -26,19 +26,19 @@ stats:
     daily-briefing: 1
     dailydawn: 19
     daybrief: 5
-  added_locally: 111
+  added_locally: 112
   by_source_type:
     api: 34
     atom: 4
     jsonfeed: 1
-    rss: 119
+    rss: 120
     scrape: 6
     x_timeline: 27
   by_category:
     community: 22
     dataset: 1
     dev: 10
-    digest: 17
+    digest: 18
     example: 5
     lab: 2
     lab-blog: 4
@@ -1675,6 +1675,39 @@ sources:
   - user-list:2026-10-20#cross-source-coverage
   provenance_count: 1
   repositories: []
+  params: null
+  merged_parameter_rows: 1
+  added_locally: true
+- source_id: rss:aihot-news-all
+  name: AIHOT 全部动态
+  url: https://aihot.news/feed/all.xml
+  normalized_url: https://aihot.news/feed/all.xml
+  domain: aihot.news
+  category: digest
+  categories_all:
+  - digest
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 20
+  needs_credential: null
+  dedup_group: aihot
+  site_fulltext: false
+  health_status: unverified
+  last_success_at: null
+  last_failure_at: null
+  notes: 最近 7 天的公开动态，按原文发布时间倒序。与其它 aihot feed 同属 dedup_group， 不会重复计入独立来源。
+  why: 用户指定必须收录的源；进入直通名单，不经过相关性筛选，只参与打分排序。
+  license_note: 数据使用受 https://aihot.news/terms 约束，非 MIT。页面须保留署名与原文链接。
+  found_in:
+  - KKKKhazix/AIHOT:README.md#六种信源
+  provenance_count: 1
+  repositories:
+  - KKKKhazix/AIHOT
   params: null
   merged_parameter_rows: 1
   added_locally: true

@@ -1993,5 +1993,11 @@ sources:
   polling_interval: 6h
   timeout_s: 20
   dedup_group: aihot
-  notes: 最近 7 天的公开动态，按原文发布时间倒序。与其它 aihot feed 同属 dedup_group，不会重复计入独立来源。
+  notes: 最近 7 天的公开动态，按原文发布时间倒序。与其它 aihot feed 同属 dedup_group，
+    不会重复计入独立来源。
   why: 用户指定必须收录的源；进入直通名单，不经过相关性筛选，只参与打分排序。
+  found_in:
+  - KKKKhazix/AIHOT:README.md#六种信源
+  repositories:
+  - KKKKhazix/AIHOT
+  license_note: 数据使用受 https://aihot.news/terms 约束，非 MIT。页面须保留署名与原文链接。
