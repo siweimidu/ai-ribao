@@ -411,7 +411,7 @@ def select_for_digest(
             # order it; degraded = it graded most of it; formula = it contributed nothing
             # usable and the formula took over. A reader can tell an odd ordering from a
             # model decision, which are different problems to fix.
-            "rubric_mode": mode,
+            "rubric_mode": rubric_mode,
         }
 
     # **Section first, score second.** This is the reverse of a pure score ranking and it is the
