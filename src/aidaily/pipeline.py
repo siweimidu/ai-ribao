@@ -95,6 +95,41 @@ def is_container_title(title: str) -> bool:
         return False
     return bool(_CONTAINER_TITLE.match(text))
 
+#: Sources the user asked to include without the relevance gate.
+#:
+#: These are curated AI digests -- a human already decided every entry is about AI, so applying
+#: our own focus score to them double-filters work that was done upstream. They still go through
+#: ranking, so a major story leads and a minor one sits low; what they skip is the *drop*.
+#:
+#: The gate stays for everything else. Removing it globally is what let consumer-electronics
+#: items into the issue, which is the complaint this floor was added to fix.
+PASSTHROUGH_SOURCES = frozenset({
+    "rss:aihot-news-picks",
+    "rss:aihot-news-full",
+    "rss:aihot-news-all",
+    "rss:aihot-news-daily",
+    "rss:aihot-news-weekly",
+    "rss:aihot-news-monthly",
+    "rss:aihot-cat-models",
+    "rss:aihot-cat-products",
+    "rss:aihot-cat-industry",
+    "rss:aihot-cat-paper",
+    "rss:aihot-cat-tip",
+    "rss:aihot-cat-opinion",
+    "rss:daily-juya-uk",
+    "rss:ainewslog-com",
+    "rss:hex2077",
+    "rss:hex2077-dev-rss-zh-cn",
+    "api:aibase-ai-news",
+    "api:aibase-daily-news",
+})
+
+
+def is_passthrough(event) -> bool:
+    """True when any source carrying this event is on the allow-list."""
+    return bool(PASSTHROUGH_SOURCES.intersection(event.source_ids or ()))
+
+
 def passes_ai_relevance(focus: float | str | None) -> bool:
     """Fail closed: missing scores and scores under the high-relevance floor never publish."""
     if focus is None:
@@ -364,7 +399,7 @@ def select_for_digest(
         # Missing relevance is not permission to publish. This used to be `if focus is not
         # None and focus < floor`, so any new event type that skipped the scorer silently
         # bypassed the filter. Absence of evidence now fails closed.
-        if not passes_ai_relevance(focus):
+        if not passes_ai_relevance(focus) and not is_passthrough(row.event):
             dropped_focus += 1
             missing = focus is None
             missing_focus += int(missing)

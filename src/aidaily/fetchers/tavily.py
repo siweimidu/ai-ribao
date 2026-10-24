@@ -27,9 +27,20 @@ from .base import BaseFetcher, SourceResult
 
 #: Search queries issued per fetch. The digest is an AI daily, so the queries are the day's
 #: angles rather than one broad term -- a single "AI" query returns SEO sludge.
+#: **Named vendors, not just "AI model release".**
+#:
+#: Measured 2026-10-24: Moonshot shipped Kimi K3.1 Pro and the issue did not carry it. The two
+#: broad queries below returned nothing about it, and Moonshot publishes no RSS -- its own site
+#: and API console said "Kimi K3.1 Pro 已正式发布" while our feeds said nothing. A query that
+#: names the lab is the only way to see a release from a company that does not syndicate.
+#:
+#: Kept short: Tavily bills per request and each query is one call.
 DEFAULT_QUERIES = (
     "AI model release announcement",
     "人工智能 大模型 发布",
+    "Kimi Moonshot 月之暗面 发布",
+    "DeepSeek Qwen 智谱 MiniMax 发布",
+    "OpenAI Anthropic Gemini release",
 )
 
 

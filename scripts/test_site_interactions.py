@@ -80,9 +80,19 @@ async def main() -> int:
         )
         check("当日标记为圆形", bool(today_style) and today_style["radius"].startswith("50%"),
               str(today_style["radius"]) if today_style else "缺失")
+        # **Compare against the theme, not against a literal colour.**
+        #
+        # This asserted `rgb(0, 101, 253)`, the accent of the old default theme. When the
+        # default became Claude light the calendar still filled with the right colour and the
+        # check failed anyway -- a guard that reports a correct page as broken.
+        accent_rgb = await page.evaluate(
+            "getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()"
+        )
+        expected = accent_rgb.lstrip("#")
+        expected = "%d, %d, %d" % tuple(int(expected[i:i + 2], 16) for i in (0, 2, 4))
         check("当日用强调色填充",
-              bool(today_style) and "0, 101, 253" in today_style["bg"].replace("rgb(", ""),
-              today_style["bg"] if today_style else "")
+              bool(today_style) and expected in today_style["bg"].replace("rgb(", ""),
+              "%s（期望 %s）" % (today_style["bg"] if today_style else "", expected))
         check("当日有圆形光晕",
               bool(today_style) and "3px" in today_style["shadow"],
               today_style["shadow"][:44] if today_style else "")
@@ -122,7 +132,7 @@ async def main() -> int:
         check("亮色设置 data-theme", seen["light"]["attr"] == "light")
         check("主题选择被记住", seen["dark"]["stored"] != "" and seen["light"]["stored"] != "",
               f"dark={seen['dark']['stored']!r} light={seen['light']['stored']!r}")
-        check("标签跟随选择", seen["dark"]["label"] == "暗色" and seen["light"]["label"] == "亮色",
+        check("标签跟随选择", seen["dark"]["label"] == "标准暗色" and seen["light"]["label"] == "标准亮色",
               f"{seen['dark']['label']}/{seen['light']['label']}")
 
         await page.click('[data-theme-choice="dark"]')

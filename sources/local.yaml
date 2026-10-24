@@ -1980,3 +1980,18 @@ sources:
   - user-list:2026-10-21#x-accounts
   repositories: []
   site_fulltext: true
+- source_id: rss:aihot-news-all
+  name: AIHOT 全部动态
+  url: https://aihot.news/feed/all.xml
+  category: digest
+  language: zh
+  source_type: rss
+  fetch_method: feedparser
+  adapter: RssFetcher
+  enabled: true
+  priority: 2
+  polling_interval: 6h
+  timeout_s: 20
+  dedup_group: aihot
+  notes: 最近 7 天的公开动态，按原文发布时间倒序。与其它 aihot feed 同属 dedup_group，不会重复计入独立来源。
+  why: 用户指定必须收录的源；进入直通名单，不经过相关性筛选，只参与打分排序。
