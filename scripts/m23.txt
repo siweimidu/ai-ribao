@@ -1,0 +1,52 @@
+fix(history): _is_ship_not_preview 收到元组就崩 —— 6 个测试红了才推的
+
+════════════════════════════════════════════════════════════════════════
+一、上一版有个明显 bug
+
+`self._titles` 存的是 `(date, title)` 元组，不是纯字符串：
+
+  old_text = (old or "").lower()   ← old 是元组，AttributeError
+
+6 个 history 测试全红：
+
+  test_a_story_from_yesterday_is_recognised
+  test_a_story_outside_the_window_is_not_a_repeat
+  test_the_oldest_match_is_reported
+  test_history_survives_a_reload
+  test_a_corrupt_line_does_not_lose_the_rest
+  test_history_rebuilds_from_the_archive
+
+════════════════════════════════════════════════════════════════════════
+二、我更该被批评的地方
+
+**我把失败的测试和修复一起推上去了。**
+
+命令是 `pytest ... | Select-Object -Last 4`，输出被截断，
+FAILED 行在截断之外，我没看见就当成功了。
+
+这正是前几天我自己写下的规则 —— 不能靠管道看结果。又犯了。
+
+正确的写法：
+
+  python -m pytest ...
+  if ($LASTEXITCODE -ne 0) { throw "tests failed" }
+
+════════════════════════════════════════════════════════════════════════
+三、修法
+
+  for entry in stored or ():
+      old = entry[1] if isinstance(entry, tuple) else entry
+      old_text = (old or "").lower()
+
+两个来源 `_titles`（元组）和 `_titles_flat`（元组）都兼容。
+
+════════════════════════════════════════════════════════════════════════
+四、验证
+
+  tests/unit + tests/contract   全绿（这一次真的看了 exit code）
+
+  端到端：
+    events : 93  (更早 88 → 上一版 90)
+    exit   : 0
+
+Kimi 相关的四篇不再被跨天去重删除。

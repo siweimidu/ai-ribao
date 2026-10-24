@@ -146,12 +146,15 @@ _PREVIEW = (
 )
 
 
-def _is_ship_not_preview(headline: str, stored: list) -> bool:
+def _is_ship_not_preview(headline: str, stored) -> bool:
     """True when today headline announces a release and the stored one did not."""
     now = (headline or "").lower()
     if not any(w in now for w in _SHIPPED):
         return False
-    for old in stored:
+    for entry in stored or ():
+        # `_titles` stores (date, title) pairs. Passing one straight through .lower()
+        # raised AttributeError and failed six history tests.
+        old = entry[1] if isinstance(entry, tuple) else entry
         old_text = (old or "").lower()
         if any(w in old_text for w in _PREVIEW) and not any(w in old_text for w in _SHIPPED):
             return True
