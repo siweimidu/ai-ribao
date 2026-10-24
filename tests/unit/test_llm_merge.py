@@ -163,3 +163,41 @@ def test_concurrency_is_bounded() -> None:
     from aidaily.merge_llm import MERGE_CONCURRENCY
 
     assert 1 <= MERGE_CONCURRENCY <= 8
+
+
+def test_merging_updates_the_evidence_level() -> None:
+    """The count and the label must move together.
+
+    Measured 2026-10-24: one event carried `single_source` after a merge grew its sources to
+    two, and `factcheck` blocked the whole issue three times
+    (`publish failed with exit code 2 after 3 attempts`).
+    """
+    keep = _event("e1", "A", sources=("s1",))
+    assert keep.evidence_level == "single_source"
+    _merge_into(keep, [_event("e2", "B", sources=("s2",))])
+    assert keep.independent_source_count == 2
+    assert keep.evidence_level == "multi_source"
+
+
+def test_merging_two_feeds_from_one_outlet_stays_single() -> None:
+    """The label follows the outlet count, not the feed count."""
+    keep = _event("e1", "A", sources=("hnrss",))
+    _merge_into(keep, [_event("e2", "B", sources=("hnrss",))])
+    assert keep.independent_source_count == 1
+    assert keep.evidence_level == "single_source"
+
+
+def test_the_label_matches_the_count_after_a_merge_of_merges() -> None:
+    keep = _event("e1", "A", sources=("s1",))
+    _merge_into(keep, [_event("e2", "B", sources=("s2",))])
+    _merge_into(keep, [_event("e3", "C", sources=("s3",))])
+    assert keep.independent_source_count == 3
+    assert keep.evidence_level == "multi_source"
+
+
+def test_a_merged_event_passes_the_factcheck_invariant() -> None:
+    """The rule the outage broke, asserted directly."""
+    keep = _event("e1", "A", sources=("s1",))
+    _merge_into(keep, [_event("e2", "B", sources=("s2",))])
+    # `factcheck` rejects exactly this combination.
+    assert not (keep.evidence_level == "single_source" and keep.independent_source_count > 1)

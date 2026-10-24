@@ -156,6 +156,19 @@ def _merge_into(target, absorbed):
         target.unique_facts["merged_titles"] = merged_titles
 
     target.independent_source_count = len(set(target.source_ids))
+
+    # **The evidence level has to follow the count.**
+    #
+    # `factcheck` rejects an event that claims `single_source` while carrying more than one
+    # independent source, and a merge is exactly how that happens: the source ids grow and
+    # the label stays behind. Measured 2026-10-24: one such event blocked the whole issue
+    # three times in a row -- `publish failed with exit code 2 after 3 attempts`.
+    #
+    # Recomputed from the union rather than incremented, so a merge of merges stays correct.
+    if target.independent_source_count >= 2:
+        target.evidence_level = "multi_source"
+    else:
+        target.evidence_level = "single_source"
     return target
 
 
