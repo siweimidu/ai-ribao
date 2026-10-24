@@ -125,6 +125,38 @@ class Repeat:
 NEAR_MATCH_RATIO = 0.80
 
 
+#: Words that mark a shipped release rather than a rumour or a preview.
+#:
+#: Measured 2026-10-24: Kimi K3.1 was reported on 10-18 as 已现身 (spotted), on 10-21 as
+#: 动向 (rumour roundup), and shipped for real today. Cross-day dedup treated the launch as a
+#: repeat of the preview and removed all four Kimi items from the issue -- the day biggest
+#: story, gone, because it had been mentioned four days earlier.
+#:
+#: A preview and a launch are different events to a reader: one says a thing exists, the other
+#: says it is available.
+_SHIPPED = (
+    "发布", "上线", "正式推出", "正式发布", "现已可用", "开放", "释出",
+    "release", "launch", "ship", "available", "now live",
+)
+
+#: Words that mark a preview, a rumour, or a leak.
+_PREVIEW = (
+    "预热", "预告", "曝光", "现身", "泄露", "传闻", "疑似", "或将", "即将", "动向",
+    "tease", "rumour", "rumor", "leak", "preview", "upcoming", "spotted",
+)
+
+
+def _is_ship_not_preview(headline: str, stored: list) -> bool:
+    """True when today headline announces a release and the stored one did not."""
+    now = (headline or "").lower()
+    if not any(w in now for w in _SHIPPED):
+        return False
+    for old in stored:
+        old_text = (old or "").lower()
+        if any(w in old_text for w in _PREVIEW) and not any(w in old_text for w in _SHIPPED):
+            return True
+    return False
+
 def _is_near_match(headline: str, published) -> bool:
     """Whether `headline` restates one of `published` in slightly different words."""
     from difflib import SequenceMatcher
@@ -280,6 +312,11 @@ class PublishedHistory:
                     # depends on seeing them.
                     if not _same_message_as(event.title, self._titles.get(key, ())):
                         continue
+                    # A launch is not a repeat of its own preview: 10-18 said 已现身,
+                    # 10-21 said 动向, and 10-24 shipped it. Those are three different
+                    # things to a reader.
+                    if _is_ship_not_preview(event.title, self._titles.get(key, ())):
+                        continue
                 try:
                     when = datetime.fromisoformat(date_str).date()
                 except ValueError:
@@ -340,6 +377,8 @@ class PublishedHistory:
             if when < cutoff or when > today_date:
                 continue
             if not _same_message_as(event.title, [(date_str, title)]):
+                continue
+            if _is_ship_not_preview(event.title, [title]):
                 continue
             days_ago = (today_date - when).days
             if best is None or days_ago > best.days_ago:
