@@ -227,6 +227,32 @@ _NEUTRAL_TECH = re.compile(
 )
 
 
+#: Words that appear in `_CORE` but describe *any* software, not AI in particular.
+#:
+#: Measured 2026-10-24: the GitHub Trending row
+#: `Renhuai123/ziwei-doushu — 紫微斗数开源排盘引擎` scored `focus: 1.0`, the same as
+#: `Anthropic 发布 Claude 5.5`. The only token that matched was `开源` -- in
+#: "开源排盘引擎", which is about divination software. A Git repository is open source whether
+#: or not it has anything to do with AI, so the word carries no signal on its own.
+#:
+#: These are counted only when the headline also contains an unambiguous AI cue (a lab name, a
+#: model name, or a technique term). Without that context they are worth nothing.
+#: Vendors whose hardware or platform work is AI work. A headline naming one of these can
+#: pair with a generic word and still be about AI: `英伟达开源 Run:ai，AI 算力编排` matched
+#: only `开源`, scored 0.59, and would have been dropped just under the 0.6 floor.
+_AI_ANCHORS = (
+    "英伟达", "nvidia", "amd", "谷歌", "google", "微软", "microsoft",
+    "meta", "苹果", "apple", "亚马逊", "aws", "阿里", "腾讯", "字节",
+    "百度", "华为", "小米", "商汤", "科大讯飞",
+)
+
+
+_CONTEXT_DEPENDENT = frozenset({
+    "开源", "模型", "上线", "推理", "训练", "预训练", "算力",
+    "智能体", "微调", "对齐", "蒸馏", "向量", "多模态",
+})
+
+
 def _headline_focus(title: str) -> float:
     """How centrally the headline is about AI, in [0, 1].
 
@@ -234,9 +260,33 @@ def _headline_focus(title: str) -> float:
     above zero because a single AI term is still evidence of *some* relevance.
     """
     text = title or ""
-    core = len(_CORE.findall(text))
+    # `finditer`, not `findall`: `_CORE` contains one capture group, and `findall` returns
+    # the *group* rather than the match whenever a pattern has groups. That made every hit read
+    # as `""`, so the context filter below saw no words at all and the divination row kept its
+    # 1.0.
+    core_hits = [m.group(0) for m in _CORE.finditer(text)]
     labs = len(_LABS.findall(text))
     weak = len(_WEAK.findall(text))
+
+    # **Split the core hits into ones that mean AI on their own and ones that do not.**
+    #
+    # `开源` matched `紫微斗数开源排盘引擎` and pushed a divination tool to focus 1.0, the same
+    # score as an Anthropic launch. A repository is open source regardless of subject, so the
+    # word proves nothing; the same is true of `模型`, `上线`, `推理` and the rest of
+    # `_CONTEXT_DEPENDENT`.
+    #
+    # They still count when the headline names a lab, a model or a technique -- `DeepSeek
+    # 开源新模型` is genuinely AI -- so the rule is co-occurrence, not exclusion.
+    has_anchor = (
+        labs > 0
+        or bool(_AMBIGUOUS_MODELS.search(text))
+        or any(a in text.lower() for a in _AI_ANCHORS)
+    )
+    strong = [w for w in core_hits if w.strip().lower() not in _CONTEXT_DEPENDENT]
+    contextual = len(core_hits) - len(strong)
+    if not strong and not has_anchor:
+        contextual = 0
+    core = len(strong) + contextual
     off = len(_OFF_TOPIC.findall(text))
     neutral = len(_NEUTRAL_TECH.findall(text))
 
