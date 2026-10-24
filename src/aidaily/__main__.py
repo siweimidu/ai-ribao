@@ -1115,6 +1115,12 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
         try:
             from .merge_llm import merge_duplicates
 
+            # Heartbeat: proves this line ran. Written before the model is called, so a
+            # hang or an exception still leaves evidence.
+            (Path("data/state") / "merge_entered.txt").write_text(
+                f"entered at {run_now.isoformat()} events={len(events)} router={router is not None}",
+                encoding="utf-8",
+            )
             merge_result = await merge_duplicates(events, router)
             events = merge_result.events
             print(f'  LLM 去重        {merge_result.label}')
