@@ -1135,7 +1135,40 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
                     f"（合并 {merge_result.merged_events} 条）"
                 )
         except Exception as exc:  # noqa: BLE001 - optional pass, must not fail the run
+            merge_result = None
             print(f'  LLM 去重        未运行：{type(exc).__name__}', file=sys.stderr)
+        # **Diagnostics go to a file, not to the log.**
+        #
+        # GitHub masks job output: Chinese and digits both come back as `***`, so the one
+        # question that matters -- did the model answer "no duplicates", or never answer at
+        # all? -- is unreadable from a finished run. A JSON under `data/state/` is committed
+        # with the rest of the state and can be read afterwards.
+        #
+        # Written outside the `try`, so a failed pass still records why it failed.
+        try:
+            diag = {
+                "generated_at": run_now.isoformat(),
+                "router_is_none": router is None,
+                "ran": merge_result is not None,
+            }
+            if merge_result is not None:
+                diag.update(
+                    {
+                        "input_events": merge_result.input_events,
+                        "batches": merge_result.batches,
+                        "calls": merge_result.calls,
+                        "merged_groups": merge_result.merged_groups,
+                        "merged_events": merge_result.merged_events,
+                        "rejected_groups": merge_result.rejected_groups,
+                        "failed": merge_result.failed,
+                        "examples": merge_result.examples,
+                    }
+                )
+            (Path("data/state") / "merge_diag.json").write_text(
+                json.dumps(diag, ensure_ascii=False, indent=2), encoding="utf-8"
+            )
+        except Exception as diag_exc:  # noqa: BLE001 - diagnostics must not fail the run
+            print(f'  诊断写入失败 {type(diag_exc).__name__}', file=sys.stderr)
         pool_target = max(cfg.output.deep.max_items * 2, cfg.output.deep.max_items + 40)
         pool, _ = select_for_digest(
             events, stage, sources, cfg, history=history, pool_only=pool_target,
