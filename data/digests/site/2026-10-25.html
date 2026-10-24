@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Block 推出本地全双工语音模型 Dessa · AI 日报</title>
+<meta name="description" content="Block 的研究实验室发布语音模型 Dessa。">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0065fd">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1530 1530'%3E%3Cstyle%3E:root{color-scheme:light dark}rect{fill:%23FEFEFE}g{fill:%23231A15}@media(prefers-color-scheme:dark){rect{fill:%230B0D10}g{fill:%23F2F4F7}}%3C/style%3E%3Crect width='1530' height='1530' rx='765'/%3E%3Cg transform='translate(765 765) scale(2.65) translate(-765 -765)'%3E%3Cpath fill-rule='evenodd' d='M 494,818 L 626,504 L 711,503 L 800,711 L 803,711 L 1018,546 L 1032,538 L 1027,544 L 745,795 L 740,795 L 726,765 L 610,765 L 586,820 Z M 669,614 L 701,694 L 636,694 Z'/%3E%3Cpath d='M 871,713 L 867,712 L 560,989 L 587,971 L 781,825 L 783,1025 L 871,1024 Z'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="canonical" href="https://siweimidu.github.io/ai-ribao/2026-10-25.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Block 推出本地全双工语音模型 Dessa">
+<meta property="og:description" content="Block 的研究实验室发布语音模型 Dessa。">
+<link rel="image_src" href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-25/e71ae2b7933fd95-m001-caf199a9.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-25/e71ae2b7933fd95-m001-caf199a9.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="AI 日报" href="feed/zh.xml">
+<link rel="alternate" type="application/feed+json" title="AI 日报" href="feed/zh.json">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/components.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Regular.min.css">
+  <!-- Theme read before first paint.
+       `motion.js` is deferred, so it runs after the document parses -- which means the
+       browser has already painted the default light theme and then repaints with the saved
+       one. That repaint is the flash seen on every navigation. This inline block runs while
+       the head is still parsing, so the attribute is set before anything is drawn. It is
+       intentionally duplicated by motion.js (which owns the UI); here it only needs to be
+       fast and to survive JS being disabled afterwards. -->
+  <script>(function(){try{var t=localStorage.getItem('aidaily-theme');if(t&&t!=='auto'&&t!=='default'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+
+<div class="shell">
+      <aside class="rail" aria-label="站点导航">
+        <button class="rail__grip" type="button" data-resize="rail"
+                aria-label="拖动调整左栏宽度" title="拖动调整宽度（双击恢复默认）"></button>
+        <div class="rail__head">
+          <a class="rail__brand" href="index.html">
+            <span class="rail__mark" aria-hidden="true"><svg viewBox="0 0 18 18" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g transform="translate(9 9) scale(0.0314) translate(-765 -765)" fill="currentColor"><path fill-rule="evenodd" d="M 494,818 L 626,504 L 711,503 L 800,711 L 803,711 L 1018,546 L 1032,538 L 1027,544 L 745,795 L 740,795 L 726,765 L 610,765 L 586,820 Z M 669,614 L 701,694 L 636,694 Z"/><path d="M 871,713 L 867,712 L 560,989 L 587,971 L 781,825 L 783,1025 L 871,1024 Z"/></g></svg></span>
+            <span>AI 日报</span>
+          </a>
+          <button class="rail__toggle rail__item" type="button" aria-expanded="false"
+                  aria-controls="rail-body" style="width:auto">
+            <span class="sr">展开导航</span>
+            <span aria-hidden="true">☰</span>
+          </button>
+        </div>
+
+        <div class="rail__body" id="rail-body">
+          <!-- 1. 搜索往期内容 -->
+          <div class="rail__group">
+            <button class="rail__item" type="button" data-open-search>
+              <span>搜索往期内容</span>
+            </button>
+          </div>
+
+          <!-- 2. 首页 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <a class="rail__item" href="index.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5 9 3l6 5.5V15H3z"/><path d="M7.5 15v-4h3v4"/></svg><span>首页</span></a>
+          </div>
+
+          <hr class="rail__sep">
+
+          <!-- 3. 日历 -->
+          <div class="cal" aria-label="按日期浏览">
+            <div class="cal__head">
+              <span class="cal__month">—</span>
+              <span class="cal__nav">
+                <button type="button" data-nav="prev" aria-label="上个月">‹</button>
+                <button type="button" data-nav="next" aria-label="下个月">›</button>
+              </span>
+            </div>
+            <div class="cal__grid" role="grid">
+              <span class="cal__dow">日</span><span class="cal__dow">一</span>
+              <span class="cal__dow">二</span><span class="cal__dow">三</span>
+              <span class="cal__dow">四</span><span class="cal__dow">五</span>
+              <span class="cal__dow">六</span>
+            </div>
+            <div class="cal__legend">
+              <span><i data-k="today"></i>今天</span>
+              <span><i data-k="has"></i>有日报</span>
+            </div>
+          </div>
+
+          <hr class="rail__sep">
+
+          <!-- 4. Tibo 重置监控 -->
+          <div class="rail__group">
+            <a class="rail__item" href="tibo.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6.5"/><path d="M9 5.5V9l2.5 1.5"/></svg><span>Tibo 重置监控</span></a>
+            <a class="rail__item" href="leaderboard.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15V9"/><path d="M7.5 15V5"/><path d="M12 15V7.5"/><path d="M16 15H2"/></svg><span>模型榜</span></a>
+          </div>
+
+          <!-- 微信公众号：暂无账号，先不放入口。留一个不能用的按钮比没有更糟。 -->
+
+          <!-- 6. 订阅 RSS -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <details class="rail__fold">
+              <summary class="rail__item"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M3 4.5A8.5 8.5 0 0 1 11.5 13"/><path d="M3 8A5 5 0 0 1 8 13"/></svg><span>订阅 RSS</span></summary>
+              <div class="rail__sub rail__sub--rss" role="menu">
+                <button type="button" class="rail__btn" data-copy="https://siweimidu.github.io/ai-ribao/feed/zh.xml">
+                  <span class="rail__btn-k">RSS</span>复制订阅地址
+                </button>
+                <button type="button" class="rail__btn" data-copy="https://siweimidu.github.io/ai-ribao/feed/zh.json">
+                  <span class="rail__btn-k">JSON</span>复制订阅地址
+                </button>
+                <p class="rail__fine">
+                  或在浏览器中查看
+                  <a href="feed/zh.xml">RSS</a>
+                  <a href="feed/zh.json">JSON</a>
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <!-- 7. 主题 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <details class="rail__fold">
+              <summary class="rail__item">
+                <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M9 3v12"/><path d="M9 3a6 6 0 0 1 0 12"/></svg><span>主题</span>
+                <span class="rail__hint" data-theme-summary>自动</span>
+              </summary>
+              <div class="rail__sub" role="menu"><button type="button" data-theme-choice="claude-light" aria-checked="false">Claude 亮色</button><button type="button" data-theme-choice="claude-dark" aria-checked="false">Claude 暗色</button><button type="button" data-theme-choice="light" aria-checked="false">标准亮色</button><button type="button" data-theme-choice="dark" aria-checked="false">标准暗色</button><button type="button" data-theme-choice="cinnabar" aria-checked="false">宣纸朱砂</button><button type="button" data-theme-choice="indigo" aria-checked="false">冷白靛紫</button><button type="button" data-theme-choice="midnight" aria-checked="false">深蓝冷青</button></div>
+            </details>
+          </div>
+
+          <!-- 8. 下载 markdown（仅在有具体日期的页面上显示）
+               首页的 rail 用的是最新一期，在这里放下载按钮等于让读者先猜自己要看哪一天。
+               先把日期选出来，日期页再给出那一天的 markdown。 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)"><a class="rail__item" href="2026-10-25.md" download><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v8"/><path d="M5.5 8 9 11.5 12.5 8"/><path d="M3.5 13.5h11"/></svg><span>下载 Markdown</span></a></div>
+
+          <hr class="rail__sep">
+
+          <div class="rail__group">
+            <a class="rail__item" href="sources.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M3 4.5A8.5 8.5 0 0 1 11.5 13"/><path d="M3 8A5 5 0 0 1 8 13"/></svg><span>信息源</span></a>
+            <a class="rail__item" href="https://github.com/siweimidu/ai-ribao" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2.5a6.5 6.5 0 0 0-2 12.7c-.1-.5-.1-1.2 0-1.7.2-.8 1.4-5 1.4-5s-.3-.7-.3-1.7c0-1.6.9-2.7 2-2.7.9 0 1.4.7 1.4 1.6 0 1-.6 2.4-.9 3.8-.3 1 .5 1.9 1.6 1.9 1.9 0 3.3-2.5 3.3-5.4 0-2.3-1.6-3.9-4-3.9-2.7 0-4.3 2-4.3 4.1 0 .9.3 1.8.8 2.3.1.1.1.2.1.3l-.3 1.1c0 .2-.2.2-.4.1-1.3-.6-2.1-2.5-2.1-4C5.3 3.4 7.5 2.5 9 2.5z"/></svg><span>源码与说明</span>
+            </a>
+          </div>
+        </div>
+      </aside>
+
+  <main class="content" id="main">
+    <header class="issue__head">
+      <p class="issue__date enter">2026-10-25　第 12 期</p>
+      <h1 class="issue__title enter">Block 推出本地全双工语音模型 Dessa</h1>
+      <p class="issue__lead enter">Block 的研究实验室发布语音模型 Dessa。</p>
+      <div class="stats enter"><div><b class="count-up" data-to="26">26</b><span>事件</span></div><div><b class="count-up" data-to="11">11</b><span>有内容的源</span></div><div><b class="count-up" data-to="21">21</b><span>多源验证</span></div><div><b class="count-up" data-to="7">7</b><span>头条覆盖来源</span></div></div>
+    </header>
+
+    
+
+          <section class="section overview" id="overview">
+        <h2 class="section__title">概览<span class="section__count">今日要闻</span></h2>
+        <ol class="ov"><li><a href="#e-e71ae2b793"><span class="ov__no">01</span><span><b>Block 推出本地全双工语音模型 Dessa</b><span class="ov__detail">Block 的研究实验室发布语音模型 Dessa。</span></span></a></li><li><a href="#e-e8763eb181"><span class="ov__no">02</span><span><b>DeepSeek新模型发布带来费用降低</b><span class="ov__detail">DeepSeek推出了新模型。</span></span></a></li><li><a href="#e-eccfb49496"><span class="ov__no">03</span><span><b>Krea 推出 2k 图像编辑 beta，8 秒完成</b><span class="ov__detail">Krea 开放 Krea 3 图像编辑 beta，定位为图像编辑新前沿。</span></span></a></li><li><a href="#e-e6a4620de3"><span class="ov__no">04</span><span><b>宾夕法尼亚州签署法案要求AI生成广告加注标识</b><span class="ov__detail">Pennsylvania Governor Josh Shapiro signed the Artificial Intelligence Deceptive Advertising Act into law on Thursday.</span></span></a></li><li><a href="#e-ece60a7c3c"><span class="ov__no">05</span><span><b>Grok Bot 可在 Slack 中协作</b></span></a></li><li><a href="#e-eaf1a59ad5"><span class="ov__no">06</span><span><b>Sundar Pichai 讲 AI 智能体助力 Google 管理</b><span class="ov__detail">Sundar Pichai 在 Gemini 4 Argon 发布后的访谈中介绍，他用内部运行的智能体自动汇总预训练、中训练、后训练数据等群组的最新进展。</span></span></a></li><li><a href="#e-e9a2fe54db"><span class="ov__no">07</span><span><b>Google 内部命名或从 AI 转向 SI</b><span class="ov__detail">Google 出现了与模型对比相关的内部字符串 build_arena_andwise_si_comparison。</span></span></a></li><li><a href="#e-ead87aa00f"><span class="ov__no">08</span><span><b>TechCrunch 列出多款 AI 项目失败案例</b><span class="ov__detail">TechCrunch 维护了一份持续更新的 AI 失败项目清单。</span></span></a></li></ol>
+        <p class="ov__foot">今日共 26 条事件，
+        其中 21 条经多个独立来源交叉验证。下面是完整列表。</p>
+      </section>
+
+      <section class="section" id="all">
+        <h2 class="section__title">全部消息<span class="section__count">26 条</span></h2>
+        <ol class="stream">
+        <li class="item" id="e-e71ae2b793">
+          <div class="item__head"><span class="item__no">01</span><h3 class="item__title"><a href="https://techcrunch.com/2026/10/24/blocks-new-voice-model-sounds-eerily-human/" target="_blank" rel="noopener noreferrer">Block 推出本地全双工语音模型 Dessa</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-25/e71ae2b7933fd95-m001-caf199a9.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-25/e71ae2b7933fd95-m001-caf199a9.webp" alt="" loading="lazy" decoding="async"></button></div>
+          <div class="item__meta">
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>2 个独立来源</span>
+            <span>10-25 00:00</span>
+            <a href="https://techcrunch.com/2026/10/24/blocks-new-voice-model-sounds-eerily-human/" target="_blank" rel="noopener noreferrer">techcrunch.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Block 的研究实验室发布语音模型 Dessa。</li><li data-kind="fact">Dessa 可在单块 NVIDIA GPU 上本地运行。</li><li data-kind="fact">Dessa 支持全双工对话，能同时说和听。</li><li data-kind="fact">模型完全基于人类语音训练，带有笑声、停顿、哭泣等情感表达。</li><li data-kind="fact">官方称其知识来自对话数据而非搭配大语言模型。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">由于模型可在单块 NVIDIA GPU 本地运行，可能不需要依赖云端计算资源。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">模型的具体参数规模和性能指标未披露。</li><li data-kind="uncertain">模型是否支持除 NVIDIA GPU 和 MacBook M4 Max 之外的其他硬件平台尚不明确。</li><li data-kind="uncertain">模型的正式发布和开放时间未知。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e8763eb181">
+          <div class="item__head"><span class="item__no">02</span><h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE9wWGRLTFhZX2dWcU1QbE5sS2lBdHdERk5BY21xbk1qaUhOV0QtSTVJWW1MdDBHU0NZMktoTTI4NVN6UGRjU0JZczhIaHdBUQ?oc=5" target="_blank" rel="noopener noreferrer">DeepSeek新模型发布带来费用降低</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-25 01:34</span>
+            <a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE9wWGRLTFhZX2dWcU1QbE5sS2lBdHdERk5BY21xbk1qaUhOV0QtSTVJWW1MdDBHU0NZMktoTTI4NVN6UGRjU0JZczhIaHdBUQ?oc=5" target="_blank" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">DeepSeek推出了新模型。</li><li data-kind="fact">新模型的登场使得用户支付给AI的费用减少。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">DeepSeek的新模型可能采用了更具成本效益的技术或定价策略。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">新模型的具体名称是什么。</li><li data-kind="uncertain">新模型的API定价或具体降价幅度是多少。</li><li data-kind="uncertain">新模型的性能表现如何。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-eccfb49496">
+          <div class="item__head"><span class="item__no">03</span><h3 class="item__title"><a href="https://aihot.news/items/xougitbm9f5vrlfghlw4gh7t6" target="_blank" rel="noopener noreferrer">Krea 推出 2k 图像编辑 beta，8 秒完成</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-25 04:53</span>
+            <a href="https://aihot.news/items/xougitbm9f5vrlfghlw4gh7t6" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Krea 开放 Krea 3 图像编辑 beta，定位为图像编辑新前沿。</li><li data-kind="fact">端到端 2k 编辑可在 8 秒内完成，画质对标 Nano Banana Pro 与 GPT Image 2.5，并支持 bounding box 控制和精确多轮编辑。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Krea 3 可能在图像编辑质量和速度上与 Nano Banana Pro 与 GPT Image 2.5 相当。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">该 beta 是否对所有用户开放尚未说明。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e6a4620de3">
+          <div class="item__head"><span class="item__no">04</span><h3 class="item__title"><a href="https://www.theverge.com/ai-artificial-intelligence/1018187/pennsylvania-ai-deceptive-advertising-act" target="_blank" rel="noopener noreferrer">宾夕法尼亚州签署法案要求AI生成广告加注标识</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-25/e6a4620de3facc4-m001-4e992d03.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-25/e6a4620de3facc4-m001-4e992d03.webp" alt="" loading="lazy" decoding="async"></button></div>
+          <div class="item__meta">
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>2 个独立来源</span>
+            <span>10-25 02:32</span>
+            <a href="https://www.theverge.com/ai-artificial-intelligence/1018187/pennsylvania-ai-deceptive-advertising-act" target="_blank" rel="noopener noreferrer">theverge.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Pennsylvania Governor Josh Shapiro signed the Artificial Intelligence Deceptive Advertising Act into law on Thursday.</li><li data-kind="fact">The law requires disclosures on AI-generated ads, including still image, video, audio, or text that has been significantly modified or generated by artificial intelligence.</li><li data-kind="fact">The label must be in the same format as the ad.</li><li data-kind="fact">The law applies to ads regardless of where they are made as long as they are placed in Pennsylvania.</li><li data-kind="fact">Pennsylvania is one of the earliest states to require AI content disclosure.</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">由于法案对相关表述界定模糊且设有豁免，该法案可能在实际执行中面临漏洞或挑战。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">法案中“显著修改”和“明显虚构”等表述的具体界定标准是什么。</li><li data-kind="uncertain">戏仿、讽刺等豁免条款的具体适用范围如何划分。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ece60a7c3c">
+          <div class="item__head"><span class="item__no">05</span><h3 class="item__title"><a href="https://aihot.news/items/ojwqwdgv1z3x0q4e8iuk4cbn9" target="_blank" rel="noopener noreferrer">Grok Bot 可在 Slack 中协作</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-25 03:07</span>
+            <a href="https://aihot.news/items/ojwqwdgv1z3x0q4e8iuk4cbn9" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Grok Bot 可在 Slack 中协作</li><li data-kind="fact">只需把你的 bot 添加到 Slack，就能像队友一样与它们一起工作</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">将 bot 添加到 Slack 后，bot 可以与其他 bot 协作</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">不清楚具体协作功能细节</li><li data-kind="uncertain">不清楚是否需要额外设置</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-eaf1a59ad5">
+          <div class="item__head"><span class="item__no">06</span><h3 class="item__title"><a href="https://aihot.news/items/f9lp2z2y29vunz0j8lrt69ja6" target="_blank" rel="noopener noreferrer">Sundar Pichai 讲 AI 智能体助力 Google 管理</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-25 02:24</span>
+            <a href="https://aihot.news/items/f9lp2z2y29vunz0j8lrt69ja6" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Sundar Pichai 在 Gemini 4 Argon 发布后的访谈中介绍，他用内部运行的智能体自动汇总预训练、中训练、后训练数据等群组的最新进展。</li><li data-kind="fact">该智能体把过去每天一小时的跟进时间压缩下来。</li><li data-kind="fact">该智能体还能深入查看细节。</li><li data-kind="fact">智能体接入算力遥测，向他反馈各产品领域的使用效率与利用率。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">使用内部智能体后，Sundar Pichai 能更高效地监控和管理 Google 的 AI 项目进展。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">智能体具体覆盖哪些产品领域尚未说明。</li><li data-kind="uncertain">算力遥测的技术实现细节未披露。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e9a2fe54db">
+          <div class="item__head"><span class="item__no">07</span><h3 class="item__title"><a href="https://aihot.news/items/ffe3f6xqqeuk8sabpt0iuisrp" target="_blank" rel="noopener noreferrer">Google 内部命名或从 AI 转向 SI</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-25 04:30</span>
+            <a href="https://aihot.news/items/ffe3f6xqqeuk8sabpt0iuisrp" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Google 出现了与模型对比相关的内部字符串 build_arena_andwise_si_comparison。</li><li data-kind="fact">材料列举了 SpaceXSI、MSL 和 SSI 作为带有 SI 的命名示例。</li><li data-kind="fact">材料列举了 MAI &gt; MSI、OpenAI &gt; OpenSI 以及 Apple Intelligence &gt; ASI 的潜在命名变化。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Google 似乎正在将内部命名从 AI 转向 SI。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">这种内部命名转向是否会进一步扩散无法确定。</li><li data-kind="uncertain">MAI、OpenAI、Apple Intelligence 等名称是否会真正转变为 MSI、OpenSI 和 ASI 无法确认。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ead87aa00f">
+          <div class="item__head"><span class="item__no">08</span><h3 class="item__title"><a href="https://aihot.news/items/zx7qypqq6saeqgby7jmn3qca8" target="_blank" rel="noopener noreferrer">TechCrunch 列出多款 AI 项目失败案例</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-25 03:00</span>
+            <a href="https://aihot.news/items/zx7qypqq6saeqgby7jmn3qca8" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">TechCrunch 维护了一份持续更新的 AI 失败项目清单。</li><li data-kind="fact">清单覆盖的项目包括 Relay、Character.ai、Notion Mail、Humane AI Pin、Rabbit R1、Sora 等。</li><li data-kind="fact">这些项目已关闭、转型或远低于预期。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这些项目的市场表现普遍不佳。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">未说明每个项目具体的失败原因。</li><li data-kind="uncertain">未提供清单的更新时间频率。</li><li data-kind="uncertain">未说明是否还有其他未列出的失败项目。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e4c9c04df9">
+          <div class="item__head"><span class="item__no">09</span><h3 class="item__title"><a href="https://aihot.news/items/pfanvhtyrqvzvmgcqoib971nq" target="_blank" rel="noopener noreferrer">Warp CEO 谈 AI 原生产品构建思路</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-25 03:55</span>
+            <a href="https://aihot.news/items/pfanvhtyrqvzvmgcqoib971nq" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Warp 创始人兼 CEO Ayush Sharma（@ayushswrites）谈构建 AI 原生产品的意义。</li><li data-kind="fact">要让每一项任务——从深度税务合规工作流开始——都能由智能体来完成。</li><li data-kind="fact">Warp 利用 AI 智能体为高速成长的公司处理薪酬、税务和人力资源。</li><li data-kind="fact">完整视频见“YC Root Access”YouTube 频道，（链接在评论中）。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Warp 计划先以深度税务合规工作流为切入点，逐步扩展 AI 智能体在薪酬和人力资源等业务的应用。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">未说明使用的具体 AI 技术或模型。</li><li data-kind="uncertain">未说明产品的上线时间或商业化进度。</li><li data-kind="uncertain">未透露已有客户或实际使用案例。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e6c07bf48b">
+          <div class="item__head"><span class="item__no">10</span><h3 class="item__title"><a href="https://aihot.news/items/i0tfbsd3clnmqe8q7q8e6ccve" target="_blank" rel="noopener noreferrer">Meta Muse 正式登陆日本</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-25 02:20</span>
+            <a href="https://aihot.news/items/i0tfbsd3clnmqe8q7q8e6ccve" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Meta Muse 登陆日本</li><li data-kind="fact">在日本，@Muse 只配最好的</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Meta Muse 将在日本市场提供服务</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明 @Muse 的具体含义</li><li data-kind="uncertain">材料未提供 Meta Muse 在日本的详细上线时间</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e5d46b92df">
+          <div class="item__head"><span class="item__no">11</span><h3 class="item__title"><a href="https://aihot.news/items/v14cdk5hahufp3sl2ee37yz0v" target="_blank" rel="noopener noreferrer">新实验室通过转租GPU实现盈利</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-25 01:15</span>
+            <a href="https://aihot.news/items/v14cdk5hahufp3sl2ee37yz0v" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">新实验室的朋友称他们早早锁定了GPU算力。</li><li data-kind="fact">H100/B200/B300的租赁价格此后涨了2–3倍。</li><li data-kind="fact">他们直接把算力转租出去就能印钱。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">可以推断GPU租赁价格上涨为转租提供了利润空间。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明转租后实际盈利金额。</li><li data-kind="uncertain">未明确该实验室是否真的实现了盈利。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-edde4441c3">
+          <div class="item__head"><span class="item__no">12</span><h3 class="item__title"><a href="https://aihot.news/items/cd5s0x8ag3s5fz876ic96bzyu" target="_blank" rel="noopener noreferrer">顶尖工程师的运作方式</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-25 04:32</span>
+            <a href="https://aihot.news/items/cd5s0x8ag3s5fz876ic96bzyu" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">顺便说一句，这就是最顶尖 0.01% 工程师的运作方式。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">文章讨论了最顶尖 0.01% 工程师的运作方式。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">具体的运作方式细节未说明。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ed0fd49641">
+          <div class="item__head"><span class="item__no">13</span><h3 class="item__title"><a href="https://aihot.news/items/hcy7edjdy1jpso1b37l8oci3u" target="_blank" rel="noopener noreferrer">非AI公司凭AI与稀缺资产取胜</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-25 00:25</span>
+            <a href="https://aihot.news/items/hcy7edjdy1jpso1b37l8oci3u" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">你不需要成为一家AI公司才能赢。</li><li data-kind="fact">拥有稀缺实物资产、并把AI用得极其出色的公司，将攫取巨大的经济价值，而无需自建模型。</li><li data-kind="fact">如果每一家铜矿商都能廉价买到同样的冶金智能，那么持久的优势就在于矿藏的质量和开采成本。</li><li data-kind="fact">垂直一体化的服装制造商同样如此（而且后AGI时代人们仍然会穿衣服）。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">非AI公司通过高效使用AI并依托稀缺实物资产，可在无需自行研发模型的情况下获取巨大经济价值。</li><li data-kind="inference">当所有企业都能获得相同的AI工具时，竞争优势主要转向资产质量和运营成本。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明哪些具体AI技术或平台可以廉价获取。</li><li data-kind="uncertain">未明确后AGI时代的具体时间范围和对服装需求的影响程度。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-eeb50cfc1f">
+          <div class="item__head"><span class="item__no">14</span><h3 class="item__title"><a href="https://aihot.news/items/qin27qdcayepr4mhxoahi7m5r" target="_blank" rel="noopener noreferrer">Lauren Tan 在 pstack 指南中撰文</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-25 04:42</span>
+            <a href="https://aihot.news/items/qin27qdcayepr4mhxoahi7m5r" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Lauren Tan 在 pstack 指南里写过这个。</li><li data-kind="fact">两篇材料均来自 rss:aihot-news 与 rss:aihot-news-all，发布时间为2026-10-25 04:42 北京时间。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该事件被多个 rss 源同步发布，可能来源于同一稿件。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">未说明 Lauren Tan 在 pstack 指南中具体写了什么。</li><li data-kind="uncertain">未说明 pstack 指南的内容或用途。</li><li data-kind="uncertain">不确定是否还有其他媒体报道此事。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-efc0ecb801">
+          <div class="item__head"><span class="item__no">15</span><h3 class="item__title"><a href="https://aihot.news/items/cnmi8e4c5td3b5vxkj9exngle" target="_blank" rel="noopener noreferrer">Perplexity 用电脑标注 Johnny Cash 歌词中的 92 个地点</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-25 02:54</span>
+            <a href="https://aihot.news/items/cnmi8e4c5td3b5vxkj9exngle" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Perplexity 用电脑标注 Johnny Cash 歌中 92 个地点</li><li data-kind="fact">两条来源均在2026-10-25 02:54 北京时间发布该标题</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Perplexity 对 Johnny Cash 歌词进行地理位置自动标注</li><li data-kind="inference">这些歌曲共涉及 92 个不同地点</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">未说明使用的具体技术或模型</li><li data-kind="uncertain">未列出涉及的具体歌曲或地点名单</li><li data-kind="uncertain">标注的准确性未知</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ec16c30be3">
+          <div class="item__head"><span class="item__no">16</span><h3 class="item__title"><a href="https://aihot.news/items/s5cqpdr4722jeivrmfoe0g6ve" target="_blank" rel="noopener noreferrer">Gary Marcus 再次质疑 ChatGPT 利弊</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-25 03:32</span>
+            <a href="https://aihot.news/items/s5cqpdr4722jeivrmfoe0g6ve" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Gary Marcus 重提 2023 年 3 月与 Keith Teare 在 Open to Debate 的辩论。</li><li data-kind="fact">Gary Marcus 再次追问 ChatGPT 是否弊大于利。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Gary Marcus 对 ChatGPT 的利弊持疑问态度。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明 Gary Marcus 对 ChatGPT 的最终结论。</li><li data-kind="uncertain">材料未提供原辩论的具体内容。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ee4f3ed10b">
+          <div class="item__head"><span class="item__no">17</span><h3 class="item__title"><a href="https://aihot.news/items/d8jwl31a0p4cw9vnc60s01afw" target="_blank" rel="noopener noreferrer">机器人相互安排会议</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-25 03:35</span>
+            <a href="https://aihot.news/items/d8jwl31a0p4cw9vnc60s01afw" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">材料1的标题为“让机器人互相安排会议”。</li><li data-kind="fact">材料1的内容是让他们为这场会议安排一场会议。</li><li data-kind="fact">材料2的标题与材料1相同，内容亦相同。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">可以推断机器人需要相互协作来安排会议。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">未说明机器人如何实现会议安排的具体方法。</li><li data-kind="uncertain">未说明会议的具体主题或参与者。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ebaa252b67">
+          <div class="item__head"><span class="item__no">18</span><h3 class="item__title"><a href="https://aihot.news/items/zb1thz9nsoxinjvkojrtlvob4" target="_blank" rel="noopener noreferrer">Runway 联合创始人 Anastasis Germanidis 将赴纽约参加 State of AI 2026</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-25 00:15</span>
+            <a href="https://aihot.news/items/zb1thz9nsoxinjvkojrtlvob4" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Anastasis Germanidis 是 Runway 的联合创始人兼联合 CEO。</li><li data-kind="fact">Anastasis Germanidis 将于 10 月 27 日出席在纽约举办的 State of AI 2026 发布见面会。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">他出席该活动可能是为 Runway 进行宣传或业务交流。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">具体的出席时间（时分）未在材料中说明。</li><li data-kind="uncertain">他在会议上的具体角色（演讲、主持或仅参会）不明确。</li><li data-kind="uncertain">是否还有其他 Runway 高层共同出席未知。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e0304e3f3b">
+          <div class="item__head"><span class="item__no">19</span><h3 class="item__title"><a href="https://aihot.news/items/ukda0jmhl5p6nl2lqyl40rzg4" target="_blank" rel="noopener noreferrer">马东锡质疑Kimi公关事件系营销号操盘</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-25 01:15</span>
+            <a href="https://aihot.news/items/ukda0jmhl5p6nl2lqyl40rzg4" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">马东锡（@dongxi_nlp）指称，爆出 Kimi 公关问题的所谓&quot;英推KOL&quot;是关注6000、粉丝6000的账号。</li><li data-kind="fact">为其站台的多个&quot;英推KOL&quot;多为抄袭搬运、什么广告都接的 AI Slop 营销号。</li><li data-kind="fact">马东锡认为该事件有操盘手。</li><li data-kind="fact">马东锡提醒吃瓜群众擦亮眼睛。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该公关事件的曝光可能是由营销号组织或操控的。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">是否真的存在操盘手尚未确认。</li><li data-kind="uncertain">所谓&quot;英推KOL&quot;的真实身份和运营情况未知。</li><li data-kind="uncertain">该账号的关注数和粉丝数是否真实可靠尚不清楚。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e9841dff2b">
+          <div class="item__head"><span class="item__no">20</span><h3 class="item__title"><a href="https://aihot.news/items/fkykb7kkncgmc3gmzj27nvpjz" target="_blank" rel="noopener noreferrer">Hugging Face CEO 调侃 Microducks 过度表现</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-25 00:28</span>
+            <a href="https://aihot.news/items/fkykb7kkncgmc3gmzj27nvpjz" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Hugging Face CEO 调侃 Microducks 用力过猛</li><li data-kind="fact">Microducks 太想给 @JensenHuang 留下印象了</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Hugging Face CEO 对 Microducks 的行为持讽刺态度</li><li data-kind="inference">Microducks 可能在尝试向 @JensenHuang 展示其成果</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">Microducks 具体做了什么导致被调侃</li><li data-kind="uncertain">@JensenHuang 对此是否有回应</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e31a2e6d13">
+          <div class="item__head"><span class="item__no">21</span><h3 class="item__title"><a href="https://www.theverge.com/ai-artificial-intelligence/1018205/blue-planet-iii-authentic-organic-ai" target="_blank" rel="noopener noreferrer">BBC《Blue Planet III》保留粗糙画面彰显真实</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-25/e31a2e6d13027a2-m001-3c41d34c.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-25/e31a2e6d13027a2-m001-3c41d34c.webp" alt="" loading="lazy" decoding="async"></button></div>
+          <div class="item__meta">
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>2 个独立来源</span>
+            <span>10-25 05:29</span>
+            <a href="https://www.theverge.com/ai-artificial-intelligence/1018205/blue-planet-iii-authentic-organic-ai" target="_blank" rel="noopener noreferrer">theverge.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">BBC的Blue Planet III在AI时代刻意保留浮游生物、船只等不完美画面</li><li data-kind="fact">执行制片人 Elizabeth White 表示过去因水质不佳或杂物剪掉的镜头这次全部保留</li><li data-kind="fact">片中出现海豚用海绵堵洞围捕鱼群、鱼类跨物种交流，以及 20 万只螃蟹列队觅食</li><li data-kind="fact">BBC的Blue Planet III通过保留不完美镜头来证明其真实性</li><li data-kind="fact">之前的系列以晶莹剔透的画面著称，看起来几乎不真实</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">保留不完美镜头是为了让观众感受到节目不是由 AI 生成的</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">观众是否会因为这些不完美镜头而认定节目更真实尚未可知</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-eac33f3cae">
+          <div class="item__head"><span class="item__no">22</span><h3 class="item__title"><a href="https://aihot.news/items/p7plzx0145pxfzntu73gjr6km" target="_blank" rel="noopener noreferrer">你会让 bot 周末加班吗？</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-25 01:53</span>
+            <a href="https://aihot.news/items/p7plzx0145pxfzntu73gjr6km" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">文章标题为“你会让 bot 周末加班吗？”</li><li data-kind="fact">文章内容为“你会让 @bot 在周末工作吗？”</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">文章在询问是否让 bot 在周末工作</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">未说明提问者身份</li><li data-kind="uncertain">未说明 bot 指的是哪种 bot</li><li data-kind="uncertain">未说明是否有具体背景或上下文</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e1af3ef1cf">
+          <div class="item__head"><span class="item__no">23</span><h3 class="item__title"><a href="https://hackaday.com/2026/10/24/2026-retrocomputing-challenge-i-would-do-anything-for-serial-data/" target="_blank" rel="noopener noreferrer">2026 Retrocomputing Challenge：解决老电脑串口通信</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-25/e1af3ef1cf32baf-m001-b66d5e57.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-25/e1af3ef1cf32baf-m001-b66d5e57.webp" alt="" loading="lazy" decoding="async"></button></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-25 04:00</span>
+            <a href="https://hackaday.com/2026/10/24/2026-retrocomputing-challenge-i-would-do-anything-for-serial-data/" target="_blank" rel="noopener noreferrer">hackaday.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">2026 Retrocomputing Challenge: I Would Do Anything For Serial Data 于2026年举行。</li><li data-kind="fact">该活动关注将老式计算机与现代机器的串行数据通信。</li><li data-kind="fact">文章指出，高速网络已被视为理所当然，但老式计算机与现代机器通信困难。</li><li data-kind="fact">Jaime 提出了帮助解决该问题的方案。</li><li data-kind="fact">材料来源于 rss:hackaday-com，发布时间为2026-10-25 04:00 北京时间。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">可以推断该挑战旨在促进老电脑的串行数据连接技术。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明 Jaime 提出的具体方案细节。</li><li data-kind="uncertain">挑战的具体赛制和评奖方式未在材料中提及。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ebb0fb6162">
+          <div class="item__head item__head--card"><span class="item__no">24</span><div class="item__cardwrap"><a class="ghm" href="https://github.com/luongnv89/claude-howto" target="_blank" rel="noopener noreferrer"><div class="ghm__kicker">Open source · MIT</div><div class="ghm__title">claude-howto<span class="ghm__owner"> / luongnv89</span></div><p class="ghm__desc">A visual, example-driven guide to Claude Code — from basic concepts to advanced agents, with copy-paste templates that bring immediate value.</p><div class="ghm__rule"></div><div class="ghm__stats"><div class="ghm__stat"><b>44.2k</b><i>Stars</i></div><div class="ghm__stat"><b>5.5k</b><i>Forks</i></div><div class="ghm__stat"><b>25</b><i>Contributors</i></div></div><div class="ghm__langs"><div class="ghm__bar"><span style="width:65.65%;background:#3572A5"></span><span style="width:13.95%;background:#89e051"></span><span style="width:6.55%;background:#563d7c"></span><span style="width:5.85%;background:#8b949e"></span><span style="width:4.81%;background:#f1e05a"></span><span style="width:3.18%;background:#e34c26"></span></div><div class="ghm__legend"><span><em style="background:#3572A5"></em>Python 66%</span><span><em style="background:#89e051"></em>Shell 14%</span><span><em style="background:#563d7c"></em>CSS 7%</span><span><em style="background:#8b949e"></em>Jinja 6%</span><span><em style="background:#f1e05a"></em>JavaScript 5%</span><span><em style="background:#e34c26"></em>HTML 3%</span></div></div></a></div></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>Trending，11 个月前创建</span>
+            <a href="https://github.com/luongnv89/claude-howto" target="_blank" rel="noopener noreferrer">github.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e694504104">
+          <div class="item__head item__head--card"><span class="item__no">25</span><div class="item__cardwrap"><a class="ghm" href="https://github.com/makecindy/cindy" target="_blank" rel="noopener noreferrer"><div class="ghm__kicker">Open source · Apache-2.0</div><div class="ghm__title">cindy<span class="ghm__owner"> / makecindy</span></div><p class="ghm__desc">Consider it done. The open-source AI agent that works out of the box · 想到，就能做到。开源、开箱即用的 AI Agent。</p><div class="ghm__rule"></div><div class="ghm__stats"><div class="ghm__stat"><b>3.8k</b><i>Stars</i></div><div class="ghm__stat"><b>563</b><i>Forks</i></div><div class="ghm__stat"><b>160</b><i>Contributors</i></div></div><div class="ghm__langs"><div class="ghm__bar"><span style="width:96.99%;background:#3178c6"></span><span style="width:2.37%;background:#f1e05a"></span><span style="width:0.65%;background:#8b949e"></span></div><div class="ghm__legend"><span><em style="background:#3178c6"></em>TypeScript 97%</span><span><em style="background:#f1e05a"></em>JavaScript 2%</span><span><em style="background:#8b949e"></em>Swift 1%</span></div></div></a></div></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>Trending，3 个月前创建</span>
+            <a href="https://github.com/makecindy/cindy" target="_blank" rel="noopener noreferrer">github.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e3117de733">
+          <div class="item__head item__head--card"><span class="item__no">26</span><div class="item__cardwrap"><a class="ghm" href="https://github.com/aws/agent-toolkit-for-aws" target="_blank" rel="noopener noreferrer"><div class="ghm__kicker">Open source · Apache-2.0</div><div class="ghm__title">agent-toolkit-for-aws<span class="ghm__owner"> / aws</span></div><p class="ghm__desc">Official, AWS-supported MCP servers, skills, and plugins to help AI agents build on AWS</p><div class="ghm__rule"></div><div class="ghm__stats"><div class="ghm__stat"><b>3k</b><i>Stars</i></div><div class="ghm__stat"><b>392</b><i>Forks</i></div><div class="ghm__stat"><b>120</b><i>Contributors</i></div></div><div class="ghm__langs"><div class="ghm__bar"><span style="width:90.08%;background:#3572A5"></span><span style="width:4.51%;background:#3178c6"></span><span style="width:3.20%;background:#89e051"></span><span style="width:1.41%;background:#e34c26"></span><span style="width:0.79%;background:#8b949e"></span></div><div class="ghm__legend"><span><em style="background:#3572A5"></em>Python 90%</span><span><em style="background:#3178c6"></em>TypeScript 5%</span><span><em style="background:#89e051"></em>Shell 3%</span><span><em style="background:#e34c26"></em>HTML 1%</span><span><em style="background:#8b949e"></em>HCL 1%</span></div></div></a></div></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>Trending，6 个月前创建</span>
+            <a href="https://github.com/aws/agent-toolkit-for-aws" target="_blank" rel="noopener noreferrer">github.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div></div>
+          
+        </li>
+        </ol>
+      </section>
+
+    
+
+    <nav class="pager"><a href="2026-10-24.html"><span>上一期</span>2026-10-24</a><span></span></nav>
+
+    <footer class="foot">
+      <p>本期从 193 个已注册信息源采集，
+      11 个源提供了窗口内的内容，
+      0 个失败，0 个跳过。
+      共 101 条条目进入分析，
+      29 条被判定为重复。</p>
+      <p>大模型：40 次调用 / 74,539 token。
+      摘要由 AI 从原始来源整理，事实、推断与不确定项已分列；
+      <strong>每个条目的链接都来自采集记录，未经模型生成</strong>。请以原始来源为准。</p>
+<p>生成于 2026-10-25 06:23 北京时间</p>
+    </footer>
+  </main>
+
+      <nav class="toc" aria-label="目录">
+        <button class="toc__grip" type="button" data-resize="toc"
+                aria-label="拖动调整目录宽度" title="拖动调整宽度（双击恢复默认）"></button>
+        <p class="toc__title">今日目录</p>
+        <div class="toc__nav">
+          <a href="#overview" class="toc__overview">概览</a>
+          <a href="#e-e71ae2b793"><span class="toc__no">01</span>Block 推出本地全双工语音模型 Dessa</a>
+          <a href="#e-e8763eb181"><span class="toc__no">02</span>DeepSeek新模型发布带来费用降低</a>
+          <a href="#e-eccfb49496"><span class="toc__no">03</span>Krea 推出 2k 图像编辑 beta，8 秒完成</a>
+          <a href="#e-e6a4620de3"><span class="toc__no">04</span>宾夕法尼亚州签署法案要求AI生成广告加注标识</a>
+          <a href="#e-ece60a7c3c"><span class="toc__no">05</span>Grok Bot 可在 Slack 中协作</a>
+          <a href="#e-eaf1a59ad5"><span class="toc__no">06</span>Sundar Pichai 讲 AI 智能体助力 Google 管理</a>
+          <a href="#e-e9a2fe54db"><span class="toc__no">07</span>Google 内部命名或从 AI 转向 SI</a>
+          <a href="#e-ead87aa00f"><span class="toc__no">08</span>TechCrunch 列出多款 AI 项目失败案例</a>
+          <a href="#e-e4c9c04df9"><span class="toc__no">09</span>Warp CEO 谈 AI 原生产品构建思路</a>
+          <a href="#e-e6c07bf48b"><span class="toc__no">10</span>Meta Muse 正式登陆日本</a>
+          <a href="#e-e5d46b92df"><span class="toc__no">11</span>新实验室通过转租GPU实现盈利</a>
+          <a href="#e-edde4441c3"><span class="toc__no">12</span>顶尖工程师的运作方式</a>
+          <a href="#e-ed0fd49641"><span class="toc__no">13</span>非AI公司凭AI与稀缺资产取胜</a>
+          <a href="#e-eeb50cfc1f"><span class="toc__no">14</span>Lauren Tan 在 pstack 指南中撰文</a>
+          <a href="#e-efc0ecb801"><span class="toc__no">15</span>Perplexity 用电脑标注 Johnny Cash 歌词中的 92 个地点</a>
+          <a href="#e-ec16c30be3"><span class="toc__no">16</span>Gary Marcus 再次质疑 ChatGPT 利弊</a>
+          <a href="#e-ee4f3ed10b"><span class="toc__no">17</span>机器人相互安排会议</a>
+          <a href="#e-ebaa252b67"><span class="toc__no">18</span>Runway 联合创始人 Anastasis Germanidis 将赴纽约参加…</a>
+          <a href="#e-e0304e3f3b"><span class="toc__no">19</span>马东锡质疑Kimi公关事件系营销号操盘</a>
+          <a href="#e-e9841dff2b"><span class="toc__no">20</span>Hugging Face CEO 调侃 Microducks 过度表现</a>
+          <a href="#e-e31a2e6d13"><span class="toc__no">21</span>BBC《Blue Planet III》保留粗糙画面彰显真实</a>
+          <a href="#e-eac33f3cae"><span class="toc__no">22</span>你会让 bot 周末加班吗？</a>
+          <a href="#e-e1af3ef1cf"><span class="toc__no">23</span>2026 Retrocomputing Challenge：解决老电脑串口通信</a>
+          <a href="#e-e694504104"><span class="toc__no">25</span>makecindy/cindy — Consider it done. The …</a>
+        </div>
+      </nav>
+</div>
+
+<dialog class="search" id="search-dialog" aria-label="搜索往期内容">
+  <div class="search__form">
+    <input type="search" placeholder="搜索往期内容…" aria-label="搜索关键词" autocomplete="off">
+    <kbd>Esc</kbd>
+  </div>
+  <ul class="search__results"></ul>
+</dialog>
+
+<script type="application/json" id="calendar-data">{"dates": ["2026-10-25", "2026-10-24", "2026-10-23", "2026-10-22", "2026-10-21", "2026-10-20", "2026-10-19", "2026-10-18", "2026-10-17", "2026-10-16", "2026-10-15", "2026-10-14"], "current": "2026-10-25", "today": "2026-10-25"}</script>
+<script type="application/json" id="search-index">[{"date": "2026-10-25", "items": [{"t": "Block 发布本地运行的全双工语音模型 Dessa", "s": "rss:aihot-demo-techcrunch-ai, rss:aihot-news"}, {"t": "DeepSeek新模型登场，用户要给AI付的钱又少了 - 36Kr", "s": "api:news-google-com-search"}, {"t": "Krea 开放 Krea 3 图像编辑 beta，支持 2k 快速生成与多轮精确编辑", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "Pennsylvania will require labels on AI-generated ads", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "Grok Bot 可在 Slack 中协作", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "Sundar Pichai 谈如何用 AI 智能体管理 Google", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "Google 内部命名从 AI 转向 SI？", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "TechCrunch 梳理 AI 坟场：Relay、Character.ai、Humane AI Pin 等失败项目盘点", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "Warp CEO 谈构建 AI 原生产品", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "Meta Muse 登陆日本", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "新实验室靠转租GPU盈利", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "顶尖工程师如何驾驭AI", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "非AI公司如何靠AI与稀缺资产取胜", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "Lauren Tan 谈 pstack 指南写作", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "Perplexity 用电脑标注 Johnny Cash 歌中 92 个地点", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "Gary Marcus 再议：生成式 AI 是利大于弊还是弊大于利？", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "让机器人互相安排会议", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "Runway 联合创始人 Anastasis Germanidis 将于 10 月 27 日出席纽约 State of AI 2026 见面会", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "马东锡质疑Kimi公关事件系营销号操盘", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "Hugging Face CEO 调侃 Microducks 用力过猛", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "Blue Planet III is keeping the rough edges in the age of AI", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "你会让 bot 周末加班吗？", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "2026 Retrocomputing Challenge: I Would Do Anything For Serial Data", "s": "rss:hackaday-com"}, {"t": "luongnv89/claude-howto — A visual, example-driven guide to Claude Code — from basic concepts to advanced agents…", "s": "scrape:github-com-trending"}, {"t": "makecindy/cindy — Consider it done. The open-source AI agent that works out of the box · 想到，就能做到。开源、开箱即用的…", "s": "scrape:github-com-trending"}, {"t": "aws/agent-toolkit-for-aws — Official, AWS-supported MCP servers, skills, and plugins to help AI agents build on AWS", "s": "scrape:github-com-trending"}]}]</script>
+<script src="assets/motion.js" defer></script>
+<div class="lightbox" id="lightbox" hidden>
+  <button type="button" class="lightbox__close" aria-label="关闭">×</button>
+  <img class="lightbox__img" alt="">
+</div>
+<script>
+// Click a picture and it opens in place. No new tab, no scroll jump, no history entry.
+// Escape, the close button, or a click on the backdrop dismisses it.
+(function () {
+  var box = document.getElementById("lightbox");
+  if (!box) return;
+  var img = box.querySelector(".lightbox__img");
+  function open(src) {
+    img.src = src;
+    box.hidden = false;
+    document.body.classList.add("is-lightbox");
+  }
+  function close() {
+    box.hidden = true;
+    img.removeAttribute("src");
+    document.body.classList.remove("is-lightbox");
+  }
+  document.addEventListener("click", function (e) {
+    var thumb = e.target.closest(".item__thumb");
+    if (thumb) { e.preventDefault(); open(thumb.dataset.full); return; }
+    if (e.target === box || e.target.closest(".lightbox__close")) close();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !box.hidden) close();
+  });
+})();
+</script>
+</body>
+</html>
