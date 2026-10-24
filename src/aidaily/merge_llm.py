@@ -40,32 +40,42 @@ only merge; it never drops.
 from __future__ import annotations
 
 import json
+from pathlib import Path
 from dataclasses import dataclass, field
 
 from .llm import LLMError, LLMUnavailable, Router
 from .models import Event
 
-SYSTEM = (
-    "你是 AI 日报的编辑，负责把同一件事的多篇报道合并。\n"
-    "\n"
-    "输入是一批新闻标题，每条有 id。请找出**报道同一件事**的条目，把它们分到一组。\n"
-    "\n"
-    "判定标准：\n"
-    "- 同一款模型/产品的发布，即使标题措辞完全不同（一个写产品名，一个写「全球最大开源模型」）\n"
-    "- 同一笔融资、同一起安全事故、同一份报告\n"
-    "\n"
-    "不是同一件事的例子：\n"
-    "- 同一家公司的两个不同产品发布\n"
-    "- 同一款模型的发布 vs 它的评测/教程/跑分\n"
-    "- 同一主题的两条不同新闻（两家公司各自发模型）\n"
-    "\n"
-    "输出要求：\n"
-    "- 只输出 JSON，形如 "
-    '{"groups": [{"ids": ["a", "b"], "why": "都是 Kimi K3.1 Pro 发布"}]}\n'
-    "- 只列出至少有 2 条的组；不构成重复的条目**不要**出现在输出里\n"
-    "- 每个 id 必须原样照抄输入里给的，不要改写、不要新增\n"
-    "- 不要输出任何解释性文字",
+#: The dedup rules live in `config/dedup_prompt.md` rather than in this file.
+#:
+#: They are the specification for a judgement the model makes every run, and they grow every
+#: time a merge goes wrong -- the three-headline Kimi case, the roundup trap, and so on.
+#: Keeping them in a Markdown file means they can be reviewed and edited as a document instead
+#: of as escaped Python string concatenation.
+PROMPT_PATH = Path(__file__).resolve().parents[2] / "config" / "dedup_prompt.md"
+
+#: Used when the file is missing or empty. A packaging mistake must not silently disable
+#: dedup -- the fallback states the two rules that matter most.
+_FALLBACK = (
+    "你是 AI 日报的编辑。找出报道同一件事的标题，把它们分到一组。",
+    "同一款模型的发布可以措辞完全不同；同公司的不同产品、发布与评测不能合并。",
+    "拿不准就不合并。只输出 JSON：",
+    '{"groups": [{"ids": ["a", "b"], "why": "理由"}]}',
 )
+
+
+def load_prompt(path: Path | None = None) -> str:
+    """The dedup rules, from disk when available."""
+    target = path or PROMPT_PATH
+    try:
+        text = target.read_text(encoding="utf-8").strip()
+    except OSError:
+        return "\n".join(_FALLBACK)
+    return text or "\n".join(_FALLBACK)
+
+
+SYSTEM = load_prompt()
+
 
 USER = """# 待识别的标题（{count} 条）
 
