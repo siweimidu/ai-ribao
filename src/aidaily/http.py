@@ -206,7 +206,27 @@ class HttpClient:
                 return HttpResult(False, url, None, b"", "", "dead", f"{type(exc).__name__}: {exc}"[:200], attempt)
             else:
                 if resp.status_code == 304:
-                    return HttpResult(True, url, 304, b"", "", "not_modified", "304 Not Modified", attempt)
+                    # **A 304 without a cached body is a lost payload.**
+                    #
+                    # This client stores validators (`ETag` / `Last-Modified`) but not the
+                    # response body, so `304 Not Modified` tells us the content on the server
+                    # has not changed since a copy we no longer have. Returning an empty body
+                    # meant the source contributed nothing at all.
+                    #
+                    # Measured 2026-10-24: eight sources answered 304, including
+                    # `rss:daily-juya-uk` which had carried 14 stories the day before. The
+                    # issue dropped from 96 entries to 36 while the collection report counted
+                    # those eight as successes.
+                    #
+                    # The validators are dropped and the request repeated once, unconditionally.
+                    # That costs one extra fetch for a source that genuinely did not change, and
+                    # it is the only way to obtain a body this client never kept.
+                    self.validators.pop(url, None)
+                    if not conditional or attempt > self.retries:
+                        return HttpResult(
+                            True, url, 304, b"", "", "not_modified", "304 Not Modified", attempt
+                        )
+                    continue
 
                 if resp.status_code < 400:
                     if etag := resp.headers.get("ETag"):
