@@ -1,0 +1,58 @@
+fix(fetcher): B站抓取器没注册进 ADAPTERS —— 采集静默跳过
+
+════════════════════════════════════════════════════════════════════════
+一、B 站 0 条的原因
+
+`BilibiliHotFetcher` 写好了、单测过了、源也注册进 `sources/local.yaml` 了，
+**但没加进 `fetchers/__init__.py` 的 `ADAPTERS` 字典。**
+
+后果：采集器解析不到适配器，**静默跳过** ——
+不报错、不写日志、就是 0 条。
+
+这比「源坏了」更糟：坏了的源会报告失败，没注册的源什么都不说。
+
+════════════════════════════════════════════════════════════════════════
+二、修法
+
+  from .bilibili import BilibiliHotFetcher
+  ADAPTERS = { ... "BilibiliHotFetcher": BilibiliHotFetcher }
+
+验证链路：
+
+  注册表读取         api:bilibili-hot-search  enabled=True
+  适配器解析         -> BilibiliHotFetcher
+  真实抓取           verdict=ok items=1
+                     Kimi K3.1 Pro发布
+
+════════════════════════════════════════════════════════════════════════
+三、3 项契约测试
+
+  · **每个启用的源，其 adapter 都必须解析到已知类** —— 这类静默跳过从此会被测试拦下
+  · BilibiliHotFetcher 确实在 ADAPTERS 里
+  · 每个适配器类都要有 `name`（采集报告用它打印失败）
+
+第一条是通用的：以后再加源，忘了注册就会红。
+
+════════════════════════════════════════════════════════════════════════
+四、上一次运行的结果（这次成功）
+
+  40083084075   全部 success
+  10-24: 98 条
+
+  Kimi K3.1 Pro 排第一（rubric 8.5）
+    01 Moonshot AI launches new flagship Kimi K3.1 Pro model
+    02 [AINews] Kimi 3.1 Pro 104BA-2.8T
+    06 3万亿级参数规模 全球最大开源AI大模型上新
+
+  命理类 0 条
+  B站 0 条  ← 就是这次修的
+
+LLM 排序改动生效了：模型给 Kimi 8.5 分，排序键让它落到第一。
+
+════════════════════════════════════════════════════════════════════════
+五、验证
+
+  tests/unit + tests/contract  全绿
+  python -m aidaily run --no-llm --no-deliver
+    events : 100
+    exit   : 0

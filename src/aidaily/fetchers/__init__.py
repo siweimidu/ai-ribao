@@ -11,6 +11,7 @@ from __future__ import annotations
 from ..http import HttpClient
 from ..models import SourceSpec
 from .base import BaseFetcher, SourceResult
+from .bilibili import BilibiliHotFetcher
 from .github_trending import GitHubTrendingFetcher
 from .html import HtmlFetcher
 from .jsonapi import JsonApiFetcher
@@ -29,6 +30,7 @@ ADAPTERS: dict[str, type[BaseFetcher]] = {
     "HtmlFetcher": HtmlFetcher,
     "TavilyFetcher": TavilyFetcher,
     "XTimelineFetcher": XTimelineFetcher,
+    "BilibiliHotFetcher": BilibiliHotFetcher,
 }
 
 #: fallback when the registry names an adapter we do not have yet
