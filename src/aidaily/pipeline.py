@@ -221,6 +221,46 @@ def write_json(path: Path | str, payload: object) -> Path:
 
 
 # --- digest assembly --------------------------------------------------------------
+#: Verbs that mark a release rather than a mention.
+#:
+#: A headline needs one of these *and* a model name to lead the issue: 发布 / 上线 /
+#: 正式推出 describe something new, while 评测 / 实测 / 访谈 describe commentary on
+#: something old.
+_RELEASE_VERBS = (
+    "发布", "上线", "推出", "开源", "正式可用", "开放",
+    "announce", "release", "launch", "ship", "introduce", "available",
+)
+
+#: Model-name patterns that make a release worth leading with.
+#:
+#: Narrower than the focus vocabulary on purpose: a chat-app point release should not outrank
+#: a frontier model, so only named model families are here.
+#: Any of these names a model family. The version may sit anywhere in the headline:
+#: `DeepSeek 发布 V4` puts a verb between the two, so one regex over the whole string cannot
+#: see them as adjacent.
+_MODEL_FAMILY = re.compile(
+    r"(kimi|deepseek|claude|gpt|gemini|qwen|llama|glm|grok|mistral|sora)",
+    re.IGNORECASE,
+)
+
+#: A version marker: `V4`, `K3.1`, `5.5`, `Pro`.
+_VERSION = re.compile(r"\bv?k?\d+(\.\d+)?\b|\d+\.\d+|\bpro\b", re.IGNORECASE)
+
+
+def leads_the_issue(title: str) -> bool:
+    """True when this headline is a named-model release.
+
+    Measured 2026-10-24: Moonshot shipped Kimi K3.1 Pro and it was not in the issue at all.
+    Once collected it would still rank by score, and a release carried by one source loses to
+    a story carried by four. A named-model launch is the day headline by definition, so it is
+    pinned rather than left to the arithmetic.
+    """
+    text = title or ""
+    lower = text.lower()
+    if not (_MODEL_FAMILY.search(lower) and _VERSION.search(text)):
+        return False
+    return any(v in lower for v in _RELEASE_VERBS)
+
 def select_for_digest(
     events: list[Event],
     stage,
@@ -606,7 +646,10 @@ def select_for_digest(
     # A stable sort, so `select_diverse`'s judgement still decides the order *within* a section,
     # which is exactly where the analysis said it belongs: outside a section, no title feature
     # predicts the reference's order; within one, the score is the only signal available.
+    # A named-model release leads, whatever its score. Everything else keeps the section
+    # order and the score inside it.
     chosen.sort(key=lambda r: (
+        0 if leads_the_issue(r.event.title) else 1,
         rank_of(r.components.get("section") or classify(r.event.title)),
         -r.score,
     ))

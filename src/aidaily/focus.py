@@ -215,7 +215,7 @@ _OFF_TOPIC = re.compile(
     # the tag `#ai模型` contains 模型. It is a football result; the `ai` in the tags is
     # something the poster typed, not the subject. 足球/欧冠/赛季 alone is enough to dilute it.
     r"足球|篮球|欧冠|世界杯|联赛|球队|球员|转会|球迷|赛程|比分|夺冠|"
-    r"斯图加特|马德里竞技|皇马|巴萨|曼联|利物浦|拜仁",
+    r"斯图加特|马德里竞技|皇马|巴萨|曼联|利物浦|拜仁|紫微|斗数|八字|风水|算命|占卜|起卦|六爻|奇门|梅花易数|大六壬|塔罗|星盘|星座|黄历|择日|面相|手相|称骨|命理|排盘|四化|古籍原文|天纪|倪海厦",
     re.IGNORECASE,
 )
 
