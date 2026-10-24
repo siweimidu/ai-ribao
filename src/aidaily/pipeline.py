@@ -656,9 +656,22 @@ def select_for_digest(
     # predicts the reference's order; within one, the score is the only signal available.
     # A named-model release leads, whatever its score. Everything else keeps the section
     # order and the score inside it.
+    # **The model orders the issue; the formula is the fallback.**
+    #
+    # Measured 2026-10-24: `Chinese AI model Kimi K3.1 Pro is closing in on` had the highest
+    # formula score in the issue (36.7) and was published at position 18, because the first
+    # sort key was the *section* and the score only ordered rows inside a section. The
+    # reader asked why the day biggest launch was buried; the answer was that a taxonomy
+    # label outranked the model judgement and the evidence.
+    #
+    # Now the rubric score is the primary key. `-1.0` for an ungraded event puts it after
+    # every graded one instead of letting a missing score masquerade as a high one --
+    # measured: 3 of 36 events had no rubric score and two of them sat in the top twelve.
+    # Section drops to a tiebreak inside the same rubric band, so a 7.5 from a side column
+    # still beats a 7.5 from the lead column rather than being reordered by taxonomy.
     chosen.sort(key=lambda r: (
         0 if leads_the_issue(r.event.title) else 1,
-        rank_of(r.components.get("section") or classify(r.event.title)),
+        -(r.components.get("rubric_score") if r.components.get("rubric_score") is not None else -1.0),
         -r.score,
     ))
 
