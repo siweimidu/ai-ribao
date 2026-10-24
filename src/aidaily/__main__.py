@@ -1098,6 +1098,37 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
         # with headroom so a story the formula underrates can still be promoted by the model.
         rubric_scores: dict[str, float] = {}
         rubric_result = None
+        # **One LLM pass that merges the same story told in different words.**
+        #
+        # Measured 2026-10-24: three entries in the issue were one launch --
+        # `Moonshot AI 推出 3 万亿参数 Kim K3.1 Pro`, `Kimi 3.1 Pro 推出 Fable-5.1 开放权重`,
+        # and `全球最大 3 万亿参数开源AI模型上线`. Title similarity between them was 0.18-0.31,
+        # `same_message` returned False on every pair, and only the second named a model. The
+        # third says the world largest open model and never mentions Kimi: no rule over the
+        # text can know that is the same event.
+        #
+        # Merging is also what the reader asked for. A story carried by several outlets is ONE
+        # entry with multi-source corroboration, not three entries repeating each other.
+        #
+        # Runs before scoring so the model grades the merged set rather than three copies of
+        # one story, and before pool_target because merging shrinks the pool.
+        try:
+            from .merge_llm import merge_duplicates
+
+            merge_result = await merge_duplicates(events, router)
+            events = merge_result.events
+            print(f'  LLM 去重        {merge_result.label}')
+            for example in merge_result.examples:
+                print(f"  · 保留 {example['kept'][:50]}")
+                for merged in example['merged'][:3]:
+                    print(f'      合并 {merged}')
+            if merge_result.merged_groups:
+                history_notes.append(
+                    f"LLM 去重 {merge_result.merged_groups} 组"
+                    f"（合并 {merge_result.merged_events} 条）"
+                )
+        except Exception as exc:  # noqa: BLE001 - optional pass, must not fail the run
+            print(f'  LLM 去重        未运行：{type(exc).__name__}', file=sys.stderr)
         pool_target = max(cfg.output.deep.max_items * 2, cfg.output.deep.max_items + 40)
         pool, _ = select_for_digest(
             events, stage, sources, cfg, history=history, pool_only=pool_target,
