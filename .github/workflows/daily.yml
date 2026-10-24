@@ -515,16 +515,21 @@ jobs:
           exit 1
 
   deploy:
-    # `leaderboard` is listed so its commit is on disk before the artifact is packaged: the
-    # job writes `data/digests/site/leaderboard.html`, and deploying without waiting would
-    # publish the previous build page.
+    # **Only `publish` produces the Pages artifact.**
     #
-    # `always()` because the two dependencies now fail independently: a failed publish must
-    # not block deploying a refreshed leaderboard, and vice versa.
+    # `leaderboard` was in this condition for one commit, to let a refreshed leaderboard
+    # deploy even when publish failed. That is wrong: `actions/upload-pages-artifact` runs
+    # inside `publish`, so when publish is skipped there is nothing to deploy and
+    # `deploy-pages` fails with "No artifacts named github-pages were found".
+    #
+    # Measured 2026-10-24 08:35: the gate decided today was already published, collect and
+    # publish were skipped, `leaderboard` succeeded, and the deploy job failed the whole
+    # run. A skipped job must not turn into a red workflow.
+    #
+    # `leaderboard` stays in `needs` so its commit is on disk before publish packages the
+    # artifact, but it can no longer make deploy run on its own.
     needs: [publish, leaderboard]
-    if: always() && (needs.publish.result == 'success' || needs.leaderboard.result == 'success')
-    # No `if:` on gate: `needs.gate` is out of scope here and referencing it made GitHub
-    # reject the entire file (zero jobs were created).
+    if: needs.publish.result == 'success'
     runs-on: ubuntu-latest
     permissions:
       pages: write

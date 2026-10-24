@@ -1,0 +1,54 @@
+fix(ci): deploy 在 publish 跳过时仍然运行 —— 又一次把跳过变成红叉
+
+════════════════════════════════════════════════════════════════════════
+一、这次为什么失败
+
+  40078613834  AI Daily  failure
+
+  gate         success   ← 判定「今天已发布」
+  collect      skipped
+  publish      skipped   ← 没有产出 artifact
+  deploy       failure   ← 但要部署，找不到产物
+
+  Error: No artifacts named "github-pages" were found for this workflow run.
+
+**这是我上一轮改 deploy 依赖时引入的。**
+
+当时为了「模型榜刷新后也能部署」，把条件改成：
+
+  always() && (needs.publish.result == 'success' || needs.leaderboard.result == 'success')
+
+`leaderboard` 根本不产生 Pages 产物 —— 上传发生在 `publish` 里。
+于是 leaderboard 成功就触发 deploy，而 deploy 无物可部。
+
+════════════════════════════════════════════════════════════════════════
+二、修法
+
+  if: needs.publish.result == 'success'
+
+只认真正的产物生产者。`leaderboard` 仍留在 `needs` 里（它的提交要在打包前落盘），
+但不能再单独触发部署。
+
+════════════════════════════════════════════════════════════════════════
+三、5 项契约测试，防止再犯
+
+  · deploy 条件必须要求 publish 成功
+  · deploy 条件**只能**引用 publish（引用别的 job 就可能被跳过任务触发）
+  · publish 确实上传 Pages 产物（上面那条不变量）
+  · publish 仍然受闸门约束
+  · leaderboard 在闸门说「已发布」时仍要运行
+
+第二条是这次的关键：不是「包含 publish」，而是「除 publish 外不许引用别的」。
+
+════════════════════════════════════════════════════════════════════════
+四、这一类问题的共性
+
+**「某个 job 被跳过」必须不能变成整个工作流失败。**
+
+三次同类事故：
+
+  1. leaderboard 让它自己失败 -> 部署也跟着失败
+  2. deploy 引用 leaderboard  -> 跳过 publish 时无产物可部
+  3. 合并自检 except 吞错     -> 静默失效
+
+现在有契约测试盯着第 2 类。

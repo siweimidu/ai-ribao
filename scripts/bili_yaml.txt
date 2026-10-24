@@ -1,0 +1,20 @@
+- source_id: api:bilibili-hot-search
+  name: B站热搜（AI 相关）
+  url: https://api.bilibili.com/x/web-interface/search/square?limit=50
+  category: social
+  language: zh
+  source_type: api
+  fetch_method: api
+  adapter: BilibiliHotFetcher
+  enabled: true
+  priority: 3
+  polling_interval: 3h
+  timeout_s: 20
+  dedup_group: bilibili
+  notes: 官方热搜接口，每次 50 条，抓取时用 focus 判定过滤到 AI 相关。实测 50 条里通常只有 1-3 条与 AI 有关。
+  why: 用户要求覆盖 B 站热点。B 站是中文社区里 AI 话题发酵最快的地方之一，
+    但热搜以电竞、综艺、游戏为主，因此必须在采集阶段就按 AI 相关性过滤，
+    否则会淹掉整个池子。实测该接口能抓到「Kimi K3.1 Pro发布」这类一线发布消息。
+  found_in:
+  - 用户提供：https://www.bilibili.com 热搜榜
+  license_note: 数据来自 B 站公开接口，仅用于聚合展示，须保留原站链接。
