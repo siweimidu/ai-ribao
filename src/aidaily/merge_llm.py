@@ -40,6 +40,7 @@ only merge; it never drops.
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from dataclasses import dataclass, field
 
@@ -172,6 +173,113 @@ def _merge_into(target, absorbed):
     return target
 
 
+#: A parameter count, written the ways outlets actually write it.
+#:
+#: `万亿` / `T` are trillions, `B` is billions. The unit must sit immediately after the digits,
+#: so "300 亿美元融资" -- funding, not parameters -- does not match.
+_SCALE = re.compile(r"(\d+(?:\.\d+)?)\s*(万亿|[tT]|[bB])(?![a-zA-Z])")
+
+
+def _scale_key(title):
+    """The parameter scale a headline names, rounded to a band, or empty.
+
+    Two outlets write one model as `3万亿` and `2.8T`; a third writes `2800B`. They are the same
+    thing stated at different precision, so the key is the count rounded to whole trillions:
+
+        3万亿 -> 3.0T
+        2.8T  -> 2.8T  -> rounds to 3
+        2800B -> 2.8T  -> rounds to 3
+
+    Rounding is what makes those collide while keeping a 3T and a 4T model apart, which is the
+    distinction that matters.
+    """
+    match = _SCALE.search(title or "")
+    if not match:
+        return ""
+    number, unit = match.group(1), match.group(2).lower()
+    try:
+        value = float(number)
+    except ValueError:
+        return ""
+    trillions = value if unit in ("万亿", "t") else value / 1000.0
+    if trillions < 0.5:
+        return ""
+    return "scale:%dT" % round(trillions)
+
+
+def _bucket(events, cap):
+    """Group events so that ones naming the same entity share a batch.
+
+    **A fixed slice is why the merge missed.** Measured 2026-10-24: three Kimi headlines
+    describing one launch were merged correctly, but a fourth -- `3万亿级参数规模
+    全球最大开源AI模型上新` -- landed in a different batch and survived as its own entry.
+    The model can only merge what it can see together, and a fixed 40-item slice put
+    related events on opposite sides of the cut.
+
+    So events sharing an entity are placed in the same bucket first, and buckets are then
+    packed up to `cap`. Ordering is by entity rather than by score, because the goal here is
+    grouping, not ranking -- ranking happens after the merge.
+
+    An event with no recognised entity is packed with whatever else has room.
+    """
+    from .entities import extract_entities
+
+    groups = {}
+    loose = []
+
+    for event in events:
+        try:
+            names = {n.lower() for n in extract_entities(event.title)}
+        except Exception:
+            names = set()
+        # **Two keys, because a headline can identify a model without naming it.**
+        #
+        # Measured 2026-10-24: `3万亿级参数规模 全球最大开源AI模型上新` is the Kimi K3.1 Pro
+        # launch, but it names no entity the extractor recognises -- only a parameter count.
+        # It landed in a different batch from the three headlines that do name Kimi, and
+        # survived as a separate entry after the other three were merged.
+        #
+        # **The scale is the primary key when it is present.**
+        #
+        # Measured after the first attempt at this fix: three headlines that all named `3万亿`
+        # still split across batches, because each had a *different* first entity
+        # (`kimi`, `moonshot`, `开源`) and the scale was only consulted when no entity was
+        # found. A parameter count that large is rare enough on one day that it identifies the
+        # model more reliably than the entity string does.
+        #
+        # So: scale first, entity second, and no key at all goes to the loose pile.
+        scale = _scale_key(event.title)
+        key = scale or (sorted(names)[0] if names else "")
+        if not key:
+            loose.append(event)
+            continue
+        groups.setdefault(key, []).append(event)
+
+    buckets = []
+    current = []
+    for key in sorted(groups):
+        members = groups[key]
+        if len(members) > cap:
+            if current:
+                buckets.append(current)
+                current = []
+            buckets.append(members[:cap])
+            loose.extend(members[cap:])
+            continue
+        if len(current) + len(members) > cap:
+            buckets.append(current)
+            current = []
+        current.extend(members)
+    if current:
+        buckets.append(current)
+
+    for event in loose:
+        if not buckets or len(buckets[-1]) >= cap:
+            buckets.append([])
+        buckets[-1].append(event)
+
+    return [b for b in buckets if len(b) >= 2]
+
 async def merge_duplicates(
     events: list[Event],
     router,
@@ -197,8 +305,7 @@ async def merge_duplicates(
     lock = asyncio.Lock()
 
     size = max(2, batch)
-    chunks = [events[i:i + size] for i in range(0, len(events), size)]
-    chunks = [c for c in chunks if len(c) >= 2]
+    chunks = _bucket(events, size)
 
     async def one(chunk: list[Event]) -> None:
         messages = [

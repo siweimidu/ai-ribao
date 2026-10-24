@@ -201,3 +201,44 @@ def test_a_merged_event_passes_the_factcheck_invariant() -> None:
     _merge_into(keep, [_event("e2", "B", sources=("s2",))])
     # `factcheck` rejects exactly this combination.
     assert not (keep.evidence_level == "single_source" and keep.independent_source_count > 1)
+
+
+def test_the_scale_is_the_bucket_key_when_present() -> None:
+    """A parameter count identifies a model more reliably than an entity string.
+
+    Measured 2026-10-24: three headlines all saying 3万亿 still split across batches because
+    each had a different first entity (kimi / moonshot / 开源) and the scale was only consulted
+    when no entity was found.
+    """
+    from aidaily.merge_llm import _bucket
+
+    events = [
+        _event("e1", "Moonshot AI launches Kimi K3.1 Pro with 2.8T parameters"),
+        _event("e2", "Kimi迭代3万亿参数大模型 首次推出Pro版本模型"),
+        _event("e3", "3万亿级参数规模 全球最大开源AI模型上新"),
+        _event("e4", "OpenAI CEO 最强内部模型暂难开源"),
+    ]
+    buckets = _bucket(events, 10)
+    together = [b for b in buckets if len([e for e in b if "3" in e.title or "2.8" in e.title]) >= 3]
+    assert together, "the three scale-3T headlines must share a batch"
+
+
+def test_a_funding_amount_is_not_a_parameter_scale() -> None:
+    """`300 亿美元融资` is money, not a model size."""
+    from aidaily.merge_llm import _scale_key
+
+    assert _scale_key("OpenAI 完成 300 亿美元融资") == ""
+    assert _scale_key("Claude 5.5 发布") == ""
+
+
+def test_the_same_scale_written_three_ways_normalises() -> None:
+    from aidaily.merge_llm import _scale_key
+
+    assert _scale_key("3万亿参数") == _scale_key("2.8T parameters") == _scale_key("2800B")
+
+
+def test_a_small_model_is_not_bucketed_by_a_rounding_artefact() -> None:
+    """70B rounds to 0T, which must not collide with a real multi-trillion model."""
+    from aidaily.merge_llm import _scale_key
+
+    assert _scale_key("某开源模型 70B 发布") == ""
