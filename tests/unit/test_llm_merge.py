@@ -101,3 +101,65 @@ def test_the_pass_runs_before_scoring() -> None:
 
     source = inspect.getsource(entry)
     assert source.index("merge_duplicates") < source.index("score_events(")
+
+
+def test_batches_run_concurrently() -> None:
+    """Ten batches at 0.5s each must not take five seconds."""
+    import asyncio
+    import time
+
+    from aidaily.merge_llm import merge_duplicates
+
+    class Slow:
+        async def complete_json(self, messages, **kw):
+            await asyncio.sleep(0.4)
+            return {"groups": []}
+
+    events = [_event(f"e{i}", f"标题 {i}") for i in range(10)]
+
+    async def run():
+        start = time.monotonic()
+        result = await merge_duplicates(events, Slow(), batch=2, timeout_s=10, concurrency=5)
+        return result, time.monotonic() - start
+
+    result, elapsed = asyncio.run(run())
+    assert result.calls == 5
+    assert elapsed < 1.8, f"{elapsed:.2f}s for five 0.4s batches is sequential"
+
+
+def test_a_slow_provider_costs_the_merge_not_the_issue() -> None:
+    """Measured 2026-10-24: the first run spent over an hour here."""
+    import asyncio
+    import time
+
+    from aidaily.merge_llm import merge_duplicates
+
+    class Hanging:
+        async def complete_json(self, messages, **kw):
+            await asyncio.sleep(60)
+
+    events = [_event(f"e{i}", f"标题 {i}") for i in range(6)]
+
+    async def run():
+        start = time.monotonic()
+        result = await merge_duplicates(events, Hanging(), batch=2, timeout_s=1.0)
+        return result, time.monotonic() - start
+
+    result, elapsed = asyncio.run(run())
+    assert elapsed < 5.0, f"{elapsed:.2f}s exceeds the deadline"
+    assert result.failed
+    assert len(result.events) == len(events), "a timeout must not drop events"
+
+
+def test_the_deadline_is_shorter_than_a_publish_step() -> None:
+    """The whole pass must fit comfortably inside the job timeout."""
+    from aidaily.merge_llm import MERGE_TIMEOUT_SECONDS
+
+    assert 30 <= MERGE_TIMEOUT_SECONDS <= 600
+
+
+def test_concurrency_is_bounded() -> None:
+    """The relay pool rotates keys per call; a wide fan-out would burn them all at once."""
+    from aidaily.merge_llm import MERGE_CONCURRENCY
+
+    assert 1 <= MERGE_CONCURRENCY <= 8

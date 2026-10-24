@@ -93,6 +93,19 @@ GROUP_MAX_TOKENS = 2000
 #: Titles per call. A batch that is too large makes the comparison quadratic in the model head
 #: and the output long; 40 keeps one call under a few seconds.
 BATCH = 40
+#: Hard ceiling on the whole pass. A slow provider must cost the merge, not the issue.
+#:
+#: Measured 2026-10-24: the run that first shipped this pass spent over an hour in `publish`,
+#: far past the usual ten to fifteen minutes. The batches were sequential, each asking one
+#: model to compare forty headlines against each other -- the most expensive prompt in the
+#: pipeline -- and a provider that is merely slow (not failing) has no timeout of its own.
+#:
+#: Two fixes: batches run concurrently, and the whole pass has a deadline.
+MERGE_TIMEOUT_SECONDS = 180
+
+#: How many batches may be in flight. The rubric stage uses a similar number; the relay pool
+#: rotates keys per call, so a handful in parallel spreads across accounts.
+MERGE_CONCURRENCY = 3
 
 
 @dataclass
@@ -146,25 +159,35 @@ def _merge_into(target, absorbed):
     return target
 
 
-async def merge_duplicates(events, router, *, batch=BATCH):
+async def merge_duplicates(
+    events: list[Event],
+    router,
+    *,
+    batch: int = BATCH,
+    timeout_s: float = MERGE_TIMEOUT_SECONDS,
+    concurrency: int = MERGE_CONCURRENCY,
+) -> MergeResult:
     """Group events that report one story. Never raises; a failure returns the input.
 
     Only merges. An event the model did not mention survives untouched, so a partial answer
     costs nothing and a wrong answer costs a merge rather than a lost story.
     """
+    import asyncio
+
     result = MergeResult(events=list(events))
     if router is None or len(events) < 2:
         result.failed = router is None
         return result
 
     by_id = {e.event_id: e for e in events}
-    absorbed = set()
+    absorbed: set[str] = set()
+    lock = asyncio.Lock()
 
     size = max(2, batch)
-    for start in range(0, len(events), size):
-        chunk = events[start:start + size]
-        if len(chunk) < 2:
-            continue
+    chunks = [events[i:i + size] for i in range(0, len(events), size)]
+    chunks = [c for c in chunks if len(c) >= 2]
+
+    async def one(chunk: list[Event]) -> None:
         messages = [
             {"role": "system", "content": SYSTEM},
             {"role": "user", "content": USER.format(count=len(chunk), items=_listing(chunk))},
@@ -173,34 +196,57 @@ async def merge_duplicates(events, router, *, batch=BATCH):
             got = await router.complete_json(
                 messages, temperature=0.0, max_tokens=GROUP_MAX_TOKENS
             )
-            result.calls += 1
-        except Exception:
-            result.failed = True
-            continue
+        except Exception:  # noqa: BLE001 - the pass is optional by design
+            async with lock:
+                result.failed = True
+            return
 
         if not isinstance(got, dict):
-            result.failed = True
-            continue
+            async with lock:
+                result.failed = True
+            return
 
-        for group in got.get("groups") or []:
-            if not isinstance(group, dict):
-                continue
-            ids = [str(i) for i in (group.get("ids") or []) if str(i) in by_id]
-            ids = [i for i in ids if i not in absorbed]
-            if len(ids) < 2:
-                continue
-            keep = by_id[ids[0]]
-            rest = [by_id[i] for i in ids[1:]]
-            _merge_into(keep, rest)
-            absorbed.update(ids[1:])
-            result.merged_groups += 1
-            result.merged_events += len(ids) - 1
-            if len(result.examples) < 5:
-                result.examples.append({
-                    "kept": keep.title[:80],
-                    "merged": [e.title[:60] for e in rest],
-                    "why": str(group.get("why") or "")[:80],
-                })
+        async with lock:
+            result.calls += 1
+            for group in got.get("groups") or []:
+                if not isinstance(group, dict):
+                    continue
+                ids = [str(i) for i in (group.get("ids") or []) if str(i) in by_id]
+                ids = [i for i in ids if i not in absorbed]
+                if len(ids) < 2:
+                    continue
+                keep = by_id[ids[0]]
+                rest = [by_id[i] for i in ids[1:]]
+                _merge_into(keep, rest)
+                absorbed.update(ids[1:])
+                result.merged_groups += 1
+                result.merged_events += len(ids) - 1
+                if len(result.examples) < 5:
+                    result.examples.append({
+                        "kept": keep.title[:80],
+                        "merged": [e.title[:60] for e in rest],
+                        "why": str(group.get("why") or "")[:80],
+                    })
+
+    sem = asyncio.Semaphore(max(1, concurrency))
+
+    async def guarded(chunk: list[Event]) -> None:
+        async with sem:
+            await one(chunk)
+
+    try:
+        tasks = [asyncio.create_task(guarded(c)) for c in chunks]
+        done, pending = await asyncio.wait(tasks, timeout=max(1.0, timeout_s))
+        # **Cancel what is still running.** `wait_for(gather(...))` cancels the gather, not the
+        # tasks inside it, so a hanging provider still burned its full timeout before the
+        # function returned -- measured 5.0s for a 1.0s deadline.
+        for task in pending:
+            task.cancel()
+        if pending:
+            result.failed = True
+            await asyncio.gather(*pending, return_exceptions=True)
+    except Exception:  # noqa: BLE001
+        result.failed = True
 
     result.events = [e for e in events if e.event_id not in absorbed]
     return result
