@@ -208,63 +208,95 @@ def _scale_key(title):
 
 
 def _bucket(events, cap):
-    """Group events so that ones naming the same entity share a batch.
+    """Group events so that two that share *any* identifying feature share a batch.
 
-    **A fixed slice is why the merge missed.** Measured 2026-10-24: three Kimi headlines
-    describing one launch were merged correctly, but a fourth -- `3万亿级参数规模
-    全球最大开源AI模型上新` -- landed in a different batch and survived as its own entry.
-    The model can only merge what it can see together, and a fixed 40-item slice put
-    related events on opposite sides of the cut.
+    ## Why a partition failed twice
 
-    So events sharing an entity are placed in the same bucket first, and buckets are then
-    packed up to `cap`. Ordering is by entity rather than by score, because the goal here is
-    grouping, not ranking -- ranking happens after the merge.
+    The first version sliced at a fixed 40. Measured: `3万亿级参数规模 全球最大开源AI模型上新`
+    fell on the far side of the cut from three headlines that do name Kimi, survived on its
+    own, and the issue carried one launch four times.
 
-    An event with no recognised entity is packed with whatever else has room.
+    The second version bucketed by a single key. Measured: `Kimi 3.1 Pro 推出 Fable-5.1 开放权重`
+    names no parameter count, so it keyed on its entity while the other three keyed on
+    `scale:3T` -- and the split came back.
+
+    **A single key cannot express "these belong together".** Two headlines about one launch may
+    share an entity, or a parameter count, or neither on their own while a third connects both.
+    That is a connected-components problem, so this builds a union-find over every feature a
+    title carries.
+
+    ## What a feature is
+
+    * each recognised entity (`kimi`, `moonshot`, `fable-5.1`)
+    * the parameter scale when present (`scale:3T`)
+
+    Two events are unioned when they share any one of them. The buckets are the components,
+    packed up to `cap`. An event with no features goes to the loose pile.
+
+    This over-groups on purpose: a batch holding two unrelated stories costs nothing, because
+    the model decides what to merge. A batch that hides one story from its sibling is the
+    failure that shipped four times.
     """
     from .entities import extract_entities
 
-    groups = {}
-    loose = []
-
-    for event in events:
+    def features(event):
         try:
             names = {n.lower() for n in extract_entities(event.title)}
         except Exception:
             names = set()
-        # **Two keys, because a headline can identify a model without naming it.**
-        #
-        # Measured 2026-10-24: `3万亿级参数规模 全球最大开源AI模型上新` is the Kimi K3.1 Pro
-        # launch, but it names no entity the extractor recognises -- only a parameter count.
-        # It landed in a different batch from the three headlines that do name Kimi, and
-        # survived as a separate entry after the other three were merged.
-        #
-        # **The scale is the primary key when it is present.**
-        #
-        # Measured after the first attempt at this fix: three headlines that all named `3万亿`
-        # still split across batches, because each had a *different* first entity
-        # (`kimi`, `moonshot`, `开源`) and the scale was only consulted when no entity was
-        # found. A parameter count that large is rare enough on one day that it identifies the
-        # model more reliably than the entity string does.
-        #
-        # So: scale first, entity second, and no key at all goes to the loose pile.
         scale = _scale_key(event.title)
-        key = scale or (sorted(names)[0] if names else "")
-        if not key:
+        if scale:
+            names = names | {scale}
+        return names
+
+    by_feature = {}
+    loose = []
+    for index, event in enumerate(events):
+        feats = features(event)
+        if not feats:
             loose.append(event)
             continue
-        groups.setdefault(key, []).append(event)
+        for feature in feats:
+            by_feature.setdefault(feature, []).append(index)
+
+    parent = list(range(len(events)))
+
+    def find(x):
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    def union(a, b):
+        ra, rb = find(a), find(b)
+        if ra != rb:
+            parent[rb] = ra
+
+    for indices in by_feature.values():
+        for other in indices[1:]:
+            union(indices[0], other)
+
+    loose_ids = {id(e) for e in loose}
+    components = {}
+    for index, event in enumerate(events):
+        if id(event) in loose_ids:
+            continue
+        components.setdefault(find(index), []).append(event)
 
     buckets = []
     current = []
-    for key in sorted(groups):
-        members = groups[key]
+    for root in sorted(components):
+        members = components[root]
         if len(members) > cap:
             if current:
                 buckets.append(current)
                 current = []
-            buckets.append(members[:cap])
-            loose.extend(members[cap:])
+            for start in range(0, len(members), cap):
+                piece = members[start:start + cap]
+                if len(piece) >= 2:
+                    buckets.append(piece)
+                else:
+                    loose.extend(piece)
             continue
         if len(current) + len(members) > cap:
             buckets.append(current)
@@ -279,6 +311,7 @@ def _bucket(events, cap):
         buckets[-1].append(event)
 
     return [b for b in buckets if len(b) >= 2]
+
 
 async def merge_duplicates(
     events: list[Event],

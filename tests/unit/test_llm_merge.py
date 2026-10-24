@@ -242,3 +242,51 @@ def test_a_small_model_is_not_bucketed_by_a_rounding_artefact() -> None:
     from aidaily.merge_llm import _scale_key
 
     assert _scale_key("某开源模型 70B 发布") == ""
+
+
+def test_a_missing_parameter_count_does_not_split_the_group() -> None:
+    """`Kimi 3.1 Pro 推出 Fable-5.1` names no scale, so a scale-first partition lost it.
+
+    The union-find groups by *any* shared feature, so an event that shares an entity with one
+    sibling and a scale with another still lands in one batch.
+    """
+    from aidaily.merge_llm import _bucket
+
+    events = [
+        _event("e1", "Moonshot AI 推出 3 万亿参数 Kim K3.1 Pro"),
+        _event("e2", "Kimi 3.1 Pro 推出 Fable-5.1 开放权重与高速 API"),
+        _event("e3", "3万亿级参数规模 全球最大开源AI模型上新"),
+        _event("e4", "OpenAI 完成 300 亿美元融资"),
+    ]
+    buckets = _bucket(events, 10)
+    sizes = [len(b) for b in buckets if any("Kimi" in e.title or "3万亿" in e.title for e in b)]
+    assert sizes, "the Kimi headlines must share a batch"
+    assert max(sizes) >= 3, sizes
+
+
+def test_a_chain_connects_events_that_share_no_feature_pairwise() -> None:
+    """e1-e2 share an entity, e2-e3 share a scale: all three belong together."""
+    from aidaily.merge_llm import _bucket
+
+    events = [
+        _event("a", "Kimi K3.1 Pro 发布"),
+        _event("b", "Kimi 开源 3万亿参数模型"),
+        _event("c", "3万亿参数模型登顶榜单"),
+    ]
+    buckets = _bucket(events, 10)
+    assert any(len(b) == 3 for b in buckets), [len(b) for b in buckets]
+
+
+def test_over_grouping_is_acceptable() -> None:
+    """A batch holding two unrelated stories costs nothing; the model decides what to merge.
+
+    A batch that hides one story from its sibling is the failure that shipped four times.
+    """
+    from aidaily.merge_llm import _bucket
+
+    events = [_event(f"e{i}", f"无关标题 {i}") for i in range(6)]
+    events.append(_event("k1", "Kimi K3.1 Pro 发布"))
+    events.append(_event("k2", "Kimi 推出新版本"))
+    buckets = _bucket(events, 40)
+    joined = [b for b in buckets if any("Kimi" in e.title for e in b)]
+    assert joined and len(joined[0]) >= 2
