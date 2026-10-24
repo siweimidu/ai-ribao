@@ -615,9 +615,17 @@ def select_for_digest(
 
     # Final invariant at the publication boundary: diversity selection is permitted to reorder
     # or omit candidates, never to restore one below the high-relevance floor.
+    # **The pass-through list is part of the rule, not an exception to it.**
+    #
+    # This assertion was written before cur curated digests could skip the gate, so it
+    # failed the whole publish with `select_diverse reintroduced stories below the AI
+    # relevance floor` -- three times, on 2026-10-24. The two rules are consistent once
+    # the assertion asks the same question the gate asks: is this below the floor *and*
+    # not from a source the user allow-listed?
     violating = [
         row.event.title for row in chosen
         if not passes_ai_relevance(row.components.get("focus"))
+        and not is_passthrough(row.event)
     ]
     if violating:
         raise AssertionError(
@@ -696,7 +704,8 @@ def select_for_digest(
             for row in chosen
         }
         suspicions = _inspect_merges(
-            Digest(date=today or "", top_events=[row.event for row in chosen]),
+            [row.event for row in chosen],
+
             titles_by_event,
         )
         report["merge_audit"] = _merge_report(suspicions)

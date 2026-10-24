@@ -67,14 +67,15 @@ def _entities(text: str) -> set[str]:
         return set()
 
 
-def inspect(digest: Digest, headlines: dict[str, list[str]]) -> list[Suspicion]:
+def inspect(events, headlines: dict[str, list[str]]) -> list[Suspicion]:
     """Events whose members do not look like one story.
 
+    `events` is any iterable of events; only `event_id`, `title` and `member_item_ids` are read.
     `headlines` maps `event_id` to the member titles, which the caller has and this module does
     not: an `Event` keeps member *ids*, and the titles live on the items.
     """
     out: list[Suspicion] = []
-    for event in digest.top_events:
+    for event in events:
         titles = [t for t in (headlines.get(event.event_id) or []) if t and t.strip()]
         if len(titles) < 2:
             continue
