@@ -412,8 +412,36 @@ class PublishedHistory:
                 for e in events
             ],
         }
-        with self.path.open("a", encoding="utf-8") as handle:
-            handle.write(json.dumps(payload, ensure_ascii=False) + "\n")
+        # **One line per date, not one line per run.**
+        #
+        # This appended unconditionally. Measured 2026-10-24, after four re-runs of the same
+        # date: the file held four records for 2026-10-24 (36, 88, 98 and 108 events), and the
+        # third run deduplicated its own stories against the second run's output. The merged
+        # Kimi K3.1 Pro entry -- four headlines folded into one with multi-source corroboration
+        # -- was removed as "已发布过" by the history of the run that had produced it.
+        #
+        # Re-running a date means replacing that date's record. The earlier rows are dropped
+        # before the new one is written, so the file always describes the last published
+        # version of each issue.
+        existing = []
+        if self.path.exists():
+            for line in self.path.read_text(encoding="utf-8").splitlines():
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    row = json.loads(line)
+                except ValueError:
+                    continue
+                if str(row.get("date") or "") != date:
+                    existing.append(row)
+
+        self.path.write_text(
+            "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in existing)
+            + json.dumps(payload, ensure_ascii=False)
+            + "\n",
+            encoding="utf-8",
+        )
 
         # Keep the in-memory view consistent so a second call in the same run sees them.
         for row in payload["events"]:
