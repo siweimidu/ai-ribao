@@ -271,6 +271,9 @@ def select_for_digest(
     history: PublishedHistory | None = None,
     today: str | None = None,
     rubric_scores: dict[str, float] | None = None,
+    #: How the rubric stage ended: llm, degraded, or formula. Recorded so the
+    #: archive can say whether an ordering was a model decision or a fallback.
+    rubric_mode: str = "",
     rubric_sections: dict[str, str] | None = None,
     pool_only: int | None = None,
 ) -> tuple[list[Event], dict]:
@@ -404,6 +407,11 @@ def select_for_digest(
         rubric_report = {
             "rubric_scored": graded,
             "rubric_scored_total": len(rubric_scores),
+            # How the order was decided. llm = the model graded enough of the pool to
+            # order it; degraded = it graded most of it; formula = it contributed nothing
+            # usable and the formula took over. A reader can tell an odd ordering from a
+            # model decision, which are different problems to fix.
+            "rubric_mode": mode,
         }
 
     # **Section first, score second.** This is the reverse of a pure score ranking and it is the

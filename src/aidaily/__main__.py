@@ -1113,6 +1113,18 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
         )
         rubric_scores = rubric_result.scores
 
+        # **How the order was decided belongs in the log, not only in the JSON.**
+        #
+        # A reader who sees an odd ordering needs to know whether the model chose it
+        # or it fell back to the formula. Those are different problems: one is a
+        # grading question, the other is an outage.
+        _mode_label = {
+            "llm": "模型排序",
+            "degraded": "模型排序（部分降级）",
+            "formula": "公式排序（模型不可用）",
+        }
+        print("  排序依据        %s" % _mode_label.get(rubric_result.mode, rubric_result.mode))
+
         rubric_note = (
             f"rubric 评分 {rubric_result.coverage}"
             f"（标准来源：{rubric_result.profile_source}）"
@@ -1129,6 +1141,7 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
         selected, selection_report = select_for_digest(
             events, stage, sources, cfg, history=history, rubric_scores=rubric_scores,
             rubric_sections=getattr(rubric_result, "sections", None),
+            rubric_mode=getattr(rubric_result, "mode", ""),
             now=run_now, today=run_date,
         )
 

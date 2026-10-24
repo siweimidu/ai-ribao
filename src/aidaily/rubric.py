@@ -154,6 +154,22 @@ class RubricResult:
     #: Ids that came back unscored after every attempt, and so kept their formula score.
     unscored: int = 0
     profile_source: str = "default"
+    #: How the ordering was decided for this issue.
+    #:
+    #:   "llm"      -- the model graded enough of the pool; its scores order the issue.
+    #:   "degraded" -- the model graded most of the pool but some batches failed. Graded rows
+    #:                 lead, ungraded ones follow -- the ordering still reflects the model,
+    #:                 partially.
+    #:   "formula"  -- the model contributed nothing usable. The formula orders the issue.
+    #:
+    #: Recorded rather than logged: a reader of the archive can tell whether an odd ordering
+    #: was a model decision or a fallback, which are different problems to fix.
+    mode: str = "llm"
+
+    @property
+    def is_degraded(self) -> bool:
+        """True when the model did not decide the whole ordering."""
+        return self.mode != "llm"
 
     @property
     def disagreement(self) -> float:
@@ -302,6 +318,10 @@ async def score_events(
     result.profile_source = source
 
     if router is None or not events:
+        # No model means no model judgement. Returning early with the default mode
+        # would report a formula ordering as a model decision -- the one thing this
+        # field exists to distinguish.
+        result.mode = "formula"
         return result
 
     batches: list[list[Event]] = [
@@ -403,6 +423,31 @@ async def score_events(
         await asyncio.gather(*(run(b) for b in retry_batches))
 
     result.unscored = sum(1 for e in events if e.event_id not in result.scores)
+
+    # **Decide how far the model got, once, here.**
+    #
+    # The caller needs one answer to "did the LLM choose this order?", and the pieces that
+    # answer it -- failed batches, unscored ids, total events -- are only all known at this
+    # point. Scattering the test across the caller is how a degraded run gets reported as a
+    # normal one.
+    #
+    # Thresholds:
+    #   nothing scored at all            -> "formula"  (no model judgement exists)
+    #   fewer than half the pool scored  -> "formula"  (too few to order a whole issue)
+    #   anything else missing            -> "degraded" (graded rows lead, rest follow)
+    #
+    # Measured 2026-10-24: 34 of 36 scored with 8 calls -- "llm". A run where gemini returned
+    # 429 for every batch would have scored 0 and must not read as a normal day.
+    scored = len(result.scores)
+    if scored == 0:
+        result.mode = "formula"
+    elif scored * 2 < len(events):
+        result.mode = "formula"
+    elif result.unscored or result.failed_batches:
+        result.mode = "degraded"
+    else:
+        result.mode = "llm"
+
     return result
 
 
