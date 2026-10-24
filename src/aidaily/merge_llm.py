@@ -116,6 +116,9 @@ class MergeResult:
     merged_events: int = 0
     calls: int = 0
     failed: bool = False
+    #: Groups the model proposed but the plausibility check rejected. Recorded because a high
+    #: count means the model is grouping by theme rather than by subject.
+    rejected_groups: int = 0
     examples: list[dict] = field(default_factory=list)
 
     @property
@@ -313,6 +316,49 @@ def _bucket(events, cap):
     return [b for b in buckets if len(b) >= 2]
 
 
+#: Features that make two headlines plausibly the same story.
+#:
+#: A merge is not free: it unions the source lists, which is how the page claims "N outlets
+#: independently carry this". A wrong merge therefore manufactures proof that a story is true.
+#:
+#: Measured 2026-10-24, the first run with union-find bucketing:
+#:
+#:     kept  Moonshot AI Releases Kimi K3.1 Pro ...
+#:     merged  OpenAI now trains its frontier AI models with no internet access
+#:
+#:     kept  3万亿级参数规模 全球最大开源AI大模型上新
+#:     merged  Anthropic says its unreleased model is both more capable ...
+#:
+#: Two vendors, two stories, one entry. The model had been handed forty headlines per batch and
+#: started grouping by theme ("a lab announces a model") rather than by subject.
+#:
+#: So every group the model returns is checked before it is applied. Two headlines pass when
+#: they share an entity, a parameter scale, or a model designation. Anything else is rejected
+#: and the entries stay separate -- a missed merge only repeats a story, while a wrong one
+#: invents corroboration.
+def _plausible(a: Event, b: Event) -> bool:
+    """Whether these two headlines could be one story."""
+    from .designation import designation
+    from .entities import extract_entities
+
+    def feats(event):
+        try:
+            names = {n.lower() for n in extract_entities(event.title)}
+        except Exception:
+            names = set()
+        scale = _scale_key(event.title)
+        if scale:
+            names.add(scale)
+        try:
+            tag = designation(event.title)
+        except Exception:
+            tag = None
+        if tag:
+            names.add("designation:" + str(tag))
+        return names
+
+    return bool(feats(a) & feats(b))
+
 async def merge_duplicates(
     events: list[Event],
     router,
@@ -369,9 +415,22 @@ async def merge_duplicates(
                 if len(ids) < 2:
                     continue
                 keep = by_id[ids[0]]
-                rest = [by_id[i] for i in ids[1:]]
+                # **Check the group before applying it.**
+                #
+                # Measured 2026-10-24: the model returned
+                #   [Moonshot AI Releases Kimi K3.1 Pro, OpenAI now trains its frontier ...]
+                # and [3万亿级参数规模 ..., Anthropic says its unreleased model ...].
+                # Two vendors, two stories, one entry each, with source lists unioned -- exactly
+                # how the page would have claimed "2 outlets carry this".
+                #
+                # Only members sharing a feature with the kept headline are merged; the rest stay
+                # separate. A missed merge repeats a story; a wrong one invents proof.
+                rest = [by_id[i] for i in ids[1:] if _plausible(keep, by_id[i])]
+                if not rest:
+                    result.rejected_groups += 1
+                    continue
                 _merge_into(keep, rest)
-                absorbed.update(ids[1:])
+                absorbed.update(e.event_id for e in rest)
                 result.merged_groups += 1
                 result.merged_events += len(ids) - 1
                 if len(result.examples) < 5:
