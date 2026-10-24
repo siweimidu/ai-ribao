@@ -1164,9 +1164,14 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
                         "examples": merge_result.examples,
                     }
                 )
-            (Path("data/state") / "merge_diag.json").write_text(
+            diag_path = Path("data/state/merge_diag.json").resolve()
+            diag_path.parent.mkdir(parents=True, exist_ok=True)
+            diag_path.write_text(
                 json.dumps(diag, ensure_ascii=False, indent=2), encoding="utf-8"
             )
+            # Printed so a run that genuinely executed this says so. The log masks most
+            # content, but a resolved absolute path is ASCII and survives.
+            print(f'  merge_diag -> {diag_path} ({diag_path.stat().st_size}B)')
         except Exception as diag_exc:  # noqa: BLE001 - diagnostics must not fail the run
             print(f'  诊断写入失败 {type(diag_exc).__name__}', file=sys.stderr)
         pool_target = max(cfg.output.deep.max_items * 2, cfg.output.deep.max_items + 40)
