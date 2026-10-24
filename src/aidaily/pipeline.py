@@ -796,8 +796,6 @@ def build_digest(
         total=total, active=len(active), failed=failed, skipped=skipped
     )
 
-    multi = [e for e in events if e.independent_source_count > 1]
-
     ordered, rank_report = select_for_digest(
         events, stage, sources, cfg, now=now, history=history,
         today=(now or datetime.now(timezone.utc)).astimezone().date().isoformat(),
@@ -856,7 +854,9 @@ def build_digest(
             # them yet.
             "events": len(ordered),
             "events_considered": len(events),
-            "multi_source_events": len(multi),
+            "multi_source_events": sum(
+                1 for e in ordered if e.independent_source_count > 1
+            ),
             "items_after_window": len(stage.window.kept),
             "items_merged_away": sum(len(g.member_item_ids) - 1 for g in stage.result.groups),
             "distinct_sources_in_head": int(rank_report["distinct_sources"]),

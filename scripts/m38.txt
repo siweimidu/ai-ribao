@@ -1,0 +1,55 @@
+fix(rank): 合并结果被下游丢掉 —— collapse 保留证据并重算等级
+
+════════════════════════════════════════════════════════════════════════
+一、日志说合并了，归档里没有
+
+  日志   LLM 去重  7 组，合并 16 条
+         · 保留 Moonshot AI Releases Kimi K3.1 Pro
+             合并 月之暗面发布 Kimi K3.1 Pro，100 万 token
+             合并 [AINews] Kimi 3.1 Pro 104BA-2.8T
+
+  归档   #01 Moonshot AI launches new flagship Kim K3.1 Pro
+             merged=0  sources=1  independent=1
+
+**合并真的发生了，但证据在到达归档前被抹掉了。**
+
+════════════════════════════════════════════════════════════════════════
+二、根因：collapse_by_designation
+
+`rank_events` 之后还有一个 `collapse_by_designation`，它按模型代号合并事件。
+它的问题：
+
+  candidates = target.unique_facts.setdefault('merged_titles', [])
+  for title in (target.title, event.title):
+      candidates.append(title)
+
+**从零重建列表** —— 之前 LLM 合并记录的标题全丢了。
+
+而且这段代码在 `if 合并` 分支里，**没被合并的事件连这个键都不会写**。
+
+还有一处：
+
+  independent_source_count = max(两者)
+
+确定性聚类时代这是对的；LLM 先 union 来源后，
+两个各自多源的事件合并应该**取并集**，不是取最大值。
+
+════════════════════════════════════════════════════════════════════════
+三、修法
+
+  1. 合并时**继承**双方的 merged_titles，而不是重建
+  2. 来源数改为 `len(set(source_ids))`（并集）
+  3. **循环结束后对所有事件统一校正**，不只是被合并的：
+
+     independent_source_count = len(set(source_ids))
+     if >= 2: evidence_level = 'multi_source'
+     elif 原为 multi_source: evidence_level = 'single_source'
+
+第 3 条是这个 bug 的根：`factcheck` 拒绝「single_source 但独立来源 >1」，
+而我上一轮恰好让 LLM 合并出了这种状态，整期发布失败三次。
+
+════════════════════════════════════════════════════════════════════════
+四、4 项测试
+
+单个事件经过 collapse 后 merged_titles 不变、来源数不变、
+多源事件被标为 multi_source、未合并事件原样返回。

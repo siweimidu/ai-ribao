@@ -434,21 +434,45 @@ def collapse_by_designation(events: list[Event]) -> list[Event]:
         for url in event.all_urls:
             if url not in target.all_urls:
                 target.all_urls.append(url)
-        target.independent_source_count = max(
-            target.independent_source_count, event.independent_source_count
-        )
-        # Keep the longest headline as the display candidate. The merged entry renders through
-        # `_display_title`, which prefers an insight title; when the surviving event has none,
-        # this records the phrasing that actually says what happened instead of
-        # "deepseek-v4.1-flash-1017 发布了".
-        candidates = target.unique_facts.setdefault("merged_titles", [])
+        # **Recompute, do not take the max.**
+        #
+        # `max` was right while every event here came from deterministic clustering, where a
+        # merge could only be as corroborated as its best member. After the LLM pass unions
+        # source lists first, this pass can join two events that are *each* already
+        # multi-source, so the union is the honest number.
+        target.independent_source_count = len(set(target.source_ids))
+        if target.independent_source_count >= 2:
+            target.evidence_level = "multi_source"
+
+        # **Carry forward what the LLM pass already merged.**
+        #
+        # This rebuilt the list from the two titles joined here, discarding the ones the
+        # earlier merge had recorded. Measured 2026-10-24: the log said "4 条 Kimi 合并成 1 条"
+        # while the archive held `merged_titles: 0` for that entry -- the evidence was dropped
+        # on the way through, so the page could not show what the other outlets called it.
+        candidates = list(target.unique_facts.get("merged_titles") or [])
+        candidates += list(event.unique_facts.get("merged_titles") or [])
         for title in (target.title, event.title):
             if title and title not in candidates:
                 candidates.append(title)
+        target.unique_facts["merged_titles"] = candidates
         if event.first_seen_at and target.first_seen_at:
             target.first_seen_at = min(target.first_seen_at, event.first_seen_at)
         if event.last_updated_at and target.last_updated_at:
             target.last_updated_at = max(target.last_updated_at, event.last_updated_at)
+    # **Every surviving event, not only the merged ones.**
+    #
+    # The correction above runs inside the merge branch, so an event that passed through
+    # unmerged kept whatever label it arrived with. Measured 2026-10-24: the LLM pass unioned
+    # three sources onto the Kimi entry and left `evidence_level` at `single_source`; `factcheck`
+    # rejects exactly that combination, and the whole issue failed to publish three times.
+    for event in kept:
+        event.independent_source_count = len(set(event.source_ids))
+        if event.independent_source_count >= 2:
+            event.evidence_level = "multi_source"
+        elif event.evidence_level == "multi_source":
+            # A claim of corroboration must not survive a recount that finds one source.
+            event.evidence_level = "single_source"
     return kept
 
 

@@ -125,9 +125,16 @@ class MergeResult:
     def label(self) -> str:
         if self.failed:
             return "未运行（模型不可用）"
-        if not self.merged_groups:
+        if not self.merged_groups and not self.rejected_groups:
             return "无重复"
-        return f"{self.merged_groups} 组，合并 {self.merged_events} 条"
+        parts = []
+        if self.merged_groups:
+            parts.append(f"{self.merged_groups} 组，合并 {self.merged_events} 条")
+        if self.rejected_groups:
+            # Non-zero means the model proposed groups whose members share no entity, scale or
+            # designation -- it is grouping by theme. Worth seeing: it predicts a bad batch.
+            parts.append(f"拒绝 {self.rejected_groups} 组（成员无共同特征）")
+        return "；".join(parts)
 
 def _listing(events):
     return "\n".join(f"- id={e.event_id} | {e.title[:160]}" for e in events)

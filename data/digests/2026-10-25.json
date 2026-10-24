@@ -1,0 +1,64 @@
+{
+ "digest": {
+  "date": "2026-10-25",
+  "kind": "deep",
+  "generated_at": "2026-10-24T16:11:26.871603Z",
+  "window_start": "2026-10-23T04:11:26.871603Z",
+  "window_end": "2026-10-24T16:11:26.871603Z",
+  "headline": "",
+  "top_events": [],
+  "trend_notes": [],
+  "source_coverage": {
+   "total": 193,
+   "active": 3,
+   "failed": 1,
+   "degraded": 0,
+   "blocked": 0,
+   "skipped": 66
+  },
+  "llm_usage": {},
+  "warnings": [
+   "--no-llm：本次运行未调用大模型",
+   "未配置大模型，本期所有条目为来源原文摘录（规则降级）",
+   "rubric 评分 0 条已打分 / 0 次调用（标准来源：D:\\Code\\AI日报\\config\\profiles\\ai-daily）",
+   "事件聚类未经过模型判定（候选簇为空或未启用模型）"
+  ],
+  "counts": {
+   "events": 0,
+   "events_considered": 12,
+   "multi_source_events": 0,
+   "items_after_window": 12,
+   "items_merged_away": 0,
+   "distinct_sources_in_head": 0,
+   "head_max_source_share": 0,
+   "dropped_unknown": 112,
+   "late_or_ignored": 8296
+  }
+ },
+ "sections": {
+  "dev": [
+   "e18ea8747659f4b",
+   "e3117de73322861",
+   "e4a3903bf06b394",
+   "e51917ede69d74d",
+   "e69450410422ba5",
+   "e6fe4940b67eed1",
+   "e87c40fd5ccfa45",
+   "ebb0fb616299b9b",
+   "ec06bc01fe9bdd9",
+   "ecc40079c865122"
+  ],
+  "media": [
+   "e81a3c89a87edb5",
+   "ebf6bb4b98433c1"
+  ]
+ },
+ "insights": {},
+ "factcheck": {
+  "ok": true,
+  "checked_events": 12,
+  "checked_urls": 12,
+  "violations": 0,
+  "by_kind": {}
+ }
+}
