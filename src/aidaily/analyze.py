@@ -39,15 +39,83 @@ SYSTEM_PROMPT = (
     "- uncertainties：材料没有讲清楚、无法确认的点。宁多勿少。\n"
     "**语言要求：所有输出必须是简体中文。**\n"
     "材料常常是英文的。标题、事实、推断、观点、不确定项一律译成中文，不要保留英文句子。\n"
-    "专有名词保留原文：公司名、产品名、模型名、论文名、人名、代码标识符\n"
-    "（例如 OpenAI、Gemini 4 Argon、Anthropic、Scion、GPT-6、CUDA）—— 这些译成中文反而看不懂。\n"
-    "除这些专有名词外，句子里不应出现英文单词。不要出现「本文」「该报道」这类译文腔，直接陈述。\n"
-    "硬性禁止：\n"
+    "\n"
+    "## 术语怎么处理\n"
+    "\n"
+    "下列内容**整块保留英文原文，不要逐词翻译**：\n"
+    "公司名、产品名、模型名、论文名、人名、代码标识符，以及**技术术语的固定搭配**。\n"
+    "例如：OpenAI、Gemini 4 Argon、Kimi K3.1 Pro、GPT-6、CUDA、MoE、RLHF、\n"
+    "Open Weights、Context Window、Fine-tuning、Zero-shot、Benchmark。\n"
+    "\n"
+    "**Open Weights 是一个术语，不能拆成「公开组重量」。**\n"
+    "同样的：Closed-Weighted 不译「封闭重量」，Context Window 不译「上下文窗户」，\n"
+    "Benchmark 不译「长凳标记」。遇到不确定的英文术语，保留原文，比硬译更准。\n"
+    "\n"
+    "译错的代价比不译大：读者看到「公开组重量」会以为说的是物理重量。\n"
+    "\n"
+    "## 时间与因果\n"
+    "\n"
+    "原文说「narrows the gap」就写「差距缩小」，不要写成「重量差距缩小」——\n"
+    "不要给术语拆分出来的字面词加上原文没有的限定。\n"
+    "\n"
+    "## 硬性禁止\n"
+    "\n"
     "1. 不得写出任何链接（链接由程序回填）。\n"
     "2. 不得写出材料中没有的日期、数字、模型名或公司名。\n"
     "3. 材料里没有的信息，宁可不写，也不要推测填充。\n"
+    "4. **不要为了凑中文而拆解英文术语。** 保留原文永远比造一个错误的中文词好。\n"
     "只输出 JSON，不要 markdown 代码块或解释。"
 )
+
+#: Chinese renderings that mean the model split an English term into its words.
+#:
+#: Measured 2026-10-24: `Fable-5.1-Class Open Weights narrows Closed-Weighted gap` was
+#: rewritten as `Fable-5.1-公开组重量差距缩小`. `Open Weights` became 公开组重量 -- `open` as
+#: 公开, `weights` as 重量 -- which reads as a statement about physical mass. The prompt now
+#: forbids it, but a prompt is a request, not a guarantee; this is the check that catches it.
+#:
+#: Every entry here is a compound that is meaningless or wrong when split.
+_MISTRANSLATED_TERMS = (
+    "公开组重量",   # Open Weights
+    "开放组重量",
+    "封闭重量",     # Closed-Weighted
+    "上下文窗户",   # Context Window
+    "长凳标记",     # Benchmark
+    "微量调",       # Fine-tuning
+    "零射击",       # Zero-shot
+    "提示工程",     # Prompt engineering -- acceptable in Chinese, listed for contrast only
+)
+
+#: Terms that should survive verbatim. If the source had one and the rewrite lost it, the
+#: rewrite dropped information.
+_KEEP_VERBATIM = ("Open Weights", "Closed-Weighted", "Context Window", "Benchmark", "MoE", "RLHF")
+
+
+def _safe_title(original: str, rewritten: str) -> str:
+    """The rewritten title when it passed the checks, else the original."""
+    if not rewritten:
+        return original[:200]
+    ok, _reason = title_is_safe(original, rewritten)
+    return rewritten[:200] if ok else original[:200]
+
+def title_is_safe(original: str, rewritten: str) -> tuple[bool, str]:
+    """Whether the rewritten title may replace the original. Returns (ok, reason)."""
+    text = (rewritten or "").strip()
+    if not text:
+        return False, "empty"
+
+    for bad in _MISTRANSLATED_TERMS:
+        if bad in text:
+            return False, f"term split: {bad}"
+
+    # A model that answers with the original English sentence unchanged has not translated.
+    # That is handled elsewhere (the page falls back to the source title), so it is not a
+    # failure here -- but a rewrite that keeps an English sentence AND adds invented Chinese
+    # is worse than keeping the original alone.
+    if len(text) > 120:
+        return False, "too long for a headline"
+
+    return True, ""
 
 USER_TEMPLATE = """以下是关于同一事件的材料。请据此产出 JSON。
 
@@ -216,7 +284,11 @@ async def analyze_event(
 
     return EventInsight(
         event_id=event.event_id,
-        title=str(got.get("title") or event.title)[:200],
+        # A rewrite that split a technical term is worse than the English original:
+        # the reader gets a confident Chinese sentence that says something false. The
+        # prompt forbids it and `title_is_safe` enforces it -- a prompt is a request,
+        # not a guarantee.
+        title=_safe_title(event.title, str(got.get("title") or "")),
         facts=strings("facts", 8),
         inferences=strings("inferences", 5),
         opinions=strings("opinions", 4),

@@ -157,9 +157,12 @@ def test_the_prompt_asks_for_chinese_and_names_the_exceptions() -> None:
     from aidaily.analyze import SYSTEM_PROMPT, USER_TEMPLATE
 
     assert "简体中文" in SYSTEM_PROMPT
-    assert "专有名词保留原文" in SYSTEM_PROMPT
+    # The prompt was rewritten after `Open Weights` was split into 公开组重量. The wording
+    # changed from one line to a section, so assert the rule rather than the old sentence.
+    assert "整块保留英文原文" in SYSTEM_PROMPT
+    assert "Open Weights" in SYSTEM_PROMPT
     # The examples are what make the rule concrete for the model.
-    for example in ("OpenAI", "Gemini 4 Argon", "Scion"):
+    for example in ("OpenAI", "Gemini 4 Argon", "Kimi K3.1 Pro"):
         assert example in SYSTEM_PROMPT
 
     assert "中文" in USER_TEMPLATE
