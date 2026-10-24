@@ -140,58 +140,55 @@
       }
     },
     {
-      "id": "2026-10-24-e08070942cc48bd",
-      "url": "https://github.com/obsproject/obs-studio/releases/tag/33.0.0",
-      "external_url": "https://github.com/obsproject/obs-studio/releases/tag/33.0.0",
-      "title": "Hacker reverses Samsung TV, finds on-board AI listening OpenAI account suspended",
-      "summary": "Article URL: Comments URL: Points: 395 # Comments: 138",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Article URL:\nComments URL:\nPoints: 395\n# Comments: 138</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li><li>本条的来源标题为外文，未调用大模型，因此未翻译</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://github.com/obsproject/obs-studio/releases/tag/33.0.0\">github.com</a></li><li><a href=\"https://grapheneos.social/@GrapheneOS/117492375462459244\">grapheneos.social</a></li><li><a href=\"https://philipotoole.com/twelve-years-of-distributed-sqlite/\">philipotoole.com</a></li><li><a href=\"https://rtfeldman.com/fp-vs-c\">rtfeldman.com</a></li><li><a href=\"https://security.apple.com/research-device/\">security.apple.com</a></li><li><a href=\"https://www.reddit.com/r/antiai/comments/1xdv3e5/hacker_reverse_engineers_his_samsung_tv_and_finds/\">reddit.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
-      "content_text": "事实\n· Article URL:\nComments URL:\nPoints: 395\n# Comments: 138\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n· 本条的来源标题为外文，未调用大模型，因此未翻译\n可信度：多源交叉验证（2 个独立来源）\n来源\n· github.com\n· grapheneos.social\n· philipotoole.com\n· rtfeldman.com\n· security.apple.com\n· reddit.com\nAI 日报",
-      "date_published": "2026-10-24T01:15:14+00:00",
+      "id": "2026-10-24-ecf764950d14578",
+      "url": "https://hackaday.com/2026/10/24/a-walkie-talkie-interface-for-claude/",
+      "external_url": "https://hackaday.com/2026/10/24/a-walkie-talkie-interface-for-claude/",
+      "title": "Meet Anthropic’s sandbox-runtime: OS-Level Sandboxing for AI Agents, No Containers",
+      "summary": "Anthropic sandbox-runtime (srt) is the open-source, OS-level sandbox behind Claude Code. It restricts file and network access for agents, MCP servers and CLI tools with Seatbelt on macOS and bubblewrap on Linux, no containers needed. The post Meet Anthropic’s sandbox-runtime: OS-…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Anthropic sandbox-runtime (srt) is the open-source, OS-level sandbox behind Claude Code. It restricts file and network access for agents, MCP servers and CLI tools with Seatbelt on macOS and bubblewrap on Linux, no containers needed.\nThe post Meet Anthropic’s sandbox-runtime: OS-Level Sandboxing for</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li><li>本条的来源标题为外文，未调用大模型，因此未翻译</li></ul><p><strong>可信度</strong>：多源交叉验证（4 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://hackaday.com/2026/10/24/a-walkie-talkie-interface-for-claude/\">hackaday.com</a></li><li><a href=\"https://the-decoder.com/fancy-harnesses-make-coding-agents-more-expensive-but-not-better-study-finds/\">the-decoder.com</a></li><li><a href=\"https://www.marktechpost.com/2026/10/24/anthropic-sandbox-runtime-ai-agent-sandbox/\">marktechpost.com</a></li><li><a href=\"https://aihot.news/items/hu6uexzdgvqt4np5b7sbk2i2m\">aihot.news</a></li><li><a href=\"https://aihot.news/items/nj4rndmo45sc6mzp2smlwz4s2\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Anthropic sandbox-runtime (srt) is the open-source, OS-level sandbox behind Claude Code. It restricts file and network access for agents, MCP servers and CLI tools with Seatbelt on macOS and bubblewrap on Linux, no containers needed.\nThe post Meet Anthropic’s sandbox-runtime: OS-Level Sandboxing for\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n· 本条的来源标题为外文，未调用大模型，因此未翻译\n可信度：多源交叉验证（4 个独立来源）\n来源\n· hackaday.com\n· the-decoder.com\n· marktechpost.com\n· aihot.news\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T08:00:14+00:00",
       "authors": [
         {
-          "name": "github.com"
+          "name": "hackaday.com"
         },
         {
-          "name": "grapheneos.social"
+          "name": "the-decoder.com"
         },
         {
-          "name": "philipotoole.com"
+          "name": "marktechpost.com"
         },
         {
-          "name": "rtfeldman.com"
-        },
-        {
-          "name": "security.apple.com"
-        },
-        {
-          "name": "reddit.com"
+          "name": "aihot.news"
         }
       ],
       "tags": [
-        "api:hn-algolia-com-search",
-        "rss:hnrss-org-frontpage"
+        "rss:aihot-demo-the-decoder",
+        "rss:aihot-news-all",
+        "rss:hackaday-com",
+        "rss:marktechpost"
       ],
       "language": "zh-CN",
       "_ai_daily": {
-        "event_id": "e08070942cc48bd",
+        "event_id": "ecf764950d14578",
         "source_ids": [
-          "api:hn-algolia-com-search",
-          "rss:hnrss-org-frontpage"
+          "rss:aihot-demo-the-decoder",
+          "rss:aihot-news-all",
+          "rss:hackaday-com",
+          "rss:marktechpost"
         ],
         "all_urls": [
-          "https://github.com/obsproject/obs-studio/releases/tag/33.0.0",
-          "https://grapheneos.social/@GrapheneOS/117492375462459244",
-          "https://philipotoole.com/twelve-years-of-distributed-sqlite/",
-          "https://rtfeldman.com/fp-vs-c",
-          "https://security.apple.com/research-device/",
-          "https://www.reddit.com/r/antiai/comments/1xdv3e5/hacker_reverse_engineers_his_samsung_tv_and_finds/"
+          "https://hackaday.com/2026/10/24/a-walkie-talkie-interface-for-claude/",
+          "https://the-decoder.com/fancy-harnesses-make-coding-agents-more-expensive-but-not-better-study-finds/",
+          "https://www.marktechpost.com/2026/10/24/anthropic-sandbox-runtime-ai-agent-sandbox/",
+          "https://aihot.news/items/hu6uexzdgvqt4np5b7sbk2i2m",
+          "https://aihot.news/items/nj4rndmo45sc6mzp2smlwz4s2"
         ],
-        "independent_source_count": 2,
+        "independent_source_count": 4,
         "evidence_level": "multi_source",
         "confidence": 0.9,
         "facts": [
-          "Article URL:\nComments URL:\nPoints: 395\n# Comments: 138"
+          "Anthropic sandbox-runtime (srt) is the open-source, OS-level sandbox behind Claude Code. It restricts file and network access for agents, MCP servers and CLI tools with Seatbelt on macOS and bubblewrap on Linux, no containers needed.\nThe post Meet Anthropic’s sandbox-runtime: OS-Level Sandboxing for"
         ],
         "inferences": [],
         "uncertainties": [
@@ -277,51 +274,6 @@
         "uncertainties": [
           "本次未调用大模型，内容为来源原文摘录",
           "本条的来源标题为外文，未调用大模型，因此未翻译"
-        ],
-        "rule_based": true
-      }
-    },
-    {
-      "id": "2026-10-24-e98a427acd01deb",
-      "url": "https://aihot.news/items/nj4rndmo45sc6mzp2smlwz4s2",
-      "external_url": "https://aihot.news/items/nj4rndmo45sc6mzp2smlwz4s2",
-      "title": "Anthropic 开源 sandbox-runtime：无需容器的操作系统级 AI Agent 沙箱",
-      "summary": "Anthropic 开源的 sandbox-runtime（srt）是 Claude Code 沙箱 bash 工具背后的操作系统级沙箱，用 macOS Seatbelt、Linux bubblewrap 等原生隔离机制限制任意进程的文件与网络访问，无需容器，npm 包 @anthropic-ai/sandbox-runtime v0.0.81，Apache-2.0 协议。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Anthropic 开源的 sandbox-runtime（srt）是 Claude Code 沙箱 bash 工具背后的操作系统级沙箱，用 macOS Seatbelt、Linux bubblewrap 等原生隔离机制限制任意进程的文件与网络访问，无需容器，npm 包 @anthropic-ai/sandbox-runtime v0.0.81，Apache-2.0 协议。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/nj4rndmo45sc6mzp2smlwz4s2\">aihot.news</a></li><li><a href=\"https://www.marktechpost.com/2026/10/24/anthropic-sandbox-runtime-ai-agent-sandbox/\">marktechpost.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
-      "content_text": "事实\n· Anthropic 开源的 sandbox-runtime（srt）是 Claude Code 沙箱 bash 工具背后的操作系统级沙箱，用 macOS Seatbelt、Linux bubblewrap 等原生隔离机制限制任意进程的文件与网络访问，无需容器，npm 包 @anthropic-ai/sandbox-runtime v0.0.81，Apache-2.0 协议。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\n· marktechpost.com\nAI 日报",
-      "date_published": "2026-10-24T11:12:27+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        },
-        {
-          "name": "marktechpost.com"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news-all",
-        "rss:marktechpost"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "e98a427acd01deb",
-        "source_ids": [
-          "rss:aihot-news-all",
-          "rss:marktechpost"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/nj4rndmo45sc6mzp2smlwz4s2",
-          "https://www.marktechpost.com/2026/10/24/anthropic-sandbox-runtime-ai-agent-sandbox/"
-        ],
-        "independent_source_count": 2,
-        "evidence_level": "multi_source",
-        "confidence": 1.0,
-        "facts": [
-          "Anthropic 开源的 sandbox-runtime（srt）是 Claude Code 沙箱 bash 工具背后的操作系统级沙箱，用 macOS Seatbelt、Linux bubblewrap 等原生隔离机制限制任意进程的文件与网络访问，无需容器，npm 包 @anthropic-ai/sandbox-runtime v0.0.81，Apache-2.0 协议。"
-        ],
-        "inferences": [],
-        "uncertainties": [
-          "本次未调用大模型，内容为来源原文摘录"
         ],
         "rule_based": true
       }
@@ -892,46 +844,6 @@
       }
     },
     {
-      "id": "2026-10-24-e58b45aa5ef10f6",
-      "url": "https://hackaday.com/2026/10/24/a-walkie-talkie-interface-for-claude/",
-      "external_url": "https://hackaday.com/2026/10/24/a-walkie-talkie-interface-for-claude/",
-      "title": "A Walkie Talkie Interface For Claude",
-      "summary": "[Bookmari] had a problem — working as a delivery driver, they wanted to work on various projects with Claude Code while out and about. Unfortunately, it simply wasn’t practical to …read more",
-      "content_html": "<p><strong>事实</strong></p><ul><li>[Bookmari] had a problem — working as a delivery driver, they wanted to work on various projects with Claude Code while out and about. Unfortunately, it simply wasn’t practical to …read more</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li><li>本条的来源标题为外文，未调用大模型，因此未翻译</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://hackaday.com/2026/10/24/a-walkie-talkie-interface-for-claude/\">hackaday.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
-      "content_text": "事实\n· [Bookmari] had a problem — working as a delivery driver, they wanted to work on various projects with Claude Code while out and about. Unfortunately, it simply wasn’t practical to …read more\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n· 本条的来源标题为外文，未调用大模型，因此未翻译\n可信度：单一来源\n来源\n· hackaday.com\nAI 日报",
-      "date_published": "2026-10-24T08:00:14+00:00",
-      "authors": [
-        {
-          "name": "hackaday.com"
-        }
-      ],
-      "tags": [
-        "rss:hackaday-com"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "e58b45aa5ef10f6",
-        "source_ids": [
-          "rss:hackaday-com"
-        ],
-        "all_urls": [
-          "https://hackaday.com/2026/10/24/a-walkie-talkie-interface-for-claude/"
-        ],
-        "independent_source_count": 1,
-        "evidence_level": "single_source",
-        "confidence": 1.0,
-        "facts": [
-          "[Bookmari] had a problem — working as a delivery driver, they wanted to work on various projects with Claude Code while out and about. Unfortunately, it simply wasn’t practical to …read more"
-        ],
-        "inferences": [],
-        "uncertainties": [
-          "本次未调用大模型，内容为来源原文摘录",
-          "本条的来源标题为外文，未调用大模型，因此未翻译"
-        ],
-        "rule_based": true
-      }
-    },
-    {
       "id": "2026-10-24-e1fe7dbbeeb465e",
       "url": "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651069794&idx=2&sn=ae62dbad6234b3c4c7359543936974c7",
       "external_url": "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651069794&idx=2&sn=ae62dbad6234b3c4c7359543936974c7",
@@ -1493,45 +1405,6 @@
       }
     },
     {
-      "id": "2026-10-24-ecce0d0669b2161",
-      "url": "https://aihot.news/items/b9y9le03t9zbrxyys3cir9l8u",
-      "external_url": "https://aihot.news/items/b9y9le03t9zbrxyys3cir9l8u",
-      "title": "Claude 工程负责人 Felix Rieseberg 访谈：别再用 2024 年的方式用 Claude",
-      "summary": "Claude 工程负责人 Felix Rieseberg 在 Silicon Valley Millennial 访谈中提出，与其当传话筒或堆角色 Agent，不如把全量崩溃数据、业务工具和电脑直接交给模型，让模型自己挑问题、自己用工具。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Claude 工程负责人 Felix Rieseberg 在 Silicon Valley Millennial 访谈中提出，与其当传话筒或堆角色 Agent，不如把全量崩溃数据、业务工具和电脑直接交给模型，让模型自己挑问题、自己用工具。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/b9y9le03t9zbrxyys3cir9l8u\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
-      "content_text": "事实\n· Claude 工程负责人 Felix Rieseberg 在 Silicon Valley Millennial 访谈中提出，与其当传话筒或堆角色 Agent，不如把全量崩溃数据、业务工具和电脑直接交给模型，让模型自己挑问题、自己用工具。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T12:25:45+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "ecce0d0669b2161",
-        "source_ids": [
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/b9y9le03t9zbrxyys3cir9l8u"
-        ],
-        "independent_source_count": 1,
-        "evidence_level": "single_source",
-        "confidence": 1.0,
-        "facts": [
-          "Claude 工程负责人 Felix Rieseberg 在 Silicon Valley Millennial 访谈中提出，与其当传话筒或堆角色 Agent，不如把全量崩溃数据、业务工具和电脑直接交给模型，让模型自己挑问题、自己用工具。"
-        ],
-        "inferences": [],
-        "uncertainties": [
-          "本次未调用大模型，内容为来源原文摘录"
-        ],
-        "rule_based": true
-      }
-    },
-    {
       "id": "2026-10-24-e1aa3b718523475",
       "url": "https://aihot.news/items/t2jkkvoa0kvjffq189dcaa8g8",
       "external_url": "https://aihot.news/items/t2jkkvoa0kvjffq189dcaa8g8",
@@ -1562,6 +1435,45 @@
         "confidence": 1.0,
         "facts": [
           "AI 视频公司 Higgsfield 宣布 NVIDIA 和 TCV 加入其 Series B 延长轮投资。公司称自 8 月 Series B 以来年化收入突破 10 亿美元，企业合同增长 71%，用户从 3000 万增至超过 4000 万；NVIDIA 从 L40、A40 到 Hopper 和 Blackwell 一直为其提供算力，下一代将采用 Vera Rubin。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-24-ecce0d0669b2161",
+      "url": "https://aihot.news/items/b9y9le03t9zbrxyys3cir9l8u",
+      "external_url": "https://aihot.news/items/b9y9le03t9zbrxyys3cir9l8u",
+      "title": "Claude 工程负责人 Felix Rieseberg 访谈：别再用 2024 年的方式用 Claude",
+      "summary": "Claude 工程负责人 Felix Rieseberg 在 Silicon Valley Millennial 访谈中提出，与其当传话筒或堆角色 Agent，不如把全量崩溃数据、业务工具和电脑直接交给模型，让模型自己挑问题、自己用工具。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Claude 工程负责人 Felix Rieseberg 在 Silicon Valley Millennial 访谈中提出，与其当传话筒或堆角色 Agent，不如把全量崩溃数据、业务工具和电脑直接交给模型，让模型自己挑问题、自己用工具。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/b9y9le03t9zbrxyys3cir9l8u\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Claude 工程负责人 Felix Rieseberg 在 Silicon Valley Millennial 访谈中提出，与其当传话筒或堆角色 Agent，不如把全量崩溃数据、业务工具和电脑直接交给模型，让模型自己挑问题、自己用工具。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T12:25:45+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ecce0d0669b2161",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/b9y9le03t9zbrxyys3cir9l8u"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Claude 工程负责人 Felix Rieseberg 在 Silicon Valley Millennial 访谈中提出，与其当传话筒或堆角色 Agent，不如把全量崩溃数据、业务工具和电脑直接交给模型，让模型自己挑问题、自己用工具。"
         ],
         "inferences": [],
         "uncertainties": [
@@ -1606,45 +1518,6 @@
         "uncertainties": [
           "本次未调用大模型，内容为来源原文摘录",
           "本条的来源标题为外文，未调用大模型，因此未翻译"
-        ],
-        "rule_based": true
-      }
-    },
-    {
-      "id": "2026-10-24-e0c8a5ce022f0a5",
-      "url": "https://aihot.news/items/r8s64sz704toyhz5jmuzz55zc",
-      "external_url": "https://aihot.news/items/r8s64sz704toyhz5jmuzz55zc",
-      "title": "Codex 支持对话中切换推理等级",
-      "summary": "Codex 开发者的体验更新： 现在可以在对话中途切换推理等级，而且不会丢失缓存！简单任务用低推理，需要时再调高，无需重建上下文。 还有一些不错的 CLI 更新： - 可复用的提示词预设 - 内联切换模型和权限 - 修复长会话恢复问题 - 企业版 MCP 登录和 Windows 代理认证 另外，dot 调用现在的连接速度也快多了 ;)",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Codex 开发者的体验更新：\n现在可以在对话中途切换推理等级，而且不会丢失缓存！简单任务用低推理，需要时再调高，无需重建上下文。\n还有一些不错的 CLI 更新：\n- 可复用的提示词预设\n- 内联切换模型和权限\n- 修复长会话恢复问题\n- 企业版 MCP 登录和 Windows 代理认证\n另外，dot 调用现在的连接速度也快多了 ;)</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/r8s64sz704toyhz5jmuzz55zc\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
-      "content_text": "事实\n· Codex 开发者的体验更新：\n现在可以在对话中途切换推理等级，而且不会丢失缓存！简单任务用低推理，需要时再调高，无需重建上下文。\n还有一些不错的 CLI 更新：\n- 可复用的提示词预设\n- 内联切换模型和权限\n- 修复长会话恢复问题\n- 企业版 MCP 登录和 Windows 代理认证\n另外，dot 调用现在的连接速度也快多了 ;)\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T07:25:56+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "e0c8a5ce022f0a5",
-        "source_ids": [
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/r8s64sz704toyhz5jmuzz55zc"
-        ],
-        "independent_source_count": 1,
-        "evidence_level": "single_source",
-        "confidence": 1.0,
-        "facts": [
-          "Codex 开发者的体验更新：\n现在可以在对话中途切换推理等级，而且不会丢失缓存！简单任务用低推理，需要时再调高，无需重建上下文。\n还有一些不错的 CLI 更新：\n- 可复用的提示词预设\n- 内联切换模型和权限\n- 修复长会话恢复问题\n- 企业版 MCP 登录和 Windows 代理认证\n另外，dot 调用现在的连接速度也快多了 ;)"
-        ],
-        "inferences": [],
-        "uncertainties": [
-          "本次未调用大模型，内容为来源原文摘录"
         ],
         "rule_based": true
       }
@@ -1886,85 +1759,6 @@
       }
     },
     {
-      "id": "2026-10-24-e633f0b8de3dfb5",
-      "url": "https://news.google.com/rss/articles/CBMiP0FVX3lxTE1jN29MUTZrX3piT2syV1hFM1llaEdMX3FJYUNrcUMwb1NORjAwLUQzNUhHQnJSVjVsdXptSVVRQQ?oc=5",
-      "external_url": "https://news.google.com/rss/articles/CBMiP0FVX3lxTE1jN29MUTZrX3piT2syV1hFM1llaEdMX3FJYUNrcUMwb1NORjAwLUQzNUhHQnJSVjVsdXptSVVRQQ?oc=5",
-      "title": "智谱(02513)股票股价_股价行情_讨论_资讯_财报_数据报告 - 雪球",
-      "summary": "智谱(02513)股票股价_股价行情_讨论_资讯_财报_数据报告 雪球",
-      "content_html": "<p><strong>事实</strong></p><ul><li>智谱(02513)股票股价_股价行情_讨论_资讯_财报_数据报告 雪球</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiP0FVX3lxTE1jN29MUTZrX3piT2syV1hFM1llaEdMX3FJYUNrcUMwb1NORjAwLUQzNUhHQnJSVjVsdXptSVVRQQ?oc=5\">news.google.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
-      "content_text": "事实\n· 智谱(02513)股票股价_股价行情_讨论_资讯_财报_数据报告 雪球\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· news.google.com\nAI 日报",
-      "date_published": "2026-10-24T07:33:47+00:00",
-      "authors": [
-        {
-          "name": "news.google.com"
-        }
-      ],
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "e633f0b8de3dfb5",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMiP0FVX3lxTE1jN29MUTZrX3piT2syV1hFM1llaEdMX3FJYUNrcUMwb1NORjAwLUQzNUhHQnJSVjVsdXptSVVRQQ?oc=5"
-        ],
-        "independent_source_count": 1,
-        "evidence_level": "single_source",
-        "confidence": 1.0,
-        "facts": [
-          "智谱(02513)股票股价_股价行情_讨论_资讯_财报_数据报告 雪球"
-        ],
-        "inferences": [],
-        "uncertainties": [
-          "本次未调用大模型，内容为来源原文摘录"
-        ],
-        "rule_based": true
-      }
-    },
-    {
-      "id": "2026-10-24-e6c304c689df7e3",
-      "url": "https://the-decoder.com/fancy-harnesses-make-coding-agents-more-expensive-but-not-better-study-finds/",
-      "external_url": "https://the-decoder.com/fancy-harnesses-make-coding-agents-more-expensive-but-not-better-study-finds/",
-      "title": "Fancy harnesses make coding agents more expensive but not better, study finds",
-      "summary": "A controlled study shows that switching between coding-agent harnesses like Claude Code, OpenCode, or mini-SWE-agent barely moves pass rates more than rerunning the same setup. Cost per task, however, can triple, driven mainly by the system prompt that gets resent with every step…",
-      "content_html": "<p><strong>事实</strong></p><ul><li>A controlled study shows that switching between coding-agent harnesses like Claude Code, OpenCode, or mini-SWE-agent barely moves pass rates more than rerunning the same setup. Cost per task, however, can triple, driven mainly by the system prompt that gets resent with every step.\nThe article Fancy </li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li><li>本条的来源标题为外文，未调用大模型，因此未翻译</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://the-decoder.com/fancy-harnesses-make-coding-agents-more-expensive-but-not-better-study-finds/\">the-decoder.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
-      "content_text": "事实\n· A controlled study shows that switching between coding-agent harnesses like Claude Code, OpenCode, or mini-SWE-agent barely moves pass rates more than rerunning the same setup. Cost per task, however, can triple, driven mainly by the system prompt that gets resent with every step.\nThe article Fancy\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n· 本条的来源标题为外文，未调用大模型，因此未翻译\n可信度：单一来源\n来源\n· the-decoder.com\nAI 日报",
-      "date_published": "2026-10-24T09:21:39+00:00",
-      "authors": [
-        {
-          "name": "the-decoder.com"
-        }
-      ],
-      "tags": [
-        "rss:aihot-demo-the-decoder"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "e6c304c689df7e3",
-        "source_ids": [
-          "rss:aihot-demo-the-decoder"
-        ],
-        "all_urls": [
-          "https://the-decoder.com/fancy-harnesses-make-coding-agents-more-expensive-but-not-better-study-finds/"
-        ],
-        "independent_source_count": 1,
-        "evidence_level": "single_source",
-        "confidence": 1.0,
-        "facts": [
-          "A controlled study shows that switching between coding-agent harnesses like Claude Code, OpenCode, or mini-SWE-agent barely moves pass rates more than rerunning the same setup. Cost per task, however, can triple, driven mainly by the system prompt that gets resent with every step.\nThe article Fancy "
-        ],
-        "inferences": [],
-        "uncertainties": [
-          "本次未调用大模型，内容为来源原文摘录",
-          "本条的来源标题为外文，未调用大模型，因此未翻译"
-        ],
-        "rule_based": true
-      }
-    },
-    {
       "id": "2026-10-24-e62d6fecca5accf",
       "url": "https://www.semafor.com/article/10/23/2026/warhound-raises-200-million-to-engineer-military-dogs",
       "external_url": "https://www.semafor.com/article/10/23/2026/warhound-raises-200-million-to-engineer-military-dogs",
@@ -2045,36 +1839,36 @@
       }
     },
     {
-      "id": "2026-10-24-e2c4db4d32c2fac",
-      "url": "https://x.com/meaghaneschoi/status/2113636733556535660",
-      "external_url": "https://x.com/meaghaneschoi/status/2113636733556535660",
-      "title": "Claude 发布桌面应用界面更新",
-      "summary": "Claude 发布桌面应用界面更新",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Claude 发布桌面应用界面更新</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://x.com/meaghaneschoi/status/2113636733556535660\">x.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
-      "content_text": "事实\n· Claude 发布桌面应用界面更新\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· x.com\nAI 日报",
-      "date_published": "2026-10-24T01:28:12+00:00",
+      "id": "2026-10-24-e10d108d430b840",
+      "url": "https://aihot.news/items/jryc594pqpq0xbtqbbd6yn7xb",
+      "external_url": "https://aihot.news/items/jryc594pqpq0xbtqbbd6yn7xb",
+      "title": "Perplexity 在 Computer 技能市场上线开源技能 /impeccable，每用户赠 5000 credits",
+      "summary": "Perplexity CEO Aravind Srinivas 宣布 @pbakaus 开发的开源技能 /impeccable 现已进入 Computer 的技能市场，用于构建不像 AI 生成套路的界面。该技能检查布局、字体、对比度和可访问性，并通过修复设计师会指出的问题来改进界面；10 月 31 日前每用户可享最多 5000 credits 免费使用。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Perplexity CEO Aravind Srinivas 宣布 @pbakaus 开发的开源技能 /impeccable 现已进入 Computer 的技能市场，用于构建不像 AI 生成套路的界面。该技能检查布局、字体、对比度和可访问性，并通过修复设计师会指出的问题来改进界面；10 月 31 日前每用户可享最多 5000 credits 免费使用。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/jryc594pqpq0xbtqbbd6yn7xb\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Perplexity CEO Aravind Srinivas 宣布 @pbakaus 开发的开源技能 /impeccable 现已进入 Computer 的技能市场，用于构建不像 AI 生成套路的界面。该技能检查布局、字体、对比度和可访问性，并通过修复设计师会指出的问题来改进界面；10 月 31 日前每用户可享最多 5000 credits 免费使用。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T15:51:16+00:00",
       "authors": [
         {
-          "name": "x.com"
+          "name": "aihot.news"
         }
       ],
       "tags": [
-        "rss:daily-juya-uk"
+        "rss:aihot-news-all"
       ],
       "language": "zh-CN",
       "_ai_daily": {
-        "event_id": "e2c4db4d32c2fac",
+        "event_id": "e10d108d430b840",
         "source_ids": [
-          "rss:daily-juya-uk"
+          "rss:aihot-news-all"
         ],
         "all_urls": [
-          "https://x.com/meaghaneschoi/status/2113636733556535660"
+          "https://aihot.news/items/jryc594pqpq0xbtqbbd6yn7xb"
         ],
         "independent_source_count": 1,
         "evidence_level": "single_source",
         "confidence": 1.0,
         "facts": [
-          "Claude 发布桌面应用界面更新"
+          "Perplexity CEO Aravind Srinivas 宣布 @pbakaus 开发的开源技能 /impeccable 现已进入 Computer 的技能市场，用于构建不像 AI 生成套路的界面。该技能检查布局、字体、对比度和可访问性，并通过修复设计师会指出的问题来改进界面；10 月 31 日前每用户可享最多 5000 credits 免费使用。"
         ],
         "inferences": [],
         "uncertainties": [
@@ -2153,6 +1947,45 @@
         "confidence": 1.0,
         "facts": [
           "各位 V 友好，感谢大家一直以来对我们智友社的支持和关注。\n我们智友社的初衷是帮大家寻找市面上稳定的主流 AI 特价渠道，鉴于目前国外主流 AI 的正价订购价格昂贵，我们发现市面上有不少的价格实惠的特殊渠道 AI 产品，可惜质量参差不齐，为了节省大家的时间跟金钱，我们花了不少精力对各个渠道商的特价 AI 进行了购买评测，再从中选取稳定的渠道上架出售，我们也欢迎各位佬友跟我们推荐稳定的特殊渠道 AI ，我们会自费购买进行稳定性测试，测试通过后也能让更多的人能受益！\n由于目前国外 AI 并不能上架国内主流购物平台，所以我们只能把店铺开在了一个小众平台—链动小铺，您有问题可以随时联系我们 QQ 客服"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-24-e2c4db4d32c2fac",
+      "url": "https://x.com/meaghaneschoi/status/2113636733556535660",
+      "external_url": "https://x.com/meaghaneschoi/status/2113636733556535660",
+      "title": "Claude 发布桌面应用界面更新",
+      "summary": "Claude 发布桌面应用界面更新",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Claude 发布桌面应用界面更新</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://x.com/meaghaneschoi/status/2113636733556535660\">x.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Claude 发布桌面应用界面更新\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· x.com\nAI 日报",
+      "date_published": "2026-10-24T01:28:12+00:00",
+      "authors": [
+        {
+          "name": "x.com"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e2c4db4d32c2fac",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://x.com/meaghaneschoi/status/2113636733556535660"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Claude 发布桌面应用界面更新"
         ],
         "inferences": [],
         "uncertainties": [
@@ -2397,45 +2230,6 @@
       }
     },
     {
-      "id": "2026-10-24-eb2ebe94ddc237c",
-      "url": "https://x.com/thsottiaux/status/2113492187770175603",
-      "external_url": "https://x.com/thsottiaux/status/2113492187770175603",
-      "title": "Codex 28 天改进第 18、19 天",
-      "summary": "Codex 28 天改进第 18、19 天",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Codex 28 天改进第 18、19 天</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://x.com/thsottiaux/status/2113492187770175603\">x.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
-      "content_text": "事实\n· Codex 28 天改进第 18、19 天\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· x.com\nAI 日报",
-      "date_published": "2026-10-24T01:28:12+00:00",
-      "authors": [
-        {
-          "name": "x.com"
-        }
-      ],
-      "tags": [
-        "rss:daily-juya-uk"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "eb2ebe94ddc237c",
-        "source_ids": [
-          "rss:daily-juya-uk"
-        ],
-        "all_urls": [
-          "https://x.com/thsottiaux/status/2113492187770175603"
-        ],
-        "independent_source_count": 1,
-        "evidence_level": "single_source",
-        "confidence": 1.0,
-        "facts": [
-          "Codex 28 天改进第 18、19 天"
-        ],
-        "inferences": [],
-        "uncertainties": [
-          "本次未调用大模型，内容为来源原文摘录"
-        ],
-        "rule_based": true
-      }
-    },
-    {
       "id": "2026-10-24-eaa1a7a648a675b",
       "url": "https://aihot.news/items/dkwtctkpgl3o3o7mwl6f394px",
       "external_url": "https://aihot.news/items/dkwtctkpgl3o3o7mwl6f394px",
@@ -2593,45 +2387,6 @@
       }
     },
     {
-      "id": "2026-10-24-ed7260b00177b8f",
-      "url": "https://aihot.news/items/hu6uexzdgvqt4np5b7sbk2i2m",
-      "external_url": "https://aihot.news/items/hu6uexzdgvqt4np5b7sbk2i2m",
-      "title": "山东大学研究：花哨的 coding agent harness 更贵但并不能提升成绩",
-      "summary": "山东大学研究者让五个模型在 Claude Code、OpenCode 和 mini-SWE-agent 三个 harness 下跑 SWE-bench Verified 任务，发现换 harness 的结果波动与重复运行同一配置相当，成本却最多可达三倍。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>山东大学研究者让五个模型在 Claude Code、OpenCode 和 mini-SWE-agent 三个 harness 下跑 SWE-bench Verified 任务，发现换 harness 的结果波动与重复运行同一配置相当，成本却最多可达三倍。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/hu6uexzdgvqt4np5b7sbk2i2m\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
-      "content_text": "事实\n· 山东大学研究者让五个模型在 Claude Code、OpenCode 和 mini-SWE-agent 三个 harness 下跑 SWE-bench Verified 任务，发现换 harness 的结果波动与重复运行同一配置相当，成本却最多可达三倍。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T09:21:39+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "ed7260b00177b8f",
-        "source_ids": [
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/hu6uexzdgvqt4np5b7sbk2i2m"
-        ],
-        "independent_source_count": 1,
-        "evidence_level": "single_source",
-        "confidence": 1.0,
-        "facts": [
-          "山东大学研究者让五个模型在 Claude Code、OpenCode 和 mini-SWE-agent 三个 harness 下跑 SWE-bench Verified 任务，发现换 harness 的结果波动与重复运行同一配置相当，成本却最多可达三倍。"
-        ],
-        "inferences": [],
-        "uncertainties": [
-          "本次未调用大模型，内容为来源原文摘录"
-        ],
-        "rule_based": true
-      }
-    },
-    {
       "id": "2026-10-24-ede829336dcc62e",
       "url": "https://x.com/cursor_ai/status/2113661506634305834",
       "external_url": "https://x.com/cursor_ai/status/2113661506634305834",
@@ -2706,6 +2461,45 @@
         "uncertainties": [
           "本次未调用大模型，内容为来源原文摘录",
           "本条的来源标题为外文，未调用大模型，因此未翻译"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-24-eb2ebe94ddc237c",
+      "url": "https://x.com/thsottiaux/status/2113492187770175603",
+      "external_url": "https://x.com/thsottiaux/status/2113492187770175603",
+      "title": "Codex 28 天改进第 18、19 天",
+      "summary": "Codex 28 天改进第 18、19 天",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Codex 28 天改进第 18、19 天</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://x.com/thsottiaux/status/2113492187770175603\">x.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Codex 28 天改进第 18、19 天\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· x.com\nAI 日报",
+      "date_published": "2026-10-24T01:28:12+00:00",
+      "authors": [
+        {
+          "name": "x.com"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "eb2ebe94ddc237c",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://x.com/thsottiaux/status/2113492187770175603"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Codex 28 天改进第 18、19 天"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
         ],
         "rule_based": true
       }
@@ -3343,9 +3137,9 @@
       "url": "https://block.xyz/dessa",
       "external_url": "https://block.xyz/dessa",
       "title": "Dessa: Conversation Model trained only on speech",
-      "summary": "Article URL: Comments URL: Points: 441 # Comments: 166",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Article URL:\nComments URL:\nPoints: 441\n# Comments: 166</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li><li>本条的来源标题为外文，未调用大模型，因此未翻译</li></ul><p><strong>可信度</strong>：多源交叉验证（3 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://block.xyz/dessa\">block.xyz</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
-      "content_text": "事实\n· Article URL:\nComments URL:\nPoints: 441\n# Comments: 166\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n· 本条的来源标题为外文，未调用大模型，因此未翻译\n可信度：多源交叉验证（3 个独立来源）\n来源\n· block.xyz\nAI 日报",
+      "summary": "Article URL: Comments URL: Points: 444 # Comments: 168",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Article URL:\nComments URL:\nPoints: 444\n# Comments: 168</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li><li>本条的来源标题为外文，未调用大模型，因此未翻译</li></ul><p><strong>可信度</strong>：多源交叉验证（3 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://block.xyz/dessa\">block.xyz</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Article URL:\nComments URL:\nPoints: 444\n# Comments: 168\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n· 本条的来源标题为外文，未调用大模型，因此未翻译\n可信度：多源交叉验证（3 个独立来源）\n来源\n· block.xyz\nAI 日报",
       "date_published": "2026-10-23T19:09:54+00:00",
       "authors": [
         {
@@ -3372,7 +3166,7 @@
         "evidence_level": "multi_source",
         "confidence": 1.0,
         "facts": [
-          "Article URL:\nComments URL:\nPoints: 441\n# Comments: 166"
+          "Article URL:\nComments URL:\nPoints: 444\n# Comments: 168"
         ],
         "inferences": [],
         "uncertainties": [
@@ -3578,6 +3372,45 @@
       }
     },
     {
+      "id": "2026-10-24-e363d5f243fff9c",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5HR1ZOUU1RSkZoTUhBa3ZnSE5Nc2VkTEpETjEzMEtqNkVIM2ZnOE4yaUs0R0E5eWxlWEtaS2d4LUEzMUNGUFBCR2lJV0FTcGtIZGhfZW1uak5Bd1pPS19vQlpORDg0Tzd3TXZWLUd1YngwandFa2J0amRUbU4?oc=5",
+      "external_url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5HR1ZOUU1RSkZoTUhBa3ZnSE5Nc2VkTEpETjEzMEtqNkVIM2ZnOE4yaUs0R0E5eWxlWEtaS2d4LUEzMUNGUFBCR2lJV0FTcGtIZGhfZW1uak5Bd1pPS19vQlpORDg0Tzd3TXZWLUd1YngwandFa2J0amRUbU4?oc=5",
+      "title": "钛动科技发布营销智能体Navos Pro，尝试把AI接入出海营销流程 - 新浪财经",
+      "summary": "钛动科技发布营销智能体Navos Pro，尝试把AI接入出海营销流程 新浪财经",
+      "content_html": "<p><strong>事实</strong></p><ul><li>钛动科技发布营销智能体Navos Pro，尝试把AI接入出海营销流程 新浪财经</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMifEFVX3lxTE5HR1ZOUU1RSkZoTUhBa3ZnSE5Nc2VkTEpETjEzMEtqNkVIM2ZnOE4yaUs0R0E5eWxlWEtaS2d4LUEzMUNGUFBCR2lJV0FTcGtIZGhfZW1uak5Bd1pPS19vQlpORDg0Tzd3TXZWLUd1YngwandFa2J0amRUbU4?oc=5\">news.google.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 钛动科技发布营销智能体Navos Pro，尝试把AI接入出海营销流程 新浪财经\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· news.google.com\nAI 日报",
+      "date_published": "2026-10-24T11:09:11+00:00",
+      "authors": [
+        {
+          "name": "news.google.com"
+        }
+      ],
+      "tags": [
+        "api:news-google-com-search"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e363d5f243fff9c",
+        "source_ids": [
+          "api:news-google-com-search"
+        ],
+        "all_urls": [
+          "https://news.google.com/rss/articles/CBMifEFVX3lxTE5HR1ZOUU1RSkZoTUhBa3ZnSE5Nc2VkTEpETjEzMEtqNkVIM2ZnOE4yaUs0R0E5eWxlWEtaS2d4LUEzMUNGUFBCR2lJV0FTcGtIZGhfZW1uak5Bd1pPS19vQlpORDg0Tzd3TXZWLUd1YngwandFa2J0amRUbU4?oc=5"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "钛动科技发布营销智能体Navos Pro，尝试把AI接入出海营销流程 新浪财经"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
       "id": "2026-10-24-ebb0fb616299b9b",
       "url": "https://github.com/luongnv89/claude-howto",
       "external_url": "https://github.com/luongnv89/claude-howto",
@@ -3619,45 +3452,6 @@
         "uncertainties": [
           "本次未调用大模型，内容为来源原文摘录",
           "本条的来源标题为外文，未调用大模型，因此未翻译"
-        ],
-        "rule_based": true
-      }
-    },
-    {
-      "id": "2026-10-24-e363d5f243fff9c",
-      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5HR1ZOUU1RSkZoTUhBa3ZnSE5Nc2VkTEpETjEzMEtqNkVIM2ZnOE4yaUs0R0E5eWxlWEtaS2d4LUEzMUNGUFBCR2lJV0FTcGtIZGhfZW1uak5Bd1pPS19vQlpORDg0Tzd3TXZWLUd1YngwandFa2J0amRUbU4?oc=5",
-      "external_url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5HR1ZOUU1RSkZoTUhBa3ZnSE5Nc2VkTEpETjEzMEtqNkVIM2ZnOE4yaUs0R0E5eWxlWEtaS2d4LUEzMUNGUFBCR2lJV0FTcGtIZGhfZW1uak5Bd1pPS19vQlpORDg0Tzd3TXZWLUd1YngwandFa2J0amRUbU4?oc=5",
-      "title": "钛动科技发布营销智能体Navos Pro，尝试把AI接入出海营销流程 - 新浪财经",
-      "summary": "钛动科技发布营销智能体Navos Pro，尝试把AI接入出海营销流程 新浪财经",
-      "content_html": "<p><strong>事实</strong></p><ul><li>钛动科技发布营销智能体Navos Pro，尝试把AI接入出海营销流程 新浪财经</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMifEFVX3lxTE5HR1ZOUU1RSkZoTUhBa3ZnSE5Nc2VkTEpETjEzMEtqNkVIM2ZnOE4yaUs0R0E5eWxlWEtaS2d4LUEzMUNGUFBCR2lJV0FTcGtIZGhfZW1uak5Bd1pPS19vQlpORDg0Tzd3TXZWLUd1YngwandFa2J0amRUbU4?oc=5\">news.google.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
-      "content_text": "事实\n· 钛动科技发布营销智能体Navos Pro，尝试把AI接入出海营销流程 新浪财经\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· news.google.com\nAI 日报",
-      "date_published": "2026-10-24T11:09:11+00:00",
-      "authors": [
-        {
-          "name": "news.google.com"
-        }
-      ],
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "e363d5f243fff9c",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMifEFVX3lxTE5HR1ZOUU1RSkZoTUhBa3ZnSE5Nc2VkTEpETjEzMEtqNkVIM2ZnOE4yaUs0R0E5eWxlWEtaS2d4LUEzMUNGUFBCR2lJV0FTcGtIZGhfZW1uak5Bd1pPS19vQlpORDg0Tzd3TXZWLUd1YngwandFa2J0amRUbU4?oc=5"
-        ],
-        "independent_source_count": 1,
-        "evidence_level": "single_source",
-        "confidence": 1.0,
-        "facts": [
-          "钛动科技发布营销智能体Navos Pro，尝试把AI接入出海营销流程 新浪财经"
-        ],
-        "inferences": [],
-        "uncertainties": [
-          "本次未调用大模型，内容为来源原文摘录"
         ],
         "rule_based": true
       }
@@ -4639,6 +4433,45 @@
       }
     },
     {
+      "id": "2026-10-24-ed9a37fa8e2fbf9",
+      "url": "https://aihot.news/items/omqftqosxz75y0b0gvosrj8i5",
+      "external_url": "https://aihot.news/items/omqftqosxz75y0b0gvosrj8i5",
+      "title": "PixLight 2026 征片倒计时7天",
+      "summary": "还在追那最后一个镜头？🎬 PixLight 2026 还剩 7 天。 再渲染一次。再改写一次。再多一次讲述你故事的机会。 $300K 奖金池 符合条件的付费 PixVerse 会员可获最高 100K 的 Pilot Track 积分全额返还。适用条款与条件。 提交链接见下方。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>还在追那最后一个镜头？🎬\nPixLight 2026 还剩 7 天。\n再渲染一次。再改写一次。再多一次讲述你故事的机会。\n$300K 奖金池\n符合条件的付费 PixVerse 会员可获最高 100K 的 Pilot Track 积分全额返还。适用条款与条件。\n提交链接见下方。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/omqftqosxz75y0b0gvosrj8i5\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 还在追那最后一个镜头？🎬\nPixLight 2026 还剩 7 天。\n再渲染一次。再改写一次。再多一次讲述你故事的机会。\n$300K 奖金池\n符合条件的付费 PixVerse 会员可获最高 100K 的 Pilot Track 积分全额返还。适用条款与条件。\n提交链接见下方。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T15:00:10+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ed9a37fa8e2fbf9",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/omqftqosxz75y0b0gvosrj8i5"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "还在追那最后一个镜头？🎬\nPixLight 2026 还剩 7 天。\n再渲染一次。再改写一次。再多一次讲述你故事的机会。\n$300K 奖金池\n符合条件的付费 PixVerse 会员可获最高 100K 的 Pilot Track 积分全额返还。适用条款与条件。\n提交链接见下方。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
       "id": "2026-10-24-e69450410422ba5",
       "url": "https://github.com/makecindy/cindy",
       "external_url": "https://github.com/makecindy/cindy",
@@ -4719,6 +4552,45 @@
       }
     },
     {
+      "id": "2026-10-24-e19b099b39ed56b",
+      "url": "https://aihot.news/items/p3p8q7qrk3pmohvjkumxif2dc",
+      "external_url": "https://aihot.news/items/p3p8q7qrk3pmohvjkumxif2dc",
+      "title": "Tripo 发布全新视觉标识",
+      "summary": "3D 是世界的语言。也是我们的语言。 认识 Tripo 全新视觉标识——由 3D 塑造，向所有人开放，为进化而生。 原生 3D。开放予众。持续进化。 用 Tripo 构建你的世界。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>3D 是世界的语言。也是我们的语言。\n认识 Tripo 全新视觉标识——由 3D 塑造，向所有人开放，为进化而生。\n原生 3D。开放予众。持续进化。\n用 Tripo 构建你的世界。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/p3p8q7qrk3pmohvjkumxif2dc\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 3D 是世界的语言。也是我们的语言。\n认识 Tripo 全新视觉标识——由 3D 塑造，向所有人开放，为进化而生。\n原生 3D。开放予众。持续进化。\n用 Tripo 构建你的世界。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T15:00:03+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e19b099b39ed56b",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/p3p8q7qrk3pmohvjkumxif2dc"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "3D 是世界的语言。也是我们的语言。\n认识 Tripo 全新视觉标识——由 3D 塑造，向所有人开放，为进化而生。\n原生 3D。开放予众。持续进化。\n用 Tripo 构建你的世界。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
       "id": "2026-10-24-e9b6dadf48216a1",
       "url": "https://aihot.news/items/hgym9cuiylm0l5hwkgunqfvi4",
       "external_url": "https://aihot.news/items/hgym9cuiylm0l5hwkgunqfvi4",
@@ -4749,6 +4621,84 @@
         "confidence": 1.0,
         "facts": [
           "这是个错误，但我猜他们会纠正。中国实验室非常渴望影响西方生态和 X，所以他们很可能在这里走得太远了。他们紧跟风向，我打赌他们会明白（即使是一些文化差异导致了这一点）"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-24-e07719e82f09eb7",
+      "url": "https://aihot.news/items/ebmz39imohfiva1hltr726t8j",
+      "external_url": "https://aihot.news/items/ebmz39imohfiva1hltr726t8j",
+      "title": "Francois Chollet：符号学习有效",
+      "summary": "符号学习有效",
+      "content_html": "<p><strong>事实</strong></p><ul><li>符号学习有效</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/ebmz39imohfiva1hltr726t8j\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 符号学习有效\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T13:01:13+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e07719e82f09eb7",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/ebmz39imohfiva1hltr726t8j"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "符号学习有效"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-24-ed5910151893e4a",
+      "url": "https://www.bloomberg.com/news/articles/2026-10-21/ai-research-startup-flapping-airplanes-valued-at-6-billion-in-round",
+      "external_url": "https://www.bloomberg.com/news/articles/2026-10-21/ai-research-startup-flapping-airplanes-valued-at-6-billion-in-round",
+      "title": "Flapping Airplanes 获融资",
+      "summary": "Flapping Airplanes 获融资",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Flapping Airplanes 获融资</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.bloomberg.com/news/articles/2026-10-21/ai-research-startup-flapping-airplanes-valued-at-6-billion-in-round\">bloomberg.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Flapping Airplanes 获融资\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· bloomberg.com\nAI 日报",
+      "date_published": "2026-10-24T01:28:12+00:00",
+      "authors": [
+        {
+          "name": "bloomberg.com"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ed5910151893e4a",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://www.bloomberg.com/news/articles/2026-10-21/ai-research-startup-flapping-airplanes-valued-at-6-billion-in-round"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Flapping Airplanes 获融资"
         ],
         "inferences": [],
         "uncertainties": [

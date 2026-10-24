@@ -119,6 +119,11 @@ class MergeResult:
     #: Groups the model proposed but the plausibility check rejected. Recorded because a high
     #: count means the model is grouping by theme rather than by subject.
     rejected_groups: int = 0
+    #: Batches the input was split into, and how many produced an answer. A run that merged
+    #: nothing has to distinguish "the model said no duplicates" from "the model never
+    #: answered" -- the archive looks the same either way, and the fixes are opposite.
+    batches: int = 0
+    input_events: int = 0
     examples: list[dict] = field(default_factory=list)
 
     @property
@@ -392,6 +397,8 @@ async def merge_duplicates(
 
     size = max(2, batch)
     chunks = _bucket(events, size)
+    result.batches = len(chunks)
+    result.input_events = len(events)
 
     async def one(chunk: list[Event]) -> None:
         messages = [

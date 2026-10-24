@@ -1118,6 +1118,13 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
             merge_result = await merge_duplicates(events, router)
             events = merge_result.events
             print(f'  LLM 去重        {merge_result.label}')
+            # Calls and batches, always. A merge that did nothing has to distinguish "the model
+            # said no duplicates" from "the model never answered" -- the archive looks identical
+            # either way, and the two need opposite fixes.
+            print(
+                f'                  {merge_result.calls} 次调用 / {merge_result.batches} 批'
+                f' / 输入 {merge_result.input_events} 条'
+            )
             for example in merge_result.examples:
                 print(f"  · 保留 {example['kept'][:50]}")
                 for merged in example['merged'][:3]:
