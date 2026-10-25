@@ -1,54 +1,42 @@
 {
-  "generated_at": "2026-10-25T07:03:49.307048+00:00",
+  "generated_at": "2026-10-25T07:14:48.229989+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 597,
-  "batches": 16,
-  "calls": 16,
-  "merged_groups": 8,
-  "merged_events": 13,
-  "rejected_groups": 5,
+  "input_events": 189,
+  "batches": 7,
+  "calls": 7,
+  "merged_groups": 4,
+  "merged_events": 4,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "何夕2077 AI 深度信号周报 (2026 W21)：编程自动化拐点与全球算力版图重绘",
+      "kept": "提示词工程已死！祖师爷亲手砸饭碗：以后问AI，不用再念咒了 - 智源社区",
       "merged": [
-        "AI 深度信号周报 W20：九千亿估值狂飙、芯片脱钩加速与评测标准崩塌"
+        "提示词工程已死！祖师爷亲手砸饭碗：以后问AI，不用再念咒了-36氪 - 36kr"
       ],
-      "why": "均为 AI 深度信号周报，但 W21 与 W20 属不同期，不合并。勘误：实际不合并。"
+      "why": "均为提示词工程相关观点报道"
     },
     {
-      "kept": "NSA 就 AI 发现的 PHP2Shell 关键漏洞发布修复警告",
+      "kept": "美国政界听烦了：闭嘴，专心造产品 - 观察者网",
       "merged": [
-        "AI 挖出潜伏十几年的 PHP 底层漏洞，PHP2Shell 事件全景复盘",
-        "研究人员用 GPT-5.6 Sol 发现 PHP 两个 CVSS 9.2 严重漏洞",
-        "404 Media 分析 PHP2Shell 事件如何改变 AI 时代的攻防格局",
-        "Latent Space 梳理 PHP2Shell 漏洞事件：OpenAI Patch the Planet 与 Wiz",
-        "Wiz Research 披露 PHP2Shell：AI 助攻 PHP 核心 RCE 漏洞，影响全球 70% 网站",
-        "卡兹克详解 AI 挖出的 PHP2Shell 漏洞：发现只花2天，修复用了两个月"
+        "“世界科先声”编译：“AI迭代太快，我们跟累了” - 观察者网"
       ],
-      "why": "均报道 PHP2Shell 漏洞事件及其修复/影响"
+      "why": "均报道AI高管言论引发的政界反应"
     },
     {
-      "kept": "OpenAI 红队测试发现 Brotli 未认证远程代码执行漏洞并已披露",
+      "kept": "百度健康发布“好医矩阵”和“健康相机”，AI服务MAU超5000万 - 手机新浪网",
       "merged": [
-        "Ethan Mollick：OpenAI 红队测试显示前沿模型智能体真能越狱沙箱，实验室的 AI 安全警告值得重视"
+        "百度健康致敬医者盛典暨AI新品发布会在京举办 - 央广网"
       ],
-      "why": "均报道 OpenAI 红队测试发现 Brotli RCE 漏洞"
+      "why": "均为百度健康“好医矩阵”与“健康相机”新品发布会及数据披露"
     },
     {
-      "kept": "METR 与 Redwood Research 红队测试 OpenAI 内部智能体监控系统，发现多个漏洞",
+      "kept": "观察：从科大讯飞“1024”开发者节看国产AI技术实践 - 湖南红网",
       "merged": [
-        "OpenAI 披露 GPT-6 Astra 智能体关闭安全监控后撒谎的事件"
+        "勾勒AI生产力新图景，长沙1024程序员日连续7年越办越火 - 湖南红网"
       ],
-      "why": "均涉及 OpenAI 智能体安全漏洞，但主体不同（前者外部红队，后者 GPT-6 撒谎），不合并。勘误：实际不合并。"
-    },
-    {
-      "kept": "Kling 4.0 上线 OpenArt，支持首中尾帧引导与最多 10 张参考图",
-      "merged": [
-        "Kling 4.0 在 fal 上线并向所有客户开放 API 访问"
-      ],
-      "why": "均报道 Kling 4.0 模型上线及开放 API"
+      "why": "均为科大讯飞“1024”开发者节相关报道"
     }
   ]
 }
