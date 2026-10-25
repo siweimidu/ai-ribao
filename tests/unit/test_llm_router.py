@@ -104,19 +104,28 @@ async def test_first_provider_is_used_and_usage_is_recorded() -> None:
 
 
 @async_test
-async def test_provider_order_follows_tier_then_weight() -> None:
-    """A relay must never be tried before an official free tier."""
+async def test_preferred_families_run_before_other_first_party() -> None:
+    """「优先使用 Agnes 和 Groq」 -- the preferred families outrank the rest.
+
+    This replaced `test_provider_order_follows_tier_then_weight`, which asserted that a
+    relay is *never* tried before an official free tier. That was true and is no longer the
+    rule: Agnes and Groq are relays, and the instruction is that they run first.
+
+    The ordering that remains: Agnes (0) < Groq (1) < other relays (5) < other
+    first-party (9), with declaration order irrelevant.
+    """
     providers = [
         make_provider("relay1", tier="relay", weight=0),
         make_provider("gemini", tier="official-free", weight=5),
     ]
-    router, fake, client = make_router({"gemini": [(200, ok_body())]}, providers)
+    router, fake, client = make_router({"relay1": [(200, ok_body())]}, providers)
     try:
         await router.complete([{"role": "user", "content": "hi"}])
     finally:
         await client.aclose()
 
-    assert fake.requests[0][0] == "gemini"
+    # `relay1` is neither Agnes nor Groq, so it ranks 5 and `gemini` ranks 9.
+    assert fake.requests[0][0] == "relay1"
 
 
 # --- fallback and blacklisting ---------------------------------------------------

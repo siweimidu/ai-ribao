@@ -39,6 +39,39 @@ from .client import (
     extract_json,
 )
 
+#: Provider families tried first, in this order. 「优先使用 Agnes 和 Groq」.
+#:
+#: Matched on **exact host**, not a substring of the whole spec. A substring test over
+#: `f"{spec.id} {spec.base_url}"` looks harmless and is not: the test fixtures use
+#: `https://groq.example/v1`, and a `"groq" in haystack` check promoted them ahead of the
+#: provider the test was about, so five unrelated routing tests failed.
+#:
+#: Each entry is (substring of HOST, rank). Lower rank runs first.
+_PREFERRED_HOSTS: tuple[tuple[str, int], ...] = (
+    ("agnes-ai.com", 0),
+    ("agnes-ai.cn", 0),
+    ("api.groq.com", 1),
+    ("groq.com", 1),
+)
+
+#: Ranks for everything not named above.
+_RANK_OTHER_RELAY = 5
+_RANK_OTHER_FIRST_PARTY = 9
+
+
+def priority_of(spec) -> int:
+    """Sort key: lower runs first.
+
+    Only the **host** decides the family. `tier` breaks the remaining ties, because a relay
+    key that is neither Agnes nor Groq still runs before the small first-party quotas.
+    """
+    host = (spec.base_url or "").split("//")[-1].split("/")[0].lower()
+    for marker, rank in _PREFERRED_HOSTS:
+        if host == marker or host.endswith("." + marker):
+            return rank
+    return _RANK_OTHER_RELAY if spec.tier == "relay" else _RANK_OTHER_FIRST_PARTY
+
+
 TIER_RANK = {"official-free": 0, "official-paid": 1, "relay": 2}
 
 #: Providers we have verified ourselves and that publish quotas/terms.
@@ -163,19 +196,34 @@ class Router:
         if len(out) < 2:
             return out
 
-        # **Rotate within each tier, not across them.**
+        # **Preferred families first, rotation inside each family.**
         #
-        # A relay key and a first-party key are not interchangeable: the first-party ones are
-        # free quota that costs nothing to spend, while a relay key may be a paid account.
-        # Rotating the whole list would put a relay key ahead of a first-party one on some
-        # calls. Rotating inside each tier keeps the preference order and still spreads load.
-        offset = self._rr % len(out)
-        self._rr += 1
-        rotated = out[offset:] + out[:offset]
+        # Two problems, fixed together:
+        #
+        # 1. *Order.* Every call started at declaration position, so the relay tier always
+        #    began at `#0`. Measured 2026-10-25: 57 / 25 / 15 / 4 calls across the first four
+        #    relay keys and **zero** for the other nineteen. Then #0, #1 and #2 all answered
+        #    429 together, every groq key was already 429, and 81 of 120 events fell back to
+        #    rule-based excerpts with 19 unused keys and 61% of budget left.
+        #
+        # 2. *Preference.* 「优先使用 Agnes 和 Groq」. `priority_of` ranks Agnes first, Groq
+        #    second, other relays next, the remaining first-party keys last.
+        #
+        # Rotation happens among providers of equal priority only, so load spreads across the
+        # Agnes keys without letting a lower-priority family jump the queue.
+        buckets: dict[int, list[ProviderSpec]] = {}
+        for spec in out:
+            buckets.setdefault(priority_of(spec), []).append(spec)
 
-        first_party = [s for s in rotated if s.tier != "relay"]
-        relay = [s for s in rotated if s.tier == "relay"]
-        return first_party + relay
+        ordered: list[ProviderSpec] = []
+        for rank in sorted(buckets):
+            members = buckets[rank]
+            if len(members) > 1:
+                offset = self._rr % len(members)
+                members = members[offset:] + members[:offset]
+            ordered.extend(members)
+        self._rr += 1
+        return ordered
 
     # --- the one entry point ----------------------------------------------------
     async def complete(
