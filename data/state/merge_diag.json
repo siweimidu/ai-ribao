@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-10-25T06:20:41.455897+00:00",
+  "generated_at": "2026-10-25T06:41:51.348609+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 594,
+  "input_events": 595,
   "batches": 16,
   "calls": 16,
-  "merged_groups": 12,
-  "merged_events": 14,
-  "rejected_groups": 7,
+  "merged_groups": 7,
+  "merged_events": 9,
+  "rejected_groups": 0,
   "failed": false,
   "examples": [
     {
@@ -15,36 +15,37 @@
       "merged": [
         "下周，AI巨头财报密集揭晓 - 凤凰网"
       ],
-      "why": "均报道下周AI巨头财报密集揭晓"
+      "why": "都是月之暗面 Kimi K3.1 Pro 发布及相关多源验证"
     },
     {
-      "kept": "科大讯飞发布星火 X2.6 端云一体大模型",
+      "kept": "OpenAI 下调估值目标至 1.25 万亿美元，拟融资至多 300 亿美元",
       "merged": [
-        "观察：从科大讯飞“1024”开发者节看国产AI技术实践 - 湖南红网"
+        "Bloomberg 报道 DeepSeek 新一轮融资约 150 亿美元"
       ],
-      "why": "均围绕科大讯飞星火X2.6发布及1024开发者节"
+      "why": "均为 OpenAI/DeepSeek 融资报道"
     },
     {
-      "kept": "Kimi K3.1 Pro 发布，以 55 分位列 Artificial Analysis Intelligence Index 第 4",
+      "kept": "OpenCode 上线 Meta 的 Muse Wonder 模型",
       "merged": [
-        "月之暗面发布 Kimi K3.1 Pro，100 万 token 上下文，开放权重将于 11 月 4 日前释出"
+        "AIHOT 日报 · 2026-10-13 — Meta 发布 Muse Wonder 和 Muse Wonder Fu"
       ],
-      "why": "都是 Kimi K3.1 Pro 发布"
+      "why": "均为 Meta 发布 Muse Wonder 模型"
     },
     {
-      "kept": "Wiz Research 披露 PHP2Shell：AI 助攻 PHP 核心 RCE 漏洞，影响全球 70% 网站",
+      "kept": "Anthropic 据报大幅削减蒸馏收入",
       "merged": [
-        "卡兹克详解 AI 挖出的 PHP2Shell 漏洞：发现只花2天，修复用了两个月",
-        "PHP2Shell 漏洞披露前黑客已有四天窗口，多国机构紧急响应"
+        "Anthropic 把智能体\"说明书\"交出去：Agent Skills 标准捐给社区",
+        "Anthropic 捐赠 Agent Skills 标准"
       ],
-      "why": "都是 PHP2Shell 漏洞披露"
+      "why": "均报道 Anthropic 开放/捐赠 Agent Skills 标准"
     },
     {
-      "kept": "美国国土安全部下令所有联邦文职机构移除 DeepSeek 及基于其开发的产品",
+      "kept": "DeepSeek 更新 V4.1 Flash 模型并开放搜索接口",
       "merged": [
-        "美国下令联邦文职机构禁购并移除 DeepSeek"
+        "OpenCode 更新 DeepSeek V4.1 Flash",
+        "AIHOT 日报 · 2026-10-18 — DeepSeek-V4.1-Flash-1017 发布，多基准成绩提升且"
       ],
-      "why": "都是美联邦机构禁 DeepSeek"
+      "why": "均报道 DeepSeek V4.1 Flash 模型更新"
     }
   ]
 }
