@@ -122,6 +122,7 @@ class Router:
         self.stats = RouterStats()
         self.relay_max_calls = relay_max_calls
         self._relay_calls = 0
+        self._rr = 0
         self._lock = asyncio.Lock()
         self._on_retry = on_retry
         self._rate_limit_backoff = rate_limit_backoff
@@ -134,6 +135,21 @@ class Router:
             self.stats.note("provider_dead", provider=provider_id, reason=reason)
 
     def available(self) -> list[ProviderSpec]:
+        """Providers to try, ordered so the load spreads across every relay key.
+
+        **Round-robin, not list order.**
+
+        The list used to be returned in declaration order, so every call started at the first
+        relay key and only advanced when it died. Measured 2026-10-25: relay #0 took 57 calls,
+        #1 took 25, #2 took 15, #3 took 4 -- and #4 through #22 were never touched at all. Then
+        #0, #1 and #2 all answered HTTP 429 at once, every groq key was already 429, and the
+        router raised `LLMUnavailable`. 81 of 120 events fell back to rule-based excerpts while
+        19 unused relay keys sat in the pool and the budget sat at 39% of its call cap.
+
+        Rotating the starting offset spreads the same number of calls across every key, which
+        is both fairer to each quota and much later to hit the point where all of them are
+        rate-limited simultaneously.
+        """
         out: list[ProviderSpec] = []
         for spec in self.providers:
             if spec.id in self.stats.dead:
@@ -143,7 +159,23 @@ class Router:
             if spec.resolve_key(self.env) is None:
                 continue
             out.append(spec)
-        return out
+
+        if len(out) < 2:
+            return out
+
+        # **Rotate within each tier, not across them.**
+        #
+        # A relay key and a first-party key are not interchangeable: the first-party ones are
+        # free quota that costs nothing to spend, while a relay key may be a paid account.
+        # Rotating the whole list would put a relay key ahead of a first-party one on some
+        # calls. Rotating inside each tier keeps the preference order and still spreads load.
+        offset = self._rr % len(out)
+        self._rr += 1
+        rotated = out[offset:] + out[:offset]
+
+        first_party = [s for s in rotated if s.tier != "relay"]
+        relay = [s for s in rotated if s.tier == "relay"]
+        return first_party + relay
 
     # --- the one entry point ----------------------------------------------------
     async def complete(
