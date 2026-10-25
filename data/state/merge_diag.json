@@ -1,51 +1,42 @@
 {
-  "generated_at": "2026-10-25T06:41:51.348609+00:00",
+  "generated_at": "2026-10-25T07:14:48.229989+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 595,
-  "batches": 16,
-  "calls": 16,
-  "merged_groups": 7,
-  "merged_events": 9,
-  "rejected_groups": 0,
+  "input_events": 189,
+  "batches": 7,
+  "calls": 7,
+  "merged_groups": 4,
+  "merged_events": 4,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "环球下周看点：AI巨头财报密集揭晓 美联储议息或为利率定调 - 财联社",
+      "kept": "提示词工程已死！祖师爷亲手砸饭碗：以后问AI，不用再念咒了 - 智源社区",
       "merged": [
-        "下周，AI巨头财报密集揭晓 - 凤凰网"
+        "提示词工程已死！祖师爷亲手砸饭碗：以后问AI，不用再念咒了-36氪 - 36kr"
       ],
-      "why": "都是月之暗面 Kimi K3.1 Pro 发布及相关多源验证"
+      "why": "均为提示词工程相关观点报道"
     },
     {
-      "kept": "OpenAI 下调估值目标至 1.25 万亿美元，拟融资至多 300 亿美元",
+      "kept": "美国政界听烦了：闭嘴，专心造产品 - 观察者网",
       "merged": [
-        "Bloomberg 报道 DeepSeek 新一轮融资约 150 亿美元"
+        "“世界科先声”编译：“AI迭代太快，我们跟累了” - 观察者网"
       ],
-      "why": "均为 OpenAI/DeepSeek 融资报道"
+      "why": "均报道AI高管言论引发的政界反应"
     },
     {
-      "kept": "OpenCode 上线 Meta 的 Muse Wonder 模型",
+      "kept": "百度健康发布“好医矩阵”和“健康相机”，AI服务MAU超5000万 - 手机新浪网",
       "merged": [
-        "AIHOT 日报 · 2026-10-13 — Meta 发布 Muse Wonder 和 Muse Wonder Fu"
+        "百度健康致敬医者盛典暨AI新品发布会在京举办 - 央广网"
       ],
-      "why": "均为 Meta 发布 Muse Wonder 模型"
+      "why": "均为百度健康“好医矩阵”与“健康相机”新品发布会及数据披露"
     },
     {
-      "kept": "Anthropic 据报大幅削减蒸馏收入",
+      "kept": "观察：从科大讯飞“1024”开发者节看国产AI技术实践 - 湖南红网",
       "merged": [
-        "Anthropic 把智能体\"说明书\"交出去：Agent Skills 标准捐给社区",
-        "Anthropic 捐赠 Agent Skills 标准"
+        "勾勒AI生产力新图景，长沙1024程序员日连续7年越办越火 - 湖南红网"
       ],
-      "why": "均报道 Anthropic 开放/捐赠 Agent Skills 标准"
-    },
-    {
-      "kept": "DeepSeek 更新 V4.1 Flash 模型并开放搜索接口",
-      "merged": [
-        "OpenCode 更新 DeepSeek V4.1 Flash",
-        "AIHOT 日报 · 2026-10-18 — DeepSeek-V4.1-Flash-1017 发布，多基准成绩提升且"
-      ],
-      "why": "均报道 DeepSeek V4.1 Flash 模型更新"
+      "why": "均为科大讯飞“1024”开发者节相关报道"
     }
   ]
 }
