@@ -1,42 +1,49 @@
 {
-  "generated_at": "2026-10-25T07:14:48.229989+00:00",
+  "generated_at": "2026-10-25T15:54:49.154858+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 189,
-  "batches": 7,
-  "calls": 7,
-  "merged_groups": 4,
-  "merged_events": 4,
-  "rejected_groups": 1,
+  "input_events": 251,
+  "batches": 8,
+  "calls": 8,
+  "merged_groups": 7,
+  "merged_events": 7,
+  "rejected_groups": 4,
   "failed": false,
   "examples": [
     {
-      "kept": "提示词工程已死！祖师爷亲手砸饭碗：以后问AI，不用再念咒了 - 智源社区",
+      "kept": "Nvidia 开源机器人视频标注引擎 Flora，标注成本约为 GPT-6 Astra 的 1/125",
       "merged": [
-        "提示词工程已死！祖师爷亲手砸饭碗：以后问AI，不用再念咒了-36氪 - 36kr"
+        "Nvidia open-sources Flora to make robot video labeling 125x "
       ],
-      "why": "均为提示词工程相关观点报道"
+      "why": "均为 Nvidia 开源 Flora 机器人视频标注引擎"
     },
     {
-      "kept": "美国政界听烦了：闭嘴，专心造产品 - 观察者网",
+      "kept": "南京大学等团队开源 OpenMobile-2 手机智能体，27B 版 AndroidWorld 得分 79.9",
       "merged": [
-        "“世界科先声”编译：“AI迭代太快，我们跟累了” - 观察者网"
+        "OpenMobile-2 proves open-source smartphone agents can rival "
       ],
-      "why": "均报道AI高管言论引发的政界反应"
+      "why": "均为 OpenMobile-2 开源手机智能体发布"
     },
     {
-      "kept": "百度健康发布“好医矩阵”和“健康相机”，AI服务MAU超5000万 - 手机新浪网",
+      "kept": "Podcast: Kimi K3.1 Pro, the new cyber reality, and Muse musings",
       "merged": [
-        "百度健康致敬医者盛典暨AI新品发布会在京举办 - 央广网"
+        "Interconnects 播客第20期：Kimi K3.1 与开源权重模型风险辩论"
       ],
-      "why": "均为百度健康“好医矩阵”与“健康相机”新品发布会及数据披露"
+      "why": "均为 Kimi K3.1 相关播客节目内容"
     },
     {
-      "kept": "观察：从科大讯飞“1024”开发者节看国产AI技术实践 - 湖南红网",
+      "kept": "DeepSeek 传融资约 150 亿美元，月之暗面发布 Kimi K3.1 Pro，中国出台 AI 就业政策",
       "merged": [
-        "勾勒AI生产力新图景，长沙1024程序员日连续7年越办越火 - 湖南红网"
+        "软银孙正义计划在马来西亚投资 500 亿美元，押注 AI 与数据中心"
       ],
-      "why": "均为科大讯飞“1024”开发者节相关报道"
+      "why": "均报道孙正义在马来西亚投资数据中心"
+    },
+    {
+      "kept": "施密特等学者撰文：OpenAI 与 Anthropic 正像现代东印度公司",
+      "merged": [
+        "Ex-Google CEO Eric Schmidt calls OpenAI and Anthropic modern"
+      ],
+      "why": "均为施密特批评 OpenAI 和 Anthropic"
     }
   ]
 }
