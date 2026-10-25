@@ -21,6 +21,7 @@ from dataclasses import dataclass, field
 from datetime import datetime, timedelta, timezone
 
 from .config import AppConfig
+from .unfiltered import is_unfiltered
 from .models import NormalizedItem
 
 #: Buckets that count as "inside the window". `unknown` is deliberately absent.
@@ -93,6 +94,18 @@ def select_window(
             continue
         if item.published_at is not None and item.published_at > future_limit:
             drop("future_dated", item, result.future_dated_samples)
+            continue
+        # **Unfiltered sources skip the recency window.**
+        #
+        # `window_hours` defaults to 36. `hex2077`, `daily-juya`, `ainewslog` and the aibase
+        # feeds publish a rolling archive, so their newest item was 14 / 10 / 11 days old on
+        # 2026-10-25 -- inside no 36-hour window ever. The standing rule for these is explicit:
+        # add them unfiltered, let the scoring sort them out.
+        #
+        # The future-dated and no-URL checks above still apply: those are correctness, not
+        # relevance, and a future date is a defect rather than old news.
+        if is_unfiltered(item.source_id):
+            result.kept.append(item)
             continue
 
         bucket = item.age_bucket

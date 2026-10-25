@@ -157,12 +157,12 @@
   }
  },
  "XHToken/Spark-X2.6": {
-  "fetched_at": "2026-10-22T05:20:38.910724+00:00",
+  "fetched_at": "2026-10-25T04:35:04.682779+00:00",
   "data": {
    "full_name": "XHToken/Spark-X2.6",
-   "description": "Spark-x2.5 open model series. Pushing the Limits of Agentic Capabilities in On-Device Models",
-   "stars": 828,
-   "forks": 110,
+   "description": "Spark-x2.6 open model series. Pushing the Limits of Agentic Capabilities in On-Device Models",
+   "stars": 843,
+   "forks": 116,
    "language": "",
    "license": "Apache-2.0",
    "topics": [
@@ -176,7 +176,7 @@
    "created": "2026-08-24",
    "pushed": "2026-10-20",
    "contributors": 2,
-   "discussions": null,
+   "discussions": 3,
    "languages": {}
   }
  },
@@ -357,12 +357,12 @@
   }
  },
  "StartLuxLabs/StartLux-Prism": {
-  "fetched_at": "2026-10-23T09:22:19.252533+00:00",
+  "fetched_at": "2026-10-25T04:35:04.682779+00:00",
   "data": {
    "full_name": "StartLuxLabs/StartLux-Prism",
    "description": "Fast, exact inference for StartLux-Decision models on NVIDIA GPUs: the released GGUF files on int8 and 4-bit tensor cores, behind the /v1/systemone API, with up to 5.3× lower latency than vLLM in FP8 and bit-identical answers.",
-   "stars": 41,
-   "forks": 0,
+   "stars": 65,
+   "forks": 2,
    "language": "Python",
    "license": "",
    "topics": [
@@ -376,7 +376,7 @@
    "created": "2026-10-13",
    "pushed": "2026-10-22",
    "contributors": 2,
-   "discussions": null,
+   "discussions": 0,
    "languages": {
     "Python": 81.80066917683955,
     "Cuda": 12.934440726795335,
@@ -785,6 +785,92 @@
     "Makefile": 2.977509317568436,
     "Shell": 1.0055262819688986
    }
+  }
+ },
+ "XingChen-AGI/Xing4.0-29B-Intent": {
+  "fetched_at": "2026-10-25T04:35:04.682779+00:00",
+  "data": {
+   "full_name": "XingChen-AGI/Xing4.0-29B-Intent",
+   "description": "Xing4.0-29B-Intent - schema-guided intent recognition and structured information extraction (intent and slot filling, entity, relation and event extraction). A 29B MoE with 4B activated parameters, Apache-2.0.",
+   "stars": 32,
+   "forks": 5,
+   "language": "Python",
+   "license": "Apache-2.0",
+   "topics": [
+    "information-extraction",
+    "intent-recognition",
+    "llm",
+    "moe",
+    "nlp",
+    "schema-guided"
+   ],
+   "created": "2026-10-17",
+   "pushed": "2026-10-19",
+   "contributors": 2,
+   "discussions": 0,
+   "languages": {
+    "Python": 100.0
+   }
+  }
+ },
+ "huggingface/carbon": {
+  "fetched_at": "2026-10-25T04:35:04.682779+00:00",
+  "data": {
+   "full_name": "huggingface/carbon",
+   "description": "The home of Carbon Genomic Foundation Model 🧬",
+   "stars": 232,
+   "forks": 29,
+   "language": "Python",
+   "license": "Apache-2.0",
+   "topics": [],
+   "created": "2026-05-10",
+   "pushed": "2026-06-06",
+   "contributors": 8,
+   "discussions": 0,
+   "languages": {
+    "Python": 82.97266114167523,
+    "Shell": 17.027338858324775
+   }
+  }
+ },
+ "slee-persis/GVS5H": {
+  "fetched_at": "2026-10-25T04:35:04.682779+00:00",
+  "data": {
+   "full_name": "slee-persis/GVS5H",
+   "description": "GVS5H: Five Qwen3.8-27B Models Match Claude Fable 5 on LiveCodeBench Hard  |  Fable 5 Level Coding for a Fifth the Price - or on a Single GPU",
+   "stars": 767,
+   "forks": 93,
+   "language": "Python",
+   "license": "MIT",
+   "topics": [],
+   "created": "2026-08-26",
+   "pushed": "2026-09-23",
+   "contributors": 2,
+   "discussions": 0,
+   "languages": {
+    "Python": 98.69799193985376,
+    "TeX": 0.9413864336749548,
+    "Shell": 0.19051488798721392,
+    "BibTeX Style": 0.1653556673320823,
+    "Perl": 0.004751071151980268
+   }
+  }
+ },
+ "stepfun-ai/Step-5-Preview": {
+  "fetched_at": "2026-10-25T04:35:04.682779+00:00",
+  "data": {
+   "full_name": "stepfun-ai/Step-5-Preview",
+   "description": "StepFun's flagship model for agentic work",
+   "stars": 73,
+   "forks": 0,
+   "language": "",
+   "license": "NOASSERTION",
+   "topics": [],
+   "created": "2026-10-12",
+   "pushed": "2026-10-15",
+   "contributors": 2,
+   "discussions": 0,
+   "languages": {}
   }
  }
 }
