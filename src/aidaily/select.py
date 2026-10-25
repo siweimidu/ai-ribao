@@ -37,6 +37,9 @@ class WindowResult:
     undated_samples: list[str] = field(default_factory=list)
     future_dated_samples: list[str] = field(default_factory=list)
     no_url_samples: list[str] = field(default_factory=list)
+    #: Items whose publication date was not the issue date. Recorded because "the issue is
+    #: thin today" and "the feeds are serving last week" look identical without them.
+    wrong_date_samples: list[str] = field(default_factory=list)
 
     def missing_critical(self, critical: list[str]) -> list[str]:
         return [s for s in critical if s not in self.sources_with_items]
@@ -80,6 +83,8 @@ def select_window(
     """
     now = now or datetime.now(timezone.utc)
     cutoff = now - timedelta(hours=cfg.run.window_hours)
+    # The calendar day the issue covers, in Beijing time.
+    issue_day = now.astimezone(timezone(timedelta(hours=8))).date()
     future_limit = now + timedelta(hours=future_tolerance_hours)
     result = WindowResult()
 
@@ -95,30 +100,31 @@ def select_window(
         if item.published_at is not None and item.published_at > future_limit:
             drop("future_dated", item, result.future_dated_samples)
             continue
-        # **The recency window applies to every source.**
+        # **The date must match the issue date, not merely fall inside a rolling window.**
         #
-        # This used to exempt `unfiltered.UNFILTERED_SOURCES`, on the reading that 「这些源不用
-        # 筛选」 meant no date limit. It did not. Measured on the 2026-10-25 issue: 129 entries,
-        # of which only 22 were published that day; the page led with a 3-day-old Kimi release
-        # and two 9-day-old items, and the tail reached back to 2025-10-08.
+        # `window_hours: 36` was a rolling cutoff: an issue built at 12:00 on the 25th accepted
+        # anything published after noon on the 24th. The instruction is 「信息源只收纳当天的
+        # 信息，日期必须对得上」 -- the calendar date has to be the issue date.
         #
-        # The exemption those sources need is on *relevance*, not on age -- a Chinese
-        # model-release headline scores under the AI floor and must still be included. Old news
-        # is not the same complaint.
-
-        bucket = item.age_bucket
-        if bucket in IN_WINDOW_BUCKETS:
-            # The bucket is a coarse label; the exact timestamp is the real gate. An
-            # item can be bucket "past_72h" and still fall outside a 26h window.
-            if item.published_at is not None and item.published_at < cutoff:
-                result.dropped_by_bucket["outside_window"] = (
-                    result.dropped_by_bucket.get("outside_window", 0) + 1
+        # Measured on the 2026-10-25 issue with the rolling window: 129 entries, of which only
+        # 22 were published that day. The page led with a 3-day-old Kimi release and two
+        # 9-day-old items; the tail reached back to 2025-10-08.
+        #
+        # Undated items follow `include_unknown`: a source that omits the date cannot be judged
+        # either way, and dropping it silently would hide the source entirely.
+        if item.published_at is not None:
+            published_day = item.published_at.astimezone(timezone(timedelta(hours=8))).date()
+            if published_day != issue_day:
+                result.dropped_by_bucket["wrong_date"] = (
+                    result.dropped_by_bucket.get("wrong_date", 0) + 1
                 )
+                if len(result.wrong_date_samples) < 20:
+                    result.wrong_date_samples.append(
+                        f"{item.source_id}: {published_day} {item.title[:50]}"
+                    )
                 continue
-        elif bucket == "unknown" and include_unknown:
-            pass
-        else:
-            drop(bucket, item, result.undated_samples)
+        elif not include_unknown and item.age_bucket not in IN_WINDOW_BUCKETS:
+            drop("unknown", item, result.undated_samples)
             continue
 
         result.kept.append(item)
