@@ -1,13 +1,50 @@
 {
-  "generated_at": "2026-10-25T15:59:59+00:00",
-  "router_is_none": true,
+  "generated_at": "2026-10-25T05:39:44.092170+00:00",
+  "router_is_none": false,
   "ran": true,
-  "input_events": 0,
-  "batches": 0,
-  "calls": 0,
-  "merged_groups": 0,
-  "merged_events": 0,
-  "rejected_groups": 0,
-  "failed": true,
-  "examples": []
+  "input_events": 591,
+  "batches": 16,
+  "calls": 16,
+  "merged_groups": 7,
+  "merged_events": 8,
+  "rejected_groups": 5,
+  "failed": false,
+  "examples": [
+    {
+      "kept": "AIHOT 日报 · 2026-10-24 — 月之暗面发布 Kimi K3.1 Pro，100 万 token 上下文，开放权重将于 11 月 4 日前释出",
+      "merged": [
+        "月之暗面 Kimi K3.1 Pro 上线 OpenRouter，1M 上下文多模态开源权重模型"
+      ],
+      "why": "均为 Kimi K3.1 Pro 模型发布及上线信息"
+    },
+    {
+      "kept": "Wiz Research 披露 PHP2Shell：AI 助攻 PHP 核心 RCE 漏洞，影响全球 70% 网站",
+      "merged": [
+        "卡兹克详解 AI 挖出的 PHP2Shell 漏洞：发现只花2天，修复用了两个月",
+        "PHP2Shell 漏洞披露前黑客已有四天窗口，多国机构紧急响应"
+      ],
+      "why": "都是关于 Wiz 披露 PHP2Shell 漏洞的报道"
+    },
+    {
+      "kept": "Kimi K3.1 Pro 发布，以 55 分位列 Artificial Analysis Intelligence Index 第 4",
+      "merged": [
+        "月之暗面发布 Kimi K3.1 Pro，100 万 token 上下文，开放权重将于 11 月 4 日前释出"
+      ],
+      "why": "都是 Kimi K3.1 Pro 发布的报道"
+    },
+    {
+      "kept": "Kling 4.0 现已上线 OnSolo",
+      "merged": [
+        "可灵 Kling 4.0 上线 Runway Dev 平台并开放 API 调用"
+      ],
+      "why": "都是可灵 Kling 4.0 上线相关平台并开放 API 的报道"
+    },
+    {
+      "kept": "美国国土安全部下令所有联邦文职机构移除 DeepSeek 及基于其开发的产品",
+      "merged": [
+        "美国下令联邦文职机构禁购并移除 DeepSeek"
+      ],
+      "why": "均报道美国联邦文职机构移除/禁购 DeepSeek"
+    }
+  ]
 }
