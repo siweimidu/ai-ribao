@@ -36,6 +36,38 @@ from .models import NormalizedItem
 #: it is a rewrite. Six days covers the realistic delay (a weekly roundup, a weekend gap).
 MAX_BACKFILL_DAYS = 6
 
+#: Sources whose items skip the date window entirely.
+#:
+#: The instruction for these was explicit: add them without filtering, let the scoring decide.
+#: The date window IS a filter, and it was silently discarding them.
+#:
+#: Measured 2026-10-25, source -> newest item -> age against the 6-day window:
+#:
+#:   rss:hex2077         2026-10-11   14 days   all dropped
+#:   rss:daily-juya-uk   2026-10-15   10 days   all dropped
+#:   rss:ainewslog-com   2026-10-14   11 days   all dropped
+#:
+#: Those feeds serve a rolling archive rather than a today-only feed, so the newest item is
+#: often a week or two old. Judging them by publication date throws away the material the
+#: user asked to keep.
+#:
+#: Scoring still separates them: `heat` already discounts by age, so an old story ranks low
+#: without being deleted.
+DATE_EXEMPT_SOURCES = frozenset({
+    "rss:hex2077",
+    "rss:hex2077-dev-rss-zh-cn",
+    "rss:daily-juya-uk",
+    "rss:ainewslog-com",
+    "api:aibase-ai-news",
+    "api:aibase-daily-news",
+    "api:aibase-com",
+})
+
+
+def _date_exempt(item: NormalizedItem) -> bool:
+    """True when the item's publication date must not exclude it."""
+    return (item.source_id or "") in DATE_EXEMPT_SOURCES
+
 
 def local_date(when: datetime, tz_offset_hours: int = 8) -> str:
     """The Beijing calendar date of an instant."""
@@ -86,6 +118,15 @@ def split_by_date(
     late: dict[str, list[NormalizedItem]] = defaultdict(list)
 
     for item in items:
+        # **Date-exempt sources join the target regardless of age.**
+        #
+        # `hex2077`, `daily-juya`, `ainewslog` and `aibase` publish a rolling archive, not a
+        # today-only feed. The instruction for them was explicit: add without filtering, let
+        # the score decide. The date window is still a filter, and it was dropping every one
+        # of their items -- 14 / 10 / 11 days old against a 6-day window on 2026-10-25.
+        if _date_exempt(item):
+            split.target.append(item)
+            continue
         if item.published_at is None:
             # Undated: keep it with the target. Back-dating an unknown is worse than a little
             # noise in today's issue.

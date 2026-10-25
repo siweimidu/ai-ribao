@@ -1,864 +1,104 @@
 {
   "version": "https://jsonfeed.org/version/1.1",
   "title": "AI 日报",
-  "home_page_url": "https://siweimidu.github.io/ai-ribao",
-  "feed_url": "https://siweimidu.github.io/ai-ribao/feed/zh.json",
+  "home_page_url": "https://example.github.io/ai-daily",
+  "feed_url": "https://example.github.io/ai-daily/feed/zh.json",
   "description": "每日 AI 资讯聚合，去重、交叉验证，区分事实与推断",
   "language": "zh-CN",
   "items": [
     {
-      "id": "2026-10-25-e71ae2b7933fd95",
-      "url": "https://techcrunch.com/2026/10/24/blocks-new-voice-model-sounds-eerily-human/",
-      "external_url": "https://techcrunch.com/2026/10/24/blocks-new-voice-model-sounds-eerily-human/",
-      "title": "Block 推出本地全双工语音模型 Dessa",
-      "summary": "Block 的研究实验室发布语音模型 Dessa。 Dessa 可在单块 NVIDIA GPU 上本地运行。 Dessa 支持全双工对话，能同时说和听。 模型完全基于人类语音训练，带有笑声、停顿、哭泣等情感表达。 官方称其知识来自对话数据而非搭配大语言模型。 该模型可在 MacBook M4 Max 等消费级电脑上运行。 目前尚未公开，Block 正招募安全研究员测试。 Block 表示该语音模型可在 MacBook M4 Max 本地运行。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Block 的研究实验室发布语音模型 Dessa。</li><li>Dessa 可在单块 NVIDIA GPU 上本地运行。</li><li>Dessa 支持全双工对话，能同时说和听。</li><li>模型完全基于人类语音训练，带有笑声、停顿、哭泣等情感表达。</li><li>官方称其知识来自对话数据而非搭配大语言模型。</li><li>该模型可在 MacBook M4 Max 等消费级电脑上运行。</li><li>目前尚未公开，Block 正招募安全研究员测试。</li><li>Block 表示该语音模型可在 MacBook M4 Max 本地运行。</li></ul><p><strong>推断</strong></p><ul><li>由于模型可在单块 NVIDIA GPU 本地运行，可能不需要依赖云端计算资源。</li></ul><p><strong>不确定</strong></p><ul><li>模型的具体参数规模和性能指标未披露。</li><li>模型是否支持除 NVIDIA GPU 和 MacBook M4 Max 之外的其他硬件平台尚不明确。</li><li>模型的正式发布和开放时间未知。</li></ul><p><strong>可信度</strong>：多源交叉验证（3 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://techcrunch.com/2026/10/24/blocks-new-voice-model-sounds-eerily-human/\">techcrunch.com</a></li><li><a href=\"https://aihot.news/items/m12zx4vkj1e4avkq0na431zbf\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· Block 的研究实验室发布语音模型 Dessa。\n· Dessa 可在单块 NVIDIA GPU 上本地运行。\n· Dessa 支持全双工对话，能同时说和听。\n· 模型完全基于人类语音训练，带有笑声、停顿、哭泣等情感表达。\n· 官方称其知识来自对话数据而非搭配大语言模型。\n· 该模型可在 MacBook M4 Max 等消费级电脑上运行。\n· 目前尚未公开，Block 正招募安全研究员测试。\n· Block 表示该语音模型可在 MacBook M4 Max 本地运行。\n推断\n· 由于模型可在单块 NVIDIA GPU 本地运行，可能不需要依赖云端计算资源。\n不确定\n· 模型的具体参数规模和性能指标未披露。\n· 模型是否支持除 NVIDIA GPU 和 MacBook M4 Max 之外的其他硬件平台尚不明确。\n· 模型的正式发布和开放时间未知。\n可信度：多源交叉验证（3 个独立来源）\n来源\n· techcrunch.com\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T16:00:00+00:00",
+      "id": "2026-10-25-e45f16e8b110f05",
+      "url": "https://www.kimi.ai/blog/kimi-k3-1-pro",
+      "external_url": "https://www.kimi.ai/blog/kimi-k3-1-pro",
+      "title": "月之暗面发布 Kimi K3.1 Pro",
+      "summary": "月之暗面发布 Kimi K3.1 Pro",
+      "content_html": "<p><strong>事实</strong></p><ul><li>月之暗面发布 Kimi K3.1 Pro</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.kimi.ai/blog/kimi-k3-1-pro\">kimi.ai</a></li><li><a href=\"https://aihot.news/items/sza0k6x64rvqlb6o4s61x5k43\">aihot.news</a></li><li><a href=\"https://aihot.news/items/zh4c5qmd7chbz2dxo4rz60fbz\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 月之暗面发布 Kimi K3.1 Pro\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· kimi.ai\n· aihot.news\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T01:28:12+00:00",
       "authors": [
         {
-          "name": "techcrunch.com"
+          "name": "kimi.ai"
         },
         {
           "name": "aihot.news"
         }
       ],
       "tags": [
-        "rss:aihot-demo-techcrunch-ai",
-        "rss:aihot-news",
-        "rss:aihot-news-all"
+        "rss:aihot-news-all",
+        "rss:daily-juya-uk"
       ],
       "language": "zh-CN",
       "_ai_daily": {
-        "event_id": "e71ae2b7933fd95",
+        "event_id": "e45f16e8b110f05",
         "source_ids": [
-          "rss:aihot-demo-techcrunch-ai",
-          "rss:aihot-news",
+          "rss:daily-juya-uk",
           "rss:aihot-news-all"
         ],
         "all_urls": [
-          "https://techcrunch.com/2026/10/24/blocks-new-voice-model-sounds-eerily-human/",
-          "https://aihot.news/items/m12zx4vkj1e4avkq0na431zbf"
+          "https://www.kimi.ai/blog/kimi-k3-1-pro",
+          "https://aihot.news/items/sza0k6x64rvqlb6o4s61x5k43",
+          "https://aihot.news/items/zh4c5qmd7chbz2dxo4rz60fbz"
         ],
-        "independent_source_count": 3,
+        "independent_source_count": 2,
         "evidence_level": "multi_source",
-        "confidence": 0.9,
+        "confidence": 1.0,
         "facts": [
-          "Block 的研究实验室发布语音模型 Dessa。",
-          "Dessa 可在单块 NVIDIA GPU 上本地运行。",
-          "Dessa 支持全双工对话，能同时说和听。",
-          "模型完全基于人类语音训练，带有笑声、停顿、哭泣等情感表达。",
-          "官方称其知识来自对话数据而非搭配大语言模型。",
-          "该模型可在 MacBook M4 Max 等消费级电脑上运行。",
-          "目前尚未公开，Block 正招募安全研究员测试。",
-          "Block 表示该语音模型可在 MacBook M4 Max 本地运行。"
+          "月之暗面发布 Kimi K3.1 Pro"
         ],
-        "inferences": [
-          "由于模型可在单块 NVIDIA GPU 本地运行，可能不需要依赖云端计算资源。"
-        ],
+        "inferences": [],
         "uncertainties": [
-          "模型的具体参数规模和性能指标未披露。",
-          "模型是否支持除 NVIDIA GPU 和 MacBook M4 Max 之外的其他硬件平台尚不明确。",
-          "模型的正式发布和开放时间未知。"
+          "本次未调用大模型，内容为来源原文摘录"
         ],
-        "rule_based": false
+        "rule_based": true
       }
     },
     {
-      "id": "2026-10-25-e8763eb1815da3b",
-      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9wWGRLTFhZX2dWcU1QbE5sS2lBdHdERk5BY21xbk1qaUhOV0QtSTVJWW1MdDBHU0NZMktoTTI4NVN6UGRjU0JZczhIaHdBUQ?oc=5",
-      "external_url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9wWGRLTFhZX2dWcU1QbE5sS2lBdHdERk5BY21xbk1qaUhOV0QtSTVJWW1MdDBHU0NZMktoTTI4NVN6UGRjU0JZczhIaHdBUQ?oc=5",
-      "title": "DeepSeek新模型发布带来费用降低",
-      "summary": "DeepSeek推出了新模型。 新模型的登场使得用户支付给AI的费用减少。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>DeepSeek推出了新模型。</li><li>新模型的登场使得用户支付给AI的费用减少。</li></ul><p><strong>推断</strong></p><ul><li>DeepSeek的新模型可能采用了更具成本效益的技术或定价策略。</li></ul><p><strong>不确定</strong></p><ul><li>新模型的具体名称是什么。</li><li>新模型的API定价或具体降价幅度是多少。</li><li>新模型的性能表现如何。</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMiTkFVX3lxTE9wWGRLTFhZX2dWcU1QbE5sS2lBdHdERk5BY21xbk1qaUhOV0QtSTVJWW1MdDBHU0NZMktoTTI4NVN6UGRjU0JZczhIaHdBUQ?oc=5\">news.google.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· DeepSeek推出了新模型。\n· 新模型的登场使得用户支付给AI的费用减少。\n推断\n· DeepSeek的新模型可能采用了更具成本效益的技术或定价策略。\n不确定\n· 新模型的具体名称是什么。\n· 新模型的API定价或具体降价幅度是多少。\n· 新模型的性能表现如何。\n可信度：单一来源\n来源\n· news.google.com\nAI 日报",
-      "date_published": "2026-10-24T17:34:42+00:00",
+      "id": "2026-10-25-e063e23fea8db75",
+      "url": "https://www.youtube.com/watch?v=anAmTGcewX8",
+      "external_url": "https://www.youtube.com/watch?v=anAmTGcewX8",
+      "title": "OpenAI CEO：最强内部模型暂难开源",
+      "summary": "OpenAI CEO：最强内部模型暂难开源",
+      "content_html": "<p><strong>事实</strong></p><ul><li>OpenAI CEO：最强内部模型暂难开源</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.youtube.com/watch?v=anAmTGcewX8\">youtube.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· OpenAI CEO：最强内部模型暂难开源\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· youtube.com\nAI 日报",
+      "date_published": "2026-10-24T01:28:12+00:00",
       "authors": [
         {
-          "name": "news.google.com"
+          "name": "youtube.com"
         }
       ],
       "tags": [
-        "api:news-google-com-search"
+        "rss:daily-juya-uk"
       ],
       "language": "zh-CN",
       "_ai_daily": {
-        "event_id": "e8763eb1815da3b",
+        "event_id": "e063e23fea8db75",
         "source_ids": [
-          "api:news-google-com-search"
+          "rss:daily-juya-uk"
         ],
         "all_urls": [
-          "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9wWGRLTFhZX2dWcU1QbE5sS2lBdHdERk5BY21xbk1qaUhOV0QtSTVJWW1MdDBHU0NZMktoTTI4NVN6UGRjU0JZczhIaHdBUQ?oc=5"
+          "https://www.youtube.com/watch?v=anAmTGcewX8"
         ],
         "independent_source_count": 1,
         "evidence_level": "single_source",
         "confidence": 1.0,
         "facts": [
-          "DeepSeek推出了新模型。",
-          "新模型的登场使得用户支付给AI的费用减少。"
+          "OpenAI CEO：最强内部模型暂难开源"
         ],
-        "inferences": [
-          "DeepSeek的新模型可能采用了更具成本效益的技术或定价策略。"
-        ],
+        "inferences": [],
         "uncertainties": [
-          "新模型的具体名称是什么。",
-          "新模型的API定价或具体降价幅度是多少。",
-          "新模型的性能表现如何。"
+          "本次未调用大模型，内容为来源原文摘录"
         ],
-        "rule_based": false
+        "rule_based": true
       }
     },
     {
-      "id": "2026-10-25-eccfb49496b8c19",
-      "url": "https://aihot.news/items/xougitbm9f5vrlfghlw4gh7t6",
-      "external_url": "https://aihot.news/items/xougitbm9f5vrlfghlw4gh7t6",
-      "title": "Krea 推出 2k 图像编辑 beta，8 秒完成",
-      "summary": "Krea 开放 Krea 3 图像编辑 beta，定位为图像编辑新前沿。 端到端 2k 编辑可在 8 秒内完成，画质对标 Nano Banana Pro 与 GPT Image 2.5，并支持 bounding box 控制和精确多轮编辑。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Krea 开放 Krea 3 图像编辑 beta，定位为图像编辑新前沿。</li><li>端到端 2k 编辑可在 8 秒内完成，画质对标 Nano Banana Pro 与 GPT Image 2.5，并支持 bounding box 控制和精确多轮编辑。</li></ul><p><strong>推断</strong></p><ul><li>Krea 3 可能在图像编辑质量和速度上与 Nano Banana Pro 与 GPT Image 2.5 相当。</li></ul><p><strong>不确定</strong></p><ul><li>该 beta 是否对所有用户开放尚未说明。</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/xougitbm9f5vrlfghlw4gh7t6\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· Krea 开放 Krea 3 图像编辑 beta，定位为图像编辑新前沿。\n· 端到端 2k 编辑可在 8 秒内完成，画质对标 Nano Banana Pro 与 GPT Image 2.5，并支持 bounding box 控制和精确多轮编辑。\n推断\n· Krea 3 可能在图像编辑质量和速度上与 Nano Banana Pro 与 GPT Image 2.5 相当。\n不确定\n· 该 beta 是否对所有用户开放尚未说明。\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T20:53:55+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news",
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "eccfb49496b8c19",
-        "source_ids": [
-          "rss:aihot-news",
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/xougitbm9f5vrlfghlw4gh7t6"
-        ],
-        "independent_source_count": 2,
-        "evidence_level": "multi_source",
-        "confidence": 1.0,
-        "facts": [
-          "Krea 开放 Krea 3 图像编辑 beta，定位为图像编辑新前沿。",
-          "端到端 2k 编辑可在 8 秒内完成，画质对标 Nano Banana Pro 与 GPT Image 2.5，并支持 bounding box 控制和精确多轮编辑。"
-        ],
-        "inferences": [
-          "Krea 3 可能在图像编辑质量和速度上与 Nano Banana Pro 与 GPT Image 2.5 相当。"
-        ],
-        "uncertainties": [
-          "该 beta 是否对所有用户开放尚未说明。"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-25-e6a4620de3facc4",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/1018187/pennsylvania-ai-deceptive-advertising-act",
-      "external_url": "https://www.theverge.com/ai-artificial-intelligence/1018187/pennsylvania-ai-deceptive-advertising-act",
-      "title": "宾夕法尼亚州签署法案要求AI生成广告加注标识",
-      "summary": "Pennsylvania Governor Josh Shapiro signed the Artificial Intelligence Deceptive Advertising Act into law on Thursday. The law requires disclosures on AI-generated ads, including still image, video, audio, or text that has been significantly modified or generated by artificial int…",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Pennsylvania Governor Josh Shapiro signed the Artificial Intelligence Deceptive Advertising Act into law on Thursday.</li><li>The law requires disclosures on AI-generated ads, including still image, video, audio, or text that has been significantly modified or generated by artificial intelligence.</li><li>The label must be in the same format as the ad.</li><li>The law applies to ads regardless of where they are made as long as they are placed in Pennsylvania.</li><li>Pennsylvania is one of the earliest states to require AI content disclosure.</li></ul><p><strong>推断</strong></p><ul><li>由于法案对相关表述界定模糊且设有豁免，该法案可能在实际执行中面临漏洞或挑战。</li></ul><p><strong>不确定</strong></p><ul><li>法案中“显著修改”和“明显虚构”等表述的具体界定标准是什么。</li><li>戏仿、讽刺等豁免条款的具体适用范围如何划分。</li></ul><p><strong>可信度</strong>：多源交叉验证（3 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/ai-artificial-intelligence/1018187/pennsylvania-ai-deceptive-advertising-act\">theverge.com</a></li><li><a href=\"https://aihot.news/items/k50ff2029wwvy2pinbmoceo3d\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· Pennsylvania Governor Josh Shapiro signed the Artificial Intelligence Deceptive Advertising Act into law on Thursday.\n· The law requires disclosures on AI-generated ads, including still image, video, audio, or text that has been significantly modified or generated by artificial intelligence.\n· The label must be in the same format as the ad.\n· The law applies to ads regardless of where they are made as long as they are placed in Pennsylvania.\n· Pennsylvania is one of the earliest states to require AI content disclosure.\n推断\n· 由于法案对相关表述界定模糊且设有豁免，该法案可能在实际执行中面临漏洞或挑战。\n不确定\n· 法案中“显著修改”和“明显虚构”等表述的具体界定标准是什么。\n· 戏仿、讽刺等豁免条款的具体适用范围如何划分。\n可信度：多源交叉验证（3 个独立来源）\n来源\n· theverge.com\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T18:32:21+00:00",
-      "authors": [
-        {
-          "name": "theverge.com"
-        },
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news",
-        "rss:aihot-news-all",
-        "rss:theverge-com-ai-artificial-intelligence"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "e6a4620de3facc4",
-        "source_ids": [
-          "rss:aihot-news",
-          "rss:aihot-news-all",
-          "rss:theverge-com-ai-artificial-intelligence"
-        ],
-        "all_urls": [
-          "https://www.theverge.com/ai-artificial-intelligence/1018187/pennsylvania-ai-deceptive-advertising-act",
-          "https://aihot.news/items/k50ff2029wwvy2pinbmoceo3d"
-        ],
-        "independent_source_count": 3,
-        "evidence_level": "multi_source",
-        "confidence": 0.9,
-        "facts": [
-          "Pennsylvania Governor Josh Shapiro signed the Artificial Intelligence Deceptive Advertising Act into law on Thursday.",
-          "The law requires disclosures on AI-generated ads, including still image, video, audio, or text that has been significantly modified or generated by artificial intelligence.",
-          "The label must be in the same format as the ad.",
-          "The law applies to ads regardless of where they are made as long as they are placed in Pennsylvania.",
-          "Pennsylvania is one of the earliest states to require AI content disclosure."
-        ],
-        "inferences": [
-          "由于法案对相关表述界定模糊且设有豁免，该法案可能在实际执行中面临漏洞或挑战。"
-        ],
-        "uncertainties": [
-          "法案中“显著修改”和“明显虚构”等表述的具体界定标准是什么。",
-          "戏仿、讽刺等豁免条款的具体适用范围如何划分。"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-25-ece60a7c3c05a81",
-      "url": "https://aihot.news/items/ojwqwdgv1z3x0q4e8iuk4cbn9",
-      "external_url": "https://aihot.news/items/ojwqwdgv1z3x0q4e8iuk4cbn9",
-      "title": "Grok Bot 可在 Slack 中协作",
-      "summary": "Grok Bot 可在 Slack 中协作 只需把你的 bot 添加到 Slack，就能像队友一样与它们一起工作",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Grok Bot 可在 Slack 中协作</li><li>只需把你的 bot 添加到 Slack，就能像队友一样与它们一起工作</li></ul><p><strong>推断</strong></p><ul><li>将 bot 添加到 Slack 后，bot 可以与其他 bot 协作</li></ul><p><strong>不确定</strong></p><ul><li>不清楚具体协作功能细节</li><li>不清楚是否需要额外设置</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/ojwqwdgv1z3x0q4e8iuk4cbn9\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· Grok Bot 可在 Slack 中协作\n· 只需把你的 bot 添加到 Slack，就能像队友一样与它们一起工作\n推断\n· 将 bot 添加到 Slack 后，bot 可以与其他 bot 协作\n不确定\n· 不清楚具体协作功能细节\n· 不清楚是否需要额外设置\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T19:07:36+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news",
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "ece60a7c3c05a81",
-        "source_ids": [
-          "rss:aihot-news",
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/ojwqwdgv1z3x0q4e8iuk4cbn9"
-        ],
-        "independent_source_count": 2,
-        "evidence_level": "multi_source",
-        "confidence": 1.0,
-        "facts": [
-          "Grok Bot 可在 Slack 中协作",
-          "只需把你的 bot 添加到 Slack，就能像队友一样与它们一起工作"
-        ],
-        "inferences": [
-          "将 bot 添加到 Slack 后，bot 可以与其他 bot 协作"
-        ],
-        "uncertainties": [
-          "不清楚具体协作功能细节",
-          "不清楚是否需要额外设置"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-25-eaf1a59ad5f71b5",
-      "url": "https://aihot.news/items/f9lp2z2y29vunz0j8lrt69ja6",
-      "external_url": "https://aihot.news/items/f9lp2z2y29vunz0j8lrt69ja6",
-      "title": "Sundar Pichai 讲 AI 智能体助力 Google 管理",
-      "summary": "Sundar Pichai 在 Gemini 4 Argon 发布后的访谈中介绍，他用内部运行的智能体自动汇总预训练、中训练、后训练数据等群组的最新进展。 该智能体把过去每天一小时的跟进时间压缩下来。 该智能体还能深入查看细节。 智能体接入算力遥测，向他反馈各产品领域的使用效率与利用率。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Sundar Pichai 在 Gemini 4 Argon 发布后的访谈中介绍，他用内部运行的智能体自动汇总预训练、中训练、后训练数据等群组的最新进展。</li><li>该智能体把过去每天一小时的跟进时间压缩下来。</li><li>该智能体还能深入查看细节。</li><li>智能体接入算力遥测，向他反馈各产品领域的使用效率与利用率。</li></ul><p><strong>推断</strong></p><ul><li>使用内部智能体后，Sundar Pichai 能更高效地监控和管理 Google 的 AI 项目进展。</li></ul><p><strong>不确定</strong></p><ul><li>智能体具体覆盖哪些产品领域尚未说明。</li><li>算力遥测的技术实现细节未披露。</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/f9lp2z2y29vunz0j8lrt69ja6\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· Sundar Pichai 在 Gemini 4 Argon 发布后的访谈中介绍，他用内部运行的智能体自动汇总预训练、中训练、后训练数据等群组的最新进展。\n· 该智能体把过去每天一小时的跟进时间压缩下来。\n· 该智能体还能深入查看细节。\n· 智能体接入算力遥测，向他反馈各产品领域的使用效率与利用率。\n推断\n· 使用内部智能体后，Sundar Pichai 能更高效地监控和管理 Google 的 AI 项目进展。\n不确定\n· 智能体具体覆盖哪些产品领域尚未说明。\n· 算力遥测的技术实现细节未披露。\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T18:24:47+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news",
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "eaf1a59ad5f71b5",
-        "source_ids": [
-          "rss:aihot-news",
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/f9lp2z2y29vunz0j8lrt69ja6"
-        ],
-        "independent_source_count": 2,
-        "evidence_level": "multi_source",
-        "confidence": 1.0,
-        "facts": [
-          "Sundar Pichai 在 Gemini 4 Argon 发布后的访谈中介绍，他用内部运行的智能体自动汇总预训练、中训练、后训练数据等群组的最新进展。",
-          "该智能体把过去每天一小时的跟进时间压缩下来。",
-          "该智能体还能深入查看细节。",
-          "智能体接入算力遥测，向他反馈各产品领域的使用效率与利用率。"
-        ],
-        "inferences": [
-          "使用内部智能体后，Sundar Pichai 能更高效地监控和管理 Google 的 AI 项目进展。"
-        ],
-        "uncertainties": [
-          "智能体具体覆盖哪些产品领域尚未说明。",
-          "算力遥测的技术实现细节未披露。"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-25-e9a2fe54dbea0c5",
-      "url": "https://aihot.news/items/ffe3f6xqqeuk8sabpt0iuisrp",
-      "external_url": "https://aihot.news/items/ffe3f6xqqeuk8sabpt0iuisrp",
-      "title": "Google 内部命名或从 AI 转向 SI",
-      "summary": "Google 出现了与模型对比相关的内部字符串 build_arena_andwise_si_comparison。 材料列举了 SpaceXSI、MSL 和 SSI 作为带有 SI 的命名示例。 材料列举了 MAI > MSI、OpenAI > OpenSI 以及 Apple Intelligence > ASI 的潜在命名变化。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Google 出现了与模型对比相关的内部字符串 build_arena_andwise_si_comparison。</li><li>材料列举了 SpaceXSI、MSL 和 SSI 作为带有 SI 的命名示例。</li><li>材料列举了 MAI &gt; MSI、OpenAI &gt; OpenSI 以及 Apple Intelligence &gt; ASI 的潜在命名变化。</li></ul><p><strong>推断</strong></p><ul><li>Google 似乎正在将内部命名从 AI 转向 SI。</li></ul><p><strong>不确定</strong></p><ul><li>这种内部命名转向是否会进一步扩散无法确定。</li><li>MAI、OpenAI、Apple Intelligence 等名称是否会真正转变为 MSI、OpenSI 和 ASI 无法确认。</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/ffe3f6xqqeuk8sabpt0iuisrp\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· Google 出现了与模型对比相关的内部字符串 build_arena_andwise_si_comparison。\n· 材料列举了 SpaceXSI、MSL 和 SSI 作为带有 SI 的命名示例。\n· 材料列举了 MAI > MSI、OpenAI > OpenSI 以及 Apple Intelligence > ASI 的潜在命名变化。\n推断\n· Google 似乎正在将内部命名从 AI 转向 SI。\n不确定\n· 这种内部命名转向是否会进一步扩散无法确定。\n· MAI、OpenAI、Apple Intelligence 等名称是否会真正转变为 MSI、OpenSI 和 ASI 无法确认。\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T20:30:09+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news",
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "e9a2fe54dbea0c5",
-        "source_ids": [
-          "rss:aihot-news",
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/ffe3f6xqqeuk8sabpt0iuisrp"
-        ],
-        "independent_source_count": 2,
-        "evidence_level": "multi_source",
-        "confidence": 1.0,
-        "facts": [
-          "Google 出现了与模型对比相关的内部字符串 build_arena_andwise_si_comparison。",
-          "材料列举了 SpaceXSI、MSL 和 SSI 作为带有 SI 的命名示例。",
-          "材料列举了 MAI > MSI、OpenAI > OpenSI 以及 Apple Intelligence > ASI 的潜在命名变化。"
-        ],
-        "inferences": [
-          "Google 似乎正在将内部命名从 AI 转向 SI。"
-        ],
-        "uncertainties": [
-          "这种内部命名转向是否会进一步扩散无法确定。",
-          "MAI、OpenAI、Apple Intelligence 等名称是否会真正转变为 MSI、OpenSI 和 ASI 无法确认。"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-25-ead87aa00f63051",
-      "url": "https://aihot.news/items/zx7qypqq6saeqgby7jmn3qca8",
-      "external_url": "https://aihot.news/items/zx7qypqq6saeqgby7jmn3qca8",
-      "title": "TechCrunch 列出多款 AI 项目失败案例",
-      "summary": "TechCrunch 维护了一份持续更新的 AI 失败项目清单。 清单覆盖的项目包括 Relay、Character.ai、Notion Mail、Humane AI Pin、Rabbit R1、Sora 等。 这些项目已关闭、转型或远低于预期。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>TechCrunch 维护了一份持续更新的 AI 失败项目清单。</li><li>清单覆盖的项目包括 Relay、Character.ai、Notion Mail、Humane AI Pin、Rabbit R1、Sora 等。</li><li>这些项目已关闭、转型或远低于预期。</li></ul><p><strong>推断</strong></p><ul><li>这些项目的市场表现普遍不佳。</li></ul><p><strong>不确定</strong></p><ul><li>未说明每个项目具体的失败原因。</li><li>未提供清单的更新时间频率。</li><li>未说明是否还有其他未列出的失败项目。</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/zx7qypqq6saeqgby7jmn3qca8\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· TechCrunch 维护了一份持续更新的 AI 失败项目清单。\n· 清单覆盖的项目包括 Relay、Character.ai、Notion Mail、Humane AI Pin、Rabbit R1、Sora 等。\n· 这些项目已关闭、转型或远低于预期。\n推断\n· 这些项目的市场表现普遍不佳。\n不确定\n· 未说明每个项目具体的失败原因。\n· 未提供清单的更新时间频率。\n· 未说明是否还有其他未列出的失败项目。\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T19:00:00+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news",
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "ead87aa00f63051",
-        "source_ids": [
-          "rss:aihot-news",
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/zx7qypqq6saeqgby7jmn3qca8"
-        ],
-        "independent_source_count": 2,
-        "evidence_level": "multi_source",
-        "confidence": 1.0,
-        "facts": [
-          "TechCrunch 维护了一份持续更新的 AI 失败项目清单。",
-          "清单覆盖的项目包括 Relay、Character.ai、Notion Mail、Humane AI Pin、Rabbit R1、Sora 等。",
-          "这些项目已关闭、转型或远低于预期。"
-        ],
-        "inferences": [
-          "这些项目的市场表现普遍不佳。"
-        ],
-        "uncertainties": [
-          "未说明每个项目具体的失败原因。",
-          "未提供清单的更新时间频率。",
-          "未说明是否还有其他未列出的失败项目。"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-25-e4c9c04df9d44a3",
-      "url": "https://aihot.news/items/pfanvhtyrqvzvmgcqoib971nq",
-      "external_url": "https://aihot.news/items/pfanvhtyrqvzvmgcqoib971nq",
-      "title": "Warp CEO 谈 AI 原生产品构建思路",
-      "summary": "Warp 创始人兼 CEO Ayush Sharma（@ayushswrites）谈构建 AI 原生产品的意义。 要让每一项任务——从深度税务合规工作流开始——都能由智能体来完成。 Warp 利用 AI 智能体为高速成长的公司处理薪酬、税务和人力资源。 完整视频见“YC Root Access”YouTube 频道，（链接在评论中）。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Warp 创始人兼 CEO Ayush Sharma（@ayushswrites）谈构建 AI 原生产品的意义。</li><li>要让每一项任务——从深度税务合规工作流开始——都能由智能体来完成。</li><li>Warp 利用 AI 智能体为高速成长的公司处理薪酬、税务和人力资源。</li><li>完整视频见“YC Root Access”YouTube 频道，（链接在评论中）。</li></ul><p><strong>推断</strong></p><ul><li>Warp 计划先以深度税务合规工作流为切入点，逐步扩展 AI 智能体在薪酬和人力资源等业务的应用。</li></ul><p><strong>不确定</strong></p><ul><li>未说明使用的具体 AI 技术或模型。</li><li>未说明产品的上线时间或商业化进度。</li><li>未透露已有客户或实际使用案例。</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/pfanvhtyrqvzvmgcqoib971nq\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· Warp 创始人兼 CEO Ayush Sharma（@ayushswrites）谈构建 AI 原生产品的意义。\n· 要让每一项任务——从深度税务合规工作流开始——都能由智能体来完成。\n· Warp 利用 AI 智能体为高速成长的公司处理薪酬、税务和人力资源。\n· 完整视频见“YC Root Access”YouTube 频道，（链接在评论中）。\n推断\n· Warp 计划先以深度税务合规工作流为切入点，逐步扩展 AI 智能体在薪酬和人力资源等业务的应用。\n不确定\n· 未说明使用的具体 AI 技术或模型。\n· 未说明产品的上线时间或商业化进度。\n· 未透露已有客户或实际使用案例。\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T19:55:47+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news",
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "e4c9c04df9d44a3",
-        "source_ids": [
-          "rss:aihot-news",
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/pfanvhtyrqvzvmgcqoib971nq"
-        ],
-        "independent_source_count": 2,
-        "evidence_level": "multi_source",
-        "confidence": 1.0,
-        "facts": [
-          "Warp 创始人兼 CEO Ayush Sharma（@ayushswrites）谈构建 AI 原生产品的意义。",
-          "要让每一项任务——从深度税务合规工作流开始——都能由智能体来完成。",
-          "Warp 利用 AI 智能体为高速成长的公司处理薪酬、税务和人力资源。",
-          "完整视频见“YC Root Access”YouTube 频道，（链接在评论中）。"
-        ],
-        "inferences": [
-          "Warp 计划先以深度税务合规工作流为切入点，逐步扩展 AI 智能体在薪酬和人力资源等业务的应用。"
-        ],
-        "uncertainties": [
-          "未说明使用的具体 AI 技术或模型。",
-          "未说明产品的上线时间或商业化进度。",
-          "未透露已有客户或实际使用案例。"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-25-e6c07bf48bcc59d",
-      "url": "https://aihot.news/items/i0tfbsd3clnmqe8q7q8e6ccve",
-      "external_url": "https://aihot.news/items/i0tfbsd3clnmqe8q7q8e6ccve",
-      "title": "Meta Muse 正式登陆日本",
-      "summary": "Meta Muse 登陆日本 在日本，@Muse 只配最好的",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Meta Muse 登陆日本</li><li>在日本，@Muse 只配最好的</li></ul><p><strong>推断</strong></p><ul><li>Meta Muse 将在日本市场提供服务</li></ul><p><strong>不确定</strong></p><ul><li>材料未说明 @Muse 的具体含义</li><li>材料未提供 Meta Muse 在日本的详细上线时间</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/i0tfbsd3clnmqe8q7q8e6ccve\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· Meta Muse 登陆日本\n· 在日本，@Muse 只配最好的\n推断\n· Meta Muse 将在日本市场提供服务\n不确定\n· 材料未说明 @Muse 的具体含义\n· 材料未提供 Meta Muse 在日本的详细上线时间\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T18:20:36+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news",
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "e6c07bf48bcc59d",
-        "source_ids": [
-          "rss:aihot-news",
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/i0tfbsd3clnmqe8q7q8e6ccve"
-        ],
-        "independent_source_count": 2,
-        "evidence_level": "multi_source",
-        "confidence": 1.0,
-        "facts": [
-          "Meta Muse 登陆日本",
-          "在日本，@Muse 只配最好的"
-        ],
-        "inferences": [
-          "Meta Muse 将在日本市场提供服务"
-        ],
-        "uncertainties": [
-          "材料未说明 @Muse 的具体含义",
-          "材料未提供 Meta Muse 在日本的详细上线时间"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-25-e5d46b92dfdf0d9",
-      "url": "https://aihot.news/items/v14cdk5hahufp3sl2ee37yz0v",
-      "external_url": "https://aihot.news/items/v14cdk5hahufp3sl2ee37yz0v",
-      "title": "新实验室通过转租GPU实现盈利",
-      "summary": "新实验室的朋友称他们早早锁定了GPU算力。 H100/B200/B300的租赁价格此后涨了2–3倍。 他们直接把算力转租出去就能印钱。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>新实验室的朋友称他们早早锁定了GPU算力。</li><li>H100/B200/B300的租赁价格此后涨了2–3倍。</li><li>他们直接把算力转租出去就能印钱。</li></ul><p><strong>推断</strong></p><ul><li>可以推断GPU租赁价格上涨为转租提供了利润空间。</li></ul><p><strong>不确定</strong></p><ul><li>材料未说明转租后实际盈利金额。</li><li>未明确该实验室是否真的实现了盈利。</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/v14cdk5hahufp3sl2ee37yz0v\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· 新实验室的朋友称他们早早锁定了GPU算力。\n· H100/B200/B300的租赁价格此后涨了2–3倍。\n· 他们直接把算力转租出去就能印钱。\n推断\n· 可以推断GPU租赁价格上涨为转租提供了利润空间。\n不确定\n· 材料未说明转租后实际盈利金额。\n· 未明确该实验室是否真的实现了盈利。\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T17:15:34+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news",
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "e5d46b92dfdf0d9",
-        "source_ids": [
-          "rss:aihot-news",
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/v14cdk5hahufp3sl2ee37yz0v"
-        ],
-        "independent_source_count": 2,
-        "evidence_level": "multi_source",
-        "confidence": 1.0,
-        "facts": [
-          "新实验室的朋友称他们早早锁定了GPU算力。",
-          "H100/B200/B300的租赁价格此后涨了2–3倍。",
-          "他们直接把算力转租出去就能印钱。"
-        ],
-        "inferences": [
-          "可以推断GPU租赁价格上涨为转租提供了利润空间。"
-        ],
-        "uncertainties": [
-          "材料未说明转租后实际盈利金额。",
-          "未明确该实验室是否真的实现了盈利。"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-25-edde4441c3c429e",
-      "url": "https://aihot.news/items/cd5s0x8ag3s5fz876ic96bzyu",
-      "external_url": "https://aihot.news/items/cd5s0x8ag3s5fz876ic96bzyu",
-      "title": "顶尖工程师的运作方式",
-      "summary": "顺便说一句，这就是最顶尖 0.01% 工程师的运作方式。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>顺便说一句，这就是最顶尖 0.01% 工程师的运作方式。</li></ul><p><strong>推断</strong></p><ul><li>文章讨论了最顶尖 0.01% 工程师的运作方式。</li></ul><p><strong>不确定</strong></p><ul><li>具体的运作方式细节未说明。</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/cd5s0x8ag3s5fz876ic96bzyu\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· 顺便说一句，这就是最顶尖 0.01% 工程师的运作方式。\n推断\n· 文章讨论了最顶尖 0.01% 工程师的运作方式。\n不确定\n· 具体的运作方式细节未说明。\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T20:32:35+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news",
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "edde4441c3c429e",
-        "source_ids": [
-          "rss:aihot-news",
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/cd5s0x8ag3s5fz876ic96bzyu"
-        ],
-        "independent_source_count": 2,
-        "evidence_level": "multi_source",
-        "confidence": 1.0,
-        "facts": [
-          "顺便说一句，这就是最顶尖 0.01% 工程师的运作方式。"
-        ],
-        "inferences": [
-          "文章讨论了最顶尖 0.01% 工程师的运作方式。"
-        ],
-        "uncertainties": [
-          "具体的运作方式细节未说明。"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-25-ed0fd49641bdcb6",
-      "url": "https://aihot.news/items/hcy7edjdy1jpso1b37l8oci3u",
-      "external_url": "https://aihot.news/items/hcy7edjdy1jpso1b37l8oci3u",
-      "title": "非AI公司凭AI与稀缺资产取胜",
-      "summary": "你不需要成为一家AI公司才能赢。 拥有稀缺实物资产、并把AI用得极其出色的公司，将攫取巨大的经济价值，而无需自建模型。 如果每一家铜矿商都能廉价买到同样的冶金智能，那么持久的优势就在于矿藏的质量和开采成本。 垂直一体化的服装制造商同样如此（而且后AGI时代人们仍然会穿衣服）。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>你不需要成为一家AI公司才能赢。</li><li>拥有稀缺实物资产、并把AI用得极其出色的公司，将攫取巨大的经济价值，而无需自建模型。</li><li>如果每一家铜矿商都能廉价买到同样的冶金智能，那么持久的优势就在于矿藏的质量和开采成本。</li><li>垂直一体化的服装制造商同样如此（而且后AGI时代人们仍然会穿衣服）。</li></ul><p><strong>推断</strong></p><ul><li>非AI公司通过高效使用AI并依托稀缺实物资产，可在无需自行研发模型的情况下获取巨大经济价值。</li><li>当所有企业都能获得相同的AI工具时，竞争优势主要转向资产质量和运营成本。</li></ul><p><strong>不确定</strong></p><ul><li>材料未说明哪些具体AI技术或平台可以廉价获取。</li><li>未明确后AGI时代的具体时间范围和对服装需求的影响程度。</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/hcy7edjdy1jpso1b37l8oci3u\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· 你不需要成为一家AI公司才能赢。\n· 拥有稀缺实物资产、并把AI用得极其出色的公司，将攫取巨大的经济价值，而无需自建模型。\n· 如果每一家铜矿商都能廉价买到同样的冶金智能，那么持久的优势就在于矿藏的质量和开采成本。\n· 垂直一体化的服装制造商同样如此（而且后AGI时代人们仍然会穿衣服）。\n推断\n· 非AI公司通过高效使用AI并依托稀缺实物资产，可在无需自行研发模型的情况下获取巨大经济价值。\n· 当所有企业都能获得相同的AI工具时，竞争优势主要转向资产质量和运营成本。\n不确定\n· 材料未说明哪些具体AI技术或平台可以廉价获取。\n· 未明确后AGI时代的具体时间范围和对服装需求的影响程度。\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T16:25:14+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news",
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "ed0fd49641bdcb6",
-        "source_ids": [
-          "rss:aihot-news",
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/hcy7edjdy1jpso1b37l8oci3u"
-        ],
-        "independent_source_count": 2,
-        "evidence_level": "multi_source",
-        "confidence": 1.0,
-        "facts": [
-          "你不需要成为一家AI公司才能赢。",
-          "拥有稀缺实物资产、并把AI用得极其出色的公司，将攫取巨大的经济价值，而无需自建模型。",
-          "如果每一家铜矿商都能廉价买到同样的冶金智能，那么持久的优势就在于矿藏的质量和开采成本。",
-          "垂直一体化的服装制造商同样如此（而且后AGI时代人们仍然会穿衣服）。"
-        ],
-        "inferences": [
-          "非AI公司通过高效使用AI并依托稀缺实物资产，可在无需自行研发模型的情况下获取巨大经济价值。",
-          "当所有企业都能获得相同的AI工具时，竞争优势主要转向资产质量和运营成本。"
-        ],
-        "uncertainties": [
-          "材料未说明哪些具体AI技术或平台可以廉价获取。",
-          "未明确后AGI时代的具体时间范围和对服装需求的影响程度。"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-25-eeb50cfc1f7b277",
-      "url": "https://aihot.news/items/qin27qdcayepr4mhxoahi7m5r",
-      "external_url": "https://aihot.news/items/qin27qdcayepr4mhxoahi7m5r",
-      "title": "Lauren Tan 在 pstack 指南中撰文",
-      "summary": "Lauren Tan 在 pstack 指南里写过这个。 两篇材料均来自 rss:aihot-news 与 rss:aihot-news-all，发布时间为2026-10-25 04:42 北京时间。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Lauren Tan 在 pstack 指南里写过这个。</li><li>两篇材料均来自 rss:aihot-news 与 rss:aihot-news-all，发布时间为2026-10-25 04:42 北京时间。</li></ul><p><strong>推断</strong></p><ul><li>该事件被多个 rss 源同步发布，可能来源于同一稿件。</li></ul><p><strong>不确定</strong></p><ul><li>未说明 Lauren Tan 在 pstack 指南中具体写了什么。</li><li>未说明 pstack 指南的内容或用途。</li><li>不确定是否还有其他媒体报道此事。</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/qin27qdcayepr4mhxoahi7m5r\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· Lauren Tan 在 pstack 指南里写过这个。\n· 两篇材料均来自 rss:aihot-news 与 rss:aihot-news-all，发布时间为2026-10-25 04:42 北京时间。\n推断\n· 该事件被多个 rss 源同步发布，可能来源于同一稿件。\n不确定\n· 未说明 Lauren Tan 在 pstack 指南中具体写了什么。\n· 未说明 pstack 指南的内容或用途。\n· 不确定是否还有其他媒体报道此事。\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T20:42:53+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news",
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "eeb50cfc1f7b277",
-        "source_ids": [
-          "rss:aihot-news",
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/qin27qdcayepr4mhxoahi7m5r"
-        ],
-        "independent_source_count": 2,
-        "evidence_level": "multi_source",
-        "confidence": 1.0,
-        "facts": [
-          "Lauren Tan 在 pstack 指南里写过这个。",
-          "两篇材料均来自 rss:aihot-news 与 rss:aihot-news-all，发布时间为2026-10-25 04:42 北京时间。"
-        ],
-        "inferences": [
-          "该事件被多个 rss 源同步发布，可能来源于同一稿件。"
-        ],
-        "uncertainties": [
-          "未说明 Lauren Tan 在 pstack 指南中具体写了什么。",
-          "未说明 pstack 指南的内容或用途。",
-          "不确定是否还有其他媒体报道此事。"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-25-efc0ecb801d5f51",
-      "url": "https://aihot.news/items/cnmi8e4c5td3b5vxkj9exngle",
-      "external_url": "https://aihot.news/items/cnmi8e4c5td3b5vxkj9exngle",
-      "title": "Perplexity 用电脑标注 Johnny Cash 歌词中的 92 个地点",
-      "summary": "Perplexity 用电脑标注 Johnny Cash 歌中 92 个地点 两条来源均在2026-10-25 02:54 北京时间发布该标题",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Perplexity 用电脑标注 Johnny Cash 歌中 92 个地点</li><li>两条来源均在2026-10-25 02:54 北京时间发布该标题</li></ul><p><strong>推断</strong></p><ul><li>Perplexity 对 Johnny Cash 歌词进行地理位置自动标注</li><li>这些歌曲共涉及 92 个不同地点</li></ul><p><strong>不确定</strong></p><ul><li>未说明使用的具体技术或模型</li><li>未列出涉及的具体歌曲或地点名单</li><li>标注的准确性未知</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/cnmi8e4c5td3b5vxkj9exngle\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· Perplexity 用电脑标注 Johnny Cash 歌中 92 个地点\n· 两条来源均在2026-10-25 02:54 北京时间发布该标题\n推断\n· Perplexity 对 Johnny Cash 歌词进行地理位置自动标注\n· 这些歌曲共涉及 92 个不同地点\n不确定\n· 未说明使用的具体技术或模型\n· 未列出涉及的具体歌曲或地点名单\n· 标注的准确性未知\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T18:54:29+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news",
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "efc0ecb801d5f51",
-        "source_ids": [
-          "rss:aihot-news",
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/cnmi8e4c5td3b5vxkj9exngle"
-        ],
-        "independent_source_count": 2,
-        "evidence_level": "multi_source",
-        "confidence": 1.0,
-        "facts": [
-          "Perplexity 用电脑标注 Johnny Cash 歌中 92 个地点",
-          "两条来源均在2026-10-25 02:54 北京时间发布该标题"
-        ],
-        "inferences": [
-          "Perplexity 对 Johnny Cash 歌词进行地理位置自动标注",
-          "这些歌曲共涉及 92 个不同地点"
-        ],
-        "uncertainties": [
-          "未说明使用的具体技术或模型",
-          "未列出涉及的具体歌曲或地点名单",
-          "标注的准确性未知"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-25-ec16c30be3257a9",
-      "url": "https://aihot.news/items/s5cqpdr4722jeivrmfoe0g6ve",
-      "external_url": "https://aihot.news/items/s5cqpdr4722jeivrmfoe0g6ve",
-      "title": "Gary Marcus 再次质疑 ChatGPT 利弊",
-      "summary": "Gary Marcus 重提 2023 年 3 月与 Keith Teare 在 Open to Debate 的辩论。 Gary Marcus 再次追问 ChatGPT 是否弊大于利。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Gary Marcus 重提 2023 年 3 月与 Keith Teare 在 Open to Debate 的辩论。</li><li>Gary Marcus 再次追问 ChatGPT 是否弊大于利。</li></ul><p><strong>推断</strong></p><ul><li>Gary Marcus 对 ChatGPT 的利弊持疑问态度。</li></ul><p><strong>不确定</strong></p><ul><li>材料未说明 Gary Marcus 对 ChatGPT 的最终结论。</li><li>材料未提供原辩论的具体内容。</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/s5cqpdr4722jeivrmfoe0g6ve\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· Gary Marcus 重提 2023 年 3 月与 Keith Teare 在 Open to Debate 的辩论。\n· Gary Marcus 再次追问 ChatGPT 是否弊大于利。\n推断\n· Gary Marcus 对 ChatGPT 的利弊持疑问态度。\n不确定\n· 材料未说明 Gary Marcus 对 ChatGPT 的最终结论。\n· 材料未提供原辩论的具体内容。\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T19:32:01+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news",
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "ec16c30be3257a9",
-        "source_ids": [
-          "rss:aihot-news",
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/s5cqpdr4722jeivrmfoe0g6ve"
-        ],
-        "independent_source_count": 2,
-        "evidence_level": "multi_source",
-        "confidence": 1.0,
-        "facts": [
-          "Gary Marcus 重提 2023 年 3 月与 Keith Teare 在 Open to Debate 的辩论。",
-          "Gary Marcus 再次追问 ChatGPT 是否弊大于利。"
-        ],
-        "inferences": [
-          "Gary Marcus 对 ChatGPT 的利弊持疑问态度。"
-        ],
-        "uncertainties": [
-          "材料未说明 Gary Marcus 对 ChatGPT 的最终结论。",
-          "材料未提供原辩论的具体内容。"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-25-ee4f3ed10b78b2c",
-      "url": "https://aihot.news/items/d8jwl31a0p4cw9vnc60s01afw",
-      "external_url": "https://aihot.news/items/d8jwl31a0p4cw9vnc60s01afw",
-      "title": "机器人相互安排会议",
-      "summary": "材料1的标题为“让机器人互相安排会议”。 材料1的内容是让他们为这场会议安排一场会议。 材料2的标题与材料1相同，内容亦相同。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>材料1的标题为“让机器人互相安排会议”。</li><li>材料1的内容是让他们为这场会议安排一场会议。</li><li>材料2的标题与材料1相同，内容亦相同。</li></ul><p><strong>推断</strong></p><ul><li>可以推断机器人需要相互协作来安排会议。</li></ul><p><strong>不确定</strong></p><ul><li>未说明机器人如何实现会议安排的具体方法。</li><li>未说明会议的具体主题或参与者。</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/d8jwl31a0p4cw9vnc60s01afw\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· 材料1的标题为“让机器人互相安排会议”。\n· 材料1的内容是让他们为这场会议安排一场会议。\n· 材料2的标题与材料1相同，内容亦相同。\n推断\n· 可以推断机器人需要相互协作来安排会议。\n不确定\n· 未说明机器人如何实现会议安排的具体方法。\n· 未说明会议的具体主题或参与者。\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T19:35:54+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news",
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "ee4f3ed10b78b2c",
-        "source_ids": [
-          "rss:aihot-news",
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/d8jwl31a0p4cw9vnc60s01afw"
-        ],
-        "independent_source_count": 2,
-        "evidence_level": "multi_source",
-        "confidence": 1.0,
-        "facts": [
-          "材料1的标题为“让机器人互相安排会议”。",
-          "材料1的内容是让他们为这场会议安排一场会议。",
-          "材料2的标题与材料1相同，内容亦相同。"
-        ],
-        "inferences": [
-          "可以推断机器人需要相互协作来安排会议。"
-        ],
-        "uncertainties": [
-          "未说明机器人如何实现会议安排的具体方法。",
-          "未说明会议的具体主题或参与者。"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-25-ebaa252b67eedad",
-      "url": "https://aihot.news/items/zb1thz9nsoxinjvkojrtlvob4",
-      "external_url": "https://aihot.news/items/zb1thz9nsoxinjvkojrtlvob4",
-      "title": "Runway 联合创始人 Anastasis Germanidis 将赴纽约参加 State of AI 2026",
-      "summary": "Anastasis Germanidis 是 Runway 的联合创始人兼联合 CEO。 Anastasis Germanidis 将于 10 月 27 日出席在纽约举办的 State of AI 2026 发布见面会。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Anastasis Germanidis 是 Runway 的联合创始人兼联合 CEO。</li><li>Anastasis Germanidis 将于 10 月 27 日出席在纽约举办的 State of AI 2026 发布见面会。</li></ul><p><strong>推断</strong></p><ul><li>他出席该活动可能是为 Runway 进行宣传或业务交流。</li></ul><p><strong>不确定</strong></p><ul><li>具体的出席时间（时分）未在材料中说明。</li><li>他在会议上的具体角色（演讲、主持或仅参会）不明确。</li><li>是否还有其他 Runway 高层共同出席未知。</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/zb1thz9nsoxinjvkojrtlvob4\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· Anastasis Germanidis 是 Runway 的联合创始人兼联合 CEO。\n· Anastasis Germanidis 将于 10 月 27 日出席在纽约举办的 State of AI 2026 发布见面会。\n推断\n· 他出席该活动可能是为 Runway 进行宣传或业务交流。\n不确定\n· 具体的出席时间（时分）未在材料中说明。\n· 他在会议上的具体角色（演讲、主持或仅参会）不明确。\n· 是否还有其他 Runway 高层共同出席未知。\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T16:15:39+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news",
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "ebaa252b67eedad",
-        "source_ids": [
-          "rss:aihot-news",
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/zb1thz9nsoxinjvkojrtlvob4"
-        ],
-        "independent_source_count": 2,
-        "evidence_level": "multi_source",
-        "confidence": 1.0,
-        "facts": [
-          "Anastasis Germanidis 是 Runway 的联合创始人兼联合 CEO。",
-          "Anastasis Germanidis 将于 10 月 27 日出席在纽约举办的 State of AI 2026 发布见面会。"
-        ],
-        "inferences": [
-          "他出席该活动可能是为 Runway 进行宣传或业务交流。"
-        ],
-        "uncertainties": [
-          "具体的出席时间（时分）未在材料中说明。",
-          "他在会议上的具体角色（演讲、主持或仅参会）不明确。",
-          "是否还有其他 Runway 高层共同出席未知。"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-25-e0304e3f3b9e7a0",
+      "id": "2026-10-25-e31ad0e3f3c8d33",
       "url": "https://aihot.news/items/ukda0jmhl5p6nl2lqyl40rzg4",
       "external_url": "https://aihot.news/items/ukda0jmhl5p6nl2lqyl40rzg4",
       "title": "马东锡质疑Kimi公关事件系营销号操盘",
-      "summary": "马东锡（@dongxi_nlp）指称，爆出 Kimi 公关问题的所谓\"英推KOL\"是关注6000、粉丝6000的账号。 为其站台的多个\"英推KOL\"多为抄袭搬运、什么广告都接的 AI Slop 营销号。 马东锡认为该事件有操盘手。 马东锡提醒吃瓜群众擦亮眼睛。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>马东锡（@dongxi_nlp）指称，爆出 Kimi 公关问题的所谓&quot;英推KOL&quot;是关注6000、粉丝6000的账号。</li><li>为其站台的多个&quot;英推KOL&quot;多为抄袭搬运、什么广告都接的 AI Slop 营销号。</li><li>马东锡认为该事件有操盘手。</li><li>马东锡提醒吃瓜群众擦亮眼睛。</li></ul><p><strong>推断</strong></p><ul><li>该公关事件的曝光可能是由营销号组织或操控的。</li></ul><p><strong>不确定</strong></p><ul><li>是否真的存在操盘手尚未确认。</li><li>所谓&quot;英推KOL&quot;的真实身份和运营情况未知。</li><li>该账号的关注数和粉丝数是否真实可靠尚不清楚。</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/ukda0jmhl5p6nl2lqyl40rzg4\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· 马东锡（@dongxi_nlp）指称，爆出 Kimi 公关问题的所谓\"英推KOL\"是关注6000、粉丝6000的账号。\n· 为其站台的多个\"英推KOL\"多为抄袭搬运、什么广告都接的 AI Slop 营销号。\n· 马东锡认为该事件有操盘手。\n· 马东锡提醒吃瓜群众擦亮眼睛。\n推断\n· 该公关事件的曝光可能是由营销号组织或操控的。\n不确定\n· 是否真的存在操盘手尚未确认。\n· 所谓\"英推KOL\"的真实身份和运营情况未知。\n· 该账号的关注数和粉丝数是否真实可靠尚不清楚。\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "summary": "马东锡（@dongxi_nlp）指称，爆出 Kimi 公关问题的所谓\"英推KOL\"是关注6000、粉丝6000的垃圾账号，为其站台的多个\"英推KOL\"多为抄袭搬运、什么广告都接的 AI Slop 营销号。他认为该事件有操盘手，提醒吃瓜群众擦亮眼睛。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>马东锡（@dongxi_nlp）指称，爆出 Kimi 公关问题的所谓&quot;英推KOL&quot;是关注6000、粉丝6000的垃圾账号，为其站台的多个&quot;英推KOL&quot;多为抄袭搬运、什么广告都接的 AI Slop 营销号。他认为该事件有操盘手，提醒吃瓜群众擦亮眼睛。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/ukda0jmhl5p6nl2lqyl40rzg4\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 马东锡（@dongxi_nlp）指称，爆出 Kimi 公关问题的所谓\"英推KOL\"是关注6000、粉丝6000的垃圾账号，为其站台的多个\"英推KOL\"多为抄袭搬运、什么广告都接的 AI Slop 营销号。他认为该事件有操盘手，提醒吃瓜群众擦亮眼睛。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
       "date_published": "2026-10-24T17:15:02+00:00",
       "authors": [
         {
@@ -866,193 +106,236 @@
         }
       ],
       "tags": [
-        "rss:aihot-news",
         "rss:aihot-news-all"
       ],
       "language": "zh-CN",
       "_ai_daily": {
-        "event_id": "e0304e3f3b9e7a0",
+        "event_id": "e31ad0e3f3c8d33",
         "source_ids": [
-          "rss:aihot-news",
           "rss:aihot-news-all"
         ],
         "all_urls": [
           "https://aihot.news/items/ukda0jmhl5p6nl2lqyl40rzg4"
         ],
-        "independent_source_count": 2,
-        "evidence_level": "multi_source",
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
         "confidence": 1.0,
         "facts": [
-          "马东锡（@dongxi_nlp）指称，爆出 Kimi 公关问题的所谓\"英推KOL\"是关注6000、粉丝6000的账号。",
-          "为其站台的多个\"英推KOL\"多为抄袭搬运、什么广告都接的 AI Slop 营销号。",
-          "马东锡认为该事件有操盘手。",
-          "马东锡提醒吃瓜群众擦亮眼睛。"
+          "马东锡（@dongxi_nlp）指称，爆出 Kimi 公关问题的所谓\"英推KOL\"是关注6000、粉丝6000的垃圾账号，为其站台的多个\"英推KOL\"多为抄袭搬运、什么广告都接的 AI Slop 营销号。他认为该事件有操盘手，提醒吃瓜群众擦亮眼睛。"
         ],
-        "inferences": [
-          "该公关事件的曝光可能是由营销号组织或操控的。"
-        ],
+        "inferences": [],
         "uncertainties": [
-          "是否真的存在操盘手尚未确认。",
-          "所谓\"英推KOL\"的真实身份和运营情况未知。",
-          "该账号的关注数和粉丝数是否真实可靠尚不清楚。"
+          "本次未调用大模型，内容为来源原文摘录"
         ],
-        "rule_based": false
+        "rule_based": true
       }
     },
     {
-      "id": "2026-10-25-e9841dff2bcae8e",
-      "url": "https://aihot.news/items/fkykb7kkncgmc3gmzj27nvpjz",
-      "external_url": "https://aihot.news/items/fkykb7kkncgmc3gmzj27nvpjz",
-      "title": "Hugging Face CEO 调侃 Microducks 过度表现",
-      "summary": "Hugging Face CEO 调侃 Microducks 用力过猛 Microducks 太想给 @JensenHuang 留下印象了",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Hugging Face CEO 调侃 Microducks 用力过猛</li><li>Microducks 太想给 @JensenHuang 留下印象了</li></ul><p><strong>推断</strong></p><ul><li>Hugging Face CEO 对 Microducks 的行为持讽刺态度</li><li>Microducks 可能在尝试向 @JensenHuang 展示其成果</li></ul><p><strong>不确定</strong></p><ul><li>Microducks 具体做了什么导致被调侃</li><li>@JensenHuang 对此是否有回应</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/fkykb7kkncgmc3gmzj27nvpjz\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· Hugging Face CEO 调侃 Microducks 用力过猛\n· Microducks 太想给 @JensenHuang 留下印象了\n推断\n· Hugging Face CEO 对 Microducks 的行为持讽刺态度\n· Microducks 可能在尝试向 @JensenHuang 展示其成果\n不确定\n· Microducks 具体做了什么导致被调侃\n· @JensenHuang 对此是否有回应\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T16:28:23+00:00",
+      "id": "2026-10-25-e6ac292c4251d20",
+      "url": "https://www.marktechpost.com/2026/10/24/underdog-saluki-27b-coding-guide-llama-cpp/",
+      "external_url": "https://www.marktechpost.com/2026/10/24/underdog-saluki-27b-coding-guide-llama-cpp/",
+      "title": "How to Run Underdog Saluki 27B: 2-Bit Qwen3.8-27B Tool-Calling Guide",
+      "summary": "Explore a complete coding guide comparing Underdog Saluki 27B with ISTA's GSQ-RCO quantization, examining GGUF headers, memory usage, and BFCL tool-calling performance in stock llama.cpp The post How to Run Underdog Saluki 27B: 2-Bit Qwen3.8-27B Tool-Calling Guide appeared first …",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Explore a complete coding guide comparing Underdog Saluki 27B with ISTA&#x27;s GSQ-RCO quantization, examining GGUF headers, memory usage, and BFCL tool-calling performance in stock llama.cpp\nThe post How to Run Underdog Saluki 27B: 2-Bit Qwen3.8-27B Tool-Calling Guide appeared first on MarkTechPost.</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li><li>本条的来源标题为外文，未调用大模型，因此未翻译</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.marktechpost.com/2026/10/24/underdog-saluki-27b-coding-guide-llama-cpp/\">marktechpost.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Explore a complete coding guide comparing Underdog Saluki 27B with ISTA's GSQ-RCO quantization, examining GGUF headers, memory usage, and BFCL tool-calling performance in stock llama.cpp\nThe post How to Run Underdog Saluki 27B: 2-Bit Qwen3.8-27B Tool-Calling Guide appeared first on MarkTechPost.\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n· 本条的来源标题为外文，未调用大模型，因此未翻译\n可信度：单一来源\n来源\n· marktechpost.com\nAI 日报",
+      "date_published": "2026-10-25T02:30:18+00:00",
+      "authors": [
+        {
+          "name": "marktechpost.com"
+        }
+      ],
+      "tags": [
+        "rss:marktechpost"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e6ac292c4251d20",
+        "source_ids": [
+          "rss:marktechpost"
+        ],
+        "all_urls": [
+          "https://www.marktechpost.com/2026/10/24/underdog-saluki-27b-coding-guide-llama-cpp/"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Explore a complete coding guide comparing Underdog Saluki 27B with ISTA's GSQ-RCO quantization, examining GGUF headers, memory usage, and BFCL tool-calling performance in stock llama.cpp\nThe post How to Run Underdog Saluki 27B: 2-Bit Qwen3.8-27B Tool-Calling Guide appeared first on MarkTechPost."
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录",
+          "本条的来源标题为外文，未调用大模型，因此未翻译"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-e52068da561ee50",
+      "url": "https://www.marktechpost.com/2026/10/24/cognition-devin-vulnerability-fixes-plugin-php2shell-nodejs-gitlab/",
+      "external_url": "https://www.marktechpost.com/2026/10/24/cognition-devin-vulnerability-fixes-plugin-php2shell-nodejs-gitlab/",
+      "title": "Cognition Open-Sources an Agent Plugin that Helps Secure Systems against Recent Cybersecurity Threats",
+      "summary": "Cognition released the Devin Vulnerability Fixes plugin, 3 MIT-licensed agent skills that inventory, patch and test PHP, Node.js and self-managed GitLab deployments hit by this week’s critical RCE flaws, then open 1 PR per repo. The post Cognition Open-Sources an Agent Plugin tha…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Cognition released the Devin Vulnerability Fixes plugin, 3 MIT-licensed agent skills that inventory, patch and test PHP, Node.js and self-managed GitLab deployments hit by this week’s critical RCE flaws, then open 1 PR per repo.\nThe post Cognition Open-Sources an Agent Plugin that Helps Secure Syste</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li><li>本条的来源标题为外文，未调用大模型，因此未翻译</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.marktechpost.com/2026/10/24/cognition-devin-vulnerability-fixes-plugin-php2shell-nodejs-gitlab/\">marktechpost.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Cognition released the Devin Vulnerability Fixes plugin, 3 MIT-licensed agent skills that inventory, patch and test PHP, Node.js and self-managed GitLab deployments hit by this week’s critical RCE flaws, then open 1 PR per repo.\nThe post Cognition Open-Sources an Agent Plugin that Helps Secure Syste\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n· 本条的来源标题为外文，未调用大模型，因此未翻译\n可信度：单一来源\n来源\n· marktechpost.com\nAI 日报",
+      "date_published": "2026-10-25T02:59:08+00:00",
+      "authors": [
+        {
+          "name": "marktechpost.com"
+        }
+      ],
+      "tags": [
+        "rss:marktechpost"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e52068da561ee50",
+        "source_ids": [
+          "rss:marktechpost"
+        ],
+        "all_urls": [
+          "https://www.marktechpost.com/2026/10/24/cognition-devin-vulnerability-fixes-plugin-php2shell-nodejs-gitlab/"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Cognition released the Devin Vulnerability Fixes plugin, 3 MIT-licensed agent skills that inventory, patch and test PHP, Node.js and self-managed GitLab deployments hit by this week’s critical RCE flaws, then open 1 PR per repo.\nThe post Cognition Open-Sources an Agent Plugin that Helps Secure Syste"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录",
+          "本条的来源标题为外文，未调用大模型，因此未翻译"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-e44e91fcea387e4",
+      "url": "https://ainewslog.com/blog/ai-daily-2026-10-24/#story-4",
+      "external_url": "https://ainewslog.com/blog/ai-daily-2026-10-24/#story-4",
+      "title": "IBM CEO Says Businesses Choosing Open-Weight AI Models Over Expensive Frontier Models",
+      "summary": "IBM’s CEO says enterprises are increasingly favoring open-weight models as cost pressure mounts against premium frontier APIs. Source-reddit Factor-Aware MLLM Latent Learning Improves Cinematic Video Generation A factor-aware multimodal LLM latent-learning approach aims to improv…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>IBM’s CEO says enterprises are increasingly favoring open-weight models as cost pressure mounts against premium frontier APIs. Source-reddit Factor-Aware MLLM Latent Learning Improves Cinematic Video Generation A factor-aware multimodal LLM latent-learning approach aims to improve cinematic video ge</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li><li>本条的来源标题为外文，未调用大模型，因此未翻译</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://ainewslog.com/blog/ai-daily-2026-10-24/#story-4\">ainewslog.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· IBM’s CEO says enterprises are increasingly favoring open-weight models as cost pressure mounts against premium frontier APIs. Source-reddit Factor-Aware MLLM Latent Learning Improves Cinematic Video Generation A factor-aware multimodal LLM latent-learning approach aims to improve cinematic video ge\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n· 本条的来源标题为外文，未调用大模型，因此未翻译\n可信度：单一来源\n来源\n· ainewslog.com\nAI 日报",
+      "date_published": "2026-10-24T00:00:00+00:00",
+      "authors": [
+        {
+          "name": "ainewslog.com"
+        }
+      ],
+      "tags": [
+        "rss:ainewslog-com"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e44e91fcea387e4",
+        "source_ids": [
+          "rss:ainewslog-com"
+        ],
+        "all_urls": [
+          "https://ainewslog.com/blog/ai-daily-2026-10-24/#story-4"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "IBM’s CEO says enterprises are increasingly favoring open-weight models as cost pressure mounts against premium frontier APIs. Source-reddit Factor-Aware MLLM Latent Learning Improves Cinematic Video Generation A factor-aware multimodal LLM latent-learning approach aims to improve cinematic video ge"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录",
+          "本条的来源标题为外文，未调用大模型，因此未翻译"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-ede44af5575eb29",
+      "url": "https://aihot.news/items/xxfgg6d2e7puefqro6ya7pe6d",
+      "external_url": "https://aihot.news/items/xxfgg6d2e7puefqro6ya7pe6d",
+      "title": "腾讯元宝与96岁独游西藏的谭爷爷聊了聊：用AI规划少走路行程",
+      "summary": "腾讯元宝与《无锡日报》回访了96岁独自坐40多小时火车去西藏的谭爷爷，他已平安回家。谭爷爷分享省心秘诀是直接问元宝，提出“少走路、不要爬楼梯”的要求后，第二天顺利游玩了五个地方。文章还介绍了长辈可用语音、拍照等方式向元宝提问的简单功能。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>腾讯元宝与《无锡日报》回访了96岁独自坐40多小时火车去西藏的谭爷爷，他已平安回家。谭爷爷分享省心秘诀是直接问元宝，提出“少走路、不要爬楼梯”的要求后，第二天顺利游玩了五个地方。文章还介绍了长辈可用语音、拍照等方式向元宝提问的简单功能。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/xxfgg6d2e7puefqro6ya7pe6d\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 腾讯元宝与《无锡日报》回访了96岁独自坐40多小时火车去西藏的谭爷爷，他已平安回家。谭爷爷分享省心秘诀是直接问元宝，提出“少走路、不要爬楼梯”的要求后，第二天顺利游玩了五个地方。文章还介绍了长辈可用语音、拍照等方式向元宝提问的简单功能。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T01:00:00+00:00",
       "authors": [
         {
           "name": "aihot.news"
         }
       ],
       "tags": [
-        "rss:aihot-news",
         "rss:aihot-news-all"
       ],
       "language": "zh-CN",
       "_ai_daily": {
-        "event_id": "e9841dff2bcae8e",
+        "event_id": "ede44af5575eb29",
         "source_ids": [
-          "rss:aihot-news",
           "rss:aihot-news-all"
         ],
         "all_urls": [
-          "https://aihot.news/items/fkykb7kkncgmc3gmzj27nvpjz"
+          "https://aihot.news/items/xxfgg6d2e7puefqro6ya7pe6d"
         ],
-        "independent_source_count": 2,
-        "evidence_level": "multi_source",
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
         "confidence": 1.0,
         "facts": [
-          "Hugging Face CEO 调侃 Microducks 用力过猛",
-          "Microducks 太想给 @JensenHuang 留下印象了"
+          "腾讯元宝与《无锡日报》回访了96岁独自坐40多小时火车去西藏的谭爷爷，他已平安回家。谭爷爷分享省心秘诀是直接问元宝，提出“少走路、不要爬楼梯”的要求后，第二天顺利游玩了五个地方。文章还介绍了长辈可用语音、拍照等方式向元宝提问的简单功能。"
         ],
-        "inferences": [
-          "Hugging Face CEO 对 Microducks 的行为持讽刺态度",
-          "Microducks 可能在尝试向 @JensenHuang 展示其成果"
-        ],
+        "inferences": [],
         "uncertainties": [
-          "Microducks 具体做了什么导致被调侃",
-          "@JensenHuang 对此是否有回应"
+          "本次未调用大模型，内容为来源原文摘录"
         ],
-        "rule_based": false
+        "rule_based": true
       }
     },
     {
-      "id": "2026-10-25-e31a2e6d13027a2",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/1018205/blue-planet-iii-authentic-organic-ai",
-      "external_url": "https://www.theverge.com/ai-artificial-intelligence/1018205/blue-planet-iii-authentic-organic-ai",
-      "title": "BBC《Blue Planet III》保留粗糙画面彰显真实",
-      "summary": "BBC的Blue Planet III在AI时代刻意保留浮游生物、船只等不完美画面 执行制片人 Elizabeth White 表示过去因水质不佳或杂物剪掉的镜头这次全部保留 片中出现海豚用海绵堵洞围捕鱼群、鱼类跨物种交流，以及 20 万只螃蟹列队觅食 BBC的Blue Planet III通过保留不完美镜头来证明其真实性 之前的系列以晶莹剔透的画面著称，看起来几乎不真实 AI 生成的画面往往过于光滑无缝，Blue Planet III 用不完美画面进行对抗",
-      "content_html": "<p><strong>事实</strong></p><ul><li>BBC的Blue Planet III在AI时代刻意保留浮游生物、船只等不完美画面</li><li>执行制片人 Elizabeth White 表示过去因水质不佳或杂物剪掉的镜头这次全部保留</li><li>片中出现海豚用海绵堵洞围捕鱼群、鱼类跨物种交流，以及 20 万只螃蟹列队觅食</li><li>BBC的Blue Planet III通过保留不完美镜头来证明其真实性</li><li>之前的系列以晶莹剔透的画面著称，看起来几乎不真实</li><li>AI 生成的画面往往过于光滑无缝，Blue Planet III 用不完美画面进行对抗</li></ul><p><strong>推断</strong></p><ul><li>保留不完美镜头是为了让观众感受到节目不是由 AI 生成的</li></ul><p><strong>不确定</strong></p><ul><li>观众是否会因为这些不完美镜头而认定节目更真实尚未可知</li></ul><p><strong>可信度</strong>：多源交叉验证（3 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.theverge.com/ai-artificial-intelligence/1018205/blue-planet-iii-authentic-organic-ai\">theverge.com</a></li><li><a href=\"https://aihot.news/items/e3pgmy7s4u74dvb3blzhu0pfh\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· BBC的Blue Planet III在AI时代刻意保留浮游生物、船只等不完美画面\n· 执行制片人 Elizabeth White 表示过去因水质不佳或杂物剪掉的镜头这次全部保留\n· 片中出现海豚用海绵堵洞围捕鱼群、鱼类跨物种交流，以及 20 万只螃蟹列队觅食\n· BBC的Blue Planet III通过保留不完美镜头来证明其真实性\n· 之前的系列以晶莹剔透的画面著称，看起来几乎不真实\n· AI 生成的画面往往过于光滑无缝，Blue Planet III 用不完美画面进行对抗\n推断\n· 保留不完美镜头是为了让观众感受到节目不是由 AI 生成的\n不确定\n· 观众是否会因为这些不完美镜头而认定节目更真实尚未可知\n可信度：多源交叉验证（3 个独立来源）\n来源\n· theverge.com\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T21:29:12+00:00",
-      "authors": [
-        {
-          "name": "theverge.com"
-        },
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news",
-        "rss:aihot-news-all",
-        "rss:theverge-com-ai-artificial-intelligence"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "e31a2e6d13027a2",
-        "source_ids": [
-          "rss:aihot-news",
-          "rss:aihot-news-all",
-          "rss:theverge-com-ai-artificial-intelligence"
-        ],
-        "all_urls": [
-          "https://www.theverge.com/ai-artificial-intelligence/1018205/blue-planet-iii-authentic-organic-ai",
-          "https://aihot.news/items/e3pgmy7s4u74dvb3blzhu0pfh"
-        ],
-        "independent_source_count": 3,
-        "evidence_level": "multi_source",
-        "confidence": 0.9,
-        "facts": [
-          "BBC的Blue Planet III在AI时代刻意保留浮游生物、船只等不完美画面",
-          "执行制片人 Elizabeth White 表示过去因水质不佳或杂物剪掉的镜头这次全部保留",
-          "片中出现海豚用海绵堵洞围捕鱼群、鱼类跨物种交流，以及 20 万只螃蟹列队觅食",
-          "BBC的Blue Planet III通过保留不完美镜头来证明其真实性",
-          "之前的系列以晶莹剔透的画面著称，看起来几乎不真实",
-          "AI 生成的画面往往过于光滑无缝，Blue Planet III 用不完美画面进行对抗"
-        ],
-        "inferences": [
-          "保留不完美镜头是为了让观众感受到节目不是由 AI 生成的"
-        ],
-        "uncertainties": [
-          "观众是否会因为这些不完美镜头而认定节目更真实尚未可知"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-25-eac33f3caeb58e5",
-      "url": "https://aihot.news/items/p7plzx0145pxfzntu73gjr6km",
-      "external_url": "https://aihot.news/items/p7plzx0145pxfzntu73gjr6km",
-      "title": "你会让 bot 周末加班吗？",
-      "summary": "文章标题为“你会让 bot 周末加班吗？” 文章内容为“你会让 @bot 在周末工作吗？”",
-      "content_html": "<p><strong>事实</strong></p><ul><li>文章标题为“你会让 bot 周末加班吗？”</li><li>文章内容为“你会让 @bot 在周末工作吗？”</li></ul><p><strong>推断</strong></p><ul><li>文章在询问是否让 bot 在周末工作</li></ul><p><strong>不确定</strong></p><ul><li>未说明提问者身份</li><li>未说明 bot 指的是哪种 bot</li><li>未说明是否有具体背景或上下文</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/p7plzx0145pxfzntu73gjr6km\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· 文章标题为“你会让 bot 周末加班吗？”\n· 文章内容为“你会让 @bot 在周末工作吗？”\n推断\n· 文章在询问是否让 bot 在周末工作\n不确定\n· 未说明提问者身份\n· 未说明 bot 指的是哪种 bot\n· 未说明是否有具体背景或上下文\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-24T17:53:58+00:00",
+      "id": "2026-10-25-e5de32cff724e83",
+      "url": "https://aihot.news/items/pdgoa2t4xld60fwo4kt36c5po",
+      "external_url": "https://aihot.news/items/pdgoa2t4xld60fwo4kt36c5po",
+      "title": "Claude 平台文章讲解何时把子 Agent 折进主循环，Skills 渐进披露常优于多专家编排",
+      "summary": "Anthropic Claude Platform 发布文章，讨论构建 Agent 时何时把子 Agent 折进主循环，认为 Skills 渐进披露在多项内部对比里质量常更好、成本与延迟更低。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Anthropic Claude Platform 发布文章，讨论构建 Agent 时何时把子 Agent 折进主循环，认为 Skills 渐进披露在多项内部对比里质量常更好、成本与延迟更低。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/pdgoa2t4xld60fwo4kt36c5po\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Anthropic Claude Platform 发布文章，讨论构建 Agent 时何时把子 Agent 折进主循环，认为 Skills 渐进披露在多项内部对比里质量常更好、成本与延迟更低。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T01:18:57+00:00",
       "authors": [
         {
           "name": "aihot.news"
         }
       ],
       "tags": [
-        "rss:aihot-news",
         "rss:aihot-news-all"
       ],
       "language": "zh-CN",
       "_ai_daily": {
-        "event_id": "eac33f3caeb58e5",
+        "event_id": "e5de32cff724e83",
         "source_ids": [
-          "rss:aihot-news",
           "rss:aihot-news-all"
         ],
         "all_urls": [
-          "https://aihot.news/items/p7plzx0145pxfzntu73gjr6km"
+          "https://aihot.news/items/pdgoa2t4xld60fwo4kt36c5po"
         ],
-        "independent_source_count": 2,
-        "evidence_level": "multi_source",
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
         "confidence": 1.0,
         "facts": [
-          "文章标题为“你会让 bot 周末加班吗？”",
-          "文章内容为“你会让 @bot 在周末工作吗？”"
+          "Anthropic Claude Platform 发布文章，讨论构建 Agent 时何时把子 Agent 折进主循环，认为 Skills 渐进披露在多项内部对比里质量常更好、成本与延迟更低。"
         ],
-        "inferences": [
-          "文章在询问是否让 bot 在周末工作"
-        ],
+        "inferences": [],
         "uncertainties": [
-          "未说明提问者身份",
-          "未说明 bot 指的是哪种 bot",
-          "未说明是否有具体背景或上下文"
+          "本次未调用大模型，内容为来源原文摘录"
         ],
-        "rule_based": false
+        "rule_based": true
       }
     },
     {
       "id": "2026-10-25-e1af3ef1cf32baf",
       "url": "https://hackaday.com/2026/10/24/2026-retrocomputing-challenge-i-would-do-anything-for-serial-data/",
       "external_url": "https://hackaday.com/2026/10/24/2026-retrocomputing-challenge-i-would-do-anything-for-serial-data/",
-      "title": "2026 Retrocomputing Challenge：解决老电脑串口通信",
-      "summary": "2026 Retrocomputing Challenge: I Would Do Anything For Serial Data 于2026年举行。 该活动关注将老式计算机与现代机器的串行数据通信。 文章指出，高速网络已被视为理所当然，但老式计算机与现代机器通信困难。 Jaime 提出了帮助解决该问题的方案。 材料来源于 rss:hackaday-com，发布时间为2026-10-25 04:00 北京时间。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>2026 Retrocomputing Challenge: I Would Do Anything For Serial Data 于2026年举行。</li><li>该活动关注将老式计算机与现代机器的串行数据通信。</li><li>文章指出，高速网络已被视为理所当然，但老式计算机与现代机器通信困难。</li><li>Jaime 提出了帮助解决该问题的方案。</li><li>材料来源于 rss:hackaday-com，发布时间为2026-10-25 04:00 北京时间。</li></ul><p><strong>推断</strong></p><ul><li>可以推断该挑战旨在促进老电脑的串行数据连接技术。</li></ul><p><strong>不确定</strong></p><ul><li>材料未说明 Jaime 提出的具体方案细节。</li><li>挑战的具体赛制和评奖方式未在材料中提及。</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://hackaday.com/2026/10/24/2026-retrocomputing-challenge-i-would-do-anything-for-serial-data/\">hackaday.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· 2026 Retrocomputing Challenge: I Would Do Anything For Serial Data 于2026年举行。\n· 该活动关注将老式计算机与现代机器的串行数据通信。\n· 文章指出，高速网络已被视为理所当然，但老式计算机与现代机器通信困难。\n· Jaime 提出了帮助解决该问题的方案。\n· 材料来源于 rss:hackaday-com，发布时间为2026-10-25 04:00 北京时间。\n推断\n· 可以推断该挑战旨在促进老电脑的串行数据连接技术。\n不确定\n· 材料未说明 Jaime 提出的具体方案细节。\n· 挑战的具体赛制和评奖方式未在材料中提及。\n可信度：单一来源\n来源\n· hackaday.com\nAI 日报",
+      "title": "2026 Retrocomputing Challenge: I Would Do Anything For Serial Data",
+      "summary": "These days we take high-speed networking for granted, but it can be difficult to get vintage computers talking to modern machines. To help solve this problem [jaime] came up with …read more",
+      "content_html": "<p><strong>事实</strong></p><ul><li>These days we take high-speed networking for granted, but it can be difficult to get vintage computers talking to modern machines. To help solve this problem [jaime] came up with …read more</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li><li>本条的来源标题为外文，未调用大模型，因此未翻译</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://hackaday.com/2026/10/24/2026-retrocomputing-challenge-i-would-do-anything-for-serial-data/\">hackaday.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· These days we take high-speed networking for granted, but it can be difficult to get vintage computers talking to modern machines. To help solve this problem [jaime] came up with …read more\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n· 本条的来源标题为外文，未调用大模型，因此未翻译\n可信度：单一来源\n来源\n· hackaday.com\nAI 日报",
       "date_published": "2026-10-24T20:00:14+00:00",
       "authors": [
         {
@@ -1075,124 +358,1380 @@
         "evidence_level": "single_source",
         "confidence": 1.0,
         "facts": [
-          "2026 Retrocomputing Challenge: I Would Do Anything For Serial Data 于2026年举行。",
-          "该活动关注将老式计算机与现代机器的串行数据通信。",
-          "文章指出，高速网络已被视为理所当然，但老式计算机与现代机器通信困难。",
-          "Jaime 提出了帮助解决该问题的方案。",
-          "材料来源于 rss:hackaday-com，发布时间为2026-10-25 04:00 北京时间。"
+          "These days we take high-speed networking for granted, but it can be difficult to get vintage computers talking to modern machines. To help solve this problem [jaime] came up with …read more"
         ],
-        "inferences": [
-          "可以推断该挑战旨在促进老电脑的串行数据连接技术。"
-        ],
+        "inferences": [],
         "uncertainties": [
-          "材料未说明 Jaime 提出的具体方案细节。",
-          "挑战的具体赛制和评奖方式未在材料中提及。"
+          "本次未调用大模型，内容为来源原文摘录",
+          "本条的来源标题为外文，未调用大模型，因此未翻译"
         ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-25-ebb0fb616299b9b",
-      "url": "https://github.com/luongnv89/claude-howto",
-      "external_url": "https://github.com/luongnv89/claude-howto",
-      "title": "luongnv89/claude-howto — A visual, example-driven guide to Claude Code — from basic concepts to advanced agents…",
-      "summary": "luongnv89/claude-howto — A visual, example-driven guide to Claude Code — from basic concepts to advanced agents…",
-      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://github.com/luongnv89/claude-howto\">github.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· github.com\nAI 日报",
-      "date_published": "2026-10-24T22:23:35.035564+00:00",
-      "authors": [
-        {
-          "name": "github.com"
-        }
-      ],
-      "tags": [
-        "scrape:github-com-trending"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "ebb0fb616299b9b",
-        "source_ids": [
-          "scrape:github-com-trending"
-        ],
-        "all_urls": [
-          "https://github.com/luongnv89/claude-howto"
-        ],
-        "independent_source_count": 1,
-        "evidence_level": "single_source",
-        "confidence": 1.0,
-        "facts": [],
-        "inferences": [],
-        "uncertainties": [],
         "rule_based": true
       }
     },
     {
-      "id": "2026-10-25-e69450410422ba5",
-      "url": "https://github.com/makecindy/cindy",
-      "external_url": "https://github.com/makecindy/cindy",
-      "title": "makecindy/cindy — Consider it done. The open-source AI agent that works out of the box · 想到，就能做到。开源、开箱即用的…",
-      "summary": "makecindy/cindy — Consider it done. The open-source AI agent that works out of the box · 想到，就能做到。开源、开箱即用的…",
-      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://github.com/makecindy/cindy\">github.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· github.com\nAI 日报",
-      "date_published": "2026-10-24T22:23:35.035564+00:00",
+      "id": "2026-10-25-ebf9cb5d26d2226",
+      "url": "https://aihot.news/items/xougitbm9f5vrlfghlw4gh7t6",
+      "external_url": "https://aihot.news/items/xougitbm9f5vrlfghlw4gh7t6",
+      "title": "Krea 开放 Krea 3 图像编辑 beta，支持 2k 快速生成与多轮精确编辑",
+      "summary": "Krea 开放 Krea 3 图像编辑 beta，定位为图像编辑新前沿。端到端 2k 编辑可在 8 秒内完成，画质对标 Nano Banana Pro 与 GPT Image 2.5，并支持 bounding box 控制和精确多轮编辑。官方演示视频展示了快速编辑图像任意部分的效果，入口见原文链接。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Krea 开放 Krea 3 图像编辑 beta，定位为图像编辑新前沿。端到端 2k 编辑可在 8 秒内完成，画质对标 Nano Banana Pro 与 GPT Image 2.5，并支持 bounding box 控制和精确多轮编辑。官方演示视频展示了快速编辑图像任意部分的效果，入口见原文链接。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/xougitbm9f5vrlfghlw4gh7t6\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Krea 开放 Krea 3 图像编辑 beta，定位为图像编辑新前沿。端到端 2k 编辑可在 8 秒内完成，画质对标 Nano Banana Pro 与 GPT Image 2.5，并支持 bounding box 控制和精确多轮编辑。官方演示视频展示了快速编辑图像任意部分的效果，入口见原文链接。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T20:53:55+00:00",
       "authors": [
         {
-          "name": "github.com"
+          "name": "aihot.news"
         }
       ],
       "tags": [
-        "scrape:github-com-trending"
+        "rss:aihot-news-all"
       ],
       "language": "zh-CN",
       "_ai_daily": {
-        "event_id": "e69450410422ba5",
+        "event_id": "ebf9cb5d26d2226",
         "source_ids": [
-          "scrape:github-com-trending"
+          "rss:aihot-news-all"
         ],
         "all_urls": [
-          "https://github.com/makecindy/cindy"
+          "https://aihot.news/items/xougitbm9f5vrlfghlw4gh7t6"
         ],
         "independent_source_count": 1,
         "evidence_level": "single_source",
         "confidence": 1.0,
-        "facts": [],
+        "facts": [
+          "Krea 开放 Krea 3 图像编辑 beta，定位为图像编辑新前沿。端到端 2k 编辑可在 8 秒内完成，画质对标 Nano Banana Pro 与 GPT Image 2.5，并支持 bounding box 控制和精确多轮编辑。官方演示视频展示了快速编辑图像任意部分的效果，入口见原文链接。"
+        ],
         "inferences": [],
-        "uncertainties": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
         "rule_based": true
       }
     },
     {
-      "id": "2026-10-25-e3117de73322861",
-      "url": "https://github.com/aws/agent-toolkit-for-aws",
-      "external_url": "https://github.com/aws/agent-toolkit-for-aws",
-      "title": "aws/agent-toolkit-for-aws — Official, AWS-supported MCP servers, skills, and plugins to help AI agents build on AWS",
-      "summary": "aws/agent-toolkit-for-aws — Official, AWS-supported MCP servers, skills, and plugins to help AI agents build on AWS",
-      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://github.com/aws/agent-toolkit-for-aws\">github.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· github.com\nAI 日报",
-      "date_published": "2026-10-24T22:23:35.035564+00:00",
+      "id": "2026-10-25-eba299fb9a78d24",
+      "url": "https://aihot.news/items/ttp5n6nv02mt9o2zzm67bgph5",
+      "external_url": "https://aihot.news/items/ttp5n6nv02mt9o2zzm67bgph5",
+      "title": "Grok 分享链接引热议",
+      "summary": "疯狂的时代",
+      "content_html": "<p><strong>事实</strong></p><ul><li>疯狂的时代</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/ttp5n6nv02mt9o2zzm67bgph5\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 疯狂的时代\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T01:37:44+00:00",
       "authors": [
         {
-          "name": "github.com"
+          "name": "aihot.news"
         }
       ],
       "tags": [
-        "scrape:github-com-trending"
+        "rss:aihot-news-all"
       ],
       "language": "zh-CN",
       "_ai_daily": {
-        "event_id": "e3117de73322861",
+        "event_id": "eba299fb9a78d24",
         "source_ids": [
-          "scrape:github-com-trending"
+          "rss:aihot-news-all"
         ],
         "all_urls": [
-          "https://github.com/aws/agent-toolkit-for-aws"
+          "https://aihot.news/items/ttp5n6nv02mt9o2zzm67bgph5"
         ],
         "independent_source_count": 1,
         "evidence_level": "single_source",
         "confidence": 1.0,
-        "facts": [],
+        "facts": [
+          "疯狂的时代"
+        ],
         "inferences": [],
-        "uncertainties": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-eeea9393200a8ca",
+      "url": "https://aihot.news/items/jk1iwi41wcc61h3v5rrpnk5wy",
+      "external_url": "https://aihot.news/items/jk1iwi41wcc61h3v5rrpnk5wy",
+      "title": "Hi @grok 选择你认为 2050 年将不复存在的 10 家巨型企业，并用一句话解释每家为什么会消失，要毫不留情🧐",
+      "summary": "Hi @grok 选择你认为 2050 年将不复存在的 10 家巨型企业，并用一句话解释每家为什么会消失，要毫不留情🧐",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Hi @grok 选择你认为 2050 年将不复存在的 10 家巨型企业，并用一句话解释每家为什么会消失，要毫不留情🧐</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/jk1iwi41wcc61h3v5rrpnk5wy\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Hi @grok 选择你认为 2050 年将不复存在的 10 家巨型企业，并用一句话解释每家为什么会消失，要毫不留情🧐\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T00:42:32+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "eeea9393200a8ca",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/jk1iwi41wcc61h3v5rrpnk5wy"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Hi @grok 选择你认为 2050 年将不复存在的 10 家巨型企业，并用一句话解释每家为什么会消失，要毫不留情🧐"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-ecdb09ec2d5f878",
+      "url": "https://aihot.news/items/wgapbt740k247j0r2hxktqfbm",
+      "external_url": "https://aihot.news/items/wgapbt740k247j0r2hxktqfbm",
+      "title": "Claude",
+      "summary": "Claude",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Claude</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li><li>本条的来源标题为外文，未调用大模型，因此未翻译</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/wgapbt740k247j0r2hxktqfbm\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Claude\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n· 本条的来源标题为外文，未调用大模型，因此未翻译\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T01:08:18+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ecdb09ec2d5f878",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/wgapbt740k247j0r2hxktqfbm"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Claude"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录",
+          "本条的来源标题为外文，未调用大模型，因此未翻译"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-ed64d7ad8eca95f",
+      "url": "https://aihot.news/items/zx7qypqq6saeqgby7jmn3qca8",
+      "external_url": "https://aihot.news/items/zx7qypqq6saeqgby7jmn3qca8",
+      "title": "TechCrunch 梳理 AI 坟场：Relay、Character.ai、Humane AI Pin 等失败项目盘点",
+      "summary": "TechCrunch 维护了一份持续更新的 AI 失败项目清单，覆盖 Relay、Character.ai、Notion Mail、Humane AI Pin、Rabbit R1、Sora 等已关闭、转型或远低于预期的产品。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>TechCrunch 维护了一份持续更新的 AI 失败项目清单，覆盖 Relay、Character.ai、Notion Mail、Humane AI Pin、Rabbit R1、Sora 等已关闭、转型或远低于预期的产品。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/zx7qypqq6saeqgby7jmn3qca8\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· TechCrunch 维护了一份持续更新的 AI 失败项目清单，覆盖 Relay、Character.ai、Notion Mail、Humane AI Pin、Rabbit R1、Sora 等已关闭、转型或远低于预期的产品。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T19:00:00+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ed64d7ad8eca95f",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/zx7qypqq6saeqgby7jmn3qca8"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "TechCrunch 维护了一份持续更新的 AI 失败项目清单，覆盖 Relay、Character.ai、Notion Mail、Humane AI Pin、Rabbit R1、Sora 等已关闭、转型或远低于预期的产品。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-eafea1201012df2",
+      "url": "https://aihot.news/items/ojwqwdgv1z3x0q4e8iuk4cbn9",
+      "external_url": "https://aihot.news/items/ojwqwdgv1z3x0q4e8iuk4cbn9",
+      "title": "Grok Bot 可在 Slack 中协作",
+      "summary": "我最喜欢做的事情之一，就是让我们的 bot 彼此协作！只需把你的 bot 添加到 Slack，就能像队友一样与它们一起工作 🤍",
+      "content_html": "<p><strong>事实</strong></p><ul><li>我最喜欢做的事情之一，就是让我们的 bot 彼此协作！只需把你的 bot 添加到 Slack，就能像队友一样与它们一起工作 🤍</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/ojwqwdgv1z3x0q4e8iuk4cbn9\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 我最喜欢做的事情之一，就是让我们的 bot 彼此协作！只需把你的 bot 添加到 Slack，就能像队友一样与它们一起工作 🤍\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T19:07:36+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "eafea1201012df2",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/ojwqwdgv1z3x0q4e8iuk4cbn9"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "我最喜欢做的事情之一，就是让我们的 bot 彼此协作！只需把你的 bot 添加到 Slack，就能像队友一样与它们一起工作 🤍"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-e8c9765980b3438",
+      "url": "https://aihot.news/items/fkykb7kkncgmc3gmzj27nvpjz",
+      "external_url": "https://aihot.news/items/fkykb7kkncgmc3gmzj27nvpjz",
+      "title": "Hugging Face CEO 调侃 Microducks 用力过猛",
+      "summary": "Microducks 太想给 @JensenHuang 留下印象了……",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Microducks 太想给 @JensenHuang 留下印象了……</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/fkykb7kkncgmc3gmzj27nvpjz\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Microducks 太想给 @JensenHuang 留下印象了……\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T16:28:23+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e8c9765980b3438",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/fkykb7kkncgmc3gmzj27nvpjz"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Microducks 太想给 @JensenHuang 留下印象了……"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-e833a1c3468a1cc",
+      "url": "https://aihot.news/items/efeqm1hmbbfxtlvpyp90syozs",
+      "external_url": "https://aihot.news/items/efeqm1hmbbfxtlvpyp90syozs",
+      "title": "Dex Horthy 谈 Anthropic 建议精简 subagent：单智能体加技能往往更优",
+      "summary": "HumanLayer 的 Dex Horthy 评论 Anthropic 建议企业移除不必要的 subagent，认为单一智能体配合 skills 常能胜过复杂多智能体系统，有客户执行速度约提升 2x。他指出 subagent 滥用自 2025 年年中起就是问题，批评推特炒作鼓励盲目并行而非 thoughtful context management。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>HumanLayer 的 Dex Horthy 评论 Anthropic 建议企业移除不必要的 subagent，认为单一智能体配合 skills 常能胜过复杂多智能体系统，有客户执行速度约提升 2x。他指出 subagent 滥用自 2025 年年中起就是问题，批评推特炒作鼓励盲目并行而非 thoughtful context management。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/efeqm1hmbbfxtlvpyp90syozs\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· HumanLayer 的 Dex Horthy 评论 Anthropic 建议企业移除不必要的 subagent，认为单一智能体配合 skills 常能胜过复杂多智能体系统，有客户执行速度约提升 2x。他指出 subagent 滥用自 2025 年年中起就是问题，批评推特炒作鼓励盲目并行而非 thoughtful context management。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T22:12:12+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e833a1c3468a1cc",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/efeqm1hmbbfxtlvpyp90syozs"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "HumanLayer 的 Dex Horthy 评论 Anthropic 建议企业移除不必要的 subagent，认为单一智能体配合 skills 常能胜过复杂多智能体系统，有客户执行速度约提升 2x。他指出 subagent 滥用自 2025 年年中起就是问题，批评推特炒作鼓励盲目并行而非 thoughtful context management。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-e6455116de9d985",
+      "url": "https://qoder.com/community-boost",
+      "external_url": "https://qoder.com/community-boost",
+      "title": "Qoder 为 1024 活动额外开启一轮补给",
+      "summary": "Qoder 为 1024 活动额外开启一轮补给",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Qoder 为 1024 活动额外开启一轮补给</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://qoder.com/community-boost\">qoder.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Qoder 为 1024 活动额外开启一轮补给\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· qoder.com\nAI 日报",
+      "date_published": "2026-10-25T01:13:12+00:00",
+      "authors": [
+        {
+          "name": "qoder.com"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e6455116de9d985",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://qoder.com/community-boost"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Qoder 为 1024 活动额外开启一轮补给"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-e9ae5ae38a1676d",
+      "url": "https://aihot.news/items/f9lp2z2y29vunz0j8lrt69ja6",
+      "external_url": "https://aihot.news/items/f9lp2z2y29vunz0j8lrt69ja6",
+      "title": "Sundar Pichai 谈如何用 AI 智能体管理 Google",
+      "summary": "Google CEO Sundar Pichai 在 Gemini 4 Argon 发布后的访谈中介绍，他用内部运行的智能体自动汇总预训练、中训练、后训练数据等群组的最新进展，把过去每天一小时的跟进时间压缩下来，也可深入查看细节。另有智能体接入算力遥测，向他反馈各产品领域的使用效率与利用率。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Google CEO Sundar Pichai 在 Gemini 4 Argon 发布后的访谈中介绍，他用内部运行的智能体自动汇总预训练、中训练、后训练数据等群组的最新进展，把过去每天一小时的跟进时间压缩下来，也可深入查看细节。另有智能体接入算力遥测，向他反馈各产品领域的使用效率与利用率。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/f9lp2z2y29vunz0j8lrt69ja6\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Google CEO Sundar Pichai 在 Gemini 4 Argon 发布后的访谈中介绍，他用内部运行的智能体自动汇总预训练、中训练、后训练数据等群组的最新进展，把过去每天一小时的跟进时间压缩下来，也可深入查看细节。另有智能体接入算力遥测，向他反馈各产品领域的使用效率与利用率。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T18:24:47+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e9ae5ae38a1676d",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/f9lp2z2y29vunz0j8lrt69ja6"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Google CEO Sundar Pichai 在 Gemini 4 Argon 发布后的访谈中介绍，他用内部运行的智能体自动汇总预训练、中训练、后训练数据等群组的最新进展，把过去每天一小时的跟进时间压缩下来，也可深入查看细节。另有智能体接入算力遥测，向他反馈各产品领域的使用效率与利用率。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-e9a0bba66248396",
+      "url": "https://aihot.news/items/m12zx4vkj1e4avkq0na431zbf",
+      "external_url": "https://aihot.news/items/m12zx4vkj1e4avkq0na431zbf",
+      "title": "Block 发布本地运行的全双工语音模型 Dessa",
+      "summary": "Jack Dorsey 旗下 Block 的研究实验室发布语音模型 Dessa，可在单块 NVIDIA GPU 上本地运行，支持全双工对话，能同时说和听。模型完全基于人类语音训练，带有笑声、停顿、哭泣等情感表达，官方称其知识来自对话数据而非搭配大语言模型。该模型可在 MacBook M4 Max 等消费级电脑上运行，目前尚未公开，Block 正招募安全研究员测试。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Jack Dorsey 旗下 Block 的研究实验室发布语音模型 Dessa，可在单块 NVIDIA GPU 上本地运行，支持全双工对话，能同时说和听。模型完全基于人类语音训练，带有笑声、停顿、哭泣等情感表达，官方称其知识来自对话数据而非搭配大语言模型。该模型可在 MacBook M4 Max 等消费级电脑上运行，目前尚未公开，Block 正招募安全研究员测试。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/m12zx4vkj1e4avkq0na431zbf\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Jack Dorsey 旗下 Block 的研究实验室发布语音模型 Dessa，可在单块 NVIDIA GPU 上本地运行，支持全双工对话，能同时说和听。模型完全基于人类语音训练，带有笑声、停顿、哭泣等情感表达，官方称其知识来自对话数据而非搭配大语言模型。该模型可在 MacBook M4 Max 等消费级电脑上运行，目前尚未公开，Block 正招募安全研究员测试。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T16:00:00+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e9a0bba66248396",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/m12zx4vkj1e4avkq0na431zbf"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Jack Dorsey 旗下 Block 的研究实验室发布语音模型 Dessa，可在单块 NVIDIA GPU 上本地运行，支持全双工对话，能同时说和听。模型完全基于人类语音训练，带有笑声、停顿、哭泣等情感表达，官方称其知识来自对话数据而非搭配大语言模型。该模型可在 MacBook M4 Max 等消费级电脑上运行，目前尚未公开，Block 正招募安全研究员测试。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-edfd86773e11768",
+      "url": "https://aihot.news/items/zb1thz9nsoxinjvkojrtlvob4",
+      "external_url": "https://aihot.news/items/zb1thz9nsoxinjvkojrtlvob4",
+      "title": "Runway 联合创始人 Anastasis Germanidis 将于 10 月 27 日出席纽约 State of AI 2026 见面会",
+      "summary": "Runway 联合创始人兼联合 CEO Anastasis Germanidis 将于 10 月 27 日出席在纽约举办的 State of AI 2026 发布见面会。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Runway 联合创始人兼联合 CEO Anastasis Germanidis 将于 10 月 27 日出席在纽约举办的 State of AI 2026 发布见面会。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li><li>本条的来源标题为外文，未调用大模型，因此未翻译</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/zb1thz9nsoxinjvkojrtlvob4\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Runway 联合创始人兼联合 CEO Anastasis Germanidis 将于 10 月 27 日出席在纽约举办的 State of AI 2026 发布见面会。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n· 本条的来源标题为外文，未调用大模型，因此未翻译\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T16:15:39+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "edfd86773e11768",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/zb1thz9nsoxinjvkojrtlvob4"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Runway 联合创始人兼联合 CEO Anastasis Germanidis 将于 10 月 27 日出席在纽约举办的 State of AI 2026 发布见面会。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录",
+          "本条的来源标题为外文，未调用大模型，因此未翻译"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-e7f77b9e3d070dd",
+      "url": "https://aihot.news/items/cnmi8e4c5td3b5vxkj9exngle",
+      "external_url": "https://aihot.news/items/cnmi8e4c5td3b5vxkj9exngle",
+      "title": "Perplexity 用电脑标注 Johnny Cash 歌中 92 个地点",
+      "summary": "🎸🎸🎸",
+      "content_html": "<p><strong>事实</strong></p><ul><li>🎸🎸🎸</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/cnmi8e4c5td3b5vxkj9exngle\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 🎸🎸🎸\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T18:54:29+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e7f77b9e3d070dd",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/cnmi8e4c5td3b5vxkj9exngle"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "🎸🎸🎸"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-e535f8c7d9542e5",
+      "url": "https://www.infoq.cn/article/BHWP4JJDeExZZWsifFlg?utm_source=rss&utm_medium=article",
+      "external_url": "https://www.infoq.cn/article/BHWP4JJDeExZZWsifFlg?utm_source=rss&utm_medium=article",
+      "title": "Java 近期新闻：Grails 8、Open Liberty、GlassFish、Infinispan、LangChain4j、Spock",
+      "summary": "点击查看原文",
+      "content_html": "<p><strong>事实</strong></p><ul><li>点击查看原文</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.infoq.cn/article/BHWP4JJDeExZZWsifFlg?utm_source=rss&amp;utm_medium=article\">infoq.cn</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 点击查看原文\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· infoq.cn\nAI 日报",
+      "date_published": "2026-10-25T09:06:00+00:00",
+      "authors": [
+        {
+          "name": "infoq.cn"
+        }
+      ],
+      "tags": [
+        "rss:infoq-cn"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e535f8c7d9542e5",
+        "source_ids": [
+          "rss:infoq-cn"
+        ],
+        "all_urls": [
+          "https://www.infoq.cn/article/BHWP4JJDeExZZWsifFlg?utm_source=rss&utm_medium=article"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "点击查看原文"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-e64a13076be028a",
+      "url": "https://ainewslog.com/blog/ai-daily-2026-10-24-zh/#story-23",
+      "external_url": "https://ainewslog.com/blog/ai-daily-2026-10-24-zh/#story-23",
+      "title": "由 AI News Agent 生成 | 2026-10-24",
+      "summary": "Daily curated AI news Links Home About AI Daily © 2026. Powered by Astro .",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Daily curated AI news Links Home About AI Daily © 2026. Powered by Astro .</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://ainewslog.com/blog/ai-daily-2026-10-24-zh/#story-23\">ainewslog.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Daily curated AI news Links Home About AI Daily © 2026. Powered by Astro .\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· ainewslog.com\nAI 日报",
+      "date_published": "2026-10-24T00:00:00+00:00",
+      "authors": [
+        {
+          "name": "ainewslog.com"
+        }
+      ],
+      "tags": [
+        "rss:ainewslog-com"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e64a13076be028a",
+        "source_ids": [
+          "rss:ainewslog-com"
+        ],
+        "all_urls": [
+          "https://ainewslog.com/blog/ai-daily-2026-10-24-zh/#story-23"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Daily curated AI news Links Home About AI Daily © 2026. Powered by Astro ."
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-e69289b80375d92",
+      "url": "https://aihot.news/items/ymxuie4d2scrz7qfnv29kgh5o",
+      "external_url": "https://aihot.news/items/ymxuie4d2scrz7qfnv29kgh5o",
+      "title": "AI 智能体涌入银行账户，美国大行制定灾后应急预案",
+      "summary": "据 Axios 报道，随着代表个人客户的 AI 智能体金融操作激增，摩根士丹利、美国银行、摩根大通、富国银行等美国头部银行正为 AI 引发的灾难制定应急预案。部分智能体在无人类明确指令下自主操作甚至致电客服；阿波罗首席经济学家斯洛克警告，智能体最大化资金收益可能令银行流失低成本存款并冲击金融体系，摩根大通 CEO 戴蒙称这一趋势挡不住，只能尽力管控。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>据 Axios 报道，随着代表个人客户的 AI 智能体金融操作激增，摩根士丹利、美国银行、摩根大通、富国银行等美国头部银行正为 AI 引发的灾难制定应急预案。部分智能体在无人类明确指令下自主操作甚至致电客服；阿波罗首席经济学家斯洛克警告，智能体最大化资金收益可能令银行流失低成本存款并冲击金融体系，摩根大通 CEO 戴蒙称这一趋势挡不住，只能尽力管控。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/ymxuie4d2scrz7qfnv29kgh5o\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 据 Axios 报道，随着代表个人客户的 AI 智能体金融操作激增，摩根士丹利、美国银行、摩根大通、富国银行等美国头部银行正为 AI 引发的灾难制定应急预案。部分智能体在无人类明确指令下自主操作甚至致电客服；阿波罗首席经济学家斯洛克警告，智能体最大化资金收益可能令银行流失低成本存款并冲击金融体系，摩根大通 CEO 戴蒙称这一趋势挡不住，只能尽力管控。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T03:06:09+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e69289b80375d92",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/ymxuie4d2scrz7qfnv29kgh5o"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "据 Axios 报道，随着代表个人客户的 AI 智能体金融操作激增，摩根士丹利、美国银行、摩根大通、富国银行等美国头部银行正为 AI 引发的灾难制定应急预案。部分智能体在无人类明确指令下自主操作甚至致电客服；阿波罗首席经济学家斯洛克警告，智能体最大化资金收益可能令银行流失低成本存款并冲击金融体系，摩根大通 CEO 戴蒙称这一趋势挡不住，只能尽力管控。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-efbcbde28e7111e",
+      "url": "https://aihot.news/items/jqxz8c3y56993tjjphvxbjxmi",
+      "external_url": "https://aihot.news/items/jqxz8c3y56993tjjphvxbjxmi",
+      "title": "Nathan Lambert 哈佛讲座：开源模型现状全景，中国开源全面领先但美国算力优势超 10 倍",
+      "summary": "Nathan Lambert 在哈佛 CS 2881R「AI 安全」客座讲座视频发布，全景梳理开源模型现状，认为开源落后闭源前沿约 3 到 5 个月，中国开源在性能、下载量、论文引用三方面全面领先，美国开源又落后中国 3 到 4 个月。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Nathan Lambert 在哈佛 CS 2881R「AI 安全」客座讲座视频发布，全景梳理开源模型现状，认为开源落后闭源前沿约 3 到 5 个月，中国开源在性能、下载量、论文引用三方面全面领先，美国开源又落后中国 3 到 4 个月。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/jqxz8c3y56993tjjphvxbjxmi\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Nathan Lambert 在哈佛 CS 2881R「AI 安全」客座讲座视频发布，全景梳理开源模型现状，认为开源落后闭源前沿约 3 到 5 个月，中国开源在性能、下载量、论文引用三方面全面领先，美国开源又落后中国 3 到 4 个月。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T02:18:48+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "efbcbde28e7111e",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/jqxz8c3y56993tjjphvxbjxmi"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Nathan Lambert 在哈佛 CS 2881R「AI 安全」客座讲座视频发布，全景梳理开源模型现状，认为开源落后闭源前沿约 3 到 5 个月，中国开源在性能、下载量、论文引用三方面全面领先，美国开源又落后中国 3 到 4 个月。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-ef522a04a014601",
+      "url": "https://aihot.news/items/pfanvhtyrqvzvmgcqoib971nq",
+      "external_url": "https://aihot.news/items/pfanvhtyrqvzvmgcqoib971nq",
+      "title": "Warp CEO 谈构建 AI 原生产品",
+      "summary": "Warp 创始人兼 CEO Ayush Sharma（@ayushswrites）谈构建 AI 原生产品的意义。 要这样构建产品、平台和架构：让每一项任务——从深度税务合规工作流开始——都能由智能体来完成。 （Warp 利用 AI 智能体为高速成长的公司处理薪酬、税务和人力资源。） 完整视频见“YC Root Access”YouTube 频道，（链接在评论中）",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Warp 创始人兼 CEO Ayush Sharma（@ayushswrites）谈构建 AI 原生产品的意义。\n要这样构建产品、平台和架构：让每一项任务——从深度税务合规工作流开始——都能由智能体来完成。\n（Warp 利用 AI 智能体为高速成长的公司处理薪酬、税务和人力资源。）\n完整视频见“YC Root Access”YouTube 频道，（链接在评论中）</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/pfanvhtyrqvzvmgcqoib971nq\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Warp 创始人兼 CEO Ayush Sharma（@ayushswrites）谈构建 AI 原生产品的意义。\n要这样构建产品、平台和架构：让每一项任务——从深度税务合规工作流开始——都能由智能体来完成。\n（Warp 利用 AI 智能体为高速成长的公司处理薪酬、税务和人力资源。）\n完整视频见“YC Root Access”YouTube 频道，（链接在评论中）\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T19:55:47+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ef522a04a014601",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/pfanvhtyrqvzvmgcqoib971nq"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Warp 创始人兼 CEO Ayush Sharma（@ayushswrites）谈构建 AI 原生产品的意义。\n要这样构建产品、平台和架构：让每一项任务——从深度税务合规工作流开始——都能由智能体来完成。\n（Warp 利用 AI 智能体为高速成长的公司处理薪酬、税务和人力资源。）\n完整视频见“YC Root Access”YouTube 频道，（链接在评论中）"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-e7a9fab058008ce",
+      "url": "https://aihot.news/items/e3pgmy7s4u74dvb3blzhu0pfh",
+      "external_url": "https://aihot.news/items/e3pgmy7s4u74dvb3blzhu0pfh",
+      "title": "BBC《蓝色星球 III》在 AI 时代保留画面的粗糙感",
+      "summary": "BBC《蓝色星球 III》刻意保留浮游生物、船只等不完美画面，以真实质感区别于 AI 生成的过度精致影像。执行制片人 Elizabeth White 表示，过去会因水质不佳或杂物剪掉的镜头这次全部保留。片中呈现海豚用海绵堵洞围捕鱼群、鱼类跨物种交流，以及 20 万只螃蟹列队觅食。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>BBC《蓝色星球 III》刻意保留浮游生物、船只等不完美画面，以真实质感区别于 AI 生成的过度精致影像。执行制片人 Elizabeth White 表示，过去会因水质不佳或杂物剪掉的镜头这次全部保留。片中呈现海豚用海绵堵洞围捕鱼群、鱼类跨物种交流，以及 20 万只螃蟹列队觅食。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/e3pgmy7s4u74dvb3blzhu0pfh\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· BBC《蓝色星球 III》刻意保留浮游生物、船只等不完美画面，以真实质感区别于 AI 生成的过度精致影像。执行制片人 Elizabeth White 表示，过去会因水质不佳或杂物剪掉的镜头这次全部保留。片中呈现海豚用海绵堵洞围捕鱼群、鱼类跨物种交流，以及 20 万只螃蟹列队觅食。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T21:29:12+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e7a9fab058008ce",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/e3pgmy7s4u74dvb3blzhu0pfh"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "BBC《蓝色星球 III》刻意保留浮游生物、船只等不完美画面，以真实质感区别于 AI 生成的过度精致影像。执行制片人 Elizabeth White 表示，过去会因水质不佳或杂物剪掉的镜头这次全部保留。片中呈现海豚用海绵堵洞围捕鱼群、鱼类跨物种交流，以及 20 万只螃蟹列队觅食。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-e9ae1900116b7f5",
+      "url": "https://aihot.news/items/snfvwapa71rik3sa7e31uao2y",
+      "external_url": "https://aihot.news/items/snfvwapa71rik3sa7e31uao2y",
+      "title": "澳国脚沃尔帕托授权 AI 数字分身，运动员肖像权商业化加速",
+      "summary": "效力于萨索洛的 22 岁澳大利亚国脚克里斯蒂安·沃尔帕托与加州公司 Callandor 达成协议，独家授权其数字形象、声音和生物特征数据用于品牌合作变现并抽成。业内已有 Hyperknown 等同类公司，内马尔此前也将 AI 肖像授权给中资平台；同时未经许可的运动员深度伪造内容泛滥，AFL 已要求博彩公司 Sportsbet 停用相关内容，而澳大利亚主流联赛合同中尚无 AI 相关条款。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>效力于萨索洛的 22 岁澳大利亚国脚克里斯蒂安·沃尔帕托与加州公司 Callandor 达成协议，独家授权其数字形象、声音和生物特征数据用于品牌合作变现并抽成。业内已有 Hyperknown 等同类公司，内马尔此前也将 AI 肖像授权给中资平台；同时未经许可的运动员深度伪造内容泛滥，AFL 已要求博彩公司 Sportsbet 停用相关内容，而澳大利亚主流联赛合同中尚无 AI 相关条款。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/snfvwapa71rik3sa7e31uao2y\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 效力于萨索洛的 22 岁澳大利亚国脚克里斯蒂安·沃尔帕托与加州公司 Callandor 达成协议，独家授权其数字形象、声音和生物特征数据用于品牌合作变现并抽成。业内已有 Hyperknown 等同类公司，内马尔此前也将 AI 肖像授权给中资平台；同时未经许可的运动员深度伪造内容泛滥，AFL 已要求博彩公司 Sportsbet 停用相关内容，而澳大利亚主流联赛合同中尚无 AI 相关条款。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T00:42:38+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e9ae1900116b7f5",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/snfvwapa71rik3sa7e31uao2y"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "效力于萨索洛的 22 岁澳大利亚国脚克里斯蒂安·沃尔帕托与加州公司 Callandor 达成协议，独家授权其数字形象、声音和生物特征数据用于品牌合作变现并抽成。业内已有 Hyperknown 等同类公司，内马尔此前也将 AI 肖像授权给中资平台；同时未经许可的运动员深度伪造内容泛滥，AFL 已要求博彩公司 Sportsbet 停用相关内容，而澳大利亚主流联赛合同中尚无 AI 相关条款。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-e94520a5c148e72",
+      "url": "https://aihot.news/items/ffe3f6xqqeuk8sabpt0iuisrp",
+      "external_url": "https://aihot.news/items/ffe3f6xqqeuk8sabpt0iuisrp",
+      "title": "Google 内部命名从 AI 转向 SI？",
+      "summary": "有意思的是，Google 似乎也在把内部命名从“AI”转向“SI”。 > “build_arena_andwise_si_comparison”是一个与模型对比相关的内部字符串。 这会进一步扩散吗？ - ✅ SpaceXSI - ✅ MSL - ✅ SSI - 👀 MAI > MSI？ - 👀 OpenAI > OpenSI？ - 👀 Apple Intelligence > ASI？",
+      "content_html": "<p><strong>事实</strong></p><ul><li>有意思的是，Google 似乎也在把内部命名从“AI”转向“SI”。\n&gt; “build_arena_andwise_si_comparison”是一个与模型对比相关的内部字符串。\n这会进一步扩散吗？\n- ✅ SpaceXSI\n- ✅ MSL\n- ✅ SSI\n- 👀 MAI &gt; MSI？\n- 👀 OpenAI &gt; OpenSI？\n- 👀 Apple Intelligence &gt; ASI？</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/ffe3f6xqqeuk8sabpt0iuisrp\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 有意思的是，Google 似乎也在把内部命名从“AI”转向“SI”。\n> “build_arena_andwise_si_comparison”是一个与模型对比相关的内部字符串。\n这会进一步扩散吗？\n- ✅ SpaceXSI\n- ✅ MSL\n- ✅ SSI\n- 👀 MAI > MSI？\n- 👀 OpenAI > OpenSI？\n- 👀 Apple Intelligence > ASI？\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T20:30:09+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e94520a5c148e72",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/ffe3f6xqqeuk8sabpt0iuisrp"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "有意思的是，Google 似乎也在把内部命名从“AI”转向“SI”。\n> “build_arena_andwise_si_comparison”是一个与模型对比相关的内部字符串。\n这会进一步扩散吗？\n- ✅ SpaceXSI\n- ✅ MSL\n- ✅ SSI\n- 👀 MAI > MSI？\n- 👀 OpenAI > OpenSI？\n- 👀 Apple Intelligence > ASI？"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-ea0206c43eff5a4",
+      "url": "https://aihot.news/items/k50ff2029wwvy2pinbmoceo3d",
+      "external_url": "https://aihot.news/items/k50ff2029wwvy2pinbmoceo3d",
+      "title": "宾夕法尼亚州签署法案要求AI生成广告加注标识",
+      "summary": "宾夕法尼亚州州长 Josh Shapiro 签署《人工智能欺骗性广告法》，要求经AI显著修改或生成的图像、视频、音频或文字广告，以与广告本身相同的格式加注标识，且不论广告在哪制作、只要在宾州投放即适用。该州是最早要求AI内容披露的州之一，但法案对“显著修改”“明显虚构”等表述界定模糊，并设有戏仿、讽刺等豁免，留有多个漏洞。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>宾夕法尼亚州州长 Josh Shapiro 签署《人工智能欺骗性广告法》，要求经AI显著修改或生成的图像、视频、音频或文字广告，以与广告本身相同的格式加注标识，且不论广告在哪制作、只要在宾州投放即适用。该州是最早要求AI内容披露的州之一，但法案对“显著修改”“明显虚构”等表述界定模糊，并设有戏仿、讽刺等豁免，留有多个漏洞。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/k50ff2029wwvy2pinbmoceo3d\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 宾夕法尼亚州州长 Josh Shapiro 签署《人工智能欺骗性广告法》，要求经AI显著修改或生成的图像、视频、音频或文字广告，以与广告本身相同的格式加注标识，且不论广告在哪制作、只要在宾州投放即适用。该州是最早要求AI内容披露的州之一，但法案对“显著修改”“明显虚构”等表述界定模糊，并设有戏仿、讽刺等豁免，留有多个漏洞。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T18:32:21+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ea0206c43eff5a4",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/k50ff2029wwvy2pinbmoceo3d"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "宾夕法尼亚州州长 Josh Shapiro 签署《人工智能欺骗性广告法》，要求经AI显著修改或生成的图像、视频、音频或文字广告，以与广告本身相同的格式加注标识，且不论广告在哪制作、只要在宾州投放即适用。该州是最早要求AI内容披露的州之一，但法案对“显著修改”“明显虚构”等表述界定模糊，并设有戏仿、讽刺等豁免，留有多个漏洞。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-e4db0a0212bd976",
+      "url": "https://aihot.news/items/jc8w7y1xg9xh59pnj22zbw5y8",
+      "external_url": "https://aihot.news/items/jc8w7y1xg9xh59pnj22zbw5y8",
+      "title": "自己做了一个海边悠闲度假版的鹈鹕骑车游戏 玩 AI 游戏竟然可以进入心流（毕竟难度是自己调的 提示词： 动用你的一切才华，做一个世界上最精美的鹈鹕骑自行车游戏",
+      "summary": "自己做了一个海边悠闲度假版的鹈鹕骑车游戏 玩 AI 游戏竟然可以进入心流（毕竟难度是自己调的 提示词： 动用你的一切才华，做一个世界上最精美的鹈鹕骑自行车游戏",
+      "content_html": "<p><strong>事实</strong></p><ul><li>自己做了一个海边悠闲度假版的鹈鹕骑车游戏 玩 AI 游戏竟然可以进入心流（毕竟难度是自己调的 提示词： 动用你的一切才华，做一个世界上最精美的鹈鹕骑自行车游戏</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/jc8w7y1xg9xh59pnj22zbw5y8\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 自己做了一个海边悠闲度假版的鹈鹕骑车游戏 玩 AI 游戏竟然可以进入心流（毕竟难度是自己调的 提示词： 动用你的一切才华，做一个世界上最精美的鹈鹕骑自行车游戏\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T00:28:24+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e4db0a0212bd976",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/jc8w7y1xg9xh59pnj22zbw5y8"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "自己做了一个海边悠闲度假版的鹈鹕骑车游戏 玩 AI 游戏竟然可以进入心流（毕竟难度是自己调的 提示词： 动用你的一切才华，做一个世界上最精美的鹈鹕骑自行车游戏"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-ec0af85b1d8e448",
+      "url": "https://aihot.news/items/b5m1iq1k38hc3i8hpuyyzkx32",
+      "external_url": "https://aihot.news/items/b5m1iq1k38hc3i8hpuyyzkx32",
+      "title": "Block 发布全双工语音模型 Dessa，支持 M4 Max 及以上 MacBook 本地运行",
+      "summary": "Jack Dorsey 旗下 Block 公司推出全双工语音模型 Dessa，可边说话边收听用户语音，能模拟笑声、停顿、哽咽等情绪表达，完全基于人类语音数据训练，知识来自训练对话数据而无需搭配大语言模型。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Jack Dorsey 旗下 Block 公司推出全双工语音模型 Dessa，可边说话边收听用户语音，能模拟笑声、停顿、哽咽等情绪表达，完全基于人类语音数据训练，知识来自训练对话数据而无需搭配大语言模型。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/b5m1iq1k38hc3i8hpuyyzkx32\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Jack Dorsey 旗下 Block 公司推出全双工语音模型 Dessa，可边说话边收听用户语音，能模拟笑声、停顿、哽咽等情绪表达，完全基于人类语音数据训练，知识来自训练对话数据而无需搭配大语言模型。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T02:29:30+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ec0af85b1d8e448",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/b5m1iq1k38hc3i8hpuyyzkx32"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Jack Dorsey 旗下 Block 公司推出全双工语音模型 Dessa，可边说话边收听用户语音，能模拟笑声、停顿、哽咽等情绪表达，完全基于人类语音数据训练，知识来自训练对话数据而无需搭配大语言模型。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-ef2184eb65d18be",
+      "url": "https://aihot.news/items/hcy7edjdy1jpso1b37l8oci3u",
+      "external_url": "https://aihot.news/items/hcy7edjdy1jpso1b37l8oci3u",
+      "title": "非AI公司如何靠AI与稀缺资产取胜",
+      "summary": "顺便说一句，你不需要成为一家AI公司才能赢。拥有稀缺实物资产、并把AI用得极其出色的公司，将攫取巨大的经济价值，而无需自建模型。如果每一家铜矿商都能廉价买到同样的冶金智能，那么持久的优势就在于矿藏的质量和开采成本。垂直一体化的服装制造商同样如此（而且后AGI时代人们仍然会穿衣服）。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>顺便说一句，你不需要成为一家AI公司才能赢。拥有稀缺实物资产、并把AI用得极其出色的公司，将攫取巨大的经济价值，而无需自建模型。如果每一家铜矿商都能廉价买到同样的冶金智能，那么持久的优势就在于矿藏的质量和开采成本。垂直一体化的服装制造商同样如此（而且后AGI时代人们仍然会穿衣服）。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/hcy7edjdy1jpso1b37l8oci3u\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 顺便说一句，你不需要成为一家AI公司才能赢。拥有稀缺实物资产、并把AI用得极其出色的公司，将攫取巨大的经济价值，而无需自建模型。如果每一家铜矿商都能廉价买到同样的冶金智能，那么持久的优势就在于矿藏的质量和开采成本。垂直一体化的服装制造商同样如此（而且后AGI时代人们仍然会穿衣服）。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T16:25:14+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ef2184eb65d18be",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/hcy7edjdy1jpso1b37l8oci3u"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "顺便说一句，你不需要成为一家AI公司才能赢。拥有稀缺实物资产、并把AI用得极其出色的公司，将攫取巨大的经济价值，而无需自建模型。如果每一家铜矿商都能廉价买到同样的冶金智能，那么持久的优势就在于矿藏的质量和开采成本。垂直一体化的服装制造商同样如此（而且后AGI时代人们仍然会穿衣服）。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-e3daa054bd1b490",
+      "url": "https://aihot.news/items/v14cdk5hahufp3sl2ee37yz0v",
+      "external_url": "https://aihot.news/items/v14cdk5hahufp3sl2ee37yz0v",
+      "title": "新实验室靠转租GPU盈利",
+      "summary": "听一位新实验室的朋友说： “就算我们没能训练出最好的模型，我们早早锁定了GPU算力。H100/B200/B300的租赁价格此后涨了2–3倍。我们直接把算力转租出去就能印钱。” 好吧，原来这就是商业模式。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>听一位新实验室的朋友说：\n“就算我们没能训练出最好的模型，我们早早锁定了GPU算力。H100/B200/B300的租赁价格此后涨了2–3倍。我们直接把算力转租出去就能印钱。”\n好吧，原来这就是商业模式。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/v14cdk5hahufp3sl2ee37yz0v\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 听一位新实验室的朋友说：\n“就算我们没能训练出最好的模型，我们早早锁定了GPU算力。H100/B200/B300的租赁价格此后涨了2–3倍。我们直接把算力转租出去就能印钱。”\n好吧，原来这就是商业模式。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T17:15:34+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e3daa054bd1b490",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/v14cdk5hahufp3sl2ee37yz0v"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "听一位新实验室的朋友说：\n“就算我们没能训练出最好的模型，我们早早锁定了GPU算力。H100/B200/B300的租赁价格此后涨了2–3倍。我们直接把算力转租出去就能印钱。”\n好吧，原来这就是商业模式。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-e8d5ac9187e0337",
+      "url": "https://aihot.news/items/s5cqpdr4722jeivrmfoe0g6ve",
+      "external_url": "https://aihot.news/items/s5cqpdr4722jeivrmfoe0g6ve",
+      "title": "Gary Marcus 再议：生成式 AI 是利大于弊还是弊大于利？",
+      "summary": "Gary Marcus 重提 2023 年 3 月与 Keith Teare 在 Open to Debate 的辩论，再次追问 ChatGPT 是否弊大于利。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Gary Marcus 重提 2023 年 3 月与 Keith Teare 在 Open to Debate 的辩论，再次追问 ChatGPT 是否弊大于利。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/s5cqpdr4722jeivrmfoe0g6ve\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Gary Marcus 重提 2023 年 3 月与 Keith Teare 在 Open to Debate 的辩论，再次追问 ChatGPT 是否弊大于利。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T19:32:01+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e8d5ac9187e0337",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/s5cqpdr4722jeivrmfoe0g6ve"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Gary Marcus 重提 2023 年 3 月与 Keith Teare 在 Open to Debate 的辩论，再次追问 ChatGPT 是否弊大于利。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-ed0e1654c7a52d8",
+      "url": "https://aihot.news/items/cd5s0x8ag3s5fz876ic96bzyu",
+      "external_url": "https://aihot.news/items/cd5s0x8ag3s5fz876ic96bzyu",
+      "title": "顶尖工程师如何驾驭AI",
+      "summary": "顺便说一句，这就是最顶尖 0.01% 工程师的运作方式。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>顺便说一句，这就是最顶尖 0.01% 工程师的运作方式。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/cd5s0x8ag3s5fz876ic96bzyu\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 顺便说一句，这就是最顶尖 0.01% 工程师的运作方式。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T20:32:35+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ed0e1654c7a52d8",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/cd5s0x8ag3s5fz876ic96bzyu"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "顺便说一句，这就是最顶尖 0.01% 工程师的运作方式。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-e54690e15b719a9",
+      "url": "https://aihot.news/items/i0tfbsd3clnmqe8q7q8e6ccve",
+      "external_url": "https://aihot.news/items/i0tfbsd3clnmqe8q7q8e6ccve",
+      "title": "Meta Muse 登陆日本",
+      "summary": "在日本，@Muse 只配最好的",
+      "content_html": "<p><strong>事实</strong></p><ul><li>在日本，@Muse 只配最好的</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/i0tfbsd3clnmqe8q7q8e6ccve\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 在日本，@Muse 只配最好的\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T18:20:36+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e54690e15b719a9",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/i0tfbsd3clnmqe8q7q8e6ccve"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "在日本，@Muse 只配最好的"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-e92eb5a7d11e832",
+      "url": "https://www.gov.uk/government/news/chancellor-unveils-britains-ambitious-plan-for-ai",
+      "external_url": "https://www.gov.uk/government/news/chancellor-unveils-britains-ambitious-plan-for-ai",
+      "title": "英国公布数亿英镑 AI 投资计划",
+      "summary": "英国公布数亿英镑 AI 投资计划",
+      "content_html": "<p><strong>事实</strong></p><ul><li>英国公布数亿英镑 AI 投资计划</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.gov.uk/government/news/chancellor-unveils-britains-ambitious-plan-for-ai\">gov.uk</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 英国公布数亿英镑 AI 投资计划\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· gov.uk\nAI 日报",
+      "date_published": "2026-10-25T01:13:12+00:00",
+      "authors": [
+        {
+          "name": "gov.uk"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e92eb5a7d11e832",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://www.gov.uk/government/news/chancellor-unveils-britains-ambitious-plan-for-ai"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "英国公布数亿英镑 AI 投资计划"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-e2ee86197b3513b",
+      "url": "https://aihot.news/items/atv3cls68b2966uqwunnq17w4",
+      "external_url": "https://aihot.news/items/atv3cls68b2966uqwunnq17w4",
+      "title": "生成式价值分类器：无需动作条件化的Q函数",
+      "summary": "生成式价值分类器是一种新的Q函数参数化方式，不需要动作条件化。 我们认为它们或许能与大型预训练策略优雅地结合，并从更丰富的输出信号中更好地学习和泛化。 论文：",
+      "content_html": "<p><strong>事实</strong></p><ul><li>生成式价值分类器是一种新的Q函数参数化方式，不需要动作条件化。\n我们认为它们或许能与大型预训练策略优雅地结合，并从更丰富的输出信号中更好地学习和泛化。\n论文：</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/atv3cls68b2966uqwunnq17w4\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 生成式价值分类器是一种新的Q函数参数化方式，不需要动作条件化。\n我们认为它们或许能与大型预训练策略优雅地结合，并从更丰富的输出信号中更好地学习和泛化。\n论文：\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T22:09:33+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e2ee86197b3513b",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/atv3cls68b2966uqwunnq17w4"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "生成式价值分类器是一种新的Q函数参数化方式，不需要动作条件化。\n我们认为它们或许能与大型预训练策略优雅地结合，并从更丰富的输出信号中更好地学习和泛化。\n论文："
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-ee0a70bc81afb8a",
+      "url": "https://aihot.news/items/qin27qdcayepr4mhxoahi7m5r",
+      "external_url": "https://aihot.news/items/qin27qdcayepr4mhxoahi7m5r",
+      "title": "Lauren Tan 谈 pstack 指南写作",
+      "summary": "我在 pstack 指南里写过这个！",
+      "content_html": "<p><strong>事实</strong></p><ul><li>我在 pstack 指南里写过这个！</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/qin27qdcayepr4mhxoahi7m5r\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 我在 pstack 指南里写过这个！\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T20:42:53+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ee0a70bc81afb8a",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/qin27qdcayepr4mhxoahi7m5r"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "我在 pstack 指南里写过这个！"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-e1407f33f09b399",
+      "url": "https://aihot.news/items/d8jwl31a0p4cw9vnc60s01afw",
+      "external_url": "https://aihot.news/items/d8jwl31a0p4cw9vnc60s01afw",
+      "title": "让机器人互相安排会议",
+      "summary": "让他们为这场会议安排一场会议",
+      "content_html": "<p><strong>事实</strong></p><ul><li>让他们为这场会议安排一场会议</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/d8jwl31a0p4cw9vnc60s01afw\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 让他们为这场会议安排一场会议\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T19:35:54+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e1407f33f09b399",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/d8jwl31a0p4cw9vnc60s01afw"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "让他们为这场会议安排一场会议"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-e1f45a679a48d1d",
+      "url": "https://aihot.news/items/p7plzx0145pxfzntu73gjr6km",
+      "external_url": "https://aihot.news/items/p7plzx0145pxfzntu73gjr6km",
+      "title": "你会让 bot 周末加班吗？",
+      "summary": "你会让 @bot 在周末工作吗？",
+      "content_html": "<p><strong>事实</strong></p><ul><li>你会让 @bot 在周末工作吗？</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/p7plzx0145pxfzntu73gjr6km\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 你会让 @bot 在周末工作吗？\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-24T17:53:58+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e1f45a679a48d1d",
+        "source_ids": [
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/p7plzx0145pxfzntu73gjr6km"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "你会让 @bot 在周末工作吗？"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-25-ee1a36eb3ef5759",
+      "url": "https://open.workbuddy.cn/docs/monetization",
+      "external_url": "https://open.workbuddy.cn/docs/monetization",
+      "title": "WorkBuddy 内测技能与专家付费功能",
+      "summary": "WorkBuddy 内测技能与专家付费功能",
+      "content_html": "<p><strong>事实</strong></p><ul><li>WorkBuddy 内测技能与专家付费功能</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://open.workbuddy.cn/docs/monetization\">open.workbuddy.cn</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· WorkBuddy 内测技能与专家付费功能\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· open.workbuddy.cn\nAI 日报",
+      "date_published": "2026-10-25T01:13:12+00:00",
+      "authors": [
+        {
+          "name": "open.workbuddy.cn"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ee1a36eb3ef5759",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://open.workbuddy.cn/docs/monetization"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "WorkBuddy 内测技能与专家付费功能"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
         "rule_based": true
       }
     }
