@@ -20,6 +20,7 @@ from zoneinfo import ZoneInfo
 
 from .config import AppConfig
 from .dedup import DedupConfig, DedupResult, cluster
+from .unfiltered import UNFILTERED_SOURCES
 from .models import Digest, Event, NormalizedItem, SourceCoverage, SourceSpec
 from .rank import RankWeights, diversity_report, rank_events, select_diverse
 from .sections import classify, rank_of
@@ -103,26 +104,10 @@ def is_container_title(title: str) -> bool:
 #:
 #: The gate stays for everything else. Removing it globally is what let consumer-electronics
 #: items into the issue, which is the complaint this floor was added to fix.
-PASSTHROUGH_SOURCES = frozenset({
-    "rss:aihot-news-picks",
-    "rss:aihot-news-full",
-    "rss:aihot-news-all",
-    "rss:aihot-news-daily",
-    "rss:aihot-news-weekly",
-    "rss:aihot-news-monthly",
-    "rss:aihot-cat-models",
-    "rss:aihot-cat-products",
-    "rss:aihot-cat-industry",
-    "rss:aihot-cat-paper",
-    "rss:aihot-cat-tip",
-    "rss:aihot-cat-opinion",
-    "rss:daily-juya-uk",
-    "rss:ainewslog-com",
-    "rss:hex2077",
-    "rss:hex2077-dev-rss-zh-cn",
-    "api:aibase-ai-news",
-    "api:aibase-daily-news",
-})
+#: The list lives in `unfiltered.py`: the same set also governs the date window.
+#: Keeping a second copy here is what let the two drift apart -- an aihot feed was exempt from
+#: one filter and not the other.
+PASSTHROUGH_SOURCES = UNFILTERED_SOURCES
 
 
 def is_passthrough(event) -> bool:

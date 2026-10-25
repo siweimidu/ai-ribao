@@ -29,6 +29,7 @@ from collections import defaultdict
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta, timezone
 
+from .unfiltered import UNFILTERED_SOURCES
 from .models import NormalizedItem
 
 #: How far back a late story may be filed. Beyond this the archive for that day has usually been
@@ -53,15 +54,9 @@ MAX_BACKFILL_DAYS = 6
 #:
 #: Scoring still separates them: `heat` already discounts by age, so an old story ranks low
 #: without being deleted.
-DATE_EXEMPT_SOURCES = frozenset({
-    "rss:hex2077",
-    "rss:hex2077-dev-rss-zh-cn",
-    "rss:daily-juya-uk",
-    "rss:ainewslog-com",
-    "api:aibase-ai-news",
-    "api:aibase-daily-news",
-    "api:aibase-com",
-})
+#: Shared with the relevance gate: these sources are never filtered, by any filter.
+#: The list lives in `unfiltered.py` so the two cannot drift apart.
+DATE_EXEMPT_SOURCES = UNFILTERED_SOURCES
 
 
 def _date_exempt(item: NormalizedItem) -> bool:

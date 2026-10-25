@@ -5,54 +5,60 @@
   "generated_at": "2026-10-25T15:59:59Z",
   "window_start": "2026-10-24T03:59:59Z",
   "window_end": "2026-10-25T15:59:59Z",
-  "headline": "月之暗面发布 Kimi K3.1 Pro",
+  "headline": "月之暗面 Kimi K3.1 Pro 上线 OpenRouter，1M 上下文多模态开源权重模型",
   "top_events": [
    {
-    "event_id": "e45f16e8b110f05",
-    "title": "月之暗面发布 Kimi K3.1 Pro",
+    "event_id": "e6cc73d8164c2ca",
+    "title": "月之暗面 Kimi K3.1 Pro 上线 OpenRouter，1M 上下文多模态开源权重模型",
     "member_item_ids": [
-     "580792f52a88fad7",
+     "cc7a55f6c1c5cdef",
+     "e003dd6346000ffb",
+     "e900395d3ef7d974",
+     "283d8acc032f01e6",
      "abebbf19900ec915",
      "facfd06c70eccf5d"
     ],
-    "primary_item_id": "580792f52a88fad7",
+    "primary_item_id": "e003dd6346000ffb",
     "source_ids": [
-     "rss:daily-juya-uk",
+     "rss:aihot-cat-products",
+     "rss:aihot-news-full",
+     "rss:aihot-news-picks",
      "rss:aihot-news-all"
     ],
     "all_urls": [
-     "https://www.kimi.ai/blog/kimi-k3-1-pro",
+     "https://aihot.news/items/g725ujk3cq0gquz6g2nlozeu4",
+     "https://aihot.news/items/a0iu44aluvhc5spq1x5818uff",
      "https://aihot.news/items/sza0k6x64rvqlb6o4s61x5k43",
      "https://aihot.news/items/zh4c5qmd7chbz2dxo4rz60fbz"
     ],
-    "independent_source_count": 2,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "independent_source_count": 4,
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
-     "2026-10-24T01:28:12Z",
-     "2026-10-24T01:28:12Z"
+     "2026-10-23T18:31:22Z",
+     "2026-10-23T18:31:22Z"
     ],
     "unique_facts": {},
     "confidence": 1.0,
     "evidence_level": "multi_source",
     "image_urls": [],
     "needs_review": false,
-    "rank_score": 51.529157,
+    "rank_score": 60.083126,
     "rank_components": {
-     "source_weight": 1.2,
-     "source_damped": 1.0466,
-     "substance": 0.415,
-     "substance_chars": 249.0,
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 1.0,
+     "substance_chars": 758.0,
      "title_quality": 1.0,
      "source_boost": 1.0,
-     "heat": 0.40322,
-     "h_corroboration": 0.3562,
+     "heat": 0.463038,
+     "h_corroboration": 0.7124,
      "h_magnitude": 0.2975,
      "h_engagement": 0.0,
-     "h_reach": 0.6826,
-     "h_substance": 0.6225,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
      "h_velocity": 1.0,
-     "h_freshness": 0.5747,
+     "h_freshness": 0.5455,
      "significance": 2.2,
      "lab_announcement": 2.2,
      "sig_model": 0.0,
@@ -66,8 +72,69 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.32,
      "vendor_subject": "kimi",
-     "score": 51.529157,
+     "score": 60.083126,
      "section": "模型发布"
+    }
+   },
+   {
+    "event_id": "e4185400743f76f",
+    "title": "How to Run Underdog Saluki 27B: 2-Bit Qwen3.8-27B Tool-Calling Guide",
+    "member_item_ids": [
+     "e6ceac39a0dc4367",
+     "f1f35baa421d5efb"
+    ],
+    "primary_item_id": "e6ceac39a0dc4367",
+    "source_ids": [
+     "rss:aihot-news-all",
+     "rss:marktechpost"
+    ],
+    "all_urls": [
+     "https://www.marktechpost.com/2026/10/24/underdog-saluki-27b-coding-guide-llama-cpp/",
+     "https://aihot.news/items/mvmew8r9de5k082wq57xqc6ix"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
+    "published_range": [
+     "2026-10-25T02:30:18Z",
+     "2026-10-25T02:30:18Z"
+    ],
+    "unique_facts": {},
+    "confidence": 0.9,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 35.689187,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 1.0,
+     "substance_chars": 46250.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "heat": 0.35651,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.6826,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7771,
+     "significance": 1.0,
+     "minor": 1.0,
+     "sig_model": 1.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.15,
+     "vendor_subject": "qwen",
+     "score": 35.689187,
+     "section": "开发生态"
     }
    },
    {
@@ -84,8 +151,8 @@
      "https://www.youtube.com/watch?v=anAmTGcewX8"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T01:28:12Z",
      "2026-10-24T01:28:12Z"
@@ -142,8 +209,8 @@
      "https://aihot.news/items/ukda0jmhl5p6nl2lqyl40rzg4"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T17:15:02Z",
      "2026-10-24T17:15:02Z"
@@ -186,64 +253,6 @@
     }
    },
    {
-    "event_id": "e6ac292c4251d20",
-    "title": "How to Run Underdog Saluki 27B: 2-Bit Qwen3.8-27B Tool-Calling Guide",
-    "member_item_ids": [
-     "e6ceac39a0dc4367"
-    ],
-    "primary_item_id": "e6ceac39a0dc4367",
-    "source_ids": [
-     "rss:marktechpost"
-    ],
-    "all_urls": [
-     "https://www.marktechpost.com/2026/10/24/underdog-saluki-27b-coding-guide-llama-cpp/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
-    "published_range": [
-     "2026-10-25T02:30:18Z",
-     "2026-10-25T02:30:18Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "image_urls": [],
-    "needs_review": false,
-    "rank_score": 29.412571,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 46250.0,
-     "title_quality": 1.0,
-     "source_boost": 1.0,
-     "heat": 0.293811,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7771,
-     "significance": 1.0,
-     "minor": 1.0,
-     "sig_model": 1.0,
-     "sig_release": 0.0,
-     "sig_lab": 1.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0,
-     "vendor_priority": 1.15,
-     "vendor_subject": "qwen",
-     "score": 29.412571,
-     "section": "开发生态"
-    }
-   },
-   {
     "event_id": "e52068da561ee50",
     "title": "Cognition Open-Sources an Agent Plugin that Helps Secure Systems against Recent Cybersecurity Threats",
     "member_item_ids": [
@@ -257,8 +266,8 @@
      "https://www.marktechpost.com/2026/10/24/cognition-devin-vulnerability-fixes-plugin-php2shell-nodejs-gitlab/"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-25T02:59:08Z",
      "2026-10-25T02:59:08Z"
@@ -268,7 +277,7 @@
     "evidence_level": "single_source",
     "image_urls": [],
     "needs_review": false,
-    "rank_score": 27.867539,
+    "rank_score": 28.459219,
     "rank_components": {
      "source_weight": 1.1,
      "source_damped": 1.0241,
@@ -297,7 +306,7 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 27.867539,
+     "score": 28.459219,
      "section": "产品应用"
     }
    },
@@ -315,8 +324,8 @@
      "https://ainewslog.com/blog/ai-daily-2026-10-24/#story-4"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T00:00:00Z",
      "2026-10-24T00:00:00Z"
@@ -372,8 +381,8 @@
      "https://aihot.news/items/xxfgg6d2e7puefqro6ya7pe6d"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-25T01:00:00Z",
      "2026-10-25T01:00:00Z"
@@ -429,8 +438,8 @@
      "https://aihot.news/items/pdgoa2t4xld60fwo4kt36c5po"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-25T01:18:57Z",
      "2026-10-25T01:18:57Z"
@@ -440,7 +449,7 @@
     "evidence_level": "single_source",
     "image_urls": [],
     "needs_review": false,
-    "rank_score": 25.703906,
+    "rank_score": 25.982102,
     "rank_components": {
      "source_weight": 1.1,
      "source_damped": 1.0241,
@@ -468,8 +477,66 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 25.703906,
+     "score": 25.982102,
      "section": "开发生态"
+    }
+   },
+   {
+    "event_id": "e15cad7c964b4aa",
+    "title": "Cognition 开源 Devin Vulnerability Fixes 插件，修复 PHP2Shell、Node.js 与 GitLab 三个 RCE 漏洞",
+    "member_item_ids": [
+     "dd04d7deab17e307"
+    ],
+    "primary_item_id": "dd04d7deab17e307",
+    "source_ids": [
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/qlkl7zlx77jue9bhrsz6e3r8v"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
+    "published_range": [
+     "2026-10-25T02:59:08Z",
+     "2026-10-25T02:59:08Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 25.39734,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.315,
+     "substance_chars": 189.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "heat": 0.262527,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.4725,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7832,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 25.39734,
+     "section": "产品应用"
     }
    },
    {
@@ -486,8 +553,8 @@
      "https://hackaday.com/2026/10/24/2026-retrocomputing-challenge-i-would-do-anything-for-serial-data/"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T20:00:14Z",
      "2026-10-24T20:00:14Z"
@@ -531,6 +598,120 @@
     }
    },
    {
+    "event_id": "e14d0f226d72043",
+    "title": "Convovo 研究：Grok 4.7 强制选择时 92% 推荐共和党，GPT-6.1 Sol 97% 推荐民主党",
+    "member_item_ids": [
+     "7191f6d84ea3e68f"
+    ],
+    "primary_item_id": "7191f6d84ea3e68f",
+    "source_ids": [
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/ggpyd5zaj25h11h1rcqrfer6p"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
+    "published_range": [
+     "2026-10-24T15:00:00Z",
+     "2026-10-24T15:00:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 25.095101,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.317,
+     "substance_chars": 190.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "heat": 0.255286,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.475,
+     "h_velocity": 1.0,
+     "h_freshness": 0.66,
+     "significance": 1.0,
+     "sig_model": 1.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 25.095101,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "eba299fb9a78d24",
+    "title": "Grok 分享链接引热议",
+    "member_item_ids": [
+     "deda41450c20a515"
+    ],
+    "primary_item_id": "deda41450c20a515",
+    "source_ids": [
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/ttp5n6nv02mt9o2zzm67bgph5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
+    "published_range": [
+     "2026-10-25T01:37:44Z",
+     "2026-10-25T01:37:44Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 25.072885,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.243,
+     "substance_chars": 146.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "heat": 0.25506,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.365,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7662,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 25.072885,
+     "section": "其他"
+    }
+   },
+   {
     "event_id": "ebf9cb5d26d2226",
     "title": "Krea 开放 Krea 3 图像编辑 beta，支持 2k 快速生成与多轮精确编辑",
     "member_item_ids": [
@@ -544,8 +725,8 @@
      "https://aihot.news/items/xougitbm9f5vrlfghlw4gh7t6"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T20:53:55Z",
      "2026-10-24T20:53:55Z"
@@ -589,63 +770,6 @@
     }
    },
    {
-    "event_id": "eba299fb9a78d24",
-    "title": "Grok 分享链接引热议",
-    "member_item_ids": [
-     "deda41450c20a515"
-    ],
-    "primary_item_id": "deda41450c20a515",
-    "source_ids": [
-     "rss:aihot-news-all"
-    ],
-    "all_urls": [
-     "https://aihot.news/items/ttp5n6nv02mt9o2zzm67bgph5"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
-    "published_range": [
-     "2026-10-25T01:37:44Z",
-     "2026-10-25T01:37:44Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "image_urls": [],
-    "needs_review": false,
-    "rank_score": 24.674969,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 0.243,
-     "substance_chars": 146.0,
-     "title_quality": 1.0,
-     "source_boost": 1.0,
-     "heat": 0.25506,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.365,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7662,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 1.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0,
-     "vendor_priority": 1.0,
-     "vendor_subject": "",
-     "score": 24.674969,
-     "section": "其他"
-    }
-   },
-   {
     "event_id": "eeea9393200a8ca",
     "title": "Hi @grok 选择你认为 2050 年将不复存在的 10 家巨型企业，并用一句话解释每家为什么会消失，要毫不留情🧐",
     "member_item_ids": [
@@ -659,8 +783,8 @@
      "https://aihot.news/items/jk1iwi41wcc61h3v5rrpnk5wy"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-25T00:42:32Z",
      "2026-10-25T00:42:32Z"
@@ -670,7 +794,7 @@
     "evidence_level": "single_source",
     "image_urls": [],
     "needs_review": false,
-    "rank_score": 24.393353,
+    "rank_score": 24.786728,
     "rank_components": {
      "source_weight": 1.1,
      "source_damped": 1.0241,
@@ -699,7 +823,64 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 24.393353,
+     "score": 24.786728,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e9ae5ae38a1676d",
+    "title": "Sundar Pichai 谈如何用 AI 智能体管理 Google",
+    "member_item_ids": [
+     "03f8ded208eb93b6"
+    ],
+    "primary_item_id": "03f8ded208eb93b6",
+    "source_ids": [
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/f9lp2z2y29vunz0j8lrt69ja6"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
+    "published_range": [
+     "2026-10-24T18:24:47Z",
+     "2026-10-24T18:24:47Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 24.748916,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.363,
+     "substance_chars": 218.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "heat": 0.261256,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.545,
+     "h_velocity": 1.0,
+     "h_freshness": 0.6895,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 24.748916,
      "section": "其他"
     }
    },
@@ -717,8 +898,8 @@
      "https://aihot.news/items/wgapbt740k247j0r2hxktqfbm"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-25T01:08:18Z",
      "2026-10-25T01:08:18Z"
@@ -728,7 +909,7 @@
     "evidence_level": "single_source",
     "image_urls": [],
     "needs_review": false,
-    "rank_score": 24.346975,
+    "rank_score": 24.610486,
     "rank_components": {
      "source_weight": 1.1,
      "source_damped": 1.0241,
@@ -757,8 +938,65 @@
      "focus_multiplier": 1.0,
      "vendor_priority": 1.0,
      "vendor_subject": "",
-     "score": 24.346975,
+     "score": 24.610486,
      "section": "其他"
+    }
+   },
+   {
+    "event_id": "eafea1201012df2",
+    "title": "Grok Bot 可在 Slack 中协作",
+    "member_item_ids": [
+     "d42033a95ffe2bc1"
+    ],
+    "primary_item_id": "d42033a95ffe2bc1",
+    "source_ids": [
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/ojwqwdgv1z3x0q4e8iuk4cbn9"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
+    "published_range": [
+     "2026-10-24T19:07:36Z",
+     "2026-10-24T19:07:36Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 24.497524,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.225,
+     "substance_chars": 135.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "heat": 0.249207,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.3375,
+     "h_velocity": 1.0,
+     "h_freshness": 0.6962,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 24.497524,
+     "section": "产品应用"
     }
    },
    {
@@ -775,8 +1013,8 @@
      "https://aihot.news/items/zx7qypqq6saeqgby7jmn3qca8"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T19:00:00Z",
      "2026-10-24T19:00:00Z"
@@ -820,63 +1058,6 @@
     }
    },
    {
-    "event_id": "eafea1201012df2",
-    "title": "Grok Bot 可在 Slack 中协作",
-    "member_item_ids": [
-     "d42033a95ffe2bc1"
-    ],
-    "primary_item_id": "d42033a95ffe2bc1",
-    "source_ids": [
-     "rss:aihot-news-all"
-    ],
-    "all_urls": [
-     "https://aihot.news/items/ojwqwdgv1z3x0q4e8iuk4cbn9"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
-    "published_range": [
-     "2026-10-24T19:07:36Z",
-     "2026-10-24T19:07:36Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "image_urls": [],
-    "needs_review": false,
-    "rank_score": 24.108739,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 0.225,
-     "substance_chars": 135.0,
-     "title_quality": 1.0,
-     "source_boost": 1.0,
-     "heat": 0.249207,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.3375,
-     "h_velocity": 1.0,
-     "h_freshness": 0.6962,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 1.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0,
-     "vendor_priority": 1.0,
-     "vendor_subject": "",
-     "score": 24.108739,
-     "section": "产品应用"
-    }
-   },
-   {
     "event_id": "e8c9765980b3438",
     "title": "Hugging Face CEO 调侃 Microducks 用力过猛",
     "member_item_ids": [
@@ -890,8 +1071,8 @@
      "https://aihot.news/items/fkykb7kkncgmc3gmzj27nvpjz"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T16:28:23Z",
      "2026-10-24T16:28:23Z"
@@ -947,8 +1128,8 @@
      "https://aihot.news/items/efeqm1hmbbfxtlvpyp90syozs"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T22:12:12Z",
      "2026-10-24T22:12:12Z"
@@ -991,6 +1172,64 @@
     }
    },
    {
+    "event_id": "e10d108d430b840",
+    "title": "Perplexity 在 Computer 技能市场上线开源技能 /impeccable，每用户赠 5000 credits",
+    "member_item_ids": [
+     "145f0cce8671c712"
+    ],
+    "primary_item_id": "145f0cce8671c712",
+    "source_ids": [
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/jryc594pqpq0xbtqbbd6yn7xb"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
+    "published_range": [
+     "2026-10-24T15:51:16Z",
+     "2026-10-24T15:51:16Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 23.042742,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.417,
+     "substance_chars": 250.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "heat": 0.264708,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.625,
+     "h_velocity": 1.0,
+     "h_freshness": 0.667,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 23.042742,
+     "section": "开发生态"
+    }
+   },
+   {
     "event_id": "e6455116de9d985",
     "title": "Qoder 为 1024 活动额外开启一轮补给",
     "member_item_ids": [
@@ -1004,8 +1243,8 @@
      "https://qoder.com/community-boost"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-25T01:13:12Z",
      "2026-10-25T01:13:12Z"
@@ -1049,63 +1288,6 @@
     }
    },
    {
-    "event_id": "e9ae5ae38a1676d",
-    "title": "Sundar Pichai 谈如何用 AI 智能体管理 Google",
-    "member_item_ids": [
-     "03f8ded208eb93b6"
-    ],
-    "primary_item_id": "03f8ded208eb93b6",
-    "source_ids": [
-     "rss:aihot-news-all"
-    ],
-    "all_urls": [
-     "https://aihot.news/items/f9lp2z2y29vunz0j8lrt69ja6"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
-    "published_range": [
-     "2026-10-24T18:24:47Z",
-     "2026-10-24T18:24:47Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "image_urls": [],
-    "needs_review": false,
-    "rank_score": 22.742247,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 0.363,
-     "substance_chars": 218.0,
-     "title_quality": 1.0,
-     "source_boost": 1.0,
-     "heat": 0.261256,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.545,
-     "h_velocity": 1.0,
-     "h_freshness": 0.6895,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 1.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0,
-     "vendor_priority": 1.0,
-     "vendor_subject": "",
-     "score": 22.742247,
-     "section": "其他"
-    }
-   },
-   {
     "event_id": "e9a0bba66248396",
     "title": "Block 发布本地运行的全双工语音模型 Dessa",
     "member_item_ids": [
@@ -1119,8 +1301,8 @@
      "https://aihot.news/items/m12zx4vkj1e4avkq0na431zbf"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T16:00:00Z",
      "2026-10-24T16:00:00Z"
@@ -1176,8 +1358,8 @@
      "https://aihot.news/items/zb1thz9nsoxinjvkojrtlvob4"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T16:15:39Z",
      "2026-10-24T16:15:39Z"
@@ -1233,8 +1415,8 @@
      "https://aihot.news/items/cnmi8e4c5td3b5vxkj9exngle"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T18:54:29Z",
      "2026-10-24T18:54:29Z"
@@ -1291,8 +1473,8 @@
      "https://www.infoq.cn/article/BHWP4JJDeExZZWsifFlg?utm_source=rss&utm_medium=article"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-25T09:06:00Z",
      "2026-10-25T09:06:00Z"
@@ -1349,8 +1531,8 @@
      "https://ainewslog.com/blog/ai-daily-2026-10-24-zh/#story-23"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T00:00:00Z",
      "2026-10-24T00:00:00Z"
@@ -1406,8 +1588,8 @@
      "https://aihot.news/items/ymxuie4d2scrz7qfnv29kgh5o"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-25T03:06:09Z",
      "2026-10-25T03:06:09Z"
@@ -1463,8 +1645,8 @@
      "https://aihot.news/items/jqxz8c3y56993tjjphvxbjxmi"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-25T02:18:48Z",
      "2026-10-25T02:18:48Z"
@@ -1520,8 +1702,8 @@
      "https://aihot.news/items/pfanvhtyrqvzvmgcqoib971nq"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T19:55:47Z",
      "2026-10-24T19:55:47Z"
@@ -1564,6 +1746,63 @@
     }
    },
    {
+    "event_id": "e4db0a0212bd976",
+    "title": "自己做了一个海边悠闲度假版的鹈鹕骑车游戏 玩 AI 游戏竟然可以进入心流（毕竟难度是自己调的 提示词： 动用你的一切才华，做一个世界上最精美的鹈鹕骑自行车游戏",
+    "member_item_ids": [
+     "7a93b1f25f408288"
+    ],
+    "primary_item_id": "7a93b1f25f408288",
+    "source_ids": [
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/jc8w7y1xg9xh59pnj22zbw5y8"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
+    "published_range": [
+     "2026-10-25T00:28:24Z",
+     "2026-10-25T00:28:24Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 13.241643,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.252,
+     "substance_chars": 151.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "heat": 0.254984,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.3775,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7525,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.4208,
+     "focus_headline": 0.2871,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.5482,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 13.241643,
+     "section": "其他"
+    }
+   },
+   {
     "event_id": "e7a9fab058008ce",
     "title": "BBC《蓝色星球 III》在 AI 时代保留画面的粗糙感",
     "member_item_ids": [
@@ -1577,8 +1816,8 @@
      "https://aihot.news/items/e3pgmy7s4u74dvb3blzhu0pfh"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T21:29:12Z",
      "2026-10-24T21:29:12Z"
@@ -1634,8 +1873,8 @@
      "https://aihot.news/items/snfvwapa71rik3sa7e31uao2y"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-25T00:42:38Z",
      "2026-10-25T00:42:38Z"
@@ -1691,8 +1930,8 @@
      "https://aihot.news/items/ffe3f6xqqeuk8sabpt0iuisrp"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T20:30:09Z",
      "2026-10-24T20:30:09Z"
@@ -1735,6 +1974,64 @@
     }
    },
    {
+    "event_id": "e0132252bc5db82",
+    "title": "Exponential View #607：互联网遭攻击、AGI 时间表压缩与电动车能源安全",
+    "member_item_ids": [
+     "9d24c710cbe3449c"
+    ],
+    "primary_item_id": "9d24c710cbe3449c",
+    "source_ids": [
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/osw3spso9e2epowkbin22w4r3"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
+    "published_range": [
+     "2026-10-25T03:30:52Z",
+     "2026-10-25T03:30:52Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 12.274068,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.338,
+     "substance_chars": 203.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "heat": 0.265039,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.5075,
+     "h_velocity": 1.0,
+     "h_freshness": 0.7901,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.4,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.532,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 12.274068,
+     "section": "其他"
+    }
+   },
+   {
     "event_id": "ea0206c43eff5a4",
     "title": "宾夕法尼亚州签署法案要求AI生成广告加注标识",
     "member_item_ids": [
@@ -1748,8 +2045,8 @@
      "https://aihot.news/items/k50ff2029wwvy2pinbmoceo3d"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T18:32:21Z",
      "2026-10-24T18:32:21Z"
@@ -1792,63 +2089,6 @@
     }
    },
    {
-    "event_id": "e4db0a0212bd976",
-    "title": "自己做了一个海边悠闲度假版的鹈鹕骑车游戏 玩 AI 游戏竟然可以进入心流（毕竟难度是自己调的 提示词： 动用你的一切才华，做一个世界上最精美的鹈鹕骑自行车游戏",
-    "member_item_ids": [
-     "7a93b1f25f408288"
-    ],
-    "primary_item_id": "7a93b1f25f408288",
-    "source_ids": [
-     "rss:aihot-news-all"
-    ],
-    "all_urls": [
-     "https://aihot.news/items/jc8w7y1xg9xh59pnj22zbw5y8"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
-    "published_range": [
-     "2026-10-25T00:28:24Z",
-     "2026-10-25T00:28:24Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "image_urls": [],
-    "needs_review": false,
-    "rank_score": 12.167996,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 0.252,
-     "substance_chars": 151.0,
-     "title_quality": 1.0,
-     "source_boost": 1.0,
-     "heat": 0.254984,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.3775,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7525,
-     "significance": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "focus": 0.4208,
-     "focus_headline": 0.2871,
-     "focus_source": 0.75,
-     "focus_multiplier": 0.5482,
-     "vendor_priority": 1.0,
-     "vendor_subject": "",
-     "score": 12.167996,
-     "section": "其他"
-    }
-   },
-   {
     "event_id": "ec0af85b1d8e448",
     "title": "Block 发布全双工语音模型 Dessa，支持 M4 Max 及以上 MacBook 本地运行",
     "member_item_ids": [
@@ -1862,8 +2102,8 @@
      "https://aihot.news/items/b5m1iq1k38hc3i8hpuyyzkx32"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-25T02:29:30Z",
      "2026-10-25T02:29:30Z"
@@ -1919,8 +2159,8 @@
      "https://aihot.news/items/hcy7edjdy1jpso1b37l8oci3u"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T16:25:14Z",
      "2026-10-24T16:25:14Z"
@@ -1976,8 +2216,8 @@
      "https://aihot.news/items/v14cdk5hahufp3sl2ee37yz0v"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T17:15:34Z",
      "2026-10-24T17:15:34Z"
@@ -2033,8 +2273,8 @@
      "https://aihot.news/items/s5cqpdr4722jeivrmfoe0g6ve"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T19:32:01Z",
      "2026-10-24T19:32:01Z"
@@ -2090,8 +2330,8 @@
      "https://aihot.news/items/cd5s0x8ag3s5fz876ic96bzyu"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T20:32:35Z",
      "2026-10-24T20:32:35Z"
@@ -2147,8 +2387,8 @@
      "https://aihot.news/items/i0tfbsd3clnmqe8q7q8e6ccve"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T18:20:36Z",
      "2026-10-24T18:20:36Z"
@@ -2205,8 +2445,8 @@
      "https://www.gov.uk/government/news/chancellor-unveils-britains-ambitious-plan-for-ai"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-25T01:13:12Z",
      "2026-10-25T01:13:12Z"
@@ -2262,8 +2502,8 @@
      "https://aihot.news/items/atv3cls68b2966uqwunnq17w4"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T22:09:33Z",
      "2026-10-24T22:09:33Z"
@@ -2320,8 +2560,8 @@
      "https://aihot.news/items/qin27qdcayepr4mhxoahi7m5r"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T20:42:53Z",
      "2026-10-24T20:42:53Z"
@@ -2378,8 +2618,8 @@
      "https://aihot.news/items/d8jwl31a0p4cw9vnc60s01afw"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T19:35:54Z",
      "2026-10-24T19:35:54Z"
@@ -2436,8 +2676,8 @@
      "https://aihot.news/items/p7plzx0145pxfzntu73gjr6km"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-24T17:53:58Z",
      "2026-10-24T17:53:58Z"
@@ -2494,8 +2734,8 @@
      "https://open.workbuddy.cn/docs/monetization"
     ],
     "independent_source_count": 1,
-    "first_seen_at": "2026-10-25T04:05:31.804561Z",
-    "last_updated_at": "2026-10-25T04:05:31.804561Z",
+    "first_seen_at": "2026-10-25T04:21:52.686787Z",
+    "last_updated_at": "2026-10-25T04:21:52.686787Z",
     "published_range": [
      "2026-10-25T01:13:12Z",
      "2026-10-25T01:13:12Z"
@@ -2542,8 +2782,8 @@
   "trend_notes": [],
   "source_coverage": {
    "total": 193,
-   "active": 16,
-   "failed": 20,
+   "active": 23,
+   "failed": 21,
    "degraded": 0,
    "blocked": 0,
    "skipped": 66
@@ -2556,18 +2796,18 @@
    "事件聚类未经过模型判定（候选簇为空或未启用模型）"
   ],
   "counts": {
-   "events": 44,
-   "events_considered": 94,
-   "multi_source_events": 1,
-   "items_after_window": 141,
-   "items_merged_away": 9,
-   "distinct_sources_in_head": 6,
+   "events": 48,
+   "events_considered": 112,
+   "multi_source_events": 2,
+   "items_after_window": 174,
+   "items_merged_away": 21,
+   "distinct_sources_in_head": 9,
    "head_max_source_share": 75,
    "dropped_unknown": 89,
    "dropped_future_dated": 1,
-   "dropped_outside_window": 122,
-   "dropped_older": 794,
-   "late_or_ignored": 5423
+   "dropped_outside_window": 224,
+   "dropped_older": 925,
+   "late_or_ignored": 5387
   }
  },
  "sections": {
@@ -2583,29 +2823,34 @@
    "e535f8c7d9542e5"
   ],
   "digest": [
+   "e6cc73d8164c2ca",
    "e31ad0e3f3c8d33",
    "ede44af5575eb29",
    "e5de32cff724e83",
-   "ebf9cb5d26d2226",
+   "e15cad7c964b4aa",
+   "e14d0f226d72043",
    "eba299fb9a78d24",
+   "ebf9cb5d26d2226",
    "eeea9393200a8ca",
+   "e9ae5ae38a1676d",
    "ecdb09ec2d5f878",
-   "ed64d7ad8eca95f",
    "eafea1201012df2",
+   "ed64d7ad8eca95f",
    "e8c9765980b3438",
    "e833a1c3468a1cc",
-   "e9ae5ae38a1676d",
+   "e10d108d430b840",
    "e9a0bba66248396",
    "edfd86773e11768",
    "e7f77b9e3d070dd",
    "e69289b80375d92",
    "efbcbde28e7111e",
    "ef522a04a014601",
+   "e4db0a0212bd976",
    "e7a9fab058008ce",
    "e9ae1900116b7f5",
    "e94520a5c148e72",
+   "e0132252bc5db82",
    "ea0206c43eff5a4",
-   "e4db0a0212bd976",
    "ec0af85b1d8e448",
    "ef2184eb65d18be",
    "e3daa054bd1b490",
@@ -2616,14 +2861,27 @@
    "ee0a70bc81afb8a",
    "e1407f33f09b399",
    "e1f45a679a48d1d",
+   "ef3be1f0baf47de",
+   "e838a8f6622506c",
+   "e85ee37b6b2e083",
+   "eea142be78dc012",
    "e0c07d9e826fcf5",
    "e0c72ef02f7221d",
+   "e19b099b39ed56b",
+   "e201b62696dbf14",
    "e5a1deb05c36735",
+   "e6dbfab9e13c922",
    "e7204d783eb8c63",
-   "ea675a4c0eab8a4"
+   "e9bd4a510365ef8",
+   "ea1d2fb6d4a1b93",
+   "ea675a4c0eab8a4",
+   "ea769b9b5e48130",
+   "eaa1a7a648a675b",
+   "ed092de6128ba87",
+   "ed9a37fa8e2fbf9"
   ],
   "media": [
-   "e6ac292c4251d20",
+   "e4185400743f76f",
    "e52068da561ee50",
    "e1af3ef1cf32baf",
    "e02aa20cba88176",
@@ -2642,10 +2900,13 @@
    "ee51a6b97a51a29",
    "e385edac3beeebe",
    "e8b6772c404d379",
-   "ea78a73bf69e51a"
+   "ea78a73bf69e51a",
+   "eb74b58f71b552d"
+  ],
+  "paper": [
+   "ed73df36af65a68"
   ],
   "zh-media": [
-   "e45f16e8b110f05",
    "e063e23fea8db75",
    "e6455116de9d985",
    "e92eb5a7d11e832",
@@ -2658,7 +2919,6 @@
    "e4977d9ad435a6a",
    "e597f99f4605d64",
    "e65d64ccc825af0",
-   "e663debb13fb16d",
    "e68b6f5af58a6d0",
    "e80851ac1092b7f",
    "e87e8c3c6826c66",
@@ -2679,16 +2939,31 @@
   ]
  },
  "insights": {
-  "e45f16e8b110f05": {
-   "event_id": "e45f16e8b110f05",
-   "title": "月之暗面发布 Kimi K3.1 Pro",
+  "e6cc73d8164c2ca": {
+   "event_id": "e6cc73d8164c2ca",
+   "title": "月之暗面 Kimi K3.1 Pro 上线 OpenRouter，1M 上下文多模态开源权重模型",
    "facts": [
-    "月之暗面发布 Kimi K3.1 Pro"
+    "OpenRouter 宣布月之暗面的 Kimi K3.1 Pro 上线，定位为基于 Kimi K3 后训练、面向长程编码和智能体任务的 1M 上下文多模态开源权重模型。定价为 $2/M input tokens、$10/M output tokens，可在 OpenRouter 直接试用。"
    ],
    "inferences": [],
    "opinions": [],
    "uncertainties": [
     "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e4185400743f76f": {
+   "event_id": "e4185400743f76f",
+   "title": "How to Run Underdog Saluki 27B: 2-Bit Qwen3.8-27B Tool-Calling Guide",
+   "facts": [
+    "Explore a complete coding guide comparing Underdog Saluki 27B with ISTA's GSQ-RCO quantization, examining GGUF headers, memory usage, and BFCL tool-calling performance in stock llama.cpp\nThe post How to Run Underdog Saluki 27B: 2-Bit Qwen3.8-27B Tool-Calling Guide appeared first on MarkTechPost."
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
    ],
    "key_points": [],
    "rule_based": true
@@ -2717,21 +2992,6 @@
    "opinions": [],
    "uncertainties": [
     "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "e6ac292c4251d20": {
-   "event_id": "e6ac292c4251d20",
-   "title": "How to Run Underdog Saluki 27B: 2-Bit Qwen3.8-27B Tool-Calling Guide",
-   "facts": [
-    "Explore a complete coding guide comparing Underdog Saluki 27B with ISTA's GSQ-RCO quantization, examining GGUF headers, memory usage, and BFCL tool-calling performance in stock llama.cpp\nThe post How to Run Underdog Saluki 27B: 2-Bit Qwen3.8-27B Tool-Calling Guide appeared first on MarkTechPost."
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录",
-    "本条的来源标题为外文，未调用大模型，因此未翻译"
    ],
    "key_points": [],
    "rule_based": true
@@ -2794,6 +3054,20 @@
    "key_points": [],
    "rule_based": true
   },
+  "e15cad7c964b4aa": {
+   "event_id": "e15cad7c964b4aa",
+   "title": "Cognition 开源 Devin Vulnerability Fixes 插件，修复 PHP2Shell、Node.js 与 GitLab 三个 RCE 漏洞",
+   "facts": [
+    "Cognition 发布免费开源的 Devin Vulnerability Fixes 插件，包含三个 MIT 许可的 Agent Skills（fix-php-vuln、fix-node-vuln、fix-gitlab-vuln）。"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
   "e1af3ef1cf32baf": {
    "event_id": "e1af3ef1cf32baf",
    "title": "2026 Retrocomputing Challenge: I Would Do Anything For Serial Data",
@@ -2809,11 +3083,11 @@
    "key_points": [],
    "rule_based": true
   },
-  "ebf9cb5d26d2226": {
-   "event_id": "ebf9cb5d26d2226",
-   "title": "Krea 开放 Krea 3 图像编辑 beta，支持 2k 快速生成与多轮精确编辑",
+  "e14d0f226d72043": {
+   "event_id": "e14d0f226d72043",
+   "title": "Convovo 研究：Grok 4.7 强制选择时 92% 推荐共和党，GPT-6.1 Sol 97% 推荐民主党",
    "facts": [
-    "Krea 开放 Krea 3 图像编辑 beta，定位为图像编辑新前沿。端到端 2k 编辑可在 8 秒内完成，画质对标 Nano Banana Pro 与 GPT Image 2.5，并支持 bounding box 控制和精确多轮编辑。官方演示视频展示了快速编辑图像任意部分的效果，入口见原文链接。"
+    "Convovo 研究室要求 GPT 与 Grok 模型通过 API 在近 500 个选区中指定一名候选人，Grok 4.7 在 92% 的回答中推荐共和党候选人，GPT-6.1 Sol 在 97% 中推荐民主党，两者一致率不足 10%。"
    ],
    "inferences": [],
    "opinions": [],
@@ -2837,11 +3111,39 @@
    "key_points": [],
    "rule_based": true
   },
+  "ebf9cb5d26d2226": {
+   "event_id": "ebf9cb5d26d2226",
+   "title": "Krea 开放 Krea 3 图像编辑 beta，支持 2k 快速生成与多轮精确编辑",
+   "facts": [
+    "Krea 开放 Krea 3 图像编辑 beta，定位为图像编辑新前沿。端到端 2k 编辑可在 8 秒内完成，画质对标 Nano Banana Pro 与 GPT Image 2.5，并支持 bounding box 控制和精确多轮编辑。官方演示视频展示了快速编辑图像任意部分的效果，入口见原文链接。"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
   "eeea9393200a8ca": {
    "event_id": "eeea9393200a8ca",
    "title": "Hi @grok 选择你认为 2050 年将不复存在的 10 家巨型企业，并用一句话解释每家为什么会消失，要毫不留情🧐",
    "facts": [
     "Hi @grok 选择你认为 2050 年将不复存在的 10 家巨型企业，并用一句话解释每家为什么会消失，要毫不留情🧐"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e9ae5ae38a1676d": {
+   "event_id": "e9ae5ae38a1676d",
+   "title": "Sundar Pichai 谈如何用 AI 智能体管理 Google",
+   "facts": [
+    "Google CEO Sundar Pichai 在 Gemini 4 Argon 发布后的访谈中介绍，他用内部运行的智能体自动汇总预训练、中训练、后训练数据等群组的最新进展，把过去每天一小时的跟进时间压缩下来，也可深入查看细节。另有智能体接入算力遥测，向他反馈各产品领域的使用效率与利用率。"
    ],
    "inferences": [],
    "opinions": [],
@@ -2866,11 +3168,11 @@
    "key_points": [],
    "rule_based": true
   },
-  "ed64d7ad8eca95f": {
-   "event_id": "ed64d7ad8eca95f",
-   "title": "TechCrunch 梳理 AI 坟场：Relay、Character.ai、Humane AI Pin 等失败项目盘点",
+  "eafea1201012df2": {
+   "event_id": "eafea1201012df2",
+   "title": "Grok Bot 可在 Slack 中协作",
    "facts": [
-    "TechCrunch 维护了一份持续更新的 AI 失败项目清单，覆盖 Relay、Character.ai、Notion Mail、Humane AI Pin、Rabbit R1、Sora 等已关闭、转型或远低于预期的产品。"
+    "我最喜欢做的事情之一，就是让我们的 bot 彼此协作！只需把你的 bot 添加到 Slack，就能像队友一样与它们一起工作 🤍"
    ],
    "inferences": [],
    "opinions": [],
@@ -2880,11 +3182,11 @@
    "key_points": [],
    "rule_based": true
   },
-  "eafea1201012df2": {
-   "event_id": "eafea1201012df2",
-   "title": "Grok Bot 可在 Slack 中协作",
+  "ed64d7ad8eca95f": {
+   "event_id": "ed64d7ad8eca95f",
+   "title": "TechCrunch 梳理 AI 坟场：Relay、Character.ai、Humane AI Pin 等失败项目盘点",
    "facts": [
-    "我最喜欢做的事情之一，就是让我们的 bot 彼此协作！只需把你的 bot 添加到 Slack，就能像队友一样与它们一起工作 🤍"
+    "TechCrunch 维护了一份持续更新的 AI 失败项目清单，覆盖 Relay、Character.ai、Notion Mail、Humane AI Pin、Rabbit R1、Sora 等已关闭、转型或远低于预期的产品。"
    ],
    "inferences": [],
    "opinions": [],
@@ -2922,11 +3224,11 @@
    "key_points": [],
    "rule_based": true
   },
-  "e6455116de9d985": {
-   "event_id": "e6455116de9d985",
-   "title": "Qoder 为 1024 活动额外开启一轮补给",
+  "e10d108d430b840": {
+   "event_id": "e10d108d430b840",
+   "title": "Perplexity 在 Computer 技能市场上线开源技能 /impeccable，每用户赠 5000 credits",
    "facts": [
-    "Qoder 为 1024 活动额外开启一轮补给"
+    "Perplexity CEO Aravind Srinivas 宣布 @pbakaus 开发的开源技能 /impeccable 现已进入 Computer 的技能市场，用于构建不像 AI 生成套路的界面。该技能检查布局、字体、对比度和可访问性，并通过修复设计师会指出的问题来改进界面；10 月 31 日前每用户可享最多 5000 credits 免费使用。"
    ],
    "inferences": [],
    "opinions": [],
@@ -2936,11 +3238,11 @@
    "key_points": [],
    "rule_based": true
   },
-  "e9ae5ae38a1676d": {
-   "event_id": "e9ae5ae38a1676d",
-   "title": "Sundar Pichai 谈如何用 AI 智能体管理 Google",
+  "e6455116de9d985": {
+   "event_id": "e6455116de9d985",
+   "title": "Qoder 为 1024 活动额外开启一轮补给",
    "facts": [
-    "Google CEO Sundar Pichai 在 Gemini 4 Argon 发布后的访谈中介绍，他用内部运行的智能体自动汇总预训练、中训练、后训练数据等群组的最新进展，把过去每天一小时的跟进时间压缩下来，也可深入查看细节。另有智能体接入算力遥测，向他反馈各产品领域的使用效率与利用率。"
+    "Qoder 为 1024 活动额外开启一轮补给"
    ],
    "inferences": [],
    "opinions": [],
@@ -3063,6 +3365,20 @@
    "key_points": [],
    "rule_based": true
   },
+  "e4db0a0212bd976": {
+   "event_id": "e4db0a0212bd976",
+   "title": "自己做了一个海边悠闲度假版的鹈鹕骑车游戏 玩 AI 游戏竟然可以进入心流（毕竟难度是自己调的 提示词： 动用你的一切才华，做一个世界上最精美的鹈鹕骑自行车游戏",
+   "facts": [
+    "自己做了一个海边悠闲度假版的鹈鹕骑车游戏 玩 AI 游戏竟然可以进入心流（毕竟难度是自己调的 提示词： 动用你的一切才华，做一个世界上最精美的鹈鹕骑自行车游戏"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
   "e7a9fab058008ce": {
    "event_id": "e7a9fab058008ce",
    "title": "BBC《蓝色星球 III》在 AI 时代保留画面的粗糙感",
@@ -3105,11 +3421,11 @@
    "key_points": [],
    "rule_based": true
   },
-  "ea0206c43eff5a4": {
-   "event_id": "ea0206c43eff5a4",
-   "title": "宾夕法尼亚州签署法案要求AI生成广告加注标识",
+  "e0132252bc5db82": {
+   "event_id": "e0132252bc5db82",
+   "title": "Exponential View #607：互联网遭攻击、AGI 时间表压缩与电动车能源安全",
    "facts": [
-    "宾夕法尼亚州州长 Josh Shapiro 签署《人工智能欺骗性广告法》，要求经AI显著修改或生成的图像、视频、音频或文字广告，以与广告本身相同的格式加注标识，且不论广告在哪制作、只要在宾州投放即适用。该州是最早要求AI内容披露的州之一，但法案对“显著修改”“明显虚构”等表述界定模糊，并设有戏仿、讽刺等豁免，留有多个漏洞。"
+    "Demis Hassabis 将 AGI 实现时间预期从此前的三到五年进一步压缩至两到三年。本期 Exponential View 还讨论 AI 正把微小漏洞放大为严重安全风险、互联网或需牺牲部分开放性换取安全，以及电动车如何帮助石油进口国降低石油供应中断风险。"
    ],
    "inferences": [],
    "opinions": [],
@@ -3119,11 +3435,11 @@
    "key_points": [],
    "rule_based": true
   },
-  "e4db0a0212bd976": {
-   "event_id": "e4db0a0212bd976",
-   "title": "自己做了一个海边悠闲度假版的鹈鹕骑车游戏 玩 AI 游戏竟然可以进入心流（毕竟难度是自己调的 提示词： 动用你的一切才华，做一个世界上最精美的鹈鹕骑自行车游戏",
+  "ea0206c43eff5a4": {
+   "event_id": "ea0206c43eff5a4",
+   "title": "宾夕法尼亚州签署法案要求AI生成广告加注标识",
    "facts": [
-    "自己做了一个海边悠闲度假版的鹈鹕骑车游戏 玩 AI 游戏竟然可以进入心流（毕竟难度是自己调的 提示词： 动用你的一切才华，做一个世界上最精美的鹈鹕骑自行车游戏"
+    "宾夕法尼亚州州长 Josh Shapiro 签署《人工智能欺骗性广告法》，要求经AI显著修改或生成的图像、视频、音频或文字广告，以与广告本身相同的格式加注标识，且不论广告在哪制作、只要在宾州投放即适用。该州是最早要求AI内容披露的州之一，但法案对“显著修改”“明显虚构”等表述界定模糊，并设有戏仿、讽刺等豁免，留有多个漏洞。"
    ],
    "inferences": [],
    "opinions": [],
@@ -3304,8 +3620,8 @@
  },
  "factcheck": {
   "ok": true,
-  "checked_events": 94,
-  "checked_urls": 109,
+  "checked_events": 112,
+  "checked_urls": 131,
   "violations": 0,
   "by_kind": {}
  }
