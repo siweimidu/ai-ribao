@@ -157,7 +157,9 @@ def main() -> int:
         return 0
 
     if not due:
-        print("第一个时段还没到，页面完整，无需检查时段")
+        # _output, not a bare print: the external scheduler reads the marker from stdout,
+        # and an unmarked exit is indistinguishable from a crash before deciding.
+        _output("false", "第一个时段还没到，页面完整，无需检查时段")
         return 0
 
     # The artifact is the thing itself: a ledger row saying "published" for a date whose archive
