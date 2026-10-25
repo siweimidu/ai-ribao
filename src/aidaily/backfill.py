@@ -37,30 +37,31 @@ from .models import NormalizedItem
 #: it is a rewrite. Six days covers the realistic delay (a weekly roundup, a weekend gap).
 MAX_BACKFILL_DAYS = 6
 
-#: Sources whose items skip the date window entirely.
+#: **No source is exempt from the date window.**
 #:
-#: The instruction for these was explicit: add them without filtering, let the scoring decide.
-#: The date window IS a filter, and it was silently discarding them.
+#: This held the list of feeds allowed to ignore `published_at` entirely. It was wrong, and the
+#: 2026-10-25 issue proved it: the page led with
 #:
-#: Measured 2026-10-25, source -> newest item -> age against the 6-day window:
+#:     01  Kimi K3.1 Pro 发布               2026-10-22   3 days old
+#:     03  微软宣布 MAI-Base-2 完成预训练      2026-10-16   9 days old
+#:     05  阶跃 Step 5 Preview 开放模型权重     2026-10-16   9 days old
 #:
-#:   rss:hex2077         2026-10-11   14 days   all dropped
-#:   rss:daily-juya-uk   2026-10-15   10 days   all dropped
-#:   rss:ainewslog-com   2026-10-14   11 days   all dropped
+#: and only 22 of its 129 entries were published that day. The rest went back to 2025-10-08.
 #:
-#: Those feeds serve a rolling archive rather than a today-only feed, so the newest item is
-#: often a week or two old. Judging them by publication date throws away the material the
-#: user asked to keep.
+#: The instruction was 「抓取这些的当日源不用筛选，直接打分排序」 -- *the day's* items,
+#: unfiltered by relevance. I read "不用筛选" as "no date window either" and filled the issue
+#: with a week of backlog. Two different filters; only one was meant.
 #:
-#: Scoring still separates them: `heat` already discounts by age, so an old story ranks low
-#: without being deleted.
-#: Shared with the relevance gate: these sources are never filtered, by any filter.
-#: The list lives in `unfiltered.py` so the two cannot drift apart.
-DATE_EXEMPT_SOURCES = UNFILTERED_SOURCES
+#: Relevance stays exempt (`unfiltered.UNFILTERED_SOURCES`): a Chinese model-release headline
+#: scores under the AI floor and must still be included. The date window does not.
+DATE_EXEMPT_SOURCES: frozenset[str] = frozenset()
 
 
 def _date_exempt(item: NormalizedItem) -> bool:
-    """True when the item's publication date must not exclude it."""
+    """True when the item's publication date must not exclude it.
+
+    Empty by design: see the note above `DATE_EXEMPT_SOURCES`.
+    """
     return (item.source_id or "") in DATE_EXEMPT_SOURCES
 
 

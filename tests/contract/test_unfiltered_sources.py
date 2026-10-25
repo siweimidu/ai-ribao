@@ -59,11 +59,14 @@ def test_every_aihot_feed_is_present() -> None:
         assert sid in UNFILTERED_SOURCES, sid
 
 
-def test_the_relevance_gate_and_the_date_window_share_one_list() -> None:
-    """Two copies is how `api:aibase-com` fell between them."""
+def test_relevance_is_exempt_but_age_is_not() -> None:
+    """The two filters are separate, and only one is exempt."""
+    #
+    # This asserted that both shared one list. They must not: a Chinese model-release
+    # headline scores under the AI floor and has to be included, while a 9-day-old item
+    # does not belong in today issue whoever published it.
     assert PASSTHROUGH_SOURCES is UNFILTERED_SOURCES
-    assert DATE_EXEMPT_SOURCES is UNFILTERED_SOURCES
-
+    assert DATE_EXEMPT_SOURCES == frozenset()
 
 def test_the_helper_is_exact_match_not_prefix() -> None:
     """A source named `rss:hex2077-something-else` must not inherit the exemption."""

@@ -95,18 +95,16 @@ def select_window(
         if item.published_at is not None and item.published_at > future_limit:
             drop("future_dated", item, result.future_dated_samples)
             continue
-        # **Unfiltered sources skip the recency window.**
+        # **The recency window applies to every source.**
         #
-        # `window_hours` defaults to 36. `hex2077`, `daily-juya`, `ainewslog` and the aibase
-        # feeds publish a rolling archive, so their newest item was 14 / 10 / 11 days old on
-        # 2026-10-25 -- inside no 36-hour window ever. The standing rule for these is explicit:
-        # add them unfiltered, let the scoring sort them out.
+        # This used to exempt `unfiltered.UNFILTERED_SOURCES`, on the reading that 「这些源不用
+        # 筛选」 meant no date limit. It did not. Measured on the 2026-10-25 issue: 129 entries,
+        # of which only 22 were published that day; the page led with a 3-day-old Kimi release
+        # and two 9-day-old items, and the tail reached back to 2025-10-08.
         #
-        # The future-dated and no-URL checks above still apply: those are correctness, not
-        # relevance, and a future date is a defect rather than old news.
-        if is_unfiltered(item.source_id):
-            result.kept.append(item)
-            continue
+        # The exemption those sources need is on *relevance*, not on age -- a Chinese
+        # model-release headline scores under the AI floor and must still be included. Old news
+        # is not the same complaint.
 
         bucket = item.age_bucket
         if bucket in IN_WINDOW_BUCKETS:

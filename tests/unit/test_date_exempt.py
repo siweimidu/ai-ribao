@@ -1,15 +1,24 @@
-"""Sources the user asked to run unfiltered must not be dropped by the date window.
+"""The date window applies to every source, including the unfiltered ones.
 
-Measured 2026-10-25, the 6-day window against each feed's newest item:
+## What went wrong
 
-    rss:hex2077         2026-10-11   14 days   all dropped
-    rss:daily-juya-uk   2026-10-15   10 days   all dropped
-    rss:ainewslog-com   2026-10-14   11 days   all dropped
+The 2026-10-25 issue led with:
 
-These serve a rolling archive rather than a today-only feed, so the newest item is often a
-week or two old. Judging them by publication date throws away the material that was explicitly
-requested. Scoring still separates them: `heat` discounts by age, so an old story ranks low
-without being deleted.
+    01  Kimi K3.1 Pro 发布              2026-10-22   3 days old
+    03  微软宣布 MAI-Base-2 完成预训练     2026-10-16   9 days old
+    05  阶跃 Step 5 Preview 开放模型权重    2026-10-16   9 days old
+
+Of 129 entries only 22 were published that day. The rest went back to 2025-10-08.
+
+The instruction was 「抓取这些的当日源不用筛选，直接打分排序」 -- *the day's* items,
+unfiltered by relevance. Reading "不用筛选" as "no date window either" filled the issue with
+a week of backlog.
+
+## The distinction that matters
+
+* **Relevance** -- a Chinese model-release headline scores under the AI floor. These sources
+  must bypass it. That exemption stays (`unfiltered.UNFILTERED_SOURCES`).
+* **Age** -- old news is old news whoever published it. That exemption is gone.
 """
 
 from __future__ import annotations
@@ -18,7 +27,9 @@ import hashlib
 from datetime import datetime, timedelta, timezone
 
 from aidaily.backfill import DATE_EXEMPT_SOURCES, _date_exempt, split_by_date
+from aidaily.config import load_config
 from aidaily.models import NormalizedItem
+from aidaily.select import select_window
 
 NOW = datetime.now(timezone.utc)
 
@@ -37,43 +48,48 @@ def _item(sid: str, days_ago: int, i: int = 0) -> NormalizedItem:
         published_at=NOW - timedelta(days=days_ago),
         content_sha256=hashlib.sha256(title.encode()).hexdigest(),
         simhash=0,
+        age_bucket="today" if days_ago == 0 else "older",
     )
 
 
-def test_an_exempt_source_survives_a_stale_item() -> None:
-    """The exact failure: 14 days old, 6-day window, dropped."""
-    items = [_item("rss:hex2077", 14)]
-    split = split_by_date(items, NOW.strftime("%Y-%m-%d"))
-    assert len(split.target) == 1
-    assert not split.late and split.ignored == 0
+def _cfg():
+    from pathlib import Path
+
+    return load_config(Path(__file__).resolve().parents[2] / "config" / "daily.yaml")
 
 
-def test_a_non_exempt_source_is_still_windowed() -> None:
-    """The window must keep working for everything else."""
-    items = [_item("rss:some-other-feed", 30)]
-    split = split_by_date(items, NOW.strftime("%Y-%m-%d"))
-    assert not split.target
-    assert split.ignored == 1
+def test_no_source_is_exempt_from_the_date_window() -> None:
+    """The list is empty on purpose; see the module docstring."""
+    assert DATE_EXEMPT_SOURCES == frozenset()
 
 
-def test_every_requested_source_is_on_the_list() -> None:
-    for sid in (
-        "rss:hex2077",
-        "rss:daily-juya-uk",
-        "rss:ainewslog-com",
-        "api:aibase-ai-news",
-        "api:aibase-daily-news",
-    ):
-        assert sid in DATE_EXEMPT_SOURCES, sid
+def test_an_unfiltered_source_with_an_old_item_is_dropped_by_the_window() -> None:
+    """`daily-juya` served a 9-day-old item that led the issue."""
+    result = select_window([_item("rss:daily-juya-uk", 9)], _cfg(), NOW)
+    assert not result.kept
 
 
-def test_the_helper_matches_on_source_id_only() -> None:
-    assert _date_exempt(_item("rss:hex2077", 100))
-    assert not _date_exempt(_item("rss:other", 100))
+def test_an_unfiltered_source_with_a_today_item_is_kept() -> None:
+    """The source is not banned -- only its old items are."""
+    result = select_window([_item("rss:daily-juya-uk", 0)], _cfg(), NOW)
+    assert len(result.kept) == 1
 
 
-def test_a_future_dated_exempt_item_still_joins_the_target() -> None:
-    """A wrong clock on one feed must not silently drop the source."""
-    item = _item("rss:daily-juya-uk", -3)
+def test_split_by_date_no_longer_routes_old_items_to_the_target() -> None:
+    """This was the first of the two exemptions, and the wrong one."""
+    item = _item("rss:hex2077", 14)
     split = split_by_date([item], NOW.strftime("%Y-%m-%d"))
-    assert len(split.target) == 1
+    assert not split.target
+
+
+def test_the_helper_never_exempts_anything_now() -> None:
+    for sid in ("rss:hex2077", "rss:daily-juya-uk", "rss:aihot-news-all", "api:aibase-com"):
+        assert not _date_exempt(_item(sid, 30)), sid
+
+
+def test_relevance_exemption_is_a_separate_concern() -> None:
+    """The sources still bypass the AI floor; only the date window changed."""
+    from aidaily.unfiltered import UNFILTERED_SOURCES
+
+    for sid in ("rss:hex2077", "rss:daily-juya-uk", "rss:ainewslog-com"):
+        assert sid in UNFILTERED_SOURCES, sid
