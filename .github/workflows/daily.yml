@@ -206,6 +206,16 @@ jobs:
   publish:
     needs: [gate, collect]
     if: needs.gate.outputs.run == 'true'
+    outputs:
+      # Set only when the Pages artifact was actually uploaded. `deploy` keys on this rather
+      # than on the job result, because a *skipped* job reports `success` to
+      # `needs.X.result` -- that is what turned three "already published" runs red.
+      #
+      # `outcome`, not `outputs.artifact_id`: the artifact id is a v4 feature and this pins
+      # v5, but relying on an output that may not exist fails silently as an empty string,
+      # which is exactly the ambiguity being removed. The step outcome is defined for every
+      # version of the action.
+      pages: ${{ steps.upload-pages.outcome || '' }}
     runs-on: ubuntu-latest
     timeout-minutes: 40
     env:
@@ -453,6 +463,7 @@ jobs:
           retention-days: 14
 
       - uses: actions/upload-pages-artifact@v5
+        id: upload-pages
         if: always()
         with:
           path: data/digests/site
@@ -529,7 +540,25 @@ jobs:
     # `leaderboard` stays in `needs` so its commit is on disk before publish packages the
     # artifact, but it can no longer make deploy run on its own.
     needs: [publish, leaderboard]
-    if: needs.publish.result == 'success'
+    # **`== 'success'` is not enough: a skipped job satisfies it.**
+    #
+    # Measured 2026-10-24 08:35: the gate said today was already published, so `collect` and
+    # `publish` were both *skipped*; `needs.publish.result` still compared equal to
+    # `'success'`, deploy ran, and `deploy-pages` failed with
+    #
+    #     Found 0 artifact(s)
+    #     No artifacts named "github-pages" were found for this workflow run
+    #
+    # turning an "already done" run red. Three of the five scheduled failures in the week to
+    # 2026-10-25 were exactly this.
+    #
+    # `always()` first, then the explicit skip test: without `always()` GitHub's implicit
+    # success-check on `needs` short-circuits the whole expression when anything upstream was
+    # skipped, and the condition never gets evaluated.
+    if: >-
+      always() &&
+      needs.publish.result == 'success' &&
+      needs.publish.outputs.pages != ''
     runs-on: ubuntu-latest
     permissions:
       pages: write

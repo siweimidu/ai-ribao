@@ -27,18 +27,39 @@ def _job(name: str) -> str:
     return rest if nxt is None else rest[: nxt.start() + 1]
 
 
+def _condition_of(job_text: str) -> str:
+    """Everything under a job's `if:`, including a `>-` block."""
+    match = re.search(r"(?m)^    if:s*(.*)$", job_text)
+    if not match:
+        return ""
+    first = match.group(1).strip()
+    if first not in ("", ">-", ">", "|", "|-"):
+        return first
+    # Multi-line: collect indented lines until one is not deeper than the `if:` key.
+    rest = job_text[match.end():].splitlines()
+    parts = []
+    for line in rest:
+        if not line.strip():
+            continue
+        if len(line) - len(line.lstrip()) <= 4:
+            break
+        parts.append(line.strip())
+    return " ".join(parts)
+
 def test_deploy_requires_publish_to_have_succeeded() -> None:
     """Nothing else uploads the Pages artifact, so nothing else may trigger a deploy."""
     deploy = _job("deploy")
-    cond = re.search(r"(?m)^    if:s*(.+)$", deploy)
+    # The condition is a `>-` block now, so read every line between `if:` and the next
+    # top-level key rather than assuming one line.
+    cond = _condition_of(deploy)
     assert cond, "deploy must have an explicit condition"
-    assert "needs.publish.result == 'success'" in cond.group(1)
+    assert "needs.publish.result == " + chr(39) + "success" + chr(39) in cond
 
 
 def test_the_artifact_producer_is_the_only_trigger() -> None:
     """If the condition mentions another job, a skipped publish can still fire it."""
     deploy = _job("deploy")
-    cond = re.search(r"(?m)^    if:s*(.+)$", deploy).group(1)
+    cond = _condition_of(deploy)
     referenced = set(re.findall(r"needs\.([a-z]+)\.", cond))
     assert referenced == {"publish"}, f"deploy condition references {referenced}"
 
