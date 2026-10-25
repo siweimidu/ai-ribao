@@ -1,47 +1,13 @@
 {
-  "generated_at": "2026-10-25T04:52:08.297520+00:00",
-  "router_is_none": false,
+  "generated_at": "2026-10-25T15:59:59+00:00",
+  "router_is_none": true,
   "ran": true,
-  "input_events": 621,
-  "batches": 17,
-  "calls": 9,
-  "merged_groups": 4,
-  "merged_events": 9,
+  "input_events": 0,
+  "batches": 0,
+  "calls": 0,
+  "merged_groups": 0,
+  "merged_events": 0,
   "rejected_groups": 0,
   "failed": true,
-  "examples": [
-    {
-      "kept": "美国国土安全部下令所有联邦文职机构移除 DeepSeek 及基于其开发的产品",
-      "merged": [
-        "美国下令联邦文职机构禁购并移除 DeepSeek"
-      ],
-      "why": "都是关于美国联邦机构移除/禁购 DeepSeek 的报道"
-    },
-    {
-      "kept": "NSA 就 AI 发现的 PHP2Shell 关键漏洞发布修复警告",
-      "merged": [
-        "AI 挖出潜伏十几年的 PHP 底层漏洞，PHP2Shell 事件全景复盘",
-        "研究人员用 GPT-5.6 Sol 发现 PHP 两个 CVSS 9.2 严重漏洞",
-        "404 Media 分析 PHP2Shell 事件如何改变 AI 时代的攻防格局",
-        "Latent Space 梳理 PHP2Shell 漏洞事件：OpenAI Patch the Planet 与 Wiz",
-        "Wiz Research 披露 PHP2Shell：AI 助攻 PHP 核心 RCE 漏洞，影响全球 70% 网站",
-        "卡兹克详解 AI 挖出的 PHP2Shell 漏洞：发现只花2天，修复用了两个月"
-      ],
-      "why": "均涉及 PHP2Shell 漏洞事件及其安全影响"
-    },
-    {
-      "kept": "据路透社：OpenAI 洽谈约 300 亿美元融资",
-      "merged": [
-        "路透：OpenAI 拟在 Anthropic 上市前加速融资约 300 亿美元，估值超 1.4 万亿美元"
-      ],
-      "why": "均为 OpenAI 300 亿美元融资报道"
-    },
-    {
-      "kept": "AIHOT 日报 · 2026-10-23 — AI 挖出潜伏十几年的 PHP 底层漏洞，PHP2Shell 事件全景复盘",
-      "merged": [
-        "PHP 两项严重漏洞获修复，OpenAI 协助发现与修复"
-      ],
-      "why": "均为 PHP 漏洞及 OpenAI 参与发现"
-    }
-  ]
+  "examples": []
 }

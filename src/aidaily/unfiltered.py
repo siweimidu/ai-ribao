@@ -46,7 +46,13 @@ UNFILTERED_SOURCES = frozenset({
     "rss:ainewslog-com",
     "api:aibase-ai-news",
     "api:aibase-daily-news",
-    "api:aibase-com",
+    # NOTE: `api:aibase-com` is deliberately NOT here.
+    #
+    # It is `https://aibase.com`, the site root, and the scraper harvests the navigation
+    # chrome rather than stories. Measured 2026-10-25 once it was exempted: 28 of its 40 items
+    # were catalogue links -- `#2 Gemini & Gemini Advanced gemini.google.com`,
+    # `#3 Claude 2 claude.ai`, `AI Tools Directory`, `Full Ranking` -- and two of them ranked
+    # into the top ten of the issue. The two API feeds below carry the actual news.
     # --- aihot.news, every feed it publishes ----------------------------------------
     "rss:aihot-news-picks",
     "rss:aihot-news-full",

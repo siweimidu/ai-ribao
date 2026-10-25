@@ -18,6 +18,7 @@ from .http import HttpClient
 from .fulltext import extract_body
 from .expand import expand_all, drain_notes as _drain_expand_notes
 from .ingest import normalize_raw
+from .catalogue import is_catalogue_row
 from .roundup import split_all
 from .models import NormalizedItem, RawItem, SourceSpec
 
@@ -202,7 +203,14 @@ async def collect(
         # page held 21 stories. Fetching the page is what turns one line a day into twenty.
 
         for raw in split_all(result.items):
-            report.items.append(normalize_raw(raw, spec, now))
+            item = normalize_raw(raw, spec, now)
+            # Catalogue rows are navigation, not news. Any extractor pointed at a
+            # listing page produces them, so the guard lives here rather than in one
+            # fetcher.
+            if is_catalogue_row(item.title):
+                report.catalogue_skipped = getattr(report, "catalogue_skipped", 0) + 1
+                continue
+            report.items.append(item)
 
     # Move the rotation cursor past the accounts this run actually served.
     if "_x_rotation" in dir():
@@ -311,7 +319,13 @@ async def wait_for_critical(
                 report.results.append(result)
                 report.items = [i for i in report.items if i.source_id != source_id]
                 for raw in result.items:
-                    report.items.append(normalize_raw(raw, spec, datetime.now(timezone.utc)))
+                    item = normalize_raw(raw, spec, datetime.now(timezone.utc))
+                    if is_catalogue_row(item.title):
+                        report.catalogue_skipped = (
+                            getattr(report, "catalogue_skipped", 0) + 1
+                        )
+                        continue
+                    report.items.append(item)
 
 
 def _missing_critical(

@@ -1,0 +1,57 @@
+fix(collect): 导航目录被当成新闻 —— aibase 首页的 28 条链接进了头条
+
+════════════════════════════════════════════════════════════════════════
+这次运行前 10 条里出现了这些
+
+  03  #2 Gemini & Gemini Advanced gemini.google.com
+  07  #3 Claude 2 claude.ai
+
+**不是新闻，是站点导航。**
+
+════════════════════════════════════════════════════════════════════════
+根因
+
+`api:aibase-com` 的 URL 是 `https://aibase.com` —— **站点首页**，
+抓取器收到的是目录页，不是新闻。40 条里 28 条是链接目录：
+
+  #1 ChatGPT chatgpt.com
+  #2 Gemini & Gemini Advanced gemini.google.com
+  AI Tools Directory
+  Full Ranking
+
+我上一轮把它加进直通名单，等于让这些目录项跳过了所有筛选。
+真正带新闻的是另外两个 API：
+
+  api:aibase-ai-news     .../aiNews
+  api:aibase-daily-news  .../dailyNews
+
+════════════════════════════════════════════════════════════════════════
+两层修复
+
+**1. 把 aibase-com 移出直通名单**
+只在 `unfiltered.py` 里留了一行注释说明为什么不留它。
+
+**2. 内容级防线 `catalogue.py`**
+
+不依赖源 —— 任何抓取器指向目录页都会产生这种条目：
+
+  _RANKED_LINK       `#N 名称 裸域名` 形式（域名允许子域）
+  _CATALOGUE_PHRASES AI Tools Directory / Full Ranking / Brand Monitoring…
+
+在 collect 的两个聚合循环里统一拦截，计入 `catalogue_skipped`。
+
+════════════════════════════════════════════════════════════════════════
+上一轮运行的其他结果（正面）
+
+  items_after_window   865   （之前 174）
+  events               120
+  LLM 去重             4 组，合并 9 条   ← 终于跑通了
+  rubric 评分          240 条 / 48 次调用
+
+  Kimi K3.1 Pro 第一条合并了 7 个源。
+
+════════════════════════════════════════════════════════════════════════
+6 项测试
+
+带子域的排名链接、目录页标题、真实标题不被误伤、
+空标题、`#1` 单独出现不算目录项。
