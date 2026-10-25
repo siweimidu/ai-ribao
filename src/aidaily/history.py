@@ -275,6 +275,30 @@ class PublishedHistory:
                 out.append(key)
         return out
 
+    def recent_titles(self, *, days: int = 7, before: str | None = None) -> list[tuple[str, str]]:
+        """Every (date, title) inside the window, newest first.
+
+        Feeds the model-driven cross-day dedup, which needs raw headlines rather than
+        fingerprints: the duplicates it catches differ by vocabulary, not by hash.
+
+        `before` excludes a date, so a re-run of today does not compare today to itself.
+        """
+        rows = [
+            (date_str, title)
+            for date_str, title in self._titles_flat()
+            if before is None or date_str < before
+        ]
+        rows.sort(key=lambda row: row[0], reverse=True)
+        if days > 0 and rows:
+            newest = max(date_str for date_str, _ in rows)
+            try:
+                cutoff = (
+                    datetime.strptime(newest, "%Y-%m-%d") - timedelta(days=days)
+                ).strftime("%Y-%m-%d")
+            except ValueError:
+                return rows
+            rows = [row for row in rows if row[0] > cutoff]
+        return rows
 
     def find_repeat(self, event: Event, *, today: str, now: datetime) -> Repeat | None:
         """Whether this event was published inside the window, and how long it has run.

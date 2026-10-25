@@ -1227,6 +1227,44 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
             now=run_now, today=run_date,
         )
 
+        # **Cross-day dedup by model, over the whole seven-day window.**
+        #
+        # `history.find_repeat` catches identical fingerprints and near-identical titles.
+        # Measured 2026-10-25 against the previous six issues, it did not catch these:
+        #
+        #    0.71  Kling 4.0 在 fal 上线并向所有客户开放 API
+        #            [10-24] 可灵 Kling 4.0 上线 fal 平台并开放 API
+        #    0.69  Cohere 发布 Rerank 5 企业检索重排模型，分 Pro 与 Fast 两档
+        #            [10-22] Cohere 发布 Rerank 5 重排序模型
+        #    0.61  Cognition 推出 Devin Oncall，协助诊断和解决生产事故
+        #            [10-24] Cognition 推出焕新版 Devin Desktop
+        #
+        # Fourteen of 120 entries repeated something from the previous six issues. The
+        # difference is vocabulary -- 可灵/Kling, 上线/推出, one names the platform and the
+        # other the model -- and a similarity threshold loose enough to merge those would also
+        # merge genuinely different releases. The judgement goes to the model.
+        try:
+            from .crossday_llm import drop_cross_day_duplicates
+
+            earlier = history.recent_titles(days=7, before=run_date)
+            cross_result = await drop_cross_day_duplicates(selected, earlier, router)
+            if cross_result.dropped:
+                selected = cross_result.events
+            print(f"  跨天语义去重    {cross_result.label}")
+            print(
+                "                  %d 次调用 / %d 段 / 比对 %d 条历史"
+                % (cross_result.calls, cross_result.chunks, len(earlier))
+            )
+            for example in cross_result.examples:
+                print("  · 剔除 " + example["dropped"][:50])
+                print("        " + example["why"])
+            if cross_result.dropped:
+                history_notes.append(
+                    f"跨天语义去重剔除 {cross_result.dropped} 条（与 7 天内重复）"
+                )
+        except Exception as cross_exc:  # noqa: BLE001 - optional pass
+            print(f"  跨天语义去重    未运行：{type(cross_exc).__name__}", file=sys.stderr)
+
         # Print what selection decided, not only what it returned. A run that publishes 0 of
         # 218 events has to say why in its own log; on 2026-10-19 the archive recorded
         # "events: 0, considered: 219" and nothing else, so the cause had to be guessed at from
