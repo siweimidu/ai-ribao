@@ -1,49 +1,49 @@
 {
-  "generated_at": "2026-10-25T15:54:49.154858+00:00",
+  "generated_at": "2026-10-25T22:22:45.302316+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 251,
-  "batches": 8,
-  "calls": 8,
-  "merged_groups": 7,
-  "merged_events": 7,
-  "rejected_groups": 4,
+  "input_events": 72,
+  "batches": 2,
+  "calls": 2,
+  "merged_groups": 5,
+  "merged_events": 5,
+  "rejected_groups": 0,
   "failed": false,
   "examples": [
     {
-      "kept": "Nvidia 开源机器人视频标注引擎 Flora，标注成本约为 GPT-6 Astra 的 1/125",
+      "kept": "Nanbeige Releases Nanbeige4.3-33B, a 33B Open Agentic Coding Model",
       "merged": [
-        "Nvidia open-sources Flora to make robot video labeling 125x "
+        "南北阁发布 Nanbeige4.3-33B 开源模型"
       ],
-      "why": "均为 Nvidia 开源 Flora 机器人视频标注引擎"
+      "why": "都是 Nanbeige4.3-33B 开源模型发布"
     },
     {
-      "kept": "南京大学等团队开源 OpenMobile-2 手机智能体，27B 版 AndroidWorld 得分 79.9",
+      "kept": "Grok releases the first seven minutes of its AI-generated ‘Odyssey’",
       "merged": [
-        "OpenMobile-2 proves open-source smartphone agents can rival "
+        "Grok 发布 AI 生成版《奥德赛》系列首集七分钟，TechCrunch 评测观感平平"
       ],
-      "why": "均为 OpenMobile-2 开源手机智能体发布"
+      "why": "都是 Grok 发布 AI 生成《奥德赛》首集"
     },
     {
-      "kept": "Podcast: Kimi K3.1 Pro, the new cyber reality, and Muse musings",
+      "kept": "Grok Bot 周日反馈征集",
       "merged": [
-        "Interconnects 播客第20期：Kimi K3.1 与开源权重模型风险辩论"
+        "你的 Grok 机器人现在在做什么"
       ],
-      "why": "均为 Kimi K3.1 相关播客节目内容"
+      "why": "都是 Grok 机器人周日反馈征集"
     },
     {
-      "kept": "DeepSeek 传融资约 150 亿美元，月之暗面发布 Kimi K3.1 Pro，中国出台 AI 就业政策",
+      "kept": "Grok releases the first seven minutes of its AI-generated ‘Odyssey’",
       "merged": [
-        "软银孙正义计划在马来西亚投资 500 亿美元，押注 AI 与数据中心"
+        "Odyssey 分享其中一视角"
       ],
-      "why": "均报道孙正义在马来西亚投资数据中心"
+      "why": "都是关于 Grok AI 生成《奥德赛》的内容"
     },
     {
-      "kept": "施密特等学者撰文：OpenAI 与 Anthropic 正像现代东印度公司",
+      "kept": "Apollo 经济学家称 AI 对科技行业外的多数公司财务回报为零",
       "merged": [
-        "Ex-Google CEO Eric Schmidt calls OpenAI and Anthropic modern"
+        "AI delivers ‘zero financial payoff’ to most companies, Apoll"
       ],
-      "why": "均为施密特批评 OpenAI 和 Anthropic"
+      "why": "均为Apollo经济学家称AI对多数公司财务回报为零"
     }
   ]
 }

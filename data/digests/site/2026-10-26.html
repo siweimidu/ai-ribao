@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nanbeige 发布 33B 开源 Agentic Coding 模型 · AI 日报</title>
+<meta name="description" content="Hugging Face 与中关村学院、TIGEM/那不勒斯费德里科二世大学发布开源 DNA 语言模型 Carbon-X，14.8B 参数、40,960 token 上下文，基于 Qwen3-14B，用混合 tokenizer 加入 5,515 个 DNA token，可直接读 DNA 并用英文回答">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0065fd">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1530 1530'%3E%3Cstyle%3E:root{color-scheme:light dark}rect{fill:%23FEFEFE}g{fill:%23231A15}@media(prefers-color-scheme:dark){rect{fill:%230B0D10}g{fill:%23F2F4F7}}%3C/style%3E%3Crect width='1530' height='1530' rx='765'/%3E%3Cg transform='translate(765 765) scale(2.65) translate(-765 -765)'%3E%3Cpath fill-rule='evenodd' d='M 494,818 L 626,504 L 711,503 L 800,711 L 803,711 L 1018,546 L 1032,538 L 1027,544 L 745,795 L 740,795 L 726,765 L 610,765 L 586,820 Z M 669,614 L 701,694 L 636,694 Z'/%3E%3Cpath d='M 871,713 L 867,712 L 560,989 L 587,971 L 781,825 L 783,1025 L 871,1024 Z'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="canonical" href="https://siweimidu.github.io/ai-ribao/2026-10-26.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nanbeige 发布 33B 开源 Agentic Coding 模型">
+<meta property="og:description" content="Hugging Face 与中关村学院、TIGEM/那不勒斯费德里科二世大学发布开源 DNA 语言模型 Carbon-X，14.8B 参数、40,960 token 上下文，基于 Qwen3-14B，用混合 tokenizer 加入 5,515 个 DNA token，可直接读 DNA 并用英文回答">
+<link rel="image_src" href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-26/e71f17805f23b94-m001-8f173418.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-26/e71f17805f23b94-m001-8f173418.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="AI 日报" href="feed/zh.xml">
+<link rel="alternate" type="application/feed+json" title="AI 日报" href="feed/zh.json">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/components.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Regular.min.css">
+  <!-- Theme read before first paint.
+       `motion.js` is deferred, so it runs after the document parses -- which means the
+       browser has already painted the default light theme and then repaints with the saved
+       one. That repaint is the flash seen on every navigation. This inline block runs while
+       the head is still parsing, so the attribute is set before anything is drawn. It is
+       intentionally duplicated by motion.js (which owns the UI); here it only needs to be
+       fast and to survive JS being disabled afterwards. -->
+  <script>(function(){try{var t=localStorage.getItem('aidaily-theme');if(t&&t!=='auto'&&t!=='default'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+
+<div class="shell">
+      <aside class="rail" aria-label="站点导航">
+        <button class="rail__grip" type="button" data-resize="rail"
+                aria-label="拖动调整左栏宽度" title="拖动调整宽度（双击恢复默认）"></button>
+        <div class="rail__head">
+          <a class="rail__brand" href="index.html">
+            <span class="rail__mark" aria-hidden="true"><svg viewBox="0 0 18 18" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g transform="translate(9 9) scale(0.0314) translate(-765 -765)" fill="currentColor"><path fill-rule="evenodd" d="M 494,818 L 626,504 L 711,503 L 800,711 L 803,711 L 1018,546 L 1032,538 L 1027,544 L 745,795 L 740,795 L 726,765 L 610,765 L 586,820 Z M 669,614 L 701,694 L 636,694 Z"/><path d="M 871,713 L 867,712 L 560,989 L 587,971 L 781,825 L 783,1025 L 871,1024 Z"/></g></svg></span>
+            <span>AI 日报</span>
+          </a>
+          <button class="rail__toggle rail__item" type="button" aria-expanded="false"
+                  aria-controls="rail-body" style="width:auto">
+            <span class="sr">展开导航</span>
+            <span aria-hidden="true">☰</span>
+          </button>
+        </div>
+
+        <div class="rail__body" id="rail-body">
+          <!-- 1. 搜索往期内容 -->
+          <div class="rail__group">
+            <button class="rail__item" type="button" data-open-search>
+              <span>搜索往期内容</span>
+            </button>
+          </div>
+
+          <!-- 2. 首页 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <a class="rail__item" href="index.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5 9 3l6 5.5V15H3z"/><path d="M7.5 15v-4h3v4"/></svg><span>首页</span></a>
+          </div>
+
+          <hr class="rail__sep">
+
+          <!-- 3. 日历 -->
+          <div class="cal" aria-label="按日期浏览">
+            <div class="cal__head">
+              <span class="cal__month">—</span>
+              <span class="cal__nav">
+                <button type="button" data-nav="prev" aria-label="上个月">‹</button>
+                <button type="button" data-nav="next" aria-label="下个月">›</button>
+              </span>
+            </div>
+            <div class="cal__grid" role="grid">
+              <span class="cal__dow">日</span><span class="cal__dow">一</span>
+              <span class="cal__dow">二</span><span class="cal__dow">三</span>
+              <span class="cal__dow">四</span><span class="cal__dow">五</span>
+              <span class="cal__dow">六</span>
+            </div>
+            <div class="cal__legend">
+              <span><i data-k="today"></i>今天</span>
+              <span><i data-k="has"></i>有日报</span>
+            </div>
+          </div>
+
+          <hr class="rail__sep">
+
+          <!-- 4. Tibo 重置监控 -->
+          <div class="rail__group">
+            <a class="rail__item" href="tibo.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6.5"/><path d="M9 5.5V9l2.5 1.5"/></svg><span>Tibo 重置监控</span></a>
+            <a class="rail__item" href="leaderboard.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15V9"/><path d="M7.5 15V5"/><path d="M12 15V7.5"/><path d="M16 15H2"/></svg><span>模型榜</span></a>
+          </div>
+
+          <!-- 微信公众号：暂无账号，先不放入口。留一个不能用的按钮比没有更糟。 -->
+
+          <!-- 6. 订阅 RSS -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <details class="rail__fold">
+              <summary class="rail__item"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M3 4.5A8.5 8.5 0 0 1 11.5 13"/><path d="M3 8A5 5 0 0 1 8 13"/></svg><span>订阅 RSS</span></summary>
+              <div class="rail__sub rail__sub--rss" role="menu">
+                <button type="button" class="rail__btn" data-copy="https://siweimidu.github.io/ai-ribao/feed/zh.xml">
+                  <span class="rail__btn-k">RSS</span>复制订阅地址
+                </button>
+                <button type="button" class="rail__btn" data-copy="https://siweimidu.github.io/ai-ribao/feed/zh.json">
+                  <span class="rail__btn-k">JSON</span>复制订阅地址
+                </button>
+                <p class="rail__fine">
+                  或在浏览器中查看
+                  <a href="feed/zh.xml">RSS</a>
+                  <a href="feed/zh.json">JSON</a>
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <!-- 7. 主题 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <details class="rail__fold">
+              <summary class="rail__item">
+                <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M9 3v12"/><path d="M9 3a6 6 0 0 1 0 12"/></svg><span>主题</span>
+                <span class="rail__hint" data-theme-summary>自动</span>
+              </summary>
+              <div class="rail__sub" role="menu"><button type="button" data-theme-choice="claude-light" aria-checked="false">Claude 亮色</button><button type="button" data-theme-choice="claude-dark" aria-checked="false">Claude 暗色</button><button type="button" data-theme-choice="light" aria-checked="false">标准亮色</button><button type="button" data-theme-choice="dark" aria-checked="false">标准暗色</button><button type="button" data-theme-choice="cinnabar" aria-checked="false">宣纸朱砂</button><button type="button" data-theme-choice="indigo" aria-checked="false">冷白靛紫</button><button type="button" data-theme-choice="midnight" aria-checked="false">深蓝冷青</button></div>
+            </details>
+          </div>
+
+          <!-- 8. 下载 markdown（仅在有具体日期的页面上显示）
+               首页的 rail 用的是最新一期，在这里放下载按钮等于让读者先猜自己要看哪一天。
+               先把日期选出来，日期页再给出那一天的 markdown。 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)"><a class="rail__item" href="2026-10-26.md" download><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v8"/><path d="M5.5 8 9 11.5 12.5 8"/><path d="M3.5 13.5h11"/></svg><span>下载 Markdown</span></a></div>
+
+          <hr class="rail__sep">
+
+          <div class="rail__group">
+            <a class="rail__item" href="sources.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M3 4.5A8.5 8.5 0 0 1 11.5 13"/><path d="M3 8A5 5 0 0 1 8 13"/></svg><span>信息源</span></a>
+            <a class="rail__item" href="https://github.com/siweimidu/ai-ribao" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2.5a6.5 6.5 0 0 0-2 12.7c-.1-.5-.1-1.2 0-1.7.2-.8 1.4-5 1.4-5s-.3-.7-.3-1.7c0-1.6.9-2.7 2-2.7.9 0 1.4.7 1.4 1.6 0 1-.6 2.4-.9 3.8-.3 1 .5 1.9 1.6 1.9 1.9 0 3.3-2.5 3.3-5.4 0-2.3-1.6-3.9-4-3.9-2.7 0-4.3 2-4.3 4.1 0 .9.3 1.8.8 2.3.1.1.1.2.1.3l-.3 1.1c0 .2-.2.2-.4.1-1.3-.6-2.1-2.5-2.1-4C5.3 3.4 7.5 2.5 9 2.5z"/></svg><span>源码与说明</span>
+            </a>
+          </div>
+        </div>
+      </aside>
+
+  <main class="content" id="main">
+    <header class="issue__head">
+      <p class="issue__date enter">2026-10-26　第 13 期</p>
+      <h1 class="issue__title enter">Hugging Face 联合合作机构发布 14.8B 开源 DNA 语言模型 Carbon-X</h1>
+      <p class="issue__lead enter">Hugging Face 与中关村学院、TIGEM/那不勒斯费德里科二世大学发布开源 DNA 语言模型 Carbon-X，14.8B 参数、40,960 token 上下文，基于 Qwen3-14B，用混合 tokenizer 加入 5,515 个 DNA token，可直接读 DNA 并用英文回答突变致病性预测等任务，权重采用 Apache 2.0。</p>
+      <div class="stats enter"><div><b class="count-up" data-to="21">21</b><span>事件</span></div><div><b class="count-up" data-to="12">12</b><span>有内容的源</span></div><div><b class="count-up" data-to="4">4</b><span>多源验证</span></div><div><b class="count-up" data-to="9">9</b><span>头条覆盖来源</span></div></div>
+    </header>
+
+    
+
+          <section class="section overview" id="overview">
+        <h2 class="section__title">概览<span class="section__count">今日要闻</span></h2>
+        <ol class="ov"><li><a href="#e-ec9d01ab94"><span class="ov__no">01</span><span><b>Hugging Face 联合合作机构发布 14.8B 开源 DNA 语言模型 Carbon-X</b></span></a></li><li><a href="#e-e417d1ecf6"><span class="ov__no">03</span><span><b>南北阁发布 Nanbeige4.3-33B 开源模型</b><span class="ov__detail">Nanbeige LLM Lab 发布了 Nanbeige4.3-33B</span></span></a></li><li><a href="#e-e0fb26bd02"><span class="ov__no">04</span><span><b>Dex Horthy 谈多 Skill 同会话上下文污染及取舍</b><span class="ov__detail">HumanLayer 的 Dex Horthy 认为同会话串联约 5 个 Skill 没问题</span></span></a></li><li><a href="#e-e032706836"><span class="ov__no">05</span><span><b>模型自建并删除技能以验证权重知识</b><span class="ov__detail">这是一种让模型为特定任务创建详细技能的方法，仅需要极轻的自然语言引导。</span></span></a></li><li><a href="#e-e71f17805f"><span class="ov__no">06</span><span><b>Apollo 经济学家称 AI 对非科技行业零财务回报</b><span class="ov__detail">Apollo Global Management 首席经济学家 Torsten Slok 发文称 AI 未提升科技巨头以外大公司的利润。</span></span></a></li><li><a href="#e-e6c8c73554"><span class="ov__no">07</span><span><b>Gartner 预测超 80% neocloud 厂商到 2030 年将无法独立运营</b></span></a></li><li><a href="#e-e4e3559069"><span class="ov__no">08</span><span><b>Grok 发布 AI 生成版《奥德赛》系列首集七分钟，TechCrunch 评测观感平平</b></span></a></li><li><a href="#e-e4a8d8bd4d"><span class="ov__no">09</span><span><b>Kimi 就 K3.1 Pro 订阅限流与配额消耗致歉并补偿</b></span></a></li></ol>
+        <p class="ov__foot">今日共 21 条事件，
+        其中 4 条经多个独立来源交叉验证。下面是完整列表。</p>
+      </section>
+
+      <section class="section" id="all">
+        <h2 class="section__title">全部消息<span class="section__count">19 条</span></h2>
+        <ol class="stream">
+        <li class="item" id="e-ec9d01ab94">
+          <div class="item__head"><span class="item__no">01</span><h3 class="item__title"><a href="https://www.marktechpost.com/2026/10/25/hugging-face-carbon-x-14b-dna-language-model/" target="_blank" rel="noopener noreferrer">Hugging Face 联合合作机构发布 14.8B 开源 DNA 语言模型 Carbon-X</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>2 个独立来源</span>
+            <span>10-26 00:53</span>
+            <a href="https://www.marktechpost.com/2026/10/25/hugging-face-carbon-x-14b-dna-language-model/" target="_blank" rel="noopener noreferrer">marktechpost.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e417d1ecf6">
+          <div class="item__head"><span class="item__no">03</span><h3 class="item__title"><a href="https://www.marktechpost.com/2026/10/25/nanbeige-releases-nanbeige4-3-33b-open-agentic-coding-model/" target="_blank" rel="noopener noreferrer">南北阁发布 Nanbeige4.3-33B 开源模型</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>2 个独立来源</span>
+            <span>10-26 05:15</span>
+            <a href="https://www.marktechpost.com/2026/10/25/nanbeige-releases-nanbeige4-3-33b-open-agentic-coding-model/" target="_blank" rel="noopener noreferrer">marktechpost.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Nanbeige LLM Lab 发布了 Nanbeige4.3-33B</li><li data-kind="fact">Nanbeige4.3-33B 是一个 33B 稠密模型</li><li data-kind="fact">该模型采用 Apache 2.0 协议</li><li data-kind="fact">该模型拥有 512K Context Window</li><li data-kind="fact">该模型在 Terminal-Bench 2.1 上的报告得分为 80.9</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Nanbeige4.3-33B 在智能体编程和协作任务中表现强劲，因为其性能优于 Qwen3.8-27B、Muse-Glimmer-30B 和 Gemma4-31B</li><li data-kind="inference">Nanbeige4.3-33B 是约 30B 参数级别中新的 SOTA 开源模型，因为它在大多数 Benchmark 上领先</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">Nanbeige4.3-33B 是否确实在所有 Benchmark 上都领先于 Qwen3.8-27B、Muse-Glimmer-30B 和 Gemma4-31B</li><li data-kind="uncertain">Nanbeige4.3-3B 具体何时推出</li><li data-kind="uncertain">Nanbeige4.3-33B 是否会“教”Nanbeige4.3-3B（材料1中的表述较为模糊，可能指知识蒸馏或训练数据共享，但未明确机制）</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e0fb26bd02">
+          <div class="item__head"><span class="item__no">04</span><h3 class="item__title"><a href="https://aihot.news/items/hn0kmj2e3ezwn34jbphleek65" target="_blank" rel="noopener noreferrer">Dex Horthy 谈多 Skill 同会话上下文污染及取舍</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-26 01:27</span>
+            <a href="https://aihot.news/items/hn0kmj2e3ezwn34jbphleek65" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">HumanLayer 的 Dex Horthy 认为同会话串联约 5 个 Skill 没问题</li><li data-kind="fact">当 Skill 需要叠加生效或数量极多如 200 个时，他建议改用子智能体、新会话或把多个 Skill 内容预合并到一条用户消息</li><li data-kind="fact">他建议流程步骤宜拆开，纯信息可合并</li><li data-kind="fact">他建议重要行为规则需重复注入或用 hooks 等确定性手段保证遵循</li><li data-kind="fact">他提醒不要把权重里已有的知识写进 Skill</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Dex Horthy 的观点表明，在 Skill 数量增多时，上下文管理策略需要从简单串联转向更复杂的架构如子智能体或预合并</li><li data-kind="inference">对于不同类型的 Skill 内容（流程、信息、规则），应采取不同的组织策略以优化上下文效率</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">「权重里已有的知识」具体指模型预训练时的哪些知识范围未明确</li><li data-kind="uncertain">hooks 的具体实现方式或工具未在材料中详述</li><li data-kind="uncertain">「约 5 个」Skill 的具体临界值是否随模型 Context Window 大小变化未说明</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e032706836">
+          <div class="item__head"><span class="item__no">05</span><h3 class="item__title"><a href="https://aihot.news/items/rrt8fpfx9ba2h50fcju7b7g60" target="_blank" rel="noopener noreferrer">模型自建并删除技能以验证权重知识</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-26 01:40</span>
+            <a href="https://aihot.news/items/rrt8fpfx9ba2h50fcju7b7g60" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">这是一种让模型为特定任务创建详细技能的方法，仅需要极轻的自然语言引导。</li><li data-kind="fact">模型创建的技能内容主要来源于模型权重以及轻量框架提供的上下文（如代码库信息）。</li><li data-kind="fact">如果确认创建的技能内容正确，则删除该技能。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">删除技能的操作隐含的前提是该技能所需的知识已经存在于模型权重中。</li><li data-kind="inference">通过创建后删除的过程，可以作为一种机制来检验和确认模型权重中是否包含了特定任务的知识。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未明确“轻量框架”具体指代何种架构或工具。</li><li data-kind="uncertain">材料未说明如何客观判定“技能内容看起来正确”的具体标准或评估方法。</li><li data-kind="uncertain">材料未提及在权重中不存在该技能知识时，模型创建内容会呈现何种状态。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e71f17805f">
+          <div class="item__head"><span class="item__no">06</span><h3 class="item__title"><a href="https://techcrunch.com/2026/10/25/ai-delivers-zero-financial-payoff-to-most-companies-according-to-apollo-economist/" target="_blank" rel="noopener noreferrer">Apollo 经济学家称 AI 对非科技行业零财务回报</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-26/e71f17805f23b94-m001-8f173418.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-26/e71f17805f23b94-m001-8f173418.webp" alt="" loading="lazy" decoding="async"></button></div>
+          <div class="item__meta">
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>2 个独立来源</span>
+            <span>10-26 00:57</span>
+            <a href="https://techcrunch.com/2026/10/25/ai-delivers-zero-financial-payoff-to-most-companies-according-to-apollo-economist/" target="_blank" rel="noopener noreferrer">techcrunch.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Apollo Global Management 首席经济学家 Torsten Slok 发文称 AI 未提升科技巨头以外大公司的利润。</li><li data-kind="fact">Slok 分析剔除了 Alphabet、Amazon、Apple、Meta、Microsoft、Nvidia 和 Tesla 后的 S&amp;P 493。</li><li data-kind="fact">数据显示该组别的利润率和人均营收持平。</li><li data-kind="fact">材料指出没有证据表明 AI 提升了生产率。</li><li data-kind="fact">Slok 表示 AI 对美国非科技企业没有产生财务回报。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">基于利润率与人均营收持平的数据，推断 AI 在除科技巨头外的公司中尚未转化为可量化的财务优势。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料中 Torsten Slok 的文章具体发布日期未明确。</li><li data-kind="uncertain">S&amp;P 493 中具体哪些公司表现异常或未受 AI 影响未在材料中列出。</li><li data-kind="uncertain">“零财务回报”在财务指标上的具体定义范围（如是否包含股价波动或资本支出回报）未在材料中详细解释。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e6c8c73554">
+          <div class="item__head"><span class="item__no">07</span><h3 class="item__title"><a href="https://aihot.news/items/m66e28rmzmebb9pdznwkgs3u2" target="_blank" rel="noopener noreferrer">Gartner 预测超 80% neocloud 厂商到 2030 年将无法独立运营</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-26 04:54</span>
+            <a href="https://aihot.news/items/m66e28rmzmebb9pdznwkgs3u2" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e4e3559069">
+          <div class="item__head"><span class="item__no">08</span><h3 class="item__title"><a href="https://techcrunch.com/2026/10/25/grok-releases-the-first-seven-minutes-of-its-ai-generated-odyssey/" target="_blank" rel="noopener noreferrer">Grok 发布 AI 生成版《奥德赛》系列首集七分钟，TechCrunch 评测观感平平</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-26/e4e355906937de5-m001-550026b7.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-26/e4e355906937de5-m001-550026b7.webp" alt="" loading="lazy" decoding="async"></button></div>
+          <div class="item__meta">
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>2 个独立来源</span>
+            <span>10-26 05:31</span>
+            <a href="https://techcrunch.com/2026/10/25/grok-releases-the-first-seven-minutes-of-its-ai-generated-odyssey/" target="_blank" rel="noopener noreferrer">techcrunch.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e4a8d8bd4d">
+          <div class="item__head"><span class="item__no">09</span><h3 class="item__title"><a href="https://aihot.news/items/rxtt8pr7jifok7ab985s1hmkh" target="_blank" rel="noopener noreferrer">Kimi 就 K3.1 Pro 订阅限流与配额消耗致歉并补偿</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-26 04:14</span>
+            <a href="https://aihot.news/items/rxtt8pr7jifok7ab985s1hmkh" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e5697e58af">
+          <div class="item__head"><span class="item__no">10</span><h3 class="item__title"><a href="https://aihot.news/items/xgqqpi4xn8ksefujks5g4s05v" target="_blank" rel="noopener noreferrer">用户用 Opus 5.5 重做书籍网站</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-26 01:10</span>
+            <a href="https://aihot.news/items/xgqqpi4xn8ksefujks5g4s05v" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">作者使用 Opus 5.5 重做了其书籍的网站</li><li data-kind="fact">该网站的最初版本是由 Opus 4.8 制作的</li><li data-kind="fact">最初版本需要大量工作才能做出有辨识度的静态网站</li><li data-kind="fact">Opus 5.5 基本独自完成了网站重做工作</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">从最初版本到 Opus 5.5 版本，网站开发所需的额外人工投入显著减少</li><li data-kind="inference">Opus 在生成具有辨识度的静态网站方面能力较 Opus 4.8 有所提升</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">具体是哪本书的网站未明确说明</li><li data-kind="uncertain">“ClaudeDesign”具体指代的设计风格或组件库未在材料中详细定义</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e23d65eb66">
+          <div class="item__head"><span class="item__no">11</span><h3 class="item__title"><a href="https://aihot.news/items/btiwx1gbvz0gjjfomrw0361mw" target="_blank" rel="noopener noreferrer">Muse 逐步上线实时语音通话功能</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-26 00:10</span>
+            <a href="https://aihot.news/items/btiwx1gbvz0gjjfomrw0361mw" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e5d845ed21">
+          <div class="item__head"><span class="item__no">12</span><h3 class="item__title"><a href="https://aihot.news/items/n34b7dqi4rv63ndqloozrih40" target="_blank" rel="noopener noreferrer">Yuchen Jin 认为多数 neolab 将失败</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-26 01:04</span>
+            <a href="https://aihot.news/items/n34b7dqi4rv63ndqloozrih40" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Yuchen Jin 回应关于嘲讽 neolab 的质疑</li><li data-kind="fact">Yuchen Jin 表示多数 neolab 失败是正常的现象</li><li data-kind="fact">Yuchen Jin 认为融资 10 亿美元且将 50% 用于 GPU 的公司难以估值 100 亿美元</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Yuchen Jin 认为当前流行的 neolab 复制模式存在资金使用效率问题</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料中未具体说明哪些公司或团队属于‘反共识者’</li><li data-kind="uncertain">材料中未明确 Yuchen Jin 个人投资或支持的具体 neolab 对象</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-edf97675d3">
+          <div class="item__head"><span class="item__no">14</span><h3 class="item__title"><a href="https://aihot.news/items/ekwnu4nn9so5fv1lp0bw64x6i" target="_blank" rel="noopener noreferrer">你的 Grok 机器人现在在做什么</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-26 05:02</span>
+            <a href="https://aihot.news/items/ekwnu4nn9so5fv1lp0bw64x6i" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Grok Bot 在周日发布了反馈帖。</li><li data-kind="fact">该帖子询问用户目前使用 Grok Bot 最烦恼的问题。</li><li data-kind="fact">帖子鼓励用户直言不讳地表达意见。</li><li data-kind="fact">另一则内容询问用户当前使用 Grok Bot 的具体场景。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Grok Bot 团队旨在通过收集负面反馈来识别产品当前的主要痛点。</li><li data-kind="inference">这种征集方式反映了团队希望了解用户在特定使用场景下的真实体验。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">用户具体反馈了哪些“最让人烦”的问题在材料中未提及。</li><li data-kind="uncertain">Grok Bot 团队计划如何根据这些反馈改进产品在材料中未说明。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e6fb943ce0">
+          <div class="item__head"><span class="item__no">15</span><h3 class="item__title"><a href="https://aihot.news/items/mn3xa29flku905y91pita5vwi" target="_blank" rel="noopener noreferrer">SpaceXSI作者确认引用中的机器人系其自造</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-26 01:19</span>
+            <a href="https://aihot.news/items/mn3xa29flku905y91pita5vwi" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">SpaceXSI 的作者确认某处引用中出现的机器人是该作者自己制造的。</li><li data-kind="fact">该事件信息来源于 aihot-news-all 的 RSS 订阅。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">作者通过这一确认澄清了该机器人的归属权，排除了机器人属于其他第三方的可能性。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明该机器人的具体名称、类型或制造时间。</li><li data-kind="uncertain">材料未指明“引用”具体出现在哪篇论文、文章或代码仓库中。</li><li data-kind="uncertain">材料内容过于简短，无法判断该确认是针对网络上的误解、争议还是单纯的自我展示。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e583ae7404">
+          <div class="item__head"><span class="item__no">16</span><h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMi_gJBVV95cUxON1NTNG5UNUduT3hmUDFyMXVBdG9sb1FHZHMwaHFOOXprWUpKS2gyZXpPUlh5VzBsZm5CODFYdmlkcHM2MG1xX1p6bWNDTUpkeXlFdDh2amdKcVI0SHRBMU1hNUpKeG5feERUeHdjRlVQOWpCQnRnYUd6aUc5RUNHVGJZbkwwNS10VHRSQWRQOTdiNjdvWUx6WkFRMUxXV215LUlJcHhoY1ZLMEhqY29HMWZCNGpId1NLMl9Fa3RQWXBYcDZkRXdYMWpMMmI3al9TV2g2dUZmMHh3emRjbnBybzBVYnYtbXBvZXNUdmFhLUFGcmJxcVQ3RTNIMVVBWGFDZmVHUk5nSHFDZjdqNTlCaUVwN0hYSjBlY3VaMFBhU0NsTFNHRXY1THBEdGJGT0JXUE1iaXhkQXkyQXFPYnZScHVDM1oxRVMyeFU1M1lTMU5MaGNQV0FiaDQ4Y3NlcWRwWllQZ3Uxa0hVVk15Tll0Vm8tM3Bnbm9ja3lmTVRB?oc=5" target="_blank" rel="noopener noreferrer">联想AI主机P7预览版亮相搭载国产双芯可本地运行千亿级大模型|云端|经济|天禧|断网_手机新浪网 - finance.sina.com.cn</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-26 02:39</span>
+            <a href="https://news.google.com/rss/articles/CBMi_gJBVV95cUxON1NTNG5UNUduT3hmUDFyMXVBdG9sb1FHZHMwaHFOOXprWUpKS2gyZXpPUlh5VzBsZm5CODFYdmlkcHM2MG1xX1p6bWNDTUpkeXlFdDh2amdKcVI0SHRBMU1hNUpKeG5feERUeHdjRlVQOWpCQnRnYUd6aUc5RUNHVGJZbkwwNS10VHRSQWRQOTdiNjdvWUx6WkFRMUxXV215LUlJcHhoY1ZLMEhqY29HMWZCNGpId1NLMl9Fa3RQWXBYcDZkRXdYMWpMMmI3al9TV2g2dUZmMHh3emRjbnBybzBVYnYtbXBvZXNUdmFhLUFGcmJxcVQ3RTNIMVVBWGFDZmVHUk5nSHFDZjdqNTlCaUVwN0hYSjBlY3VaMFBhU0NsTFNHRXY1THBEdGJGT0JXUE1iaXhkQXkyQXFPYnZScHVDM1oxRVMyeFU1M1lTMU5MaGNQV0FiaDQ4Y3NlcWRwWllQZ3Uxa0hVVk15Tll0Vm8tM3Bnbm9ja3lmTVRB?oc=5" target="_blank" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ee34a39804">
+          <div class="item__head"><span class="item__no">17</span><h3 class="item__title"><a href="https://aihot.news/items/kp3jgyp8b3u0n3gzvab7pzpr2" target="_blank" rel="noopener noreferrer">用户热情响应 @bot 新功能</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-26 00:35</span>
+            <a href="https://aihot.news/items/kp3jgyp8b3u0n3gzvab7pzpr2" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ee5a2a6c18">
+          <div class="item__head"><span class="item__no">18</span><h3 class="item__title"><a href="https://www.axios.com/2026/10/25/josh-shapiro-2028-questions" target="_blank" rel="noopener noreferrer">Axios分析Shapiro 2028竞选前景</a></h3></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-26 05:44</span>
+            <a href="https://www.axios.com/2026/10/25/josh-shapiro-2028-questions" target="_blank" rel="noopener noreferrer">axios.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">宾夕法尼亚州州长 Josh Shapiro 在该州取得了多项全州选举的胜利</li><li data-kind="fact">Josh Shapiro 近年来未在竞选中面对资金充裕的对手</li><li data-kind="fact">Josh Shapiro 被广泛视为 2028 年美国总统大选的潜在候选人</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Josh Shapiro 缺乏应对高强度、充满攻击性竞选活动的经验</li><li data-kind="inference">若 Josh Shapiro 成为 2028 年民主党初选的主要候选人，他将面临大量的攻击性广告和反对</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">Josh Shapiro 在 2028 年民主党初选中的具体排名不确定</li><li data-kind="uncertain">Josh Shapiro 是否真正具备应对激烈竞选考验的能力尚未得到测试</li><li data-kind="uncertain">Shapiro 在 2028 年选举中最终的表现及结果不确定</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e43b164bc4">
+          <div class="item__head"><span class="item__no">19</span><h3 class="item__title"><a href="https://www.engadget.com/2293493/mesh-wifi-system-improved-with-simple-cable/" target="_blank" rel="noopener noreferrer">简单网线可进一步提升 mesh Wi-Fi 系统性能</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-26/e43b164bc4de301-m001-e5aed867.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-26/e43b164bc4de301-m001-e5aed867.webp" alt="" loading="lazy" decoding="async"></button></div>
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>10-26 02:00</span>
+            <a href="https://www.engadget.com/2293493/mesh-wifi-system-improved-with-simple-cable/" target="_blank" rel="noopener noreferrer">engadget.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Mesh systems 通常提供比独立路由器更好的 Wi-Fi 覆盖</li><li data-kind="fact">可以通过某种方式让 mesh 信号更强</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">添加网线可能有助于增强 mesh Wi-Fi 系统的信号强度</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未明确说明具体需要哪类网线</li><li data-kind="uncertain">材料未提供具体的性能提升数据或测试方法</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ecd67a9ede">
+          <div class="item__head item__head--card"><span class="item__no">20</span><div class="item__cardwrap"><a class="ghm" href="https://github.com/debpalash/VoiceStudio" target="_blank" rel="noopener noreferrer"><div class="ghm__kicker">Open source · AGPL-3.0</div><div class="ghm__title">VoiceStudio<span class="ghm__owner"> / debpalash</span></div><p class="ghm__desc">VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription &amp; audiobook creation in 646 languages.</p><div class="ghm__rule"></div><div class="ghm__stats"><div class="ghm__stat"><b>86.1k</b><i>Stars</i></div><div class="ghm__stat"><b>9.5k</b><i>Forks</i></div><div class="ghm__stat"><b>101</b><i>Contributors</i></div></div><div class="ghm__langs"><div class="ghm__bar"><span style="width:48.56%;background:#3572A5"></span><span style="width:20.76%;background:#f1e05a"></span><span style="width:20.45%;background:#3178c6"></span><span style="width:5.15%;background:#8b949e"></span><span style="width:4.48%;background:#8b949e"></span><span style="width:0.60%;background:#89e051"></span></div><div class="ghm__legend"><span><em style="background:#3572A5"></em>Python 49%</span><span><em style="background:#f1e05a"></em>JavaScript 21%</span><span><em style="background:#3178c6"></em>TypeScript 20%</span><span><em style="background:#8b949e"></em>Swift 5%</span><span><em style="background:#8b949e"></em>Kotlin 4%</span><span><em style="background:#89e051"></em>Shell 1%</span></div></div></a></div></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>Trending，6 个月前创建</span>
+            <a href="https://github.com/debpalash/VoiceStudio" target="_blank" rel="noopener noreferrer">github.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ef1bc03730">
+          <div class="item__head item__head--card"><span class="item__no">21</span><div class="item__cardwrap"><a class="ghm" href="https://github.com/TauricResearch/TradingAgents" target="_blank" rel="noopener noreferrer"><div class="ghm__kicker">Open source · Apache-2.0</div><div class="ghm__title">TradingAgents<span class="ghm__owner"> / TauricResearch</span></div><p class="ghm__desc">TradingAgents: Multi-Agents LLM Financial Trading Framework</p><div class="ghm__rule"></div><div class="ghm__stats"><div class="ghm__stat"><b>114.2k</b><i>Stars</i></div><div class="ghm__stat"><b>22.1k</b><i>Forks</i></div><div class="ghm__stat"><b>24</b><i>Contributors</i></div></div><div class="ghm__langs"><div class="ghm__bar"><span style="width:100.00%;background:#3572A5"></span></div><div class="ghm__legend"><span><em style="background:#3572A5"></em>Python 100%</span></div></div></a></div></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>Trending，1 年前创建</span>
+            <a href="https://github.com/TauricResearch/TradingAgents" target="_blank" rel="noopener noreferrer">github.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div></div>
+          
+        </li>
+        </ol>
+      </section>
+
+          <details class="untranslated" id="untranslated">
+        <summary>本期待翻译条目（2 条）</summary>
+        <p>这些条目的来源是外文，且本期模型额度用完、未能逐条译成中文，
+        因此只在这里保留原文与出处，不混进上面的正文。
+        <strong>点开即离开本站、前往原文</strong>。</p>
+        <ol><li><span class="untranslated__no">02</span><a href="https://www.theinformation.com/articles/anthropics-big-reveal" target="_blank" rel="noopener noreferrer">Anthropic’s Big Reveal</a><span class="untranslated__src">theinformation.com</span></li><li><span class="untranslated__no">13</span><a href="https://www.semafor.com/article/10/25/2026/rest-of-world-faces-prospect-of-shutting-down" target="_blank" rel="noopener noreferrer">Rest of World faces prospect of shutting down</a><span class="untranslated__src">semafor.com</span></li></ol>
+      </details>
+
+    <nav class="pager"><a href="2026-10-25.html"><span>上一期</span>2026-10-25</a><span></span></nav>
+
+    <footer class="foot">
+      <p>本期从 193 个已注册信息源采集，
+      12 个源提供了窗口内的内容，
+      0 个失败，0 个跳过。
+      共 96 条条目进入分析，
+      8 条被判定为重复。</p>
+      <p>大模型：22 次调用 / 47,651 token。
+      摘要由 AI 从原始来源整理，事实、推断与不确定项已分列；
+      <strong>每个条目的链接都来自采集记录，未经模型生成</strong>。请以原始来源为准。</p>
+<p>生成于 2026-10-26 06:22 北京时间</p>
+    </footer>
+  </main>
+
+      <nav class="toc" aria-label="目录">
+        <button class="toc__grip" type="button" data-resize="toc"
+                aria-label="拖动调整目录宽度" title="拖动调整宽度（双击恢复默认）"></button>
+        <p class="toc__title">今日目录</p>
+        <div class="toc__nav">
+          <a href="#overview" class="toc__overview">概览</a>
+          <a href="#e-ec9d01ab94"><span class="toc__no">01</span>Hugging Face 联合合作机构发布 14.8B 开源 DNA 语言模型 …</a>
+          <a href="#e-e417d1ecf6"><span class="toc__no">03</span>南北阁发布 Nanbeige4.3-33B 开源模型</a>
+          <a href="#e-e0fb26bd02"><span class="toc__no">04</span>Dex Horthy 谈多 Skill 同会话上下文污染及取舍</a>
+          <a href="#e-e032706836"><span class="toc__no">05</span>模型自建并删除技能以验证权重知识</a>
+          <a href="#e-e71f17805f"><span class="toc__no">06</span>Apollo 经济学家称 AI 对非科技行业零财务回报</a>
+          <a href="#e-e6c8c73554"><span class="toc__no">07</span>Gartner 预测超 80% neocloud 厂商到 2030 年将无法独立运营</a>
+          <a href="#e-e4e3559069"><span class="toc__no">08</span>Grok 发布 AI 生成版《奥德赛》系列首集七分钟，TechCrunch 评测…</a>
+          <a href="#e-e4a8d8bd4d"><span class="toc__no">09</span>Kimi 就 K3.1 Pro 订阅限流与配额消耗致歉并补偿</a>
+          <a href="#e-e5697e58af"><span class="toc__no">10</span>用户用 Opus 5.5 重做书籍网站</a>
+          <a href="#e-e23d65eb66"><span class="toc__no">11</span>Muse 逐步上线实时语音通话功能</a>
+          <a href="#e-e5d845ed21"><span class="toc__no">12</span>Yuchen Jin 认为多数 neolab 将失败</a>
+          <a href="#e-edf97675d3"><span class="toc__no">14</span>你的 Grok 机器人现在在做什么</a>
+          <a href="#e-e6fb943ce0"><span class="toc__no">15</span>SpaceXSI作者确认引用中的机器人系其自造</a>
+          <a href="#e-e583ae7404"><span class="toc__no">16</span>联想AI主机P7预览版亮相搭载国产双芯可本地运行千亿级大模型|云端|经济|天禧|…</a>
+          <a href="#e-ee34a39804"><span class="toc__no">17</span>用户热情响应 @bot 新功能</a>
+          <a href="#e-ee5a2a6c18"><span class="toc__no">18</span>Axios分析Shapiro 2028竞选前景</a>
+          <a href="#e-e43b164bc4"><span class="toc__no">19</span>简单网线可进一步提升 mesh Wi-Fi 系统性能</a>
+        </div>
+      </nav>
+</div>
+
+<dialog class="search" id="search-dialog" aria-label="搜索往期内容">
+  <div class="search__form">
+    <input type="search" placeholder="搜索往期内容…" aria-label="搜索关键词" autocomplete="off">
+    <kbd>Esc</kbd>
+  </div>
+  <ul class="search__results"></ul>
+</dialog>
+
+<script type="application/json" id="calendar-data">{"dates": ["2026-10-26", "2026-10-25", "2026-10-24", "2026-10-23", "2026-10-22", "2026-10-21", "2026-10-20", "2026-10-19", "2026-10-18", "2026-10-17", "2026-10-16", "2026-10-15", "2026-10-14"], "current": "2026-10-26", "today": "2026-10-26"}</script>
+<script type="application/json" id="search-index">[{"date": "2026-10-26", "items": [{"t": "Hugging Face Releases Carbon-X, a 14B Open DNA Language Model that Brings DNA and Natural Language Together for the First Time", "s": "rss:aihot-news-all, rss:marktechpost"}, {"t": "Anthropic’s Big Reveal", "s": "rss:the-information"}, {"t": "Nanbeige Releases Nanbeige4.3-33B, a 33B Open Agentic Coding Model", "s": "rss:marktechpost, rss:aihot-news-all"}, {"t": "Dex Horthy 谈多 Skill 同会话是否污染上下文及取舍方法", "s": "rss:aihot-news-all"}, {"t": "让模型自建技能再删除以验证权重知识", "s": "rss:aihot-news-all"}, {"t": "Apollo 经济学家称 AI 对科技行业外的多数公司财务回报为零", "s": "rss:aihot-news-all, rss:aihot-demo-techcrunch-ai"}, {"t": "Gartner 预测超 80% neocloud 厂商到 2030 年将无法独立运营", "s": "rss:aihot-news-all"}, {"t": "Grok releases the first seven minutes of its AI-generated ‘Odyssey’", "s": "rss:aihot-demo-techcrunch-ai, rss:aihot-news-all"}, {"t": "Kimi 就 K3.1 Pro 订阅限流与配额消耗致歉并补偿", "s": "rss:aihot-news-all"}, {"t": "Opus 5.5 重做著作网站", "s": "rss:aihot-news-all"}, {"t": "Muse 逐步上线实时语音通话功能", "s": "rss:aihot-news-all"}, {"t": "Yuchen Jin：多数 neolab 会失败，看好反共识者", "s": "rss:aihot-news-all"}, {"t": "Rest of World faces prospect of shutting down", "s": "rss:semafor"}, {"t": "Grok Bot 周日反馈征集", "s": "rss:aihot-news-all"}, {"t": "SpaceXSI 作者确认引用中为自己所造机器人", "s": "rss:aihot-news-all"}, {"t": "联想AI主机P7预览版亮相搭载国产双芯可本地运行千亿级大模型|云端|经济|天禧|断网_手机新浪网 - finance.sina.com.cn", "s": "api:news-google-com-search"}, {"t": "用户热情响应 @bot 新功能", "s": "rss:aihot-news-all"}, {"t": "Shapiro looks like a 2028 powerhouse — with an asterisk", "s": "rss:axios"}, {"t": "Even the best mesh Wi-Fi system can be easily improved with a simple cable", "s": "rss:engadget"}, {"t": "debpalash/VoiceStudio — VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice…", "s": "scrape:github-com-trending"}, {"t": "TauricResearch/TradingAgents — TradingAgents: Multi-Agents LLM Financial Trading Framework", "s": "scrape:github-com-trending"}]}]</script>
+<script src="assets/motion.js" defer></script>
+<div class="lightbox" id="lightbox" hidden>
+  <button type="button" class="lightbox__close" aria-label="关闭">×</button>
+  <img class="lightbox__img" alt="">
+</div>
+<script>
+// Click a picture and it opens in place. No new tab, no scroll jump, no history entry.
+// Escape, the close button, or a click on the backdrop dismisses it.
+(function () {
+  var box = document.getElementById("lightbox");
+  if (!box) return;
+  var img = box.querySelector(".lightbox__img");
+  function open(src) {
+    img.src = src;
+    box.hidden = false;
+    document.body.classList.add("is-lightbox");
+  }
+  function close() {
+    box.hidden = true;
+    img.removeAttribute("src");
+    document.body.classList.remove("is-lightbox");
+  }
+  document.addEventListener("click", function (e) {
+    var thumb = e.target.closest(".item__thumb");
+    if (thumb) { e.preventDefault(); open(thumb.dataset.full); return; }
+    if (e.target === box || e.target.closest(".lightbox__close")) close();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !box.hidden) close();
+  });
+})();
+</script>
+</body>
+</html>
