@@ -846,8 +846,19 @@ def _render_overview(
     """
     translated_ids = translated_ids or set()
     rows: list[str] = []
+    # **Number the rows that are actually rendered, not the events that are scanned.**
+    #
+    # `index` used to come from `enumerate(digest.top_events, start=1)`, and the loop can
+    # skip: an event that did not reach the body (`translated_ids`) or whose title is still
+    # English is `continue`d. The counter had already advanced, so the first visible row read
+    # `03`. Measured 2026-10-26: the overview opened at 03 with 21 stories, which reads as two
+    # missing stories rather than two skipped ones.
+    #
+    # A separate counter also keeps the overview numbering aligned with the body, which
+    # numbers the events it renders.
+    shown = 0
     for index, event in enumerate(digest.top_events, start=1):
-        if len(rows) >= 8:
+        if shown >= 8:
             break
         # Only items that made it into the body, so the overview never links to an anchor
         # that was moved into the untranslated block.
@@ -857,6 +868,7 @@ def _render_overview(
         title = _display_title(event, insight, items_by_id)
         if not _looks_chinese(title):
             continue
+        shown += 1
         anchor = f"e-{event.event_id[:10]}"
 
         # The first supporting fact, when there is one, is what makes the line informative
@@ -868,7 +880,7 @@ def _render_overview(
                 detail = fact
         rows.append(
             f'<li><a href="#{esc(anchor)}">'
-            f'<span class="ov__no">{index:02d}</span>'
+            f'<span class="ov__no">{shown:02d}</span>'
             f"<span><b>{esc(title)}</b>"
             + (f'<span class="ov__detail">{esc(detail)}</span>' if detail else "")
             + "</span></a></li>"

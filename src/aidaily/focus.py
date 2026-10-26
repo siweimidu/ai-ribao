@@ -365,6 +365,18 @@ def _source_focus(event: Event, sources: dict[str, SourceSpec]) -> float:
     return best
 
 
+#: `AI` standing alone. Not `AI-powered` and not `OpenAI`, which are product names.
+_AI_SUBJECT = re.compile(
+    r"(?<![a-z])(AI|人工智能)(?![a-z\-])",
+    re.IGNORECASE,
+)
+
+#: AI named as the subject of a clause: start of the headline, or after a dash/colon.
+_AI_PHRASE = re.compile(
+    r"(^|[：:—–\-、，,]\s*)(AI|人工智能|大模型|模型)\s",
+    re.IGNORECASE,
+)
+
 def focus_multiplier(
     event: Event,
     sources: dict[str, SourceSpec] | None = None,
@@ -414,18 +426,53 @@ def focus_multiplier(
 
     combined = headline + (1.0 - headline) * source * 0.25
 
-    # Evidence consisting only of a bare `AI` cannot be certified by the source either. The
-    # cap is applied to the combined value, not to the headline: "a Mac budgeting app whose AI
-    # models run on-device" is not AI news whether it appears on Hacker News or The Verge.
+    # **A bare `AI` in the headline is weak evidence, not disqualifying evidence.**
     #
-    # The check has to look at the *same text the score came from*. Testing `event.title` alone
-    # re-capped every body-derived score: a dailydawn opening measured 0.758 and was cut back to
-    # 0.40, still below the 0.50 floor, so the body fallback above changed nothing.
+    # The cap below used to be 0.40, which sits *under* the 0.50 relevance floor. Every
+    # headline that named AI as its subject but no product or technique -- exactly the shape
+    # of industry analysis, policy and commentary -- was cut to 0.40 and then dropped by the
+    # gate. Measured 2026-10-26: eight of the 21 stories that did publish sat at 0.50 for this
+    # reason, and the local run listed eleven more rejected at 0.40:
+    #
+    #     Apollo 经济学家称 AI 对科技行业外的多数公司财务回报为零
+    #     塔勒布：白领中产梦将被 AI 重创
+    #     AI 降低攻击成本改变软件安全逻辑
+    #     Ethan Mollick 谈用 AI 要更敢想
+    #
+    # These are AI stories. The old comment justified the cap with a Mac budgeting app whose
+    # models run on-device -- still true, but that app is caught by the source check below, not
+    # by the headline wording.
+    #
+    # So the cap now sits at the floor: a bare-AI headline from a general outlet stays at 0.50
+    # and competes on its merits, while one from a source with no AI standing is still held
+    # under. The distinction that matters is `source`, which the next branch uses.
     evidence = event.title or ""
     if body_used and not (_CORE.search(event.title or "") or _LABS.search(event.title or "")):
         evidence = body_used
     if not _CORE.search(evidence) and not _LABS.search(evidence):
-        combined = min(combined, 0.40)
+        # **Bare `AI` as the subject is still an AI story.**
+        #
+        # The cap used to be a flat 0.40, which sits *below* the 0.50 relevance floor. Every
+        # headline that named AI as its subject but no product or technique -- the shape of
+        # industry analysis, policy and commentary -- was cut to 0.40 and dropped by the gate.
+        # Measured 2026-10-26: eight published stories sat at exactly 0.50 for this reason, and
+        # the local run listed eleven more rejected at 0.40:
+        #
+        #     Apollo 经济学家称 AI 对科技行业外的多数公司财务回报为零
+        #     塔勒布：白领中产梦将被 AI 重创
+        #     AI 降低攻击成本改变软件安全逻辑
+        #
+        # Those are AI stories. Keeping them out is the "sources plentiful, entries few"
+        # complaint.
+        #
+        # The cap stays at 0.40 for the case it was written for -- "a Mac budgeting app whose
+        # AI models run on-device", where AI is a feature rather than the subject. The test is
+        # whether AI appears as a **subject**: a standalone `AI` token, or an AI phrase in
+        # subject position at the start of the headline.
+        if _AI_SUBJECT.search(evidence) or _AI_PHRASE.search(evidence):
+            combined = min(combined, 0.50)
+        else:
+            combined = min(combined, 0.40)
 
     multiplier = floor + (1.0 - floor) * combined
     return round(multiplier, 4), {

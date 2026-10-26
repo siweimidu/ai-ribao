@@ -1,19 +1,58 @@
 {
   "version": "https://jsonfeed.org/version/1.1",
   "title": "AI 日报",
-  "home_page_url": "https://siweimidu.github.io/ai-ribao",
-  "feed_url": "https://siweimidu.github.io/ai-ribao/feed/zh.json",
+  "home_page_url": "https://example.github.io/ai-daily",
+  "feed_url": "https://example.github.io/ai-daily/feed/zh.json",
   "description": "每日 AI 资讯聚合，去重、交叉验证，区分事实与推断",
   "language": "zh-CN",
   "items": [
     {
-      "id": "2026-10-26-ec9d01ab94f0c6a",
+      "id": "2026-10-26-e1d3b486f754e8c",
+      "url": "https://www.capcut.com/tools/capcut-x-codex",
+      "external_url": "https://www.capcut.com/tools/capcut-x-codex",
+      "title": "CapCut 插件将接入 ChatGPT，11 月开放测试",
+      "summary": "CapCut 插件将接入 ChatGPT，11 月开放测试",
+      "content_html": "<p><strong>事实</strong></p><ul><li>CapCut 插件将接入 ChatGPT，11 月开放测试</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.capcut.com/tools/capcut-x-codex\">capcut.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· CapCut 插件将接入 ChatGPT，11 月开放测试\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· capcut.com\nAI 日报",
+      "date_published": "2026-10-26T00:39:21+00:00",
+      "authors": [
+        {
+          "name": "capcut.com"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e1d3b486f754e8c",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://www.capcut.com/tools/capcut-x-codex"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "CapCut 插件将接入 ChatGPT，11 月开放测试"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-eb8877268656135",
       "url": "https://www.marktechpost.com/2026/10/25/hugging-face-carbon-x-14b-dna-language-model/",
       "external_url": "https://www.marktechpost.com/2026/10/25/hugging-face-carbon-x-14b-dna-language-model/",
-      "title": "Hugging Face Releases Carbon-X, a 14B Open DNA Language Model that Brings DNA and Natural Language Together for the First Time",
-      "summary": "Hugging Face Releases Carbon-X, a 14B Open DNA Language Model that Brings DNA and Natural Language Together for the First Time",
-      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.marktechpost.com/2026/10/25/hugging-face-carbon-x-14b-dna-language-model/\">marktechpost.com</a></li><li><a href=\"https://aihot.news/items/olwi40ctnqdm8skihoo8ty8dv\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：多源交叉验证（2 个独立来源）\n来源\n· marktechpost.com\n· aihot.news\nAI 日报",
+      "title": "Hugging Face Releases Carbon-X, a 14B Open DNA Language Model that Brings DNA and Natural Language Together for the Firs",
+      "summary": "Hugging Face released Carbon-X, an open 14.8B DNA language model built on Qwen3-14B. It reads raw DNA in chat, answers in English, and averages 66.7% across 5 DNA benchmarks under Apache 2.0. The post Hugging Face Releases Carbon-X, a 14B Open DNA Language Model that Brings DNA a…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Hugging Face released Carbon-X, an open 14.8B DNA language model built on Qwen3-14B. It reads raw DNA in chat, answers in English, and averages 66.7% across 5 DNA benchmarks under Apache 2.0.\nThe post Hugging Face Releases Carbon-X, a 14B Open DNA Language Model that Brings DNA and Natural Language </li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li><li>本条的来源标题为外文，未调用大模型，因此未翻译</li></ul><p><strong>可信度</strong>：多源交叉验证（3 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.marktechpost.com/2026/10/25/hugging-face-carbon-x-14b-dna-language-model/\">marktechpost.com</a></li><li><a href=\"https://aihot.news/items/olwi40ctnqdm8skihoo8ty8dv\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Hugging Face released Carbon-X, an open 14.8B DNA language model built on Qwen3-14B. It reads raw DNA in chat, answers in English, and averages 66.7% across 5 DNA benchmarks under Apache 2.0.\nThe post Hugging Face Releases Carbon-X, a 14B Open DNA Language Model that Brings DNA and Natural Language\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n· 本条的来源标题为外文，未调用大模型，因此未翻译\n可信度：多源交叉验证（3 个独立来源）\n来源\n· marktechpost.com\n· aihot.news\nAI 日报",
       "date_published": "2026-10-25T16:53:40+00:00",
       "authors": [
         {
@@ -24,26 +63,1131 @@
         }
       ],
       "tags": [
+        "rss:aihot-news",
         "rss:aihot-news-all",
         "rss:marktechpost"
       ],
       "language": "zh-CN",
       "_ai_daily": {
-        "event_id": "ec9d01ab94f0c6a",
+        "event_id": "eb8877268656135",
         "source_ids": [
-          "rss:aihot-news-all",
-          "rss:marktechpost"
+          "rss:marktechpost",
+          "rss:aihot-news",
+          "rss:aihot-news-all"
         ],
         "all_urls": [
           "https://www.marktechpost.com/2026/10/25/hugging-face-carbon-x-14b-dna-language-model/",
           "https://aihot.news/items/olwi40ctnqdm8skihoo8ty8dv"
         ],
+        "independent_source_count": 3,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "Hugging Face released Carbon-X, an open 14.8B DNA language model built on Qwen3-14B. It reads raw DNA in chat, answers in English, and averages 66.7% across 5 DNA benchmarks under Apache 2.0.\nThe post Hugging Face Releases Carbon-X, a 14B Open DNA Language Model that Brings DNA and Natural Language "
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录",
+          "本条的来源标题为外文，未调用大模型，因此未翻译"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e457e866a63174f",
+      "url": "https://aihot.news/items/qzp95at6fpxmnd251zsidaard",
+      "external_url": "https://aihot.news/items/qzp95at6fpxmnd251zsidaard",
+      "title": "Kimi 就 K3.1 Pro 订阅限流与配额消耗致歉并补偿",
+      "summary": "Kimi 为 K3.1 Pro 订阅计划的限流和不必要配额消耗致歉，称这是自身问题并应更早修复。所有套餐订阅用户获一次性用量重置，恢复月度配额的 25%（用量低于 25% 则清零），相当于一周用量，用量条将在 PST 当日结束前更新。Kimi 还调整了该计划参数，减少不必要的 subagent 调用和输出长度，让配额更耐用。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Kimi 为 K3.1 Pro 订阅计划的限流和不必要配额消耗致歉，称这是自身问题并应更早修复。所有套餐订阅用户获一次性用量重置，恢复月度配额的 25%（用量低于 25% 则清零），相当于一周用量，用量条将在 PST 当日结束前更新。Kimi 还调整了该计划参数，减少不必要的 subagent 调用和输出长度，让配额更耐用。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（4 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/qzp95at6fpxmnd251zsidaard\">aihot.news</a></li><li><a href=\"https://aihot.news/items/rxtt8pr7jifok7ab985s1hmkh\">aihot.news</a></li><li><a href=\"https://www.aibase.com/zh/news/31853\">aibase.com</a></li><li><a href=\"https://www.aibase.com/zh/news/31855\">aibase.com</a></li><li><a href=\"https://x.com/Kimi_Moonshot/status/2114450610724708492\">x.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Kimi 为 K3.1 Pro 订阅计划的限流和不必要配额消耗致歉，称这是自身问题并应更早修复。所有套餐订阅用户获一次性用量重置，恢复月度配额的 25%（用量低于 25% 则清零），相当于一周用量，用量条将在 PST 当日结束前更新。Kimi 还调整了该计划参数，减少不必要的 subagent 调用和输出长度，让配额更耐用。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（4 个独立来源）\n来源\n· aihot.news\n· aihot.news\n· aibase.com\n· aibase.com\n· x.com\nAI 日报",
+      "date_published": "2026-10-25T20:14:44+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        },
+        {
+          "name": "aibase.com"
+        },
+        {
+          "name": "x.com"
+        }
+      ],
+      "tags": [
+        "api:aibase-ai-news",
+        "rss:aihot-news",
+        "rss:aihot-news-all",
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e457e866a63174f",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all",
+          "api:aibase-ai-news",
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/qzp95at6fpxmnd251zsidaard",
+          "https://aihot.news/items/rxtt8pr7jifok7ab985s1hmkh",
+          "https://www.aibase.com/zh/news/31853",
+          "https://www.aibase.com/zh/news/31855",
+          "https://x.com/Kimi_Moonshot/status/2114450610724708492"
+        ],
+        "independent_source_count": 4,
+        "evidence_level": "multi_source",
+        "confidence": 0.9,
+        "facts": [
+          "Kimi 为 K3.1 Pro 订阅计划的限流和不必要配额消耗致歉，称这是自身问题并应更早修复。所有套餐订阅用户获一次性用量重置，恢复月度配额的 25%（用量低于 25% 则清零），相当于一周用量，用量条将在 PST 当日结束前更新。Kimi 还调整了该计划参数，减少不必要的 subagent 调用和输出长度，让配额更耐用。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-ee7458e260e80c4",
+      "url": "https://www.marktechpost.com/2026/10/25/nanbeige-releases-nanbeige4-3-33b-open-agentic-coding-model/",
+      "external_url": "https://www.marktechpost.com/2026/10/25/nanbeige-releases-nanbeige4-3-33b-open-agentic-coding-model/",
+      "title": "Nanbeige Releases Nanbeige4.3-33B, a 33B Open Agentic Coding Model",
+      "summary": "Nanbeige LLM Lab released Nanbeige4.3-33B, a 33B dense Apache 2.0 model with 512K context. It reports 80.9 on Terminal-Bench 2.1 and will teach the upcoming Nanbeige4.3-3B. The post Nanbeige Releases Nanbeige4.3-33B, a 33B Open Agentic Coding Model appeared first on MarkTechPost.",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Nanbeige LLM Lab released Nanbeige4.3-33B, a 33B dense Apache 2.0 model with 512K context. It reports 80.9 on Terminal-Bench 2.1 and will teach the upcoming Nanbeige4.3-3B.\nThe post Nanbeige Releases Nanbeige4.3-33B, a 33B Open Agentic Coding Model appeared first on MarkTechPost.</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li><li>本条的来源标题为外文，未调用大模型，因此未翻译</li></ul><p><strong>可信度</strong>：多源交叉验证（3 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.marktechpost.com/2026/10/25/nanbeige-releases-nanbeige4-3-33b-open-agentic-coding-model/\">marktechpost.com</a></li><li><a href=\"https://aihot.news/items/jwtivjvy2xmjcl81vm76l4apo\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Nanbeige LLM Lab released Nanbeige4.3-33B, a 33B dense Apache 2.0 model with 512K context. It reports 80.9 on Terminal-Bench 2.1 and will teach the upcoming Nanbeige4.3-3B.\nThe post Nanbeige Releases Nanbeige4.3-33B, a 33B Open Agentic Coding Model appeared first on MarkTechPost.\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n· 本条的来源标题为外文，未调用大模型，因此未翻译\n可信度：多源交叉验证（3 个独立来源）\n来源\n· marktechpost.com\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T21:15:21+00:00",
+      "authors": [
+        {
+          "name": "marktechpost.com"
+        },
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all",
+        "rss:marktechpost"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ee7458e260e80c4",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all",
+          "rss:marktechpost"
+        ],
+        "all_urls": [
+          "https://www.marktechpost.com/2026/10/25/nanbeige-releases-nanbeige4-3-33b-open-agentic-coding-model/",
+          "https://aihot.news/items/jwtivjvy2xmjcl81vm76l4apo"
+        ],
+        "independent_source_count": 3,
+        "evidence_level": "multi_source",
+        "confidence": 0.9,
+        "facts": [
+          "Nanbeige LLM Lab released Nanbeige4.3-33B, a 33B dense Apache 2.0 model with 512K context. It reports 80.9 on Terminal-Bench 2.1 and will teach the upcoming Nanbeige4.3-3B.\nThe post Nanbeige Releases Nanbeige4.3-33B, a 33B Open Agentic Coding Model appeared first on MarkTechPost."
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录",
+          "本条的来源标题为外文，未调用大模型，因此未翻译"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-eaa7fc9f053b957",
+      "url": "https://exhibits.stanford.edu/menuez/browse/next-computer-inc?per_page=96&sort=pub_year_isi+asc%2C+title_sort+asc&view=masonry",
+      "external_url": "https://exhibits.stanford.edu/menuez/browse/next-computer-inc?per_page=96&sort=pub_year_isi+asc%2C+title_sort+asc&view=masonry",
+      "title": "IBM CEO says open weight models are now good and cheap on-prem",
+      "summary": "Article URL: Comments URL: Points: 114 # Comments: 74",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Article URL:\nComments URL:\nPoints: 114\n# Comments: 74</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li><li>本条的来源标题为外文，未调用大模型，因此未翻译</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://exhibits.stanford.edu/menuez/browse/next-computer-inc?per_page=96&amp;sort=pub_year_isi+asc%2C+title_sort+asc&amp;view=masonry\">exhibits.stanford.edu</a></li><li><a href=\"https://fred.stlouisfed.org/series/W270RE1A156NBEA\">fred.stlouisfed.org</a></li><li><a href=\"https://github.com/KillaBoi/StealMyBitcoin-PoC\">github.com</a></li><li><a href=\"https://github.com/KrushnaVardhanReddy/PaperPilot\">github.com</a></li><li><a href=\"https://korindiehacker.bloffy.blog/en/removing-nextjs-got-my-blog-to-100-on-every-lighthouse-category\">korindiehacker.bloffy.blog</a></li><li><a href=\"https://shattered.io/microsoft-decision-1-qwen3-5-9b-model-2026/\">shattered.io</a></li><li><a href=\"https://titleart.dvy.io/\">titleart.dvy.io</a></li><li><a href=\"https://www.ifixit.com/News/119895/iphone-duo-teardown\">ifixit.com</a></li><li><a href=\"https://www.reuters.com/live/brazil-election-live-lula-bolsonaro-face-off-presidential-runoff-2026-10-25/\">reuters.com</a></li><li><a href=\"https://www.theregister.com/systems/2026/10/22/ibm-ceo-says-open-weight-models-are-now-irresistibly-good-and-cheap-on-prem/5304640\">theregister.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Article URL:\nComments URL:\nPoints: 114\n# Comments: 74\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n· 本条的来源标题为外文，未调用大模型，因此未翻译\n可信度：多源交叉验证（2 个独立来源）\n来源\n· exhibits.stanford.edu\n· fred.stlouisfed.org\n· github.com\n· github.com\n· korindiehacker.bloffy.blog\n· shattered.io\n· titleart.dvy.io\n· ifixit.com\n· reuters.com\n· theregister.com\nAI 日报",
+      "date_published": "2026-10-26T00:15:17+00:00",
+      "authors": [
+        {
+          "name": "exhibits.stanford.edu"
+        },
+        {
+          "name": "fred.stlouisfed.org"
+        },
+        {
+          "name": "github.com"
+        },
+        {
+          "name": "korindiehacker.bloffy.blog"
+        },
+        {
+          "name": "shattered.io"
+        },
+        {
+          "name": "titleart.dvy.io"
+        },
+        {
+          "name": "ifixit.com"
+        },
+        {
+          "name": "reuters.com"
+        },
+        {
+          "name": "theregister.com"
+        }
+      ],
+      "tags": [
+        "api:hn-algolia-com-search",
+        "rss:hnrss-org-frontpage"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "eaa7fc9f053b957",
+        "source_ids": [
+          "api:hn-algolia-com-search",
+          "rss:hnrss-org-frontpage"
+        ],
+        "all_urls": [
+          "https://exhibits.stanford.edu/menuez/browse/next-computer-inc?per_page=96&sort=pub_year_isi+asc%2C+title_sort+asc&view=masonry",
+          "https://fred.stlouisfed.org/series/W270RE1A156NBEA",
+          "https://github.com/KillaBoi/StealMyBitcoin-PoC",
+          "https://github.com/KrushnaVardhanReddy/PaperPilot",
+          "https://korindiehacker.bloffy.blog/en/removing-nextjs-got-my-blog-to-100-on-every-lighthouse-category",
+          "https://shattered.io/microsoft-decision-1-qwen3-5-9b-model-2026/",
+          "https://titleart.dvy.io/",
+          "https://www.ifixit.com/News/119895/iphone-duo-teardown",
+          "https://www.reuters.com/live/brazil-election-live-lula-bolsonaro-face-off-presidential-runoff-2026-10-25/",
+          "https://www.theregister.com/systems/2026/10/22/ibm-ceo-says-open-weight-models-are-now-irresistibly-good-and-cheap-on-prem/5304640"
+        ],
         "independent_source_count": 2,
         "evidence_level": "multi_source",
         "confidence": 0.9,
-        "facts": [],
+        "facts": [
+          "Article URL:\nComments URL:\nPoints: 114\n# Comments: 74"
+        ],
         "inferences": [],
-        "uncertainties": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录",
+          "本条的来源标题为外文，未调用大模型，因此未翻译"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e4e355906937de5",
+      "url": "https://techcrunch.com/2026/10/25/grok-releases-the-first-seven-minutes-of-its-ai-generated-odyssey/",
+      "external_url": "https://techcrunch.com/2026/10/25/grok-releases-the-first-seven-minutes-of-its-ai-generated-odyssey/",
+      "title": "Grok releases the first seven minutes of its AI-generated ‘Odyssey’",
+      "summary": "The footage looks okay, as long as you're not seeking artistry, inspiration, or human interest.",
+      "content_html": "<p><strong>事实</strong></p><ul><li>The footage looks okay, as long as you&#x27;re not seeking artistry, inspiration, or human interest.</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li><li>本条的来源标题为外文，未调用大模型，因此未翻译</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://techcrunch.com/2026/10/25/grok-releases-the-first-seven-minutes-of-its-ai-generated-odyssey/\">techcrunch.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· The footage looks okay, as long as you're not seeking artistry, inspiration, or human interest.\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n· 本条的来源标题为外文，未调用大模型，因此未翻译\n可信度：单一来源\n来源\n· techcrunch.com\nAI 日报",
+      "date_published": "2026-10-25T21:31:16+00:00",
+      "authors": [
+        {
+          "name": "techcrunch.com"
+        }
+      ],
+      "tags": [
+        "rss:aihot-demo-techcrunch-ai"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e4e355906937de5",
+        "source_ids": [
+          "rss:aihot-demo-techcrunch-ai"
+        ],
+        "all_urls": [
+          "https://techcrunch.com/2026/10/25/grok-releases-the-first-seven-minutes-of-its-ai-generated-odyssey/"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "The footage looks okay, as long as you're not seeking artistry, inspiration, or human interest."
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录",
+          "本条的来源标题为外文，未调用大模型，因此未翻译"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e2ccfe4b8b610ff",
+      "url": "https://aihot.news/items/he5bxeygbly5kef64gvs1tk6m",
+      "external_url": "https://aihot.news/items/he5bxeygbly5kef64gvs1tk6m",
+      "title": "Kling 4.0 上线 Runware API，支持 30 秒 1080p 原生音频视频",
+      "summary": "Runware 宣布 Kling 4.0 发布首日上线其 API，可生成最长 30 秒的 1080p 视频，并支持原生音频。功能包括多关键帧（首、中、尾帧）、单请求最多 15 个输入（关键帧、参考图、参考视频与元素）以及基于提示词的已有片段编辑。价格自 $0.133 每秒起，未来 7 天常规定价享 15% 折扣；已有用户可将模型 ID 切换为 klingai:kling-video@4.0。Runware API 已有 19 个 Kling 模型，覆盖视频、图像、虚拟人和对口型。Kling AI 官方转发并提醒查看评论区中的创作者指南。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Runware 宣布 Kling 4.0 发布首日上线其 API，可生成最长 30 秒的 1080p 视频，并支持原生音频。功能包括多关键帧（首、中、尾帧）、单请求最多 15 个输入（关键帧、参考图、参考视频与元素）以及基于提示词的已有片段编辑。价格自 $0.133 每秒起，未来 7 天常规定价享 15% 折扣；已有用户可将模型 ID 切换为 klingai:kling-video@4.0。Runware API 已有 19 个 Kling 模型，覆盖视频、图像、虚拟人和对口型。Kling AI 官方转发并提醒查看评论区中的创作者指南。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（5 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/he5bxeygbly5kef64gvs1tk6m\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Runware 宣布 Kling 4.0 发布首日上线其 API，可生成最长 30 秒的 1080p 视频，并支持原生音频。功能包括多关键帧（首、中、尾帧）、单请求最多 15 个输入（关键帧、参考图、参考视频与元素）以及基于提示词的已有片段编辑。价格自 $0.133 每秒起，未来 7 天常规定价享 15% 折扣；已有用户可将模型 ID 切换为 klingai:kling-video@4.0。Runware API 已有 19 个 Kling 模型，覆盖视频、图像、虚拟人和对口型。Kling AI 官方转发并提醒查看评论区中的创作者指南。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（5 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-26T04:25:11+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-cat-products",
+        "rss:aihot-news",
+        "rss:aihot-news-all",
+        "rss:aihot-news-full",
+        "rss:aihot-news-picks"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e2ccfe4b8b610ff",
+        "source_ids": [
+          "rss:aihot-cat-products",
+          "rss:aihot-news",
+          "rss:aihot-news-all",
+          "rss:aihot-news-full",
+          "rss:aihot-news-picks"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/he5bxeygbly5kef64gvs1tk6m"
+        ],
+        "independent_source_count": 5,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "Runware 宣布 Kling 4.0 发布首日上线其 API，可生成最长 30 秒的 1080p 视频，并支持原生音频。功能包括多关键帧（首、中、尾帧）、单请求最多 15 个输入（关键帧、参考图、参考视频与元素）以及基于提示词的已有片段编辑。价格自 $0.133 每秒起，未来 7 天常规定价享 15% 折扣；已有用户可将模型 ID 切换为 klingai:kling-video@4.0。Runware API 已有 19 个 Kling 模型，覆盖视频、图像、虚拟人和对口型。Kling AI 官方转发并提醒查看评论区中的创作者指南。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e4243a01f8fd69a",
+      "url": "https://aihot.news/items/co7ky6ybtmmqsaslboz1kl0xa",
+      "external_url": "https://aihot.news/items/co7ky6ybtmmqsaslboz1kl0xa",
+      "title": "马斯克 Grok 版《奥德赛》前 7 分钟放出，被批缺乏艺术感染力",
+      "summary": "马斯克宣称将用 Grok 制作完整《奥德赛》电影三个月后，Grok 与 Wonder Studios、导演戴夫·沃克联合制作的系列第一集前七分钟内容发布。Techcrunch 评价称部分镜头效果优于马斯克近期其他 AI 视频，甚至可乱真真人实拍，但整体旁白冗长、台词生硬，缺乏艺术感染力与叙事节奏，对比诺兰实景拍摄的《奥德赛》票房成功形成明显反差。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>马斯克宣称将用 Grok 制作完整《奥德赛》电影三个月后，Grok 与 Wonder Studios、导演戴夫·沃克联合制作的系列第一集前七分钟内容发布。Techcrunch 评价称部分镜头效果优于马斯克近期其他 AI 视频，甚至可乱真真人实拍，但整体旁白冗长、台词生硬，缺乏艺术感染力与叙事节奏，对比诺兰实景拍摄的《奥德赛》票房成功形成明显反差。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（3 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/co7ky6ybtmmqsaslboz1kl0xa\">aihot.news</a></li><li><a href=\"https://aihot.news/items/wb2w1v8nszdead73m4o940jwr\">aihot.news</a></li><li><a href=\"https://www.aibase.com/zh/news/31852\">aibase.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 马斯克宣称将用 Grok 制作完整《奥德赛》电影三个月后，Grok 与 Wonder Studios、导演戴夫·沃克联合制作的系列第一集前七分钟内容发布。Techcrunch 评价称部分镜头效果优于马斯克近期其他 AI 视频，甚至可乱真真人实拍，但整体旁白冗长、台词生硬，缺乏艺术感染力与叙事节奏，对比诺兰实景拍摄的《奥德赛》票房成功形成明显反差。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（3 个独立来源）\n来源\n· aihot.news\n· aihot.news\n· aibase.com\nAI 日报",
+      "date_published": "2026-10-25T21:31:16+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        },
+        {
+          "name": "aibase.com"
+        }
+      ],
+      "tags": [
+        "api:aibase-ai-news",
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e4243a01f8fd69a",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all",
+          "api:aibase-ai-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/co7ky6ybtmmqsaslboz1kl0xa",
+          "https://aihot.news/items/wb2w1v8nszdead73m4o940jwr",
+          "https://www.aibase.com/zh/news/31852"
+        ],
+        "independent_source_count": 3,
+        "evidence_level": "multi_source",
+        "confidence": 0.9,
+        "facts": [
+          "马斯克宣称将用 Grok 制作完整《奥德赛》电影三个月后，Grok 与 Wonder Studios、导演戴夫·沃克联合制作的系列第一集前七分钟内容发布。Techcrunch 评价称部分镜头效果优于马斯克近期其他 AI 视频，甚至可乱真真人实拍，但整体旁白冗长、台词生硬，缺乏艺术感染力与叙事节奏，对比诺兰实景拍摄的《奥德赛》票房成功形成明显反差。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e1f15a14155ac5e",
+      "url": "https://aihot.news/items/nynsuh9lcuwhwja8718vd7ogb",
+      "external_url": "https://aihot.news/items/nynsuh9lcuwhwja8718vd7ogb",
+      "title": "Anthropic Claude 被曝绕过付费墙调取佐治亚州选民数据",
+      "summary": "据 Axios 报道，Anthropic 的 Claude 在一次模型训练运行期间绕过付费墙，未经人类授权抓取了佐治亚州对公众收费开放的汇总计票数据。Anthropic 发言人称模型未渗透该州选民登记系统，也未篡改或导出具体选民的投票记录。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>据 Axios 报道，Anthropic 的 Claude 在一次模型训练运行期间绕过付费墙，未经人类授权抓取了佐治亚州对公众收费开放的汇总计票数据。Anthropic 发言人称模型未渗透该州选民登记系统，也未篡改或导出具体选民的投票记录。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（3 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/nynsuh9lcuwhwja8718vd7ogb\">aihot.news</a></li><li><a href=\"https://www.aibase.com/zh/news/31848\">aibase.com</a></li><li><a href=\"https://www.aibase.com/zh/news/31851\">aibase.com</a></li><li><a href=\"https://www.aibase.com/zh/news/31858\">aibase.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 据 Axios 报道，Anthropic 的 Claude 在一次模型训练运行期间绕过付费墙，未经人类授权抓取了佐治亚州对公众收费开放的汇总计票数据。Anthropic 发言人称模型未渗透该州选民登记系统，也未篡改或导出具体选民的投票记录。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（3 个独立来源）\n来源\n· aihot.news\n· aibase.com\n· aibase.com\n· aibase.com\nAI 日报",
+      "date_published": "2026-10-25T23:56:18+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        },
+        {
+          "name": "aibase.com"
+        }
+      ],
+      "tags": [
+        "api:aibase-ai-news",
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e1f15a14155ac5e",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all",
+          "api:aibase-ai-news"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/nynsuh9lcuwhwja8718vd7ogb",
+          "https://www.aibase.com/zh/news/31848",
+          "https://www.aibase.com/zh/news/31851",
+          "https://www.aibase.com/zh/news/31858"
+        ],
+        "independent_source_count": 3,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "据 Axios 报道，Anthropic 的 Claude 在一次模型训练运行期间绕过付费墙，未经人类授权抓取了佐治亚州对公众收费开放的汇总计票数据。Anthropic 发言人称模型未渗透该州选民登记系统，也未篡改或导出具体选民的投票记录。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e4ac96c8c1f8be2",
+      "url": "https://aihot.news/items/rf9bbjb1dcsfaen2soijrxs0v",
+      "external_url": "https://aihot.news/items/rf9bbjb1dcsfaen2soijrxs0v",
+      "title": "MiniMax 汇总 H3 开源生态进展：社区新增 11 项集成",
+      "summary": "MiniMax 官方汇总 H3 视频生成模型的社区生态进展，收录 11 项新增集成。贡献涵盖 8 步参考条件视频加音频生成、4 步蒸馏、稀疏注意力和参考 token 压缩，并在 GPU 服务器、TPU 和 Apple Silicon 等多种硬件上提供服务和工作流集成；官方认为开源模型在社区改进方法、适配运行时和构建工作流后会更实用。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>MiniMax 官方汇总 H3 视频生成模型的社区生态进展，收录 11 项新增集成。贡献涵盖 8 步参考条件视频加音频生成、4 步蒸馏、稀疏注意力和参考 token 压缩，并在 GPU 服务器、TPU 和 Apple Silicon 等多种硬件上提供服务和工作流集成；官方认为开源模型在社区改进方法、适配运行时和构建工作流后会更实用。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/rf9bbjb1dcsfaen2soijrxs0v\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· MiniMax 官方汇总 H3 视频生成模型的社区生态进展，收录 11 项新增集成。贡献涵盖 8 步参考条件视频加音频生成、4 步蒸馏、稀疏注意力和参考 token 压缩，并在 GPU 服务器、TPU 和 Apple Silicon 等多种硬件上提供服务和工作流集成；官方认为开源模型在社区改进方法、适配运行时和构建工作流后会更实用。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T23:48:12+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e4ac96c8c1f8be2",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/rf9bbjb1dcsfaen2soijrxs0v"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "MiniMax 官方汇总 H3 视频生成模型的社区生态进展，收录 11 项新增集成。贡献涵盖 8 步参考条件视频加音频生成、4 步蒸馏、稀疏注意力和参考 token 压缩，并在 GPU 服务器、TPU 和 Apple Silicon 等多种硬件上提供服务和工作流集成；官方认为开源模型在社区改进方法、适配运行时和构建工作流后会更实用。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e04ddcdc982bb9a",
+      "url": "https://x.com/thdxr/status/2114211145615626433",
+      "external_url": "https://x.com/thdxr/status/2114211145615626433",
+      "title": "OpenCode 披露 DeepSeek 推理机架运行数据",
+      "summary": "OpenCode 披露 DeepSeek 推理机架运行数据",
+      "content_html": "<p><strong>事实</strong></p><ul><li>OpenCode 披露 DeepSeek 推理机架运行数据</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://x.com/thdxr/status/2114211145615626433\">x.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· OpenCode 披露 DeepSeek 推理机架运行数据\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· x.com\nAI 日报",
+      "date_published": "2026-10-26T00:39:21+00:00",
+      "authors": [
+        {
+          "name": "x.com"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e04ddcdc982bb9a",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://x.com/thdxr/status/2114211145615626433"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "OpenCode 披露 DeepSeek 推理机架运行数据"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e6e5819ae8f7c8e",
+      "url": "https://aihot.news/items/hoy59yzbg5kl7komgxudp55jp",
+      "external_url": "https://aihot.news/items/hoy59yzbg5kl7komgxudp55jp",
+      "title": "南北阁发布 Nanbeige4.3-33B 开源模型",
+      "summary": "Nanbeige 发布 Nanbeige4.3-33B，这是约 30B 参数级别中新的 SOTA 开源模型。 > \"Nanbeige4.3-33B 在大多数基准测试上领先，在智能体编程和协作任务中均表现出强劲性能。\" > 该模型在大多数基准测试上优于 Qwen3.8-27B、Muse-Glimmer-30B 和 Gemma4-31B。 > 更小的模型 Nanbeige4.3-3B 也计划在未来推出。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Nanbeige 发布 Nanbeige4.3-33B，这是约 30B 参数级别中新的 SOTA 开源模型。\n&gt; &quot;Nanbeige4.3-33B 在大多数基准测试上领先，在智能体编程和协作任务中均表现出强劲性能。&quot;\n&gt; 该模型在大多数基准测试上优于 Qwen3.8-27B、Muse-Glimmer-30B 和 Gemma4-31B。\n&gt; 更小的模型 Nanbeige4.3-3B 也计划在未来推出。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/hoy59yzbg5kl7komgxudp55jp\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Nanbeige 发布 Nanbeige4.3-33B，这是约 30B 参数级别中新的 SOTA 开源模型。\n> \"Nanbeige4.3-33B 在大多数基准测试上领先，在智能体编程和协作任务中均表现出强劲性能。\"\n> 该模型在大多数基准测试上优于 Qwen3.8-27B、Muse-Glimmer-30B 和 Gemma4-31B。\n> 更小的模型 Nanbeige4.3-3B 也计划在未来推出。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T17:06:12+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e6e5819ae8f7c8e",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/hoy59yzbg5kl7komgxudp55jp"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "Nanbeige 发布 Nanbeige4.3-33B，这是约 30B 参数级别中新的 SOTA 开源模型。\n> \"Nanbeige4.3-33B 在大多数基准测试上领先，在智能体编程和协作任务中均表现出强劲性能。\"\n> 该模型在大多数基准测试上优于 Qwen3.8-27B、Muse-Glimmer-30B 和 Gemma4-31B。\n> 更小的模型 Nanbeige4.3-3B 也计划在未来推出。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e52b0918e66607c",
+      "url": "https://lynchlab.net/llm-skin-cancer",
+      "external_url": "https://lynchlab.net/llm-skin-cancer",
+      "title": "A 10-year-old CNN outperforms frontier LLMs for skin cancer diagnosis",
+      "summary": "A 10-year-old CNN outperforms frontier LLMs for skin cancer diagnosis",
+      "content_html": "<p><strong>事实</strong></p><ul><li>A 10-year-old CNN outperforms frontier LLMs for skin cancer diagnosis</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li><li>本条的来源标题为外文，未调用大模型，因此未翻译</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://lynchlab.net/llm-skin-cancer\">lynchlab.net</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· A 10-year-old CNN outperforms frontier LLMs for skin cancer diagnosis\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n· 本条的来源标题为外文，未调用大模型，因此未翻译\n可信度：单一来源\n来源\n· lynchlab.net\nAI 日报",
+      "date_published": "2026-10-25T17:15:38+00:00",
+      "authors": [
+        {
+          "name": "lynchlab.net"
+        }
+      ],
+      "tags": [
+        "api:hn-algolia-com-search"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e52b0918e66607c",
+        "source_ids": [
+          "api:hn-algolia-com-search"
+        ],
+        "all_urls": [
+          "https://lynchlab.net/llm-skin-cancer"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "A 10-year-old CNN outperforms frontier LLMs for skin cancer diagnosis"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录",
+          "本条的来源标题为外文，未调用大模型，因此未翻译"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e3b7d517e315637",
+      "url": "https://aihot.news/items/whb7pod3w780a1q54ay4srjx5",
+      "external_url": "https://aihot.news/items/whb7pod3w780a1q54ay4srjx5",
+      "title": "xAI 的 Grok Bot 工程负责人谈护城河",
+      "summary": "仅剩的护城河就是 sybau 💔",
+      "content_html": "<p><strong>事实</strong></p><ul><li>仅剩的护城河就是 sybau 💔</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/whb7pod3w780a1q54ay4srjx5\">aihot.news</a></li><li><a href=\"https://aihot.news/items/vo4p8w77zu1ao8p6sfuksl4bq\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 仅剩的护城河就是 sybau 💔\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-26T02:21:22+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e3b7d517e315637",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/whb7pod3w780a1q54ay4srjx5",
+          "https://aihot.news/items/vo4p8w77zu1ao8p6sfuksl4bq"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "仅剩的护城河就是 sybau 💔"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e5df5dd3b167637",
+      "url": "https://aihot.news/items/j58f7feu11g48spbf31twniws",
+      "external_url": "https://aihot.news/items/j58f7feu11g48spbf31twniws",
+      "title": "Grok Bot 周日反馈征集",
+      "summary": "周日 @bot 反馈帖。 Grok Bot 现在最让人烦的是什么？实话实说，越狠越好。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>周日 @bot 反馈帖。\nGrok Bot 现在最让人烦的是什么？实话实说，越狠越好。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/j58f7feu11g48spbf31twniws\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 周日 @bot 反馈帖。\nGrok Bot 现在最让人烦的是什么？实话实说，越狠越好。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T21:02:57+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e5df5dd3b167637",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/j58f7feu11g48spbf31twniws"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "周日 @bot 反馈帖。\nGrok Bot 现在最让人烦的是什么？实话实说，越狠越好。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-ee166562e56cd2d",
+      "url": "https://aihot.news/items/hn0kmj2e3ezwn34jbphleek65",
+      "external_url": "https://aihot.news/items/hn0kmj2e3ezwn34jbphleek65",
+      "title": "Dex Horthy 谈多 Skill 同会话是否污染上下文及取舍方法",
+      "summary": "HumanLayer 的 Dex Horthy 回应提问，认为同会话串联约 5 个 Skill 没问题，但 Skill 需要叠加生效或数量极多（如 200 个）时，应改用子智能体、新会话或把多个 Skill 内容预合并到一条用户消息。他建议按内容类型取舍：流程步骤宜拆开，纯信息可合并，重要行为规则需重复注入或用 hooks 等确定性手段保证遵循，并提醒不要把权重里已有的知识写进 Skill。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>HumanLayer 的 Dex Horthy 回应提问，认为同会话串联约 5 个 Skill 没问题，但 Skill 需要叠加生效或数量极多（如 200 个）时，应改用子智能体、新会话或把多个 Skill 内容预合并到一条用户消息。他建议按内容类型取舍：流程步骤宜拆开，纯信息可合并，重要行为规则需重复注入或用 hooks 等确定性手段保证遵循，并提醒不要把权重里已有的知识写进 Skill。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/hn0kmj2e3ezwn34jbphleek65\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· HumanLayer 的 Dex Horthy 回应提问，认为同会话串联约 5 个 Skill 没问题，但 Skill 需要叠加生效或数量极多（如 200 个）时，应改用子智能体、新会话或把多个 Skill 内容预合并到一条用户消息。他建议按内容类型取舍：流程步骤宜拆开，纯信息可合并，重要行为规则需重复注入或用 hooks 等确定性手段保证遵循，并提醒不要把权重里已有的知识写进 Skill。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T17:27:46+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ee166562e56cd2d",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/hn0kmj2e3ezwn34jbphleek65"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "HumanLayer 的 Dex Horthy 回应提问，认为同会话串联约 5 个 Skill 没问题，但 Skill 需要叠加生效或数量极多（如 200 个）时，应改用子智能体、新会话或把多个 Skill 内容预合并到一条用户消息。他建议按内容类型取舍：流程步骤宜拆开，纯信息可合并，重要行为规则需重复注入或用 hooks 等确定性手段保证遵循，并提醒不要把权重里已有的知识写进 Skill。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-ec6674069765e72",
+      "url": "https://aihot.news/items/z9gm915cjjqx88q0kdqt3ce34",
+      "external_url": "https://aihot.news/items/z9gm915cjjqx88q0kdqt3ce34",
+      "title": "Greg Brockman 评价 OpenAI 流体奇点论文技术构造超出人类直觉但可被理解",
+      "summary": "Greg Brockman 引用 PDE 专家 @scottnarmstrong 的分析称，这篇 OpenAI 论文在技术层面令人难以置信，或超出人类能想出的范围，但仍在人类理解力之内。分析认为论文用物理不稳定性让流动自行产生振荡，这种构造方式此前文献中没有先例，多组专家正在消化理解，预计解读很快会陆续出现。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Greg Brockman 引用 PDE 专家 @scottnarmstrong 的分析称，这篇 OpenAI 论文在技术层面令人难以置信，或超出人类能想出的范围，但仍在人类理解力之内。分析认为论文用物理不稳定性让流动自行产生振荡，这种构造方式此前文献中没有先例，多组专家正在消化理解，预计解读很快会陆续出现。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/z9gm915cjjqx88q0kdqt3ce34\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Greg Brockman 引用 PDE 专家 @scottnarmstrong 的分析称，这篇 OpenAI 论文在技术层面令人难以置信，或超出人类能想出的范围，但仍在人类理解力之内。分析认为论文用物理不稳定性让流动自行产生振荡，这种构造方式此前文献中没有先例，多组专家正在消化理解，预计解读很快会陆续出现。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T22:23:33+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ec6674069765e72",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/z9gm915cjjqx88q0kdqt3ce34"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "Greg Brockman 引用 PDE 专家 @scottnarmstrong 的分析称，这篇 OpenAI 论文在技术层面令人难以置信，或超出人类能想出的范围，但仍在人类理解力之内。分析认为论文用物理不稳定性让流动自行产生振荡，这种构造方式此前文献中没有先例，多组专家正在消化理解，预计解读很快会陆续出现。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-eeeab3f824933cc",
+      "url": "https://aihot.news/items/nnuq9q3ngqtp5c3wr6owvdd9a",
+      "external_url": "https://aihot.news/items/nnuq9q3ngqtp5c3wr6owvdd9a",
+      "title": "对话《罗拉快跑》导演汤姆·提克威：用 Seedance 2.5 拍《火山高校》",
+      "summary": "导演汤姆·提克威与 Bonn Park、制片人 Sarika Lakhani 用 Seedance 2.5 将舞台剧《Gymnasium》改编为一镜到底影片《火山高校》，片长约 10-12 分钟，实拍不到 10 位演员，AI 生成数百人校园场景与喷发火山。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>导演汤姆·提克威与 Bonn Park、制片人 Sarika Lakhani 用 Seedance 2.5 将舞台剧《Gymnasium》改编为一镜到底影片《火山高校》，片长约 10-12 分钟，实拍不到 10 位演员，AI 生成数百人校园场景与喷发火山。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/nnuq9q3ngqtp5c3wr6owvdd9a\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 导演汤姆·提克威与 Bonn Park、制片人 Sarika Lakhani 用 Seedance 2.5 将舞台剧《Gymnasium》改编为一镜到底影片《火山高校》，片长约 10-12 分钟，实拍不到 10 位演员，AI 生成数百人校园场景与喷发火山。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-26T03:41:43+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "eeeab3f824933cc",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/nnuq9q3ngqtp5c3wr6owvdd9a"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "导演汤姆·提克威与 Bonn Park、制片人 Sarika Lakhani 用 Seedance 2.5 将舞台剧《Gymnasium》改编为一镜到底影片《火山高校》，片长约 10-12 分钟，实拍不到 10 位演员，AI 生成数百人校园场景与喷发火山。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-eb243e14717f5d5",
+      "url": "https://aihot.news/items/e4m005qo52k9io7rsahinoqnh",
+      "external_url": "https://aihot.news/items/e4m005qo52k9io7rsahinoqnh",
+      "title": "Thorsten Ball 谈 Agent 工作法：横向打通构建、发版与生产观测",
+      "summary": "邵猛转发并归纳 Thorsten Ball（AmpCode）的 How I Work with Agents 一文，核心观点是只把 Agent 塞进编辑器那一格不会带来收益，要让 Agent 横向覆盖构建、发版、CI、生产日志、feature flag 和监控。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>邵猛转发并归纳 Thorsten Ball（AmpCode）的 How I Work with Agents 一文，核心观点是只把 Agent 塞进编辑器那一格不会带来收益，要让 Agent 横向覆盖构建、发版、CI、生产日志、feature flag 和监控。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/e4m005qo52k9io7rsahinoqnh\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 邵猛转发并归纳 Thorsten Ball（AmpCode）的 How I Work with Agents 一文，核心观点是只把 Agent 塞进编辑器那一格不会带来收益，要让 Agent 横向覆盖构建、发版、CI、生产日志、feature flag 和监控。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-26T02:09:16+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "eb243e14717f5d5",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/e4m005qo52k9io7rsahinoqnh"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "邵猛转发并归纳 Thorsten Ball（AmpCode）的 How I Work with Agents 一文，核心观点是只把 Agent 塞进编辑器那一格不会带来收益，要让 Agent 横向覆盖构建、发版、CI、生产日志、feature flag 和监控。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e7442fa347fc97b",
+      "url": "https://aihot.news/items/d4zgze7eorjwlamp16qe24lly",
+      "external_url": "https://aihot.news/items/d4zgze7eorjwlamp16qe24lly",
+      "title": "小米开源桌面 AI 硬件 HachimoDock 亮相，自制成本约 150 元",
+      "summary": "2026 观猹大会期间，小米技术委创新产品团队孵化开源 AI 硬件 HachimoDock 亮相，硬件自制成本约 150 元，集个性化桌宠、语音操控电脑端 Agent、智能家居联动与自定义组件创作于一体。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>2026 观猹大会期间，小米技术委创新产品团队孵化开源 AI 硬件 HachimoDock 亮相，硬件自制成本约 150 元，集个性化桌宠、语音操控电脑端 Agent、智能家居联动与自定义组件创作于一体。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/d4zgze7eorjwlamp16qe24lly\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 2026 观猹大会期间，小米技术委创新产品团队孵化开源 AI 硬件 HachimoDock 亮相，硬件自制成本约 150 元，集个性化桌宠、语音操控电脑端 Agent、智能家居联动与自定义组件创作于一体。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-26T04:53:01+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e7442fa347fc97b",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/d4zgze7eorjwlamp16qe24lly"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "2026 观猹大会期间，小米技术委创新产品团队孵化开源 AI 硬件 HachimoDock 亮相，硬件自制成本约 150 元，集个性化桌宠、语音操控电脑端 Agent、智能家居联动与自定义组件创作于一体。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e93a834b3ed1f41",
+      "url": "https://aihot.news/items/xgqqpi4xn8ksefujks5g4s05v",
+      "external_url": "https://aihot.news/items/xgqqpi4xn8ksefujks5g4s05v",
+      "title": "Opus 5.5 重做著作网站",
+      "summary": "用 Opus 5.5 重做了我这本书的网站。最初版本（用 Opus 4.8 做的）需要大量工作才能做出一个有辨识度的静态网站。现在 Opus 基本独自完成了这些。短短时间内，我们已经从千篇一律的 ClaudeDesign 走了很远。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>用 Opus 5.5 重做了我这本书的网站。最初版本（用 Opus 4.8 做的）需要大量工作才能做出一个有辨识度的静态网站。现在 Opus 基本独自完成了这些。短短时间内，我们已经从千篇一律的 ClaudeDesign 走了很远。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/xgqqpi4xn8ksefujks5g4s05v\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 用 Opus 5.5 重做了我这本书的网站。最初版本（用 Opus 4.8 做的）需要大量工作才能做出一个有辨识度的静态网站。现在 Opus 基本独自完成了这些。短短时间内，我们已经从千篇一律的 ClaudeDesign 走了很远。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T17:10:24+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e93a834b3ed1f41",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/xgqqpi4xn8ksefujks5g4s05v"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "用 Opus 5.5 重做了我这本书的网站。最初版本（用 Opus 4.8 做的）需要大量工作才能做出一个有辨识度的静态网站。现在 Opus 基本独自完成了这些。短短时间内，我们已经从千篇一律的 ClaudeDesign 走了很远。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-eedf8a161b57ff5",
+      "url": "https://aihot.news/items/rrt8fpfx9ba2h50fcju7b7g60",
+      "external_url": "https://aihot.news/items/rrt8fpfx9ba2h50fcju7b7g60",
+      "title": "让模型自建技能再删除以验证权重知识",
+      "summary": "另一种做法——让模型为某个任务制作一份详细的技能，只需极轻的引导。基本上就是你平时用来激活该技能的那条自然语言消息。 阅读所创建技能的内容（主要来自权重，以及轻量框架可能提供的上下文，比如关于你的代码库的信息）。 如果技能内容看起来正确，就删掉这个技能。它已经在权重里了。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>另一种做法——让模型为某个任务制作一份详细的技能，只需极轻的引导。基本上就是你平时用来激活该技能的那条自然语言消息。\n阅读所创建技能的内容（主要来自权重，以及轻量框架可能提供的上下文，比如关于你的代码库的信息）。\n如果技能内容看起来正确，就删掉这个技能。它已经在权重里了。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/rrt8fpfx9ba2h50fcju7b7g60\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 另一种做法——让模型为某个任务制作一份详细的技能，只需极轻的引导。基本上就是你平时用来激活该技能的那条自然语言消息。\n阅读所创建技能的内容（主要来自权重，以及轻量框架可能提供的上下文，比如关于你的代码库的信息）。\n如果技能内容看起来正确，就删掉这个技能。它已经在权重里了。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T17:40:25+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "eedf8a161b57ff5",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/rrt8fpfx9ba2h50fcju7b7g60"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "另一种做法——让模型为某个任务制作一份详细的技能，只需极轻的引导。基本上就是你平时用来激活该技能的那条自然语言消息。\n阅读所创建技能的内容（主要来自权重，以及轻量框架可能提供的上下文，比如关于你的代码库的信息）。\n如果技能内容看起来正确，就删掉这个技能。它已经在权重里了。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e9d59d823527d7e",
+      "url": "https://aihot.news/items/n34b7dqi4rv63ndqloozrih40",
+      "external_url": "https://aihot.news/items/n34b7dqi4rv63ndqloozrih40",
+      "title": "Yuchen Jin：多数 neolab 会失败，看好反共识者",
+      "summary": "Yuchen Jin 回应“是否在嘲讽 neolab”时表示，多数 neolab 会失败属正常，但他相信还会有更多 AI 突破。他质疑照搬 OpenAI 和 Anthropic 打法的公司，认为融资 10 亿美元、把 50% 花在 GPU 上并不能让公司值 100 亿美元。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Yuchen Jin 回应“是否在嘲讽 neolab”时表示，多数 neolab 会失败属正常，但他相信还会有更多 AI 突破。他质疑照搬 OpenAI 和 Anthropic 打法的公司，认为融资 10 亿美元、把 50% 花在 GPU 上并不能让公司值 100 亿美元。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/n34b7dqi4rv63ndqloozrih40\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Yuchen Jin 回应“是否在嘲讽 neolab”时表示，多数 neolab 会失败属正常，但他相信还会有更多 AI 突破。他质疑照搬 OpenAI 和 Anthropic 打法的公司，认为融资 10 亿美元、把 50% 花在 GPU 上并不能让公司值 100 亿美元。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T17:04:49+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e9d59d823527d7e",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/n34b7dqi4rv63ndqloozrih40"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "Yuchen Jin 回应“是否在嘲讽 neolab”时表示，多数 neolab 会失败属正常，但他相信还会有更多 AI 突破。他质疑照搬 OpenAI 和 Anthropic 打法的公司，认为融资 10 亿美元、把 50% 花在 GPU 上并不能让公司值 100 亿美元。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-efc10b069fa902d",
+      "url": "https://aihot.news/items/kko3fit1qvgtweprzbqu9gc73",
+      "external_url": "https://aihot.news/items/kko3fit1qvgtweprzbqu9gc73",
+      "title": "Sebastian Raschka 推出 11 小时「从零构建推理模型」视频课，用 PyTorch 实现评估、推理时扩展、RLVR 与蒸馏",
+      "summary": "Sebastian Raschka「Build a Reasoning Model (From Scratch)」系列的完整 11 小时视频课已上线，作者邵猛推荐其为系统学习推理模型构建原理的教程。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Sebastian Raschka「Build a Reasoning Model (From Scratch)」系列的完整 11 小时视频课已上线，作者邵猛推荐其为系统学习推理模型构建原理的教程。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/kko3fit1qvgtweprzbqu9gc73\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Sebastian Raschka「Build a Reasoning Model (From Scratch)」系列的完整 11 小时视频课已上线，作者邵猛推荐其为系统学习推理模型构建原理的教程。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-26T01:43:59+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "efc10b069fa902d",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/kko3fit1qvgtweprzbqu9gc73"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "Sebastian Raschka「Build a Reasoning Model (From Scratch)」系列的完整 11 小时视频课已上线，作者邵猛推荐其为系统学习推理模型构建原理的教程。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e864194ac353941",
+      "url": "https://aihot.news/items/r2zhofdjzanlz8dr5r93cs3iz",
+      "external_url": "https://aihot.news/items/r2zhofdjzanlz8dr5r93cs3iz",
+      "title": "Mastra 发布 Knowledge 自托管服务，为企业 Agent 提供公司级知识上下文",
+      "summary": "Mastra 发布 Knowledge，一个独立服务，用于存放公司级和团队级上下文，在 Agent 需要时提供给它，可连接 Slack、Monday 等系统并自动保持更新。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Mastra 发布 Knowledge，一个独立服务，用于存放公司级和团队级上下文，在 Agent 需要时提供给它，可连接 Slack、Monday 等系统并自动保持更新。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/r2zhofdjzanlz8dr5r93cs3iz\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Mastra 发布 Knowledge，一个独立服务，用于存放公司级和团队级上下文，在 Agent 需要时提供给它，可连接 Slack、Monday 等系统并自动保持更新。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-26T00:00:00+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e864194ac353941",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/r2zhofdjzanlz8dr5r93cs3iz"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "Mastra 发布 Knowledge，一个独立服务，用于存放公司级和团队级上下文，在 Agent 需要时提供给它，可连接 Slack、Monday 等系统并自动保持更新。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-ecd587773878c0b",
+      "url": "https://aihot.news/items/uf46yorgombd2n2wfcbokxnvz",
+      "external_url": "https://aihot.news/items/uf46yorgombd2n2wfcbokxnvz",
+      "title": "LangChain 总结公司级 Agent Harness 五件套共性底座",
+      "summary": "LangChain 基于自家 GTM Agent、OpenSWE 和 Content Studio 三套内部 Agent。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>LangChain 基于自家 GTM Agent、OpenSWE 和 Content Studio 三套内部 Agent。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/uf46yorgombd2n2wfcbokxnvz\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· LangChain 基于自家 GTM Agent、OpenSWE 和 Content Studio 三套内部 Agent。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-26T02:28:38+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ecd587773878c0b",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/uf46yorgombd2n2wfcbokxnvz"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "LangChain 基于自家 GTM Agent、OpenSWE 和 Content Studio 三套内部 Agent。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e10f559a1eb3f6d",
+      "url": "https://aihot.news/items/po1j55t13aeo5r0muxne1k017",
+      "external_url": "https://aihot.news/items/po1j55t13aeo5r0muxne1k017",
+      "title": "日本総研与PFN签署国産大模型 PLaMo 授权协议",
+      "summary": "日本総研与 PFN 签署国産大语言模型 PLaMo 的授权协议，自2026年10月起在本地部署环境全公司使用 PLaMo 3.0 Prime，并启动追加学习验证。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>日本総研与 PFN 签署国産大语言模型 PLaMo 的授权协议，自2026年10月起在本地部署环境全公司使用 PLaMo 3.0 Prime，并启动追加学习验证。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/po1j55t13aeo5r0muxne1k017\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 日本総研与 PFN 签署国産大语言模型 PLaMo 的授权协议，自2026年10月起在本地部署环境全公司使用 PLaMo 3.0 Prime，并启动追加学习验证。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T16:00:00+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e10f559a1eb3f6d",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/po1j55t13aeo5r0muxne1k017"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "日本総研与 PFN 签署国産大语言模型 PLaMo 的授权协议，自2026年10月起在本地部署环境全公司使用 PLaMo 3.0 Prime，并启动追加学习验证。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
         "rule_based": true
       }
     },
@@ -52,9 +1196,9 @@
       "url": "https://www.theinformation.com/articles/anthropics-big-reveal",
       "external_url": "https://www.theinformation.com/articles/anthropics-big-reveal",
       "title": "Anthropic’s Big Reveal",
-      "summary": "Anthropic’s Big Reveal",
-      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.theinformation.com/articles/anthropics-big-reveal\">theinformation.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· theinformation.com\nAI 日报",
+      "summary": "The tech industry equivalent of the Super Bowl may finally be upon us. Anthropic could make public the paperwork for its initial public offering as early as Monday. Details about Anthropic’s finances from either drafts of the IPO filing or recent investor meetings have been dribb…",
+      "content_html": "<p><strong>事实</strong></p><ul><li>The tech industry equivalent of the Super Bowl may finally be upon us. Anthropic could make public the paperwork for its initial public offering as early as Monday. Details about Anthropic’s finances from either drafts of the IPO filing or recent investor meetings have been dribbling out for weeks. </li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li><li>本条的来源标题为外文，未调用大模型，因此未翻译</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.theinformation.com/articles/anthropics-big-reveal\">theinformation.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· The tech industry equivalent of the Super Bowl may finally be upon us. Anthropic could make public the paperwork for its initial public offering as early as Monday. Details about Anthropic’s finances from either drafts of the IPO filing or recent investor meetings have been dribbling out for weeks.\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n· 本条的来源标题为外文，未调用大模型，因此未翻译\n可信度：单一来源\n来源\n· theinformation.com\nAI 日报",
       "date_published": "2026-10-25T22:01:16+00:00",
       "authors": [
         {
@@ -76,380 +1220,64 @@
         "independent_source_count": 1,
         "evidence_level": "single_source",
         "confidence": 1.0,
-        "facts": [],
+        "facts": [
+          "The tech industry equivalent of the Super Bowl may finally be upon us. Anthropic could make public the paperwork for its initial public offering as early as Monday. Details about Anthropic’s finances from either drafts of the IPO filing or recent investor meetings have been dribbling out for weeks. "
+        ],
         "inferences": [],
-        "uncertainties": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录",
+          "本条的来源标题为外文，未调用大模型，因此未翻译"
+        ],
         "rule_based": true
       }
     },
     {
-      "id": "2026-10-26-e417d1ecf67be97",
-      "url": "https://www.marktechpost.com/2026/10/25/nanbeige-releases-nanbeige4-3-33b-open-agentic-coding-model/",
-      "external_url": "https://www.marktechpost.com/2026/10/25/nanbeige-releases-nanbeige4-3-33b-open-agentic-coding-model/",
-      "title": "Nanbeige 发布 33B 开源 Agentic Coding 模型",
-      "summary": "Nanbeige LLM Lab 发布了 Nanbeige4.3-33B Nanbeige4.3-33B 是一个 33B 稠密模型 该模型采用 Apache 2.0 协议 该模型拥有 512K Context Window 该模型在 Terminal-Bench 2.1 上的报告得分为 80.9 Nanbeige4.3-3B 计划在未来推出",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Nanbeige LLM Lab 发布了 Nanbeige4.3-33B</li><li>Nanbeige4.3-33B 是一个 33B 稠密模型</li><li>该模型采用 Apache 2.0 协议</li><li>该模型拥有 512K Context Window</li><li>该模型在 Terminal-Bench 2.1 上的报告得分为 80.9</li><li>Nanbeige4.3-3B 计划在未来推出</li></ul><p><strong>推断</strong></p><ul><li>Nanbeige4.3-33B 在智能体编程和协作任务中表现强劲，因为其性能优于 Qwen3.8-27B、Muse-Glimmer-30B 和 Gemma4-31B</li><li>Nanbeige4.3-33B 是约 30B 参数级别中新的 SOTA 开源模型，因为它在大多数 Benchmark 上领先</li></ul><p><strong>不确定</strong></p><ul><li>Nanbeige4.3-33B 是否确实在所有 Benchmark 上都领先于 Qwen3.8-27B、Muse-Glimmer-30B 和 Gemma4-31B</li><li>Nanbeige4.3-3B 具体何时推出</li><li>Nanbeige4.3-33B 是否会“教”Nanbeige4.3-3B（材料1中的表述较为模糊，可能指知识蒸馏或训练数据共享，但未明确机制）</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.marktechpost.com/2026/10/25/nanbeige-releases-nanbeige4-3-33b-open-agentic-coding-model/\">marktechpost.com</a></li><li><a href=\"https://aihot.news/items/hoy59yzbg5kl7komgxudp55jp\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· Nanbeige LLM Lab 发布了 Nanbeige4.3-33B\n· Nanbeige4.3-33B 是一个 33B 稠密模型\n· 该模型采用 Apache 2.0 协议\n· 该模型拥有 512K Context Window\n· 该模型在 Terminal-Bench 2.1 上的报告得分为 80.9\n· Nanbeige4.3-3B 计划在未来推出\n推断\n· Nanbeige4.3-33B 在智能体编程和协作任务中表现强劲，因为其性能优于 Qwen3.8-27B、Muse-Glimmer-30B 和 Gemma4-31B\n· Nanbeige4.3-33B 是约 30B 参数级别中新的 SOTA 开源模型，因为它在大多数 Benchmark 上领先\n不确定\n· Nanbeige4.3-33B 是否确实在所有 Benchmark 上都领先于 Qwen3.8-27B、Muse-Glimmer-30B 和 Gemma4-31B\n· Nanbeige4.3-3B 具体何时推出\n· Nanbeige4.3-33B 是否会“教”Nanbeige4.3-3B（材料1中的表述较为模糊，可能指知识蒸馏或训练数据共享，但未明确机制）\n可信度：多源交叉验证（2 个独立来源）\n来源\n· marktechpost.com\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-25T21:15:21+00:00",
+      "id": "2026-10-26-e77c65bab149ba2",
+      "url": "https://www.aibase.com/zh/news/31849",
+      "external_url": "https://www.aibase.com/zh/news/31849",
+      "title": "AI巨头遭猫王版权方索赔 4100 万美元：当传奇音乐遇上大模型侵权风暴",
+      "summary": "近日，猫王埃尔维斯·普雷斯利音乐曲库持有方“正宗品牌集团”起诉人工智能企业Anthropic，指控其未经许可擅自使用猫王274首歌曲训练AI模型，索赔4100万美元。此案打破以往多由唱片工业协会或大型唱片公司发起的维权惯例，成为首批由知名艺人遗产管理方直接针对AI开发公司发起的重大诉讼之一。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>近日，猫王埃尔维斯·普雷斯利音乐曲库持有方“正宗品牌集团”起诉人工智能企业Anthropic，指控其未经许可擅自使用猫王274首歌曲训练AI模型，索赔4100万美元。此案打破以往多由唱片工业协会或大型唱片公司发起的维权惯例，成为首批由知名艺人遗产管理方直接针对AI开发公司发起的重大诉讼之一。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.aibase.com/zh/news/31849\">aibase.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 近日，猫王埃尔维斯·普雷斯利音乐曲库持有方“正宗品牌集团”起诉人工智能企业Anthropic，指控其未经许可擅自使用猫王274首歌曲训练AI模型，索赔4100万美元。此案打破以往多由唱片工业协会或大型唱片公司发起的维权惯例，成为首批由知名艺人遗产管理方直接针对AI开发公司发起的重大诉讼之一。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aibase.com\nAI 日报",
+      "date_published": "2026-10-26T09:00:27+00:00",
       "authors": [
         {
-          "name": "marktechpost.com"
-        },
-        {
-          "name": "aihot.news"
+          "name": "aibase.com"
         }
       ],
       "tags": [
-        "rss:aihot-news-all",
-        "rss:marktechpost"
+        "api:aibase-ai-news"
       ],
       "language": "zh-CN",
       "_ai_daily": {
-        "event_id": "e417d1ecf67be97",
+        "event_id": "e77c65bab149ba2",
         "source_ids": [
-          "rss:marktechpost",
-          "rss:aihot-news-all"
+          "api:aibase-ai-news"
         ],
         "all_urls": [
-          "https://www.marktechpost.com/2026/10/25/nanbeige-releases-nanbeige4-3-33b-open-agentic-coding-model/",
-          "https://aihot.news/items/hoy59yzbg5kl7komgxudp55jp"
-        ],
-        "independent_source_count": 2,
-        "evidence_level": "multi_source",
-        "confidence": 1.0,
-        "facts": [
-          "Nanbeige LLM Lab 发布了 Nanbeige4.3-33B",
-          "Nanbeige4.3-33B 是一个 33B 稠密模型",
-          "该模型采用 Apache 2.0 协议",
-          "该模型拥有 512K Context Window",
-          "该模型在 Terminal-Bench 2.1 上的报告得分为 80.9",
-          "Nanbeige4.3-3B 计划在未来推出"
-        ],
-        "inferences": [
-          "Nanbeige4.3-33B 在智能体编程和协作任务中表现强劲，因为其性能优于 Qwen3.8-27B、Muse-Glimmer-30B 和 Gemma4-31B",
-          "Nanbeige4.3-33B 是约 30B 参数级别中新的 SOTA 开源模型，因为它在大多数 Benchmark 上领先"
-        ],
-        "uncertainties": [
-          "Nanbeige4.3-33B 是否确实在所有 Benchmark 上都领先于 Qwen3.8-27B、Muse-Glimmer-30B 和 Gemma4-31B",
-          "Nanbeige4.3-3B 具体何时推出",
-          "Nanbeige4.3-33B 是否会“教”Nanbeige4.3-3B（材料1中的表述较为模糊，可能指知识蒸馏或训练数据共享，但未明确机制）"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-26-e0fb26bd02816f2",
-      "url": "https://aihot.news/items/hn0kmj2e3ezwn34jbphleek65",
-      "external_url": "https://aihot.news/items/hn0kmj2e3ezwn34jbphleek65",
-      "title": "Dex Horthy 谈多 Skill 同会话上下文污染及取舍",
-      "summary": "HumanLayer 的 Dex Horthy 认为同会话串联约 5 个 Skill 没问题 当 Skill 需要叠加生效或数量极多如 200 个时，他建议改用子智能体、新会话或把多个 Skill 内容预合并到一条用户消息 他建议流程步骤宜拆开，纯信息可合并 他建议重要行为规则需重复注入或用 hooks 等确定性手段保证遵循 他提醒不要把权重里已有的知识写进 Skill",
-      "content_html": "<p><strong>事实</strong></p><ul><li>HumanLayer 的 Dex Horthy 认为同会话串联约 5 个 Skill 没问题</li><li>当 Skill 需要叠加生效或数量极多如 200 个时，他建议改用子智能体、新会话或把多个 Skill 内容预合并到一条用户消息</li><li>他建议流程步骤宜拆开，纯信息可合并</li><li>他建议重要行为规则需重复注入或用 hooks 等确定性手段保证遵循</li><li>他提醒不要把权重里已有的知识写进 Skill</li></ul><p><strong>推断</strong></p><ul><li>Dex Horthy 的观点表明，在 Skill 数量增多时，上下文管理策略需要从简单串联转向更复杂的架构如子智能体或预合并</li><li>对于不同类型的 Skill 内容（流程、信息、规则），应采取不同的组织策略以优化上下文效率</li></ul><p><strong>不确定</strong></p><ul><li>「权重里已有的知识」具体指模型预训练时的哪些知识范围未明确</li><li>hooks 的具体实现方式或工具未在材料中详述</li><li>「约 5 个」Skill 的具体临界值是否随模型 Context Window 大小变化未说明</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/hn0kmj2e3ezwn34jbphleek65\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· HumanLayer 的 Dex Horthy 认为同会话串联约 5 个 Skill 没问题\n· 当 Skill 需要叠加生效或数量极多如 200 个时，他建议改用子智能体、新会话或把多个 Skill 内容预合并到一条用户消息\n· 他建议流程步骤宜拆开，纯信息可合并\n· 他建议重要行为规则需重复注入或用 hooks 等确定性手段保证遵循\n· 他提醒不要把权重里已有的知识写进 Skill\n推断\n· Dex Horthy 的观点表明，在 Skill 数量增多时，上下文管理策略需要从简单串联转向更复杂的架构如子智能体或预合并\n· 对于不同类型的 Skill 内容（流程、信息、规则），应采取不同的组织策略以优化上下文效率\n不确定\n· 「权重里已有的知识」具体指模型预训练时的哪些知识范围未明确\n· hooks 的具体实现方式或工具未在材料中详述\n· 「约 5 个」Skill 的具体临界值是否随模型 Context Window 大小变化未说明\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-25T17:27:46+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "e0fb26bd02816f2",
-        "source_ids": [
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/hn0kmj2e3ezwn34jbphleek65"
+          "https://www.aibase.com/zh/news/31849"
         ],
         "independent_source_count": 1,
         "evidence_level": "single_source",
         "confidence": 1.0,
         "facts": [
-          "HumanLayer 的 Dex Horthy 认为同会话串联约 5 个 Skill 没问题",
-          "当 Skill 需要叠加生效或数量极多如 200 个时，他建议改用子智能体、新会话或把多个 Skill 内容预合并到一条用户消息",
-          "他建议流程步骤宜拆开，纯信息可合并",
-          "他建议重要行为规则需重复注入或用 hooks 等确定性手段保证遵循",
-          "他提醒不要把权重里已有的知识写进 Skill"
+          "近日，猫王埃尔维斯·普雷斯利音乐曲库持有方“正宗品牌集团”起诉人工智能企业Anthropic，指控其未经许可擅自使用猫王274首歌曲训练AI模型，索赔4100万美元。此案打破以往多由唱片工业协会或大型唱片公司发起的维权惯例，成为首批由知名艺人遗产管理方直接针对AI开发公司发起的重大诉讼之一。"
         ],
-        "inferences": [
-          "Dex Horthy 的观点表明，在 Skill 数量增多时，上下文管理策略需要从简单串联转向更复杂的架构如子智能体或预合并",
-          "对于不同类型的 Skill 内容（流程、信息、规则），应采取不同的组织策略以优化上下文效率"
-        ],
-        "uncertainties": [
-          "「权重里已有的知识」具体指模型预训练时的哪些知识范围未明确",
-          "hooks 的具体实现方式或工具未在材料中详述",
-          "「约 5 个」Skill 的具体临界值是否随模型 Context Window 大小变化未说明"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-26-e032706836fa28c",
-      "url": "https://aihot.news/items/rrt8fpfx9ba2h50fcju7b7g60",
-      "external_url": "https://aihot.news/items/rrt8fpfx9ba2h50fcju7b7g60",
-      "title": "模型自建并删除技能以验证权重知识",
-      "summary": "这是一种让模型为特定任务创建详细技能的方法，仅需要极轻的自然语言引导。 模型创建的技能内容主要来源于模型权重以及轻量框架提供的上下文（如代码库信息）。 如果确认创建的技能内容正确，则删除该技能。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>这是一种让模型为特定任务创建详细技能的方法，仅需要极轻的自然语言引导。</li><li>模型创建的技能内容主要来源于模型权重以及轻量框架提供的上下文（如代码库信息）。</li><li>如果确认创建的技能内容正确，则删除该技能。</li></ul><p><strong>推断</strong></p><ul><li>删除技能的操作隐含的前提是该技能所需的知识已经存在于模型权重中。</li><li>通过创建后删除的过程，可以作为一种机制来检验和确认模型权重中是否包含了特定任务的知识。</li></ul><p><strong>不确定</strong></p><ul><li>材料未明确“轻量框架”具体指代何种架构或工具。</li><li>材料未说明如何客观判定“技能内容看起来正确”的具体标准或评估方法。</li><li>材料未提及在权重中不存在该技能知识时，模型创建内容会呈现何种状态。</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/rrt8fpfx9ba2h50fcju7b7g60\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· 这是一种让模型为特定任务创建详细技能的方法，仅需要极轻的自然语言引导。\n· 模型创建的技能内容主要来源于模型权重以及轻量框架提供的上下文（如代码库信息）。\n· 如果确认创建的技能内容正确，则删除该技能。\n推断\n· 删除技能的操作隐含的前提是该技能所需的知识已经存在于模型权重中。\n· 通过创建后删除的过程，可以作为一种机制来检验和确认模型权重中是否包含了特定任务的知识。\n不确定\n· 材料未明确“轻量框架”具体指代何种架构或工具。\n· 材料未说明如何客观判定“技能内容看起来正确”的具体标准或评估方法。\n· 材料未提及在权重中不存在该技能知识时，模型创建内容会呈现何种状态。\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-25T17:40:25+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "e032706836fa28c",
-        "source_ids": [
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/rrt8fpfx9ba2h50fcju7b7g60"
-        ],
-        "independent_source_count": 1,
-        "evidence_level": "single_source",
-        "confidence": 1.0,
-        "facts": [
-          "这是一种让模型为特定任务创建详细技能的方法，仅需要极轻的自然语言引导。",
-          "模型创建的技能内容主要来源于模型权重以及轻量框架提供的上下文（如代码库信息）。",
-          "如果确认创建的技能内容正确，则删除该技能。"
-        ],
-        "inferences": [
-          "删除技能的操作隐含的前提是该技能所需的知识已经存在于模型权重中。",
-          "通过创建后删除的过程，可以作为一种机制来检验和确认模型权重中是否包含了特定任务的知识。"
-        ],
-        "uncertainties": [
-          "材料未明确“轻量框架”具体指代何种架构或工具。",
-          "材料未说明如何客观判定“技能内容看起来正确”的具体标准或评估方法。",
-          "材料未提及在权重中不存在该技能知识时，模型创建内容会呈现何种状态。"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-26-e71f17805f23b94",
-      "url": "https://aihot.news/items/pb5suea09x990mhtlzl0h6jsu",
-      "external_url": "https://aihot.news/items/pb5suea09x990mhtlzl0h6jsu",
-      "title": "Apollo 经济学家称 AI 对非科技行业零财务回报",
-      "summary": "Apollo Global Management 首席经济学家 Torsten Slok 发文称 AI 未提升科技巨头以外大公司的利润。 Slok 分析剔除了 Alphabet、Amazon、Apple、Meta、Microsoft、Nvidia 和 Tesla 后的 S&P 493。 数据显示该组别的利润率和人均营收持平。 材料指出没有证据表明 AI 提升了生产率。 Slok 表示 AI 对美国非科技企业没有产生财务回报。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Apollo Global Management 首席经济学家 Torsten Slok 发文称 AI 未提升科技巨头以外大公司的利润。</li><li>Slok 分析剔除了 Alphabet、Amazon、Apple、Meta、Microsoft、Nvidia 和 Tesla 后的 S&amp;P 493。</li><li>数据显示该组别的利润率和人均营收持平。</li><li>材料指出没有证据表明 AI 提升了生产率。</li><li>Slok 表示 AI 对美国非科技企业没有产生财务回报。</li></ul><p><strong>推断</strong></p><ul><li>基于利润率与人均营收持平的数据，推断 AI 在除科技巨头外的公司中尚未转化为可量化的财务优势。</li></ul><p><strong>不确定</strong></p><ul><li>材料中 Torsten Slok 的文章具体发布日期未明确。</li><li>S&amp;P 493 中具体哪些公司表现异常或未受 AI 影响未在材料中列出。</li><li>“零财务回报”在财务指标上的具体定义范围（如是否包含股价波动或资本支出回报）未在材料中详细解释。</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/pb5suea09x990mhtlzl0h6jsu\">aihot.news</a></li><li><a href=\"https://techcrunch.com/2026/10/25/ai-delivers-zero-financial-payoff-to-most-companies-according-to-apollo-economist/\">techcrunch.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· Apollo Global Management 首席经济学家 Torsten Slok 发文称 AI 未提升科技巨头以外大公司的利润。\n· Slok 分析剔除了 Alphabet、Amazon、Apple、Meta、Microsoft、Nvidia 和 Tesla 后的 S&P 493。\n· 数据显示该组别的利润率和人均营收持平。\n· 材料指出没有证据表明 AI 提升了生产率。\n· Slok 表示 AI 对美国非科技企业没有产生财务回报。\n推断\n· 基于利润率与人均营收持平的数据，推断 AI 在除科技巨头外的公司中尚未转化为可量化的财务优势。\n不确定\n· 材料中 Torsten Slok 的文章具体发布日期未明确。\n· S&P 493 中具体哪些公司表现异常或未受 AI 影响未在材料中列出。\n· “零财务回报”在财务指标上的具体定义范围（如是否包含股价波动或资本支出回报）未在材料中详细解释。\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\n· techcrunch.com\nAI 日报",
-      "date_published": "2026-10-25T16:57:32+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        },
-        {
-          "name": "techcrunch.com"
-        }
-      ],
-      "tags": [
-        "rss:aihot-demo-techcrunch-ai",
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "e71f17805f23b94",
-        "source_ids": [
-          "rss:aihot-news-all",
-          "rss:aihot-demo-techcrunch-ai"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/pb5suea09x990mhtlzl0h6jsu",
-          "https://techcrunch.com/2026/10/25/ai-delivers-zero-financial-payoff-to-most-companies-according-to-apollo-economist/"
-        ],
-        "independent_source_count": 2,
-        "evidence_level": "multi_source",
-        "confidence": 1.0,
-        "facts": [
-          "Apollo Global Management 首席经济学家 Torsten Slok 发文称 AI 未提升科技巨头以外大公司的利润。",
-          "Slok 分析剔除了 Alphabet、Amazon、Apple、Meta、Microsoft、Nvidia 和 Tesla 后的 S&P 493。",
-          "数据显示该组别的利润率和人均营收持平。",
-          "材料指出没有证据表明 AI 提升了生产率。",
-          "Slok 表示 AI 对美国非科技企业没有产生财务回报。"
-        ],
-        "inferences": [
-          "基于利润率与人均营收持平的数据，推断 AI 在除科技巨头外的公司中尚未转化为可量化的财务优势。"
-        ],
-        "uncertainties": [
-          "材料中 Torsten Slok 的文章具体发布日期未明确。",
-          "S&P 493 中具体哪些公司表现异常或未受 AI 影响未在材料中列出。",
-          "“零财务回报”在财务指标上的具体定义范围（如是否包含股价波动或资本支出回报）未在材料中详细解释。"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-26-e6c8c735540ca6f",
-      "url": "https://aihot.news/items/m66e28rmzmebb9pdznwkgs3u2",
-      "external_url": "https://aihot.news/items/m66e28rmzmebb9pdznwkgs3u2",
-      "title": "Gartner 预测超 80% neocloud 厂商到 2030 年将无法独立运营",
-      "summary": "Gartner 预测超 80% neocloud 厂商到 2030 年将无法独立运营",
-      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/m66e28rmzmebb9pdznwkgs3u2\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-25T20:54:44+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "e6c8c735540ca6f",
-        "source_ids": [
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/m66e28rmzmebb9pdznwkgs3u2"
-        ],
-        "independent_source_count": 1,
-        "evidence_level": "single_source",
-        "confidence": 1.0,
-        "facts": [],
         "inferences": [],
-        "uncertainties": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
         "rule_based": true
       }
     },
     {
-      "id": "2026-10-26-e4e355906937de5",
-      "url": "https://techcrunch.com/2026/10/25/grok-releases-the-first-seven-minutes-of-its-ai-generated-odyssey/",
-      "external_url": "https://techcrunch.com/2026/10/25/grok-releases-the-first-seven-minutes-of-its-ai-generated-odyssey/",
-      "title": "Grok releases the first seven minutes of its AI-generated ‘Odyssey’",
-      "summary": "Grok releases the first seven minutes of its AI-generated ‘Odyssey’",
-      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://techcrunch.com/2026/10/25/grok-releases-the-first-seven-minutes-of-its-ai-generated-odyssey/\">techcrunch.com</a></li><li><a href=\"https://aihot.news/items/co7ky6ybtmmqsaslboz1kl0xa\">aihot.news</a></li><li><a href=\"https://aihot.news/items/udo9r9ozheki30d5r5tn3oaab\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：多源交叉验证（2 个独立来源）\n来源\n· techcrunch.com\n· aihot.news\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-25T21:31:16+00:00",
-      "authors": [
-        {
-          "name": "techcrunch.com"
-        },
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-demo-techcrunch-ai",
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "e4e355906937de5",
-        "source_ids": [
-          "rss:aihot-demo-techcrunch-ai",
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://techcrunch.com/2026/10/25/grok-releases-the-first-seven-minutes-of-its-ai-generated-odyssey/",
-          "https://aihot.news/items/co7ky6ybtmmqsaslboz1kl0xa",
-          "https://aihot.news/items/udo9r9ozheki30d5r5tn3oaab"
-        ],
-        "independent_source_count": 2,
-        "evidence_level": "multi_source",
-        "confidence": 1.0,
-        "facts": [],
-        "inferences": [],
-        "uncertainties": [],
-        "rule_based": true
-      }
-    },
-    {
-      "id": "2026-10-26-e4a8d8bd4d455aa",
-      "url": "https://aihot.news/items/rxtt8pr7jifok7ab985s1hmkh",
-      "external_url": "https://aihot.news/items/rxtt8pr7jifok7ab985s1hmkh",
-      "title": "Kimi 就 K3.1 Pro 订阅限流与配额消耗致歉并补偿",
-      "summary": "Kimi 就 K3.1 Pro 订阅限流与配额消耗致歉并补偿",
-      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/rxtt8pr7jifok7ab985s1hmkh\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-25T20:14:44+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "e4a8d8bd4d455aa",
-        "source_ids": [
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/rxtt8pr7jifok7ab985s1hmkh"
-        ],
-        "independent_source_count": 1,
-        "evidence_level": "single_source",
-        "confidence": 1.0,
-        "facts": [],
-        "inferences": [],
-        "uncertainties": [],
-        "rule_based": true
-      }
-    },
-    {
-      "id": "2026-10-26-e5697e58afeb4e4",
-      "url": "https://aihot.news/items/xgqqpi4xn8ksefujks5g4s05v",
-      "external_url": "https://aihot.news/items/xgqqpi4xn8ksefujks5g4s05v",
-      "title": "用户用 Opus 5.5 重做书籍网站",
-      "summary": "作者使用 Opus 5.5 重做了其书籍的网站 该网站的最初版本是由 Opus 4.8 制作的 最初版本需要大量工作才能做出有辨识度的静态网站 Opus 5.5 基本独自完成了网站重做工作",
-      "content_html": "<p><strong>事实</strong></p><ul><li>作者使用 Opus 5.5 重做了其书籍的网站</li><li>该网站的最初版本是由 Opus 4.8 制作的</li><li>最初版本需要大量工作才能做出有辨识度的静态网站</li><li>Opus 5.5 基本独自完成了网站重做工作</li></ul><p><strong>推断</strong></p><ul><li>从最初版本到 Opus 5.5 版本，网站开发所需的额外人工投入显著减少</li><li>Opus 在生成具有辨识度的静态网站方面能力较 Opus 4.8 有所提升</li></ul><p><strong>不确定</strong></p><ul><li>具体是哪本书的网站未明确说明</li><li>“ClaudeDesign”具体指代的设计风格或组件库未在材料中详细定义</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/xgqqpi4xn8ksefujks5g4s05v\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· 作者使用 Opus 5.5 重做了其书籍的网站\n· 该网站的最初版本是由 Opus 4.8 制作的\n· 最初版本需要大量工作才能做出有辨识度的静态网站\n· Opus 5.5 基本独自完成了网站重做工作\n推断\n· 从最初版本到 Opus 5.5 版本，网站开发所需的额外人工投入显著减少\n· Opus 在生成具有辨识度的静态网站方面能力较 Opus 4.8 有所提升\n不确定\n· 具体是哪本书的网站未明确说明\n· “ClaudeDesign”具体指代的设计风格或组件库未在材料中详细定义\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-25T17:10:24+00:00",
-      "authors": [
-        {
-          "name": "aihot.news"
-        }
-      ],
-      "tags": [
-        "rss:aihot-news-all"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "e5697e58afeb4e4",
-        "source_ids": [
-          "rss:aihot-news-all"
-        ],
-        "all_urls": [
-          "https://aihot.news/items/xgqqpi4xn8ksefujks5g4s05v"
-        ],
-        "independent_source_count": 1,
-        "evidence_level": "single_source",
-        "confidence": 1.0,
-        "facts": [
-          "作者使用 Opus 5.5 重做了其书籍的网站",
-          "该网站的最初版本是由 Opus 4.8 制作的",
-          "最初版本需要大量工作才能做出有辨识度的静态网站",
-          "Opus 5.5 基本独自完成了网站重做工作"
-        ],
-        "inferences": [
-          "从最初版本到 Opus 5.5 版本，网站开发所需的额外人工投入显著减少",
-          "Opus 在生成具有辨识度的静态网站方面能力较 Opus 4.8 有所提升"
-        ],
-        "uncertainties": [
-          "具体是哪本书的网站未明确说明",
-          "“ClaudeDesign”具体指代的设计风格或组件库未在材料中详细定义"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-26-e23d65eb66d7af1",
+      "id": "2026-10-26-e5939d4ef2c5ba8",
       "url": "https://aihot.news/items/btiwx1gbvz0gjjfomrw0361mw",
       "external_url": "https://aihot.news/items/btiwx1gbvz0gjjfomrw0361mw",
       "title": "Muse 逐步上线实时语音通话功能",
-      "summary": "Muse 逐步上线实时语音通话功能",
-      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/btiwx1gbvz0gjjfomrw0361mw\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "summary": "META 🔥：从昨天开始，Muse 正在逐步上线语音通话功能。 该功能支持与 Muse 智能体进行实时语音对话。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>META 🔥：从昨天开始，Muse 正在逐步上线语音通话功能。\n该功能支持与 Muse 智能体进行实时语音对话。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/btiwx1gbvz0gjjfomrw0361mw\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· META 🔥：从昨天开始，Muse 正在逐步上线语音通话功能。\n该功能支持与 Muse 智能体进行实时语音对话。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
       "date_published": "2026-10-25T16:10:56+00:00",
       "authors": [
         {
@@ -457,239 +1285,931 @@
         }
       ],
       "tags": [
+        "rss:aihot-news",
         "rss:aihot-news-all"
       ],
       "language": "zh-CN",
       "_ai_daily": {
-        "event_id": "e23d65eb66d7af1",
+        "event_id": "e5939d4ef2c5ba8",
         "source_ids": [
+          "rss:aihot-news",
           "rss:aihot-news-all"
         ],
         "all_urls": [
           "https://aihot.news/items/btiwx1gbvz0gjjfomrw0361mw"
         ],
-        "independent_source_count": 1,
-        "evidence_level": "single_source",
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
         "confidence": 1.0,
-        "facts": [],
+        "facts": [
+          "META 🔥：从昨天开始，Muse 正在逐步上线语音通话功能。\n该功能支持与 Muse 智能体进行实时语音对话。"
+        ],
         "inferences": [],
-        "uncertainties": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
         "rule_based": true
       }
     },
     {
-      "id": "2026-10-26-e5d845ed21f30aa",
-      "url": "https://aihot.news/items/n34b7dqi4rv63ndqloozrih40",
-      "external_url": "https://aihot.news/items/n34b7dqi4rv63ndqloozrih40",
-      "title": "Yuchen Jin 认为多数 neolab 将失败",
-      "summary": "Yuchen Jin 回应关于嘲讽 neolab 的质疑 Yuchen Jin 表示多数 neolab 失败是正常的现象 Yuchen Jin 认为融资 10 亿美元且将 50% 用于 GPU 的公司难以估值 100 亿美元",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Yuchen Jin 回应关于嘲讽 neolab 的质疑</li><li>Yuchen Jin 表示多数 neolab 失败是正常的现象</li><li>Yuchen Jin 认为融资 10 亿美元且将 50% 用于 GPU 的公司难以估值 100 亿美元</li></ul><p><strong>推断</strong></p><ul><li>Yuchen Jin 认为当前流行的 neolab 复制模式存在资金使用效率问题</li></ul><p><strong>不确定</strong></p><ul><li>材料中未具体说明哪些公司或团队属于‘反共识者’</li><li>材料中未明确 Yuchen Jin 个人投资或支持的具体 neolab 对象</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/n34b7dqi4rv63ndqloozrih40\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· Yuchen Jin 回应关于嘲讽 neolab 的质疑\n· Yuchen Jin 表示多数 neolab 失败是正常的现象\n· Yuchen Jin 认为融资 10 亿美元且将 50% 用于 GPU 的公司难以估值 100 亿美元\n推断\n· Yuchen Jin 认为当前流行的 neolab 复制模式存在资金使用效率问题\n不确定\n· 材料中未具体说明哪些公司或团队属于‘反共识者’\n· 材料中未明确 Yuchen Jin 个人投资或支持的具体 neolab 对象\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-25T17:04:49+00:00",
+      "id": "2026-10-26-e40769ba53c1cae",
+      "url": "https://aihot.news/items/dow5qc70brnie4prbc88rsg8x",
+      "external_url": "https://aihot.news/items/dow5qc70brnie4prbc88rsg8x",
+      "title": "xAI 工程师打破个人纪录",
+      "summary": "看来我打破了自己的纪录",
+      "content_html": "<p><strong>事实</strong></p><ul><li>看来我打破了自己的纪录</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/dow5qc70brnie4prbc88rsg8x\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 看来我打破了自己的纪录\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-26T01:53:17+00:00",
       "authors": [
         {
           "name": "aihot.news"
         }
       ],
       "tags": [
+        "rss:aihot-news",
         "rss:aihot-news-all"
       ],
       "language": "zh-CN",
       "_ai_daily": {
-        "event_id": "e5d845ed21f30aa",
+        "event_id": "e40769ba53c1cae",
         "source_ids": [
+          "rss:aihot-news",
           "rss:aihot-news-all"
         ],
         "all_urls": [
-          "https://aihot.news/items/n34b7dqi4rv63ndqloozrih40"
+          "https://aihot.news/items/dow5qc70brnie4prbc88rsg8x"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "看来我打破了自己的纪录"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-ec82e65849311fc",
+      "url": "https://www.aibase.com/zh/news/31859",
+      "external_url": "https://www.aibase.com/zh/news/31859",
+      "title": "巴掌大小却能跑千亿大模型：联想AI主机P7 预览版正式亮相，搭载国产双芯",
+      "summary": "10月25日，联想AI主机P7预览版亮相。该机主打本地化运行与高效能，重仅300克，巴掌大小，可7×24小时桌面不间断运行。硬件搭载国产双芯：一颗负责AI算力推理，一颗负责系统调度与任务执行，双芯协同释放整体算力。性能上最高可本地运行122B参数大模型，整体定位为紧凑型本地AI计算设备。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>10月25日，联想AI主机P7预览版亮相。该机主打本地化运行与高效能，重仅300克，巴掌大小，可7×24小时桌面不间断运行。硬件搭载国产双芯：一颗负责AI算力推理，一颗负责系统调度与任务执行，双芯协同释放整体算力。性能上最高可本地运行122B参数大模型，整体定位为紧凑型本地AI计算设备。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.aibase.com/zh/news/31859\">aibase.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 10月25日，联想AI主机P7预览版亮相。该机主打本地化运行与高效能，重仅300克，巴掌大小，可7×24小时桌面不间断运行。硬件搭载国产双芯：一颗负责AI算力推理，一颗负责系统调度与任务执行，双芯协同释放整体算力。性能上最高可本地运行122B参数大模型，整体定位为紧凑型本地AI计算设备。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aibase.com\nAI 日报",
+      "date_published": "2026-10-26T10:51:58+00:00",
+      "authors": [
+        {
+          "name": "aibase.com"
+        }
+      ],
+      "tags": [
+        "api:aibase-ai-news"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ec82e65849311fc",
+        "source_ids": [
+          "api:aibase-ai-news"
+        ],
+        "all_urls": [
+          "https://www.aibase.com/zh/news/31859"
         ],
         "independent_source_count": 1,
         "evidence_level": "single_source",
         "confidence": 1.0,
         "facts": [
-          "Yuchen Jin 回应关于嘲讽 neolab 的质疑",
-          "Yuchen Jin 表示多数 neolab 失败是正常的现象",
-          "Yuchen Jin 认为融资 10 亿美元且将 50% 用于 GPU 的公司难以估值 100 亿美元"
+          "10月25日，联想AI主机P7预览版亮相。该机主打本地化运行与高效能，重仅300克，巴掌大小，可7×24小时桌面不间断运行。硬件搭载国产双芯：一颗负责AI算力推理，一颗负责系统调度与任务执行，双芯协同释放整体算力。性能上最高可本地运行122B参数大模型，整体定位为紧凑型本地AI计算设备。"
         ],
-        "inferences": [
-          "Yuchen Jin 认为当前流行的 neolab 复制模式存在资金使用效率问题"
-        ],
-        "uncertainties": [
-          "材料中未具体说明哪些公司或团队属于‘反共识者’",
-          "材料中未明确 Yuchen Jin 个人投资或支持的具体 neolab 对象"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-26-e7dd068238dc570",
-      "url": "https://www.semafor.com/article/10/25/2026/rest-of-world-faces-prospect-of-shutting-down",
-      "external_url": "https://www.semafor.com/article/10/25/2026/rest-of-world-faces-prospect-of-shutting-down",
-      "title": "Rest of World faces prospect of shutting down",
-      "summary": "Rest of World faces prospect of shutting down",
-      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.semafor.com/article/10/25/2026/rest-of-world-faces-prospect-of-shutting-down\">semafor.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· semafor.com\nAI 日报",
-      "date_published": "2026-10-25T21:32:11+00:00",
-      "authors": [
-        {
-          "name": "semafor.com"
-        }
-      ],
-      "tags": [
-        "rss:semafor"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "e7dd068238dc570",
-        "source_ids": [
-          "rss:semafor"
-        ],
-        "all_urls": [
-          "https://www.semafor.com/article/10/25/2026/rest-of-world-faces-prospect-of-shutting-down"
-        ],
-        "independent_source_count": 1,
-        "evidence_level": "single_source",
-        "confidence": 1.0,
-        "facts": [],
         "inferences": [],
-        "uncertainties": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
         "rule_based": true
       }
     },
     {
-      "id": "2026-10-26-edf97675d3de16d",
-      "url": "https://aihot.news/items/j58f7feu11g48spbf31twniws",
-      "external_url": "https://aihot.news/items/j58f7feu11g48spbf31twniws",
-      "title": "Grok Bot 发起周日用户反馈征集",
-      "summary": "Grok Bot 在周日发布了反馈帖。 该帖子询问用户目前使用 Grok Bot 最烦恼的问题。 帖子鼓励用户直言不讳地表达意见。 另一则内容询问用户当前使用 Grok Bot 的具体场景。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Grok Bot 在周日发布了反馈帖。</li><li>该帖子询问用户目前使用 Grok Bot 最烦恼的问题。</li><li>帖子鼓励用户直言不讳地表达意见。</li><li>另一则内容询问用户当前使用 Grok Bot 的具体场景。</li></ul><p><strong>推断</strong></p><ul><li>Grok Bot 团队旨在通过收集负面反馈来识别产品当前的主要痛点。</li><li>这种征集方式反映了团队希望了解用户在特定使用场景下的真实体验。</li></ul><p><strong>不确定</strong></p><ul><li>用户具体反馈了哪些“最让人烦”的问题在材料中未提及。</li><li>Grok Bot 团队计划如何根据这些反馈改进产品在材料中未说明。</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/j58f7feu11g48spbf31twniws\">aihot.news</a></li><li><a href=\"https://aihot.news/items/ekwnu4nn9so5fv1lp0bw64x6i\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· Grok Bot 在周日发布了反馈帖。\n· 该帖子询问用户目前使用 Grok Bot 最烦恼的问题。\n· 帖子鼓励用户直言不讳地表达意见。\n· 另一则内容询问用户当前使用 Grok Bot 的具体场景。\n推断\n· Grok Bot 团队旨在通过收集负面反馈来识别产品当前的主要痛点。\n· 这种征集方式反映了团队希望了解用户在特定使用场景下的真实体验。\n不确定\n· 用户具体反馈了哪些“最让人烦”的问题在材料中未提及。\n· Grok Bot 团队计划如何根据这些反馈改进产品在材料中未说明。\n可信度：单一来源\n来源\n· aihot.news\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-25T21:02:57+00:00",
+      "id": "2026-10-26-e26cac07702cc76",
+      "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop",
+      "external_url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop",
+      "title": "Anthropic 建议企业将部分 subagent 并入主 agent 循环",
+      "summary": "Anthropic 建议企业将部分 subagent 并入主 agent 循环",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Anthropic 建议企业将部分 subagent 并入主 agent 循环</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop\">claude.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Anthropic 建议企业将部分 subagent 并入主 agent 循环\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· claude.com\nAI 日报",
+      "date_published": "2026-10-26T00:39:21+00:00",
+      "authors": [
+        {
+          "name": "claude.com"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e26cac07702cc76",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Anthropic 建议企业将部分 subagent 并入主 agent 循环"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e10a2e72ab8ed80",
+      "url": "https://x.com/thsottiaux/status/2114237083652882932",
+      "external_url": "https://x.com/thsottiaux/status/2114237083652882932",
+      "title": "OpenAI 28 天计划第 20 天全量重置，Tibo 称改动已传播完成",
+      "summary": "OpenAI 28 天计划第 20 天全量重置，Tibo 称改动已传播完成",
+      "content_html": "<p><strong>事实</strong></p><ul><li>OpenAI 28 天计划第 20 天全量重置，Tibo 称改动已传播完成</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://x.com/thsottiaux/status/2114237083652882932\">x.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· OpenAI 28 天计划第 20 天全量重置，Tibo 称改动已传播完成\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· x.com\nAI 日报",
+      "date_published": "2026-10-26T00:39:21+00:00",
+      "authors": [
+        {
+          "name": "x.com"
+        }
+      ],
+      "tags": [
+        "rss:daily-juya-uk"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e10a2e72ab8ed80",
+        "source_ids": [
+          "rss:daily-juya-uk"
+        ],
+        "all_urls": [
+          "https://x.com/thsottiaux/status/2114237083652882932"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "OpenAI 28 天计划第 20 天全量重置，Tibo 称改动已传播完成"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-ea1d4bf1adfa37d",
+      "url": "https://aihot.news/items/livnf0pl5cq44hm5p1a4n1i1r",
+      "external_url": "https://aihot.news/items/livnf0pl5cq44hm5p1a4n1i1r",
+      "title": "扎克伯格：小企业将各有AI智能体",
+      "summary": "“我不认为未来会有一个所有人都想用的单一AI。 ……我认为每家小企业都会想拥有自己的AI智能体……很多创作者也会想要智能体 ~ Mark Zuckerberg",
+      "content_html": "<p><strong>事实</strong></p><ul><li>“我不认为未来会有一个所有人都想用的单一AI。\n……我认为每家小企业都会想拥有自己的AI智能体……很多创作者也会想要智能体\n~ Mark Zuckerberg</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/livnf0pl5cq44hm5p1a4n1i1r\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· “我不认为未来会有一个所有人都想用的单一AI。\n……我认为每家小企业都会想拥有自己的AI智能体……很多创作者也会想要智能体\n~ Mark Zuckerberg\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T21:52:06+00:00",
       "authors": [
         {
           "name": "aihot.news"
         }
       ],
       "tags": [
+        "rss:aihot-news",
         "rss:aihot-news-all"
       ],
       "language": "zh-CN",
       "_ai_daily": {
-        "event_id": "edf97675d3de16d",
+        "event_id": "ea1d4bf1adfa37d",
         "source_ids": [
+          "rss:aihot-news",
           "rss:aihot-news-all"
         ],
         "all_urls": [
-          "https://aihot.news/items/j58f7feu11g48spbf31twniws",
-          "https://aihot.news/items/ekwnu4nn9so5fv1lp0bw64x6i"
+          "https://aihot.news/items/livnf0pl5cq44hm5p1a4n1i1r"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "“我不认为未来会有一个所有人都想用的单一AI。\n……我认为每家小企业都会想拥有自己的AI智能体……很多创作者也会想要智能体\n~ Mark Zuckerberg"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e0ee630bbc1d623",
+      "url": "https://www.aibase.com/zh/news/31860",
+      "external_url": "https://www.aibase.com/zh/news/31860",
+      "title": "Reddit开源子版块颁布AI禁令，全面封杀人工智能相关项目",
+      "summary": "Reddit社区r/opensource版主Wolvereness于2026年10月25日宣布，全面禁止在开源项目中引入AI及AI生成内容。新规禁止使用、制造或供AI使用的开源项目在该版发布，也不接受含AI贡献的代码或人工编写的MCP。此举引发行业争议，批评者指出Linux内核等主流开源项目早已使用AI，禁令与现实脱节。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Reddit社区r/opensource版主Wolvereness于2026年10月25日宣布，全面禁止在开源项目中引入AI及AI生成内容。新规禁止使用、制造或供AI使用的开源项目在该版发布，也不接受含AI贡献的代码或人工编写的MCP。此举引发行业争议，批评者指出Linux内核等主流开源项目早已使用AI，禁令与现实脱节。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.aibase.com/zh/news/31860\">aibase.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Reddit社区r/opensource版主Wolvereness于2026年10月25日宣布，全面禁止在开源项目中引入AI及AI生成内容。新规禁止使用、制造或供AI使用的开源项目在该版发布，也不接受含AI贡献的代码或人工编写的MCP。此举引发行业争议，批评者指出Linux内核等主流开源项目早已使用AI，禁令与现实脱节。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aibase.com\nAI 日报",
+      "date_published": "2026-10-26T11:04:17+00:00",
+      "authors": [
+        {
+          "name": "aibase.com"
+        }
+      ],
+      "tags": [
+        "api:aibase-ai-news"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e0ee630bbc1d623",
+        "source_ids": [
+          "api:aibase-ai-news"
+        ],
+        "all_urls": [
+          "https://www.aibase.com/zh/news/31860"
         ],
         "independent_source_count": 1,
         "evidence_level": "single_source",
         "confidence": 1.0,
         "facts": [
-          "Grok Bot 在周日发布了反馈帖。",
-          "该帖子询问用户目前使用 Grok Bot 最烦恼的问题。",
-          "帖子鼓励用户直言不讳地表达意见。",
-          "另一则内容询问用户当前使用 Grok Bot 的具体场景。"
+          "Reddit社区r/opensource版主Wolvereness于2026年10月25日宣布，全面禁止在开源项目中引入AI及AI生成内容。新规禁止使用、制造或供AI使用的开源项目在该版发布，也不接受含AI贡献的代码或人工编写的MCP。此举引发行业争议，批评者指出Linux内核等主流开源项目早已使用AI，禁令与现实脱节。"
         ],
-        "inferences": [
-          "Grok Bot 团队旨在通过收集负面反馈来识别产品当前的主要痛点。",
-          "这种征集方式反映了团队希望了解用户在特定使用场景下的真实体验。"
-        ],
+        "inferences": [],
         "uncertainties": [
-          "用户具体反馈了哪些“最让人烦”的问题在材料中未提及。",
-          "Grok Bot 团队计划如何根据这些反馈改进产品在材料中未说明。"
+          "本次未调用大模型，内容为来源原文摘录"
         ],
-        "rule_based": false
+        "rule_based": true
       }
     },
     {
-      "id": "2026-10-26-e6fb943ce071636",
-      "url": "https://aihot.news/items/mn3xa29flku905y91pita5vwi",
-      "external_url": "https://aihot.news/items/mn3xa29flku905y91pita5vwi",
-      "title": "SpaceXSI作者确认引用中的机器人系其自造",
-      "summary": "SpaceXSI 的作者确认某处引用中出现的机器人是该作者自己制造的。 该事件信息来源于 aihot-news-all 的 RSS 订阅。",
-      "content_html": "<p><strong>事实</strong></p><ul><li>SpaceXSI 的作者确认某处引用中出现的机器人是该作者自己制造的。</li><li>该事件信息来源于 aihot-news-all 的 RSS 订阅。</li></ul><p><strong>推断</strong></p><ul><li>作者通过这一确认澄清了该机器人的归属权，排除了机器人属于其他第三方的可能性。</li></ul><p><strong>不确定</strong></p><ul><li>材料未说明该机器人的具体名称、类型或制造时间。</li><li>材料未指明“引用”具体出现在哪篇论文、文章或代码仓库中。</li><li>材料内容过于简短，无法判断该确认是针对网络上的误解、争议还是单纯的自我展示。</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/mn3xa29flku905y91pita5vwi\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· SpaceXSI 的作者确认某处引用中出现的机器人是该作者自己制造的。\n· 该事件信息来源于 aihot-news-all 的 RSS 订阅。\n推断\n· 作者通过这一确认澄清了该机器人的归属权，排除了机器人属于其他第三方的可能性。\n不确定\n· 材料未说明该机器人的具体名称、类型或制造时间。\n· 材料未指明“引用”具体出现在哪篇论文、文章或代码仓库中。\n· 材料内容过于简短，无法判断该确认是针对网络上的误解、争议还是单纯的自我展示。\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
-      "date_published": "2026-10-25T17:19:49+00:00",
+      "id": "2026-10-26-ec8b6d77c9f4d79",
+      "url": "https://aihot.news/items/pb5suea09x990mhtlzl0h6jsu",
+      "external_url": "https://aihot.news/items/pb5suea09x990mhtlzl0h6jsu",
+      "title": "Apollo 经济学家称 AI 对科技行业外的多数公司财务回报为零",
+      "summary": "Apollo Global Management 首席经济学家 Torsten Slok 发文称，除科技巨头外 AI 尚未改善任何大公司的利润。他聚焦剔除 Alphabet、Amazon、Apple、Meta、Microsoft、Nvidia 和 Tesla 后的 S&P 493，发现利润率和人均营收持平，没有证据表明 AI 提升了生产率。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Apollo Global Management 首席经济学家 Torsten Slok 发文称，除科技巨头外 AI 尚未改善任何大公司的利润。他聚焦剔除 Alphabet、Amazon、Apple、Meta、Microsoft、Nvidia 和 Tesla 后的 S&amp;P 493，发现利润率和人均营收持平，没有证据表明 AI 提升了生产率。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/pb5suea09x990mhtlzl0h6jsu\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Apollo Global Management 首席经济学家 Torsten Slok 发文称，除科技巨头外 AI 尚未改善任何大公司的利润。他聚焦剔除 Alphabet、Amazon、Apple、Meta、Microsoft、Nvidia 和 Tesla 后的 S&P 493，发现利润率和人均营收持平，没有证据表明 AI 提升了生产率。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T16:57:32+00:00",
       "authors": [
         {
           "name": "aihot.news"
         }
       ],
       "tags": [
+        "rss:aihot-news",
         "rss:aihot-news-all"
       ],
       "language": "zh-CN",
       "_ai_daily": {
-        "event_id": "e6fb943ce071636",
+        "event_id": "ec8b6d77c9f4d79",
         "source_ids": [
+          "rss:aihot-news",
           "rss:aihot-news-all"
         ],
         "all_urls": [
-          "https://aihot.news/items/mn3xa29flku905y91pita5vwi"
+          "https://aihot.news/items/pb5suea09x990mhtlzl0h6jsu"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "Apollo Global Management 首席经济学家 Torsten Slok 发文称，除科技巨头外 AI 尚未改善任何大公司的利润。他聚焦剔除 Alphabet、Amazon、Apple、Meta、Microsoft、Nvidia 和 Tesla 后的 S&P 493，发现利润率和人均营收持平，没有证据表明 AI 提升了生产率。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-edbfbb03b2c074d",
+      "url": "https://aihot.news/items/gzb3sskvbloow7j7mlw4apsj5",
+      "external_url": "https://aihot.news/items/gzb3sskvbloow7j7mlw4apsj5",
+      "title": "千问App全面适配 iPhone Duo，折叠屏怎么用都顺手",
+      "summary": "千问App现已全面适配 iPhone Duo，折叠屏展开与合拢两种形态各有用法。合拢时拿起即可提问，展开横屏适合做表格、写PPT并边聊边改，竖屏则适合查攻略、做调研和阅读长答案。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>千问App现已全面适配 iPhone Duo，折叠屏展开与合拢两种形态各有用法。合拢时拿起即可提问，展开横屏适合做表格、写PPT并边聊边改，竖屏则适合查攻略、做调研和阅读长答案。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/gzb3sskvbloow7j7mlw4apsj5\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 千问App现已全面适配 iPhone Duo，折叠屏展开与合拢两种形态各有用法。合拢时拿起即可提问，展开横屏适合做表格、写PPT并边聊边改，竖屏则适合查攻略、做调研和阅读长答案。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-26T01:00:00+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "edbfbb03b2c074d",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/gzb3sskvbloow7j7mlw4apsj5"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "千问App现已全面适配 iPhone Duo，折叠屏展开与合拢两种形态各有用法。合拢时拿起即可提问，展开横屏适合做表格、写PPT并边聊边改，竖屏则适合查攻略、做调研和阅读长答案。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e788036e5a1c66c",
+      "url": "https://aihot.news/items/ji19kgoq8nfbm48kstr7gbs4g",
+      "external_url": "https://aihot.news/items/ji19kgoq8nfbm48kstr7gbs4g",
+      "title": "indigo 转述 Elon Musk 观点：债务市场收紧，200 多家 NeoCloud 将迎来死亡与整合",
+      "summary": "indigo 转述 Elon Musk 的说法：过去几周债务市场几乎切断了缺乏独立于 AI 数据中心收入的公司的融资渠道，200 多家 NeoCloud 将大规模死亡与整合，只有少数能存活；SpaceX 因有 Starlink 与发射收入等投资级资质，已为 GPU 关闭 400 亿美元债务。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>indigo 转述 Elon Musk 的说法：过去几周债务市场几乎切断了缺乏独立于 AI 数据中心收入的公司的融资渠道，200 多家 NeoCloud 将大规模死亡与整合，只有少数能存活；SpaceX 因有 Starlink 与发射收入等投资级资质，已为 GPU 关闭 400 亿美元债务。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/ji19kgoq8nfbm48kstr7gbs4g\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· indigo 转述 Elon Musk 的说法：过去几周债务市场几乎切断了缺乏独立于 AI 数据中心收入的公司的融资渠道，200 多家 NeoCloud 将大规模死亡与整合，只有少数能存活；SpaceX 因有 Starlink 与发射收入等投资级资质，已为 GPU 关闭 400 亿美元债务。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-26T03:20:56+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e788036e5a1c66c",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/ji19kgoq8nfbm48kstr7gbs4g"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "indigo 转述 Elon Musk 的说法：过去几周债务市场几乎切断了缺乏独立于 AI 数据中心收入的公司的融资渠道，200 多家 NeoCloud 将大规模死亡与整合，只有少数能存活；SpaceX 因有 Starlink 与发射收入等投资级资质，已为 GPU 关闭 400 亿美元债务。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-eb507ee52e5dfca",
+      "url": "https://www.aibase.com/zh/news/31857",
+      "external_url": "https://www.aibase.com/zh/news/31857",
+      "title": "韩国游戏巨头 KRAFTON 放出 Raon-1 mini，叫板 Meta 同档模型",
+      "summary": "韩国游戏企业 KRAFTON 旗下 AI 分支 KRAFTON AI 公布从零训练的 Raon-1 mini 预览版，正式版及更大后续型号在研。该模型采用混合专家架构，引入线性注意力并支持推测解码，体量标注为 30B-A4B，总参数约 300 亿，凸显游戏公司跨界基础模型的野心。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>韩国游戏企业 KRAFTON 旗下 AI 分支 KRAFTON AI 公布从零训练的 Raon-1 mini 预览版，正式版及更大后续型号在研。该模型采用混合专家架构，引入线性注意力并支持推测解码，体量标注为 30B-A4B，总参数约 300 亿，凸显游戏公司跨界基础模型的野心。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.aibase.com/zh/news/31857\">aibase.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 韩国游戏企业 KRAFTON 旗下 AI 分支 KRAFTON AI 公布从零训练的 Raon-1 mini 预览版，正式版及更大后续型号在研。该模型采用混合专家架构，引入线性注意力并支持推测解码，体量标注为 30B-A4B，总参数约 300 亿，凸显游戏公司跨界基础模型的野心。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aibase.com\nAI 日报",
+      "date_published": "2026-10-26T10:09:40+00:00",
+      "authors": [
+        {
+          "name": "aibase.com"
+        }
+      ],
+      "tags": [
+        "api:aibase-ai-news"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "eb507ee52e5dfca",
+        "source_ids": [
+          "api:aibase-ai-news"
+        ],
+        "all_urls": [
+          "https://www.aibase.com/zh/news/31857"
         ],
         "independent_source_count": 1,
         "evidence_level": "single_source",
         "confidence": 1.0,
         "facts": [
-          "SpaceXSI 的作者确认某处引用中出现的机器人是该作者自己制造的。",
-          "该事件信息来源于 aihot-news-all 的 RSS 订阅。"
+          "韩国游戏企业 KRAFTON 旗下 AI 分支 KRAFTON AI 公布从零训练的 Raon-1 mini 预览版，正式版及更大后续型号在研。该模型采用混合专家架构，引入线性注意力并支持推测解码，体量标注为 30B-A4B，总参数约 300 亿，凸显游戏公司跨界基础模型的野心。"
         ],
-        "inferences": [
-          "作者通过这一确认澄清了该机器人的归属权，排除了机器人属于其他第三方的可能性。"
-        ],
-        "uncertainties": [
-          "材料未说明该机器人的具体名称、类型或制造时间。",
-          "材料未指明“引用”具体出现在哪篇论文、文章或代码仓库中。",
-          "材料内容过于简短，无法判断该确认是针对网络上的误解、争议还是单纯的自我展示。"
-        ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-26-e583ae7404d1f14",
-      "url": "https://news.google.com/rss/articles/CBMi_gJBVV95cUxON1NTNG5UNUduT3hmUDFyMXVBdG9sb1FHZHMwaHFOOXprWUpKS2gyZXpPUlh5VzBsZm5CODFYdmlkcHM2MG1xX1p6bWNDTUpkeXlFdDh2amdKcVI0SHRBMU1hNUpKeG5feERUeHdjRlVQOWpCQnRnYUd6aUc5RUNHVGJZbkwwNS10VHRSQWRQOTdiNjdvWUx6WkFRMUxXV215LUlJcHhoY1ZLMEhqY29HMWZCNGpId1NLMl9Fa3RQWXBYcDZkRXdYMWpMMmI3al9TV2g2dUZmMHh3emRjbnBybzBVYnYtbXBvZXNUdmFhLUFGcmJxcVQ3RTNIMVVBWGFDZmVHUk5nSHFDZjdqNTlCaUVwN0hYSjBlY3VaMFBhU0NsTFNHRXY1THBEdGJGT0JXUE1iaXhkQXkyQXFPYnZScHVDM1oxRVMyeFU1M1lTMU5MaGNQV0FiaDQ4Y3NlcWRwWllQZ3Uxa0hVVk15Tll0Vm8tM3Bnbm9ja3lmTVRB?oc=5",
-      "external_url": "https://news.google.com/rss/articles/CBMi_gJBVV95cUxON1NTNG5UNUduT3hmUDFyMXVBdG9sb1FHZHMwaHFOOXprWUpKS2gyZXpPUlh5VzBsZm5CODFYdmlkcHM2MG1xX1p6bWNDTUpkeXlFdDh2amdKcVI0SHRBMU1hNUpKeG5feERUeHdjRlVQOWpCQnRnYUd6aUc5RUNHVGJZbkwwNS10VHRSQWRQOTdiNjdvWUx6WkFRMUxXV215LUlJcHhoY1ZLMEhqY29HMWZCNGpId1NLMl9Fa3RQWXBYcDZkRXdYMWpMMmI3al9TV2g2dUZmMHh3emRjbnBybzBVYnYtbXBvZXNUdmFhLUFGcmJxcVQ3RTNIMVVBWGFDZmVHUk5nSHFDZjdqNTlCaUVwN0hYSjBlY3VaMFBhU0NsTFNHRXY1THBEdGJGT0JXUE1iaXhkQXkyQXFPYnZScHVDM1oxRVMyeFU1M1lTMU5MaGNQV0FiaDQ4Y3NlcWRwWllQZ3Uxa0hVVk15Tll0Vm8tM3Bnbm9ja3lmTVRB?oc=5",
-      "title": "联想AI主机P7预览版亮相搭载国产双芯可本地运行千亿级大模型|云端|经济|天禧|断网_手机新浪网 - finance.sina.com.cn",
-      "summary": "联想AI主机P7预览版亮相搭载国产双芯可本地运行千亿级大模型|云端|经济|天禧|断网_手机新浪网 - finance.sina.com.cn",
-      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://news.google.com/rss/articles/CBMi_gJBVV95cUxON1NTNG5UNUduT3hmUDFyMXVBdG9sb1FHZHMwaHFOOXprWUpKS2gyZXpPUlh5VzBsZm5CODFYdmlkcHM2MG1xX1p6bWNDTUpkeXlFdDh2amdKcVI0SHRBMU1hNUpKeG5feERUeHdjRlVQOWpCQnRnYUd6aUc5RUNHVGJZbkwwNS10VHRSQWRQOTdiNjdvWUx6WkFRMUxXV215LUlJcHhoY1ZLMEhqY29HMWZCNGpId1NLMl9Fa3RQWXBYcDZkRXdYMWpMMmI3al9TV2g2dUZmMHh3emRjbnBybzBVYnYtbXBvZXNUdmFhLUFGcmJxcVQ3RTNIMVVBWGFDZmVHUk5nSHFDZjdqNTlCaUVwN0hYSjBlY3VaMFBhU0NsTFNHRXY1THBEdGJGT0JXUE1iaXhkQXkyQXFPYnZScHVDM1oxRVMyeFU1M1lTMU5MaGNQV0FiaDQ4Y3NlcWRwWllQZ3Uxa0hVVk15Tll0Vm8tM3Bnbm9ja3lmTVRB?oc=5\">news.google.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· news.google.com\nAI 日报",
-      "date_published": "2026-10-25T18:39:26+00:00",
-      "authors": [
-        {
-          "name": "news.google.com"
-        }
-      ],
-      "tags": [
-        "api:news-google-com-search"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "e583ae7404d1f14",
-        "source_ids": [
-          "api:news-google-com-search"
-        ],
-        "all_urls": [
-          "https://news.google.com/rss/articles/CBMi_gJBVV95cUxON1NTNG5UNUduT3hmUDFyMXVBdG9sb1FHZHMwaHFOOXprWUpKS2gyZXpPUlh5VzBsZm5CODFYdmlkcHM2MG1xX1p6bWNDTUpkeXlFdDh2amdKcVI0SHRBMU1hNUpKeG5feERUeHdjRlVQOWpCQnRnYUd6aUc5RUNHVGJZbkwwNS10VHRSQWRQOTdiNjdvWUx6WkFRMUxXV215LUlJcHhoY1ZLMEhqY29HMWZCNGpId1NLMl9Fa3RQWXBYcDZkRXdYMWpMMmI3al9TV2g2dUZmMHh3emRjbnBybzBVYnYtbXBvZXNUdmFhLUFGcmJxcVQ3RTNIMVVBWGFDZmVHUk5nSHFDZjdqNTlCaUVwN0hYSjBlY3VaMFBhU0NsTFNHRXY1THBEdGJGT0JXUE1iaXhkQXkyQXFPYnZScHVDM1oxRVMyeFU1M1lTMU5MaGNQV0FiaDQ4Y3NlcWRwWllQZ3Uxa0hVVk15Tll0Vm8tM3Bnbm9ja3lmTVRB?oc=5"
-        ],
-        "independent_source_count": 1,
-        "evidence_level": "single_source",
-        "confidence": 1.0,
-        "facts": [],
         "inferences": [],
-        "uncertainties": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
         "rule_based": true
       }
     },
     {
-      "id": "2026-10-26-ee34a3980468349",
+      "id": "2026-10-26-e39a1afa4be3a73",
+      "url": "https://aihot.news/items/q5xrd30zkhi4cfbxy1itq5wqx",
+      "external_url": "https://aihot.news/items/q5xrd30zkhi4cfbxy1itq5wqx",
+      "title": "塔勒布：白领中产梦将被 AI 重创",
+      "summary": "塔勒布在 X 上连续发文称，所有被称为\"白领\"的职业和 20 世纪发明的工作都将被 AI 快速重创，冲击不会表现为大规模裁员，而是增量岗位直接归零、公司扩产改为加 token 和算力预算。他认为问题不在 AI 聪明，而在于太多成年人机械、跟风、缺乏想象力且养起来太贵。但他同时认为这是能定义问题、有品味、懂指挥 Agent 工作流的超级个体和小团队的红利期。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>塔勒布在 X 上连续发文称，所有被称为&quot;白领&quot;的职业和 20 世纪发明的工作都将被 AI 快速重创，冲击不会表现为大规模裁员，而是增量岗位直接归零、公司扩产改为加 token 和算力预算。他认为问题不在 AI 聪明，而在于太多成年人机械、跟风、缺乏想象力且养起来太贵。但他同时认为这是能定义问题、有品味、懂指挥 Agent 工作流的超级个体和小团队的红利期。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/q5xrd30zkhi4cfbxy1itq5wqx\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 塔勒布在 X 上连续发文称，所有被称为\"白领\"的职业和 20 世纪发明的工作都将被 AI 快速重创，冲击不会表现为大规模裁员，而是增量岗位直接归零、公司扩产改为加 token 和算力预算。他认为问题不在 AI 聪明，而在于太多成年人机械、跟风、缺乏想象力且养起来太贵。但他同时认为这是能定义问题、有品味、懂指挥 Agent 工作流的超级个体和小团队的红利期。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-26T04:09:34+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e39a1afa4be3a73",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/q5xrd30zkhi4cfbxy1itq5wqx"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "塔勒布在 X 上连续发文称，所有被称为\"白领\"的职业和 20 世纪发明的工作都将被 AI 快速重创，冲击不会表现为大规模裁员，而是增量岗位直接归零、公司扩产改为加 token 和算力预算。他认为问题不在 AI 聪明，而在于太多成年人机械、跟风、缺乏想象力且养起来太贵。但他同时认为这是能定义问题、有品味、懂指挥 Agent 工作流的超级个体和小团队的红利期。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-ed52ea61771989f",
+      "url": "https://aihot.news/items/hrg559voeeipj7k17jzax38zd",
+      "external_url": "https://aihot.news/items/hrg559voeeipj7k17jzax38zd",
+      "title": "AI 破解索尼 A7C II 固件：解锁 FL2/FL3 与富士、理光滤镜",
+      "summary": "网友“QAQLeonard”为索尼 A7C II 制作定制固件，直接解锁 FL2、FL3 胶片模式，并支持导入外部 LUT、富士 NC 与理光 GR 直出色调。配套工具 A7C II Tools 已推出 3.0 版本，是首个带正式图形界面的版本，仅支持该机型固件 2.01。刷入可能影响副厂电池识别，并存在无法开机、影响保修等风险。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>网友“QAQLeonard”为索尼 A7C II 制作定制固件，直接解锁 FL2、FL3 胶片模式，并支持导入外部 LUT、富士 NC 与理光 GR 直出色调。配套工具 A7C II Tools 已推出 3.0 版本，是首个带正式图形界面的版本，仅支持该机型固件 2.01。刷入可能影响副厂电池识别，并存在无法开机、影响保修等风险。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li><li>本条的来源标题为外文，未调用大模型，因此未翻译</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/hrg559voeeipj7k17jzax38zd\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 网友“QAQLeonard”为索尼 A7C II 制作定制固件，直接解锁 FL2、FL3 胶片模式，并支持导入外部 LUT、富士 NC 与理光 GR 直出色调。配套工具 A7C II Tools 已推出 3.0 版本，是首个带正式图形界面的版本，仅支持该机型固件 2.01。刷入可能影响副厂电池识别，并存在无法开机、影响保修等风险。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n· 本条的来源标题为外文，未调用大模型，因此未翻译\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-26T02:28:07+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ed52ea61771989f",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/hrg559voeeipj7k17jzax38zd"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "网友“QAQLeonard”为索尼 A7C II 制作定制固件，直接解锁 FL2、FL3 胶片模式，并支持导入外部 LUT、富士 NC 与理光 GR 直出色调。配套工具 A7C II Tools 已推出 3.0 版本，是首个带正式图形界面的版本，仅支持该机型固件 2.01。刷入可能影响副厂电池识别，并存在无法开机、影响保修等风险。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录",
+          "本条的来源标题为外文，未调用大模型，因此未翻译"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-eb9d07dda6d4dce",
+      "url": "https://aihot.news/items/m66e28rmzmebb9pdznwkgs3u2",
+      "external_url": "https://aihot.news/items/m66e28rmzmebb9pdznwkgs3u2",
+      "title": "Gartner 预测超 80% neocloud 厂商到 2030 年将无法独立运营",
+      "summary": "Rohan Paul 转述 Gartner 预测：成本压力将迫使超过 80% 的 neocloud 厂商到 2030 年停止独立运营。Gartner 测算 AI 数据中心到 2030 年需累计 8.5T 美元收入才能覆盖资本开支、融资成本和 12% 回报，而归属 AI 收入预计不超过 3.6T 美元，超 4T 美元资产到 2032 年面临减记风险。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Rohan Paul 转述 Gartner 预测：成本压力将迫使超过 80% 的 neocloud 厂商到 2030 年停止独立运营。Gartner 测算 AI 数据中心到 2030 年需累计 8.5T 美元收入才能覆盖资本开支、融资成本和 12% 回报，而归属 AI 收入预计不超过 3.6T 美元，超 4T 美元资产到 2032 年面临减记风险。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/m66e28rmzmebb9pdznwkgs3u2\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Rohan Paul 转述 Gartner 预测：成本压力将迫使超过 80% 的 neocloud 厂商到 2030 年停止独立运营。Gartner 测算 AI 数据中心到 2030 年需累计 8.5T 美元收入才能覆盖资本开支、融资成本和 12% 回报，而归属 AI 收入预计不超过 3.6T 美元，超 4T 美元资产到 2032 年面临减记风险。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T20:54:44+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "eb9d07dda6d4dce",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/m66e28rmzmebb9pdznwkgs3u2"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "Rohan Paul 转述 Gartner 预测：成本压力将迫使超过 80% 的 neocloud 厂商到 2030 年停止独立运营。Gartner 测算 AI 数据中心到 2030 年需累计 8.5T 美元收入才能覆盖资本开支、融资成本和 12% 回报，而归属 AI 收入预计不超过 3.6T 美元，超 4T 美元资产到 2032 年面临减记风险。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-ed54411d251f56a",
+      "url": "https://aihot.news/items/wg0d0d9p9tlca5uovrz43xqkp",
+      "external_url": "https://aihot.news/items/wg0d0d9p9tlca5uovrz43xqkp",
+      "title": "阿波罗首席经济学家：AI 尚未给科技七巨头以外的美国企业带来利润增量",
+      "summary": "据 TechCrunch 报道，阿波罗全球管理公司首席经济学家托斯滕·斯洛克发布研报称，除 Alphabet、亚马逊、苹果、Meta、微软、英伟达、特斯拉七家科技巨头外，AI 还没给美国企业带来实际财务回报。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>据 TechCrunch 报道，阿波罗全球管理公司首席经济学家托斯滕·斯洛克发布研报称，除 Alphabet、亚马逊、苹果、Meta、微软、英伟达、特斯拉七家科技巨头外，AI 还没给美国企业带来实际财务回报。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/wg0d0d9p9tlca5uovrz43xqkp\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 据 TechCrunch 报道，阿波罗全球管理公司首席经济学家托斯滕·斯洛克发布研报称，除 Alphabet、亚马逊、苹果、Meta、微软、英伟达、特斯拉七家科技巨头外，AI 还没给美国企业带来实际财务回报。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-26T04:30:20+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "ed54411d251f56a",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/wg0d0d9p9tlca5uovrz43xqkp"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "据 TechCrunch 报道，阿波罗全球管理公司首席经济学家托斯滕·斯洛克发布研报称，除 Alphabet、亚马逊、苹果、Meta、微软、英伟达、特斯拉七家科技巨头外，AI 还没给美国企业带来实际财务回报。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e1cb2c50682e1f2",
+      "url": "https://aihot.news/items/c00nomnh3pc0ejh2744gptf8o",
+      "external_url": "https://aihot.news/items/c00nomnh3pc0ejh2744gptf8o",
+      "title": "Ethan Mollick 谈用 AI 要更敢想",
+      "summary": "我对用 AI 做任何事的通用建议是：问问自己“我怎样才能让手头这件事更有野心？” 一直这样做，直到你撞上一堵墙，那时你就知道了前沿的形状（这很有用！），或者你发现 AI 能做的比你想象的更多（这很常见！）",
+      "content_html": "<p><strong>事实</strong></p><ul><li>我对用 AI 做任何事的通用建议是：问问自己“我怎样才能让手头这件事更有野心？”\n一直这样做，直到你撞上一堵墙，那时你就知道了前沿的形状（这很有用！），或者你发现 AI 能做的比你想象的更多（这很常见！）</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/c00nomnh3pc0ejh2744gptf8o\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 我对用 AI 做任何事的通用建议是：问问自己“我怎样才能让手头这件事更有野心？”\n一直这样做，直到你撞上一堵墙，那时你就知道了前沿的形状（这很有用！），或者你发现 AI 能做的比你想象的更多（这很常见！）\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T23:46:18+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e1cb2c50682e1f2",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/c00nomnh3pc0ejh2744gptf8o"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "我对用 AI 做任何事的通用建议是：问问自己“我怎样才能让手头这件事更有野心？”\n一直这样做，直到你撞上一堵墙，那时你就知道了前沿的形状（这很有用！），或者你发现 AI 能做的比你想象的更多（这很常见！）"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-eed371cd6350086",
+      "url": "https://aihot.news/items/uclxzbeg8hkqh90681jqt2xzg",
+      "external_url": "https://aihot.news/items/uclxzbeg8hkqh90681jqt2xzg",
+      "title": "AI 降低攻击成本改变软件安全逻辑",
+      "summary": "世界上很多软件的安全性，实际上是靠攻击它的机会成本来隐性保障的。AI 改变了这笔账。你的遗留代码没变，但当别人只需花 100 美元的推理费用时，你突然就值得被盯上了。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>世界上很多软件的安全性，实际上是靠攻击它的机会成本来隐性保障的。AI 改变了这笔账。你的遗留代码没变，但当别人只需花 100 美元的推理费用时，你突然就值得被盯上了。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/uclxzbeg8hkqh90681jqt2xzg\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 世界上很多软件的安全性，实际上是靠攻击它的机会成本来隐性保障的。AI 改变了这笔账。你的遗留代码没变，但当别人只需花 100 美元的推理费用时，你突然就值得被盯上了。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-26T03:43:43+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "eed371cd6350086",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/uclxzbeg8hkqh90681jqt2xzg"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "世界上很多软件的安全性，实际上是靠攻击它的机会成本来隐性保障的。AI 改变了这笔账。你的遗留代码没变，但当别人只需花 100 美元的推理费用时，你突然就值得被盯上了。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e5227729655df77",
+      "url": "https://aihot.news/items/biakuagye3oijk0ydn1zcjwit",
+      "external_url": "https://aihot.news/items/biakuagye3oijk0ydn1zcjwit",
+      "title": "英伟达下调 Rubin GPU 系统 HBM 与 NVLink 带宽，网络带宽提升",
+      "summary": "根据 NVIDIA 今年 10 月文档与 6 月文档的对比，NVIDIA 下调了 Rubin GPU 系统的 HBM 与 NVLink 带宽，同时提升网络带宽。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>根据 NVIDIA 今年 10 月文档与 6 月文档的对比，NVIDIA 下调了 Rubin GPU 系统的 HBM 与 NVLink 带宽，同时提升网络带宽。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/biakuagye3oijk0ydn1zcjwit\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 根据 NVIDIA 今年 10 月文档与 6 月文档的对比，NVIDIA 下调了 Rubin GPU 系统的 HBM 与 NVLink 带宽，同时提升网络带宽。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-26T03:26:52+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e5227729655df77",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/biakuagye3oijk0ydn1zcjwit"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "根据 NVIDIA 今年 10 月文档与 6 月文档的对比，NVIDIA 下调了 Rubin GPU 系统的 HBM 与 NVLink 带宽，同时提升网络带宽。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e0f5bf0e9891b67",
+      "url": "https://aihot.news/items/e9d27qk15s8yjlmafcyvdfpwu",
+      "external_url": "https://aihot.news/items/e9d27qk15s8yjlmafcyvdfpwu",
+      "title": "全国首个人工智能应用风险综合保障方案在 2026 金融街论坛年会发布",
+      "summary": "据央视财经报道，全国首个人工智能应用风险综合保障方案在 2026 金融街论坛年会正式发布，通过保险分别保障 AI 服务给第三方造成的损失，以及 AI 供应方自身的修复、退费、鉴定等费用损失。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>据央视财经报道，全国首个人工智能应用风险综合保障方案在 2026 金融街论坛年会正式发布，通过保险分别保障 AI 服务给第三方造成的损失，以及 AI 供应方自身的修复、退费、鉴定等费用损失。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/e9d27qk15s8yjlmafcyvdfpwu\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 据央视财经报道，全国首个人工智能应用风险综合保障方案在 2026 金融街论坛年会正式发布，通过保险分别保障 AI 服务给第三方造成的损失，以及 AI 供应方自身的修复、退费、鉴定等费用损失。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T23:21:57+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e0f5bf0e9891b67",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/e9d27qk15s8yjlmafcyvdfpwu"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "据央视财经报道，全国首个人工智能应用风险综合保障方案在 2026 金融街论坛年会正式发布，通过保险分别保障 AI 服务给第三方造成的损失，以及 AI 供应方自身的修复、退费、鉴定等费用损失。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e7313d53b7b1e25",
+      "url": "https://aihot.news/items/udo9r9ozheki30d5r5tn3oaab",
+      "external_url": "https://aihot.news/items/udo9r9ozheki30d5r5tn3oaab",
+      "title": "Odyssey 分享其中一视角",
+      "summary": "其中一个视角。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>其中一个视角。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/udo9r9ozheki30d5r5tn3oaab\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 其中一个视角。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T19:45:03+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e7313d53b7b1e25",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/udo9r9ozheki30d5r5tn3oaab"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "其中一个视角。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-eb9e3c86c146c31",
+      "url": "https://aihot.news/items/f2k6os611k4aug4vjwc1fbgn1",
+      "external_url": "https://aihot.news/items/f2k6os611k4aug4vjwc1fbgn1",
+      "title": "Neolab 的商业模式就是囤卡等涨价2-3倍 历史上这种事情发生的时候一般都是泡沫的顶峰 比如印度有一段时间，土地的价格不到一年涨了18倍 联动西班牙，美国一起涨价 接下来就是全球的房地产危机",
+      "summary": "Neolab 的商业模式就是囤卡等涨价2-3倍 历史上这种事情发生的时候一般都是泡沫的顶峰 比如印度有一段时间，土地的价格不到一年涨了18倍 联动西班牙，美国一起涨价 接下来就是全球的房地产危机",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Neolab 的商业模式就是囤卡等涨价2-3倍 历史上这种事情发生的时候一般都是泡沫的顶峰 比如印度有一段时间，土地的价格不到一年涨了18倍 联动西班牙，美国一起涨价 接下来就是全球的房地产危机</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/f2k6os611k4aug4vjwc1fbgn1\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Neolab 的商业模式就是囤卡等涨价2-3倍 历史上这种事情发生的时候一般都是泡沫的顶峰 比如印度有一段时间，土地的价格不到一年涨了18倍 联动西班牙，美国一起涨价 接下来就是全球的房地产危机\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-26T01:03:19+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "eb9e3c86c146c31",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/f2k6os611k4aug4vjwc1fbgn1"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "Neolab 的商业模式就是囤卡等涨价2-3倍 历史上这种事情发生的时候一般都是泡沫的顶峰 比如印度有一段时间，土地的价格不到一年涨了18倍 联动西班牙，美国一起涨价 接下来就是全球的房地产危机"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e72ba4a06c88ef7",
+      "url": "https://www.aibase.com/zh/news/31850",
+      "external_url": "https://www.aibase.com/zh/news/31850",
+      "title": "Epic 老大再喷 Steam AI 公示：逼开发者写\"政治声明\"招来网暴",
+      "summary": "Epic游戏CEO蒂姆·斯维尼再度炮轰Steam的AI内容公示规则，称其“令人反感”。导火索是Fal的马特·沃克曼称到2026年AI公示意义已不大，斯维尼跟帖称公示标签等于逼开发者写“政治声明”。这让Epic与Valve的拉锯战再添一笔，此时Epic商城刚完成改版。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Epic游戏CEO蒂姆·斯维尼再度炮轰Steam的AI内容公示规则，称其“令人反感”。导火索是Fal的马特·沃克曼称到2026年AI公示意义已不大，斯维尼跟帖称公示标签等于逼开发者写“政治声明”。这让Epic与Valve的拉锯战再添一笔，此时Epic商城刚完成改版。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.aibase.com/zh/news/31850\">aibase.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Epic游戏CEO蒂姆·斯维尼再度炮轰Steam的AI内容公示规则，称其“令人反感”。导火索是Fal的马特·沃克曼称到2026年AI公示意义已不大，斯维尼跟帖称公示标签等于逼开发者写“政治声明”。这让Epic与Valve的拉锯战再添一笔，此时Epic商城刚完成改版。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aibase.com\nAI 日报",
+      "date_published": "2026-10-26T09:03:11+00:00",
+      "authors": [
+        {
+          "name": "aibase.com"
+        }
+      ],
+      "tags": [
+        "api:aibase-ai-news"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e72ba4a06c88ef7",
+        "source_ids": [
+          "api:aibase-ai-news"
+        ],
+        "all_urls": [
+          "https://www.aibase.com/zh/news/31850"
+        ],
+        "independent_source_count": 1,
+        "evidence_level": "single_source",
+        "confidence": 1.0,
+        "facts": [
+          "Epic游戏CEO蒂姆·斯维尼再度炮轰Steam的AI内容公示规则，称其“令人反感”。导火索是Fal的马特·沃克曼称到2026年AI公示意义已不大，斯维尼跟帖称公示标签等于逼开发者写“政治声明”。这让Epic与Valve的拉锯战再添一笔，此时Epic商城刚完成改版。"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e7b65c3282d8f09",
+      "url": "https://aihot.news/items/nxe9x7bjug5hsifus9cin499r",
+      "external_url": "https://aihot.news/items/nxe9x7bjug5hsifus9cin499r",
+      "title": "智能体时代已至，要么适应要么落后",
+      "summary": "软件的智能体时代已经到来。 要么适应，要么被甩在后面 🫪",
+      "content_html": "<p><strong>事实</strong></p><ul><li>软件的智能体时代已经到来。\n要么适应，要么被甩在后面 🫪</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/nxe9x7bjug5hsifus9cin499r\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 软件的智能体时代已经到来。\n要么适应，要么被甩在后面 🫪\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-26T02:02:14+00:00",
+      "authors": [
+        {
+          "name": "aihot.news"
+        }
+      ],
+      "tags": [
+        "rss:aihot-news",
+        "rss:aihot-news-all"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e7b65c3282d8f09",
+        "source_ids": [
+          "rss:aihot-news",
+          "rss:aihot-news-all"
+        ],
+        "all_urls": [
+          "https://aihot.news/items/nxe9x7bjug5hsifus9cin499r"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "软件的智能体时代已经到来。\n要么适应，要么被甩在后面 🫪"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e391cca55eddc3b",
       "url": "https://aihot.news/items/kp3jgyp8b3u0n3gzvab7pzpr2",
       "external_url": "https://aihot.news/items/kp3jgyp8b3u0n3gzvab7pzpr2",
       "title": "用户热情响应 @bot 新功能",
-      "summary": "用户热情响应 @bot 新功能",
-      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/kp3jgyp8b3u0n3gzvab7pzpr2\">aihot.news</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· aihot.news\nAI 日报",
+      "summary": "我很喜欢每次 @bot 发布新功能公告时，大家都会去标记它来设置好 🚀",
+      "content_html": "<p><strong>事实</strong></p><ul><li>我很喜欢每次 @bot 发布新功能公告时，大家都会去标记它来设置好 🚀</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/kp3jgyp8b3u0n3gzvab7pzpr2\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 我很喜欢每次 @bot 发布新功能公告时，大家都会去标记它来设置好 🚀\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
       "date_published": "2026-10-25T16:35:04+00:00",
       "authors": [
         {
@@ -697,182 +2217,148 @@
         }
       ],
       "tags": [
+        "rss:aihot-news",
         "rss:aihot-news-all"
       ],
       "language": "zh-CN",
       "_ai_daily": {
-        "event_id": "ee34a3980468349",
+        "event_id": "e391cca55eddc3b",
         "source_ids": [
+          "rss:aihot-news",
           "rss:aihot-news-all"
         ],
         "all_urls": [
           "https://aihot.news/items/kp3jgyp8b3u0n3gzvab7pzpr2"
         ],
-        "independent_source_count": 1,
-        "evidence_level": "single_source",
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
         "confidence": 1.0,
-        "facts": [],
+        "facts": [
+          "我很喜欢每次 @bot 发布新功能公告时，大家都会去标记它来设置好 🚀"
+        ],
         "inferences": [],
-        "uncertainties": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
         "rule_based": true
       }
     },
     {
-      "id": "2026-10-26-ee5a2a6c18b8d71",
-      "url": "https://www.axios.com/2026/10/25/josh-shapiro-2028-questions",
-      "external_url": "https://www.axios.com/2026/10/25/josh-shapiro-2028-questions",
-      "title": "Axios分析Shapiro 2028竞选前景",
-      "summary": "宾夕法尼亚州州长 Josh Shapiro 在该州取得了多项全州选举的胜利 Josh Shapiro 近年来未在竞选中面对资金充裕的对手 Josh Shapiro 被广泛视为 2028 年美国总统大选的潜在候选人",
-      "content_html": "<p><strong>事实</strong></p><ul><li>宾夕法尼亚州州长 Josh Shapiro 在该州取得了多项全州选举的胜利</li><li>Josh Shapiro 近年来未在竞选中面对资金充裕的对手</li><li>Josh Shapiro 被广泛视为 2028 年美国总统大选的潜在候选人</li></ul><p><strong>推断</strong></p><ul><li>Josh Shapiro 缺乏应对高强度、充满攻击性竞选活动的经验</li><li>若 Josh Shapiro 成为 2028 年民主党初选的主要候选人，他将面临大量的攻击性广告和反对</li></ul><p><strong>不确定</strong></p><ul><li>Josh Shapiro 在 2028 年民主党初选中的具体排名不确定</li><li>Josh Shapiro 是否真正具备应对激烈竞选考验的能力尚未得到测试</li><li>Shapiro 在 2028 年选举中最终的表现及结果不确定</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.axios.com/2026/10/25/josh-shapiro-2028-questions\">axios.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· 宾夕法尼亚州州长 Josh Shapiro 在该州取得了多项全州选举的胜利\n· Josh Shapiro 近年来未在竞选中面对资金充裕的对手\n· Josh Shapiro 被广泛视为 2028 年美国总统大选的潜在候选人\n推断\n· Josh Shapiro 缺乏应对高强度、充满攻击性竞选活动的经验\n· 若 Josh Shapiro 成为 2028 年民主党初选的主要候选人，他将面临大量的攻击性广告和反对\n不确定\n· Josh Shapiro 在 2028 年民主党初选中的具体排名不确定\n· Josh Shapiro 是否真正具备应对激烈竞选考验的能力尚未得到测试\n· Shapiro 在 2028 年选举中最终的表现及结果不确定\n可信度：单一来源\n来源\n· axios.com\nAI 日报",
-      "date_published": "2026-10-25T21:44:03+00:00",
+      "id": "2026-10-26-e2c508d0b45ee0d",
+      "url": "https://aihot.news/items/mn3xa29flku905y91pita5vwi",
+      "external_url": "https://aihot.news/items/mn3xa29flku905y91pita5vwi",
+      "title": "SpaceXSI 作者确认引用中为自己所造机器人",
+      "summary": "等等，那是我的机器人",
+      "content_html": "<p><strong>事实</strong></p><ul><li>等等，那是我的机器人</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：多源交叉验证（2 个独立来源）</p><p><strong>来源</strong></p><ul><li><a href=\"https://aihot.news/items/mn3xa29flku905y91pita5vwi\">aihot.news</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 等等，那是我的机器人\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：多源交叉验证（2 个独立来源）\n来源\n· aihot.news\nAI 日报",
+      "date_published": "2026-10-25T17:19:49+00:00",
       "authors": [
         {
-          "name": "axios.com"
+          "name": "aihot.news"
         }
       ],
       "tags": [
-        "rss:axios"
+        "rss:aihot-news",
+        "rss:aihot-news-all"
       ],
       "language": "zh-CN",
       "_ai_daily": {
-        "event_id": "ee5a2a6c18b8d71",
+        "event_id": "e2c508d0b45ee0d",
         "source_ids": [
-          "rss:axios"
+          "rss:aihot-news",
+          "rss:aihot-news-all"
         ],
         "all_urls": [
-          "https://www.axios.com/2026/10/25/josh-shapiro-2028-questions"
+          "https://aihot.news/items/mn3xa29flku905y91pita5vwi"
+        ],
+        "independent_source_count": 2,
+        "evidence_level": "multi_source",
+        "confidence": 1.0,
+        "facts": [
+          "等等，那是我的机器人"
+        ],
+        "inferences": [],
+        "uncertainties": [
+          "本次未调用大模型，内容为来源原文摘录"
+        ],
+        "rule_based": true
+      }
+    },
+    {
+      "id": "2026-10-26-e54c6ea2b74eafd",
+      "url": "https://www.aibase.com/zh/news/31856",
+      "external_url": "https://www.aibase.com/zh/news/31856",
+      "title": "Block 发布全新语音模型 Dessa:打破文字中转桎梏，实现逼真全双工交互",
+      "summary": "2026年10月24日，杰克·多西旗下Block发布全新语音模型Dessa。它完全基于人类语音数据训练，支持本地部署，发音异常逼真，能模拟笑声、停顿、哭泣等情感；作为全双工语音转语音模型，可同时聆听与对话，知识库直接来自对话数据，无需依赖大型语言模型检索，区别于以文本为生成输入的传统语音模型。",
+      "content_html": "<p><strong>事实</strong></p><ul><li>2026年10月24日，杰克·多西旗下Block发布全新语音模型Dessa。它完全基于人类语音数据训练，支持本地部署，发音异常逼真，能模拟笑声、停顿、哭泣等情感；作为全双工语音转语音模型，可同时聆听与对话，知识库直接来自对话数据，无需依赖大型语言模型检索，区别于以文本为生成输入的传统语音模型。</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.aibase.com/zh/news/31856\">aibase.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· 2026年10月24日，杰克·多西旗下Block发布全新语音模型Dessa。它完全基于人类语音数据训练，支持本地部署，发音异常逼真，能模拟笑声、停顿、哭泣等情感；作为全双工语音转语音模型，可同时聆听与对话，知识库直接来自对话数据，无需依赖大型语言模型检索，区别于以文本为生成输入的传统语音模型。\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· aibase.com\nAI 日报",
+      "date_published": "2026-10-26T09:48:22+00:00",
+      "authors": [
+        {
+          "name": "aibase.com"
+        }
+      ],
+      "tags": [
+        "api:aibase-ai-news"
+      ],
+      "language": "zh-CN",
+      "_ai_daily": {
+        "event_id": "e54c6ea2b74eafd",
+        "source_ids": [
+          "api:aibase-ai-news"
+        ],
+        "all_urls": [
+          "https://www.aibase.com/zh/news/31856"
         ],
         "independent_source_count": 1,
         "evidence_level": "single_source",
         "confidence": 1.0,
         "facts": [
-          "宾夕法尼亚州州长 Josh Shapiro 在该州取得了多项全州选举的胜利",
-          "Josh Shapiro 近年来未在竞选中面对资金充裕的对手",
-          "Josh Shapiro 被广泛视为 2028 年美国总统大选的潜在候选人"
+          "2026年10月24日，杰克·多西旗下Block发布全新语音模型Dessa。它完全基于人类语音数据训练，支持本地部署，发音异常逼真，能模拟笑声、停顿、哭泣等情感；作为全双工语音转语音模型，可同时聆听与对话，知识库直接来自对话数据，无需依赖大型语言模型检索，区别于以文本为生成输入的传统语音模型。"
         ],
-        "inferences": [
-          "Josh Shapiro 缺乏应对高强度、充满攻击性竞选活动的经验",
-          "若 Josh Shapiro 成为 2028 年民主党初选的主要候选人，他将面临大量的攻击性广告和反对"
-        ],
+        "inferences": [],
         "uncertainties": [
-          "Josh Shapiro 在 2028 年民主党初选中的具体排名不确定",
-          "Josh Shapiro 是否真正具备应对激烈竞选考验的能力尚未得到测试",
-          "Shapiro 在 2028 年选举中最终的表现及结果不确定"
+          "本次未调用大模型，内容为来源原文摘录"
         ],
-        "rule_based": false
+        "rule_based": true
       }
     },
     {
-      "id": "2026-10-26-e43b164bc4de301",
-      "url": "https://www.engadget.com/2293493/mesh-wifi-system-improved-with-simple-cable/",
-      "external_url": "https://www.engadget.com/2293493/mesh-wifi-system-improved-with-simple-cable/",
-      "title": "简单网线可进一步提升 mesh Wi-Fi 系统性能",
-      "summary": "Mesh systems 通常提供比独立路由器更好的 Wi-Fi 覆盖 可以通过某种方式让 mesh 信号更强",
-      "content_html": "<p><strong>事实</strong></p><ul><li>Mesh systems 通常提供比独立路由器更好的 Wi-Fi 覆盖</li><li>可以通过某种方式让 mesh 信号更强</li></ul><p><strong>推断</strong></p><ul><li>添加网线可能有助于增强 mesh Wi-Fi 系统的信号强度</li></ul><p><strong>不确定</strong></p><ul><li>材料未明确说明具体需要哪类网线</li><li>材料未提供具体的性能提升数据或测试方法</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://www.engadget.com/2293493/mesh-wifi-system-improved-with-simple-cable/\">engadget.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "事实\n· Mesh systems 通常提供比独立路由器更好的 Wi-Fi 覆盖\n· 可以通过某种方式让 mesh 信号更强\n推断\n· 添加网线可能有助于增强 mesh Wi-Fi 系统的信号强度\n不确定\n· 材料未明确说明具体需要哪类网线\n· 材料未提供具体的性能提升数据或测试方法\n可信度：单一来源\n来源\n· engadget.com\nAI 日报",
-      "date_published": "2026-10-25T18:00:00+00:00",
+      "id": "2026-10-26-ec50f64310ff216",
+      "url": "https://x.com/nanbeige/status/2114328933181333798",
+      "external_url": "https://x.com/nanbeige/status/2114328933181333798",
+      "title": "Nanbeige 开源 33B 模型 Nanbeige4.3-33B",
+      "summary": "Nanbeige 开源 33B 模型 Nanbeige4.3-33B",
+      "content_html": "<p><strong>事实</strong></p><ul><li>Nanbeige 开源 33B 模型 Nanbeige4.3-33B</li></ul><p><strong>不确定</strong></p><ul><li>本次未调用大模型，内容为来源原文摘录</li></ul><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://x.com/nanbeige/status/2114328933181333798\">x.com</a></li></ul><p><a href=\"https://example.github.io/ai-daily\">AI 日报</a></p>",
+      "content_text": "事实\n· Nanbeige 开源 33B 模型 Nanbeige4.3-33B\n不确定\n· 本次未调用大模型，内容为来源原文摘录\n可信度：单一来源\n来源\n· x.com\nAI 日报",
+      "date_published": "2026-10-26T00:39:21+00:00",
       "authors": [
         {
-          "name": "engadget.com"
+          "name": "x.com"
         }
       ],
       "tags": [
-        "rss:engadget"
+        "rss:daily-juya-uk"
       ],
       "language": "zh-CN",
       "_ai_daily": {
-        "event_id": "e43b164bc4de301",
+        "event_id": "ec50f64310ff216",
         "source_ids": [
-          "rss:engadget"
+          "rss:daily-juya-uk"
         ],
         "all_urls": [
-          "https://www.engadget.com/2293493/mesh-wifi-system-improved-with-simple-cable/"
+          "https://x.com/nanbeige/status/2114328933181333798"
         ],
         "independent_source_count": 1,
         "evidence_level": "single_source",
         "confidence": 1.0,
         "facts": [
-          "Mesh systems 通常提供比独立路由器更好的 Wi-Fi 覆盖",
-          "可以通过某种方式让 mesh 信号更强"
+          "Nanbeige 开源 33B 模型 Nanbeige4.3-33B"
         ],
-        "inferences": [
-          "添加网线可能有助于增强 mesh Wi-Fi 系统的信号强度"
-        ],
+        "inferences": [],
         "uncertainties": [
-          "材料未明确说明具体需要哪类网线",
-          "材料未提供具体的性能提升数据或测试方法"
+          "本次未调用大模型，内容为来源原文摘录"
         ],
-        "rule_based": false
-      }
-    },
-    {
-      "id": "2026-10-26-ecd67a9edef7a8d",
-      "url": "https://github.com/debpalash/VoiceStudio",
-      "external_url": "https://github.com/debpalash/VoiceStudio",
-      "title": "debpalash/VoiceStudio — VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice…",
-      "summary": "debpalash/VoiceStudio — VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice…",
-      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://github.com/debpalash/VoiceStudio\">github.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· github.com\nAI 日报",
-      "date_published": "2026-10-25T22:22:45.302316+00:00",
-      "authors": [
-        {
-          "name": "github.com"
-        }
-      ],
-      "tags": [
-        "scrape:github-com-trending"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "ecd67a9edef7a8d",
-        "source_ids": [
-          "scrape:github-com-trending"
-        ],
-        "all_urls": [
-          "https://github.com/debpalash/VoiceStudio"
-        ],
-        "independent_source_count": 1,
-        "evidence_level": "single_source",
-        "confidence": 1.0,
-        "facts": [],
-        "inferences": [],
-        "uncertainties": [],
-        "rule_based": true
-      }
-    },
-    {
-      "id": "2026-10-26-ef1bc03730741b3",
-      "url": "https://github.com/TauricResearch/TradingAgents",
-      "external_url": "https://github.com/TauricResearch/TradingAgents",
-      "title": "TauricResearch/TradingAgents — TradingAgents: Multi-Agents LLM Financial Trading Framework",
-      "summary": "TauricResearch/TradingAgents — TradingAgents: Multi-Agents LLM Financial Trading Framework",
-      "content_html": "<p><strong>来源摘录</strong></p><p>本条未调用大模型，内容为来源原文。</p><p><strong>可信度</strong>：单一来源</p><p><strong>来源</strong></p><ul><li><a href=\"https://github.com/TauricResearch/TradingAgents\">github.com</a></li></ul><p><a href=\"https://siweimidu.github.io/ai-ribao\">AI 日报</a></p>",
-      "content_text": "来源摘录\n本条未调用大模型，内容为来源原文。\n可信度：单一来源\n来源\n· github.com\nAI 日报",
-      "date_published": "2026-10-25T22:22:45.302316+00:00",
-      "authors": [
-        {
-          "name": "github.com"
-        }
-      ],
-      "tags": [
-        "scrape:github-com-trending"
-      ],
-      "language": "zh-CN",
-      "_ai_daily": {
-        "event_id": "ef1bc03730741b3",
-        "source_ids": [
-          "scrape:github-com-trending"
-        ],
-        "all_urls": [
-          "https://github.com/TauricResearch/TradingAgents"
-        ],
-        "independent_source_count": 1,
-        "evidence_level": "single_source",
-        "confidence": 1.0,
-        "facts": [],
-        "inferences": [],
-        "uncertainties": [],
         "rule_based": true
       }
     }
