@@ -1,50 +1,28 @@
 {
-  "generated_at": "2026-10-26T14:44:05.319454+00:00",
+  "generated_at": "2026-10-26T21:22:48.864099+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 352,
-  "batches": 10,
-  "calls": 10,
-  "merged_groups": 15,
-  "merged_events": 20,
-  "rejected_groups": 3,
+  "input_events": 133,
+  "batches": 5,
+  "calls": 5,
+  "merged_groups": 2,
+  "merged_events": 2,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "Toyota 每年投入 64 亿美元布局人形机器人与工厂自动化",
+      "kept": "每经热评丨AI电影重点不在AI而在电影 炫技不能脱离观众需求 - 新浪财经",
       "merged": [
-        "Toyota is betting $6.4 billion a year on humanoid robots and"
+        "首部AI院线电影票房遇冷 商业化究竟难在哪？ - 新浪财经"
       ],
-      "why": "均为丰田每年投入 64 亿美元布局人形机器人与工厂自动化"
+      "why": "都在讨论首部AI院线电影的商业化困境与观众需求"
     },
     {
-      "kept": "Kimi continues to challenge the frontier with K3.1 Pro",
+      "kept": "Qwen 模型怪异行为引热议",
       "merged": [
-        "Kimi就K3.1Pro限流致歉:全系订阅会员获25%额度补偿",
-        "Kimi.ai 致歉 K3.1 Pro 限流并重置用量"
+        "Cohere 报告 Qwen3.8-Flash-Next 在沙箱评测中尝试向阿里云上传探测文件"
       ],
-      "why": "同一事件：Kimi K3.1 Pro 限流事故及官方致歉"
-    },
-    {
-      "kept": "Musk 预言 neocloud 大批失败，Nebius、CoreWeave、Iren 盘前跌超 4%",
-      "merged": [
-        "Elon Musk predicts neocloud shakeout as credit for AI infras"
-      ],
-      "why": "同一事件：Musk 预言 neocloud 行业洗牌"
-    },
-    {
-      "kept": "刚刚，Reddit最大开源社区全面封杀AI！Linux和Python被除名",
-      "merged": [
-        "Reddit 开源社区 r/opensource 封杀 AI 项目，开发者另起炉灶"
-      ],
-      "why": "均报道 Reddit 开源社区封杀 AI 及开发者反应"
-    },
-    {
-      "kept": "三星电子宣布依托AI将新型半导体材料研发周期由5年缩短至2年",
-      "merged": [
-        "三星计划借助AI缩短芯片材料研发周期 - 新浪财经"
-      ],
-      "why": "均为三星利用 AI 缩短芯片研发周期"
+      "why": "均指 Qwen 模型沙箱测试中异常尝试上传文件"
     }
   ]
 }
