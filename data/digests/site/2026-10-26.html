@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nanbeige 发布 33B 开源 Agentic Coding 模型 · AI 日报</title>
-<meta name="description" content="Hugging Face 与中关村学院、TIGEM/那不勒斯费德里科二世大学发布开源 DNA 语言模型 Carbon-X，14.8B 参数、40,960 token 上下文，基于 Qwen3-14B，用混合 tokenizer 加入 5,515 个 DNA token，可直接读 DNA 并用英文回答">
+<meta name="description" content="">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#0065fd">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1530 1530'%3E%3Cstyle%3E:root{color-scheme:light dark}rect{fill:%23FEFEFE}g{fill:%23231A15}@media(prefers-color-scheme:dark){rect{fill:%230B0D10}g{fill:%23F2F4F7}}%3C/style%3E%3Crect width='1530' height='1530' rx='765'/%3E%3Cg transform='translate(765 765) scale(2.65) translate(-765 -765)'%3E%3Cpath fill-rule='evenodd' d='M 494,818 L 626,504 L 711,503 L 800,711 L 803,711 L 1018,546 L 1032,538 L 1027,544 L 745,795 L 740,795 L 726,765 L 610,765 L 586,820 Z M 669,614 L 701,694 L 636,694 Z'/%3E%3Cpath d='M 871,713 L 867,712 L 560,989 L 587,971 L 781,825 L 783,1025 L 871,1024 Z'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="canonical" href="https://siweimidu.github.io/ai-ribao/2026-10-26.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nanbeige 发布 33B 开源 Agentic Coding 模型">
-<meta property="og:description" content="Hugging Face 与中关村学院、TIGEM/那不勒斯费德里科二世大学发布开源 DNA 语言模型 Carbon-X，14.8B 参数、40,960 token 上下文，基于 Qwen3-14B，用混合 tokenizer 加入 5,515 个 DNA token，可直接读 DNA 并用英文回答">
+<meta property="og:description" content="">
 <link rel="image_src" href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-26/e71f17805f23b94-m001-8f173418.webp">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-26/e71f17805f23b94-m001-8f173418.webp">
 <meta name="twitter:card" content="summary_large_image">
@@ -147,8 +147,8 @@
   <main class="content" id="main">
     <header class="issue__head">
       <p class="issue__date enter">2026-10-26　第 13 期</p>
-      <h1 class="issue__title enter">Hugging Face 联合合作机构发布 14.8B 开源 DNA 语言模型 Carbon-X</h1>
-      <p class="issue__lead enter">Hugging Face 与中关村学院、TIGEM/那不勒斯费德里科二世大学发布开源 DNA 语言模型 Carbon-X，14.8B 参数、40,960 token 上下文，基于 Qwen3-14B，用混合 tokenizer 加入 5,515 个 DNA token，可直接读 DNA 并用英文回答突变致病性预测等任务，权重采用 Apache 2.0。</p>
+      <h1 class="issue__title enter">Hugging Face Releases Carbon-X, a 14B Open DNA Language Model that Brings DNA and Natural Language Together for the First Time</h1>
+      
       <div class="stats enter"><div><b class="count-up" data-to="21">21</b><span>事件</span></div><div><b class="count-up" data-to="12">12</b><span>有内容的源</span></div><div><b class="count-up" data-to="4">4</b><span>多源验证</span></div><div><b class="count-up" data-to="9">9</b><span>头条覆盖来源</span></div></div>
     </header>
 
@@ -156,26 +156,14 @@
 
           <section class="section overview" id="overview">
         <h2 class="section__title">概览<span class="section__count">今日要闻</span></h2>
-        <ol class="ov"><li><a href="#e-ec9d01ab94"><span class="ov__no">01</span><span><b>Hugging Face 联合合作机构发布 14.8B 开源 DNA 语言模型 Carbon-X</b></span></a></li><li><a href="#e-e417d1ecf6"><span class="ov__no">03</span><span><b>南北阁发布 Nanbeige4.3-33B 开源模型</b><span class="ov__detail">Nanbeige LLM Lab 发布了 Nanbeige4.3-33B</span></span></a></li><li><a href="#e-e0fb26bd02"><span class="ov__no">04</span><span><b>Dex Horthy 谈多 Skill 同会话上下文污染及取舍</b><span class="ov__detail">HumanLayer 的 Dex Horthy 认为同会话串联约 5 个 Skill 没问题</span></span></a></li><li><a href="#e-e032706836"><span class="ov__no">05</span><span><b>模型自建并删除技能以验证权重知识</b><span class="ov__detail">这是一种让模型为特定任务创建详细技能的方法，仅需要极轻的自然语言引导。</span></span></a></li><li><a href="#e-e71f17805f"><span class="ov__no">06</span><span><b>Apollo 经济学家称 AI 对非科技行业零财务回报</b><span class="ov__detail">Apollo Global Management 首席经济学家 Torsten Slok 发文称 AI 未提升科技巨头以外大公司的利润。</span></span></a></li><li><a href="#e-e6c8c73554"><span class="ov__no">07</span><span><b>Gartner 预测超 80% neocloud 厂商到 2030 年将无法独立运营</b></span></a></li><li><a href="#e-e4e3559069"><span class="ov__no">08</span><span><b>Grok 发布 AI 生成版《奥德赛》系列首集七分钟，TechCrunch 评测观感平平</b></span></a></li><li><a href="#e-e4a8d8bd4d"><span class="ov__no">09</span><span><b>Kimi 就 K3.1 Pro 订阅限流与配额消耗致歉并补偿</b></span></a></li></ol>
+        <ol class="ov"><li><a href="#e-e417d1ecf6"><span class="ov__no">03</span><span><b>南北阁发布 Nanbeige4.3-33B 开源模型</b><span class="ov__detail">Nanbeige LLM Lab 发布了 Nanbeige4.3-33B</span></span></a></li><li><a href="#e-e0fb26bd02"><span class="ov__no">04</span><span><b>Dex Horthy 谈多 Skill 同会话上下文污染及取舍</b><span class="ov__detail">HumanLayer 的 Dex Horthy 认为同会话串联约 5 个 Skill 没问题</span></span></a></li><li><a href="#e-e032706836"><span class="ov__no">05</span><span><b>模型自建并删除技能以验证权重知识</b><span class="ov__detail">这是一种让模型为特定任务创建详细技能的方法，仅需要极轻的自然语言引导。</span></span></a></li><li><a href="#e-e71f17805f"><span class="ov__no">06</span><span><b>Apollo 经济学家称 AI 对非科技行业零财务回报</b><span class="ov__detail">Apollo Global Management 首席经济学家 Torsten Slok 发文称 AI 未提升科技巨头以外大公司的利润。</span></span></a></li><li><a href="#e-e6c8c73554"><span class="ov__no">07</span><span><b>Gartner 预测超 80% neocloud 厂商到 2030 年将无法独立运营</b></span></a></li><li><a href="#e-e4e3559069"><span class="ov__no">08</span><span><b>Grok 发布 AI 生成版《奥德赛》系列首集七分钟，TechCrunch 评测观感平平</b></span></a></li><li><a href="#e-e4a8d8bd4d"><span class="ov__no">09</span><span><b>Kimi 就 K3.1 Pro 订阅限流与配额消耗致歉并补偿</b></span></a></li><li><a href="#e-e5697e58af"><span class="ov__no">10</span><span><b>用户用 Opus 5.5 重做书籍网站</b><span class="ov__detail">作者使用 Opus 5.5 重做了其书籍的网站</span></span></a></li></ol>
         <p class="ov__foot">今日共 21 条事件，
         其中 4 条经多个独立来源交叉验证。下面是完整列表。</p>
       </section>
 
       <section class="section" id="all">
-        <h2 class="section__title">全部消息<span class="section__count">19 条</span></h2>
+        <h2 class="section__title">全部消息<span class="section__count">18 条</span></h2>
         <ol class="stream">
-        <li class="item" id="e-ec9d01ab94">
-          <div class="item__head"><span class="item__no">01</span><h3 class="item__title"><a href="https://www.marktechpost.com/2026/10/25/hugging-face-carbon-x-14b-dna-language-model/" target="_blank" rel="noopener noreferrer">Hugging Face 联合合作机构发布 14.8B 开源 DNA 语言模型 Carbon-X</a></h3></div>
-          
-          <div class="item__meta">
-            <span class="badge" data-level="multi_source">多源交叉验证</span>
-            <span>2 个独立来源</span>
-            <span>10-26 00:53</span>
-            <a href="https://www.marktechpost.com/2026/10/25/hugging-face-carbon-x-14b-dna-language-model/" target="_blank" rel="noopener noreferrer">marktechpost.com</a>
-          </div>
-          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div></div>
-          
-        </li>
         <li class="item" id="e-e417d1ecf6">
           <div class="item__head"><span class="item__no">03</span><h3 class="item__title"><a href="https://www.marktechpost.com/2026/10/25/nanbeige-releases-nanbeige4-3-33b-open-agentic-coding-model/" target="_blank" rel="noopener noreferrer">南北阁发布 Nanbeige4.3-33B 开源模型</a></h3></div>
           
@@ -374,7 +362,7 @@
           <div class="item__meta">
             <span class="badge" data-level="single_source">单一来源</span>
             
-            <span>Trending，6 个月前创建</span>
+            <span class="when-unknown">时间未知</span>
             <a href="https://github.com/debpalash/VoiceStudio" target="_blank" rel="noopener noreferrer">github.com</a>
           </div>
           <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div></div>
@@ -386,7 +374,7 @@
           <div class="item__meta">
             <span class="badge" data-level="single_source">单一来源</span>
             
-            <span>Trending，1 年前创建</span>
+            <span class="when-unknown">时间未知</span>
             <a href="https://github.com/TauricResearch/TradingAgents" target="_blank" rel="noopener noreferrer">github.com</a>
           </div>
           <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">来源摘录</p><ul><li data-kind="fact">本条未调用大模型，内容为来源原文摘录。</li></ul></div></div>
@@ -396,11 +384,11 @@
       </section>
 
           <details class="untranslated" id="untranslated">
-        <summary>本期待翻译条目（2 条）</summary>
+        <summary>本期待翻译条目（3 条）</summary>
         <p>这些条目的来源是外文，且本期模型额度用完、未能逐条译成中文，
         因此只在这里保留原文与出处，不混进上面的正文。
         <strong>点开即离开本站、前往原文</strong>。</p>
-        <ol><li><span class="untranslated__no">02</span><a href="https://www.theinformation.com/articles/anthropics-big-reveal" target="_blank" rel="noopener noreferrer">Anthropic’s Big Reveal</a><span class="untranslated__src">theinformation.com</span></li><li><span class="untranslated__no">13</span><a href="https://www.semafor.com/article/10/25/2026/rest-of-world-faces-prospect-of-shutting-down" target="_blank" rel="noopener noreferrer">Rest of World faces prospect of shutting down</a><span class="untranslated__src">semafor.com</span></li></ol>
+        <ol><li><span class="untranslated__no">01</span><a href="https://www.marktechpost.com/2026/10/25/hugging-face-carbon-x-14b-dna-language-model/" target="_blank" rel="noopener noreferrer">Hugging Face Releases Carbon-X, a 14B Open DNA Language Model that Brings DNA and Natural Language Together for the First Time</a><span class="untranslated__src">marktechpost.com</span></li><li><span class="untranslated__no">02</span><a href="https://www.theinformation.com/articles/anthropics-big-reveal" target="_blank" rel="noopener noreferrer">Anthropic’s Big Reveal</a><span class="untranslated__src">theinformation.com</span></li><li><span class="untranslated__no">13</span><a href="https://www.semafor.com/article/10/25/2026/rest-of-world-faces-prospect-of-shutting-down" target="_blank" rel="noopener noreferrer">Rest of World faces prospect of shutting down</a><span class="untranslated__src">semafor.com</span></li></ol>
       </details>
 
     <nav class="pager"><a href="2026-10-25.html"><span>上一期</span>2026-10-25</a><span></span></nav>
@@ -424,7 +412,8 @@
         <p class="toc__title">今日目录</p>
         <div class="toc__nav">
           <a href="#overview" class="toc__overview">概览</a>
-          <a href="#e-ec9d01ab94"><span class="toc__no">01</span>Hugging Face 联合合作机构发布 14.8B 开源 DNA 语言模型 …</a>
+          <a href="#e-ec9d01ab94"><span class="toc__no">01</span>Hugging Face Releases Carbon-X, a 14B Op…</a>
+          <a href="#e-e3ae35fd21"><span class="toc__no">02</span>Anthropic’s Big Reveal</a>
           <a href="#e-e417d1ecf6"><span class="toc__no">03</span>南北阁发布 Nanbeige4.3-33B 开源模型</a>
           <a href="#e-e0fb26bd02"><span class="toc__no">04</span>Dex Horthy 谈多 Skill 同会话上下文污染及取舍</a>
           <a href="#e-e032706836"><span class="toc__no">05</span>模型自建并删除技能以验证权重知识</a>
@@ -435,12 +424,15 @@
           <a href="#e-e5697e58af"><span class="toc__no">10</span>用户用 Opus 5.5 重做书籍网站</a>
           <a href="#e-e23d65eb66"><span class="toc__no">11</span>Muse 逐步上线实时语音通话功能</a>
           <a href="#e-e5d845ed21"><span class="toc__no">12</span>Yuchen Jin 认为多数 neolab 将失败</a>
+          <a href="#e-e7dd068238"><span class="toc__no">13</span>Rest of World faces prospect of shutting…</a>
           <a href="#e-edf97675d3"><span class="toc__no">14</span>你的 Grok 机器人现在在做什么</a>
           <a href="#e-e6fb943ce0"><span class="toc__no">15</span>SpaceXSI作者确认引用中的机器人系其自造</a>
           <a href="#e-e583ae7404"><span class="toc__no">16</span>联想AI主机P7预览版亮相搭载国产双芯可本地运行千亿级大模型|云端|经济|天禧|…</a>
           <a href="#e-ee34a39804"><span class="toc__no">17</span>用户热情响应 @bot 新功能</a>
           <a href="#e-ee5a2a6c18"><span class="toc__no">18</span>Axios分析Shapiro 2028竞选前景</a>
           <a href="#e-e43b164bc4"><span class="toc__no">19</span>简单网线可进一步提升 mesh Wi-Fi 系统性能</a>
+          <a href="#e-ecd67a9ede"><span class="toc__no">20</span>debpalash/VoiceStudio — VoiceStudio is t…</a>
+          <a href="#e-ef1bc03730"><span class="toc__no">21</span>TauricResearch/TradingAgents — TradingAg…</a>
         </div>
       </nav>
 </div>

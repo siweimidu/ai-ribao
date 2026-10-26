@@ -211,7 +211,9 @@ def main() -> int:
             f"缺 {missing}，已归档 {events} 条 —— 重新触发采集",
         )
     else:
-        print("所有应完成的时段都已发布，无需重试")
+        # _output, not a bare print: the external scheduler reads the marker from
+        # stdout, and an unmarked exit is indistinguishable from a crash before deciding.
+        _output("false", "所有应完成的时段都已发布，无需重试")
     return 0
 
 

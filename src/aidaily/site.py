@@ -431,8 +431,14 @@ def render_toc(
     for index, event in enumerate(events, start=1):
         insight = insights.get(event.event_id)
         title = _display_title(event, insight, items_by_id)
-        if not _looks_chinese(title):
-            continue
+        # **Every story gets a rail entry, including the untranslated ones.**
+        #
+        # This skipped titles that were not Chinese, on the reasoning that the rail is the
+        # column a reader scans constantly and an English line is conspicuous there. The
+        # reasoning is fine; the consequence was not. Measured 2026-10-26: the issue had 21
+        # stories and the rail stopped at 19, so two entries existed on the page and could not
+        # be found from the rail. A navigation aid that silently omits destinations is worse
+        # than one that shows a foreign title.
         anchor = f"e-{event.event_id[:10]}"
         label = title if len(title) <= 42 else title[:40] + "…"
         rows.append(

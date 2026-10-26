@@ -188,11 +188,24 @@ class HttpClient:
         attempts = (self.retries if retries is None else retries) + 1
 
         req_headers: dict[str, str] = {}
-        if conditional and (v := self.validators.get(url)):
-            req_headers.update(v)
-
         last_detail = ""
         for attempt in range(1, self.retries + 2):
+            # **Rebuild the conditional headers on every attempt.**
+            #
+            # They used to be built once, outside the loop. After a 304 the code dropped the
+            # stored validator and retried -- but the request still carried the `If-None-Match`
+            # it had been built with, so the server answered 304 again and the source
+            # contributed nothing.
+            #
+            # Measured 2026-10-26: `rss:daily-juya-uk`, `rss:ainewslog-com` and
+            # `rss:hex2077-dev-rss-zh-cn` all reported `not_modified` with 0 items, and the
+            # issue carried 21 entries from 96 items that reached the window. The retry loop
+            # looked correct because it did retry; it retried the same question.
+            if conditional and (v := self.validators.get(url)):
+                req_headers.update(v)
+            else:
+                req_headers.pop("If-None-Match", None)
+                req_headers.pop("If-Modified-Since", None)
             await self.limiter.wait(url)
             try:
                 # `timeout` is per request, so a source that declared 20s cannot silently
