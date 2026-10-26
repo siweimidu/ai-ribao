@@ -1,13 +1,51 @@
 {
-  "generated_at": "2026-10-26T15:59:59+00:00",
-  "router_is_none": true,
+  "generated_at": "2026-10-26T06:55:46.012812+00:00",
+  "router_is_none": false,
   "ran": true,
-  "input_events": 0,
-  "batches": 0,
-  "calls": 0,
-  "merged_groups": 0,
-  "merged_events": 0,
-  "rejected_groups": 0,
-  "failed": true,
-  "examples": []
+  "input_events": 237,
+  "batches": 8,
+  "calls": 8,
+  "merged_groups": 12,
+  "merged_events": 15,
+  "rejected_groups": 1,
+  "failed": false,
+  "examples": [
+    {
+      "kept": "Apollo analysis shows no one besides the biggest tech giants is seeing benefits ",
+      "merged": [
+        "AI delivers ‘zero financial payoff’ to most companies, Apoll"
+      ],
+      "why": "均为阿波罗分析指AI利好集中于巨头"
+    },
+    {
+      "kept": "Kimi 就 K3.1 Pro 订阅限流与配额消耗致歉并补偿",
+      "merged": [
+        "Kimi就K3.1Pro限流致歉:全系订阅会员获25%额度补偿",
+        "Kimi.ai 致歉 K3.1 Pro 限流并重置用量"
+      ],
+      "why": "均为 Kimi K3.1 Pro 限流致歉及补偿事件"
+    },
+    {
+      "kept": "马斯克 Grok 版《奥德赛》前 7 分钟放出，被批缺乏艺术感染力",
+      "merged": [
+        "Grok releases the first seven minutes of its AI-generated ‘O",
+        "Grok首发 7 分钟AI版《奥德赛》史诗短片，叫板诺兰传统大制作"
+      ],
+      "why": "均为 Grok 发布 AI 版《奥德赛》前 7 分钟视频"
+    },
+    {
+      "kept": "阿波罗首席经济学家：AI 尚未给科技七巨头以外的美国企业带来利润增量",
+      "merged": [
+        "阿波罗首席经济学家：AI红利仅惠及科技七巨头 标普其余493只成分股生产力未提升 - 观点网"
+      ],
+      "why": "均为阿波罗首席经济学家谈 AI 红利仅惠及科技巨头"
+    },
+    {
+      "kept": "千问App全面适配 iPhone Duo，折叠屏怎么用都顺手",
+      "merged": [
+        "Which Android phone is the closest equivalent to the iPhone "
+      ],
+      "why": "均涉及 iPhone Duo 及其 Android 对应机型对比"
+    }
+  ]
 }
