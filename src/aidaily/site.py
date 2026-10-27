@@ -411,6 +411,7 @@ def render_toc(
     events: list[Event],
     insights: dict[str, EventInsight] | None = None,
     items_by_id: dict[str, NormalizedItem] | None = None,
+    translated_ids: set[str] | None = None,
 ) -> str:
     """Right rail: an overview link plus every story of the day, in rank order.
 
@@ -426,24 +427,32 @@ def render_toc(
       happened today" before "where is that one story".
     """
     insights = insights or {}
+    translated_ids = translated_ids or set()
     rows: list[str] = ['<a href="#overview" class="toc__overview">概览</a>']
 
-    for index, event in enumerate(events, start=1):
+    # **The rail lists the body, not `top_events`.**
+    #
+    # Two rules pull in opposite directions and the user settled it:
+    #
+    #   2026-10-26  21 stories, rail stopped at 19 -- every story needs an entry.
+    #   2026-10-27  the rail linked 11 待翻译 entries that live in a collapsed block, so
+    #               clicking one jumped to an anchor that is not in the body.
+    #
+    # Both are the same mistake in different directions: the rail was built from a list that
+    # is not what the page renders. It is now built from `translated_ids` -- exactly the set
+    # the body shows -- so the count matches and every link resolves.
+    shown = 0
+    for event in events:
+        if translated_ids and event.event_id not in translated_ids:
+            continue
         insight = insights.get(event.event_id)
         title = _display_title(event, insight, items_by_id)
-        # **Every story gets a rail entry, including the untranslated ones.**
-        #
-        # This skipped titles that were not Chinese, on the reasoning that the rail is the
-        # column a reader scans constantly and an English line is conspicuous there. The
-        # reasoning is fine; the consequence was not. Measured 2026-10-26: the issue had 21
-        # stories and the rail stopped at 19, so two entries existed on the page and could not
-        # be found from the rail. A navigation aid that silently omits destinations is worse
-        # than one that shows a foreign title.
+        shown += 1
         anchor = f"e-{event.event_id[:10]}"
         label = title if len(title) <= 42 else title[:40] + "…"
         rows.append(
             f'<a href="#{esc(anchor)}">'
-            f'<span class="toc__no">{index:02d}</span>{esc(label)}</a>'
+            f'<span class="toc__no">{shown:02d}</span>{esc(label)}</a>'
         )
 
     if len(rows) == 1:
@@ -906,8 +915,6 @@ def render_day(
     ctx: SiteContext,
     repo_meta: dict[str, dict] | None = None,
 ) -> str:
-    toc = render_toc(digest.top_events, insights, items_by_id)
-
     # One flat list, in heat order.
     #
     # It used to be grouped by **source category** -- 实验室博客, 科技媒体, 中文媒体, 社区讨论,
@@ -972,6 +979,10 @@ def render_day(
       </details>"""
 
     overview = _render_overview(digest, insights, translated_ids, items_by_id)
+    # The rail is built here, after the body decided which events it shows.
+    # It used to be built before the loop, from `top_events` -- which is why it once
+    # listed 11 entries that the body had moved into the collapsed 待翻译 block.
+    toc = render_toc(digest.top_events, insights, items_by_id, translated_ids)
 
     # The headline shown at the top of the page.
     #

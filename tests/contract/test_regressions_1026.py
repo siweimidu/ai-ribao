@@ -31,7 +31,9 @@ def test_the_rail_does_not_skip_non_chinese_titles() -> None:
 
 def test_the_rail_still_emits_one_row_per_event() -> None:
     body = _function_body(SITE, "render_toc")
-    assert "for index, event in enumerate(events" in body
+    # The loop dropped `enumerate` when numbering moved to a `shown` counter: the rail
+    # numbers what it renders, not what it scans.
+    assert "for event in events:" in body
     assert "toc__no" in body
 
 
