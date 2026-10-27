@@ -271,7 +271,7 @@ def cmd_run(args: argparse.Namespace) -> int:
     # 3) L3 semantic clustering + 4) analysis, both need the LLM
     router, llm_warnings, http = _build_router(args)
     (events, cluster_result, insights, analyze_warnings, history,
-     rubric_scores, rubric_sections, run_now, selection_report) = asyncio.run(
+     rubric_scores, rubric_sections, run_now, selection_report, selected) = asyncio.run(
         _analyze_async(stage, sources, cfg, router, http, args, digest_date)
     )
 
@@ -300,6 +300,9 @@ def cmd_run(args: argparse.Namespace) -> int:
         history=history, rubric_scores=rubric_scores,
         rubric_sections=rubric_sections, now=run_now,
         pre_date_ignored=split.ignored,
+        # The list the model actually analysed. Without it the digest re-selects and
+        # some published entries have no insight, so their headline stays in English.
+        preselected=selected,
     )
 
     # 6) fact check -- a failing digest is not published
@@ -1318,9 +1321,14 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
         # `rubric_sections` travels with the scores: the section is the ranking's primary key,
         # so the caller that re-selects with the scores must receive the sections too, or the
         # final order would fall back to the rule-based classifier for rows the model classified.
+        # `selected` travels with the result: the caller must hand *this* list to
+        # `build_digest`, or the digest re-selects and the insights (built from
+        # `selected`) no longer line up with `top_events`. Measured 2026-10-27: 17 of
+        # 73 entries rendered their source headline untranslated because their insight
+        # was attached to an event the second pass did not choose.
         return (events, cluster_result, insights, analyze_warnings + history_notes,
                 history, rubric_scores, getattr(rubric_result, "sections", None), run_now,
-                selection_report)
+                selection_report, selected)
     finally:
         if http is not None:
             await http.aclose()

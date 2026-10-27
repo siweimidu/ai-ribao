@@ -1,0 +1,68 @@
+fix(pipeline): 选择跑了两遍 —— 17 条标题因此没翻译
+
+════════════════════════════════════════════════════════════════════════
+你的疑问
+
+  「我总共给了20条Agnes的密钥，这额度怎么看都能够翻译大标题吧，
+    那么多条的密钥你不是有轮换机制吗」
+
+**你说得对，轮换没问题，额度也没问题。**
+
+实测 10-27 那次：
+
+  calls   101 / 400        用了 25%
+  tokens  161767 / 2000000 用了 8%
+  供应商  23 条 Agnes 全部用上，每个 2–8 次
+
+════════════════════════════════════════════════════════════════════════
+真正的原因：翻译根本没被请求
+
+  归档里 events 73 条，insights 只有 59 条
+
+缺失的 17 条没有 insight，`_display_title` 只能回退到英文原标题。
+
+而 warnings 里没有任何降级记录 —— 因为**这些条目从来没被送去分析**。
+
+════════════════════════════════════════════════════════════════════════
+根因：选择跑了两遍
+
+  _analyze_async:
+      selected, _ = select_for_digest(...)      ← 第一次
+      insights = await analyze_events(selected) ← 分析这一批
+      return (events, ...)                      ← **返回的是 events，不是 selected**
+
+  build_digest:
+      ordered, _ = select_for_digest(events)    ← **第二次，重新选一遍**
+      top_events = ordered
+
+两次选择的结果不一致时，发布出去的条目里就有一部分没有 insight。
+
+之前我已经修过一次 —— 把 `rubric_scores`、`rubric_sections` 传进第二次选择。
+**那是在给错误的设计打补丁。**
+
+════════════════════════════════════════════════════════════════════════
+修法：只选一次
+
+  build_digest(..., preselected=selected)
+
+    if preselected is not None:
+        ordered = list(preselected)
+        # rank_report 的两个字段从实际列表算，不置空
+    else:
+        ordered, rank_report = select_for_digest(...)
+
+`_analyze_async` 现在把 `selected` 一起返回。
+
+════════════════════════════════════════════════════════════════════════
+验证
+
+  修复前:  events 73   insights 59   missing 17
+  修复后:  events 120  insights 120  missing 0
+
+  端到端 120 条，exit 0
+
+════════════════════════════════════════════════════════════════════════
+5 项契约测试
+
+build_digest 接受 preselected、该路径跳过第二次选择、
+调用方传入并返回 selected、头条统计仍正确。

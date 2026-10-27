@@ -775,6 +775,9 @@ def build_digest(
     rubric_scores: dict[str, float] | None = None,
     rubric_sections: dict[str, str] | None = None,
     pre_date_ignored: int = 0,
+    #: A list the caller already selected. When given, the internal re-selection is
+    #: skipped entirely -- see the note at the call site.
+    preselected: list[Event] | None = None,
 ) -> Digest:
     """Assemble the Digest from the stages' output.
 
@@ -813,26 +816,40 @@ def build_digest(
         total=total, active=len(active), failed=failed, skipped=skipped
     )
 
-    ordered, rank_report = select_for_digest(
-        events, stage, sources, cfg, now=now, history=history,
-        today=(now or datetime.now(timezone.utc)).astimezone().date().isoformat(),
-        # The rubric scores **must** be passed here, or this call re-selects a different
-        # sixty events than the caller analysed.
-        #
-        # That is not hypothetical: omitting them produced a digest whose `top_events` shared
-        # only 40 ids with its own `insights` map. Twenty entries rendered the source's
-        # English headline while their analyses sat in the archive attached to events nobody
-        # would see -- and it is the exact failure `select_for_digest`'s own docstring warns
-        # about, reintroduced by adding a second selection pass without threading the scores
-        # through. Selection happens in two places and they must agree.
-        # `rubric_sections` matters as much as the scores: the section is the ranking's
-        # primary key, so a pass holding the scores but not the sections re-classifies every
-        # row with the rule-based fallback and orders them differently. On 2026-10-19 that
-        # divergence emptied the issue: the caller selected 200+ events, this call selected
-        # none, and the digest published 0 while reporting 219 considered.
-        rubric_scores=rubric_scores,
-        rubric_sections=rubric_sections,
-    )
+    if preselected is not None:
+        ordered = list(preselected)
+        # The two figures the digest records about its own head. Computed here rather
+        # than left empty: `distinct_sources` and `max_share` describe the published
+        # list, and a pre-selected list still has both.
+        head_sources = [s for e in ordered for s in (e.source_ids or ())]
+        counts = {}
+        for sid in head_sources:
+            counts[sid] = counts.get(sid, 0) + 1
+        rank_report = {
+            "distinct_sources": len(counts),
+            "max_share": (max(counts.values()) / len(head_sources)) if head_sources else 0.0,
+        }
+    else:
+        ordered, rank_report = select_for_digest(
+            events, stage, sources, cfg, now=now, history=history,
+            today=(now or datetime.now(timezone.utc)).astimezone().date().isoformat(),
+            # The rubric scores **must** be passed here, or this call re-selects a different
+            # sixty events than the caller analysed.
+            #
+            # That is not hypothetical: omitting them produced a digest whose `top_events` shared
+            # only 40 ids with its own `insights` map. Twenty entries rendered the source's
+            # English headline while their analyses sat in the archive attached to events nobody
+            # would see -- and it is the exact failure `select_for_digest`'s own docstring warns
+            # about, reintroduced by adding a second selection pass without threading the scores
+            # through. Selection happens in two places and they must agree.
+            # `rubric_sections` matters as much as the scores: the section is the ranking's
+            # primary key, so a pass holding the scores but not the sections re-classifies every
+            # row with the rule-based fallback and orders them differently. On 2026-10-19 that
+            # divergence emptied the issue: the caller selected 200+ events, this call selected
+            # none, and the digest published 0 while reporting 219 considered.
+            rubric_scores=rubric_scores,
+            rubric_sections=rubric_sections,
+        )
 
     # The headline comes from the top-ranked event that actually has an insight.
     headline = ""
