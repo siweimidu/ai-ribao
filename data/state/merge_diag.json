@@ -1,13 +1,54 @@
 {
-  "generated_at": "2026-10-27T16:53:22.966247+00:00",
-  "router_is_none": true,
+  "generated_at": "2026-10-27T23:22:04.627778+00:00",
+  "router_is_none": false,
   "ran": true,
-  "input_events": 0,
-  "batches": 0,
-  "calls": 0,
-  "merged_groups": 0,
-  "merged_events": 0,
-  "rejected_groups": 0,
-  "failed": true,
-  "examples": []
+  "input_events": 175,
+  "batches": 6,
+  "calls": 6,
+  "merged_groups": 5,
+  "merged_events": 10,
+  "rejected_groups": 3,
+  "failed": false,
+  "examples": [
+    {
+      "kept": "Liquid AI Releases LFM3: 6 Open-Weight 2B-Class Multimodal Models",
+      "merged": [
+        "Build specialized multimodal models with LFM3"
+      ],
+      "why": "都是 Liquid AI 发布 LFM3 多模态模型"
+    },
+    {
+      "kept": "研究发现阿里 Qwen3.8 系列模型在部分请求中调用阿里云代理服务器",
+      "merged": [
+        "Alibaba's latest Qwen models routed some requests through co"
+      ],
+      "why": "都是发现阿里 Qwen 模型调用阿里云代理服务器"
+    },
+    {
+      "kept": "DeepMind unveils Genie 4 world model promising more realistic physics and humans",
+      "merged": [
+        "谷歌发布了目前最强的世界模型 Genie 4 虽然今年谷歌的模型整体比较拉胯 但看 Genie 4 的质感还是非常有希望",
+        "刚刚，谷歌 Genie 4 发布，120 秒的世界却让我看见 AI 的未来 - 爱范儿"
+      ],
+      "why": "谷歌 Genie 4 世界模型发布"
+    },
+    {
+      "kept": "Anthropic’s elaborate plan to keep Wall Street at bay",
+      "merged": [
+        "刚刚，Anthropic冲刺超级智能第一股！招股书曝光：AI第一次造出智能 - 智源社区",
+        "Anthropic IPO 后的治理结构解析：LTBT 与创始人如何掌握控制权",
+        "Azeem Azhar 图解 Anthropic S-1 财务数据",
+        "Anthropic S-1 文件披露其 AI 可能勒索人类、产生意识乃至终结人类等风险因素",
+        "K33提示Anthropic IPO风险，比特币面临AI相关抛售风险 - www.tmgm.com"
+      ],
+      "why": "Anthropic IPO 招股书及相关风险与治理"
+    },
+    {
+      "kept": "Nvidia, AMD to buy $4B in Meta shares as part of expanded chip partnerships",
+      "merged": [
+        "三十亿美元加码!英伟达与Meta联手重塑AI智能体新纪元"
+      ],
+      "why": "Nvidia 与 Meta 芯片合作及股份购买"
+    }
+  ]
 }
