@@ -1,45 +1,35 @@
-"""Sources that bypass relevance filtering and date windows entirely.
+"""Which sources bypass the relevance gate, and which merely get a boost.
 
-## The instruction
+## Two different instructions, two different lists
 
-The user set this as a standing rule, not a one-off:
+「以后都记清楚了抓取这些的当日源不用筛选，直接打分排序，以后每天都是」
 
-    「以后都记清楚了抓取这些的当日源不用筛选，直接打分排序，以后每天都是」
+named hex2077, daily-juya, ainewslog and aibase. Those skip the relevance gate entirely: their
+editorial judgement is trusted, and the instruction is that score decides position, not
+admission.
 
-listed: hex2077, daily-juya, ainewslog, aibase, plus every aihot.news feed
-(picks / full / all / daily / weekly / monthly / the five category feeds).
+「aihot.news的信息仍然要筛选一遍，只是来自aihot.news的信息天然要高些」
 
-## What "不用筛选" covers, and why each filter had to be named
+aihot is different. It is an aggregator -- it carries whatever its own contributors submitted,
+including a World of Warcraft transmog talk and a climate-week recap. Its items are still
+filtered, but they are AI-native material from an AI publication, so they carry a modest bonus
+rather than an exemption.
 
-Three different filters were each silently dropping these sources:
+## Why the split matters
 
-1. **AI relevance** (`focus.py`). `hex2077` carries Chinese dev news, `daily-juya` a daily
-   roundup, `aibase` press releases. A Chinese headline about a model release often scores
-   under the 0.55 floor because the gate wants AI vocabulary, not an AI story.
+Measured 2026-10-27, with every aihot feed exempt:
 
-2. **The publication-date window** (`backfill.py`, 6 days). These feeds serve a rolling
-   archive rather than a today-only stream, so their newest item is routinely one or two
-   weeks old. Measured 2026-10-25: 14 / 10 / 11 days -- every item discarded, and the issue
-   carried 26 entries instead of the expected few hundred.
+    #59  MIT 在 2026 纽约气候周对接全球气候网络     focus 0.50
+    #61  Thariq 将在 AIE Code 分享 WoW 萨满配装     focus 0.33
 
-3. **The single-source floor** (`pipeline.py`). One outlet reporting a story is still a
-   story; the corroboration requirement exists to rank, not to exclude.
-
-Naming them in three separate places guarantees one gets missed on the next edit, which is
-exactly what happened. One list, imported everywhere.
-
-## What still applies
-
-Scoring. `heat` discounts by age and by single-source status, so an old one-outlet story
-ranks low on the page. The rule is "do not filter", not "do not rank" -- the user asked for
-打分排序, and ranking is where these sources are meant to compete.
+Both published. `is_passthrough` short-circuited the gate for any event carrying an aihot
+source, so a 0.33 score was as good as a 1.00.
 """
 
 from __future__ import annotations
 
-#: Never relevance-filtered, never date-windowed, never dropped as a lone source.
+#: Sources whose items are never relevance-filtered. Named by the user, one by one.
 UNFILTERED_SOURCES = frozenset({
-    # --- named explicitly by the user ------------------------------------------------
     "rss:hex2077",
     "rss:hex2077-dev-rss-zh-cn",
     "rss:daily-juya-uk",
@@ -48,12 +38,15 @@ UNFILTERED_SOURCES = frozenset({
     "api:aibase-daily-news",
     # NOTE: `api:aibase-com` is deliberately NOT here.
     #
-    # It is `https://aibase.com`, the site root, and the scraper harvests the navigation
-    # chrome rather than stories. Measured 2026-10-25 once it was exempted: 28 of its 40 items
-    # were catalogue links -- `#2 Gemini & Gemini Advanced gemini.google.com`,
-    # `#3 Claude 2 claude.ai`, `AI Tools Directory`, `Full Ranking` -- and two of them ranked
-    # into the top ten of the issue. The two API feeds below carry the actual news.
-    # --- aihot.news, every feed it publishes ----------------------------------------
+    # It is `https://aibase.com`, the site root, and the scraper harvests the navigation chrome
+    # rather than stories. Measured 2026-10-25 once it was exempted: 28 of its 40 items were
+    # catalogue links -- `#2 Gemini & Gemini Advanced gemini.google.com`, `AI Tools Directory`,
+    # `Full Ranking` -- and two of them ranked into the top ten. The two API feeds above carry
+    # the news.
+})
+
+#: aihot.news feeds. Still filtered; ranked higher because the publication is AI-native.
+AIHOT_SOURCES = frozenset({
     "rss:aihot-news-picks",
     "rss:aihot-news-full",
     "rss:aihot-news-all",
@@ -68,7 +61,19 @@ UNFILTERED_SOURCES = frozenset({
     "rss:aihot-cat-opinion",
 })
 
+#: Multiplier applied to an aihot story's score.
+#:
+#: Small on purpose. A boost large enough to lift a marginal story over the relevance gate
+#: would be an exemption by another name -- and the gate is exactly what removed the WoW talk.
+#: 1.25 lifts an already-AI story a place or two without changing what gets in.
+AIHOT_BOOST = 1.25
+
 
 def is_unfiltered(source_id: str | None) -> bool:
-    """True when this source's items must not be filtered out."""
+    """True when this source's items are never relevance-filtered."""
     return (source_id or "") in UNFILTERED_SOURCES
+
+
+def is_aihot(source_id: str | None) -> bool:
+    """True when this source is an aihot.news feed."""
+    return (source_id or "") in AIHOT_SOURCES

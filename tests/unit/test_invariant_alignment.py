@@ -51,7 +51,7 @@ def test_the_invariant_asks_the_same_question_as_the_gate() -> None:
 
 def test_a_low_focus_allow_listed_event_survives_both_rules() -> None:
     """The exact shape that failed: below the floor, but from a curated digest."""
-    event = _event(["rss:aihot-news-picks"])
+    event = _event(["rss:hex2077"])
     assert not passes_ai_relevance(0.36)
     assert is_passthrough(event)
     # Together they mean: keep it.

@@ -20,7 +20,7 @@ from zoneinfo import ZoneInfo
 
 from .config import AppConfig
 from .dedup import DedupConfig, DedupResult, cluster
-from .unfiltered import UNFILTERED_SOURCES
+from .unfiltered import AIHOT_BOOST, UNFILTERED_SOURCES, is_aihot
 from .models import Digest, Event, NormalizedItem, SourceCoverage, SourceSpec
 from .rank import RankWeights, diversity_report, rank_events, select_diverse
 from .sections import classify, rank_of
@@ -62,6 +62,26 @@ REPEAT_PENALTY = 0.12
 #
 # The cost is more candidates reaching the model: a few more batched calls, not a redesign.
 MIN_AI_RELEVANCE = 0.50
+
+#: The absolute floor, applied even to sources exempt from the relevance gate.
+#:
+#: 「抓取这些的当日源不用筛选，直接打分排序」 was the instruction for hex2077, daily-juya,
+#: ainewslog, aibase and every aihot feed. Read literally, those sources skip the gate entirely
+#: -- and that is what `is_passthrough` did.
+#:
+#: Measured 2026-10-27, two entries published from `rss:aihot-news-all`:
+#:
+#:     #59  MIT 在 2026 纽约气候周对接全球气候网络        focus 0.50
+#:     #61  Thariq 将在 AIE Code 分享 WoW 萨满配装        focus 0.33
+#:
+#: Neither is AI news. The second is a World of Warcraft transmog talk. The exemption was
+#: meant to stop good AI stories being filtered out for scoring low on Chinese vocabulary; it
+#: was not a licence to publish anything the aggregator carried.
+#:
+#: So the exemption now stops at a floor instead of at zero: an unfiltered source still skips
+#: the 0.50 gate, but a story with *no* AI signal at all -- below 0.25, where `heat` already
+#: puts unrelated material -- is dropped like any other.
+PASSTHROUGH_FLOOR = 0.25
 
 
 #: A title that names a *container* rather than a story: a bare date, a period label, an issue
@@ -111,8 +131,20 @@ PASSTHROUGH_SOURCES = UNFILTERED_SOURCES
 
 
 def is_passthrough(event) -> bool:
-    """True when any source carrying this event is on the allow-list."""
+    """True when any source carrying this event is never relevance-filtered.
+
+    **aihot feeds are not on this list.** They are an aggregator: their items are still
+    filtered, and get a ranking boost instead of an exemption. Measured 2026-10-27, with
+    the whole aihot family exempt, the issue carried
+    ``Thariq 将在 AIE Code 分享 WoW 萨满配装`` at focus 0.33 and
+    ``MIT 在 2026 纽约气候周对接全球气候网络`` at 0.50 -- neither is AI news.
+    """
     return bool(PASSTHROUGH_SOURCES.intersection(event.source_ids or ()))
+
+
+def has_aihot_source(event) -> bool:
+    """True when any source carrying this event is an aihot.news feed."""
+    return any(is_aihot(s) for s in (event.source_ids or ()))
 
 
 def passes_ai_relevance(focus: float | str | None) -> bool:

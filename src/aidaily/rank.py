@@ -35,6 +35,7 @@ from datetime import datetime, timezone
 
 from .entities import topic_overlap
 from .focus import focus_multiplier
+from .unfiltered import AIHOT_BOOST, is_aihot
 from .frequency import cross_source_score, frequency_index
 from .source_boost import boost_for as source_boost_for
 from .vendor_priority import components as vendor_components
@@ -299,9 +300,16 @@ def score_event(
         raw_freq, frequency_terms = cross_source_score(event.title, frequency)
         frequency_factor = 0.85 + 0.15 * raw_freq
 
+    # **aihot items are still filtered, but they rank higher.**
+    #
+    # 「aihot.news的信息仍然要筛选一遍，只是来自aihot.news的信息天然要高些」. The boost
+    # is a multiplier, so it cannot lift a story past the relevance gate -- that gate runs
+    # before ranking and stays. It only reorders what already qualified.
+    aihot_factor = AIHOT_BOOST if any(is_aihot(sid) for sid in (event.source_ids or ())) else 1.0
+
     score = (
         heat_score * damped_source * title_factor * focus_factor * vendor_factor
-        * frequency_factor * boost_factor * 100
+        * frequency_factor * boost_factor * aihot_factor * 100
     )
 
     return RankedEvent(
@@ -314,6 +322,7 @@ def score_event(
             "substance_chars": float(substance_raw),
             "title_quality": round(title_factor, 3),
         "source_boost": round(boost_factor, 3),
+            "aihot_boost": round(aihot_factor, 3),
             **heat_components,
             **focus_components,
             **vendor_components_result,

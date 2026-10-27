@@ -1,82 +1,98 @@
-"""The unfiltered-source rule is one list, and every filter must read it.
+"""Two lists, because the two instructions differ.
 
-## The standing instruction
+「以后都记清楚了抓取这些的当日源不用筛选，直接打分排序」  -- hex2077, daily-juya,
+ainewslog, aibase.
 
-「以后都记清楚了抓取这些的当日源不用筛选，直接打分排序，以后每天都是」
+「aihot.news的信息仍然要筛选一遍，只是来自aihot.news的信息天然要高些」  -- aihot is an
+aggregator, filtered but boosted.
 
-hex2077, daily-juya, ainewslog, aibase, and every aihot.news feed. Not a one-off -- a rule
-that has to hold every day.
+## Why they must not share one list
 
-## Why one list
+Measured 2026-10-27, with every aihot feed on the exemption list:
 
-Three separate filters were each dropping these sources, and each had its own copy of the
-names:
+    #59  MIT 在 2026 纽约气候周对接全球气候网络     focus 0.50
+    #61  Thariq 将在 AIE Code 分享 WoW 萨满配装     focus 0.33
 
-  focus.py     AI relevance floor 0.55     (a Chinese model-release headline scores under it)
-  backfill.py  publication-date window     (14 / 10 / 11 days old on 2026-10-25, all dropped)
-  pipeline.py  single-source floor         (one outlet is still a story)
-
-Naming them twice guarantees the copies drift, and they did: `api:aibase-com` was date-exempt
-but not relevance-exempt, so 40 press releases were date-windowed in only to be filtered out
-later. `unfiltered.py` holds the one list; these tests keep it that way.
+`is_passthrough` short-circuits the relevance gate, so a 0.33 World-of-Warcraft talk published
+as AI news. The exemption was written for editorial sources whose judgement is trusted; an
+aggregator carries whatever its contributors submitted.
 """
 
 from __future__ import annotations
 
-from aidaily.backfill import DATE_EXEMPT_SOURCES
-from aidaily.pipeline import PASSTHROUGH_SOURCES
-from aidaily.unfiltered import UNFILTERED_SOURCES, is_unfiltered
+from datetime import datetime, timezone
+
+from aidaily.models import Event
+from aidaily.pipeline import has_aihot_source, is_passthrough
+from aidaily.unfiltered import (
+    AIHOT_BOOST,
+    AIHOT_SOURCES,
+    UNFILTERED_SOURCES,
+    is_aihot,
+    is_unfiltered,
+)
+
+NOW = datetime.now(timezone.utc)
 
 
-def test_every_named_source_is_present() -> None:
-    """The four the user listed by name."""
+def _event(*sids: str) -> Event:
+    return Event(
+        event_id="e",
+        title="t",
+        member_item_ids=["m"],
+        primary_item_id="m",
+        source_ids=list(sids),
+        all_urls=["https://example.com/x"],
+        first_seen_at=NOW,
+        last_updated_at=NOW,
+    )
+
+
+def test_the_named_sources_stay_exempt() -> None:
+    """「其他的那几个不要筛选的源保持不变」."""
     for sid in (
         "rss:hex2077",
+        "rss:hex2077-dev-rss-zh-cn",
         "rss:daily-juya-uk",
         "rss:ainewslog-com",
         "api:aibase-ai-news",
         "api:aibase-daily-news",
     ):
-        assert sid in UNFILTERED_SOURCES, sid
+        assert is_unfiltered(sid), sid
+        assert is_passthrough(_event(sid)), sid
 
 
-def test_every_aihot_feed_is_present() -> None:
-    """Picks, full, all, daily, weekly, monthly and the five category feeds."""
-    for sid in (
-        "rss:aihot-news-picks",
-        "rss:aihot-news-full",
-        "rss:aihot-news-all",
-        "rss:aihot-news-daily",
-        "rss:aihot-news-weekly",
-        "rss:aihot-news-monthly",
-        "rss:aihot-cat-models",
-        "rss:aihot-cat-products",
-        "rss:aihot-cat-industry",
-        "rss:aihot-cat-paper",
-        "rss:aihot-cat-tip",
-        "rss:aihot-cat-opinion",
-    ):
-        assert sid in UNFILTERED_SOURCES, sid
+def test_no_aihot_feed_is_exempt() -> None:
+    """They are filtered now -- that is the change."""
+    for sid in AIHOT_SOURCES:
+        assert not is_unfiltered(sid), sid
+        assert not is_passthrough(_event(sid)), sid
 
 
-def test_relevance_is_exempt_but_age_is_not() -> None:
-    """The two filters are separate, and only one is exempt."""
-    #
-    # This asserted that both shared one list. They must not: a Chinese model-release
-    # headline scores under the AI floor and has to be included, while a 9-day-old item
-    # does not belong in today issue whoever published it.
-    assert PASSTHROUGH_SOURCES is UNFILTERED_SOURCES
-    assert DATE_EXEMPT_SOURCES == frozenset()
-
-def test_the_helper_is_exact_match_not_prefix() -> None:
-    """A source named `rss:hex2077-something-else` must not inherit the exemption."""
-    assert is_unfiltered("rss:hex2077")
-    assert not is_unfiltered("rss:hex2077-extra")
-    assert not is_unfiltered(None)
-    assert not is_unfiltered("")
+def test_aihot_feeds_are_recognised_for_the_boost() -> None:
+    for sid in AIHOT_SOURCES:
+        assert is_aihot(sid), sid
+        assert has_aihot_source(_event(sid)), sid
 
 
-def test_nothing_unexpected_crept_in() -> None:
-    """Every entry is one of the two documented families."""
-    for sid in UNFILTERED_SOURCES:
-        assert sid.startswith(("rss:aihot-", "rss:hex2077", "rss:daily-juya", "rss:ainewslog", "api:aibase-")), sid
+def test_a_plain_source_gets_neither() -> None:
+    for sid in ("rss:axios", "rss:engadget", "rss:semafor"):
+        assert not is_unfiltered(sid)
+        assert not is_aihot(sid)
+        assert not is_passthrough(_event(sid))
+        assert not has_aihot_source(_event(sid))
+
+
+def test_the_boost_cannot_lift_a_story_past_the_gate() -> None:
+    """The gate runs before ranking, so a multiplier cannot admit anything."""
+    assert 0.33 * AIHOT_BOOST < 0.50
+
+
+def test_the_boost_is_modest() -> None:
+    """Large enough to reorder, small enough not to dominate."""
+    assert 1.0 < AIHOT_BOOST <= 1.5
+
+
+def test_the_two_lists_do_not_overlap() -> None:
+    """An overlapping id would be both exempt and boosted, which is incoherent."""
+    assert not (UNFILTERED_SOURCES & AIHOT_SOURCES)

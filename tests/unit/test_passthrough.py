@@ -17,8 +17,8 @@ class _Event:
 
 def test_the_curated_digests_are_on_the_list() -> None:
     for sid in (
-        "rss:aihot-news-picks",
-        "rss:aihot-news-all",
+        "rss:hex2077",
+        "rss:daily-juya-uk",
         "rss:daily-juya-uk",
         "rss:ainewslog-com",
         "rss:hex2077",
@@ -28,7 +28,7 @@ def test_the_curated_digests_are_on_the_list() -> None:
 
 
 def test_a_passthrough_event_is_recognised() -> None:
-    assert is_passthrough(_Event(["rss:aihot-news-picks"]))
+    assert is_passthrough(_Event(["rss:hex2077"]))
 
 
 def test_one_allow_listed_source_is_enough() -> None:
