@@ -108,3 +108,33 @@ def test_the_button_is_absent_when_there_is_no_data() -> None:
     # the page must not claim a model count it does not have.
     assert "在榜模型" in html
     assert LEADERBOARD_JSON_URL in html
+
+
+def test_the_rail_control_copies_the_json_not_the_feed() -> None:
+    """The rail on this page is the ranking's control, not the RSS subscribe button.
+
+    A reader on the leaderboard is looking at the table; the copyable thing beside it is the
+    table. Passing the address through `rail_rss_copy` keeps one implementation -- the bug this
+    file exists because of was a second copy control drifting from the first.
+    """
+    html = _render()
+    start = html.index('<aside class="rail"')
+    rail = html[start : html.index("</aside>", start)]
+    assert f'data-copy="{LEADERBOARD_JSON_URL}"' in rail
+    assert "feed/zh.xml" not in rail, "the rail still offers the RSS feed on the leaderboard"
+
+
+def test_the_rail_label_says_what_it_copies() -> None:
+    html = _render()
+    start = html.index('<aside class="rail"')
+    rail = html[start : html.index("</aside>", start)]
+    assert "JSON" in rail
+    assert "复制订阅地址" not in rail
+
+
+def test_the_page_control_is_kept() -> None:
+    """The in-page button stays: the rail and the header serve different readers."""
+    html = _render()
+    assert "lb__api-btn" in html
+    aside_end = html.index("</aside>")
+    assert "lb__api-btn" in html[aside_end:], "the header control disappeared"

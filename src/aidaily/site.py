@@ -223,8 +223,16 @@ class SiteContext:
 
 
 # ============================== left rail =======================================
-def rail_rss_copy(ctx: SiteContext, *, compact: bool = False) -> str:
-    """The subscribe control: copies the feed address, never navigates to it.
+def rail_rss_copy(
+    ctx: SiteContext,
+    *,
+    compact: bool = False,
+    data_copy: str = "",
+    label: str = "",
+    icon_name: str = "rss",
+    title: str = "",
+) -> str:
+    """The subscribe control: copies the address, never navigates to it.
 
     One function because the same control lives in three rails, and duplicating it is what
     let the first "copy instead of navigate" fix miss two of them -- `tibo.html` went on
@@ -232,12 +240,21 @@ def rail_rss_copy(ctx: SiteContext, *, compact: bool = False) -> str:
 
     `compact` is for the secondary pages, whose rail is a short list of destinations rather
     than a full navigation panel.
+
+    On the leaderboard the rail's one control is the ranking's own JSON, not the RSS feed: a
+    reader on that page is looking at the table, and the copyable thing next to it is the
+    table. Passing `data_copy`/`label` keeps the single implementation while letting each page
+    say what its own control does -- the alternative was a second copy button that would drift
+    from this one, which is exactly the bug the docstring above records.
     """
     base = esc(ctx.site_url.rstrip("/"))
+    target = esc(data_copy) if data_copy else f"{base}/feed/zh.xml"
+    text = esc(label) if label else "复制订阅地址"
+    hint = f' title="{esc(title)}"' if title else ""
     if compact:
         return (
-            f'<button class="rail__item" type="button" data-copy="{base}/feed/zh.xml">'
-            f'{icon("rss")}<span>复制订阅地址</span></button>'
+            f'<button class="rail__item" type="button" data-copy="{target}"{hint}>'
+            f'{icon(icon_name)}<span>{text}</span></button>'
         )
     return f"""<div class="rail__sub rail__sub--rss" role="menu">
                 <button type="button" class="rail__btn" data-copy="{base}/feed/zh.xml">
@@ -1578,7 +1595,7 @@ def render_leaderboard(
       <a class="rail__item" href="index.html">{icon("home")}<span>首页</span></a>
       <a class="rail__item" href="tibo.html">{icon("clock")}<span>Tibo 重置监控</span></a>
       <a class="rail__item" href="leaderboard.html" aria-current="page">{icon("chart")}<span>模型榜</span></a>
-      {rail_rss_copy(ctx, compact=True)}
+      <button class="rail__item" type="button" data-copy="{esc(LEADERBOARD_JSON_URL)}" title="复制模型榜原始数据的 JSON 地址">{icon("download")}<span>复制 JSON 地址</span></button>
     </div>
   </aside>
   <main class="content" id="main">
