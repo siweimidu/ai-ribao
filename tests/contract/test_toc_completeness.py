@@ -5,13 +5,12 @@ Two user reports, opposite directions:
   2026-10-26  the issue had 21 stories and the rail stopped at 19.
               Cause: the rail skipped non-Chinese titles.
 
-  2026-10-27  the rail listed 11 untranslated entries that live in a collapsed block at the
-              page bottom. Cause: the rail was built from top_events, not from the set the
-              body renders. Clicking one jumped to an anchor that is not in the body.
+  2026-10-27  the rail ended at 99 while the body numbered up to 106.
+              Cause: each ran its own loop with its own counter.
 
-Both are one mistake: the rail was built from a list that is not what the page shows. It is now
-built from translated_ids -- exactly the body set -- so the count matches and every link
-resolves.
+Both are one mistake. The rail no longer runs a loop at all -- it reads `_body_order`, the same
+numbered list the body renders, so the counts match by construction. `test_numbering.py` pins
+that shared source; this file pins the two properties that must survive it.
 """
 
 from __future__ import annotations
@@ -30,29 +29,16 @@ def _function_body(name: str) -> str:
     return rest if match is None else rest[: match.start() + 1]
 
 
-def test_the_rail_is_scoped_to_the_body() -> None:
-    body = _function_body("render_toc")
-    assert "translated_ids" in body
-    assert "if translated_ids and event.event_id not in translated_ids:" in body
-
-
 def test_the_rail_does_not_filter_by_language() -> None:
     """That was the 2026-10-26 fix and it must stay."""
     body = _function_body("render_toc")
     assert "_looks_chinese(title)" not in body
 
 
-def test_the_rail_numbers_only_what_it_renders() -> None:
+def test_the_rail_renders_one_row_per_ordered_event() -> None:
     body = _function_body("render_toc")
-    assert "shown += 1" in body
-
-
-def test_the_rail_is_built_after_the_body_decides() -> None:
-    """translated_ids is final only once the body loop has run."""
-    day = _function_body("render_day")
-    loop = day.index("for event in digest.top_events:")
-    rail = day.index("toc = render_toc(")
-    assert rail > loop, "the rail must be built after the body loop"
+    assert "for number, event in ordered:" in body
+    assert "toc__no" in body
 
 
 def test_the_untranslated_block_still_exists() -> None:

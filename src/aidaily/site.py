@@ -407,11 +407,42 @@ def _looks_chinese(text: str) -> bool:
     return any("\u4e00" <= ch <= "\u9fff" for ch in (text or ""))
 
 
-def render_toc(
+def _body_order(
     events: list[Event],
+    insights: dict[str, EventInsight],
+    items_by_id: dict[str, NormalizedItem] | None,
+) -> tuple[list[tuple[int, Event]], list[tuple[int, Event]]]:
+    """The body order and the untranslated order, numbered once.
+
+    **One function decides which events the page shows and in what order.**
+
+    Three call sites each kept their own counter -- the body, the rail and the overview -- and
+    each one incremented at a different point in the skip test. Measured 2026-10-27: the rail
+    ended at 99 and the last story in the body carried 106, because the body counted every
+    event it scanned while the rail counted only the ones it rendered. Numbers that exist in
+    one list and not the other are worse than no numbers: they look like a missing story.
+
+    Returning the lists here means every consumer numbers the same elements in the same order.
+    """
+    shown: list[tuple[int, Event]] = []
+    untranslated: list[tuple[int, Event]] = []
+    for event in events:
+        insight = insights.get(event.event_id)
+        title = _display_title(event, insight, items_by_id)
+        # A repository slug is not foreign reporting: it has no Chinese form and never will,
+        # so routing it to the untranslated block reads as "we could not handle this" when the
+        # entry is complete. Measured 2026-10-23: the repository the reader asked about was in
+        # that collapsed block rather than the issue body.
+        if not _looks_chinese(title) and not _is_repository_story(event):
+            untranslated.append((len(untranslated) + 1, event))
+            continue
+        shown.append((len(shown) + 1, event))
+    return shown, untranslated
+
+def render_toc(
+    ordered: list[tuple[int, Event]],
     insights: dict[str, EventInsight] | None = None,
     items_by_id: dict[str, NormalizedItem] | None = None,
-    translated_ids: set[str] | None = None,
 ) -> str:
     """Right rail: an overview link plus every story of the day, in rank order.
 
@@ -427,32 +458,23 @@ def render_toc(
       happened today" before "where is that one story".
     """
     insights = insights or {}
-    translated_ids = translated_ids or set()
     rows: list[str] = ['<a href="#overview" class="toc__overview">概览</a>']
 
-    # **The rail lists the body, not `top_events`.**
+    # **The rail is built from the same numbered list the body renders.**
     #
-    # Two rules pull in opposite directions and the user settled it:
-    #
-    #   2026-10-26  21 stories, rail stopped at 19 -- every story needs an entry.
-    #   2026-10-27  the rail linked 11 待翻译 entries that live in a collapsed block, so
-    #               clicking one jumped to an anchor that is not in the body.
-    #
-    # Both are the same mistake in different directions: the rail was built from a list that
-    # is not what the page renders. It is now built from `translated_ids` -- exactly the set
-    # the body shows -- so the count matches and every link resolves.
-    shown = 0
-    for event in events:
-        if translated_ids and event.event_id not in translated_ids:
-            continue
+    # Two reports, opposite directions: on 2026-10-26 the rail stopped at 19 of 21 stories, and
+    # on 2026-10-27 it listed 99 while the body numbered up to 106. Both were one mistake --
+    # the rail ran its own loop over `events` with its own counter instead of reading the list
+    # the body produced. It takes `ordered` now, so the numbers are the body numbers by
+    # construction and there is nothing left to keep in sync.
+    for number, event in ordered:
         insight = insights.get(event.event_id)
         title = _display_title(event, insight, items_by_id)
-        shown += 1
         anchor = f"e-{event.event_id[:10]}"
         label = title if len(title) <= 42 else title[:40] + "…"
         rows.append(
             f'<a href="#{esc(anchor)}">'
-            f'<span class="toc__no">{shown:02d}</span>{esc(label)}</a>'
+            f'<span class="toc__no">{number:02d}</span>{esc(label)}</a>'
         )
 
     if len(rows) == 1:
@@ -840,7 +862,7 @@ def _stats(digest: Digest) -> str:
 def _render_overview(
     digest: Digest,
     insights: dict[str, EventInsight],
-    translated_ids: set[str] | None = None,
+    ordered: list[tuple[int, Event]],
     items_by_id: dict[str, NormalizedItem] | None = None,
 ) -> str:
     """The day at a glance: the top stories, one line each, before the full list.
@@ -853,31 +875,18 @@ def _render_overview(
     the list below it. Every line is a real headline from the digest, not a generated
     summary -- a summary here would be a second, unchecked claim about the day.
     """
-    translated_ids = translated_ids or set()
     rows: list[str] = []
-    # **Number the rows that are actually rendered, not the events that are scanned.**
+    # **The overview reads the body list, so its numbers are the body numbers.**
     #
-    # `index` used to come from `enumerate(digest.top_events, start=1)`, and the loop can
-    # skip: an event that did not reach the body (`translated_ids`) or whose title is still
-    # English is `continue`d. The counter had already advanced, so the first visible row read
-    # `03`. Measured 2026-10-26: the overview opened at 03 with 21 stories, which reads as two
-    # missing stories rather than two skipped ones.
+    # It used to run its own loop over `digest.top_events` with `enumerate`, skipping entries
+    # that did not reach the body. The counter advanced before the skip, so the first visible
+    # line read `03` on the 2026-10-26 issue -- two stories that looked missing and were not.
     #
-    # A separate counter also keeps the overview numbering aligned with the body, which
-    # numbers the events it renders.
-    shown = 0
-    for index, event in enumerate(digest.top_events, start=1):
-        if shown >= 8:
-            break
-        # Only items that made it into the body, so the overview never links to an anchor
-        # that was moved into the untranslated block.
-        if translated_ids and event.event_id not in translated_ids:
-            continue
+    # `ordered` is already numbered by `_body_order`. Taking the first eight of it needs no
+    # counter and cannot drift.
+    for number, event in ordered[:8]:
         insight = insights.get(event.event_id)
         title = _display_title(event, insight, items_by_id)
-        if not _looks_chinese(title):
-            continue
-        shown += 1
         anchor = f"e-{event.event_id[:10]}"
 
         # The first supporting fact, when there is one, is what makes the line informative
@@ -889,7 +898,7 @@ def _render_overview(
                 detail = fact
         rows.append(
             f'<li><a href="#{esc(anchor)}">'
-            f'<span class="ov__no">{shown:02d}</span>'
+            f'<span class="ov__no">{number:02d}</span>'
             f"<span><b>{esc(title)}</b>"
             + (f'<span class="ov__detail">{esc(detail)}</span>' if detail else "")
             + "</span></a></li>"
@@ -935,21 +944,19 @@ def render_day(
     translated_ids: set[str] = set()
     untranslated: list[tuple[int, Event]] = []
     rows: list[str] = []
-    counter = 0
-
-    for event in digest.top_events:
-        counter += 1
+    # **One decision, shared by the body, the rail and the overview.**
+    #
+    # Each used to run its own loop with its own counter, incrementing at a different point in
+    # the skip test. Measured 2026-10-27: the rail ended at 99 and the last story in the body
+    # carried 106, so seven numbers existed only in the body. Numbers that appear in one list
+    # and not the other look like missing stories.
+    #
+    # `_body_order` returns both lists, already numbered.
+    ordered_body, untranslated = _body_order(digest.top_events, insights, items_by_id)
+    for number, event in ordered_body:
         insight = insights.get(event.event_id)
-        title = _display_title(event, insight, items_by_id)
-        # A repository slug is not foreign reporting: it has no Chinese form and never will, so
-        # routing it to the untranslated block reads as "we could not handle this" when the
-        # entry is complete. Measured 2026-10-23: the repository the reader asked about was in
-        # that collapsed block rather than the issue body.
-        if not _looks_chinese(title) and not _is_repository_story(event):
-            untranslated.append((counter, event))
-            continue
         translated_ids.add(event.event_id)
-        rows.append(render_item(counter, event, insight, items_by_id, repo_meta))
+        rows.append(render_item(number, event, insight, items_by_id, repo_meta))
 
     body: list[str] = []
     if rows:
@@ -978,11 +985,11 @@ def render_day(
         <ol>{items}</ol>
       </details>"""
 
-    overview = _render_overview(digest, insights, translated_ids, items_by_id)
+    overview = _render_overview(digest, insights, ordered_body, items_by_id)
     # The rail is built here, after the body decided which events it shows.
     # It used to be built before the loop, from `top_events` -- which is why it once
     # listed 11 entries that the body had moved into the collapsed 待翻译 block.
-    toc = render_toc(digest.top_events, insights, items_by_id, translated_ids)
+    toc = render_toc(ordered_body, insights, items_by_id)
 
     # The headline shown at the top of the page.
     #
