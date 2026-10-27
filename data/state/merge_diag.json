@@ -1,53 +1,51 @@
 {
-  "generated_at": "2026-10-27T15:07:01.624216+00:00",
+  "generated_at": "2026-10-27T16:02:38.597261+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 378,
+  "input_events": 377,
   "batches": 11,
   "calls": 11,
-  "merged_groups": 8,
-  "merged_events": 13,
-  "rejected_groups": 1,
+  "merged_groups": 16,
+  "merged_events": 24,
+  "rejected_groups": 9,
   "failed": false,
   "examples": [
     {
-      "kept": "Microsoft offers voluntary buyouts to 60,000 employees amid AI investments",
+      "kept": "全球首个海洋通用基座大模型正式通过国家网信办备案",
+      "merged": [
+        "全球首个海洋通用基座大模型完成备案 - 中国科技网"
+      ],
+      "why": "同一款海洋通用基座大模型完成备案"
+    },
+    {
+      "kept": "Cohere says Alibaba’s Qwen model tried to send a file to Beijing",
       "merged": [
         "Microsoft Offers Buyouts to 60,000 Employees",
         "Microsoft's buyout offer to employees shows which tech jobs "
       ],
-      "why": "均报道微软向员工提供自愿买断计划"
-    },
-    {
-      "kept": "Meta Slightly Increases Equity Fundraising Plan to $97.5 Billion",
-      "merged": [
-        "Meta to sell up to $95B in stock to finance AI infrastructur"
-      ],
-      "why": "均报道Meta融资以支持AI基础设施"
-    },
-    {
-      "kept": "Anthropic S-1 Highlights Rising Payment Costs",
-      "merged": [
-        "Anthropic’s S-1 Takeaways: From Giant Compute Commitments to",
-        "Anthropic’s IPO needs believers to bridge it to the payoff",
-        "Anthropic 七联创身价均破 900 亿，承诺捐出八成股份",
-        "Anthropic Founders Say They Will Keep Claude Free of Adverti"
-      ],
-      "why": "均涉及Anthropic S-1或IPO相关细节"
-    },
-    {
-      "kept": "OpenAI GPT-6.1 Terra 上线 OpenRouter，定价 $1/M input、$5/M output",
-      "merged": [
-        "GPT-6.1 Terra"
-      ],
-      "why": "均报道 GPT-6.1 Terra 模型上线及定价"
+      "why": "Cohere 发布 Qwen 异常行为调查报告"
     },
     {
       "kept": "OpenAI announces three big science discoveries and a new way to work with academ",
       "merged": [
-        "OpenAI 宣布 AI 模型取得三项科学突破，涉及局部光滑猜想、指数时间假设与杨–米尔斯理论"
+        "OpenAI announces new discoveries in mathematics, computer sc",
+        "OpenAI官宣数学与物理学三大突破：AI攻克百年猜想，携手全球学者开启科学验证新模式"
       ],
-      "why": "均报道 OpenAI 宣布的三项科学突破"
+      "why": "均为 OpenAI 宣布的数学、物理等科学新发现"
+    },
+    {
+      "kept": "刚刚，Anthropic公开335页招股书：史上最大IPO，史上最亏AI公司",
+      "merged": [
+        "科技时空 - Anthropic冲刺史上最大规模IPO 招股书警示AI安全风险引关注 - RFI"
+      ],
+      "why": "均为 Anthropic 发行招股书及 IPO 相关报道"
+    },
+    {
+      "kept": "Meta AI director Rohit Patel leaves to take on Microsoft Office and Google Works",
+      "merged": [
+        "Anthropic, SpaceX and Meta Cash Grabs"
+      ],
+      "why": "涉及 Meta 和 SpaceX 的人才与资金变动，但主体不同，不合并"
     }
   ]
 }
