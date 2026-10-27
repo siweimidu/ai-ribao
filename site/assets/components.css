@@ -2209,3 +2209,70 @@ body { font-family: var(--f-sans); }
   .lb__model { min-width: 12em; }
   .lb thead th, .lb tbody td { padding-left: calc(var(--unit) * 2); padding-right: calc(var(--unit) * 2); }
 }
+
+/* 模型榜的机器可读出口：一个复制按钮，不是链接跳转。
+   表格是给人看的，JSON 是给程序取的——把它写出来，省得别人去翻 devtools。 */
+.lb__api {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: calc(var(--unit) * 2);
+  margin-top: calc(var(--unit) * 4);
+}
+
+.lb__api-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--unit) * 1.5);
+  padding: calc(var(--unit) * 1.6) calc(var(--unit) * 3);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--fg);
+  font: inherit;
+  font-size: var(--fs-small);
+  cursor: pointer;
+  transition: border-color 150ms ease, background 150ms ease, transform 150ms ease;
+}
+
+.lb__api-btn:hover {
+  border-color: var(--accent);
+  background: var(--surface-raised, var(--surface));
+  transform: translateY(-1px);
+}
+
+.lb__api-btn:active { transform: translateY(0); }
+
+.lb__api-btn[data-copied="true"] {
+  border-color: #2f8f5b;
+  color: #2f8f5b;
+}
+
+.lb__api-btn[data-copied="false"] {
+  border-color: #b4553f;
+  color: #b4553f;
+}
+
+.lb__api-btn svg { flex: none; }
+
+.lb__api-link {
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.lb__api-link:hover {
+  color: var(--accent);
+  border-bottom-color: currentColor;
+}
+
+.lb__api-note {
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+
+@media (max-width: 560px) {
+  .lb__api { gap: calc(var(--unit) * 1.5); }
+  .lb__api-note { flex-basis: 100%; }
+}

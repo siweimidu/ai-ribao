@@ -68,6 +68,15 @@ FAVICON = (
     "Z'/%3E%3C/g%3E%3C/svg%3E"
 )
 
+#: The leaderboard's committed JSON, addressed on raw.githubusercontent rather than the site.
+#:
+#: The page is rendered from this file, so every row on screen is already in it -- the URL
+#: exists for programs that want the table without parsing HTML. A site-relative path would
+#: work for a browser and for nothing else, which is the opposite of the audience.
+LEADERBOARD_JSON_URL = (
+    "https://raw.githubusercontent.com/siweimidu/ai-ribao/main/data/state/leaderboard.json")
+
+
 #: Inline icons.
 #:
 #: `brand` is the user-supplied logo (`ai2.svg`), drawn on the same 18x18 grid as the rest: the
@@ -1519,6 +1528,28 @@ def render_leaderboard(
 
     fetched_note = f"抓取于 {esc(fetched_at)}。" if fetched_at else ""
 
+    # **The table has a machine-readable twin, and nothing on the page said so.**
+    #
+    # `data/state/leaderboard.json` is what this page is rendered from, and it has been
+    # committed for as long as the page has existed. Anyone wiring the ranking into a
+    # workflow (n8n, a spreadsheet, a bot) had to open devtools or guess the path.
+    #
+    # The raw.githubusercontent address, not a site-relative one: the JSON exists to be
+    # fetched by something that has no page to resolve a relative path against. It is also
+    # the URL a reader can paste into a browser to check for themselves.
+    json_copy = (
+        '<div class="lb__api">'
+        '<button type="button" class="lb__api-btn" data-copy="'
+        f'{esc(LEADERBOARD_JSON_URL)}" ' 
+        'title="复制模型榜原始数据的 JSON 地址">'
+        f'{icon("download", 14)}<span>复制 JSON 地址</span>'
+        "</button>"
+        f'<a class="lb__api-link" href="{esc(LEADERBOARD_JSON_URL)}" ' 
+        'target="_blank" rel="noopener noreferrer">查看</a>'
+        '<span class="lb__api-note">模型榜原始数据，供程序取用</span>'
+        "</div>"
+    )
+
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -1556,6 +1587,7 @@ def render_leaderboard(
       <h1 class="issue__title">模型榜</h1>
       <p class="issue__lead">按智能指数排序；价格与上下文并列，方便看清「更强」和「更贵」不是一回事。</p>
       {stats}
+      {json_copy}
     </header>
     {body}
     <footer class="lb__foot">
