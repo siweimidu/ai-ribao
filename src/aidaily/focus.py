@@ -418,7 +418,22 @@ def focus_multiplier(
         body = _body_opening(event, items_by_id)
         if body:
             lifted = _headline_focus(body)
-            if lifted > headline:
+            # **The body fallback may not carry a story on a bare mention of AI.**
+            #
+            # `_body_opening` exists for the digest feeds that title an issue by its date, so
+            # a headline with no AI vocabulary can still be recognised from its own text. It
+            # lifts whenever the body scores higher, and a body that says 「AI 与气候方程」 once
+            # scored 0.50 -- enough to carry a climate story into an AI digest.
+            #
+            # Measured 2026-10-27: `MIT 在 2026 纽约气候周对接全球气候网络` published at
+            # focus 0.50 with a headline that measures 0.18 on its own and matches no `_CORE`,
+            # `_LABS`, `_AI_SUBJECT` or `_AI_PHRASE` pattern. Its only AI content was one
+            # mention in one fact.
+            #
+            # The fallback therefore needs a *structural* signal in the body -- a model, a lab,
+            # or a technique word -- not merely the letters `AI`. A genuine digest issue
+            # mentions its subjects by name; an article about climate names climate.
+            if lifted > headline and (_CORE.search(body) or _LABS.search(body)):
                 headline = lifted
                 body_used = body
 
