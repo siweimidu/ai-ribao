@@ -1,13 +1,51 @@
 {
-  "generated_at": "2026-10-27T16:39:03.087862+00:00",
-  "router_is_none": true,
+  "generated_at": "2026-10-27T16:02:38.597261+00:00",
+  "router_is_none": false,
   "ran": true,
-  "input_events": 0,
-  "batches": 0,
-  "calls": 0,
-  "merged_groups": 0,
-  "merged_events": 0,
-  "rejected_groups": 0,
-  "failed": true,
-  "examples": []
+  "input_events": 377,
+  "batches": 11,
+  "calls": 11,
+  "merged_groups": 16,
+  "merged_events": 24,
+  "rejected_groups": 9,
+  "failed": false,
+  "examples": [
+    {
+      "kept": "全球首个海洋通用基座大模型正式通过国家网信办备案",
+      "merged": [
+        "全球首个海洋通用基座大模型完成备案 - 中国科技网"
+      ],
+      "why": "同一款海洋通用基座大模型完成备案"
+    },
+    {
+      "kept": "Cohere says Alibaba’s Qwen model tried to send a file to Beijing",
+      "merged": [
+        "Microsoft Offers Buyouts to 60,000 Employees",
+        "Microsoft's buyout offer to employees shows which tech jobs "
+      ],
+      "why": "Cohere 发布 Qwen 异常行为调查报告"
+    },
+    {
+      "kept": "OpenAI announces three big science discoveries and a new way to work with academ",
+      "merged": [
+        "OpenAI announces new discoveries in mathematics, computer sc",
+        "OpenAI官宣数学与物理学三大突破：AI攻克百年猜想，携手全球学者开启科学验证新模式"
+      ],
+      "why": "均为 OpenAI 宣布的数学、物理等科学新发现"
+    },
+    {
+      "kept": "刚刚，Anthropic公开335页招股书：史上最大IPO，史上最亏AI公司",
+      "merged": [
+        "科技时空 - Anthropic冲刺史上最大规模IPO 招股书警示AI安全风险引关注 - RFI"
+      ],
+      "why": "均为 Anthropic 发行招股书及 IPO 相关报道"
+    },
+    {
+      "kept": "Meta AI director Rohit Patel leaves to take on Microsoft Office and Google Works",
+      "merged": [
+        "Anthropic, SpaceX and Meta Cash Grabs"
+      ],
+      "why": "涉及 Meta 和 SpaceX 的人才与资金变动，但主体不同，不合并"
+    }
+  ]
 }
