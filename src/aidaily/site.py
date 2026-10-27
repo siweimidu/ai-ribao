@@ -917,6 +917,48 @@ def _render_overview(
       </section>"""
 
 
+def _untranslated_reason(digest: Digest) -> str:
+    """Why these entries are untranslated, in this issue's own words.
+
+    **The sentence used to be a constant:** 「本期模型额度用完、未能逐条译成中文」. It was not
+    a judgement, it was a guess rendered as fact -- and on 2026-10-27 it was wrong twice over:
+    the run had spent 8% of its token budget across 23 working providers, and the real cause was
+    that the pipeline selected a second time after analysis, so 17 entries were published
+    without ever being sent to a model. Telling the reader "quota exhausted" about a run that
+    was nowhere near its quota is a false statement on the page.
+
+    So the reason is read from the digest: the budget, when it was actually reached; the
+    warning the analyzer recorded, when the model was unavailable; and otherwise a statement of
+    what is observable -- the source headline is in a language this issue did not translate.
+    """
+    warnings = " ".join(digest.warnings or ())
+    usage = digest.llm_usage or {}
+
+    calls = usage.get("calls") or 0
+    max_calls = usage.get("max_calls") or 0
+    tokens = usage.get("tokens") or 0
+    max_tokens = usage.get("max_tokens") or 0
+
+    # Only claim exhaustion when the numbers say so.
+    if max_calls and calls >= max_calls:
+        return f"本期调用数已达上限（{calls}/{max_calls} 次），未能逐条译成中文，"
+    if max_tokens and tokens >= max_tokens:
+        return f"本期 token 用量已达上限（{tokens:,}/{max_tokens:,}），未能逐条译成中文，"
+
+    if "未配置大模型" in warnings or "未找到任何可用的模型密钥" in warnings:
+        return "本期未配置可用的大模型密钥，未能逐条译成中文，"
+    # Two wordings reach here: the analyzer own summary and the older per-batch note.
+    if (
+        "降级为规则摘录" in warnings
+        or "降级为原文摘录" in warnings
+        or "部分模型调用失败" in warnings
+    ):
+        return "本期部分模型调用失败，这些条目未能译成中文，"
+
+    # No budget or failure explains it. Say what is actually true rather than invent a cause.
+    return "这些条目的原始标题为外文，本期未能译成中文，"
+
+
 def render_day(
     digest: Digest,
     insights: dict[str, EventInsight],
@@ -979,8 +1021,7 @@ def render_day(
         )
         untranslated_block = f"""      <details class="untranslated" id="untranslated">
         <summary>本期待翻译条目（{len(untranslated)} 条）</summary>
-        <p>这些条目的来源是外文，且本期模型额度用完、未能逐条译成中文，
-        因此只在这里保留原文与出处，不混进上面的正文。
+        <p>{_untranslated_reason(digest)}这些条目只在这里保留原文与出处，不混进上面的正文。
         <strong>点开即离开本站、前往原文</strong>。</p>
         <ol>{items}</ol>
       </details>"""
