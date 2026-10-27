@@ -1,50 +1,53 @@
 {
-  "generated_at": "2026-10-27T04:25:52.979384+00:00",
+  "generated_at": "2026-10-27T15:07:01.624216+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 285,
-  "batches": 8,
-  "calls": 8,
-  "merged_groups": 13,
-  "merged_events": 29,
-  "rejected_groups": 4,
+  "input_events": 378,
+  "batches": 11,
+  "calls": 11,
+  "merged_groups": 8,
+  "merged_events": 13,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "Cohere says Alibaba’s Qwen model tried to send a file to Beijing",
+      "kept": "Microsoft offers voluntary buyouts to 60,000 employees amid AI investments",
       "merged": [
-        "https://huggingface.co/datasets/CohereLabs/10-2026-qwen-inve"
+        "Microsoft Offers Buyouts to 60,000 Employees",
+        "Microsoft's buyout offer to employees shows which tech jobs "
       ],
-      "why": "都是关于阿里 Qwen 模型被指试图向北京发送文件的安全调查事件"
+      "why": "均报道微软向员工提供自愿买断计划"
     },
     {
-      "kept": "Ollama Mac 应用新增离线语音生成，速度比 Gradium 自身实现快 35%",
+      "kept": "Meta Slightly Increases Equity Fundraising Plan to $97.5 Billion",
       "merged": [
-        "Mac版Ollama正式支持离线AI语音：数据不出门，速度比原方案最高提升35%"
+        "Meta to sell up to $95B in stock to finance AI infrastructur"
       ],
-      "why": "都是 Mac 版 Ollama 新增离线语音生成功能的发布"
+      "why": "均报道Meta融资以支持AI基础设施"
     },
     {
-      "kept": "微软向六万员工发出 Voluntary Exit Offer 自愿离职邀约",
+      "kept": "Anthropic S-1 Highlights Rising Payment Costs",
       "merged": [
-        "微软 CEO 纳德拉：不再认为 AI 越强大就越安全，对齐是更棘手的问题",
-        "微软 CEO 认错：曾以为 AI 越强越安全，如今不敢这么想了"
+        "Anthropic’s S-1 Takeaways: From Giant Compute Commitments to",
+        "Anthropic’s IPO needs believers to bridge it to the payoff",
+        "Anthropic 七联创身价均破 900 亿，承诺捐出八成股份",
+        "Anthropic Founders Say They Will Keep Claude Free of Adverti"
       ],
-      "why": "注意：e77 是裁员，后两条是纳德拉言论，不能全合并。仅后两条合并"
+      "why": "均涉及Anthropic S-1或IPO相关细节"
     },
     {
-      "kept": "Cisco’s Privileged Infrastructure Access ties admin and AI agent privileges to t",
+      "kept": "OpenAI GPT-6.1 Terra 上线 OpenRouter，定价 $1/M input、$5/M output",
       "merged": [
-        "Cisco expands AI-driven network management and offers new pa"
+        "GPT-6.1 Terra"
       ],
-      "why": "都是 Cisco 发布 AI 驱动的网络管理及合作伙伴激励措施"
+      "why": "均报道 GPT-6.1 Terra 模型上线及定价"
     },
     {
-      "kept": "OpenAI Unveils Cheaper Terra Model Amid Anthropic Pricing Battle",
+      "kept": "OpenAI announces three big science discoveries and a new way to work with academ",
       "merged": [
-        "OpenAI Launches GPT-6.1 Terra, Halving GPT-6.1 Sol’s API Pri"
+        "OpenAI 宣布 AI 模型取得三项科学突破，涉及局部光滑猜想、指数时间假设与杨–米尔斯理论"
       ],
-      "why": "都是 OpenAI 发布 GPT-6.1 Terra 模型"
+      "why": "均报道 OpenAI 宣布的三项科学突破"
     }
   ]
 }
