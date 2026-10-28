@@ -452,6 +452,18 @@ def select_for_digest(
     # more than the AI pool needs. Dropped rows are counted in the report so a thin day reads as
     # "今天AI新闻少", which is true, rather than being padded back to sixty with consumer
     # electronics, which is not.
+    # **The model judges relevance; the formula is only the fallback.**
+    #
+    # The floor used to be the gate, always. It is a regex, and on 2026-10-28 it was broken
+    # (`rag` matched `average`), so four non-AI stories published while genuine AI coverage was
+    # ranked as dubious. A regex can see words; it cannot tell "Africa Finance names Lobito
+    # Corridor builders" from "Robinson: Raspberry Pi 5 on Fedora" -- both passed.
+    #
+    # So when the rubric actually ran (`rubric_mode == "llm"`), the model has already decided:
+    # `__main__` removed the rows it judged off-topic before this function was called, and this
+    # floor must not override that judgement. The formula keeps its veto only when no model was
+    # available -- a degraded run still needs *something* to keep junk out.
+    model_judged_relevance = rubric_mode == "llm"
     focus_floor = MIN_AI_RELEVANCE
     kept: list = []
     dropped_focus = 0
@@ -464,7 +476,11 @@ def select_for_digest(
         # Missing relevance is not permission to publish. This used to be `if focus is not
         # None and focus < floor`, so any new event type that skipped the scorer silently
         # bypassed the filter. Absence of evidence now fails closed.
-        if not passes_ai_relevance(focus) and not is_passthrough(row.event):
+        if (
+            not model_judged_relevance
+            and not passes_ai_relevance(focus)
+            and not is_passthrough(row.event)
+        ):
             dropped_focus += 1
             missing = focus is None
             missing_focus += int(missing)
@@ -507,6 +523,7 @@ def select_for_digest(
     # No relaxation and no slot-filling exceptions. `select_diverse` must not reinsert rejected
     # rows, and publication asserts the invariant again after diversity selection.
     report_extra = {
+        "relevance_gate": "llm" if model_judged_relevance else "formula",
         "relevance_floor": focus_floor,
         "relevance_floor_dropped": dropped_focus,
         "container_titles_dropped": dropped_container,
