@@ -7113,72 +7113,6 @@
     }
    },
    {
-    "event_id": "e7dd068238dc570",
-    "title": "Rest of World faces prospect of shutting down",
-    "member_item_ids": [
-     "b3973ea05500fc38"
-    ],
-    "primary_item_id": "b3973ea05500fc38",
-    "source_ids": [
-     "rss:semafor"
-    ],
-    "all_urls": [
-     "https://www.semafor.com/article/10/25/2026/rest-of-world-faces-prospect-of-shutting-down"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-26T14:33:32.931496Z",
-    "last_updated_at": "2026-10-26T14:33:32.931496Z",
-    "published_range": [
-     "2026-10-25T21:32:11Z",
-     "2026-10-25T21:32:11Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "image_urls": [
-     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-26/e7dd068238dc570-m001-d47d1446.webp"
-    ],
-    "needs_review": false,
-    "rank_score": 14.068715,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 1.0,
-     "substance_chars": 4558.0,
-     "title_quality": 1.0,
-     "source_boost": 1.0,
-     "heat": 0.291202,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.7336,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0,
-     "vendor_priority": 1.0,
-     "vendor_subject": "",
-     "score": 14.068715,
-     "rubric_score": 3.0,
-     "rubric_multiplier": 0.51,
-     "rubric_band": "低优先",
-     "tier": "T2",
-     "tier_threshold": 68.0,
-     "tier_shortfall": true,
-     "section": "其他"
-    }
-   },
-   {
     "event_id": "ef1e9dcf3999a5f",
     "title": "从 Agent 工程化到任务交付，解读 AI 走向生产的关键挑战｜QCon 上海 2026 圆满收官",
     "member_item_ids": [
@@ -7567,70 +7501,6 @@
      "tier_shortfall": true,
      "section": "技术与洞察"
     }
-   },
-   {
-    "event_id": "eeb8345c3c1d164",
-    "title": "ProjectDiscovery adds Neo Triage to confirm which vulnerabilities are exploitable",
-    "member_item_ids": [
-     "8ce5ff8c5ea7ae0e"
-    ],
-    "primary_item_id": "8ce5ff8c5ea7ae0e",
-    "source_ids": [
-     "rss:siliconangle"
-    ],
-    "all_urls": [
-     "https://siliconangle.com/2026/10/26/projectdiscovery-adds-neo-triage-to-confirm-which-vulnerabilities-are-exploitable/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-26T14:33:32.931496Z",
-    "last_updated_at": "2026-10-26T14:33:32.931496Z",
-    "published_range": [
-     "2026-10-26T14:00:17Z",
-     "2026-10-26T14:00:17Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "image_urls": [],
-    "needs_review": false,
-    "rank_score": 7.155732,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 0.875,
-     "substance_chars": 525.0,
-     "title_quality": 1.0,
-     "source_boost": 1.0,
-     "heat": 0.30627,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 1.0,
-     "h_velocity": 1.0,
-     "h_freshness": 0.9848,
-     "significance": 1.0,
-     "not_ai": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 0.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "focus": 0.5,
-     "focus_headline": 0.5,
-     "focus_source": 0.75,
-     "focus_multiplier": 0.61,
-     "vendor_priority": 1.0,
-     "vendor_subject": "",
-     "score": 7.155732,
-     "rubric_score": 2.0,
-     "rubric_multiplier": 0.44,
-     "rubric_band": "噪音",
-     "tier": "T2",
-     "tier_threshold": 68.0,
-     "tier_shortfall": true,
-     "section": "开发生态"
-    }
    }
   ],
   "trend_notes": [],
@@ -7695,7 +7565,7 @@
    "跨天语义去重剔除 10 条（与 7 天内重复）"
   ],
   "counts": {
-   "events": 116,
+   "events": 114,
    "events_considered": 332,
    "multi_source_events": 45,
    "items_after_window": 957,
@@ -7808,7 +7678,6 @@
    "eecd2d0f1565632",
    "e3e2911673cf97c",
    "e3194140c98d97c",
-   "e7dd068238dc570",
    "e3369bd6a3acbcc",
    "e0959edce5869a2",
    "e30033e76045797",
@@ -7874,7 +7743,6 @@
    "e7ad8d3bbe496e2",
    "e4e4b0b5f5ee89c",
    "eeca3912ff2882c",
-   "eeb8345c3c1d164",
    "eb16b6003b22841",
    "efb88af749f93be",
    "e85125799e1dae3",
@@ -10158,21 +10026,6 @@
    "key_points": [],
    "rule_based": true
   },
-  "e7dd068238dc570": {
-   "event_id": "e7dd068238dc570",
-   "title": "Rest of World faces prospect of shutting down",
-   "facts": [
-    "The six-year-old digital publication has seen the social and web search traffic on which it depends evaporate."
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录",
-    "本条的来源标题为外文，未调用大模型，因此未翻译"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
   "ef4e57c19af0273": {
    "event_id": "ef4e57c19af0273",
    "title": "地铁里的 AI 伪人广告，正在集体霸凌人类 - 爱范儿",
@@ -10297,21 +10150,6 @@
    "opinions": [],
    "uncertainties": [
     "本次未调用大模型，内容为来源原文摘录"
-   ],
-   "key_points": [],
-   "rule_based": true
-  },
-  "eeb8345c3c1d164": {
-   "event_id": "eeb8345c3c1d164",
-   "title": "ProjectDiscovery adds Neo Triage to confirm which vulnerabilities are exploitable",
-   "facts": [
-    "Open-source cybersecurity company ProjectDiscovery Inc. today added Neo Triage to its Neo security testing platform to confirm which reported vulnerabilities can actually be exploited before teams start fixing them. The new capability goes after the triage backlog, which ProjectDiscovery blames on a"
-   ],
-   "inferences": [],
-   "opinions": [],
-   "uncertainties": [
-    "本次未调用大模型，内容为来源原文摘录",
-    "本条的来源标题为外文，未调用大模型，因此未翻译"
    ],
    "key_points": [],
    "rule_based": true
