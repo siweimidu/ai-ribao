@@ -460,19 +460,68 @@
 
     // A click must move the highlight immediately. Waiting for the scroll event means the
     // wrong entry stays lit for the whole smooth-scroll, which looks like the click failed.
+    /* **Jump to the entry, then verify the entry is actually where it was asked to be.**
+     *
+     * This used to be one `scrollIntoView` call, and it landed on the wrong story: clicking
+     * entry 47 left the reader at 44. The scroll itself was correct at the instant it ran -- the
+     * page then changed under it. Lazy images above the target decoded and grew (up to 340px
+     * each before their height was reserved), pushing the target down by several entries.
+     * Measured 2026-10-28: a three-entry drift, which no amount of care with the anchor could
+     * fix, because the anchor had been right when we used it.
+     *
+     * So the jump is now two things: a scroll, and a short correction loop that re-reads the
+     * target's real position on the following frames and re-aims until it stops moving. It also
+     * runs once more when the smooth scroll finishes, which is when the last images land.
+     *
+     * Precision beats animation here, but the animation is kept: a reader notices a missing
+     * transition far less than they notice being sent to the wrong paragraph. */
+    const alignTarget = (target) => {
+      const offset = READING_LINE;
+      const delta = () => target.getBoundingClientRect().top - offset;
+      return {
+        delta,
+        top: () => Math.max(0, window.scrollY + delta()),
+      };
+    };
+
+    const settleOn = (target) => {
+      const aim = alignTarget(target);
+      let passes = 0;
+      const tick = () => {
+        // Bounded: a page that never stops moving would otherwise spin here.
+        if (passes++ >= 8) return;
+        const drift = aim.delta();
+        if (Math.abs(drift) > 1) {
+          window.scrollTo({ top: Math.max(0, window.scrollY + drift), behavior: 'auto' });
+        }
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+
     tocLinks.forEach((a) => {
       a.addEventListener('click', (event) => {
         const id = a.hash.slice(1);
         const target = document.getElementById(decodeURIComponent(id));
         if (!target) return;
         event.preventDefault();
-        // Smooth scrolling is a nicety; `prefers-reduced-motion` turns it off and the
-        // jump is instant, which is the documented behaviour for that setting.
-        const behaviour = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-          ? 'auto' : 'smooth';
-        target.scrollIntoView({ behavior: behaviour, block: 'start' });
+
+        const aim = alignTarget(target);
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: aim.top(), behavior: reduced ? 'auto' : 'smooth' });
+
         setCurrent(id);
         if (history.replaceState) history.replaceState(null, '', `#${id}`);
+
+        // Correct once the motion stops. `scrollend` is the accurate signal; the timer is the
+        // fallback for browsers without it, and both paths end at exact alignment.
+        if (reduced) {
+          settleOn(target);
+        } else if ('onscrollend' in window) {
+          window.addEventListener('scrollend', () => settleOn(target), { once: true });
+        } else {
+          window.setTimeout(() => settleOn(target), 700);
+        }
       });
     });
 

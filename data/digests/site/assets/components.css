@@ -1997,17 +1997,32 @@ body { font-family: var(--f-sans); }
   scroll-snap-align: start;
 }
 
+/* **A fixed height, so the page does not reflow once the images arrive.**
+ *
+ * These are `loading="lazy"` with no intrinsic size known up front, so before this the
+ * container collapsed to the `padding` and grew by up to 340px per item as each image
+ * decoded. That is what made the table of contents land on the wrong story: clicking entry 47
+ * scrolled to where 47 *was*, then the images above finished loading, everything below shifted
+ * down, and the reader was left looking at 44. Measured on 2026-10-28: a 3-entry drift.
+ *
+ * Reserving the box means the layout is final at first paint; the images now fill a space that
+ * was already accounted for. `object-fit: cover` keeps the thumbnails from distorting. */
+.item__images {
+  height: 190px;
+}
+
 .item__images img {
   width: auto;
   max-width: none;
-  max-height: 340px;
+  height: 100%;
+  object-fit: cover;
   margin: 0;
   border-radius: 8px;
   display: block;
 }
 
 @media (max-width: 640px) {
-  .item__images img { max-height: 220px; }
+  .item__images { height: 150px; }
 }
 
 /* “另有 N 家其他来源”：默认收起，展开后逐个可点。

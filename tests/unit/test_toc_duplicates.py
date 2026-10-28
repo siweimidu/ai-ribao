@@ -111,3 +111,26 @@ def test_the_reading_line_is_one_shared_number() -> None:
     assert "--reading-line:" in tokens, "the shared line must be declared once, in tokens.css"
     assert "scroll-margin-top: var(--reading-line)" in css
     assert '"--reading-line"' in js, "the script must read the same custom property"
+
+def test_item_images_reserve_their_height() -> None:
+    """Lazy images without a reserved box move everything below them after paint.
+
+    That was the real cause of the wrong jump: the scroll was correct when it ran, then the
+    images above the target decoded and grew, pushing the target down by several entries.
+    Reserving the container height makes the layout final at first paint.
+    """
+    from pathlib import Path
+
+    css = Path("site/assets/components.css").read_text(encoding="utf-8")
+    assert "height: 190px" in css, "the image strip must reserve its vertical space"
+    assert "object-fit: cover" in css, "thumbnails must fill that box without distorting"
+
+
+def test_the_jump_corrects_itself_after_layout_settles() -> None:
+    """One scroll call cannot stay correct when the page moves underneath it."""
+    from pathlib import Path
+
+    js = Path("site/assets/motion.js").read_text(encoding="utf-8")
+    assert "settleOn" in js, "the jump must re-aim after the layout settles"
+    assert "scrollend" in js, "correction should hook the real end-of-scroll signal"
+    assert "window.scrollTo" in js, "the jump must position by computed offset"
