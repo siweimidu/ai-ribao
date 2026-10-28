@@ -72,3 +72,42 @@ def test_the_render_guard_dedupes_a_stored_digest() -> None:
     # Numbering must stay contiguous: a gap looks like a missing story.
     numbers = [n for n, _ in shown]
     assert numbers == list(range(1, len(numbers) + 1)), numbers
+
+
+def test_toc_highlight_uses_span_containment() -> None:
+    """The highlight must ask which item *owns* the reading line.
+
+    The old rule was "the last target whose top is above the line", i.e. `top <= line`.
+    `scrollIntoView` honours `scroll-margin-top: var(--reading-line)`, so a clicked item lands
+    at exactly that offset -- the very number the rule compared against. A measured
+    `getBoundingClientRect().top` of 64.4 then failed `64.4 <= 64`, the clicked entry never
+    qualified, and the highlight fell back to the row above: "点第 15 条跳到第 14 条".
+
+    Geometry simulated over eight rounding offsets: the old rule missed in four of them, the
+    span rule in none. These assertions keep the span form and the slop that makes it work in
+    both rounding directions.
+    """
+    from pathlib import Path
+
+    js = Path("site/assets/motion.js").read_text(encoding="utf-8")
+    assert "READING_SLOP" in js, "the reading line needs a slop below the scroll margin"
+    assert "r.bottom > line" in js, "the pick must test span containment, not top <= line"
+    assert "const READING_LINE = 88;" not in js, "a hardcoded reading line came back"
+
+
+def test_the_reading_line_is_one_shared_number() -> None:
+    """Click offset and highlight threshold must not be two independent literals.
+
+    They were: `scroll-margin-top: calc(var(--unit) * 6)` = 24px in CSS while the JS compared
+    against a literal 88. Two unrelated numbers meant the two halves of one interaction
+    disagreed, which is why the highlight lagged a full row while scrolling.
+    """
+    from pathlib import Path
+
+    css = Path("site/assets/components.css").read_text(encoding="utf-8")
+    tokens = Path("site/assets/tokens.css").read_text(encoding="utf-8")
+    js = Path("site/assets/motion.js").read_text(encoding="utf-8")
+
+    assert "--reading-line:" in tokens, "the shared line must be declared once, in tokens.css"
+    assert "scroll-margin-top: var(--reading-line)" in css
+    assert '"--reading-line"' in js, "the script must read the same custom property"
