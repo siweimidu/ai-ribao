@@ -1,9 +1,9 @@
-"""Re-judge an already-published issue with the model, and remove what is not AI news.
+"""Re-judge already-published issues with the model, and remove what is not AI news.
 
 ## Why a repair tool exists at all
 
 The relevance gate is a regex (`focus.py`). On 2026-10-28 that regex was broken -- `rag`
-matched `average`, `cline` matched `declined` -- so four stories with no AI subject were
+matched `average`, `cline` matched `declined` -- so stories with no AI subject were
 published, and 39 of 82 rows carried a perfect relevance score. Fixing the regex stops the
 next issue from repeating it; it does not clean the issues already on disk, and rewriting
 published data by hand is how an archive stops being trustworthy.
@@ -11,12 +11,11 @@ published data by hand is how an archive stops being trustworthy.
 So this asks the model the question the reader is actually asking: *is this story about AI*
 at all? It prints what it would remove and changes nothing unless `--apply` is given.
 
-## Why the model, when a regex already exists
+## Why several dates in one run
 
-A regex can see words. "Africa Finance Corporation names Lobito Corridor builders" has no AI
-word in it, but neither does "Robinson: Raspberry Pi 5 on Fedora" -- and both were published.
-A regex tuned to catch those would also catch real AI coverage that avoids the vocabulary.
-The model reads the sentence. This is the one place that judgement belongs.
+The workflow holds a concurrency lock, and GitHub keeps only one *pending* run per group:
+dispatching six dates at once cancelled five of them. Taking the dates as arguments means
+one job, one router, one rebuild at the end.
 """
 
 from __future__ import annotations
@@ -29,12 +28,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
-#: Ids per call. Small enough that the model can attend to every title, large enough that
-#: an 90-row issue costs four calls rather than ninety.
+#: Ids per call. Small enough that the model attends to every title, large enough that an
+#: issue costs four calls rather than ninety.
 BATCH = 25
 
 SYSTEM = (
-    "你是 AI 日报的审稿人。你会读到一批新闻标题（可能附一句要点）。\n"
+    "你是 AI 日报的审稿人。你会读到一批新闻标题。\n"
     "你的唯一任务：找出**与人工智能无关**的那些。\n"
     "\n"
     "判定为无关的例子：\n"
@@ -76,15 +75,10 @@ async def _judge(router, rows: list[tuple[str, str]]) -> set[str]:
     return {str(i) for i in ids if str(i) in sent}
 
 
-async def main() -> int:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("date", help="YYYY-MM-DD")
-    ap.add_argument("--apply", action="store_true", help="写回 JSON（默认只报告）")
-    args = ap.parse_args()
-
-    path = ROOT / "data" / "digests" / f"{args.date}.json"
+async def repair_one(router, date: str, apply: bool) -> int:
+    path = ROOT / "data" / "digests" / f"{date}.json"
     if not path.exists():
-        print(f"没有 {path}")
+        print(f"  {date}: 没有 {path.name}，跳过")
         return 2
     doc = json.loads(path.read_text(encoding="utf-8"))
     events = doc["digest"]["top_events"]
@@ -93,20 +87,8 @@ async def main() -> int:
     def title_of(e):
         return (insights.get(e["event_id"]) or {}).get("title") or e.get("title") or ""
 
-    # Reuse the real provider stack rather than a second copy of the env handling.
-    sys.path.insert(0, str(ROOT / "src"))
-    from aidaily.__main__ import _build_router
-    import argparse as _ap
-
-    router, warnings, http = _build_router(_ap.Namespace(no_llm=False, relay_keys=None))
-    for w in warnings:
-        print("  " + w)
-    if router is None:
-        print("没有可用的模型，退出")
-        return 3
-
     rows = [(e["event_id"], title_of(e)) for e in events]
-    print(f"  待审 {len(rows)} 条")
+    print(f"  {date}: 待审 {len(rows)} 条")
 
     off: set[str] = set()
     for i in range(0, len(rows), BATCH):
@@ -119,22 +101,16 @@ async def main() -> int:
         off |= got
         print(f"    第 {i // BATCH + 1} 批：{len(got)} 条判为无关")
 
-    if http is not None:
-        await http.aclose()
-
     if not off:
-        print("  模型认为全部与 AI 相关")
+        print(f"  {date}: 模型认为全部与 AI 相关，不改动")
         return 0
 
-    print("")
-    print(f"  判为无关 {len(off)} 条：")
+    print(f"  {date}: 判为无关 {len(off)} 条：")
     for e in events:
         if e["event_id"] in off:
-            print("    · " + title_of(e)[:76])
+            print("    · " + title_of(e)[:74])
 
-    if not args.apply:
-        print("")
-        print("  未加 --apply，未改动任何文件")
+    if not apply:
         return 0
 
     kept = [e for e in events if e["event_id"] not in off]
@@ -151,7 +127,35 @@ async def main() -> int:
         counts["events"] = len(kept)
 
     path.write_text(json.dumps(doc, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    print(f"  已写回 {path.name}：{len(events)} → {len(kept)} 条")
+    print(f"  {date}: 已写回 {len(events)} → {len(kept)} 条")
+    return 0
+
+
+async def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("dates", nargs="+", help="YYYY-MM-DD，可给多个")
+    ap.add_argument("--apply", action="store_true", help="写回 JSON（默认只报告）")
+    args = ap.parse_args()
+
+    # Reuse the real provider stack rather than a second copy of the env handling.
+    sys.path.insert(0, str(ROOT / "src"))
+    from aidaily.__main__ import _build_router
+    import argparse as _ap
+
+    router, warnings, http = _build_router(_ap.Namespace(no_llm=False, relay_keys=None))
+    for w in warnings:
+        print("  " + w)
+    if router is None:
+        print("没有可用的模型，退出")
+        return 3
+
+    try:
+        for date in args.dates:
+            await repair_one(router, date, args.apply)
+            print("")
+    finally:
+        if http is not None:
+            await http.aclose()
     return 0
 
 

@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       date:
-        description: "要修复的期号 YYYY-MM-DD"
+        description: "要修复的期号，空格分隔可给多个（2026-10-22 2026-10-23）"
         required: true
         type: string
       dry_run:
@@ -55,9 +55,9 @@ jobs:
         run: |
           set -o pipefail
           if [ "${{ inputs.dry_run }}" = "true" ]; then
-            python scripts/fix_relevance.py "${{ inputs.date }}"
+            python scripts/fix_relevance.py ${{ inputs.date }}
           else
-            python scripts/fix_relevance.py "${{ inputs.date }}" --apply
+            python scripts/fix_relevance.py ${{ inputs.date }} --apply
           fi
 
       - name: 重建站点
