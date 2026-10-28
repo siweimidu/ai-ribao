@@ -1,13 +1,51 @@
 {
-  "generated_at": "2026-10-28T06:57:00.365287+00:00",
-  "router_is_none": true,
+  "generated_at": "2026-10-28T06:48:28.287946+00:00",
+  "router_is_none": false,
   "ran": true,
-  "input_events": 0,
-  "batches": 0,
-  "calls": 0,
-  "merged_groups": 0,
-  "merged_events": 0,
-  "rejected_groups": 0,
-  "failed": true,
-  "examples": []
+  "input_events": 297,
+  "batches": 9,
+  "calls": 9,
+  "merged_groups": 10,
+  "merged_events": 13,
+  "rejected_groups": 3,
+  "failed": false,
+  "examples": [
+    {
+      "kept": "Jetbrains 在经历 Fleet 和 Air 的失败之后再次发布一款的轻量级编辑器 Thinkrail",
+      "merged": [
+        "JetBrains/thinkrail — Vibe code with pi in a lightweight, re"
+      ],
+      "why": "都是 JetBrains 发布 Thinkrail 轻量级编辑器"
+    },
+    {
+      "kept": "DeepMind unveils Genie 4 world model promising more realistic physics and humans",
+      "merged": [
+        "Genie 4",
+        "谷歌DeepMind发布实时交互世界模型Genie4 加速具身智能与多模态模拟演进",
+        "Ethan Mollick 实测 Genie 4 实时交互式世界生成"
+      ],
+      "why": "都是关于 Google DeepMind 发布 Genie 4 世界模型"
+    },
+    {
+      "kept": "Anthropic IPO 最大赢家或为 Amazon 而非 VC",
+      "merged": [
+        "Anthropic’s elaborate plan to keep Wall Street at bay"
+      ],
+      "why": "都是关于 Anthropic IPO 对投资者/市场的影响"
+    },
+    {
+      "kept": "MacBook Pro M6 14 寸来袭，值不值？",
+      "merged": [
+        "New 14‑inch MacBook Pro with M6"
+      ],
+      "why": "都是关于新款 M6 芯片 MacBook Pro 14 寸"
+    },
+    {
+      "kept": "面壁智能回应 MiniCPM-OCR 实测对比",
+      "merged": [
+        "面壁智能 OpenBMB 回应第三方对 MiniCPM-OCR 的评测"
+      ],
+      "why": "都是面壁智能回应 MiniCPM-OCR 评测"
+    }
+  ]
 }
