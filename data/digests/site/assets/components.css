@@ -506,7 +506,7 @@
 .item {
   padding-block: calc(var(--unit) * 6);
   border-bottom: 1px solid var(--border);
-  scroll-margin-top: calc(var(--unit) * 6);
+  scroll-margin-top: var(--reading-line);
 }
 .item:last-child { border-bottom: 0; }
 

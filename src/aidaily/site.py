@@ -450,9 +450,23 @@ def _body_order(
 
     Returning the lists here means every consumer numbers the same elements in the same order.
     """
+    # **Never render the same event twice.**
+    #
+    # Measured 2026-10-27: `top_events` held 106 rows for 97 stories. The page emitted two
+    # `<li id="e-...">` sharing one id, and every `href="#e-..."` resolves to the
+    # *first* match -- so clicking entry 32 landed on entry 3. The same duplicate made the
+    # rail highlight the wrong row while scrolling.
+    #
+    # The selection stage now dedupes by `event_id` (see `rank.select_diverse`). This guard
+    # keeps already-published digests correct too: they are re-rendered from JSON that still
+    # carries the duplicates, and rewriting published data is not a renderer job.
     shown: list[tuple[int, Event]] = []
     untranslated: list[tuple[int, Event]] = []
+    seen_ids: set[str] = set()
     for event in events:
+        if event.event_id in seen_ids:
+            continue
+        seen_ids.add(event.event_id)
         insight = insights.get(event.event_id)
         title = _display_title(event, insight, items_by_id)
         # A repository slug is not foreign reporting: it has no Chinese form and never will,
@@ -496,7 +510,7 @@ def render_toc(
     for number, event in ordered:
         insight = insights.get(event.event_id)
         title = _display_title(event, insight, items_by_id)
-        anchor = f"e-{event.event_id[:10]}"
+        anchor = f"e-{event.event_id}"
         label = title if len(title) <= 42 else title[:40] + "…"
         rows.append(
             f'<a href="#{esc(anchor)}">'
@@ -607,7 +621,7 @@ def render_item(
     repo_meta: dict[str, dict] | None = None,
 ) -> str:
     title = _display_title(event, insight, items_by_id)
-    anchor = f"e-{event.event_id[:10]}"
+    anchor = f"e-{event.event_id}"
     # The archived `all_urls` was written by whatever ordering the pipeline used at the time,
     # and until 2026-10-21 that was a plain string sort -- which put the aggregator first on
     # every event it carried, so the title link opened `aihot.news/items/...` instead of the
@@ -913,7 +927,7 @@ def _render_overview(
     for number, event in ordered[:8]:
         insight = insights.get(event.event_id)
         title = _display_title(event, insight, items_by_id)
-        anchor = f"e-{event.event_id[:10]}"
+        anchor = f"e-{event.event_id}"
 
         # The first supporting fact, when there is one, is what makes the line informative
         # rather than a second headline.

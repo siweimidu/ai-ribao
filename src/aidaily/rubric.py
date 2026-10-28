@@ -76,10 +76,13 @@ SYSTEM = (
     "\n"
     "输出要求：\n"
     "- 只输出 JSON，形如 "
-    '{"scores": [{"id": "...", "score": 7, "section": "模型发布"}, ...]}\n'
+    '{"scores": [{"id": "...", "score": 7, "section": "模型发布", "on_topic": true}, ...]}\n'
     "- 每个 id 必须原样照抄输入里给的 id，不要改写、不要新增、不要遗漏\n"
     "- score 是 0 到 10 之间的整数\n"
     "- section 只能取：要闻、开发生态、模型发布、产品应用、技术与洞察、行业动态、其他\n"
+    "- **on_topic**：这条新闻是否真的与人工智能有关（模型、公司、产品、研究、应用、算力或 AI 政策）。\n"
+    "  只是标题里偶然出现某个词、但主体是政治、金融、体育、地方政务或普通软件更新的，一律 false。\n"
+    "  拿不准就给 true —— 本项只用来剔除明显无关的内容，不是用来筛掉你不确定的。\n"
     "- 不要输出解释以外的任何文字\n"
 )
 
@@ -140,6 +143,20 @@ class RubricResult:
     #: How many events were scored twice. Compared against `len(scores)` to see whether the
     #: second pass actually ran or fell back to a single sample.
     double_scored: int = 0
+    #: Ids the model judged **not about AI at all**, in every pass that scored them.
+    #:
+    #: This is the only place a model gets a say over relevance. Until now the gate was the
+    #: `focus` regex alone, and on 2026-10-28 that regex was broken (`rag` matched
+    #: `average`), so four non-AI stories published with a perfect relevance score.
+    #:
+    #: Requires a **unanimous** vote: one pass calling a real AI story off-topic is noise, and
+    #: dropping on that would cost the reader a story. The caller additionally requires the
+    #: formula to agree before removing anything.
+    off_topic: set[str] = field(default_factory=set)
+
+    #: Per-id count of passes that called it off-topic, so the unanimity rule is visible.
+    off_topic_votes: dict[str, int] = field(default_factory=dict)
+
     #: Section id per event, the ranking's **primary** key. Separate from `scores`
     #: because "important" and "filed under 行业动态" are different judgements, and
     #: folding one into the other loses the distinction the ordering depends on.
@@ -293,6 +310,45 @@ def _parse_scores(raw: str) -> tuple[dict[str, float], dict[str, str]]:
     return out, sections
 
 
+def _parse_on_topic(raw: str) -> set[str]:
+    """Ids the model marked `on_topic: false`.
+
+    Absent or unparseable fields are **not** treated as off-topic: the flag exists to remove
+    obvious noise, and a model that forgets the field must not cost the digest its stories.
+    Only an explicit `false` counts.
+    """
+    text = (raw or "").strip()
+    if text.startswith("```"):
+        text = re.sub(r"^```[a-zA-Z]*\s*", "", text)
+        text = re.sub(r"\s*```$", "", text)
+    doc = None
+    try:
+        doc = json.loads(text)
+    except (TypeError, ValueError):
+        start, end = text.find("{"), text.rfind("}")
+        if start != -1 and end > start:
+            try:
+                doc = json.loads(text[start : end + 1])
+            except (TypeError, ValueError):
+                return set()
+    if not isinstance(doc, dict):
+        return set()
+    rows = doc.get("scores")
+    if not isinstance(rows, list):
+        return set()
+    out: set[str] = set()
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        rid = row.get("id")
+        if rid is None:
+            continue
+        if row.get("on_topic") is False:
+            out.add(str(rid))
+    return out
+
+
+
 async def score_events(
     events: list[Event],
     router: Router | None,
@@ -350,6 +406,7 @@ async def score_events(
             if text is None:
                 raise ValueError("router returned a response with no text")
             got, got_sections = _parse_scores(text)
+            got_off_topic = _parse_on_topic(text)
         except (LLMError, LLMUnavailable):
             async with lock:
                 result.failed_batches += 1
@@ -369,6 +426,11 @@ async def score_events(
             # disagree on the section disagree about what the story is, and an average cannot
             # express that. The first pass wins; a model vote would be less stable than the
             # rule-based fallback the pipeline already has.
+            for event_id in got_off_topic:
+                if event_id in sent:
+                    result.off_topic_votes[event_id] = (
+                        result.off_topic_votes.get(event_id, 0) + 1
+                    )
             if pass_index == 0:
                 for event_id, section in got_sections.items():
                     if event_id in sent:
@@ -421,6 +483,11 @@ async def score_events(
         ]
         result.batches += len(retry_batches)
         await asyncio.gather(*(run(b) for b in retry_batches))
+
+    # Unanimous only: with `passes=2` an id needs two votes. A single dissenting pass is
+    # noise, and acting on it would drop a real story the reader never gets to see.
+    required = max(1, passes)
+    result.off_topic = {i for i, n in result.off_topic_votes.items() if n >= required}
 
     result.unscored = sum(1 for e in events if e.event_id not in result.scores)
 

@@ -537,6 +537,20 @@ def select_diverse(
     source_ceiling_floor = max(2, -(-limit // 4))  # at least a quarter of the digest
     hard_source_ceiling = max(rank.max_per_source, min(-(-limit * 20 // 100), source_ceiling_floor))
 
+    #: Identity is `event_id`, not object identity.
+    #:
+    #: Measured 2026-10-27: the published issue carried **10 events twice**. `top_events` held
+    #: 130 rows for 120 stories, so the page rendered two `<li id="e-...">` with the same id and
+    #: every `href="#e-..."` resolved to the first of them. The user reported it as the table of
+    #: contents jumping to the wrong story: clicking entry 32 landed on entry 3.
+    #:
+    #: The cause was here. Pass 1 had no duplicate check at all, and passes 2 and 3 compared with
+    #: `candidate is c` -- object identity -- which cannot see two RankedEvent objects built for
+    #: the same event. `consider()` also re-applies a topic penalty, so the two copies ended up
+    #: with *different* scores and were sorted far apart: positions 3 and 32, not side by side.
+    def already_chosen(candidate: RankedEvent) -> bool:
+        return any(c.event.event_id == candidate.event.event_id for c in chosen)
+
     def take(candidate: RankedEvent) -> None:
         chosen.append(candidate)
         for source_id in candidate.event.source_ids:
@@ -620,6 +634,8 @@ def select_diverse(
     for candidate in ranked:
         if len(chosen) >= limit:
             break
+        if already_chosen(candidate):
+            continue
         if (
             over_source_cap(candidate, rank.max_per_source)
             or over_group_cap(candidate, rank.max_per_group)
@@ -637,7 +653,7 @@ def select_diverse(
         for candidate in ranked:
             if len(chosen) >= limit:
                 break
-            if any(candidate is c for c in chosen):
+            if already_chosen(candidate):
                 continue
             if over_source_cap(candidate, hard_source_ceiling):
                 continue
@@ -663,7 +679,7 @@ def select_diverse(
         for candidate in ranked:
             if len(chosen) >= limit:
                 break
-            if any(candidate is c for c in chosen):
+            if already_chosen(candidate):
                 continue
             if over_group_cap(candidate, rank.max_per_group):
                 continue
@@ -672,7 +688,16 @@ def select_diverse(
             consider(candidate)
 
     chosen.sort(key=lambda r: (-r.score, r.event.event_id))
-    return chosen
+    # Belt and braces: the page numbers its rows and its table of contents from this list, and a
+    # repeated event_id makes the two disagree about where a story is.
+    unique: list[RankedEvent] = []
+    seen_ids: set[str] = set()
+    for entry in chosen:
+        if entry.event.event_id in seen_ids:
+            continue
+        seen_ids.add(entry.event.event_id)
+        unique.append(entry)
+    return unique
 
 
 def diversity_report(chosen: list[RankedEvent], sources: list[SourceSpec]) -> dict[str, object]:

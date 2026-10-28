@@ -150,14 +150,22 @@ _AI_CONTEXT = re.compile(
 
 #: Vocabulary that only appears in AI coverage. Deliberately specific: "model" alone is a
 #: word in fashion and finance writing, so the bare term is not enough on its own.
-_CORE = re.compile(
-    rf"(?<![a-z])({_MODEL_ALTERNATION})(?![a-z])|"
-    r"llms?|agents?|transformers?|diffusion|rag|embeddings?|tokenizers?|"
-    r"benchmarks?|fine-?tun\w*|open-?weight\w*|context window|inference|multimodal|"
-    r"neural networks?|machine learning|deep learning|reinforcement learning|"
-    r"大模型|新模型|模型权重|模型发布|发布模型|开源权重|智能体|多模态|微调|推理|训练|"
-    r"预训练|算力|提示词|上下文|向量|基准测试|参数规模|端侧|蒸馏|对齐|神经网络|"
-    r"机器学习|深度学习|"
+#:
+#: **The Latin half is wrapped in word boundaries; the CJK half is not.**
+#:
+#: Measured 2026-10-28: the Latin half was a bare alternation, so `cline` matched `declined`,
+#: `rag` matched `average` / `coverage` / `storage`, and `dify` matched `modify`. "Every average
+#: coverage" is ordinary news prose, so `_CORE.search()` succeeded on almost any article -- and
+#: through the body fallback in `focus_multiplier` that gave **39 of 82** published items a
+#: perfect focus of 1.0. Four non-AI stories shipped that day (Axios, Semafor, LWN): a Trump
+#: trade-talk piece whose body said "declined", a DOJ filing story, an Africa Finance corridor
+#: announcement, and a Fedora/Raspberry Pi post.
+#:
+#: The boundary is `[a-z0-9]`, not `[a-z]`: a product name never continues into a digit.
+_CORE_LATIN = (
+    r"llms?|agents?|transformers?|diffusion|rag|embeddings?|tokenizers?"
+    r"|benchmarks?|fine-?tun\w*|open-?weight\w*|context window|inference|multimodal"
+    r"|neural networks?|machine learning|deep learning|reinforcement learning"
       # Added 2026-10-21: the vocabulary was missing the products this digest writes about most.
       # Measured on a real 670-item window, these headlines all scored 0.18 ("no AI at all"):
       #
@@ -165,20 +173,31 @@ _CORE = re.compile(
       #     MPS in PyTorch 2.15
       #     TRAE 公布程序员节活动，设百万积分大奖
       #
-      # A vocabulary that does not contain `pytorch` cannot judge a PyTorch story. The list below
-      # is the coding-agent and ML-framework layer -- the products whose *names alone* mean AI.
-      r"devin|cursor|copilot|codex|windsurf|replit|cline|aider|bolt\.new|lovable|"
-      r"pytorch|tensorflow|jax|onnx|vllm|sglang|ollama|llama\.cpp|safetensors|"
-      r"perplexity|character\.ai|midjourney|runway|suno|elevenlabs|synthesia|"
-      r"trae|qoder|comfyui|langchain|llamaindex|autogen|crewai|n8n|dify|"
-      r"mcp|function calling|tool use|"
-      r"推理框架|推理引擎|提示词缓存|上下文长度|智能体框架|编程智能体|"
-    # Added after the 0.70 floor started rejecting real AI news. Measured misses:
-    # `可灵AI新一代模型Kling 4.0正式上线` and `范式智能…开源推出 AI 部署平台模域ModelSphere`
-    # both scored 0.50 -- below the floor -- because bare `模型` and `开源` were absent from this
-    # list while `大模型` and `开源权重` were present. A vocabulary that only recognises the
-    # longer compound is a vocabulary that misses how headlines are actually written.
-    r"模型|开源|上线|推理服务|智能体平台|模型服务",
+      # A vocabulary that does not contain `pytorch` cannot judge a PyTorch story. The list
+      # below is the coding-agent and ML-framework layer -- names that mean AI on their own.
+    r"|devin|cursor|copilot|codex|windsurf|replit|cline|aider|bolt\.new|lovable"
+    r"|pytorch|tensorflow|jax|onnx|vllm|sglang|ollama|llama\.cpp|safetensors"
+    r"|perplexity|character\.ai|midjourney|runway|suno|elevenlabs|synthesia"
+    r"|trae|qoder|comfyui|langchain|llamaindex|autogen|crewai|n8n|dify"
+    r"|mcp|function calling|tool use"
+)
+
+#: CJK AI vocabulary. No boundaries: Chinese has none, and each of these is a compound that
+#: does not occur inside an unrelated word.
+_CORE_CJK = (
+    r"大模型|新模型|模型权重|模型发布|发布模型|开源权重|智能体|多模态|微调|推理|训练"
+    r"|预训练|算力|提示词|上下文|向量|基准测试|参数规模|端侧|蒸馏|对齐|神经网络"
+    r"|机器学习|深度学习|推理框架|推理引擎|提示词缓存|上下文长度|智能体框架|编程智能体"
+      # Added after the 0.70 floor started rejecting real AI news. Measured misses:
+      # `可灵AI新一代模型Kling 4.0正式上线` and `范式智能…开源推出 AI 部署平台模域ModelSphere`
+      # both scored 0.50 -- below the floor -- because bare `模型` and `开源` were absent.
+    r"|模型|开源|上线|推理服务|智能体平台|模型服务"
+)
+
+_CORE = re.compile(
+    rf"(?<![a-z])({_MODEL_ALTERNATION})(?![a-z])"
+    rf"|(?<![a-z0-9])(?:{_CORE_LATIN})(?![a-z0-9])"
+    rf"|{_CORE_CJK}",
     re.IGNORECASE,
 )
 
@@ -328,6 +347,11 @@ def _headline_focus(title: str) -> float:
 #: reading the whole thing would score an opinion column on every term it mentions in passing.
 _BODY_PROBE_CHARS = 1200
 
+#: Ceiling for a score that came from the body rather than the headline. Above the 0.50
+#: relevance floor so a date-titled digest issue still publishes, and well below 1.0 so a
+#: rescued item ranks behind a story whose own headline states what it is.
+_BODY_LIFT_CAP = 0.62
+
 
 def _body_opening(event: Event, items_by_id: dict[str, object] | None) -> str:
     """The opening of the event's body text, or "" when there is none."""
@@ -433,8 +457,22 @@ def focus_multiplier(
             # The fallback therefore needs a *structural* signal in the body -- a model, a lab,
             # or a technique word -- not merely the letters `AI`. A genuine digest issue
             # mentions its subjects by name; an article about climate names climate.
-            if lifted > headline and (_CORE.search(body) or _LABS.search(body)):
-                headline = lifted
+            # **A body may rescue a headline, but it may not certify it.**
+            #
+            # `_headline_focus` is a ratio built for one-line headlines. Applied to 1200
+            # characters of prose it degenerates: `score = hits / (hits + off * 1.2)` and a news
+            # article matches little of `_OFF_TOPIC`, so **one** stray term gives exactly 1.0.
+            # Measured 2026-10-28: a Trump trade story scored focus 1.0 because its body said
+            # "declined", which the unanchored `cline` token read as the Cline coding agent. It
+            # published in an AI digest.
+            #
+            # So the body now has to carry *structural* evidence -- a named lab, or several
+            # distinct AI terms -- and the lift is capped below certainty. A digest feed that
+            # titles its issue by date (`DailyDawn · 2026-10-15`) names many models and clears
+            # both tests; an article that mentions AI once in passing clears neither.
+            structural = len(_LABS.findall(body)) > 0 or len(_CORE.findall(body)) >= 3
+            if lifted > headline and structural:
+                headline = min(lifted, _BODY_LIFT_CAP)
                 body_used = body
 
     source = _source_focus(event, sources or {}) if sources else 0.0

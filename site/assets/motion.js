@@ -391,9 +391,22 @@
       tocRoot.scrollTop += it.top - box.top - (box.height - it.height) / 2;
     };
 
-    // The reading line: a target is "current" when its top has passed this offset but the
-    // next target has not. 88px clears the sticky rail's height.
-    const READING_LINE = 88;
+    // **The reading line is one number, shared with the stylesheet.**
+    //
+    // It used to be a literal 88 here while `.item { scroll-margin-top }` was `--unit * 6`
+    // = 24px. Two unrelated numbers meant the two halves of one interaction disagreed:
+    // clicking an entry put the story at 24px (flush against the top, which reads as
+    // "没对齐"), while the highlight switched a full 88px earlier. Measured on the
+    // 2026-10-27 issue: the reader at story 41 saw entry 40 lit.
+    //
+    // `--reading-line` is declared in tokens.css and consumed by both, so they cannot drift.
+    const READING_LINE = (() => {
+      const raw = getComputedStyle(document.documentElement)
+        .getPropertyValue("--reading-line")
+        .trim();
+      const px = parseFloat(raw);
+      return Number.isFinite(px) && px > 0 ? px : 64;
+    })();
     let ticking = false;
 
     const pick = () => {

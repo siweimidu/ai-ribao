@@ -31,7 +31,9 @@ from .factcheck import check_digest
 from .l3 import build_events
 from .history import PublishedHistory
 from .rubric import score_events
+from .focus import focus_multiplier
 from .pipeline import (
+    MIN_AI_RELEVANCE,
     build_digest,
     dedup_report,
     run_dedup_stage,
@@ -1221,6 +1223,34 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
         if rubric_result.failed_batches:
             rubric_note += f"；{rubric_result.failed_batches} 批失败（这些条目仍用公式分）"
         history_notes.append(rubric_note)
+
+        # **The model's only veto over relevance, and it needs the formula to agree.**
+        #
+        # Relevance used to be the `focus` regex and nothing else. On 2026-10-28 that regex was
+        # broken: `rag` matched `average`, `cline` matched `declined`, so 39 of 82 published
+        # stories scored a perfect 1.0 and four non-AI pieces (Axios, Semafor, LWN) reached the
+        # page. The regex is fixed, but a regex is still the only judge.
+        #
+        # So the rubric now also asks whether a story is about AI at all. It may only remove an
+        # event the formula **already** scores below the relevance floor: the model is the
+        # second opinion, never the sole reason a story disappears. A story the formula likes is
+        # kept even if a model pass doubted it.
+        _off_topic = getattr(rubric_result, "off_topic", set())
+        if _off_topic:
+            _sources_by_id = {s.source_id: s for s in sources}
+            _kept, _dropped = [], []
+            for _event in events:
+                if _event.event_id not in _off_topic:
+                    _kept.append(_event)
+                    continue
+                _focus, _ = focus_multiplier(_event, _sources_by_id)
+                (_dropped if _focus < MIN_AI_RELEVANCE else _kept).append(_event)
+            if _dropped:
+                events = _kept
+                history_notes.append(
+                    f"模型判定与 AI 无关并剔除 {len(_dropped)} 条（公式相关性同样低于门槛）"
+                )
+                print(f"  相关性剔除      {len(_dropped)} 条（模型判定 + 公式一致）")
 
         # Phase 2: the real selection, now that the model's judgement is on the table.
         selected, selection_report = select_for_digest(
