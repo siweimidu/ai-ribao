@@ -411,19 +411,40 @@
 
     const pick = () => {
       ticking = false;
-      const line = READING_LINE;
-      let best = tocTargets[0];
-      let bestTop = -Infinity;
+
+      // The line sits a few pixels **below** the scroll margin on purpose.
+      //
+      // scrollIntoView(block:start) puts the clicked item's top at --reading-line (64px), and
+      // sub-pixel layout routinely lands it at 64.4 or 63.6. Comparing against exactly 64 makes
+      // one rounding direction lose the clicked item and the other hand the line to the row
+      // above -- the reported "点第 15 条跳到第 14 条".
+      const READING_SLOP = 3;
+      const line = READING_LINE + READING_SLOP;
+
+      // **Which item owns the reading line, not which one last crossed it.**
+      //
+      // The old rule was "the last target whose top is above the line", i.e.
+      // top <= line && top > bestTop. That put the clicked item exactly on the boundary it was
+      // tested against, so any rounding dropped it. Asking which item's *span* contains the line
+      // removes the equality: item 15 spans [64, big) so it owns 64, while item 14's bottom is
+      // also 64 and is excluded by bottom > line. Two adjacent items can never both qualify, and
+      // neither can be missed.
+      let best = null;
       for (const t of tocTargets) {
-        const top = t.el.getBoundingClientRect().top;
-        // The last target whose top is above the reading line is the one being read.
-        if (top <= line && top > bestTop) {
-          bestTop = top;
+        const r = t.el.getBoundingClientRect();
+        if (r.top <= line && r.bottom > line) {
           best = t;
+          break;
         }
       }
-      // Above the first target nothing qualifies, and an empty highlight reads as broken.
-      if (bestTop === -Infinity) best = tocTargets[0];
+
+      // Above the first item the line sits in no span at all; highlight the first one, because
+      // an empty highlight reads as broken.
+      if (!best) {
+        const firstTop = tocTargets[0].el.getBoundingClientRect().top;
+        best = firstTop > line ? tocTargets[0] : tocTargets[tocTargets.length - 1];
+      }
+
       setCurrent(best.a.hash.slice(1));
       syncTocScroll(best.a);
     };
