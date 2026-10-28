@@ -463,7 +463,9 @@ def select_for_digest(
     # `__main__` removed the rows it judged off-topic before this function was called, and this
     # floor must not override that judgement. The formula keeps its veto only when no model was
     # available -- a degraded run still needs *something* to keep junk out.
-    model_judged_relevance = rubric_mode == "llm"
+    # "degraded" counts: the model did run and did judge the rows it saw, so its verdict still
+    # outranks a regex. Only "formula" means no model judgement exists at all.
+    model_judged_relevance = rubric_mode in ("llm", "degraded")
     focus_floor = MIN_AI_RELEVANCE
     kept: list = []
     dropped_focus = 0
@@ -476,8 +478,13 @@ def select_for_digest(
         # Missing relevance is not permission to publish. This used to be `if focus is not
         # None and focus < floor`, so any new event type that skipped the scorer silently
         # bypassed the filter. Absence of evidence now fails closed.
+        # The model is the judge wherever it actually looked. A row it never scored keeps the
+        # formula veto, which is the fallback the user asked for: LLM first, regex only when
+        # there is no model judgement to defer to.
+        model_scored_this_row = bool(rubric_scores) and row.event.event_id in rubric_scores
+        formula_has_veto = not model_judged_relevance or not model_scored_this_row
         if (
-            not model_judged_relevance
+            formula_has_veto
             and not passes_ai_relevance(focus)
             and not is_passthrough(row.event)
         ):
