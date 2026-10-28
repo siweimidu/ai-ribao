@@ -529,17 +529,17 @@
   }
  },
  "Nutlope/hallmark": {
-  "fetched_at": "2026-10-27T15:30:16.273423+00:00",
+  "fetched_at": "2026-10-28T14:51:37.970992+00:00",
   "data": {
    "full_name": "Nutlope/hallmark",
    "description": "Anti-AI-slop design skill for Claude Code, Cursor, and Codex.",
-   "stars": 38311,
-   "forks": 1997,
+   "stars": 40180,
+   "forks": 2092,
    "language": "CSS",
    "license": "MIT",
    "topics": [],
    "created": "2026-04-27",
-   "pushed": "2026-10-27",
+   "pushed": "2026-10-28",
    "contributors": 5,
    "discussions": null,
    "languages": {
@@ -656,12 +656,12 @@
   }
  },
  "makecindy/cindy": {
-  "fetched_at": "2026-10-27T15:30:16.273423+00:00",
+  "fetched_at": "2026-10-28T14:51:37.970992+00:00",
   "data": {
    "full_name": "makecindy/cindy",
    "description": "Consider it done. The open-source AI agent that works out of the box · 想到，就能做到。开源、开箱即用的 AI Agent。",
-   "stars": 7251,
-   "forks": 865,
+   "stars": 7884,
+   "forks": 926,
    "language": "TypeScript",
    "license": "Apache-2.0",
    "topics": [
@@ -673,40 +673,46 @@
     "codex"
    ],
    "created": "2026-07-22",
-   "pushed": "2026-10-27",
-   "contributors": 169,
+   "pushed": "2026-10-28",
+   "contributors": 173,
    "discussions": null,
    "languages": {
-    "TypeScript": 96.11498005949453,
-    "JavaScript": 2.3834533711402903,
-    "Swift": 0.6330628335883272,
-    "Python": 0.22077093551831425,
-    "Rust": 0.19644600093805303,
-    "HTML": 0.12296414781767553
+    "TypeScript": 96.07901019988468,
+    "JavaScript": 2.4073506824547426,
+    "Swift": 0.6383986772728156,
+    "Python": 0.2189708923122091,
+    "Rust": 0.20456364703336014,
+    "HTML": 0.12196156666561371
    }
   }
  },
  "pbakaus/impeccable": {
-  "fetched_at": "2026-10-27T15:30:16.273423+00:00",
+  "fetched_at": "2026-10-28T14:51:37.970992+00:00",
   "data": {
    "full_name": "pbakaus/impeccable",
-   "description": "The design language that makes your AI harness better at design.",
-   "stars": 90098,
-   "forks": 5357,
+   "description": "The design vocabulary for your coding agent. Steer with polish and bolder, review with critique and audit, catch AI slop before it ships.",
+   "stars": 91732,
+   "forks": 5426,
    "language": "Rust",
    "license": "Apache-2.0",
-   "topics": [],
+   "topics": [
+    "agent-skills",
+    "ai",
+    "anti-slop",
+    "design",
+    "slop"
+   ],
    "created": "2025-11-16",
-   "pushed": "2026-10-27",
+   "pushed": "2026-10-28",
    "contributors": 61,
    "discussions": null,
    "languages": {
-    "Rust": 76.38602276346225,
-    "JavaScript": 21.07095055369556,
-    "TypeScript": 1.777583934510968,
-    "HTML": 0.2812624930840776,
-    "CSS": 0.27105714290850547,
-    "Batchfile": 0.07479083526366102
+    "Rust": 76.31919165259627,
+    "JavaScript": 21.144946005074647,
+    "TypeScript": 1.7725760371564458,
+    "HTML": 0.28047010648128706,
+    "CSS": 0.2702935073228422,
+    "Batchfile": 0.0745801308244569
    }
   }
  },
@@ -904,12 +910,12 @@
   }
  },
  "JetBrains/thinkrail": {
-  "fetched_at": "2026-10-27T15:30:16.273423+00:00",
+  "fetched_at": "2026-10-28T14:51:37.970992+00:00",
   "data": {
    "full_name": "JetBrains/thinkrail",
    "description": "Vibe code with pi in a lightweight, real IDE that customises itself around the way you work — The Vibe You Need",
-   "stars": 3683,
-   "forks": 190,
+   "stars": 4681,
+   "forks": 244,
    "language": "TypeScript",
    "license": "Apache-2.0",
    "topics": [
@@ -921,16 +927,16 @@
     "ai-tools"
    ],
    "created": "2026-07-08",
-   "pushed": "2026-10-27",
-   "contributors": 28,
+   "pushed": "2026-10-28",
+   "contributors": 30,
    "discussions": null,
    "languages": {
-    "TypeScript": 98.06056304514478,
-    "CSS": 1.0456210375798707,
-    "Astro": 0.4946645770901601,
-    "Shell": 0.18550966491051346,
-    "PowerShell": 0.17530263969089524,
-    "JavaScript": 0.03351879346460614
+    "TypeScript": 85.79138615329073,
+    "HTML": 12.493216807455124,
+    "CSS": 0.9357880502522306,
+    "Astro": 0.4386109354478736,
+    "Shell": 0.15477651051420996,
+    "PowerShell": 0.14626047040931778
    }
   }
  },
@@ -1268,12 +1274,12 @@
   }
  },
  "nightly-labs/openbot": {
-  "fetched_at": "2026-10-27T15:30:16.273423+00:00",
+  "fetched_at": "2026-10-28T14:51:37.970992+00:00",
   "data": {
    "full_name": "nightly-labs/openbot",
    "description": "A local-first desktop workspace for persistent AI teammates. Run Codex, Claude, and Grok with dedicated workspaces, task queues, file sharing, browser control, and agent-to-agent collaboration.",
-   "stars": 2052,
-   "forks": 223,
+   "stars": 2988,
+   "forks": 295,
    "language": "TypeScript",
    "license": "NOASSERTION",
    "topics": [
@@ -1285,16 +1291,16 @@
     "macos"
    ],
    "created": "2026-08-12",
-   "pushed": "2026-10-27",
-   "contributors": 36,
+   "pushed": "2026-10-28",
+   "contributors": 37,
    "discussions": null,
    "languages": {
-    "TypeScript": 95.77151729953539,
-    "CSS": 3.591549530692373,
-    "Shell": 0.3021341773338664,
-    "JavaScript": 0.1403353669616771,
-    "Swift": 0.0936776157441424,
-    "Kotlin": 0.053500595445957685
+    "TypeScript": 95.70287148688146,
+    "CSS": 3.5639026494030275,
+    "Shell": 0.2981809726101489,
+    "Swift": 0.18274874383657524,
+    "JavaScript": 0.151236904143795,
+    "Kotlin": 0.052800579285902594
    }
   }
  },
@@ -1486,12 +1492,12 @@
   }
  },
  "HKUDS/DeepTutor": {
-  "fetched_at": "2026-10-27T15:30:16.273423+00:00",
+  "fetched_at": "2026-10-28T14:51:37.970992+00:00",
   "data": {
    "full_name": "HKUDS/DeepTutor",
    "description": "DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/.",
-   "stars": 45285,
-   "forks": 5700,
+   "stars": 47455,
+   "forks": 5906,
    "language": "Python",
    "license": "Apache-2.0",
    "topics": [
@@ -1503,26 +1509,26 @@
     "interactive-learning"
    ],
    "created": "2025-12-28",
-   "pushed": "2026-10-27",
-   "contributors": 242,
+   "pushed": "2026-10-28",
+   "contributors": 252,
    "discussions": null,
    "languages": {
-    "Python": 65.59358892635399,
-    "TypeScript": 33.949155945734276,
-    "JavaScript": 0.1786928492309111,
-    "CSS": 0.1755644333564294,
-    "Dockerfile": 0.08147874188106949,
-    "HTML": 0.0124270406941605
+    "Python": 63.19959102824147,
+    "TypeScript": 35.57632092048419,
+    "CSS": 0.9048024783498417,
+    "JavaScript": 0.22099574340112083,
+    "Dockerfile": 0.0780895619628743,
+    "HTML": 0.011665427775302219
    }
   }
  },
  "obra/superpowers": {
-  "fetched_at": "2026-10-27T15:30:16.273423+00:00",
+  "fetched_at": "2026-10-28T14:51:37.970992+00:00",
   "data": {
    "full_name": "obra/superpowers",
    "description": "An agentic skills framework & software development methodology that works.",
-   "stars": 306091,
-   "forks": 27255,
+   "stars": 307073,
+   "forks": 27328,
    "language": "Shell",
    "license": "MIT",
    "topics": [
@@ -1548,17 +1554,17 @@
   }
  },
  "togg53192-cmd/jailbreaks": {
-  "fetched_at": "2026-10-27T15:30:16.273423+00:00",
+  "fetched_at": "2026-10-28T14:51:37.970992+00:00",
   "data": {
    "full_name": "togg53192-cmd/jailbreaks",
    "description": "LIST OF ALL MY JAILBREAKS",
-   "stars": 5076,
-   "forks": 794,
+   "stars": 6580,
+   "forks": 953,
    "language": "",
    "license": "",
    "topics": [],
    "created": "2026-06-18",
-   "pushed": "2026-10-25",
+   "pushed": "2026-10-28",
    "contributors": 4,
    "discussions": null,
    "languages": {}
@@ -1960,6 +1966,167 @@
     "Assembly": 2.1693026116588614,
     "Shell": 0.39732286981087306,
     "Perl": 0.0876325228007846
+   }
+  }
+ },
+ "expo/skills": {
+  "fetched_at": "2026-10-28T14:51:37.970992+00:00",
+  "data": {
+   "full_name": "expo/skills",
+   "description": "A collection of AI agent skills for working with Expo projects and Expo Application Services",
+   "stars": 3405,
+   "forks": 218,
+   "language": "Shell",
+   "license": "MIT",
+   "topics": [],
+   "created": "2025-11-30",
+   "pushed": "2026-10-28",
+   "contributors": 31,
+   "discussions": null,
+   "languages": {
+    "Shell": 34.47266203488225,
+    "Python": 30.432685391261668,
+    "TypeScript": 26.35970516802207,
+    "JavaScript": 8.734947405834017
+   }
+  }
+ },
+ "hmjz100/LinkSwift": {
+  "fetched_at": "2026-10-28T14:51:37.970992+00:00",
+  "data": {
+   "full_name": "hmjz100/LinkSwift",
+   "description": "一个基于 JavaScript 的网盘文件下载地址获取工具。基于【网盘直链下载助手】修改 ，支持 百度网盘 / 阿里云盘 / 中国移动云盘 / 天翼云盘 / 迅雷云盘 / 夸克网盘 / UC网盘 / 123云盘 八大网盘",
+   "stars": 33967,
+   "forks": 2396,
+   "language": "JavaScript",
+   "license": "AGPL-3.0",
+   "topics": [
+    "123pan",
+    "aliyun-drive",
+    "aliyunpan",
+    "aria2",
+    "baidu",
+    "baidu-netdisk"
+   ],
+   "created": "2022-08-10",
+   "pushed": "2026-10-27",
+   "contributors": 8,
+   "discussions": null,
+   "languages": {
+    "JavaScript": 100.0
+   }
+  }
+ },
+ "macro-inc/macro": {
+  "fetched_at": "2026-10-28T14:51:37.970992+00:00",
+  "data": {
+   "full_name": "macro-inc/macro",
+   "description": "Macro is a unified workspace for teams: email, chat, docs, tasks, agents, calls, and CRM — @-linked together with shared AI memory.",
+   "stars": 5243,
+   "forks": 511,
+   "language": "Rust",
+   "license": "AGPL-3.0",
+   "topics": [
+    "agent",
+    "ai",
+    "ai-agents",
+    "all-in-one",
+    "crm",
+    "crm-system"
+   ],
+   "created": "2025-11-08",
+   "pushed": "2026-10-28",
+   "contributors": 26,
+   "discussions": null,
+   "languages": {
+    "Rust": 50.94697785861471,
+    "TypeScript": 45.61461838246591,
+    "CSS": 0.6547708196407779,
+    "MDX": 0.5806661061634674,
+    "JavaScript": 0.4917154337308705,
+    "PLpgSQL": 0.33727651136105996
+   }
+  }
+ },
+ "ruvnet/RuView": {
+  "fetched_at": "2026-10-28T14:51:37.970992+00:00",
+  "data": {
+   "full_name": "ruvnet/RuView",
+   "description": "π RuView turns commodity WiFi signals into real-time spatial intelligence, vital sign monitoring, and presence detection — all without a single pixel of video.",
+   "stars": 100651,
+   "forks": 13134,
+   "language": "Rust",
+   "license": "MIT",
+   "topics": [
+    "awesome",
+    "claude",
+    "densepose",
+    "esp32",
+    "firmware",
+    "home-assistant"
+   ],
+   "created": "2025-06-07",
+   "pushed": "2026-10-28",
+   "contributors": 45,
+   "discussions": null,
+   "languages": {
+    "Rust": 58.57030239014377,
+    "JavaScript": 13.825995203169136,
+    "Python": 13.58385902963609,
+    "TypeScript": 4.7064746407621065,
+    "C": 4.097252571749335,
+    "Shell": 2.333323043374193
+   }
+  }
+ },
+ "thomasunise/casecite": {
+  "fetched_at": "2026-10-28T14:51:37.970992+00:00",
+  "data": {
+   "full_name": "thomasunise/casecite",
+   "description": "CaseCite is an open-source, self-hosted legal RAG caselaw research & document analysis platform.",
+   "stars": 39,
+   "forks": 4,
+   "language": "Python",
+   "license": "Apache-2.0",
+   "topics": [
+    "caselaw",
+    "harvey",
+    "legal",
+    "legal-ai",
+    "legal-research",
+    "legal-tech"
+   ],
+   "created": "2026-08-27",
+   "pushed": "2026-10-28",
+   "contributors": 2,
+   "discussions": null,
+   "languages": {
+    "Python": 66.28687190986096,
+    "TypeScript": 27.367663065046493,
+    "CSS": 5.579169132734785,
+    "Shell": 0.519670656372449,
+    "Dockerfile": 0.13904312945868247,
+    "JavaScript": 0.08558371030920017
+   }
+  }
+ },
+ "xiaolai/the-craft-of-selfteaching": {
+  "fetched_at": "2026-10-28T14:51:37.970992+00:00",
+  "data": {
+   "full_name": "xiaolai/the-craft-of-selfteaching",
+   "description": "One has no future if one couldn't teach themself.",
+   "stars": 18350,
+   "forks": 17870,
+   "language": "Jupyter Notebook",
+   "license": "",
+   "topics": [],
+   "created": "2019-03-14",
+   "pushed": "2026-05-20",
+   "contributors": 133,
+   "discussions": null,
+   "languages": {
+    "Jupyter Notebook": 99.83949510103847,
+    "Python": 0.1605048989615375
    }
   }
  }

@@ -1,13 +1,50 @@
 {
-  "generated_at": "2026-10-28T07:14:10.446976+00:00",
-  "router_is_none": true,
+  "generated_at": "2026-10-28T14:51:37.959656+00:00",
+  "router_is_none": false,
   "ran": true,
-  "input_events": 0,
-  "batches": 0,
-  "calls": 0,
-  "merged_groups": 0,
-  "merged_events": 0,
-  "rejected_groups": 0,
-  "failed": true,
-  "examples": []
+  "input_events": 401,
+  "batches": 12,
+  "calls": 12,
+  "merged_groups": 9,
+  "merged_events": 18,
+  "rejected_groups": 1,
+  "failed": false,
+  "examples": [
+    {
+      "kept": "U.S. granting visas to Flávio Bolsonaro and family",
+      "merged": [
+        "US offers visa to Brazil's Flávio Bolsonaro as he flees corr"
+      ],
+      "why": "均报道美政府授予博索纳罗家族签证事宜"
+    },
+    {
+      "kept": "Israeli turnout hits three-decade high in warning sign for Netanyahu",
+      "merged": [
+        "Netanyahu's coalition draws ahead in Israel's tight election",
+        "Netanyahu and Eisenkot blocs deadlocked and shy of a majorit"
+      ],
+      "why": "均报道以色列大选结果及内塔尼亚胡联盟席位僵局"
+    },
+    {
+      "kept": "Nathan Lambert 谈 Artificial Analysis v5 指数与基准评测行业",
+      "merged": [
+        "Nathan Lambert 谈 AAv5 指数与开源模型评测"
+      ],
+      "why": "都是Nathan Lambert谈AAv5指数与开源模型评测"
+    },
+    {
+      "kept": "Axiom 智能体集群用 24 天完成有限单群分类定理的机器验证",
+      "merged": [
+        "Axiom 开源数十个 AI 智能体 24 天完成 15000 页有限单群分类定理形式化"
+      ],
+      "why": "都是Axiom智能体24天完成有限单群分类定理形式化"
+    },
+    {
+      "kept": "商汤开源 SenseNova 6.8 Code2Video：用代码生成短视频",
+      "merged": [
+        "商汤开源 SenseNova 6.8 Code2Video 视频模型"
+      ],
+      "why": "都是商汤开源SenseNova 6.8 Code2Video视频模型"
+    }
+  ]
 }
