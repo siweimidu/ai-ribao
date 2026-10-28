@@ -1243,14 +1243,23 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
                 if _event.event_id not in _off_topic:
                     _kept.append(_event)
                     continue
+                # The model is the judge here, not a second opinion. Requiring the formula to
+                # agree was the cautious choice, and it was wrong: the formula is what let the
+                # 2026-10-28 junk through in the first place, so on a disagreement the stricter
+                # reader -- the model -- is the one to trust. The formula value is still
+                # recorded below, so a questionable removal can be audited afterwards.
                 _focus, _ = focus_multiplier(_event, _sources_by_id)
-                (_dropped if _focus < MIN_AI_RELEVANCE else _kept).append(_event)
+                _dropped.append((_event, _focus))
             if _dropped:
                 events = _kept
+                _titles = "；".join(f"{t[:24]}（公式 {f:.2f}）"
+                                    for t, f in ((e.title, f) for e, f in _dropped))
                 history_notes.append(
-                    f"模型判定与 AI 无关并剔除 {len(_dropped)} 条（公式相关性同样低于门槛）"
+                    f"模型判定与 AI 无关并剔除 {len(_dropped)} 条：{_titles}"
                 )
-                print(f"  相关性剔除      {len(_dropped)} 条（模型判定 + 公式一致）")
+                print(f"  相关性剔除      {len(_dropped)} 条（模型判定）")
+                for _event, _focus in _dropped:
+                    print(f"    · {_event.title[:58]}  （公式相关性 {_focus:.2f}）")
 
         # Phase 2: the real selection, now that the model's judgement is on the table.
         selected, selection_report = select_for_digest(

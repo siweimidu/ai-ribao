@@ -1,0 +1,81 @@
+name: Repair relevance
+
+# Re-judge one already-published issue with the model and remove what is not AI news.
+#
+# Fixing the relevance regex stops the *next* issue from repeating a mistake; it does not
+# clean the issue already on disk. This is the tool for that, and it is dispatch-only on
+# purpose: rewriting published data is a deliberate act, never a scheduled one.
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "要修复的期号 YYYY-MM-DD"
+        required: true
+        type: string
+      dry_run:
+        description: "只报告，不写回"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: repair-relevance
+  cancel-in-progress: false
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - run: pip install -e ".[fetchers,llm]"
+
+      - name: 让模型判定相关性
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-flash-lite-latest' }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GROQ_MODEL: ${{ vars.GROQ_MODEL || 'openai/gpt-oss-20b' }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          SAMBANOVA_API_KEY: ${{ secrets.SAMBANOVA_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          RELAY_KEYS_JSON: ${{ secrets.RELAY_KEYS_JSON }}
+        run: |
+          set -o pipefail
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python scripts/fix_relevance.py "${{ inputs.date }}"
+          else
+            python scripts/fix_relevance.py "${{ inputs.date }}" --apply
+          fi
+
+      - name: 重建站点
+        if: ${{ inputs.dry_run == false }}
+        run: python scripts/rebuild_site.py
+
+      - name: 提交
+        if: ${{ inputs.dry_run == false }}
+        run: |
+          git config user.name "ai-daily"
+          git config user.email "ai-daily@local"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "没有需要提交的改动"; exit 0
+          fi
+          git commit -m "chore(daily): ${{ inputs.date }} 按模型判定剔除与 AI 无关的条目"
+          for i in 1 2 3 4 5; do
+            git push && break
+            sleep 8
+            git fetch origin main && git rebase origin/main || true
+          done
