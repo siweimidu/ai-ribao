@@ -1,50 +1,52 @@
 {
-  "generated_at": "2026-10-28T14:51:37.959656+00:00",
+  "generated_at": "2026-10-28T22:53:36.264101+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 401,
-  "batches": 12,
-  "calls": 12,
-  "merged_groups": 9,
-  "merged_events": 18,
-  "rejected_groups": 1,
+  "input_events": 189,
+  "batches": 6,
+  "calls": 6,
+  "merged_groups": 6,
+  "merged_events": 9,
+  "rejected_groups": 0,
   "failed": false,
   "examples": [
     {
-      "kept": "U.S. granting visas to Flávio Bolsonaro and family",
+      "kept": "谷歌CEO皮查伊表示：新AI模型Carbon的性能优于Gemini 4 Argon - 东方财富",
       "merged": [
-        "US offers visa to Brazil's Flávio Bolsonaro as he flees corr"
+        "谷歌最强 AI 模型：Gemini 4 Carbon 登顶全球智能指数榜首，“专职”做网络安全 - 新浪财经",
+        "谷歌“网安高手”Gemini 4 Carbon登顶AI智能榜，漏洞检测得分88.2%，标准价持平Argon - 华尔街见"
       ],
-      "why": "均报道美政府授予博索纳罗家族签证事宜"
+      "why": "均为谷歌发布 Gemini 4 Carbon 模型及登顶榜单"
     },
     {
-      "kept": "Israeli turnout hits three-decade high in warning sign for Netanyahu",
+      "kept": "Meta says it’ll probably delay its controversial new business terms again",
       "merged": [
-        "Netanyahu's coalition draws ahead in Israel's tight election",
-        "Netanyahu and Eisenkot blocs deadlocked and shy of a majorit"
+        "Meta weighs delaying 'alarming' new business terms as backla"
       ],
-      "why": "均报道以色列大选结果及内塔尼亚胡联盟席位僵局"
+      "why": "均为 Meta 拟延期更新具有争议的商业条款"
     },
     {
-      "kept": "Nathan Lambert 谈 Artificial Analysis v5 指数与基准评测行业",
+      "kept": "Wiz CTO 谈互联网老旧代码面临的安全危机与 AI 的影响",
       "merged": [
-        "Nathan Lambert 谈 AAv5 指数与开源模型评测"
+        "Wiz CTO 谈 PHP2Shell 漏洞与即将到来的“漏洞末日”",
+        "The ‘Vulnpocalypse’ is coming for the internet’s aging code,"
       ],
-      "why": "都是Nathan Lambert谈AAv5指数与开源模型评测"
+      "why": "均为 Wiz CTO 谈互联网老旧代码安全危机与漏洞日终结论"
     },
     {
-      "kept": "Axiom 智能体集群用 24 天完成有限单群分类定理的机器验证",
+      "kept": "Google DeepMind Introduces Gemini 4 Carbon, Its Top Model for Cyber Defense and ",
       "merged": [
-        "Axiom 开源数十个 AI 智能体 24 天完成 15000 页有限单群分类定理形式化"
+        "Google announces Gemini 4 Carbon, its latest frontier AI mod",
+        "谷歌发布 Gemini 4 Carbon，登顶 Artificial Analysis Intelligence Ind"
       ],
-      "why": "都是Axiom智能体24天完成有限单群分类定理形式化"
+      "why": "均报道Google发布Gemini 4 Carbon"
     },
     {
-      "kept": "商汤开源 SenseNova 6.8 Code2Video：用代码生成短视频",
+      "kept": "Apple Launches First Touchscreen MacBook",
       "merged": [
-        "商汤开源 SenseNova 6.8 Code2Video 视频模型"
+        "MacBook Pro with PROLED XDR Display and Touch"
       ],
-      "why": "都是商汤开源SenseNova 6.8 Code2Video视频模型"
+      "why": "均报道Apple发布触屏MacBook"
     }
   ]
 }
