@@ -1,52 +1,44 @@
 {
-  "generated_at": "2026-10-29T15:57:59.639765+00:00",
+  "generated_at": "2026-10-29T23:01:39.917729+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 436,
-  "batches": 12,
-  "calls": 12,
-  "merged_groups": 8,
-  "merged_events": 11,
-  "rejected_groups": 2,
+  "input_events": 179,
+  "batches": 6,
+  "calls": 6,
+  "merged_groups": 4,
+  "merged_events": 6,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "Google 发布 Gemini 4 Carbon：AA Index v5.0 登顶，网络安全基准领先",
+      "kept": "You can generate and edit Google Docs files directly in Gemini chats now",
       "merged": [
-        "Google’s Gemini 4 Carbon tops the charts (for now)",
-        "Google 推出 Gemini 4 Carbon，先向部分用户开放",
-        "[AINews] Gemini 4 Carbon tops leaderboards, launches for cyb"
+        "Gemini 新增文档、PDF、演示文稿和表格的直接生成、预览与编辑功能"
       ],
-      "why": "都是 Gemini 4 Carbon 发布及登顶榜单"
+      "why": "都是 Gemini 新增文档直接生成与编辑功能"
     },
     {
-      "kept": "Apple Launches First Touchscreen MacBook",
+      "kept": "Reddit 宣布转向以登录为主的体验，以应对 AI 搜索带来的流量下滑",
       "merged": [
-        "Apple's first touchscreen MacBook Pro feels both familiar an"
+        "Reddit will force users to log in as AI is killing search tr",
+        "As search traffic dries up, Reddit announces it’s shifting t"
       ],
-      "why": "都是苹果首款触控屏 MacBook 发布"
+      "why": "都是 Reddit 宣布转向登录体验以应对流量下滑"
     },
     {
-      "kept": "SemiAnalysis 分析师解读 Anthropic S-1 招股书背后的 AI 经济账",
+      "kept": "Rivian 与大众 58 亿美元合资公司扩展至 AI 助手",
       "merged": [
-        "The Verge 解读 Anthropic S-1：约 8500 亿美元 compute 承诺押注递归自我改进",
-        "Ed Zitron 长文解析 Anthropic S-1：称其把散户当作退出流动性"
+        "Rivian expands joint venture with VW to include AI assistant"
       ],
-      "why": "都是解读 Anthropic S-1 招股书"
+      "why": "都是 Rivian 与大众合资公司扩展 AI 业务"
     },
     {
-      "kept": "Hackers expose the identities of more than 40k DHS employees",
+      "kept": "备足“优质口粮” 支撑京津冀AI 协同创新发展 - 天津日报",
       "merged": [
-        "Leak website releases data on DHS employees"
+        "加强关键技术攻关 打造AI 标杆应用场景 - 天津日报",
+        "首批风云气象卫星极端天气AI 模型发布 - 天津日报"
       ],
-      "why": "均报道DHS员工数据泄露事件"
-    },
-    {
-      "kept": "Microsoft Seeks to Raise $25 Billion in Bond Sale",
-      "merged": [
-        "Microsoft 拟重返美国债券市场募资至少 250 亿美元"
-      ],
-      "why": "均报道微软拟发债融资250亿美元"
+      "why": "都是天津日报关于京津冀/地区 AI 发展的系列报道"
     }
   ]
 }
