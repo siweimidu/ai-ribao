@@ -20,7 +20,7 @@ from zoneinfo import ZoneInfo
 
 from .config import AppConfig
 from .dedup import DedupConfig, DedupResult, cluster
-from .unfiltered import AIHOT_BOOST, UNFILTERED_SOURCES, is_aihot
+from .unfiltered import AIHOT_BOOST, UNFILTERED_SOURCES, is_aihot, protects
 from .models import Digest, Event, NormalizedItem, SourceCoverage, SourceSpec
 from .rank import RankWeights, diversity_report, rank_events, select_diverse
 from .sections import classify, rank_of
@@ -653,7 +653,21 @@ def select_for_digest(
         print("同一条消息合并：%d 条" % same_issue_merged)
     ranked = deduped
 
-    chosen = list(ranked[:cfg.output.deep.max_items])
+    cap = cfg.output.deep.max_items
+    chosen = list(ranked[:cap])
+    # **The cap may not truncate a named source either.**
+    #
+    # 「不能删除任何一条」 applies to the cut as much as to deduplication: max_items is an
+    # upper bound on the issue, and an item from one of those sources that ranked below the
+    # bound would simply never appear. They are appended rather than substituted, so the cut
+    # still governs everything else.
+    if len(ranked) > cap:
+        keep = {row.event.event_id for row in chosen}
+        carried = [row for row in ranked[cap:] if protects(row.event.source_ids)]
+        carried = [row for row in carried if row.event.event_id not in keep]
+        if carried:
+            print('不筛选源超过名额上限：%d 条仍保留' % len(carried))
+            chosen.extend(carried)
     # Copied *after* selection: `select_diverse` adds `topic_penalty` and `final_score` to
     # the same dict, and Pydantic snapshots the mapping on assignment. Doing this before
     # selection archived a penalty of 1.0 for every entry -- the audit trail disagreed with

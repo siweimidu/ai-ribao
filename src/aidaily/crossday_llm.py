@@ -38,6 +38,7 @@ import json
 from dataclasses import dataclass, field
 
 from .models import Event
+from .unfiltered import protects
 
 SYSTEM = """你是 AI 日报的编辑。任务是找出「今天这条与过去某天那条讲的是同一件事」。
 
@@ -212,13 +213,22 @@ async def drop_cross_day_duplicates(
                     continue
                 if not (0 <= index < len(events)) or index in removed:
                     continue
-                # A widely corroborated story is never a duplicate.
+                # **Never delete an item from a source the user put on the no-filter list.**
+                #
+                # 「这些消息只能去重并标注多源验证，不能删除，不能删除任何一条」. Merging is
+                # still allowed and still happens upstream; this stage only decides deletion,
+                # and for those sources the answer is always no.
+                #
+                # Measured 2026-10-28: Genie 4 arrived from juya, was deleted here, and the
+                # issue published without the biggest story of the day.
+                protected_by_source = protects(events[index].source_ids)
                 sources = len(set(events[index].source_ids or ()))
-                if sources >= MIN_SOURCES_TO_PROTECT:
+                if protected_by_source or sources >= MIN_SOURCES_TO_PROTECT:
                     if len(result.protected) < 6:
                         result.protected.append({
                             "kept": events[index].title[:70],
                             "sources": sources,
+                            "named_source": protected_by_source,
                             "why": str(row.get("why") or "")[:60],
                         })
                     continue

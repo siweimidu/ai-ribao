@@ -32,6 +32,7 @@ from .l3 import build_events
 from .history import PublishedHistory
 from .rubric import score_events
 from .focus import focus_multiplier
+from .unfiltered import protects
 from .pipeline import (
     MIN_AI_RELEVANCE,
     build_digest,
@@ -316,7 +317,19 @@ def cmd_run(args: argparse.Namespace) -> int:
     #    27 future_date violations, the report said "not ok", and 220 good events were
     #    never published -- the whole day was empty. One bad input must not cost the day.
     check = check_digest(digest, stage.window.kept)
-    offending = check.offending_event_ids
+    offending = set(check.offending_event_ids)
+    # **The fact-check may not delete a named source either.**
+    #
+    # 「不能删除任何一条」. This stage exists to drop malformed entries -- a placeholder
+    # future date, a broken URL -- and for the sources the user trusts, a malformed field is
+    # not a reason to lose the story. Keeping it visible is the lesser harm: the reader can
+    # see the entry and its source, whereas a deletion is invisible.
+    if offending:
+        named = {e.event_id for e in digest.top_events if protects(e.source_ids)}
+        held = offending & named
+        if held:
+            print(f"事实校验：{len(held)} 条属不筛选源，保留不删", file=sys.stderr)
+            offending -= held
     if offending:
         print(f"事实校验：剔除 {len(offending)} 条问题事件", file=sys.stderr)
         digest = _drop_events(digest, offending)

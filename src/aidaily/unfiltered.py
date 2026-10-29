@@ -77,3 +77,26 @@ def is_unfiltered(source_id: str | None) -> bool:
 def is_aihot(source_id: str | None) -> bool:
     """True when this source is an aihot.news feed."""
     return (source_id or "") in AIHOT_SOURCES
+
+def protects(source_ids) -> bool:
+    '''True when an event carrying any of these sources may not be deleted.
+
+    **The hard rule.** 「但凡是那几个不要筛选直接进打分的那几个源获得的当日信息，这些消息只能
+    去重并标注多源验证，不能删除，这些信息价值很高，不能删除任何一条」
+
+    Those sources are named by the user, one by one. Their items skip the relevance gate, and
+    they must also skip every stage that removes an event:
+
+      - cross-day semantic dedup   may merge, may not delete
+      - the max_items cut          may not truncate them
+      - the fact-check drop        may not remove them
+
+    Deduplication is still allowed and expected -- two outlets covering one launch become one
+    entry with both sources listed, which is what 「标注多源验证」 means. What is forbidden is
+    the entry disappearing.
+
+    Measured 2026-10-28: `Genie 4` arrived from juya among twenty sources, and a cross-day
+    dedup pass deleted the whole event while nothing named Genie had been published in the
+    previous seven days. The issue published without the biggest story of the day.
+    '''
+    return any(is_unfiltered(sid) for sid in (source_ids or ()))
