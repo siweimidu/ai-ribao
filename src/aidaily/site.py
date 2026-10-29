@@ -555,6 +555,53 @@ def _is_repository_story(event: Event) -> bool:
     return False
 
 
+#: A digest issue's own label, e.g. `2026-10-29 AI 日报 · `.
+_CONTAINER_PREFIX = re.compile(
+    r"^\s*\d{4}[-/年.]\d{1,2}[-/月.]\d{1,2}\s*(?:AI\s*)?(?:日报|早报|晚报|周报)\s*[\u00b7\-—|｜:：]\s*"
+)
+
+
+def _strip_container(title: str) -> str:
+    """Drop a digest issue label glued to the front of a headline."""
+    return _CONTAINER_PREFIX.sub("", (title or "").strip()).strip()
+
+
+def _is_compound(title: str) -> bool:
+    """True when a headline states more than one thing.
+
+    **A title reports one event.** Measured 2026-10-29, the lead read:
+
+        2026-10-29 AI 日报 · Gemini 4 Carbon 登顶智能榜单、主打网络安全；微软首次披露 Azure
+        收入，来自 OpenAI 的收入达百亿美元
+
+    Two unrelated stories in one line. It happened because an aggregated issue title was merged
+    into the Gemini event, and the merge kept the longest string -- which is exactly the
+    container title, since it names everything.
+
+    A semicolon or a full stop inside a headline is the tell. Commas and 、 are fine; they join
+    clauses of one story.
+    """
+    text = (title or "").strip()
+    if not text:
+        return False
+    if "；" in text or ";" in text:
+        return True
+    if "。" in text:
+        return True
+    return False
+
+
+def _first_clause(title: str) -> str:
+    """The leading claim, for when every candidate turned out to be compound."""
+    text = (title or "").strip()
+    for mark in ("；", ";", "。"):
+        if mark in text:
+            head = text.split(mark)[0].strip()
+            if head:
+                return head
+    return text
+
+
 def _display_title(
     event: Event,
     insight: EventInsight | None,
@@ -605,12 +652,16 @@ def _display_title(
             if item and item.title:
                 candidates.append(item.title)
 
-    for title in candidates:
+    # One title, one event: strip issue labels and refuse compounds.
+    cleaned = [_strip_container(c) for c in candidates]
+    singles = [c for c in cleaned if c and not _is_compound(c)]
+    pool = singles or [_first_clause(c) for c in cleaned]
+    for title in pool:
         if _looks_chinese(title):
             return title.strip()
     # Nothing Chinese anywhere: return the model's title or the event's, unchanged, so the
     # caller can route it to the untranslated block.
-    return (candidates[0] or "").strip()
+    return (pool[0] if pool else "").strip()
 
 
 def render_item(
