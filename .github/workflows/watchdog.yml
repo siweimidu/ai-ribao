@@ -31,7 +31,7 @@ name: Slot watchdog
 on:
   schedule:
     # UTC. Every two hours, off the hour so it does not contend with the collection itself.
-    - cron: "23 */2 * * *"
+    - cron: "23 * * * *"
   workflow_dispatch:
 
 permissions:

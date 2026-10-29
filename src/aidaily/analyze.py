@@ -333,6 +333,7 @@ async def analyze_events(
 
     sem = asyncio.Semaphore(concurrency)
     degraded = 0
+    missed: list[Event] = []
 
     async def run(event: Event) -> None:
         nonlocal degraded
@@ -341,12 +342,44 @@ async def analyze_events(
                 insights[event.event_id] = await analyze_event(router, event, members_of(event))
             except (LLMError, LLMUnavailable) as exc:
                 degraded += 1
+                missed.append(event)
                 if degraded == 1:
                     warnings.append(f"部分条目降级为原文摘录（首次失败：{type(exc).__name__}）")
                 insights[event.event_id] = fallback_insight(event, members_of(event))
 
     await asyncio.gather(*(run(e) for e in targets))
 
+    # **A second pass over what failed.**
+    #
+    # Measured across recent builds: 44/114 and 62/110 events fell back to rule-based
+    # excerpts. Those entries lose their translated headline and their facts, and they are the
+    # ones the page has to move into the 待翻译 block -- so a transient provider error becomes
+    # a visible quality drop in the issue.
+    #
+    # The first pass runs at `concurrency` to finish quickly; the retry runs slower, because
+    # the failures are usually rate limits and a burst is what caused them. Only events that
+    # actually fell back are retried, so a healthy run costs nothing here.
+    recovered = 0
+    if missed and router is not None:
+        retry_sem = asyncio.Semaphore(max(1, concurrency // 3))
+
+        async def retry(event: Event) -> None:
+            nonlocal recovered
+            async with retry_sem:
+                try:
+                    insights[event.event_id] = await analyze_event(
+                        router, event, members_of(event)
+                    )
+                except (LLMError, LLMUnavailable):
+                    return
+                recovered += 1
+
+        await asyncio.gather(*(retry(e) for e in missed))
+
     if degraded:
-        warnings.append(f"{degraded}/{len(targets)} 个事件降级为规则摘录")
+        left = degraded - recovered
+        note = f"{left}/{len(targets)} 个事件降级为规则摘录"
+        if recovered:
+            note += f"（补跑恢复 {recovered}/{degraded} 条）"
+        warnings.append(note)
     return insights, warnings

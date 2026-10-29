@@ -77,9 +77,17 @@ def test_the_watchdog_runs_often_enough_to_catch_a_dropped_trigger() -> None:
     spec = yaml.safe_load((ROOT / ".github" / "workflows" / "watchdog.yml").read_text(encoding="utf-8"))
     crons = [e["cron"] for e in spec[True]["schedule"]]
     assert crons, "the watchdog has no schedule"
-    # A step of at most two hours: `*/N` with N <= 2, or an explicit list covering the day.
-    step_ok = any("*/2" in c or "*/1" in c for c in crons)
-    assert step_ok, crons
+    # A step of at most two hours. `*` in the hour field means every hour -- the watchdog
+    # runs hourly so a dropped trigger is noticed within the hour rather than within two.
+    def _step(cron: str) -> int:
+        hours = cron.split()[1]
+        if hours == "*":
+            return 1
+        if hours.startswith("*/"):
+            return int(hours[2:])
+        return 24
+
+    assert min(_step(c) for c in crons) <= 2, crons
     assert spec["jobs"]["check"]["steps"][-1].get("if", "").find("retry") >= 0
 
 

@@ -1087,18 +1087,29 @@ def _render_source_coverage(ordered: list) -> str:
         for sid in _NAMED_LABEL
         if sid in counts
     ]
-    missing = [
-        _NAMED_LABEL[sid]
-        for sid in _NAMED_LABEL
-        if sid not in counts and sid != "rss:hex2077-dev-rss-zh-cn"
-    ]
-    zero = ""
+    # A weekly source is absent by rule, not by failure. Saying so on the page stops the
+    # line reading as a defect every day it appears.
+    from .unfiltered import WEEKLY_SOURCES
+
+    missing: list[str] = []
+    weekly: list[str] = []
+    for sid in _NAMED_LABEL:
+        if sid in counts or sid == "rss:hex2077-dev-rss-zh-cn":
+            continue
+        (weekly if sid in WEEKLY_SOURCES else missing).append(_NAMED_LABEL[sid])
+
+    notes: list[str] = []
     if missing:
-        zero = (
-            '<p class="src-cover__zero">本期未收录：'
-            + esc("、".join(missing))
+        notes.append(
+            '<p class="src-cover__zero">本期未收录：' + esc("、".join(missing)) + "</p>"
+        )
+    if weekly:
+        notes.append(
+            '<p class="src-cover__weekly">按规则不收录周刊：'
+            + esc("、".join(weekly))
             + "</p>"
         )
+    zero = "".join(notes)
     if not parts:
         return ""
     return (

@@ -170,13 +170,42 @@ def main() -> int:
         return 0
 
     try:
-        events = len(json.loads(archive.read_text(encoding="utf-8"))["digest"]["top_events"])
+        payload = json.loads(archive.read_text(encoding="utf-8"))
+        events = len(payload["digest"]["top_events"])
     except Exception:
+        payload = {}
         events = 0
 
     if events == 0:
         _output("true", f"{today} 的归档存在但 0 条事件")
         return 0
+
+    # **A publish is not proof that the last slot rebuilt anything.**
+    #
+    # The ledger records that *a* run published today. The evening slot can fail after the
+    # morning one succeeded, and nothing below would notice -- a publish already exists, the
+    # archive exists, the event count is fine. The issue is simply eight hours old.
+    #
+    # `generated_at` is the only field that says when the *content* was produced, so after the
+    # last deadline it has to be recent. Twelve hours is generous: the evening run finishes by
+    # 21:00 and the next one is at 04:00, so a healthy archive is never older than that.
+    if len(due) == len(SLOT_DEADLINES):
+        stamp = str((payload.get("digest") or {}).get("generated_at") or "")
+        built = None
+        if stamp:
+            try:
+                built = datetime.strptime(stamp[:19], "%Y-%m-%dT%H:%M:%S") + timedelta(hours=8)
+            except ValueError:
+                built = None
+        if built is not None:
+            age_hours = (now - built).total_seconds() / 3600
+            if age_hours >= 12:
+                _output(
+                    "true",
+                    f"{today} 的归档已 {age_hours:.1f} 小时没重建（生成于 {built:%H:%M}），"
+                    "晚间时段可能没落地 —— 重新触发采集",
+                )
+                return 0
 
     # Which slot does each publish belong to? The one whose *collection hour* it follows.
     #
