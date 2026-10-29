@@ -7,6 +7,8 @@ network -- which is how the numbers in docs/ROADMAP.md were produced.
 
 from __future__ import annotations
 
+import sys
+
 import re
 
 from collections import Counter
@@ -20,7 +22,14 @@ from zoneinfo import ZoneInfo
 
 from .config import AppConfig
 from .dedup import DedupConfig, DedupResult, cluster
-from .unfiltered import AIHOT_BOOST, UNFILTERED_SOURCES, is_aihot, protects, source_group
+from .unfiltered import (
+    AIHOT_BOOST,
+    UNFILTERED_SOURCES,
+    distinct_source_groups,
+    is_aihot,
+    protects,
+    source_group,
+)
 from .models import Digest, Event, NormalizedItem, SourceCoverage, SourceSpec
 from .rank import RankWeights, diversity_report, rank_events, select_diverse
 from .sections import classify, rank_of
@@ -673,6 +682,10 @@ def select_for_digest(
     same_issue_merged = len(ranked) - len(deduped)
     if same_issue_merged:
         print("同一条消息合并：%d 条" % same_issue_merged)
+    # One product launch is one entry, however many angles it was covered from.
+    product_merged = _merge_same_product(deduped)
+    if product_merged:
+        print("同一产品合并：%d 条" % product_merged)
     ranked = deduped
 
     cap = cfg.output.deep.max_items
@@ -820,6 +833,107 @@ def select_for_digest(
     return [row.event for row in chosen], report
 
 
+#: A versioned product name: `Gemini 4 Carbon`, `LFM3`, `Claude Opus 5.5`.
+_PRODUCT_TOKEN = re.compile(r'([A-Za-z]{1,})[ \-]?(\d+(?:\.\d+)?)(?:[ \-]([A-Z][A-Za-z0-9]*))?')
+
+
+def _product_tokens(title: str) -> set[str]:
+    '''Names like `gemini4carbon`, `lfm3`, `opus5.5`. Empty when the title names no version.
+
+    Built from the title as written, not from a whitespace-stripped copy: stripping spaces
+    glued `Releases` to `LFM3` and produced `releaseslfm3`, which never matched the Chinese
+    coverage of the same model.
+
+    A trailing capitalised word is kept, so `Gemini 4 Carbon` and `Gemini 4 Pro` are different
+    products; without it they would collapse to `gemini4` and one launch would hide another.
+    '''
+    out: set[str] = set()
+    for word, number, suffix in _PRODUCT_TOKEN.findall(title or ''):
+        token = f'{word}{number}{suffix or ""}'.lower()
+        if re.fullmatch(r'(19|20)\d{2}', token):
+            continue
+        if len(token) < 4:
+            continue
+        out.add(token)
+    return out
+
+def _merge_same_product(rows: list) -> int:
+    '''Fold entries about one product launch into one entry.
+
+    **One launch is one story.** Measured 2026-10-29: `Gemini 4 Carbon` occupied three
+    positions -- the launch, its benchmark placement, and a hands-on video -- and on
+    2026-10-28 `LFM3` appeared twice, once in English and once in Chinese. The reader sees
+    the same launch three times and the count on the page overstates the day.
+
+    Nothing is deleted. The absorbed entries contribute their member items, sources and URLs,
+    and their headlines are recorded in `merged_titles`, so the card still links to every
+    report and the source count still reflects all of them. This is what 「只能去重并标注多源
+    验证」 asks for.
+
+    The token keeps the whole product phrase -- `Gemini 4 Carbon` collapses to
+    `gemini4carbon`, not `gemini4` -- so `Gemini 4 Pro` on the same day stays separate. What
+    still folds is one product written differently across outlets; every fold is counted in
+    the report rather than left silent.
+    '''
+    if len(rows) < 2:
+        return 0
+
+    tokens = [_product_tokens(getattr(r.event, 'title', '') or '') for r in rows]
+    parent = list(range(len(rows)))
+
+    def find(i: int) -> int:
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]
+            i = parent[i]
+        return i
+
+    seen: dict[str, int] = {}
+    for index, own in enumerate(tokens):
+        for token in own:
+            first = seen.setdefault(token, index)
+            if first != index:
+                a, b = find(first), find(index)
+                if a != b:
+                    parent[b] = a
+
+    groups: dict[int, list[int]] = {}
+    for index in range(len(rows)):
+        groups.setdefault(find(index), []).append(index)
+
+    survivors: list = []
+    merged = 0
+    for root in sorted(groups):
+        members = groups[root]
+        if len(members) == 1:
+            survivors.append(rows[members[0]])
+            continue
+        # `rows` is already in rank order, so the first member is the one to keep.
+        keeper = rows[members[0]]
+        for index in members[1:]:
+            other = rows[index]
+            for mid in other.event.member_item_ids:
+                if mid not in keeper.event.member_item_ids:
+                    keeper.event.member_item_ids.append(mid)
+            for sid in other.event.source_ids:
+                if sid not in keeper.event.source_ids:
+                    keeper.event.source_ids.append(sid)
+            for url in other.event.all_urls:
+                if url not in keeper.event.all_urls:
+                    keeper.event.all_urls.append(url)
+            facts = keeper.event.unique_facts if isinstance(keeper.event.unique_facts, dict) else {}
+            absorbed = list(facts.get('merged_titles') or [])
+            for title in [other.event.title, *((other.event.unique_facts or {}).get('merged_titles') or [])]:
+                if title and title not in absorbed:
+                    absorbed.append(title)
+            facts['merged_titles'] = absorbed
+            keeper.event.unique_facts = facts
+            keeper.event.independent_source_count = distinct_source_groups(keeper.event.source_ids)
+            merged += 1
+        survivors.append(keeper)
+    if merged:
+        rows[:] = survivors
+    return merged
+
 def build_digest(
     stage: DedupStage,
     events: list[Event],
@@ -922,6 +1036,26 @@ def build_digest(
             rubric_scores=rubric_scores,
             rubric_sections=rubric_sections,
         )
+
+    # **An issue never contains the same event twice.**
+    #
+    # Measured 2026-10-29: three events appeared twice each, at positions (15, 82),
+    # (37, 103) and (38, 104) -- same event_id, same title, same URL, same source. The
+    # reader sees one story twice and the count on the page is wrong.
+    #
+    # Rather than chase which concatenation produced it, the list is made idempotent here:
+    # by event_id, keeping the first (highest-ranked) occurrence. Selection, late merging
+    # and re-scoring all funnel through this point.
+    seen_ids: set[str] = set()
+    unique: list[Event] = []
+    for event in ordered:
+        if event.event_id in seen_ids:
+            continue
+        seen_ids.add(event.event_id)
+        unique.append(event)
+    if len(unique) != len(ordered):
+        print(f"去重：同一事件重复出现 {len(ordered) - len(unique)} 次，已合并", file=sys.stderr)
+    ordered = unique
 
     # The headline comes from the top-ranked event that actually has an insight.
     headline = ""
