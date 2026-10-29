@@ -1,13 +1,49 @@
 {
-  "generated_at": "2026-10-29T15:59:59+00:00",
-  "router_is_none": true,
+  "generated_at": "2026-10-29T06:17:09.195184+00:00",
+  "router_is_none": false,
   "ran": true,
-  "input_events": 0,
-  "batches": 0,
-  "calls": 0,
-  "merged_groups": 0,
-  "merged_events": 0,
-  "rejected_groups": 0,
-  "failed": true,
-  "examples": []
+  "input_events": 339,
+  "batches": 10,
+  "calls": 10,
+  "merged_groups": 7,
+  "merged_events": 7,
+  "rejected_groups": 2,
+  "failed": false,
+  "examples": [
+    {
+      "kept": "Google DeepMind Introduces Gemini 4 Carbon, Its Top Model for Cyber Defense and ",
+      "merged": [
+        "[AINews] Gemini 4 Carbon tops leaderboards, launches for cyb"
+      ],
+      "why": "都是 Gemini 4 Carbon 模型发布及榜首表现"
+    },
+    {
+      "kept": "腾讯WorkBuddy上线Buddy One，打通腾讯会议、腾讯文档、ima和腾讯网盘账号体系",
+      "merged": [
+        "腾讯发布跨应用 AI 协同体系 Buddy One，打通 WorkBuddy 与多款办公产品"
+      ],
+      "why": "都是腾讯发布 Buddy One 办公协同产品"
+    },
+    {
+      "kept": "Anthropic 内部研究模型发现多个系统漏洞",
+      "merged": [
+        "锁屏照片被顺走、 53 分钟攻破Linux！Anthropic内部研究模型连破五大主流系统"
+      ],
+      "why": "均报道Anthropic内部研究模型发现漏洞及系统被攻破事件"
+    },
+    {
+      "kept": "ServiceNow shares drop 18% after mixed earnings results",
+      "merged": [
+        "ServiceNow 财报超预期盘后仍跌 19%，AI 冲击订阅业务担忧发酵"
+      ],
+      "why": "均为 ServiceNow 财报发布及股价下跌事件"
+    },
+    {
+      "kept": "塞拉俱乐部报告：AI 数据中心或抵消美国电力行业 15 年减排成果",
+      "merged": [
+        "AI 数据中心狂吞电力，美国十五年减排成果或归零"
+      ],
+      "why": "均报道 AI 数据中心电力消耗抵消美国减排成果"
+    }
+  ]
 }
