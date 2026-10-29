@@ -35,7 +35,7 @@ from datetime import datetime, timezone
 
 from .entities import topic_overlap
 from .focus import focus_multiplier
-from .unfiltered import AIHOT_BOOST, is_aihot
+from .unfiltered import AIHOT_BOOST, is_aihot, distinct_source_groups
 from .frequency import cross_source_score, frequency_index
 from .source_boost import boost_for as source_boost_for
 from .vendor_priority import components as vendor_components
@@ -449,7 +449,7 @@ def collapse_by_designation(events: list[Event]) -> list[Event]:
         # merge could only be as corroborated as its best member. After the LLM pass unions
         # source lists first, this pass can join two events that are *each* already
         # multi-source, so the union is the honest number.
-        target.independent_source_count = len(set(target.source_ids))
+        target.independent_source_count = distinct_source_groups(target.source_ids)
         if target.independent_source_count >= 2:
             target.evidence_level = "multi_source"
 
@@ -476,7 +476,7 @@ def collapse_by_designation(events: list[Event]) -> list[Event]:
     # three sources onto the Kimi entry and left `evidence_level` at `single_source`; `factcheck`
     # rejects exactly that combination, and the whole issue failed to publish three times.
     for event in kept:
-        event.independent_source_count = len(set(event.source_ids))
+        event.independent_source_count = distinct_source_groups(event.source_ids)
         if event.independent_source_count >= 2:
             event.evidence_level = "multi_source"
         elif event.evidence_level == "multi_source":

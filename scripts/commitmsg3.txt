@@ -1,0 +1,52 @@
+feat(rule): aihot 三个 RSS 加入不筛选名单，且三个算作一个来源
+
+「https://aihot.news/feed.xml / feed/full.xml / feed/daily.xml 这三个RSS算作一个，
+  也加入不用筛选，直接打分的当日信息里面，这些消息只能去重并标注多源验证，
+  不能删除，这些信息价值很高，不能删除任何一条，这条要写死」
+
+────────────────────────────────────────────────────────────
+URL 对应的源 id（查 sources/local.yaml）
+
+  https://aihot.news/feed.xml        -> rss:aihot-news-picks
+  https://aihot.news/feed/full.xml   -> rss:aihot-news-full
+  https://aihot.news/feed/daily.xml  -> rss:aihot-news-daily
+
+────────────────────────────────────────────────────────────
+改动一：进 UNFILTERED_SOURCES
+
+  这三条现在同时属于两个名单：
+
+    UNFILTERED_SOURCES  不过相关性门槛，且任何环节不许删除
+    AIHOT_SOURCES       排序加成 x1.25
+
+  这是模块里唯一的刻意重叠。之前测试断言「两名单不许重叠」，
+  现在改为「重叠必须精确等于这三条」。
+
+  其余 9 个 aihot feed 仍然走筛选。
+
+────────────────────────────────────────────────────────────
+改动二：三个算作一个来源
+
+  这三个 feed 把同样的条目发到三个 URL。若不处理，
+  一条只被 aihot 报道的新闻会被算成 3 个独立来源 ——
+  而独立来源数正是页面上「多源验证」的依据、也是排序的权重。
+
+  source_group(sid)         三条 aihot feed -> 同一组 aihot.news
+  distinct_source_groups()  按组计数
+
+  替换了 4 处 len(set(source_ids))：rank.py 两处、merge_llm.py 一处、
+  pipeline 取 max 不动。
+
+────────────────────────────────────────────────────────────
+验证
+
+  三条 aihot feed          -> 1 个来源
+  三条 aihot + axios       -> 2 个来源
+  两个真实媒体             -> 2 个来源
+
+  端到端实跑：
+    不筛选源超过名额上限：7 条仍保留
+    选择：127 / 348 事件
+    events 127（多源 43）  exit=0
+
+  全套测试通过，新增 6 项契约测试锁定三条 feed 的豁免与合并计数。

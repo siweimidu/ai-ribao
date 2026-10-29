@@ -15,6 +15,18 @@ including a World of Warcraft transmog talk and a climate-week recap. Its items 
 filtered, but they are AI-native material from an AI publication, so they carry a modest bonus
 rather than an exemption.
 
+「https://aihot.news/feed.xml / feed/full.xml / feed/daily.xml 这三个RSS算作一个，
+  也加入不用筛选，直接打分的当日信息里面，这些消息只能去重并标注多源验证，
+  不能删除，这些信息价值很高，不能删除任何一条，这条要写死」
+
+That instruction splits aihot in two. Three of its feeds are named -- feed.xml, feed/full.xml
+and feed/daily.xml -- and those join the unfiltered set: no relevance gate, and no stage may
+delete them. The remaining aihot feeds are still filtered and still boosted.
+
+Those three are the module's one deliberate overlap: they are unfiltered *and* AI-native, so
+they earn the bonus as well as the protection. An earlier note here called such an overlap
+incoherent -- the user has since made it a requirement, and the contract test records why.
+
 ## Why the split matters
 
 Measured 2026-10-27, with every aihot feed exempt:
@@ -36,6 +48,15 @@ UNFILTERED_SOURCES = frozenset({
     "rss:ainewslog-com",
     "api:aibase-ai-news",
     "api:aibase-daily-news",
+    # --- aihot.news, the three feeds the user named -----------------------------------
+    #
+    # 「这三个RSS算作一个，也加入不用筛选，直接打分的当日信息里面，这些消息只能去重并标注
+    #   多源验证，不能删除，不能删除任何一条，这条要写死」
+    #
+    # They are in AIHOT_SOURCES as well, so they still rank higher; see the module docstring.
+    "rss:aihot-news-picks",   # https://aihot.news/feed.xml
+    "rss:aihot-news-full",    # https://aihot.news/feed/full.xml
+    "rss:aihot-news-daily",   # https://aihot.news/feed/daily.xml
     # NOTE: `api:aibase-com` is deliberately NOT here.
     #
     # It is `https://aibase.com`, the site root, and the scraper harvests the navigation chrome
@@ -45,7 +66,9 @@ UNFILTERED_SOURCES = frozenset({
     # the news.
 })
 
-#: aihot.news feeds. Still filtered; ranked higher because the publication is AI-native.
+#: aihot.news feeds. Ranked higher because the publication is AI-native.
+#:
+#: Three of them are also in UNFILTERED_SOURCES by name. The other nine are still filtered.
 AIHOT_SOURCES = frozenset({
     "rss:aihot-news-picks",
     "rss:aihot-news-full",
@@ -100,3 +123,31 @@ def protects(source_ids) -> bool:
     previous seven days. The issue published without the biggest story of the day.
     '''
     return any(is_unfiltered(sid) for sid in (source_ids or ()))
+
+#: The three aihot feeds the user named. 「这三个RSS算作一个」 -- one source, three URLs.
+NAMED_AIHOT_FEEDS = frozenset({
+    "rss:aihot-news-picks",   # https://aihot.news/feed.xml
+    "rss:aihot-news-full",    # https://aihot.news/feed/full.xml
+    "rss:aihot-news-daily",   # https://aihot.news/feed/daily.xml
+})
+
+#: The identity those three share when counting independent sources.
+_AIHOT_GROUP = "aihot.news"
+
+
+def source_group(source_id: str) -> str:
+    '''The independence identity of a feed.
+
+    **The three named aihot feeds are one source.** 「这三个RSS算作一个」. They publish the
+    same items to three URLs, so a story carried by all three would otherwise be counted as
+    three independent outlets -- and independence is what the page shows as 「多源验证」 and
+    what the ranker rewards.
+
+    Every feed that is not one of the three is its own group.'''
+    sid = source_id or ''
+    return _AIHOT_GROUP if sid in NAMED_AIHOT_FEEDS else sid
+
+
+def distinct_source_groups(source_ids) -> int:
+    '''How many *independent* sources carry an event, collapsing the aihot trio to one.'''
+    return len({source_group(sid) for sid in (source_ids or ())})

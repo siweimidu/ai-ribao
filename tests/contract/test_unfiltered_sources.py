@@ -62,9 +62,26 @@ def test_the_named_sources_stay_exempt() -> None:
         assert is_passthrough(_event(sid)), sid
 
 
-def test_no_aihot_feed_is_exempt() -> None:
-    """They are filtered now -- that is the change."""
-    for sid in AIHOT_SOURCES:
+#: The three aihot feeds the user named by URL on 2026-10-29.
+#:
+#: 「这三个RSS算作一个，也加入不用筛选，直接打分的当日信息里面，这些消息只能去重并标注多源
+#:   验证，不能删除，不能删除任何一条，这条要写死」
+NAMED_AIHOT = frozenset({
+    "rss:aihot-news-picks",   # https://aihot.news/feed.xml
+    "rss:aihot-news-full",    # https://aihot.news/feed/full.xml
+    "rss:aihot-news-daily",   # https://aihot.news/feed/daily.xml
+})
+
+
+def test_the_three_named_aihot_feeds_are_unfiltered() -> None:
+    for sid in NAMED_AIHOT:
+        assert is_unfiltered(sid), sid
+        assert is_passthrough(_event(sid)), sid
+
+
+def test_the_other_aihot_feeds_are_still_filtered() -> None:
+    """Only the three named feeds were exempted; the rest still pass the gate."""
+    for sid in AIHOT_SOURCES - NAMED_AIHOT:
         assert not is_unfiltered(sid), sid
         assert not is_passthrough(_event(sid)), sid
 
@@ -93,6 +110,33 @@ def test_the_boost_is_modest() -> None:
     assert 1.0 < AIHOT_BOOST <= 1.5
 
 
-def test_the_two_lists_do_not_overlap() -> None:
-    """An overlapping id would be both exempt and boosted, which is incoherent."""
-    assert not (UNFILTERED_SOURCES & AIHOT_SOURCES)
+def test_the_only_overlap_is_the_three_named_feeds() -> None:
+    """They are unfiltered *and* AI-native, so they take the bonus and the protection.
+
+    An earlier version of this test asserted no overlap at all. The user then named these
+    three feeds explicitly, which makes both properties a requirement rather than a
+    contradiction -- so the invariant is now "the overlap is exactly the named three".
+    """
+    assert UNFILTERED_SOURCES & AIHOT_SOURCES == NAMED_AIHOT
+
+def test_the_three_named_feeds_count_as_one_source() -> None:
+    """銆岃繖涓変釜RSS绠椾綔涓€涓€?-- they publish the same items to three URLs."""
+    from aidaily.unfiltered import distinct_source_groups
+
+    assert distinct_source_groups(sorted(NAMED_AIHOT)) == 1
+
+
+def test_a_real_second_outlet_still_counts() -> None:
+    from aidaily.unfiltered import distinct_source_groups
+
+    assert distinct_source_groups(sorted(NAMED_AIHOT) + ["rss:axios"]) == 2
+
+
+def test_independence_is_not_inflated_by_the_trio() -> None:
+    """Without the collapse, one story on three aihot URLs reads as 3 outlets."""
+    from aidaily.unfiltered import distinct_source_groups
+
+    three = sorted(NAMED_AIHOT)
+    assert len(set(three)) == 3
+    assert distinct_source_groups(three) == 1
+

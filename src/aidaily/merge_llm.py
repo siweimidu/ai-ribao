@@ -46,6 +46,7 @@ from dataclasses import dataclass, field
 
 from .llm import LLMError, LLMUnavailable, Router
 from .models import Event
+from .unfiltered import distinct_source_groups
 
 #: The dedup rules live in `config/dedup_prompt.md` rather than in this file.
 #:
@@ -171,7 +172,7 @@ def _merge_into(target, absorbed):
         target.unique_facts = dict(target.unique_facts or {})
         target.unique_facts["merged_titles"] = merged_titles
 
-    target.independent_source_count = len(set(target.source_ids))
+    target.independent_source_count = distinct_source_groups(target.source_ids)
 
     # **The evidence level has to follow the count.**
     #
