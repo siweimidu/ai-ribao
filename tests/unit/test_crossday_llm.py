@@ -64,7 +64,7 @@ def test_a_repeat_in_other_words_is_dropped() -> None:
 def test_an_unmentioned_event_survives() -> None:
     """A partial answer costs nothing; a wrong one costs a hidden story."""
     events = [_event(0, "A"), _event(1, "B"), _event(2, "C")]
-    earlier = [("2026-10-24", "A")]
+    earlier = [("2026-10-24", "一个完全不同的旧标题")]
     router = _Scripted({"duplicates": [{"today": "T1", "earlier": "E0", "why": "same"}]})
     result = asyncio.run(drop_cross_day_duplicates(events, earlier, router))
     assert [e.title for e in result.events] == ["A", "C"]
@@ -81,7 +81,7 @@ def test_an_invented_id_is_ignored() -> None:
 
 def test_no_model_means_no_drop_and_no_crash() -> None:
     events = [_event(0, "A")]
-    result = asyncio.run(drop_cross_day_duplicates(events, [("2026-10-24", "A")], None))
+    result = asyncio.run(drop_cross_day_duplicates(events, [("2026-10-24", "一个完全不同的旧标题")], None))
     assert result.failed and len(result.events) == 1
 
 
@@ -108,7 +108,7 @@ def test_a_hanging_provider_costs_the_dedup_not_the_issue() -> None:
 
     events = [_event(0, "A")]
     result = asyncio.run(
-        drop_cross_day_duplicates(events, [("2026-10-24", "A")], Hanging(), timeout_s=1.0)
+        drop_cross_day_duplicates(events, [("2026-10-24", "一个完全不同的旧标题")], Hanging(), timeout_s=1.0)
     )
     assert result.failed
     assert len(result.events) == 1
