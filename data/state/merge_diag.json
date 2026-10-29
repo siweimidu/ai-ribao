@@ -1,50 +1,52 @@
 {
-  "generated_at": "2026-10-29T14:51:10.354525+00:00",
+  "generated_at": "2026-10-29T15:57:59.639765+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 425,
+  "input_events": 436,
   "batches": 12,
   "calls": 12,
-  "merged_groups": 15,
-  "merged_events": 17,
-  "rejected_groups": 7,
+  "merged_groups": 8,
+  "merged_events": 11,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "How Instacart Ended Up in DoorDash’s Cart",
+      "kept": "Google 发布 Gemini 4 Carbon：AA Index v5.0 登顶，网络安全基准领先",
       "merged": [
-        "DoorDash to Acquire Instacart"
+        "Google’s Gemini 4 Carbon tops the charts (for now)",
+        "Google 推出 Gemini 4 Carbon，先向部分用户开放",
+        "[AINews] Gemini 4 Carbon tops leaderboards, launches for cyb"
       ],
-      "why": "都是关于 DoorDash 收购 Instacart 的报道"
-    },
-    {
-      "kept": "ServiceNow shares drop 18% after mixed earnings results",
-      "merged": [
-        "ServiceNow 财报超预期盘后仍跌 19%，AI 冲击订阅业务担忧发酵"
-      ],
-      "why": "都是 ServiceNow 财报发布后股价大跌的新闻"
-    },
-    {
-      "kept": "首批风云气象卫星极端天气AI模型发布 - 中国科技网",
-      "merged": [
-        "新华社消息丨首批风云气象卫星极端天气AI模型发布 - 新华网"
-      ],
-      "why": "均为首批风云气象卫星极端天气AI模型发布"
-    },
-    {
-      "kept": "2026-10-29 AI 日报 · Gemini 4 Carbon 登顶智能榜单、主打网络安全；微软首次披露 Azure 收入，来自 OpenAI 的收入达百",
-      "merged": [
-        "Google DeepMind Introduces Gemini 4 Carbon, Its Top Model fo",
-        "Google’s Gemini 4 Carbon tops the charts (for now)"
-      ],
-      "why": "均报道 Gemini 4 Carbon 发布及登顶"
+      "why": "都是 Gemini 4 Carbon 发布及登顶榜单"
     },
     {
       "kept": "Apple Launches First Touchscreen MacBook",
       "merged": [
         "Apple's first touchscreen MacBook Pro feels both familiar an"
       ],
-      "why": "均报道苹果触屏 MacBook 发布"
+      "why": "都是苹果首款触控屏 MacBook 发布"
+    },
+    {
+      "kept": "SemiAnalysis 分析师解读 Anthropic S-1 招股书背后的 AI 经济账",
+      "merged": [
+        "The Verge 解读 Anthropic S-1：约 8500 亿美元 compute 承诺押注递归自我改进",
+        "Ed Zitron 长文解析 Anthropic S-1：称其把散户当作退出流动性"
+      ],
+      "why": "都是解读 Anthropic S-1 招股书"
+    },
+    {
+      "kept": "Hackers expose the identities of more than 40k DHS employees",
+      "merged": [
+        "Leak website releases data on DHS employees"
+      ],
+      "why": "均报道DHS员工数据泄露事件"
+    },
+    {
+      "kept": "Microsoft Seeks to Raise $25 Billion in Bond Sale",
+      "merged": [
+        "Microsoft 拟重返美国债券市场募资至少 250 亿美元"
+      ],
+      "why": "均报道微软拟发债融资250亿美元"
     }
   ]
 }
