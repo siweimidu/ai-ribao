@@ -107,6 +107,20 @@ DEDUP_TIMEOUT_SECONDS = 240
 #: Concurrent chunk comparisons.
 DEDUP_CONCURRENCY = 3
 
+#: How many independent sources it takes for a story to be exempt from this drop.
+#:
+#: The check below is a model reading today headlines against the last seven days of
+#: published ones. It is a judgement on wording, and wording is exactly what a big story
+#: has twenty different versions of.
+#:
+#: Measured 2026-10-28: the 06:48 build of the issue dropped Genie 4, a story carried by
+#: 20 independent sources -- the DeepMind blog, four aihot feeds, juya, the Verge,
+#: TechCrunch, Hacker News. Nothing named Genie had been published in the previous seven
+#: days, so there was nothing for it to duplicate. The 14:51 rebuild kept it and it
+#: published at #03. A story corroborated that widely is not a duplicate of anything, and
+#: an LLM guess must not be able to delete it.
+MIN_SOURCES_TO_PROTECT = 3
+
 
 @dataclass
 class CrossDayResult:
@@ -116,6 +130,8 @@ class CrossDayResult:
     chunks: int = 0
     failed: bool = False
     examples: list[dict] = field(default_factory=list)
+    #: Events the model called duplicates but which survived on source count.
+    protected: list[dict] = field(default_factory=list)
 
     @property
     def label(self) -> str:
@@ -123,7 +139,8 @@ class CrossDayResult:
             return "未运行（模型不可用）"
         if not self.dropped:
             return "无重复"
-        return f"剔除 {self.dropped} 条（与 7 天内重复）"
+        kept = f"，保护 {len(self.protected)} 条多源报道" if self.protected else ""
+        return f"剔除 {self.dropped} 条（与 7 天内重复）{kept}"
 
 
 def _listing(events, prefix):
@@ -194,6 +211,16 @@ async def drop_cross_day_duplicates(
                 except ValueError:
                     continue
                 if not (0 <= index < len(events)) or index in removed:
+                    continue
+                # A widely corroborated story is never a duplicate.
+                sources = len(set(events[index].source_ids or ()))
+                if sources >= MIN_SOURCES_TO_PROTECT:
+                    if len(result.protected) < 6:
+                        result.protected.append({
+                            "kept": events[index].title[:70],
+                            "sources": sources,
+                            "why": str(row.get("why") or "")[:60],
+                        })
                     continue
                 removed.add(index)
                 if len(result.examples) < 6:

@@ -1,52 +1,13 @@
 {
-  "generated_at": "2026-10-28T22:53:36.264101+00:00",
-  "router_is_none": false,
+  "generated_at": "2026-10-29T15:59:59+00:00",
+  "router_is_none": true,
   "ran": true,
-  "input_events": 189,
-  "batches": 6,
-  "calls": 6,
-  "merged_groups": 6,
-  "merged_events": 9,
+  "input_events": 0,
+  "batches": 0,
+  "calls": 0,
+  "merged_groups": 0,
+  "merged_events": 0,
   "rejected_groups": 0,
-  "failed": false,
-  "examples": [
-    {
-      "kept": "谷歌CEO皮查伊表示：新AI模型Carbon的性能优于Gemini 4 Argon - 东方财富",
-      "merged": [
-        "谷歌最强 AI 模型：Gemini 4 Carbon 登顶全球智能指数榜首，“专职”做网络安全 - 新浪财经",
-        "谷歌“网安高手”Gemini 4 Carbon登顶AI智能榜，漏洞检测得分88.2%，标准价持平Argon - 华尔街见"
-      ],
-      "why": "均为谷歌发布 Gemini 4 Carbon 模型及登顶榜单"
-    },
-    {
-      "kept": "Meta says it’ll probably delay its controversial new business terms again",
-      "merged": [
-        "Meta weighs delaying 'alarming' new business terms as backla"
-      ],
-      "why": "均为 Meta 拟延期更新具有争议的商业条款"
-    },
-    {
-      "kept": "Wiz CTO 谈互联网老旧代码面临的安全危机与 AI 的影响",
-      "merged": [
-        "Wiz CTO 谈 PHP2Shell 漏洞与即将到来的“漏洞末日”",
-        "The ‘Vulnpocalypse’ is coming for the internet’s aging code,"
-      ],
-      "why": "均为 Wiz CTO 谈互联网老旧代码安全危机与漏洞日终结论"
-    },
-    {
-      "kept": "Google DeepMind Introduces Gemini 4 Carbon, Its Top Model for Cyber Defense and ",
-      "merged": [
-        "Google announces Gemini 4 Carbon, its latest frontier AI mod",
-        "谷歌发布 Gemini 4 Carbon，登顶 Artificial Analysis Intelligence Ind"
-      ],
-      "why": "均报道Google发布Gemini 4 Carbon"
-    },
-    {
-      "kept": "Apple Launches First Touchscreen MacBook",
-      "merged": [
-        "MacBook Pro with PROLED XDR Display and Touch"
-      ],
-      "why": "均报道Apple发布触屏MacBook"
-    }
-  ]
+  "failed": true,
+  "examples": []
 }
