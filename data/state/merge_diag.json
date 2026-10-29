@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-10-29T11:15:23.419377+00:00",
+  "generated_at": "2026-10-29T13:35:05.640674+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 382,
-  "batches": 11,
-  "calls": 3,
-  "merged_groups": 1,
-  "merged_events": 1,
-  "rejected_groups": 0,
+  "input_events": 404,
+  "batches": 12,
+  "calls": 6,
+  "merged_groups": 4,
+  "merged_events": 4,
+  "rejected_groups": 2,
   "failed": true,
   "examples": [
     {
@@ -15,7 +15,28 @@
       "merged": [
         "ServiceNow 财报超预期盘后仍跌 19%，AI 冲击订阅业务担忧发酵"
       ],
-      "why": "均为 ServiceNow 财报发布后股价下跌报道"
+      "why": "都是 ServiceNow 财报后股价下跌"
+    },
+    {
+      "kept": "Meta says it’ll probably delay its controversial new business terms again",
+      "merged": [
+        "Meta weighs delaying 'alarming' new business terms as backla"
+      ],
+      "why": "都是 Meta 推迟争议性新商务条款"
+    },
+    {
+      "kept": "腾讯发布跨应用 AI 协同体系 Buddy One，打通 WorkBuddy 与多款办公产品",
+      "merged": [
+        "腾讯WorkBuddy上线Buddy One，打通腾讯会议、腾讯文档、ima和腾讯网盘账号体系"
+      ],
+      "why": "均报道腾讯发布Buddy One打通办公产品"
+    },
+    {
+      "kept": "NVIDIA Releases Nemotron 3.5 Transcribe: An Open 30B MoE Model for 40-Language T",
+      "merged": [
+        "英伟达发布开放权重转录模型 Nemotron 3.5 Transcribe，支持 40 种语言并开源数据管线 Grana"
+      ],
+      "why": "都是 NVIDIA Nemotron 3.5 Transcribe 模型发布"
     }
   ]
 }
