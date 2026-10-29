@@ -20,7 +20,7 @@ from zoneinfo import ZoneInfo
 
 from .config import AppConfig
 from .dedup import DedupConfig, DedupResult, cluster
-from .unfiltered import AIHOT_BOOST, UNFILTERED_SOURCES, is_aihot, protects
+from .unfiltered import AIHOT_BOOST, UNFILTERED_SOURCES, is_aihot, protects, source_group
 from .models import Digest, Event, NormalizedItem, SourceCoverage, SourceSpec
 from .rank import RankWeights, diversity_report, rank_events, select_diverse
 from .sections import classify, rank_of
@@ -129,6 +129,28 @@ def is_container_title(title: str) -> bool:
 #: one filter and not the other.
 PASSTHROUGH_SOURCES = UNFILTERED_SOURCES
 
+
+#: Search-engine feeds whose `pubDate` is an *index* time, not a publication time.
+#:
+#: Google News re-dates an article every time it re-indexes it, so a story published on the
+#: 28th can arrive stamped `2026-10-29T04:00:48Z` and pass the calendar-date rule as today's.
+SEARCH_INDEX_SOURCES = frozenset({"api:news-google-com-search"})
+
+
+def _uncorroborated_search_hit(event) -> bool:
+    '''True when a search-engine hit is the only thing carrying this event.
+
+    **Not a source removal.** The feed stays in the registry and its items still publish
+    when another outlet reports the same event -- that second outlet is what makes the date
+    credible. What is refused is a single redirect URL, re-stamped by the indexer, being
+    presented as the day\'s news.
+
+    Measured 2026-10-29: 「再度嫌弃“AI” 川普宣布全面禁用 都要改称“SI” - 文学城」 published at
+    #80, one source, one Google News redirect, a story readers had already seen the day
+    before.
+    '''
+    groups = {source_group(sid) for sid in (event.source_ids or ())}
+    return bool(groups) and groups <= SEARCH_INDEX_SOURCES
 
 def is_passthrough(event) -> bool:
     """True when any source carrying this event is never relevance-filtered.
@@ -832,6 +854,18 @@ def build_digest(
         if primary is None:
             return "other"
         return category_of.get(primary.source_id, "other")
+
+    # Drop indexer-dated search hits that no second outlet corroborates.
+    corroborated: list[Event] = []
+    uncorroborated_search = 0
+    for event in events:
+        if _uncorroborated_search_hit(event):
+            uncorroborated_search += 1
+            continue
+        corroborated.append(event)
+    events = corroborated
+    if uncorroborated_search and warnings is not None:
+        warnings.append(f"搜索引擎索引时间不可信，剔除 {uncorroborated_search} 条单源搜索命中")
 
     sections: dict[str, list[Event]] = {}
     for event in events:
