@@ -1,42 +1,50 @@
 {
-  "generated_at": "2026-10-29T13:35:05.640674+00:00",
+  "generated_at": "2026-10-29T14:51:10.354525+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 404,
+  "input_events": 425,
   "batches": 12,
-  "calls": 6,
-  "merged_groups": 4,
-  "merged_events": 4,
-  "rejected_groups": 2,
-  "failed": true,
+  "calls": 12,
+  "merged_groups": 15,
+  "merged_events": 17,
+  "rejected_groups": 7,
+  "failed": false,
   "examples": [
+    {
+      "kept": "How Instacart Ended Up in DoorDash’s Cart",
+      "merged": [
+        "DoorDash to Acquire Instacart"
+      ],
+      "why": "都是关于 DoorDash 收购 Instacart 的报道"
+    },
     {
       "kept": "ServiceNow shares drop 18% after mixed earnings results",
       "merged": [
         "ServiceNow 财报超预期盘后仍跌 19%，AI 冲击订阅业务担忧发酵"
       ],
-      "why": "都是 ServiceNow 财报后股价下跌"
+      "why": "都是 ServiceNow 财报发布后股价大跌的新闻"
     },
     {
-      "kept": "Meta says it’ll probably delay its controversial new business terms again",
+      "kept": "首批风云气象卫星极端天气AI模型发布 - 中国科技网",
       "merged": [
-        "Meta weighs delaying 'alarming' new business terms as backla"
+        "新华社消息丨首批风云气象卫星极端天气AI模型发布 - 新华网"
       ],
-      "why": "都是 Meta 推迟争议性新商务条款"
+      "why": "均为首批风云气象卫星极端天气AI模型发布"
     },
     {
-      "kept": "腾讯发布跨应用 AI 协同体系 Buddy One，打通 WorkBuddy 与多款办公产品",
+      "kept": "2026-10-29 AI 日报 · Gemini 4 Carbon 登顶智能榜单、主打网络安全；微软首次披露 Azure 收入，来自 OpenAI 的收入达百",
       "merged": [
-        "腾讯WorkBuddy上线Buddy One，打通腾讯会议、腾讯文档、ima和腾讯网盘账号体系"
+        "Google DeepMind Introduces Gemini 4 Carbon, Its Top Model fo",
+        "Google’s Gemini 4 Carbon tops the charts (for now)"
       ],
-      "why": "均报道腾讯发布Buddy One打通办公产品"
+      "why": "均报道 Gemini 4 Carbon 发布及登顶"
     },
     {
-      "kept": "NVIDIA Releases Nemotron 3.5 Transcribe: An Open 30B MoE Model for 40-Language T",
+      "kept": "Apple Launches First Touchscreen MacBook",
       "merged": [
-        "英伟达发布开放权重转录模型 Nemotron 3.5 Transcribe，支持 40 种语言并开源数据管线 Grana"
+        "Apple's first touchscreen MacBook Pro feels both familiar an"
       ],
-      "why": "都是 NVIDIA Nemotron 3.5 Transcribe 模型发布"
+      "why": "均报道苹果触屏 MacBook 发布"
     }
   ]
 }
