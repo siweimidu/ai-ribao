@@ -151,3 +151,34 @@ def source_group(source_id: str) -> str:
 def distinct_source_groups(source_ids) -> int:
     '''How many *independent* sources carry an event, collapsing the aihot trio to one.'''
     return len({source_group(sid) for sid in (source_ids or ())})
+
+#: Sources that publish one big issue a week or a month.
+#:
+#: 「不收录周刊」. Their items are never admitted by `admits_unseen`: a weekly issue drops
+#: thirty-odd stories on one date, and folding a whole issue into one day's digest is what the
+#: instruction rules out. They keep the plain same-day rule.
+WEEKLY_SOURCES = frozenset({
+    "rss:hex2077",
+    "rss:hex2077-dev-rss-zh-cn",
+    "rss:aihot-news-weekly",
+    "rss:aihot-news-monthly",
+})
+
+
+def admits_unseen(source_id: str | None) -> bool:
+    '''True when this source admits items whose publish date is not the issue date.
+
+    **「当天每一条从没被报道过的，都收；报道过的一律不再出现」.**
+
+    The date rule asks 「发布日 == 今天」, which silently excluded every source that dates its
+    entries behind: measured 2026-10-29, `ainewslog` delivered 662 items and contributed 0
+    events, `aibase-daily-news` 20 and 0. Their items were fine; their timestamps were older.
+
+    The question that matters is not when an item was stamped but whether the reader has seen
+    it. That is decided downstream by `PublishedHistory`, which drops anything already
+    published. So the window opens to the last few days for these sources and dedup does the
+    rest -- an item appears once, on the first issue that can carry it.
+
+    Weekly sources are excluded; see `WEEKLY_SOURCES`.'''
+    sid = source_id or ''
+    return is_unfiltered(sid) and sid not in WEEKLY_SOURCES

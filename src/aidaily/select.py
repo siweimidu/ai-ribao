@@ -23,6 +23,7 @@ from datetime import datetime, timedelta, timezone
 from .config import AppConfig
 from .unfiltered import is_unfiltered
 from .models import NormalizedItem
+from .unfiltered import admits_unseen
 
 #: Buckets that count as "inside the window". `unknown` is deliberately absent.
 IN_WINDOW_BUCKETS = {"today", "today_window", "past_72h"}
@@ -115,14 +116,21 @@ def select_window(
         if item.published_at is not None:
             published_day = item.published_at.astimezone(timezone(timedelta(hours=8))).date()
             if published_day != issue_day:
-                result.dropped_by_bucket["wrong_date"] = (
-                    result.dropped_by_bucket.get("wrong_date", 0) + 1
-                )
-                if len(result.wrong_date_samples) < 20:
-                    result.wrong_date_samples.append(
-                        f"{item.source_id}: {published_day} {item.title[:50]}"
+                # 「当天每一条从没被报道过的，都收」 -- for the named sources, an item is
+                # admitted on the first issue that can carry it, whatever its stamp. The
+                # repeat guard is PublishedHistory, not this comparison.
+                reach = timedelta(days=getattr(cfg.run, "cross_day_window_days", 7))
+                if admits_unseen(item.source_id) and published_day >= (issue_day - reach):
+                    pass
+                else:
+                    result.dropped_by_bucket["wrong_date"] = (
+                        result.dropped_by_bucket.get("wrong_date", 0) + 1
                     )
-                continue
+                    if len(result.wrong_date_samples) < 20:
+                        result.wrong_date_samples.append(
+                            f"{item.source_id}: {published_day} {item.title[:50]}"
+                        )
+                    continue
         elif not include_unknown and item.age_bucket not in IN_WINDOW_BUCKETS:
             drop("unknown", item, result.undated_samples)
             continue
