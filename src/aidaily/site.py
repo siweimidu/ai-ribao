@@ -103,6 +103,10 @@ ICONS = {
 }
 
 
+#: A Bilibili video id, so an embed player can be built from a stored link.
+_BVID = re.compile(r"(BV[0-9A-Za-z]{10})")
+
+
 def esc(text: object) -> str:
     return html.escape(str(text if text is not None else ""), quote=True)
 
@@ -882,13 +886,25 @@ def render_item(
     # The official walkthrough, when one was verified for this story.
     _facts = event.unique_facts if isinstance(event.unique_facts, dict) else {}
     _video_url = (_facts.get("video_url") or [""])[0]
+    _video_title = (_facts.get("video_title") or [""])[0]
+    _bvid = _BVID.search(_video_url).group(1) if _BVID.search(_video_url) else ""
     video_html = ""
-    if _video_url:
+    if _bvid:
+        # Embedded, not linked: the click the reader wants is "play", not "open a tab".
+        video_html = (
+            '<figure class="item__video">'
+            '<iframe src="https://player.bilibili.com/player.html?bvid='
+            + _bvid
+            + '&page=1&high_quality=1&autoplay=0&danmaku=0" '
+            'loading="lazy" scrolling="no" frameborder="0" allowfullscreen></iframe>'
+            '<figcaption>官方视频：' + esc(_video_title)[:60] + "</figcaption></figure>"
+        )
+    elif _video_url:
         video_html = (
             '<p class="item__video"><a href="'
             + esc(_video_url)
             + '" target="_blank" rel="noopener noreferrer">官方视频：'
-            + esc((_facts.get("video_title") or [""])[0])[:60]
+            + esc(_video_title)[:60]
             + "</a></p>"
         )
 

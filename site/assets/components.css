@@ -2293,31 +2293,27 @@ body { font-family: var(--f-sans); }
 }
 
 
-/* The official video line under a story.
-   A plain paragraph read as body text -- the reader could not tell it was a link, which is
-   exactly what was reported. Accent colour, a play mark and a hover underline make it read as
-   something to click. */
+/* The official video, embedded.
+   A button that opened another tab was the wrong shape: the reader wants to watch it here.
+   Capped at 560px so a video never dominates the column; 16/9 keeps proportions without a
+   fixed height. */
 .item__video {
-  margin: 0 0 10px;
-  font-size: 15px;
+  margin: 6px 0 14px;
+}
+.item__video iframe {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 10px;
+  background: #000;
+}
+.item__video figcaption {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--muted, #6b6459);
 }
 .item__video a {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 8px;
-  padding: 6px 12px;
-  border: 1px solid var(--line, #d8d3c8);
-  border-radius: 8px;
   color: var(--accent, #b4541f);
-  text-decoration: none;
-  background: var(--surface, #fff);
-}
-.item__video a::before {
-  content: "▶";
-  font-size: 12px;
-  line-height: 1;
-}
-.item__video a:hover {
-  text-decoration: underline;
-  border-color: var(--accent, #b4541f);
 }
