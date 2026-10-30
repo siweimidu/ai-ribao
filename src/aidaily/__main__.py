@@ -1483,6 +1483,21 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
         # and for an English feed that put English sentences on a Chinese page. Defaulting
         # to the full selected set means the digest's language rule holds by construction
         # rather than by luck.
+        # **Credit the publisher, not the aggregator.**
+        #
+        # `api:news-google-com-search` hands back `news.google.com/rss/articles/...` links, so a
+        # 凤凰网 article was rendered as a story whose source read 「news.google.com」. One HEAD
+        # request per link, following redirects, bounded so it cannot dominate the run.
+        if http is not None:
+            try:
+                from .resolve_links import resolve_events
+
+                resolved = await resolve_events(selected, http)
+                if resolved:
+                    print(f"  链接解析        {resolved} 条 Google News 链接换成原始出处")
+            except Exception as exc:  # noqa: BLE001 - cosmetic, never fatal
+                print(f"  链接解析        未运行：{type(exc).__name__}", file=sys.stderr)
+
         analyse = selected[: args.analyze_limit] if args.analyze_limit else selected
 
         if len(analyse) < len(selected):
