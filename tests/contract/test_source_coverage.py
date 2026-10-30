@@ -54,11 +54,9 @@ def test_every_named_source_has_a_label() -> None:
     for sid in UNFILTERED_SOURCES:
         assert sid in _NAMED_LABEL, sid
 
-def test_weekly_absent_is_not_reported_as_missing() -> None:
-    """「不收录周刊」 is a rule, not a failure -- the page must say so."""
+def test_a_weekly_source_is_not_shown_at_all() -> None:
+    """A name that will never appear is noise: no row, no explanation."""
     html = _render_source_coverage(_rows(["rss:daily-juya-uk"]))
-    assert "按规则不收录周刊" in html
-    assert "hex2077" in html
-    # It must not be listed among the sources that failed to deliver.
-    head, _, tail = html.partition("按规则不收录周刊")
-    assert "hex2077" not in head
+    assert "hex2077" not in html
+    assert "周刊" not in html
+    assert "本期未收录" in html
