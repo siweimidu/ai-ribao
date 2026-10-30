@@ -11,6 +11,7 @@ import asyncio
 import json
 import os
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -193,7 +194,41 @@ def _drop_events(digest: Digest, event_ids: set[str]) -> Digest:
     )
 
 
+#: Wall-clock budget for one publish, in minutes.
+#:
+#: Measured 2026-10-30: a publish took 31-37 minutes and one run was cancelled at its limit --
+#: the day published nothing at all. The optional stages (pairwise dedup, images, the analysis
+#: retry) are improvements; they must not decide whether the issue ships.
+#:
+#: So the budget is a hard ordering: past the soft limit the optional stages are skipped and the
+#: issue goes out with what it already has. Every skip is printed, so a thin issue is visibly
+#: thin rather than silently expensive.
+PUBLISH_SOFT_BUDGET_MIN = 18.0
+
+#: Pairwise dedup is the first thing to drop -- it is the newest and the most optional.
+PAIR_REVIEW_BUDGET_MIN = 12.0
+
+#: Images are the second: decoration, and the slowest single stage when a publisher hangs.
+IMAGE_BUDGET_MIN = 15.0
+
+_BUDGET_START: float | None = None
+
+
+def _start_budget() -> None:
+    """Mark the start of one publish."""
+    global _BUDGET_START
+    _BUDGET_START = time.monotonic()
+
+
+def _elapsed_minutes() -> float:
+    """Minutes since the clock started; zero when no budget is running."""
+    if _BUDGET_START is None:
+        return 0.0
+    return (time.monotonic() - _BUDGET_START) / 60.0
+
+
 def cmd_run(args: argparse.Namespace) -> int:
+    _start_budget()
     """The full chain: collect -> window -> L2 -> L3 -> analyze -> factcheck -> render."""
     cfg = load_config(env={} if args.no_env else None)
     sources = _load_sources()
@@ -345,7 +380,13 @@ def cmd_run(args: argparse.Namespace) -> int:
     #     It is skippable and it never raises: `cfg.output.images` gates it, and every fetch
     #     inside `media` returns None on failure. An issue without pictures is the same issue.
     images_by_event: dict[str, bytes] = {}
-    if cfg.output.images:
+    if cfg.output.images and _elapsed_minutes() > IMAGE_BUDGET_MIN:
+        print(
+            f"  配图            跳过：已用 {_elapsed_minutes():.0f} 分钟，"
+            f"超出 {IMAGE_BUDGET_MIN:.0f} 分钟预算",
+            file=sys.stderr,
+        )
+    elif cfg.output.images:
         images_by_event = asyncio.run(
             _fetch_images(digest, cfg, limit=cfg.output.images_max)
         )
@@ -1198,7 +1239,15 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
         try:
             from .pair_merge import review_pairs
 
-            events, pair_report = await review_pairs(events, router)
+            if _elapsed_minutes() > PAIR_REVIEW_BUDGET_MIN:
+                print(
+                    f"  配对复核        跳过：已用 {_elapsed_minutes():.0f} 分钟，"
+                    f"超出 {PAIR_REVIEW_BUDGET_MIN:.0f} 分钟预算",
+                    file=sys.stderr,
+                )
+                pair_report = {"merged": 0, "asked": 0, "pairs": 0}
+            else:
+                events, pair_report = await review_pairs(events, router)
             print(
                 f"  配对复核        {pair_report['merged']} 组合并"
                 f" / {pair_report['asked']} 对已判 / 候选 {pair_report['pairs']}"
