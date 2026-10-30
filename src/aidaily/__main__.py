@@ -834,7 +834,7 @@ SHARED_IMAGE_LIMIT = 3
 #: Sized for the whole issue, not the first forty: measured 2026-10-23 at 96 events, which at
 #: concurrency 24 finishes in well under a minute. The ceiling exists for a day when several
 #: publishers hang at once, not to bound a normal run.
-IMAGE_STAGE_SECONDS = 600
+IMAGE_STAGE_SECONDS = 240
 
 
 async def _fetch_images(

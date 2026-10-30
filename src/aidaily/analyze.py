@@ -310,7 +310,7 @@ async def analyze_events(
     router: Router | None,
     *,
     limit: int | None = None,
-    concurrency: int = 8,
+    concurrency: int = 16,
     
 ) -> tuple[dict[str, EventInsight], list[str]]:
     """Analyse events, newest-ranked first. Returns (insights, warnings).

@@ -84,7 +84,7 @@ async def collect(
     specs: list[SourceSpec],
     cfg: AppConfig,
     *,
-    concurrency: int = 8,
+    concurrency: int = 20,
     limit: int | None = None,
     only: list[str] | None = None,
     timeout_s: int | None = None,

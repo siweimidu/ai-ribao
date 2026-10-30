@@ -54,7 +54,7 @@ dedup:
   l3:                           # 多篇不同文章报道同一事件（语义）
     candidate_limit: 150        # 先用规则把当日条目压到这个规模，再动用 LLM
     max_clusters: 60            # 最多把多少个候选簇交给模型判定（每个一次调用）
-    judge_concurrency: 4
+    judge_concurrency: 8
     entity_overlap_min: 2
     time_bucket_hours: 6
     confidence_threshold: 0.75
@@ -150,7 +150,7 @@ llm:
     # 批量的意义就是把一整轮排序从约 60 次调用压到 10 次以内。
     rubric: 10
     # rubric 并发。刻意压低：它在发布之前运行，这里被限流会拖慢整轮，而不是降级某一条。
-    rubric_concurrency: 2
+    rubric_concurrency: 5
 
 budget:
   # 运行期熔断；超限则降级为规则摘要并在 digest.warnings 中声明
