@@ -700,6 +700,41 @@ def _record_run(digest, channels: dict[str, str], status: str, note: str) -> Non
     )
 
 
+#: Beijing hour after which a source that publishes later than the first slot exists.
+#:
+#: juya publishes its edition around 08:39. The first collection is at 04:00, so its issue is
+#: built before juya exists -- and the gate then refuses every later trigger *in that same
+#: slot*, so juya stays absent all day unless the 12:00 slot happens to fire. GitHub delays
+#: schedules by hours, so it often does not.
+#:
+#: Measured 2026-10-30: the issue was generated 07:01 Beijing with juya at 0 events, and the
+#: page still said 「本期未收录：橘鸦」 at noon.
+SOURCE_READY_HOUR = 9
+
+
+def _morning_rebuild_due(now_local, generated_at: str, ready_hour: int = SOURCE_READY_HOUR) -> bool:
+    """True when the day's issue predates the sources that publish after the first slot.
+
+    One extra rebuild, once: before `ready_hour` this is False, and after the rebuild the
+    archive's own timestamp is past `ready_hour`, so it cannot fire again.
+    """
+    if now_local.hour < ready_hour:
+        return False
+    text = (generated_at or "").strip()
+    if not text:
+        return True
+    try:
+        stamp = datetime.fromisoformat(text.replace("Z", "+00:00"))
+    except ValueError:
+        return False
+    if stamp.tzinfo is None:
+        stamp = stamp.replace(tzinfo=timezone.utc)
+    built = stamp.astimezone(now_local.tzinfo)
+    return built.hour < ready_hour
+
+
+
+
 def cmd_gate(args: argparse.Namespace) -> int:
     """Cheap first step for every scheduled trigger.
 
@@ -747,6 +782,27 @@ def cmd_gate(args: argparse.Namespace) -> int:
             "done_channels": {},
         }, ensure_ascii=False))
         return EXIT_TOO_EARLY
+
+    # One extra rebuild once the late-publishing sources exist; see SOURCE_READY_HOUR.
+    if is_today and not args.force:
+        archive = out_dir / f"{date}.json"
+        if archive.exists():
+            try:
+                payload = json.loads(archive.read_text(encoding="utf-8"))
+                stamp = (payload.get("digest") or {}).get("generated_at", "")
+            except Exception:
+                stamp = ""
+            if _morning_rebuild_due(now_local_slot, stamp):
+                print(json.dumps({
+                    "date": date,
+                    "publish": True,
+                    "reason": (
+                        f"重建：本日归档生成于 {str(stamp)[:16]}，"
+                        f"早于 {SOURCE_READY_HOUR:02d}:00 才发布的源"
+                    ),
+                    "done_channels": {},
+                }, ensure_ascii=False))
+                return 0
 
     should, reason, done = gate(
         date, artifact_dir=out_dir, slot=slot, slot_hours=slot_hours
