@@ -12,24 +12,31 @@
     "title": "Mistral 发布 1 万亿参数 Mistral Large 4 权重并将 API 价格约减半",
     "member_item_ids": [
      "89eaf3aa2207bc33",
-     "bc291cab2f5d344a"
+     "bc291cab2f5d344a",
+     "cb9dab879d1f879e"
     ],
     "primary_item_id": "bc291cab2f5d344a",
     "source_ids": [
      "rss:aihot-news",
-     "rss:aihot-news-all"
+     "rss:aihot-news-all",
+     "rss:aihot-demo-techcrunch-ai"
     ],
     "all_urls": [
-     "https://aihot.news/items/qjlnyctm3t9mgkccrwthnyg1e"
+     "https://aihot.news/items/qjlnyctm3t9mgkccrwthnyg1e",
+     "https://techcrunch.com/2026/10/29/mistral-releases-weights-for-its-trillion-parameter-ai-model-targeting-cybersecurity/"
     ],
-    "independent_source_count": 2,
+    "independent_source_count": 3,
     "first_seen_at": "2026-10-29T22:51:45.323120Z",
     "last_updated_at": "2026-10-29T22:51:45.323120Z",
     "published_range": [
      "2026-10-29T18:38:50Z",
      "2026-10-29T18:38:50Z"
     ],
-    "unique_facts": {},
+    "unique_facts": {
+     "merged_titles": [
+      "Mistral releases weights for its trillion-parameter AI model, targeting cybersecurity"
+     ]
+    },
     "confidence": 1.0,
     "evidence_level": "multi_source",
     "image_urls": [],
@@ -68,73 +75,6 @@
      "rubric_score": 8.5,
      "rubric_multiplier": 0.895,
      "rubric_band": "高价值",
-     "tier": "T2",
-     "tier_threshold": 68.0,
-     "tier_shortfall": false,
-     "section": "模型发布"
-    }
-   },
-   {
-    "event_id": "e76ede3d284d3b5",
-    "title": "Mistral releases weights for its trillion-parameter AI model, targeting cybersecurity",
-    "member_item_ids": [
-     "cb9dab879d1f879e"
-    ],
-    "primary_item_id": "cb9dab879d1f879e",
-    "source_ids": [
-     "rss:aihot-demo-techcrunch-ai"
-    ],
-    "all_urls": [
-     "https://techcrunch.com/2026/10/29/mistral-releases-weights-for-its-trillion-parameter-ai-model-targeting-cybersecurity/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-29T22:51:45.323120Z",
-    "last_updated_at": "2026-10-29T22:51:45.323120Z",
-    "published_range": [
-     "2026-10-29T17:00:00Z",
-     "2026-10-29T17:00:00Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "image_urls": [
-     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-30/e76ede3d284d3b5-m001-9d367015.webp"
-    ],
-    "needs_review": false,
-    "rank_score": 33.937274,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 0.198,
-     "substance_chars": 119.0,
-     "title_quality": 1.0,
-     "source_boost": 1.0,
-     "aihot_boost": 1.0,
-     "heat": 0.377207,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.2975,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.2975,
-     "h_velocity": 1.0,
-     "h_freshness": 0.8861,
-     "significance": 2.2,
-     "lab_announcement": 2.2,
-     "sig_model": 0.0,
-     "sig_release": 1.0,
-     "sig_lab": 1.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.5455,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0,
-     "vendor_priority": 1.0,
-     "vendor_subject": "",
-     "score": 33.937274,
-     "rubric_score": 9.0,
-     "rubric_multiplier": 0.93,
-     "rubric_band": "突破性",
      "tier": "T2",
      "tier_threshold": 68.0,
      "tier_shortfall": false,
@@ -372,24 +312,31 @@
     "title": "Anthropic 研究：50 名专家在分析决策中最高 86% 采纳 AI 智能体的随机偏好且不自知",
     "member_item_ids": [
      "1dcbbb9eada612fe",
-     "d8f900806c380a28"
+     "d8f900806c380a28",
+     "a08111afbd8cb322"
     ],
     "primary_item_id": "d8f900806c380a28",
     "source_ids": [
      "rss:aihot-news",
-     "rss:aihot-news-all"
+     "rss:aihot-news-all",
+     "rss:aihot-demo-the-decoder"
     ],
     "all_urls": [
-     "https://aihot.news/items/k4yit08mbo924u6om43499git"
+     "https://aihot.news/items/k4yit08mbo924u6om43499git",
+     "https://the-decoder.com/experts-adopt-ai-agents-random-opinions-and-think-theyre-their-own-anthropic-study-finds/"
     ],
-    "independent_source_count": 2,
+    "independent_source_count": 3,
     "first_seen_at": "2026-10-29T22:51:45.323120Z",
     "last_updated_at": "2026-10-29T22:51:45.323120Z",
     "published_range": [
      "2026-10-29T19:33:37Z",
      "2026-10-29T19:33:37Z"
     ],
-    "unique_facts": {},
+    "unique_facts": {
+     "merged_titles": [
+      "Experts adopt AI agent's random opinions and think they're their own, Anthropic study finds"
+     ]
+    },
     "confidence": 1.0,
     "evidence_level": "multi_source",
     "image_urls": [],
@@ -424,73 +371,6 @@
      "vendor_priority": 1.0,
      "vendor_subject": "",
      "score": 29.930906,
-     "rubric_score": 8.0,
-     "rubric_multiplier": 0.86,
-     "rubric_band": "高价值",
-     "tier": "T2",
-     "tier_threshold": 68.0,
-     "tier_shortfall": false,
-     "section": "技术与洞察"
-    }
-   },
-   {
-    "event_id": "e3d90035961407f",
-    "title": "Experts adopt AI agent's random opinions and think they're their own, Anthropic study finds",
-    "member_item_ids": [
-     "a08111afbd8cb322"
-    ],
-    "primary_item_id": "a08111afbd8cb322",
-    "source_ids": [
-     "rss:aihot-demo-the-decoder"
-    ],
-    "all_urls": [
-     "https://the-decoder.com/experts-adopt-ai-agents-random-opinions-and-think-theyre-their-own-anthropic-study-finds/"
-    ],
-    "independent_source_count": 1,
-    "first_seen_at": "2026-10-29T22:51:45.323120Z",
-    "last_updated_at": "2026-10-29T22:51:45.323120Z",
-    "published_range": [
-     "2026-10-29T19:33:37Z",
-     "2026-10-29T19:33:37Z"
-    ],
-    "unique_facts": {},
-    "confidence": 1.0,
-    "evidence_level": "single_source",
-    "image_urls": [
-     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-10-30/e3d90035961407f-m001-9dfdb37a.webp"
-    ],
-    "needs_review": false,
-    "rank_score": 22.126423,
-    "rank_components": {
-     "source_weight": 1.1,
-     "source_damped": 1.0241,
-     "substance": 0.583,
-     "substance_chars": 350.0,
-     "title_quality": 1.0,
-     "source_boost": 1.0,
-     "aihot_boost": 1.0,
-     "heat": 0.29556,
-     "h_corroboration": 0.3562,
-     "h_magnitude": 0.0,
-     "h_engagement": 0.0,
-     "h_reach": 0.4307,
-     "h_substance": 0.875,
-     "h_velocity": 1.0,
-     "h_freshness": 0.9313,
-     "significance": 1.0,
-     "minor": 1.0,
-     "sig_model": 0.0,
-     "sig_release": 0.0,
-     "sig_lab": 1.0,
-     "sig_first_party": 0.0,
-     "magnitude_linear": 0.0,
-     "focus": 1.0,
-     "focus_headline": 1.0,
-     "focus_source": 0.75,
-     "focus_multiplier": 1.0,
-     "vendor_priority": 1.0,
-     "vendor_subject": "",
-     "score": 22.126423,
      "rubric_score": 8.0,
      "rubric_multiplier": 0.86,
      "rubric_band": "高价值",
@@ -6016,7 +5896,7 @@
    "搜索引擎索引时间不可信，剔除 20 条单源搜索命中"
   ],
   "counts": {
-   "events": 89,
+   "events": 87,
    "events_considered": 150,
    "multi_source_events": 35,
    "items_after_window": 285,

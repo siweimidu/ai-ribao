@@ -22,6 +22,7 @@ from zoneinfo import ZoneInfo
 
 from .config import AppConfig
 from .dedup import DedupConfig, DedupResult, cluster
+from .crossday_llm import _norm_title
 from .unfiltered import (
     AIHOT_BOOST,
     UNFILTERED_SOURCES,
@@ -1047,11 +1048,21 @@ def build_digest(
     # by event_id, keeping the first (highest-ranked) occurrence. Selection, late merging
     # and re-scoring all funnel through this point.
     seen_ids: set[str] = set()
+    seen_titles: set[str] = set()
     unique: list[Event] = []
     for event in ordered:
         if event.event_id in seen_ids:
             continue
         seen_ids.add(event.event_id)
+        # **The same headline twice is the same event twice.** Two events can survive
+        # clustering with different ids and identical titles -- measured 2026-10-30, the
+        # page carried `Mistral 发布 1 万亿参数 ...` at #01 and #02, and two other pairs
+        # the same way. A reader cannot tell them apart and the count overstates the day.
+        title_key = _norm_title(event.title)
+        if title_key and title_key in seen_titles:
+            continue
+        if title_key:
+            seen_titles.add(title_key)
         unique.append(event)
     if len(unique) != len(ordered):
         print(f"去重：同一事件重复出现 {len(ordered) - len(unique)} 次，已合并", file=sys.stderr)

@@ -1128,6 +1128,29 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
         # Merging is also what the reader asked for. A story carried by several outlets is ONE
         # entry with multi-source corroboration, not three entries repeating each other.
         #
+        # **Two reports of one event, decided pair by pair.**
+        #
+        # `merge_duplicates` asks the model to find duplicates among a bucket of headlines at
+        # once, and it missed the shape that reaches the page most often: one outlet names the
+        # product, another describes it. Measured 2026-10-30, both published as separate rows:
+        #
+        #     #01 Mistral 发布 1 万亿参数 Mistral Large 4 权重
+        #     #02 Mistral 发布万亿参数模型权重以应对网络安全
+        #
+        # This pass finds pairs sharing a name rare enough to mean something and asks about
+        # each pair alone -- two headlines, one yes/no, nothing to group wrongly.
+        try:
+            from .pair_merge import review_pairs
+
+            events, pair_report = await review_pairs(events, router)
+            print(
+                f"  配对复核        {pair_report['merged']} 组合并"
+                f" / {pair_report['asked']} 对已判 / 候选 {pair_report['pairs']}"
+            )
+            if pair_report["merged"]:
+                history_notes.append(f"配对复核合并 {pair_report['merged']} 条")
+        except Exception as exc:  # noqa: BLE001 - optional pass, must not fail the run
+            print(f"  配对复核        未运行：{type(exc).__name__}", file=sys.stderr)
         # Runs before scoring so the model grades the merged set rather than three copies of
         # one story, and before pool_target because merging shrinks the pool.
         try:
