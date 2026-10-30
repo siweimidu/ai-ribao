@@ -2299,6 +2299,9 @@ body { font-family: var(--f-sans); }
    fixed height. */
 .item__video {
   margin: 6px 0 14px;
+  /* The same indent the facts and the meta line use, so the player sits in the
+     same column as everything it belongs to rather than at the item edge. */
+  padding-left: calc(1.6em + var(--unit) * 3);
 }
 .item__video iframe {
   display: block;
