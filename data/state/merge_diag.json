@@ -1,49 +1,50 @@
 {
-  "generated_at": "2026-10-30T05:05:30.070648+00:00",
+  "generated_at": "2026-10-30T06:22:48.920946+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 300,
-  "batches": 9,
-  "calls": 9,
-  "merged_groups": 12,
-  "merged_events": 14,
-  "rejected_groups": 2,
+  "input_events": 321,
+  "batches": 10,
+  "calls": 10,
+  "merged_groups": 14,
+  "merged_events": 15,
+  "rejected_groups": 3,
   "failed": false,
   "examples": [
     {
-      "kept": "OpenAI 更新 Model Spec，围绕五项核心价值观重组模型行为准则",
+      "kept": "Meta悄然推出AI时尚应用Style Sketch，支持虚拟衣橱与AI试穿",
       "merged": [
-        "OpenAI 更新模型规范，将忠于人类意图列为核心准则"
+        "Meta quietly launches an AI fashion app called Style Sketch",
+        "Meta悄悄推出穿搭应用Style Sketch：AI帮你搭衣服，还能虚拟试穿 - 凤凰网科技"
       ],
-      "why": "均为 OpenAI 更新 Model Spec 核心准则"
+      "why": "都是 Meta 推出 AI 时尚应用 Style Sketch"
     },
     {
-      "kept": "谷歌 Gemini 上线聊天内文件编辑功能，支持 PDF、文档、表格等格式",
+      "kept": "AI architecture startup Dream launches with $17M in funding",
       "merged": [
-        "告别繁琐导出！谷歌 Gemini 大升级:支持在对话中直接生成与编辑多格式文件"
+        "Ex-Palantir execs launch Dream with $17M from a16z to build "
       ],
-      "why": "均指谷歌 Gemini 上线文件编辑功能"
+      "why": "都是 Dream 启动并融资 1700 万美元"
     },
     {
-      "kept": "OpenAI doubles usage limits on Pro plans as competition with Anthropic heats up",
+      "kept": "警惕“中国AI跑偏论”（人民锐评） - 人民日报",
       "merged": [
-        "Codex 宣布即日起 Pro 及 Business Premium 各档位用量上限翻倍"
+        "人民日报评论：警惕“中国AI跑偏论” - 21财经"
       ],
-      "why": "均为 OpenAI/Codex Pro 上限翻倍报道"
+      "why": "都是人民日报评论警惕“中国 AI 跑偏论”"
     },
     {
-      "kept": "Reddit will force users to log in as AI is killing search traffic",
+      "kept": "Rivian 与大众 58 亿美元合资公司扩展至 AI 助手",
       "merged": [
-        "Reddit moves to logged-in experience as AI eats search"
+        "Rivian expands joint venture with VW to include AI assistant"
       ],
-      "why": "均报道Reddit为应对AI爬虫强制登录"
+      "why": "均为 Rivian 与大众合资公司扩展至 AI 助手的同一事件"
     },
     {
-      "kept": "Claude Code 命令行工具恢复 ultrathink 功能",
+      "kept": "Granola 新增免费不限量语音输入功能",
       "merged": [
-        "AI删文件终于可以不用再问了！Claude Code上线全新环境变量，赋予开发者绝对放行权限"
+        "Granola crunches up a dictation feature to compete with Wisp"
       ],
-      "why": "均涉及Claude Code功能更新与权限调整"
+      "why": "均为 Granola 新增免费不限量语音输入功能的同一事件"
     }
   ]
 }
