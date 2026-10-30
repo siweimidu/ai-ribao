@@ -879,11 +879,24 @@ def render_item(
             '</div>'
         )
 
+    # The official walkthrough, when one was verified for this story.
+    _video = (event.unique_facts or {}).get("video") if isinstance(event.unique_facts, dict) else None
+    video_html = ""
+    if isinstance(_video, dict) and _video.get("url"):
+        video_html = (
+            '<p class="item__video"><a href="'
+            + esc(str(_video["url"]))
+            + '" target="_blank" rel="noopener noreferrer">官方视频 · '
+            + esc(str(_video.get("title") or ""))[:60]
+            + "</a></p>"
+        )
+
     when_cls = "" if known else ' class="when-unknown"'
 
     return f"""        <li class="item" id="{esc(anchor)}">
           {head_html}
           {image_html}
+          {video_html}
           <div class="item__meta">
             <span class="badge" data-level="{esc(level)}">{esc(label)}</span>
             {count_note}
