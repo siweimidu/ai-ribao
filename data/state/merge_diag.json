@@ -1,50 +1,49 @@
 {
-  "generated_at": "2026-10-30T06:22:48.920946+00:00",
+  "generated_at": "2026-10-30T10:47:48.851323+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 321,
-  "batches": 10,
-  "calls": 10,
-  "merged_groups": 14,
-  "merged_events": 15,
-  "rejected_groups": 3,
+  "input_events": 381,
+  "batches": 11,
+  "calls": 11,
+  "merged_groups": 6,
+  "merged_events": 6,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "Meta悄然推出AI时尚应用Style Sketch，支持虚拟衣橱与AI试穿",
+      "kept": "豆包推出免费额度活动：签到 30 天得 8800 额度，新用户免费领一个月订阅",
       "merged": [
-        "Meta quietly launches an AI fashion app called Style Sketch",
-        "Meta悄悄推出穿搭应用Style Sketch：AI帮你搭衣服，还能虚拟试穿 - 凤凰网科技"
+        "签到30天白拿8800额度:豆包向新老用户敞开30天免费订阅"
       ],
-      "why": "都是 Meta 推出 AI 时尚应用 Style Sketch"
-    },
-    {
-      "kept": "AI architecture startup Dream launches with $17M in funding",
-      "merged": [
-        "Ex-Palantir execs launch Dream with $17M from a16z to build "
-      ],
-      "why": "都是 Dream 启动并融资 1700 万美元"
-    },
-    {
-      "kept": "警惕“中国AI跑偏论”（人民锐评） - 人民日报",
-      "merged": [
-        "人民日报评论：警惕“中国AI跑偏论” - 21财经"
-      ],
-      "why": "都是人民日报评论警惕“中国 AI 跑偏论”"
-    },
-    {
-      "kept": "Rivian 与大众 58 亿美元合资公司扩展至 AI 助手",
-      "merged": [
-        "Rivian expands joint venture with VW to include AI assistant"
-      ],
-      "why": "均为 Rivian 与大众合资公司扩展至 AI 助手的同一事件"
+      "why": "都是豆包推出签到30天得8800额度及免费订阅活动"
     },
     {
       "kept": "Granola 新增免费不限量语音输入功能",
       "merged": [
         "Granola crunches up a dictation feature to compete with Wisp"
       ],
-      "why": "均为 Granola 新增免费不限量语音输入功能的同一事件"
+      "why": "都是Granola新增语音输入功能与Wispr竞争"
+    },
+    {
+      "kept": "AI“次贷”的金融裂缝 - 财新",
+      "merged": [
+        "中金：AI“次贷”的金融裂缝 - 华尔街见闻"
+      ],
+      "why": "都是中金公司关于 AI 次贷金融裂缝的报道"
+    },
+    {
+      "kept": "AI architecture startup Dream launches with $17M in funding",
+      "merged": [
+        "Ex-Palantir execs launch Dream with $17M from a16z to build "
+      ],
+      "why": "均为 AI 创业公司 Dream 获 a16z 1700 万美元融资"
+    },
+    {
+      "kept": "谷歌 Gemini 上线聊天内文件编辑功能，支持 PDF、文档、表格等格式",
+      "merged": [
+        "告别繁琐导出！谷歌 Gemini 大升级:支持在对话中直接生成与编辑多格式文件"
+      ],
+      "why": "都是谷歌 Gemini 上线文件编辑功能"
     }
   ]
 }
