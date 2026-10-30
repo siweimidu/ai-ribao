@@ -1,49 +1,49 @@
 {
-  "generated_at": "2026-10-30T10:47:48.851323+00:00",
+  "generated_at": "2026-10-30T11:32:22.845344+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 381,
-  "batches": 11,
-  "calls": 11,
-  "merged_groups": 6,
-  "merged_events": 6,
+  "input_events": 400,
+  "batches": 12,
+  "calls": 12,
+  "merged_groups": 7,
+  "merged_events": 8,
   "rejected_groups": 1,
   "failed": false,
   "examples": [
-    {
-      "kept": "豆包推出免费额度活动：签到 30 天得 8800 额度，新用户免费领一个月订阅",
-      "merged": [
-        "签到30天白拿8800额度:豆包向新老用户敞开30天免费订阅"
-      ],
-      "why": "都是豆包推出签到30天得8800额度及免费订阅活动"
-    },
-    {
-      "kept": "Granola 新增免费不限量语音输入功能",
-      "merged": [
-        "Granola crunches up a dictation feature to compete with Wisp"
-      ],
-      "why": "都是Granola新增语音输入功能与Wispr竞争"
-    },
-    {
-      "kept": "AI“次贷”的金融裂缝 - 财新",
-      "merged": [
-        "中金：AI“次贷”的金融裂缝 - 华尔街见闻"
-      ],
-      "why": "都是中金公司关于 AI 次贷金融裂缝的报道"
-    },
     {
       "kept": "AI architecture startup Dream launches with $17M in funding",
       "merged": [
         "Ex-Palantir execs launch Dream with $17M from a16z to build "
       ],
-      "why": "均为 AI 创业公司 Dream 获 a16z 1700 万美元融资"
+      "why": "都是 Dream 获得 a16z 融资 1700 万美元"
+    },
+    {
+      "kept": "Toyota 与 Waymo 深化自动驾驶合作，2027 年在日本测试自动驾驶 bZ4X 车队",
+      "merged": [
+        "Waymo and Toyota will soon start testing their robotaxis in "
+      ],
+      "why": "都是丰田与Waymo在日本测试自动驾驶"
+    },
+    {
+      "kept": "豆包推出免费额度活动：签到 30 天得 8800 额度，新用户免费领一个月订阅",
+      "merged": [
+        "签到30天白拿8800额度:豆包向新老用户敞开30天免费订阅"
+      ],
+      "why": "都是豆包推出30天签到领额度活动"
+    },
+    {
+      "kept": "“智启潇湘，AI创未来！”湖南青年AI短视频创作大赛启动 - 三湘都市报",
+      "merged": [
+        "“AI（爱）创未来·中韩青年AI短视频大赛”结果公布 - 中华人民共和国驻大韩民国大使馆"
+      ],
+      "why": "都是中韩青年AI短视频大赛相关"
     },
     {
       "kept": "谷歌 Gemini 上线聊天内文件编辑功能，支持 PDF、文档、表格等格式",
       "merged": [
         "告别繁琐导出！谷歌 Gemini 大升级:支持在对话中直接生成与编辑多格式文件"
       ],
-      "why": "都是谷歌 Gemini 上线文件编辑功能"
+      "why": "均报道谷歌 Gemini 支持对话内编辑多格式文件功能"
     }
   ]
 }
