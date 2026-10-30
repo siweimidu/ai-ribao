@@ -1,49 +1,49 @@
 {
-  "generated_at": "2026-10-30T11:32:22.845344+00:00",
+  "generated_at": "2026-10-30T15:16:04.981680+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 400,
+  "input_events": 436,
   "batches": 12,
   "calls": 12,
-  "merged_groups": 7,
-  "merged_events": 8,
+  "merged_groups": 6,
+  "merged_events": 6,
   "rejected_groups": 1,
   "failed": false,
   "examples": [
+    {
+      "kept": "IDC：上半年中国MaaS市场达106.3亿元，火山引擎份额45.1%居首",
+      "merged": [
+        "IDC：阿里云位居中国大语言模型 MaaS 市场第一"
+      ],
+      "why": "IDC发布同一份中国MaaS市场报告，火山与阿里云份额互换排名"
+    },
     {
       "kept": "AI architecture startup Dream launches with $17M in funding",
       "merged": [
         "Ex-Palantir execs launch Dream with $17M from a16z to build "
       ],
-      "why": "都是 Dream 获得 a16z 融资 1700 万美元"
+      "why": "AI架构初创公司Dream获得a16z 1700万美元融资"
     },
     {
-      "kept": "Toyota 与 Waymo 深化自动驾驶合作，2027 年在日本测试自动驾驶 bZ4X 车队",
+      "kept": "龙岗街道开展WorkBuddy AI工作流实战课堂，解码效能，优化办公流程 - 龙岗政府在线",
       "merged": [
-        "Waymo and Toyota will soon start testing their robotaxis in "
+        "龙岗街道牵头“组队”练AI：260名干部带机开练，三份“家底”开放共享 - 龙岗政府在线"
       ],
-      "why": "都是丰田与Waymo在日本测试自动驾驶"
+      "why": "均为龙岗街道组织干部进行AI工作流实战培训"
     },
     {
-      "kept": "豆包推出免费额度活动：签到 30 天得 8800 额度，新用户免费领一个月订阅",
+      "kept": "AI电影上映一周票房不到150万，AI电影败走院线 - 新浪网",
       "merged": [
-        "签到30天白拿8800额度:豆包向新老用户敞开30天免费订阅"
+        "AI电影的路在哪？徐汇“AI创聚场”来探讨 - 上观新闻"
       ],
-      "why": "都是豆包推出30天签到领额度活动"
+      "why": "均探讨AI电影市场现状与出路"
     },
     {
-      "kept": "“智启潇湘，AI创未来！”湖南青年AI短视频创作大赛启动 - 三湘都市报",
+      "kept": "Samaya AI 发布 Sterling：3B 激活参数的金融研究智能体模型，在 FrontierFinance 上以 11 倍低成本超越 Claude Fa",
       "merged": [
-        "“AI（爱）创未来·中韩青年AI短视频大赛”结果公布 - 中华人民共和国驻大韩民国大使馆"
+        "Samaya AI Releases Sterling: A 3B-Active Finance Research Ag"
       ],
-      "why": "都是中韩青年AI短视频大赛相关"
-    },
-    {
-      "kept": "谷歌 Gemini 上线聊天内文件编辑功能，支持 PDF、文档、表格等格式",
-      "merged": [
-        "告别繁琐导出！谷歌 Gemini 大升级:支持在对话中直接生成与编辑多格式文件"
-      ],
-      "why": "均报道谷歌 Gemini 支持对话内编辑多格式文件功能"
+      "why": "均为 Samaya AI 发布 Sterling 金融研究模型"
     }
   ]
 }
