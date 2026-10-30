@@ -1261,7 +1261,7 @@ def render_day(
     ]
 
     return f"""<!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="claude-light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1447,7 +1447,7 @@ def render_index(ctx: SiteContext, latest: Digest | None) -> str:
     search_index = []
 
     return f"""<!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="claude-light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1717,7 +1717,7 @@ def render_leaderboard(
     )
 
     return f"""<!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="claude-light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1903,7 +1903,7 @@ def render_tibo(ctx: SiteContext, monitor: dict | None = None) -> str:
       </section>"""
 
     return f"""<!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="claude-light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -2179,7 +2179,7 @@ def render_sources(
     }
 
     return f"""<!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="claude-light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -2256,7 +2256,7 @@ def render_sources(
 def render_404(ctx: SiteContext) -> str:
     calendar_data = {"dates": ctx.dates, "current": None, "today": None}
     return f"""<!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="claude-light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
