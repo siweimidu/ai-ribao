@@ -100,3 +100,36 @@ def test_a_healthy_run_does_not_retry(monkeypatch) -> None:
 
     assert calls["n"] == 1
     assert not any("降级" in w for w in warnings)
+
+
+def test_the_retry_pass_is_bounded(monkeypatch) -> None:
+    """An unbounded retry pushed publish past its 40-minute limit on 2026-10-30 and GitHub
+    cancelled the job -- the issue never published at all."""
+    from aidaily.analyze import RETRY_BUDGET_SECONDS, RETRY_LIMIT
+
+    assert RETRY_LIMIT > 0 and RETRY_LIMIT <= 50
+    assert RETRY_BUDGET_SECONDS > 0 and RETRY_BUDGET_SECONDS <= 180
+
+    seen = {"n": 0}
+
+    async def broken(router, event, members):
+        seen["n"] += 1
+        raise analyze_module.LLMUnavailable("down")
+
+    monkeypatch.setattr(analyze_module, "analyze_event", broken)
+
+    events = []
+    items = {}
+    for i in range(RETRY_LIMIT + 10):
+        item = _item()
+        item = item.model_copy(update={"item_id": f"i{i}", "url": f"https://example.com/{i}"})
+        items[item.item_id] = item
+        events.append(_event().model_copy(
+            update={"event_id": f"e{i}", "title": f"T{i}", "member_item_ids": [f"i{i}"],
+                    "primary_item_id": f"i{i}", "all_urls": [f"https://example.com/{i}"]}
+        ))
+
+    asyncio.run(analyze_events(events, items, router=object()))
+
+    # One first attempt per event, plus at most RETRY_LIMIT retries.
+    assert seen["n"] == len(events) + RETRY_LIMIT

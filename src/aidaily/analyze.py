@@ -91,6 +91,13 @@ _MISTRANSLATED_TERMS = (
 _KEEP_VERBATIM = ("Open Weights", "Closed-Weighted", "Context Window", "Benchmark", "MoE", "RLHF")
 
 
+#: How many failed events get a second attempt, and for how long in total.
+#:
+#: Both bounds exist because the retry is an optional improvement: it must never be the
+#: reason an issue does not publish.
+RETRY_LIMIT = 30
+RETRY_BUDGET_SECONDS = 120
+
 def _safe_title(original: str, rewritten: str) -> str:
     """The rewritten title when it passed the checks, else the original."""
     if not rewritten:
@@ -374,7 +381,17 @@ async def analyze_events(
                     return
                 recovered += 1
 
-        await asyncio.gather(*(retry(e) for e in missed))
+        # **Bounded, both in count and in wall clock.**
+        #
+        # Measured 2026-10-30: an unbounded retry pass plus the pairwise review pushed the
+        # publish job past its 40-minute limit and GitHub cancelled it -- the issue was
+        # never published at all. A partial improvement to quality is not worth losing the
+        # day, so the pass gives up after a fixed slice of both.
+        tasks = [asyncio.create_task(retry(e)) for e in missed[:RETRY_LIMIT]]
+        _, pending = await asyncio.wait(tasks, timeout=RETRY_BUDGET_SECONDS)
+        for task in pending:
+            task.cancel()
+        await asyncio.gather(*pending, return_exceptions=True)
 
     if degraded:
         left = degraded - recovered

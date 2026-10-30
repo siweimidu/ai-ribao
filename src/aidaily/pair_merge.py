@@ -48,10 +48,10 @@ _STOP = frozenset(
 RARE_LIMIT = 4
 
 #: A hard ceiling on questions per issue. Two hundred events produce far fewer shareable names.
-MAX_PAIRS = 80
+MAX_PAIRS = 50
 
 PAIR_MAX_TOKENS = 300
-PAIR_TIMEOUT_SECONDS = 120
+PAIR_TIMEOUT_SECONDS = 90
 PAIR_CONCURRENCY = 4
 
 SYSTEM = """你是 AI 资讯编辑的合并裁判。

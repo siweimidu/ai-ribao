@@ -217,7 +217,7 @@ jobs:
       # version of the action.
       pages: ${{ steps.upload-pages.outcome || '' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 55
     env:
       # `github_meta` reads this to lift the REST quota from 60/h (anonymous) to 1000/h.
       # Without it, the shared runner IP is usually already rate-limited and every
