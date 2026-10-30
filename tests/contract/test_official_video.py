@@ -92,7 +92,9 @@ def test_attachment_lands_in_unique_facts() -> None:
     event = _event("Kimi 官方教程：如何用 Kimi K3.1 Pro 创作 3D 作品")
     count = asyncio.run(attach_official_videos([event], _Client(ROWS)))
     assert count == 1
-    assert event.unique_facts["video"]["platform"] == "bilibili"
+    # unique_facts is dict[str, list[str]]; the video lives in flat keys.
+    assert event.unique_facts["video_url"] == ["https://www.bilibili.com/video/BV1xx411c7mD"]
+    assert event.unique_facts["video_author"] == ["Kimi官方"]
 
 
 def test_a_story_that_does_not_want_a_video_is_skipped() -> None:

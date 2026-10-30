@@ -155,8 +155,11 @@ async def attach_official_videos(events, client, *, limit: int = VIDEO_LOOKUP_LI
             found = await find_video(client, event.title)
         if not found:
             return False
+        # unique_facts is dict[str, list[str]] -- flat keys, not a nested object.
         facts = event.unique_facts if isinstance(event.unique_facts, dict) else {}
-        facts["video"] = found
+        facts["video_url"] = [found["url"]]
+        facts["video_title"] = [found["title"]]
+        facts["video_author"] = [found["author"]]
         event.unique_facts = facts
         return True
 

@@ -880,14 +880,15 @@ def render_item(
         )
 
     # The official walkthrough, when one was verified for this story.
-    _video = (event.unique_facts or {}).get("video") if isinstance(event.unique_facts, dict) else None
+    _facts = event.unique_facts if isinstance(event.unique_facts, dict) else {}
+    _video_url = (_facts.get("video_url") or [""])[0]
     video_html = ""
-    if isinstance(_video, dict) and _video.get("url"):
+    if _video_url:
         video_html = (
             '<p class="item__video"><a href="'
-            + esc(str(_video["url"]))
+            + esc(_video_url)
             + '" target="_blank" rel="noopener noreferrer">官方视频：'
-            + esc(str(_video.get("title") or ""))[:60]
+            + esc((_facts.get("video_title") or [""])[0])[:60]
             + "</a></p>"
         )
 
