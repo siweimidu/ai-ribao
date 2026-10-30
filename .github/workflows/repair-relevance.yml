@@ -74,8 +74,12 @@ jobs:
             echo "no changes"; exit 0
           fi
           git commit -m "chore(daily): ${{ inputs.date }} relevance repair"
-          for i in 1 2 3 4 5; do
+          for _ in 1 2 3 4 5; do
             git push && break
             sleep 8
-            git fetch origin main && git rebase origin/main || true
+            # `A && B || C` hides a real failure: shellcheck SC2015, and it also
+            # rebounds even when the fetch failed.
+            if git fetch origin main; then
+              git rebase origin/main || true
+            fi
           done
