@@ -1490,7 +1490,10 @@ async def _analyze_async(stage, sources, cfg, router, http, args, run_date: str)
 
                 attached = await attach_official_videos(selected, http)
                 if attached:
-                    print(f"  官方视频        {attached} 条挂上官方视频")
+                    from .rank import promote_official_videos
+
+                    selected = promote_official_videos(selected)
+                    print(f"  官方视频        {attached} 条带官方视频，已上提到第 4 位起")
             except Exception as exc:  # noqa: BLE001 - cosmetic, never fatal
                 print(f"  官方视频        未运行：{type(exc).__name__}", file=sys.stderr)
 

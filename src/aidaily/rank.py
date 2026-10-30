@@ -194,6 +194,47 @@ def _recency(
     return floor + (1.0 - floor) * decayed
 
 
+#: How many official-video stories may be lifted, and how far up they land.
+#:
+#: A tutorial is one story with one demonstration: corroboration across outlets is not the
+#: signal that makes it useful, so the heat model scores it low by construction. Measured
+#: 2026-10-30: 「Kimi 官方教程：如何用 Kimi K3.1 Pro 创作 3D 作品」 sat at #83 while being the most
+#: directly useful item of the day.
+#:
+#: The lift is deliberately bounded. Promotion is only granted to a story whose *verified
+#: official video* was attached -- that check is what makes "official" a fact rather than a
+#: claim -- and at most OFFICIAL_PROMOTE_LIMIT such stories per issue, placed after the leading
+#: news so a tutorial never displaces the day's biggest event.
+OFFICIAL_PROMOTE_LIMIT = 6
+OFFICIAL_PROMOTE_AFTER = 3
+
+
+def has_official_video(event) -> bool:
+    """True when a verified official video is attached to this event."""
+    facts = getattr(event, "unique_facts", None)
+    if not isinstance(facts, dict):
+        return False
+    return bool((facts.get("video_url") or [""])[0])
+
+
+def promote_official_videos(events, *, limit: int = OFFICIAL_PROMOTE_LIMIT,
+                            after: int = OFFICIAL_PROMOTE_AFTER):
+    """Move video-backed stories up, keeping the leading news in front of them.
+
+    Order among the promoted entries is the order they already had, so this cannot invent a
+    ranking -- it only lifts what the ranker already rated and the video check corroborated.
+    """
+    rows = list(events)
+    promoted = [e for e in rows if has_official_video(e)][:limit]
+    if not promoted:
+        return rows
+
+    promoted_ids = {e.event_id for e in promoted}
+    rest = [e for e in rows if e.event_id not in promoted_ids]
+    head = rest[:after]
+    tail = rest[after:]
+    return head + promoted + tail
+
 def score_event(
     event: Event,
     items_by_id: dict[str, NormalizedItem],
