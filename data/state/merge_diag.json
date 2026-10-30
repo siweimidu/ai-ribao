@@ -1,44 +1,49 @@
 {
-  "generated_at": "2026-10-29T23:01:39.917729+00:00",
+  "generated_at": "2026-10-30T05:05:30.070648+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 179,
-  "batches": 6,
-  "calls": 6,
-  "merged_groups": 4,
-  "merged_events": 6,
-  "rejected_groups": 1,
+  "input_events": 300,
+  "batches": 9,
+  "calls": 9,
+  "merged_groups": 12,
+  "merged_events": 14,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "You can generate and edit Google Docs files directly in Gemini chats now",
+      "kept": "OpenAI 更新 Model Spec，围绕五项核心价值观重组模型行为准则",
       "merged": [
-        "Gemini 新增文档、PDF、演示文稿和表格的直接生成、预览与编辑功能"
+        "OpenAI 更新模型规范，将忠于人类意图列为核心准则"
       ],
-      "why": "都是 Gemini 新增文档直接生成与编辑功能"
+      "why": "均为 OpenAI 更新 Model Spec 核心准则"
     },
     {
-      "kept": "Reddit 宣布转向以登录为主的体验，以应对 AI 搜索带来的流量下滑",
+      "kept": "谷歌 Gemini 上线聊天内文件编辑功能，支持 PDF、文档、表格等格式",
       "merged": [
-        "Reddit will force users to log in as AI is killing search tr",
-        "As search traffic dries up, Reddit announces it’s shifting t"
+        "告别繁琐导出！谷歌 Gemini 大升级:支持在对话中直接生成与编辑多格式文件"
       ],
-      "why": "都是 Reddit 宣布转向登录体验以应对流量下滑"
+      "why": "均指谷歌 Gemini 上线文件编辑功能"
     },
     {
-      "kept": "Rivian 与大众 58 亿美元合资公司扩展至 AI 助手",
+      "kept": "OpenAI doubles usage limits on Pro plans as competition with Anthropic heats up",
       "merged": [
-        "Rivian expands joint venture with VW to include AI assistant"
+        "Codex 宣布即日起 Pro 及 Business Premium 各档位用量上限翻倍"
       ],
-      "why": "都是 Rivian 与大众合资公司扩展 AI 业务"
+      "why": "均为 OpenAI/Codex Pro 上限翻倍报道"
     },
     {
-      "kept": "备足“优质口粮” 支撑京津冀AI 协同创新发展 - 天津日报",
+      "kept": "Reddit will force users to log in as AI is killing search traffic",
       "merged": [
-        "加强关键技术攻关 打造AI 标杆应用场景 - 天津日报",
-        "首批风云气象卫星极端天气AI 模型发布 - 天津日报"
+        "Reddit moves to logged-in experience as AI eats search"
       ],
-      "why": "都是天津日报关于京津冀/地区 AI 发展的系列报道"
+      "why": "均报道Reddit为应对AI爬虫强制登录"
+    },
+    {
+      "kept": "Claude Code 命令行工具恢复 ultrathink 功能",
+      "merged": [
+        "AI删文件终于可以不用再问了！Claude Code上线全新环境变量，赋予开发者绝对放行权限"
+      ],
+      "why": "均涉及Claude Code功能更新与权限调整"
     }
   ]
 }
