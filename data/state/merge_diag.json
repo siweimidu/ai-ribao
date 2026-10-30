@@ -1,49 +1,21 @@
 {
-  "generated_at": "2026-10-30T15:16:04.981680+00:00",
+  "generated_at": "2026-10-30T21:46:52.054991+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 436,
-  "batches": 12,
-  "calls": 12,
-  "merged_groups": 6,
-  "merged_events": 6,
-  "rejected_groups": 1,
+  "input_events": 119,
+  "batches": 3,
+  "calls": 3,
+  "merged_groups": 1,
+  "merged_events": 1,
+  "rejected_groups": 4,
   "failed": false,
   "examples": [
     {
-      "kept": "IDC：上半年中国MaaS市场达106.3亿元，火山引擎份额45.1%居首",
+      "kept": "Dartmouth's provost warned us about AI cheating—but his own AI use cost him his ",
       "merged": [
-        "IDC：阿里云位居中国大语言模型 MaaS 市场第一"
+        "My reporting prompted Dartmouth provost to resign. It wasn't"
       ],
-      "why": "IDC发布同一份中国MaaS市场报告，火山与阿里云份额互换排名"
-    },
-    {
-      "kept": "AI architecture startup Dream launches with $17M in funding",
-      "merged": [
-        "Ex-Palantir execs launch Dream with $17M from a16z to build "
-      ],
-      "why": "AI架构初创公司Dream获得a16z 1700万美元融资"
-    },
-    {
-      "kept": "龙岗街道开展WorkBuddy AI工作流实战课堂，解码效能，优化办公流程 - 龙岗政府在线",
-      "merged": [
-        "龙岗街道牵头“组队”练AI：260名干部带机开练，三份“家底”开放共享 - 龙岗政府在线"
-      ],
-      "why": "均为龙岗街道组织干部进行AI工作流实战培训"
-    },
-    {
-      "kept": "AI电影上映一周票房不到150万，AI电影败走院线 - 新浪网",
-      "merged": [
-        "AI电影的路在哪？徐汇“AI创聚场”来探讨 - 上观新闻"
-      ],
-      "why": "均探讨AI电影市场现状与出路"
-    },
-    {
-      "kept": "Samaya AI 发布 Sterling：3B 激活参数的金融研究智能体模型，在 FrontierFinance 上以 11 倍低成本超越 Claude Fa",
-      "merged": [
-        "Samaya AI Releases Sterling: A 3B-Active Finance Research Ag"
-      ],
-      "why": "均为 Samaya AI 发布 Sterling 金融研究模型"
+      "why": "均为达特茅斯学院教务长因AI使用违规辞职一事"
     }
   ]
 }
