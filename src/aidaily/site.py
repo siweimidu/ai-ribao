@@ -886,7 +886,7 @@ def render_item(
         video_html = (
             '<p class="item__video"><a href="'
             + esc(str(_video["url"]))
-            + '" target="_blank" rel="noopener noreferrer">官方视频 · '
+            + '" target="_blank" rel="noopener noreferrer">官方视频：'
             + esc(str(_video.get("title") or ""))[:60]
             + "</a></p>"
         )
