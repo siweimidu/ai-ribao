@@ -64,6 +64,11 @@ class RankWeights:
     engagement: float = 0.20
     #: reference body length (characters) at which substance saturates
     substance_reference_chars: int = 600
+
+    #: Body length below which a story counts as a bare headline.
+    #:
+    #: Not a deletion test: it caps how far a thin entry can climb.
+    substance_thin_chars: int = 300
     max_per_source: int = 2
     max_per_group: int = 3
     #: Entries allowed per model designation in one issue. One: the reader treats a model
@@ -231,6 +236,19 @@ def score_event(
     damped_source = source_weight ** 0.25
 
     substance_raw = _substance(members)
+    # **A headline is not a story.**
+    #
+    # Substance used to be reported but never scored, and the cost is visible on the page: on
+    # 2026-10-30 position #02 was 「中国首个 AI 定义芯片诞生」, a Google News re-index whose
+    # whole body is the headline. Its facts were 「报道标题称…」 and every 不确定 line read 未提及.
+    # The reader learned nothing, and it outranked complete stories.
+    #
+    # The factor is bounded: a thin entry keeps 35% of its score, so it can still appear at the
+    # tail of the issue but cannot lead it. Nothing is deleted.
+    substance_factor = 0.35 + 0.65 * min(
+        1.0, substance_raw / max(1, rank.substance_thin_chars)
+    )
+
 
     heat_score, heat_components = heat(event, items_by_id, now=now)
 
@@ -309,7 +327,7 @@ def score_event(
 
     score = (
         heat_score * damped_source * title_factor * focus_factor * vendor_factor
-        * frequency_factor * boost_factor * aihot_factor * 100
+        * frequency_factor * boost_factor * aihot_factor * substance_factor * 100
     )
 
     return RankedEvent(
@@ -320,6 +338,7 @@ def score_event(
             "source_damped": round(damped_source, 4),
             "substance": round(min(substance_raw / max(1, rank.substance_reference_chars), 1.0), 3),
             "substance_chars": float(substance_raw),
+            "substance_factor": round(substance_factor, 3),
             "title_quality": round(title_factor, 3),
         "source_boost": round(boost_factor, 3),
             "aihot_boost": round(aihot_factor, 3),

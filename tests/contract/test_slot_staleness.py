@@ -13,7 +13,16 @@ from __future__ import annotations
 import json
 from datetime import datetime, timedelta
 
-from scripts import missing_slots
+# `scripts/` is not a package, so CI cannot import it by name. Load it by path.
+import importlib.util
+from pathlib import Path
+
+_SPEC = importlib.util.spec_from_file_location(
+    "missing_slots",
+    Path(__file__).resolve().parents[2] / "scripts" / "missing_slots.py",
+)
+missing_slots = importlib.util.module_from_spec(_SPEC)
+_SPEC.loader.exec_module(missing_slots)
 
 #: A time after the last slot deadline, so all three slots count as due.
 NOW_CN = datetime(2026, 10, 30, 22, 30)
