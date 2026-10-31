@@ -1,50 +1,13 @@
 {
-  "generated_at": "2026-10-31T15:48:23.255292+00:00",
+  "generated_at": "2026-10-31T23:07:21.679899+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 315,
-  "batches": 8,
-  "calls": 8,
-  "merged_groups": 5,
-  "merged_events": 6,
-  "rejected_groups": 5,
+  "input_events": 79,
+  "batches": 2,
+  "calls": 2,
+  "merged_groups": 0,
+  "merged_events": 0,
+  "rejected_groups": 0,
   "failed": false,
-  "examples": [
-    {
-      "kept": "Sam Altman 会见约50名三星高管谈存储芯片合作",
-      "merged": [
-        "Sam Altman says it’s better for RAM to be in a data center t",
-        "Sam Altman is upset at you for hoarding RAM in your own comp"
-      ],
-      "why": "Sam Altman 谈存储芯片/RAM 合作与观点"
-    },
-    {
-      "kept": "黑石称 Anthropic 上市后或难获投资级信用评级",
-      "merged": [
-        "Anthropic may not secure investment-grade rating after IPO, "
-      ],
-      "why": "均报道黑石称 Anthropic 上市后难获投资级评级"
-    },
-    {
-      "kept": "Google’s first data center satellite is online and writing poetry",
-      "merged": [
-        "Google’s satellite AI server transmits its first response to"
-      ],
-      "why": "均指 Google 首个数据中心卫星上线并响应"
-    },
-    {
-      "kept": "Dartmouth's provost warned us about AI cheating—but his own AI use cost him his ",
-      "merged": [
-        "My reporting prompted Dartmouth provost to resign. It wasn't"
-      ],
-      "why": "均为达特茅斯学院教务长因AI使用不当辞职事件"
-    },
-    {
-      "kept": "Gemini 聊天内直接编辑 PDF 与文档",
-      "merged": [
-        "AI日报：百度升级AI搜索；豆包工作正式接入DeepSeek；谷歌Gemini全面支持PDF、表格等内联编辑"
-      ],
-      "why": "谷歌Gemini支持文档内联编辑"
-    }
-  ]
+  "examples": []
 }
