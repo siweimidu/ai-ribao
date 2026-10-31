@@ -1,35 +1,28 @@
 {
-  "generated_at": "2026-10-31T04:01:50.810687+00:00",
+  "generated_at": "2026-10-31T09:41:30.886546+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 146,
-  "batches": 5,
-  "calls": 5,
-  "merged_groups": 3,
-  "merged_events": 3,
-  "rejected_groups": 3,
+  "input_events": 255,
+  "batches": 8,
+  "calls": 8,
+  "merged_groups": 2,
+  "merged_events": 2,
+  "rejected_groups": 0,
   "failed": false,
   "examples": [
     {
-      "kept": "Google’s first data center satellite is online and writing poetry",
+      "kept": "AI听得懂“得闲饮茶”？这场大赛院士“点”题，AI“心”领神会 - 新华网广东",
       "merged": [
-        "Google’s satellite AI server transmits its first response to"
+        "AI让多种服务“识听识讲”粤语，琶洲算法大赛“点心杯”决出最终名次 - 新华网广东"
       ],
-      "why": "都是关于 Google 数据中心卫星上线并产生首次响应"
-    },
-    {
-      "kept": "GitHub Incident with Actions, Pages, and Webhooks",
-      "merged": [
-        "GitHub Actions Runner Controller 0.15.0 致力于实现大规模场景下的可靠性"
-      ],
-      "why": "都提及 GitHub Actions 相关的事件/更新"
+      "why": "都是琶洲算法大赛“点心杯”AI粤语识别结果的报道"
     },
     {
       "kept": "Dartmouth's provost warned us about AI cheating—but his own AI use cost him his ",
       "merged": [
         "My reporting prompted Dartmouth provost to resign. It wasn't"
       ],
-      "why": "均报道达特茅斯学院学术副校长因AI使用争议辞职事件"
+      "why": "都是关于达特茅斯学院教务长因 AI 使用问题辞职的报道"
     }
   ]
 }
