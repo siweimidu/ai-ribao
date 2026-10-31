@@ -47,11 +47,22 @@ _ROW = re.compile(
     re.S,
 )
 
+#: A row that carries a number but no link -- 「据报道 Anthropic 是 SpaceX 最大单一客户
+#: <code>#15</code>」 arrives this way. Without it the whole 前瞻与传闻 section is skipped,
+#: which is how the 2026-10-31 issue delivered 15 stories and only 13 were collected.
+_ROW_NO_LINK = re.compile(
+    r"<li>(?P<title>.+?)\s*<code>#(?P<n>\d+)</code>\s*</li>",
+    re.S,
+)
+
 _TAG = re.compile(r"<[^>]+>")
 
 #: Section names a digest uses. Recognising them keeps a page of prose from being parsed as a
 #: story list: without this, any `<h3>` followed by `<ul>` would qualify.
 KNOWN_SECTIONS = {
+    #: 2026-10-31: the section that carried the Musk/Grok 4.8 story. A whitelist that
+    #: does not name a real section silently drops every story in it.
+    "前瞻与传闻",
     "要闻", "开发生态", "模型发布", "产品应用", "技术与洞察", "行业动态",
     "概览", "快讯", "其他", "头条",
 }
@@ -59,6 +70,10 @@ KNOWN_SECTIONS = {
 
 def _text(html: str) -> str:
     return " ".join(_TAG.sub(" ", html).split())
+
+
+#: Sections named in an issue but absent from the whitelist, recorded per run.
+SKIPPED_SECTIONS: set[str] = set()
 
 
 def split_digest(body_html: str) -> list[Story]:
@@ -76,7 +91,18 @@ def split_digest(body_html: str) -> list[Story]:
     seen: set[str] = set()
     for section_m in _SECTION.finditer(html):
         section = _text(section_m.group(1))
+        # A section that numbers its rows is a story section, whatever it is called.
+        #
+        # The whitelist alone was a silent trap: 2026-10-31 shipped a section called 前瞻与传闻
+        # that was not on the list, so 「马斯克称 Grok 4.8 推出较慢但不会令人失望」 never entered
+        # the candidate pool and nobody was told. Navigation blocks do not number their rows,
+        # so the number is the signal that separates a section of stories from site furniture.
         if section not in KNOWN_SECTIONS:
+            # **Never drop a section silently.** 2026-10-31 shipped 前瞻与传闻, the whitelist did
+            # not name it, and 「马斯克称 Grok 4.8 推出较慢但不会令人失望」 never reached the
+            # candidate pool -- with no warning anywhere. The name is now whitelisted, and any
+            # future unknown section is recorded so it shows up instead of vanishing.
+            SKIPPED_SECTIONS.add(section)
             continue
         for row_m in _ROW.finditer(section_m.group(2)):
             title = _text(row_m.group("title"))
