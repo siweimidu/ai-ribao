@@ -28,6 +28,8 @@ fact rather than argued about.
 
 from __future__ import annotations
 
+import re
+
 import math
 from collections import Counter
 from dataclasses import dataclass, field
@@ -234,6 +236,34 @@ def promote_official_videos(events, *, limit: int = OFFICIAL_PROMOTE_LIMIT,
     head = rest[:after]
     tail = rest[after:]
     return head + promoted + tail
+
+#: A repository link, as opposed to a story about one.
+_REPO_URL = re.compile(r"^https?://(?:www\.)?github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+/?$")
+
+#: Where a repository entry is allowed to start from.
+REPO_DEMOTE_AFTER = 20
+
+
+def _is_repository_event(event) -> bool:
+    return any(_REPO_URL.match(u or "") for u in (getattr(event, "all_urls", None) or ()))
+
+
+def demote_repository_stories(events, *, after: int = REPO_DEMOTE_AFTER):
+    """Push open-source repository links below the first `after` positions.
+
+    Measured 2026-10-31: `anthropics/skills — Public repository for Agent Skills` sat at #09.
+    A repository is a place, not an event: it says nothing happened today, and the reader
+    clicking it lands on a README. It stays in the issue -- the work is real -- but it does not
+    take a slot in front of the day's news.
+    """
+    rows = list(events)
+    repos = [e for e in rows if _is_repository_event(e)]
+    if not repos:
+        return rows
+    rest = [e for e in rows if not _is_repository_event(e)]
+    if len(rest) <= after:
+        return rest + repos
+    return rest[:after] + repos + rest[after:]
 
 def score_event(
     event: Event,

@@ -2320,3 +2320,8 @@ body { font-family: var(--f-sans); }
 .item__video a {
   color: var(--accent, #b4541f);
 }
+
+
+/* A picture that cannot load leaves an empty frame; an empty frame is worse than no picture.
+   The onerror handler removes the button and this rule collapses the container. */
+.item__images:empty { display: none; }

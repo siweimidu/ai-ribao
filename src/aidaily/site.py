@@ -707,7 +707,8 @@ def render_item(
         thumbs = "".join(
             f'<button type="button" class="item__thumb" data-full="{esc(url)}" '
             f'aria-label="放大图片">'
-            f'<img src="{esc(url)}" alt="" loading="lazy" decoding="async"></button>'
+            f'<img src="{esc(url)}" alt="" loading="lazy" decoding="async" '
+            'onerror="this.closest(''.item__thumb'').remove()"></button>'
             for url in event.image_urls
         )
         image_html = f'<div class="item__images">{thumbs}</div>'
