@@ -1,28 +1,50 @@
 {
-  "generated_at": "2026-10-31T09:41:30.886546+00:00",
+  "generated_at": "2026-10-31T15:48:23.255292+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 255,
+  "input_events": 315,
   "batches": 8,
   "calls": 8,
-  "merged_groups": 2,
-  "merged_events": 2,
-  "rejected_groups": 0,
+  "merged_groups": 5,
+  "merged_events": 6,
+  "rejected_groups": 5,
   "failed": false,
   "examples": [
     {
-      "kept": "AI听得懂“得闲饮茶”？这场大赛院士“点”题，AI“心”领神会 - 新华网广东",
+      "kept": "Sam Altman 会见约50名三星高管谈存储芯片合作",
       "merged": [
-        "AI让多种服务“识听识讲”粤语，琶洲算法大赛“点心杯”决出最终名次 - 新华网广东"
+        "Sam Altman says it’s better for RAM to be in a data center t",
+        "Sam Altman is upset at you for hoarding RAM in your own comp"
       ],
-      "why": "都是琶洲算法大赛“点心杯”AI粤语识别结果的报道"
+      "why": "Sam Altman 谈存储芯片/RAM 合作与观点"
+    },
+    {
+      "kept": "黑石称 Anthropic 上市后或难获投资级信用评级",
+      "merged": [
+        "Anthropic may not secure investment-grade rating after IPO, "
+      ],
+      "why": "均报道黑石称 Anthropic 上市后难获投资级评级"
+    },
+    {
+      "kept": "Google’s first data center satellite is online and writing poetry",
+      "merged": [
+        "Google’s satellite AI server transmits its first response to"
+      ],
+      "why": "均指 Google 首个数据中心卫星上线并响应"
     },
     {
       "kept": "Dartmouth's provost warned us about AI cheating—but his own AI use cost him his ",
       "merged": [
         "My reporting prompted Dartmouth provost to resign. It wasn't"
       ],
-      "why": "都是关于达特茅斯学院教务长因 AI 使用问题辞职的报道"
+      "why": "均为达特茅斯学院教务长因AI使用不当辞职事件"
+    },
+    {
+      "kept": "Gemini 聊天内直接编辑 PDF 与文档",
+      "merged": [
+        "AI日报：百度升级AI搜索；豆包工作正式接入DeepSeek；谷歌Gemini全面支持PDF、表格等内联编辑"
+      ],
+      "why": "谷歌Gemini支持文档内联编辑"
     }
   ]
 }
