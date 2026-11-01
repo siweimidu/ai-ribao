@@ -1,50 +1,28 @@
 {
-  "generated_at": "2026-11-01T03:10:46.882112+00:00",
+  "generated_at": "2026-11-01T06:28:12.858024+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 161,
-  "batches": 5,
-  "calls": 5,
-  "merged_groups": 5,
-  "merged_events": 6,
-  "rejected_groups": 1,
+  "input_events": 184,
+  "batches": 6,
+  "calls": 6,
+  "merged_groups": 2,
+  "merged_events": 2,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
       "kept": "OpenAI 传闻将新一轮融资目标下调至 200 亿美元",
       "merged": [
-        "OpenAI reportedly lowers funding target for new round"
+        "AI巨头融资压力显现？OpenAI据称将融资目标下调百亿美元 - 新浪财经"
       ],
-      "why": "都是OpenAI下调新一轮融资目标传闻"
+      "why": "均报道 OpenAI 融资目标下调至 200 亿美元"
     },
     {
-      "kept": "商汤开源 SenseNova Loop-9B-Preview：9B 参数媲美 27B 模型",
+      "kept": "英国学者看爆火AI歌曲《过来人》：难以置信，令人着迷！ - 川观新闻",
       "merged": [
-        "3.3亿参数打平通用大模型：垂直基础模型的算力性价比答案 - ThePaper.cn"
+        "当AI唱起“过来人”，谁才是情绪的主人？ - 中国新闻网"
       ],
-      "why": "均报道 3.3 亿参数垂直模型媲美通用大模型"
-    },
-    {
-      "kept": "成本千万票房不到150万？首部AI电影《三星堆：未来往事》败走大银幕 - ThePaper.cn",
-      "merged": [
-        "首部AI院线电影“遇冷” - 凤凰网财经"
-      ],
-      "why": "均报道首部 AI 院线电影票房惨淡"
-    },
-    {
-      "kept": "英国学者看爆火AI歌曲《过来人》：通过AI连接古今、抒发情感的方式“令人着迷” - 欧洲头条",
-      "merged": [
-        "工人日报：当AI唱起“过来人”，谁才是情绪的主人？ - ThePaper.cn"
-      ],
-      "why": "均探讨 AI 歌曲《过来人》及其影响"
-    },
-    {
-      "kept": "【现代快报】落地真实产业场景！这场省级AI大赛见证东南学子科创硬实力 - 东大新闻网",
-      "merged": [
-        "【交汇点新闻】AI时代教育如何重塑？中英20余所高校在南京发布共同倡议 - 东大新闻网",
-        "【荔枝网】AI时代如何重塑教育边界？中英卓越大学校长论坛在南京举行 - 东大新闻网"
-      ],
-      "why": "均报道南京中英高校 AI 教育倡议活动"
+      "why": "都是对AI歌曲《过来人》的热议与评论"
     }
   ]
 }
