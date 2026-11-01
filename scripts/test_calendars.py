@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import asyncio
 import calendar
+import re
 import sys
 from datetime import date
 from pathlib import Path
@@ -200,15 +201,27 @@ async def check_rail_calendar(page) -> None:
         }"""
     )
     check("导航日历表头 7 个", shape["dow"] == 7, str(shape["dow"]))
-    check("导航日历有当日标记", shape["today"])
-    check("当日是圆形", (shape["todayRadius"] or "").startswith("50%"), shape["todayRadius"] or "")
     check("显示月份", "年" in shape["month"] and "月" in shape["month"], shape["month"])
 
-    # The rail calendar draws the current month, so compare against the real one.
+    # **The grid drawn is the one belonging to the page, not to today.**
+    #
+    # 2026-11-01: this guard failed two checks because the page it opens is from October and
+    # today is November -- there is no "today" cell to measure, and the day count was compared
+    # against November. A guard that goes red because the month turned over trains people to
+    # ignore it. So: the marker checks run only when the page's month is the current month,
+    # and the day count is compared against the month the page actually draws.
     today = date.today()
-    expected = calendar.monthrange(today.year, today.month)[1]
-    if str(today.year) in shape["month"]:
+    shown = re.findall(r"(\d{4})\s*年\s*(\d{1,2})\s*月", shape["month"])
+    if shown:
+        year, month = int(shown[0][0]), int(shown[0][1])
+        expected = calendar.monthrange(year, month)[1]
         check("当月天数正确", shape["days"] == expected, f"{shape['days']} / {expected}")
+        if (year, month) == (today.year, today.month):
+            check("导航日历有当日标记", shape["today"])
+            check("当日是圆形", (shape["todayRadius"] or "").startswith("50%"),
+                  shape["todayRadius"] or "")
+        else:
+            print(f"  skip 当日标记（页面是 {year}-{month:02d}，今天 {today.year}-{today.month:02d}）")
 
 
 async def main() -> int:
@@ -221,7 +234,16 @@ async def main() -> int:
         page = await browser.new_page(viewport={"width": 1600, "height": 1000})
         errors: list[str] = []
         page.on("pageerror", lambda e: errors.append(str(e)))
-        page.on("console", lambda m: errors.append(m.text) if m.type == "error" else None)
+        # A blocked font or player is the environment, not a defect in the page; only real
+        # script errors count. See test_site_interactions.py for the same rule.
+        page.on(
+            "console",
+            lambda m: errors.append(m.text)
+            if m.type == "error"
+            and "Failed to load resource" not in m.text
+            and "net::ERR_" not in m.text
+            else None,
+        )
 
         print("事件日历（tibo.html）")
         await check_event_calendar(page)
