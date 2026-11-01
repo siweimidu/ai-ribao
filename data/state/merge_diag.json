@@ -1,49 +1,35 @@
 {
-  "generated_at": "2026-11-01T06:45:13.460194+00:00",
+  "generated_at": "2026-11-01T13:45:07.782295+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 182,
-  "batches": 6,
-  "calls": 6,
-  "merged_groups": 5,
-  "merged_events": 7,
-  "rejected_groups": 1,
+  "input_events": 241,
+  "batches": 7,
+  "calls": 7,
+  "merged_groups": 3,
+  "merged_events": 3,
+  "rejected_groups": 0,
   "failed": false,
   "examples": [
     {
-      "kept": "美国AI扩张的新瓶颈：“廉价资金”短缺|Anthropic|OpenAI|spacex|债券|ChatGPT_手机新浪网 - 新浪财经",
+      "kept": "Claude紧急叫停！暗改Harness禁止逆向游戏",
       "merged": [
-        "当前AI最紧迫的瓶颈：廉价资金在枯竭 - 凤凰网财经"
+        "Anthropic takes steps to block Claude from reverse-engineeri"
       ],
-      "why": "均报道AI扩张面临廉价资金短缺瓶颈"
+      "why": "均为 Claude 禁止逆向工程游戏"
     },
     {
-      "kept": "从技术试水到多场景落地——今年“双11”AI产品开始走上货架 - 新浪财经",
+      "kept": "DeepSeek 发文探讨 Super-agent 架构，并开源研究原型",
       "merged": [
-        "首次摆上“双十一”货架 Token走进大众消费 - 新京报"
+        "AI进化速递丨DeepSeek发布全新Agent架构 - 新浪财经"
       ],
-      "why": "均报道双11期间AI产品/Token上架消费新闻"
+      "why": "均为 DeepSeek 发布 Agent 架构"
     },
     {
-      "kept": "Grok 模型将于 11 月 7 日起为生成文本添加隐形水印以响应欧盟 AI 法案",
+      "kept": "近岸蛋白：公司赋能AI的高通量湿实验与数据包服务尚处于市场拓展初期 - 东方财富",
       "merged": [
-        "SpaceXSI 将为 Grok API 文本默认加入不可见水印"
+        "股价异动，近岸蛋白称公司赋能AI的高通量湿实验与数据包服务尚处于市场拓展初期 - 东方财富"
       ],
-      "why": "均报道Grok模型/文本将添加隐形水印"
-    },
-    {
-      "kept": "OpenAI reportedly lowers funding target for new round",
-      "merged": [
-        "报道称 OpenAI 新一轮融资获约 110 亿美元承诺"
-      ],
-      "why": "均报道 OpenAI 融资目标或金额变动"
-    },
-    {
-      "kept": "乌镇“网事”|【AI视频】千年古镇“开源”向世界 - 光明网",
-      "merged": [
-        "乌镇“网事”丨AI点亮千年古镇 智慧生活触手可及 - 新浪新闻_手机新浪网"
-      ],
-      "why": "均为乌镇AI相关报道"
+      "why": "都是近岸蛋白对 AI 高通量湿实验服务的同一条回应"
     }
   ]
 }
