@@ -570,6 +570,38 @@ def _strip_container(title: str) -> str:
     return _CONTAINER_PREFIX.sub("", (title or "").strip()).strip()
 
 
+
+
+#: Leading interjections a news site adds to make a headline feel urgent.
+_INTERJECTION = re.compile(r"^\s*(?:\u521a\u521a|\u91cd\u78c5|\u7a81\u53d1|\u72ec\u5bb6|\u5feb\u8baf|\u6700\u65b0)\s*[\uff0c,\u3001:\uff1a!\uff01]?\s*")
+
+#: `- 新浪网`: the outlet appended to a syndicated headline.
+_OUTLET_SUFFIX = re.compile(r"\s+[-\u2014\u2013|\uff5c]\s+[^-\u2014\u2013|\uff5c]{2,20}$")
+
+#: Decorative quote marks around a term.
+_DECOR_QUOTES = re.compile(r"[\u300c\u300d\u300e\u300f\u201c\u201d\u2018\u2019]")
+
+
+def _formalize_title(title: str) -> str:
+    """A headline written for a paper, not for a feed.
+
+    A syndicated headline arrives with an interjection, decorative quotes, an exclamation and
+    the outlet appended: 「刚刚，DeepSeek 开源「超级智能体」！这 AI 牛马 - 新浪网」.
+
+    Removed here: the interjection, the quote marks, the outlet suffix, the exclamation mark.
+    The words themselves are left alone -- rewriting them is the model job, and a regex that
+    edits prose produces worse prose than it removes.
+    """
+    text = (title or "").strip()
+    if not text:
+        return text
+    for _ in range(2):
+        text = _INTERJECTION.sub("", text)
+        text = _OUTLET_SUFFIX.sub("", text)
+    text = _DECOR_QUOTES.sub("", text)
+    text = text.replace("\uff01", "").replace("!", "")
+    return re.sub(r"\s{2,}", " ", text).strip()
+
 def _is_compound(title: str) -> bool:
     """True when a headline states more than one thing.
 
@@ -657,7 +689,7 @@ def _display_title(
                 candidates.append(item.title)
 
     # One title, one event: strip issue labels and refuse compounds.
-    cleaned = [_strip_container(c) for c in candidates]
+    cleaned = [_formalize_title(_strip_container(c)) for c in candidates]
     singles = [c for c in cleaned if c and not _is_compound(c)]
     pool = singles or [_first_clause(c) for c in cleaned]
     for title in pool:

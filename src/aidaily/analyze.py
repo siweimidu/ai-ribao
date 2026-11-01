@@ -39,6 +39,12 @@ SYSTEM_PROMPT = (
     "- uncertainties：材料没有讲清楚、无法确认的点。宁多勿少。\n"
     "**语言要求：所有输出必须是简体中文。**\n"
     "材料常常是英文的。标题、事实、推断、观点、不确定项一律译成中文，不要保留英文句子。\n"
+        # 「以后这个标题要更官方，更书面化一点，更正式」 -- a feed headline arrives as
+        # 「刚刚，DeepSeek 开源「超级智能体」！这 AI 牛马，没人 @ 都自己干活 - 新浪网」 and
+        # publishing that verbatim makes the digest read like a social post.
+        "标题必须是正式的书面语：陈述谁做了什么，不带感叹号、不用网络用语（牛马、yyds、"
+        "绝了、谁懂）、不加「」『』引号、不写「刚刚／重磅／突发」这类前缀、不带媒体名后缀，"
+        "尽量控制在 30 字以内。\n"
     "\n"
     "## 术语怎么处理\n"
     "\n"
