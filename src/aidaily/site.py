@@ -665,7 +665,17 @@ def _display_title(
     # Longest first: absorbed headlines are recorded in merge order, and the first is
     # often a bare product string while a later one says what happened. Length is a crude
     # but reliable proxy here, because every candidate describes the same release.
-    candidates: list[str] = sorted((t for t in merged if t), key=len, reverse=True)
+    # **The model title wins over a headline the outlet wrote to attract clicks.**
+    #
+    # Candidates used to be ordered longest-first, on the reasoning that length is a
+    # proxy for completeness. It is also a proxy for clickbait: 「刚刚，DeepSeek 开源
+    # 「超级智能体」！这 AI 牛马，没人 @ 都自己干活 - 新浪网」 is longer than any rewrite,
+    # so the page led with it. The model is asked for a formal written headline; that
+    # instruction is worth more than a length heuristic.
+    candidates: list[str] = []
+    if insight and insight.title:
+        candidates.append(insight.title)
+    candidates.extend(sorted((t for t in merged if t), key=len, reverse=True))
 
     # **A repository story keeps its own title.**
     #
@@ -679,8 +689,6 @@ def _display_title(
     if _is_repository_story(event):
         return event.title.strip()
 
-    if insight and insight.title:
-        candidates.append(insight.title)
     candidates.append(event.title)
     if items_by_id:
         for item_id in event.member_item_ids:
