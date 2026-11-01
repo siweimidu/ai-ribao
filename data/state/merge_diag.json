@@ -1,28 +1,49 @@
 {
-  "generated_at": "2026-11-01T06:28:12.858024+00:00",
+  "generated_at": "2026-11-01T06:45:13.460194+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 184,
+  "input_events": 182,
   "batches": 6,
   "calls": 6,
-  "merged_groups": 2,
-  "merged_events": 2,
-  "rejected_groups": 2,
+  "merged_groups": 5,
+  "merged_events": 7,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "OpenAI 传闻将新一轮融资目标下调至 200 亿美元",
+      "kept": "美国AI扩张的新瓶颈：“廉价资金”短缺|Anthropic|OpenAI|spacex|债券|ChatGPT_手机新浪网 - 新浪财经",
       "merged": [
-        "AI巨头融资压力显现？OpenAI据称将融资目标下调百亿美元 - 新浪财经"
+        "当前AI最紧迫的瓶颈：廉价资金在枯竭 - 凤凰网财经"
       ],
-      "why": "均报道 OpenAI 融资目标下调至 200 亿美元"
+      "why": "均报道AI扩张面临廉价资金短缺瓶颈"
     },
     {
-      "kept": "英国学者看爆火AI歌曲《过来人》：难以置信，令人着迷！ - 川观新闻",
+      "kept": "从技术试水到多场景落地——今年“双11”AI产品开始走上货架 - 新浪财经",
       "merged": [
-        "当AI唱起“过来人”，谁才是情绪的主人？ - 中国新闻网"
+        "首次摆上“双十一”货架 Token走进大众消费 - 新京报"
       ],
-      "why": "都是对AI歌曲《过来人》的热议与评论"
+      "why": "均报道双11期间AI产品/Token上架消费新闻"
+    },
+    {
+      "kept": "Grok 模型将于 11 月 7 日起为生成文本添加隐形水印以响应欧盟 AI 法案",
+      "merged": [
+        "SpaceXSI 将为 Grok API 文本默认加入不可见水印"
+      ],
+      "why": "均报道Grok模型/文本将添加隐形水印"
+    },
+    {
+      "kept": "OpenAI reportedly lowers funding target for new round",
+      "merged": [
+        "报道称 OpenAI 新一轮融资获约 110 亿美元承诺"
+      ],
+      "why": "均报道 OpenAI 融资目标或金额变动"
+    },
+    {
+      "kept": "乌镇“网事”|【AI视频】千年古镇“开源”向世界 - 光明网",
+      "merged": [
+        "乌镇“网事”丨AI点亮千年古镇 智慧生活触手可及 - 新浪新闻_手机新浪网"
+      ],
+      "why": "均为乌镇AI相关报道"
     }
   ]
 }
