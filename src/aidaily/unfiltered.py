@@ -48,6 +48,12 @@ UNFILTERED_SOURCES = frozenset({
     "rss:ainewslog-com",
     "api:aibase-ai-news",
     "api:aibase-daily-news",
+
+    #: 「以后这个网站也放到不用筛选，直接打分去重排序的几个源里」 -- daily.ai225.com.
+    #:
+    #: It also publishes a JSON API (/api/v1/daily/YYYY-MM-DD.json). The RSS feed carries the
+    #: same daily stories and is what this registry already reads, so one id covers the site.
+    "rss:daily-ai225",
     # --- aihot.news, the three feeds the user named -----------------------------------
     #
     # 「这三个RSS算作一个，也加入不用筛选，直接打分的当日信息里面，这些消息只能去重并标注

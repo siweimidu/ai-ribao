@@ -1132,6 +1132,7 @@ _NAMED_LABEL = {
     "rss:aihot-news-picks": "aihot 精选",
     "rss:aihot-news-full": "aihot 全量",
     "rss:aihot-news-daily": "aihot 日报",
+    "rss:daily-ai225": "daily.ai225",
 }
 
 
