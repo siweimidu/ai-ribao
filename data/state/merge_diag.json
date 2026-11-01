@@ -1,35 +1,13 @@
 {
-  "generated_at": "2026-11-01T13:45:07.782295+00:00",
+  "generated_at": "2026-11-01T23:05:34.727836+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 241,
-  "batches": 7,
-  "calls": 7,
-  "merged_groups": 3,
-  "merged_events": 3,
+  "input_events": 99,
+  "batches": 3,
+  "calls": 3,
+  "merged_groups": 0,
+  "merged_events": 0,
   "rejected_groups": 0,
   "failed": false,
-  "examples": [
-    {
-      "kept": "Claude紧急叫停！暗改Harness禁止逆向游戏",
-      "merged": [
-        "Anthropic takes steps to block Claude from reverse-engineeri"
-      ],
-      "why": "均为 Claude 禁止逆向工程游戏"
-    },
-    {
-      "kept": "DeepSeek 发文探讨 Super-agent 架构，并开源研究原型",
-      "merged": [
-        "AI进化速递丨DeepSeek发布全新Agent架构 - 新浪财经"
-      ],
-      "why": "均为 DeepSeek 发布 Agent 架构"
-    },
-    {
-      "kept": "近岸蛋白：公司赋能AI的高通量湿实验与数据包服务尚处于市场拓展初期 - 东方财富",
-      "merged": [
-        "股价异动，近岸蛋白称公司赋能AI的高通量湿实验与数据包服务尚处于市场拓展初期 - 东方财富"
-      ],
-      "why": "都是近岸蛋白对 AI 高通量湿实验服务的同一条回应"
-    }
-  ]
+  "examples": []
 }
