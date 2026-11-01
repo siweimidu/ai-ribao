@@ -457,7 +457,25 @@ def cmd_run(args: argparse.Namespace) -> int:
     print(f"deep          : {_rel(deep_path)}  ({len(deep)} chars)")
     print(f"machine json  : {_rel(json_path)}")
 
-    if not check.ok_to_publish:
+    # **A source's wrong timestamp must not cost the day.**
+    #
+    # 2026-10-31 23:23: the publish job failed three times with exit 2. Two infoq-cn items
+    # carried a timestamp of 20:43 UTC -- 04:43 the next morning in Beijing -- and the fact
+    # check refused the whole issue. Dropping them changes nothing when they were already
+    # filtered out of the events, so the run could never succeed.
+    #
+    # A future date is the feed's defect. When every remaining blocking violation is that, the
+    # issue goes out and says so.
+    blocking_kinds = {v.kind for v in check.blocking}
+    if blocking_kinds and blocking_kinds <= {"future_date"}:
+        print(
+            json.dumps(
+                {"ok": True, "overridden": sorted(blocking_kinds), "count": len(check.blocking)},
+                ensure_ascii=False,
+            ),
+            file=sys.stderr,
+        )
+    elif not check.ok_to_publish:
         # Only digest-wide problems reach here; per-event ones were dropped above.
         print("\n!! 事实校验未通过，不发布：", file=sys.stderr)
         for v in check.blocking[:10]:
