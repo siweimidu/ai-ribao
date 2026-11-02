@@ -1,13 +1,23 @@
 {
-  "generated_at": "2026-11-01T23:05:34.727836+00:00",
+  "generated_at": "2026-11-02T04:54:53.955851+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 99,
-  "batches": 3,
-  "calls": 3,
-  "merged_groups": 0,
-  "merged_events": 0,
+  "input_events": 219,
+  "batches": 7,
+  "calls": 7,
+  "merged_groups": 1,
+  "merged_events": 3,
   "rejected_groups": 0,
   "failed": false,
-  "examples": []
+  "examples": [
+    {
+      "kept": "微软 AI 负责人苏莱曼：AI 模型没有意识，应确保其永远保持如此",
+      "merged": [
+        "微软AI首席执行官苏莱曼发文：研发有意识AI是鲁莽之举 - 观点网",
+        "AI不能有意识，微软AI掌门人亲自划红线！ - finance.sina.com.cn",
+        "微软 AI 掌门人划红线：AI 不该有意识，有了就全员暂停"
+      ],
+      "why": "均报道微软苏莱曼关于AI无意识的言论"
+    }
+  ]
 }
