@@ -1,50 +1,22 @@
 {
-  "generated_at": "2026-11-02T14:09:03.132120+00:00",
+  "generated_at": "2026-11-02T21:45:33.901221+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 323,
-  "batches": 10,
-  "calls": 10,
-  "merged_groups": 5,
-  "merged_events": 7,
-  "rejected_groups": 4,
+  "input_events": 129,
+  "batches": 4,
+  "calls": 4,
+  "merged_groups": 1,
+  "merged_events": 2,
+  "rejected_groups": 0,
   "failed": false,
   "examples": [
     {
-      "kept": "OpenRouter测算：中国大模型周调用量连续27周超美国 - 观点网",
+      "kept": "Anthropic 为 Claude 新增禁止复刻现有游戏的规则",
       "merged": [
-        "中国大模型周调用量连续 27 周领跑全球：OpenRouter最新数据显示国产AI生态爆发"
+        "Anthropic 更新 Claude Code 系统提示词，限制复刻现有游戏",
+        "Anthropic clamps down on Claude’s AI video game clones"
       ],
-      "why": "均报道OpenRouter数据显示中国大模型周调用量连续27周超美国"
-    },
-    {
-      "kept": "OpenAI might rebrand its data centers as ‘AI compute campuses’",
-      "merged": [
-        "OpenAI 将数据中心改称\"AI 算力园区\""
-      ],
-      "why": "都是 OpenAI 将数据中心改称 AI 算力园区"
-    },
-    {
-      "kept": "Andrej Karpathy 周末项目 HackerTube：用 Claude 从 4300 万条 HN 评论中筛选推荐视频",
-      "merged": [
-        "Karpathy 用 Claude Code 两小时构建 HackerTube 视频站"
-      ],
-      "why": "都是 Karpathy 用 Claude Code 构建 HackerTube"
-    },
-    {
-      "kept": "Show HN: Wikihack – HackerTube, but for Wikipedia articles mentioned on HN",
-      "merged": [
-        "Andrej Karpathy 周末项目 HackerTube：用 Claude 从 4300 万条 HN 评论中筛选推"
-      ],
-      "why": "均为 Karpathy 构建 HackerTube 项目报道"
-    },
-    {
-      "kept": "沙特阿美以 26 亿美元收购 AI 公司 Humain 49% 股份",
-      "merged": [
-        "沙特阿美收购 AI 公司 HUMAIN 49% 股份，PIF 保留 51%",
-        "Saudi Aramco takes 49 percent stake in AI firm Humain with $"
-      ],
-      "why": "均为报道沙特阿美收购AI公司Humain 49%股份的同一笔交易"
+      "why": "均报道 Anthropic/Claude 新增禁止复刻现有游戏规则"
     }
   ]
 }
