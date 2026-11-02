@@ -390,14 +390,15 @@ def _source_focus(event: Event, sources: dict[str, SourceSpec]) -> float:
 
 
 #: `AI` standing alone. Not `AI-powered` and not `OpenAI`, which are product names.
-#: Headlines about something else that mention AI in passing.
+#: A headline about something else that mentions AI in passing.
 #:
-#: Market commentary, campus galas, check-in campaigns and event recaps. The words are common
-#: enough that they cannot be caught by an allowlist of AI terms, and specific enough that a
-#: headline containing them is not an AI story even when it also says 人工智能.
-_OFF_TOPIC = re.compile(
+#: Distinct from `_OFF_TOPIC`, which dilutes a score in proportion to how much consumer-tech
+#: noise the headline carries. These words describe the *occasion* -- a market report, a
+#: campus gala, a check-in campaign -- and a headline built around one of them is not an AI
+#: story even when it also says 人工智能.
+_PASSING_MENTION = re.compile(
     r"股评|午评|收盘|涨停|概念股|板块|大盘|沪指|创业板|深成指|美股|港股|原油|债券|"
-    r"迎新晚会|圆满落幕|成功举办|赋能活动|讲座|打卡|招聘|招生|考试|课程表|生日"
+    r"迎新晚会|圆满落幕|成功举办|赋能活动|讲座|打卡|招聘|招生|考试|课程表"
 )
 
 _AI_SUBJECT = re.compile(
@@ -532,19 +533,14 @@ def focus_multiplier(
         # AI models run on-device", where AI is a feature rather than the subject. The test is
         # whether AI appears as a **subject**: a standalone `AI` token, or an AI phrase in
         # subject position at the start of the headline.
-        if _OFF_TOPIC.search(event.title or ""):
+        if _PASSING_MENTION.search(event.title or ""):
             # **A story about something else that says "AI" once is not an AI story.**
             #
-            # Measured 2026-11-02: the issue published 107 entries and ten of them were
-            # 「A股午评：创业板指涨超3%，AI漫剧、白酒概念集体爆发」,
-            # 「美股进入关键一周，AI股还能重新领涨吗？」,
-            # 「…迎新晚会暨1024程序员节智能之夜圆满落幕」,
-            # 「moomoo AI 打卡 #2」. Each names AI, each is about the market, a campus event or
-            # a marketing campaign. They were landing exactly on the 0.50 floor and passing.
-            #
-            # The floor cannot distinguish them, because the floor measures "did this headline
-            # name AI" and they all do. What separates them is what the headline is *about*,
-            # which is what this cap reads.
+            # Measured 2026-11-02: 107 entries, ten of them 「A股午评：创业板指涨超3%…」,
+            # 「美股进入关键一周，AI股还能重新领涨吗？」, 「…迎新晚会圆满落幕」,
+            # 「moomoo AI 打卡 #2」. Each names AI, so each cleared the 0.50 floor -- which
+            # asks "did this headline name AI". What separates them is what the headline is
+            # *about*, and that is what this cap reads.
             combined = min(combined, 0.32)
         elif _AI_SUBJECT.search(evidence) or _AI_PHRASE.search(evidence):
             combined = min(combined, 0.50)

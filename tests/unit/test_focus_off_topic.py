@@ -25,7 +25,7 @@ from datetime import datetime, timezone
 
 import pytest
 
-from aidaily.focus import _OFF_TOPIC, focus_multiplier
+from aidaily.focus import _PASSING_MENTION, focus_multiplier
 from aidaily.models import Event
 
 NOW = datetime.now(timezone.utc)
@@ -54,8 +54,8 @@ def _event(title: str) -> Event:
         "人工智能与计算机学院2026年迎新晚会暨1024程序员节智能之夜圆满落幕",
     ],
 )
-def test_off_topic_headlines_are_capped_below_the_floor(title: str) -> None:
-    assert _OFF_TOPIC.search(title)
+def test_PASSING_MENTION_headlines_are_capped_below_the_floor(title: str) -> None:
+    assert _PASSING_MENTION.search(title)
     multiplier, detail = focus_multiplier(_event(title))
     assert detail["focus"] <= 0.32
     assert multiplier < 0.5, title
@@ -63,6 +63,6 @@ def test_off_topic_headlines_are_capped_below_the_floor(title: str) -> None:
 
 def test_a_real_ai_story_is_not_caught() -> None:
     title = "OpenAI 发布 GPT-6，上下文扩到 200 万 token"
-    assert not _OFF_TOPIC.search(title)
+    assert not _PASSING_MENTION.search(title)
     _multiplier, detail = focus_multiplier(_event(title))
     assert detail["focus"] > 0.32
