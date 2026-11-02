@@ -61,8 +61,13 @@ class RankWeights:
     #: an old entry keeps this fraction of its score; without a floor, decay alone
     #: re-creates the pure-recency ranking this module exists to replace
     recency_floor: float = 0.25
-    corroboration: float = 0.35
-    content_substance: float = 0.45
+    #: How many independent outlets carried the story is the strongest single signal that
+    #: it matters. It used to sit below content length, so a story five outlets ran could
+    #: rank under a story one outlet ran with a longer body -- measured 2026-11-02:
+    #: 「美团龙猫发布 LongCat-2.5 原生多模态模型：1.6T 参数」 had 5 sources and ranked #04,
+    #: behind a single-source `qwenGPU` post. Reader expectation is the opposite.
+    corroboration: float = 0.50
+    content_substance: float = 0.30
     engagement: float = 0.20
     #: reference body length (characters) at which substance saturates
     substance_reference_chars: int = 600
