@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-02T05:16:20.306038+00:00",
+  "generated_at": "2026-11-02T08:01:34.370797+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 234,
-  "batches": 7,
-  "calls": 7,
-  "merged_groups": 8,
-  "merged_events": 13,
-  "rejected_groups": 0,
+  "input_events": 250,
+  "batches": 8,
+  "calls": 8,
+  "merged_groups": 4,
+  "merged_events": 6,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
@@ -16,36 +16,29 @@
         "OpenAI 或把数据中心改名为“AI 算力园区”",
         "OpenAI 要搞大公关：把\"数据中心\"改名\"AI 算力园区\""
       ],
-      "why": "OpenAI拟将数据中心改名AI算力园区"
+      "why": "均为 OpenAI 拟将数据中心改名为 AI 算力园区"
     },
     {
-      "kept": "Google 点赞 GDPx 基准与 Carbon 成本",
+      "kept": "微软 AI 负责人苏莱曼：AI 模型没有意识，应确保其永远保持如此",
       "merged": [
-        "SemiAnalysis 发布通用智能体能力基准 GDPx，最佳模型仅得 12%"
+        "微软AI首席执行官苏莱曼发文：研发有意识AI是鲁莽之举 - 观点网",
+        "微软 AI 掌门人划红线：AI 不该有意识，有了就全员暂停"
       ],
-      "why": "SemiAnalysis发布GDPx基准及Google评价"
+      "why": "均为微软 AI 负责人苏莱曼表态 AI 不应有意识"
     },
     {
-      "kept": "美团龙猫发布 LongCat-2.5 原生多模态模型：1.6T 参数，面向长程智能体任务",
+      "kept": "Anthropic 更新 Claude 限制重制现有电子游戏",
       "merged": [
-        "美团龙猫发布 LongCat-2.5:1.6万亿参数原生多模态模型",
-        "美团发布 1.6 万亿参数模型 LongCat-2.5 正式版"
+        "Claude Code搭载Opus 5. 5 正式封杀复刻特定现有游戏"
       ],
-      "why": "均为美团 LongCat-2.5 模型发布"
+      "why": "均为 Anthropic 限制 Claude 复刻现有电子游戏"
     },
     {
-      "kept": "百度搜索 AI API 千次仅需 4.9 元，低于 DeepSeek",
+      "kept": "OpenRouter测算：中国大模型周调用量连续27周超美国 - 观点网",
       "merged": [
-        "百度搜索 AI API 千次仅需 4.9 元，低于 DeepSeek；搜索开始 RSI - InfoQ.cn"
+        "中国大模型周调用量连续 27 周领跑全球：OpenRouter最新数据显示国产AI生态爆发"
       ],
-      "why": "均报道百度搜索AI API定价低于DeepSeek"
-    },
-    {
-      "kept": "思科给一位年轻工程师无上限 Token 预算，目标 24 个月用 AI 重写 98% 遗留代码",
-      "merged": [
-        "思科给 27 岁工程师\"无限 Token\"：放手去重写 98% 的旧代码"
-      ],
-      "why": "均报道思科给年轻工程师无限Token预算重写代码事件"
+      "why": "同一数据源报道中国大模型周调用量领先"
     }
   ]
 }
