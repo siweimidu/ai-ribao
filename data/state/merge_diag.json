@@ -1,42 +1,50 @@
 {
-  "generated_at": "2026-11-02T13:04:00.729719+00:00",
+  "generated_at": "2026-11-02T14:09:03.132120+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 309,
+  "input_events": 323,
   "batches": 10,
   "calls": 10,
-  "merged_groups": 4,
-  "merged_events": 4,
-  "rejected_groups": 0,
+  "merged_groups": 5,
+  "merged_events": 7,
+  "rejected_groups": 4,
   "failed": false,
   "examples": [
     {
-      "kept": "OpenAI might rebrand its data centers as ‘AI compute campuses’",
+      "kept": "OpenRouter测算：中国大模型周调用量连续27周超美国 - 观点网",
       "merged": [
-        "OpenAI 或把数据中心改名为“AI 算力园区”"
+        "中国大模型周调用量连续 27 周领跑全球：OpenRouter最新数据显示国产AI生态爆发"
       ],
-      "why": "均为 OpenAI 拟将数据中心改名为 AI 算力园区"
+      "why": "均报道OpenRouter数据显示中国大模型周调用量连续27周超美国"
     },
     {
-      "kept": "Andrej Karpathy 用 Claude 打造 HackerTube 视频推荐站",
+      "kept": "OpenAI might rebrand its data centers as ‘AI compute campuses’",
+      "merged": [
+        "OpenAI 将数据中心改称\"AI 算力园区\""
+      ],
+      "why": "都是 OpenAI 将数据中心改称 AI 算力园区"
+    },
+    {
+      "kept": "Andrej Karpathy 周末项目 HackerTube：用 Claude 从 4300 万条 HN 评论中筛选推荐视频",
+      "merged": [
+        "Karpathy 用 Claude Code 两小时构建 HackerTube 视频站"
+      ],
+      "why": "都是 Karpathy 用 Claude Code 构建 HackerTube"
+    },
+    {
+      "kept": "Show HN: Wikihack – HackerTube, but for Wikipedia articles mentioned on HN",
       "merged": [
         "Andrej Karpathy 周末项目 HackerTube：用 Claude 从 4300 万条 HN 评论中筛选推"
       ],
-      "why": "均为 Andrej Karpathy 用 Claude 打造 HackerTube 项目"
+      "why": "均为 Karpathy 构建 HackerTube 项目报道"
     },
     {
-      "kept": "AIHOT 日报 · 2026-11-02 — OpenAI 12月起将ChatGPT与Codex合并为统一Token额度",
+      "kept": "沙特阿美以 26 亿美元收购 AI 公司 Humain 49% 股份",
       "merged": [
-        "Codex 完成 28 天改进计划，最后 2 天发放手动重置次数"
+        "沙特阿美收购 AI 公司 HUMAIN 49% 股份，PIF 保留 51%",
+        "Saudi Aramco takes 49 percent stake in AI firm Humain with $"
       ],
-      "why": "均报道 OpenAI 将 ChatGPT 与 Codex 合并为统一 Token 额度"
-    },
-    {
-      "kept": "度小满联合港科大发布轩辕4.5大模型 核心场景效果提升30% - 观点网",
-      "merged": [
-        "行业首个自进化金融大模型登场：度小满联手港科大发布轩辕4.5"
-      ],
-      "why": "均报道度小满联合港科大发布轩辕4.5大模型"
+      "why": "均为报道沙特阿美收购AI公司Humain 49%股份的同一笔交易"
     }
   ]
 }
