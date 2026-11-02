@@ -1,44 +1,42 @@
 {
-  "generated_at": "2026-11-02T08:01:34.370797+00:00",
+  "generated_at": "2026-11-02T13:04:00.729719+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 250,
-  "batches": 8,
-  "calls": 8,
+  "input_events": 309,
+  "batches": 10,
+  "calls": 10,
   "merged_groups": 4,
-  "merged_events": 6,
-  "rejected_groups": 2,
+  "merged_events": 4,
+  "rejected_groups": 0,
   "failed": false,
   "examples": [
     {
       "kept": "OpenAI might rebrand its data centers as ‘AI compute campuses’",
       "merged": [
-        "OpenAI 或把数据中心改名为“AI 算力园区”",
-        "OpenAI 要搞大公关：把\"数据中心\"改名\"AI 算力园区\""
+        "OpenAI 或把数据中心改名为“AI 算力园区”"
       ],
       "why": "均为 OpenAI 拟将数据中心改名为 AI 算力园区"
     },
     {
-      "kept": "微软 AI 负责人苏莱曼：AI 模型没有意识，应确保其永远保持如此",
+      "kept": "Andrej Karpathy 用 Claude 打造 HackerTube 视频推荐站",
       "merged": [
-        "微软AI首席执行官苏莱曼发文：研发有意识AI是鲁莽之举 - 观点网",
-        "微软 AI 掌门人划红线：AI 不该有意识，有了就全员暂停"
+        "Andrej Karpathy 周末项目 HackerTube：用 Claude 从 4300 万条 HN 评论中筛选推"
       ],
-      "why": "均为微软 AI 负责人苏莱曼表态 AI 不应有意识"
+      "why": "均为 Andrej Karpathy 用 Claude 打造 HackerTube 项目"
     },
     {
-      "kept": "Anthropic 更新 Claude 限制重制现有电子游戏",
+      "kept": "AIHOT 日报 · 2026-11-02 — OpenAI 12月起将ChatGPT与Codex合并为统一Token额度",
       "merged": [
-        "Claude Code搭载Opus 5. 5 正式封杀复刻特定现有游戏"
+        "Codex 完成 28 天改进计划，最后 2 天发放手动重置次数"
       ],
-      "why": "均为 Anthropic 限制 Claude 复刻现有电子游戏"
+      "why": "均报道 OpenAI 将 ChatGPT 与 Codex 合并为统一 Token 额度"
     },
     {
-      "kept": "OpenRouter测算：中国大模型周调用量连续27周超美国 - 观点网",
+      "kept": "度小满联合港科大发布轩辕4.5大模型 核心场景效果提升30% - 观点网",
       "merged": [
-        "中国大模型周调用量连续 27 周领跑全球：OpenRouter最新数据显示国产AI生态爆发"
+        "行业首个自进化金融大模型登场：度小满联手港科大发布轩辕4.5"
       ],
-      "why": "同一数据源报道中国大模型周调用量领先"
+      "why": "均报道度小满联合港科大发布轩辕4.5大模型"
     }
   ]
 }
