@@ -1,50 +1,50 @@
 {
-  "generated_at": "2026-11-03T02:31:22.111366+00:00",
+  "generated_at": "2026-11-03T05:06:21.274686+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 260,
+  "input_events": 319,
   "batches": 9,
   "calls": 9,
-  "merged_groups": 8,
-  "merged_events": 9,
-  "rejected_groups": 1,
+  "merged_groups": 13,
+  "merged_events": 14,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "Squarespace 宣布裁员约19%，约300名员工受影响",
+      "kept": "Trajectory 融资 4500 万美元，让非技术专家也能训练 AI 模型",
       "merged": [
-        "Web host Squarespace lays off 19% of its employees"
+        "Trajectory raises $45M to make AI model training accessible "
       ],
-      "why": "都是 Squarespace 裁员 19%"
+      "why": "均为 Trajectory 融资 4500 万美元"
     },
     {
-      "kept": "中信建投：AI需求高景气驱动功率半导体迈向新周期 - 证券之星",
+      "kept": "New York Times and other outlets sue web browser Brave over alleged content scra",
       "merged": [
-        "中信建投研报称AI需求高景气驱动功率半导体涨价潮 - 观点网"
+        "The New York Times sues Brave web browser for AI scraping an",
+        "《纽约时报》起诉 Brave，指其抓取内容卖给 AI"
       ],
-      "why": "均为中信建投关于AI驱动功率半导体的研报"
+      "why": "都是《纽约时报》起诉 Brave 浏览器抓取内容"
     },
     {
-      "kept": "Astra can read and write weights to improve Qwen",
+      "kept": "Y Combinator CEO Garry Tan 每年花 10 万至 20 万美元买 token 跑 AI 智能体",
       "merged": [
-        "GPT-6 Astra 直接改写模型权重",
-        "MIT CSAIL 团队提出权重空间编程，让 GPT-6 Astra 直接改写 Qwen3.5-0.8B 权重"
+        "Y Combinator’s Garry Tan uses AI agents so much, he spends u"
       ],
-      "why": "均为 MIT 团队发布 GPT-6 Astra 改写模型权重技术"
+      "why": "同一人物 Y Combinator CEO Garry Tan 的 AI 智能体消费报道"
     },
     {
-      "kept": "OpenAI 发布 LifeVal 基准，衡量 AI 完成日常任务的能力",
+      "kept": "OpenAI 宣布 ChatGPT Classic 将于 2027 年 1 月 30 日停服",
       "merged": [
-        "OpenAI 发布 LifeVal 日常任务基准"
+        "OpenAI 启动内部安全冲刺并提高漏洞赏金"
       ],
-      "why": "均为 OpenAI 发布 LifeVal 基准测试"
+      "why": "OpenAI 安全冲刺与漏洞赏金调整"
     },
     {
-      "kept": "OpenAI 据报聘请前美国防部长 Mark Esper 扩展军事 AI 业务",
+      "kept": "Anthropic 算力与基础设施合同承诺达 $895.4B，其中 $447.5B 须在 2031 年前支付",
       "merged": [
-        "OpenAI Hires Ex-Army Secretary As Senior Advisor"
+        "Anthropic 修订版 IPO 文件披露 8954 亿美元算力承诺，总额可达 1.07 万亿美元"
       ],
-      "why": "均为 OpenAI 聘请前美国防部长 Mark Esper"
+      "why": "Anthropic 修订版 IPO 文件披露的算力承诺与估值细节"
     }
   ]
 }
