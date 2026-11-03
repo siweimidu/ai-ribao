@@ -1,22 +1,50 @@
 {
-  "generated_at": "2026-11-02T21:45:33.901221+00:00",
+  "generated_at": "2026-11-03T02:31:22.111366+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 129,
-  "batches": 4,
-  "calls": 4,
-  "merged_groups": 1,
-  "merged_events": 2,
-  "rejected_groups": 0,
+  "input_events": 260,
+  "batches": 9,
+  "calls": 9,
+  "merged_groups": 8,
+  "merged_events": 9,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "Anthropic 为 Claude 新增禁止复刻现有游戏的规则",
+      "kept": "Squarespace 宣布裁员约19%，约300名员工受影响",
       "merged": [
-        "Anthropic 更新 Claude Code 系统提示词，限制复刻现有游戏",
-        "Anthropic clamps down on Claude’s AI video game clones"
+        "Web host Squarespace lays off 19% of its employees"
       ],
-      "why": "均报道 Anthropic/Claude 新增禁止复刻现有游戏规则"
+      "why": "都是 Squarespace 裁员 19%"
+    },
+    {
+      "kept": "中信建投：AI需求高景气驱动功率半导体迈向新周期 - 证券之星",
+      "merged": [
+        "中信建投研报称AI需求高景气驱动功率半导体涨价潮 - 观点网"
+      ],
+      "why": "均为中信建投关于AI驱动功率半导体的研报"
+    },
+    {
+      "kept": "Astra can read and write weights to improve Qwen",
+      "merged": [
+        "GPT-6 Astra 直接改写模型权重",
+        "MIT CSAIL 团队提出权重空间编程，让 GPT-6 Astra 直接改写 Qwen3.5-0.8B 权重"
+      ],
+      "why": "均为 MIT 团队发布 GPT-6 Astra 改写模型权重技术"
+    },
+    {
+      "kept": "OpenAI 发布 LifeVal 基准，衡量 AI 完成日常任务的能力",
+      "merged": [
+        "OpenAI 发布 LifeVal 日常任务基准"
+      ],
+      "why": "均为 OpenAI 发布 LifeVal 基准测试"
+    },
+    {
+      "kept": "OpenAI 据报聘请前美国防部长 Mark Esper 扩展军事 AI 业务",
+      "merged": [
+        "OpenAI Hires Ex-Army Secretary As Senior Advisor"
+      ],
+      "why": "均为 OpenAI 聘请前美国防部长 Mark Esper"
     }
   ]
 }
