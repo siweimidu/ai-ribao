@@ -1,50 +1,43 @@
 {
-  "generated_at": "2026-11-03T07:43:51.390897+00:00",
+  "generated_at": "2026-11-03T11:22:53.855978+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 335,
-  "batches": 9,
-  "calls": 9,
-  "merged_groups": 11,
-  "merged_events": 16,
+  "input_events": 370,
+  "batches": 11,
+  "calls": 11,
+  "merged_groups": 4,
+  "merged_events": 5,
   "rejected_groups": 3,
   "failed": false,
   "examples": [
     {
-      "kept": "Apple 或通过第三方 AI 应用提升服务收入，具体方式尚不明确",
+      "kept": "QuestMobile报告称AI应用入口大战接近尾声 豆包DeepSeek月人均使用超65次 - 观点网",
       "merged": [
-        "Apple may try to increase revenue by doing…something with th"
+        "机构：AI应用“入口大战”接近尾声 豆包、DeepSeek甩开其他玩家 - 金融界"
       ],
-      "why": "均为 Apple 通过第三方 AI 应用提升收入的报道"
+      "why": "同一份 QuestMobile 关于 AI 应用入口竞争的报道"
     },
     {
-      "kept": "New York Times and other outlets sue web browser Brave over alleged content scra",
+      "kept": "SpaceXSI apparently cuts Grok Bot quotas weeks after Musk called it his fastest-",
       "merged": [
-        "The New York Times sues Brave web browser for AI scraping an",
-        "《纽约时报》起诉 Brave，指其抓取内容卖给 AI"
+        "Grok Bot用户吐槽额度提前耗尽，马斯克坦言AI算力“太烧钱”扛不住！ - 财联社",
+        "Elon Musk throttles Grok Bot limits due to ‘unsustainably hi"
       ],
-      "why": "均为纽约时报起诉 Brave 抓取内容的报道"
+      "why": "均报道马斯克因算力成本高削减 Grok Bot 额度"
     },
     {
-      "kept": "OpenAI Hires Ex-Army Secretary As Senior Advisor",
+      "kept": "AI自我演进恐成现实？Anthropic招股书“埋暗雷”：已接近RSI模型！ - 财联社",
       "merged": [
-        "从\"禁军用\"到拿下五角大楼，OpenAI 请来前陆军部长当顾问"
+        "Anthropic warns that it’s very close to RSI capability, aka "
       ],
-      "why": "均报道OpenAI聘请前陆军部长担任顾问"
+      "why": "均报道 Anthropic 接近递归自我改进（RSI）能力"
     },
     {
-      "kept": "MIT CSAIL 提出「权重空间编程」：GPT-6 Astra 仅修改 Qwen3.5-0.8B 约 0.016% 权重，MATH-500 成绩提升至 6 倍",
+      "kept": "OpenAI 部署激活分类器，实时拦截模型违规输出",
       "merged": [
-        "MIT CSAIL 团队提出权重空间编程，让 GPT-6 Astra 直接改写 Qwen3.5-0.8B 权重"
+        "OpenAI will merge ChatGPT’s chat and work tabs – here’s when"
       ],
-      "why": "均报道MIT CSAIL团队提出权重空间编程方法"
-    },
-    {
-      "kept": "OpenAI 据报聘请前美国防部长 Mark Esper 扩展军事 AI 业务",
-      "merged": [
-        "OpenAI Hires Ex-Army Secretary As Senior Advisor"
-      ],
-      "why": "均涉及OpenAI聘请前美国防部长相关动态"
+      "why": "均涉及 OpenAI 产品功能更新（拦截器/Chat合并）"
     }
   ]
 }
