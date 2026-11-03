@@ -1,43 +1,49 @@
 {
-  "generated_at": "2026-11-03T11:22:53.855978+00:00",
+  "generated_at": "2026-11-03T11:56:02.570590+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 370,
-  "batches": 11,
-  "calls": 11,
-  "merged_groups": 4,
-  "merged_events": 5,
-  "rejected_groups": 3,
+  "input_events": 377,
+  "batches": 12,
+  "calls": 12,
+  "merged_groups": 13,
+  "merged_events": 15,
+  "rejected_groups": 5,
   "failed": false,
   "examples": [
     {
-      "kept": "QuestMobile报告称AI应用入口大战接近尾声 豆包DeepSeek月人均使用超65次 - 观点网",
+      "kept": "Revolut 将约 2000 名工程师迁移到自托管 GLM 编码",
       "merged": [
-        "机构：AI应用“入口大战”接近尾声 豆包、DeepSeek甩开其他玩家 - 金融界"
+        "Revolut moves to self-hosted GLM"
       ],
-      "why": "同一份 QuestMobile 关于 AI 应用入口竞争的报道"
+      "why": "均为 Revolut 迁移至自托管 GLM"
     },
     {
-      "kept": "SpaceXSI apparently cuts Grok Bot quotas weeks after Musk called it his fastest-",
+      "kept": "阿里蔡崇信：只有开源才能推动 AI 普及，千问开源模型已超 470 款",
       "merged": [
-        "Grok Bot用户吐槽额度提前耗尽，马斯克坦言AI算力“太烧钱”扛不住！ - 财联社",
-        "Elon Musk throttles Grok Bot limits due to ‘unsustainably hi"
+        "阿里把千问\"开\"出 470 款模型，蔡崇信：开源才是 AI 普及的钥匙"
       ],
-      "why": "均报道马斯克因算力成本高削减 Grok Bot 额度"
+      "why": "均为蔡崇信谈阿里千问开源及模型数量"
     },
     {
-      "kept": "AI自我演进恐成现实？Anthropic招股书“埋暗雷”：已接近RSI模型！ - 财联社",
+      "kept": "OpenAI 提高漏洞赏金至最高约 17.2 万美元并启动安全冲刺",
       "merged": [
-        "Anthropic warns that it’s very close to RSI capability, aka "
+        "OpenAI 上调漏洞赏金奖励"
       ],
-      "why": "均报道 Anthropic 接近递归自我改进（RSI）能力"
+      "why": "都是OpenAI提高漏洞赏金及安全冲刺"
     },
     {
-      "kept": "OpenAI 部署激活分类器，实时拦截模型违规输出",
+      "kept": "Meshy N1 Texture 上线网页端与 API，速度较 Meshy 7 提升 3 倍",
       "merged": [
-        "OpenAI will merge ChatGPT’s chat and work tabs – here’s when"
+        "Meshy 发布 N1 Texture，单个游戏资产纹理约 20 秒完成"
       ],
-      "why": "均涉及 OpenAI 产品功能更新（拦截器/Chat合并）"
+      "why": "都是Meshy N1 Texture发布及性能提升"
+    },
+    {
+      "kept": "Anthropic 在 Claude Code 系统提示词中阻止克隆现有游戏",
+      "merged": [
+        "Claude’s new rules against game cloning won’t stop the AI co"
+      ],
+      "why": "都是Anthropic在Claude Code中阻止游戏克隆"
     }
   ]
 }
