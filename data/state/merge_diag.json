@@ -1,49 +1,28 @@
 {
-  "generated_at": "2026-11-03T11:56:02.570590+00:00",
+  "generated_at": "2026-11-04T00:05:23.495387+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 377,
-  "batches": 12,
-  "calls": 12,
-  "merged_groups": 13,
-  "merged_events": 15,
-  "rejected_groups": 5,
+  "input_events": 195,
+  "batches": 6,
+  "calls": 6,
+  "merged_groups": 2,
+  "merged_events": 2,
+  "rejected_groups": 0,
   "failed": false,
   "examples": [
     {
-      "kept": "Revolut 将约 2000 名工程师迁移到自托管 GLM 编码",
+      "kept": "fal 完成 E 轮融资",
       "merged": [
-        "Revolut moves to self-hosted GLM"
+        "fal 完成 E 轮与 F 轮共 16.5 亿美元融资，联合创始人谈生成式媒体与 AI 基础设施经济"
       ],
-      "why": "均为 Revolut 迁移至自托管 GLM"
+      "why": "都是 fal 完成 E 轮融资（后者含 F 轮及专访，核心事件相同）"
     },
     {
-      "kept": "阿里蔡崇信：只有开源才能推动 AI 普及，千问开源模型已超 470 款",
+      "kept": "Anthropic 研究开源系统 FlashProve，用密码学证明 AI 模型输出身份",
       "merged": [
-        "阿里把千问\"开\"出 470 款模型，蔡崇信：开源才是 AI 普及的钥匙"
+        "Anthropic亲手终结「套壳AI」！17秒扒下假模型头套，验身速度快5000倍 - 手机新浪网"
       ],
-      "why": "均为蔡崇信谈阿里千问开源及模型数量"
-    },
-    {
-      "kept": "OpenAI 提高漏洞赏金至最高约 17.2 万美元并启动安全冲刺",
-      "merged": [
-        "OpenAI 上调漏洞赏金奖励"
-      ],
-      "why": "都是OpenAI提高漏洞赏金及安全冲刺"
-    },
-    {
-      "kept": "Meshy N1 Texture 上线网页端与 API，速度较 Meshy 7 提升 3 倍",
-      "merged": [
-        "Meshy 发布 N1 Texture，单个游戏资产纹理约 20 秒完成"
-      ],
-      "why": "都是Meshy N1 Texture发布及性能提升"
-    },
-    {
-      "kept": "Anthropic 在 Claude Code 系统提示词中阻止克隆现有游戏",
-      "merged": [
-        "Claude’s new rules against game cloning won’t stop the AI co"
-      ],
-      "why": "都是Anthropic在Claude Code中阻止游戏克隆"
+      "why": "都是 Anthropic 开源 FlashProve 验证模型身份的研究"
     }
   ]
 }
