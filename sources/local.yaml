@@ -555,6 +555,23 @@ sources:
   - user-list:2026-10-15#用户提供的信息源清单
   why: 其他 AI 日报，用于扩大覆盖面；每个发布者独立成组。注意它们是**二手聚合**，引用时应指向原文而非它们。
   notes: 2026-10-15 核验：本地实测超时（需 CI 复核）。
+- source_id: rss:smol-ai-news
+  name: AI News (smol.ai)
+  url: https://news.smol.ai/rss.xml
+  normalized_url: https://news.smol.ai/rss.xml
+  domain: news.smol.ai
+  category: global-media
+  language: en
+  source_type: rss
+  adapter: RssFetcher
+  enabled: true
+  priority: 3
+  polling_interval: 6h
+  timeout_s: 30
+  found_in:
+  - user-list:2026-11-02#七源
+  why: 每天把 AI 社区、产品与论文动态汇成一篇，社区侧最完整的一份日报。
+  notes: 2026-11-02 实测 feedparser 解析出 716 条，标题形如 'not much happened today' -> 正文才是内容，解析时以 description 为准。
 - source_id: rss:daily-ai225
   name: daily.ai225
   url: https://daily.ai225.com/rss.xml
