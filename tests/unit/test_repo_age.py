@@ -11,7 +11,7 @@ and "created last week" as the same thing.
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from aidaily.heat import _REPO_AGE_FACTORS, _freshness, _repository_novelty, HeatWeights
 from aidaily.models import Event, NormalizedItem
@@ -62,7 +62,9 @@ def test_a_nine_month_old_repository_is_demoted() -> None:
 
 def test_a_week_old_repository_keeps_the_neutral_value() -> None:
     """A genuinely new project must not be punished for being on a windowed list."""
-    items = {"i1": _item("2026-10-20")}
+    # Relative, not a fixed calendar date. "2026-10-20" was three days old when written
+    # and thirteen days old a fortnight later, so the test failed while the code was right.
+    items = {"i1": _item((NOW - timedelta(days=1)).strftime("%Y-%m-%d"))}
     assert _repository_novelty(_event(), items) == 1.0
     assert _freshness(_event(), NOW, HeatWeights(), items) == 0.5
 
