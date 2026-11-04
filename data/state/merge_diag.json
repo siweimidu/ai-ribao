@@ -1,50 +1,49 @@
 {
-  "generated_at": "2026-11-04T04:05:19.021282+00:00",
+  "generated_at": "2026-11-04T04:37:57.576638+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 314,
+  "input_events": 321,
   "batches": 10,
   "calls": 10,
-  "merged_groups": 9,
-  "merged_events": 10,
-  "rejected_groups": 2,
+  "merged_groups": 16,
+  "merged_events": 17,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "Salesforce to buy customer service automation startup Cresta for reported $2.7B",
+      "kept": "Netflix thinks AI might save you from scrolling aimlessly for something to watch",
       "merged": [
-        "Salesforce’s M&A Blitz Reflects Broader Deal Rush"
+        "Netflix will show you themed recommendations through a new ‘"
       ],
-      "why": "均报道 Salesforce 收购 Cresta"
+      "why": "都是 Netflix 推出 AI 推荐功能"
     },
     {
-      "kept": "在乌镇，看见AI未来的模样 - 欧洲头条",
+      "kept": "fal 完成 E 轮融资",
       "merged": [
-        "乌镇“网事” | 从开源到协作，让AI红利惠及世界 - 上观新闻"
+        "fal 完成 E 轮与 F 轮共 16.5 亿美元融资，联合创始人谈生成式媒体与 AI 基础设施经济"
       ],
-      "why": "均报道乌镇世界互联网大会 AI 相关议题"
+      "why": "都是 Fal 完成 E 轮及 F 轮融资"
     },
     {
-      "kept": "给 AI 业务单独划一块地：帆软怎么重新安排事、人和组织｜AICon北京",
+      "kept": "Canva 十年来首次增长放缓，裁员及岗位调整涉及 22% 员工",
       "merged": [
-        "给 AI 业务单独划一块地：帆软怎么重新安排事、人和组织｜AICon 北京 - InfoQ.cn"
+        "Canva Lays Off Workers After AI Rollout Problems"
       ],
-      "why": "都是帆软在 AICon 北京分享 AI 业务组织调整"
+      "why": "都是 Canva 因 AI 问题裁员"
     },
     {
-      "kept": "Netflix will show you themed recommendations through a new ‘AI Discover’ tab",
+      "kept": "OpenAI 证实 ChatGPT 搜索查询量已达谷歌的 20%",
       "merged": [
-        "Netflix thinks AI might save you from scrolling aimlessly fo"
+        "搜索版图被撕开一道口子：ChatGPT 抢下谷歌两成流量"
       ],
-      "why": "均报道 Netflix 推出 AI 发现标签功能"
+      "why": "均报道 ChatGPT 搜索流量达谷歌 20%"
     },
     {
-      "kept": "Moondream Parakeet Ultra 上线 OpenRouter",
+      "kept": "AI漫剧爆发！600892、601599三连板 - 21财经",
       "merged": [
-        "OpenRouter 上线隐身模型 Crouton Alpha",
-        "隐身模型 Crouton Alpha 上线 OpenCode 和 OpenRouter，免费一周"
+        "不到三年大增4亿短剧用户！AI漫剧概念活跃，大晟文化3连板 - 21财经"
       ],
-      "why": "涉及隐身模型 Crouton Alpha 上线及 Moondream 相关"
+      "why": "均报道 AI 漫剧概念股票大幅上涨"
     }
   ]
 }
