@@ -572,6 +572,45 @@ sources:
   - user-list:2026-11-02#七源
   why: 每天把 AI 社区、产品与论文动态汇成一篇，社区侧最完整的一份日报。
   notes: 2026-11-02 实测 feedparser 解析出 716 条，标题形如 'not much happened today' -> 正文才是内容，解析时以 description 为准。
+- source_id: api:hf-daily-papers
+  name: Hugging Face Daily Papers
+  url: https://huggingface.co/api/daily_papers?limit=30
+  normalized_url: https://huggingface.co/api/daily_papers
+  domain: huggingface.co
+  category: research
+  language: en
+  source_type: api
+  adapter: JsonApiFetcher
+  enabled: true
+  priority: 4
+  polling_interval: 6h
+  timeout_s: 30
+  params:
+    title_key: title
+    summary_key: summary
+    id_key: paper.id
+    url_template: https://huggingface.co/papers/{id}
+  found_in:
+  - user-list:2026-11-02#七源
+  why: 社区每天票选的热门论文，追新模型和新技术最快的一条线。
+  notes: 2026-11-02 实测 30 条，字段 title/summary/publishedAt 在顶层，论文 id 在 paper.id（嵌套），故用 id_key 点号取值。
+- source_id: rss:arxiv-cs-ai
+  name: arXiv cs.AI
+  url: http://export.arxiv.org/api/query?search_query=cat:cs.AI&sortBy=submittedDate&sortOrder=descending&max_results=40
+  normalized_url: http://export.arxiv.org/api/query
+  domain: export.arxiv.org
+  category: research
+  language: en
+  source_type: atom
+  adapter: RssFetcher
+  enabled: true
+  priority: 6
+  polling_interval: 12h
+  timeout_s: 30
+  found_in:
+  - user-list:2026-11-02#七源
+  why: 最原始的一手论文源，好些新研究第一个就出现在这里。
+  notes: 列表页 /list/cs.AI/recent 的 RSS 是 RDF，feedparser 解析出 0 条；改用官方 API 的 Atom 输出，已验证可用。
 - source_id: rss:daily-ai225
   name: daily.ai225
   url: https://daily.ai225.com/rss.xml

@@ -28,7 +28,7 @@ _URL_KEYS = ("url", "link", "html_url", "web_url", "permalink", "id")
 # it out silently dropped every date from that source.
 _DATE_KEYS = (
     "created_at", "createdAt", "created", "lastModified", "published_at",
-    "published", "date", "updated_at",
+    "published", "publishedAt", "date", "updated_at",
 )
 _SUMMARY_KEYS = ("summary", "description", "tagline", "content", "text", "body")
 
@@ -140,7 +140,8 @@ def _mapped(record: dict, params: dict, key: str) -> object | None:
     name = params.get(key)
     if not name:
         return None
-    value = record.get(str(name))
+    # A nested field (`paper.id`) is as legitimate a declaration as a flat one.
+    value = _dig(record, str(name)) if "." in str(name) else record.get(str(name))
     return value if value not in (None, "", [], {}) else None
 
 def _map_record(spec: SourceSpec, record: dict) -> RawItem | None:
