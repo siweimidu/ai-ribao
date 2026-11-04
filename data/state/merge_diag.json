@@ -1,49 +1,50 @@
 {
-  "generated_at": "2026-11-04T03:32:58.418429+00:00",
+  "generated_at": "2026-11-04T04:05:19.021282+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 294,
-  "batches": 9,
-  "calls": 9,
-  "merged_groups": 7,
-  "merged_events": 9,
-  "rejected_groups": 0,
+  "input_events": 314,
+  "batches": 10,
+  "calls": 10,
+  "merged_groups": 9,
+  "merged_events": 10,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
+    {
+      "kept": "Salesforce to buy customer service automation startup Cresta for reported $2.7B",
+      "merged": [
+        "Salesforce’s M&A Blitz Reflects Broader Deal Rush"
+      ],
+      "why": "均报道 Salesforce 收购 Cresta"
+    },
+    {
+      "kept": "在乌镇，看见AI未来的模样 - 欧洲头条",
+      "merged": [
+        "乌镇“网事” | 从开源到协作，让AI红利惠及世界 - 上观新闻"
+      ],
+      "why": "均报道乌镇世界互联网大会 AI 相关议题"
+    },
+    {
+      "kept": "给 AI 业务单独划一块地：帆软怎么重新安排事、人和组织｜AICon北京",
+      "merged": [
+        "给 AI 业务单独划一块地：帆软怎么重新安排事、人和组织｜AICon 北京 - InfoQ.cn"
+      ],
+      "why": "都是帆软在 AICon 北京分享 AI 业务组织调整"
+    },
     {
       "kept": "Netflix will show you themed recommendations through a new ‘AI Discover’ tab",
       "merged": [
         "Netflix thinks AI might save you from scrolling aimlessly fo"
       ],
-      "why": "均报道 Netflix 推出 AI 推荐功能"
+      "why": "均报道 Netflix 推出 AI 发现标签功能"
     },
     {
-      "kept": "OpenRouter 上线隐身模型 Crouton Alpha",
+      "kept": "Moondream Parakeet Ultra 上线 OpenRouter",
       "merged": [
+        "OpenRouter 上线隐身模型 Crouton Alpha",
         "隐身模型 Crouton Alpha 上线 OpenCode 和 OpenRouter，免费一周"
       ],
-      "why": "均报道 Crouton Alpha 上线 OpenRouter"
-    },
-    {
-      "kept": "fal 完成 E 轮融资",
-      "merged": [
-        "fal 完成 E 轮与 F 轮共 16.5 亿美元融资，联合创始人谈生成式媒体与 AI 基础设施经济"
-      ],
-      "why": "均报道 fal 完成 E 轮融资"
-    },
-    {
-      "kept": "Canva 十年来首次增长放缓，裁员及岗位调整涉及 22% 员工",
-      "merged": [
-        "Canva Lays Off Workers After AI Rollout Problems"
-      ],
-      "why": "均报道 Canva 裁员与业务调整"
-    },
-    {
-      "kept": "挑战搜索巨头初见成效：OpenAI官方证实，ChatGPT搜索查询量已达谷歌的20%",
-      "merged": [
-        "OpenAI 称 ChatGPT 搜索量约为 Google 的 20%"
-      ],
-      "why": "均报道 OpenAI 官方称 ChatGPT 搜索量达谷歌 20%"
+      "why": "涉及隐身模型 Crouton Alpha 上线及 Moondream 相关"
     }
   ]
 }
