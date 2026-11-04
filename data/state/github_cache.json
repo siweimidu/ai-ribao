@@ -2249,12 +2249,12 @@
   }
  },
  "thedotmack/claude-mem": {
-  "fetched_at": "2026-11-04T00:05:23.511682+00:00",
+  "fetched_at": "2026-11-04T22:07:57.262881+00:00",
   "data": {
    "full_name": "thedotmack/claude-mem",
    "description": "Persistent Context Across Sessions for Every Agent –  Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More",
-   "stars": 111872,
-   "forks": 9735,
+   "stars": 112762,
+   "forks": 9797,
    "language": "TypeScript",
    "license": "Apache-2.0",
    "topics": [
@@ -2266,16 +2266,16 @@
     "chromadb"
    ],
    "created": "2025-08-31",
-   "pushed": "2026-11-03",
-   "contributors": 333,
+   "pushed": "2026-11-04",
+   "contributors": 342,
    "discussions": null,
    "languages": {
-    "TypeScript": 60.47640124771771,
-    "JavaScript": 31.6898085473415,
-    "Python": 6.727256005366011,
-    "HTML": 0.6827127860256035,
-    "Shell": 0.2322238476796414,
-    "CSS": 0.17104617636453784
+    "TypeScript": 60.745484665654295,
+    "JavaScript": 31.466019706930222,
+    "Python": 6.68803215225266,
+    "HTML": 0.6778915671630666,
+    "Shell": 0.23058391648502927,
+    "CSS": 0.1698382730284158
    }
   }
  },
@@ -2562,17 +2562,17 @@
   }
  },
  "mattpocock/skills": {
-  "fetched_at": "2026-11-03T11:06:26.468911+00:00",
+  "fetched_at": "2026-11-04T22:07:57.262881+00:00",
   "data": {
    "full_name": "mattpocock/skills",
    "description": "Skills for Real Engineers. Straight from my .agents directory.",
-   "stars": 310755,
-   "forks": 26135,
+   "stars": 313188,
+   "forks": 26276,
    "language": "Shell",
    "license": "MIT",
    "topics": [],
    "created": "2026-02-03",
-   "pushed": "2026-11-01",
+   "pushed": "2026-11-04",
    "contributors": 8,
    "discussions": null,
    "languages": {
@@ -3121,12 +3121,12 @@
   }
  },
  "max-sixty/worktrunk": {
-  "fetched_at": "2026-11-03T11:06:26.468911+00:00",
+  "fetched_at": "2026-11-04T22:07:57.262881+00:00",
   "data": {
    "full_name": "max-sixty/worktrunk",
    "description": "Worktrunk is a CLI for Git worktree management, designed for parallel AI agent workflows",
-   "stars": 10235,
-   "forks": 371,
+   "stars": 10985,
+   "forks": 410,
    "language": "Rust",
    "license": "NOASSERTION",
    "topics": [
@@ -3138,16 +3138,16 @@
     "worktrees"
    ],
    "created": "2025-10-17",
-   "pushed": "2026-11-03",
-   "contributors": 82,
+   "pushed": "2026-11-04",
+   "contributors": 83,
    "discussions": null,
    "languages": {
-    "Rust": 99.12204664172425,
-    "TypeScript": 0.4657451689216689,
-    "Shell": 0.17773324959577155,
-    "Nix": 0.09490521519036485,
-    "Nushell": 0.07286596261311369,
-    "PowerShell": 0.04299805986820582
+    "Rust": 99.08770031384864,
+    "TypeScript": 0.5008508825964806,
+    "Shell": 0.17740582255944753,
+    "Nix": 0.09473037714845571,
+    "Nushell": 0.07273172613096097,
+    "PowerShell": 0.04291884718660376
    }
   }
  },
@@ -3209,12 +3209,12 @@
   }
  },
  "vercel-labs/agent-desktop": {
-  "fetched_at": "2026-11-03T11:06:26.468911+00:00",
+  "fetched_at": "2026-11-04T22:07:57.262881+00:00",
   "data": {
    "full_name": "vercel-labs/agent-desktop",
    "description": "Computer use CLI for AI agents",
-   "stars": 11479,
-   "forks": 779,
+   "stars": 14874,
+   "forks": 1028,
    "language": "Rust",
    "license": "Apache-2.0",
    "topics": [
@@ -3226,16 +3226,16 @@
     "computer-use"
    ],
    "created": "2026-02-19",
-   "pushed": "2026-11-03",
+   "pushed": "2026-11-04",
    "contributors": 9,
    "discussions": null,
    "languages": {
-    "Rust": 72.12987909224827,
-    "PowerShell": 13.000765671543823,
-    "Python": 5.758348795803545,
-    "MDX": 2.1012352522498925,
-    "C#": 1.9792924035718868,
-    "Shell": 1.4381439516768484
+    "Rust": 72.19233427932284,
+    "PowerShell": 12.960804426611627,
+    "Python": 5.740689295251342,
+    "MDX": 2.1172968285093163,
+    "C#": 1.9732085320115609,
+    "Shell": 1.4337234410582698
    }
   }
  },
@@ -3669,6 +3669,36 @@
     "Luau": 6.042687803483565,
     "JavaScript": 1.4374881510500703,
     "HTML": 1.1441794363377276
+   }
+  }
+ },
+ "FareedKhan-dev/kimi-k3-in-c": {
+  "fetched_at": "2026-11-04T22:07:57.262881+00:00",
+  "data": {
+   "full_name": "FareedKhan-dev/kimi-k3-in-c",
+   "description": "A 2.78-trillion-parameter Kimi K3 running inference on a single CPU in 8.24 GB of RAM. Portable C99: no BLAS, no framework, no GPU.",
+   "stars": 10233,
+   "forks": 1625,
+   "language": "C",
+   "license": "Apache-2.0",
+   "topics": [
+    "avx2",
+    "c99",
+    "cpu-inference",
+    "deep-learning",
+    "from-scratch",
+    "inference-engine"
+   ],
+   "created": "2026-08-01",
+   "pushed": "2026-10-02",
+   "contributors": 10,
+   "discussions": null,
+   "languages": {
+    "C": 71.44159486194812,
+    "Python": 20.027231831506956,
+    "Shell": 4.52015145749966,
+    "Makefile": 2.3234112564105827,
+    "CMake": 1.6876105926346894
    }
   }
  }
