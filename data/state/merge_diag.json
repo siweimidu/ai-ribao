@@ -1,28 +1,49 @@
 {
-  "generated_at": "2026-11-04T00:05:23.495387+00:00",
+  "generated_at": "2026-11-04T03:32:58.418429+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 195,
-  "batches": 6,
-  "calls": 6,
-  "merged_groups": 2,
-  "merged_events": 2,
+  "input_events": 294,
+  "batches": 9,
+  "calls": 9,
+  "merged_groups": 7,
+  "merged_events": 9,
   "rejected_groups": 0,
   "failed": false,
   "examples": [
+    {
+      "kept": "Netflix will show you themed recommendations through a new ‘AI Discover’ tab",
+      "merged": [
+        "Netflix thinks AI might save you from scrolling aimlessly fo"
+      ],
+      "why": "均报道 Netflix 推出 AI 推荐功能"
+    },
+    {
+      "kept": "OpenRouter 上线隐身模型 Crouton Alpha",
+      "merged": [
+        "隐身模型 Crouton Alpha 上线 OpenCode 和 OpenRouter，免费一周"
+      ],
+      "why": "均报道 Crouton Alpha 上线 OpenRouter"
+    },
     {
       "kept": "fal 完成 E 轮融资",
       "merged": [
         "fal 完成 E 轮与 F 轮共 16.5 亿美元融资，联合创始人谈生成式媒体与 AI 基础设施经济"
       ],
-      "why": "都是 fal 完成 E 轮融资（后者含 F 轮及专访，核心事件相同）"
+      "why": "均报道 fal 完成 E 轮融资"
     },
     {
-      "kept": "Anthropic 研究开源系统 FlashProve，用密码学证明 AI 模型输出身份",
+      "kept": "Canva 十年来首次增长放缓，裁员及岗位调整涉及 22% 员工",
       "merged": [
-        "Anthropic亲手终结「套壳AI」！17秒扒下假模型头套，验身速度快5000倍 - 手机新浪网"
+        "Canva Lays Off Workers After AI Rollout Problems"
       ],
-      "why": "都是 Anthropic 开源 FlashProve 验证模型身份的研究"
+      "why": "均报道 Canva 裁员与业务调整"
+    },
+    {
+      "kept": "挑战搜索巨头初见成效：OpenAI官方证实，ChatGPT搜索查询量已达谷歌的20%",
+      "merged": [
+        "OpenAI 称 ChatGPT 搜索量约为 Google 的 20%"
+      ],
+      "why": "均报道 OpenAI 官方称 ChatGPT 搜索量达谷歌 20%"
     }
   ]
 }
