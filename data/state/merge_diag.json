@@ -1,52 +1,49 @@
 {
-  "generated_at": "2026-11-05T04:27:27.852204+00:00",
+  "generated_at": "2026-11-05T13:11:01.023792+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 313,
-  "batches": 9,
-  "calls": 9,
-  "merged_groups": 9,
-  "merged_events": 14,
-  "rejected_groups": 2,
+  "input_events": 404,
+  "batches": 12,
+  "calls": 12,
+  "merged_groups": 7,
+  "merged_events": 8,
+  "rejected_groups": 4,
   "failed": false,
   "examples": [
     {
-      "kept": "Cyberattacks in Europe target supermarkets, blood banks",
+      "kept": "Agility Robotics' Nasdaq debut invites scrutiny of humanoid robot market",
       "merged": [
-        "French blood banks hacked amid ‘deeply concerning’ wave of f"
+        "人形机器人公司 Agility 将通过 SPAC 上市并募资 4.65 亿美元"
       ],
-      "why": "同一波欧洲针对血库和超市的网络安全攻击事件"
-    },
-    {
-      "kept": "Snap Reports Anemic Ad Growth",
-      "merged": [
-        "Snap has more than 30 million paid subscribers across Snapch"
-      ],
-      "why": "均为Snap公司发布的同一份财报及业务数据"
-    },
-    {
-      "kept": "OpenAI 用网络漏洞管线发现并修复 Linux 内核 948 个本地提权漏洞",
-      "merged": [
-        "OpenAI 团队用网络模型单次运行验证并修补 Linux 内核 948 个本地提权漏洞",
-        "OpenAI 称其安全模型一次运行修复 948 个 Linux 内核提权漏洞，API 成本约 120 万美元"
-      ],
-      "why": "均为 OpenAI 披露 Linux 内核 948 个提权漏洞"
-    },
-    {
-      "kept": "据报道 Apple 削减内部 AI 使用预算",
-      "merged": [
-        "彭博社称苹果收紧员工 AI 使用预算，部分工程师日额度下降 33%"
-      ],
-      "why": "均为苹果削减内部 AI 使用预算"
+      "why": "都是人形机器人公司 Agility 通过 SPAC 上市"
     },
     {
       "kept": "美国中期选举投票限制 AI 与数据中心，Big Tech 称这是反特朗普而非反科技",
       "merged": [
-        "美国中期选举中选民在 13 州否决数据中心相关提案",
-        "美国中期选举后数据中心阻力加大，民主党控制国会或带来更多限制",
-        "FT：政治阻力或影响美国 45% 数据中心扩张计划，Anthropic 申报约 8954 亿美元算力承诺"
+        "美国中期选举中选民在 13 州否决数据中心相关提案"
       ],
-      "why": "均为美国中期选举中数据中心/AI相关政治限制与影响"
+      "why": "都报道美国中期选举中选民否决数据中心提案"
+    },
+    {
+      "kept": "Claude Code 产品负责人 Cat Wu 闪电跳槽，两周内三位核心骨干相继离职",
+      "merged": [
+        "Anthropic loses product lead Catherine Wu behind Claude Code"
+      ],
+      "why": "均报道 Claude Code 负责人 Cat Wu 离职"
+    },
+    {
+      "kept": "Trump blames GOP midterm defeat on the Iran war",
+      "merged": [
+        "After midterm defeat, Trump faces mostly bad options in Iran"
+      ],
+      "why": "均报道美国中期选举后共和党的反应/争议"
+    },
+    {
+      "kept": "Almost no one uses AI agents to book their Uber, company says",
+      "merged": [
+        "Uber 披露万圣节当周 AI 智能体订单仅数百笔"
+      ],
+      "why": "都报道 Uber 披露 AI 智能体订单量极低"
     }
   ]
 }
