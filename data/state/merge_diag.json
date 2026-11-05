@@ -1,28 +1,28 @@
 {
-  "generated_at": "2026-11-05T04:07:09.979952+00:00",
+  "generated_at": "2026-11-05T04:27:27.852204+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 312,
-  "batches": 10,
-  "calls": 10,
+  "input_events": 313,
+  "batches": 9,
+  "calls": 9,
   "merged_groups": 9,
-  "merged_events": 12,
-  "rejected_groups": 1,
+  "merged_events": 14,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "月之暗面开放 2.8 万亿参数 Kimi K3.1 Pro 权重，强势登顶 Agent Arena 开源榜",
+      "kept": "Cyberattacks in Europe target supermarkets, blood banks",
       "merged": [
-        "FareedKhan-dev/kimi-k3-in-c — A 2.78-trillion-parameter Kimi"
+        "French blood banks hacked amid ‘deeply concerning’ wave of f"
       ],
-      "why": "均为月之暗面 Kimi K3.1 Pro (2.8T/2.78T) 开放权重事件"
+      "why": "同一波欧洲针对血库和超市的网络安全攻击事件"
     },
     {
-      "kept": "ChatGPT will now make you animated GIFs",
+      "kept": "Snap Reports Anemic Ad Growth",
       "merged": [
-        "fal 上线 GPT Image 2.6"
+        "Snap has more than 30 million paid subscribers across Snapch"
       ],
-      "why": "都是 ChatGPT 支持生成动图/GIF"
+      "why": "均为Snap公司发布的同一份财报及业务数据"
     },
     {
       "kept": "OpenAI 用网络漏洞管线发现并修复 Linux 内核 948 个本地提权漏洞",
@@ -30,22 +30,23 @@
         "OpenAI 团队用网络模型单次运行验证并修补 Linux 内核 948 个本地提权漏洞",
         "OpenAI 称其安全模型一次运行修复 948 个 Linux 内核提权漏洞，API 成本约 120 万美元"
       ],
-      "why": "都是 OpenAI 修复 Linux 内核 948 个漏洞"
+      "why": "均为 OpenAI 披露 Linux 内核 948 个提权漏洞"
     },
     {
       "kept": "据报道 Apple 削减内部 AI 使用预算",
       "merged": [
         "彭博社称苹果收紧员工 AI 使用预算，部分工程师日额度下降 33%"
       ],
-      "why": "都是苹果削减内部 AI 使用预算"
+      "why": "均为苹果削减内部 AI 使用预算"
     },
     {
       "kept": "美国中期选举投票限制 AI 与数据中心，Big Tech 称这是反特朗普而非反科技",
       "merged": [
         "美国中期选举中选民在 13 州否决数据中心相关提案",
-        "美国中期选举后数据中心阻力加大，民主党控制国会或带来更多限制"
+        "美国中期选举后数据中心阻力加大，民主党控制国会或带来更多限制",
+        "FT：政治阻力或影响美国 45% 数据中心扩张计划，Anthropic 申报约 8954 亿美元算力承诺"
       ],
-      "why": "都是美国中期选举否决数据中心提案"
+      "why": "均为美国中期选举中数据中心/AI相关政治限制与影响"
     }
   ]
 }
