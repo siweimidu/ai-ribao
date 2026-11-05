@@ -1,49 +1,52 @@
 {
-  "generated_at": "2026-11-04T22:07:57.246237+00:00",
+  "generated_at": "2026-11-05T03:16:06.835425+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 173,
-  "batches": 6,
-  "calls": 6,
-  "merged_groups": 12,
-  "merged_events": 12,
-  "rejected_groups": 0,
+  "input_events": 218,
+  "batches": 7,
+  "calls": 7,
+  "merged_groups": 7,
+  "merged_events": 15,
+  "rejected_groups": 3,
   "failed": false,
   "examples": [
     {
-      "kept": "The Results Are In: Voters Hate Data Centers",
+      "kept": "月之暗面开放 2.8 万亿参数 Kimi K3.1 Pro 权重，登顶 Agent Arena 开源模型榜",
       "merged": [
-        "RESULTS: Data center opponents have won 38 of the 39 local b"
+        "华为昇腾 0 Day 适配 Kimi K3.1 Pro 推理部署，支持 vLLM Ascend 与 SGLang"
       ],
-      "why": "都报道数据中心公投结果，数据一致"
+      "why": "均报道 Kimi K3.1 Pro 开源权重及适配"
     },
     {
-      "kept": "道指收涨超3%，AI概念股逆势下挫；原油期货跌超8%；特朗普称伊朗战事何时结束将由其决定丨每经整点 - www.mrjjxw.com",
+      "kept": "据报道 Apple 削减内部 AI 使用预算",
       "merged": [
-        "大型科技股走强推动道指收涨超3% AI概念股逆势下挫 - 东方财富"
+        "彭博社称苹果收紧员工 AI 使用预算，部分工程师日额度下降 33%",
+        "Apple is reportedly cutting budgets for its internal AI usag"
       ],
-      "why": "均报道道指收涨超3%且AI概念股逆势下挫的市场动态"
+      "why": "均报道苹果削减内部 AI 使用预算"
     },
     {
-      "kept": "Use decision models with Amazon Bedrock AgentCore Evaluations",
+      "kept": "美国中期选举投票限制 AI 与数据中心，Big Tech 称这是反特朗普而非反科技",
       "merged": [
-        "How U Mobile built agentic telco operations with Amazon Bedr"
+        "美国中期选举中选民在 13 州否决数据中心相关提案",
+        "美国中期选举后数据中心阻力加大，民主党控制国会或带来更多限制"
       ],
-      "why": "均为 Amazon Bedrock AgentCore 模型评测功能"
+      "why": "均报道美国中期选举数据中心限制提案"
     },
     {
       "kept": "Six Ways the Blue Wave Could Shake Up AI, Crypto and Tech",
       "merged": [
+        "The Blue Wave Has Tech Bros Scrambling for Data Centers in S",
         "Blue Wave Could Engulf Data Center Industry"
       ],
-      "why": "均指蓝潮选举对数据中心行业的影响"
+      "why": "均报道 Blue Wave 对科技及数据中心行业的影响"
     },
     {
-      "kept": "Johnson out as House Republican leader after GOP rout",
+      "kept": "Tencent releases Hy4, a powerful frontier AI model introducing visual understand",
       "merged": [
-        "Scalise, Jordan vie to lead House Republicans reeling from m"
+        "派早报：腾讯发布混元 Hy4 正式版，Google 调整 K-12 教育 AI 政策等"
       ],
-      "why": "均指众议院共和党领导层换届/重组"
+      "why": "均为腾讯发布混元 Hy4 模型"
     }
   ]
 }
