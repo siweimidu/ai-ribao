@@ -1,29 +1,43 @@
 {
-  "generated_at": "2026-11-05T03:16:06.835425+00:00",
+  "generated_at": "2026-11-05T04:07:09.979952+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 218,
-  "batches": 7,
-  "calls": 7,
-  "merged_groups": 7,
-  "merged_events": 15,
-  "rejected_groups": 3,
+  "input_events": 312,
+  "batches": 10,
+  "calls": 10,
+  "merged_groups": 9,
+  "merged_events": 12,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "月之暗面开放 2.8 万亿参数 Kimi K3.1 Pro 权重，登顶 Agent Arena 开源模型榜",
+      "kept": "月之暗面开放 2.8 万亿参数 Kimi K3.1 Pro 权重，强势登顶 Agent Arena 开源榜",
       "merged": [
-        "华为昇腾 0 Day 适配 Kimi K3.1 Pro 推理部署，支持 vLLM Ascend 与 SGLang"
+        "FareedKhan-dev/kimi-k3-in-c — A 2.78-trillion-parameter Kimi"
       ],
-      "why": "均报道 Kimi K3.1 Pro 开源权重及适配"
+      "why": "均为月之暗面 Kimi K3.1 Pro (2.8T/2.78T) 开放权重事件"
+    },
+    {
+      "kept": "ChatGPT will now make you animated GIFs",
+      "merged": [
+        "fal 上线 GPT Image 2.6"
+      ],
+      "why": "都是 ChatGPT 支持生成动图/GIF"
+    },
+    {
+      "kept": "OpenAI 用网络漏洞管线发现并修复 Linux 内核 948 个本地提权漏洞",
+      "merged": [
+        "OpenAI 团队用网络模型单次运行验证并修补 Linux 内核 948 个本地提权漏洞",
+        "OpenAI 称其安全模型一次运行修复 948 个 Linux 内核提权漏洞，API 成本约 120 万美元"
+      ],
+      "why": "都是 OpenAI 修复 Linux 内核 948 个漏洞"
     },
     {
       "kept": "据报道 Apple 削减内部 AI 使用预算",
       "merged": [
-        "彭博社称苹果收紧员工 AI 使用预算，部分工程师日额度下降 33%",
-        "Apple is reportedly cutting budgets for its internal AI usag"
+        "彭博社称苹果收紧员工 AI 使用预算，部分工程师日额度下降 33%"
       ],
-      "why": "均报道苹果削减内部 AI 使用预算"
+      "why": "都是苹果削减内部 AI 使用预算"
     },
     {
       "kept": "美国中期选举投票限制 AI 与数据中心，Big Tech 称这是反特朗普而非反科技",
@@ -31,22 +45,7 @@
         "美国中期选举中选民在 13 州否决数据中心相关提案",
         "美国中期选举后数据中心阻力加大，民主党控制国会或带来更多限制"
       ],
-      "why": "均报道美国中期选举数据中心限制提案"
-    },
-    {
-      "kept": "Six Ways the Blue Wave Could Shake Up AI, Crypto and Tech",
-      "merged": [
-        "The Blue Wave Has Tech Bros Scrambling for Data Centers in S",
-        "Blue Wave Could Engulf Data Center Industry"
-      ],
-      "why": "均报道 Blue Wave 对科技及数据中心行业的影响"
-    },
-    {
-      "kept": "Tencent releases Hy4, a powerful frontier AI model introducing visual understand",
-      "merged": [
-        "派早报：腾讯发布混元 Hy4 正式版，Google 调整 K-12 教育 AI 政策等"
-      ],
-      "why": "均为腾讯发布混元 Hy4 模型"
+      "why": "都是美国中期选举否决数据中心提案"
     }
   ]
 }
