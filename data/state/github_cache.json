@@ -270,12 +270,12 @@
   }
  },
  "cloudflare/security-audit-skill": {
-  "fetched_at": "2026-10-28T01:59:45.785337+00:00",
+  "fetched_at": "2026-11-06T12:46:27.783806+00:00",
   "data": {
    "full_name": "cloudflare/security-audit-skill",
    "description": "A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings",
-   "stars": 50269,
-   "forks": 3162,
+   "stars": 62817,
+   "forks": 4073,
    "language": "JavaScript",
    "license": "MIT",
    "topics": [],
@@ -3292,17 +3292,17 @@
   }
  },
  "NVIDIA/auto-ontology": {
-  "fetched_at": "2026-11-05T12:53:32.594001+00:00",
+  "fetched_at": "2026-11-06T12:46:27.783806+00:00",
   "data": {
    "full_name": "NVIDIA/auto-ontology",
    "description": "Auto Ontology is a Python framework for building semantic, graph-based reasoning layers over data. It enables deterministic query generation, better context retrieval, and more explainable AI for LLM and agent workflows.",
-   "stars": 6424,
-   "forks": 504,
+   "stars": 8347,
+   "forks": 670,
    "language": "Python",
    "license": "Apache-2.0",
    "topics": [],
    "created": "2026-04-27",
-   "pushed": "2026-11-05",
+   "pushed": "2026-11-06",
    "contributors": 13,
    "discussions": null,
    "languages": {
@@ -3765,12 +3765,12 @@
   }
  },
  "google/skills": {
-  "fetched_at": "2026-11-05T12:53:32.594001+00:00",
+  "fetched_at": "2026-11-06T12:46:27.783806+00:00",
   "data": {
    "full_name": "google/skills",
    "description": "Agent Skills for Google products and technologies",
-   "stars": 22120,
-   "forks": 1880,
+   "stars": 22632,
+   "forks": 1904,
    "language": "Python",
    "license": "Apache-2.0",
    "topics": [
@@ -3783,22 +3783,22 @@
    "contributors": 8,
    "discussions": null,
    "languages": {
-    "Python": 80.4306498628442,
-    "Shell": 9.194185539461559,
-    "HTML": 8.626873943406318,
-    "HCL": 1.4408554569103107,
-    "Go Template": 0.23186525436653785,
-    "Dockerfile": 0.0384938424888675
+    "Python": 80.64387414024475,
+    "Shell": 9.094007273234107,
+    "HTML": 8.532877006874642,
+    "HCL": 1.4251561433671895,
+    "Go Template": 0.22933889038561397,
+    "Dockerfile": 0.038074420193720614
    }
   }
  },
  "lz4/lz4": {
-  "fetched_at": "2026-11-05T12:53:32.594001+00:00",
+  "fetched_at": "2026-11-06T12:46:27.783806+00:00",
   "data": {
    "full_name": "lz4/lz4",
    "description": "Extremely Fast Compression algorithm",
-   "stars": 12239,
-   "forks": 1632,
+   "stars": 12539,
+   "forks": 1640,
    "language": "C",
    "license": "NOASSERTION",
    "topics": [
@@ -3807,16 +3807,16 @@
     "lz4"
    ],
    "created": "2014-03-25",
-   "pushed": "2026-11-05",
-   "contributors": 225,
+   "pushed": "2026-11-06",
+   "contributors": 229,
    "discussions": null,
    "languages": {
-    "C": 80.09919131324898,
-    "C++": 5.632996608552835,
-    "Makefile": 5.065503012541039,
-    "Shell": 2.901968580668472,
-    "Python": 2.465598283558043,
-    "Meson": 1.38360768891835
+    "C": 79.96850630291262,
+    "C++": 5.685057464868669,
+    "Makefile": 5.064364547890173,
+    "Shell": 2.9986896173738375,
+    "Python": 2.456675300539455,
+    "Meson": 1.3844428926348706
    }
   }
  },
@@ -3974,6 +3974,471 @@
     "Starlark": 0.8229407185855332,
     "Go Template": 0.3842752285597181
    }
+  }
+ },
+ "PrivSec-dev/banking-apps-compat-report": {
+  "fetched_at": "2026-11-06T12:46:27.783806+00:00",
+  "data": {
+   "full_name": "PrivSec-dev/banking-apps-compat-report",
+   "description": "Report and track banking app compatibility with GrapheneOS, including which workarounds may be required.",
+   "stars": 357,
+   "forks": 11,
+   "language": "",
+   "license": "",
+   "topics": [
+    "android",
+    "attestation-compatibility",
+    "banking-app",
+    "compatibility-layer",
+    "exploit-protection-compatibility-mode",
+    "grapheneos"
+   ],
+   "created": "2022-01-30",
+   "pushed": "2026-05-20",
+   "contributors": 7,
+   "discussions": null,
+   "languages": {}
+  }
+ },
+ "Unleash/unleash": {
+  "fetched_at": "2026-11-06T12:46:27.783806+00:00",
+  "data": {
+   "full_name": "Unleash/unleash",
+   "description": "Open-source feature management platform",
+   "stars": 13949,
+   "forks": 924,
+   "language": "TypeScript",
+   "license": "AGPL-3.0",
+   "topics": [
+    "activation-strategies",
+    "collaboration",
+    "continuous-delivery",
+    "continuous-deployment",
+    "devops",
+    "devtool"
+   ],
+   "created": "2014-09-29",
+   "pushed": "2026-11-06",
+   "contributors": 262,
+   "discussions": null,
+   "languages": {
+    "TypeScript": 97.19453717732297,
+    "JavaScript": 2.1004480030697006,
+    "Mustache": 0.5401589644133002,
+    "Shell": 0.05403692014303085,
+    "SCSS": 0.036046638259040475,
+    "Makefile": 0.033211441915386566
+   }
+  }
+ },
+ "angular/angular": {
+  "fetched_at": "2026-11-06T12:46:27.783806+00:00",
+  "data": {
+   "full_name": "angular/angular",
+   "description": "Deliver web apps with confidence 🚀",
+   "stars": 101149,
+   "forks": 28906,
+   "language": "TypeScript",
+   "license": "MIT",
+   "topics": [
+    "angular",
+    "javascript",
+    "pwa",
+    "typescript",
+    "web",
+    "web-framework"
+   ],
+   "created": "2014-09-18",
+   "pushed": "2026-11-06",
+   "contributors": 2698,
+   "discussions": null,
+   "languages": {
+    "TypeScript": 78.20139191055216,
+    "JavaScript": 10.70802605672203,
+    "Rust": 6.089639767117757,
+    "HTML": 1.7526569294787655,
+    "Starlark": 1.6829983410720086,
+    "CSS": 0.8937023582636694
+   }
+  }
+ },
+ "astral-sh/ruff": {
+  "fetched_at": "2026-11-06T12:46:27.783806+00:00",
+  "data": {
+   "full_name": "astral-sh/ruff",
+   "description": "An extremely fast Python linter and code formatter, written in Rust.",
+   "stars": 50492,
+   "forks": 2597,
+   "language": "Rust",
+   "license": "MIT",
+   "topics": [
+    "linter",
+    "pep8",
+    "python",
+    "python3",
+    "ruff",
+    "rust"
+   ],
+   "created": "2022-08-09",
+   "pushed": "2026-11-06",
+   "contributors": 1009,
+   "discussions": null,
+   "languages": {
+    "Rust": 96.68941349391201,
+    "Python": 2.471915372112931,
+    "TypeScript": 0.6952764269825863,
+    "Shell": 0.07037156461093007,
+    "HTML": 0.04132533058791372,
+    "CSS": 0.0204858934425827
+   }
+  }
+ },
+ "etcd-io/etcd": {
+  "fetched_at": "2026-11-06T12:46:27.783806+00:00",
+  "data": {
+   "full_name": "etcd-io/etcd",
+   "description": "Distributed reliable key-value store for the most critical data of a distributed system",
+   "stars": 52489,
+   "forks": 10572,
+   "language": "Go",
+   "license": "Apache-2.0",
+   "topics": [
+    "cncf",
+    "consensus",
+    "database",
+    "distributed-database",
+    "distributed-systems",
+    "etcd"
+   ],
+   "created": "2013-07-06",
+   "pushed": "2026-11-06",
+   "contributors": 1212,
+   "discussions": null,
+   "languages": {
+    "Go": 95.93724898014305,
+    "Shell": 2.4296719306888037,
+    "Jsonnet": 0.9822443278198139,
+    "Makefile": 0.41479332517916473,
+    "Procfile": 0.13537598472540338,
+    "Dockerfile": 0.10066545144375708
+   }
+  }
+ },
+ "matthewmrichter/mooftcp": {
+  "fetched_at": "2026-11-06T12:46:27.783806+00:00",
+  "data": {
+   "full_name": "matthewmrichter/mooftcp",
+   "description": "Drop-in MacTCP replacement for System 6 / 68000 Macs",
+   "stars": 26,
+   "forks": 0,
+   "language": "C",
+   "license": "MIT",
+   "topics": [],
+   "created": "2026-10-28",
+   "pushed": "2026-11-06",
+   "contributors": 2,
+   "discussions": null,
+   "languages": {
+    "C": 83.06119638986604,
+    "Shell": 8.467247628184628,
+    "Python": 4.582844757133213,
+    "Rez": 1.2826901893899016,
+    "Assembly": 1.0813523789219344,
+    "CMake": 0.9652933233841453
+   }
+  }
+ },
+ "microsoft/vscode": {
+  "fetched_at": "2026-11-06T12:46:27.783806+00:00",
+  "data": {
+   "full_name": "microsoft/vscode",
+   "description": "Visual Studio Code",
+   "stars": 194801,
+   "forks": 44404,
+   "language": "TypeScript",
+   "license": "MIT",
+   "topics": [
+    "editor",
+    "electron",
+    "microsoft",
+    "typescript",
+    "visual-studio-code"
+   ],
+   "created": "2015-09-03",
+   "pushed": "2026-11-06",
+   "contributors": 3304,
+   "discussions": null,
+   "languages": {
+    "TypeScript": 96.51675830480748,
+    "CSS": 1.4255888560419179,
+    "Rust": 0.6844777139812519,
+    "JavaScript": 0.5002444227252645,
+    "HTML": 0.30133712591816997,
+    "Inno Setup": 0.1633868291066182
+   }
+  }
+ },
+ "mpv-player/mpv": {
+  "fetched_at": "2026-11-06T12:46:27.783806+00:00",
+  "data": {
+   "full_name": "mpv-player/mpv",
+   "description": "🎥 Command line media player",
+   "stars": 37763,
+   "forks": 3628,
+   "language": "C",
+   "license": "NOASSERTION",
+   "topics": [
+    "audio",
+    "c",
+    "ffmpeg",
+    "mplayer",
+    "mpv",
+    "multimedia"
+   ],
+   "created": "2012-10-13",
+   "pushed": "2026-11-05",
+   "contributors": 836,
+   "discussions": null,
+   "languages": {
+    "C": 88.00280524003279,
+    "Lua": 5.821628148959161,
+    "Swift": 2.264476245554604,
+    "Meson": 1.1078066786907583,
+    "Python": 0.7425534434264199,
+    "Objective-C": 0.5952897823250429
+   }
+  }
+ },
+ "nushell/nushell": {
+  "fetched_at": "2026-11-06T12:46:27.783806+00:00",
+  "data": {
+   "full_name": "nushell/nushell",
+   "description": "A new type of shell",
+   "stars": 40807,
+   "forks": 2331,
+   "language": "Rust",
+   "license": "MIT",
+   "topics": [
+    "nushell",
+    "rust",
+    "shell"
+   ],
+   "created": "2019-05-10",
+   "pushed": "2026-11-06",
+   "contributors": 983,
+   "discussions": null,
+   "languages": {
+    "Rust": 97.41059909893235,
+    "Nushell": 2.4035393225738515,
+    "Nix": 0.049494813628941314,
+    "Python": 0.04817891868793374,
+    "JavaScript": 0.03179316603121337,
+    "Dockerfile": 0.023731879196953944
+   }
+  }
+ },
+ "openssl/openssl": {
+  "fetched_at": "2026-11-06T12:46:27.783806+00:00",
+  "data": {
+   "full_name": "openssl/openssl",
+   "description": "General purpose TLS and crypto library",
+   "stars": 31204,
+   "forks": 11579,
+   "language": "C",
+   "license": "Apache-2.0",
+   "topics": [
+    "cryptography",
+    "decryption",
+    "encryption",
+    "openssl",
+    "ssl",
+    "tls"
+   ],
+   "created": "2013-01-15",
+   "pushed": "2026-11-06",
+   "contributors": 1602,
+   "discussions": null,
+   "languages": {
+    "C": 74.09149152363632,
+    "Perl": 22.505183326994178,
+    "C++": 0.9968286549435085,
+    "Assembly": 0.6322659698765436,
+    "Go Template": 0.4750820961160798,
+    "Raku": 0.4666674928831435
+   }
+  }
+ },
+ "ppmpreetham/BUI": {
+  "fetched_at": "2026-11-06T12:46:27.783806+00:00",
+  "data": {
+   "full_name": "ppmpreetham/BUI",
+   "description": "Blender's GPU Accelerated UI, Decoupled from it's original codebase. Supports Rust, Python, JS, React, C & C++. Twice as good as GPUI",
+   "stars": 530,
+   "forks": 12,
+   "language": "C++",
+   "license": "GPL-3.0",
+   "topics": [
+    "blender",
+    "blender-ui",
+    "bui"
+   ],
+   "created": "2026-08-26",
+   "pushed": "2026-11-06",
+   "contributors": 3,
+   "discussions": null,
+   "languages": {
+    "C++": 44.4531429152497,
+    "C": 25.981136897954602,
+    "Rust": 15.064500177667327,
+    "Python": 5.961833129992892,
+    "MDX": 4.177585280819953,
+    "JavaScript": 1.479193617570223
+   }
+  }
+ },
+ "prometheus/prometheus": {
+  "fetched_at": "2026-11-06T12:46:27.783806+00:00",
+  "data": {
+   "full_name": "prometheus/prometheus",
+   "description": "The Prometheus monitoring system and time series database.",
+   "stars": 66996,
+   "forks": 10979,
+   "language": "Go",
+   "license": "Apache-2.0",
+   "topics": [
+    "alerting",
+    "graphing",
+    "hacktoberfest",
+    "metrics",
+    "monitoring",
+    "prometheus"
+   ],
+   "created": "2012-11-24",
+   "pushed": "2026-11-06",
+   "contributors": 1530,
+   "discussions": null,
+   "languages": {
+    "Go": 87.68839596427446,
+    "TypeScript": 10.182662694907199,
+    "Python": 0.7999658371559827,
+    "Yacc": 0.40991184746008275,
+    "Shell": 0.24561590928693802,
+    "JavaScript": 0.24325523421561038
+   }
+  }
+ },
+ "rails/rails": {
+  "fetched_at": "2026-11-06T12:46:27.783806+00:00",
+  "data": {
+   "full_name": "rails/rails",
+   "description": "Ruby on Rails",
+   "stars": 58896,
+   "forks": 23822,
+   "language": "Ruby",
+   "license": "MIT",
+   "topics": [
+    "activejob",
+    "activerecord",
+    "framework",
+    "html",
+    "mvc",
+    "rails"
+   ],
+   "created": "2008-04-11",
+   "pushed": "2026-11-06",
+   "contributors": 7130,
+   "discussions": null,
+   "languages": {
+    "Ruby": 97.42510543544385,
+    "JavaScript": 1.1850060541611305,
+    "HTML": 0.9974704031051169,
+    "SCSS": 0.24667292788022088,
+    "CSS": 0.13145928979870575,
+    "Dockerfile": 0.010206285820534204
+   }
+  }
+ },
+ "react/react": {
+  "fetched_at": "2026-11-06T12:46:27.783806+00:00",
+  "data": {
+   "full_name": "react/react",
+   "description": "The library for web and native user interfaces.",
+   "stars": 252052,
+   "forks": 51786,
+   "language": "JavaScript",
+   "license": "MIT",
+   "topics": [
+    "declarative",
+    "frontend",
+    "javascript",
+    "library",
+    "react",
+    "ui"
+   ],
+   "created": "2013-05-24",
+   "pushed": "2026-11-06",
+   "contributors": 2027,
+   "discussions": null,
+   "languages": {
+    "JavaScript": 49.21313847564466,
+    "Rust": 26.124332720050212,
+    "TypeScript": 22.52992669093898,
+    "HTML": 1.0067887074173298,
+    "CSS": 0.8282343921460621,
+    "CoffeeScript": 0.16134727739420002
+   }
+  }
+ },
+ "rust-lang/rust": {
+  "fetched_at": "2026-11-06T12:46:27.783806+00:00",
+  "data": {
+   "full_name": "rust-lang/rust",
+   "description": "Empowering everyone to build reliable and efficient software.",
+   "stars": 121175,
+   "forks": 17357,
+   "language": "Rust",
+   "license": "Apache-2.0",
+   "topics": [
+    "compiler",
+    "language",
+    "rust"
+   ],
+   "created": "2010-06-16",
+   "pushed": "2026-11-06",
+   "contributors": 8955,
+   "discussions": null,
+   "languages": {
+    "Rust": 90.58399109364791,
+    "HTML": 6.29646938233248,
+    "Shell": 0.7565587365181444,
+    "C": 0.7408411773139089,
+    "JavaScript": 0.488157251225048,
+    "Python": 0.36203885327918456
+   }
+  }
+ },
+ "symfony/symfony": {
+  "fetched_at": "2026-11-06T12:46:27.783806+00:00",
+  "data": {
+   "full_name": "symfony/symfony",
+   "description": "The Symfony PHP framework",
+   "stars": 31256,
+   "forks": 9939,
+   "language": "PHP",
+   "license": "MIT",
+   "topics": [
+    "bundle",
+    "framework",
+    "hacktoberfest",
+    "php",
+    "php-framework",
+    "symfony"
+   ],
+   "created": "2010-01-04",
+   "pushed": "2026-11-06",
+   "contributors": null,
+   "discussions": null,
+   "languages": {}
   }
  }
 }
