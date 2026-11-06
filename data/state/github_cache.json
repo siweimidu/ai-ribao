@@ -2562,17 +2562,17 @@
   }
  },
  "mattpocock/skills": {
-  "fetched_at": "2026-11-04T22:07:57.262881+00:00",
+  "fetched_at": "2026-11-06T00:25:51.684453+00:00",
   "data": {
    "full_name": "mattpocock/skills",
    "description": "Skills for Real Engineers. Straight from my .agents directory.",
-   "stars": 313188,
-   "forks": 26276,
+   "stars": 315194,
+   "forks": 26393,
    "language": "Shell",
    "license": "MIT",
    "topics": [],
    "created": "2026-02-03",
-   "pushed": "2026-11-04",
+   "pushed": "2026-11-05",
    "contributors": 8,
    "discussions": null,
    "languages": {
@@ -3121,12 +3121,12 @@
   }
  },
  "max-sixty/worktrunk": {
-  "fetched_at": "2026-11-04T22:07:57.262881+00:00",
+  "fetched_at": "2026-11-06T00:25:51.684453+00:00",
   "data": {
    "full_name": "max-sixty/worktrunk",
    "description": "Worktrunk is a CLI for Git worktree management, designed for parallel AI agent workflows",
-   "stars": 10985,
-   "forks": 410,
+   "stars": 11504,
+   "forks": 438,
    "language": "Rust",
    "license": "NOASSERTION",
    "topics": [
@@ -3138,16 +3138,16 @@
     "worktrees"
    ],
    "created": "2025-10-17",
-   "pushed": "2026-11-04",
-   "contributors": 83,
+   "pushed": "2026-11-05",
+   "contributors": 86,
    "discussions": null,
    "languages": {
-    "Rust": 99.08770031384864,
-    "TypeScript": 0.5008508825964806,
-    "Shell": 0.17740582255944753,
-    "Nix": 0.09473037714845571,
-    "Nushell": 0.07273172613096097,
-    "PowerShell": 0.04291884718660376
+    "Rust": 99.03219646377164,
+    "TypeScript": 0.5183588028704113,
+    "Shell": 0.1921284899363957,
+    "Nix": 0.09443341228142742,
+    "Nushell": 0.07250372358278817,
+    "Batchfile": 0.04717570755361613
    }
   }
  },
@@ -3860,6 +3860,89 @@
     "HTML": 0.38768108299875365,
     "Shell": 0.2208425422317182,
     "Python": 0.21307067854450665
+   }
+  }
+ },
+ "anthropics/claude-code": {
+  "fetched_at": "2026-11-06T00:25:51.684453+00:00",
+  "data": {
+   "full_name": "anthropics/claude-code",
+   "description": "Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands.",
+   "stars": 154672,
+   "forks": 25574,
+   "language": "TypeScript",
+   "license": "",
+   "topics": [],
+   "created": "2025-02-22",
+   "pushed": "2026-11-06",
+   "contributors": 59,
+   "discussions": null,
+   "languages": {
+    "TypeScript": 97.5475783726449,
+    "Shell": 1.4960883942253407,
+    "PowerShell": 0.6499791038866771,
+    "Dockerfile": 0.3063541292430719
+   }
+  }
+ },
+ "rivet-dev/rivet": {
+  "fetched_at": "2026-11-06T00:25:51.684453+00:00",
+  "data": {
+   "full_name": "rivet-dev/rivet",
+   "description": "The orchestrator for agentic workloads. A fast, high-density and scalable orchestrator for every workload an agent needs.",
+   "stars": 6647,
+   "forks": 307,
+   "language": "Rust",
+   "license": "Apache-2.0",
+   "topics": [
+    "actor",
+    "actors",
+    "cloudflare",
+    "cloudflare-durable-objects",
+    "durable-objects",
+    "foundationdb"
+   ],
+   "created": "2023-06-16",
+   "pushed": "2026-11-05",
+   "contributors": 35,
+   "discussions": null,
+   "languages": {
+    "Rust": 81.89503900710808,
+    "TypeScript": 15.796074922708152,
+    "Swift": 1.3082678681051683,
+    "JavaScript": 0.5380696868168697,
+    "Dockerfile": 0.33951352953577785,
+    "Shell": 0.05835349912826374
+   }
+  }
+ },
+ "saragordic/window-sweaters": {
+  "fetched_at": "2026-11-06T00:25:51.684453+00:00",
+  "data": {
+   "full_name": "saragordic/window-sweaters",
+   "description": "A macOS menu-bar app that dresses your windows in knitted borders.",
+   "stars": 1015,
+   "forks": 31,
+   "language": "C",
+   "license": "GPL-3.0",
+   "topics": [
+    "desktop-customization",
+    "knitting",
+    "macos",
+    "macos-app",
+    "menubar",
+    "menubar-app"
+   ],
+   "created": "2026-09-15",
+   "pushed": "2026-11-05",
+   "contributors": 2,
+   "discussions": null,
+   "languages": {
+    "C": 63.530948165547706,
+    "Objective-C": 34.57280838606763,
+    "Makefile": 1.04212316160359,
+    "Python": 0.5911792031132225,
+    "Shell": 0.26294108366785285
    }
   }
  }

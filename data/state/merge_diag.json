@@ -1,49 +1,45 @@
 {
-  "generated_at": "2026-11-05T13:11:01.023792+00:00",
+  "generated_at": "2026-11-06T00:25:51.672983+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 404,
-  "batches": 12,
-  "calls": 12,
-  "merged_groups": 7,
-  "merged_events": 8,
-  "rejected_groups": 4,
+  "input_events": 209,
+  "batches": 7,
+  "calls": 7,
+  "merged_groups": 4,
+  "merged_events": 7,
+  "rejected_groups": 3,
   "failed": false,
   "examples": [
     {
-      "kept": "Agility Robotics' Nasdaq debut invites scrutiny of humanoid robot market",
+      "kept": "fal 上线 Lucy 2.6 实时模型",
       "merged": [
-        "人形机器人公司 Agility 将通过 SPAC 上市并募资 4.65 亿美元"
+        "Decart Lucy 2.6 上线 fal"
       ],
-      "why": "都是人形机器人公司 Agility 通过 SPAC 上市"
+      "why": "均为 Decart Lucy 2.6 模型在 fal 平台上线"
     },
     {
-      "kept": "美国中期选举投票限制 AI 与数据中心，Big Tech 称这是反特朗普而非反科技",
+      "kept": "Nasdaq plummets 4% into correction territory",
       "merged": [
-        "美国中期选举中选民在 13 州否决数据中心相关提案"
+        "Nasdaq drops into correction territory — here’s what typical",
+        "Nasdaq Sinks 5% as Investors Retreat from AI Trade After Ele",
+        "Nasdaq 100 单日下跌 6.49% 进入技术性熊市，indigo 分析 AI 基建政策风险"
       ],
-      "why": "都报道美国中期选举中选民否决数据中心提案"
+      "why": "均报道 Nasdaq 指数下跌进入技术性调整区间"
     },
     {
-      "kept": "Claude Code 产品负责人 Cat Wu 闪电跳槽，两周内三位核心骨干相继离职",
+      "kept": "Anthropic’s R&D Speed May Have Doubled Due to AI, Researchers Find",
       "merged": [
-        "Anthropic loses product lead Catherine Wu behind Claude Code"
+        "研究称Anthropic模型改进速度接近翻倍，AI加速自身发展 - 凤凰网"
       ],
-      "why": "均报道 Claude Code 负责人 Cat Wu 离职"
+      "why": "均报道研究发现Anthropic模型改进速度因AI加速而接近翻倍"
     },
     {
-      "kept": "Trump blames GOP midterm defeat on the Iran war",
+      "kept": "Claude AI can plug directly into your bank account",
       "merged": [
-        "After midterm defeat, Trump faces mostly bad options in Iran"
+        "Claude’s new Personal Finance tool aims to help analyze your",
+        "Now Claude can help with your finances too"
       ],
-      "why": "均报道美国中期选举后共和党的反应/争议"
-    },
-    {
-      "kept": "Almost no one uses AI agents to book their Uber, company says",
-      "merged": [
-        "Uber 披露万圣节当周 AI 智能体订单仅数百笔"
-      ],
-      "why": "都报道 Uber 披露 AI 智能体订单量极低"
+      "why": "均报道 Claude 上线个人财务分析工具"
     }
   ]
 }
