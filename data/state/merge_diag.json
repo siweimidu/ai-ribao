@@ -1,52 +1,51 @@
 {
-  "generated_at": "2026-11-06T01:28:47.960332+00:00",
+  "generated_at": "2026-11-06T01:56:30.626402+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 255,
-  "batches": 9,
-  "calls": 9,
-  "merged_groups": 16,
-  "merged_events": 36,
-  "rejected_groups": 2,
+  "input_events": 263,
+  "batches": 8,
+  "calls": 8,
+  "merged_groups": 8,
+  "merged_events": 12,
+  "rejected_groups": 7,
   "failed": false,
   "examples": [
     {
-      "kept": "Reflection 详解开源模型 Beam 的安全训练与评估方法",
+      "kept": "Thinking Machines 发布 Inkling 2 Small：得 31 分，拟下周开放权重",
       "merged": [
-        "Reflection 公开开源模型 Beam 安全训练与评估详情"
+        "Inkling 2 Small"
       ],
-      "why": "都是 Reflection 详解开源模型 Beam 的安全训练与评估"
+      "why": "均为Thinking Machines发布Inkling 2 Small"
     },
     {
-      "kept": "Airbnb 宣布 2027 年上半年推出 AI 旅行智能体",
+      "kept": "Claude’s new Personal Finance tool aims to help analyze your spending – read-onl",
       "merged": [
-        "Airbnb is working on an AI travel agent",
-        "Airbnb says it’s launching an AI travel agent in the first h"
+        "Now Claude can help with your finances too"
       ],
-      "why": "都是 Airbnb 宣布 2027 上半年推出 AI 旅行智能体"
-    },
-    {
-      "kept": "fal 上线 Lucy 2.6 实时模型",
-      "merged": [
-        "Decart Lucy 2.6 上线 fal"
-      ],
-      "why": "都是 Decart Lucy 2.6 实时模型在 fal 上线"
+      "why": "均为Claude推出新个人理财工具"
     },
     {
       "kept": "第十届杭州国际友城市长论坛开幕 AI成为嘉宾热议高频词 - 杭州网",
       "merged": [
-        "为“AI”而来！第十届杭州国际友城市长论坛开幕 - 杭州网",
-        "全球27城的市长、议长和市长代表齐聚杭州 AI驱动创新 友城共话合作 - 杭州网"
+        "Nasdaq drops into correction territory — here’s what typical"
       ],
-      "why": "都是第十届杭州国际友城市长论坛开幕及 AI 话题"
+      "why": "均为纳斯达克大跌进入修正区"
     },
     {
-      "kept": "美国中期选举后数据中心民意反弹引发AI股暴跌",
+      "kept": "Perplexity 推出 Teammates 智能体，面向 Max 订阅用户开放",
       "merged": [
-        "美国中期选举蓝潮冲击 AI 行业，44 项数据中心暂停提案中 43 项通过",
-        "中期选举后AI退潮、债券受益：10年期美债期权押注收益率奔向4.35% - 金融界"
+        "Perplexity 发布面向工作的常驻智能体 Teammates",
+        "Perplexity launches its own take on AI agents for work"
       ],
-      "why": "均报道美国中期选举后数据中心民意反弹及AI监管压力引发AI股暴跌"
+      "why": "均为Perplexity发布面向工作的智能体Teammates"
+    },
+    {
+      "kept": "Google 发布 Gemini Omni 1.2 Flash：15 秒视频生成，降价 30% 至 $0.07/秒",
+      "merged": [
+        "2026-11-06 AI 日报 · 百度开源文心5.5 Flash Base，OpenAI发布GPT-6 Cyber，",
+        "Baidu Releases ERNIE 5.5 Flash Base: A 280B MoE Base Model W"
+      ],
+      "why": "均为百度开源文心5.5 Flash Base"
     }
   ]
 }
