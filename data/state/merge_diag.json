@@ -1,21 +1,35 @@
 {
-  "generated_at": "2026-11-06T12:46:27.716113+00:00",
+  "generated_at": "2026-11-06T23:56:27.925402+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 396,
-  "batches": 11,
-  "calls": 11,
-  "merged_groups": 1,
-  "merged_events": 1,
-  "rejected_groups": 1,
+  "input_events": 170,
+  "batches": 6,
+  "calls": 6,
+  "merged_groups": 3,
+  "merged_events": 3,
+  "rejected_groups": 0,
   "failed": false,
   "examples": [
     {
-      "kept": "Reflection 详解开源模型 Beam 的安全训练与评估方法",
+      "kept": "OpenAI valued at $1.25 trillion, as rival Anthropic nears its IPO",
       "merged": [
-        "Reflection 公开开源模型 Beam 安全训练与评估详情"
+        "Anthropic IPO buyers see valuation as low as $1.1T"
       ],
-      "why": "都是 Reflection 开源模型 Beam 安全训练评估详情报道"
+      "why": "报道 Anthropic IPO 估值不同报道角度"
+    },
+    {
+      "kept": "Serverless MCP server for AI agent data lake access on Amazon ECS Fargate",
+      "merged": [
+        "Taxonomy of agentic primitives in Amazon Quick"
+      ],
+      "why": "均报道亚马逊 ECS/Quick 上的 Serverless MCP 服务器及代理原语"
+    },
+    {
+      "kept": "微软收缩AI算力租赁！据称逐步退出甲骨文云协议，“新云”CoreWeave闪跌 - 华尔街见闻",
+      "merged": [
+        "微软据悉正在逐步终止与甲骨文之间租用AI云容量的协议 - 东方财富"
+      ],
+      "why": "均报道微软终止与甲骨文 AI 云容量协议"
     }
   ]
 }
