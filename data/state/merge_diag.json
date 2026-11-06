@@ -1,45 +1,52 @@
 {
-  "generated_at": "2026-11-06T00:25:51.672983+00:00",
+  "generated_at": "2026-11-06T01:28:47.960332+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 209,
-  "batches": 7,
-  "calls": 7,
-  "merged_groups": 4,
-  "merged_events": 7,
-  "rejected_groups": 3,
+  "input_events": 255,
+  "batches": 9,
+  "calls": 9,
+  "merged_groups": 16,
+  "merged_events": 36,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
+    {
+      "kept": "Reflection 详解开源模型 Beam 的安全训练与评估方法",
+      "merged": [
+        "Reflection 公开开源模型 Beam 安全训练与评估详情"
+      ],
+      "why": "都是 Reflection 详解开源模型 Beam 的安全训练与评估"
+    },
+    {
+      "kept": "Airbnb 宣布 2027 年上半年推出 AI 旅行智能体",
+      "merged": [
+        "Airbnb is working on an AI travel agent",
+        "Airbnb says it’s launching an AI travel agent in the first h"
+      ],
+      "why": "都是 Airbnb 宣布 2027 上半年推出 AI 旅行智能体"
+    },
     {
       "kept": "fal 上线 Lucy 2.6 实时模型",
       "merged": [
         "Decart Lucy 2.6 上线 fal"
       ],
-      "why": "均为 Decart Lucy 2.6 模型在 fal 平台上线"
+      "why": "都是 Decart Lucy 2.6 实时模型在 fal 上线"
     },
     {
-      "kept": "Nasdaq plummets 4% into correction territory",
+      "kept": "第十届杭州国际友城市长论坛开幕 AI成为嘉宾热议高频词 - 杭州网",
       "merged": [
-        "Nasdaq drops into correction territory — here’s what typical",
-        "Nasdaq Sinks 5% as Investors Retreat from AI Trade After Ele",
-        "Nasdaq 100 单日下跌 6.49% 进入技术性熊市，indigo 分析 AI 基建政策风险"
+        "为“AI”而来！第十届杭州国际友城市长论坛开幕 - 杭州网",
+        "全球27城的市长、议长和市长代表齐聚杭州 AI驱动创新 友城共话合作 - 杭州网"
       ],
-      "why": "均报道 Nasdaq 指数下跌进入技术性调整区间"
+      "why": "都是第十届杭州国际友城市长论坛开幕及 AI 话题"
     },
     {
-      "kept": "Anthropic’s R&D Speed May Have Doubled Due to AI, Researchers Find",
+      "kept": "美国中期选举后数据中心民意反弹引发AI股暴跌",
       "merged": [
-        "研究称Anthropic模型改进速度接近翻倍，AI加速自身发展 - 凤凰网"
+        "美国中期选举蓝潮冲击 AI 行业，44 项数据中心暂停提案中 43 项通过",
+        "中期选举后AI退潮、债券受益：10年期美债期权押注收益率奔向4.35% - 金融界"
       ],
-      "why": "均报道研究发现Anthropic模型改进速度因AI加速而接近翻倍"
-    },
-    {
-      "kept": "Claude AI can plug directly into your bank account",
-      "merged": [
-        "Claude’s new Personal Finance tool aims to help analyze your",
-        "Now Claude can help with your finances too"
-      ],
-      "why": "均报道 Claude 上线个人财务分析工具"
+      "why": "均报道美国中期选举后数据中心民意反弹及AI监管压力引发AI股暴跌"
     }
   ]
 }
