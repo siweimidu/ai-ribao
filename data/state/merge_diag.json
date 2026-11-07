@@ -1,28 +1,21 @@
 {
-  "generated_at": "2026-11-07T13:43:54.359593+00:00",
+  "generated_at": "2026-11-07T14:33:09.752549+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 289,
+  "input_events": 300,
   "batches": 8,
   "calls": 8,
-  "merged_groups": 2,
-  "merged_events": 2,
+  "merged_groups": 1,
+  "merged_events": 1,
   "rejected_groups": 0,
   "failed": false,
   "examples": [
-    {
-      "kept": "OpenRouter 限免 Parallel Decisions 一周",
-      "merged": [
-        "OpenRouter 上架 Parallel Decisions，免费试用 7 天"
-      ],
-      "why": "都是 OpenRouter 上架 Parallel Decisions 并免费试用 7 天"
-    },
     {
       "kept": "员工用 AI 辅助办公被开除，法院判决保险公司赔偿 4.6 万并继续履约",
       "merged": [
         "用 AI 做 PPT 被开除，公司反赔 4.6 万：法院判了"
       ],
-      "why": "都是员工用 AI 辅助办公被开除，法院判决赔偿 4.6 万并继续履约"
+      "why": "均为员工用AI办公被开除后获赔4.6万的法院判决"
     }
   ]
 }
