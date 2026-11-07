@@ -1,50 +1,28 @@
 {
-  "generated_at": "2026-11-07T12:39:20.791670+00:00",
+  "generated_at": "2026-11-07T13:43:54.359593+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 287,
+  "input_events": 289,
   "batches": 8,
   "calls": 8,
-  "merged_groups": 14,
-  "merged_events": 17,
-  "rejected_groups": 2,
+  "merged_groups": 2,
+  "merged_events": 2,
+  "rejected_groups": 0,
   "failed": false,
   "examples": [
     {
-      "kept": "Thinking Machines debuts Inkling 2 Small amid reported $5B fundraising push",
+      "kept": "OpenRouter 限免 Parallel Decisions 一周",
       "merged": [
-        "Inkling 2 Small 登顶 WebDev 开源榜",
-        "Thinking Machines’ new model takes the lead in western open-"
+        "OpenRouter 上架 Parallel Decisions，免费试用 7 天"
       ],
-      "why": "均为 Thinking Machines 发布 Inkling 2 Small"
+      "why": "都是 OpenRouter 上架 Parallel Decisions 并免费试用 7 天"
     },
     {
-      "kept": "Asahi Linux Progress Linux 7.3",
+      "kept": "员工用 AI 辅助办公被开除，法院判决保险公司赔偿 4.6 万并继续履约",
       "merged": [
-        "Asahi Linux 7.3 progress report"
+        "用 AI 做 PPT 被开除，公司反赔 4.6 万：法院判了"
       ],
-      "why": "均为 Asahi Linux 7.3 版本进度报道"
-    },
-    {
-      "kept": "Trump replaces chief of staff Susie Wiles with Stephen Miller",
-      "merged": [
-        "Trump elevates Stephen Miller after midterms disaster"
-      ],
-      "why": "均为特朗普任命 Stephen Miller 接替幕僚长"
-    },
-    {
-      "kept": "Dems plot a unified case against Trump",
-      "merged": [
-        "Trump still defiant after a bruising week"
-      ],
-      "why": "均为特朗普在中期选举失利后仍保持强硬态度"
-    },
-    {
-      "kept": "It’s Alpine Linux, On A Kindle Paperwhite 3",
-      "merged": [
-        "Asahi Linux Progress Linux 7.3"
-      ],
-      "why": "均为 Asahi Linux 7.3 版本更新及适配报道"
+      "why": "都是员工用 AI 辅助办公被开除，法院判决赔偿 4.6 万并继续履约"
     }
   ]
 }
