@@ -1,35 +1,50 @@
 {
-  "generated_at": "2026-11-06T23:56:27.925402+00:00",
+  "generated_at": "2026-11-07T01:19:16.489034+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 170,
+  "input_events": 201,
   "batches": 6,
   "calls": 6,
-  "merged_groups": 3,
-  "merged_events": 3,
-  "rejected_groups": 0,
+  "merged_groups": 5,
+  "merged_events": 6,
+  "rejected_groups": 3,
   "failed": false,
   "examples": [
     {
       "kept": "OpenAI valued at $1.25 trillion, as rival Anthropic nears its IPO",
       "merged": [
-        "Anthropic IPO buyers see valuation as low as $1.1T"
+        "OpenAI 新一轮融资 110 亿美元，估值达 1.25 万亿美元"
       ],
-      "why": "报道 Anthropic IPO 估值不同报道角度"
+      "why": "均报道 OpenAI 1.25 万亿美元估值的融资新闻"
     },
     {
-      "kept": "Serverless MCP server for AI agent data lake access on Amazon ECS Fargate",
+      "kept": "Z.ai 与 DeepSeek 开源权重模型增长领先",
       "merged": [
-        "Taxonomy of agentic primitives in Amazon Quick"
+        "DeepSeek V4.1 Flash 在 GB300 上提速最高 1.5 倍"
       ],
-      "why": "均报道亚马逊 ECS/Quick 上的 Serverless MCP 服务器及代理原语"
+      "why": "均涉及 DeepSeek 开源权重模型的技术进展与性能表现"
     },
     {
-      "kept": "微软收缩AI算力租赁！据称逐步退出甲骨文云协议，“新云”CoreWeave闪跌 - 华尔街见闻",
+      "kept": "GPT-Image-2.6 支持生成 GIF",
       "merged": [
-        "微软据悉正在逐步终止与甲骨文之间租用AI云容量的协议 - 东方财富"
+        "Artificial Analysis 实测 GPT Image 2.6 图像生成与编辑表现"
       ],
-      "why": "均报道微软终止与甲骨文 AI 云容量协议"
+      "why": "均报道 GPT Image 2.6 图像生成模型的更新与实测表现"
+    },
+    {
+      "kept": "彭博：微软逐步停用向甲骨文租用的 AI 算力，理由是不再符合其规格 - 智源社区",
+      "merged": [
+        "消息称微软不再续签甲骨文 AI 算力租赁协议 - DoNews",
+        "微软收缩AI算力租赁！据称逐步退出甲骨文云协议，“新云”CoreWeave闪跌 - 华尔街见闻"
+      ],
+      "why": "都报道微软停用/退出甲骨文AI算力租赁"
+    },
+    {
+      "kept": "5连板AI短剧概念股，紧急提示 - 东方财富",
+      "merged": [
+        "5连板后收监管函！601599澄清：无AI短剧相关业务 - 东方财富"
+      ],
+      "why": "都报道5连板AI短剧概念股澄清无业务"
     }
   ]
 }
