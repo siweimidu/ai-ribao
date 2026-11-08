@@ -481,7 +481,39 @@ def _body_order(
             untranslated.append((len(untranslated) + 1, event))
             continue
         shown.append((len(shown) + 1, event))
-    return shown, untranslated
+    return _repositories_below_the_head(shown), untranslated
+
+
+#: How many entries the overview shows, and therefore how many must stay free of repositories.
+OVERVIEW_HEAD = 8
+
+
+def _repositories_below_the_head(
+    shown: list[tuple[int, Event]],
+) -> list[tuple[int, Event]]:
+    """A repository never appears in the first `OVERVIEW_HEAD` entries.
+
+    The ranking stage already demotes repositories, but a rendered page carries whatever order
+    was written into the JSON when it was built -- and an already-published issue is not
+    rebuilt when the ranking changes. Enforcing it here makes the promise hold for every page
+    the renderer ever emits, including the ones built before this rule existed.
+
+    The swap keeps both lists in order otherwise: an offending repository trades places with
+    the first non-repository below the head, so nothing else moves and every entry still
+    appears exactly once.
+    """
+    rows = list(shown)
+    for i in range(min(OVERVIEW_HEAD, len(rows))):
+        if not _is_repository_story(rows[i][1]):
+            continue
+        later = next(
+            (k for k in range(OVERVIEW_HEAD, len(rows)) if not _is_repository_story(rows[k][1])),
+            None,
+        )
+        if later is None:
+            break
+        rows[i], rows[later] = rows[later], rows[i]
+    return [(number + 1, event) for number, (_old, event) in enumerate(rows)]
 
 def render_toc(
     ordered: list[tuple[int, Event]],
@@ -547,16 +579,34 @@ _GITHUB_RESERVED = {
     "orgs", "users", "apps", "notifications", "issues", "pulls", "search", "readme",
 }
 
-_REPO_URL = re.compile(r"^https?://(?:www\.)?github\.com/([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+)/?$")
+#: A GitHub repository URL. The path may continue (`/tree/main`), carry a query or a
+#: fragment. The earlier pattern required the URL to end at `owner/repo`, so those
+#: variants were read as ordinary news and a repository reached the top of the page.
+_REPO_URL = re.compile(
+    r"^https?://(?:www\.)?github\.com/([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+)(?:[/?#].*)?$"
+)
+
+#: A headline that opens with a repository slug: `owner/repo — Public repository for …`.
+_REPO_TITLE = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+(?:\s|$)")
 
 
 def _is_repository_story(event: Event) -> bool:
-    """True when the event is about one repository rather than about news."""
+    """True when the event is about one repository rather than about news.
+
+    Two tests, because either can arrive without the other: the link may be the repository
+    (`/tree/main`, `/issues` and `#readme` all count) and the headline may open with its slug
+    even when the collected URL points at an article about it.
+    """
     for url in event.all_urls or []:
         match = _REPO_URL.match((url or "").strip())
-        if match and match.group(1).lower() not in _GITHUB_RESERVED:
+        if not match:
+            continue
+        if match.group(1).lower() not in _GITHUB_RESERVED:
             return True
-    return False
+        # `github.com/topics/llm` is a GitHub page about a subject, not a repository. Its
+        # headline may still look like a slug, so stop here instead of consulting the title.
+        return False
+    return bool(_REPO_TITLE.match((event.title or "").strip()))
 
 
 #: A digest issue's own label, e.g. `2026-10-29 AI 日报 · `.
@@ -1046,7 +1096,17 @@ def _render_overview(
     #
     # `ordered` is already numbered by `_body_order`. Taking the first eight of it needs no
     # counter and cannot drift.
-    for number, event in ordered[:8]:
+    # **A repository is skipped, not counted.** 「开源仓库不准放在前八概览里」. Ordering the
+    # head so repositories fall below position eight is not enough: measured 2026-10-14, that
+    # page held eleven stories and six were repositories, so positions six to eight were
+    # repositories however they were ordered. The overview therefore takes the first eight
+    # entries that are not repositories -- fewer than eight when the day has fewer, which is
+    # honest: padding a 今日要闻 list with README links is not a favour to the reader.
+    #
+    # The numbering still comes from the body order, so the overview and the body agree.
+    for number, event in [
+        (number, event) for number, event in ordered if not _is_repository_story(event)
+    ][:OVERVIEW_HEAD]:
         insight = insights.get(event.event_id)
         title = _display_title(event, insight, items_by_id)
         anchor = f"e-{event.event_id}"

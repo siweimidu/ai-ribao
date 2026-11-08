@@ -243,7 +243,10 @@ def promote_official_videos(events, *, limit: int = OFFICIAL_PROMOTE_LIMIT,
     return head + promoted + tail
 
 #: A repository link, as opposed to a story about one.
-_REPO_URL = re.compile(r"^https?://(?:www\.)?github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+/?$")
+_REPO_URL = re.compile(
+    r"^https?://(?:www\.)?github\.com/([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+)"
+    r"(?:[/?#].*)?$"
+)
 
 #: Where a repository entry is allowed to start from.
 REPO_DEMOTE_AFTER = 20

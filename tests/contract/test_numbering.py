@@ -60,8 +60,18 @@ def test_the_rail_has_no_counter_of_its_own() -> None:
 
 
 def test_the_overview_reads_the_shared_list() -> None:
+    """The overview takes its rows from `ordered`, minus the repositories.
+
+    It used to be the literal `ordered[:8]`. 「开源仓库不准放在前八概览里」 made that wrong on
+    pages where more than three of the first eight rows are repositories -- 2026-10-14 had six
+    of eleven -- because no ordering can push them all below eighth place. The overview now
+    keeps reading the shared list and skips repository entries, so it can show fewer than eight
+    rather than pad the list with README links.
+    """
     body = _function_body("_render_overview")
-    assert "ordered[:8]" in body
+    assert "in ordered" in body
+    assert "[:OVERVIEW_HEAD]" in body
+    assert "_is_repository_story(event)" in body
 
 
 def test_the_overview_has_no_counter_of_its_own() -> None:

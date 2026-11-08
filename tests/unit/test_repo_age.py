@@ -64,7 +64,9 @@ def test_a_week_old_repository_keeps_the_neutral_value() -> None:
     """A genuinely new project must not be punished for being on a windowed list."""
     # Relative, not a fixed calendar date. "2026-10-20" was three days old when written
     # and thirteen days old a fortnight later, so the test failed while the code was right.
-    items = {"i1": _item((NOW - timedelta(days=1)).strftime("%Y-%m-%d"))}
+    # Against the real clock, not the module's NOW: `_repository_novelty` compares to
+    # `datetime.now()`, and a fixture pinned to a fixed NOW drifts from it.
+    items = {"i1": _item((datetime.now(timezone.utc) - timedelta(days=1)).strftime("%Y-%m-%d"))}
     assert _repository_novelty(_event(), items) == 1.0
     assert _freshness(_event(), NOW, HeatWeights(), items) == 0.5
 
