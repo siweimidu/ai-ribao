@@ -1,43 +1,29 @@
 {
-  "generated_at": "2026-11-08T04:11:51.420093+00:00",
+  "generated_at": "2026-11-08T12:13:35.275219+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 170,
-  "batches": 5,
-  "calls": 5,
-  "merged_groups": 4,
-  "merged_events": 5,
-  "rejected_groups": 3,
+  "input_events": 218,
+  "batches": 7,
+  "calls": 7,
+  "merged_groups": 2,
+  "merged_events": 3,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "男子驾考戴 AI 眼镜、智能戒指作弊，被抓现行！民警：多选题答案全错，正确率还不如自己做 - 新浪财经_金融信息服务商",
+      "kept": "Anthropic pushes ahead with pre-Thanksgiving IPO despite tech selloff, accepts l",
       "merged": [
-        "男子考驾照戴AI眼镜作弊，民警：答案错得离谱 - 新华网客户端",
-        "男子考驾照戴AI眼镜、智能戒指作弊！民警：多选题全错 正确率比他自己做还低 - 驱动之家"
+        "消息称 Anthropic 仍推进 IPO：拟募资 800 亿至 1000 亿美元，估值预期回落",
+        "AI风向突变！Anthropic IPO估值遭砍 - 21财经"
       ],
-      "why": "均为男子驾考戴AI眼镜及智能戒指作弊被抓事件"
+      "why": "都是 Anthropic IPO 相关动态，涉及 IPO 推进及估值下调"
     },
     {
-      "kept": "AI生成负面动漫等 一批违法违规涉军“自媒体”账号被关闭 - 中国新闻网",
+      "kept": "英伟达大劫案！超7600万元AI芯片和硬件离奇失踪，嫌疑人尚未抓获 - 华尔街见闻",
       "merged": [
-        "AI生成负面动漫等 一批违法违规涉军“自媒体”账号被关闭 - 新浪财经_金融信息服务商"
+        "英伟达千万美元AI芯片货车离奇失联 - 金融界"
       ],
-      "why": "均为AI生成负面动漫等涉军违规自媒体账号被关闭"
-    },
-    {
-      "kept": "从约束到进化：Ontology 与 AI 自迭代的实践｜AICon北京",
-      "merged": [
-        "从约束到进化：Ontology 与 AI 自迭代的实践｜AICon 北京 - InfoQ.cn"
-      ],
-      "why": "均为Ontology与AI自迭代实践在AICon北京的演讲"
-    },
-    {
-      "kept": "新华鲜报｜世界媒体峰会上，北京亮出AI“新名片” - 新华网",
-      "merged": [
-        "AI越来越能干，媒体人怎么办？ - 新华网"
-      ],
-      "why": "均来自新华网关于世界媒体峰会及AI相关报道"
+      "why": "均报道英伟达AI芯片/硬件失踪事件"
     }
   ]
 }
