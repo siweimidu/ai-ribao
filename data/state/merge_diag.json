@@ -1,53 +1,52 @@
 {
-  "generated_at": "2026-11-09T04:13:37.175505+00:00",
+  "generated_at": "2026-11-09T12:15:31.700531+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 202,
-  "batches": 7,
-  "calls": 7,
-  "merged_groups": 6,
-  "merged_events": 14,
-  "rejected_groups": 0,
+  "input_events": 309,
+  "batches": 9,
+  "calls": 9,
+  "merged_groups": 10,
+  "merged_events": 21,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "用户反映 Grok Bot 额度消耗加快，Elon Musk 称将核查用量",
+      "kept": "Nvidia CEO Jensen Huang admits to affair with suspected Chinese spy",
       "merged": [
-        "SpaceXAI Grok Bot availability just keeps growing - here's w",
-        "SpaceXAI 扩大 Grok Bot 访问范围，覆盖 SuperGrok 与 Cursor 全线套餐"
+        "Nvidia CEO 黄仁勋婚外情风波削弱其对严格 AI 芯片出口管制的游说",
+        "NYT 报道 Nvidia 调查黄仁勋与一名中国间谍的关系"
       ],
-      "why": "均报道 Grok Bot 访问范围扩大/额度变化"
+      "why": "都报道英伟达调查黄仁勋与中国间谍关系事件"
     },
     {
-      "kept": "全球AI大模型周调用量达210万亿Token，中国大模型连续二十八周居首 - 金融界",
+      "kept": "Nvidia espionage scandal weakens Huang's lobby against tighter AI chip export co",
       "merged": [
-        "中国AI大模型又赢了！连续28周领先美国 全球前五拿下四席 - 手机新浪网",
-        "210万亿Token！全球AI大模型周调用量榜单出炉，中国产品拿下前五中四席：DeepSeek连续三周领跑，腾讯混元Hy"
+        "Nvidia shares fall amid spying allegations"
       ],
-      "why": "均为全球AI大模型周调用量榜单，中国大模型居首"
+      "why": "都报道因黄仁勋间谍丑闻导致的英伟达股价下跌及影响"
     },
     {
-      "kept": "新版 Siri 跳票两年后，苹果 AI 主帅动了离职念头",
+      "kept": "NVIDIA Announces New Planned Investments in Korean Startups at the MSIT-NVIDIA A",
       "merged": [
-        "2026-11-09 AI 日报 · 黄仁勋致歉信与董事会调查发酵，苹果被曝冲刺代理式 Siri"
+        "NVIDIA 与韩国科学技术信息通信部扩大主权 AI 合作",
+        "NVIDIA 携手 Rebellions 与 SK Telecom，用 NVLink Fusion 推进韩国主权 AI ",
+        "NVIDIA 助力韩国各行业推进物理 AI 落地"
       ],
-      "why": "均涉及苹果AI战略及Siri相关人事或动态"
+      "why": "都报道英伟达与韩国政府及企业的AI合作"
     },
     {
-      "kept": "Nvidia’s $4.5 trillion test of founder immunity",
+      "kept": "字节发布 Seedream 5.5 图像创作模型：支持 100 轮编辑与原生 RGBA 透明输出",
       "merged": [
-        "Nvidia Inquiry, Anthropic, CoreWeave and Unity News Promise ",
-        "Trump backs Nvidia's Huang amid affair, spy investigation",
-        "AIHOT 日报 · 2026-11-09 — NVIDIA 董事会宣布就 CEO 黄仁勋遭外国情报行动瞄准一事启动独立"
+        "豆包图像创作模型 Seedream 5.5 发布，支持像素级多轮编辑与 RGBA 透明素材"
       ],
-      "why": "均涉及英伟达CEO黄仁勋调查/绯闻相关新闻"
+      "why": "都报道字节发布Seedream 5.5图像模型"
     },
     {
-      "kept": "OpenAI新一轮融资筹集110亿美元，估值达1.25万亿美元",
+      "kept": "数字生命卡兹克上线免费 Token 福利聚合网站 Token羊毛",
       "merged": [
-        "OpenAI 员工征询用户意见：是否增设 Pro 50 档位"
+        "AIHOT 上线免费 Token 福利聚合页「Token羊毛」"
       ],
-      "why": "均涉及OpenAI产品/服务变动，但主体动作不同，不合并"
+      "why": "都报道免费Token福利聚合网站Token羊毛上线"
     }
   ]
 }
