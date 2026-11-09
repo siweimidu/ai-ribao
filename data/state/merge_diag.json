@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-11-09T01:25:55.917463+00:00",
+  "generated_at": "2026-11-09T01:35:04.826761+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 151,
-  "batches": 4,
-  "calls": 4,
-  "merged_groups": 1,
-  "merged_events": 2,
+  "input_events": 150,
+  "batches": 5,
+  "calls": 5,
+  "merged_groups": 5,
+  "merged_events": 7,
   "rejected_groups": 0,
   "failed": false,
   "examples": [
@@ -15,7 +15,35 @@
       "merged": [
         "NVIDIA 创始人黄仁勋承认对妻子不忠并道歉"
       ],
-      "why": "均为黄仁勋承认出轨/不忠并道歉一事"
+      "why": "均为黄仁勋出轨道歉引发的传闻与市场反应"
+    },
+    {
+      "kept": "Bloomberg 报道 DeepSeek 开源智能体应用 Harness 日活用户达 154 万",
+      "merged": [
+        "DeepSeek Harness 负责人回应插件作者：内置功能可被插件替换"
+      ],
+      "why": "同一 DeepSeek 智能体产品的相关动态"
+    },
+    {
+      "kept": "AI搜索好用的手机怎么选？3款旗舰实测对比+避坑指南+FAQ - 新浪网",
+      "merged": [
+        "AI搜索好用的手机怎么选？3款旗舰横评+2个硬门槛避坑+FAQ - 手机新浪网"
+      ],
+      "why": "同一篇AI搜索手机选购指南，仅措辞微调"
+    },
+    {
+      "kept": "AI时代，“下一代图书馆”应该如何转型 - ThePaper.cn",
+      "merged": [
+        "AI时代，“下一代图书馆”应该如何转型 - 手机新浪网"
+      ],
+      "why": "标题完全相同，均为AI时代图书馆转型报道"
+    },
+    {
+      "kept": "How long can you expect your PC RAM to last?",
+      "merged": [
+        "RAM Altman: Linux Script Emails Sam Altman Daily How Much Un"
+      ],
+      "why": "均探讨PC内存寿命及Sam Altman查看内存的传闻"
     }
   ]
 }
