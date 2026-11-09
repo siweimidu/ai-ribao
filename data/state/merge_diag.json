@@ -1,52 +1,49 @@
 {
-  "generated_at": "2026-11-09T12:15:31.700531+00:00",
+  "generated_at": "2026-11-09T12:44:13.553440+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 309,
-  "batches": 9,
-  "calls": 9,
-  "merged_groups": 10,
-  "merged_events": 21,
-  "rejected_groups": 1,
-  "failed": false,
+  "input_events": 315,
+  "batches": 10,
+  "calls": 8,
+  "merged_groups": 9,
+  "merged_events": 11,
+  "rejected_groups": 0,
+  "failed": true,
   "examples": [
     {
-      "kept": "Nvidia CEO Jensen Huang admits to affair with suspected Chinese spy",
+      "kept": "韩国 2026 年高考将禁带一切电子设备并设专人检查 AI 眼镜",
       "merged": [
-        "Nvidia CEO 黄仁勋婚外情风波削弱其对严格 AI 芯片出口管制的游说",
-        "NYT 报道 Nvidia 调查黄仁勋与一名中国间谍的关系"
+        "韩国高考将有专人查AI眼镜 - 京报网"
       ],
-      "why": "都报道英伟达调查黄仁勋与中国间谍关系事件"
+      "why": "都报道韩国高考将严查AI眼镜"
     },
     {
-      "kept": "Nvidia espionage scandal weakens Huang's lobby against tighter AI chip export co",
+      "kept": "消息称 Sakana AI 最早 2027 年秋 IPO，已委任高盛担任顾问",
       "merged": [
-        "Nvidia shares fall amid spying allegations"
+        "实验室里的独角兽要出 App 了：Sakana AI 转向消费端"
       ],
-      "why": "都报道因黄仁勋间谍丑闻导致的英伟达股价下跌及影响"
+      "why": "均报道Sakana AI上市及业务转向消息"
     },
     {
-      "kept": "NVIDIA Announces New Planned Investments in Korean Startups at the MSIT-NVIDIA A",
+      "kept": "特朗普称 AI 风险可控但不介意设置监管护栏",
       "merged": [
-        "NVIDIA 与韩国科学技术信息通信部扩大主权 AI 合作",
-        "NVIDIA 携手 Rebellions 与 SK Telecom，用 NVLink Fusion 推进韩国主权 AI ",
-        "NVIDIA 助力韩国各行业推进物理 AI 落地"
+        "AI安全之争持续发酵！特朗普再谈AI：风险可控 不介意设置护栏 - 财联社"
       ],
-      "why": "都报道英伟达与韩国政府及企业的AI合作"
+      "why": "均为特朗普关于AI监管的言论报道"
     },
     {
-      "kept": "字节发布 Seedream 5.5 图像创作模型：支持 100 轮编辑与原生 RGBA 透明输出",
+      "kept": "特朗普在 60 Minutes 访谈中谈 AI：美国不能在对华竞争中位居第二",
       "merged": [
-        "豆包图像创作模型 Seedream 5.5 发布，支持像素级多轮编辑与 RGBA 透明素材"
+        "Former ‘60 Minutes’ chief criticizes questions and ratings"
       ],
-      "why": "都报道字节发布Seedream 5.5图像模型"
+      "why": "均涉及60 Minutes节目相关言论或评价"
     },
     {
       "kept": "数字生命卡兹克上线免费 Token 福利聚合网站 Token羊毛",
       "merged": [
         "AIHOT 上线免费 Token 福利聚合页「Token羊毛」"
       ],
-      "why": "都报道免费Token福利聚合网站Token羊毛上线"
+      "why": "都是 AIHOT 上线 Token 福利聚合网站"
     }
   ]
 }
