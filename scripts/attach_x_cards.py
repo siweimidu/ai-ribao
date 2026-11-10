@@ -21,6 +21,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 DAY = sys.argv[1] if len(sys.argv) > 1 else "2026-11-10"
 DIGEST = Path(f"data/digests/{DAY}.json")
 STATE = Path("data/state/x-highlights.json")
+ASSETS = Path("data/digests/site/assets/x")
 
 #: 带数字的产品名：Fable 5.2 / TPU 8i / GPT-6.2。
 _PRODUCT = re.compile(r"[A-Za-z][A-Za-z0-9.\-]{1,20}\s?\d+(?:\.\d+)?")
@@ -75,7 +76,11 @@ def main() -> None:
         taken.add(index)
         event = events[index]
         facts = event.get("unique_facts") or {}
-        facts["x_card"] = [card["image"]]
+        # 文件名就是推文 id，内容换了文件名不变，浏览器会一直用缓存里那张旧图
+        # （实测：卡片已换成单页，线上还在显示旧的跨页版）。加内容指纹强制刷新。
+        image = ASSETS / str(card.get("image") or "")
+        stamp = image.stat().st_size if image.exists() else 0
+        facts["x_card"] = [f"{card.get('image')}?v={stamp}"]
         facts["x_url"] = [card.get("url") or ""]
         facts["x_author"] = [card.get("author") or ""]
         event["unique_facts"] = facts
