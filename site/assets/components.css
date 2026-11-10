@@ -2031,8 +2031,8 @@ body { font-family: var(--f-sans); }
  * 无法核实的话。用 <details> 折叠：默认只占一行，展开后每家一行真实链接。
  */
 .item__more {
-  display: inline-block;
-  position: relative;
+  display: block;
+  position: static;
 }
 
 .item__more > summary {
@@ -2055,13 +2055,14 @@ body { font-family: var(--f-sans); }
 
 .item__more > summary:hover { color: var(--accent); }
 
+/* 展开后**在文档流里往下排**，不浮在卡片外面。
+   原来是 position:absolute + top:100%，条目靠近卡片底部时那 3 个来源会溢出卡片、
+   压在下一个区块上（截图里 theinformation.com 被切掉就是这样）。折叠控件不是浮层，
+   它展开的内容本来就该把卡片撑高。 */
 .item__more > ul {
-  position: absolute;
-  z-index: 20;
-  top: calc(100% + 6px);
-  left: 0;
-  min-width: 180px;
-  margin: 0;
+  position: static;
+  min-width: 0;
+  margin: 8px 0 0;
   padding: 8px 12px;
   list-style: none;
   background: var(--surface, #fff);
@@ -2334,6 +2335,7 @@ body { font-family: var(--f-sans); }
 .xgrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
   gap: calc(var(--unit) * 4);
   margin-top: calc(var(--unit) * 3);
 }

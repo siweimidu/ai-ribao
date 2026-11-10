@@ -81,7 +81,9 @@ def _run(url: str, target: Path, layout: str) -> dict | None:
         "--json",
     ]
     if layout == "spread":
-        cmd.extend(["--long-height", str(CARD_H)])
+        # 不传 --long-height：让渲染器按内容决定页高。写死高度会在内容少的帖子上
+        # 补出上千像素空白（实测 Google/Higgsfield 两页下面空了一大片）。
+        pass
     try:
         done = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", timeout=180)
     except (OSError, subprocess.TimeoutExpired):
