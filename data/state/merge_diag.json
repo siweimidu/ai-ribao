@@ -1,52 +1,53 @@
 {
-  "generated_at": "2026-11-10T08:33:30.829769+00:00",
+  "generated_at": "2026-11-10T12:30:26.549153+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 309,
-  "batches": 9,
-  "calls": 8,
-  "merged_groups": 6,
-  "merged_events": 9,
+  "input_events": 361,
+  "batches": 11,
+  "calls": 11,
+  "merged_groups": 11,
+  "merged_events": 17,
   "rejected_groups": 2,
-  "failed": true,
+  "failed": false,
   "examples": [
-    {
-      "kept": "Nvidia has no obvious successor to Jensen Huang — and that's a problem",
-      "merged": [
-        "Who Could Succeed Jensen Huang at Nvidia?"
-      ],
-      "why": "均为Nvidia黄仁勋接班人讨论"
-    },
     {
       "kept": "AIHOT 日报 · 2026-11-10 — Anthropic 发布 Claude Fable 5.2 与 Claude Mythos 5.2",
       "merged": [
         "Anthropic 发布 Fable 5.2 与 Mythos 5.2，llm-anthropic 0.31 已支持",
-        "Anthropic 发布 Claude Fable 5.2 与 Mythos 5.2，API 调用费下降 20%",
+        "Anthropic 发布 Claude Fable 5.2 与 Mythos 5.2，重登榜首但每任务成本上升",
         "Claude Fable 5.2 and Mythos 5.2"
       ],
-      "why": "均为Anthropic发布Claude Fable/Mythos 5.2"
+      "why": "均报道 Anthropic 发布 Claude Fable 5.2 与 Mythos 5.2"
     },
     {
-      "kept": "[AINews] Fable 5.2 retakes World #1 LLM spot as $ANT IPO roadshow begins",
+      "kept": "Meta launches Muse Ember, a small AI model built for the repetitive work agents ",
       "merged": [
-        "Claude Fable 5.2 (xHigh) 以 1832 分登顶 Code Arena: WebDev 榜单"
+        "Muse Ember: Our smallest, most efficient model",
+        "Meta 发布最小模型 Muse Ember，价格介于 GPT-6 Luna 与 Claude Haiku 5.5 之间",
+        "Meta 发布 Muse Ember：1M 上下文的小型智能体模型"
       ],
-      "why": "均为Claude Fable 5.2登顶榜单排名"
+      "why": "均报道 Meta 发布 Muse Ember 模型"
     },
     {
-      "kept": "Fireworks 遭黑客入侵，客户数据与部分模型权重暴露",
+      "kept": "谷歌 Gemini 上线记忆摘要功能，可查看、编辑和删除 AI 记住的个人信息",
       "merged": [
-        "Fireworks 确认黑客入侵暴露客户账单与模型数据",
-        "New Fireworks Hack Threatens $1 Billion Business"
+        "Google Gemini routes personal Drive files and emails to huma"
       ],
-      "why": "Fireworks遭黑客入侵事件的多篇报道"
+      "why": "均为 Google Gemini 隐私/数据路由功能"
     },
     {
-      "kept": "2026年金鸡百花电影节首次设立电影AI单元，AI极客松287支团队报名",
+      "kept": "Adobe 与迪士尼达成多年战略合作，将 Firefly 等 AI 工具推广至乐园和内容制作",
       "merged": [
-        "金鸡百花电影节首次设立AI单元 - 凤凰网科技"
+        "Disney bets on Adobe's Firefly to create brand-safe AI model"
       ],
-      "why": "金鸡百花电影节首次设立AI单元"
+      "why": "都是 Adobe 与迪士尼达成 Firefly 合作"
+    },
+    {
+      "kept": "Grok Bot 宣布为所有用户重置每周限额",
+      "merged": [
+        "马斯克称 Grok Bot 修复连夜实施，预计次日显著改善"
+      ],
+      "why": "都是 Grok Bot 限额重置/修复事件"
     }
   ]
 }
