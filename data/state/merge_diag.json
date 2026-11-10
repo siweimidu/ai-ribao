@@ -1,50 +1,49 @@
 {
-  "generated_at": "2026-11-10T04:40:12.327242+00:00",
+  "generated_at": "2026-11-10T05:22:32.182621+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 278,
+  "input_events": 287,
   "batches": 8,
   "calls": 8,
-  "merged_groups": 13,
-  "merged_events": 25,
-  "rejected_groups": 2,
+  "merged_groups": 10,
+  "merged_events": 12,
+  "rejected_groups": 4,
   "failed": false,
   "examples": [
     {
-      "kept": "Medium’s new TK app brings AI assistance directly into the writing process",
+      "kept": "Anthropic launches new Claude Fable and Mythos 5.2 models",
       "merged": [
-        "Medium 推出全新 AI 写作辅助应用 TK，将大模型深度融入创作流程"
+        "2026-11-10 AI 日报 · Anthropic发布新旗舰模型Fable与Mythos 5.2，大模型加速挺进物"
       ],
-      "why": "都是 Medium 推出 AI 写作辅助应用 TK"
+      "why": "均报道 Anthropic 发布 Fable 和 Mythos 5.2 模型"
     },
     {
-      "kept": "火山引擎发布Seedream5.5:像素级可控编辑，百轮修改不崩坏",
+      "kept": "Nvidia has no obvious successor to Jensen Huang — and that's a problem",
       "merged": [
-        "派早报：火山引擎发布 Seedream 5.5，苹果研究团队用仿真训练人形机器人等"
+        "Who Could Succeed Jensen Huang at Nvidia?"
       ],
-      "why": "都是火山引擎发布 Seedream 5.5 及相关报道"
+      "why": "均讨论 Nvidia 缺少 Jensen Huang 接班人的问题"
     },
     {
-      "kept": "Fireworks 遭黑客入侵，客户数据与部分模型权重暴露",
+      "kept": "OpenAI 部署控制室系统，35 秒内叫停失控 AI 智能体",
       "merged": [
-        "Fireworks 确认黑客入侵暴露客户账单与模型数据",
-        "New Fireworks Hack Threatens $1 Billion Business"
+        "OpenAI 建 Control Room 追踪模型负载并快速叫停"
       ],
-      "why": "都是 Fireworks 遭黑客入侵事件报道"
+      "why": "均报道 OpenAI 部署 Control Room 系统监控 AI"
     },
     {
-      "kept": "Adobe 与迪士尼达成多年战略合作，将 Firefly 等 AI 工具推广至乐园和内容制作",
+      "kept": "Claude Fable 5.2 (xHigh) 以 1832 分登顶 Code Arena: WebDev 榜单",
       "merged": [
-        "Disney bets on Adobe's Firefly to create brand-safe AI model"
+        "Claude Fable 5.2 登顶 Arena WebDev 榜，比 Fable 5.1 快 30% 且降价"
       ],
-      "why": "Adobe 与迪士尼达成战略合作"
+      "why": "均报道 Claude Fable 5.2 登顶 Code Arena WebDev 榜"
     },
     {
-      "kept": "免费时代要结束？三星 Galaxy AI 准备收每月 4.99 美元",
+      "kept": "Locating the source of a mysterious beep with Claude",
       "merged": [
-        "Samsung mulls Galaxy AI usage limits and subscription tiers "
+        "Locating the source of a mysterious beep with Claude"
       ],
-      "why": "三星 Galaxy AI 调整订阅/使用限制"
+      "why": "重复 ID，无法成立"
     }
   ]
 }
