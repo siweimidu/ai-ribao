@@ -1,36 +1,29 @@
 {
-  "generated_at": "2026-11-10T03:18:35.823622+00:00",
+  "generated_at": "2026-11-10T03:33:49.846645+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 268,
-  "batches": 9,
-  "calls": 9,
-  "merged_groups": 11,
-  "merged_events": 20,
-  "rejected_groups": 4,
+  "input_events": 276,
+  "batches": 8,
+  "calls": 8,
+  "merged_groups": 7,
+  "merged_events": 17,
+  "rejected_groups": 3,
   "failed": false,
   "examples": [
     {
-      "kept": "Jensen Huang pulls out of ElevenLabs Summit amid Nvidia controversy",
-      "merged": [
-        "Who Could Succeed Jensen Huang at Nvidia?"
-      ],
-      "why": "都报道 Jensen Huang 及 Nvidia 相关争议"
-    },
-    {
       "kept": "Meta launches Muse Ember, a small AI model built for the repetitive work agents ",
       "merged": [
-        "Our Smallest, Most Efficient Model: Muse Ember",
-        "Meta 推出轻量级 AI 模型 Muse Ember，跑分媲美 Claude Haiku 5.5，单任务成本仅 1/3"
+        "Meta introduces Muse Ember to power cost-efficient AI agents"
       ],
-      "why": "都报道 Meta 发布 Muse Ember 模型"
+      "why": "Meta Muse Ember 模型发布"
     },
     {
-      "kept": "OpenAI 发布 Control Room，35 秒内可叫停研究中的模型任务",
+      "kept": "Fireworks 遭黑客入侵，客户数据与部分模型权重暴露",
       "merged": [
-        "OpenAI 建 Control Room 追踪模型负载并快速叫停"
+        "Fireworks 确认黑客入侵暴露客户账单与模型数据",
+        "New Fireworks Hack Threatens $1 Billion Business"
       ],
-      "why": "都报道 OpenAI 发布 Control Room 功能"
+      "why": "均为 Fireworks 遭黑客入侵及安全漏洞事件"
     },
     {
       "kept": "Anthropic 发布 Claude Fable 5.2 与 Mythos 5.2，API 调用费下降 20%",
@@ -39,15 +32,24 @@
         "Anthropic 发布 Claude Fable 5.2 与 Mythos 5.2，IPO 前重夺性能领先",
         "Claude Fable 5.2 and Mythos 5.2"
       ],
-      "why": "都报道 Anthropic 发布 Claude Fable 5.2 与 Mythos 5.2"
+      "why": "均为 Anthropic 发布 Claude Fable 5.2 和 Mythos 5.2"
     },
     {
-      "kept": "Fireworks 遭黑客入侵，客户数据与部分模型权重暴露",
+      "kept": "OpenAI 部署控制室系统，35 秒内叫停失控 AI 智能体",
       "merged": [
-        "Fireworks 确认黑客入侵暴露客户账单与模型数据",
-        "New Fireworks Hack Threatens $1 Billion Business"
+        "OpenAI 建 Control Room 追踪模型负载并快速叫停"
       ],
-      "why": "都是报道 Fireworks 被黑客入侵及数据泄露事件"
+      "why": "均为 OpenAI 部署 Control Room 叫停失控模型"
+    },
+    {
+      "kept": "Anthropic 随 Fable 5.2 上线推出限时优惠，高阶订阅最多可获 3 次重置",
+      "merged": [
+        "Anthropic 发布 Fable 5.2 和 Mythos 5.2，编程与科学评测提升",
+        "AIHOT 日报 · 2026-11-10 — Anthropic 发布 Claude Fable 5.2 与 Clau",
+        "Anthropic releases new Mythos and Fable models amid RSI conc",
+        "Anthropic 发布 Claude Fable5.2与 Mythos5.2:1000个子智能体8天写出可启动操作系统"
+      ],
+      "why": "均为 Anthropic 发布 Fable 5.2 和 Mythos 5.2 模型"
     }
   ]
 }
