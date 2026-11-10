@@ -2031,8 +2031,8 @@ body { font-family: var(--f-sans); }
  * 无法核实的话。用 <details> 折叠：默认只占一行，展开后每家一行真实链接。
  */
 .item__more {
-  display: inline-block;
-  position: relative;
+  display: block;
+  position: static;
 }
 
 .item__more > summary {
@@ -2055,13 +2055,14 @@ body { font-family: var(--f-sans); }
 
 .item__more > summary:hover { color: var(--accent); }
 
+/* 展开后**在文档流里往下排**，不浮在卡片外面。
+   原来是 position:absolute + top:100%，条目靠近卡片底部时那 3 个来源会溢出卡片、
+   压在下一个区块上（截图里 theinformation.com 被切掉就是这样）。折叠控件不是浮层，
+   它展开的内容本来就该把卡片撑高。 */
 .item__more > ul {
-  position: absolute;
-  z-index: 20;
-  top: calc(100% + 6px);
-  left: 0;
-  min-width: 180px;
-  margin: 0;
+  position: static;
+  min-width: 0;
+  margin: 8px 0 0;
   padding: 8px 12px;
   list-style: none;
   background: var(--surface, #fff);
@@ -2325,3 +2326,37 @@ body { font-family: var(--f-sans); }
 /* A picture that cannot load leaves an empty frame; an empty frame is worse than no picture.
    The onerror handler removes the button and this rule collapses the container. */
 .item__images:empty { display: none; }
+
+
+/* X 精选：横版卡片两列并排，等比例缩放。
+   源图 1080×900，两列时每张约 460px —— 这是缩略图的大小，不是正文的替代品；
+   点开图片就是原尺寸，长帖的字在那里看得清。 */
+.xsection .section__note { color: var(--muted-fg); font-size: var(--fs-small); }
+.xgrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: calc(var(--unit) * 4);
+  margin-top: calc(var(--unit) * 3);
+}
+@media (max-width: 900px) {
+  .xgrid { grid-template-columns: minmax(0, 1fr); }
+}
+.xcard { margin: 0; }
+.xcard img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+.xcard figcaption {
+  margin-top: calc(var(--unit) * 2);
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+}
+.xcard figcaption b { color: var(--fg); }
+.xcard figcaption p { margin: 6px 0; line-height: 1.55; }
+.xcard__src { color: var(--accent); text-decoration: none; }
+.xcard__src:hover { text-decoration: underline; }
