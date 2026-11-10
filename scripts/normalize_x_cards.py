@@ -1,25 +1,13 @@
-"""把卡片统一成横版同高的规格。
-
-卡片自带高度：短帖 600 上下，长帖能到 2400。直接并排会让页面长得没边，也对不齐。
-
-这里的做法是**等比缩放后居中补边**，不裁切：
-  · 裁切会把正文后半段切掉，读者拿到的是半条消息；
-  · 缩放至少保住全部文字，只是长帖的字会变小；
-  · 补边用的是卡片自己的底色，看起来是同一套版式，不是拼上去的。
-
-规格固定为 1200×900（4:3），和参考站那种横版卡片一致。
-"""
+"""统一尺寸：按宽度缩放，高度补边到同一值（不压缩短卡）。"""
 
 from __future__ import annotations
 
-import io
-import sys
 from pathlib import Path
 
 from PIL import Image
 
-CARD_W = 1200
-CARD_H = 900
+CARD_W = 1080
+CARD_H = 1400
 
 
 def _background(img: Image.Image) -> tuple[int, int, int]:
@@ -28,11 +16,18 @@ def _background(img: Image.Image) -> tuple[int, int, int]:
 
 
 def normalize(path: Path, *, width: int = CARD_W, height: int = CARD_H) -> tuple[int, int]:
-    """把一张卡片放进 width×height 的画面里，等比缩放，居中补边。"""
+    """把一张卡片放进 width×height 的画面里。
+
+    先按宽度缩放 —— 单页卡原生 1200 宽，缩到 1080 后正文仍是原生大小；
+    只有当它比画布还高时才按高度再缩，这一步很少触发，因为超高的帖子在分流时已经改成跨页。
+    高度不足的补边，补的是卡片自己的底色。
+    """
     with Image.open(path) as raw:
         img = raw.convert("RGB")
         box = _background(img)
-        ratio = min(width / img.width, height / img.height)
+        ratio = width / img.width
+        if img.height * ratio > height:
+            ratio = min(ratio, height / img.height)
         scaled = img.resize(
             (max(1, round(img.width * ratio)), max(1, round(img.height * ratio))),
             Image.LANCZOS,
@@ -44,6 +39,9 @@ def normalize(path: Path, *, width: int = CARD_W, height: int = CARD_H) -> tuple
 
 
 if __name__ == "__main__":
+    import io
+    import sys
+
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
     root = Path("data/digests/site/assets/x")
     for png in sorted(root.glob("*.png")):

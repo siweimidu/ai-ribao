@@ -1,4 +1,4 @@
-"""X 精选：从今天抓到的页面里取出 X 原帖，渲染成卡片，供网站的一个栏位使用。
+"""X 精选：从今天抓到的页面里取出 X 原帖，渲染成卡片。
 
 **为什么从这个方向取帖，而不是自己去 X 搜索。**
 
@@ -6,18 +6,17 @@ X 没有可靠的公开搜索接口：关键词搜索要登录、要浏览器，
 本来就会把当天的原帖链出来 —— 实测 2026-11-10 的 aihot 日报页面上有 4 个不同的
 `x.com/<user>/status/<id>`。这些是编辑挑过的帖子，不是关键词撞出来的噪声。
 
-所以这一层的职责很窄：**找出今天页面里出现过的原帖，渲染卡片，给出摘要与来源链接。**
-发现（看哪些页面）由既有采集决定，不是这里重新发明一遍。
+**卡片尺寸分两档。** 短帖走原生单页卡片，正文是 X 的正常字号；超过阈值的才摊成左右两页。
+一刀切全都跨页，会把短帖也压成小字；一刀切都不跨页，长帖会变成一根竖条，缩到页面宽度后
+根本看不清。分流看的是渲染出来的真实高度，不是猜字数。
 """
 
 from __future__ import annotations
 
-import io
 import json
 import re
 import subprocess
-import sys
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 
 #: 页面里出现的 X 原帖链接。只认 status，不认主页、话题页和转推短链。
@@ -29,11 +28,15 @@ _X_STATUS = re.compile(
 SKILL = Path.home() / ".agents" / "skills" / "x-post2image"
 CLI = SKILL / "scripts" / "x-post2image.mjs"
 
-#: 卡片统一尺寸。spread 的原生输出就是 1080×900，短帖补边到同一高度，并排时才齐。
+#: 卡片统一尺寸。跨页原生输出 1080×H，单页 1200 宽；统一到 1080 宽、1000 高后并排才齐。
 CARD_W = 1080
-CARD_H = 900
+CARD_H = 1400
 
-#: 一期最多几张卡。卡片是重内容（每张 40 KB 上下 + 一次外部请求），不是越多越好。
+#: 超过这个高度（CSS px）的帖子改用跨页。原生单页卡片宽 600 CSS px，正文正常大小；
+#: 再长就成了一根竖条，缩到页面宽度后字看不清 —— 那时候才摊成两页。
+LONG_THRESHOLD_CHARS = 400
+
+#: 一期最多几张卡。卡片是重内容（每张几十 KB + 一次外部请求），不是越多越好。
 MAX_CARDS = 4
 
 
@@ -52,6 +55,7 @@ class XPost:
     likes: str = ""
     reposts: str = ""
     views: str = ""
+    layout: str = "single"
 
 
 def extract_posts(html: str) -> list[tuple[str, str]]:
@@ -66,39 +70,50 @@ def extract_posts(html: str) -> list[tuple[str, str]]:
     return out
 
 
-def render(post_id: str, url: str, out_dir: Path, *, timeout: int = 120) -> XPost | None:
-    """把一条帖子渲染成 PNG，返回它的元数据。渲染失败返回 None，绝不编造。"""
-    out_dir.mkdir(parents=True, exist_ok=True)
-    target = out_dir / f"{post_id}.png"
-    # `--layout spread` 是参考站那种「两页并排」的横版：长帖被摊成左右两栏，
-    # 高度靠 `--long-height` 固定，短帖只占一页。默认的 single 会把长帖拉成一根竖条，
-    # 缩到页面宽度后字小到看不清。
+def _run(url: str, target: Path, layout: str) -> dict | None:
+    """跑一次渲染，返回 CLI 的 JSON；失败返回 None。"""
     cmd = [
-        "node",
-        str(CLI),
-        url,
-        "--out",
-        str(target),
-        "--theme",
-        "light",
-        "--layout",
-        "spread",
-        "--long-height",
-        str(CARD_H),
-        "--translate",
-        "zh-CN",
+        "node", str(CLI), url,
+        "--out", str(target),
+        "--theme", "light",
+        "--layout", layout,
+        "--translate", "zh-CN",
         "--json",
     ]
+    if layout == "spread":
+        cmd.extend(["--long-height", str(CARD_H)])
     try:
-        done = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", timeout=timeout)
+        done = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", timeout=180)
     except (OSError, subprocess.TimeoutExpired):
         return None
     if done.returncode != 0 or not target.exists():
         return None
     try:
-        payload = json.loads(done.stdout)
+        return json.loads(done.stdout)
     except ValueError:
-        payload = {}
+        return {"url": url, "width": 0, "height": 0}
+
+
+def render(post_id: str, url: str, out_dir: Path) -> XPost | None:
+    """渲染一张卡片：短帖单页，长帖跨页。渲染失败返回 None，绝不编造。"""
+    out_dir.mkdir(parents=True, exist_ok=True)
+    target = out_dir / f"{post_id}.png"
+
+    payload = _run(url, target, "single")
+    if payload is None:
+        return None
+    layout = "single"
+
+    # 两个信号任一到就摊成两页：
+    #   · 正文超过 400 字 —— 读者眼里的「长文」；
+    #   · 单页渲染出来比画布还高 —— 带大图/视频预览的帖子字数不多但很长，
+    #     只按字数判断会把它压成一根竖条，再缩到页面宽度就看不清了。
+    if len(payload.get("text") or "") > LONG_THRESHOLD_CHARS or int(payload.get("height") or 0) > CARD_H:
+        harder = _run(url, target, "spread")
+        if harder is not None:
+            payload = harder
+            layout = "spread"
+
     author = payload.get("author") or {}
     if isinstance(author, dict):
         name = author.get("name") or ""
@@ -119,6 +134,7 @@ def render(post_id: str, url: str, out_dir: Path, *, timeout: int = 120) -> XPos
         likes=str(metrics.get("likes") or ""),
         reposts=str(metrics.get("reposts") or ""),
         views=str(metrics.get("views") or ""),
+        layout=layout,
     )
 
 
@@ -141,15 +157,13 @@ def collect(pages: list[str], out_dir: Path, *, limit: int = MAX_CARDS) -> list[
 
 def dump(posts: list[XPost], path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    payload = [p.__dict__ if hasattr(p, "__dict__") else {
-        "url": p.url, "author": p.author, "handle": p.handle, "text": p.text,
-        "translated": p.translated, "image": p.image, "width": p.width,
-        "height": p.height, "likes": p.likes, "reposts": p.reposts, "views": p.views,
-    } for p in posts]
-    path.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
-
-
-if __name__ == "__main__":
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
-    page = Path(sys.argv[1]).read_text(encoding="utf-8") if len(sys.argv) > 1 else ""
-    print("  页面里的原帖:", len(extract_posts(page)))
+    rows = [
+        {
+            "url": p.url, "author": p.author, "handle": p.handle, "text": p.text,
+            "translated": p.translated, "image": p.image, "width": p.width,
+            "height": p.height, "likes": p.likes, "reposts": p.reposts,
+            "views": p.views, "layout": p.layout,
+        }
+        for p in posts
+    ]
+    path.write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding="utf-8")
