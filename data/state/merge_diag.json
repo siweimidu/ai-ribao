@@ -1,49 +1,52 @@
 {
-  "generated_at": "2026-11-10T05:22:32.182621+00:00",
+  "generated_at": "2026-11-10T08:33:30.829769+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 287,
-  "batches": 8,
+  "input_events": 309,
+  "batches": 9,
   "calls": 8,
-  "merged_groups": 10,
-  "merged_events": 12,
-  "rejected_groups": 4,
-  "failed": false,
+  "merged_groups": 6,
+  "merged_events": 9,
+  "rejected_groups": 2,
+  "failed": true,
   "examples": [
-    {
-      "kept": "Anthropic launches new Claude Fable and Mythos 5.2 models",
-      "merged": [
-        "2026-11-10 AI 日报 · Anthropic发布新旗舰模型Fable与Mythos 5.2，大模型加速挺进物"
-      ],
-      "why": "均报道 Anthropic 发布 Fable 和 Mythos 5.2 模型"
-    },
     {
       "kept": "Nvidia has no obvious successor to Jensen Huang — and that's a problem",
       "merged": [
         "Who Could Succeed Jensen Huang at Nvidia?"
       ],
-      "why": "均讨论 Nvidia 缺少 Jensen Huang 接班人的问题"
+      "why": "均为Nvidia黄仁勋接班人讨论"
     },
     {
-      "kept": "OpenAI 部署控制室系统，35 秒内叫停失控 AI 智能体",
+      "kept": "AIHOT 日报 · 2026-11-10 — Anthropic 发布 Claude Fable 5.2 与 Claude Mythos 5.2",
       "merged": [
-        "OpenAI 建 Control Room 追踪模型负载并快速叫停"
+        "Anthropic 发布 Fable 5.2 与 Mythos 5.2，llm-anthropic 0.31 已支持",
+        "Anthropic 发布 Claude Fable 5.2 与 Mythos 5.2，API 调用费下降 20%",
+        "Claude Fable 5.2 and Mythos 5.2"
       ],
-      "why": "均报道 OpenAI 部署 Control Room 系统监控 AI"
+      "why": "均为Anthropic发布Claude Fable/Mythos 5.2"
     },
     {
-      "kept": "Claude Fable 5.2 (xHigh) 以 1832 分登顶 Code Arena: WebDev 榜单",
+      "kept": "[AINews] Fable 5.2 retakes World #1 LLM spot as $ANT IPO roadshow begins",
       "merged": [
-        "Claude Fable 5.2 登顶 Arena WebDev 榜，比 Fable 5.1 快 30% 且降价"
+        "Claude Fable 5.2 (xHigh) 以 1832 分登顶 Code Arena: WebDev 榜单"
       ],
-      "why": "均报道 Claude Fable 5.2 登顶 Code Arena WebDev 榜"
+      "why": "均为Claude Fable 5.2登顶榜单排名"
     },
     {
-      "kept": "Locating the source of a mysterious beep with Claude",
+      "kept": "Fireworks 遭黑客入侵，客户数据与部分模型权重暴露",
       "merged": [
-        "Locating the source of a mysterious beep with Claude"
+        "Fireworks 确认黑客入侵暴露客户账单与模型数据",
+        "New Fireworks Hack Threatens $1 Billion Business"
       ],
-      "why": "重复 ID，无法成立"
+      "why": "Fireworks遭黑客入侵事件的多篇报道"
+    },
+    {
+      "kept": "2026年金鸡百花电影节首次设立电影AI单元，AI极客松287支团队报名",
+      "merged": [
+        "金鸡百花电影节首次设立AI单元 - 凤凰网科技"
+      ],
+      "why": "金鸡百花电影节首次设立AI单元"
     }
   ]
 }
