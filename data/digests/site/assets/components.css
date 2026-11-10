@@ -2360,3 +2360,27 @@ body { font-family: var(--f-sans); }
 .xcard figcaption p { margin: 6px 0; line-height: 1.55; }
 .xcard__src { color: var(--accent); text-decoration: none; }
 .xcard__src:hover { text-decoration: underline; }
+
+
+/* 条目里的 X 卡片。宽度跟正文列一致，高度按比例走；
+   一屏放不下没关系 —— 它是佐证，读者可以跳过。 */
+.item__x {
+  margin: calc(var(--unit) * 2) 0;
+  padding-left: calc(1.6em + var(--unit) * 3);
+}
+.item__x img {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+}
+.item__x figcaption {
+  margin-top: 6px;
+  font-size: var(--fs-micro);
+  color: var(--muted-fg);
+}
+.item__x figcaption a { color: var(--accent); text-decoration: none; }
+.item__x figcaption a:hover { text-decoration: underline; }

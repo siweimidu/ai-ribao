@@ -976,6 +976,22 @@ def render_item(
 
     # The official walkthrough, when one was verified for this story.
     _facts = event.unique_facts if isinstance(event.unique_facts, dict) else {}
+    # X 卡片长在条目里：读者看的是「Anthropic 发布 Fable 5.2」这条新闻，推文图是它的佐证，
+    # 不是另一栏里的展品。
+    x_card = (_facts.get("x_card") or [""])[0]
+    x_url = (_facts.get("x_url") or [""])[0]
+    x_html = ""
+    if x_card:
+        x_html = (
+            '<figure class="item__x">'
+            f'<a href="{esc(x_url) or "#"}" target="_blank" rel="noopener noreferrer">'
+            f'<img src="assets/x/{esc(x_card)}" alt="原帖" loading="lazy" decoding="async">'
+            "</a>"
+            '<figcaption>原帖截图 · <a href="'
+            + (esc(x_url) or "#")
+            + '" target="_blank" rel="noopener noreferrer">打开 X</a></figcaption>'
+            "</figure>"
+        )
     _video_url = (_facts.get("video_url") or [""])[0]
     _video_title = (_facts.get("video_title") or [""])[0]
     _bvid = _BVID.search(_video_url).group(1) if _BVID.search(_video_url) else ""
@@ -1003,7 +1019,7 @@ def render_item(
 
     return f"""        <li class="item" id="{esc(anchor)}">
           {head_html}
-          {image_html}
+          {image_html}{x_html}
           {video_html}
           <div class="item__meta">
             <span class="badge" data-level="{esc(level)}">{esc(label)}</span>
@@ -1364,7 +1380,7 @@ def render_day(
       </details>"""
 
     overview = _render_overview(digest, insights, ordered_body, items_by_id)
-    x_highlights = render_x_highlights()
+    x_highlights = ""
     source_cover = _render_source_coverage(ordered_body)
     # The rail is built here, after the body decided which events it shows.
     # It used to be built before the loop, from `top_events` -- which is why it once

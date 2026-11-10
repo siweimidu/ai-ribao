@@ -106,15 +106,9 @@ def render(post_id: str, url: str, out_dir: Path) -> XPost | None:
         return None
     layout = "single"
 
-    # 两个信号任一到就摊成两页：
-    #   · 正文超过 400 字 —— 读者眼里的「长文」；
-    #   · 单页渲染出来比画布还高 —— 带大图/视频预览的帖子字数不多但很长，
-    #     只按字数判断会把它压成一根竖条，再缩到页面宽度就看不清了。
-    if len(payload.get("text") or "") > LONG_THRESHOLD_CHARS or int(payload.get("height") or 0) > CARD_H:
-        harder = _run(url, target, "spread")
-        if harder is not None:
-            payload = harder
-            layout = "spread"
+    # **只用单页卡片。** 跨页那种两页并排的版式在真实帖子上问题太多：右页经常半空、
+    # 长帖被压成一堆小字、原帖配图不显示。单页是 X 自己的版式，字号正常、配图在、
+    # 头像和蓝 V 都对 —— 高度参差由页面布局吸收，不为整齐去牺牲可读性。
 
     author = payload.get("author") or {}
     if isinstance(author, dict):
