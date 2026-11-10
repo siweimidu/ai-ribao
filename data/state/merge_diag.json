@@ -1,29 +1,53 @@
 {
-  "generated_at": "2026-11-09T22:20:38.169340+00:00",
+  "generated_at": "2026-11-10T03:18:35.823622+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 136,
-  "batches": 5,
-  "calls": 5,
-  "merged_groups": 2,
-  "merged_events": 4,
-  "rejected_groups": 1,
+  "input_events": 268,
+  "batches": 9,
+  "calls": 9,
+  "merged_groups": 11,
+  "merged_events": 20,
+  "rejected_groups": 4,
   "failed": false,
   "examples": [
     {
-      "kept": "免费时代要结束？三星 Galaxy AI 准备收每月 4.99 美元",
+      "kept": "Jensen Huang pulls out of ElevenLabs Summit amid Nvidia controversy",
       "merged": [
-        "Samsung mulls Galaxy AI usage limits and subscription tiers "
+        "Who Could Succeed Jensen Huang at Nvidia?"
       ],
-      "why": "都是三星 Galaxy AI 收费/订阅限制的消息"
+      "why": "都报道 Jensen Huang 及 Nvidia 相关争议"
     },
     {
-      "kept": "With a weak board and no successor, Nvidia confronts a governance crisis",
+      "kept": "Meta launches Muse Ember, a small AI model built for the repetitive work agents ",
       "merged": [
-        "What we know about the mystery woman at the center of Nvidia",
-        "Jensen Huang exit odds are low on prediction markets after N"
+        "Our Smallest, Most Efficient Model: Muse Ember",
+        "Meta 推出轻量级 AI 模型 Muse Ember，跑分媲美 Claude Haiku 5.5，单任务成本仅 1/3"
       ],
-      "why": "均报道英伟达间谍案及黄仁波影响"
+      "why": "都报道 Meta 发布 Muse Ember 模型"
+    },
+    {
+      "kept": "OpenAI 发布 Control Room，35 秒内可叫停研究中的模型任务",
+      "merged": [
+        "OpenAI 建 Control Room 追踪模型负载并快速叫停"
+      ],
+      "why": "都报道 OpenAI 发布 Control Room 功能"
+    },
+    {
+      "kept": "Anthropic 发布 Claude Fable 5.2 与 Mythos 5.2，API 调用费下降 20%",
+      "merged": [
+        "Anthropic 发布 Claude Fable 5.2，Claude Mythos 5.2 开放专项申请",
+        "Anthropic 发布 Claude Fable 5.2 与 Mythos 5.2，IPO 前重夺性能领先",
+        "Claude Fable 5.2 and Mythos 5.2"
+      ],
+      "why": "都报道 Anthropic 发布 Claude Fable 5.2 与 Mythos 5.2"
+    },
+    {
+      "kept": "Fireworks 遭黑客入侵，客户数据与部分模型权重暴露",
+      "merged": [
+        "Fireworks 确认黑客入侵暴露客户账单与模型数据",
+        "New Fireworks Hack Threatens $1 Billion Business"
+      ],
+      "why": "都是报道 Fireworks 被黑客入侵及数据泄露事件"
     }
   ]
 }
