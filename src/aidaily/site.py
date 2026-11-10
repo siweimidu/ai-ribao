@@ -1071,6 +1071,52 @@ def _stats(digest: Digest) -> str:
 
 # ============================== page ============================================
 # ============================== overview ========================================
+def render_x_highlights(path: Path | None = None) -> str:
+    """X 精选：今天抓到的原帖，渲染成两页并排的横版卡片。
+
+    源图固定 1080×900。页面上按栏宽等比例缩小 —— 两列并排时每张约 460px，
+    是「扫一眼就知道这条讲了什么」的大小；想看细节就点开原尺寸。
+    """
+    import json as _json
+
+    state = path if path is not None else Path("data/state/x-highlights.json")
+    if not state.exists():
+        return ""
+    try:
+        rows = _json.loads(state.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return ""
+    cards: list[str] = []
+    for row in rows:
+        image = str(row.get("image") or "")
+        if not image:
+            continue
+        author = esc(str(row.get("author") or ""))
+        handle = esc(str(row.get("handle") or "").lstrip("@"))
+        url = esc(str(row.get("url") or ""))
+        said = str(row.get("translated") or row.get("text") or "").strip()
+        said = esc(said if len(said) <= 84 else said[:83] + "…")
+        cards.append(
+            '<figure class="xcard">'
+            f'<a href="assets/x/{esc(image)}" target="_blank" rel="noopener noreferrer">'
+            f'<img src="assets/x/{esc(image)}" alt="{author} 的帖子" loading="lazy" decoding="async">'
+            "</a>"
+            "<figcaption>"
+            f"<b>{author}</b> <span>@{handle}</span>"
+            f"<p>{said}</p>"
+            f'<a class="xcard__src" href="{url}" target="_blank" rel="noopener noreferrer">原帖 ↗</a>'
+            "</figcaption></figure>"
+        )
+    if not cards:
+        return ""
+    return (
+        '<section class="section xsection" id="x-highlights">'
+        '<h2 class="section__title">X 精选</h2>'
+        '<p class="section__note">今天的原帖，卡片自动渲染；点开看原尺寸</p>'
+        '<div class="xgrid">' + "".join(cards) + "</div></section>"
+    )
+
+
 def _render_overview(
     digest: Digest,
     insights: dict[str, EventInsight],
@@ -1318,6 +1364,7 @@ def render_day(
       </details>"""
 
     overview = _render_overview(digest, insights, ordered_body, items_by_id)
+    x_highlights = render_x_highlights()
     source_cover = _render_source_coverage(ordered_body)
     # The rail is built here, after the body decided which events it shows.
     # It used to be built before the loop, from `top_events` -- which is why it once
@@ -1430,6 +1477,8 @@ def render_day(
     {warnings}
 
     {overview}
+
+    {x_highlights}
 
 {chr(10).join(body)}
 

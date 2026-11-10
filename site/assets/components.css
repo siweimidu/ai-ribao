@@ -2325,3 +2325,36 @@ body { font-family: var(--f-sans); }
 /* A picture that cannot load leaves an empty frame; an empty frame is worse than no picture.
    The onerror handler removes the button and this rule collapses the container. */
 .item__images:empty { display: none; }
+
+
+/* X 精选：横版卡片两列并排，等比例缩放。
+   源图 1080×900，两列时每张约 460px —— 这是缩略图的大小，不是正文的替代品；
+   点开图片就是原尺寸，长帖的字在那里看得清。 */
+.xsection .section__note { color: var(--muted-fg); font-size: var(--fs-small); }
+.xgrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(var(--unit) * 4);
+  margin-top: calc(var(--unit) * 3);
+}
+@media (max-width: 900px) {
+  .xgrid { grid-template-columns: minmax(0, 1fr); }
+}
+.xcard { margin: 0; }
+.xcard img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+.xcard figcaption {
+  margin-top: calc(var(--unit) * 2);
+  font-size: var(--fs-small);
+  color: var(--muted-fg);
+}
+.xcard figcaption b { color: var(--fg); }
+.xcard figcaption p { margin: 6px 0; line-height: 1.55; }
+.xcard__src { color: var(--accent); text-decoration: none; }
+.xcard__src:hover { text-decoration: underline; }
