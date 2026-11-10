@@ -2392,3 +2392,40 @@ body { font-family: var(--f-sans); }
 }
 .item__x figcaption a { color: var(--accent); text-decoration: none; }
 .item__x figcaption a:hover { text-decoration: underline; }
+
+
+/* 点图后的全屏浮层。用 :target，没有 JS 也能开合，Esc/点背景/× 都关。
+   不用新标签页 —— 读者是在读日报，不该被一个截图带到别处。 */
+.xzoom { display: none; }
+.xzoom:target {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.xzoom__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 72%);
+}
+.xzoom img {
+  position: relative;
+  max-width: min(96vw, 1200px);
+  max-height: 92vh;
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 24px 60px -20px rgb(0 0 0 / 60%);
+}
+.xzoom__close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-size: 32px;
+  line-height: 1;
+  color: #fff;
+  text-decoration: none;
+}

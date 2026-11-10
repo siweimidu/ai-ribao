@@ -982,15 +982,24 @@ def render_item(
     x_url = (_facts.get("x_url") or [""])[0]
     x_html = ""
     if x_card:
+        # 点图开**页内悬浮窗**，不跳走。用 :target 实现，不需要 JS：
+        # 链接指到 #xz-<id>，那个 div 的 :target 规则把它显示成全屏浮层。
+        zoom_id = f"xz-{event.event_id}"
+        src = f"assets/x/{esc(x_card)}"
         x_html = (
             '<figure class="item__x">'
-            f'<a href="{esc(x_url) or "#"}" target="_blank" rel="noopener noreferrer">'
-            f'<img src="assets/x/{esc(x_card)}" alt="原帖" loading="lazy" decoding="async">'
+            f'<a class="item__x-open" href="#{zoom_id}" aria-label="查看原帖大图">'
+            f'<img src="{src}" alt="原帖" loading="lazy" decoding="async">'
             "</a>"
-            '<figcaption>原帖截图 · <a href="'
+            '<figcaption>原帖截图 · 点击看大图 · <a href="'
             + (esc(x_url) or "#")
             + '" target="_blank" rel="noopener noreferrer">打开 X</a></figcaption>'
             "</figure>"
+            f'<div class="xzoom" id="{zoom_id}">'
+            f'<a class="xzoom__backdrop" href="#{anchor}" aria-label="关闭"></a>'
+            f'<img src="{src}" alt="原帖大图">'
+            f'<a class="xzoom__close" href="#{anchor}" aria-label="关闭">×</a>'
+            "</div>"
         )
     _video_url = (_facts.get("video_url") or [""])[0]
     _video_title = (_facts.get("video_title") or [""])[0]

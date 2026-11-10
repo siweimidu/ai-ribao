@@ -106,9 +106,14 @@ def render(post_id: str, url: str, out_dir: Path) -> XPost | None:
         return None
     layout = "single"
 
-    # **只用单页卡片。** 跨页那种两页并排的版式在真实帖子上问题太多：右页经常半空、
-    # 长帖被压成一堆小字、原帖配图不显示。单页是 X 自己的版式，字号正常、配图在、
-    # 头像和蓝 V 都对 —— 高度参差由页面布局吸收，不为整齐去牺牲可读性。
+    # **长帖按 skill 的规范摊成左右两面。** 单页装不下时，竖着一条长图既读不完也看不清；
+    # 跨页是渲染器自己的版式：左页正文、右页互动数据与要点，页高由 `--long-height` 定。
+    # 短帖仍然单页 —— 两三句话摊成两页会留出半个空页。
+    if len(payload.get("text") or "") > LONG_THRESHOLD_CHARS:
+        spread = _run(url, target, "spread")
+        if spread is not None:
+            payload = spread
+            layout = "spread"
 
     author = payload.get("author") or {}
     if isinstance(author, dict):
