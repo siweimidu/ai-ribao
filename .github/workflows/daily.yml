@@ -333,7 +333,15 @@ jobs:
             # image stage stores locally and returns no URLs, so the issue publishes without
             # pictures rather than failing -- decoration must not break the run.
             export MEDIA_TOKEN="${{ secrets.MEDIA_TOKEN }}"
-            python -m aidaily run \
+            # **一次尝试最多 30 分钟。**
+            #
+            # 2026-11-10：publish 跑了 53 分钟没有一行新输出，`updatedAt` 停在开跑后第四分钟，
+            # 最后被作业的 55 分钟上限杀掉，当期什么都没发出去。整条链路里没有任何一处会主动
+            # 结束一个卡住的请求 —— 只要有一个 socket 不返回，它就一直等。
+            #
+            # 外面套一层 `timeout`，卡住的尝试在 30 分钟处被 SIGTERM，退出码 124 落进下面
+            # 「运行时失败」那一支，重试循环还能再试一次。宁可少一次尝试，也不要整档空掉。
+            timeout 1800 python -m aidaily run \
               --from-items data/raw/items.jsonl \
               --site-url "$SITE_URL" \
               --analyze-limit 0 | tee "publish.log" | tee "publish-$attempt.log"
