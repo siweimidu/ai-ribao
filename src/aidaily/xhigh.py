@@ -1,14 +1,13 @@
-"""X 精选：从今天抓到的页面里取出 X 原帖，渲染成卡片。
+"""X 卡片渲染。
 
-**为什么从这个方向取帖，而不是自己去 X 搜索。**
+**为什么用 x-post2image-2page 而不是主版本。**
+主版本 2.1.5 的跨页在长文上会自动扩到三张（实测同一篇 1604×687，三页并排）；
+而页面上要的是**两张横排**。2.1.0 的跨页给 1080×900，正是两张。所以渲染走 2.1.0 那份，
+主版本仍然装着、也仍然是最新的 —— 等上游支持「最多两页」再切回去。
 
-X 没有可靠的公开搜索接口：关键词搜索要登录、要浏览器，还要处理限流。而「已经收进来的源」
-本来就会把当天的原帖链出来 —— 实测 2026-11-10 的 aihot 日报页面上有 4 个不同的
-`x.com/<user>/status/<id>`。这些是编辑挑过的帖子，不是关键词撞出来的噪声。
-
-**卡片尺寸分两档。** 短帖走原生单页卡片，正文是 X 的正常字号；超过阈值的才摊成左右两页。
-一刀切全都跨页，会把短帖也压成小字；一刀切都不跨页，长帖会变成一根竖条，缩到页面宽度后
-根本看不清。分流看的是渲染出来的真实高度，不是猜字数。
+规则和 skill 一致：
+  · 短帖（≤ 400 字）→ 单页原生卡片，字号正常；
+  · 长帖 → 跨页两栏，页高 900。
 """
 
 from __future__ import annotations
@@ -24,26 +23,24 @@ _X_STATUS = re.compile(
     r"https?://(?:www\.|mobile\.)?(?:x|twitter)\.com/([A-Za-z0-9_]{1,20})/status/(\d{6,25})"
 )
 
-#: 渲染器所在位置。装到用户级 skills 目录的那一份。
-SKILL = Path.home() / ".agents" / "skills" / "x-post2image"
-CLI = SKILL / "scripts" / "x-post2image.mjs"
+#: 渲染器：两页版（见模块开头）。
+CLI = Path.home() / ".agents" / "skills" / "x-post2image-2page" / "scripts" / "x-post2image.mjs"
 
-#: 卡片统一尺寸。跨页原生输出 1080×H，单页 1200 宽；统一到 1080 宽、1000 高后并排才齐。
+#: 卡片统一宽度。
 CARD_W = 1080
-CARD_H = 1400
 
-#: 超过这个高度（CSS px）的帖子改用跨页。原生单页卡片宽 600 CSS px，正文正常大小；
-#: 再长就成了一根竖条，缩到页面宽度后字看不清 —— 那时候才摊成两页。
+#: 跨页的页高。900 是两页版里唯一稳定给出「两张」的值。
+SPREAD_HEIGHT = 900
+
+#: 超过这个字数按跨页渲染。
 LONG_THRESHOLD_CHARS = 400
 
-#: 一期最多几张卡。卡片是重内容（每张几十 KB + 一次外部请求），不是越多越好。
+#: 一期最多几张卡。
 MAX_CARDS = 4
 
 
 @dataclass(slots=True)
 class XPost:
-    """一张渲染好的帖子卡片。"""
-
     url: str
     author: str = ""
     handle: str = ""
@@ -59,7 +56,6 @@ class XPost:
 
 
 def extract_posts(html: str) -> list[tuple[str, str]]:
-    """页面里出现过的原帖，按 id 去重并保持出现顺序。"""
     seen: set[str] = set()
     out: list[tuple[str, str]] = []
     for user, status in _X_STATUS.findall(html or ""):
@@ -71,7 +67,6 @@ def extract_posts(html: str) -> list[tuple[str, str]]:
 
 
 def _run(url: str, target: Path, layout: str) -> dict | None:
-    """跑一次渲染，返回 CLI 的 JSON；失败返回 None。"""
     cmd = [
         "node", str(CLI), url,
         "--out", str(target),
@@ -81,11 +76,9 @@ def _run(url: str, target: Path, layout: str) -> dict | None:
         "--json",
     ]
     if layout == "spread":
-        # 不传 --long-height：让渲染器按内容决定页高。写死高度会在内容少的帖子上
-        # 补出上千像素空白（实测 Google/Higgsfield 两页下面空了一大片）。
-        pass
+        cmd.extend(["--long-height", str(SPREAD_HEIGHT)])
     try:
-        done = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", timeout=180)
+        done = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", timeout=240)
     except (OSError, subprocess.TimeoutExpired):
         return None
     if done.returncode != 0 or not target.exists():
@@ -93,11 +86,10 @@ def _run(url: str, target: Path, layout: str) -> dict | None:
     try:
         return json.loads(done.stdout)
     except ValueError:
-        return {"url": url, "width": 0, "height": 0}
+        return {"url": url}
 
 
 def render(post_id: str, url: str, out_dir: Path) -> XPost | None:
-    """渲染一张卡片：短帖单页，长帖跨页。渲染失败返回 None，绝不编造。"""
     out_dir.mkdir(parents=True, exist_ok=True)
     target = out_dir / f"{post_id}.png"
 
@@ -106,9 +98,6 @@ def render(post_id: str, url: str, out_dir: Path) -> XPost | None:
         return None
     layout = "single"
 
-    # **长帖按 skill 的规范摊成左右两面。** 单页装不下时，竖着一条长图既读不完也看不清；
-    # 跨页是渲染器自己的版式：左页正文、右页互动数据与要点，页高由 `--long-height` 定。
-    # 短帖仍然单页 —— 两三句话摊成两页会留出半个空页。
     if len(payload.get("text") or "") > LONG_THRESHOLD_CHARS:
         spread = _run(url, target, "spread")
         if spread is not None:
@@ -140,7 +129,6 @@ def render(post_id: str, url: str, out_dir: Path) -> XPost | None:
 
 
 def collect(pages: list[str], out_dir: Path, *, limit: int = MAX_CARDS) -> list[XPost]:
-    """从若干页面 HTML 里取帖并渲染，最多 `limit` 张。"""
     posts: list[XPost] = []
     seen: set[str] = set()
     for html in pages:
