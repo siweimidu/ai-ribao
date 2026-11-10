@@ -1,52 +1,51 @@
 {
-  "generated_at": "2026-11-10T12:58:27.316153+00:00",
+  "generated_at": "2026-11-10T13:29:30.601030+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 378,
-  "batches": 12,
-  "calls": 12,
+  "input_events": 384,
+  "batches": 11,
+  "calls": 11,
   "merged_groups": 8,
-  "merged_events": 15,
-  "rejected_groups": 1,
+  "merged_events": 13,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "2026年金鸡百花电影节首次设立电影AI单元，AI极客松287支团队报名",
+      "kept": "通用大脑能力再提升，蚂蚁灵波发布LingBot-Touch触觉基础模型",
       "merged": [
-        "影视工业加速拥抱生成式AI 金鸡百花电影节首次设立AI单元",
-        "金鸡百花电影节首次设立AI单元 72小时创作挑战展现影像制作新可能 - 新华网"
+        "触觉也能 Token 化！蚂蚁灵波发布通用触觉模型，把“具身原生”推进到机器人指尖"
       ],
-      "why": "均报道金鸡百花电影节首次设立AI单元"
+      "why": "均为蚂蚁灵波发布触觉基础模型 LingBot-Touch"
     },
     {
-      "kept": "谷歌 Gemini 上线记忆摘要功能，可查看、编辑和删除 AI 记住的个人信息",
+      "kept": "Fireworks 遭黑客入侵，客户数据与部分模型权重暴露",
       "merged": [
-        "Google Gemini routes personal Drive files and emails to huma"
+        "Fireworks 确认黑客入侵暴露客户账单与模型数据",
+        "New Fireworks Hack Threatens $1 Billion Business"
       ],
-      "why": "均为 Fireworks 黑客入侵事件"
+      "why": "均报道 Fireworks 遭黑客入侵及数据泄露事件"
+    },
+    {
+      "kept": "Meta launches Muse Ember, a small AI model built for the repetitive work agents ",
+      "merged": [
+        "Meta 发布最小模型 Muse Ember，价格介于 GPT-6 Luna 与 Claude Haiku 5.5 之间",
+        "Meta 发布 Muse Ember：1M 上下文的小型智能体模型"
+      ],
+      "why": "均为 Meta 发布 Muse Ember 模型"
     },
     {
       "kept": "通用大脑能力再提升，蚂蚁灵波发布LingBot-Touch触觉基础模型",
       "merged": [
         "触觉也能 Token 化！蚂蚁灵波发布通用触觉模型，把“具身原生”推进到机器人指尖"
       ],
-      "why": "均为蚂蚁灵波发布触觉模型"
+      "why": "Adobe 与迪士尼达成 AI 合作"
     },
     {
-      "kept": "AIHOT 日报 · 2026-11-10 — Anthropic 发布 Claude Fable 5.2 与 Claude Mythos 5.2",
+      "kept": "马斯克转发：SpaceX 称 Grok 检测航空航天零件异物准确率达 99.9%，高于人工的 94%",
       "merged": [
-        "Anthropic 发布 Fable 5.2 与 Mythos 5.2，llm-anthropic 0.31 已支持",
-        "Claude Fable 5.2 and Mythos 5.2"
+        "Grok Bot 宣布为所有用户重置每周限额"
       ],
-      "why": "都是 Anthropic 发布 Claude Fable 5.2 和 Mythos 5.2"
-    },
-    {
-      "kept": "Anthropic pushes ahead with IPO despite AI selloff",
-      "merged": [
-        "Anthropic 拟通过 IPO 筹集最多 644 亿美元，另向谷歌、英伟达等私募融资 260 亿美元",
-        "Anthropic 启动 IPO 路演，拟发行 8.25 亿股 A 类普通股并申请以代码 ANT 上市纳斯达克"
-      ],
-      "why": "都是 Anthropic 启动 IPO 及私募融资"
+      "why": "Grok 检测异物准确率与限额重置相关"
     }
   ]
 }
