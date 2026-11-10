@@ -1,21 +1,28 @@
 {
-  "generated_at": "2026-11-10T03:33:49.846645+00:00",
+  "generated_at": "2026-11-10T04:40:12.327242+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 276,
+  "input_events": 278,
   "batches": 8,
   "calls": 8,
-  "merged_groups": 7,
-  "merged_events": 17,
-  "rejected_groups": 3,
+  "merged_groups": 13,
+  "merged_events": 25,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "Meta launches Muse Ember, a small AI model built for the repetitive work agents ",
+      "kept": "Medium’s new TK app brings AI assistance directly into the writing process",
       "merged": [
-        "Meta introduces Muse Ember to power cost-efficient AI agents"
+        "Medium 推出全新 AI 写作辅助应用 TK，将大模型深度融入创作流程"
       ],
-      "why": "Meta Muse Ember 模型发布"
+      "why": "都是 Medium 推出 AI 写作辅助应用 TK"
+    },
+    {
+      "kept": "火山引擎发布Seedream5.5:像素级可控编辑，百轮修改不崩坏",
+      "merged": [
+        "派早报：火山引擎发布 Seedream 5.5，苹果研究团队用仿真训练人形机器人等"
+      ],
+      "why": "都是火山引擎发布 Seedream 5.5 及相关报道"
     },
     {
       "kept": "Fireworks 遭黑客入侵，客户数据与部分模型权重暴露",
@@ -23,33 +30,21 @@
         "Fireworks 确认黑客入侵暴露客户账单与模型数据",
         "New Fireworks Hack Threatens $1 Billion Business"
       ],
-      "why": "均为 Fireworks 遭黑客入侵及安全漏洞事件"
+      "why": "都是 Fireworks 遭黑客入侵事件报道"
     },
     {
-      "kept": "Anthropic 发布 Claude Fable 5.2 与 Mythos 5.2，API 调用费下降 20%",
+      "kept": "Adobe 与迪士尼达成多年战略合作，将 Firefly 等 AI 工具推广至乐园和内容制作",
       "merged": [
-        "Anthropic 发布 Claude Fable 5.2，Claude Mythos 5.2 开放专项申请",
-        "Anthropic 发布 Claude Fable 5.2 与 Mythos 5.2，IPO 前重夺性能领先",
-        "Claude Fable 5.2 and Mythos 5.2"
+        "Disney bets on Adobe's Firefly to create brand-safe AI model"
       ],
-      "why": "均为 Anthropic 发布 Claude Fable 5.2 和 Mythos 5.2"
+      "why": "Adobe 与迪士尼达成战略合作"
     },
     {
-      "kept": "OpenAI 部署控制室系统，35 秒内叫停失控 AI 智能体",
+      "kept": "免费时代要结束？三星 Galaxy AI 准备收每月 4.99 美元",
       "merged": [
-        "OpenAI 建 Control Room 追踪模型负载并快速叫停"
+        "Samsung mulls Galaxy AI usage limits and subscription tiers "
       ],
-      "why": "均为 OpenAI 部署 Control Room 叫停失控模型"
-    },
-    {
-      "kept": "Anthropic 随 Fable 5.2 上线推出限时优惠，高阶订阅最多可获 3 次重置",
-      "merged": [
-        "Anthropic 发布 Fable 5.2 和 Mythos 5.2，编程与科学评测提升",
-        "AIHOT 日报 · 2026-11-10 — Anthropic 发布 Claude Fable 5.2 与 Clau",
-        "Anthropic releases new Mythos and Fable models amid RSI conc",
-        "Anthropic 发布 Claude Fable5.2与 Mythos5.2:1000个子智能体8天写出可启动操作系统"
-      ],
-      "why": "均为 Anthropic 发布 Fable 5.2 和 Mythos 5.2 模型"
+      "why": "三星 Galaxy AI 调整订阅/使用限制"
     }
   ]
 }
