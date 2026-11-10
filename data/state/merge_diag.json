@@ -1,54 +1,53 @@
 {
-  "generated_at": "2026-11-10T14:52:28.673906+00:00",
+  "generated_at": "2026-11-10T23:30:53.117990+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 412,
-  "batches": 12,
-  "calls": 12,
-  "merged_groups": 8,
-  "merged_events": 18,
-  "rejected_groups": 2,
+  "input_events": 186,
+  "batches": 6,
+  "calls": 6,
+  "merged_groups": 12,
+  "merged_events": 17,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "2026年金鸡百花电影节首次设立电影AI单元，AI极客松287支团队报名",
+      "kept": "美联储理事鲍曼警告：若AI押注落空，股市或现回调 - 华尔街见闻",
       "merged": [
-        "影视工业加速拥抱生成式AI 金鸡百花电影节首次设立AI单元",
-        "金鸡百花电影节首次设立AI单元 72小时创作挑战展现影像制作新可能 - 新华网"
+        "美联储理事鲍曼警告AI投资回报不及预期或导致股市估值大幅回调 - Sohu"
       ],
-      "why": "均报道金鸡百花电影节首次设立AI单元及挑战赛"
+      "why": "都是美联储理事鲍曼警告AI投资可能引发股市回调"
     },
     {
-      "kept": "Grok Bot 宣布为所有用户重置每周限额",
+      "kept": "AMD brings Zen 6 architecture muscle to embedded systems with new EPYC 9006 seri",
       "merged": [
-        "马斯克称 Grok Bot 修复连夜实施，预计次日显著改善"
+        "AMD发布第六代EPYC处理器 定位为引领AI与企业计算新时代的产品 - 东方财富"
       ],
-      "why": "均为马斯克称 Grok Bot 重置限额及修复措施"
+      "why": "都是AMD发布基于Zen 6架构的EPYC 9006系列处理器"
     },
     {
-      "kept": "Anthropic据报计划推进IPO",
+      "kept": "He took down Andrew Cuomo. Now Jensen Huang is in his crosshairs",
       "merged": [
-        "Claude Fable 5.2 and Mythos 5.2 cement Anthropic's AI lead j",
-        "Anthropic Releases New Frontier Models as IPO Nears"
+        "Huang scandal puts Nvidia chip loopholes in focus",
+        "Nvidia CEO Jensen Huang’s affair with alleged Chinese spy: a",
+        "The US is winning the AI race. Jensen Huang could have blown"
       ],
-      "why": "均报道 Anthropic 发布新模型并推进 IPO"
+      "why": "都围绕Nvidia CEO黄仁瀚的丑闻及其引发的调查和影响"
     },
     {
-      "kept": "[AINews] Fable 5.2 retakes World #1 LLM spot as $ANT IPO roadshow begins",
+      "kept": "Anthropic Discloses Over $10 Billion in New Deals with Microsoft, Google; Says L",
       "merged": [
-        "Anthropic 启动 IPO 路演，拟发行 8.25 亿股 A 类普通股并申请以代码 ANT 上市纳斯达克",
-        "Anthropic 拟通过 IPO 筹集最多 644 亿美元，另向谷歌、英伟达等私募融资 260 亿美元"
+        "Anthropic revenue could top $600B: Goldman",
+        "近 700 亿美元 IPO 定价突然撤回！Anthropic 最快今天路演，下周冲刺上市",
+        "Anthropic launches IPO roadshow with $64B fundraising goal"
       ],
-      "why": "均报道 Anthropic 启动 IPO 及相关融资细节"
+      "why": "都是关于Anthropic的IPO进程及相关财务信息"
     },
     {
-      "kept": "Meta launches Muse Ember, a small AI model built for the repetitive work agents ",
+      "kept": "Gemini 4 Carbon arrives just in time to feel like yesterday's news in the fastes",
       "merged": [
-        "Muse Ember: Our smallest, most efficient model",
-        "Meta 发布最小模型 Muse Ember，价格介于 GPT-6 Luna 与 Claude Haiku 5.5 之间",
-        "Meta 发布 Muse Ember：1M 上下文的小型智能体模型"
+        "Gemini Intelligence: New features, on more devices"
       ],
-      "why": "均报道 Meta 发布 Muse Ember 模型"
+      "why": "都是关于Google Gemini 4相关新功能或版本的发布"
     }
   ]
 }
