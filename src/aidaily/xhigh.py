@@ -1,13 +1,8 @@
-"""X 卡片渲染。
+"""X 卡片渲染：一律用最新版 x-post2image，版式交给它自己判断。
 
-**为什么用 x-post2image-2page 而不是主版本。**
-主版本 2.1.5 的跨页在长文上会自动扩到三张（实测同一篇 1604×687，三页并排）；
-而页面上要的是**两张横排**。2.1.0 的跨页给 1080×900，正是两张。所以渲染走 2.1.0 那份，
-主版本仍然装着、也仍然是最新的 —— 等上游支持「最多两页」再切回去。
-
-规则和 skill 一致：
-  · 短帖（≤ 400 字）→ 单页原生卡片，字号正常；
-  · 长帖 → 跨页两栏，页高 900。
+规范（SKILL.md）：正文 ≥ 360 字自动切成 X 官方风格长卡；长卡高过 1400px 再自动变左右多页；
+内容更多时才扩到三张。**所以不传 `--layout`、不传 `--long-height`** —— 任何手写的分支和
+固定页高都会盖掉规范里的判断，前面就是那样把两张顶成了三张、又把三张压回两张。
 """
 
 from __future__ import annotations
@@ -23,17 +18,11 @@ _X_STATUS = re.compile(
     r"https?://(?:www\.|mobile\.)?(?:x|twitter)\.com/([A-Za-z0-9_]{1,20})/status/(\d{6,25})"
 )
 
-#: 渲染器：两页版（见模块开头）。
-CLI = Path.home() / ".agents" / "skills" / "x-post2image-2page" / "scripts" / "x-post2image.mjs"
+#: 渲染器：用户级 skills 目录里的最新版本。
+CLI = Path.home() / ".agents" / "skills" / "x-post2image" / "scripts" / "x-post2image.mjs"
 
-#: 卡片统一宽度。
+#: 卡片统一宽度。单页原生 1200，跨页 1604；统一到 1080 后页面里才齐。
 CARD_W = 1080
-
-#: 跨页的页高。900 是两页版里唯一稳定给出「两张」的值。
-SPREAD_HEIGHT = 900
-
-#: 超过这个字数按跨页渲染。
-LONG_THRESHOLD_CHARS = 400
 
 #: 一期最多几张卡。
 MAX_CARDS = 4
@@ -52,10 +41,11 @@ class XPost:
     likes: str = ""
     reposts: str = ""
     views: str = ""
-    layout: str = "single"
+    layout: str = "auto"
 
 
 def extract_posts(html: str) -> list[tuple[str, str]]:
+    """页面里出现过的原帖，按 id 去重并保持出现顺序。"""
     seen: set[str] = set()
     out: list[tuple[str, str]] = []
     for user, status in _X_STATUS.findall(html or ""):
@@ -66,43 +56,27 @@ def extract_posts(html: str) -> list[tuple[str, str]]:
     return out
 
 
-def _run(url: str, target: Path, layout: str) -> dict | None:
+def render(post_id: str, url: str, out_dir: Path) -> XPost | None:
+    """渲染一张卡片。版式交给渲染器，失败返回 None，绝不编造。"""
+    out_dir.mkdir(parents=True, exist_ok=True)
+    target = out_dir / f"{post_id}.png"
     cmd = [
         "node", str(CLI), url,
         "--out", str(target),
         "--theme", "light",
-        "--layout", layout,
         "--translate", "zh-CN",
         "--json",
     ]
-    if layout == "spread":
-        cmd.extend(["--long-height", str(SPREAD_HEIGHT)])
     try:
-        done = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", timeout=240)
+        done = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", timeout=300)
     except (OSError, subprocess.TimeoutExpired):
         return None
     if done.returncode != 0 or not target.exists():
         return None
     try:
-        return json.loads(done.stdout)
+        payload = json.loads(done.stdout)
     except ValueError:
-        return {"url": url}
-
-
-def render(post_id: str, url: str, out_dir: Path) -> XPost | None:
-    out_dir.mkdir(parents=True, exist_ok=True)
-    target = out_dir / f"{post_id}.png"
-
-    payload = _run(url, target, "single")
-    if payload is None:
-        return None
-    layout = "single"
-
-    if len(payload.get("text") or "") > LONG_THRESHOLD_CHARS:
-        spread = _run(url, target, "spread")
-        if spread is not None:
-            payload = spread
-            layout = "spread"
+        payload = {"url": url}
 
     author = payload.get("author") or {}
     if isinstance(author, dict):
@@ -124,7 +98,7 @@ def render(post_id: str, url: str, out_dir: Path) -> XPost | None:
         likes=str(metrics.get("likes") or ""),
         reposts=str(metrics.get("reposts") or ""),
         views=str(metrics.get("views") or ""),
-        layout=layout,
+        layout=str(payload.get("layout") or "auto"),
     )
 
 
