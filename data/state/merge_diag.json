@@ -1,51 +1,54 @@
 {
-  "generated_at": "2026-11-10T13:29:30.601030+00:00",
+  "generated_at": "2026-11-10T14:52:28.673906+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 384,
-  "batches": 11,
-  "calls": 11,
+  "input_events": 412,
+  "batches": 12,
+  "calls": 12,
   "merged_groups": 8,
-  "merged_events": 13,
+  "merged_events": 18,
   "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "通用大脑能力再提升，蚂蚁灵波发布LingBot-Touch触觉基础模型",
+      "kept": "2026年金鸡百花电影节首次设立电影AI单元，AI极客松287支团队报名",
       "merged": [
-        "触觉也能 Token 化！蚂蚁灵波发布通用触觉模型，把“具身原生”推进到机器人指尖"
+        "影视工业加速拥抱生成式AI 金鸡百花电影节首次设立AI单元",
+        "金鸡百花电影节首次设立AI单元 72小时创作挑战展现影像制作新可能 - 新华网"
       ],
-      "why": "均为蚂蚁灵波发布触觉基础模型 LingBot-Touch"
+      "why": "均报道金鸡百花电影节首次设立AI单元及挑战赛"
     },
     {
-      "kept": "Fireworks 遭黑客入侵，客户数据与部分模型权重暴露",
+      "kept": "Grok Bot 宣布为所有用户重置每周限额",
       "merged": [
-        "Fireworks 确认黑客入侵暴露客户账单与模型数据",
-        "New Fireworks Hack Threatens $1 Billion Business"
+        "马斯克称 Grok Bot 修复连夜实施，预计次日显著改善"
       ],
-      "why": "均报道 Fireworks 遭黑客入侵及数据泄露事件"
+      "why": "均为马斯克称 Grok Bot 重置限额及修复措施"
+    },
+    {
+      "kept": "Anthropic据报计划推进IPO",
+      "merged": [
+        "Claude Fable 5.2 and Mythos 5.2 cement Anthropic's AI lead j",
+        "Anthropic Releases New Frontier Models as IPO Nears"
+      ],
+      "why": "均报道 Anthropic 发布新模型并推进 IPO"
+    },
+    {
+      "kept": "[AINews] Fable 5.2 retakes World #1 LLM spot as $ANT IPO roadshow begins",
+      "merged": [
+        "Anthropic 启动 IPO 路演，拟发行 8.25 亿股 A 类普通股并申请以代码 ANT 上市纳斯达克",
+        "Anthropic 拟通过 IPO 筹集最多 644 亿美元，另向谷歌、英伟达等私募融资 260 亿美元"
+      ],
+      "why": "均报道 Anthropic 启动 IPO 及相关融资细节"
     },
     {
       "kept": "Meta launches Muse Ember, a small AI model built for the repetitive work agents ",
       "merged": [
+        "Muse Ember: Our smallest, most efficient model",
         "Meta 发布最小模型 Muse Ember，价格介于 GPT-6 Luna 与 Claude Haiku 5.5 之间",
         "Meta 发布 Muse Ember：1M 上下文的小型智能体模型"
       ],
-      "why": "均为 Meta 发布 Muse Ember 模型"
-    },
-    {
-      "kept": "通用大脑能力再提升，蚂蚁灵波发布LingBot-Touch触觉基础模型",
-      "merged": [
-        "触觉也能 Token 化！蚂蚁灵波发布通用触觉模型，把“具身原生”推进到机器人指尖"
-      ],
-      "why": "Adobe 与迪士尼达成 AI 合作"
-    },
-    {
-      "kept": "马斯克转发：SpaceX 称 Grok 检测航空航天零件异物准确率达 99.9%，高于人工的 94%",
-      "merged": [
-        "Grok Bot 宣布为所有用户重置每周限额"
-      ],
-      "why": "Grok 检测异物准确率与限额重置相关"
+      "why": "均报道 Meta 发布 Muse Ember 模型"
     }
   ]
 }
