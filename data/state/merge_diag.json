@@ -1,50 +1,49 @@
 {
-  "generated_at": "2026-11-11T04:21:43.584423+00:00",
+  "generated_at": "2026-11-11T12:45:16.072474+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 304,
-  "batches": 9,
-  "calls": 9,
-  "merged_groups": 7,
-  "merged_events": 12,
-  "rejected_groups": 2,
+  "input_events": 384,
+  "batches": 12,
+  "calls": 12,
+  "merged_groups": 10,
+  "merged_events": 14,
+  "rejected_groups": 5,
   "failed": false,
   "examples": [
     {
-      "kept": "Ed Zitron 长文剖析黄仁勋丑闻与 NVIDIA 疑似借 Megaspeed 向中国走私 GPU",
+      "kept": "PSI 尝试用 AI 驱动的科学发现打造商业模式",
       "merged": [
-        "FT 报道称美国商务部搁置将 Megaspeed 列入出口黑名单",
-        "Scoop: Commerce Department received national security warnin"
+        "PSI is trying to make a business out of AI-driven scientific"
       ],
-      "why": "均涉及黄仁勋丑闻引发的美国政府监管/出口管制动作"
+      "why": "均报道PSI利用AI驱动科学发现"
     },
     {
-      "kept": "Google releases Gemini 4 Carbon with agent ‘swarm’ feature",
+      "kept": "红果短剧上线 AI 剧虚拟形象创编与确权功能",
       "merged": [
-        "谷歌开放 Gemini 4 Carbon 模型，主打复杂编程、科学研究与网络安全"
+        "AI剧虚拟形象权属如何留痕?红果短剧上线确权新能力"
       ],
-      "why": "都是 Gemini 4 Carbon 模型发布"
+      "why": "均报道红果短剧AI剧确权功能"
     },
     {
       "kept": "2026-11-11 AI 日报 · Gemini 4 Carbon 正式开放、Anthropic 启动万亿级 IPO 路演，办公与机器人 AI 同日多点开花",
       "merged": [
         "Google releases Gemini 4 Carbon with agent ‘swarm’ feature"
       ],
-      "why": "都是 Gemini 4 Carbon 模型发布"
+      "why": "同一事件：Gemini 4 Carbon 正式发布"
     },
     {
-      "kept": "Claude 向付费用户发放免费额度重置",
+      "kept": "ChatGPT is getting verified AI ‘Business Agents’",
       "merged": [
-        "Anthropic 为 Claude Pro、Max、Ultra 和 Team 用户免费重置额度，并扩大 MCP App"
+        "OpenAI 开放 ChatGPT Business 计划登录 Notion、v0 等第三方工具"
       ],
-      "why": "都是 Claude 额度重置及相关功能更新"
+      "why": "同一事件：ChatGPT 开放商务代理功能"
     },
     {
-      "kept": "Gemini 4 Carbon arrives just in time to feel like yesterday's news in the fastes",
+      "kept": "MiniMax H3 Image 开放权重图像模型上线 fal，约 10 秒生成 4K 图像",
       "merged": [
-        "谷歌旗舰 Gemini 4 Carbon 正式发布：多智能体协作一夜造游戏，网络安全与科学推理迎来质的飞跃"
+        "MiniMax 发布开源图像生成模型 H3-Image，10 秒内生成 4K 图像"
       ],
-      "why": "都是 Gemini 4 Carbon 发布"
+      "why": "同一事件：MiniMax H3 图像模型开放权重上线"
     }
   ]
 }
