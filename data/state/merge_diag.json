@@ -1,53 +1,50 @@
 {
-  "generated_at": "2026-11-10T23:30:53.117990+00:00",
+  "generated_at": "2026-11-11T04:21:43.584423+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 186,
-  "batches": 6,
-  "calls": 6,
-  "merged_groups": 12,
-  "merged_events": 17,
-  "rejected_groups": 1,
+  "input_events": 304,
+  "batches": 9,
+  "calls": 9,
+  "merged_groups": 7,
+  "merged_events": 12,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "美联储理事鲍曼警告：若AI押注落空，股市或现回调 - 华尔街见闻",
+      "kept": "Ed Zitron 长文剖析黄仁勋丑闻与 NVIDIA 疑似借 Megaspeed 向中国走私 GPU",
       "merged": [
-        "美联储理事鲍曼警告AI投资回报不及预期或导致股市估值大幅回调 - Sohu"
+        "FT 报道称美国商务部搁置将 Megaspeed 列入出口黑名单",
+        "Scoop: Commerce Department received national security warnin"
       ],
-      "why": "都是美联储理事鲍曼警告AI投资可能引发股市回调"
+      "why": "均涉及黄仁勋丑闻引发的美国政府监管/出口管制动作"
     },
     {
-      "kept": "AMD brings Zen 6 architecture muscle to embedded systems with new EPYC 9006 seri",
+      "kept": "Google releases Gemini 4 Carbon with agent ‘swarm’ feature",
       "merged": [
-        "AMD发布第六代EPYC处理器 定位为引领AI与企业计算新时代的产品 - 东方财富"
+        "谷歌开放 Gemini 4 Carbon 模型，主打复杂编程、科学研究与网络安全"
       ],
-      "why": "都是AMD发布基于Zen 6架构的EPYC 9006系列处理器"
+      "why": "都是 Gemini 4 Carbon 模型发布"
     },
     {
-      "kept": "He took down Andrew Cuomo. Now Jensen Huang is in his crosshairs",
+      "kept": "2026-11-11 AI 日报 · Gemini 4 Carbon 正式开放、Anthropic 启动万亿级 IPO 路演，办公与机器人 AI 同日多点开花",
       "merged": [
-        "Huang scandal puts Nvidia chip loopholes in focus",
-        "Nvidia CEO Jensen Huang’s affair with alleged Chinese spy: a",
-        "The US is winning the AI race. Jensen Huang could have blown"
+        "Google releases Gemini 4 Carbon with agent ‘swarm’ feature"
       ],
-      "why": "都围绕Nvidia CEO黄仁瀚的丑闻及其引发的调查和影响"
+      "why": "都是 Gemini 4 Carbon 模型发布"
     },
     {
-      "kept": "Anthropic Discloses Over $10 Billion in New Deals with Microsoft, Google; Says L",
+      "kept": "Claude 向付费用户发放免费额度重置",
       "merged": [
-        "Anthropic revenue could top $600B: Goldman",
-        "近 700 亿美元 IPO 定价突然撤回！Anthropic 最快今天路演，下周冲刺上市",
-        "Anthropic launches IPO roadshow with $64B fundraising goal"
+        "Anthropic 为 Claude Pro、Max、Ultra 和 Team 用户免费重置额度，并扩大 MCP App"
       ],
-      "why": "都是关于Anthropic的IPO进程及相关财务信息"
+      "why": "都是 Claude 额度重置及相关功能更新"
     },
     {
       "kept": "Gemini 4 Carbon arrives just in time to feel like yesterday's news in the fastes",
       "merged": [
-        "Gemini Intelligence: New features, on more devices"
+        "谷歌旗舰 Gemini 4 Carbon 正式发布：多智能体协作一夜造游戏，网络安全与科学推理迎来质的飞跃"
       ],
-      "why": "都是关于Google Gemini 4相关新功能或版本的发布"
+      "why": "都是 Gemini 4 Carbon 发布"
     }
   ]
 }
