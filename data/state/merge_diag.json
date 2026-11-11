@@ -1,49 +1,37 @@
 {
-  "generated_at": "2026-11-11T12:45:16.072474+00:00",
+  "generated_at": "2026-11-11T22:11:33.708491+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 384,
-  "batches": 12,
-  "calls": 12,
-  "merged_groups": 10,
-  "merged_events": 14,
-  "rejected_groups": 5,
+  "input_events": 136,
+  "batches": 4,
+  "calls": 4,
+  "merged_groups": 3,
+  "merged_events": 5,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "PSI 尝试用 AI 驱动的科学发现打造商业模式",
+      "kept": "AWS 发布官方模拟器 aws-emulator，可在本地测试多种服务",
       "merged": [
-        "PSI is trying to make a business out of AI-driven scientific"
+        "aws-emulator",
+        "Amazon’s open-source AWS Emulator lets developers validate t"
       ],
-      "why": "均报道PSI利用AI驱动科学发现"
+      "why": "均为 AWS 发布官方模拟器 aws-emulator"
     },
     {
-      "kept": "红果短剧上线 AI 剧虚拟形象创编与确权功能",
+      "kept": "Scoop: Lutnick stalled curbing Nvidia chip sales to China — again — after Oval O",
       "merged": [
-        "AI剧虚拟形象权属如何留痕?红果短剧上线确权新能力"
+        "Revenge of the China hawks: Jensen Huang’s enemies take a vi",
+        "Scoop: Inside Bessent's Situation Room confrontation with Lu"
       ],
-      "why": "均报道红果短剧AI剧确权功能"
+      "why": "均报道卢特尼克与贝森特就芯片出口限制的争执"
     },
     {
-      "kept": "2026-11-11 AI 日报 · Gemini 4 Carbon 正式开放、Anthropic 启动万亿级 IPO 路演，办公与机器人 AI 同日多点开花",
+      "kept": "Anthropic 一夜逼疯微软？Claude 杀入办公软件腹地：能自己参会、做表格、生成PPT",
       "merged": [
-        "Google releases Gemini 4 Carbon with agent ‘swarm’ feature"
+        "微软股价应声跳水 Anthropic上市前夕推出AI办公套件 - 东方财富"
       ],
-      "why": "同一事件：Gemini 4 Carbon 正式发布"
-    },
-    {
-      "kept": "ChatGPT is getting verified AI ‘Business Agents’",
-      "merged": [
-        "OpenAI 开放 ChatGPT Business 计划登录 Notion、v0 等第三方工具"
-      ],
-      "why": "同一事件：ChatGPT 开放商务代理功能"
-    },
-    {
-      "kept": "MiniMax H3 Image 开放权重图像模型上线 fal，约 10 秒生成 4K 图像",
-      "merged": [
-        "MiniMax 发布开源图像生成模型 H3-Image，10 秒内生成 4K 图像"
-      ],
-      "why": "同一事件：MiniMax H3 图像模型开放权重上线"
+      "why": "均报道Anthropic推出AI办公套件及微软股价反应"
     }
   ]
 }
