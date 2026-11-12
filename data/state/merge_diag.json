@@ -1,43 +1,36 @@
 {
-  "generated_at": "2026-11-12T01:48:04.390382+00:00",
+  "generated_at": "2026-11-12T04:23:08.583495+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 221,
-  "batches": 7,
-  "calls": 7,
-  "merged_groups": 4,
-  "merged_events": 8,
-  "rejected_groups": 2,
+  "input_events": 248,
+  "batches": 8,
+  "calls": 8,
+  "merged_groups": 3,
+  "merged_events": 5,
+  "rejected_groups": 5,
   "failed": false,
   "examples": [
     {
-      "kept": "AI交易热情重燃！费城半导体指数大涨5.66%，AI云服务商CoreWeave飙升近25%，闪迪涨13%，希捷、SK海力士涨超9% - 金融界",
+      "kept": "包裹“飞”起来！成都市新都区“双十一”AI来调度 - 川观新闻",
       "merged": [
-        "AI交易热情重燃，美股算力产业链集体飙升，云服务龙头涨超24% - 凤凰网",
-        "CoreWeave飙升近25%点燃AI硬件股，半导体爆发闪迪美光科技拉升超10%，黄金失守4000美元 - 第一财经"
+        "新华智见丨“双十一”词元热卖，AI离随取随用还有多远？ - 新华网",
+        "AI成为商品、即时零售增加，今年“双十一”呈现哪些新特点？ - 新蓝网"
       ],
-      "why": "均报道AI交易重燃导致美股算力股及CoreWeave大幅上涨"
+      "why": "都报道今年双十一期间AI相关应用与特点"
     },
     {
-      "kept": "Nvidia sinks after report implicates CEO Jensen Huang in 2nd affair",
+      "kept": "Anthropic上市或成AI行情转折点？创投大佬警告：禁售期结束或引发连锁抛售 港美股资讯 - 华盛通",
       "merged": [
-        "Nvidia CEO’s Exit Looms"
+        "如果Anthropic下周的上市顺利、股价上涨，那AI“一切照旧”，否则“一些公司会倒闭” - 华尔街见闻"
       ],
-      "why": "黄仁勋第二段婚外情丑闻及英伟达股价重挫/管理层动荡的报道"
+      "why": "均为Anthropic上市对AI行情的影响分析"
     },
     {
-      "kept": "CoreWeave 靠客户预付款和短期合约支撑 AI 扩张",
+      "kept": "李彦宏百度大会演讲谈AI下一幕，称未来岗位会向两类收敛 - 新浪网",
       "merged": [
-        "CoreWeave turns to customer prepayments, shorter contracts t"
+        "李彦宏：AI下一幕是智能组织，百度DAA一年增至3.7万 - 手机新浪网"
       ],
-      "why": "均报道 CoreWeave 靠预付款和短约支撑 AI 扩张"
-    },
-    {
-      "kept": "Anthropic 一夜逼疯微软？Claude 杀入办公软件腹地：能自己参会、做表格、生成PPT",
-      "merged": [
-        "微软股价应声跳水 Anthropic上市前夕推出AI办公套件 - 东方财富"
-      ],
-      "why": "均报道 Anthropic 推出 AI 办公套件并导致微软股价下跌"
+      "why": "均为李彦宏在百度大会演讲谈AI智能组织"
     }
   ]
 }
