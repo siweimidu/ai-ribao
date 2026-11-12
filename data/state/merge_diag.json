@@ -1,37 +1,43 @@
 {
-  "generated_at": "2026-11-11T22:11:33.708491+00:00",
+  "generated_at": "2026-11-12T01:48:04.390382+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 136,
-  "batches": 4,
-  "calls": 4,
-  "merged_groups": 3,
-  "merged_events": 5,
-  "rejected_groups": 1,
+  "input_events": 221,
+  "batches": 7,
+  "calls": 7,
+  "merged_groups": 4,
+  "merged_events": 8,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "AWS 发布官方模拟器 aws-emulator，可在本地测试多种服务",
+      "kept": "AI交易热情重燃！费城半导体指数大涨5.66%，AI云服务商CoreWeave飙升近25%，闪迪涨13%，希捷、SK海力士涨超9% - 金融界",
       "merged": [
-        "aws-emulator",
-        "Amazon’s open-source AWS Emulator lets developers validate t"
+        "AI交易热情重燃，美股算力产业链集体飙升，云服务龙头涨超24% - 凤凰网",
+        "CoreWeave飙升近25%点燃AI硬件股，半导体爆发闪迪美光科技拉升超10%，黄金失守4000美元 - 第一财经"
       ],
-      "why": "均为 AWS 发布官方模拟器 aws-emulator"
+      "why": "均报道AI交易重燃导致美股算力股及CoreWeave大幅上涨"
     },
     {
-      "kept": "Scoop: Lutnick stalled curbing Nvidia chip sales to China — again — after Oval O",
+      "kept": "Nvidia sinks after report implicates CEO Jensen Huang in 2nd affair",
       "merged": [
-        "Revenge of the China hawks: Jensen Huang’s enemies take a vi",
-        "Scoop: Inside Bessent's Situation Room confrontation with Lu"
+        "Nvidia CEO’s Exit Looms"
       ],
-      "why": "均报道卢特尼克与贝森特就芯片出口限制的争执"
+      "why": "黄仁勋第二段婚外情丑闻及英伟达股价重挫/管理层动荡的报道"
+    },
+    {
+      "kept": "CoreWeave 靠客户预付款和短期合约支撑 AI 扩张",
+      "merged": [
+        "CoreWeave turns to customer prepayments, shorter contracts t"
+      ],
+      "why": "均报道 CoreWeave 靠预付款和短约支撑 AI 扩张"
     },
     {
       "kept": "Anthropic 一夜逼疯微软？Claude 杀入办公软件腹地：能自己参会、做表格、生成PPT",
       "merged": [
         "微软股价应声跳水 Anthropic上市前夕推出AI办公套件 - 东方财富"
       ],
-      "why": "均报道Anthropic推出AI办公套件及微软股价反应"
+      "why": "均报道 Anthropic 推出 AI 办公套件并导致微软股价下跌"
     }
   ]
 }
