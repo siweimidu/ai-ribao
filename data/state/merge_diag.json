@@ -1,54 +1,56 @@
 {
-  "generated_at": "2026-11-13T00:51:32.339590+00:00",
+  "generated_at": "2026-11-13T02:29:09.991370+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 228,
-  "batches": 7,
-  "calls": 7,
-  "merged_groups": 11,
-  "merged_events": 26,
-  "rejected_groups": 5,
+  "input_events": 269,
+  "batches": 8,
+  "calls": 8,
+  "merged_groups": 7,
+  "merged_events": 17,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "Several Microsoft services appear to be down – what we know",
+      "kept": "AIHOT 日报 · 2026-11-13 — NVIDIA 宣布 CEO 变动：Jensen Huang 辞任，CFO Colette Kress 出任临时 ",
       "merged": [
-        "Service degradation on Microsoft 365"
+        "Jensen Huang's implosion at Nvidia leaves trail of collatera",
+        "黄仁勋辞职后，Nvidia 与 AI 热潮的未来走向分析",
+        "SemiAnalysis 分析黄仁勋辞任 Nvidia CEO 背后的出口管制博弈",
+        "The Verge 分析黄仁勋辞职与 Nvidia 芯片走私疑云",
+        "黄仁勋辞去英伟达 CEO，Hugging Face CEO 德朗格表态继续力挺开源 AI",
+        "黄仁勋辞任 Nvidia CEO 后的连锁影响分析",
+        "Hugging Face CEO vows to keep fighting for open source AI af"
       ],
-      "why": "均报道微软服务故障/降级事件"
+      "why": "均报道NVIDIA CEO黄仁勋辞任及后续影响"
+    },
+    {
+      "kept": "Trump pitches Apple's Tim Cook as new Nvidia CEO",
+      "merged": [
+        "Trump floats Apple chairman Tim Cook as Jensen Huang’s succe"
+      ],
+      "why": "均为特朗普提议苹果CEO库克接替黄仁勋"
+    },
+    {
+      "kept": "谷歌推出Android XR智能眼镜 AI芯片公司Cerebras盘后大涨 | 环球市场 - 财联社",
+      "merged": [
+        "巨头持续涌入！谷歌新一代AI眼镜来了 端侧AI打开想象空间(附股) - 东方财富",
+        "谷歌联合三星等推AI眼镜 售价395美元起 12月10日上市 - 观点网"
+      ],
+      "why": "均为谷歌发布新一代Android XR智能眼镜"
+    },
+    {
+      "kept": "大模型狂奔三年，百度词元所重新定义AI生意 - 信息化观察网",
+      "merged": [
+        "百度推出大模型交易平台“词元所”，宣称中立可信"
+      ],
+      "why": "均为百度推出大模型交易平台词元所"
     },
     {
       "kept": "FAA 将 AI 空管调度系统 SMART 扩展至全美 22 个空管中心",
       "merged": [
         "FAA expands AI advice to manage air traffic congestion acros"
       ],
-      "why": "均报道FAA AI空管系统扩展"
-    },
-    {
-      "kept": "Ukraine says its facing Starlink disruptions again",
-      "merged": [
-        "Zelenskyy says Starshield has been slowed again, endangering"
-      ],
-      "why": "均报道乌克兰Starlink干扰事件"
-    },
-    {
-      "kept": "SoftBank loses billions after over-ordering AI energy equipment",
-      "merged": [
-        "SoftBank’s billion-dollar loss may have put a cap on AI’s na"
-      ],
-      "why": "均报道软银AI设备投资亏损"
-    },
-    {
-      "kept": "Jensen Huang's implosion at Nvidia leaves trail of collateral damage",
-      "merged": [
-        "Rohan Paul 类比乔布斯被逐，评 NVIDIA 放走黄仁勋",
-        "黄仁勋辞职后，Nvidia 与 AI 热潮的未来走向分析",
-        "SemiAnalysis 分析黄仁勋辞任 Nvidia CEO 背后的出口管制博弈",
-        "The Verge 分析黄仁勋辞职与 Nvidia 芯片走私疑云",
-        "AIHOT 日报 · 2026-11-13 — NVIDIA 宣布 CEO 变动：Jensen Huang 辞任，CFO",
-        "民主党对 Nvidia 对华芯片销售启动调查，致函质疑黄仁勋与特朗普的安排"
-      ],
-      "why": "均报道黄仁勋辞任英伟达CEO一事"
+      "why": "均为FAA将AI空管系统SMART扩展至全美"
     }
   ]
 }
