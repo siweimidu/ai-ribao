@@ -1,21 +1,28 @@
 {
-  "generated_at": "2026-11-13T05:11:59.176495+00:00",
+  "generated_at": "2026-11-13T06:54:55.939251+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 305,
+  "input_events": 314,
   "batches": 9,
   "calls": 9,
-  "merged_groups": 8,
-  "merged_events": 26,
-  "rejected_groups": 5,
+  "merged_groups": 7,
+  "merged_events": 15,
+  "rejected_groups": 7,
   "failed": false,
   "examples": [
     {
-      "kept": "Ukraine says its facing Starlink disruptions again",
+      "kept": "Hugging Face CEO vows to keep fighting for open source AI after Jensen Huang’s e",
       "merged": [
-        "Zelenskyy says Starshield has been slowed again, endangering"
+        "派早报：英伟达 CEO 黄仁勋宣布辞职等"
       ],
-      "why": "报道乌克兰Starlink/Starshield服务中断事件"
+      "why": "均报道黄仁勋卸任NVIDIA CEO及继任者相关消息"
+    },
+    {
+      "kept": "黄仁勋辞去英伟达总裁与CEO职务，卡兹克梳理事件始末",
+      "merged": [
+        "黄仁勋辞去英伟达总裁兼CEO，作者梳理14天风波始末"
+      ],
+      "why": "都是黄仁勋辞去英伟达CEO的同一事件"
     },
     {
       "kept": "AIHOT 日报 · 2026-11-13 — NVIDIA 宣布 CEO 变动：Jensen Huang 辞任，CFO Colette Kress 出任临时 ",
@@ -28,29 +35,21 @@
         "黄仁勋辞去英伟达 CEO，Hugging Face CEO 德朗格表态继续力挺开源 AI",
         "黄仁勋辞任 Nvidia CEO 后的连锁影响分析"
       ],
-      "why": "均报道黄仁勋辞去英伟达CEO及其后续影响"
+      "why": "都是关于黄仁勋辞任Nvidia CEO的多篇报道"
     },
     {
-      "kept": "The Jensen Huang scandal is hardly over",
+      "kept": "Meta AI 智能体 Muse 向美国付费用户开放代打电话功能",
       "merged": [
-        "Jensen Huang Basically Lit More Than $1 Trillion on Fire in "
+        "Meta Muse 推出代打电话功能，现已向美国付费订阅用户开放"
       ],
-      "why": "均为黄仁勋卸任/辞职及英伟达影响"
+      "why": "都是Meta Muse代打电话功能开放"
     },
     {
-      "kept": "OpenAI 推出两款 AI 网络安全防御工具",
+      "kept": "Inkling 2 Small 开放权重后登顶 Agent Arena 美国开源模型第一",
       "merged": [
-        "openai/codex-security — OpenAI's Codex Security CLI and Type"
+        "Inkling 2 Small 开源并以 1647 分登顶 Code Arena WebDev 美国开源模型"
       ],
-      "why": "均为 OpenAI 网络安全防御工具"
-    },
-    {
-      "kept": "Five ways Jensen Huang’s ouster from Nvidia could damage the AI industry",
-      "merged": [
-        "Hugging Face CEO vows to keep fighting for open source AI af",
-        "Ex-NVIDIA CEO Jensen Huang is set to testify before Congress"
-      ],
-      "why": "均关于黄仁勋卸任英伟达CEO"
+      "why": "都是Inkling 2 Small开源模型登顶榜单"
     }
   ]
 }
