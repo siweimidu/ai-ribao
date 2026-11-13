@@ -1,55 +1,50 @@
 {
-  "generated_at": "2026-11-13T06:54:55.939251+00:00",
+  "generated_at": "2026-11-13T08:08:43.771602+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 314,
+  "input_events": 321,
   "batches": 9,
   "calls": 9,
-  "merged_groups": 7,
-  "merged_events": 15,
-  "rejected_groups": 7,
+  "merged_groups": 16,
+  "merged_events": 29,
+  "rejected_groups": 10,
   "failed": false,
   "examples": [
     {
-      "kept": "Hugging Face CEO vows to keep fighting for open source AI after Jensen Huang’s e",
+      "kept": "“太空AI第一股”国星宇航在港上市 孙东：体现香港“双赋能”优势 - 中国新闻网",
       "merged": [
-        "派早报：英伟达 CEO 黄仁勋宣布辞职等"
+        "“太空AI股”川企国星宇航港交所挂牌上市 - 四川新闻",
+        "“太空AI第一股”开盘破发 国星宇航登陆港股 何时商业化是市场焦点︱港股直通车 - 第一财经"
       ],
-      "why": "均报道黄仁勋卸任NVIDIA CEO及继任者相关消息"
+      "why": "国星宇航港交所上市"
     },
     {
-      "kept": "黄仁勋辞去英伟达总裁与CEO职务，卡兹克梳理事件始末",
+      "kept": "Ukraine says its facing Starlink disruptions again",
       "merged": [
-        "黄仁勋辞去英伟达总裁兼CEO，作者梳理14天风波始末"
+        "Zelenskyy says Starshield has been slowed again, endangering"
       ],
-      "why": "都是黄仁勋辞去英伟达CEO的同一事件"
+      "why": "都是泽连斯基称星链系统再次被干扰"
     },
     {
-      "kept": "AIHOT 日报 · 2026-11-13 — NVIDIA 宣布 CEO 变动：Jensen Huang 辞任，CFO Colette Kress 出任临时 ",
+      "kept": "SoftBank loses billions after over-ordering AI energy equipment",
       "merged": [
-        "Jensen Huang's implosion at Nvidia leaves trail of collatera",
-        "Rohan Paul 类比乔布斯被逐，评 NVIDIA 放走黄仁勋",
-        "黄仁勋辞职后，Nvidia 与 AI 热潮的未来走向分析",
-        "SemiAnalysis 分析黄仁勋辞任 Nvidia CEO 背后的出口管制博弈",
-        "The Verge 分析黄仁勋辞职与 Nvidia 芯片走私疑云",
-        "黄仁勋辞去英伟达 CEO，Hugging Face CEO 德朗格表态继续力挺开源 AI",
-        "黄仁勋辞任 Nvidia CEO 后的连锁影响分析"
+        "SoftBank’s billion-dollar loss may have put a cap on AI’s na"
       ],
-      "why": "都是关于黄仁勋辞任Nvidia CEO的多篇报道"
+      "why": "都是软银因AI能源设备订单亏损"
     },
     {
-      "kept": "Meta AI 智能体 Muse 向美国付费用户开放代打电话功能",
+      "kept": "Cisco beats expectations, lifts guidance and forecasts AI infrastructure revenue",
       "merged": [
-        "Meta Muse 推出代打电话功能，现已向美国付费订阅用户开放"
+        "Five thoughts from Cisco’s first quarter of fiscal 2027"
       ],
-      "why": "都是Meta Muse代打电话功能开放"
+      "why": "都是思科财报超预期并上调指引"
     },
     {
-      "kept": "Inkling 2 Small 开放权重后登顶 Agent Arena 美国开源模型第一",
+      "kept": "99%的大学生都在用AI，但“我到底学到了啥？”成了最难回答的问题 - 华东师范大学",
       "merged": [
-        "Inkling 2 Small 开源并以 1647 分登顶 Code Arena WebDev 美国开源模型"
+        "陈添：AI参与作业后，一份好答案还能证明什么？ - 华东师范大学"
       ],
-      "why": "都是Inkling 2 Small开源模型登顶榜单"
+      "why": "都讨论AI对大学教育及学习成果评估的影响"
     }
   ]
 }
