@@ -1,21 +1,54 @@
 {
-  "generated_at": "2026-11-12T12:19:42.987167+00:00",
+  "generated_at": "2026-11-13T00:51:32.339590+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 350,
-  "batches": 9,
-  "calls": 9,
-  "merged_groups": 1,
-  "merged_events": 1,
-  "rejected_groups": 1,
+  "input_events": 228,
+  "batches": 7,
+  "calls": 7,
+  "merged_groups": 11,
+  "merged_events": 26,
+  "rejected_groups": 5,
   "failed": false,
   "examples": [
     {
-      "kept": "李彦宏首提“组织进化三原则”，判断AI下一幕是智能组织 - 新华网",
+      "kept": "Several Microsoft services appear to be down – what we know",
       "merged": [
-        "百度创始人李彦宏：AI的下一幕是智能组织 - 新华网"
+        "Service degradation on Microsoft 365"
       ],
-      "why": "都是李彦宏提出“AI下一幕是智能组织”的观点"
+      "why": "均报道微软服务故障/降级事件"
+    },
+    {
+      "kept": "FAA 将 AI 空管调度系统 SMART 扩展至全美 22 个空管中心",
+      "merged": [
+        "FAA expands AI advice to manage air traffic congestion acros"
+      ],
+      "why": "均报道FAA AI空管系统扩展"
+    },
+    {
+      "kept": "Ukraine says its facing Starlink disruptions again",
+      "merged": [
+        "Zelenskyy says Starshield has been slowed again, endangering"
+      ],
+      "why": "均报道乌克兰Starlink干扰事件"
+    },
+    {
+      "kept": "SoftBank loses billions after over-ordering AI energy equipment",
+      "merged": [
+        "SoftBank’s billion-dollar loss may have put a cap on AI’s na"
+      ],
+      "why": "均报道软银AI设备投资亏损"
+    },
+    {
+      "kept": "Jensen Huang's implosion at Nvidia leaves trail of collateral damage",
+      "merged": [
+        "Rohan Paul 类比乔布斯被逐，评 NVIDIA 放走黄仁勋",
+        "黄仁勋辞职后，Nvidia 与 AI 热潮的未来走向分析",
+        "SemiAnalysis 分析黄仁勋辞任 Nvidia CEO 背后的出口管制博弈",
+        "The Verge 分析黄仁勋辞职与 Nvidia 芯片走私疑云",
+        "AIHOT 日报 · 2026-11-13 — NVIDIA 宣布 CEO 变动：Jensen Huang 辞任，CFO",
+        "民主党对 Nvidia 对华芯片销售启动调查，致函质疑黄仁勋与特朗普的安排"
+      ],
+      "why": "均报道黄仁勋辞任英伟达CEO一事"
     }
   ]
 }

@@ -4390,12 +4390,12 @@
   }
  },
  "rust-lang/rust": {
-  "fetched_at": "2026-11-06T12:46:27.783806+00:00",
+  "fetched_at": "2026-11-13T00:51:32.361168+00:00",
   "data": {
    "full_name": "rust-lang/rust",
    "description": "Empowering everyone to build reliable and efficient software.",
-   "stars": 121175,
-   "forks": 17357,
+   "stars": 121853,
+   "forks": 16661,
    "language": "Rust",
    "license": "Apache-2.0",
    "topics": [
@@ -4404,16 +4404,16 @@
     "rust"
    ],
    "created": "2010-06-16",
-   "pushed": "2026-11-06",
-   "contributors": 8955,
+   "pushed": "2026-11-12",
+   "contributors": 8981,
    "discussions": null,
    "languages": {
-    "Rust": 90.58399109364791,
-    "HTML": 6.29646938233248,
-    "Shell": 0.7565587365181444,
-    "C": 0.7408411773139089,
-    "JavaScript": 0.488157251225048,
-    "Python": 0.36203885327918456
+    "Rust": 90.5996501637755,
+    "HTML": 6.284866639956415,
+    "Shell": 0.7537625114204348,
+    "C": 0.7394747290781539,
+    "JavaScript": 0.4896103326627739,
+    "Python": 0.3617621317904659
    }
   }
  },
@@ -5579,6 +5579,89 @@
     "Shell": 1.4377534564015846,
     "Python": 0.9594156606698295,
     "HTML": 0.6106439945511767
+   }
+  }
+ },
+ "Parcha-ai/agentrun": {
+  "fetched_at": "2026-11-13T00:51:32.361168+00:00",
+  "data": {
+   "full_name": "Parcha-ai/agentrun",
+   "description": "AgentRun is an open-source platform that supercharges your agents. It adds self-improvement, durable execution and a control plane on top of your favorite agent harness. Your agents become smarter, more fault tolerant and use fewer tokens with every run.",
+   "stars": 593,
+   "forks": 44,
+   "language": "JavaScript",
+   "license": "Apache-2.0",
+   "topics": [],
+   "created": "2026-09-23",
+   "pushed": "2026-11-13",
+   "contributors": 4,
+   "discussions": null,
+   "languages": {
+    "JavaScript": 53.32030467735817,
+    "TypeScript": 41.804244412973304,
+    "Go": 2.6505199124412813,
+    "Python": 1.0590541471041528,
+    "Lean": 0.8315145666871391,
+    "Shell": 0.1976928354544114
+   }
+  }
+ },
+ "cerulion-inc/cerulion": {
+  "fetched_at": "2026-11-13T00:51:32.361168+00:00",
+  "data": {
+   "full_name": "cerulion-inc/cerulion",
+   "description": "Cerulion (YC S24) gives AI agents a harness to control real robots. Our open-source runtime and harness give any AI agent a physical body, inside safety limits the robot enforces, and tools to autonomously debug recorded robot failures. It's ROS 2 compatible.",
+   "stars": 110,
+   "forks": 4,
+   "language": "Rust",
+   "license": "AGPL-3.0",
+   "topics": [
+    "ai-agents",
+    "iceoryx2",
+    "mcap",
+    "mcp",
+    "replay",
+    "robotics"
+   ],
+   "created": "2024-07-09",
+   "pushed": "2026-11-13",
+   "contributors": 5,
+   "discussions": null,
+   "languages": {
+    "Rust": 92.86617532523955,
+    "Python": 3.724209120098157,
+    "Shell": 2.6723894514421636,
+    "C++": 0.5896336655821727,
+    "HTML": 0.07233548712871998,
+    "Java": 0.041742880729487924
+   }
+  }
+ },
+ "simpsoka/zigzag": {
+  "fetched_at": "2026-11-13T00:51:32.361168+00:00",
+  "data": {
+   "full_name": "simpsoka/zigzag",
+   "description": "Free, open-source embroidery software for Mac and Windows. Turn SVG artwork into machine embroidery, edit stitches visually, and create designs with AI agents via MCP.",
+   "stars": 232,
+   "forks": 11,
+   "language": "Rust",
+   "license": "Apache-2.0",
+   "topics": [
+    "brother-skitch",
+    "embroidery",
+    "embroidery-digitizing",
+    "embroidery-software",
+    "machine-embroidery",
+    "macos"
+   ],
+   "created": "2026-10-30",
+   "pushed": "2026-11-13",
+   "contributors": null,
+   "discussions": null,
+   "languages": {
+    "Rust": 99.04733936276666,
+    "Shell": 0.7738371347431039,
+    "Python": 0.1788235024902281
    }
   }
  }
