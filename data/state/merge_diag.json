@@ -1,55 +1,49 @@
 {
-  "generated_at": "2026-11-13T02:39:08.185745+00:00",
+  "generated_at": "2026-11-13T04:34:48.696646+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 269,
+  "input_events": 287,
   "batches": 9,
   "calls": 9,
-  "merged_groups": 10,
-  "merged_events": 29,
-  "rejected_groups": 5,
+  "merged_groups": 7,
+  "merged_events": 17,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
-    {
-      "kept": "FAA 将 AI 空管调度系统 SMART 扩展至全美 22 个空管中心",
-      "merged": [
-        "FAA expands AI advice to manage air traffic congestion acros"
-      ],
-      "why": "均报道FAA将AI空管调度系统SMART扩展至全美"
-    },
     {
       "kept": "Ukraine says its facing Starlink disruptions again",
       "merged": [
         "Zelenskyy says Starshield has been slowed again, endangering"
       ],
-      "why": "均报道乌克兰星链网络再次受阻事件"
+      "why": "均报道乌克兰Starlink系统中断事件"
     },
     {
       "kept": "SoftBank loses billions after over-ordering AI energy equipment",
       "merged": [
         "SoftBank’s billion-dollar loss may have put a cap on AI’s na"
       ],
-      "why": "均报道软银因超订AI能源设备亏损事件"
+      "why": "均报道SoftBank AI能源设备亏损"
+    },
+    {
+      "kept": "Google rolls out Gemini 4 Hydrogen, finally replacing 3.8 Flash",
+      "merged": [
+        "Google推出Gemini4Hydrogen，全球Search迎来最大模型升级"
+      ],
+      "why": "都是 Google Gemini 4 Hydrogen 模型发布"
     },
     {
       "kept": "AIHOT 日报 · 2026-11-13 — NVIDIA 宣布 CEO 变动：Jensen Huang 辞任，CFO Colette Kress 出任临时 ",
       "merged": [
-        "Rohan Paul 类比乔布斯被逐，评 NVIDIA 放走黄仁勋",
-        "SemiAnalysis 分析黄仁勋辞任 Nvidia CEO 背后的出口管制博弈",
-        "The Verge 分析黄仁勋辞职与 Nvidia 芯片走私疑云",
-        "黄仁勋辞职后，Nvidia 与 AI 热潮的未来走向分析",
-        "黄仁勋辞任 Nvidia CEO 后的连锁影响分析",
-        "Hugging Face CEO vows to keep fighting for open source AI af",
-        "Jensen Huang's implosion at Nvidia leaves trail of collatera"
+        "黄仁勋辞去英伟达 CEO，Hugging Face CEO 德朗格表态继续力挺开源 AI"
       ],
-      "why": "均报道黄仁勋辞任Nvidia CEO及后续影响"
+      "why": "都报道黄仁勋辞去英伟达 CEO 事件"
     },
     {
-      "kept": "黄仁勋出局，英伟达5000亿美元AI融资计划也悬了 - 华尔街见闻",
+      "kept": "Meta AI 智能体 Muse 向美国付费用户开放代打电话功能",
       "merged": [
-        "黄仁勋突然离任震动AI行业！英伟达大跌、新云与硬件承压、AMD大涨，Anthropic IPO受审视 - 华尔街见闻"
+        "Meta Muse 推出代打电话功能，现已向美国付费订阅用户开放"
       ],
-      "why": "均为黄仁勋离任及国会质询事件"
+      "why": "都是 Meta Muse 开放代打电话功能"
     }
   ]
 }
