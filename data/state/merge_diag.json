@@ -1,50 +1,49 @@
 {
-  "generated_at": "2026-11-13T13:08:03.906317+00:00",
+  "generated_at": "2026-11-13T14:42:59.641097+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 354,
-  "batches": 10,
-  "calls": 10,
-  "merged_groups": 11,
-  "merged_events": 19,
-  "rejected_groups": 2,
+  "input_events": 396,
+  "batches": 11,
+  "calls": 11,
+  "merged_groups": 8,
+  "merged_events": 11,
+  "rejected_groups": 9,
   "failed": false,
   "examples": [
     {
-      "kept": "AIHOT 日报 · 2026-11-13 — NVIDIA 宣布 CEO 变动：Jensen Huang 辞任，CFO Colette Kress 出任临时 ",
+      "kept": "Tibo 确认 banked reset 已开始发放",
       "merged": [
-        "Nvidia enters life without Jensen Huang"
+        "Tibo 确认 banked reset 已开始发放"
       ],
-      "why": "报道黄仁勋辞去英伟达CEO职务及Colette Kress接任"
+      "why": "Same id?"
     },
     {
-      "kept": "Several Microsoft services appear to be down – what we know",
+      "kept": "Google rolls out Gemini 4 Hydrogen, finally replacing 3.8 Flash",
       "merged": [
-        "Service degradation on Microsoft 365",
-        "Microsoft Labors to Fix Long Outage of Office, Outlook, Copi"
+        "Gemini 4 Hydrogen 上线 Cursor，CursorBench 得分 54.3%"
       ],
-      "why": "报道微软Office/Outlook等服务的故障与恢复"
+      "why": "均为 Gemini 4 Hydrogen 上线及性能表现报道"
     },
     {
-      "kept": "Grok Bot 可加入视频会议当队友",
+      "kept": "NVIDIA 员工内部信要求董事会辞职并恢复黄仁勋 CEO 职务",
       "merged": [
-        "Grok Bot 1.0 支持像邀请同事一样把 Bot 邀请进会议"
+        "Nvidia 内部建议箱帖文获超 1600 条评论，多数员工请愿黄仁勋回归"
       ],
-      "why": "均为 xAI Grok Bot 支持加入视频会议功能"
+      "why": "均为 Nvidia 员工请愿黄仁勋回归/要求董事会辞职"
     },
     {
-      "kept": "Shares of AI cloud operator Nebius drop 16%+ despite strong earnings results",
+      "kept": "Cerebras 签约微软成为第三家超大规模云客户，2026Q3 剩余履约义务 261 亿美元",
       "merged": [
-        "Nebius tests the neocloud playbook with $40 billion in plann"
+        "Surging AI chip revenue and Microsoft deal boost Cerebras Sy"
       ],
-      "why": "均报道 Nebius 股价下跌及支出计划"
+      "why": "均报道 Cerebras 与微软签约及股价上涨"
     },
     {
-      "kept": "陈添：AI参与作业后，一份好答案还能证明什么？ - 华东师范大学",
+      "kept": "派早报：英伟达 CEO 黄仁勋宣布辞职等",
       "merged": [
-        "99%的大学生都在用AI，但“我到底学到了啥？”成了最难回答的问题 - 华东师范大学"
+        "黄仁勋辞职，英伟达33年首换帅，市值蒸发超3万亿"
       ],
-      "why": "均为华东师范大学关于 AI 与教育探讨"
+      "why": "均报道黄仁勋辞职及英伟达换帅事件"
     }
   ]
 }
