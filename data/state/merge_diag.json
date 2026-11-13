@@ -1,49 +1,21 @@
 {
-  "generated_at": "2026-11-13T14:42:59.641097+00:00",
+  "generated_at": "2026-11-13T20:23:56.456729+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 396,
-  "batches": 11,
-  "calls": 11,
-  "merged_groups": 8,
-  "merged_events": 11,
-  "rejected_groups": 9,
+  "input_events": 112,
+  "batches": 4,
+  "calls": 4,
+  "merged_groups": 1,
+  "merged_events": 1,
+  "rejected_groups": 0,
   "failed": false,
   "examples": [
     {
-      "kept": "Tibo 确认 banked reset 已开始发放",
+      "kept": "OpenAI 董事会成员 Paul Cristiano 警告 AI 夺权可能在数月内发生",
       "merged": [
-        "Tibo 确认 banked reset 已开始发放"
+        "OpenAI board member worries an AI \"takeover\" of society coul"
       ],
-      "why": "Same id?"
-    },
-    {
-      "kept": "Google rolls out Gemini 4 Hydrogen, finally replacing 3.8 Flash",
-      "merged": [
-        "Gemini 4 Hydrogen 上线 Cursor，CursorBench 得分 54.3%"
-      ],
-      "why": "均为 Gemini 4 Hydrogen 上线及性能表现报道"
-    },
-    {
-      "kept": "NVIDIA 员工内部信要求董事会辞职并恢复黄仁勋 CEO 职务",
-      "merged": [
-        "Nvidia 内部建议箱帖文获超 1600 条评论，多数员工请愿黄仁勋回归"
-      ],
-      "why": "均为 Nvidia 员工请愿黄仁勋回归/要求董事会辞职"
-    },
-    {
-      "kept": "Cerebras 签约微软成为第三家超大规模云客户，2026Q3 剩余履约义务 261 亿美元",
-      "merged": [
-        "Surging AI chip revenue and Microsoft deal boost Cerebras Sy"
-      ],
-      "why": "均报道 Cerebras 与微软签约及股价上涨"
-    },
-    {
-      "kept": "派早报：英伟达 CEO 黄仁勋宣布辞职等",
-      "merged": [
-        "黄仁勋辞职，英伟达33年首换帅，市值蒸发超3万亿"
-      ],
-      "why": "均报道黄仁勋辞职及英伟达换帅事件"
+      "why": "都是 OpenAI 董事 Paul Cristiano 警告 AI 夺权"
     }
   ]
 }
