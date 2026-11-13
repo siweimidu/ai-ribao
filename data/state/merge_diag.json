@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-13T04:34:48.696646+00:00",
+  "generated_at": "2026-11-13T05:11:59.176495+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 287,
+  "input_events": 305,
   "batches": 9,
   "calls": 9,
-  "merged_groups": 7,
-  "merged_events": 17,
-  "rejected_groups": 1,
+  "merged_groups": 8,
+  "merged_events": 26,
+  "rejected_groups": 5,
   "failed": false,
   "examples": [
     {
@@ -15,35 +15,42 @@
       "merged": [
         "Zelenskyy says Starshield has been slowed again, endangering"
       ],
-      "why": "均报道乌克兰Starlink系统中断事件"
-    },
-    {
-      "kept": "SoftBank loses billions after over-ordering AI energy equipment",
-      "merged": [
-        "SoftBank’s billion-dollar loss may have put a cap on AI’s na"
-      ],
-      "why": "均报道SoftBank AI能源设备亏损"
-    },
-    {
-      "kept": "Google rolls out Gemini 4 Hydrogen, finally replacing 3.8 Flash",
-      "merged": [
-        "Google推出Gemini4Hydrogen，全球Search迎来最大模型升级"
-      ],
-      "why": "都是 Google Gemini 4 Hydrogen 模型发布"
+      "why": "报道乌克兰Starlink/Starshield服务中断事件"
     },
     {
       "kept": "AIHOT 日报 · 2026-11-13 — NVIDIA 宣布 CEO 变动：Jensen Huang 辞任，CFO Colette Kress 出任临时 ",
       "merged": [
-        "黄仁勋辞去英伟达 CEO，Hugging Face CEO 德朗格表态继续力挺开源 AI"
+        "Jensen Huang's implosion at Nvidia leaves trail of collatera",
+        "Rohan Paul 类比乔布斯被逐，评 NVIDIA 放走黄仁勋",
+        "黄仁勋辞职后，Nvidia 与 AI 热潮的未来走向分析",
+        "SemiAnalysis 分析黄仁勋辞任 Nvidia CEO 背后的出口管制博弈",
+        "The Verge 分析黄仁勋辞职与 Nvidia 芯片走私疑云",
+        "黄仁勋辞去英伟达 CEO，Hugging Face CEO 德朗格表态继续力挺开源 AI",
+        "黄仁勋辞任 Nvidia CEO 后的连锁影响分析"
       ],
-      "why": "都报道黄仁勋辞去英伟达 CEO 事件"
+      "why": "均报道黄仁勋辞去英伟达CEO及其后续影响"
     },
     {
-      "kept": "Meta AI 智能体 Muse 向美国付费用户开放代打电话功能",
+      "kept": "The Jensen Huang scandal is hardly over",
       "merged": [
-        "Meta Muse 推出代打电话功能，现已向美国付费订阅用户开放"
+        "Jensen Huang Basically Lit More Than $1 Trillion on Fire in "
       ],
-      "why": "都是 Meta Muse 开放代打电话功能"
+      "why": "均为黄仁勋卸任/辞职及英伟达影响"
+    },
+    {
+      "kept": "OpenAI 推出两款 AI 网络安全防御工具",
+      "merged": [
+        "openai/codex-security — OpenAI's Codex Security CLI and Type"
+      ],
+      "why": "均为 OpenAI 网络安全防御工具"
+    },
+    {
+      "kept": "Five ways Jensen Huang’s ouster from Nvidia could damage the AI industry",
+      "merged": [
+        "Hugging Face CEO vows to keep fighting for open source AI af",
+        "Ex-NVIDIA CEO Jensen Huang is set to testify before Congress"
+      ],
+      "why": "均关于黄仁勋卸任英伟达CEO"
     }
   ]
 }
