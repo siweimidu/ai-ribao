@@ -1,50 +1,50 @@
 {
-  "generated_at": "2026-11-13T08:08:43.771602+00:00",
+  "generated_at": "2026-11-13T13:08:03.906317+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 321,
-  "batches": 9,
-  "calls": 9,
-  "merged_groups": 16,
-  "merged_events": 29,
-  "rejected_groups": 10,
+  "input_events": 354,
+  "batches": 10,
+  "calls": 10,
+  "merged_groups": 11,
+  "merged_events": 19,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "“太空AI第一股”国星宇航在港上市 孙东：体现香港“双赋能”优势 - 中国新闻网",
+      "kept": "AIHOT 日报 · 2026-11-13 — NVIDIA 宣布 CEO 变动：Jensen Huang 辞任，CFO Colette Kress 出任临时 ",
       "merged": [
-        "“太空AI股”川企国星宇航港交所挂牌上市 - 四川新闻",
-        "“太空AI第一股”开盘破发 国星宇航登陆港股 何时商业化是市场焦点︱港股直通车 - 第一财经"
+        "Nvidia enters life without Jensen Huang"
       ],
-      "why": "国星宇航港交所上市"
+      "why": "报道黄仁勋辞去英伟达CEO职务及Colette Kress接任"
     },
     {
-      "kept": "Ukraine says its facing Starlink disruptions again",
+      "kept": "Several Microsoft services appear to be down – what we know",
       "merged": [
-        "Zelenskyy says Starshield has been slowed again, endangering"
+        "Service degradation on Microsoft 365",
+        "Microsoft Labors to Fix Long Outage of Office, Outlook, Copi"
       ],
-      "why": "都是泽连斯基称星链系统再次被干扰"
+      "why": "报道微软Office/Outlook等服务的故障与恢复"
     },
     {
-      "kept": "SoftBank loses billions after over-ordering AI energy equipment",
+      "kept": "Grok Bot 可加入视频会议当队友",
       "merged": [
-        "SoftBank’s billion-dollar loss may have put a cap on AI’s na"
+        "Grok Bot 1.0 支持像邀请同事一样把 Bot 邀请进会议"
       ],
-      "why": "都是软银因AI能源设备订单亏损"
+      "why": "均为 xAI Grok Bot 支持加入视频会议功能"
     },
     {
-      "kept": "Cisco beats expectations, lifts guidance and forecasts AI infrastructure revenue",
+      "kept": "Shares of AI cloud operator Nebius drop 16%+ despite strong earnings results",
       "merged": [
-        "Five thoughts from Cisco’s first quarter of fiscal 2027"
+        "Nebius tests the neocloud playbook with $40 billion in plann"
       ],
-      "why": "都是思科财报超预期并上调指引"
+      "why": "均报道 Nebius 股价下跌及支出计划"
     },
     {
-      "kept": "99%的大学生都在用AI，但“我到底学到了啥？”成了最难回答的问题 - 华东师范大学",
+      "kept": "陈添：AI参与作业后，一份好答案还能证明什么？ - 华东师范大学",
       "merged": [
-        "陈添：AI参与作业后，一份好答案还能证明什么？ - 华东师范大学"
+        "99%的大学生都在用AI，但“我到底学到了啥？”成了最难回答的问题 - 华东师范大学"
       ],
-      "why": "都讨论AI对大学教育及学习成果评估的影响"
+      "why": "均为华东师范大学关于 AI 与教育探讨"
     }
   ]
 }
