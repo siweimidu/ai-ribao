@@ -1,51 +1,39 @@
 {
-  "generated_at": "2026-11-14T04:13:07.355859+00:00",
+  "generated_at": "2026-11-14T12:27:45.255589+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 243,
-  "batches": 7,
-  "calls": 7,
-  "merged_groups": 14,
-  "merged_events": 18,
+  "input_events": 291,
+  "batches": 8,
+  "calls": 8,
+  "merged_groups": 3,
+  "merged_events": 7,
   "rejected_groups": 0,
   "failed": false,
   "examples": [
     {
-      "kept": "Elon Musk 推广 Grok @Bot 新会议协作功能",
+      "kept": "Grok Bot 现在可以加入会议",
       "merged": [
         "Grok Bot 现可加入会议"
       ],
-      "why": "报道 Grok Bot 加入会议功能"
+      "why": "都是 Grok Bot 支持加入会议功能"
     },
     {
-      "kept": "要让 GPT-6 Astra 等通用 AI 当机器人“大脑”：OpenAI 宣布重组具身智能团队 - 东方财富",
+      "kept": "FAA lifts rare nationwide ground stop",
       "merged": [
-        "OpenAI 解散独立机器人团队，人员转入主研究团队",
-        "OpenAI解散机器人团队！GPT-6 Astra证明：通用大模型已可直接用于“物理AI”，无需专用模型_滚动新闻_财经"
+        "3,000 flights cancelled as FAA ground stop chaos stretches i",
+        "FAA allows flights to resume after hours-long ground stop ac",
+        "FAA ends hours-long nationwide ground stop",
+        "FAA grounds all domestic flights after reported network outa",
+        "FAA lifted National Ground Stop at 0119Z"
       ],
-      "why": "都是 OpenAI 解散独立机器人团队并入主研究团队"
+      "why": "报道 FAA 实施并结束全国性地面停飞事件"
     },
     {
-      "kept": "微软致歉：Microsoft 365 服务大规模中断",
+      "kept": "OpenAI reassigns robotics researchers to other teams as general-purpose models m",
       "merged": [
-        "Outlook等服务故障期间征集AI技巧，微软推文变成吐槽现场 - Sohu"
+        "OpenAI 解散独立机器人团队，人员转入主研究团队"
       ],
-      "why": "都是 Microsoft 365 服务大规模中断事件"
-    },
-    {
-      "kept": "Jensen Didn’t Create the AI Boom. It Created Him.",
-      "merged": [
-        "Jensen Huang and the End of the Founder Fairy Tale"
-      ],
-      "why": "都是评论 Jensen Huang 与 AI 浪潮关系的文章"
-    },
-    {
-      "kept": "Jensen Huang's ouster likely traces back to Nvidia's risky business practices mo",
-      "merged": [
-        "Jensen Huang’s departure blasts big hole in AI startup fundi",
-        "Jensen Huang’s biggest mistake was getting too involved in D"
-      ],
-      "why": "均报道英伟达CEO黄仁勋离职/去职引发的市场反应及员工挽留行动"
+      "why": "均报道 OpenAI 解散独立机器人团队，人员转入主研究团队。"
     }
   ]
 }
