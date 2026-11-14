@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-11-14T12:27:45.255589+00:00",
+  "generated_at": "2026-11-14T13:03:15.848572+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 291,
-  "batches": 8,
-  "calls": 8,
-  "merged_groups": 3,
-  "merged_events": 7,
+  "input_events": 306,
+  "batches": 9,
+  "calls": 9,
+  "merged_groups": 6,
+  "merged_events": 10,
   "rejected_groups": 0,
   "failed": false,
   "examples": [
     {
-      "kept": "Grok Bot 现在可以加入会议",
+      "kept": "腾讯混元甩出实时语音模型 Hy Realtime，会聊天、能唱歌、还会自己联网搜",
       "merged": [
-        "Grok Bot 现可加入会议"
+        "腾讯发布混元实时语音模型 Hy Realtime"
       ],
-      "why": "都是 Grok Bot 支持加入会议功能"
+      "why": "都是腾讯发布混元实时语音模型 Hy Realtime"
     },
     {
       "kept": "FAA lifts rare nationwide ground stop",
@@ -26,14 +26,28 @@
         "FAA grounds all domestic flights after reported network outa",
         "FAA lifted National Ground Stop at 0119Z"
       ],
-      "why": "报道 FAA 实施并结束全国性地面停飞事件"
+      "why": "报道FAA全国停飞事件及其恢复"
     },
     {
-      "kept": "OpenAI reassigns robotics researchers to other teams as general-purpose models m",
+      "kept": "Grok Bot 现在可以加入会议",
       "merged": [
-        "OpenAI 解散独立机器人团队，人员转入主研究团队"
+        "Grok Bot 现可加入会议"
       ],
-      "why": "均报道 OpenAI 解散独立机器人团队，人员转入主研究团队。"
+      "why": "报道Grok Bot加入会议功能"
+    },
+    {
+      "kept": "ChatGPT Wallet lets OpenAI’s Dots agents make purchases for you",
+      "merged": [
+        "ChatGPT 推出 ChatGPT Wallet，dot 可在用户批准下代为完成购买"
+      ],
+      "why": "都是 ChatGPT Wallet 发布报道"
+    },
+    {
+      "kept": "博主实测 MiniMax H3-Image 的四类生图玩法：分镜爆炸图、游戏资产、超长文本排版与风格融合",
+      "merged": [
+        "实测 MiniMax H3-Image：四类复杂生图玩法与超详细提示语"
+      ],
+      "why": "都是 MiniMax H3-Image 实测评测"
     }
   ]
 }
