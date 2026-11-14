@@ -1,21 +1,51 @@
 {
-  "generated_at": "2026-11-13T20:23:56.456729+00:00",
+  "generated_at": "2026-11-14T04:13:07.355859+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 112,
-  "batches": 4,
-  "calls": 4,
-  "merged_groups": 1,
-  "merged_events": 1,
+  "input_events": 243,
+  "batches": 7,
+  "calls": 7,
+  "merged_groups": 14,
+  "merged_events": 18,
   "rejected_groups": 0,
   "failed": false,
   "examples": [
     {
-      "kept": "OpenAI 董事会成员 Paul Cristiano 警告 AI 夺权可能在数月内发生",
+      "kept": "Elon Musk 推广 Grok @Bot 新会议协作功能",
       "merged": [
-        "OpenAI board member worries an AI \"takeover\" of society coul"
+        "Grok Bot 现可加入会议"
       ],
-      "why": "都是 OpenAI 董事 Paul Cristiano 警告 AI 夺权"
+      "why": "报道 Grok Bot 加入会议功能"
+    },
+    {
+      "kept": "要让 GPT-6 Astra 等通用 AI 当机器人“大脑”：OpenAI 宣布重组具身智能团队 - 东方财富",
+      "merged": [
+        "OpenAI 解散独立机器人团队，人员转入主研究团队",
+        "OpenAI解散机器人团队！GPT-6 Astra证明：通用大模型已可直接用于“物理AI”，无需专用模型_滚动新闻_财经"
+      ],
+      "why": "都是 OpenAI 解散独立机器人团队并入主研究团队"
+    },
+    {
+      "kept": "微软致歉：Microsoft 365 服务大规模中断",
+      "merged": [
+        "Outlook等服务故障期间征集AI技巧，微软推文变成吐槽现场 - Sohu"
+      ],
+      "why": "都是 Microsoft 365 服务大规模中断事件"
+    },
+    {
+      "kept": "Jensen Didn’t Create the AI Boom. It Created Him.",
+      "merged": [
+        "Jensen Huang and the End of the Founder Fairy Tale"
+      ],
+      "why": "都是评论 Jensen Huang 与 AI 浪潮关系的文章"
+    },
+    {
+      "kept": "Jensen Huang's ouster likely traces back to Nvidia's risky business practices mo",
+      "merged": [
+        "Jensen Huang’s departure blasts big hole in AI startup fundi",
+        "Jensen Huang’s biggest mistake was getting too involved in D"
+      ],
+      "why": "均报道英伟达CEO黄仁勋离职/去职引发的市场反应及员工挽留行动"
     }
   ]
 }
