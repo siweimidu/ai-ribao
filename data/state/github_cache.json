@@ -5443,12 +5443,12 @@
   }
  },
  "QwenLM/qwen-code": {
-  "fetched_at": "2026-11-12T12:19:43.001664+00:00",
+  "fetched_at": "2026-11-14T21:45:26.325523+00:00",
   "data": {
    "full_name": "QwenLM/qwen-code",
    "description": "An open-source AI coding agent that lives in your terminal.",
-   "stars": 29555,
-   "forks": 3381,
+   "stars": 30292,
+   "forks": 3497,
    "language": "TypeScript",
    "license": "Apache-2.0",
    "topics": [
@@ -5460,26 +5460,26 @@
     "coding-agent"
    ],
    "created": "2025-06-26",
-   "pushed": "2026-11-12",
-   "contributors": 647,
+   "pushed": "2026-11-14",
+   "contributors": 648,
    "discussions": null,
    "languages": {
-    "TypeScript": 76.95212276141966,
-    "Java": 10.7967556964827,
-    "JavaScript": 4.607361579691528,
-    "Rust": 4.530672303236884,
-    "C": 1.8301402644433185,
-    "Python": 0.4930478019326316
+    "TypeScript": 76.91248382863022,
+    "Java": 10.930574355454924,
+    "JavaScript": 4.591049574319399,
+    "Rust": 4.481905770817528,
+    "C": 1.8104412907448282,
+    "Python": 0.48774081215099113
    }
   }
  },
  "ashhart/TensorFold": {
-  "fetched_at": "2026-11-12T12:19:43.001664+00:00",
+  "fetched_at": "2026-11-14T21:45:26.325523+00:00",
   "data": {
    "full_name": "ashhart/TensorFold",
    "description": "LLM Inference Engine for Metal, CUDA and Vulkan.",
-   "stars": 1824,
-   "forks": 386,
+   "stars": 2146,
+   "forks": 494,
    "language": "Zig",
    "license": "Apache-2.0",
    "topics": [
@@ -5490,16 +5490,16 @@
     "llm-tools"
    ],
    "created": "2026-06-19",
-   "pushed": "2026-11-12",
-   "contributors": 137,
+   "pushed": "2026-11-14",
+   "contributors": 138,
    "discussions": null,
    "languages": {
-    "Zig": 64.26938195224417,
-    "TypeScript": 21.37507701034902,
-    "Python": 4.729892156969465,
-    "Metal": 3.6650965712944275,
-    "Cuda": 3.3395131437784866,
-    "JavaScript": 0.7951747261125004
+    "Zig": 64.93806485504534,
+    "TypeScript": 20.827874079564438,
+    "Python": 4.760146260255076,
+    "Metal": 3.59383220989681,
+    "Cuda": 3.2909486645578276,
+    "JavaScript": 0.7748182174363484
    }
   }
  },
@@ -5961,6 +5961,179 @@
     "Metal": 2.6049913741270188,
     "GLSL": 1.4886262783809419,
     "WGSL": 0.9061600687766432
+   }
+  }
+ },
+ "IRS-Public/direct-file": {
+  "fetched_at": "2026-11-14T21:45:26.325523+00:00",
+  "data": {
+   "full_name": "IRS-Public/direct-file",
+   "description": "Direct File",
+   "stars": 4674,
+   "forks": 1379,
+   "language": "JavaScript",
+   "license": "NOASSERTION",
+   "topics": [],
+   "created": "2025-05-19",
+   "pushed": "2026-06-11",
+   "contributors": null,
+   "discussions": null,
+   "languages": {
+    "JavaScript": 44.931556967786186,
+    "TypeScript": 31.93823708342643,
+    "Java": 14.359019353203436,
+    "Scala": 6.695097174604479,
+    "HTML": 1.410873454276608,
+    "SCSS": 0.28721536787157625
+   }
+  }
+ },
+ "JuliusBrussee/caveman": {
+  "fetched_at": "2026-11-14T21:45:26.325523+00:00",
+  "data": {
+   "full_name": "JuliusBrussee/caveman",
+   "description": "🪨 why use many token when few token do trick. Viral skill + proxy for coding agents that cuts 65% of tokens by talking like a caveman.",
+   "stars": 120015,
+   "forks": 7000,
+   "language": "Go",
+   "license": "Apache-2.0",
+   "topics": [
+    "ai",
+    "anthropic",
+    "caveman",
+    "claude",
+    "claude-code",
+    "llm"
+   ],
+   "created": "2026-04-04",
+   "pushed": "2026-11-14",
+   "contributors": 118,
+   "discussions": null,
+   "languages": {
+    "Go": 48.435644129130765,
+    "JavaScript": 26.45647546332133,
+    "TypeScript": 14.085086981369056,
+    "Python": 9.98275939277238,
+    "Shell": 0.27335611822983635,
+    "PowerShell": 0.26407343197903405
+   }
+  }
+ },
+ "Tencent/LoopForge": {
+  "fetched_at": "2026-11-14T21:45:26.325523+00:00",
+  "data": {
+   "full_name": "Tencent/LoopForge",
+   "description": "Self-hosted workflows for coding-agent delivery. Orchestrate CodeBuddy, Codex and Claude Code with scripts and human approval gates. Includes Local workflows for coding assistants.",
+   "stars": 859,
+   "forks": 211,
+   "language": "Go",
+   "license": "NOASSERTION",
+   "topics": [
+    "agent-orchestration",
+    "agentic-workflow",
+    "ai-agents",
+    "ai-coding",
+    "claude-code",
+    "code-review"
+   ],
+   "created": "2026-07-28",
+   "pushed": "2026-11-14",
+   "contributors": 18,
+   "discussions": null,
+   "languages": {
+    "Go": 57.5783527415143,
+    "JavaScript": 22.67016143105382,
+    "Python": 8.550174943565327,
+    "CSS": 7.910324369720415,
+    "HTML": 2.0171489272763887,
+    "Shell": 0.8817462591378024
+   }
+  }
+ },
+ "ag-ui-protocol/ag-ui": {
+  "fetched_at": "2026-11-14T21:45:26.325523+00:00",
+  "data": {
+   "full_name": "ag-ui-protocol/ag-ui",
+   "description": "AG-UI: the Agent-User Interaction Protocol. Bring Agents into Frontend Applications.",
+   "stars": 17319,
+   "forks": 1663,
+   "language": "TypeScript",
+   "license": "MIT",
+   "topics": [
+    "ag-ui-protocol",
+    "agent-frontend",
+    "agent-ui",
+    "agentic-workflow",
+    "ai-agents"
+   ],
+   "created": "2025-05-07",
+   "pushed": "2026-11-14",
+   "contributors": 191,
+   "discussions": null,
+   "languages": {
+    "TypeScript": 36.32919885751471,
+    "Python": 34.067552837934265,
+    "C#": 8.860292384246383,
+    "Swift": 5.708814116688448,
+    "Kotlin": 3.893168895973486,
+    "Dart": 3.341440670035287
+   }
+  }
+ },
+ "dream-num/univer": {
+  "fetched_at": "2026-11-14T21:45:26.325523+00:00",
+  "data": {
+   "full_name": "dream-num/univer",
+   "description": "Build your own AI office with Univer Office SDK. Bring editing, calculation, collaboration, and file processing into your product for people and AI agents. Built on an extensible open-source core.",
+   "stars": 24432,
+   "forks": 2223,
+   "language": "TypeScript",
+   "license": "Apache-2.0",
+   "topics": [
+    "board",
+    "collaboration",
+    "doc",
+    "docx",
+    "excel",
+    "offce365"
+   ],
+   "created": "2022-09-29",
+   "pushed": "2026-11-14",
+   "contributors": 87,
+   "discussions": null,
+   "languages": {
+    "TypeScript": 99.90588765727244,
+    "HTML": 0.07099593973328407,
+    "JavaScript": 0.020585814718526496,
+    "CSS": 0.0019323881255657066,
+    "Vue": 0.0005982001501751231
+   }
+  }
+ },
+ "martin-olivier/airgorah": {
+  "fetched_at": "2026-11-14T21:45:26.325523+00:00",
+  "data": {
+   "full_name": "martin-olivier/airgorah",
+   "description": "A WiFi security auditing software",
+   "stars": 5786,
+   "forks": 1020,
+   "language": "Rust",
+   "license": "MIT",
+   "topics": [
+    "gui",
+    "kali",
+    "linux-app",
+    "security",
+    "security-audit",
+    "wifi"
+   ],
+   "created": "2022-09-30",
+   "pushed": "2026-11-06",
+   "contributors": 3,
+   "discussions": null,
+   "languages": {
+    "Rust": 99.61536751300636,
+    "Dockerfile": 0.38463248699364133
    }
   }
  }

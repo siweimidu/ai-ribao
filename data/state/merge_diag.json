@@ -1,53 +1,13 @@
 {
-  "generated_at": "2026-11-14T13:03:15.848572+00:00",
+  "generated_at": "2026-11-14T21:45:26.307309+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 306,
-  "batches": 9,
-  "calls": 9,
-  "merged_groups": 6,
-  "merged_events": 10,
-  "rejected_groups": 0,
+  "input_events": 69,
+  "batches": 2,
+  "calls": 2,
+  "merged_groups": 0,
+  "merged_events": 0,
+  "rejected_groups": 1,
   "failed": false,
-  "examples": [
-    {
-      "kept": "腾讯混元甩出实时语音模型 Hy Realtime，会聊天、能唱歌、还会自己联网搜",
-      "merged": [
-        "腾讯发布混元实时语音模型 Hy Realtime"
-      ],
-      "why": "都是腾讯发布混元实时语音模型 Hy Realtime"
-    },
-    {
-      "kept": "FAA lifts rare nationwide ground stop",
-      "merged": [
-        "3,000 flights cancelled as FAA ground stop chaos stretches i",
-        "FAA allows flights to resume after hours-long ground stop ac",
-        "FAA ends hours-long nationwide ground stop",
-        "FAA grounds all domestic flights after reported network outa",
-        "FAA lifted National Ground Stop at 0119Z"
-      ],
-      "why": "报道FAA全国停飞事件及其恢复"
-    },
-    {
-      "kept": "Grok Bot 现在可以加入会议",
-      "merged": [
-        "Grok Bot 现可加入会议"
-      ],
-      "why": "报道Grok Bot加入会议功能"
-    },
-    {
-      "kept": "ChatGPT Wallet lets OpenAI’s Dots agents make purchases for you",
-      "merged": [
-        "ChatGPT 推出 ChatGPT Wallet，dot 可在用户批准下代为完成购买"
-      ],
-      "why": "都是 ChatGPT Wallet 发布报道"
-    },
-    {
-      "kept": "博主实测 MiniMax H3-Image 的四类生图玩法：分镜爆炸图、游戏资产、超长文本排版与风格融合",
-      "merged": [
-        "实测 MiniMax H3-Image：四类复杂生图玩法与超详细提示语"
-      ],
-      "why": "都是 MiniMax H3-Image 实测评测"
-    }
-  ]
+  "examples": []
 }
