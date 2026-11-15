@@ -1,35 +1,43 @@
 {
-  "generated_at": "2026-11-15T02:40:33.004195+00:00",
+  "generated_at": "2026-11-15T04:23:02.456362+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 154,
+  "input_events": 165,
   "batches": 5,
   "calls": 5,
-  "merged_groups": 3,
-  "merged_events": 3,
+  "merged_groups": 4,
+  "merged_events": 9,
   "rejected_groups": 0,
   "failed": false,
   "examples": [
     {
-      "kept": "SK 集团会长崔泰源：所有子公司都要蜕变为 AI 企业",
+      "kept": "闭环 AI 自我进化：从 Skill、Harness 到模型训练与评估｜AICon北京",
       "merged": [
-        "SK集团会长崔泰源提出所有子公司转型为AI企业 - 手机新浪网"
+        "闭环 AI 自我进化：从 Skill、Harness 到模型训练与评估｜AICon 北京 - InfoQ.cn"
       ],
-      "why": "均报道 SK 集团崔泰源要求子公司转型 AI 的表态"
+      "why": "都是 AICon 北京大会中同一主题演讲的报道"
     },
     {
-      "kept": "投资者致信 Nvidia 董事会呼吁保留黄仁勋回归 CEO 的选项",
+      "kept": "The Fallout from Jensen’s Downfall",
       "merged": [
         "Elon Musk, other tech execs sign petition calling on Nvidia "
       ],
-      "why": "均报道各方呼吁 Nvidia 重新启用黄仁勋"
+      "why": "都报道黄仁勋离开或下台Nvidia及相关事件"
     },
     {
-      "kept": "反转了，确认系AI生成！警方通报 - 手机新浪网",
+      "kept": "AI Daily 2026-11-15: Cursor details its security incident: it began with a key i",
       "merged": [
-        "哪个品牌的智能洗衣机做得好？2026实测5大品牌3大梯队，销量王和AI王者竟然不是同一拨+FAQ - 手机新浪网"
+        "Edge AI Daily 早报（11月15日） - 钛媒体",
+        "AI 日报 2026-11-15：Cursor 公布安全事件调查：攻击始于发给 Fireworks 的密…"
       ],
-      "why": "同一款智能洗衣机推荐与实测内容"
+      "why": "都报道2026-11-15的Cursor安全事件"
+    },
+    {
+      "kept": "Anthropic CEO Amodei 在 IPO 前承认明年存在巨大不确定性，算力是公司最深的商业两难",
+      "merged": [
+        "Anthropic估值缩水三成启动路演：大模型IPO进入“算力账本”重估时刻 - Sohu"
+      ],
+      "why": "都报道Anthropic IPO相关动态"
     }
   ]
 }
