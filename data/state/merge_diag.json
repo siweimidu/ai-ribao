@@ -1,43 +1,28 @@
 {
-  "generated_at": "2026-11-15T04:23:02.456362+00:00",
+  "generated_at": "2026-11-15T12:37:37.392380+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 165,
-  "batches": 5,
-  "calls": 5,
-  "merged_groups": 4,
-  "merged_events": 9,
-  "rejected_groups": 0,
+  "input_events": 217,
+  "batches": 7,
+  "calls": 7,
+  "merged_groups": 2,
+  "merged_events": 2,
+  "rejected_groups": 3,
   "failed": false,
   "examples": [
     {
-      "kept": "闭环 AI 自我进化：从 Skill、Harness 到模型训练与评估｜AICon北京",
+      "kept": "独家调查｜轻松回本的AI漫剧千里挑一，这个行业正处于出清的前夜 - 新浪财经_金融信息服务商",
       "merged": [
-        "闭环 AI 自我进化：从 Skill、Harness 到模型训练与评估｜AICon 北京 - InfoQ.cn"
+        "独家调查｜轻松回本的AI漫剧千里挑一，这个行业正处于出清的前夜 - 东方财富"
       ],
-      "why": "都是 AICon 北京大会中同一主题演讲的报道"
+      "why": "同篇AI漫剧行业出清调查在不同平台发布"
     },
     {
-      "kept": "The Fallout from Jensen’s Downfall",
+      "kept": "Yelp AI 助手融合原生 UI 与服务端驱动 UI",
       "merged": [
-        "Elon Musk, other tech execs sign petition calling on Nvidia "
+        "Yelp AI 助手融合原生 UI 与服务端驱动 UI - InfoQ.cn"
       ],
-      "why": "都报道黄仁勋离开或下台Nvidia及相关事件"
-    },
-    {
-      "kept": "AI Daily 2026-11-15: Cursor details its security incident: it began with a key i",
-      "merged": [
-        "Edge AI Daily 早报（11月15日） - 钛媒体",
-        "AI 日报 2026-11-15：Cursor 公布安全事件调查：攻击始于发给 Fireworks 的密…"
-      ],
-      "why": "都报道2026-11-15的Cursor安全事件"
-    },
-    {
-      "kept": "Anthropic CEO Amodei 在 IPO 前承认明年存在巨大不确定性，算力是公司最深的商业两难",
-      "merged": [
-        "Anthropic估值缩水三成启动路演：大模型IPO进入“算力账本”重估时刻 - Sohu"
-      ],
-      "why": "都报道Anthropic IPO相关动态"
+      "why": "同一事件，Yelp AI 助手 UI 融合"
     }
   ]
 }
