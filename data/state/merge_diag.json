@@ -1,13 +1,28 @@
 {
-  "generated_at": "2026-11-14T21:45:26.307309+00:00",
+  "generated_at": "2026-11-15T02:33:25.064325+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 69,
-  "batches": 2,
-  "calls": 2,
-  "merged_groups": 0,
-  "merged_events": 0,
-  "rejected_groups": 1,
+  "input_events": 155,
+  "batches": 5,
+  "calls": 5,
+  "merged_groups": 2,
+  "merged_events": 4,
+  "rejected_groups": 0,
   "failed": false,
-  "examples": []
+  "examples": [
+    {
+      "kept": "Anthropic says outdated prompting habits are slowing down Claude Opus 5.5",
+      "merged": [
+        "Anthropic CEO Amodei 在 IPO 前承认明年存在巨大不确定性，算力是公司最深的商业两难"
+      ],
+      "why": "均为 Anthropic CEO Amodei 关于公司现状与不确定性的言论"
+    },
+    {
+      "kept": "The Fallout from Jensen’s Downfall",
+      "merged": [
+        "Elon Musk, other tech execs sign petition calling on Nvidia "
+      ],
+      "why": "均涉及黄仁勋卸任 Nvidia CEO 后的争议与相关事件"
+    }
+  ]
 }
