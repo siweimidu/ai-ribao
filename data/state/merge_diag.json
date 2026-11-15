@@ -1,28 +1,35 @@
 {
-  "generated_at": "2026-11-15T02:33:25.064325+00:00",
+  "generated_at": "2026-11-15T02:40:33.004195+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 155,
+  "input_events": 154,
   "batches": 5,
   "calls": 5,
-  "merged_groups": 2,
-  "merged_events": 4,
+  "merged_groups": 3,
+  "merged_events": 3,
   "rejected_groups": 0,
   "failed": false,
   "examples": [
     {
-      "kept": "Anthropic says outdated prompting habits are slowing down Claude Opus 5.5",
+      "kept": "SK 集团会长崔泰源：所有子公司都要蜕变为 AI 企业",
       "merged": [
-        "Anthropic CEO Amodei 在 IPO 前承认明年存在巨大不确定性，算力是公司最深的商业两难"
+        "SK集团会长崔泰源提出所有子公司转型为AI企业 - 手机新浪网"
       ],
-      "why": "均为 Anthropic CEO Amodei 关于公司现状与不确定性的言论"
+      "why": "均报道 SK 集团崔泰源要求子公司转型 AI 的表态"
     },
     {
-      "kept": "The Fallout from Jensen’s Downfall",
+      "kept": "投资者致信 Nvidia 董事会呼吁保留黄仁勋回归 CEO 的选项",
       "merged": [
         "Elon Musk, other tech execs sign petition calling on Nvidia "
       ],
-      "why": "均涉及黄仁勋卸任 Nvidia CEO 后的争议与相关事件"
+      "why": "均报道各方呼吁 Nvidia 重新启用黄仁勋"
+    },
+    {
+      "kept": "反转了，确认系AI生成！警方通报 - 手机新浪网",
+      "merged": [
+        "哪个品牌的智能洗衣机做得好？2026实测5大品牌3大梯队，销量王和AI王者竟然不是同一拨+FAQ - 手机新浪网"
+      ],
+      "why": "同一款智能洗衣机推荐与实测内容"
     }
   ]
 }
