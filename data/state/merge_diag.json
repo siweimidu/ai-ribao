@@ -1,28 +1,21 @@
 {
-  "generated_at": "2026-11-15T12:37:37.392380+00:00",
+  "generated_at": "2026-11-15T22:08:53.563913+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 217,
-  "batches": 7,
-  "calls": 7,
-  "merged_groups": 2,
-  "merged_events": 2,
-  "rejected_groups": 3,
+  "input_events": 66,
+  "batches": 2,
+  "calls": 2,
+  "merged_groups": 1,
+  "merged_events": 1,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "独家调查｜轻松回本的AI漫剧千里挑一，这个行业正处于出清的前夜 - 新浪财经_金融信息服务商",
+      "kept": "拒绝AI过度调色：四款影像旗舰真实还原横评，OPPO Find X10 直出有多稳？ - 新浪网",
       "merged": [
-        "独家调查｜轻松回本的AI漫剧千里挑一，这个行业正处于出清的前夜 - 东方财富"
+        "拒绝AI过度调色：OPPO Find X10、vivo X500、iPhone 18 Pro Max三款真实还原影像横评"
       ],
-      "why": "同篇AI漫剧行业出清调查在不同平台发布"
-    },
-    {
-      "kept": "Yelp AI 助手融合原生 UI 与服务端驱动 UI",
-      "merged": [
-        "Yelp AI 助手融合原生 UI 与服务端驱动 UI - InfoQ.cn"
-      ],
-      "why": "同一事件，Yelp AI 助手 UI 融合"
+      "why": "都是关于拒绝 AI 调色且包含 OPPO Find X10 的影像横评"
     }
   ]
 }
