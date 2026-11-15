@@ -1,21 +1,28 @@
 {
-  "generated_at": "2026-11-15T22:08:53.563913+00:00",
+  "generated_at": "2026-11-15T23:42:46.628789+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 66,
-  "batches": 2,
-  "calls": 2,
-  "merged_groups": 1,
-  "merged_events": 1,
+  "input_events": 107,
+  "batches": 4,
+  "calls": 4,
+  "merged_groups": 2,
+  "merged_events": 2,
   "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "拒绝AI过度调色：四款影像旗舰真实还原横评，OPPO Find X10 直出有多稳？ - 新浪网",
+      "kept": "Under pressure, Lutnick joins Trump in China",
       "merged": [
-        "拒绝AI过度调色：OPPO Find X10、vivo X500、iPhone 18 Pro Max三款真实还原影像横评"
+        "Lutnick faces questions over Nvidia spy scandal. His sons' f"
       ],
-      "why": "都是关于拒绝 AI 调色且包含 OPPO Find X10 的影像横评"
+      "why": "均为Lutnick涉英伟达间谍丑闻及访华"
+    },
+    {
+      "kept": "Anthropic IPO set to define AI trade",
+      "merged": [
+        "Nvidia’s Earnings on Deck; Anthropic’s Public Debut"
+      ],
+      "why": "均为Anthropic IPO上市"
     }
   ]
 }
