@@ -1,51 +1,29 @@
 {
-  "generated_at": "2026-11-16T12:14:22.290054+00:00",
+  "generated_at": "2026-11-16T20:44:52.311160+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 278,
-  "batches": 9,
-  "calls": 9,
-  "merged_groups": 10,
-  "merged_events": 17,
-  "rejected_groups": 3,
+  "input_events": 144,
+  "batches": 5,
+  "calls": 5,
+  "merged_groups": 2,
+  "merged_events": 4,
+  "rejected_groups": 0,
   "failed": false,
   "examples": [
     {
-      "kept": "虚拟人“方桃子”代言美瞳发布虚假广告，涉事公司被罚 6.82 万余元",
+      "kept": "Sam Altman on Nvidia without Jensen Huang: the industry will be ‘fine’",
       "merged": [
-        "“方桃子”运营方发布美瞳虚假广告被罚，律师：AI形象可以“出镜推荐”，但不能“虚构体验” - ThePaper.cn",
-        "出道30天吸粉40万，AI演员“方桃子”首条商单引发6.82万元罚单"
+        "Jensen Huang Is Gone. Now What?",
+        "'Heroes have flaws': Sam Altman says he has personal empathy"
       ],
-      "why": "均报道AI虚拟人方桃子虚假广告被罚事件"
+      "why": "均报道黄仁勋离职/去留及Sam Altman相关评论"
     },
     {
-      "kept": "豆包工作上线「工作台」功能，首批覆盖金融、医疗、教育等 21 个专业场景",
+      "kept": "美联储沃什称工作人员正在推演AI影响的应急方案 - 华尔街见闻",
       "merged": [
-        "豆包工作上线「工作台」:首批21款覆盖金融、医疗、教育等场景"
+        "美联储推演AI对经济潜在影响 主席沃什称涵盖多重情景 - 新浪财经_金融信息服务商"
       ],
-      "why": "均为豆包工作上线「工作台」及首批21个专业场景"
-    },
-    {
-      "kept": "字节跳动火山引擎全面开放 Seedance 2.5 4K 视频生成模型 API",
-      "merged": [
-        "火山引擎宣布Seedance2.54K API全面开放，支持10-bit色深与样片模式"
-      ],
-      "why": "均为火山引擎 Seedance 2.5 4K 视频生成模型 API 全面开放"
-    },
-    {
-      "kept": "苹果首款AI眼镜计划2027年WWDC亮相，年底前上市",
-      "merged": [
-        "苹果推出 AI 健康研究应用，调查用户如何使用 AI 获取健康信息",
-        "苹果联合OpenEvidence推出健康AI研究应用，计划招募20万名用户"
-      ],
-      "why": "均报道苹果发布联合OpenEvidence的AI健康研究应用"
-    },
-    {
-      "kept": "阿里巴巴发布新一代旗舰 AI 模型，称性能可比肩美国对手",
-      "merged": [
-        "华为云将发布首款昇腾原生具身世界模型 CloudRoboWM1.2"
-      ],
-      "why": "都是华为云发布昇腾具身世界模型"
+      "why": "均报道美联储推演AI对经济的影响"
     }
   ]
 }
