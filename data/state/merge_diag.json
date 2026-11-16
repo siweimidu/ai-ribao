@@ -1,28 +1,28 @@
 {
-  "generated_at": "2026-11-15T23:42:46.628789+00:00",
+  "generated_at": "2026-11-16T02:13:51.614333+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 107,
-  "batches": 4,
-  "calls": 4,
+  "input_events": 167,
+  "batches": 5,
+  "calls": 5,
   "merged_groups": 2,
-  "merged_events": 2,
+  "merged_events": 3,
   "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "Under pressure, Lutnick joins Trump in China",
+      "kept": "AI 日报 2026-11-16：160 道题只错 1 道的韩国税务师“状元”，承认用微型摄像头把考题发…",
       "merged": [
-        "Lutnick faces questions over Nvidia spy scandal. His sons' f"
+        "韩国税务师考试“状元”承认用AI作弊，惊动青瓦台 - Sohu"
       ],
-      "why": "均为Lutnick涉英伟达间谍丑闻及访华"
+      "why": "均报道韩国税务师考试状元利用AI作弊及政府回应"
     },
     {
-      "kept": "Anthropic IPO set to define AI trade",
+      "kept": "Nvidia’s Earnings on Deck; Anthropic’s Public Debut",
       "merged": [
-        "Nvidia’s Earnings on Deck; Anthropic’s Public Debut"
+        "Anthropic即将登陆纳斯达克：寻求1.4万亿美元估值，被寄望接替英伟达成为AI新标杆 - 凤凰网"
       ],
-      "why": "均为Anthropic IPO上市"
+      "why": "均报道Anthropic即将上市及估值预期"
     }
   ]
 }
