@@ -1,42 +1,51 @@
 {
-  "generated_at": "2026-11-17T03:11:42.470714+00:00",
+  "generated_at": "2026-11-17T05:03:02.324250+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 305,
-  "batches": 9,
-  "calls": 9,
-  "merged_groups": 4,
-  "merged_events": 4,
-  "rejected_groups": 3,
+  "input_events": 317,
+  "batches": 10,
+  "calls": 10,
+  "merged_groups": 7,
+  "merged_events": 9,
+  "rejected_groups": 4,
   "failed": false,
   "examples": [
     {
-      "kept": "AI演员方桃子被罚6.8万，首个美瞳代言被认定为虚假广告！其广告报价16.8万起 - 中华网财经",
+      "kept": "United Airlines resolves \"widespread system outage\" that delayed flights",
       "merged": [
-        "AI女主代言美瞳被认定为虚假广告！-中国吉林网 - 第一新闻"
+        "United Airlines, major US banks report system outages"
       ],
-      "why": "均报道AI演员方桃子美瞳代言被认定虚假广告"
+      "why": "均报道 United Airlines 系统故障及影响"
     },
     {
-      "kept": "腾讯混元推出 Hy4 flash，官方称迄今最高性价比",
+      "kept": "California sues OpenAI over rogue AI hacking incidents",
       "merged": [
-        "AI日报：DeepSeek因算力不足限额；阿里千问发布 Qwen4-Max；腾讯混元发布Hy4flash模型；豆包 Ap"
+        "2026-11-17 AI 日报 · 加州起诉OpenAI，阿里Qwen4-Max与英伟达Rubin登场"
       ],
-      "why": "腾讯混元发布Hy4flash模型"
+      "why": "均报道加州起诉OpenAI"
     },
     {
-      "kept": "Google 为 Gemini 应用推出 66 种地区语音",
+      "kept": "Alibaba's Qwen4-Max takes on Opus 5.5, GPT-6, and Kimi K3.1 Pro at much lower pr",
       "merged": [
-        "Google adds 66 regional dialects to Gemini"
+        "通义千问宣布 Qwen4-Max 上线 you.com Inference Router"
       ],
-      "why": "均为 Google 为 Gemini 应用推出 66 种地区语音"
+      "why": "均报道阿里Qwen4-Max上线或竞争"
     },
     {
-      "kept": "端侧AI高景气落地！Counterpoint重磅数据出炉，AI眼镜概念股逆势走强，波长光电涨超8% - Sohu",
+      "kept": "‘America needs to have more Jensens’: Perplexity CEO lauds Huang as industry tit",
       "merged": [
-        "AI眼镜概念拉升 瀛通通讯涨停 - Sohu"
+        "Sam Altman on Nvidia without Jensen Huang: The industry will",
+        "Jensen Huang Is Gone. Now What?",
+        "Replit CEO calls Huang’s ouster ‘attack’ on open models"
       ],
-      "why": "均为 AI 眼镜概念股/行业利好导致相关股票走强"
+      "why": "均针对黄仁勋卸任NVIDIA CEO一事引发的行业反响与评论"
+    },
+    {
+      "kept": "曾毓群现场追问：AI模型够好了吗？李彦宏：AI很会解题但…… - 21财经",
+      "merged": [
+        "李彦宏：企业要为AI重塑组织架构 百度内部也做了“激进”尝试 - 财新"
+      ],
+      "why": "均为李彦宏谈百度AI战略与组织架构"
     }
   ]
 }
