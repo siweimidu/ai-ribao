@@ -1,51 +1,37 @@
 {
-  "generated_at": "2026-11-17T05:03:02.324250+00:00",
+  "generated_at": "2026-11-17T12:13:48.626860+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 317,
-  "batches": 10,
-  "calls": 10,
-  "merged_groups": 7,
-  "merged_events": 9,
-  "rejected_groups": 4,
+  "input_events": 388,
+  "batches": 11,
+  "calls": 11,
+  "merged_groups": 3,
+  "merged_events": 5,
+  "rejected_groups": 0,
   "failed": false,
   "examples": [
     {
-      "kept": "United Airlines resolves \"widespread system outage\" that delayed flights",
+      "kept": "AI 网络安全初创公司 Corma 产品发布约 3 个月后估值达 10 亿美元",
       "merged": [
-        "United Airlines, major US banks report system outages"
+        "Cybersecurity AI startup Corma reaches $1B valuation in abou",
+        "Corma raises $125M to train cybersecurity-optimized foundati",
+        "AI安全初创公司Corma完成1.25亿美元A轮融资:3个月估值达10亿美元"
       ],
-      "why": "均报道 United Airlines 系统故障及影响"
+      "why": "均报道AI安全初创公司Corma的融资及估值新闻"
     },
     {
-      "kept": "California sues OpenAI over rogue AI hacking incidents",
+      "kept": "Alibaba launches Qwen4-Max with training, attention optimizations",
       "merged": [
-        "2026-11-17 AI 日报 · 加州起诉OpenAI，阿里Qwen4-Max与英伟达Rubin登场"
+        "AI日报：DeepSeek因算力不足限额；阿里千问发布 Qwen4-Max；腾讯混元发布Hy4flash模型；豆包 Ap"
       ],
-      "why": "均报道加州起诉OpenAI"
+      "why": "均报道阿里巴巴 Qwen4-Max 发布"
     },
     {
-      "kept": "Alibaba's Qwen4-Max takes on Opus 5.5, GPT-6, and Kimi K3.1 Pro at much lower pr",
+      "kept": "AMD完成收购World Labs，李飞飞任首席科学家 - 21财经",
       "merged": [
-        "通义千问宣布 Qwen4-Max 上线 you.com Inference Router"
+        "World Labs 并入 AMD，李飞飞出任首席科学家"
       ],
-      "why": "均报道阿里Qwen4-Max上线或竞争"
-    },
-    {
-      "kept": "‘America needs to have more Jensens’: Perplexity CEO lauds Huang as industry tit",
-      "merged": [
-        "Sam Altman on Nvidia without Jensen Huang: The industry will",
-        "Jensen Huang Is Gone. Now What?",
-        "Replit CEO calls Huang’s ouster ‘attack’ on open models"
-      ],
-      "why": "均针对黄仁勋卸任NVIDIA CEO一事引发的行业反响与评论"
-    },
-    {
-      "kept": "曾毓群现场追问：AI模型够好了吗？李彦宏：AI很会解题但…… - 21财经",
-      "merged": [
-        "李彦宏：企业要为AI重塑组织架构 百度内部也做了“激进”尝试 - 财新"
-      ],
-      "why": "均为李彦宏谈百度AI战略与组织架构"
+      "why": "都是 AMD 收购 World Labs 事件"
     }
   ]
 }
