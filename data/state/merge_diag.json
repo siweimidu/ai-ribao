@@ -1,29 +1,52 @@
 {
-  "generated_at": "2026-11-16T20:44:52.311160+00:00",
+  "generated_at": "2026-11-17T02:59:27.295246+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 144,
-  "batches": 5,
-  "calls": 5,
-  "merged_groups": 2,
-  "merged_events": 4,
-  "rejected_groups": 0,
+  "input_events": 292,
+  "batches": 9,
+  "calls": 9,
+  "merged_groups": 7,
+  "merged_events": 11,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "Sam Altman on Nvidia without Jensen Huang: the industry will be ‘fine’",
+      "kept": "AI 网络安全初创公司 Corma 产品发布约 3 个月后估值达 10 亿美元",
       "merged": [
-        "Jensen Huang Is Gone. Now What?",
-        "'Heroes have flaws': Sam Altman says he has personal empathy"
+        "Cybersecurity AI startup Corma reaches $1B valuation in abou",
+        "AI安全初创公司Corma完成1.25亿美元A轮融资:3个月估值达10亿美元"
       ],
-      "why": "均报道黄仁勋离职/去留及Sam Altman相关评论"
+      "why": "均报道Corma完成1.25亿美元融资并达10亿美元估值"
     },
     {
-      "kept": "美联储沃什称工作人员正在推演AI影响的应急方案 - 华尔街见闻",
+      "kept": "【BT财报瞬析】百度AI云收入翻番，谁在为云端算力买单？_公司新闻 - 证券之星",
       "merged": [
-        "美联储推演AI对经济潜在影响 主席沃什称涵盖多重情景 - 新浪财经_金融信息服务商"
+        "百度：资本支出将严格聚焦于AI能力，AI云收入增速将保持在80%以上_IPO观察_新股 - 证券之星",
+        "AI业务占比连续三季过半，百度向智能组织高速迈进 - 飞象网",
+        "“老本行”承压 百度说AI云开始赚钱了 - 手机新浪网"
       ],
-      "why": "均报道美联储推演AI对经济的影响"
+      "why": "均基于百度财报分析其AI云业务增长与盈利情况"
+    },
+    {
+      "kept": "美联储主席谈AI三种结局：经济繁荣、大规模失业或泡沫破裂 - 财联社",
+      "merged": [
+        "美联储画出AI三种结局！沃什警告：要么生产率腾飞，要么失业飙升、股市回调 - 金融界"
+      ],
+      "why": "都是美联储主席谈AI三种经济结局"
+    },
+    {
+      "kept": "Altimeter’s Gerstner says Nvidia’s board should keep door open to Huang’s return",
+      "merged": [
+        "Tech leaders are convinced that Jensen Huang’s exit was a pl"
+      ],
+      "why": "均报道黄仁勋离开英伟达及相关高管回应与阴谋论"
+    },
+    {
+      "kept": "Google 为 Gemini 应用推出 66 种地区语音",
+      "merged": [
+        "Google adds 66 regional dialects to Gemini"
+      ],
+      "why": "均报道Gemini应用支持66种地区语音"
     }
   ]
 }
