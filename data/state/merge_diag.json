@@ -1,53 +1,51 @@
 {
-  "generated_at": "2026-11-18T04:13:48.489991+00:00",
+  "generated_at": "2026-11-18T12:36:25.508370+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 330,
-  "batches": 10,
-  "calls": 10,
-  "merged_groups": 5,
-  "merged_events": 12,
-  "rejected_groups": 2,
+  "input_events": 413,
+  "batches": 12,
+  "calls": 12,
+  "merged_groups": 11,
+  "merged_events": 14,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "Nvidia says it doesn’t plan to reappoint Jensen Huang as CEO",
+      "kept": "FAA pauses tech upgrade linked to nationwide ground stop",
       "merged": [
-        "Some Nvidia directors continue push to bring Huang back"
+        "FAA suspends installation of router that led to a ground sto"
       ],
-      "why": "均涉及Nvidia董事会反对黄仁勋复任CEO一事"
+      "why": "均报道 FAA 暂停路由器升级导致全美停飞"
     },
     {
-      "kept": "微软联合超 40 家组织制定 AI 透明度、安全开放标准",
+      "kept": "Anthropic Adds Code Mode to Claude Code: Claude Now Chains Tool Calls in JavaScr",
       "merged": [
-        "微软推出7款新AI模型并联合逾40家机构发起AI透明度倡议 - 观点网"
+        "Claude Code 推出实验性 Code Mode 工具调用方式"
       ],
-      "why": "均报道微软联合40多家机构制定AI标准"
+      "why": "都是 Anthropic Claude Code 新增 Code 模式"
     },
     {
-      "kept": "Jensen Huang says he'd be \"honored\" to return as Nvidia CEO",
+      "kept": "Put Gemini to work for you",
       "merged": [
-        "Nvidia Board Chair: Jensen Huang’s ‘Personal Behavior’ Doome",
-        "Nvidia 创业公司股权达 655 亿美元，黄仁勋离任令后续投资存疑",
-        "Nvidia临时CEO重申黄仁勋离任后开源AI战略不变"
+        "Gemini 向美国等六国用户免费开放任务功能，可打电话、付款并接入 60 多款应用",
+        "Gemini 宣布 Tasks 功能向数亿用户免费开放"
       ],
-      "why": "均涉及英伟达CEO黄仁勋离任及后续安排"
+      "why": "都是 Google Gemini 任务功能免费开放"
     },
     {
-      "kept": "Gemini 向美国等六国用户免费开放任务功能，可打电话、付款并接入 60 多款应用",
+      "kept": "可灵发布 Kling Image 4.0 图像模型",
       "merged": [
-        "Gemini 宣布 Tasks 功能向数亿用户免费开放",
-        "Gemini 任务功能助你快速清空待办"
+        "Kling Image 4.0 上线 Higgsfield"
       ],
-      "why": "均报道Gemini任务功能免费开放"
+      "why": "都是 Kling Image 4.0 上线"
     },
     {
-      "kept": "微软Autopilot基于OpenClaw开启预览",
+      "kept": "Anthropic 获准在纳斯达克上市，代码 ANT，发行价每股 70~78 美元",
       "merged": [
-        "微软 Dragon Copilot Transcribe 采用 MAI-Transcribe-2，多语言错误率降约 50",
-        "微软发布首款语音对语音模型 MAI Realtime 1，起价每音频分钟 0.01 美元"
+        "Anthropic 拟将 IPO 定价上调至 $80 以上，估值或达 $1.6T",
+        "Anthropic IPO 估值最高或达 1.4 万亿美元，华尔街提前造势散户争抢"
       ],
-      "why": "均报道微软MAI系列新模型或功能发布"
+      "why": "都是 Anthropic IPO 定价与估值"
     }
   ]
 }
