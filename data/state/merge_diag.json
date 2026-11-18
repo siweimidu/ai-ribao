@@ -1,43 +1,39 @@
 {
-  "generated_at": "2026-11-18T12:36:25.508370+00:00",
+  "generated_at": "2026-11-18T12:54:51.746715+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 413,
+  "input_events": 415,
   "batches": 12,
   "calls": 12,
-  "merged_groups": 11,
-  "merged_events": 14,
-  "rejected_groups": 1,
+  "merged_groups": 7,
+  "merged_events": 16,
+  "rejected_groups": 5,
   "failed": false,
   "examples": [
     {
-      "kept": "FAA pauses tech upgrade linked to nationwide ground stop",
+      "kept": "Nvidia posts strong earnings amid Jensen Huang exit, reported SEC probe",
       "merged": [
-        "FAA suspends installation of router that led to a ground sto"
+        "Nvidia 第三财季营收 $115.8B 超预期，数据中心占 93%",
+        "Bloomberg：Nvidia 将在投资 AI 公司前执行更严格的审查"
       ],
-      "why": "均报道 FAA 暂停路由器升级导致全美停飞"
+      "why": "均为英伟达财报及相关高管回应"
+    },
+    {
+      "kept": "Put Gemini to work for you",
+      "merged": [
+        "Jensen Huang’s Right-Hand Man Oversaw Chip Customers—Includi",
+        "Nvidia 临时 CEO Colette Kress 表示董事会不会恢复黄仁勋的 CEO 职务",
+        "Semafor：部分 Nvidia 董事仍推动让黄仁勋回归，尽管董事长否认",
+        "Nvidia 创业公司股权达 655 亿美元，黄仁勋离任令后续投资存疑"
+      ],
+      "why": "均为黄仁勋去留及英伟达后续事宜"
     },
     {
       "kept": "Anthropic Adds Code Mode to Claude Code: Claude Now Chains Tool Calls in JavaScr",
       "merged": [
         "Claude Code 推出实验性 Code Mode 工具调用方式"
       ],
-      "why": "都是 Anthropic Claude Code 新增 Code 模式"
-    },
-    {
-      "kept": "Put Gemini to work for you",
-      "merged": [
-        "Gemini 向美国等六国用户免费开放任务功能，可打电话、付款并接入 60 多款应用",
-        "Gemini 宣布 Tasks 功能向数亿用户免费开放"
-      ],
-      "why": "都是 Google Gemini 任务功能免费开放"
-    },
-    {
-      "kept": "可灵发布 Kling Image 4.0 图像模型",
-      "merged": [
-        "Kling Image 4.0 上线 Higgsfield"
-      ],
-      "why": "都是 Kling Image 4.0 上线"
+      "why": "均为Claude Code Code Mode发布"
     },
     {
       "kept": "Anthropic 获准在纳斯达克上市，代码 ANT，发行价每股 70~78 美元",
@@ -45,7 +41,16 @@
         "Anthropic 拟将 IPO 定价上调至 $80 以上，估值或达 $1.6T",
         "Anthropic IPO 估值最高或达 1.4 万亿美元，华尔街提前造势散户争抢"
       ],
-      "why": "都是 Anthropic IPO 定价与估值"
+      "why": "均为Anthropic上市定价及估值"
+    },
+    {
+      "kept": "Put Gemini to work for you",
+      "merged": [
+        "Gemini 向美国等六国用户免费开放任务功能，可打电话、付款并接入 60 多款应用",
+        "Gemini API 支持直传 Office 文件并新增多模态内容切片",
+        "Gemini 4 Hydrogen 全面上线 Google Search"
+      ],
+      "why": "均为Gemini功能更新及上线"
     }
   ]
 }
