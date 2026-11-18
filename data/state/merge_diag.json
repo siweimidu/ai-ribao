@@ -1,51 +1,53 @@
 {
-  "generated_at": "2026-11-18T02:00:20.265296+00:00",
+  "generated_at": "2026-11-18T04:13:48.489991+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 283,
-  "batches": 8,
-  "calls": 8,
-  "merged_groups": 8,
-  "merged_events": 11,
-  "rejected_groups": 4,
+  "input_events": 330,
+  "batches": 10,
+  "calls": 10,
+  "merged_groups": 5,
+  "merged_events": 12,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "Apple reveals daily limits on your Siri AI use – here’s how much you’ll have to ",
-      "merged": [
-        "iCloud and other Apple services are down in an apparent outa",
-        "Apple Services Down"
-      ],
-      "why": "都报道 Apple 服务宕机事件"
-    },
-    {
-      "kept": "Nvidia posts strong earnings amid Jensen Huang exit, reported SEC probe",
-      "merged": [
-        "Nvidia’s Q3 earnings hit the mark, without mentioning the wh",
-        "Nvidia is abandoning China after Jensen Huang’s ouster"
-      ],
-      "why": "都报道英伟达财报及黄仁勋离任传闻"
-    },
-    {
       "kept": "Nvidia says it doesn’t plan to reappoint Jensen Huang as CEO",
       "merged": [
-        "Business as usual for Nvidia as it beats expectations in fir"
+        "Some Nvidia directors continue push to bring Huang back"
       ],
-      "why": "均报道英伟达CEO黄仁勋卸任及其影响"
+      "why": "均涉及Nvidia董事会反对黄仁勋复任CEO一事"
     },
     {
-      "kept": "2026-11-18 AI 日报 · GPT-6.2发布，英伟达拒黄仁勋复职，Anthropic获准上市",
+      "kept": "微软联合超 40 家组织制定 AI 透明度、安全开放标准",
       "merged": [
-        "OpenAI Releases GPT-6.2 Astra and Sol With a 20% Cheaper Ast"
+        "微软推出7款新AI模型并联合逾40家机构发起AI透明度倡议 - 观点网"
       ],
-      "why": "都是 GPT-6.2 发布"
+      "why": "均报道微软联合40多家机构制定AI标准"
     },
     {
-      "kept": "2026-11-18 AI 日报 · GPT-6.2发布，英伟达拒黄仁勋复职，Anthropic获准上市",
+      "kept": "Jensen Huang says he'd be \"honored\" to return as Nvidia CEO",
       "merged": [
-        "Anthropic IPO 后 Amazon 与 Google 将合计持股近 30%"
+        "Nvidia Board Chair: Jensen Huang’s ‘Personal Behavior’ Doome",
+        "Nvidia 创业公司股权达 655 亿美元，黄仁勋离任令后续投资存疑",
+        "Nvidia临时CEO重申黄仁勋离任后开源AI战略不变"
       ],
-      "why": "都是 Anthropic IPO 相关"
+      "why": "均涉及英伟达CEO黄仁勋离任及后续安排"
+    },
+    {
+      "kept": "Gemini 向美国等六国用户免费开放任务功能，可打电话、付款并接入 60 多款应用",
+      "merged": [
+        "Gemini 宣布 Tasks 功能向数亿用户免费开放",
+        "Gemini 任务功能助你快速清空待办"
+      ],
+      "why": "均报道Gemini任务功能免费开放"
+    },
+    {
+      "kept": "微软Autopilot基于OpenClaw开启预览",
+      "merged": [
+        "微软 Dragon Copilot Transcribe 采用 MAI-Transcribe-2，多语言错误率降约 50",
+        "微软发布首款语音对语音模型 MAI Realtime 1，起价每音频分钟 0.01 美元"
+      ],
+      "why": "均报道微软MAI系列新模型或功能发布"
     }
   ]
 }
