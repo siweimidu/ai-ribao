@@ -1,56 +1,51 @@
 {
-  "generated_at": "2026-11-18T12:54:51.746715+00:00",
+  "generated_at": "2026-11-18T20:27:24.639909+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 415,
-  "batches": 12,
-  "calls": 12,
-  "merged_groups": 7,
-  "merged_events": 16,
-  "rejected_groups": 5,
+  "input_events": 158,
+  "batches": 5,
+  "calls": 5,
+  "merged_groups": 5,
+  "merged_events": 7,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "Nvidia posts strong earnings amid Jensen Huang exit, reported SEC probe",
+      "kept": "Genie 4 is now available",
       "merged": [
-        "Nvidia 第三财季营收 $115.8B 超预期，数据中心占 93%",
-        "Bloomberg：Nvidia 将在投资 AI 公司前执行更严格的审查"
+        "Genie 4 is now available"
       ],
-      "why": "均为英伟达财报及相关高管回应"
+      "why": "Genie 4 发布的完全重复报道"
     },
     {
-      "kept": "Put Gemini to work for you",
+      "kept": "雷军在APEC泼冷水：AI投入太大落地难，可小米三年要砸600亿 - 手机新浪网",
       "merged": [
-        "Jensen Huang’s Right-Hand Man Oversaw Chip Customers—Includi",
-        "Nvidia 临时 CEO Colette Kress 表示董事会不会恢复黄仁勋的 CEO 职务",
-        "Semafor：部分 Nvidia 董事仍推动让黄仁勋回归，尽管董事长否认",
-        "Nvidia 创业公司股权达 655 亿美元，黄仁勋离任令后续投资存疑"
+        "雷军APEC谈AI产业化：落地场景与商业闭环 - Sohu"
       ],
-      "why": "均为黄仁勋去留及英伟达后续事宜"
+      "why": "均为雷军在 APEC 期间关于 AI 投入与产业化的发言"
     },
     {
-      "kept": "Anthropic Adds Code Mode to Claude Code: Claude Now Chains Tool Calls in JavaScr",
+      "kept": "Nvidia Holds Its First All Hands After Jensen Huang’s Departure",
       "merged": [
-        "Claude Code 推出实验性 Code Mode 工具调用方式"
+        "黄仁勋辞职后首次财报电话会：Nvidia 新 CEO Colette Kress 收紧支出并回应回归呼声",
+        "Nvidia 临时 CEO 提前加薪留人",
+        "What is Nvidia without AI’s sugar daddy in charge?"
       ],
-      "why": "均为Claude Code Code Mode发布"
+      "why": "均报道黄仁勋离职后 Nvidia 高管变动及影响"
     },
     {
-      "kept": "Anthropic 获准在纳斯达克上市，代码 ANT，发行价每股 70~78 美元",
+      "kept": "Disney 用 AWS AI 让星球大战 Anzellan 电子动画角色实时与游客互动",
       "merged": [
-        "Anthropic 拟将 IPO 定价上调至 $80 以上，估值或达 $1.6T",
-        "Anthropic IPO 估值最高或达 1.4 万亿美元，华尔街提前造势散户争抢"
+        "Disney’s new Star Wars animatronics interact with guests usi"
       ],
-      "why": "均为Anthropic上市定价及估值"
+      "why": "均报道迪士尼星球大战动画角色利用 AI 互动"
     },
     {
-      "kept": "Put Gemini to work for you",
+      "kept": "GPT-6.2 Astra 和 GPT-6.2 Sol 登上 Arena Code Arena: WebDev 排行榜第 3 和第 7",
       "merged": [
-        "Gemini 向美国等六国用户免费开放任务功能，可打电话、付款并接入 60 多款应用",
-        "Gemini API 支持直传 Office 文件并新增多模态内容切片",
-        "Gemini 4 Hydrogen 全面上线 Google Search"
+        "Arena 发布 Agent Arena Index 并更新智能体评测方法"
       ],
-      "why": "均为Gemini功能更新及上线"
+      "why": "均涉及 Arena 平台智能体/代码评测榜单更新"
     }
   ]
 }
