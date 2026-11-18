@@ -1,13 +1,51 @@
 {
-  "generated_at": "2026-11-17T20:52:35.795494+00:00",
+  "generated_at": "2026-11-18T02:00:20.265296+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 146,
-  "batches": 5,
-  "calls": 5,
-  "merged_groups": 0,
-  "merged_events": 0,
-  "rejected_groups": 0,
+  "input_events": 283,
+  "batches": 8,
+  "calls": 8,
+  "merged_groups": 8,
+  "merged_events": 11,
+  "rejected_groups": 4,
   "failed": false,
-  "examples": []
+  "examples": [
+    {
+      "kept": "Apple reveals daily limits on your Siri AI use – here’s how much you’ll have to ",
+      "merged": [
+        "iCloud and other Apple services are down in an apparent outa",
+        "Apple Services Down"
+      ],
+      "why": "都报道 Apple 服务宕机事件"
+    },
+    {
+      "kept": "Nvidia posts strong earnings amid Jensen Huang exit, reported SEC probe",
+      "merged": [
+        "Nvidia’s Q3 earnings hit the mark, without mentioning the wh",
+        "Nvidia is abandoning China after Jensen Huang’s ouster"
+      ],
+      "why": "都报道英伟达财报及黄仁勋离任传闻"
+    },
+    {
+      "kept": "Nvidia says it doesn’t plan to reappoint Jensen Huang as CEO",
+      "merged": [
+        "Business as usual for Nvidia as it beats expectations in fir"
+      ],
+      "why": "均报道英伟达CEO黄仁勋卸任及其影响"
+    },
+    {
+      "kept": "2026-11-18 AI 日报 · GPT-6.2发布，英伟达拒黄仁勋复职，Anthropic获准上市",
+      "merged": [
+        "OpenAI Releases GPT-6.2 Astra and Sol With a 20% Cheaper Ast"
+      ],
+      "why": "都是 GPT-6.2 发布"
+    },
+    {
+      "kept": "2026-11-18 AI 日报 · GPT-6.2发布，英伟达拒黄仁勋复职，Anthropic获准上市",
+      "merged": [
+        "Anthropic IPO 后 Amazon 与 Google 将合计持股近 30%"
+      ],
+      "why": "都是 Anthropic IPO 相关"
+    }
+  ]
 }
