@@ -1,51 +1,31 @@
 {
-  "generated_at": "2026-11-18T20:27:24.639909+00:00",
+  "generated_at": "2026-11-19T01:44:02.293456+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 158,
-  "batches": 5,
-  "calls": 5,
-  "merged_groups": 5,
-  "merged_events": 7,
+  "input_events": 275,
+  "batches": 8,
+  "calls": 8,
+  "merged_groups": 2,
+  "merged_events": 5,
   "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "Genie 4 is now available",
+      "kept": "ORA 用 cuRobo 规划机器人动作",
       "merged": [
-        "Genie 4 is now available"
+        "UCSD Hao AI Lab 发布开源零样本机器人工具 ORA v0.1"
       ],
-      "why": "Genie 4 发布的完全重复报道"
+      "why": "均为UCSD ORA v0.1机器人工具发布及cuRobo应用"
     },
     {
-      "kept": "雷军在APEC泼冷水：AI投入太大落地难，可小米三年要砸600亿 - 手机新浪网",
+      "kept": "GTA 6 launch day: Live updates on the biggest game of the year",
       "merged": [
-        "雷军APEC谈AI产业化：落地场景与商业闭环 - Sohu"
+        "Rockstar just settled a major question about GTA 6's controv",
+        "Why GTA 6 doesn't have a 60 fps performance mode",
+        "GTA 6's cops will remember you thanks to the 'Heat' system",
+        "You can't use GTA 6 cheats until you beat the game"
       ],
-      "why": "均为雷军在 APEC 期间关于 AI 投入与产业化的发言"
-    },
-    {
-      "kept": "Nvidia Holds Its First All Hands After Jensen Huang’s Departure",
-      "merged": [
-        "黄仁勋辞职后首次财报电话会：Nvidia 新 CEO Colette Kress 收紧支出并回应回归呼声",
-        "Nvidia 临时 CEO 提前加薪留人",
-        "What is Nvidia without AI’s sugar daddy in charge?"
-      ],
-      "why": "均报道黄仁勋离职后 Nvidia 高管变动及影响"
-    },
-    {
-      "kept": "Disney 用 AWS AI 让星球大战 Anzellan 电子动画角色实时与游客互动",
-      "merged": [
-        "Disney’s new Star Wars animatronics interact with guests usi"
-      ],
-      "why": "均报道迪士尼星球大战动画角色利用 AI 互动"
-    },
-    {
-      "kept": "GPT-6.2 Astra 和 GPT-6.2 Sol 登上 Arena Code Arena: WebDev 排行榜第 3 和第 7",
-      "merged": [
-        "Arena 发布 Agent Arena Index 并更新智能体评测方法"
-      ],
-      "why": "均涉及 Arena 平台智能体/代码评测榜单更新"
+      "why": "均涉及GTA 6游戏发布、机制及玩家体验报道"
     }
   ]
 }
