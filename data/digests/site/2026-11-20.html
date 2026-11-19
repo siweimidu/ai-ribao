@@ -1,0 +1,878 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="claude-light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>谷歌在 Gemini API 中推出 Tool Retrieval · AI 日报</title>
+<meta name="description" content="谷歌在 Gemini API 中引入了 Tool Retrieval 功能。">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0065fd">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1530 1530'%3E%3Cstyle%3E:root{color-scheme:light dark}rect{fill:%23FEFEFE}g{fill:%23231A15}@media(prefers-color-scheme:dark){rect{fill:%230B0D10}g{fill:%23F2F4F7}}%3C/style%3E%3Crect width='1530' height='1530' rx='765'/%3E%3Cg transform='translate(765 765) scale(2.65) translate(-765 -765)'%3E%3Cpath fill-rule='evenodd' d='M 494,818 L 626,504 L 711,503 L 800,711 L 803,711 L 1018,546 L 1032,538 L 1027,544 L 745,795 L 740,795 L 726,765 L 610,765 L 586,820 Z M 669,614 L 701,694 L 636,694 Z'/%3E%3Cpath d='M 871,713 L 867,712 L 560,989 L 587,971 L 781,825 L 783,1025 L 871,1024 Z'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="canonical" href="https://siweimidu.github.io/ai-ribao/2026-11-20.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="谷歌在 Gemini API 中推出 Tool Retrieval">
+<meta property="og:description" content="谷歌在 Gemini API 中引入了 Tool Retrieval 功能。">
+<link rel="image_src" href="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e5e25a054bc41cc-m001-25d9abd1.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e5e25a054bc41cc-m001-25d9abd1.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="AI 日报" href="feed/zh.xml">
+<link rel="alternate" type="application/feed+json" title="AI 日报" href="feed/zh.json">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/components.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Regular.min.css">
+  <!-- Theme read before first paint.
+       `motion.js` is deferred, so it runs after the document parses -- which means the
+       browser has already painted the default light theme and then repaints with the saved
+       one. That repaint is the flash seen on every navigation. This inline block runs while
+       the head is still parsing, so the attribute is set before anything is drawn. It is
+       intentionally duplicated by motion.js (which owns the UI); here it only needs to be
+       fast and to survive JS being disabled afterwards. -->
+  <script>(function(){try{var t=localStorage.getItem('aidaily-theme');if(t&&t!=='auto'&&t!=='default'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+
+<div class="shell">
+      <aside class="rail" aria-label="站点导航">
+        <button class="rail__grip" type="button" data-resize="rail"
+                aria-label="拖动调整左栏宽度" title="拖动调整宽度（双击恢复默认）"></button>
+        <div class="rail__head">
+          <a class="rail__brand" href="index.html">
+            <span class="rail__mark" aria-hidden="true"><svg viewBox="0 0 18 18" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g transform="translate(9 9) scale(0.0314) translate(-765 -765)" fill="currentColor"><path fill-rule="evenodd" d="M 494,818 L 626,504 L 711,503 L 800,711 L 803,711 L 1018,546 L 1032,538 L 1027,544 L 745,795 L 740,795 L 726,765 L 610,765 L 586,820 Z M 669,614 L 701,694 L 636,694 Z"/><path d="M 871,713 L 867,712 L 560,989 L 587,971 L 781,825 L 783,1025 L 871,1024 Z"/></g></svg></span>
+            <span>AI 日报</span>
+          </a>
+          <button class="rail__toggle rail__item" type="button" aria-expanded="false"
+                  aria-controls="rail-body" style="width:auto">
+            <span class="sr">展开导航</span>
+            <span aria-hidden="true">☰</span>
+          </button>
+        </div>
+
+        <div class="rail__body" id="rail-body">
+          <!-- 1. 搜索往期内容 -->
+          <div class="rail__group">
+            <button class="rail__item" type="button" data-open-search>
+              <span>搜索往期内容</span>
+            </button>
+          </div>
+
+          <!-- 2. 首页 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <a class="rail__item" href="index.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5 9 3l6 5.5V15H3z"/><path d="M7.5 15v-4h3v4"/></svg><span>首页</span></a>
+          </div>
+
+          <hr class="rail__sep">
+
+          <!-- 3. 日历 -->
+          <div class="cal" aria-label="按日期浏览">
+            <div class="cal__head">
+              <span class="cal__month">—</span>
+              <span class="cal__nav">
+                <button type="button" data-nav="prev" aria-label="上个月">‹</button>
+                <button type="button" data-nav="next" aria-label="下个月">›</button>
+              </span>
+            </div>
+            <div class="cal__grid" role="grid">
+              <span class="cal__dow">日</span><span class="cal__dow">一</span>
+              <span class="cal__dow">二</span><span class="cal__dow">三</span>
+              <span class="cal__dow">四</span><span class="cal__dow">五</span>
+              <span class="cal__dow">六</span>
+            </div>
+            <div class="cal__legend">
+              <span><i data-k="today"></i>今天</span>
+              <span><i data-k="has"></i>有日报</span>
+            </div>
+          </div>
+
+          <hr class="rail__sep">
+
+          <!-- 4. Tibo 重置监控 -->
+          <div class="rail__group">
+            <a class="rail__item" href="tibo.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6.5"/><path d="M9 5.5V9l2.5 1.5"/></svg><span>Tibo 重置监控</span></a>
+            <a class="rail__item" href="leaderboard.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15V9"/><path d="M7.5 15V5"/><path d="M12 15V7.5"/><path d="M16 15H2"/></svg><span>模型榜</span></a>
+          </div>
+
+          <!-- 微信公众号：暂无账号，先不放入口。留一个不能用的按钮比没有更糟。 -->
+
+          <!-- 6. 订阅 RSS -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <details class="rail__fold">
+              <summary class="rail__item"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M3 4.5A8.5 8.5 0 0 1 11.5 13"/><path d="M3 8A5 5 0 0 1 8 13"/></svg><span>订阅 RSS</span></summary>
+              <div class="rail__sub rail__sub--rss" role="menu">
+                <button type="button" class="rail__btn" data-copy="https://siweimidu.github.io/ai-ribao/feed/zh.xml">
+                  <span class="rail__btn-k">RSS</span>复制订阅地址
+                </button>
+                <button type="button" class="rail__btn" data-copy="https://siweimidu.github.io/ai-ribao/feed/zh.json">
+                  <span class="rail__btn-k">JSON</span>复制订阅地址
+                </button>
+                <p class="rail__fine">
+                  或在浏览器中查看
+                  <a href="feed/zh.xml">RSS</a>
+                  <a href="feed/zh.json">JSON</a>
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <!-- 7. 主题 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)">
+            <details class="rail__fold">
+              <summary class="rail__item">
+                <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M9 3v12"/><path d="M9 3a6 6 0 0 1 0 12"/></svg><span>主题</span>
+                <span class="rail__hint" data-theme-summary>自动</span>
+              </summary>
+              <div class="rail__sub" role="menu"><button type="button" data-theme-choice="claude-light" aria-checked="false">Claude 亮色</button><button type="button" data-theme-choice="claude-dark" aria-checked="false">Claude 暗色</button><button type="button" data-theme-choice="light" aria-checked="false">标准亮色</button><button type="button" data-theme-choice="dark" aria-checked="false">标准暗色</button><button type="button" data-theme-choice="cinnabar" aria-checked="false">宣纸朱砂</button><button type="button" data-theme-choice="indigo" aria-checked="false">冷白靛紫</button><button type="button" data-theme-choice="midnight" aria-checked="false">深蓝冷青</button></div>
+            </details>
+          </div>
+
+          <!-- 8. 下载 markdown（仅在有具体日期的页面上显示）
+               首页的 rail 用的是最新一期，在这里放下载按钮等于让读者先猜自己要看哪一天。
+               先把日期选出来，日期页再给出那一天的 markdown。 -->
+          <div class="rail__group" style="margin-top:calc(var(--unit) * 2)"><a class="rail__item" href="2026-11-20.md" download><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v8"/><path d="M5.5 8 9 11.5 12.5 8"/><path d="M3.5 13.5h11"/></svg><span>下载 Markdown</span></a></div>
+
+          <hr class="rail__sep">
+
+          <div class="rail__group">
+            <a class="rail__item" href="sources.html"><svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/><path d="M3 4.5A8.5 8.5 0 0 1 11.5 13"/><path d="M3 8A5 5 0 0 1 8 13"/></svg><span>信息源</span></a>
+            <a class="rail__item" href="https://github.com/siweimidu/ai-ribao" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2.5a6.5 6.5 0 0 0-2 12.7c-.1-.5-.1-1.2 0-1.7.2-.8 1.4-5 1.4-5s-.3-.7-.3-1.7c0-1.6.9-2.7 2-2.7.9 0 1.4.7 1.4 1.6 0 1-.6 2.4-.9 3.8-.3 1 .5 1.9 1.6 1.9 1.9 0 3.3-2.5 3.3-5.4 0-2.3-1.6-3.9-4-3.9-2.7 0-4.3 2-4.3 4.1 0 .9.3 1.8.8 2.3.1.1.1.2.1.3l-.3 1.1c0 .2-.2.2-.4.1-1.3-.6-2.1-2.5-2.1-4C5.3 3.4 7.5 2.5 9 2.5z"/></svg><span>源码与说明</span>
+            </a>
+          </div>
+        </div>
+      </aside>
+
+  <main class="content" id="main">
+    <header class="issue__head">
+      <p class="issue__date enter">2026-11-20　第 38 期</p>
+      <h1 class="issue__title enter">谷歌在 Gemini API 中推出 Tool Retrieval</h1>
+      <p class="issue__lead enter">谷歌在 Gemini API 中引入了 Tool Retrieval 功能。</p>
+      <div class="stats enter"><div><b class="count-up" data-to="45">45</b><span>事件</span></div><div><b class="count-up" data-to="30">30</b><span>有内容的源</span></div><div><b class="count-up" data-to="17">17</b><span>多源验证</span></div><div><b class="count-up" data-to="21">21</b><span>头条覆盖来源</span></div></div>
+    </header>
+
+    
+
+          <section class="section overview" id="overview">
+        <h2 class="section__title">概览<span class="section__count">今日要闻</span></h2>
+        <ol class="ov"><li><a href="#e-e5e25a054bc41cc"><span class="ov__no">01</span><span><b>谷歌在 Gemini API 中推出 Tool Retrieval</b><span class="ov__detail">谷歌在 Gemini API 中引入了 Tool Retrieval 功能。</span></span></a></li><li><a href="#e-e6eeeb06662671c"><span class="ov__no">02</span><span><b>Reuters：Meta智能体Muse混淆对话泄露用户隐私数据</b><span class="ov__detail">Reuters查看了Meta内部帖子并报道了此事件。</span></span></a></li><li><a href="#e-e55aa30a4746680"><span class="ov__no">03</span><span><b>Amazon 论文：环境变化后 Agent 技能选择性维护可恢复价值</b><span class="ov__detail">Amazon 与 USC 发表了一篇论文。</span></span></a></li><li><a href="#e-e11f4fb30301adc"><span class="ov__no">04</span><span><b>Perplexity 发布 Orchestrator API 支持跨供应商故障转移</b><span class="ov__detail">Perplexity 发布了 Orchestrator API。</span></span></a></li><li><a href="#e-e7a6f12099a0981"><span class="ov__no">05</span><span><b>Jim Fan 演示 GR00T 2 控制真实灵巧手</b><span class="ov__detail">Jim Fan 发布了未剪辑、1 倍速视频</span></span></a></li><li><a href="#e-e98789ec212aff7"><span class="ov__no">06</span><span><b>Claude 解决黑洞物理领域两个公开难题</b><span class="ov__detail">Claude 解决了黑洞物理中的两个公开难题。</span></span></a></li><li><a href="#e-e31c7addcd1fefb"><span class="ov__no">07</span><span><b>fal 上线可灵 v4 视频生成入口</b><span class="ov__detail">fal 平台上线可灵 v4 模型</span></span></a></li><li><a href="#e-e49feb8c212bb25"><span class="ov__no">08</span><span><b>AI芯片热潮助韩国出口破万亿美元</b><span class="ov__detail">韩国出口总额突破万亿美元。</span></span></a></li></ol>
+        <p class="ov__foot">今日共 45 条事件，
+        其中 17 条经多个独立来源交叉验证。下面是完整列表。</p>
+      </section>
+
+    
+
+      <section class="section" id="all">
+        <h2 class="section__title">全部消息<span class="section__count">45 条</span></h2>
+        <ol class="stream">
+        <li class="item" id="e-e5e25a054bc41cc">
+          <div class="item__head"><span class="item__no">01</span><h3 class="item__title"><a href="https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/" target="_blank" rel="noopener noreferrer">谷歌在 Gemini API 中推出 Tool Retrieval</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e5e25a054bc41cc-m001-25d9abd1.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e5e25a054bc41cc-m001-25d9abd1.webp" alt="" loading="lazy" decoding="async" onerror="this.closest(.item__thumb).remove()"></button></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 02:00</span>
+            <a href="https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/" target="_blank" rel="noopener noreferrer">blog.google</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">谷歌在 Gemini API 中引入了 Tool Retrieval 功能。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Tool Retrieval 功能旨在辅助 Gemini 模型检索工具。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">Tool Retrieval 的具体技术实现机制未在材料中说明。</li><li data-kind="uncertain">该功能目前是否已开放给所有用户或仅为预览阶段未明确。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e6eeeb06662671c">
+          <div class="item__head"><span class="item__no">02</span><h3 class="item__title"><a href="https://techcrunch.com/2026/11/19/metas-ai-agent-muse-is-mixing-up-conversations-and-exposing-private-data-report-says/" target="_blank" rel="noopener noreferrer">Reuters：Meta智能体Muse混淆对话泄露用户隐私数据</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e6eeeb06662671c-m001-666aebe4.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e6eeeb06662671c-m001-666aebe4.webp" alt="" loading="lazy" decoding="async" onerror="this.closest(.item__thumb).remove()"></button></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>4 个独立来源</span>
+            <span>11-20 01:38</span>
+            <a href="https://techcrunch.com/2026/11/19/metas-ai-agent-muse-is-mixing-up-conversations-and-exposing-private-data-report-says/" target="_blank" rel="noopener noreferrer">techcrunch.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Reuters查看了Meta内部帖子并报道了此事件。</li><li data-kind="fact">Meta员工反映公司AI智能体Muse会混淆不同账户的对话并暴露隐私数据。</li><li data-kind="fact">泄露的数据包括未发起的育儿请求、订单和银行账户余额。</li><li data-kind="fact">有员工收到显示Capital One余额$2722.58和Charles Schwab余额$5899.57的消息。</li><li data-kind="fact">有员工收到被提醒回复Signal上信息的消息。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Muse在识别和隔离不同用户账户的数据时存在机制缺陷，导致会话数据发生交叉污染。</li><li data-kind="inference">该隐私泄露事件不仅涉及非敏感的个人偏好数据（如育儿、职业），还涉及高敏感度的金融与通讯数据。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明受影响的具体用户总数或Meta的官方回应及补救措施。</li><li data-kind="uncertain">材料未明确该混淆问题是发生在所有用户端还是仅限于Meta内部员工账号的测试环境。</li><li data-kind="uncertain">材料没有说明泄露的隐私数据最终被传输到了何处或被谁获取。</li></ul></div></div>
+          <div class="item__links"><a href="https://www.theinformation.com/articles/meta-bets-300-muse-charm-boost-ai-hardware-business" target="_blank" rel="noopener noreferrer">theinformation.com</a><a href="https://www.zdnet.com/tech/meta-muse-privacy-violatons-employees-report/" target="_blank" rel="noopener noreferrer">zdnet.com</a></div>
+        </li>
+        <li class="item" id="e-e55aa30a4746680">
+          <div class="item__head"><span class="item__no">03</span><h3 class="item__title"><a href="https://aihot.news/items/zgisubo5assz0lvw9y1w64zda" target="_blank" rel="noopener noreferrer">Amazon 论文：环境变化后 Agent 技能选择性维护可恢复价值</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 03:04</span>
+            <a href="https://aihot.news/items/zgisubo5assz0lvw9y1w64zda" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Amazon 与 USC 发表了一篇论文。</li><li data-kind="fact">该论文发现环境变化后保存的 Agent 技能可能从增益变为负担。</li><li data-kind="fact">论文指出选择性检查和维护能恢复 Agent 技能的价值。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该研究表明动态环境下的 Agent 技能管理需要特定的维护策略。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未提供论文的具体标题和链接。</li><li data-kind="uncertain">材料未说明「环境变化」的具体类型或测试场景。</li><li data-kind="uncertain">材料未提供关于性能提升的具体量化数据。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e11f4fb30301adc">
+          <div class="item__head"><span class="item__no">04</span><h3 class="item__title"><a href="https://www.marktechpost.com/2026/11/19/perplexity-orchestrator-api-failover-model-routing/" target="_blank" rel="noopener noreferrer">Perplexity 发布 Orchestrator API 支持跨供应商故障转移</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e11f4fb30301adc-m001-ba0c9845.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e11f4fb30301adc-m001-ba0c9845.webp" alt="" loading="lazy" decoding="async" onerror="this.closest(.item__thumb).remove()"></button></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>2 个独立来源</span>
+            <span>11-20 01:47</span>
+            <a href="https://www.marktechpost.com/2026/11/19/perplexity-orchestrator-api-failover-model-routing/" target="_blank" rel="noopener noreferrer">marktechpost.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Perplexity 发布了 Orchestrator API。</li><li data-kind="fact">该 API 通过单个端点聚合了 OpenAI、Anthropic、Google、xAI 及 GLM、Kimi、DeepSeek 等开源权重模型。</li><li data-kind="fact">Perplexity 内部已在超过 85 个模型和十余家供应商上运行同一层架构。</li><li data-kind="fact">该 API 提供同模型供应商故障转移、统一计费功能。</li><li data-kind="fact">API 包含一个名为 perplexity/auto 的路由器预览版本，可将每个请求发送到描述的路线。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Orchestrator API 允许开发者通过单一接口访问多家 AI 供应商的模型服务。</li><li data-kind="inference">统一计费和故障转移功能旨在简化多模型集成后的运维与成本管理工作。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明 Orchestrator API 是否已正式全面开放还是仅限预览版。</li><li data-kind="uncertain">材料未提供具体的定价策略或计费标准细节。</li><li data-kind="uncertain">材料未明确“描述的路线”具体包含哪些路由逻辑或配置选项。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e7a6f12099a0981">
+          <div class="item__head"><span class="item__no">05</span><h3 class="item__title"><a href="https://aihot.news/items/kpdajod60rd1g95492ph1wwd8" target="_blank" rel="noopener noreferrer">Jim Fan 演示 GR00T 2 控制真实灵巧手</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 01:36</span>
+            <a href="https://aihot.news/items/kpdajod60rd1g95492ph1wwd8" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Jim Fan 发布了未剪辑、1 倍速视频</li><li data-kind="fact">视频展示了 GR00T 2 端到端控制真实灵巧手完成任务</li><li data-kind="fact">GR00T 2 是面向机器人的开源 System One 模型</li><li data-kind="fact">GR00T 2 完全运行在机器人机载算力上</li><li data-kind="fact">GR00T 2 支持 20 步以上、5 分钟以上的长时程灵巧操作与全身控制</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该模型旨在通过机载算力实现对真实机器人的实际操控</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">视频中具体演示的任务内容未在材料中详细列出</li><li data-kind="uncertain">“约 11 年经验”的具体积累方式未详细说明</li><li data-kind="uncertain">X-Adapt 配方在 12 月发布的具体日期未明确</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e98789ec212aff7">
+          <div class="item__head"><span class="item__no">06</span><h3 class="item__title"><a href="https://www.anthropic.com/research/claude-black-hole-physics" target="_blank" rel="noopener noreferrer">Claude 解决黑洞物理领域两个公开难题</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e98789ec212aff7-m001-0bbcd33d.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e98789ec212aff7-m001-0bbcd33d.webp" alt="" loading="lazy" decoding="async" onerror="this.closest(.item__thumb).remove()"></button></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>2 个独立来源</span>
+            <span>11-20 01:30</span>
+            <a href="https://www.anthropic.com/research/claude-black-hole-physics" target="_blank" rel="noopener noreferrer">anthropic.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Claude 解决了黑洞物理中的两个公开难题。</li><li data-kind="fact">相关内容在 Hacker News 获得 184 个点赞和 50 条评论。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该事件在 Hacker News 上引发了较多的讨论。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">具体是哪两个公开难题未在材料中说明。</li><li data-kind="uncertain">Claude 解决这些难题的具体过程或方法未在材料中说明。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e31c7addcd1fefb">
+          <div class="item__head"><span class="item__no">07</span><h3 class="item__title"><a href="https://aihot.news/items/my8fc9ejf688dc52b0ttx1ua9" target="_blank" rel="noopener noreferrer">fal 上线可灵 v4 视频生成入口</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 02:18</span>
+            <a href="https://aihot.news/items/my8fc9ejf688dc52b0ttx1ua9" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">fal 平台上线可灵 v4 模型</li><li data-kind="fact">fal 平台提供文生视频、图生视频、参考生成视频和视频编辑四种模式的入口链接</li><li data-kind="fact">读者可直接在 fal.ai 试用该模型</li><li data-kind="fact">fal 宣布可灵（Kling 4.0）现可在其平台生成原生 4K 视频</li><li data-kind="fact">可灵（Kling 4.0）支持从文本、图片或参考素材生成视频，也可对现有视频做 4K 编辑</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">材料1和2中提到的可灵 v4 可能对应材料3和4中提到的 Kling 4.0</li><li data-kind="inference">fal 平台正在逐步扩展对可灵视频生成模型的功能支持，从基础模式扩展到高分辨率输出</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">可灵 v4 与 Kling 4.0 是否为完全相同的模型版本，材料未明确说明两者的对应关系</li><li data-kind="uncertain">fal.ai 上该功能的实际使用体验、生成质量或限制条件未在材料中提及</li><li data-kind="uncertain">10-bit HDR 输出的具体技术细节或适用终端设备要求未说明</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e49feb8c212bb25">
+          <div class="item__head"><span class="item__no">08</span><h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMimgNBVV95cUxOZGFDT054QV9MaElkdHc0QndqeW5qR0FUMkZEMDY0ME4zb3IyVVNfTUFhRWs5WXpJUDY2YVJxWmRTV255U2hoTUtnVFZBcUNrYk1PWmNNMi1MSW9YQW02TGxsUkItX3BtUDl6WFZ4ZHgxM19jNzc2cGdHeHowaUxnWDAyZ2tYT2ptaE5RT1ZiY3J6OHNNcVpTLUw5UFp3cm10MEZYVnh5MnV1Y1hmQi1pd1IwMFI1MTBwQnZqT1ZTT2t6dktJY18tLW1PdVQtX3Z0Skp0bFJSVGVMWmJtZFcwd0FJNVoxcFZUQk1WaGFrNXlLQ3JsZmN0aFpZN1NhdDdKdHZ1T2YweG1HVXdib2JtV3k3RTlENThPajZLWjliRzhCUWV6RmJGMkRfLVFqaThmQzRHeDBULUw5T2RmS29VenNHY1d6Nk5ZLS01QW1fWElMNjdzX0FELVQzTy1qb3lOSWJOVkZ4MUdNaDNxQ3FNT3NJU2lOR1ZzdW1KNmJYbDVjUmNPdGJ5VjNWOWg0U240RkU2M0c3c2xVQQ?oc=5" target="_blank" rel="noopener noreferrer">AI芯片热潮助韩国出口破万亿美元</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 00:02</span>
+            <a href="https://news.google.com/rss/articles/CBMimgNBVV95cUxOZGFDT054QV9MaElkdHc0QndqeW5qR0FUMkZEMDY0ME4zb3IyVVNfTUFhRWs5WXpJUDY2YVJxWmRTV255U2hoTUtnVFZBcUNrYk1PWmNNMi1MSW9YQW02TGxsUkItX3BtUDl6WFZ4ZHgxM19jNzc2cGdHeHowaUxnWDAyZ2tYT2ptaE5RT1ZiY3J6OHNNcVpTLUw5UFp3cm10MEZYVnh5MnV1Y1hmQi1pd1IwMFI1MTBwQnZqT1ZTT2t6dktJY18tLW1PdVQtX3Z0Skp0bFJSVGVMWmJtZFcwd0FJNVoxcFZUQk1WaGFrNXlLQ3JsZmN0aFpZN1NhdDdKdHZ1T2YweG1HVXdib2JtV3k3RTlENThPajZLWjliRzhCUWV6RmJGMkRfLVFqaThmQzRHeDBULUw5T2RmS29VenNHY1d6Nk5ZLS01QW1fWElMNjdzX0FELVQzTy1qb3lOSWJOVkZ4MUdNaDNxQ3FNT3NJU2lOR1ZzdW1KNmJYbDVjUmNPdGJ5VjNWOWg0U240RkU2M0c3c2xVQQ?oc=5" target="_blank" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">韩国出口总额突破万亿美元。</li><li data-kind="fact">韩国出口排名晋升至全球第四。</li><li data-kind="fact">AI芯片热潮是推动此次出口增长的因素之一。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">韩国在全球出口市场的份额或地位因AI芯片需求增加而显著提升。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未提供韩国出口破万亿美元的具体达成日期。</li><li data-kind="uncertain">材料未说明此前韩国出口排名的具体数字。</li><li data-kind="uncertain">材料未详细列明除AI芯片外其他对出口增长有贡献的领域。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e41fd6e7a7d1bdc">
+          <div class="item__head"><span class="item__no">09</span><h3 class="item__title"><a href="https://the-decoder.com/chinese-tech-firms-face-a-double-hit-as-chip-shipments-stop-and-overseas-cloud-access-disappears/" target="_blank" rel="noopener noreferrer">芯片断供与云服务中断重创中国科技企业</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e41fd6e7a7d1bdc-m001-a04f8339.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e41fd6e7a7d1bdc-m001-a04f8339.webp" alt="" loading="lazy" decoding="async" onerror="this.closest(.item__thumb).remove()"></button></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 01:02</span>
+            <a href="https://the-decoder.com/chinese-tech-firms-face-a-double-hit-as-chip-shipments-stop-and-overseas-cloud-access-disappears/" target="_blank" rel="noopener noreferrer">the-decoder.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">美国对AI芯片的出口管制正在收紧。</li><li data-kind="fact">中国公司Moonshot AI放弃了一笔价值1.5亿美元的印尼交易。</li><li data-kind="fact">TSMC和三星停止了向中国客户发货。</li><li data-kind="fact">《纽约时报》的调查称，阿里巴巴通过一个由空壳公司组成的网络，将Nvidia芯片输送给了中国军方研究人员。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">出口管制的收紧导致了中国科技企业在芯片供应和海外云服务方面同时面临困难。</li><li data-kind="inference">企业通过空壳公司转移芯片的行为可能意在规避现有的出口管制限制。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">关于阿里巴巴将芯片输送给军方研究人员的具体指控，目前仅有《纽约时报》调查报道，未获得相关公司或监管机构的证实。</li><li data-kind="uncertain">“海外云服务消失”这一说法在材料中仅作为标题和概括性描述出现，缺乏具体哪几家云服务商停止服务或受到何种具体限制的详细事实支持。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ea12b18714fbd5f">
+          <div class="item__head"><span class="item__no">10</span><h3 class="item__title"><a href="https://siliconangle.com/2026/11/19/china-based-ai-robotics-biotech-firm-megarobo-raises-200m-to-accelerate-scientific-discovery/" target="_blank" rel="noopener noreferrer">MegaRobo 融资 2 亿美元加速科学发现</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 00:45</span>
+            <a href="https://siliconangle.com/2026/11/19/china-based-ai-robotics-biotech-firm-megarobo-raises-200m-to-accelerate-scientific-discovery/" target="_blank" rel="noopener noreferrer">siliconangle.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">中国生物科技机器人公司 MegaRobo Co. Ltd. 宣布已筹集 2 亿美元新资金。</li><li data-kind="fact">这笔资金将用于投资其核心技术并扩展其自动化生命科学基础设施。</li><li data-kind="fact">MegaRobo 成立于 2016 年。</li><li data-kind="fact">MegaRobo 构建让 AI 软件运行物理实验的机器人系统，并涉及精密测量和检查。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">MegaRobo 计划利用这笔资金处理日益复杂的物理系统。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未具体说明“日益复杂的物理系统”指代哪些特定类型或场景。</li><li data-kind="uncertain">材料未提及本轮融资的具体投资方名称。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e36ef74bbab77af">
+          <div class="item__head"><span class="item__no">11</span><h3 class="item__title"><a href="https://www.axios.com/2026/11/19/meta-ai-emissions-rise" target="_blank" rel="noopener noreferrer">Meta因AI排放增长45%重新评估2030年净零排放目标</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>2 个独立来源</span>
+            <span>11-20 01:00</span>
+            <a href="https://www.axios.com/2026/11/19/meta-ai-emissions-rise" target="_blank" rel="noopener noreferrer">axios.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Meta去年温室气体排放量激增45%。</li><li data-kind="fact">Meta正在重新评估其于2020年首次宣布的2030年净零排放目标。</li><li data-kind="fact">Meta是北美最大的数据中心运营商之一。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">AI基础设施建设导致的排放增长幅度超过了效率提升带来的减排效果。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明重新评估后的具体决策结果或新的目标时间线。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ef3c4d4e1cecb11">
+          <div class="item__head"><span class="item__no">12</span><h3 class="item__title"><a href="https://www.aibase.com/zh/news/32416" target="_blank" rel="noopener noreferrer">马斯克称 Optimus 有望 12 至 18 个月内处理家务</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 01:26</span>
+            <a href="https://www.aibase.com/zh/news/32416" target="_blank" rel="noopener noreferrer">aibase.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">特斯拉 CEO 马斯克表示人形机器人 Optimus 研发进展较好。</li><li data-kind="fact">马斯克预计未来 1 至 2 个月内发布 Optimus 的真实演示视频。</li><li data-kind="fact">马斯克称 Optimus 有望在 12 至 18 个月内具备收拾脏盘子、倒垃圾等家务能力。</li><li data-kind="fact">马斯克在赴中国深圳出席 APEC 峰会期间以线上方式参加美国两场峰会访谈。</li><li data-kind="fact">马斯克在访谈中介绍了特斯拉机器人及芯片业务的最新进展。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">基于马斯克提及 APEC 峰会及深圳行程，可推断该访谈时间可能在 2026 年 11 月前后。</li><li data-kind="inference">马斯克将机器人能力拓展至倒垃圾等具体家务场景，暗示其研发目标正侧重家庭服务领域。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未明确说明 Optimus 当前具体处于研发的哪个测试阶段。</li><li data-kind="uncertain">材料未详细列出除收拾脏盘子和倒垃圾外的其他具体家务能力。</li><li data-kind="uncertain">材料未提供 Optimus 芯片业务的具体技术细节或参数。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ec3368aee11f2df">
+          <div class="item__head"><span class="item__no">13</span><h3 class="item__title"><a href="https://aihot.news/items/mbq37tilcxhcua5gqxirutfpz" target="_blank" rel="noopener noreferrer">Cognition展示Devin Bots在Exa的工程自动化用法</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 00:12</span>
+            <a href="https://aihot.news/items/mbq37tilcxhcua5gqxirutfpz" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Cognition介绍了Devin Bots的用法。</li><li data-kind="fact">Cognition称一个Devin Bot可以带领一组智能体完成任务。</li><li data-kind="fact">这些任务包括编写固件和每周合并数千个PR。</li><li data-kind="fact">文中举例说明Exa工程师使用Devin Bots管理训练任务和CI。</li><li data-kind="fact">这些应用覆盖了软件栈的多个环节。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Devin Bots具备协调多智能体处理复杂工程流程的能力。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明Exa使用Devin Bots的具体模型版本。</li><li data-kind="uncertain">材料未提供&quot;每周合并数千个PR&quot;的具体数值或统计周期。</li><li data-kind="uncertain">材料未明确&quot;固件&quot;是指哪种特定设备的固件。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e63cd7d4e55f36f">
+          <div class="item__head"><span class="item__no">14</span><h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE9HcGlmV0ZoSnREb2xMOVhDRV90QXI1ZnVHU3F0TXctUFN6bDZxaGVSRHRHQ3U3WFM3X2lYTlV0YmUySFZnbWpTclhPQVpNUQ?oc=5" target="_blank" rel="noopener noreferrer">观点网称阿里AI云跨过拐点芯片与算力挑战开始</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 00:49</span>
+            <a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE9HcGlmV0ZoSnREb2xMOVhDRV90QXI1ZnVHU3F0TXctUFN6bDZxaGVSRHRHQ3U3WFM3X2lYTlV0YmUySFZnbWpTclhPQVpNUQ?oc=5" target="_blank" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">观点网发布文章标题为《观点直击 | 阿里AI云跨过了拐点 芯片与算力大考才刚开始》。</li><li data-kind="fact">该信息来源时间为2026年11月20日00:49北京时间。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">文章暗示阿里AI云业务可能已经到达了关键增长节点。</li><li data-kind="inference">后续面临的芯片供应与算力扩展问题将是主要挑战。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料中缺乏关于阿里AI云具体业务数据或财务表现的支持依据。</li><li data-kind="uncertain">未提供关于芯片短缺或算力成本的具体技术细节。</li><li data-kind="uncertain">“拐点”的具体定义与衡量标准在材料中未明确说明。</li><li data-kind="uncertain">除标题外，材料未包含文章正文内容，无法验证标题所述观点的具体论据。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e7972b57a239fb0">
+          <div class="item__head"><span class="item__no">15</span><h3 class="item__title"><a href="https://www.aibase.com/zh/news/32417" target="_blank" rel="noopener noreferrer">韩国LEET满分考生李振宇因AI作弊质疑离世</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 02:02</span>
+            <a href="https://www.aibase.com/zh/news/32417" target="_blank" rel="noopener noreferrer">aibase.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">韩国LEET法学研究生入学考试满分考生李振宇在首尔汽车旅馆内被发现心脏骤停身亡</li><li data-kind="fact">李振宇此前深陷AI作弊质疑</li><li data-kind="fact">李振宇曾公开承诺通过YouTube直播现场作答韩国高考韩语试题以自证清白</li><li data-kind="fact">约定时间大量网友蹲守直播间但李振宇未现身且手机关机</li><li data-kind="fact">该事件在韩国考场引发关于封杀智能眼镜的舆论关注</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">由于李振宇未能完成自证清白的直播且失联，其死亡加剧了公众对AI作弊嫌疑的舆论发酵</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料中未说明李振宇是否实际使用了智能眼镜或AI设备作弊</li><li data-kind="uncertain">材料中未详细列出韩国考场具体采取的封杀智能眼镜的措施或政策内容</li><li data-kind="uncertain">李振宇心脏骤停的具体原因未在材料中明确</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e41b47bc2716053">
+          <div class="item__head"><span class="item__no">16</span><h3 class="item__title"><a href="https://aihot.news/items/h4bvsjw4ri6to1inm87srlf42" target="_blank" rel="noopener noreferrer">芯片管制与云通道关闭致中国科技公司受冲击</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 01:02</span>
+            <a href="https://aihot.news/items/h4bvsjw4ri6to1inm87srlf42" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">美国商务部收紧 AI 芯片出口管制并关闭第三方国家云算力通道</li><li data-kind="fact">Moonshot AI 取消了与印尼云服务商 1.5 亿美元的合同</li><li data-kind="fact">Moonshot AI 原计划租用 Nvidia Blackwell Ultra B300 集群训练 Kimi K4</li><li data-kind="fact">Moonshot AI 此前已预付约 50% 款项，而非行业标准的 15%</li><li data-kind="fact">台积电和三星暂停向中国客户交付部分处理器</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">亚洲多笔大型 AI 数据中心交易因管制措施而面临瓦解风险</li><li data-kind="inference">中国科技公司在芯片供应和海外算力获取两方面均面临实质性障碍</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未提及除 Moonshot AI 外其他取消合同的具体公司名单及金额</li><li data-kind="uncertain">材料未说明台积电和三星暂停交付的具体处理器型号或型号范围</li><li data-kind="uncertain">材料未提供字节跳动和百度昆仑受影响的具体业务环节</li><li data-kind="uncertain">材料未说明小米、Oppo、vivo 智能手机处理器受影响的具体时间或程度</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e5036bf133b5941">
+          <div class="item__head"><span class="item__no">17</span><h3 class="item__title"><a href="https://aws.amazon.com/blogs/machine-learning/keep-inference-running-through-regional-capacity-shortfalls-with-cross-region-inference-routing-in-amazon-sagemaker-ai/" target="_blank" rel="noopener noreferrer">Amazon SageMaker AI 推出跨 Region 推理路由功能</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e5036bf133b5941-m001-fe3aa187.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e5036bf133b5941-m001-fe3aa187.webp" alt="" loading="lazy" decoding="async" onerror="this.closest(.item__thumb).remove()"></button></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 02:20</span>
+            <a href="https://aws.amazon.com/blogs/machine-learning/keep-inference-running-through-regional-capacity-shortfalls-with-cross-region-inference-routing-in-amazon-sagemaker-ai/" target="_blank" rel="noopener noreferrer">aws.amazon.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Amazon SageMaker AI 推出了 Cross-Region inference routing 功能</li><li data-kind="fact">该功能为应用程序提供跨一个或多个 AWS Regions 和 AWS accounts 的单一调用路径</li><li data-kind="fact">路由器优先使用本 Region，仅当本地端点无法可靠提供服务时才将新请求转移到其他目的地</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该功能旨在通过动态路由机制，在本地容量不足时保障推理服务的连续性</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">具体的路由切换延迟阈值未在材料中说明</li><li data-kind="uncertain">支持该功能的具体 AWS 区域列表未在材料中列出</li><li data-kind="uncertain">该功能是否已全量开放或处于 Beta 测试阶段材料未明确</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e2f77cb4cef1101">
+          <div class="item__head"><span class="item__no">18</span><h3 class="item__title"><a href="https://siliconangle.com/2026/11/19/raptor-chip-stacks-3d-dram-tackle-inference-memory-limits-sc26/" target="_blank" rel="noopener noreferrer">D-Matrix 推出 Raptor 芯片以解决推理内存带宽问题</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 03:21</span>
+            <a href="https://siliconangle.com/2026/11/19/raptor-chip-stacks-3d-dram-tackle-inference-memory-limits-sc26/" target="_blank" rel="noopener noreferrer">siliconangle.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">D-Matrix Corp. 推出了名为 Raptor 的第二代芯片</li><li data-kind="fact">Raptor 芯片在计算逻辑下方堆叠了 3D DRAM</li><li data-kind="fact">Satyam Srivastava 指出 AI 基础设施已成为系统性竞争</li><li data-kind="fact">Satyam Srivastava 认为赢家需将内存、互连和软件结合成连贯设计</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">随着 AI 工作负载转向推理，内存带宽可能成为决定硬件生成 token 速度或处于空闲状态的关键因素</li><li data-kind="inference">D-Matrix 通过堆叠 3D DRAM 技术回应了内存带宽瓶颈问题</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">Raptor 芯片的具体性能提升数据未在材料中说明</li><li data-kind="uncertain">该芯片的市场发布时间及定价信息未提及</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e3c11df6b749cf0">
+          <div class="item__head"><span class="item__no">19</span><h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE1NVUpSTHNuLS1STTR5dU5uVmpjUXhhTFROUTZ1VUdRWVR2b0NSeERtenhhZE9Odzk2YWtlRlh2RzIzSTh1Qk5UbQ?oc=5" target="_blank" rel="noopener noreferrer">Nat. Biotechnol. 探讨 AI 巨头是否接管药物发现</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 02:30</span>
+            <a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE1NVUpSTHNuLS1STTR5dU5uVmpjUXhhTFROUTZ1VUdRWVR2b0NSeERtenhhZE9Odzk2YWtlRlh2RzIzSTh1Qk5UbQ?oc=5" target="_blank" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">该事件信息来源于智源社区</li><li data-kind="fact">事件涉及 Nat. Biotechnol. 相关报道或文章</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该文章讨论了人工智能科技巨头在药物发现领域的影响力或角色变化</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未提供文章具体发布日期（仅标注检索时间为 2026-11-20）</li><li data-kind="uncertain">材料未提供具体的 AI 公司名单</li><li data-kind="uncertain">材料未提供药物发现被接管的具体证据或数据</li><li data-kind="uncertain">材料未明确是新闻报导还是观点文章</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-eab842d70058ce5">
+          <div class="item__head"><span class="item__no">20</span><h3 class="item__title"><a href="https://aws.amazon.com/blogs/machine-learning/protect-agent-tool-calls-with-skyflow-and-amazon-bedrock-agentcore-gateway/" target="_blank" rel="noopener noreferrer">Skyflow 与 Amazon Bedrock AgentCore Gateway 保护 Agent 工具调用</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/eab842d70058ce5-m001-a422bd51.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/eab842d70058ce5-m001-a422bd51.webp" alt="" loading="lazy" decoding="async" onerror="this.closest(.item__thumb).remove()"></button></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>2 个独立来源</span>
+            <span>11-20 02:13</span>
+            <a href="https://aws.amazon.com/blogs/machine-learning/protect-agent-tool-calls-with-skyflow-and-amazon-bedrock-agentcore-gateway/" target="_blank" rel="noopener noreferrer">aws.amazon.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Skyflow 作为 gateway interceptor 集成在 Amazon Bedrock AgentCore Gateway 中</li><li data-kind="fact">Skyflow 在数据被工具、模型或日志查看前进行去标识化处理</li><li data-kind="fact">Skyflow 为授权调用方恢复数据，且无需修改 Agent 代码</li><li data-kind="fact">MarkTechPost 发布文章横评 13 款 Agent Gateway</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该方案旨在通过网关拦截器机制，在数据暴露给底层组件前减少敏感数据泄露风险</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">去标识化处理后恢复数据的具体技术机制或密钥管理方式未在材料中说明</li><li data-kind="uncertain">材料未提供该解决方案的具体性能指标或延迟数据</li></ul></div></div>
+          <div class="item__links"><a href="https://www.marktechpost.com/2026/11/19/best-agent-gateways-2026/" target="_blank" rel="noopener noreferrer">marktechpost.com</a></div>
+        </li>
+        <li class="item" id="e-ed711b514905996">
+          <div class="item__head"><span class="item__no">21</span><h3 class="item__title"><a href="https://aihot.news/items/hskkbv6vrethkoro3qjv26tc5" target="_blank" rel="noopener noreferrer">Perplexity 上线电话语音联系 Teammates 功能</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 02:57</span>
+            <a href="https://aihot.news/items/hskkbv6vrethkoro3qjv26tc5" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">用户现在可以通过语音在电话上与 Perplexity Teammates 交谈</li><li data-kind="fact">该功能被描述为一种不需要在日历上点开 Teams 链接即可加入会议的替代方式</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这一更新旨在提供比传统 Teams 会议更便捷的协作沟通体验</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">未明确说明该功能是否完全取代 Teams 集成，或是作为独立并存选项</li><li data-kind="uncertain">未提供该功能的具体上线时间及支持的电话系统详情</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e810b681a30d40c">
+          <div class="item__head"><span class="item__no">22</span><h3 class="item__title"><a href="https://aihot.news/items/rgekn0fhbxsyl8tj44xu045xa" target="_blank" rel="noopener noreferrer">Databricks Genie Code 支持批量迁移 BI 报表</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 00:00</span>
+            <a href="https://aihot.news/items/rgekn0fhbxsyl8tj44xu045xa" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Databricks 的 Genie Code 现已支持批量迁移功能</li><li data-kind="fact">用户可通过 /importBI 指令指向 Unity Catalog volume 中的整个文件夹</li><li data-kind="fact">该功能可一次性将 Tableau 或 Power BI 报表转换为 AI/BI Dashboards</li><li data-kind="fact">该功能目前已正式可用</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">这一功能旨在简化从传统 BI 工具到 Databricks AI/BI 平台的数据资产迁移流程</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明 /importBI 指令在转换过程中是否支持自定义映射规则或错误处理机制</li><li data-kind="uncertain">材料未提供关于迁移后的 AI/BI Dashboards 性能或功能兼容性的具体评估指标</li><li data-kind="uncertain">材料未说明该功能是否适用于所有版本的 Tableau 或 Power BI 文件格式</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e87130a93612039">
+          <div class="item__head"><span class="item__no">23</span><h3 class="item__title"><a href="https://siliconangle.com/2026/11/19/global-cloud-availability-sets-neocloud-platforms-apart-sc26/" target="_blank" rel="noopener noreferrer">Agentic AI驱动Neocloud竞争转向全球平台</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 00:38</span>
+            <a href="https://siliconangle.com/2026/11/19/global-cloud-availability-sets-neocloud-platforms-apart-sc26/" target="_blank" rel="noopener noreferrer">siliconangle.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Neocloud行业正进入整合阶段。</li><li data-kind="fact">Agentic AI正从试点阶段转向生产环境。</li><li data-kind="fact">买家正在关注集成平台而非单纯的GPU数量。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">全球云资源的可用能力正在成为区分面向企业级AI服务的提供与仅出租GPU机架的提供商的关键标准。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">具体的买家群体未指明。</li><li data-kind="uncertain">所谓的“集成平台”具体包含哪些组件未详细列出。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ea538ed49a15c64">
+          <div class="item__head"><span class="item__no">24</span><h3 class="item__title"><a href="https://www.theinformation.com/articles/servicenow-builds-ai-weapon-target-salesforce-customers" target="_blank" rel="noopener noreferrer">ServiceNow 发布新工具以争夺 Salesforce 客户</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 02:30</span>
+            <a href="https://www.theinformation.com/articles/servicenow-builds-ai-weapon-target-salesforce-customers" target="_blank" rel="noopener noreferrer">theinformation.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">软件和 SaaS 股票在夏季上涨后重新出现下滑</li><li data-kind="fact">Anthropic 正在将其业务扩展至编程以外的工具，包括用于自动化法律、财务、人力资源和销售功能的工具</li><li data-kind="fact">ServiceNow 上周发布了一款新工具</li><li data-kind="fact">这款新工具旨在缩短企业切换至 ServiceNow 较新的客户关系管理软件所需的时间</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">现有的软件即服务（SaaS）公司正利用自己的 AI 工具相互竞争，这使得它们更容易从竞争对手那里抢夺客户</li><li data-kind="inference">ServiceNow 发布新工具的行为是对 Salesforce 等竞争对手的客户的一种进攻策略</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未明确说明 ServiceNow 新工具将切换时间从原来的多少缩短到了具体多少</li><li data-kind="uncertain">材料未明确说明 Salesforce 客户具体如何流失或 ServiceNow 工具对其造成的实际影响</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e267229063b046e">
+          <div class="item__head"><span class="item__no">25</span><h3 class="item__title"><a href="https://www.infoq.cn/article/rtBT5s1opGGazFgQi0YS?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">InfoQ 中文站刊发关于扩散智能替代自回归的专访</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e267229063b046e-m001-02952239.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e267229063b046e-m001-02952239.webp" alt="" loading="lazy" decoding="async" onerror="this.closest(.item__thumb).remove()"></button></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 00:32</span>
+            <a href="https://www.infoq.cn/article/rtBT5s1opGGazFgQi0YS?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">infoq.cn</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">InfoQ 中文站于 2026-01-20 北京时间发布了题为《杀入 Agent 主场之后：两年内部分替代自回归，扩散智能的底气从何而来？| 专访》的内容。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料仅包含“点击查看原文”的提示，缺乏关于扩散智能为何能替代自回归以及其技术底气的具体论述。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e976f5c78303d20">
+          <div class="item__head"><span class="item__no">26</span><h3 class="item__title"><a href="https://www.infoq.cn/article/6xqcZfMgJ99ZQiGFbjym?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">红帽探讨企业 AI 落地难题</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e976f5c78303d20-m001-51ddca2d.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e976f5c78303d20-m001-51ddca2d.webp" alt="" loading="lazy" decoding="async" onerror="this.closest(.item__thumb).remove()"></button></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 02:05</span>
+            <a href="https://www.infoq.cn/article/6xqcZfMgJ99ZQiGFbjym?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">infoq.cn</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">材料标题为“模型刚接进业务，CEO又要换新：红帽如何接住企业AI落地难题？”</li><li data-kind="fact">材料来源于 rss:infoq-cn</li><li data-kind="fact">材料时间为 2026-11-20 02:05 北京时间</li><li data-kind="fact">材料正文内容为“点击查看原文”</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该条目的主要信息需通过点击链接获取，当前文本未提供实质内容</li><li data-kind="inference">红帽可能涉及企业 AI 落地相关议题</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">红帽具体如何接住企业 AI 落地难题</li><li data-kind="uncertain">CEO 换新是否实际发生及其背景</li><li data-kind="uncertain">模型接入业务的具体进度与挑战</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ea03fac3444100e">
+          <div class="item__head"><span class="item__no">27</span><h3 class="item__title"><a href="https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/" target="_blank" rel="noopener noreferrer">开发者结合前沿 AI 代理与 Omniverse 库构建模拟应用</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/ea03fac3444100e-m001-152b2dc3.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/ea03fac3444100e-m001-152b2dc3.webp" alt="" loading="lazy" decoding="async" onerror="this.closest(.item__thumb).remove()"></button></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 01:00</span>
+            <a href="https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/" target="_blank" rel="noopener noreferrer">blogs.nvidia.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">开发者将前沿 AI 模型与 NVIDIA Omniverse 库结合，用于将模拟创意转化为可用应用</li><li data-kind="fact">该流程包括组装资产、连接物理与渲染引擎，以及验证场景行为是否符合预期</li><li data-kind="fact">开发者利用该组合构建应用以探索场景、调查故障并改进设计</li><li data-kind="fact">开发者通过指令引导 AI 代理执行相关任务</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">使用前沿 AI 代理与 NVIDIA Omniverse 库的组合有助于简化从概念到应用的工作流</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料中未详细说明所使用的具体前沿 AI 模型名称</li><li data-kind="uncertain">材料中未提供开发者引导 AI 代理的具体方法或技术细节</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ebc5f11df824220">
+          <div class="item__head"><span class="item__no">28</span><h3 class="item__title"><a href="https://aihot.news/items/q6r2ulb5g126486jgwts9a78l" target="_blank" rel="noopener noreferrer">Gemini 4 Neon 编写霞慕尼滑雪模拟器</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 01:37</span>
+            <a href="https://aihot.news/items/q6r2ulb5g126486jgwts9a78l" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Gemini 4 Neon 在 Antigravity 环境中从零编写了这款滑雪模拟器</li><li data-kind="fact">该模拟器包含约 10,000 行 JavaScript 代码和自定义着色器</li><li data-kind="fact">模拟器沿六条真实的勃朗峰线路开辟了全新雪道</li><li data-kind="fact">该作品实现了 120 Hz 滑雪物理引擎、动态雪痕、可触发雪崩和空间音频</li><li data-kind="fact">该作品没有使用任何预制的 3D 模型或音频文件</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">由于代码量和复杂度较高，该模拟器可能具有较好的视觉和听觉表现</li><li data-kind="inference">该模拟器为第一人称视角</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">Antigravity 平台的具体技术架构和运行环境未详细说明</li><li data-kind="uncertain">该模拟器的实际性能表现和硬件要求未提供</li><li data-kind="uncertain">六条勃朗峰线路的具体名称和位置未在材料中列出</li><li data-kind="uncertain">该作品是否已公开发布或仅供内部使用未明确说明</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e6ec0d9055bfd4e">
+          <div class="item__head"><span class="item__no">29</span><h3 class="item__title"><a href="https://aihot.news/items/i2hl934yb0cyjvutj7xn0hksq" target="_blank" rel="noopener noreferrer">GitHub 开源 Replica 设计工具与无障碍框架</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 00:00</span>
+            <a href="https://aihot.news/items/i2hl934yb0cyjvutj7xn0hksq" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">GitHub 推出了开源设计工具 Replica 和开源无障碍框架 Open Source Accessibility Framework。</li><li data-kind="fact">Replica 支持在设计系统内生成 AI 原型，并支持使用 GitHub Copilot 进行迭代。</li><li data-kind="fact">2026 年 GitHub 的公开贡献次数达到 25 亿次。</li><li data-kind="fact">2026 年 GitHub 公开贡献次数超过去年的 11.2 亿次的两倍。</li><li data-kind="fact">Open Source Accessibility Framework 包含 ACCESSIBILITY.md 文件。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">GitHub 正在通过开源设计工具与无障碍框架，强化其在开发者生态中的基础设施地位。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明 Replica 和 Open Source Accessibility Framework 的具体发布时间是 2026 年还是之前。</li><li data-kind="uncertain">材料未说明 25 亿次贡献统计的具体截止日期。</li><li data-kind="uncertain">材料未说明两个项目的具体开源许可证类型。</li><li data-kind="uncertain">材料未说明 ACCESSIBILITY.md 文件在仓库概览页显示的具体时间或触发条件。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e4d3bc776455cd6">
+          <div class="item__head"><span class="item__no">30</span><h3 class="item__title"><a href="https://siliconangle.com/2026/11/19/power-efficient-inference-chips-let-enterprises-own-ai-hardware-sc26/" target="_blank" rel="noopener noreferrer">AI推理服务器缩小以适配企业现有风冷机架</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 03:29</span>
+            <a href="https://siliconangle.com/2026/11/19/power-efficient-inference-chips-let-enterprises-own-ai-hardware-sc26/" target="_blank" rel="noopener noreferrer">siliconangle.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">节能推理芯片正成为企业运行AI的入场门槛</li><li data-kind="fact">AI应用正从模型构建转向日常运行</li><li data-kind="fact">昂贵的GPU机架及其液体冷却需求阻碍了企业自购硬件</li><li data-kind="fact">这一现状导致许多公司选择租用算力</li><li data-kind="fact">该市场现状为挑战者提供了发展空间</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">随着AI日常运行需求的增加，适配现有风冷机架的低功耗推理服务器将吸引更多企业自建算力</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">具体哪些厂商是文中提到的“挑战者”</li><li data-kind="uncertain">AI推理服务器缩小后的具体技术参数与性能指标</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ea49fca5679577d">
+          <div class="item__head"><span class="item__no">31</span><h3 class="item__title"><a href="https://aihot.news/items/v2hh5s3k6ru15plivpt8u4n18" target="_blank" rel="noopener noreferrer">Candid Health 用 ElevenAgents 处理医保拒赔电话</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 02:14</span>
+            <a href="https://aihot.news/items/v2hh5s3k6ru15plivpt8u4n18" target="_blank" rel="noopener noreferrer">aihot.news</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Candid Health 使用 ElevenAgents 拨打保险公司电话以核查拒赔原因。</li><li data-kind="fact">试点阶段共进行了 12,860 通电话。</li><li data-kind="fact">在试点案例中，59% 的案件同时确定了拒赔原因和后续处理步骤。</li><li data-kind="fact">该智能体基于 ElevenLabs 自主研发的语音与轮次转换模型构建。</li><li data-kind="fact">开发团队对智能体的语气、节奏及停顿时机进行了调整。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">ElevenLabs 的语音与轮次转换模型具备支持多轮复杂对话的技术能力。</li><li data-kind="inference">ElevenAgents 在医疗合规场景中的应用效率或准确性优于传统人工或部分自动化流程。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">除 59% 的案例外，剩余 41% 案例的具体处理结果及原因未在材料中说明。</li><li data-kind="uncertain">材料未提及该试点的时间周期及最终是否全面推广。</li><li data-kind="uncertain">材料未披露具体的语音模型名称或轮次转换模型的技术参数。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ee5a394617f1255">
+          <div class="item__head"><span class="item__no">32</span><h3 class="item__title"><a href="https://techcrunch.com/2026/11/19/former-alibaba-execs-everful-raises-48-5m-to-connect-retailers-with-chinese-factories/" target="_blank" rel="noopener noreferrer">前阿里高管 Sisi Song 创办的 Everful 完成 A 轮融资</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/ee5a394617f1255-m001-975418be.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/ee5a394617f1255-m001-975418be.webp" alt="" loading="lazy" decoding="async" onerror="this.closest(.item__thumb).remove()"></button></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>2 个独立来源</span>
+            <span>11-20 01:00</span>
+            <a href="https://techcrunch.com/2026/11/19/former-alibaba-execs-everful-raises-48-5m-to-connect-retailers-with-chinese-factories/" target="_blank" rel="noopener noreferrer">techcrunch.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">前阿里巴巴高管 Sisi Song 联合创办的 Everful 完成了 A 轮融资</li><li data-kind="fact">本轮融资金额为 4850 万美元</li><li data-kind="fact">Vertex Ventures Southeast Asia &amp; India 和 January Capital 为本轮融资领投方</li><li data-kind="fact">Square Peg 和 Lightspeed 为本轮融资参投方</li><li data-kind="fact">Everful 正在扩展其工厂直达采购平台</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">根据材料中提到的平台功能，Everful 旨在通过连接零售商与中国工厂优化供应链</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料标题提及使用 AI 连接零售商与中国工厂，但正文未详细描述具体使用的 AI 技术或模型</li><li data-kind="uncertain">材料未说明融资前的具体业务数据或市场占比</li><li data-kind="uncertain">Sisi Song 在阿里巴巴的具体职位或过往经历未在材料中详细说明</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e047597ee80c986">
+          <div class="item__head"><span class="item__no">33</span><h3 class="item__title"><a href="https://blog.google/innovation-and-ai/technology/ai/dialogues-walter-isaacson/" target="_blank" rel="noopener noreferrer">Walter Isaacson 在 Google 探讨 AI 时代的创造力</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e047597ee80c986-m001-0c174e71.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e047597ee80c986-m001-0c174e71.webp" alt="" loading="lazy" decoding="async" onerror="this.closest(.item__thumb).remove()"></button></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 01:00</span>
+            <a href="https://blog.google/innovation-and-ai/technology/ai/dialogues-walter-isaacson/" target="_blank" rel="noopener noreferrer">blog.google</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Walter Isaacson 加入 Google 参与讨论。</li><li data-kind="fact">讨论主题为历史上最伟大的创新者如何激发 AI 时代的创造力与人类判断力。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该内容可能涉及对历史创新者的案例分析以引申至当前 AI 语境。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">具体的讨论形式（如演讲、访谈）未详细说明。</li><li data-kind="uncertain">“历史上最伟大的创新者”具体指哪些人物未在材料中列出。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e3ef7884041ae12">
+          <div class="item__head"><span class="item__no">34</span><h3 class="item__title"><a href="https://perishablepress.com/chrome-ai-wasting-much-bandwidth/" target="_blank" rel="noopener noreferrer">Chrome AI 功能浪费大量带宽</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 00:54</span>
+            <a href="https://perishablepress.com/chrome-ai-wasting-much-bandwidth/" target="_blank" rel="noopener noreferrer">perishablepress.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Chrome AI 功能浪费大量带宽。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该现象引发了社区的关注与讨论。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">Chrome AI 功能具体浪费了多少带宽尚未明确。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e06190c8cba2f41">
+          <div class="item__head"><span class="item__no">35</span><h3 class="item__title"><a href="https://www.youtube.com/watch?v=lwfewYL7X0o" target="_blank" rel="noopener noreferrer">Jacob Coxon 与 Robin Hanson 辩论政府是否应放缓前沿 AI</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 02:47</span>
+            <a href="https://www.youtube.com/watch?v=lwfewYL7X0o" target="_blank" rel="noopener noreferrer">youtube.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Jacob Coxon 和 Robin Hanson 就政府是否应放缓前沿 AI 进行了辩论</li><li data-kind="fact">该辩论内容以视频形式发布</li><li data-kind="fact">该条目在 2026-11-20 02:47 北京时间被收录于 hnrss-org-frontpage</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该辩论涉及对前沿 AI 监管政策的讨论</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">Jacob Coxon 和 Robin Hanson 在辩论中的具体立场未明确</li><li data-kind="uncertain">辩论的具体时间、地点和形式细节未提供</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e95967e842751a0">
+          <div class="item__head"><span class="item__no">36</span><h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiSkFVX3lxTE80Y3VsNTYwb2NwT0c4YTk5cHR2SEVDT0pFSDFMZllQWUFNaTRPcDFHcXlnQ0dRTjUwWm1jWERyWlNkMlF6dkFfZC13?oc=5" target="_blank" rel="noopener noreferrer">江西运用 AI 技术使大件运输审批时限缩短 80%</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 03:32</span>
+            <a href="https://news.google.com/rss/articles/CBMiSkFVX3lxTE80Y3VsNTYwb2NwT0c4YTk5cHR2SEVDT0pFSDFMZllQWUFNaTRPcDFHcXlnQ0dRTjUwWm1jWERyWlNkMlF6dkFfZC13?oc=5" target="_blank" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">江西大件运输审批时限缩短了 80%。</li><li data-kind="fact">江西在大件运输领域应用了 AI 技术。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">基于审批时限的显著缩短，可推断 AI 技术的应用提升了江西大件运输的管理效率或流程处理速度。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明具体缩短后的审批时限是多少天或小时。</li><li data-kind="uncertain">材料未指明由哪个具体政府部门或机构负责该审批流程的 AI 化改造。</li><li data-kind="uncertain">材料未提及所使用的具体 AI 模型或技术平台名称。</li><li data-kind="uncertain">材料未说明该政策覆盖的具体时间段或试点范围。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-efe40a9bc27ce23">
+          <div class="item__head"><span class="item__no">37</span><h3 class="item__title"><a href="https://aws.amazon.com/blogs/machine-learning/optimize-ai-economics-on-amazon-bedrock-with-accentures-sequenced-approach/" target="_blank" rel="noopener noreferrer">Accenture提供优化Amazon Bedrock AI成本的六项策略</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/efe40a9bc27ce23-m001-9d8e338f.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/efe40a9bc27ce23-m001-9d8e338f.webp" alt="" loading="lazy" decoding="async" onerror="this.closest(.item__thumb).remove()"></button></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 02:48</span>
+            <a href="https://aws.amazon.com/blogs/machine-learning/optimize-ai-economics-on-amazon-bedrock-with-accentures-sequenced-approach/" target="_blank" rel="noopener noreferrer">aws.amazon.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">企业扩大Amazon Bedrock上的AI规模时，即使单token价格下降，token总支出仍可能增长。</li><li data-kind="fact">该帖子介绍了六个可组合的优化杠杆。</li><li data-kind="fact">文章展示了Accenture如何在四个客户案例中应用这些优化方法。</li><li data-kind="fact">文章建议了为自身工作负载减少AI token支出的实施顺序。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">通过采用Accenture推荐的分步优化策略，企业可能有效抑制因使用规模扩大导致的token总支出上涨。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未具体列出六个可组合优化杠杆的内容。</li><li data-kind="uncertain">材料未说明四个客户案例的具体名称或行业背景。</li><li data-kind="uncertain">材料未提供实施该方法后具体的成本节省数据或比例。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e390949dcafa08f">
+          <div class="item__head"><span class="item__no">38</span><h3 class="item__title"><a href="https://the-decoder.com/ai-industry-growth-remains-strong-but-the-pace-is-slowing/" target="_blank" rel="noopener noreferrer">Ramp AI Index 显示 AI 行业增长强劲但节奏放缓</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e390949dcafa08f-m001-0b5affa5.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e390949dcafa08f-m001-0b5affa5.webp" alt="" loading="lazy" decoding="async" onerror="this.closest(.item__thumb).remove()"></button></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 03:28</span>
+            <a href="https://the-decoder.com/ai-industry-growth-remains-strong-but-the-pace-is-slowing/" target="_blank" rel="noopener noreferrer">the-decoder.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">根据 Ramp AI Index，AI 模型 Token 价格在六周内下跌 21%</li><li data-kind="fact">AI 模型使用量创下历史新高</li><li data-kind="fact">Anthropic 占据近 59% 的 Token 支出份额</li><li data-kind="fact">Ramp、Stripe 和 OpenRouter 的数据均显示 AI 行业仍在增长</li><li data-kind="fact">各数据源显示 AI 行业收入动能正在冷却</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">Token 价格下跌与使用量新高并存，可能表明市场通过降价策略换取了规模扩张</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未提供 Token 价格下跌的具体时间范围（仅提及‘六周内’）</li><li data-kind="uncertain">材料未明确‘收入动能冷却’的具体量化指标或具体数值</li><li data-kind="uncertain">材料未说明 Anthropic 占据近 59% Token 支出的统计截止时间点</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e2849821db5a57c">
+          <div class="item__head"><span class="item__no">39</span><h3 class="item__title"><a href="https://www.infoq.cn/video/Cfrl4QYhD3dHMuhGt6hw?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">InfoQ 报道 Agent 从人人可用到全栈工程进化</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 00:16</span>
+            <a href="https://www.infoq.cn/video/Cfrl4QYhD3dHMuhGt6hw?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">infoq.cn</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">InfoQ 发布了一篇标题为《Agent 实干派：从人人可用到全栈工程进化 | InfoQ 小编探班》的文章</li><li data-kind="fact">该文章发布于 2026-11-20 00:16 北京时间</li><li data-kind="fact">文章内容仅显示为“点击查看原文”</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">基于文章标题，可以推断该内容涉及 Agent 技术或产品形态向工程化方向发展的趋势</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未提供文章的具体正文内容，无法确认具体的技术细节或案例</li><li data-kind="uncertain">无法确认文中提到的“全栈工程进化”具体指代哪些技术栈或功能模块</li><li data-kind="uncertain">无法确认“实干派”在文中具体指代哪款产品或哪类应用模式</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ed5cf0974651b81">
+          <div class="item__head"><span class="item__no">40</span><h3 class="item__title"><a href="https://www.engadget.com/2322205/ubisoft-lays-off-166-more-workers-opens-a-generative-ai-studio/" target="_blank" rel="noopener noreferrer">Ubisoft裁员166人并开设生成式AI工作室</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/ed5cf0974651b81-m001-727707b9.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/ed5cf0974651b81-m001-727707b9.webp" alt="" loading="lazy" decoding="async" onerror="this.closest(.item__thumb).remove()"></button></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 03:06</span>
+            <a href="https://www.engadget.com/2322205/ubisoft-lays-off-166-more-workers-opens-a-generative-ai-studio/" target="_blank" rel="noopener noreferrer">engadget.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Ubisoft裁减166名员工</li><li data-kind="fact">Ubisoft开设了一个生成式AI工作室</li><li data-kind="fact">Rockstar Games的开发人员担心裁员</li><li data-kind="fact">《GTA 6》赚了数十亿美元</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">《GTA 6》的高收入与Rockstar Games员工的裁员担忧同时存在</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未提供Ubisoft裁员的具体时间</li><li data-kind="uncertain">材料未提供生成式AI工作室的具体名称</li><li data-kind="uncertain">材料未解释Rockstar Games员工为何担心裁员</li><li data-kind="uncertain">材料未提供《GTA 6》具体的收入金额</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ef5e29f45d8b315">
+          <div class="item__head"><span class="item__no">41</span><h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxPbV9kX3dFZjNreFNEM0hISFk2SlBpNUhtTmxuaUViOHVNeW96UlBhSHprZENGbHVDZEpOaDEwR0xvU0NLMWNFSGQ2LU9HN3JUR2tNaHlQUzJVUHNMQW9WbkExdWh6NllwM09pdWh5cUx0X2lLZ1QyMmoxbGtQRGI2YXlPTWhUdw?oc=5" target="_blank" rel="noopener noreferrer">文章建议亚太经济体在AI领域进行差异化分工</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 00:35</span>
+            <a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxPbV9kX3dFZjNreFNEM0hISFk2SlBpNUhtTmxuaUViOHVNeW96UlBhSHprZENGbHVDZEpOaDEwR0xvU0NLMWNFSGQ2LU9HN3JUR2tNaHlQUzJVUHNMQW9WbkExdWh6NllwM09pdWh5cUx0X2lLZ1QyMmoxbGtQRGI2YXlPTWhUdw?oc=5" target="_blank" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">21财经发布了一篇标题为《让AI广泛赋能，亚太经济体要有差异化分工丨潮涌亚太》的文章</li><li data-kind="fact">该文章发表于2026年11月20日</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该文章认为亚太各经济体在推动AI发展时应采取不同的策略或承担不同的角色</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未提供具体的差异化分工方案或涉及的特定经济体</li><li data-kind="uncertain">材料未说明提出该建议的具体作者或机构</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ebc1024238c7d65">
+          <div class="item__head"><span class="item__no">42</span><h3 class="item__title"><a href="https://siliconangle.com/2026/11/19/apache-iceberg-intelligent-storage-help-ai-reach-production-sc26/" target="_blank" rel="noopener noreferrer">Hitachi Vantara 押注智能存储弥合 AI 从试点到生产的差距</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 02:39</span>
+            <a href="https://siliconangle.com/2026/11/19/apache-iceberg-intelligent-storage-help-ai-reach-production-sc26/" target="_blank" rel="noopener noreferrer">siliconangle.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Hitachi Vantara 认为更智能的存储可以帮助弥合 AI 从试点到生产的差距。</li><li data-kind="fact">正在推动 AI 从试点走向生产的企业发现，数据而非 GPU 是最难的部分。</li><li data-kind="fact">Apache Iceberg 等开放表格式被视为解决部分问题的方案之一。</li><li data-kind="fact">对 AI 基础设施的需求显示出很少放缓的迹象。</li><li data-kind="fact">企业所需的大量信息仍然是分散的、缺乏治理的且难以触及的。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">由于数据管理比 GPU 资源更难以解决，且现有数据处于分散和无治理状态，Hitachi Vantara 可能希望通过提供智能化的存储解决方案来帮助企业整合这些底层数据，从而加速 AI 项目的落地。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料中未具体说明 Hitachi Vantara 推出的“更智能的存储”具体产品功能或技术指标。</li><li data-kind="uncertain">材料中未提供关于数据分散、无治理导致的具体成本或效率损失的数据。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e29f6f84410b26b">
+          <div class="item__head"><span class="item__no">43</span><h3 class="item__title"><a href="https://ounapuu.ee/posts/2026/11/19/unsafeguards/" target="_blank" rel="noopener noreferrer">HN 热议帖子 Fuck Your AI Safeguards 获 239 分</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e29f6f84410b26b-m001-c53c77b0.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/e29f6f84410b26b-m001-c53c77b0.webp" alt="" loading="lazy" decoding="async" onerror="this.closest(.item__thumb).remove()"></button></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="multi_source">多源交叉验证</span>
+            <span>2 个独立来源</span>
+            <span>11-20 00:30</span>
+            <a href="https://ounapuu.ee/posts/2026/11/19/unsafeguards/" target="_blank" rel="noopener noreferrer">ounapuu.ee</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Hacker News 上有一篇标题为 Fuck Your AI Safeguards 的帖子</li><li data-kind="fact">该帖子获得了 239 点积分</li><li data-kind="fact">该帖子包含 84 条评论</li><li data-kind="fact">帖子来源显示为 rss:hnrss-org-frontpage</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该帖子在 Hacker News 社区引发了较高程度的讨论热度</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">帖子具体内容的详细观点未提供，仅知道标题</li><li data-kind="uncertain">评论的具体内容未提供</li><li data-kind="uncertain">文章 URL 和评论 URL 的具体地址未提供</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-ea49d655214a09d">
+          <div class="item__head"><span class="item__no">44</span><h3 class="item__title"><a href="https://aws.amazon.com/blogs/machine-learning/from-learning-to-leaderboard-how-cisco-upskilled-1200-engineers-in-agentic-ai-with-aws-ai-league/" target="_blank" rel="noopener noreferrer">Cisco 借助 AWS AI League 为 1200 名工程师提升 agentic AI 技能</a></h3></div>
+          <div class="item__images"><button type="button" class="item__thumb" data-full="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/ea49d655214a09d-m001-fc2c0abb.webp" aria-label="放大图片"><img src="https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-20/ea49d655214a09d-m001-fc2c0abb.webp" alt="" loading="lazy" decoding="async" onerror="this.closest(.item__thumb).remove()"></button></div>
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 02:26</span>
+            <a href="https://aws.amazon.com/blogs/machine-learning/from-learning-to-leaderboard-how-cisco-upskilled-1200-engineers-in-agentic-ai-with-aws-ai-league/" target="_blank" rel="noopener noreferrer">aws.amazon.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">Cisco 和 AWS 利用 Cisco Transformation Fest 和 AWS AI League 将动手 AI 学习转化为建设文化。</li><li data-kind="fact">一名 Cisco 工程师赢得了 2025 年 AWS AI League 全球冠军。</li><li data-kind="fact">1200 名工程师参加了 2026 年的比赛。</li><li data-kind="fact">该帖子分享了 Cisco 的历程、基于 Amazon Bedrock AgentCore 构建的 2026 年获胜 agent 的经验，以及如何举办自己的联赛。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">通过竞赛活动，Cisco 将 AI 学习融入了工程师的日常工作中。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">材料未说明 2026 年赛事的具体举办时间和地点。</li><li data-kind="uncertain">材料未详细说明 Cisco 工程师如何具体通过 Amazon Bedrock AgentCore 构建获胜 agent。</li><li data-kind="uncertain">材料未提供举办自己联赛的具体步骤细节。</li></ul></div></div>
+          
+        </li>
+        <li class="item" id="e-e0666fe06ceea37">
+          <div class="item__head"><span class="item__no">45</span><h3 class="item__title"><a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE1jZlFkX1lTRG5NM3p6XzRud1ViLTQzRTJxU3VsYWFxaWVYRldHYVV2YmhhSUJ0R3VoRFYwVXBSQ3U0Wm1XeFlQSQ?oc=5" target="_blank" rel="noopener noreferrer">ProBio 邀请您参加上海站 AI×Bio 研讨会</a></h3></div>
+          
+          
+          <div class="item__meta">
+            <span class="badge" data-level="single_source">单一来源</span>
+            
+            <span>11-20 02:40</span>
+            <a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE1jZlFkX1lTRG5NM3p6XzRud1ViLTQzRTJxU3VsYWFxaWVYRldHYVV2YmhhSUJ0R3VoRFYwVXBSQ3U0Wm1XeFlQSQ?oc=5" target="_blank" rel="noopener noreferrer">news.google.com</a>
+          </div>
+          <div class="facts"><div class="factcard" data-kind="fact"><p class="facts__label" data-kind="fact">事实</p><ul><li data-kind="fact">ProBio 邀请参加 AI×Bio 前沿技术研讨会。</li><li data-kind="fact">研讨会地点为上海张江。</li><li data-kind="fact">研讨会时间为下周二。</li></ul></div><div class="factcard" data-kind="inference"><p class="facts__label" data-kind="inference">推断</p><ul><li data-kind="inference">该活动旨在促进人工智能与生物领域的技术交流。</li></ul></div><div class="factcard" data-kind="uncertain"><p class="facts__label" data-kind="uncertain">不确定</p><ul><li data-kind="uncertain">文中提到的“下周二”没有具体日期，无法确认确切的举办日历日。</li><li data-kind="uncertain">会议的具体议程、演讲嘉宾名单及报名方式未在材料中提供。</li></ul></div></div>
+          
+        </li>
+        </ol>
+      </section>
+
+          <section class="section src-cover" id="coverage">
+        <h2 class="section__title">具名源收录<span class="section__count">全部条目均已打分排序</span></h2>
+        <ul class="src-cover__list"><li><b>aibase</b> 2 条</li><li><b>aihot 精选</b> 2 条</li><li><b>aihot 全量</b> 2 条</li></ul>
+        <p class="src-cover__zero">本期未收录：橘鸦、AINewsLog、aibase 日报、aihot 日报、daily.ai225</p>
+      </section>
+
+    
+
+    <nav class="pager"><a href="2026-11-19.html"><span>上一期</span>2026-11-19</a><span></span></nav>
+
+    <footer class="foot">
+      <p>本期从 193 个已注册信息源采集，
+      30 个源提供了窗口内的内容，
+      0 个失败，0 个跳过。
+      共 224 条条目进入分析，
+      75 条被判定为重复。</p>
+      <p>大模型：129 次调用 / 147,476 token。
+      摘要由 AI 从原始来源整理，事实、推断与不确定项已分列；
+      <strong>每个条目的链接都来自采集记录，未经模型生成</strong>。请以原始来源为准。</p>
+<p>生成于 2026-11-20 04:13 北京时间</p>
+    </footer>
+  </main>
+
+      <nav class="toc" aria-label="目录">
+        <button class="toc__grip" type="button" data-resize="toc"
+                aria-label="拖动调整目录宽度" title="拖动调整宽度（双击恢复默认）"></button>
+        <p class="toc__title">今日目录</p>
+        <div class="toc__nav">
+          <a href="#overview" class="toc__overview">概览</a>
+          <a href="#e-e5e25a054bc41cc"><span class="toc__no">01</span>谷歌在 Gemini API 中推出 Tool Retrieval</a>
+          <a href="#e-e6eeeb06662671c"><span class="toc__no">02</span>Reuters：Meta智能体Muse混淆对话泄露用户隐私数据</a>
+          <a href="#e-e55aa30a4746680"><span class="toc__no">03</span>Amazon 论文：环境变化后 Agent 技能选择性维护可恢复价值</a>
+          <a href="#e-e11f4fb30301adc"><span class="toc__no">04</span>Perplexity 发布 Orchestrator API 支持跨供应商故障转移</a>
+          <a href="#e-e7a6f12099a0981"><span class="toc__no">05</span>Jim Fan 演示 GR00T 2 控制真实灵巧手</a>
+          <a href="#e-e98789ec212aff7"><span class="toc__no">06</span>Claude 解决黑洞物理领域两个公开难题</a>
+          <a href="#e-e31c7addcd1fefb"><span class="toc__no">07</span>fal 上线可灵 v4 视频生成入口</a>
+          <a href="#e-e49feb8c212bb25"><span class="toc__no">08</span>AI芯片热潮助韩国出口破万亿美元</a>
+          <a href="#e-e41fd6e7a7d1bdc"><span class="toc__no">09</span>芯片断供与云服务中断重创中国科技企业</a>
+          <a href="#e-ea12b18714fbd5f"><span class="toc__no">10</span>MegaRobo 融资 2 亿美元加速科学发现</a>
+          <a href="#e-e36ef74bbab77af"><span class="toc__no">11</span>Meta因AI排放增长45%重新评估2030年净零排放目标</a>
+          <a href="#e-ef3c4d4e1cecb11"><span class="toc__no">12</span>马斯克称 Optimus 有望 12 至 18 个月内处理家务</a>
+          <a href="#e-ec3368aee11f2df"><span class="toc__no">13</span>Cognition展示Devin Bots在Exa的工程自动化用法</a>
+          <a href="#e-e63cd7d4e55f36f"><span class="toc__no">14</span>观点网称阿里AI云跨过拐点芯片与算力挑战开始</a>
+          <a href="#e-e7972b57a239fb0"><span class="toc__no">15</span>韩国LEET满分考生李振宇因AI作弊质疑离世</a>
+          <a href="#e-e41b47bc2716053"><span class="toc__no">16</span>芯片管制与云通道关闭致中国科技公司受冲击</a>
+          <a href="#e-e5036bf133b5941"><span class="toc__no">17</span>Amazon SageMaker AI 推出跨 Region 推理路由功能</a>
+          <a href="#e-e2f77cb4cef1101"><span class="toc__no">18</span>D-Matrix 推出 Raptor 芯片以解决推理内存带宽问题</a>
+          <a href="#e-e3c11df6b749cf0"><span class="toc__no">19</span>Nat. Biotechnol. 探讨 AI 巨头是否接管药物发现</a>
+          <a href="#e-eab842d70058ce5"><span class="toc__no">20</span>Skyflow 与 Amazon Bedrock AgentCore Gatew…</a>
+          <a href="#e-ed711b514905996"><span class="toc__no">21</span>Perplexity 上线电话语音联系 Teammates 功能</a>
+          <a href="#e-e810b681a30d40c"><span class="toc__no">22</span>Databricks Genie Code 支持批量迁移 BI 报表</a>
+          <a href="#e-e87130a93612039"><span class="toc__no">23</span>Agentic AI驱动Neocloud竞争转向全球平台</a>
+          <a href="#e-ea538ed49a15c64"><span class="toc__no">24</span>ServiceNow 发布新工具以争夺 Salesforce 客户</a>
+          <a href="#e-e267229063b046e"><span class="toc__no">25</span>InfoQ 中文站刊发关于扩散智能替代自回归的专访</a>
+          <a href="#e-e976f5c78303d20"><span class="toc__no">26</span>红帽探讨企业 AI 落地难题</a>
+          <a href="#e-ea03fac3444100e"><span class="toc__no">27</span>开发者结合前沿 AI 代理与 Omniverse 库构建模拟应用</a>
+          <a href="#e-ebc5f11df824220"><span class="toc__no">28</span>Gemini 4 Neon 编写霞慕尼滑雪模拟器</a>
+          <a href="#e-e6ec0d9055bfd4e"><span class="toc__no">29</span>GitHub 开源 Replica 设计工具与无障碍框架</a>
+          <a href="#e-e4d3bc776455cd6"><span class="toc__no">30</span>AI推理服务器缩小以适配企业现有风冷机架</a>
+          <a href="#e-ea49fca5679577d"><span class="toc__no">31</span>Candid Health 用 ElevenAgents 处理医保拒赔电话</a>
+          <a href="#e-ee5a394617f1255"><span class="toc__no">32</span>前阿里高管 Sisi Song 创办的 Everful 完成 A 轮融资</a>
+          <a href="#e-e047597ee80c986"><span class="toc__no">33</span>Walter Isaacson 在 Google 探讨 AI 时代的创造力</a>
+          <a href="#e-e3ef7884041ae12"><span class="toc__no">34</span>Chrome AI 功能浪费大量带宽</a>
+          <a href="#e-e06190c8cba2f41"><span class="toc__no">35</span>Jacob Coxon 与 Robin Hanson 辩论政府是否应放缓前沿 AI</a>
+          <a href="#e-e95967e842751a0"><span class="toc__no">36</span>江西运用 AI 技术使大件运输审批时限缩短 80%</a>
+          <a href="#e-efe40a9bc27ce23"><span class="toc__no">37</span>Accenture提供优化Amazon Bedrock AI成本的六项策略</a>
+          <a href="#e-e390949dcafa08f"><span class="toc__no">38</span>Ramp AI Index 显示 AI 行业增长强劲但节奏放缓</a>
+          <a href="#e-e2849821db5a57c"><span class="toc__no">39</span>InfoQ 报道 Agent 从人人可用到全栈工程进化</a>
+          <a href="#e-ed5cf0974651b81"><span class="toc__no">40</span>Ubisoft裁员166人并开设生成式AI工作室</a>
+          <a href="#e-ef5e29f45d8b315"><span class="toc__no">41</span>文章建议亚太经济体在AI领域进行差异化分工</a>
+          <a href="#e-ebc1024238c7d65"><span class="toc__no">42</span>Hitachi Vantara 押注智能存储弥合 AI 从试点到生产的差距</a>
+          <a href="#e-e29f6f84410b26b"><span class="toc__no">43</span>HN 热议帖子 Fuck Your AI Safeguards 获 239 分</a>
+          <a href="#e-ea49d655214a09d"><span class="toc__no">44</span>Cisco 借助 AWS AI League 为 1200 名工程师提升 age…</a>
+          <a href="#e-e0666fe06ceea37"><span class="toc__no">45</span>ProBio 邀请您参加上海站 AI×Bio 研讨会</a>
+        </div>
+      </nav>
+</div>
+
+<dialog class="search" id="search-dialog" aria-label="搜索往期内容">
+  <div class="search__form">
+    <input type="search" placeholder="搜索往期内容…" aria-label="搜索关键词" autocomplete="off">
+    <kbd>Esc</kbd>
+  </div>
+  <ul class="search__results"></ul>
+</dialog>
+
+<script type="application/json" id="calendar-data">{"dates": ["2026-11-20", "2026-11-19", "2026-11-18", "2026-11-17", "2026-11-16", "2026-11-15", "2026-11-14", "2026-11-13", "2026-11-12", "2026-11-11", "2026-11-10", "2026-11-09", "2026-11-08", "2026-11-07", "2026-11-06", "2026-11-05", "2026-11-04", "2026-11-03", "2026-11-02", "2026-11-01", "2026-10-31", "2026-10-30", "2026-10-29", "2026-10-28", "2026-10-27", "2026-10-26", "2026-10-25", "2026-10-24", "2026-10-23", "2026-10-22", "2026-10-21", "2026-10-20", "2026-10-19", "2026-10-18", "2026-10-17", "2026-10-16", "2026-10-15", "2026-10-14"], "current": "2026-11-20", "today": "2026-11-20"}</script>
+<script type="application/json" id="search-index">[{"date": "2026-11-20", "items": [{"t": "Introducing Tool Retrieval in the Gemini API", "s": "rss:official-googleai"}, {"t": "路透报道：Meta AI 智能体 Muse 混淆对话并泄露用户隐私数据", "s": "rss:aihot-cat-industry, rss:aihot-demo-techcrunch-ai"}, {"t": "Amazon 论文：环境变化会让 Agent 技能失效，选择性维护可恢复价值", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "Perplexity 发布 Orchestrator API，支持跨供应商故障转移与模型路由", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "Jim Fan 演示 GR00T 2 端到端控制真实灵巧手", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "Claude solves two open problems in the physics of black holes", "s": "api:hn-algolia-com-search, rss:hnrss-org-frontpage"}, {"t": "fal 开放可灵 v4 视频生成入口", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "AI芯片热潮推动韩国出口突破万亿美元，晋升全球第四 - RFI", "s": "api:news-google-com-search"}, {"t": "Chinese tech firms face a double hit as chip shipments stop and overseas cloud access disappears", "s": "rss:aihot-demo-the-decoder"}, {"t": "China-based AI robotics biotech firm MegaRobo raises $200M to accelerate scientific discovery", "s": "rss:siliconangle"}, {"t": "Meta rethinks climate goal as AI emissions soar 45%", "s": "rss:axios, api:news-google-com-search"}, {"t": "特斯拉机器人瞄准家庭场景，马斯克称明年有望收拾脏盘子、倒垃圾", "s": "api:aibase-ai-news"}, {"t": "Cognition 展示 Devin Bots 在 Exa 的工程自动化用法", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "观点直击 | 阿里AI云跨过了拐点 芯片与算力大考才刚开始 - 观点网", "s": "api:news-google-com-search"}, {"t": "满分学霸被疑 AI 作弊后离世，韩国考场紧急封杀智能眼镜", "s": "api:aibase-ai-news"}, {"t": "芯片停运叠加海外云通道关闭，中国科技公司面临双重冲击", "s": "rss:aihot-cat-industry, rss:aihot-news"}, {"t": "Keep inference running through regional capacity shortfalls with cross-Region inference routing in Amazon SageMaker AI", "s": "rss:aihot-demo-aws-machine-learning-blog"}, {"t": "D-Matrix bets stacked DRAM can solve inference’s memory bandwidth problem", "s": "rss:siliconangle"}, {"t": "Nat. Biotechnol. | AI科技巨头正在“接管”药物发现吗？ - 智源社区", "s": "api:news-google-com-search"}, {"t": "Protect agent tool calls with Skyflow and Amazon Bedrock AgentCore Gateway", "s": "rss:aihot-demo-aws-machine-learning-blog, rss:aihot-news"}, {"t": "Perplexity 支持电话语音联系队友", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "Databricks 用 Genie Code 批量迁移 Tableau 和 Power BI 报表至 AI/BI", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "Agentic AI pushes the neocloud race beyond GPU counts toward global platforms", "s": "rss:siliconangle"}, {"t": "ServiceNow Builds an AI Weapon to Target Salesforce Customers", "s": "rss:the-information"}, {"t": "杀入Agent主场之后：两年内部分替代自回归，扩散智能的底气从何而来？| 专访", "s": "rss:infoq-cn"}, {"t": "模型刚接进业务，CEO又要换新：红帽如何接住企业AI落地难题？", "s": "rss:infoq-cn"}, {"t": "Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents", "s": "rss:aihot-demo-nvidia-blog"}, {"t": "Gemini 4 Neon 打造霞慕尼滑雪模拟器", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "GitHub 开源两个新项目：Replica 设计工具与开源无障碍框架", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "AI inference servers shrink to fit the air-cooled racks enterprises already run", "s": "rss:siliconangle"}, {"t": "ElevenAgents 助 Candid Health 处理医保拒赔电话", "s": "rss:aihot-news, rss:aihot-news-all"}, {"t": "前阿里高管创办的 Everful 完成 4850 万美元 A 轮融资，用 AI 连接零售商与中国工厂", "s": "rss:aihot-demo-techcrunch-ai, rss:aihot-news"}, {"t": "Walter Isaacson on curiosity and creativity in the AI age.", "s": "rss:official-googleai"}, {"t": "Chrome AI features wasting much bandwidth", "s": "rss:hnrss-org-frontpage"}, {"t": "Should governments slow frontier AI? Jacob Coxon and Robin Hanson debate [video]", "s": "rss:hnrss-org-frontpage"}, {"t": "审批时限缩短80%！AI赋能江西大件运输“跑”出新速度 - 凤凰网", "s": "api:news-google-com-search"}, {"t": "Optimize AI economics on Amazon Bedrock with Accenture’s sequenced approach", "s": "rss:aihot-demo-aws-machine-learning-blog"}, {"t": "AI industry growth remains strong, but the pace is slowing", "s": "rss:aihot-demo-the-decoder"}, {"t": "Agent 实干派：从人人可用到全栈工程进化 | InfoQ 小编探班", "s": "rss:infoq-cn"}, {"t": "Ubisoft lays off 166 more workers, opens a generative AI studio", "s": "rss:engadget"}, {"t": "让AI广泛赋能，亚太经济体要有差异化分工丨潮涌亚太 - 21财经", "s": "api:news-google-com-search"}, {"t": "Hitachi Vantara bets smarter storage can close AI’s pilot-to-production gap", "s": "rss:siliconangle"}, {"t": "Fuck Your AI Safeguards", "s": "api:hn-algolia-com-search, rss:hnrss-org-frontpage"}, {"t": "From learning to leaderboard: How Cisco upskilled 1,200 engineers in agentic AI with AWS AI League", "s": "rss:aihot-demo-aws-machine-learning-blog"}, {"t": "下周二张江见丨ProBio邀您共赴AI×Bio 前沿技术研讨会·上海站 - 智源社区", "s": "api:news-google-com-search"}]}]</script>
+<script src="assets/motion.js" defer></script>
+<div class="lightbox" id="lightbox" hidden>
+  <button type="button" class="lightbox__close" aria-label="关闭">×</button>
+  <img class="lightbox__img" alt="">
+</div>
+<script>
+// Click a picture and it opens in place. No new tab, no scroll jump, no history entry.
+// Escape, the close button, or a click on the backdrop dismisses it.
+(function () {
+  var box = document.getElementById("lightbox");
+  if (!box) return;
+  var img = box.querySelector(".lightbox__img");
+  function open(src) {
+    img.src = src;
+    box.hidden = false;
+    document.body.classList.add("is-lightbox");
+  }
+  function close() {
+    box.hidden = true;
+    img.removeAttribute("src");
+    document.body.classList.remove("is-lightbox");
+  }
+  document.addEventListener("click", function (e) {
+    var thumb = e.target.closest(".item__thumb");
+    if (thumb) { e.preventDefault(); open(thumb.dataset.full); return; }
+    if (e.target === box || e.target.closest(".lightbox__close")) close();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !box.hidden) close();
+  });
+})();
+</script>
+</body>
+</html>
