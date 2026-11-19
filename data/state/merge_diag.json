@@ -1,21 +1,50 @@
 {
-  "generated_at": "2026-11-19T01:59:04.250295+00:00",
+  "generated_at": "2026-11-19T04:51:09.579018+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 287,
-  "batches": 8,
-  "calls": 8,
-  "merged_groups": 1,
-  "merged_events": 1,
-  "rejected_groups": 0,
+  "input_events": 306,
+  "batches": 9,
+  "calls": 9,
+  "merged_groups": 10,
+  "merged_events": 14,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "网传“监管要求基金公司上报全部产品AI敞口” 证监会新闻发言人回应 - 东方财富",
+      "kept": "The Gemini app is now available on lower-memory Android devices.",
       "merged": [
-        "牛市早报｜监管要求基金公司上报全部产品AI敞口？证监会：不属实 - ThePaper.cn"
+        "谷歌面向低内存安卓设备开放 Gemini 应用，最低支持 2GB 内存"
       ],
-      "why": "均为证监会回应“监管要求基金公司上报AI敞口”的辟谣"
+      "why": "谷歌向低内存安卓设备开放Gemini应用"
+    },
+    {
+      "kept": "2026-11-19 AI 日报 · Gemini 4 Neon 发布，Anthropic IPO 定价 83 美元",
+      "merged": [
+        "indigo 评 Google Neon 编码指标第一却被上时代 harness 拖累"
+      ],
+      "why": "均为对GPT-6.2 Astra/Sol模型评测或跑分报道"
+    },
+    {
+      "kept": "黄仁勋辞职后首次财报电话会：Nvidia 新 CEO Colette Kress 收紧支出并回应回归呼声",
+      "merged": [
+        "Nvidia Holds Its First All Hands After Jensen Huang’s Depart",
+        "Palmer Luckey 就 Nvidia CEO 人事变动发表看法"
+      ],
+      "why": "关于黄仁勋离职后英伟达CEO变动的报道"
+    },
+    {
+      "kept": "可灵 Kling Image 4.0 登 Artificial Analysis 文生图榜第 7、图像编辑榜第 6",
+      "merged": [
+        "可灵 Image 4.0 图像能力展示"
+      ],
+      "why": "均为可灵Kling Image 4.0发布及评测"
+    },
+    {
+      "kept": "UCSD Hao AI Lab 发布开源零样本机器人工具 ORA v0.1",
+      "merged": [
+        "UCSD Hao AI Lab 发布 ORA Traces 数据集：7 个模型在 5 个基准上的 3K+ 条轨迹"
+      ],
+      "why": "UCSD Hao AI Lab发布ORA工具及数据集"
     }
   ]
 }
