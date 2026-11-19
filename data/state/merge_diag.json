@@ -1,50 +1,49 @@
 {
-  "generated_at": "2026-11-19T04:51:09.579018+00:00",
+  "generated_at": "2026-11-19T07:02:19.862291+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 306,
-  "batches": 9,
-  "calls": 9,
-  "merged_groups": 10,
-  "merged_events": 14,
-  "rejected_groups": 1,
+  "input_events": 330,
+  "batches": 10,
+  "calls": 10,
+  "merged_groups": 5,
+  "merged_events": 5,
+  "rejected_groups": 4,
   "failed": false,
   "examples": [
     {
-      "kept": "The Gemini app is now available on lower-memory Android devices.",
+      "kept": "豆包工作日活破 800 万，企业 ARR 破 20 亿元",
       "merged": [
-        "谷歌面向低内存安卓设备开放 Gemini 应用，最低支持 2GB 内存"
+        "豆包工作上线三个月日活破800万，企业客户ARR超20亿元"
       ],
-      "why": "谷歌向低内存安卓设备开放Gemini应用"
+      "why": "均为豆包工作日活及ARR数据报道"
     },
     {
-      "kept": "2026-11-19 AI 日报 · Gemini 4 Neon 发布，Anthropic IPO 定价 83 美元",
+      "kept": "Hakeem Jeffries wins big in speaker nomination vote",
       "merged": [
-        "indigo 评 Google Neon 编码指标第一却被上时代 harness 拖累"
+        "\"There'll be no hostage-taking\": The anti-Jeffries rebellion"
       ],
-      "why": "均为对GPT-6.2 Astra/Sol模型评测或跑分报道"
+      "why": "均为Hakeem Jeffries获众议院议长提名投票结果"
     },
     {
-      "kept": "黄仁勋辞职后首次财报电话会：Nvidia 新 CEO Colette Kress 收紧支出并回应回归呼声",
+      "kept": "DeepSeek调整API定价策略:服务端搜索与网页抓取正式免除单独计费",
       "merged": [
-        "Nvidia Holds Its First All Hands After Jensen Huang’s Depart",
-        "Palmer Luckey 就 Nvidia CEO 人事变动发表看法"
+        "DeepSeek：模型触发的搜索和抓取不再单独计费"
       ],
-      "why": "关于黄仁勋离职后英伟达CEO变动的报道"
+      "why": "都是DeepSeek取消搜索抓取单独计费"
     },
     {
-      "kept": "可灵 Kling Image 4.0 登 Artificial Analysis 文生图榜第 7、图像编辑榜第 6",
+      "kept": "腾讯财报：WorkBuddy 日活超 1000 万",
       "merged": [
-        "可灵 Image 4.0 图像能力展示"
+        "腾讯：WorkBuddy已是“中国使用量最高的AI产品” - 京报网"
       ],
-      "why": "均为可灵Kling Image 4.0发布及评测"
+      "why": "均为腾讯财报中WorkBuddy使用量相关数据"
     },
     {
-      "kept": "UCSD Hao AI Lab 发布开源零样本机器人工具 ORA v0.1",
+      "kept": "安谋科技深度解析Arm Cortex-M42，发布“星辰100e”AIoT原型平台，助力打造AI性能更强的嵌入式设计",
       "merged": [
-        "UCSD Hao AI Lab 发布 ORA Traces 数据集：7 个模型在 5 个基准上的 3K+ 条轨迹"
+        "拓展边缘AI应用场景，安谋科技发布Arm Cortex-M42 CPU - 新京报"
       ],
-      "why": "UCSD Hao AI Lab发布ORA工具及数据集"
+      "why": "均为安谋科技发布 Arm Cortex-M42"
     }
   ]
 }
