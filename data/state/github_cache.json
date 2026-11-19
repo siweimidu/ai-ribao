@@ -6491,17 +6491,17 @@
   }
  },
  "cursor/plugins": {
-  "fetched_at": "2026-11-18T12:54:51.776021+00:00",
+  "fetched_at": "2026-11-19T12:14:30.905796+00:00",
   "data": {
    "full_name": "cursor/plugins",
    "description": "Cursor plugin specification and official plugins",
-   "stars": 17053,
-   "forks": 1860,
+   "stars": 17420,
+   "forks": 1922,
    "language": "TypeScript",
    "license": "",
    "topics": [],
    "created": "2026-01-23",
-   "pushed": "2026-11-18",
+   "pushed": "2026-11-19",
    "contributors": 34,
    "discussions": null,
    "languages": {
@@ -6544,12 +6544,12 @@
   }
  },
  "jingyaogong/minimind": {
-  "fetched_at": "2026-11-17T20:52:35.810429+00:00",
+  "fetched_at": "2026-11-19T12:14:30.905796+00:00",
   "data": {
    "full_name": "jingyaogong/minimind",
-   "description": "🧠 Train a 64M-parameter LLM from scratch in just 2h!",
-   "stars": 65866,
-   "forks": 8650,
+   "description": "🧠 两小时从 0 训出你的 64M 大模型。Train your own 64M LLM from scratch in 2 hours.",
+   "stars": 66627,
+   "forks": 8755,
    "language": "Python",
    "license": "Apache-2.0",
    "topics": [
@@ -6557,8 +6557,8 @@
     "large-language-model"
    ],
    "created": "2024-07-27",
-   "pushed": "2026-10-27",
-   "contributors": 27,
+   "pushed": "2026-11-18",
+   "contributors": 30,
    "discussions": null,
    "languages": {
     "Python": 100.0
@@ -6608,18 +6608,18 @@
   }
  },
  "HKUDS/CLI-Anything": {
-  "fetched_at": "2026-11-18T12:54:51.776021+00:00",
+  "fetched_at": "2026-11-19T12:14:30.905796+00:00",
   "data": {
    "full_name": "HKUDS/CLI-Anything",
    "description": "\"CLI-Anything: Making ALL Software Agent-Native\" -- CLI-Hub: https://clianything.cc/",
-   "stars": 59354,
-   "forks": 5372,
+   "stars": 60221,
+   "forks": 5462,
    "language": "Python",
    "license": "Apache-2.0",
    "topics": [],
    "created": "2026-03-08",
    "pushed": "2026-09-22",
-   "contributors": 145,
+   "contributors": 144,
    "discussions": null,
    "languages": {
     "Python": 96.99491267654565,
@@ -6723,12 +6723,12 @@
   }
  },
  "openvinotoolkit/openvino": {
-  "fetched_at": "2026-11-18T12:54:51.776021+00:00",
+  "fetched_at": "2026-11-19T12:14:30.905796+00:00",
   "data": {
    "full_name": "openvinotoolkit/openvino",
    "description": "OpenVINO™ is an open source toolkit for optimizing and deploying AI inference",
-   "stars": 11222,
-   "forks": 3575,
+   "stars": 11450,
+   "forks": 3610,
    "language": "C++",
    "license": "Apache-2.0",
    "topics": [
@@ -6740,16 +6740,16 @@
     "generative-ai"
    ],
    "created": "2018-10-15",
-   "pushed": "2026-11-18",
-   "contributors": 938,
+   "pushed": "2026-11-19",
+   "contributors": 942,
    "discussions": null,
    "languages": {
-    "C++": 87.76296164642608,
-    "Python": 7.174449275383656,
-    "C": 3.3742132372550104,
-    "CMake": 1.4721696727150024,
-    "JavaScript": 0.10487605847722802,
-    "Shell": 0.03141997250208572
+    "C++": 87.7806666120704,
+    "Python": 7.166966155339009,
+    "C": 3.3674221647471683,
+    "CMake": 1.4692595901526226,
+    "JavaScript": 0.10462348487645809,
+    "Shell": 0.03134430360580786
    }
   }
  },
@@ -6847,6 +6847,247 @@
    "languages": {
     "Go": 98.65835455865034,
     "Shell": 1.3416454413496564
+   }
+  }
+ },
+ "Tracer-Cloud/opensre": {
+  "fetched_at": "2026-11-19T12:14:30.905796+00:00",
+  "data": {
+   "full_name": "Tracer-Cloud/opensre",
+   "description": "The open-source agent for CI/CD reliability.",
+   "stars": 12896,
+   "forks": 1891,
+   "language": "Python",
+   "license": "Apache-2.0",
+   "topics": [
+    "alerting",
+    "ci-cd",
+    "cli",
+    "datadog",
+    "devops",
+    "gitlab-ci"
+   ],
+   "created": "2026-01-13",
+   "pushed": "2026-11-19",
+   "contributors": 370,
+   "discussions": null,
+   "languages": {
+    "Python": 99.51993311284453,
+    "Shell": 0.2279829062331286,
+    "PowerShell": 0.18396550937307068,
+    "Makefile": 0.03702989342658041,
+    "Dockerfile": 0.022551166349078968,
+    "JavaScript": 0.008537411773620388
+   }
+  }
+ },
+ "XiaoYouChR/Ghost-Downloader-3": {
+  "fetched_at": "2026-11-19T12:14:30.905796+00:00",
+  "data": {
+   "full_name": "XiaoYouChR/Ghost-Downloader-3",
+   "description": "The only downloader you need. 下载器的集大成者。",
+   "stars": 12274,
+   "forks": 775,
+   "language": "Python",
+   "license": "GPL-3.0",
+   "topics": [
+    "async",
+    "asyncio",
+    "bittorent",
+    "bt",
+    "cross-platform",
+    "download-manager"
+   ],
+   "created": "2023-08-16",
+   "pushed": "2026-11-19",
+   "contributors": 19,
+   "discussions": null,
+   "languages": {
+    "Python": 80.96291293604058,
+    "TypeScript": 16.588400863096062,
+    "C": 1.5560128191794445,
+    "JavaScript": 0.5531485584566782,
+    "Inno Setup": 0.2231464037883545,
+    "Shell": 0.06033948971661504
+   }
+  }
+ },
+ "cathrynlavery/diagram-design": {
+  "fetched_at": "2026-11-19T12:14:30.905796+00:00",
+  "data": {
+   "full_name": "cathrynlavery/diagram-design",
+   "description": "Editorial diagram design for Claude Code, Codex, GitHub Copilot, Cursor, Factory Droid, Qoder, and Pi. 45 diagram types. Self-contained HTML + SVG. No shadows. No Mermaid slop.",
+   "stars": 68356,
+   "forks": 4598,
+   "language": "HTML",
+   "license": "MIT",
+   "topics": [
+    "agent-skills",
+    "claude-code",
+    "codex",
+    "data-visualization",
+    "diagrams",
+    "drawio"
+   ],
+   "created": "2026-04-16",
+   "pushed": "2026-11-19",
+   "contributors": 75,
+   "discussions": null,
+   "languages": {
+    "HTML": 57.12234677895564,
+    "Python": 42.85667058482345,
+    "Mermaid": 0.020982636220914962
+   }
+  }
+ },
+ "firecrawl/firecrawl": {
+  "fetched_at": "2026-11-19T12:14:30.905796+00:00",
+  "data": {
+   "full_name": "firecrawl/firecrawl",
+   "description": "Knowledge infrastructure to make your agents smarter. Search, scrape and 550+ data providers through one API.",
+   "stars": 203558,
+   "forks": 10664,
+   "language": "TypeScript",
+   "license": "AGPL-3.0",
+   "topics": [
+    "ai",
+    "ai-agents",
+    "ai-crawler",
+    "ai-scraping",
+    "ai-search",
+    "crawler"
+   ],
+   "created": "2024-04-15",
+   "pushed": "2026-11-19",
+   "contributors": 181,
+   "discussions": null,
+   "languages": {
+    "TypeScript": 73.10136057260051,
+    "Python": 10.13920628328858,
+    "Rust": 5.2705785605994935,
+    "Java": 2.772819447329848,
+    "PHP": 2.176551537080037,
+    "Elixir": 1.676721562716833
+   }
+  }
+ },
+ "mjmirza/app-store-compliance": {
+  "fetched_at": "2026-11-19T12:14:30.905796+00:00",
+  "data": {
+   "full_name": "mjmirza/app-store-compliance",
+   "description": "Avoid common App Store and Google Play rejections. Open playbook and pre-submission guard with 117 documented rejection patterns and fixes, privacy manifest and Data safety checks, 95 tracked deadlines (EU AI Act, DSA, COPPA, age laws), and a skill for AI coding agents.",
+   "stars": 1485,
+   "forks": 112,
+   "language": "Shell",
+   "license": "NOASSERTION",
+   "topics": [
+    "accessibility",
+    "ai-agents",
+    "android",
+    "app-review-guidelines",
+    "app-store",
+    "app-store-connect"
+   ],
+   "created": "2026-06-06",
+   "pushed": "2026-11-15",
+   "contributors": 2,
+   "discussions": null,
+   "languages": {
+    "Shell": 54.16711850621844,
+    "Python": 45.83288149378156
+   }
+  }
+ },
+ "nginx/nginx": {
+  "fetched_at": "2026-11-19T12:14:30.905796+00:00",
+  "data": {
+   "full_name": "nginx/nginx",
+   "description": "The official NGINX Open Source repository.",
+   "stars": 32223,
+   "forks": 8407,
+   "language": "C",
+   "license": "BSD-2-Clause",
+   "topics": [
+    "content-cache",
+    "http",
+    "http2",
+    "http3",
+    "https",
+    "load-balancer"
+   ],
+   "created": "2015-06-23",
+   "pushed": "2026-11-18",
+   "contributors": 145,
+   "discussions": null,
+   "languages": {
+    "C": 97.73077689413294,
+    "Vim Script": 1.6359839470044861,
+    "XS": 0.3824488130123673,
+    "Perl": 0.09731090633458948,
+    "Makefile": 0.0693990239891352,
+    "IL Assembly": 0.04233469751521039
+   }
+  }
+ },
+ "toeverything/AFFiNE": {
+  "fetched_at": "2026-11-19T12:14:30.905796+00:00",
+  "data": {
+   "full_name": "toeverything/AFFiNE",
+   "description": "There can be more than Notion and Miro. AFFiNE(pronounced [ə‘fain]) is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use. ",
+   "stars": 74801,
+   "forks": 5542,
+   "language": "TypeScript",
+   "license": "NOASSERTION",
+   "topics": [
+    "app",
+    "crdt",
+    "editor",
+    "electron",
+    "knowledge-base",
+    "markdown"
+   ],
+   "created": "2022-07-31",
+   "pushed": "2026-11-18",
+   "contributors": 276,
+   "discussions": null,
+   "languages": {
+    "TypeScript": 81.46829796028659,
+    "Rust": 11.464434478918157,
+    "Swift": 4.7147261615884695,
+    "Kotlin": 1.11196115810914,
+    "PLpgSQL": 0.42003208791956903,
+    "JavaScript": 0.3775444503010095
+   }
+  }
+ },
+ "zhouxiaoka/autoclip": {
+  "fetched_at": "2026-11-19T12:14:30.905796+00:00",
+  "data": {
+   "full_name": "zhouxiaoka/autoclip",
+   "description": "AutoClip｜一个链接，一键出片。开源 AI 视频剪辑桌面工具，将播客、访谈、课程等长视频自动剪成短视频，生成字幕、封面和发布文案，适配抖音、小红书、TikTok、Reels 与 YouTube Shorts。Open-source AI video clipping & content repurposing.",
+   "stars": 10874,
+   "forks": 1916,
+   "language": "Python",
+   "license": "MIT",
+   "topics": [
+    "ai-agent",
+    "ai-video-editor",
+    "content-repurposing",
+    "desktop-app",
+    "douyin",
+    "instagram-reels"
+   ],
+   "created": "2025-07-08",
+   "pushed": "2026-11-19",
+   "contributors": 6,
+   "discussions": null,
+   "languages": {
+    "Python": 72.05960843827533,
+    "TypeScript": 12.3694861680137,
+    "JavaScript": 10.216552991355401,
+    "CSS": 2.1707044652685186,
+    "Rust": 0.9843935320501045,
+    "HTML": 0.8261101885824416
    }
   }
  }

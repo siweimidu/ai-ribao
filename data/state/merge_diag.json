@@ -1,49 +1,51 @@
 {
-  "generated_at": "2026-11-19T07:02:19.862291+00:00",
+  "generated_at": "2026-11-19T12:14:30.887673+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 330,
-  "batches": 10,
-  "calls": 10,
-  "merged_groups": 5,
-  "merged_events": 5,
-  "rejected_groups": 4,
+  "input_events": 377,
+  "batches": 11,
+  "calls": 11,
+  "merged_groups": 11,
+  "merged_events": 15,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "豆包工作日活破 800 万，企业 ARR 破 20 亿元",
+      "kept": "Nvidia 停止向中国出货许可 AI 芯片",
       "merged": [
-        "豆包工作上线三个月日活破800万，企业客户ARR超20亿元"
+        "What is Nvidia without AI’s sugar daddy in charge?",
+        "Microsoft CEO Satya Nadella remains confident in Nvidia afte"
       ],
-      "why": "均为豆包工作日活及ARR数据报道"
+      "why": "均报道 Nvidia 黄仁勋离职/卸任 CEO 及后续影响"
     },
     {
-      "kept": "Hakeem Jeffries wins big in speaker nomination vote",
+      "kept": "Trump to meet Putin in China amid renewed push to end Ukraine war",
       "merged": [
-        "\"There'll be no hostage-taking\": The anti-Jeffries rebellion"
+        "Trump praises ‘great relationship’ with Putin after meeting,",
+        "Putin eyes ‘benefit' in meeting Trump, Xi at APEC"
       ],
-      "why": "均为Hakeem Jeffries获众议院议长提名投票结果"
+      "why": "均报道特朗普与普京在中国的会晤及关系进展"
     },
     {
-      "kept": "DeepSeek调整API定价策略:服务端搜索与网页抓取正式免除单独计费",
+      "kept": "快手Q3总收入316亿元，日活跃用户达4.17亿 - 京报网",
       "merged": [
-        "DeepSeek：模型触发的搜索和抓取不再单独计费"
+        "快手第三季度营收316亿元，称AI投入将继续带来成本影响 - 新浪财经_金融信息服务商"
       ],
-      "why": "都是DeepSeek取消搜索抓取单独计费"
+      "why": "均报道快手Q3财报营收316亿元"
     },
     {
-      "kept": "腾讯财报：WorkBuddy 日活超 1000 万",
+      "kept": "阿里Q3净利润同比大增213%，云业务收入增长53%，AI投入推动资本开支增60%、负现金流扩大｜财报见闻 - 华尔街见闻",
       "merged": [
-        "腾讯：WorkBuddy已是“中国使用量最高的AI产品” - 京报网"
+        "阿里Q2财报：云外部商业化收入增长64%，AI收入连续13个季度三位数增长 - 第一财经"
       ],
-      "why": "均为腾讯财报中WorkBuddy使用量相关数据"
+      "why": "均报道阿里财报云业务增长及AI投入"
     },
     {
-      "kept": "安谋科技深度解析Arm Cortex-M42，发布“星辰100e”AIoT原型平台，助力打造AI性能更强的嵌入式设计",
+      "kept": "联想集团季度营收首破两千亿元：AI服务器订单储备达5300亿元，杨元庆称AI需求没问题 - ThePaper.cn",
       "merged": [
-        "拓展边缘AI应用场景，安谋科技发布Arm Cortex-M42 CPU - 新京报"
+        "AI基建大潮方兴未艾，联想集团最佳财季诞生！"
       ],
-      "why": "均为安谋科技发布 Arm Cortex-M42"
+      "why": "均报道联想集团季度营收破两千亿及AI服务器订单"
     }
   ]
 }
