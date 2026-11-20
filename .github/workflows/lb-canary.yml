@@ -1,0 +1,36 @@
+name: Leaderboard canary
+
+# Manual only: proves a GitHub runner can still reach and parse artificialanalysis.ai.
+#
+# The daily job exits 0 when the snapshot is fresh, so it never fetches during a normal morning
+# and cannot answer "can the runner reach the source?" on demand. `--max-age-hours 0` forces a
+# fetch, and nothing here is committed or published.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  canary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pip install -e .
+
+      - name: Fetch and parse the leaderboard, keeping nothing
+        run: python -m aidaily leaderboard --max-age-hours 0
+
+      - name: Show what the page now says
+        if: always()
+        run: grep -o "抓取于 [0-9-]*" data/digests/site/leaderboard.html || true
