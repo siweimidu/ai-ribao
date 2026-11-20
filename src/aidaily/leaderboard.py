@@ -44,11 +44,15 @@ import re
 import sys
 import urllib.request
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 LEADERBOARD_URL = "https://artificialanalysis.ai/leaderboards/models"
 MODEL_URL = "https://artificialanalysis.ai/models/{slug}"
+
+#: The site's audience clock. A fixed offset, not `zoneinfo`: Beijing has no DST, and
+#: `scripts/missing_slots.py` already reasons about time this way.
+_BEIJING = timezone(timedelta(hours=8))
 
 _UA = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -284,7 +288,9 @@ def refresh_site_page(root: Path, *, max_age_hours: float = 6.0) -> tuple[bool, 
     fetched_at = ""
     try:
         if snapshot.exists():
-            fetched_at = str(json.loads(snapshot.read_text(encoding="utf-8")).get("fetched_at") or "")[:10]
+            fetched_at = _page_date(
+                str(json.loads(snapshot.read_text(encoding="utf-8")).get("fetched_at") or "")
+            )
     except Exception:
         pass
 
@@ -302,6 +308,22 @@ def refresh_site_page(root: Path, *, max_age_hours: float = 6.0) -> tuple[bool, 
 
 def snapshot_path(root: Path) -> Path:
     return root / "data" / "state" / "leaderboard.json"
+
+
+def _page_date(stamp: str) -> str:
+    """The fetch stamp as the page shows it: a Beijing calendar date.
+
+    The page says "抓取于 <date>" and the watchdog compares that string with Beijing time, so a
+    UTC date reads as yesterday until 08:00 Beijing -- exactly the hours after the 04:00 build
+    refreshed it. The page looked a day stale every morning while it was four hours old.
+    """
+    try:
+        moment = datetime.fromisoformat(stamp)
+    except ValueError:
+        return stamp[:10]
+    if moment.tzinfo is None:
+        moment = moment.replace(tzinfo=timezone.utc)
+    return moment.astimezone(_BEIJING).strftime("%Y-%m-%d")
 
 
 def snapshot_age_hours(root: Path) -> float | None:

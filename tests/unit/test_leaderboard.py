@@ -200,3 +200,11 @@ def test_a_missing_array_is_reported(monkeypatch, capsys) -> None:
     )
     assert leaderboard.fetch_models() == []
     assert "initialModels" in capsys.readouterr().err
+
+
+def test_the_page_date_is_a_beijing_date() -> None:
+    """20:00 UTC is already tomorrow in Beijing; the page must not look a day behind."""
+    assert leaderboard._page_date("2026-11-20T20:00:21.827733+00:00") == "2026-11-21"
+    assert leaderboard._page_date("2026-11-20T18:00:21+00:00") == "2026-11-21"
+    assert leaderboard._page_date("2026-11-20T03:59:00+00:00") == "2026-11-20"
+
