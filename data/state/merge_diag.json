@@ -1,52 +1,49 @@
 {
-  "generated_at": "2026-11-20T01:34:09.942117+00:00",
+  "generated_at": "2026-11-20T04:21:41.163232+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 266,
-  "batches": 7,
-  "calls": 7,
-  "merged_groups": 8,
-  "merged_events": 14,
-  "rejected_groups": 5,
+  "input_events": 307,
+  "batches": 9,
+  "calls": 9,
+  "merged_groups": 11,
+  "merged_events": 11,
+  "rejected_groups": 3,
   "failed": false,
   "examples": [
-    {
-      "kept": "Anthropic IPO heightens Washington’s tech scrutiny",
-      "merged": [
-        "2026-11-20 AI 日报 · Anthropic创纪录挂牌纳斯达克，谷歌与Perplexity掀起决策模型架构竞",
-        "indigo 转发 Dario Amodei 为 Anthropic IPO 在 Nasdaq 敲钟",
-        "Anthropic 登陆纳斯达克，开盘价 111 美元较发行价高出 33%"
-      ],
-      "why": "均报道 Anthropic IPO 登陆纳斯达克"
-    },
-    {
-      "kept": "韩国“满分学霸”被举报用AI作弊后身亡，生前最后画面曝光 - 新蓝网",
-      "merged": [
-        "满分学霸被疑 AI 作弊后离世，韩国考场紧急封杀智能眼镜"
-      ],
-      "why": "报道韩国学霸因AI作弊嫌疑身亡事件"
-    },
     {
       "kept": "Visa, Mastercard and JPMorgan Customer Data Leaked by Hackers",
       "merged": [
         "Third-party breach exposes JPMorgan, Visa, and Mastercard cu"
       ],
-      "why": "均报道Visa/Mastercard/JPMorgan数据泄露事故"
+      "why": "均报道黑客泄露JPMorgan、Visa和Mastercard客户数据事件"
+    },
+    {
+      "kept": "House Democrats recoil at forcing December shutdown to cut Iran war funding",
+      "merged": [
+        "Thune: Trump and Democrats will have to negotiate on debt"
+      ],
+      "why": "均涉及国会/政府间关于预算、债务或拨款的政治博弈"
     },
     {
       "kept": "Anthropic 纳斯达克上市首日大涨 17%，市值达 1.27 万亿美元，IPO 募资 813 亿美元成史上最大",
       "merged": [
-        "Anthropic Opens Trading at $111.5, Passes $2 Trillion in Mar",
         "Anthropic is now a public company worth more than $1 trillio"
       ],
-      "why": "均报道 Anthropic 上市及市值/估值"
+      "why": "均报道 Anthropic 上市及市值破万亿"
     },
     {
-      "kept": "Meta rethinks climate goal as AI emissions soar 45%",
+      "kept": "Anthropic 纳斯达克上市首日大涨 17%，市值达 1.27 万亿美元，IPO 募资 813 亿美元成史上最大",
       "merged": [
-        "Meta因AI建设重新考虑2030年净零排放目标 - 东方财富网"
+        "Anthropic创纪录IPO募资1048亿美元，七位联合创始人套现近20亿美元"
       ],
-      "why": "均报道 Meta 因 AI 重新考虑净零目标"
+      "why": "均报道 Anthropic IPO 募资规模"
+    },
+    {
+      "kept": "Anthropic CEO Dario Amodei 就公司 IPO 发表声明",
+      "merged": [
+        "Anthropic’s Nasdaq debut"
+      ],
+      "why": "均报道 Anthropic 登陆纳斯达克及 CEO 声明"
     }
   ]
 }
