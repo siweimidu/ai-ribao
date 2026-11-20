@@ -1523,12 +1523,12 @@
   }
  },
  "obra/superpowers": {
-  "fetched_at": "2026-11-19T20:13:27.290284+00:00",
+  "fetched_at": "2026-11-20T21:23:06.970773+00:00",
   "data": {
    "full_name": "obra/superpowers",
    "description": "An agentic skills framework & software development methodology that works.",
-   "stars": 321965,
-   "forks": 28621,
+   "stars": 322776,
+   "forks": 28670,
    "language": "Shell",
    "license": "MIT",
    "topics": [
@@ -6218,12 +6218,12 @@
   }
  },
  "elementalsouls/Claude-BugHunter": {
-  "fetched_at": "2026-11-19T20:13:27.290284+00:00",
+  "fetched_at": "2026-11-20T21:23:06.970773+00:00",
   "data": {
    "full_name": "elementalsouls/Claude-BugHunter",
    "description": "A Claude Code skill bundle for bug hunting and external red-team work - 82 skills, 15 slash commands, 681 disclosed-report patterns curated across 24 core vulnerability classes, plus enterprise identity + infrastructure attack matrices.",
-   "stars": 12282,
-   "forks": 1578,
+   "stars": 14023,
+   "forks": 1678,
    "language": "Python",
    "license": "MIT",
    "topics": [
@@ -6235,34 +6235,35 @@
     "bugcrowd"
    ],
    "created": "2026-05-05",
-   "pushed": "2026-11-19",
+   "pushed": "2026-11-20",
    "contributors": 19,
    "discussions": null,
    "languages": {
-    "Python": 87.03303381990618,
-    "PowerShell": 7.138100073149695,
-    "Shell": 5.828866106944126
+    "Python": 87.34210750913927,
+    "PowerShell": 6.962205374034509,
+    "Shell": 5.695687116826218
    }
   }
  },
  "google-labs-code/stitch-skills": {
-  "fetched_at": "2026-11-19T20:13:27.290284+00:00",
+  "fetched_at": "2026-11-20T21:23:06.970773+00:00",
   "data": {
    "full_name": "google-labs-code/stitch-skills",
    "description": "A library of Agent Skills designed to work with the Stitch MCP server. Each skill follows the Agent Skills open standard, for compatibility with coding agents such as Antigravity, Gemini CLI, Claude Code, Cursor.",
-   "stars": 10661,
-   "forks": 1383,
+   "stars": 10985,
+   "forks": 1401,
    "language": "TypeScript",
    "license": "Apache-2.0",
    "topics": [],
    "created": "2026-01-16",
-   "pushed": "2026-11-18",
-   "contributors": 18,
+   "pushed": "2026-11-20",
+   "contributors": 19,
    "discussions": null,
    "languages": {
-    "TypeScript": 89.96353279386712,
-    "Shell": 5.100750638841567,
-    "Python": 4.935716567291312
+    "TypeScript": 86.06004277856998,
+    "Shell": 5.387426156039926,
+    "Python": 4.721557343654512,
+    "JavaScript": 3.8309737217355875
    }
   }
  },
@@ -6411,12 +6412,12 @@
   }
  },
  "mvanhorn/last30days-skill": {
-  "fetched_at": "2026-11-19T20:13:27.290284+00:00",
+  "fetched_at": "2026-11-20T21:23:06.970773+00:00",
   "data": {
    "full_name": "mvanhorn/last30days-skill",
    "description": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary",
-   "stars": 70704,
-   "forks": 6298,
+   "stars": 71380,
+   "forks": 6344,
    "language": "Python",
    "license": "MIT",
    "topics": [
@@ -6428,14 +6429,14 @@
     "clawhub"
    ],
    "created": "2026-01-23",
-   "pushed": "2026-11-19",
+   "pushed": "2026-11-20",
    "contributors": 174,
    "discussions": null,
    "languages": {
-    "Python": 95.9846371301966,
-    "HTML": 2.5332719922761417,
-    "Go": 1.2858989555274292,
-    "Shell": 0.19619192199983213
+    "Python": 96.06739836510333,
+    "HTML": 2.480820074202169,
+    "Go": 1.2592741529510068,
+    "Shell": 0.19250740774349095
    }
   }
  },
@@ -7118,6 +7119,54 @@
     "JavaScript": 0.17309732028066452,
     "HTML": 0.03691892625916214,
     "Shell": 0.004600225742902297
+   }
+  }
+ },
+ "XITRIX/ppsspp-nx2": {
+  "fetched_at": "2026-11-20T21:23:06.970773+00:00",
+  "data": {
+   "full_name": "XITRIX/ppsspp-nx2",
+   "description": "A PSP emulator for Switch 2, written in C++. Want to contribute? Join us on Discord at https://discord.gg/5NJB6dD or just send pull requests / issues.",
+   "stars": 15,
+   "forks": 1,
+   "language": "C++",
+   "license": "NOASSERTION",
+   "topics": [],
+   "created": "2026-11-19",
+   "pushed": "2026-11-19",
+   "contributors": 598,
+   "discussions": null,
+   "languages": {
+    "C++": 61.39305852135111,
+    "C": 35.15573481483197,
+    "Objective-C++": 0.7804998917850577,
+    "Python": 0.5333995054515488,
+    "Shell": 0.5303047622639913,
+    "Java": 0.4219361946427307
+   }
+  }
+ },
+ "diggerhq/opencomputer": {
+  "fetched_at": "2026-11-20T21:23:06.970773+00:00",
+  "data": {
+   "full_name": "diggerhq/opencomputer",
+   "description": "An open-source, faster Devin alternative",
+   "stars": 684,
+   "forks": 77,
+   "language": "TypeScript",
+   "license": "Apache-2.0",
+   "topics": [],
+   "created": "2025-12-09",
+   "pushed": "2026-11-20",
+   "contributors": 26,
+   "discussions": null,
+   "languages": {
+    "TypeScript": 91.97262064179266,
+    "Python": 2.895481387170626,
+    "Go": 1.9500260733469523,
+    "Shell": 1.4365564066932761,
+    "JavaScript": 1.339042858733116,
+    "HTML": 0.1581123022747867
    }
   }
  }

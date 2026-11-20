@@ -1,51 +1,22 @@
 {
-  "generated_at": "2026-11-20T12:44:47.322510+00:00",
+  "generated_at": "2026-11-20T21:23:06.953872+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 389,
-  "batches": 11,
-  "calls": 11,
-  "merged_groups": 12,
-  "merged_events": 24,
-  "rejected_groups": 1,
+  "input_events": 118,
+  "batches": 3,
+  "calls": 3,
+  "merged_groups": 1,
+  "merged_events": 2,
+  "rejected_groups": 0,
   "failed": false,
   "examples": [
     {
-      "kept": "Ideogram 4.6 图像模型发布并已上线 Luma",
+      "kept": "Anthropic shares tank after IPO as the Nasdaq erases 2026 gains",
       "merged": [
-        "Ideogram 4.6 模型发布，主打原生 4K 编辑"
+        "Anthropic Shares Slide After Banks Exercise ‘Greenshoe’",
+        "Anthropic上市次日暴跌，几乎回吐首日涨幅，AI交易“买方罢工” - 华尔街见闻"
       ],
-      "why": "都是 Ideogram 4.6 模型发布"
-    },
-    {
-      "kept": "Scoop: Trump names Kirsten Davies as new national cyber director",
-      "merged": [
-        "The Trump administration has replaced its cybersecurity chie"
-      ],
-      "why": "均报道美国网络空间安全主任人事变动"
-    },
-    {
-      "kept": "“未名·AI Park”在北京揭牌共建人工智能创新转化高地_中新社_北京分社 - 北京新闻",
-      "merged": [
-        "北大研发、海淀转化！“未名・AI Park”来了 - 国际科技创新中心"
-      ],
-      "why": "均报道‘未名·AI Park’揭牌"
-    },
-    {
-      "kept": "Anthropic Opens Trading at $111.5, Passes $2 Trillion in Market Cap",
-      "merged": [
-        "Anthropic’s IPO Triumph",
-        "Anthropic is now a public company worth more than $1 trillio",
-        "史上最大 IPO：Anthropic 首日收涨 17%"
-      ],
-      "why": "均报道 Anthropic 正式在纳斯达克上市/敲钟这一事实"
-    },
-    {
-      "kept": "Anthropic 上市当天，前研究员考克森在其总部外抗议呼吁禁止 AI 递归自我改进",
-      "merged": [
-        "敲钟前夜收到联名信：90 位大奖得主质疑 Anthropic 安全人设"
-      ],
-      "why": "均为 Anthropic 上市当天/敲钟前夕收到的安全质疑与抗议"
+      "why": "均为 Anthropic IPO 后股价下跌报道"
     }
   ]
 }
