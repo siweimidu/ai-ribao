@@ -1,49 +1,51 @@
 {
-  "generated_at": "2026-11-20T04:21:41.163232+00:00",
+  "generated_at": "2026-11-20T12:23:40.615787+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 307,
-  "batches": 9,
-  "calls": 9,
-  "merged_groups": 11,
-  "merged_events": 11,
-  "rejected_groups": 3,
+  "input_events": 375,
+  "batches": 11,
+  "calls": 11,
+  "merged_groups": 9,
+  "merged_events": 19,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "Visa, Mastercard and JPMorgan Customer Data Leaked by Hackers",
+      "kept": "Ideogram 4.6 图像模型发布并已上线 Luma",
       "merged": [
-        "Third-party breach exposes JPMorgan, Visa, and Mastercard cu"
+        "Ideogram 4.6 模型发布，主打原生 4K 编辑"
       ],
-      "why": "均报道黑客泄露JPMorgan、Visa和Mastercard客户数据事件"
+      "why": "都是 Ideogram 4.6 图像模型发布"
     },
     {
-      "kept": "House Democrats recoil at forcing December shutdown to cut Iran war funding",
+      "kept": "Scoop: Trump names Kirsten Davies as new national cyber director",
       "merged": [
-        "Thune: Trump and Democrats will have to negotiate on debt"
+        "The Trump administration has replaced its cybersecurity chie"
       ],
-      "why": "均涉及国会/政府间关于预算、债务或拨款的政治博弈"
+      "why": "均报道 Sean Cairncross 离任及 Kirsten Davies 接任网络安全主管"
     },
     {
-      "kept": "Anthropic 纳斯达克上市首日大涨 17%，市值达 1.27 万亿美元，IPO 募资 813 亿美元成史上最大",
+      "kept": "Trump to Axios: I'm \"not rushing into a decision\" on Iran",
       "merged": [
-        "Anthropic is now a public company worth more than $1 trillio"
+        "Trump tells skeptical Europeans: \"Putin wants to end the war"
       ],
-      "why": "均报道 Anthropic 上市及市值破万亿"
+      "why": "均为特朗普谈论伊朗局势及与普京的关系"
     },
     {
-      "kept": "Anthropic 纳斯达克上市首日大涨 17%，市值达 1.27 万亿美元，IPO 募资 813 亿美元成史上最大",
+      "kept": "Anthropic is now a public company worth more than $1 trillion",
       "merged": [
-        "Anthropic创纪录IPO募资1048亿美元，七位联合创始人套现近20亿美元"
+        "亏千亿也要敲钟：Anthropic 创纪录 IPO 背后的算力账单",
+        "Anthropic创纪录IPO助阿布扎比AI投资机构MGX浮盈200亿美元 - 东方财富",
+        "Anthropic pulls off the biggest IPO ever"
       ],
-      "why": "均报道 Anthropic IPO 募资规模"
+      "why": "都是 Anthropic 创纪录 IPO"
     },
     {
-      "kept": "Anthropic CEO Dario Amodei 就公司 IPO 发表声明",
+      "kept": "京东与华为OSTA星芒达成战略合作 首款鸿蒙AI手机上线首销 - 观点网",
       "merged": [
-        "Anthropic’s Nasdaq debut"
+        "京东AI agent已接入华为星芒新机，用户与AI助手对话可一步下单京东商品 - 手机新浪网"
       ],
-      "why": "均报道 Anthropic 登陆纳斯达克及 CEO 声明"
+      "why": "均报道京东与华为鸿蒙AI手机合作及功能接入"
     }
   ]
 }
