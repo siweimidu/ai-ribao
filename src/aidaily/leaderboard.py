@@ -278,8 +278,16 @@ def refresh_site_page(root: Path, *, max_age_hours: float = 6.0) -> tuple[bool, 
         return False, f"{site} 不存在，无法刷新"
 
     snapshot = snapshot_path(root)
-    age = snapshot_age_hours(root)
+    age_before = snapshot_age_hours(root)
     models = load_models(root, max_age_hours=max_age_hours)
+    age = snapshot_age_hours(root)
+
+    # Did this attempt actually move the snapshot? The age afterwards cannot say on its own:
+    # `load_models` leaves a fresh snapshot alone, so a healthy no-op cycle and a failed fetch
+    # both end up "the page did not change". Only a snapshot that got *younger* proves a fetch
+    # landed. Without this, a successful quiet cycle reported `抓取没有成功`.
+    refreshed = age is not None and (age_before is None or age < age_before)
+
     if not models:
         return False, "取不到模型数据，页面保持原样" + (
             f"（快照已 {age:.0f} 小时）" if age is not None else "（没有可用快照）"
@@ -299,9 +307,9 @@ def refresh_site_page(root: Path, *, max_age_hours: float = 6.0) -> tuple[bool, 
     html = render_leaderboard(ctx, models, fetched_at=fetched_at)
 
     if page.exists() and page.read_text(encoding="utf-8") == html:
-        if age is not None and age > max_age_hours:
-            return False, f"页面已是最新，但快照已 {age:.0f} 小时没更新，抓取没有成功"
-        return False, "页面已是最新"
+        if refreshed:
+            return False, "页面已是最新"
+        return False, f"页面已是最新，但抓取没有成功，快照还停在 {age:.0f} 小时前"
     page.write_text(html, encoding="utf-8")
     return True, f"已刷新 {page.name}（{len(models)} 个模型）"
 

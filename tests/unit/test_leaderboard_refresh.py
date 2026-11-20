@@ -12,6 +12,8 @@ without building anything.
 from __future__ import annotations
 
 import inspect
+import json
+from datetime import datetime, timedelta, timezone
 
 from aidaily import leaderboard
 
@@ -93,3 +95,67 @@ def test_the_cli_fails_once_a_whole_cycle_was_missed(monkeypatch, capsys) -> Non
 def test_the_cli_fails_when_there_is_no_snapshot_at_all(monkeypatch, capsys) -> None:
     assert _run_cli(monkeypatch, age_hours=None) == 1
     assert "快照" in capsys.readouterr().err
+
+
+# ---------------------------------------------------------------------------------------------
+# "Unchanged" must not be confused with "could not refresh".
+#
+# The age was read *before* the fetch attempt, so a healthy cycle that fetched fresh data and
+# produced the same page reported "抓取没有成功" -- a lie the canary run on a real runner caught:
+# it fetched 287 models in 1.4s and still printed that line. The age has to be read after.
+# ---------------------------------------------------------------------------------------------
+
+
+def _site(tmp_path, page_text: str):
+    site = tmp_path / "data" / "digests" / "site"
+    site.mkdir(parents=True)
+    (site / "leaderboard.html").write_text(page_text, encoding="utf-8")
+    return site
+
+
+def test_a_fresh_fetch_that_changes_nothing_is_not_reported_as_a_failure(tmp_path, monkeypatch) -> None:
+    snapshot = tmp_path / "data" / "state" / "leaderboard.json"
+    snapshot.parent.mkdir(parents=True)
+    snapshot.write_text(
+        json.dumps({"fetched_at": (datetime.now(timezone.utc) - timedelta(hours=1)).isoformat()}),
+        encoding="utf-8",
+    )
+    _site(tmp_path, "RENDERED")
+
+    def fake_load_models(root, *, max_age_hours=6.0):
+        snapshot.write_text(
+            json.dumps({"fetched_at": datetime.now(timezone.utc).isoformat()}), encoding="utf-8"
+        )
+        return [leaderboard.Model(slug="a", name="A", creator="B")]
+
+    monkeypatch.setattr(leaderboard, "load_models", fake_load_models)
+    monkeypatch.setattr("aidaily.site.render_leaderboard", lambda *a, **kw: "RENDERED")
+
+    # max_age_hours=0 forces the "the snapshot was older than the TTL" branch, which is exactly
+    # where the wrong wording lived.
+    changed, note = leaderboard.refresh_site_page(tmp_path, max_age_hours=0)
+
+    assert changed is False
+    assert note == "页面已是最新"
+
+
+def test_a_fetch_that_never_landed_is_reported_as_a_failure(tmp_path, monkeypatch) -> None:
+    snapshot = tmp_path / "data" / "state" / "leaderboard.json"
+    snapshot.parent.mkdir(parents=True)
+    snapshot.write_text(
+        json.dumps({"fetched_at": (datetime.now(timezone.utc) - timedelta(days=3)).isoformat()}),
+        encoding="utf-8",
+    )
+    _site(tmp_path, "RENDERED")
+
+    # The fetch failed: the snapshot is untouched, so it is still three days old afterwards.
+    monkeypatch.setattr(
+        leaderboard, "load_models", lambda root, **kw: [leaderboard.Model(slug="a", name="A", creator="B")]
+    )
+    monkeypatch.setattr("aidaily.site.render_leaderboard", lambda *a, **kw: "RENDERED")
+
+    changed, note = leaderboard.refresh_site_page(tmp_path, max_age_hours=6)
+
+    assert changed is False
+    assert "抓取没有成功" in note and "72" in note
+
