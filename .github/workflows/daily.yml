@@ -494,6 +494,14 @@ jobs:
   # only when the snapshot is older than `--max-age-hours` or the rendered HTML changed. A run
   # that finds nothing to do prints "页面已是最新" and exits 0, which keeps the six redundant
   # cron triggers per slot from churning the repository.
+  #
+  # **Exit 1 means the page could not be brought up to date** (`--max-stale-hours 26`, i.e. a
+  # whole day missed) -- that red run is the alarm. It has to exist: from 2026-11-15 to
+  # 2026-11-21 upstream reshaped its payload, every row was dropped, the page stayed at the
+  # 2026-11-14 snapshot, and this job exited 0 every single time. The watchdog kept re-triggering
+  # the workflow (correctly -- that is its job), but re-running a broken parser just re-renders
+  # the same stale page. Nothing ever asked a human. `deploy` does not depend on this job's
+  # result, so a red alarm here cannot stop the site from publishing.
   leaderboard:
     needs: [gate]
     if: always() && needs.gate.result != 'failure'

@@ -1640,13 +1640,29 @@ def cmd_leaderboard(args) -> int:
     Exists so a workflow run that publishes nothing (the gate said today is already done) can
     still update this one page. It reads the snapshot, rewrites one file, and touches nothing
     else -- no collection, no analysis, no delivery.
+
+    Exit code carries the staleness: 0 while the snapshot is at most `--max-stale-hours` behind,
+    1 past it. One failed fetch must not paint a run red -- the page still holds the previous
+    fetch and every other channel worked. But "the fetch has been failing since upstream
+    reshaped its payload" is exactly the state that hid for a week behind a green tick, so past
+    the threshold this fails on purpose.
     """
-    from .leaderboard import refresh_site_page
+    from .leaderboard import refresh_site_page, snapshot_age_hours
 
     changed, note = refresh_site_page(ROOT, max_age_hours=args.max_age_hours)
-    print(note)
-    # Exit 0 either way: "already fresh" is success, and a failed fetch must not paint a
-    # scheduled run red when every other channel worked.
+    print(f"{'已写入' if changed else '未写入'}：{note}")
+
+    age = snapshot_age_hours(ROOT)
+    if age is None:
+        print("error: 没有可读的模型榜快照 data/state/leaderboard.json", file=sys.stderr)
+        return 1
+    if age > args.max_stale_hours:
+        print(
+            f"error: 模型榜数据已陈旧 {age:.0f} 小时（阈值 {args.max_stale_hours:g} 小时），"
+            "抓取或解析没有成功，原因见上一条 stderr",
+            file=sys.stderr,
+        )
+        return 1
     return 0
 
 
@@ -1713,6 +1729,8 @@ def build_parser() -> argparse.ArgumentParser:
     lb = sub.add_parser("leaderboard", help="只刷新模型榜页面，不构建日报")
     lb.add_argument("--max-age-hours", type=float, default=6.0,
                     help="快照超过这个小时数才重新抓取（默认 6）")
+    lb.add_argument("--max-stale-hours", type=float, default=26.0,
+                    help="快照超过这个小时数仍没刷新成功就以退出码 1 报警（默认 26，即漏掉一整天）")
     lb.set_defaults(func=cmd_leaderboard)
 
     b = sub.add_parser(

@@ -6,10 +6,16 @@ The data comes from artificialanalysis.ai, a Next.js app that streams its state 
 
 These tests use recorded fixtures rather than the network: the parser is what can break, and a
 live fetch would make the suite depend on someone else uptime.
+
+The fixtures come in two shapes on purpose. Upstream reshaped its rows on 2026-11-15 (the slug
+moved into `release`, the benchmarks into a `scores` object), and the parser dropped every row for
+a week without a word. Both shapes are pinned here so the next reshape fails a test instead of
+freezing the page.
 """
 
 from __future__ import annotations
 
+from aidaily import leaderboard
 from aidaily.leaderboard import Model, _array_after, _to_model
 
 
@@ -86,3 +92,111 @@ def test_a_name_without_a_parenthetical_is_untouched() -> None:
 def test_the_model_url_points_at_its_own_page() -> None:
     model = Model(slug="jt-35b-flash", name="JT", creator="x")
     assert model.href == "https://artificialanalysis.ai/models/jt-35b-flash"
+
+
+# ---------------------------------------------------------------------------------------------
+# The 2026-11-15 row shape: `release.slug` and a `scores` object.
+# ---------------------------------------------------------------------------------------------
+
+# Copied from the live payload, trimmed to the fields the page reads.
+_RELEASE_ROW = {
+    "id": "042e8a37-fcd0-40f4-8f41-99215fb68eda",
+    "release": {"slug": "claude-sonnet-5-5", "name": "Claude Sonnet 5.5"},
+    "name": "Claude Sonnet 5.5 (Medium, Default Fallback)",
+    "suffix": "Medium, Default Fallback",
+    "deprecated": False,
+    "isReasoning": True,
+    "isOpenWeights": False,
+    "paramClass": None,
+    "modelCreatorName": "Anthropic",
+    "modelCreatorColor": "#cc785c",
+    "contextWindowTokens": 1000000,
+    "intelligenceIndex": 30.8195522148431,
+    "scores": {
+        "tau2-bench": 0.991,
+        "gpqa-diamond": 0.829,
+        "humanitys-last-exam": 0.398,
+        "artificial-analysis-long-context-reasoning": 0.763,
+        "omniscience-accuracy": 0.457,
+        "ifbench": 0.42,
+        "scicode": 0.528,
+        "mmmu-pro": 0.61,
+        "terminalbench-hard": 0.287,
+    },
+    "price1mInputTokens": 2,
+    "price1mOutputTokens": 10,
+}
+
+
+def test_the_current_release_shape_parses() -> None:
+    """The slug lives in `release` now; reading only the top level dropped all 287 rows."""
+    model = _to_model(dict(_RELEASE_ROW))
+    assert model is not None
+    assert model.slug == "claude-sonnet-5-5"
+    assert model.creator == "Anthropic"
+    assert model.intelligence == 30.8195522148431
+    assert model.context == 1000000
+    assert model.price_input == 2.0
+
+
+def test_the_current_release_shape_keeps_every_benchmark_column() -> None:
+    """kebab-case inside `scores` maps back onto the labels the table renders."""
+    model = _to_model(dict(_RELEASE_ROW))
+    assert model is not None
+    assert model.benchmarks == {
+        "tau2": 0.991,
+        "gpqa": 0.829,
+        "hle": 0.398,
+        "lcr": 0.763,
+        "omniscience": 0.457,
+        "ifbench": 0.42,
+        "scicode": 0.528,
+        "mmmu": 0.61,
+        "terminalbench": 0.287,
+    }
+
+
+def test_the_variant_still_leaves_the_name() -> None:
+    """`release.name` is the clean one, but `suffix` and the parenthetical agree with it."""
+    model = _to_model(dict(_RELEASE_ROW))
+    assert model is not None
+    assert model.name == "Claude Sonnet 5.5"
+    assert model.variant == "Medium, Default Fallback"
+
+
+def test_a_missing_estimated_flag_does_not_claim_an_estimate() -> None:
+    """The flag is gone upstream; absent must read as "unknown", not as "is estimated"."""
+    model = _to_model(dict(_RELEASE_ROW))
+    assert model is not None
+    assert model.estimated is False
+
+
+def test_a_true_flag_is_not_read_as_a_score() -> None:
+    """`bool` is an `int` in Python: a flag must never become a benchmark value of 1.0."""
+    model = _to_model({"release": {"slug": "s"}, "name": "S", "scores": {"tau2-bench": True}})
+    assert model is not None
+    assert "tau2" not in model.benchmarks
+
+
+# ---------------------------------------------------------------------------------------------
+# Silence was the bug: a payload nobody can parse must say so.
+# ---------------------------------------------------------------------------------------------
+
+
+def test_rows_that_no_longer_parse_are_reported(monkeypatch, capsys) -> None:
+    """Zero models out of a populated payload is a shape change, not "nothing to do"."""
+    monkeypatch.setattr(
+        leaderboard, "_flight_payload", lambda url, timeout=50.0: 'x,"initialModels":[{"foo":1}],"y":2'
+    )
+    assert leaderboard.fetch_models() == []
+    err = capsys.readouterr().err
+    assert "全部被丢弃" in err
+    assert "解析器需要更新" in err
+
+
+def test_a_missing_array_is_reported(monkeypatch, capsys) -> None:
+    monkeypatch.setattr(
+        leaderboard, "_flight_payload", lambda url, timeout=50.0: "1:[\"$Sreact.fragment\"]"
+    )
+    assert leaderboard.fetch_models() == []
+    assert "initialModels" in capsys.readouterr().err

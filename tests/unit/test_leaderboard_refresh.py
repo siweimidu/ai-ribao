@@ -54,3 +54,42 @@ def test_the_cli_command_exists() -> None:
             choices = action.choices
             break
     assert "leaderboard" in choices
+
+
+# ---------------------------------------------------------------------------------------------
+# The run must not stay green while the page is frozen.
+#
+# From 2026-11-15 to 2026-11-21 upstream had reshaped its rows and every one was dropped. The
+# command exited 0 each time, the page was byte-identical, nothing was committed, and the site
+# served 2026-11-14 data for a week. "Already fresh" and "cannot be refreshed" have to end in
+# different exit codes, and the threshold is a day because the page is meant to move daily.
+# ---------------------------------------------------------------------------------------------
+
+
+def _run_cli(monkeypatch, *, age_hours: float | None) -> int:
+    from aidaily import __main__ as cli
+
+    monkeypatch.setattr(leaderboard, "refresh_site_page", lambda root, **kw: (False, "页面已是最新"))
+    monkeypatch.setattr(leaderboard, "snapshot_age_hours", lambda root: age_hours)
+    args = cli.build_parser().parse_args(["leaderboard"])
+    return cli.cmd_leaderboard(args)
+
+
+def test_the_cli_stays_green_when_the_snapshot_is_from_this_cycle(monkeypatch) -> None:
+    assert _run_cli(monkeypatch, age_hours=5.0) == 0
+
+
+def test_a_single_missed_fetch_does_not_paint_the_run_red(monkeypatch) -> None:
+    """One failed fetch leaves yesterday's page up; that is not an incident yet."""
+    assert _run_cli(monkeypatch, age_hours=20.0) == 0
+
+
+def test_the_cli_fails_once_a_whole_cycle_was_missed(monkeypatch, capsys) -> None:
+    assert _run_cli(monkeypatch, age_hours=168.0) == 1
+    err = capsys.readouterr().err
+    assert "陈旧" in err and "168" in err
+
+
+def test_the_cli_fails_when_there_is_no_snapshot_at_all(monkeypatch, capsys) -> None:
+    assert _run_cli(monkeypatch, age_hours=None) == 1
+    assert "快照" in capsys.readouterr().err

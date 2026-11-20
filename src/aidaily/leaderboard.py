@@ -20,12 +20,28 @@ Enough to rank and to explain the rank: the intelligence index, the price per mi
 context window, size class, reasoning/open-weights flags, and the individual benchmarks that
 make up the index. Fields the site leaves null stay null rather than becoming zero, so
 "not measured" never reads as "scored 0".
+
+## The row shape changed under us (2026-11-15)
+
+Until 2026-11-14 a row carried `slug` at the top and each benchmark as a flat camelCase column
+(`omniscienceAccuracy`, `tau2`, …). From 2026-11-15 the slug lives in `release.slug`, the
+benchmarks live in a `scores` object keyed kebab-case (`omniscience-accuracy`, `tau2-bench`, …),
+and `intelligenceIndexIsEstimated` is gone.
+
+`_to_model` knew only the old shape, so every row lost its slug and was discarded: 287 rows in,
+0 models out, `fetch_models` returned `[]`, and `load_models` fell back to the 2026-11-14
+snapshot. The rendered page was byte-identical, so nothing was committed and the workflow stayed
+green for a week while the published leaderboard did not move.
+
+Both shapes are read now, and a payload whose rows no longer parse says so on stderr instead of
+passing for "nothing to do".
 """
 
 from __future__ import annotations
 
 import json
 import re
+import sys
 import urllib.request
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
@@ -116,24 +132,32 @@ def _array_after(text: str, marker: str) -> str | None:
 
 
 #: Benchmarks worth carrying. The index is built from these, so they explain it.
+#:
+#: Keyed by the label the page shows; the value lists every source key that has carried it,
+#: current shape first. Keeping both means the columns survive a reshape instead of emptying.
 _BENCHMARKS = {
-    "omniscienceAccuracy": "omniscience",
-    "terminalbenchHard": "terminalbench",
-    "tau2": "tau2",
-    "lcr": "lcr",
-    "hle": "hle",
-    "gpqa": "gpqa",
-    "ifbench": "ifbench",
-    "scicode": "scicode",
-    "mmmuPro": "mmmu",
+    "omniscience": ("omniscience-accuracy", "omniscienceAccuracy"),
+    "terminalbench": ("terminalbench-hard", "terminalbenchHard"),
+    "tau2": ("tau2-bench", "tau2"),
+    "lcr": ("artificial-analysis-long-context-reasoning", "lcr"),
+    "hle": ("humanitys-last-exam", "hle"),
+    "gpqa": ("gpqa-diamond", "gpqa"),
+    "ifbench": ("ifbench",),
+    "scicode": ("scicode",),
+    "mmmu": ("mmmu-pro", "mmmuPro"),
 }
 
 
 def _to_model(raw: dict) -> Model | None:
-    slug = str(raw.get("slug") or "").strip()
-    name = str(raw.get("name") or raw.get("shortName") or "").strip()
+    # `release` is the 2026-11-15 home of the slug; older payloads carry it at the top level.
+    release = raw.get("release") if isinstance(raw.get("release"), dict) else {}
+    slug = str(raw.get("slug") or release.get("slug") or "").strip()
+    name = str(raw.get("name") or raw.get("shortName") or release.get("name") or "").strip()
     if not slug or not name:
         return None
+
+    # Same reshape: the benchmarks moved from flat columns into this object.
+    scores = raw.get("scores") if isinstance(raw.get("scores"), dict) else {}
 
     def number(key: str) -> float | None:
         value = raw.get(key)
@@ -141,9 +165,19 @@ def _to_model(raw: dict) -> Model | None:
             return float(value)
         return None
 
+    def benchmark(*keys: str) -> float | None:
+        for key in keys:
+            value = scores.get(key)
+            if value is None:
+                value = raw.get(key)
+            # `bool` is an `int`; `True` must not read as a score of 1.
+            if isinstance(value, (int, float)) and not isinstance(value, bool):
+                return float(value)
+        return None
+
     benchmarks: dict[str, float] = {}
-    for key, label in _BENCHMARKS.items():
-        value = number(key)
+    for label, keys in _BENCHMARKS.items():
+        value = benchmark(*keys)
         if value is not None:
             benchmarks[label] = value
 
@@ -179,23 +213,39 @@ def _to_model(raw: dict) -> Model | None:
 def fetch_models(*, url: str = LEADERBOARD_URL, timeout: float = 50.0) -> list[Model]:
     """Every model on the leaderboard, ranked by intelligence index. Never raises.
 
-    An empty list means the fetch failed; the caller renders the page without a table rather
-    than with a wrong one.
+    An empty list means the fetch failed or the payload's shape is no longer understood; the
+    caller renders the page without a table rather than with a wrong one.
+
+    Every path that yields no models says why on stderr. Returning `[]` in silence is what let
+    this page sit unchanged for a week while the workflow stayed green: a reshape upstream looked
+    exactly like "nothing to do".
     """
     try:
         payload = _flight_payload(url, timeout=timeout)
-    except Exception:
+    except Exception as exc:
+        print(f"leaderboard: 抓取失败：{exc!r}", file=sys.stderr)
         return []
 
     raw = _array_after(payload, '"initialModels":')
     if not raw:
+        print(
+            "leaderboard: payload 里没有 initialModels 数组，站点结构变了，解析器需要更新",
+            file=sys.stderr,
+        )
         return []
     try:
         rows = json.loads(raw)
-    except ValueError:
+    except ValueError as exc:
+        print(f"leaderboard: initialModels 不是合法 JSON（{exc}），解析器需要更新", file=sys.stderr)
         return []
 
     models = [m for m in (_to_model(r) for r in rows if isinstance(r, dict)) if m]
+    if rows and not models:
+        print(
+            f"leaderboard: {len(rows)} 行模型全部被丢弃，行结构变了（slug/name 或分数键位改了），"
+            "解析器需要更新",
+            file=sys.stderr,
+        )
     models.sort(key=lambda m: (-(m.intelligence or -1e9), m.name.lower()))
     return models
 
@@ -224,9 +274,12 @@ def refresh_site_page(root: Path, *, max_age_hours: float = 6.0) -> tuple[bool, 
         return False, f"{site} 不存在，无法刷新"
 
     snapshot = snapshot_path(root)
+    age = snapshot_age_hours(root)
     models = load_models(root, max_age_hours=max_age_hours)
     if not models:
-        return False, "取不到模型数据，页面保持原样"
+        return False, "取不到模型数据，页面保持原样" + (
+            f"（快照已 {age:.0f} 小时）" if age is not None else "（没有可用快照）"
+        )
 
     fetched_at = ""
     try:
@@ -240,6 +293,8 @@ def refresh_site_page(root: Path, *, max_age_hours: float = 6.0) -> tuple[bool, 
     html = render_leaderboard(ctx, models, fetched_at=fetched_at)
 
     if page.exists() and page.read_text(encoding="utf-8") == html:
+        if age is not None and age > max_age_hours:
+            return False, f"页面已是最新，但快照已 {age:.0f} 小时没更新，抓取没有成功"
         return False, "页面已是最新"
     page.write_text(html, encoding="utf-8")
     return True, f"已刷新 {page.name}（{len(models)} 个模型）"
@@ -247,6 +302,23 @@ def refresh_site_page(root: Path, *, max_age_hours: float = 6.0) -> tuple[bool, 
 
 def snapshot_path(root: Path) -> Path:
     return root / "data" / "state" / "leaderboard.json"
+
+
+def snapshot_age_hours(root: Path) -> float | None:
+    """How old the saved snapshot is, or None when there is no readable snapshot.
+
+    The page promises a fetch date, and a run that could not move it must be able to say how far
+    behind it is: "unchanged" and "seven days stale" render identically otherwise.
+    """
+    path = snapshot_path(root)
+    try:
+        doc = json.loads(path.read_text(encoding="utf-8"))
+        saved = datetime.fromisoformat(doc["fetched_at"])
+    except Exception:
+        return None
+    if saved.tzinfo is None:
+        saved = saved.replace(tzinfo=timezone.utc)
+    return (datetime.now(timezone.utc) - saved).total_seconds() / 3600
 
 
 def load_models(root: Path, *, max_age_hours: float = 6.0) -> list[Model]:
