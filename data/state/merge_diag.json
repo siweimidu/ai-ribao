@@ -1,22 +1,50 @@
 {
-  "generated_at": "2026-11-20T21:23:06.953872+00:00",
+  "generated_at": "2026-11-21T02:35:25.522793+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 118,
-  "batches": 3,
-  "calls": 3,
-  "merged_groups": 1,
-  "merged_events": 2,
-  "rejected_groups": 0,
+  "input_events": 205,
+  "batches": 7,
+  "calls": 7,
+  "merged_groups": 6,
+  "merged_events": 12,
+  "rejected_groups": 4,
   "failed": false,
   "examples": [
     {
+      "kept": "Unsloth 发布 Inkling 2 Mini 本地运行指南，26.4B MoE 模型可在 16GB 内存运行",
+      "merged": [
+        "NDIF 上线 Thinking Machines 的 Inkling 2 Mini 白盒访问",
+        "Inkling 2 Mini 上架 Ollama，一条命令即可本地运行"
+      ],
+      "why": "均报道 Inkling 2 Mini 模型上线或本地运行指南"
+    },
+    {
+      "kept": "Anthropic Mathematician Says He Proved Riemann Hypothesis",
+      "merged": [
+        "Anthropic 数学家 Levent Alpöge 宣布与 Claude 合作证明黎曼猜想，放出 1737 万行 L"
+      ],
+      "why": "都是关于 Anthropic 数学家与 Claude 合作证明黎曼猜想的报道"
+    },
+    {
+      "kept": "4万亿“灰飞烟灭”、疫情以来最惨烈的一周！美国科技股跌入熊市 - 华尔街见闻",
+      "merged": [
+        "AI交易崩跌踩踏！金银铜全线重挫，全周期金跌超9%、纽铜跌近10%，原油三周大跌两成 - 华尔街见闻"
+      ],
+      "why": "均报道美股科技股及英伟达暴跌引发的AI板块熊市"
+    },
+    {
       "kept": "Anthropic shares tank after IPO as the Nasdaq erases 2026 gains",
       "merged": [
-        "Anthropic Shares Slide After Banks Exercise ‘Greenshoe’",
-        "Anthropic上市次日暴跌，几乎回吐首日涨幅，AI交易“买方罢工” - 华尔街见闻"
+        "Anthropic Shares Slide After Banks Exercise ‘Greenshoe’"
       ],
-      "why": "均为 Anthropic IPO 后股价下跌报道"
+      "why": "均报道Anthropic上市后股价下跌"
+    },
+    {
+      "kept": "不用一颗大核！AI从零设计出CPU架构 每瓦性能是常规核4.59倍 - 驱动之家",
+      "merged": [
+        "纯AI造CPU！从零自创指令集：能效比暴增4.59倍 - 驱动之家"
+      ],
+      "why": "均报道AI设计的CPU架构能效提升4.59倍"
     }
   ]
 }
