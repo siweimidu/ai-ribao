@@ -1,51 +1,50 @@
 {
-  "generated_at": "2026-11-21T04:28:09.322257+00:00",
+  "generated_at": "2026-11-21T12:12:44.272289+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 227,
-  "batches": 7,
-  "calls": 7,
+  "input_events": 286,
+  "batches": 8,
+  "calls": 8,
   "merged_groups": 11,
-  "merged_events": 15,
-  "rejected_groups": 1,
+  "merged_events": 20,
+  "rejected_groups": 5,
   "failed": false,
   "examples": [
     {
-      "kept": "Signal blocks screenshots on iOS 27 and Android to stop AI agents from reading p",
+      "kept": "CrowdStrike in Talks to Buy Zscaler",
       "merged": [
-        "Signal now blocks screenshots by default to stymie AI agents",
-        "Signal to restrict screenshots over AI agent concerns – agai"
+        "CrowdStrike reportedly in talks to acquire cybersecurity pro"
       ],
-      "why": "均报道 Signal 默认禁止截图以应对 AI 代理读取隐私消息"
+      "why": "都是关于 CrowdStrike 与 Zscaler 收购谈判的报道"
     },
     {
-      "kept": "不用一颗大核！AI从零设计出CPU架构 每瓦性能是常规核4.59倍 - 驱动之家",
+      "kept": "面向先锋者的新选择，业界首款鸿蒙AI手机华为OSTA星芒 O1 Pro登场 - 凤凰网",
       "merged": [
-        "纯AI造CPU！从零自创指令集：能效比暴增4.59倍 - 驱动之家"
+        "5499元拿下原生鸿蒙AI旗舰，OSTA星芒O1 Pro正式开售 - 紫牛新闻"
       ],
-      "why": "均报道 AI 从零设计 CPU 架构且能效提升 4.59 倍"
+      "why": "均为华为鸿蒙AI手机OSTA星芒O1 Pro发布及开售"
     },
     {
-      "kept": "先锋科技向新而行，华为OSTA星芒鸿蒙AI手机 OSTA O1 Pro正式亮相 - 财富号",
+      "kept": "华中科技大学与阿里巴巴联合成立AI前沿安全研究中心 - 凤凰网科技",
       "merged": [
-        "首款鸿蒙AI手机被嫌贵！华为星芒回应：便宜未必是创新方向 - 财富号"
+        "华中科大联合阿里巴巴成立AI安全研究中心 - www.itsdw.cn"
       ],
-      "why": "均报道华为鸿蒙 AI 手机 OSTA O1 Pro 的发布与价格回应"
+      "why": "均为华中科大与阿里共建AI安全研究中心"
     },
     {
-      "kept": "国产大模型引领全球开源生态 累计下载量突破100亿次 - 新华网",
+      "kept": "腾讯混元开源旗舰模型 Hy4：总参数 770B",
       "merged": [
-        "国产大模型引领全球开源生态（大数据观察·智能经济新形态） - 人民网"
+        "AI Daily 2026-11-21: Tencent open-sources Hy4, a 770B-parame",
+        "AI 日报 2026-11-21：腾讯开源 7700 亿参数旗舰模型 Hy4：能看图看视频、会操作电脑…"
       ],
-      "why": "均报道国产大模型开源生态下载量突破 100 亿次"
+      "why": "均报道腾讯开源旗舰模型 Hy4（770B 参数）"
     },
     {
-      "kept": "Anthropic数学家宣称：在AI帮助下已解决数学界最著名难题 - ThePaper.cn",
+      "kept": "英伟达一夜蒸发5000亿！美股大跳水，AI泡沫撑不住了？ - 雷科技",
       "merged": [
-        "马上评｜AI证明黎曼猜想，数学家该恐慌吗？ - ThePaper.cn",
-        "Anthropic数学家称用AI证明了黎曼猜想 - Sohu"
+        "深夜，美股AI血崩，英伟达市值已跌去2.7万亿美元 - 智东西"
       ],
-      "why": "都是 Anthropic 数学家宣称用 AI 解决/证明黎曼猜想"
+      "why": "均报道美股 AI 板块暴跌及英伟达市值大幅下跌"
     }
   ]
 }
