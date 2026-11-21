@@ -1,50 +1,51 @@
 {
-  "generated_at": "2026-11-21T02:35:25.522793+00:00",
+  "generated_at": "2026-11-21T04:28:09.322257+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 205,
+  "input_events": 227,
   "batches": 7,
   "calls": 7,
-  "merged_groups": 6,
-  "merged_events": 12,
-  "rejected_groups": 4,
+  "merged_groups": 11,
+  "merged_events": 15,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "Unsloth 发布 Inkling 2 Mini 本地运行指南，26.4B MoE 模型可在 16GB 内存运行",
+      "kept": "Signal blocks screenshots on iOS 27 and Android to stop AI agents from reading p",
       "merged": [
-        "NDIF 上线 Thinking Machines 的 Inkling 2 Mini 白盒访问",
-        "Inkling 2 Mini 上架 Ollama，一条命令即可本地运行"
+        "Signal now blocks screenshots by default to stymie AI agents",
+        "Signal to restrict screenshots over AI agent concerns – agai"
       ],
-      "why": "均报道 Inkling 2 Mini 模型上线或本地运行指南"
-    },
-    {
-      "kept": "Anthropic Mathematician Says He Proved Riemann Hypothesis",
-      "merged": [
-        "Anthropic 数学家 Levent Alpöge 宣布与 Claude 合作证明黎曼猜想，放出 1737 万行 L"
-      ],
-      "why": "都是关于 Anthropic 数学家与 Claude 合作证明黎曼猜想的报道"
-    },
-    {
-      "kept": "4万亿“灰飞烟灭”、疫情以来最惨烈的一周！美国科技股跌入熊市 - 华尔街见闻",
-      "merged": [
-        "AI交易崩跌踩踏！金银铜全线重挫，全周期金跌超9%、纽铜跌近10%，原油三周大跌两成 - 华尔街见闻"
-      ],
-      "why": "均报道美股科技股及英伟达暴跌引发的AI板块熊市"
-    },
-    {
-      "kept": "Anthropic shares tank after IPO as the Nasdaq erases 2026 gains",
-      "merged": [
-        "Anthropic Shares Slide After Banks Exercise ‘Greenshoe’"
-      ],
-      "why": "均报道Anthropic上市后股价下跌"
+      "why": "均报道 Signal 默认禁止截图以应对 AI 代理读取隐私消息"
     },
     {
       "kept": "不用一颗大核！AI从零设计出CPU架构 每瓦性能是常规核4.59倍 - 驱动之家",
       "merged": [
         "纯AI造CPU！从零自创指令集：能效比暴增4.59倍 - 驱动之家"
       ],
-      "why": "均报道AI设计的CPU架构能效提升4.59倍"
+      "why": "均报道 AI 从零设计 CPU 架构且能效提升 4.59 倍"
+    },
+    {
+      "kept": "先锋科技向新而行，华为OSTA星芒鸿蒙AI手机 OSTA O1 Pro正式亮相 - 财富号",
+      "merged": [
+        "首款鸿蒙AI手机被嫌贵！华为星芒回应：便宜未必是创新方向 - 财富号"
+      ],
+      "why": "均报道华为鸿蒙 AI 手机 OSTA O1 Pro 的发布与价格回应"
+    },
+    {
+      "kept": "国产大模型引领全球开源生态 累计下载量突破100亿次 - 新华网",
+      "merged": [
+        "国产大模型引领全球开源生态（大数据观察·智能经济新形态） - 人民网"
+      ],
+      "why": "均报道国产大模型开源生态下载量突破 100 亿次"
+    },
+    {
+      "kept": "Anthropic数学家宣称：在AI帮助下已解决数学界最著名难题 - ThePaper.cn",
+      "merged": [
+        "马上评｜AI证明黎曼猜想，数学家该恐慌吗？ - ThePaper.cn",
+        "Anthropic数学家称用AI证明了黎曼猜想 - Sohu"
+      ],
+      "why": "都是 Anthropic 数学家宣称用 AI 解决/证明黎曼猜想"
     }
   ]
 }
