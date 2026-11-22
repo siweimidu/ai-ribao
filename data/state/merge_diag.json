@@ -1,13 +1,49 @@
 {
-  "generated_at": "2026-11-21T23:29:00.055144+00:00",
+  "generated_at": "2026-11-22T03:20:05.598122+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 105,
-  "batches": 3,
-  "calls": 3,
-  "merged_groups": 0,
-  "merged_events": 0,
-  "rejected_groups": 0,
+  "input_events": 186,
+  "batches": 6,
+  "calls": 6,
+  "merged_groups": 5,
+  "merged_events": 5,
+  "rejected_groups": 4,
   "failed": false,
-  "examples": []
+  "examples": [
+    {
+      "kept": "生菜种20天就能端上桌？在农博会看“AI种地”新生活--经济·科技 - 人民网",
+      "merged": [
+        "湖北农博会亮相AI种地 生菜20天上桌 - www.itsdw.cn"
+      ],
+      "why": "都报道农博会上AI种地及生菜20天上桌的消息"
+    },
+    {
+      "kept": "Columbia 与 MIT 论文展示 Claude 发现的算法突破 3SUM 与 APSP 长期速度上限",
+      "merged": [
+        "A Team of Researchers from Columbia and CertiK Introduce Ten"
+      ],
+      "why": "报道 Columbia 与 CertiK/MIT 合作论文"
+    },
+    {
+      "kept": "大模型经过医考测试？官方连夜声明 - 新浪新闻_手机新浪网",
+      "merged": [
+        "最新 | 试题经过大模型测试？官方连夜声明！ - ThePaper.cn"
+      ],
+      "why": "均为官方声明大模型未进行医考/试题测试"
+    },
+    {
+      "kept": "AI早报｜Anthropic称IPO募集资金总额约为935亿美元，腾讯WorkBuddy上线电脑操控能力 - 手机新浪网",
+      "merged": [
+        "Anthropic上市未能止住美股暴跌 华尔街追问什么能拯救AI交易 - 新浪财经"
+      ],
+      "why": "均报道Anthropic IPO融资及上市影响"
+    },
+    {
+      "kept": "AI Daily 2026-11-22: On the same day as the Riemann claim, an Anthropic research",
+      "merged": [
+        "AI 日报 2026-11-22：宣称“黎曼猜想”的同一天，Anthropic 研究员和纽约大学教授又贴…"
+      ],
+      "why": "均报道 Anthropic 研究员与黎曼猜想证明相关"
+    }
+  ]
 }

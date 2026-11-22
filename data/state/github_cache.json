@@ -1523,12 +1523,12 @@
   }
  },
  "obra/superpowers": {
-  "fetched_at": "2026-11-20T21:23:06.970773+00:00",
+  "fetched_at": "2026-11-22T03:20:05.619924+00:00",
   "data": {
    "full_name": "obra/superpowers",
    "description": "An agentic skills framework & software development methodology that works.",
-   "stars": 322776,
-   "forks": 28670,
+   "stars": 323798,
+   "forks": 28721,
    "language": "Shell",
    "license": "MIT",
    "topics": [
@@ -6218,12 +6218,12 @@
   }
  },
  "elementalsouls/Claude-BugHunter": {
-  "fetched_at": "2026-11-20T21:23:06.970773+00:00",
+  "fetched_at": "2026-11-22T03:20:05.619924+00:00",
   "data": {
    "full_name": "elementalsouls/Claude-BugHunter",
    "description": "A Claude Code skill bundle for bug hunting and external red-team work - 82 skills, 15 slash commands, 681 disclosed-report patterns curated across 24 core vulnerability classes, plus enterprise identity + infrastructure attack matrices.",
-   "stars": 14023,
-   "forks": 1678,
+   "stars": 16208,
+   "forks": 1841,
    "language": "Python",
    "license": "MIT",
    "topics": [
@@ -6235,7 +6235,7 @@
     "bugcrowd"
    ],
    "created": "2026-05-05",
-   "pushed": "2026-11-20",
+   "pushed": "2026-11-22",
    "contributors": 19,
    "discussions": null,
    "languages": {
@@ -6246,12 +6246,12 @@
   }
  },
  "google-labs-code/stitch-skills": {
-  "fetched_at": "2026-11-20T21:23:06.970773+00:00",
+  "fetched_at": "2026-11-22T03:20:05.619924+00:00",
   "data": {
    "full_name": "google-labs-code/stitch-skills",
    "description": "A library of Agent Skills designed to work with the Stitch MCP server. Each skill follows the Agent Skills open standard, for compatibility with coding agents such as Antigravity, Gemini CLI, Claude Code, Cursor.",
-   "stars": 10985,
-   "forks": 1401,
+   "stars": 11485,
+   "forks": 1444,
    "language": "TypeScript",
    "license": "Apache-2.0",
    "topics": [],
@@ -6412,12 +6412,12 @@
   }
  },
  "mvanhorn/last30days-skill": {
-  "fetched_at": "2026-11-20T21:23:06.970773+00:00",
+  "fetched_at": "2026-11-22T03:20:05.619924+00:00",
   "data": {
    "full_name": "mvanhorn/last30days-skill",
    "description": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary",
-   "stars": 71380,
-   "forks": 6344,
+   "stars": 72066,
+   "forks": 6380,
    "language": "Python",
    "license": "MIT",
    "topics": [
@@ -6429,14 +6429,14 @@
     "clawhub"
    ],
    "created": "2026-01-23",
-   "pushed": "2026-11-20",
-   "contributors": 174,
+   "pushed": "2026-11-21",
+   "contributors": 181,
    "discussions": null,
    "languages": {
-    "Python": 96.06739836510333,
-    "HTML": 2.480820074202169,
-    "Go": 1.2592741529510068,
-    "Shell": 0.19250740774349095
+    "Python": 96.14781713434536,
+    "HTML": 2.4300891546735013,
+    "Go": 1.2335229360924307,
+    "Shell": 0.18857077488870877
    }
   }
  },
@@ -7197,6 +7197,81 @@
     "Shell": 0.13224941591789913,
     "CMake": 0.07736540724068057,
     "Dockerfile": 0.06617481508799146
+   }
+  }
+ },
+ "ItsNotRexed/Leonida": {
+  "fetched_at": "2026-11-22T03:20:05.619924+00:00",
+  "data": {
+   "full_name": "ItsNotRexed/Leonida",
+   "description": "Leonida Is A Native PC Recompilation Of The Xbox Version Of Grand Theft Auto 6",
+   "stars": 6509,
+   "forks": 490,
+   "language": "Python",
+   "license": "GPL-3.0",
+   "topics": [],
+   "created": "2026-11-20",
+   "pushed": "2026-11-22",
+   "contributors": 97,
+   "discussions": null,
+   "languages": {
+    "Python": 69.03928400758367,
+    "C++": 27.074446756548237,
+    "Assembly": 2.4242252394541666,
+    "CMake": 0.49141566517701996,
+    "C#": 0.2667290573450401,
+    "HTML": 0.24539607713661227
+   }
+  }
+ },
+ "ShinMegamiBoson/lookatmyquant": {
+  "fetched_at": "2026-11-22T03:20:05.619924+00:00",
+  "data": {
+   "full_name": "ShinMegamiBoson/lookatmyquant",
+   "description": "A quantization compiler that delivers 12× lower KL than Q4_K_M at the same file size",
+   "stars": 312,
+   "forks": 11,
+   "language": "Python",
+   "license": "MIT",
+   "topics": [],
+   "created": "2026-10-31",
+   "pushed": "2026-11-21",
+   "contributors": null,
+   "discussions": null,
+   "languages": {
+    "Python": 91.00657436787532,
+    "HTML": 8.99342563212468
+   }
+  }
+ },
+ "sebaandrada-cell/PcapAnalyzer": {
+  "fetched_at": "2026-11-22T03:20:05.619924+00:00",
+  "data": {
+   "full_name": "sebaandrada-cell/PcapAnalyzer",
+   "description": "Free, self-hosted pcap analyzer with 27 problem detectors and AI investigation",
+   "stars": 81,
+   "forks": 0,
+   "language": "Python",
+   "license": "Apache-2.0",
+   "topics": [
+    "fastapi",
+    "network-troubleshooting",
+    "packet-analysis",
+    "pcap",
+    "tshark",
+    "wireshark"
+   ],
+   "created": "2026-10-21",
+   "pushed": "2026-11-21",
+   "contributors": null,
+   "discussions": null,
+   "languages": {
+    "Python": 61.93698417948739,
+    "TypeScript": 26.36584027816995,
+    "HTML": 4.638754205222948,
+    "CSS": 2.7417650238396813,
+    "Shell": 2.3849765636975304,
+    "JavaScript": 1.2415996385726848
    }
   }
  }
