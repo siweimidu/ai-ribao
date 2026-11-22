@@ -1,50 +1,35 @@
 {
-  "generated_at": "2026-11-22T12:12:43.269918+00:00",
+  "generated_at": "2026-11-22T12:29:16.588772+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 241,
-  "batches": 7,
-  "calls": 7,
-  "merged_groups": 5,
-  "merged_events": 7,
-  "rejected_groups": 2,
+  "input_events": 242,
+  "batches": 8,
+  "calls": 8,
+  "merged_groups": 3,
+  "merged_events": 3,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "Nvidia 研究者称超大 AI 上下文窗口是死路",
+      "kept": "AI唤醒历史经典 “数智成果”为老手艺装上新引擎 - 中国新闻网",
       "merged": [
-        "Nvidia researchers argue huge AI context windows are a dead "
+        "AI如何“牵手”历史经典产业？各界人士在杭州共话新可能 - 中国新闻网"
       ],
-      "why": "同一篇 Nvidia 研究关于上下文窗口的观点"
+      "why": "均报道AI与历史经典产业结合"
     },
     {
-      "kept": "TechCrunch 播客解读 Nvidia 财报亮眼与请愿前 CEO 黄仁勋回归并存的两种叙事",
+      "kept": "Why Apple Vision Pro never took off like Meta's VR headsets",
       "merged": [
-        "A tale of two Nvidias"
+        "全球Meta一家独大，中国AI眼镜为何还在混战？ - 21财经"
       ],
-      "why": "均报道 Nvidia 财报与黄仁勋回归的两种叙事"
+      "why": "均讨论VR/AR眼镜市场格局"
     },
     {
-      "kept": "Lean 官方社区认证 Levent Alpöge 的黎曼猜想形式化证明",
+      "kept": "韩国高考 AI 作弊事件发酵，教育部长崔教振引咎辞职",
       "merged": [
-        "Lean 与 Mathlib 社区认证黎曼假设证明正确"
+        "韩国高考AI作弊事件发酵，教育部长引咎辞职 - 广州日报新花城"
       ],
-      "why": "均为黎曼猜想形式化证明获社区认证"
-    },
-    {
-      "kept": "“AI攻克黎曼猜想”获Lean数学社区认证，但读懂它仍需时日 - ThePaper.cn",
-      "merged": [
-        "菲尔兹奖得主梅纳德谈“AI攻克黎曼猜想” - Sohu",
-        "当AI攻克黎曼猜想，教育还有多少窗口期？这份2026年度报告给出答案 - 上观新闻"
-      ],
-      "why": "均报道 AI 辅助攻克黎曼猜想事件"
-    },
-    {
-      "kept": "AI Daily 2026-11-22: On the same day as the Riemann claim, an Anthropic research",
-      "merged": [
-        "AI 日报 2026-11-22：宣称“黎曼猜想”的同一天，Anthropic 研究员和纽约大学教授又贴…"
-      ],
-      "why": "同一篇AI日报的英文和中文版本"
+      "why": "同一韩国高考AI作弊事件及教育部长辞职"
     }
   ]
 }
