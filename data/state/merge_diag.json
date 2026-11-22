@@ -1,28 +1,50 @@
 {
-  "generated_at": "2026-11-22T04:13:14.375673+00:00",
+  "generated_at": "2026-11-22T12:12:43.269918+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 178,
-  "batches": 6,
-  "calls": 6,
-  "merged_groups": 2,
-  "merged_events": 3,
-  "rejected_groups": 1,
+  "input_events": 241,
+  "batches": 7,
+  "calls": 7,
+  "merged_groups": 5,
+  "merged_events": 7,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "智能体身份国际标准化：体系布局与研制实践｜AICon 北京 - InfoQ.cn",
+      "kept": "Nvidia 研究者称超大 AI 上下文窗口是死路",
       "merged": [
-        "智能体身份国际标准化：体系布局与研制实践｜AICon北京"
+        "Nvidia researchers argue huge AI context windows are a dead "
       ],
-      "why": "标题和会议信息完全一致，仅标点空格不同"
+      "why": "同一篇 Nvidia 研究关于上下文窗口的观点"
     },
     {
-      "kept": "部分AI大模型宣称经过中医类别医师资格考试测试，官方回应 - ThePaper.cn",
+      "kept": "TechCrunch 播客解读 Nvidia 财报亮眼与请愿前 CEO 黄仁勋回归并存的两种叙事",
       "merged": [
-        "最新 | 试题经过大模型测试？官方连夜声明！ - ThePaper.cn"
+        "A tale of two Nvidias"
       ],
-      "why": "均报道AI大模型测试中医/医考资格及官方声明"
+      "why": "均报道 Nvidia 财报与黄仁勋回归的两种叙事"
+    },
+    {
+      "kept": "Lean 官方社区认证 Levent Alpöge 的黎曼猜想形式化证明",
+      "merged": [
+        "Lean 与 Mathlib 社区认证黎曼假设证明正确"
+      ],
+      "why": "均为黎曼猜想形式化证明获社区认证"
+    },
+    {
+      "kept": "“AI攻克黎曼猜想”获Lean数学社区认证，但读懂它仍需时日 - ThePaper.cn",
+      "merged": [
+        "菲尔兹奖得主梅纳德谈“AI攻克黎曼猜想” - Sohu",
+        "当AI攻克黎曼猜想，教育还有多少窗口期？这份2026年度报告给出答案 - 上观新闻"
+      ],
+      "why": "均报道 AI 辅助攻克黎曼猜想事件"
+    },
+    {
+      "kept": "AI Daily 2026-11-22: On the same day as the Riemann claim, an Anthropic research",
+      "merged": [
+        "AI 日报 2026-11-22：宣称“黎曼猜想”的同一天，Anthropic 研究员和纽约大学教授又贴…"
+      ],
+      "why": "同一篇AI日报的英文和中文版本"
     }
   ]
 }
