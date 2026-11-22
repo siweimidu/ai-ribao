@@ -1,35 +1,32 @@
 {
-  "generated_at": "2026-11-22T12:29:16.588772+00:00",
+  "generated_at": "2026-11-22T22:04:16.937759+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 242,
-  "batches": 8,
-  "calls": 8,
-  "merged_groups": 3,
-  "merged_events": 3,
+  "input_events": 96,
+  "batches": 3,
+  "calls": 3,
+  "merged_groups": 2,
+  "merged_events": 8,
   "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "AI唤醒历史经典 “数智成果”为老手艺装上新引擎 - 中国新闻网",
+      "kept": "Claude协助数学家形式化证明黎曼猜想，引发对知识精英新闻节食与算法神话的反思 - 虎嗅网",
       "merged": [
-        "AI如何“牵手”历史经典产业？各界人士在杭州共话新可能 - 中国新闻网"
+        "Gary Marcus 评 Levent Alpöge 借助 Claude 证明黎曼猜想：不是 AI 独立完成，也难以泛",
+        "AI接连解题，数学何去何从|Anthropic|Claude|香港中文大学|清华大学|丘成桐_手机新浪网 - 新浪财经"
       ],
-      "why": "均报道AI与历史经典产业结合"
+      "why": "均报道Claude协助数学家证明黎曼猜想事件及各方反响"
     },
     {
-      "kept": "Why Apple Vision Pro never took off like Meta's VR headsets",
+      "kept": "Greg Brockman 解读 OpenAI 基于困惑度的预训练共同安全上限提议",
       "merged": [
-        "全球Meta一家独大，中国AI眼镜为何还在混战？ - 21财经"
+        "OpenAI 首席科学家 Jakub Pachocki 提议以 perplexity 作为限制 AI 发展速度的度量",
+        "OpenAI 公开预训练进展呼吁共同安全限制",
+        "Suleyman 称赞 OpenAI 预训练透明度倡议",
+        "OpenAI 首席研究官 Mark Chen 呼吁前沿实验室共享关键指标并公开自家困惑度数据"
       ],
-      "why": "均讨论VR/AR眼镜市场格局"
-    },
-    {
-      "kept": "韩国高考 AI 作弊事件发酵，教育部长崔教振引咎辞职",
-      "merged": [
-        "韩国高考AI作弊事件发酵，教育部长引咎辞职 - 广州日报新花城"
-      ],
-      "why": "同一韩国高考AI作弊事件及教育部长辞职"
+      "why": "均为OpenAI发布预训练困惑度数据并提议行业安全上限"
     }
   ]
 }
