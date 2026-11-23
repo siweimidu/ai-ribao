@@ -1,0 +1,6919 @@
+{
+ "digest": {
+  "date": "2026-11-24",
+  "kind": "deep",
+  "generated_at": "2026-11-23T23:42:31.890981Z",
+  "window_start": "2026-11-22T11:42:31.890981Z",
+  "window_end": "2026-11-23T23:42:31.890981Z",
+  "headline": "Claude Code v2.1.331 发布，新增 Code Mode 多平台支持",
+  "top_events": [
+   {
+    "event_id": "ee16722f19f7720",
+    "title": "Claude Code v2.1.331 发布：新增 Code Mode 多平台支持与多项修复",
+    "member_item_ids": [
+     "0f99b37280ce4a33",
+     "2d8fb1ae12e273ad"
+    ],
+    "primary_item_id": "2d8fb1ae12e273ad",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/bzr0oswyw5yoko5kncsoekzs6"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T21:34:41Z",
+     "2026-11-23T21:34:41Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 19.003631,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.337,
+     "substance_chars": 202.0,
+     "substance_factor": 0.788,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.312392,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.505,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9567,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 19.003631,
+     "rubric_score": 4.5,
+     "rubric_multiplier": 0.615,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "e4e60ce170d7448",
+    "title": "把“增长优先”告上法庭：加州总检察长起诉 OpenAI",
+    "member_item_ids": [
+     "36dd1eb4621a9ff5"
+    ],
+    "primary_item_id": "36dd1eb4621a9ff5",
+    "source_ids": [
+     "api:aibase-ai-news"
+    ],
+    "all_urls": [
+     "https://www.aibase.com/zh/news/32474"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T16:22:37Z",
+     "2026-11-23T16:22:37Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 13.242971,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.208,
+     "substance_chars": 125.0,
+     "substance_factor": 0.621,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.257818,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.3125,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8647,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 13.242971,
+     "rubric_score": 9.0,
+     "rubric_multiplier": 0.93,
+     "rubric_band": "突破性",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": false,
+     "section": "要闻"
+    }
+   },
+   {
+    "event_id": "e2af7df92932c92",
+    "title": "Mira Murati 团队把模型“想三遍再说话”开源了：26.4B 循环 Transformer 登顶 Hugging Face，笔记本就能跑",
+    "member_item_ids": [
+     "4d2db8433337a255"
+    ],
+    "primary_item_id": "4d2db8433337a255",
+    "source_ids": [
+     "api:aibase-ai-news"
+    ],
+    "all_urls": [
+     "https://www.aibase.com/zh/news/32475"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T16:26:17Z",
+     "2026-11-23T16:26:17Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 25.599246,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.318,
+     "substance_chars": 191.0,
+     "substance_factor": 0.764,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.386784,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.2975,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.4775,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8657,
+     "significance": 2.2,
+     "lab_announcement": 2.2,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.5455,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 25.599246,
+     "rubric_score": 8.5,
+     "rubric_multiplier": 0.895,
+     "rubric_band": "高价值",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": false,
+     "section": "模型发布"
+    }
+   },
+   {
+    "event_id": "eb062a483e17bf1",
+    "title": "智谱发布新一代大模型 - 东方财富网",
+    "member_item_ids": [
+     "3b38edeff7c5e411"
+    ],
+    "primary_item_id": "3b38edeff7c5e411",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5ETmZjQVozOWd2V2pHelUyTlNoaEdmYjNtT0VrcWdLVDQ2elpZNjhhT3Q1Uy1wTGpQeXp1RjRwNXR6aHVobWJqc19fdk5SNGJKVzJpcy0yLVlQSmZiWFlzVA?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T23:26:10Z",
+     "2026-11-23T23:26:10Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 9.262199,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.027,
+     "substance_chars": 16.0,
+     "substance_factor": 0.385,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.24924,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.04,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9943,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.24,
+     "vendor_subject": "glm",
+     "score": 9.262199,
+     "rubric_score": 8.5,
+     "rubric_multiplier": 0.895,
+     "rubric_band": "高价值",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": false,
+     "section": "模型发布"
+    }
+   },
+   {
+    "event_id": "e5276c6d7968a20",
+    "title": "Anthropic 推出 Claude Ship beta，自动审查并按策略审批 PR",
+    "member_item_ids": [
+     "3cbc34d50f8f411a",
+     "ad5720648708ef18",
+     "0a646ccae510715c",
+     "d85d1381a8feb994",
+     "122d7956cb9ba320",
+     "90c8ee338715787d",
+     "272f45f49a9e3cbc",
+     "a94aabf1c393f73e",
+     "13878a96a587c2ed",
+     "b3d533d039b7f98d",
+     "ad1422a4de1edc42",
+     "cad0eae9bc5d6291",
+     "b3124b41cb8bdfa0",
+     "c0da8b41d736228e",
+     "ff40646e6fbd294a",
+     "fb574cc9883870b5",
+     "914ec46489be24eb",
+     "fd08de5dc21e6abd",
+     "1f464f50e4f33b92",
+     "7e69449c4264dd6c"
+    ],
+    "primary_item_id": "ad5720648708ef18",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all",
+     "rss:aihot-demo-techcrunch-ai",
+     "rss:zdnet-ai"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/cf7exc2q4r0gpagip2rcepyy2",
+     "https://aihot.news/items/mo9ri8nex517xyijhdw83ywnb",
+     "https://aihot.news/items/bogrl7sijta9kbxqrgfy7hz10",
+     "https://aihot.news/items/pa7y6lb03wza7cwwikew64sqr",
+     "https://aihot.news/items/mlop8hozs26imcfjayymd6vn9",
+     "https://aihot.news/items/sy80jk76lkvjtf63d6v5xncpi",
+     "https://aihot.news/items/gt4d8yrshukcau05h4zsfrmpc",
+     "https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/",
+     "https://www.zdnet.com/innovation/claude-ship-code-how-to-try/",
+     "https://aihot.news/items/abjvysdchmlsi68fbinr7orat",
+     "https://aihot.news/items/ape2l2bmhd99j8ql1myg113yb"
+    ],
+    "independent_source_count": 4,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T22:25:45Z",
+     "2026-11-23T22:25:45Z"
+    ],
+    "unique_facts": {
+     "merged_titles": [
+      "Claude Ship (beta) 发布：审查 PR、修复问题并按团队策略批准",
+      "Anthropic 推出 Claude Ship beta：可审查 PR、修复代码并按团队策略批准合并",
+      "Anthropic 推出 Claude Ship 公测：可审查 PR、修复问题并按策略审批",
+      "Anthropic 发布 Claude Ship，让 AI Agent 审查、修复并审批代码变更",
+      "Anthropic 推出 Claude Ship，可自动审查并合入 PR",
+      "Anthropic 推出 Claude Ship 测试版，可审查 PR 并按团队策略批准",
+      "Anthropic launches Claude Ship, letting AI agents review, fix, and approve code changes",
+      "Claude can ship code for you now – how to try it (if you dare)"
+     ]
+    },
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-24/e5276c6d7968a20-m001-dd016df3.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 48.55114,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.387,
+     "substance_chars": 232.0,
+     "substance_factor": 0.853,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.527233,
+     "h_corroboration": 0.8271,
+     "h_magnitude": 0.2975,
+     "h_engagement": 0.0,
+     "h_reach": 0.8614,
+     "h_substance": 0.58,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9736,
+     "significance": 2.2,
+     "lab_announcement": 2.2,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.5455,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 48.55114,
+     "rubric_score": 8.0,
+     "rubric_multiplier": 0.86,
+     "rubric_band": "高价值",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": false,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "ea811c24340ec36",
+    "title": "蚂蚁百灵医疗健康大模型家族全面开源：四款模型各守一关，从看懂体检报告到拦住医疗风险",
+    "member_item_ids": [
+     "032d56281e09ba6f"
+    ],
+    "primary_item_id": "032d56281e09ba6f",
+    "source_ids": [
+     "api:aibase-ai-news"
+    ],
+    "all_urls": [
+     "https://www.aibase.com/zh/news/32469"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T16:01:44Z",
+     "2026-11-23T16:01:44Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 15.656251,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.34,
+     "substance_chars": 204.0,
+     "substance_factor": 0.792,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.269336,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.51,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8592,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 15.656251,
+     "rubric_score": 7.5,
+     "rubric_multiplier": 0.825,
+     "rubric_band": "高价值",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": false,
+     "section": "模型发布"
+    }
+   },
+   {
+    "event_id": "e284232590c53ed",
+    "title": "“欧洲版 OpenAI”落子新加坡：Mistral AI 设亚太总部，替亚洲政府造“主权 AI”",
+    "member_item_ids": [
+     "1865e2d2f86ab5fc"
+    ],
+    "primary_item_id": "1865e2d2f86ab5fc",
+    "source_ids": [
+     "api:aibase-ai-news"
+    ],
+    "all_urls": [
+     "https://www.aibase.com/zh/news/32471"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T16:05:17Z",
+     "2026-11-23T16:05:17Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 12.263798,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.227,
+     "substance_chars": 136.0,
+     "substance_factor": 0.645,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.259192,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.34,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8601,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 12.263798,
+     "rubric_score": 7.5,
+     "rubric_multiplier": 0.825,
+     "rubric_band": "高价值",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": false,
+     "section": "要闻"
+    }
+   },
+   {
+    "event_id": "e10ecfb20223452",
+    "title": "Cisco and OpenAI launch Shirudo open-source infrastructure shield to prevent AI-driven cyberattacks",
+    "member_item_ids": [
+     "073c1623b9f01a80",
+     "1f7820aec8a3a1ba",
+     "241a6afdf15f4e47",
+     "3c5d966eadcaddbe",
+     "54eee17d19d97fcf",
+     "64130844971c8794",
+     "734c11dfac2cd035",
+     "901928a19728dae6",
+     "d322d6363e082d72",
+     "fa43bda2a529b82e",
+     "fbcd9316dc5c9db4"
+    ],
+    "primary_item_id": "d322d6363e082d72",
+    "source_ids": [
+     "api:news-google-com-search",
+     "rss:aihot-news",
+     "rss:aihot-news-all",
+     "rss:openai-blog",
+     "rss:openai-com-news",
+     "rss:siliconangle"
+    ],
+    "all_urls": [
+     "https://openai.com/index/introducing-shirudo",
+     "https://siliconangle.com/2026/11/23/cisco-and-openai-launch-shirudo-an-open-source-infrastructure-shield-to-protect-against-ai-driven-cyberattacks/",
+     "https://aihot.news/items/cqa4xxyqgijjsna1t0wb290ix",
+     "https://aihot.news/items/r8fzlcc2l7sbaeu3l0515ous7",
+     "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1nRldrUjNaVFYxaVNsa1Z0cUJNYmgzLTdvVi1ZYXAxMDdwX2ttcUV6V1JNRExWZ0JfbE5Sa3U1d19rRzdrTjFlZEVlRQ?oc=5",
+     "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5PRElsLVNuVWFVZjlwTkItdmN1THpVUUN1TDBreXI0aWtwOV8yS0lCZW1wV0x2dWZMODJXVnNlUWdYQk1fQTRYQ19zc1otRGs4WDRPRXMtTGhGUXY1cENnUFd4Yw?oc=5",
+     "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9vLXNubl95SUgyX3pOSHI2QkVxS1RKdW0xYXhISUhuOTAxMC1OeXUzMUJLWmd1SndYMC10UHV4YjFQemM1cHRDcEhRQWx4NWs3eU5Qb1A1YV91RW9DQ0hhUmVR?oc=5",
+     "https://news.google.com/rss/articles/CBMijAFBVV95cUxNblg1NUR2b0I0blFlS2NzcjB1MDBET1JJdk1FTlFIUkN6Ukx2NjRjN1pWV3M3bmRtbW83cDRVa29jUDByS2FscmdRWEZPd3EyaUd4d195NnpOT2loLUJXWlFIWm5aaDJnNUpaY09uMkRwZTg5aGlCQ2JwSnk0UDg3UkkwSzVrb3ItbUZwbw?oc=5"
+    ],
+    "independent_source_count": 6,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T21:20:00Z",
+     "2026-11-23T23:14:20Z"
+    ],
+    "unique_facts": {},
+    "confidence": 0.9,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 55.375126,
+    "rank_components": {
+     "source_weight": 1.5,
+     "source_damped": 1.1067,
+     "substance": 0.822,
+     "substance_chars": 493.0,
+     "substance_factor": 1.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.596123,
+     "h_corroboration": 1.0,
+     "h_magnitude": 0.2975,
+     "h_engagement": 0.0,
+     "h_reach": 1.0,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9519,
+     "significance": 2.2,
+     "lab_announcement": 2.2,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 1.0,
+     "magnitude_linear": 0.5455,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 1.0,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 55.375126,
+     "rubric_score": 7.0,
+     "rubric_multiplier": 0.79,
+     "rubric_band": "高价值",
+     "tier": "T1",
+     "tier_threshold": 55.0,
+     "tier_shortfall": false,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "e2a73ac60f97405",
+    "title": "UC Berkeley、UIUC 与 Anthropic 论文：0.1% 预训练投毒可让智能体绕过干净后训练执行攻击者代码",
+    "member_item_ids": [
+     "0343809946089665",
+     "f6dfc8c00da5d786"
+    ],
+    "primary_item_id": "f6dfc8c00da5d786",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/f4mxv0c6rxdtjfq2gfnky3yt6"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T21:44:52Z",
+     "2026-11-23T21:44:52Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 25.926278,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.437,
+     "substance_chars": 262.0,
+     "substance_factor": 0.918,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.321591,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.655,
+     "h_velocity": 1.0,
+     "h_freshness": 0.96,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 25.926278,
+     "rubric_score": 7.0,
+     "rubric_multiplier": 0.79,
+     "rubric_band": "高价值",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": false,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "e66d4ea185e75d0",
+    "title": "Canva 发布 MCP 服务器，agent 可从一句需求生成可编辑的发布资产",
+    "member_item_ids": [
+     "846f888346d9275b",
+     "f75f1024960001ab"
+    ],
+    "primary_item_id": "f75f1024960001ab",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/j1l28oip9efhwhap3zauz2kyt"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T21:09:38Z",
+     "2026-11-23T21:09:38Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 27.670576,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.453,
+     "substance_chars": 272.0,
+     "substance_factor": 0.939,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.322407,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.68,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9486,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 27.670576,
+     "rubric_score": 6.5,
+     "rubric_multiplier": 0.755,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "e42a2fb5f5f38c7",
+    "title": "Anthropic's appetite for compute is pushing xAI toward a rent-over-build strategy",
+    "member_item_ids": [
+     "601db238b944ea5d"
+    ],
+    "primary_item_id": "601db238b944ea5d",
+    "source_ids": [
+     "rss:aihot-demo-the-decoder"
+    ],
+    "all_urls": [
+     "https://the-decoder.com/anthropics-appetite-for-compute-is-pushing-xai-toward-a-rent-over-build-strategy/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T18:47:53Z",
+     "2026-11-23T18:47:53Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 19.815267,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.722,
+     "substance_chars": 433.0,
+     "substance_factor": 1.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.301499,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9052,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 19.815267,
+     "rubric_score": 6.5,
+     "rubric_multiplier": 0.755,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e6fd784cb963c3c",
+    "title": "AWS is making AI agents more decisive and secure with its latest Strands updates",
+    "member_item_ids": [
+     "4e8d237a519d961b"
+    ],
+    "primary_item_id": "4e8d237a519d961b",
+    "source_ids": [
+     "rss:siliconangle"
+    ],
+    "all_urls": [
+     "https://siliconangle.com/2026/11/23/aws-is-making-ai-agents-more-decisive-and-secure-with-its-latest-strands-updates/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T18:00:17Z",
+     "2026-11-23T18:00:17Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 19.761243,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.825,
+     "substance_chars": 495.0,
+     "substance_factor": 1.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.300677,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8915,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 19.761243,
+     "rubric_score": 6.5,
+     "rubric_multiplier": 0.755,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "efd484405ff5a75",
+    "title": "Amazon Acquires Chip Software Business from AI Startup Decart",
+    "member_item_ids": [
+     "0d1df66112dc5d5f",
+     "568c7a50766d82fd"
+    ],
+    "primary_item_id": "568c7a50766d82fd",
+    "source_ids": [
+     "rss:aihot-demo-techcrunch-ai",
+     "rss:the-information"
+    ],
+    "all_urls": [
+     "https://techcrunch.com/2026/11/23/amazon-snaps-up-decarts-ai-optimization-tech-for-7-5b-as-it-prepares-to-sell-trainium-chips/",
+     "https://www.theinformation.com/briefings/amazon-acquires-chip-software-business-ai-startup-decart"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T16:11:22Z",
+     "2026-11-23T17:14:23Z"
+    ],
+    "unique_facts": {},
+    "confidence": 0.9,
+    "evidence_level": "multi_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-24/efd484405ff5a75-m001-ebd2340d.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 13.894963,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.5,
+     "substance_chars": 300.0,
+     "substance_factor": 1.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.346588,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.6826,
+     "h_substance": 0.75,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8617,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 13.894963,
+     "rubric_score": 6.5,
+     "rubric_multiplier": 0.755,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "ebdba85ec00596b",
+    "title": "万亿市值换不来投资级：Anthropic 发债大概率是垃圾级",
+    "member_item_ids": [
+     "575a5ff70f53c727"
+    ],
+    "primary_item_id": "575a5ff70f53c727",
+    "source_ids": [
+     "api:aibase-ai-news"
+    ],
+    "all_urls": [
+     "https://www.aibase.com/zh/news/32470"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T16:02:05Z",
+     "2026-11-23T16:02:05Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 11.799463,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.248,
+     "substance_chars": 149.0,
+     "substance_factor": 0.673,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.261092,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.3725,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8593,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 11.799463,
+     "rubric_score": 6.5,
+     "rubric_multiplier": 0.755,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "eead6502393e739",
+    "title": "Anthropic softens its data retention policy for Mythos and Fable model use",
+    "member_item_ids": [
+     "3454e830ec8ecc2c"
+    ],
+    "primary_item_id": "3454e830ec8ecc2c",
+    "source_ids": [
+     "rss:engadget"
+    ],
+    "all_urls": [
+     "https://www.engadget.com/2325684/anthropic-softens-its-data-retention-policy-for-mythos-and-fable-model-use/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T20:02:30Z",
+     "2026-11-23T20:02:30Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-24/eead6502393e739-m001-1766523c.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 8.640978,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.128,
+     "substance_chars": 77.0,
+     "substance_factor": 0.517,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.254389,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.1925,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9276,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 8.640978,
+     "rubric_score": 6.5,
+     "rubric_multiplier": 0.755,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "开发生态"
+    }
+   },
+   {
+    "event_id": "e1773f5f4d2c465",
+    "title": "Figma agent 正式开放至 FigJam 和 Figma Slides",
+    "member_item_ids": [
+     "230ae341c07f876a",
+     "30888331b25999a4",
+     "4328ab511c6f9ad4",
+     "5fada2ea3dcba408",
+     "aa6a012794fea546"
+    ],
+    "primary_item_id": "aa6a012794fea546",
+    "source_ids": [
+     "rss:aihot-cat-products",
+     "rss:aihot-news",
+     "rss:aihot-news-all",
+     "rss:aihot-news-full",
+     "rss:aihot-news-picks"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/zur9ndkrkvtk4lqiix14q468s"
+    ],
+    "independent_source_count": 4,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T20:54:00Z",
+     "2026-11-23T20:54:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 22.37629,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.29,
+     "substance_chars": 174.0,
+     "substance_factor": 0.727,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.384412,
+     "h_corroboration": 0.8271,
+     "h_magnitude": 0.0744,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.435,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9436,
+     "significance": 1.6,
+     "widely_reported": 1.6,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.2727,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 22.37629,
+     "rubric_score": 6.0,
+     "rubric_multiplier": 0.72,
+     "rubric_band": "有趣",
+     "tier": "T1",
+     "tier_threshold": 55.0,
+     "tier_shortfall": false,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "e2012d4d7a2ce7b",
+    "title": "贝森特指美中就AI军事决策达成“人类参与”共识，科技领袖呼吁勿将社会移交AI - 美国之音",
+    "member_item_ids": [
+     "78f2cc57ba103663"
+    ],
+    "primary_item_id": "78f2cc57ba103663",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNR1RVRGdqZjJ0WDlOVWVIWXUzS2xtX1RpN25EZ1h6VFpoeGx1RE9JRUFCdHd1SmU2Z3ZZVkw4a3FBWG1iRWozdlFlcUJFM1Y4cUF0SnZwNlVIckoyZTNlN1VKRElibFJXNEtfWVBZLTJ4WnhqdlkzdXRfTl9YZ1NPZjkyYTdmLXlMb1pGeTUyVnp4M0xXMDZXZE5VblBPLW5XT28ySW1ZcmxYY3JVTUpaeXAzVVlwVzNB0gG4AUFVX3lxTE1HVFVEZ2pmMnRYOU5VZUhZdTNLbG1fVGk3bkRnWHpUWmh4bHVET0lFQUJ0d3VKZTZndllWTDhrcUFYbWJFajN2UWVxQkUzVjhxQXRKdnA2VUhySjJlM2U3VUpESWJsUlc0S19ZUFktMnhaeGp2WTN1dF9OX1hnU09mOTJhN2YteUxvWkZ5NTJWengzTFcwNldkTlVuUE8tbldPbzJJbVlybFhjclVNSlp5cDNVWXBXM0E?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T21:23:44Z",
+     "2026-11-23T21:23:44Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 4.249738,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.072,
+     "substance_chars": 43.0,
+     "substance_factor": 0.443,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.250822,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.1075,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9531,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 4.249738,
+     "rubric_score": 6.0,
+     "rubric_multiplier": 0.72,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e362a39892a00cc",
+    "title": "Besimple 用 Baseten Training 微调 Nemotron 3.5 Transcribe 与 Qwen3-ASR，MedDictate Term-WER 低至 0.87%",
+    "member_item_ids": [
+     "9ec453e18b7d63fc",
+     "a226f490b7642fa4"
+    ],
+    "primary_item_id": "a226f490b7642fa4",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/d4tjdf7uwxhqgbg22prhfohkz"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T22:34:04Z",
+     "2026-11-23T22:34:04Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 23.758485,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.387,
+     "substance_chars": 232.0,
+     "substance_factor": 0.853,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.318073,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.58,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9764,
+     "significance": 1.0,
+     "sig_model": 1.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.15,
+     "vendor_subject": "qwen",
+     "score": 23.758485,
+     "rubric_score": 5.5,
+     "rubric_multiplier": 0.685,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "ef023d896fcf751",
+    "title": "OpenAI 推出 OpenWorks 资助计划",
+    "member_item_ids": [
+     "4b09e9ed89cdb093",
+     "bd638fa62047ca3d"
+    ],
+    "primary_item_id": "bd638fa62047ca3d",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/qhen8gmmwacvc4oedlr21z755"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T21:39:00Z",
+     "2026-11-23T21:39:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 21.242885,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.238,
+     "substance_chars": 143.0,
+     "substance_factor": 0.66,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.422634,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.2975,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.3575,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9581,
+     "significance": 2.2,
+     "lab_announcement": 2.2,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.5455,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 21.242885,
+     "rubric_score": 5.5,
+     "rubric_multiplier": 0.685,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e97bc65af26d298",
+    "title": "River API 五个月 ARR 破亿美元",
+    "member_item_ids": [
+     "c9db78cf9ce6a543",
+     "de67499d109352d4"
+    ],
+    "primary_item_id": "de67499d109352d4",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/pej5p5cwca96wgakm7o9y2n7j"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T21:32:23Z",
+     "2026-11-23T21:32:23Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 18.611436,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.438,
+     "substance_chars": 263.0,
+     "substance_factor": 0.92,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.321497,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.6575,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9559,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.6913,
+     "focus_headline": 0.62,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.7592,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 18.611436,
+     "rubric_score": 5.5,
+     "rubric_multiplier": 0.685,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e1d3ed7a44a3077",
+    "title": "Comfy Desktop 1.2 更新：App 免节点运行 ComfyUI 工作流",
+    "member_item_ids": [
+     "3b468704739f6a20",
+     "8789fd45ee8f8458"
+    ],
+    "primary_item_id": "8789fd45ee8f8458",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/c1xqqhhbrmy8l2tic2dthkrns"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T22:52:54Z",
+     "2026-11-23T22:52:54Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 16.061405,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.222,
+     "substance_chars": 133.0,
+     "substance_factor": 0.638,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.303607,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.3325,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9828,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 16.061405,
+     "rubric_score": 5.5,
+     "rubric_multiplier": 0.685,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "ecb07464d367111",
+    "title": "AI 理财初创 Supertake 融资 2000 万美元种子轮，让 AI 智能体把市场观点变成投资组合",
+    "member_item_ids": [
+     "2ef5e830660babdd",
+     "bfac4a2a7277287e",
+     "34497eb41abb31c2"
+    ],
+    "primary_item_id": "bfac4a2a7277287e",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all",
+     "rss:aihot-demo-techcrunch-ai"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/zfbnhpbj37qh1jmoavlx7hhjc",
+     "https://techcrunch.com/2026/11/23/supertake-raises-20m-to-let-ai-agents-turn-your-market-predictions-into-stock-portfolios/"
+    ],
+    "independent_source_count": 3,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T22:02:05Z",
+     "2026-11-23T22:02:05Z"
+    ],
+    "unique_facts": {
+     "merged_titles": [
+      "Supertake raises $20M to let AI agents turn your market predictions into stock portfolios"
+     ]
+    },
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-24/ecb07464d367111-m001-cdd117a9.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 12.4775,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.28,
+     "substance_chars": 168.0,
+     "substance_factor": 0.714,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.359635,
+     "h_corroboration": 0.7124,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.6826,
+     "h_substance": 0.42,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9657,
+     "significance": 1.0,
+     "minor": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5357,
+     "focus_headline": 0.4286,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.6379,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 12.4775,
+     "rubric_score": 5.5,
+     "rubric_multiplier": 0.685,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e76e1b2d157d672",
+    "title": "说不清的症状，拍给 AI 看：蚂蚁阿福升级实时视频问诊",
+    "member_item_ids": [
+     "d817409f1210407c"
+    ],
+    "primary_item_id": "d817409f1210407c",
+    "source_ids": [
+     "api:aibase-ai-news"
+    ],
+    "all_urls": [
+     "https://www.aibase.com/zh/news/32473"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T16:09:23Z",
+     "2026-11-23T16:09:23Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 6.286522,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.232,
+     "substance_chars": 139.0,
+     "substance_factor": 0.651,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.259707,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.3475,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8612,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 6.286522,
+     "rubric_score": 5.5,
+     "rubric_multiplier": 0.685,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "e33bcc4c6993fb6",
+    "title": "Supercharging transformer residual connections",
+    "member_item_ids": [
+     "d64438e04e0b657a"
+    ],
+    "primary_item_id": "d64438e04e0b657a",
+    "source_ids": [
+     "rss:aihot-demo-google-research"
+    ],
+    "all_urls": [
+     "https://research.google/blog/supercharging-transformer-residual-connections/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T17:21:12Z",
+     "2026-11-23T17:21:12Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-24/e33bcc4c6993fb6-m001-f79049a0.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 6.121668,
+    "rank_components": {
+     "source_weight": 1.5,
+     "source_damped": 1.1067,
+     "substance": 0.032,
+     "substance_chars": 19.0,
+     "substance_factor": 0.391,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.242871,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0475,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8806,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 1.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 1.0,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 6.121668,
+     "rubric_score": 5.5,
+     "rubric_multiplier": 0.685,
+     "rubric_band": "有趣",
+     "tier": "T1",
+     "tier_threshold": 55.0,
+     "tier_shortfall": false,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "e2aadc275ec419c",
+    "title": "美AI路由平台警告 用戶對話恐悄然流入中國 - 大紀元",
+    "member_item_ids": [
+     "14705c331c4bd6ae"
+    ],
+    "primary_item_id": "14705c331c4bd6ae",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBjT2hJNF8xam12S0RjdW91c1RadkpKMGxmNDBDSmFfMmJvM1pPdk9odlRoek55QzkyYnZVSmtWcnZrRmRMQlhpMWItbzJicDZ3ZzZDNGZvUUJseU9qLWJxZDh30gFnQVVfeXFMTjFJd0RSOHpuMTc1b2o3YVFwSjFId0hSVE1kb0NwZ01mT0NNb19ZbHJpYWUzclpTRy1LaFh2M0s2TGJqZnd0azc3bmFZdE51SkdzNXA1ek9mRGxFYzJaNUVhVFN5a1FHdw?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T22:02:00Z",
+     "2026-11-23T22:02:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 3.658691,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.042,
+     "substance_chars": 25.0,
+     "substance_factor": 0.404,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.248873,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0625,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9656,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 3.658691,
+     "rubric_score": 5.5,
+     "rubric_multiplier": 0.685,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "e301144264d08cc",
+    "title": "牛津论文发现 LLM 评分中无学位白人男性获最低评分",
+    "member_item_ids": [
+     "136bdee8f7d24452",
+     "c1471217f40da587"
+    ],
+    "primary_item_id": "c1471217f40da587",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/iohyyewb831n7vvzn053jlpgm"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T23:24:35Z",
+     "2026-11-23T23:24:35Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 20.681625,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.415,
+     "substance_chars": 249.0,
+     "substance_factor": 0.889,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.321663,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.6225,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9937,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 20.681625,
+     "rubric_score": 5.0,
+     "rubric_multiplier": 0.65,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "e149f09b25fa7e2",
+    "title": "The irony in Anthropic's huge payday to Gulf backers",
+    "member_item_ids": [
+     "a9ff79334819da24"
+    ],
+    "primary_item_id": "a9ff79334819da24",
+    "source_ids": [
+     "rss:semafor"
+    ],
+    "all_urls": [
+     "https://www.semafor.com/article/11/23/2026/some-irony-in-anthropic-payday-to-the-gulf"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T18:48:16Z",
+     "2026-11-23T18:48:16Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-24/e149f09b25fa7e2-m001-0d637b65.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 18.565182,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 1.0,
+     "substance_chars": 1054.0,
+     "substance_factor": 1.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.301506,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9053,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 18.565182,
+     "rubric_score": 5.0,
+     "rubric_multiplier": 0.65,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "eebceb713ccb4b2",
+    "title": "MIT 研究：多语言模型揭示 21 种语言共享同一神经编码",
+    "member_item_ids": [
+     "803f22209b8d1b88",
+     "adaf06a03a48979b"
+    ],
+    "primary_item_id": "adaf06a03a48979b",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/fdrun1sdrddfo88p05vght2nf"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T21:15:00Z",
+     "2026-11-23T21:15:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 15.258492,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.403,
+     "substance_chars": 242.0,
+     "substance_factor": 0.874,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.31801,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.605,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9503,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.6913,
+     "focus_headline": 0.62,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.7592,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 15.258492,
+     "rubric_score": 5.0,
+     "rubric_multiplier": 0.65,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "ef46b7982942e05",
+    "title": "google-labs-code/stitch-skills — A library of Agent Skills designed to work with the Stitch MCP server. Each skill follows…",
+    "member_item_ids": [
+     "0637e334b2c4af24"
+    ],
+    "primary_item_id": "0637e334b2c4af24",
+    "source_ids": [
+     "scrape:github-com-trending"
+    ],
+    "all_urls": [
+     "https://github.com/google-labs-code/stitch-skills"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": null,
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-24/ef46b7982942e05-m001-75c06f9c.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 7.420098,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.353,
+     "substance_chars": 212.0,
+     "substance_factor": 0.809,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.152485,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.53,
+     "h_velocity": 0.0,
+     "h_freshness": 0.225,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.35,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 7.420098,
+     "rubric_score": 5.0,
+     "rubric_multiplier": 0.65,
+     "rubric_band": "有趣",
+     "tier": "T1_5",
+     "tier_threshold": 60.0,
+     "tier_shortfall": true,
+     "section": "开发生态"
+    }
+   },
+   {
+    "event_id": "e4cf35a53c6a5f0",
+    "title": "一台被黑客“晒”上网的攻击工具，暴露了 AI 作案的全过程",
+    "member_item_ids": [
+     "148046906e804335"
+    ],
+    "primary_item_id": "148046906e804335",
+    "source_ids": [
+     "api:aibase-ai-news"
+    ],
+    "all_urls": [
+     "https://www.aibase.com/zh/news/32477"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T17:12:18Z",
+     "2026-11-23T17:12:18Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 5.825631,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.22,
+     "substance_chars": 132.0,
+     "substance_factor": 0.636,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.259674,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.33,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8781,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 5.825631,
+     "rubric_score": 5.0,
+     "rubric_multiplier": 0.65,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "e6c0069a33b6656",
+    "title": "Perplexity Monitor API 新增 Agent 监视器，支持自然语言定时监控智能体任务",
+    "member_item_ids": [
+     "662f07265893c8ed",
+     "cbb2b3145a72f236"
+    ],
+    "primary_item_id": "cbb2b3145a72f236",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/mryql54cfhf1wl354rnl6bv42"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T20:38:26Z",
+     "2026-11-23T20:38:26Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 18.961434,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.357,
+     "substance_chars": 214.0,
+     "substance_factor": 0.814,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.313114,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.535,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9387,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 18.961434,
+     "rubric_score": 4.5,
+     "rubric_multiplier": 0.615,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "开发生态"
+    }
+   },
+   {
+    "event_id": "ee19ee24e53d3a1",
+    "title": "Inkling 2 Mini 进入 Agent Arena Index 开源模型第 18 名",
+    "member_item_ids": [
+     "22fd9a96f4774aa4",
+     "5d7957a7498b0c3d"
+    ],
+    "primary_item_id": "5d7957a7498b0c3d",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/sgpgukk3dh0ass7hk9wz8c1pl"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T21:39:25Z",
+     "2026-11-23T21:39:25Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 15.115771,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.283,
+     "substance_chars": 170.0,
+     "substance_factor": 0.718,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.307684,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.425,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9582,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 15.115771,
+     "rubric_score": 4.5,
+     "rubric_multiplier": 0.615,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "模型发布"
+    }
+   },
+   {
+    "event_id": "e2e30d7451ef4a1",
+    "title": "AI 数据中心用电激增给 COP31 联合国气候谈判再添难题",
+    "member_item_ids": [
+     "206028cac043f4ca",
+     "59cb5d3ee5e16658"
+    ],
+    "primary_item_id": "59cb5d3ee5e16658",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/mxob0psp9v7k34jf6sbm1dyke"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T21:09:37Z",
+     "2026-11-23T21:09:37Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 12.49446,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.447,
+     "substance_chars": 268.0,
+     "substance_factor": 0.931,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.321806,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.67,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9486,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 12.49446,
+     "rubric_score": 4.5,
+     "rubric_multiplier": 0.615,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "eeda1553086b0fa",
+    "title": "Matters.AI raises $12M as it expands its data security business in North America",
+    "member_item_ids": [
+     "bdd8c856a3e10297"
+    ],
+    "primary_item_id": "bdd8c856a3e10297",
+    "source_ids": [
+     "rss:siliconangle"
+    ],
+    "all_urls": [
+     "https://siliconangle.com/2026/11/23/matters-ai-raises-12m-as-it-expands-its-data-security-business-in-north-america/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T22:22:23Z",
+     "2026-11-23T22:22:23Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 9.977596,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.812,
+     "substance_chars": 487.0,
+     "substance_factor": 1.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.30553,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9724,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 9.977596,
+     "rubric_score": 4.5,
+     "rubric_multiplier": 0.615,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e22fe6de3458720",
+    "title": "思科与OpenAI推出项目 保障智能体化AI安全 - 手机新浪网",
+    "member_item_ids": [
+     "6b6f18e6d1ce8d15"
+    ],
+    "primary_item_id": "6b6f18e6d1ce8d15",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5YV1h4aUsxaXc2ZUsyYlkwMGJnYllRTndzQm9ZQU5iRkUzUlc1ekxpMU01d2dxcDM4NEVuaF9DY1E0bU9pZTNHaHc2TTRKM2M?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T23:21:27Z",
+     "2026-11-23T23:21:27Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 8.951755,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.05,
+     "substance_chars": 30.0,
+     "substance_factor": 0.415,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.37025,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.2975,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.075,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9926,
+     "significance": 2.2,
+     "lab_announcement": 2.2,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.5455,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 8.951755,
+     "rubric_score": 4.5,
+     "rubric_multiplier": 0.615,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "e858d8e18807480",
+    "title": "Finding faster quantum algorithms with agents and formal verification",
+    "member_item_ids": [
+     "2aee6f7b85bf853b"
+    ],
+    "primary_item_id": "2aee6f7b85bf853b",
+    "source_ids": [
+     "rss:deepmind-google-blog"
+    ],
+    "all_urls": [
+     "https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T16:59:40Z",
+     "2026-11-23T16:59:40Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 8.238288,
+    "rank_components": {
+     "source_weight": 1.5,
+     "source_damped": 1.1067,
+     "substance": 0.162,
+     "substance_chars": 97.0,
+     "substance_factor": 0.56,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.254216,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.2425,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8747,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 1.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 1.0,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 8.238288,
+     "rubric_score": 4.5,
+     "rubric_multiplier": 0.615,
+     "rubric_band": "低优先",
+     "tier": "T1",
+     "tier_threshold": 55.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "ea827b36a97d745",
+    "title": "研究人员正利用Meta的开放权重AI模型推动医学变革 - 东方财富网",
+    "member_item_ids": [
+     "fac321b6ee6126c1"
+    ],
+    "primary_item_id": "fac321b6ee6126c1",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1oM1NnZmlSVUJuTl9zREs5WjBkZlJqSkNQQzZPRW41WWF0dWdlZklodk96eVl5ZmNJSkYxZE1Ld1FDc0hUd25GWTR2S3M1N3BYalBVWF9LUVJXUmYxOGpkOQ?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T18:14:57Z",
+     "2026-11-23T18:14:57Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 8.188045,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.053,
+     "substance_chars": 32.0,
+     "substance_factor": 0.419,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.364736,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.2975,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.08,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8957,
+     "significance": 2.2,
+     "lab_announcement": 2.2,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.5455,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 8.188045,
+     "rubric_score": 4.5,
+     "rubric_multiplier": 0.615,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "e451633ce0ab7a0",
+    "title": "90 分钟全 AI 造出的故事片上线三家卫视：深圳首部 AIGC 电影长片《奇妙连接》没有一台实景摄像机",
+    "member_item_ids": [
+     "fe7add442e2f9817"
+    ],
+    "primary_item_id": "fe7add442e2f9817",
+    "source_ids": [
+     "api:aibase-ai-news"
+    ],
+    "all_urls": [
+     "https://www.aibase.com/zh/news/32479"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T17:52:42Z",
+     "2026-11-23T17:52:42Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 5.197644,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.247,
+     "substance_chars": 148.0,
+     "substance_factor": 0.671,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.262749,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.37,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8894,
+     "significance": 1.0,
+     "application_not_model": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.4091,
+     "focus_headline": 0.2727,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.5391,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 5.197644,
+     "rubric_score": 4.5,
+     "rubric_multiplier": 0.615,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "e7e750a6e49a078",
+    "title": "AI安全需求爆发！网安最大并购之一落地 多股明年业绩改善(名单) - 东方财富",
+    "member_item_ids": [
+     "fa8a22d35445eb49"
+    ],
+    "primary_item_id": "fa8a22d35445eb49",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9DLUE4YjB4VmNzcHpXbHpLSTNRVk5xc3hFMEwySEJsNlZTdmNfYUdkUXZxRVhKNHVXV1U5NEFTOGNSYzFiU2lxR283VU9HdHpzT3piU2liWk5qMjZIaFZVTVNGUQ?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T22:49:58Z",
+     "2026-11-23T22:49:58Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 3.846904,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.062,
+     "substance_chars": 37.0,
+     "substance_factor": 0.43,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.25164,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0925,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9818,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 3.846904,
+     "rubric_score": 4.5,
+     "rubric_multiplier": 0.615,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e05e7f2a942ef11",
+    "title": "AI创作者收入怎么计税？数字人主播的收入又该归谁纳税？ - 央视网",
+    "member_item_ids": [
+     "1aaac59737f791eb"
+    ],
+    "primary_item_id": "1aaac59737f791eb",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMieEFVX3lxTE5LSXBUT2R6bXFvM0RkX1VqdThhd3J1ZWtOUEZHdnpnREZxZUhVb08xWUw1b25DclZGVUFzVDBiUTUzRnlPN2FqUERjVkNlTENtOGhTSmNudmdRbmNNQVJpZG1zVW5Za0syNWY2LXE3bl9rMDcweG84MA?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T18:59:56Z",
+     "2026-11-23T18:59:56Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 3.356244,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.052,
+     "substance_chars": 31.0,
+     "substance_factor": 0.417,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.246361,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0775,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9088,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 3.356244,
+     "rubric_score": 4.5,
+     "rubric_multiplier": 0.615,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "eb6853931faada9",
+    "title": "免费AI的好日子，到头了？ - ThePaper.cn",
+    "member_item_ids": [
+     "ac36289e0ccbd72f"
+    ],
+    "primary_item_id": "ac36289e0ccbd72f",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiYEFVX3lxTFB4SUZsemFKN2dFZklSbjRZa1pxbGdxaXpSTUdMczlUeFhNVUN3N0ctbG5yeEpEbWtwY1U5bUVrTFJ6d09PZnBaTzUxdExQVzg0Y25hakV4TnlNY2FCMkgxcQ?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T22:57:00Z",
+     "2026-11-23T22:57:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 3.299487,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.042,
+     "substance_chars": 25.0,
+     "substance_factor": 0.404,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.249985,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0625,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9842,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 3.299487,
+     "rubric_score": 4.5,
+     "rubric_multiplier": 0.615,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "eefe4c5c00002bd",
+    "title": "构建主权 AI 技术栈：开放权重、前沿模型与企业控制平面",
+    "member_item_ids": [
+     "17ab525ca72006e0"
+    ],
+    "primary_item_id": "17ab525ca72006e0",
+    "source_ids": [
+     "rss:infoq-cn"
+    ],
+    "all_urls": [
+     "https://www.infoq.cn/video/pZRYMTB7olLHTR3BuxaB?utm_source=rss&utm_medium=article"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T19:08:40Z",
+     "2026-11-23T19:08:40Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.98672,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.012,
+     "substance_chars": 7.0,
+     "substance_factor": 0.365,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.242916,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0175,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9113,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5437,
+     "focus_headline": 0.5,
+     "focus_source": 0.35,
+     "focus_multiplier": 0.6441,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.98672,
+     "rubric_score": 4.5,
+     "rubric_multiplier": 0.615,
+     "rubric_band": "低优先",
+     "tier": "T1_5",
+     "tier_threshold": 60.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "e8a023c2c6697f9",
+    "title": "A legendary philosopher isn’t buying Anthropic’s consciousness argument",
+    "member_item_ids": [
+     "563340c2024af1f8",
+     "d0b319b1b05e5edb"
+    ],
+    "primary_item_id": "d0b319b1b05e5edb",
+    "source_ids": [
+     "rss:aihot-demo-mit-technology-review-ai",
+     "rss:mit-tech-review-ai"
+    ],
+    "all_urls": [
+     "https://www.technologyreview.com/2026/11/23/1149569/a-legendary-philosopher-isnt-buying-anthropics-consciousness-argument/"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T17:36:08Z",
+     "2026-11-23T17:36:08Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-24/e8a023c2c6697f9-m001-43341388.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 17.053906,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 1.0,
+     "substance_chars": 5882.0,
+     "substance_factor": 1.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.337776,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8847,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 17.053906,
+     "rubric_score": 4.0,
+     "rubric_multiplier": 0.58,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e27cb3bc9a58478",
+    "title": "AI’s Power Crunch Is Reviving a Long-Stalled Energy Source",
+    "member_item_ids": [
+     "9fd836d1c043ee59"
+    ],
+    "primary_item_id": "9fd836d1c043ee59",
+    "source_ids": [
+     "rss:the-information"
+    ],
+    "all_urls": [
+     "https://www.theinformation.com/articles/ais-power-crunch-reviving-long-stalled-energy-source"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T20:09:44Z",
+     "2026-11-23T20:09:44Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 10.154305,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 1.0,
+     "substance_chars": 904.0,
+     "substance_factor": 1.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.302972,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9298,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 10.154305,
+     "rubric_score": 4.0,
+     "rubric_multiplier": 0.58,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e522b6d7ac4ec18",
+    "title": "当你的下一位客户是 AI Agent：企业营销与销售的 AI 发展前景",
+    "member_item_ids": [
+     "5b7d41115954f9e9"
+    ],
+    "primary_item_id": "5b7d41115954f9e9",
+    "source_ids": [
+     "rss:infoq-cn"
+    ],
+    "all_urls": [
+     "https://www.infoq.cn/video/cw3OFxCPlVBE625COukc?utm_source=rss&utm_medium=article"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T19:16:30Z",
+     "2026-11-23T19:16:30Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 4.37565,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.012,
+     "substance_chars": 7.0,
+     "substance_factor": 0.365,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.243055,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0175,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9137,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.35,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 4.37565,
+     "rubric_score": 4.0,
+     "rubric_multiplier": 0.58,
+     "rubric_band": "低优先",
+     "tier": "T1_5",
+     "tier_threshold": 60.0,
+     "tier_shortfall": true,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "e9507801fd4b644",
+    "title": "长电科技11月23日回应AI算力话题：定增已获国资委原则同意，扩充FCLGA封装及模组产能_公司新闻 - 证券之星",
+    "member_item_ids": [
+     "11978e8c548549ec",
+     "1c01aa0a7bc2baaf",
+     "4367f5a2fec294c0",
+     "ac8066cc61e4e969",
+     "c8276100ea69b20d",
+     "cacd0ffbf0288280",
+     "ea3a0c3de45cd069"
+    ],
+    "primary_item_id": "ac8066cc61e4e969",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5WU3QzbmU3VXR0RHNWVlIyN0xZNVJvbFJhQlNONFlKOU5zWnlndnlHRjQ5b2ZIZmRsYjhSV1FTeHM3WklDMk1CNVBZSVBoNER5d2hSVmlSOGdVTzRkZkFxMA?oc=5",
+     "https://news.google.com/rss/articles/CBMiYEFVX3lxTE81OUlrYjhfLTJlTGNxWE1lMDdFYVN2cUZEMlFBVnJsNWR6R1IxR0lzSzhOVGRtMDZ5MEpYNGtSZWEtYklpVlVxa2QzMkNRR0pPUVlkTVctTGVhS24xQU9ybA?oc=5",
+     "https://news.google.com/rss/articles/CBMiYkFVX3lxTE15STBPb2x4QkRkeFdOdk54cmhnR3Q3TWlGT3hsaWhIUF9OcnpNOWVUa3V3dXc1ckg4UjJ3ZXlYa1ZkMnMyTW1yMzJhUFBUdHFLMERVLXAxT1ZyMTJXUXRac1lB?oc=5",
+     "https://news.google.com/rss/articles/CBMiYkFVX3lxTE40b2ozRkRhRHpSMTl0enVkY2pyUkF3blF6MjZ2MXRhZzVxOUFjeENoTUUzaXNmRHh6cVJYWU4wWmEwZnpRVXh5NDB4VGpMZTRxTWlmRGgzSFAzc3hraFI3ZkV3?oc=5",
+     "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5IOWd4Z1l1QkdoblRJbFFLQVhta0xqZEx6UVVHVUxnUmRSR0dlMk9VUGJONk5QRVdWUU1icVZHN2NBMm1uaEJMdFZCaHZmOUZsU3JNUHR1TjVodG1CeHQ3Ukt3?oc=5",
+     "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5la2xvSmxkcnBuVTFEZHVJcjVjYmJReU1naUZ5a2Rucnp5cmJGRkU1bDFfTlhpRWk0d0xoQ2RxNWJpM3NCLUstM2dIMEI5UC1OUE1qa0VZek0xa1J3MEdwc19n?oc=5",
+     "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9rc2FQVWZmVXNiemExbzNnalhlTC0xRjlsWnplQzhwN0RickhubnBDUHNxLVJ0U0tNSUNVX3BjS29EMGpYMk1Tak52aTU5dHNwbjU5UUNhYS1uZUVfZFRKYlVB?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T23:03:26Z",
+     "2026-11-23T23:06:40Z"
+    ],
+    "unique_facts": {},
+    "confidence": 0.9,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 4.119969,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.092,
+     "substance_chars": 55.0,
+     "substance_factor": 0.469,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.254617,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.1375,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9864,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5938,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.6831,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 4.119969,
+     "rubric_score": 4.0,
+     "rubric_multiplier": 0.58,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e70a994d1f4c44a",
+    "title": "半导体行业脱水研报：AI与存储需求驱动第三季度收入高增，本土晶圆厂稼动率接近100% - 东方财富网",
+    "member_item_ids": [
+     "69dd590bfc2e5aa0"
+    ],
+    "primary_item_id": "69dd590bfc2e5aa0",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1MUFpDSGVBZ0N6TUxUOGU1RXY2Y1diTENMRDdIN0NxVWttV0ZGX2xNVDN6TVZySXVyazBJdnBrNzNCR01YclhSc05EZjZQTkp3V01VbXViY01VSVJtYU9Cd0ZHa2l0QQ?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T19:37:25Z",
+     "2026-11-23T19:37:25Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 3.489734,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.08,
+     "substance_chars": 48.0,
+     "substance_factor": 0.454,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.249581,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.12,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9199,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 3.489734,
+     "rubric_score": 4.0,
+     "rubric_multiplier": 0.58,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "e4e92ed69304ea9",
+    "title": "美联储反应函数正在被AI改写：从通胀目标制到“AI资本开支约束”的政策框架推演 - 同花顺",
+    "member_item_ids": [
+     "af73463f0d495b1a"
+    ],
+    "primary_item_id": "af73463f0d495b1a",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5MOFFiRHBFN2lUeURvNU9nNFdMUVV4RkpHOW9ud01RYy1Md2pCVEoweVFITHU4dzRUT2dSMXZwZFZ5d0FHaGZXLUJMVEo3X2pOXzJpVEZLSGFGejlYSHc?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T18:35:46Z",
+     "2026-11-23T18:35:46Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 3.381294,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.072,
+     "substance_chars": 43.0,
+     "substance_factor": 0.443,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.247737,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.1075,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9017,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 3.381294,
+     "rubric_score": 4.0,
+     "rubric_multiplier": 0.58,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e6b623d0b395cc9",
+    "title": "AI活化古籍：从“可见”到“可对话” - 新浪财经",
+    "member_item_ids": [
+     "f1b1c6efa35d8028"
+    ],
+    "primary_item_id": "f1b1c6efa35d8028",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMieEFVX3lxTE9xQ2VDdWp3cWRIN0REMWRnVnZCOXcyU1o1SlNReGhIQzVSd2JiM195RF95MVZTNzQyMU92UUJaclhtYzFFRE5uWk41RzdRVmctUFVFeGpNa01Bd2pjRXpEaFNoc0wxOWFUcVVyQUpzRUVUc3dyNWFPaA?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T22:06:46Z",
+     "2026-11-23T22:06:46Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 3.062131,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.038,
+     "substance_chars": 23.0,
+     "substance_factor": 0.4,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.248668,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0575,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9672,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 3.062131,
+     "rubric_score": 4.0,
+     "rubric_multiplier": 0.58,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "e81e211604ce6b5",
+    "title": "管理咨询不是智能的薄包装：AI 不会让咨询业崩溃",
+    "member_item_ids": [
+     "39467ccf8367fbb9",
+     "72b4da3b2eda0f3b"
+    ],
+    "primary_item_id": "72b4da3b2eda0f3b",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/o9mig4nbdbc0iejy6rqo542hw"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T20:12:32Z",
+     "2026-11-23T20:12:32Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 7.674316,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.257,
+     "substance_chars": 154.0,
+     "substance_factor": 0.684,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.30363,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.385,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9307,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 7.674316,
+     "rubric_score": 3.5,
+     "rubric_multiplier": 0.545,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "e08ef1fb8788a99",
+    "title": "You can block AI slop and spam on these social media platforms",
+    "member_item_ids": [
+     "e5d87ccc9a9a38b9"
+    ],
+    "primary_item_id": "e5d87ccc9a9a38b9",
+    "source_ids": [
+     "rss:engadget"
+    ],
+    "all_urls": [
+     "https://www.engadget.com/2320284/how-block-ai-slop-spam-social-media-platforms/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T17:45:00Z",
+     "2026-11-23T17:45:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-24/e08ef1fb8788a99-m001-644eb851.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 4.580782,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.202,
+     "substance_chars": 121.0,
+     "substance_factor": 0.612,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.258569,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.3025,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8872,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 4.580782,
+     "rubric_score": 3.5,
+     "rubric_multiplier": 0.545,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e5386553e824c92",
+    "title": "临沧人自己“手搓”的AI短剧上线爱奇艺啦！ - Sohu",
+    "member_item_ids": [
+     "3bbe03fd187613d3"
+    ],
+    "primary_item_id": "3bbe03fd187613d3",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMijAFBVV95cUxQdnRjbFRWdWRCTmtKcGF3Y3c0WDBOS3g4XzRTS1Vudk94TmxpTVFMNHpqVXB4QTJ6VmFCQklMV2Q4d0pzWlBHNndIZkNjMEFYZnh6LU90b0dxY3lRR1JxNGt2dVpBTzh4LWR5ZW9NN1k3MGs2SGM5WGItVXgzOUlDaUNKaVlzYWhaY2tTUw?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T23:18:43Z",
+     "2026-11-23T23:18:43Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 3.29977,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.043,
+     "substance_chars": 26.0,
+     "substance_factor": 0.406,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.250584,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.065,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9917,
+     "significance": 1.0,
+     "application_not_model": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5938,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.6831,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 3.29977,
+     "rubric_score": 3.5,
+     "rubric_multiplier": 0.545,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "edf58e7fe0b6256",
+    "title": "真相来了丨极其不靠谱！用AI技术识别蘑菇是否有毒风险很高 - Sohu",
+    "member_item_ids": [
+     "3b62c9fd5d1a8368"
+    ],
+    "primary_item_id": "3b62c9fd5d1a8368",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPaWp1VWpoTkQzRmNrQVdnQnVJMjMyY2V6ZGF1U2x5cDNkWjMzT2xhSlZLNXBBbDVHbW43MlJFY21VZFk1QjUtdkxCZjRYdXhTalFtRUo1NmhrS0REUDdPN0laTllzXzh2RFBVZ1lxYnozMG1uZ0p6OFMxa1FwT2ZiaVJmWmVaaVJF?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T23:15:57Z",
+     "2026-11-23T23:15:57Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 3.068753,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.055,
+     "substance_chars": 33.0,
+     "substance_factor": 0.421,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.251577,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0825,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9907,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 3.068753,
+     "rubric_score": 3.5,
+     "rubric_multiplier": 0.545,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "ec499a0e26fd1be",
+    "title": "AI面试官上岗 求职迎来新挑战 - 新浪财经",
+    "member_item_ids": [
+     "e0d36223f230f265"
+    ],
+    "primary_item_id": "e0d36223f230f265",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMieEFVX3lxTE1nODlaeUhidVVMT3p2SUh3bVBjcUo1ZVJ1MmRtdzdSMEc1MjVWMGpnaHNWOGYzdEVOZnFpNXZaTDVOOHdWek1ZTjZ6NGRjVHhtNjNtZ1phYVRPcXVjcWhHb2Zad29BcllORWhlM2Z5MjhGaDdvLVZfYg?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T19:30:43Z",
+     "2026-11-23T19:30:43Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.791778,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.033,
+     "substance_chars": 20.0,
+     "substance_factor": 0.393,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.24526,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.05,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9179,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.791778,
+     "rubric_score": 3.5,
+     "rubric_multiplier": 0.545,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "ecb06d703831564",
+    "title": "新款深蓝 L07 定档广州车展：800V 平台全系上激光雷达，豆包大模型把语音“喊”出座舱",
+    "member_item_ids": [
+     "d05b7d9852771ada"
+    ],
+    "primary_item_id": "d05b7d9852771ada",
+    "source_ids": [
+     "api:aibase-ai-news"
+    ],
+    "all_urls": [
+     "https://www.aibase.com/zh/news/32480"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T17:58:41Z",
+     "2026-11-23T17:58:41Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 8.642984,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.22,
+     "substance_chars": 132.0,
+     "substance_factor": 0.636,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.26045,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.33,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8911,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.15,
+     "vendor_subject": "doubao",
+     "score": 8.642984,
+     "rubric_score": 3.0,
+     "rubric_multiplier": 0.51,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "e94dc5e9ba50d8e",
+    "title": "企业 AI 发展新趋势：推动 AI Agent 迈向规模化应用的新阶段",
+    "member_item_ids": [
+     "6cedb21ef0e8c95a"
+    ],
+    "primary_item_id": "6cedb21ef0e8c95a",
+    "source_ids": [
+     "rss:infoq-cn"
+    ],
+    "all_urls": [
+     "https://www.infoq.cn/video/its3v5OfmRuikL5SeWUu?utm_source=rss&utm_medium=article"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T19:52:07Z",
+     "2026-11-23T19:52:07Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 3.857749,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.012,
+     "substance_chars": 7.0,
+     "substance_factor": 0.365,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.243699,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0175,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9244,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.35,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 3.857749,
+     "rubric_score": 3.0,
+     "rubric_multiplier": 0.51,
+     "rubric_band": "低优先",
+     "tier": "T1_5",
+     "tier_threshold": 60.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "ebc43b93fcb1879",
+    "title": "广东AI赋能千行百业1000案例（首批200个案例）名单 - 21财经",
+    "member_item_ids": [
+     "43c82d1fbf8fab09"
+    ],
+    "primary_item_id": "43c82d1fbf8fab09",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMihgFBVV95cUxPNlZnR0lRNmZwT3hiTUpQVWhlU183aWszVWI1SXZjSTVFLVZLaEJJMUhmcmM0ampOSk9rSVRFbGpFcWl4ZEtFZDhOeEFOcXRTVEFfalE3bFhDU3dBZXYyNmY5T3djOVUzaDA3enQ2ZElLckNuLVNDQWV5VUota0E1ZnpfN1A3dw?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T23:00:00Z",
+     "2026-11-23T23:00:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 3.120949,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.055,
+     "substance_chars": 33.0,
+     "substance_factor": 0.421,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.251246,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0825,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9852,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 3.120949,
+     "rubric_score": 3.0,
+     "rubric_multiplier": 0.51,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "ea1c76607a48823",
+    "title": "AI时代，产业园区正在失去什么？ - ThePaper.cn",
+    "member_item_ids": [
+     "82e28111212c131a"
+    ],
+    "primary_item_id": "82e28111212c131a",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5HbkhwdFdPd2haR1c5MlBEemNwV1dlT1pRTDZCakJpaDhCMFNlMHhXRDJSQzJ1RXJzX1JMYS1lQXpkeExWNy1WTjBaem9iQkp6NFloQXFtYk95Qk82aGVLZg?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T22:56:00Z",
+     "2026-11-23T22:56:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 3.095012,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.047,
+     "substance_chars": 28.0,
+     "substance_factor": 0.411,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.250414,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.07,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9838,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 3.095012,
+     "rubric_score": 3.0,
+     "rubric_multiplier": 0.51,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "e22a82b2d516f5f",
+    "title": "AI换脸仿冒名人带货为何屡禁不止？_新闻频道_央视网(cctv.com) - 同花顺",
+    "member_item_ids": [
+     "b7c4182ad64a97e0"
+    ],
+    "primary_item_id": "b7c4182ad64a97e0",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiXkFVX3lxTE85cHRadXl2Z3RnZGtBcFJxRnhSLUVUS1Y5LXdDeWJjTWtocHBWNVZ0LWwyNkZmWkh0cmwwbzhkeHNkOTNxbUNkcWhXWDcyOEdvNGdjcnBMNXU5TXI5UWc?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T22:32:01Z",
+     "2026-11-23T22:32:01Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.976758,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.067,
+     "substance_chars": 40.0,
+     "substance_factor": 0.437,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.251725,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.1,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9757,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.976758,
+     "rubric_score": 3.0,
+     "rubric_multiplier": 0.51,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "e72b27ee2ded004",
+    "title": "新闻1+1丨黎曼猜想 被AI“证明”之后 - 京报网",
+    "member_item_ids": [
+     "50fe634d35719bf9",
+     "7f7647eb91f6d2e5"
+    ],
+    "primary_item_id": "50fe634d35719bf9",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiXkFVX3lxTE51TTBYUVVKWWd1ekVpSS1ObnIweXF1VWgzTWVHVGpHRlZ3MjliU3VnclVBRk1PUS04eEYtTGlkWGRvam9UQzB1bnd5T0ZjWnFDWGxNbDNsdHByOFlFOEE?oc=5",
+     "https://news.google.com/rss/articles/CBMiTEFVX3lxTFB6QVRlTjJ5X3ZVN1duYU1vMHlVR2pQYUVBVTdUNVhmSHVWaTgzeXVKRmwwWTNpZkJUaHdSYk50SUZuMWI0TjhJdk9BNXo?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T23:01:06Z",
+     "2026-11-23T23:01:06Z"
+    ],
+    "unique_facts": {
+     "merged_titles": [
+      "黎曼猜想，被AI“证明”之后 - 凤凰网"
+     ]
+    },
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.720774,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.04,
+     "substance_chars": 24.0,
+     "substance_factor": 0.402,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.249919,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.06,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9856,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.720774,
+     "rubric_score": 3.0,
+     "rubric_multiplier": 0.51,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "e84c2a90762aeef",
+    "title": "AI创作收入如何纳税 - 中国新闻网",
+    "member_item_ids": [
+     "0c0cd637ff361c79"
+    ],
+    "primary_item_id": "0c0cd637ff361c79",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5pNW5RQ1hIa2o4VVU0MGwtckxwOVE0US1BdUw5bjd1MlI2U0ZWd0dTT0ZxOU55MG80UG5LYnA4SC1FejNLV2xmeTV1TmttT2x5SkQxb3p3ZnpMbWF4cjdhRnVza2VNR2xn?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T23:28:26Z",
+     "2026-11-23T23:28:26Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.596887,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.027,
+     "substance_chars": 16.0,
+     "substance_factor": 0.385,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.249288,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.04,
+     "h_velocity": 1.0,
+     "h_freshness": 0.995,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.596887,
+     "rubric_score": 3.0,
+     "rubric_multiplier": 0.51,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "ef47dfb6491321d",
+    "title": "AI 时代的数据工程：如何打造 AI 原生团队",
+    "member_item_ids": [
+     "78e893479b04d475"
+    ],
+    "primary_item_id": "78e893479b04d475",
+    "source_ids": [
+     "rss:infoq-cn"
+    ],
+    "all_urls": [
+     "https://www.infoq.cn/video/qWRo8T0IdKoI7RBuQwNd?utm_source=rss&utm_medium=article"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T19:40:31Z",
+     "2026-11-23T19:40:31Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.35118,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.012,
+     "substance_chars": 7.0,
+     "substance_factor": 0.365,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.243487,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0175,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9209,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.35,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.35118,
+     "rubric_score": 3.0,
+     "rubric_multiplier": 0.51,
+     "rubric_band": "低优先",
+     "tier": "T1_5",
+     "tier_threshold": 60.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "ee51c3bef927e5b",
+    "title": "AI大模型聚合站怎么选？这3个坑我替你踩过了 - CSDN",
+    "member_item_ids": [
+     "743ae9e52c07fd90"
+    ],
+    "primary_item_id": "743ae9e52c07fd90",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9PSWxtNkZPQ1VFbzhWdnR2eEgtalFPR1dnMjBLeW43aTZfUkdVblF1em1FVWdjQmNhbF8zU2w0VDhPZ0c2UWkyVlNieGpyVHRETllKNjhqT2JGbVJOdmc?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T21:17:07Z",
+     "2026-11-23T21:17:07Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 4.193909,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.045,
+     "substance_chars": 27.0,
+     "substance_factor": 0.408,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.248294,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0675,
+     "h_velocity": 1.0,
+     "h_freshness": 0.951,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 4.193909,
+     "rubric_score": 2.5,
+     "rubric_multiplier": 0.475,
+     "rubric_band": "噪音",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e329fc54bf54afc",
+    "title": "丘成桐：AI时代，中国数学的黄金时代 - 上观新闻",
+    "member_item_ids": [
+     "8885b612582b8cb8"
+    ],
+    "primary_item_id": "8885b612582b8cb8",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9hM0VkTWJNdjZRLVpuWlpZSDdHVzF3QUFTVUE3LWQ0VE03bnBfOEZjeE92eW9kdXlmckl4SFdBb2xNTXdoei1xQWdOMDR6WmhHX3Z4d3o3YjhYZw?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T22:26:00Z",
+     "2026-11-23T22:26:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.791313,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.038,
+     "substance_chars": 23.0,
+     "substance_factor": 0.4,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.249053,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0575,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9736,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.791313,
+     "rubric_score": 2.5,
+     "rubric_multiplier": 0.475,
+     "rubric_band": "噪音",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e3719ec9bc22630",
+    "title": "专访剑桥制造研究所所长：AI技术不必最先进，关键是用对地方 - Sohu",
+    "member_item_ids": [
+     "f28697f4689e54e1"
+    ],
+    "primary_item_id": "f28697f4689e54e1",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOSHphaG1xVFFqUjYzY3pFMzRBQTBlcmZOeV9QTHJKNGtsWHVrR091UmJZaHhXY3pWenlxNEoxUjJjTzYwaDJDaEYtQkF6NHdyZk4tS2d2RExJTXpnd0d6bUY5MWhBT3U3NGw5X09zNG5yYjNfT0RYQmVmaFM0cjF6NEhmcHZ3OGRm?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T23:15:00Z",
+     "2026-11-23T23:15:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.689739,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.057,
+     "substance_chars": 34.0,
+     "substance_factor": 0.424,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.251707,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.085,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9904,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.689739,
+     "rubric_score": 2.5,
+     "rubric_multiplier": 0.475,
+     "rubric_band": "噪音",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "e22100272ed63be",
+    "title": "厨电行业加速拥抱AI 老板电器向AI烹饪科技领军企业转型 - 东方财富网",
+    "member_item_ids": [
+     "7bd5f5f2743e61c9"
+    ],
+    "primary_item_id": "7bd5f5f2743e61c9",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBZMlNnRG5XUmJKZFpMREZmcHd6eGVOSkJreXltamN4Z1JKM1ZnQWstdXgtbWpqaVdycDJveEpuWW9tQ05DYTZwbTYtYnl4ajZ6dGJsNWJlRFhGOHlpdDYtRQ?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T22:49:58Z",
+     "2026-11-23T22:49:58Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.684214,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.057,
+     "substance_chars": 34.0,
+     "substance_factor": 0.424,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.25119,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.085,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9818,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.684214,
+     "rubric_score": 2.5,
+     "rubric_multiplier": 0.475,
+     "rubric_band": "噪音",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e39137d1734dc25",
+    "title": "AI短剧火了，青年如何书写“新剧本” - Sohu",
+    "member_item_ids": [
+     "75089832116299ac"
+    ],
+    "primary_item_id": "75089832116299ac",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOcVlRWmd2U09aVkdoaW9fMWNlTENrS25YN0VpSURyMzI4YWN0MVk5SzRsM2pOb1l3U3U0dzhKVExNdklhLUs2THBpakZFdGotOVRVQXFxR3plOXNlMzMyOVhjbE1kUFl1b1BSTHFWaTVIWXBsS1ZCSUh2TkdtYTFQYlFaZ3BLdnV6?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T23:02:00Z",
+     "2026-11-23T23:02:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.519075,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.038,
+     "substance_chars": 23.0,
+     "substance_factor": 0.4,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.249788,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0575,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9859,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.519075,
+     "rubric_score": 2.5,
+     "rubric_multiplier": 0.475,
+     "rubric_band": "噪音",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e8915261e9b0a7a",
+    "title": "加快把AI技术变量转化为文化产业增量 - 21财经",
+    "member_item_ids": [
+     "bf691efacc5d85d6"
+    ],
+    "primary_item_id": "bf691efacc5d85d6",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMihgFBVV95cUxQTnBBVWxkV0wwTnpuQkM0SUFldDV3aTZIVEtOcUJCeVZIM2E4bWp1blZzNWs4azhDNXZmcTNYaVBXSWl3Y25sTUdDOTNEMWNZQUNEN2tuOUhaYjRSbTNGal9QRzZfckhPQkF5bU9MVEVQWDdPcnZNaGpkdjdlcmlRYnMwNjBhdw?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T16:27:15Z",
+     "2026-11-23T16:27:15Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.446505,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.038,
+     "substance_chars": 23.0,
+     "substance_factor": 0.4,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.242592,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0575,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8659,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.446505,
+     "rubric_score": 2.5,
+     "rubric_multiplier": 0.475,
+     "rubric_band": "噪音",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e6651d18de01979",
+    "title": "重塑财务职能：引领 AI 时代的转型",
+    "member_item_ids": [
+     "e0c286eb843f60e9"
+    ],
+    "primary_item_id": "e0c286eb843f60e9",
+    "source_ids": [
+     "rss:infoq-cn"
+    ],
+    "all_urls": [
+     "https://www.infoq.cn/video/zDX7VX1ZLsWM2BNMJLc1?utm_source=rss&utm_medium=article"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T19:33:50Z",
+     "2026-11-23T19:33:50Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.188745,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.012,
+     "substance_chars": 7.0,
+     "substance_factor": 0.365,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.243367,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0175,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9189,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.35,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.188745,
+     "rubric_score": 2.5,
+     "rubric_multiplier": 0.475,
+     "rubric_band": "噪音",
+     "tier": "T1_5",
+     "tier_threshold": 60.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "eb63f7d63484305",
+    "title": "如何让AI红利为更多人所共享？中国答案：让人工智能成为造福人类的公共产品 - 上观新闻",
+    "member_item_ids": [
+     "cce418b882a657b5"
+    ],
+    "primary_item_id": "cce418b882a657b5",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5YQy02b3A4aWFXVy1iVHJoUms1V2ltUUJNUlF0SDB3dWVobGtMTlZYNjYyUmFJN2Jta0c1d3lIdndIWVVXR2FxVnlYaWl6SmFZUGo2N2tTdlRZZw?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T22:39:00Z",
+     "2026-11-23T22:39:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.58391,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.068,
+     "substance_chars": 41.0,
+     "substance_factor": 0.439,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.252016,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.1025,
+     "h_velocity": 1.0,
+     "h_freshness": 0.978,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.58391,
+     "rubric_score": 2.0,
+     "rubric_multiplier": 0.44,
+     "rubric_band": "噪音",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e0aafe2787189c9",
+    "title": "【视频】AI汽车、AI手机还没看到革命性的产品但未来一定会产生伟大的产品 - 汽车之家",
+    "member_item_ids": [
+     "476499cb2594d2b3",
+     "7b4a24c0c1e7f2dd"
+    ],
+    "primary_item_id": "7b4a24c0c1e7f2dd",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiW0FVX3lxTE13S1JHUk8wc0dhZFlhOE1RNmRIeC1pQmVfcHAyRHBJZ3pLdmJxc09CdkJ3dkVNTmg5VXVfRXNseC1ZWTJ0b1Z3RVkyTFlFNk5FUmRSdGVCa3Npa3M?oc=5",
+     "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1UV0M5ZVlhZWNvZWVMb2pOcGhHUWdLb2g3c3FXeGlvRjVYZDVlZVRpMnRJZEZaUE9GT2xQVnhYX2RZZGk4aUVZeWJfbWo5RENIVW9Md3BzdFF3NEU?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T22:09:59Z",
+     "2026-11-23T23:15:10Z"
+    ],
+    "unique_facts": {},
+    "confidence": 0.9,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.577922,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.068,
+     "substance_chars": 41.0,
+     "substance_factor": 0.439,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.251432,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.1025,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9683,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.4286,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.577922,
+     "rubric_score": 2.0,
+     "rubric_multiplier": 0.44,
+     "rubric_band": "噪音",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e48002f63273972",
+    "title": "监管调整重塑TDF：投资策略向韩国资产与AI主题多元化拓展 - 뉴스톱",
+    "member_item_ids": [
+     "a7df004c1cc7a482"
+    ],
+    "primary_item_id": "a7df004c1cc7a482",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1WcWF1dS1UMzVPMXpzTm1KVllYT0FKcTZUS2ZZbnczaE53TTRlaTFKOVktN0xJMFRoaG1JdEVrZTVyZ0NIUTN0ZG5pNy1HZWJoQWFiNHhZT3J0bi1ya3c?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T21:02:00Z",
+     "2026-11-23T21:02:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.451202,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.055,
+     "substance_chars": 33.0,
+     "substance_factor": 0.421,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.248904,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0825,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9462,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.451202,
+     "rubric_score": 2.0,
+     "rubric_multiplier": 0.44,
+     "rubric_band": "噪音",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e846af76b98c42c",
+    "title": "258家企业参与的智能建筑·安全·AI博览会召开，先进建筑技术汇聚一堂 - 亚洲日报",
+    "member_item_ids": [
+     "817a3e9796ee3e2f"
+    ],
+    "primary_item_id": "817a3e9796ee3e2f",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiW0FVX3lxTE95Wl9DLU5XaGZ1SWJ2V2NaSUVndjJvMmZ1dW5faHpoZlprQ192ZnpfU0ZnazJacUlOVG9xS1VLdmFoOXNkOWFOZFdGeThtR0RLU1lKT0lwRkhqeDA?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T21:04:10Z",
+     "2026-11-23T21:04:10Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.554806,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.067,
+     "substance_chars": 40.0,
+     "substance_factor": 0.437,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.249996,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.1,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9468,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.554806,
+     "rubric_score": 1.5,
+     "rubric_multiplier": 0.405,
+     "rubric_band": "噪音",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e759c5727f43127",
+    "title": "AI时代，“唯手熟尔”技能人才依然吃香 - 长沙晚报",
+    "member_item_ids": [
+     "82df919353cf0901"
+    ],
+    "primary_item_id": "82df919353cf0901",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBjRGF3bUN4bG9xUlhQcVdpRGhCNi1DbkpQMFBCMzJZaTlwdFFIVTBlNjVKWU9OUWNWTnJPX1VaSFpaVUVBWkVDUmZoX0JwaElPWENicFdlVW1ISEpGMTU4cUVR?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T23:26:00Z",
+     "2026-11-23T23:26:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.406155,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.04,
+     "substance_chars": 24.0,
+     "substance_factor": 0.402,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.250437,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.06,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9942,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.406155,
+     "rubric_score": 1.5,
+     "rubric_multiplier": 0.405,
+     "rubric_band": "噪音",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e678150a5107817",
+    "title": "通则康威：公司不从事物理AI核心算法或机器人本体的研发生产 - 东方财富网",
+    "member_item_ids": [
+     "41dbba617f8b01a5"
+    ],
+    "primary_item_id": "41dbba617f8b01a5",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9Ec2FjMG1jbHNGOFZnb0VkM0dsT3R1bHNhOC1yOXBHT1FMbURHQkR4UkVLYmVXa1lpWWJxYTEyWUoxWGlMOTRpMFdMbml5WlJRQ3hUZ3pMU0lCQmlFZDZ6d1RSdm5hQQ?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T17:12:25Z",
+     "2026-11-23T17:12:25Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.244817,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.058,
+     "substance_chars": 35.0,
+     "substance_factor": 0.426,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.245126,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0875,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8782,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.244817,
+     "rubric_score": 1.5,
+     "rubric_multiplier": 0.405,
+     "rubric_band": "噪音",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e467d2b71d3e89a",
+    "title": "用AI发掘新星，Footbao应用明年1月登陆欧洲 - 懂球帝",
+    "member_item_ids": [
+     "143a63cbe3438e14"
+    ],
+    "primary_item_id": "143a63cbe3438e14",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBibmJfOTJNUEc1UnJfN29lSWdiNWtnVTZob3IwOVdJcmVOQU1hMWdMS2pqWllKRU9adEVYQ0dGNVZNdkJpbWFmUHFpb2xOY2xsQWlqejRDUQ?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-23T23:41:20.308407Z",
+    "last_updated_at": "2026-11-23T23:41:20.308407Z",
+    "published_range": [
+     "2026-11-23T23:27:00Z",
+     "2026-11-23T23:27:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.230284,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.048,
+     "substance_chars": 29.0,
+     "substance_factor": 0.413,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.251208,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0725,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9945,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.230284,
+     "rubric_score": 1.5,
+     "rubric_multiplier": 0.405,
+     "rubric_band": "噪音",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "其他"
+    }
+   }
+  ],
+  "trend_notes": [],
+  "source_coverage": {
+   "total": 193,
+   "active": 41,
+   "failed": 0,
+   "degraded": 0,
+   "blocked": 0,
+   "skipped": 0
+  },
+  "llm_usage": {
+   "calls": 158,
+   "prompt_tokens": 185513,
+   "completion_tokens": 30877,
+   "tokens": 216390,
+   "max_calls": 400,
+   "max_tokens": 2000000,
+   "dead_providers": {
+    "gemini": "rate_limited(daily=True): gemini: HTTP 429"
+   },
+   "provider_failures": {
+    "relay:api.agnes-ai.cn#1": "rate_limited: relay:api.agnes-ai.cn#1: HTTP 429",
+    "groq": "rate_limited: groq: HTTP 429",
+    "gemini": "gemini: HTTP 503"
+   },
+   "calls_per_provider": {
+    "relay:apihub.agnes-ai.com#2": 6,
+    "relay:apihub.agnes-ai.com#3": 6,
+    "relay:apihub.agnes-ai.com#1": 6,
+    "relay:apihub.agnes-ai.com#0": 6,
+    "relay:api.agnes-ai.cn#3": 6,
+    "relay:api.agnes-ai.cn#2": 10,
+    "relay:api.agnes-ai.cn#1": 2,
+    "relay:apihub.agnes-ai.com#5": 6,
+    "relay:api.agnes-ai.cn#0": 6,
+    "relay:apihub.agnes-ai.com#4": 6,
+    "relay:apihub.agnes-ai.com#7": 6,
+    "relay:apihub.agnes-ai.com#6": 6,
+    "relay:apihub.agnes-ai.com#9": 6,
+    "relay:apihub.agnes-ai.com#8": 6,
+    "relay:apihub.agnes-ai.com#13": 6,
+    "relay:apihub.agnes-ai.com#10": 6,
+    "relay:apihub.agnes-ai.com#11": 6,
+    "relay:apihub.agnes-ai.com#12": 6,
+    "relay:apihub.agnes-ai.com#15": 6,
+    "relay:apihub.agnes-ai.com#14": 6,
+    "relay:apihub.agnes-ai.com#17": 5,
+    "relay:apihub.agnes-ai.com#16": 5,
+    "relay:apihub.agnes-ai.com#18": 5,
+    "groq": 12,
+    "gemini": 11
+   }
+  },
+  "warnings": [
+   "中转密钥已读取：28 条",
+   "模型供应商 30 个（gemini, groq, relay:api.groq.com#0, relay:api.groq.com#1…）",
+   "部分条目降级为原文摘录（首次失败：LLMUnavailable）",
+   "21/76 个事件降级为规则摘录（补跑恢复 5/26 条）",
+   "配对复核合并 13 条",
+   "LLM 去重 2 组（合并 9 条）",
+   "rubric 评分 90 条已打分 / 18 次调用 / 89 条打了两次（均差 1.01）（标准来源：/home/runner/work/ai-ribao/ai-ribao/config/profiles/ai-daily）；模型返回了 1 个未发送的 id（已丢弃）",
+   "模型判定与 AI 无关并剔除 6 条：Prospero.ai – AI 股票研究应用、（公式 0.61）；AI预测曼城vs那不勒斯：德布劳内回归难阻蓝月取（公式 0.61）；2899元起的荣耀700系列发布，主打影像与AI（公式 0.61）；Nothing’s upcoming Ear N（公式 0.61）；AI预测阿森纳vs多特：枪手黄蜂各有阵容隐忧 -（公式 0.61）；镰刀妹AI智能播报| 11月24日长沙天气和明日（公式 0.61）",
+   "跨天语义去重剔除 7 条（与 7 天内重复）",
+   "搜索引擎索引时间不可信，剔除 50 条单源搜索命中"
+  ],
+  "counts": {
+   "events": 76,
+   "events_considered": 129,
+   "multi_source_events": 19,
+   "items_after_window": 347,
+   "items_merged_away": 75,
+   "distinct_sources_in_head": 22,
+   "head_max_source_share": 32,
+   "dropped_unknown": 102,
+   "late_or_ignored": 8614
+  }
+ },
+ "sections": {
+  "dev": [
+   "ef46b7982942e05",
+   "e522b6d7ac4ec18",
+   "e94dc5e9ba50d8e",
+   "eefe4c5c00002bd",
+   "ef47dfb6491321d",
+   "e6651d18de01979",
+   "e0ba60bfc7d5c5d",
+   "e1c290159963ea7",
+   "e20dbebb262f51e",
+   "e269971a31e3bcc",
+   "e3bd8cd1a74dc39",
+   "e4cf15a3a8eecde",
+   "e535b8d9d60f79c",
+   "e641acbba4b5cc8",
+   "e726314099a8d83",
+   "e7c5c249ba5135c",
+   "eae4982f84fe1cb",
+   "eafa7d756fa4ade",
+   "ec683c8992d322b",
+   "ec6bd315ea89ad0",
+   "ed9fbb7d40edb67",
+   "ee2b1707bce550f",
+   "eecf7832af76897",
+   "ef5998df657b4bf",
+   "efc158c55e4a5aa"
+  ],
+  "digest": [
+   "e5276c6d7968a20",
+   "ee16722f19f7720",
+   "e97bc65af26d298",
+   "eebceb713ccb4b2",
+   "effc3272a9bc7a8",
+   "e1067e7cae453e8",
+   "edec63631a81f8a",
+   "e1ebe23345f1ead",
+   "e233466083b3695",
+   "e6dc2780c58e700",
+   "e7ee0a7e27e6f83",
+   "ea4b00d025ba3af",
+   "ec46457f0b70a6a",
+   "ec79ac0019b9ef2",
+   "efac23e12c1c7e9"
+  ],
+  "lab-blog": [
+   "e50d5f789736a35",
+   "eda0ef265144e5e"
+  ],
+  "lab-official": [
+   "e858d8e18807480",
+   "e33bcc4c6993fb6",
+   "ed74ab3c8eb26e7"
+  ],
+  "media": [
+   "e10ecfb20223452",
+   "e44dbcd6d3cd300",
+   "e42a2fb5f5f38c7",
+   "e6fd784cb963c3c",
+   "e149f09b25fa7e2",
+   "e8a023c2c6697f9",
+   "efd484405ff5a75",
+   "e0e958d83a50455",
+   "e5f859421f6c9b3",
+   "e27cb3bc9a58478",
+   "eeda1553086b0fa",
+   "eead6502393e739",
+   "e08ef1fb8788a99",
+   "e2921bc0d39ebc2",
+   "e12b2a74a62f1af",
+   "e4416321a031ef4",
+   "ec68a5e36d61e10",
+   "ee297ed15e90f0b",
+   "e0bf8da98de0a59",
+   "e1340f3cafe0c38",
+   "e1742537652ce81",
+   "e1dd65893a12b15",
+   "e25a92570cbfb24",
+   "e33f951ae9ddbce",
+   "e3eee43e018a78a",
+   "e4c0d641577235e",
+   "e61483a7646a987",
+   "e64dcda8326b96c",
+   "e76b0c7bd3bf407",
+   "e7bde9104e2136a",
+   "e82babf80e90cec",
+   "e83fe8f6b984838",
+   "e86bc141b177a8c",
+   "e8bc4cbf3353289",
+   "e9bb35fc19539c4",
+   "e9cf2ab7645e249",
+   "ea08849d4650c58",
+   "ea3dd5d561ef744",
+   "eaf3d06cee3f61e",
+   "ec6e92600a53a64",
+   "ecabd8691969fa2",
+   "ecdf3d52e96167a",
+   "ece765146813891",
+   "ed1bc6751318ffc",
+   "ed4a7235ccb2cb3",
+   "ed8fbb598f50289",
+   "eda233a2e98bb41",
+   "edbace9a51912ab",
+   "edcf0c11f5598b1",
+   "ee5a6a635facfe8",
+   "eec0cd40932d618",
+   "eedba72ef0129cc"
+  ],
+  "mixed": [
+   "e104e36d75d501d",
+   "e5f6ad355770047",
+   "e7b28387335a75f",
+   "e3ea29dd0d130b6"
+  ],
+  "preset": [
+   "e16d0a9b808ef57"
+  ],
+  "product": [
+   "e1773f5f4d2c465"
+  ],
+  "zh-media": [
+   "e66d4ea185e75d0",
+   "e2a73ac60f97405",
+   "e2af7df92932c92",
+   "e362a39892a00cc",
+   "ef023d896fcf751",
+   "e301144264d08cc",
+   "e6c0069a33b6656",
+   "e1d3ed7a44a3077",
+   "ea811c24340ec36",
+   "ee19ee24e53d3a1",
+   "e4e60ce170d7448",
+   "e2e30d7451ef4a1",
+   "ecb07464d367111",
+   "e284232590c53ed",
+   "ebdba85ec00596b",
+   "ecb06d703831564",
+   "e81e211604ce6b5",
+   "e76e1b2d157d672",
+   "e4cf35a53c6a5f0",
+   "e451633ce0ab7a0",
+   "e2588b5d58bfbca",
+   "e5d3eb7c4416840",
+   "ebe36299570561f",
+   "ec6b764b051277b",
+   "ecac11c217cf3a1",
+   "ee0e035c0668fb4"
+  ]
+ },
+ "insights": {
+  "eb062a483e17bf1": {
+   "event_id": "eb062a483e17bf1",
+   "title": "智谱发布新一代大模型",
+   "facts": [
+    "智谱发布新一代大模型"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "该新一代大模型的具体名称未知",
+    "该新一代大模型的性能指标未知",
+    "发布时间仅为新闻来源记录时间，并非官方确切发布时刻"
+   ],
+   "key_points": [
+    "智谱发布新一代大模型"
+   ],
+   "rule_based": false
+  },
+  "e6fd784cb963c3c": {
+   "event_id": "e6fd784cb963c3c",
+   "title": "AWS发布Strands Decider v2与Box CLI更新开源工具",
+   "facts": [
+    "Amazon Web Services Inc. 发布了 Strands Agents 的重大更新",
+    "Strands Agents 是用于构建自主工作者的开源工具包",
+    "此次更新推出了名为 Strands Decider v2 的开源权重决策模型家族",
+    "此次更新首次推出了 Box CLI"
+   ],
+   "inferences": [
+    "推出 Strands Decider v2 和 Box CLI 旨在解决 AI 智能体开发者在决策力和安全性方面的痛点"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料中未说明 Strands Decider v2 具体如何提升安全性",
+    "材料中未说明 Box CLI 的具体功能细节"
+   ],
+   "key_points": [
+    "Strands Decider v2 是新的开源权重决策模型",
+    "Box CLI 是此次更新新推出的工具"
+   ],
+   "rule_based": false
+  },
+  "ee16722f19f7720": {
+   "event_id": "ee16722f19f7720",
+   "title": "Claude Code v2.1.331 发布，新增 Code Mode 多平台支持",
+   "facts": [
+    "Claude Code v2.1.331 发布。",
+    "该版本在 Amazon Bedrock、Google Cloud Agent Platform、Microsoft Foundry 和 AWS 上的 Claude Platform 终端会话中新增 Code Mode 支持。"
+   ],
+   "inferences": [
+    "Code Mode 功能现可通过上述多个云平台或终端界面访问。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "标题提到的“多项修复”具体涉及哪些功能或错误在材料中未说明。",
+    "Code Mode 在这些新平台上的具体操作方式或功能边界未详细说明。"
+   ],
+   "key_points": [
+    "版本：Claude Code v2.1.331",
+    "新增：Amazon Bedrock、Google Cloud Agent Platform、Microsoft Foundry、AWS Claude Platform 终端会话的 Code Mode 支持",
+    "状态：包含多项修复"
+   ],
+   "rule_based": false
+  },
+  "e4e60ce170d7448": {
+   "event_id": "e4e60ce170d7448",
+   "title": "加州总检察长起诉 OpenAI 未确保 AI 模型安全",
+   "facts": [
+    "加州总检察长罗布·邦塔确认已于 11 月 16 日正式起诉 OpenAI",
+    "起诉指控 OpenAI 未能确保 AI 模型安全，将公众置于风险之中",
+    "邦塔称 OpenAI 将增长和速度置于安全之上，忽视危险信号",
+    "路透社报道了上述起诉消息"
+   ],
+   "inferences": [
+    "此次诉讼主要基于 OpenAI 在安全机制上对公众风险的忽视，而非单纯的产品性能问题"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未提及具体的诉讼法律条款或 OpenAI 的回应",
+    "邦塔提到的“危险信号”具体指代哪些事件或事故未在材料中详细说明"
+   ],
+   "key_points": [
+    "OpenAI 被控“增长优先”导致安全缺失",
+    "加州总检察长正式发起法律诉讼",
+    "公众安全风险成为核心指控"
+   ],
+   "rule_based": false
+  },
+  "e5276c6d7968a20": {
+   "event_id": "e5276c6d7968a20",
+   "title": "Anthropic 推出 Claude Ship beta 自动审查并按策略审批 PR",
+   "facts": [
+    "Anthropic 面向 Team 和 Enterprise 推出 Claude Ship (beta)",
+    "Boris Cherny 宣布了该产品的发布",
+    "Claude 可以审查 pull request、处理修复，并批准团队策略允许的合并",
+    "该功能旨在让发布代码的速度跟上写代码的速度",
+    "作者 Lydiahallie 作为 Claude Code 团队成员转发并配上 /ship 🚢"
+   ],
+   "inferences": [
+    "Claude Ship 被设计用于承接各种编码工具带来的 PR 吞吐量",
+    "该工具的目标是覆盖从 review 到自动审批的 PR 全生命周期"
+   ],
+   "opinions": [
+    "Claude Ship 能够弥补写代码与发布 PR 之间的落差"
+   ],
+   "uncertainties": [
+    "材料中未提供具体的使用数据或团队规模",
+    "材料中未说明 Claude Ship 的技术实现原理",
+    "材料中未提供具体的用户反馈或满意度调查"
+   ],
+   "key_points": [
+    "Claude Ship 自动审查 pull request 并修复问题",
+    "按团队策略允许的范围自动批准合并",
+    "面向 Team 和 Enterprise 用户发布"
+   ],
+   "rule_based": false
+  },
+  "eead6502393e739": {
+   "event_id": "eead6502393e739",
+   "title": "Anthropic放宽Mythos和Fable模型数据保留政策",
+   "facts": [
+    "Anthropic放宽了关于Mythos和Fable模型使用的数据保留政策。",
+    "企业客户现在可以在自己的服务器上保留提示和响应。"
+   ],
+   "inferences": [
+    "此举旨在通过满足数据本地存储需求来增强对企业客户的吸引力。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未明确说明该政策调整是否适用于所有客户还是仅针对企业客户。",
+    "材料未提及此政策变更的具体生效时间或实施细节。"
+   ],
+   "key_points": [
+    "Anthropic修改数据保留政策以适配Mythos和Fable模型。",
+    "企业客户获得在本地服务器存储交互数据的新权限。"
+   ],
+   "rule_based": false
+  },
+  "e10ecfb20223452": {
+   "event_id": "e10ecfb20223452",
+   "title": "OpenAI 与 Cisco 推出开源 Linux 运行时 Shirudo",
+   "facts": [
+    "OpenAI 与 Cisco 联合推出开源 Linux 运行时 Shirudo",
+    "Shirudo 基于 eBPF 技术生成可密码签名验证的 shield",
+    "该工具允许在不停机、不重启服务的情况下拦截漏洞利用",
+    "受控测试中，由 Codex 生成的 shield 成功拦截了针对 Elasticsearch 的 Java4Shell 攻击",
+    "双方称这是迈向自防御基础设施的第一步"
+   ],
+   "inferences": [
+    "Shirudo 旨在为防御方争取测试和部署补丁的时间窗口",
+    "该机制支持防御者与 AI Agent 协作定位受影响系统并部署防护"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "Shirudo 在大规模生产环境中的实际防护效能未知",
+    "除 Java4Shell 外，该 shield 对其他类型漏洞拦截率的数据未提及"
+   ],
+   "key_points": [
+    "OpenAI 与 Cisco 合作发布开源安全项目 Shirudo",
+    "利用 eBPF 动态生成 shield 保护运行中的 Linux 系统",
+    "支持 Agent 编写控制逻辑以实现不停机防护",
+    "通过 Codex 生成 shield 成功阻断已知攻击案例"
+   ],
+   "rule_based": false
+  },
+  "ea811c24340ec36": {
+   "event_id": "ea811c24340ec36",
+   "title": "蚂蚁百灵发布并开源四款医疗健康大模型",
+   "facts": [
+    "蚂蚁百灵医疗健康大模型家族在蚂蚁阿福医疗健康生态大会上宣布全面开源",
+    "此次发布会一次性发布了四款模型，分别为 LingSante-3.1-air-VL、LingSante-3.1-flash、LingSante Pulse 和 LingSante MedGuard",
+    "四款模型分别覆盖多模态健康信息理解、复杂医学推理、健康预测与医疗安全防护",
+    "LingSante-3.1-air-VL 支持文字、图片和视频理解",
+    "LingSante-3.1-air-VL 可结合皮肤照片、饮食图片、体检报告进行综合分析"
+   ],
+   "inferences": [
+    "LingSante-3.1-air-VL 因支持多种模态输入及贴近普通人的功能，可能更适用于个人日常健康管理场景"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未提供具体发布日期、开源平台链接或模型参数规模",
+    "LingSante Pulse 和 LingSante MedGuard 的具体功能细节在材料中未展开描述",
+    "材料未说明各模型在医疗场景中的实际部署情况或准确率数据"
+   ],
+   "key_points": [
+    "蚂蚁百灵医疗健康大模型家族全面开源",
+    "发布四款模型：LingSante-3.1-air-VL、LingSante-3.1-flash、LingSante Pulse、LingSante MedGuard",
+    "LingSante-3.1-air-VL 支持结合皮肤照片、饮食图片及体检报告进行多模态综合分析"
+   ],
+   "rule_based": false
+  },
+  "ebdba85ec00596b": {
+   "event_id": "ebdba85ec00596b",
+   "title": "Anthropic 估值破万亿，发债评级预计仅达 BB 区间",
+   "facts": [
+    "Anthropic 上周募资超过 1000 亿美元。",
+    "Anthropic 估值约为 1.18 万亿美元，超过沃尔玛和摩根大通。",
+    "Anthropic 承诺未来数年投入约 9000 亿美元采购算力。",
+    "华尔街预期其债券评级将处于 BB 区间。",
+    "BB 评级距离投资级有一到两档的差距。"
+   ],
+   "inferences": [
+    "债券市场对 Anthropic 的高估值持保留态度。",
+    "若评级维持 BB，Anthropic 将可能成为美国市值最高的高收益债发行主体。"
+   ],
+   "opinions": [
+    "该事件凸显了股票市场与债券市场之间的认知分歧。"
+   ],
+   "uncertainties": [
+    "债券的最终评级尚未确定，目前仅为市场预期。",
+    "材料未说明评级机构的具体名单。"
+   ],
+   "key_points": [
+    "Anthropic 在股市的高估值未能转化为债券市场的投资级信任。",
+    "巨额算力支出承诺是市场对其发债持谨慎态度的主要原因。",
+    "股市与债市对同一科技巨头的风险定价出现显著分歧。"
+   ],
+   "rule_based": false
+  },
+  "efd484405ff5a75": {
+   "event_id": "efd484405ff5a75",
+   "title": "Amazon 斥资 7.5B 美元收购 Decart 芯片软件业务",
+   "facts": [
+    "Amazon 正在收购以色列 AI 初创公司 Decart 的 AI 优化技术和研究团队。",
+    "据报道，此次交易金额达 75 亿美元。",
+    "Decart 的软件旨在提高芯片利用率并帮助芯片运行更快。",
+    "Amazon 拥有自研的 Trainium AI 芯片。",
+    "收购行为旨在帮助 Amazon 更高效地运行 AI 算力。"
+   ],
+   "inferences": [
+    "收购 Decart 的技术团队预计将有助于 Amazon 提升其自研 Trainium 芯片的算力运行效率。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "交易是否已最终完成尚不确定，目前描述为 '正在收购' 或 '据报道'。"
+   ],
+   "key_points": [
+    "Amazon 通过收购 Decart 的芯片软件业务，补齐了提升 Trainium 芯片运行效率的能力短板。",
+    "75 亿美元的收购规模显示 Amazon 对 AI 算力底层优化技术的重视程度。"
+   ],
+   "rule_based": false
+  },
+  "e2a73ac60f97405": {
+   "event_id": "e2a73ac60f97405",
+   "title": "UC Berkeley、UIUC 与 Anthropic 论文揭示 0.1% 预训练投毒后门",
+   "facts": [
+    "UC Berkeley、UIUC 与 Anthropic 发表了相关论文。",
+    "论文显示污染 0.1% 预训练文本可在智能体中植入后门。",
+    "干净的后训练无法清除该后门。",
+    "研究从零预训练了 0.6B、1.7B 和 4B 的 Qwen3 模型。",
+    "研究使用干净的 SFT、DPO 和 RL 构建 CLI 智能体。",
+    "投毒文档伪装成普通 commit message。",
+    "触发条件是文件路径含 \"anthropic\" 时执行远程脚本。"
+   ],
+   "inferences": [
+    "基于研究结果，预训练阶段的小比例数据污染可能对后续智能体的安全构成实质威胁。",
+    "基于触发机制描述，攻击者可通过控制特定文件路径来激活植入的后门。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明 0.1% 的投毒比例在工业级大规模预训练中的实际执行难度。",
+    "材料未提及除 Qwen3 之外的其他模型是否表现出相同的后门抵抗后训练清除的特性。",
+    "材料未描述远程脚本被触发后的具体执行权限或危害程度。"
+   ],
+   "key_points": [
+    "0.1% 预训练文本污染可植入无法通过干净后训练清除的后门。",
+    "后门触发机制依赖特定文件路径关键词，伪装形式为普通 commit message。",
+    "实验基于 Qwen3 系列不同参数量的模型进行验证。"
+   ],
+   "rule_based": false
+  },
+  "e2012d4d7a2ce7b": {
+   "event_id": "e2012d4d7a2ce7b",
+   "title": "贝森特称美中就AI军事决策达成共识",
+   "facts": [
+    "贝森特指美中就AI军事决策达成“人类参与”共识",
+    "科技领袖呼吁勿将社会移交AI"
+   ],
+   "inferences": [
+    "科技领袖对AI在社会中的角色持警惕态度"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未提供具体的科技领袖姓名",
+    "材料未说明该共识的具体条款或达成背景",
+    "材料来源时间标注为2026年，与当前实际时间可能存在偏差或为预测性新闻"
+   ],
+   "key_points": [
+    "美中在AI军事决策领域强调人类参与",
+    "科技界发声反对将社会控制权完全交给AI"
+   ],
+   "rule_based": false
+  },
+  "e1773f5f4d2c465": {
+   "event_id": "e1773f5f4d2c465",
+   "title": "Figma agent 向所有付费用户开放 FigJam 和 Slides 功能",
+   "facts": [
+    "Figma agent 已在 FigJam 和 Figma Slides 上对所有付费计划全面开放",
+    "该功能支持连接器和附件",
+    "用户可将设计文件、会议记录或研究笔记整理到 FigJam 白板",
+    "用户可生成演示文稿初稿"
+   ],
+   "inferences": [
+    "此次开放意味着付费用户无需等待即可在协作白板与幻灯片场景中直接使用 AI agent 进行内容整理与生成"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明免费用户是否后续会获得此功能",
+    "材料未提供具体的发布日期，仅提及新闻采集时间为 2026-11-24",
+    "材料未解释“连接器”具体支持哪些第三方服务",
+    "材料未说明生成演示文稿初稿的具体质量或可用性标准"
+   ],
+   "key_points": [
+    "Figma agent 功能扩展至 FigJam 和 Figma Slides",
+    "面向所有付费计划用户开放",
+    "支持基于文档、会议记录等素材自动整理白板和生成演示文稿"
+   ],
+   "rule_based": false
+  },
+  "e2af7df92932c92": {
+   "event_id": "e2af7df92932c92",
+   "title": "Mira Murati 团队开源循环 Transformer 模型 Inkling2Mini",
+   "facts": [
+    "Mira Murati 的 Thinking Machines Lab 发布了开源权重模型 Inkling2Mini。",
+    "该模型采用循环 Transformer 架构，包含 24 层。",
+    "中间 12 层对每个 token 循环三次，首尾各 6 层只跑一次。",
+    "Inkling2Small 的参数规模为 594B。"
+   ],
+   "inferences": [
+    "Inkling2Mini 的参数规模可能小于 Inkling2Small，从而改善了前代模型体积过大的问题。",
+    "循环机制旨在通过延长内部思考时间而非增加生成文本数量，来实现更高效的答案推导。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料中未提及 Inkling2Mini 的具体参数规模。",
+    "材料中未提供具体的 Benchmark 数据或性能对比结果，无法确认其是否真正登顶 Hugging Face。",
+    "材料中未明确说明 Inkling2Mini 是否能在笔记本上运行。",
+    "标题中提到的“登顶 Hugging Face”在正文内容中缺乏具体排名或数据支持。"
+   ],
+   "key_points": [
+    "Thinking Machines Lab 推出开源权重模型 Inkling2Mini。",
+    "模型采用循环 Transformer 设计，中间 12 层重复计算 3 次。",
+    "该架构旨在通过“多想少说”策略，在不增加生成文本长度的情况下提升推理质量。",
+    "前代模型 Inkling2Small 因 594B 参数规模较大而受到批评。"
+   ],
+   "rule_based": false
+  },
+  "e42a2fb5f5f38c7": {
+   "event_id": "e42a2fb5f5f38c7",
+   "title": "Anthropic 巨额算力需求促使 xAI 转向租赁策略",
+   "facts": [
+    "自 5 月起，SpaceXSI 开始向 Anthropic 和 Google 等竞争对手出租算力，同时缩减其自身 AI 项目。",
+    "根据《纽约时报》报道，Anthropic 每月支付约 31 亿美元租金，Google 每月支付 8 亿美元。",
+    "SpaceXSI 在 6 月 IPO 后解散了由 60 人组成的 Grok Imagine 团队，并进行了其他裁员。"
+   ],
+   "inferences": [
+    "SpaceXSI 出租算力给竞争对手的收入规模较大，可能成为其替代自建算力投入的主要资金来源。",
+    "解散 Grok Imagine 团队等举措表明 SpaceXSI 正在从自建 AI 研发向算力资产租赁业务模式转型。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料中提到的实体为 SpaceXSI，而非标题中的 xAI，两者之间的关系或未指出的更名/合并背景无法确认。",
+    "除 Grok Imagine 团队外，其他具体的裁员细节和项目缩减范围未知。",
+    "材料未明确说明 xAI 目前是否仍保留自建数据中心的计划，还是完全转向租赁模式。"
+   ],
+   "key_points": [
+    "SpaceXSI 通过向 Anthropic 和 Google 出租算力获得巨额月度收入。",
+    "公司在 IPO 后缩减内部 AI 研发团队，如解散 Grok Imagine。",
+    "Anthropic 的高昂算力需求是驱动 SpaceXSI 采取租赁优于自建（rent-over-build）策略的关键因素。"
+   ],
+   "rule_based": false
+  },
+  "e66d4ea185e75d0": {
+   "event_id": "e66d4ea185e75d0",
+   "title": "Canva 发布 MCP 服务器，支持 Agent 生成可编辑设计",
+   "facts": [
+    "Canva 发布了全新 Canva MCP",
+    "Canva 的设计工具和 AI 模型对任意 Agent 或开发者开放",
+    "接入无需候补名单",
+    "开发者需在 Canva Developer Portal 启用 MCP",
+    "Agent 收到一句需求后会自行选择并按顺序调用 Canva 工具",
+    "Agent 可生成设计、创建视频并适配各平台尺寸",
+    "最终返回的是可编辑的 Canva 设计文件",
+    "该文件需由人工进行审查、修改、分享和发布"
+   ],
+   "inferences": [
+    "该流程实现了从单一自然语言需求到多平台发布资产的自动化生成"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明该功能是否向所有用户免费开放或需额外付费",
+    "材料未提供具体的性能指标或生成质量评估数据"
+   ],
+   "key_points": [
+    "Canva 通过 MCP 协议开放设计工具给外部 Agent",
+    "实现单句需求驱动的多平台资产生成",
+    "保留人工审核环节以确保发布质量"
+   ],
+   "rule_based": false
+  },
+  "e1d3ed7a44a3077": {
+   "event_id": "e1d3ed7a44a3077",
+   "title": "ComfyUI 官方发布 Comfy Desktop 1.2 更新",
+   "facts": [
+    "ComfyUI 官方发布了 Comfy Desktop 1.2 版本更新。",
+    "该更新将 Comfy Desktop 从安装工具升级为 ComfyUI 生态的统一入口。",
+    "该更新支持 App 免节点运行 ComfyUI 工作流。"
+   ],
+   "inferences": [
+    "Comfy Desktop 1.2 的功能定位相较于旧版本发生了显著变化，不再仅局限于安装功能。",
+    "用户可以通过 App 直接运行 ComfyUI 工作流，而无需依赖传统的节点界面操作。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明“免节点运行”的具体技术实现机制或限制条件。",
+    "材料未提供 Comfy Desktop 1.2 的具体发布日期或版本号以外的详细功能列表。"
+   ],
+   "key_points": [
+    "ComfyUI 官方推出 Comfy Desktop 1.2。",
+    "定位升级为 ComfyUI 生态统一入口。",
+    "新增 App 免节点运行工作流功能。"
+   ],
+   "rule_based": false
+  },
+  "e362a39892a00cc": {
+   "event_id": "e362a39892a00cc",
+   "title": "Besimple 微调 Nemotron 与 Qwen3-ASR 降低医疗术语错误率",
+   "facts": [
+    "Besimple 与 Baseten 合作微调开源 ASR 模型",
+    "微调过程使用了约 500 美元 GPU 成本",
+    "微调过程使用了 813 小时语音数据",
+    "Nemotron 3.5 Transcribe 在 MedDictate 基准上的 Term-WER 降至 0.87%",
+    "Nemotron 3.5 Transcribe 的 Term-WER 较基座模型改进 69%",
+    "Qwen3-ASR 在 MedDictate 基准上的 Term-WER 降至 2.05%"
+   ],
+   "inferences": [
+    "基于较低的成本投入，该微调方案在医疗语音识别场景中具有较高的性价比",
+    "微调后的模型在医疗领域特定术语的识别准确性上优于原始基座模型"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明具体的 Baseten Training 平台操作细节",
+    "材料未提供 Qwen3-ASR 相比其基座模型的具体改进百分比数值",
+    "材料未说明 813 小时语音数据的具体来源或构成"
+   ],
+   "key_points": [
+    "利用 Baseten Training 进行低成本开源模型微调",
+    "Nemotron 3.5 Transcribe 医疗术语词错率显著降低"
+   ],
+   "rule_based": false
+  },
+  "e33bcc4c6993fb6": {
+   "event_id": "e33bcc4c6993fb6",
+   "title": "文章探讨 transformer 残差连接的增强方法",
+   "facts": [
+    "文章标题为 Supercharging transformer residual connections",
+    "文章归属于 Algorithms & Theory 类别"
+   ],
+   "inferences": [
+    "该文章主要涉及理论算法层面关于 transformer 残差连接的研究"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未提供具体的增强技术细节或实验结果",
+    "材料未说明该研究是由 Google Research 发布还是仅为其展示内容"
+   ],
+   "key_points": [
+    "研究对象为 transformer 架构中的 residual connections",
+    "内容分类定位为 Algorithms & Theory"
+   ],
+   "rule_based": false
+  },
+  "e76e1b2d157d672": {
+   "event_id": "e76e1b2d157d672",
+   "title": "蚂蚁阿福升级实时视频问诊功能",
+   "facts": [
+    "11月23日，在蚂蚁阿福医疗健康生态大会上，阿福App宣布升级",
+    "升级基于百灵医疗健康系列模型",
+    "升级功能包括实时视频“望闻问切”和全家健康档案集中管理",
+    "用户可以在首页右下角打开实时音视频",
+    "用户可以通过将镜头对准皮肤变化或不适位置进行健康排查"
+   ],
+   "inferences": [
+    "实时视频问诊功能旨在解决用户难以准确描述身体症状的问题，使健康咨询过程更直观"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未提及该功能目前的覆盖用户范围或是否全量开放",
+    "材料未提供百灵医疗健康系列模型的具体参数或性能指标"
+   ],
+   "key_points": [
+    "蚂蚁阿福App推出基于百灵医疗健康系列模型的升级",
+    "新增实时视频问诊功能，通过视觉辅助解决症状描述困难问题",
+    "新增全家健康档案集中管理功能"
+   ],
+   "rule_based": false
+  },
+  "ef023d896fcf751": {
+   "event_id": "ef023d896fcf751",
+   "title": "OpenAI 推出 OpenWorks 计划资助本地商家",
+   "facts": [
+    "OpenAI 推出了名为 OpenWorks 的资助计划",
+    "该计划面向本地商家开放申请",
+    "商家可以获得资助以打造并使用 AI 工具",
+    "商家可以利用 AI 工具解决其自行选择的问题",
+    "材料提及该计划鼓励与社区小店店主合作"
+   ],
+   "inferences": [
+    "OpenAI 正试图通过提供工具与资金，降低小型商家使用 AI 技术的门槛",
+    "该计划旨在促进 AI 技术在本地实体商业场景中的具体应用"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "OpenWorks 计划的具体资助金额上限未明确",
+    "申请该计划的具体资格要求与筛选标准未知",
+    "计划覆盖的地理区域或商家规模限制未详细说明"
+   ],
+   "key_points": [
+    "OpenAI 发起 OpenWorks 计划，重点支持本地商家",
+    "受资助商家需使用 AI 工具解决自选业务问题",
+    "计划强调社区互动与 AI 工具的实际落地应用"
+   ],
+   "rule_based": false
+  },
+  "e97bc65af26d298": {
+   "event_id": "e97bc65af26d298",
+   "title": "River API 发布五个月 ARR 突破 1 亿美元",
+   "facts": [
+    "River API 发布仅 5 个月，ARR 突破 1 亿美元",
+    "River API 今年有望超过 2 亿美元 ARR",
+    "River API 称自身是唯一开箱即支持前沿级 RL 训练规模的系统",
+    "Perplexity AI 是 River API 的早期设计伙伴",
+    "Jensen Huang 和 htaneja 是 River API 的早期支持者",
+    "River API 表示今年还有更多重大发布"
+   ],
+   "inferences": [
+    "River API 在发布初期即获得了显著的商业增长和市场认可"
+   ],
+   "opinions": [
+    "发文者认为 River API 的增长速度令人敬佩",
+    "发文者认为初创智能的时代已经到来"
+   ],
+   "uncertainties": [
+    "「唯一开箱即支持前沿级 RL 训练规模」这一宣称缺乏独立第三方验证",
+    "今年 ARR 超过 2 亿美元目前仅为预期，尚未达成",
+    "材料未提供 River API 具体服务内容和客户结构细节"
+   ],
+   "key_points": [
+    "River API 五个月实现 1 亿美元 ARR",
+    "Perplexity AI 等客户认可其 RL 训练支持能力",
+    "公司预期本年度 ARR 将超 2 亿美元"
+   ],
+   "rule_based": false
+  },
+  "ee19ee24e53d3a1": {
+   "event_id": "ee19ee24e53d3a1",
+   "title": "Inkling 2 Mini 进入 Agent Arena Index 开源模型第 18 名",
+   "facts": [
+    "Arena 官宣 Thinking Machines 的 Inkling 2 Mini 进入 Agent Arena Index。",
+    "Inkling 2 Mini 在开源模型中排第 18，得分为 996 分。",
+    "Inkling 2 Mini 在美国开放权重模型中排第 3。"
+   ],
+   "inferences": [
+    "Inkling 2 Mini 属于 Thinking Machines 开发的开放权重模型。",
+    "Inkling 2 Mini 被归类为美国开放权重模型。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明 Agent Arena Index 的具体评测基准或评分标准。",
+    "材料未列出除第 3 名和第 18 名之外的其他具体排名细节。"
+   ],
+   "key_points": [
+    "Thinking Machines 发布 Inkling 2 Mini 进入 Agent Arena Index。",
+    "该模型在开源模型中排名第 18，得分 996。",
+    "该模型在美国开放权重模型中排名第 3。"
+   ],
+   "rule_based": false
+  },
+  "e6c0069a33b6656": {
+   "event_id": "e6c0069a33b6656",
+   "title": "Perplexity 发布支持自然语言任务的 Agent 监视器",
+   "facts": [
+    "Perplexity CEO Aravind Srinivas 转发了官方账号的公告。",
+    "Monitor API 新增了 Agent monitors 功能。",
+    "Agent monitor 支持接受自然语言描述的任务。",
+    "Agent monitor 能按计划运行 Agent API。",
+    "当答案发生变化时，系统会发送包含来源的告警。",
+    "该功能可用于批量模式监控智能体。"
+   ],
+   "inferences": [
+    "用户无需编写代码，即可通过自然语言设定监控任务。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未提及该功能的具体发布日期或上线时间。",
+    "材料未说明该功能是否对所有用户开放或处于测试阶段。"
+   ],
+   "key_points": [
+    "Perplexity 推出 Monitor API 的 Agent monitors 模块。",
+    "支持通过自然语言描述来定义监控任务。",
+    "具备按计划运行 Agent API 及在答案变化时发送告警的能力。"
+   ],
+   "rule_based": false
+  },
+  "ef46b7982942e05": {
+   "event_id": "ef46b7982942e05",
+   "title": "google-labs-code 发布支持 Stitch MCP 的 Agent Skills 库",
+   "facts": [
+    "该仓库是一个为 Stitch MCP 服务器设计的 Agent Skills 库",
+    "每个 skill 都遵循 Agent Skills 开放标准",
+    "该标准旨在与 Antigravity、Gemini CLI、Claude Code、Cursor 等 coding agents 保持兼容性"
+   ],
+   "inferences": [
+    "由于遵循开放标准，这些 skills 可能被多个支持该标准的编码代理工具所复用"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未提供该仓库的具体发布日期或更新时间",
+    "材料未明确该库是否仅支持 Antigravity、Gemini CLI、Claude Code、Cursor 中列举的工具，还是也兼容其他遵循该标准的代理"
+   ],
+   "key_points": [
+    "核心内容是 google-labs-code 维护的 Agent Skills 开源库",
+    "该库专为 Stitch MCP 服务器设计",
+    "遵循 Agent Skills 开放标准以实现跨代理兼容性"
+   ],
+   "rule_based": false
+  },
+  "e301144264d08cc": {
+   "event_id": "e301144264d08cc",
+   "title": "牛津论文发现 LLM 评分中无学位白人男性得分最低",
+   "facts": [
+    "牛津大学发布了一项论文，使用 12 家开发者的 18 个模型对 32 份虚构申请人档案各评分 10 次",
+    "实验在贷款、招聘和租房三类场景中进行，且保持财务与工作经历不变",
+    "结果显示有学位的黑人女性平均得分最高，比无学位的白人男性高 2.94 至 3.66 分（百分制）",
+    "无学位的白人男性在 54 组模型与场景配对中的 46 组排名最低或次低",
+    "论文作者建议在进行审计时按种族、性别、教育等交叉分组而非单一属性"
+   ],
+   "inferences": [
+    "在控制财务和工作经验的条件下，当前主流 LLM 在模拟评估中存在基于种族、性别和学历的偏差",
+    "单一维度的属性测试可能掩盖了多属性交叉影响下的评分偏见"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "导致不同人群评分差异的具体内部算法机制未在材料中详述",
+    "该实验结论能否完全代表所有 LLM 开发者和所有实际业务场景尚未验证"
+   ],
+   "key_points": [
+    "LLM 评分存在系统性偏差，无学位白人男性表现最差",
+    "有学位黑人女性获得最高评分，分差显著",
+    "审计方法应转向多属性交叉分组"
+   ],
+   "rule_based": false
+  },
+  "e149f09b25fa7e2": {
+   "event_id": "e149f09b25fa7e2",
+   "title": "Anthropic 海湾股东持股估值达 1000 亿美元",
+   "facts": [
+    "Qatar Investment Authority 和 MGX 等投资者在 Anthropic 的合并持股比例估值约为 1000 亿美元。",
+    "Anthropic 此前曾发誓不接受来自该地区（海湾地区）的资金。"
+   ],
+   "inferences": [
+    "Anthropic 此前拒绝海湾资金与当前拥有巨额海湾股东投资之间的情况存在讽刺意味。"
+   ],
+   "opinions": [
+    "标题中使用的 'irony'（讽刺）属于评价性判断，而非纯事实陈述。"
+   ],
+   "uncertainties": [
+    "材料未详细说明 Anthropic 何时以及为何改变立场接受海湾投资。",
+    "“发誓不接受来自该地区的资金”的具体时间、背景及具体承诺对象未在材料中明确。",
+    "除了 Qatar Investment Authority 和 MGX 之外，还有哪些具体投资者持有股份未完整列出。"
+   ],
+   "key_points": [
+    "Anthropic 目前的海湾投资者持股价值估计为 1000 亿美元。",
+    "这一现状与其之前拒绝该地区资金的立场形成对比，被标题描述为具有讽刺意味。"
+   ],
+   "rule_based": false
+  },
+  "ea827b36a97d745": {
+   "event_id": "ea827b36a97d745",
+   "title": "研究人员利用Meta开放权重AI模型推动医学变革",
+   "facts": [
+    "研究人员正利用Meta的开放权重AI模型推动医学变革"
+   ],
+   "inferences": [
+    "研究人员正在探索AI在医学领域的应用"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "具体医学领域和预期成果不明"
+   ],
+   "key_points": [
+    "Meta开放权重AI模型被用于医学研究",
+    "研究人员致力于医学变革"
+   ],
+   "rule_based": false
+  },
+  "e22fe6de3458720": {
+   "event_id": "e22fe6de3458720",
+   "title": "思科与OpenAI推出项目 保障智能体化AI安全",
+   "facts": [
+    "思科与OpenAI推出项目保障智能体化AI安全"
+   ],
+   "inferences": [
+    "该项目旨在解决智能体化AI的安全问题"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "项目的具体内容、实施计划、技术细节等未披露"
+   ],
+   "key_points": [
+    "思科与OpenAI合作推出项目",
+    "项目目标是保障智能体化AI安全"
+   ],
+   "rule_based": false
+  },
+  "e858d8e18807480": {
+   "event_id": "e858d8e18807480",
+   "title": "使用代理团队与形式化验证寻找更快的量子算法",
+   "facts": [
+    "使用代理团队与形式化验证来改进用于聚变和化学的量子算法",
+    "聚变和化学是该研究关注的领域"
+   ],
+   "inferences": [
+    "研究旨在加速量子算法的执行速度"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "未说明使用的具体代理团队类型",
+    "未说明形式化验证的具体方法",
+    "未说明实验结果或性能提升幅度"
+   ],
+   "key_points": [
+    "使用代理团队与形式化验证改进量子算法",
+    "聚焦于聚变和化学领域"
+   ],
+   "rule_based": false
+  },
+  "e284232590c53ed": {
+   "event_id": "e284232590c53ed",
+   "title": "Mistral AI宣布在新加坡设立亚太总部",
+   "facts": [
+    "法国AI企业Mistral AI宣布在新加坡设立亚太总部。",
+    "Mistral AI计划到2027年将区域员工规模扩至200人以上。",
+    "该总部将招募科研、工程、AI及机器人领域人才。",
+    "新加坡办公室以“扩展科学中心”形态运营。",
+    "新总部核心业务是为政府机构和工业客户开发定制AI模型。",
+    "业务聚焦公共部门、高科技制造和机器人三大领域。"
+   ],
+   "inferences": [
+    "Mistral AI设立亚太总部意在将新加坡作为其进入亚洲市场的核心据点。",
+    "通过为政府机构开发定制AI模型，Mistral AI可能参与支持亚洲各国的“主权 AI”建设。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明Mistral AI是否已在其他亚洲国家设立分支机构或计划。",
+    "“扩展科学中心”的具体运营架构和内部团队构成在材料中未详细披露。",
+    "材料未提及设立该亚太总部的具体资金来源或投资规模。"
+   ],
+   "key_points": [
+    "Mistral AI正式确立新加坡为其亚太地区总部。",
+    "公司将在2027年前将亚太团队扩展至200人以上，重点吸纳AI与机器人人才。",
+    "新加坡基地将侧重于为政府及工业界提供定制化的AI模型服务，主要瞄准公共部门、高科技制造和机器人领域。"
+   ],
+   "rule_based": false
+  },
+  "ecb07464d367111": {
+   "event_id": "ecb07464d367111",
+   "title": "Supertake 获 Adjacent 领投 2000 万美元种子轮",
+   "facts": [
+    "AI 投资初创 Supertake 宣布完成 2000 万美元种子轮融资。",
+    "本轮融资由 Adjacent 领投。",
+    "Coinbase Ventures 和 Union Square Ventures 参投本轮融资。",
+    "Supertake 允许用户基于对市场走向的判断进行资金配置，且无需亲自挑选个股。"
+   ],
+   "inferences": [
+    "Supertake 的 AI 智能体功能旨在将用户的市场预测转化为具体的投资组合。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "Supertake 的具体技术实现方式未在材料中说明。",
+    "该服务在风险控制和历史表现方面的具体数据未提及。"
+   ],
+   "key_points": [
+    "Supertake 完成 2000 万美元种子轮融资。",
+    "Adjacent 领投，Coinbase Ventures 和 Union Square Ventures 参投。",
+    "平台利用 AI 智能体将市场观点转化为投资组合。"
+   ],
+   "rule_based": false
+  },
+  "e2aadc275ec419c": {
+   "event_id": "e2aadc275ec419c",
+   "title": "美AI路由平台警告用户对话恐流入中国",
+   "facts": [
+    "美AI路由平台发布警告",
+    "警告称用户对话可能流入中国"
+   ],
+   "inferences": [
+    "该警告暗示存在数据跨境传输的风险",
+    "该风险可能是用户未察觉的"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "具体是哪一家美AI路由平台",
+    "对话流入中国的具体技术路径或证据",
+    "是否有实际发生的数据泄露案例支持该警告"
+   ],
+   "key_points": [
+    "美国AI路由平台发出数据流向警告",
+    "核心关切为用户隐私对话可能泄露至中国"
+   ],
+   "rule_based": false
+  },
+  "eebceb713ccb4b2": {
+   "event_id": "eebceb713ccb4b2",
+   "title": "MIT 研究：多语言模型揭示 21 种语言共享神经编码",
+   "facts": [
+    "MIT McGovern 研究所团队在 Nature Neuroscience 发表研究。",
+    "研究使用多语言大模型构建 encoding model 来预测 21 种语言使用者的脑活动。",
+    "研究发现人脑以共同方式处理不同语言。",
+    "用单一语言训练的编码模型能够预测从未见过的语言的脑响应。",
+    "该研究有助于推动更包容的脑疾病诊断工具并帮助保护濒危语言。"
+   ],
+   "inferences": [
+    "语言神经编码中的共享成分可能与语义有关。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料中未明确说明具体是哪些 21 种语言。",
+    "材料中未提供具体的脑疾病诊断工具名称或濒危语言保护的具体措施。"
+   ],
+   "key_points": [
+    "MIT McGovern 研究所利用多语言大模型构建了跨语言的脑活动预测模型。",
+    "研究证实人脑对不同语言存在共同的神经处理机制。",
+    "单一语言训练的模型展现出对未见过语言的泛化预测能力。",
+    "该发现对开发脑疾病诊断工具和保护濒危语言具有潜在应用价值。"
+   ],
+   "rule_based": false
+  },
+  "e4cf35a53c6a5f0": {
+   "event_id": "e4cf35a53c6a5f0",
+   "title": "亚马逊披露黑客将 Cairn 武器化攻击医学影像应用",
+   "facts": [
+    "亚马逊威胁情报披露了一项安全事件。",
+    "黑客将合法自动化渗透测试工具 Cairn 武器化。",
+    "攻击者利用自主 AI 平台攻击了一款医学影像应用。",
+    "攻击利用了供应商尚未察觉且无补丁可打的零日漏洞。",
+    "攻击者通过零日漏洞控制了服务器。",
+    "AI 智能体接管了攻击全程，黑客仅下达指令。",
+    "黑客将作案工具挂上公网，暴露了行踪。",
+    "消息时间为 11 月 23 日。"
+   ],
+   "inferences": [
+    "由于黑客将工具挂上公网，此次事件的主要风险在于攻击者身份暴露而非攻击行为本身失败。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "具体哪款医学影像应用遭受攻击未明确说明。",
+    "供应商具体是谁未明确说明。",
+    "黑客所属组织或身份未明确说明。",
+    "AI 智能体使用的具体模型或平台名称未明确说明。"
+   ],
+   "key_points": [
+    "Cairn 从合法渗透测试工具被武器化为攻击手段。",
+    "零日漏洞在供应商无补丁可打的情况下被利用。",
+    "AI 智能体实现了攻击过程的全程接管。",
+    "黑客因将工具暴露在公网而失手暴露行踪。"
+   ],
+   "rule_based": false
+  },
+  "e2e30d7451ef4a1": {
+   "event_id": "e2e30d7451ef4a1",
+   "title": "AI 数据中心用电激增给 COP31 谈判增添难题",
+   "facts": [
+    "COP31 气候大会在土耳其安塔利亚混乱收场，为期两周的谈判未能通过协议。",
+    "EU、英国等认为草案太弱，文本省略了化石燃料一词，美国缺席。",
+    "IEA 预计数据中心用电到 2030 年将翻倍。",
+    "Meta 因 AI 押注导致碳排放同比增加 45% 并重新评估净零时间表。",
+    "约 80 国签署了到 2035 年将电力占能源消费提升至 35% 的自愿承诺。"
+   ],
+   "inferences": [
+    "AI 数据中心带来的电力需求飙升，可能对全球气候目标的实现和相关谈判造成了负面影响。"
+   ],
+   "opinions": [
+    "EU 和英国认为草案太弱。"
+   ],
+   "uncertainties": [
+    "未来各方能否就气候协议达成一致。",
+    "Meta 最终的净零时间表将如何调整。",
+    "约 80 国签署的自愿承诺能否最终落实。"
+   ],
+   "key_points": [
+    "COP31 气候大会未通过协议混乱收场。",
+    "AI 数据中心用电激增成为 COP31 议题。",
+    "Meta 因 AI 碳排放大增并评估净零时间表。"
+   ],
+   "rule_based": false
+  },
+  "eeda1553086b0fa": {
+   "event_id": "eeda1553086b0fa",
+   "title": "Matters.AI raises $12M as it expands its data security business in North America",
+   "facts": [
+    "Enterprise data security startup Matters.AI today announced that it has raised $12 million in new funding as it expands its business in North America. Matters.AI offers a platform called the AI Security Engineer for Data that is designed to protect sensitive data used by employees, artificial intell"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "eb6853931faada9": {
+   "event_id": "eb6853931faada9",
+   "title": "ThePaper.cn 发布关于免费AI发展现状的文章",
+   "facts": [
+    "ThePaper.cn 发布了题为免费AI的好日子，到头了？的文章。"
+   ],
+   "inferences": [
+    "文章内容可能探讨了免费AI服务未来是否会减少或结束。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "文章的具体内容和核心观点是什么。"
+   ],
+   "key_points": [
+    "ThePaper.cn 关注了免费AI的发展趋势。"
+   ],
+   "rule_based": false
+  },
+  "e451633ce0ab7a0": {
+   "event_id": "e451633ce0ab7a0",
+   "title": "深圳首部全 AI 制作电影奇妙连接上线三家卫视",
+   "facts": [
+    "深圳首部 AIGC 网络故事片《奇妙连接》于 11 月 23 日同步登陆深圳卫视、湖南卫视和芒果TV。",
+    "该影片时长约 90 分钟，全程没有使用一台传统实景摄像机。",
+    "影片的故事设定在 2026 年 APEC 中国年背景下，讲述了一封邮件引发的都市冒险及深圳企业相关故事。"
+   ],
+   "inferences": [
+    "该影片可能采用了先进的 AIGC 技术来生成真人影像质感的画面，从而实现了全程无实景拍摄。",
+    "该影片在卫视和网络平台的同步上线，表明 AIGC 影像技术已经开始进入主流长片播映渠道。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明该影片在 AIGC 制作过程中具体使用了哪些模型或工具。",
+    "材料未提及该影片除了三家卫视和芒果TV之外是否还在其他平台上线。",
+    "材料未透露该影片 90 分钟全 AI 制作的具体耗时和制作团队详细信息。"
+   ],
+   "key_points": [
+    "深圳首部 AIGC 网络故事片《奇妙连接》上线三家卫视及芒果TV。",
+    "影片时长约 90 分钟且全程无传统实景拍摄。",
+    "故事背景设定在 2026 年 APEC 中国年并聚焦深圳企业故事。"
+   ],
+   "rule_based": false
+  },
+  "e5386553e824c92": {
+   "event_id": "e5386553e824c92",
+   "title": "临沧人自行制作AI短剧上线爱奇艺",
+   "facts": [
+    "临沧人自己“手搓”的AI短剧上线爱奇艺",
+    "该信息来源于Sohu"
+   ],
+   "inferences": [
+    "该短剧展示了临沧人对AI技术的应用"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "短剧的具体内容、长度及制作细节未说明",
+    "短剧上线的具体时间未给出"
+   ],
+   "key_points": [
+    "临沧人自行制作AI短剧",
+    "短剧已上线爱奇艺"
+   ],
+   "rule_based": false
+  },
+  "e81e211604ce6b5": {
+   "event_id": "e81e211604ce6b5",
+   "title": "管理咨询不是智能的薄包装：AI 不会让咨询业崩溃",
+   "facts": [
+    "Sayash Kapoor 与 Rod Moshtagi 撰文反驳咨询业崩溃论，指出客户付费的不只是分析，还包括判断、协调、信誉与问责，而战略判断难以训练进 AI。"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e6b623d0b395cc9": {
+   "event_id": "e6b623d0b395cc9",
+   "title": "AI活化古籍：从“可见”到“可对话” - 新浪财经",
+   "facts": [
+    "AI活化古籍：从“可见”到“可对话” 新浪财经"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e522b6d7ac4ec18": {
+   "event_id": "e522b6d7ac4ec18",
+   "title": "当你的下一位客户是 AI Agent：企业营销与销售的 AI 发展前景",
+   "facts": [
+    "点击查看原文"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e8a023c2c6697f9": {
+   "event_id": "e8a023c2c6697f9",
+   "title": "哲学大师对 Anthropic 的 AI 意识论点表示质疑",
+   "facts": [
+    "Anthropic 在公开上市前一周将 AI 具有意识或感知能力的可能行列为投资风险因素。",
+    "一位传奇哲学家对 Anthropic 的 consciousness argument 不买账。"
+   ],
+   "inferences": [
+    "Anthropic 认为 AI 意识或感知能力可能对投资者构成影响。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "这位传奇哲学家是谁。",
+    "这位哲学家对 Anthropic 论点不买账的具体理由是什么。"
+   ],
+   "key_points": [
+    "Anthropic 将 AI 意识风险列为投资考量。",
+    "哲学家对 Anthropic 的 AI 意识观点持有异议。"
+   ],
+   "rule_based": false
+  },
+  "e7e750a6e49a078": {
+   "event_id": "e7e750a6e49a078",
+   "title": "网安领域发生最大并购之一且多股明年业绩改善",
+   "facts": [
+    "AI安全需求爆发。",
+    "网安最大并购之一落地。",
+    "多股明年业绩改善。"
+   ],
+   "inferences": [
+    "AI安全需求的爆发可能推动了网安领域的并购与相关股票业绩的改善。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "具体是哪家公司进行了网安并购。",
+    "哪些具体的股票将在明年实现业绩改善。",
+    "AI安全需求爆发的具体表现和数据支撑是什么。"
+   ],
+   "key_points": [
+    "AI安全需求爆发",
+    "网安最大并购之一落地",
+    "多股明年业绩改善"
+   ],
+   "rule_based": false
+  },
+  "eefe4c5c00002bd": {
+   "event_id": "eefe4c5c00002bd",
+   "title": "构建主权 AI 技术栈包括开放权重与前沿模型",
+   "facts": [
+    "相关内容涉及构建主权 AI 技术栈。",
+    "该技术栈包含开放权重、前沿模型与企业控制平面。"
+   ],
+   "inferences": [
+    "该材料可能是一篇关于主权 AI 技术栈的文章或报道。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未提供关于主权 AI 技术栈的具体构建细节。",
+    "材料未说明涉及哪些具体的企业或组织。"
+   ],
+   "key_points": [
+    "构建主权 AI 技术栈",
+    "包含开放权重、前沿模型与企业控制平面"
+   ],
+   "rule_based": false
+  },
+  "e05e7f2a942ef11": {
+   "event_id": "e05e7f2a942ef11",
+   "title": "央视网关注AI创作者与数字人主播计税问题",
+   "facts": [
+    "央视网报道了AI创作者收入计税问题。",
+    "央视网提出了数字人主播的收入该归谁纳税的问题。"
+   ],
+   "inferences": [
+    "相关媒体和公众可能正在关注AI及数字人带来的税务合规与界定问题。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "AI创作者的收入应当如何具体计税。",
+    "数字人主播的收入应当归谁纳税。",
+    "是否存在针对AI创作者和数字人主播的具体税收法规出台。"
+   ],
+   "key_points": [
+    "AI创作者收入计税方式受到关注。",
+    "数字人主播的纳税归属主体尚待明确。"
+   ],
+   "rule_based": false
+  },
+  "e08ef1fb8788a99": {
+   "event_id": "e08ef1fb8788a99",
+   "title": "You can block AI slop and spam on these social media platforms",
+   "facts": [
+    "Some sites offer tools to filter the slop out of your feeds, while doing so on others will require some dedicated effort."
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e70a994d1f4c44a": {
+   "event_id": "e70a994d1f4c44a",
+   "title": "半导体行业第三季度收入高增且本土晶圆厂稼动率接近百分之百",
+   "facts": [
+    "半导体行业第三季度收入高增由 AI 与存储需求驱动。",
+    "本土晶圆厂稼动率接近 100%。"
+   ],
+   "inferences": [
+    "AI 与存储领域的市场需求可能在第三季度出现了显著增长。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "具体的半导体行业收入增长幅度和详细数据未在材料中给出。",
+    "哪些本土晶圆厂的稼动率接近 100% 并没有具体说明。"
+   ],
+   "key_points": [
+    "半导体行业第三季度收入因 AI 与存储需求而实现高增。",
+    "本土晶圆厂稼动率接近 100%。"
+   ],
+   "rule_based": false
+  },
+  "e27cb3bc9a58478": {
+   "event_id": "e27cb3bc9a58478",
+   "title": "AI’s Power Crunch Is Reviving a Long-Stalled Energy Source",
+   "facts": [
+    "AI’s insatiable appetite for power is one of the most resonant signals in our AI Inflection Index. The theme first appeared meaningfully in our coverage in late 2021 and picked up momentum in the third quarter of 2024—well before the largest grid operators in the U.S. began reporting a surge in capa"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录",
+    "本条的来源标题为外文，未调用大模型，因此未翻译"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "ec499a0e26fd1be": {
+   "event_id": "ec499a0e26fd1be",
+   "title": "AI面试官上岗求职迎来新挑战",
+   "facts": [
+    "AI面试官已经上岗并给求职带来了新挑战。"
+   ],
+   "inferences": [
+    "求职者在面对AI面试官时可能需要适应新的面试流程和评估标准。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "哪些公司或行业率先启用了AI面试官？",
+    "AI面试官具体的考核方式和评估标准是什么？",
+    "求职者面临的具体新挑战包含哪些内容？"
+   ],
+   "key_points": [
+    "AI面试官上岗",
+    "求职迎来新挑战"
+   ],
+   "rule_based": false
+  },
+  "edf58e7fe0b6256": {
+   "event_id": "edf58e7fe0b6256",
+   "title": "媒体报道指出使用 AI 技术识别蘑菇是否有毒风险很高",
+   "facts": [
+    "Sohu 发布了关于 AI 识别蘑菇是否有毒风险很高的新闻报道。"
+   ],
+   "inferences": [
+    "该报道可能旨在提醒公众不要依赖 AI 技术来辨别蘑菇是否有毒。"
+   ],
+   "opinions": [
+    "用 AI 技术识别蘑菇是否有毒被认为是极其不靠谱的。"
+   ],
+   "uncertainties": [
+    "报道中提及的 AI 识别蘑菇的具体技术和应用场景是什么。",
+    "该报道是否有具体的科学实验或案例支撑。"
+   ],
+   "key_points": [
+    "使用 AI 技术识别蘑菇是否有毒存在很高风险。",
+    "相关新闻报道认为此做法极其不靠谱。"
+   ],
+   "rule_based": false
+  },
+  "e84c2a90762aeef": {
+   "event_id": "e84c2a90762aeef",
+   "title": "AI创作收入如何纳税 - 中国新闻网",
+   "facts": [
+    "AI创作收入如何纳税 中国新闻网"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e39137d1734dc25": {
+   "event_id": "e39137d1734dc25",
+   "title": "AI短剧火了，青年如何书写“新剧本”",
+   "facts": [
+    "AI短剧火了"
+   ],
+   "inferences": [
+    "AI短剧受欢迎"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "青年如何书写新剧本的具体方法不明"
+   ],
+   "key_points": [
+    "AI短剧火了",
+    "青年关注AI短剧"
+   ],
+   "rule_based": false
+  },
+  "ea1c76607a48823": {
+   "event_id": "ea1c76607a48823",
+   "title": "AI时代，产业园区正在失去什么？",
+   "facts": [
+    "标题为《AI时代，产业园区正在失去什么？》",
+    "来源为 ThePaper.cn"
+   ],
+   "inferences": [
+    "文章讨论产业园区在 AI 时代正在失去的东西"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "未说明产业园区失去的具体是什么",
+    "未提供文章具体内容"
+   ],
+   "key_points": [
+    "标题指出产业园区在 AI 时代正在失去什么",
+    "来源为 ThePaper.cn"
+   ],
+   "rule_based": false
+  },
+  "e72b27ee2ded004": {
+   "event_id": "e72b27ee2ded004",
+   "title": "新闻1+1丨黎曼猜想 被AI“证明”之后 - 京报网",
+   "facts": [
+    "新闻1+1丨黎曼猜想 被AI“证明”之后 京报网"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e94dc5e9ba50d8e": {
+   "event_id": "e94dc5e9ba50d8e",
+   "title": "企业 AI 发展新趋势：推动 AI Agent 迈向规模化应用的新阶段",
+   "facts": [],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "材料未提供具体内容"
+   ],
+   "key_points": [],
+   "rule_based": false
+  },
+  "e8915261e9b0a7a": {
+   "event_id": "e8915261e9b0a7a",
+   "title": "加快把AI技术变量转化为文化产业增量 - 21财经",
+   "facts": [
+    "加快把AI技术变量转化为文化产业增量 21财经"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e3719ec9bc22630": {
+   "event_id": "e3719ec9bc22630",
+   "title": "专访剑桥制造研究所所长：AI技术不必最先进，关键是用对地方 - Sohu",
+   "facts": [
+    "专访剑桥制造研究所所长：AI技术不必最先进，关键是用对地方 Sohu"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "ee51c3bef927e5b": {
+   "event_id": "ee51c3bef927e5b",
+   "title": "AI大模型聚合站怎么选？这3个坑我替你踩过了 - CSDN",
+   "facts": [
+    "AI大模型聚合站怎么选？这3个坑我替你踩过了 CSDN"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e22100272ed63be": {
+   "event_id": "e22100272ed63be",
+   "title": "厨电行业加速拥抱AI 老板电器向AI烹饪科技领军企业转型 - 东方财富网",
+   "facts": [
+    "厨电行业加速拥抱AI 老板电器向AI烹饪科技领军企业转型 东方财富网"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e4e92ed69304ea9": {
+   "event_id": "e4e92ed69304ea9",
+   "title": "美联储反应函数正因AI而发生改写",
+   "facts": [
+    "美联储的反应函数正在被AI改写。"
+   ],
+   "inferences": [
+    "政策框架可能从通胀目标制转向AI资本开支约束。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "美联储具体的政策框架将如何调整",
+    "AI资本开支约束将如何具体影响美联储的决策过程"
+   ],
+   "key_points": [
+    "美联储反应函数正在被AI改写",
+    "政策框架面临从通胀目标制到AI资本开支约束的推演"
+   ],
+   "rule_based": false
+  },
+  "e329fc54bf54afc": {
+   "event_id": "e329fc54bf54afc",
+   "title": "丘成桐：AI时代，中国数学的黄金时代 - 上观新闻",
+   "facts": [
+    "丘成桐：AI时代，中国数学的黄金时代 上观新闻"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e9507801fd4b644": {
+   "event_id": "e9507801fd4b644",
+   "title": "长电科技11月23日回应AI算力话题：定增已获国资委原则同意，扩充FCLGA封装及模组产能_公司新闻 - 证券之星",
+   "facts": [
+    "长电科技11月23日回应AI算力话题：定增已获国资委原则同意，扩充FCLGA封装及模组产能_公司新闻 证券之星"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "ef47dfb6491321d": {
+   "event_id": "ef47dfb6491321d",
+   "title": "AI 时代的数据工程：如何打造 AI 原生团队",
+   "facts": [
+    "来源为 rss:infoq-cn",
+    "发布时间为 2026-11-24 03:40 北京时间"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "内容未提供，具体细节未知"
+   ],
+   "key_points": [],
+   "rule_based": false
+  },
+  "ebc43b93fcb1879": {
+   "event_id": "ebc43b93fcb1879",
+   "title": "广东AI赋能千行百业1000案例（首批200个案例）名单 - 21财经",
+   "facts": [
+    "广东AI赋能千行百业1000案例（首批200个案例）名单 21财经"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e22a82b2d516f5f": {
+   "event_id": "e22a82b2d516f5f",
+   "title": "AI换脸仿冒名人带货为何屡禁不止？_新闻频道_央视网(cctv.com) - 同花顺",
+   "facts": [
+    "AI换脸仿冒名人带货为何屡禁不止？_新闻频道_央视网(cctv.com) 同花顺"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "ecb06d703831564": {
+   "event_id": "ecb06d703831564",
+   "title": "新款深蓝 L07 定档广州车展：800V 平台全系上激光雷达，豆包大模型把语音“喊”出座舱",
+   "facts": [
+    "新款深蓝L07确定于11月27日开幕的2026广州车展登场。作为中型轿车，其升级主打800V高压平台，激光雷达全系标配，智能辅助驾驶覆盖通勤、高速和泊车等高频场景，将高端感知硬件下放为“出厂默认值”。座舱变化突出，搭载端到端开放域豆包大模型，智能化体验进一步升级。"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e6651d18de01979": {
+   "event_id": "e6651d18de01979",
+   "title": "重塑财务职能：引领 AI 时代的转型",
+   "facts": [],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "材料未提供具体内容，无法确认事件细节"
+   ],
+   "key_points": [],
+   "rule_based": false
+  },
+  "eb63f7d63484305": {
+   "event_id": "eb63f7d63484305",
+   "title": "如何让AI红利为更多人所共享？中国答案：让人工智能成为造福人类的公共产品 - 上观新闻",
+   "facts": [
+    "如何让AI红利为更多人所共享？中国答案：让人工智能成为造福人类的公共产品 上观新闻"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e0aafe2787189c9": {
+   "event_id": "e0aafe2787189c9",
+   "title": "【视频】AI汽车、AI手机还没看到革命性的产品但未来一定会产生伟大的产品 - 汽车之家",
+   "facts": [
+    "【视频】AI汽车、AI手机还没看到革命性的产品但未来一定会产生伟大的产品 汽车之家"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e678150a5107817": {
+   "event_id": "e678150a5107817",
+   "title": "通则康威：公司不从事物理AI核心算法或机器人本体的研发生产 - 东方财富网",
+   "facts": [
+    "通则康威：公司不从事物理AI核心算法或机器人本体的研发生产 东方财富网"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e48002f63273972": {
+   "event_id": "e48002f63273972",
+   "title": "监管调整重塑TDF：投资策略向韩国资产与AI主题多元化拓展 - 뉴스톱",
+   "facts": [
+    "监管调整重塑TDF：投资策略向韩国资产与AI主题多元化拓展 뉴스톱"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "本次未调用大模型，内容为来源原文摘录"
+   ],
+   "key_points": [],
+   "rule_based": true
+  },
+  "e467d2b71d3e89a": {
+   "event_id": "e467d2b71d3e89a",
+   "title": "Footbao应用明年1月登陆欧洲",
+   "facts": [
+    "Footbao应用将于明年1月登陆欧洲",
+    "Footbao应用使用AI发掘新星"
+   ],
+   "inferences": [
+    "Footbao应用正在扩展到欧洲市场"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "未说明具体登陆日期",
+    "未说明Footbao应用的功能细节",
+    "未说明是否已获得欧洲监管批准"
+   ],
+   "key_points": [
+    "Footbao应用将于明年1月登陆欧洲",
+    "Footbao应用利用AI发掘新星"
+   ],
+   "rule_based": false
+  },
+  "e759c5727f43127": {
+   "event_id": "e759c5727f43127",
+   "title": "AI时代，技能人才依然吃香",
+   "facts": [
+    "AI时代，技能人才依然吃香",
+    "长沙晚报报道"
+   ],
+   "inferences": [
+    "技术发展未能完全替代手工技能"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "报道未说明具体技能类型"
+   ],
+   "key_points": [
+    "AI时代仍需手工技能人才",
+    "长沙晚报报道"
+   ],
+   "rule_based": false
+  },
+  "e846af76b98c42c": {
+   "event_id": "e846af76b98c42c",
+   "title": "258家企业参与的智能建筑·安全·AI博览会召开",
+   "facts": [
+    "258家企业参与",
+    "智能建筑·安全·AI博览会召开",
+    "先进建筑技术汇聚一堂"
+   ],
+   "inferences": [
+    "该博览会吸引了大量企业参与"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "未说明博览会具体地点",
+    "未说明博览会持续时间"
+   ],
+   "key_points": [
+    "258家企业参与",
+    "先进建筑技术汇聚",
+    "智能建筑·安全·AI博览会召开"
+   ],
+   "rule_based": false
+  }
+ },
+ "factcheck": {
+  "ok": true,
+  "checked_events": 162,
+  "checked_urls": 253,
+  "violations": 0,
+  "by_kind": {}
+ }
+}

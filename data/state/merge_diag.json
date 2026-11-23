@@ -1,50 +1,33 @@
 {
-  "generated_at": "2026-11-23T12:14:09.227224+00:00",
+  "generated_at": "2026-11-23T23:42:31.890981+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 297,
-  "batches": 9,
-  "calls": 9,
-  "merged_groups": 13,
-  "merged_events": 22,
-  "rejected_groups": 2,
+  "input_events": 192,
+  "batches": 7,
+  "calls": 7,
+  "merged_groups": 2,
+  "merged_events": 9,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "黎曼猜想“被AI证明”？数学界吵翻了 - 新蓝网",
+      "kept": "Anthropic 推出 Claude Ship beta，自动审查并按策略审批 PR",
       "merged": [
-        "黎曼猜想被AI辅助证明？丘成桐独家回应：机器验证相当准确，但100%确认仍需数学家消化复用，预计5年内理解 - TheP"
+        "Anthropic 推出 Claude Ship 公测：可审查 PR、修复问题并按策略审批",
+        "Anthropic 发布 Claude Ship，让 AI Agent 审查、修复并审批代码变更",
+        "Anthropic 推出 Claude Ship，可自动审查并合入 PR",
+        "Anthropic 推出 Claude Ship 测试版，可审查 PR 并按团队策略批准",
+        "Anthropic launches Claude Ship, letting AI agents review, fi",
+        "Claude can ship code for you now – how to try it (if you dar"
       ],
-      "why": "都是关于AI辅助验证黎曼猜想的数学事件"
+      "why": "均为 Claude Ship 发布及 Cisco 安全合作"
     },
     {
-      "kept": "AI服务器供应商，集体涨价！ - 上观新闻",
+      "kept": "新闻1+1丨黎曼猜想 被AI“证明”之后 - 京报网",
       "merged": [
-        "AI服务器供应商，集体涨价丨财经下午茶 - 中国经济网"
+        "黎曼猜想，被AI“证明”之后 - 凤凰网"
       ],
-      "why": "都是关于AI服务器供应商集体涨价"
-    },
-    {
-      "kept": "成都创作者单人打造爆款AI短剧：4000元成本跑出十亿流量 - 中国新闻网",
-      "merged": [
-        "AI短剧《丑狐》爆火，一张“丑脸”如何出圈？ - 上观新闻",
-        "当OPC遇上AI短剧 爆款背后一位创作者的历史表达 - 中国新闻网"
-      ],
-      "why": "都是关于成都/单人创作者AI短剧爆款案例"
-    },
-    {
-      "kept": "智谱 GLM-5.4 上线 Coding Plan，新增视觉能力",
-      "merged": [
-        "GLM-5.4：瞄向泛Coding，首个Loop Transformer带来的惊喜"
-      ],
-      "why": "均为 GLM-5.4 模型发布及新功能介绍"
-    },
-    {
-      "kept": "US spy chief calls Nvidia chips 'jewels'",
-      "merged": [
-        "特朗普发帖呼吁 Nvidia 董事会重新雇用黄仁勋"
-      ],
-      "why": "均涉及 Nvidia 芯片与 AI 相关争议"
+      "why": "均报道黎曼猜想被 AI 证明的后续事件"
     }
   ]
 }
