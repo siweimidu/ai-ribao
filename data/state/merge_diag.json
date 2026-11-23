@@ -1,52 +1,50 @@
 {
-  "generated_at": "2026-11-23T04:13:06.135147+00:00",
+  "generated_at": "2026-11-23T12:14:09.227224+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 222,
-  "batches": 7,
-  "calls": 7,
-  "merged_groups": 4,
-  "merged_events": 14,
+  "input_events": 297,
+  "batches": 9,
+  "calls": 9,
+  "merged_groups": 13,
+  "merged_events": 22,
   "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "【每日瞰AI】丘成桐：AI 证明黎曼猜想，数学进入新纪元；AI 服务器供应商被曝在交货前提价，部分订单涨幅达45% - 电子工程专辑EE Times China",
+      "kept": "黎曼猜想“被AI证明”？数学界吵翻了 - 新蓝网",
       "merged": [
-        "派早报：Anthropic 研究员宣称用 Claude 证明黎曼猜想"
+        "黎曼猜想被AI辅助证明？丘成桐独家回应：机器验证相当准确，但100%确认仍需数学家消化复用，预计5年内理解 - TheP"
       ],
-      "why": "都报道Anthropic研究员宣称用Claude证明黎曼猜想"
+      "why": "都是关于AI辅助验证黎曼猜想的数学事件"
     },
     {
-      "kept": "AIHOT 日报 · 2026-11-23 — OpenAI 提议以困惑度作为行业共享指标并公开内部预训练测量数据",
+      "kept": "AI服务器供应商，集体涨价！ - 上观新闻",
       "merged": [
-        "OpenAI 发布 Perplexity and Intelligence，公开预训练困惑度进展数据",
-        "Greg Brockman 解读 OpenAI 基于困惑度的预训练共同安全上限提议",
-        "OpenAI 首席科学家 Jakub 发文倡议用对数困惑度衡量底层智能进展",
-        "OpenAI 首席科学家 Jakub Pachocki 提议以 perplexity 作为限制 AI 发展速度的度量",
-        "OpenAI 公开预训练进展呼吁共同安全限制",
-        "OpenAI 首席科学家 Jakub Pachocki 提议为先进 AI 设共同开发门槛，警告 2027 年或现能力加速",
-        "Sam Altman 提议前沿模型开发者共同建立评估与安全红线测试的行业规范",
-        "Suleyman 称赞 OpenAI 预训练透明度倡议",
-        "OpenAI 首席研究官 Mark Chen 呼吁前沿实验室共享关键指标并公开自家困惑度数据"
+        "AI服务器供应商，集体涨价丨财经下午茶 - 中国经济网"
       ],
-      "why": "均为 OpenAI 提出以困惑度作为 AI 发展安全上限/共享指标的倡议"
+      "why": "都是关于AI服务器供应商集体涨价"
     },
     {
-      "kept": "蚂蚁百灵开源医疗多模态模型 LingSante-3.1-air-VL，总参数 124B、激活 5.5B",
+      "kept": "成都创作者单人打造爆款AI短剧：4000元成本跑出十亿流量 - 中国新闻网",
       "merged": [
-        "蚂蚁百灵发布开源医疗模型 LingSante-3.1-flash，融合医学推理与工作流执行",
-        "蚂蚁百灵医疗健康大模型宣布全面开源，最轻量版一台笔记本即可部署"
+        "AI短剧《丑狐》爆火，一张“丑脸”如何出圈？ - 上观新闻",
+        "当OPC遇上AI短剧 爆款背后一位创作者的历史表达 - 中国新闻网"
       ],
-      "why": "均为蚂蚁百灵开源医疗大模型 LingSante 系列"
+      "why": "都是关于成都/单人创作者AI短剧爆款案例"
     },
     {
-      "kept": "Gary Marcus 评 Levent Alpöge 借助 Claude 证明黎曼猜想：不是 AI 独立完成，也难以泛化",
+      "kept": "智谱 GLM-5.4 上线 Coding Plan，新增视觉能力",
       "merged": [
-        "Claude helps topple Riemann problem",
-        "AI 与人各交一份千禧难题答卷：一边靠 Claude 写完 79 页证明，一边掏出 12 年手写的 940 页草稿"
+        "GLM-5.4：瞄向泛Coding，首个Loop Transformer带来的惊喜"
       ],
-      "why": "均报道 Claude 协助证明黎曼猜想的相关讨论"
+      "why": "均为 GLM-5.4 模型发布及新功能介绍"
+    },
+    {
+      "kept": "US spy chief calls Nvidia chips 'jewels'",
+      "merged": [
+        "特朗普发帖呼吁 Nvidia 董事会重新雇用黄仁勋"
+      ],
+      "why": "均涉及 Nvidia 芯片与 AI 相关争议"
     }
   ]
 }
