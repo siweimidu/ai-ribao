@@ -1,32 +1,51 @@
 {
-  "generated_at": "2026-11-22T22:04:16.937759+00:00",
+  "generated_at": "2026-11-23T03:19:21.205286+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 96,
-  "batches": 3,
-  "calls": 3,
-  "merged_groups": 2,
-  "merged_events": 8,
-  "rejected_groups": 1,
+  "input_events": 208,
+  "batches": 7,
+  "calls": 7,
+  "merged_groups": 9,
+  "merged_events": 11,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "Claude协助数学家形式化证明黎曼猜想，引发对知识精英新闻节食与算法神话的反思 - 虎嗅网",
+      "kept": "宣传先行、功能迟到：苹果 2.5 亿美元和解 Siri 诉讼",
       "merged": [
-        "Gary Marcus 评 Levent Alpöge 借助 Claude 证明黎曼猜想：不是 AI 独立完成，也难以泛",
-        "AI接连解题，数学何去何从|Anthropic|Claude|香港中文大学|清华大学|丘成桐_手机新浪网 - 新浪财经"
+        "苹果Siri AI未兑现 每台iPhone最高赔95美元 - 手机新浪网"
       ],
-      "why": "均报道Claude协助数学家证明黎曼猜想事件及各方反响"
+      "why": "均为苹果Siri诉讼达成和解及赔偿事宜"
     },
     {
-      "kept": "Greg Brockman 解读 OpenAI 基于困惑度的预训练共同安全上限提议",
+      "kept": "Claude helps topple Riemann problem",
       "merged": [
-        "OpenAI 首席科学家 Jakub Pachocki 提议以 perplexity 作为限制 AI 发展速度的度量",
-        "OpenAI 公开预训练进展呼吁共同安全限制",
-        "Suleyman 称赞 OpenAI 预训练透明度倡议",
+        "AI 与人各交一份千禧难题答卷：一边靠 Claude 写完 79 页证明，一边掏出 12 年手写的 940 页草稿",
+        "2026-11-23 AI 日报 · Lean确认Claude协作黎曼猜想证明，可灵增资后估值近180亿美元"
+      ],
+      "why": "均报道Claude辅助证明黎曼猜想"
+    },
+    {
+      "kept": "韩国资格考试防 AI 作弊：考生穿围裙考试、时隔 6 年重新收缴手机",
+      "merged": [
+        "防AI作弊 韩国高校要求穿围裙考试：杜绝藏匿微型摄像头等 - 驱动之家"
+      ],
+      "why": "均报道韩国考试穿围裙防AI作弊"
+    },
+    {
+      "kept": "OpenAI 首席科学家 Jakub 发文倡议用对数困惑度衡量底层智能进展",
+      "merged": [
+        "OpenAI 首席科学家 Jakub Pachocki 提议为先进 AI 设共同开发门槛，警告 2027 年或现能力加速",
         "OpenAI 首席研究官 Mark Chen 呼吁前沿实验室共享关键指标并公开自家困惑度数据"
       ],
-      "why": "均为OpenAI发布预训练困惑度数据并提议行业安全上限"
+      "why": "均为OpenAI提议用困惑度设AI安全上限"
+    },
+    {
+      "kept": "OpenAI 发布 Perplexity and Intelligence，公开预训练困惑度进展数据",
+      "merged": [
+        "OpenAI 公开预训练进展呼吁共同安全限制"
+      ],
+      "why": "均为OpenAI公开预训练困惑度数据"
     }
   ]
 }
