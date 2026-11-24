@@ -1,33 +1,52 @@
 {
-  "generated_at": "2026-11-23T23:42:31.890981+00:00",
+  "generated_at": "2026-11-24T01:49:04.428927+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 192,
+  "input_events": 232,
   "batches": 7,
   "calls": 7,
-  "merged_groups": 2,
-  "merged_events": 9,
+  "merged_groups": 9,
+  "merged_events": 12,
   "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "Anthropic 推出 Claude Ship beta，自动审查并按策略审批 PR",
+      "kept": "Anthropic Launches Claude Ship for GitHub Pull Request Review and Fixes",
       "merged": [
-        "Anthropic 推出 Claude Ship 公测：可审查 PR、修复问题并按策略审批",
+        "Anthropic 推出 Claude Ship beta，自动审查并按策略审批 PR",
         "Anthropic 发布 Claude Ship，让 AI Agent 审查、修复并审批代码变更",
-        "Anthropic 推出 Claude Ship，可自动审查并合入 PR",
-        "Anthropic 推出 Claude Ship 测试版，可审查 PR 并按团队策略批准",
-        "Anthropic launches Claude Ship, letting AI agents review, fi",
-        "Claude can ship code for you now – how to try it (if you dar"
+        "Anthropic 推出 Claude Ship 测试版：AI 自动完成代码审查、修复与批准"
       ],
-      "why": "均为 Claude Ship 发布及 Cisco 安全合作"
+      "why": "均报道 Anthropic 推出 Claude Ship 功能"
     },
     {
-      "kept": "新闻1+1丨黎曼猜想 被AI“证明”之后 - 京报网",
+      "kept": "俄勒冈州和弗吉尼亚州起诉 SpaceX 指控 Grok 生成色情深伪防护不足",
       "merged": [
-        "黎曼猜想，被AI“证明”之后 - 凤凰网"
+        "多州起诉 SpaceX，要求阻止 Grok 生成儿童性虐待图像和复仇式色情内容",
+        "美国弗吉尼亚州和俄勒冈州起诉 SpaceX，指控 Grok 生成儿童性虐待图像"
       ],
-      "why": "均报道黎曼猜想被 AI 证明的后续事件"
+      "why": "均报道俄勒冈州和弗吉尼亚州起诉 SpaceX"
+    },
+    {
+      "kept": "OpenAI 推出 OpenWorks 资助计划",
+      "merged": [
+        "OpenAI 推出 OpenWorks，资助专家免费帮美国小企业用 AI"
+      ],
+      "why": "均报道 OpenAI 推出 OpenWorks 计划"
+    },
+    {
+      "kept": "Anthropic 开放企业安全功能 EFS 公测，数据存企业自有云存储",
+      "merged": [
+        "不再强制留存！Anthropic推出EFS系统，允许企业自主掌控AI数据 - 华尔街见闻"
+      ],
+      "why": "均为 Anthropic 推出 EFS 企业数据安全功能"
+    },
+    {
+      "kept": "Anthropic softens its data retention policy for Mythos and Fable model use",
+      "merged": [
+        "Anthropic 开放企业安全功能 EFS 公测，数据存企业自有云存储"
+      ],
+      "why": "均报道 Anthropic 调整数据留存政策及推出 EFS"
     }
   ]
 }
