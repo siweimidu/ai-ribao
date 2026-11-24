@@ -1,51 +1,50 @@
 {
-  "generated_at": "2026-11-24T04:13:32.239439+00:00",
+  "generated_at": "2026-11-24T12:13:31.679753+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 270,
-  "batches": 8,
-  "calls": 8,
-  "merged_groups": 6,
-  "merged_events": 9,
-  "rejected_groups": 4,
+  "input_events": 332,
+  "batches": 10,
+  "calls": 10,
+  "merged_groups": 9,
+  "merged_events": 13,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "蚂蚁阿福发布新版App：实时视频看健康，升级AI健康管家",
+      "kept": "报名从速｜来MEET2027！听AI前沿实践者交出“判断” - 智源社区",
       "merged": [
-        "说不清的症状，拍给 AI 看：蚂蚁阿福升级实时视频问诊"
+        "报名从速｜来MEET2027！听AI前沿实践者交出“判断”"
       ],
-      "why": "都是蚂蚁阿福新版 App 实时视频问诊发布"
+      "why": "都是 MEET2027 活动报名"
     },
     {
-      "kept": "AI“大到不能倒”？黄仁勋回归触发史诗级机械买盘，野村提醒风险犹存！ - 财联社",
+      "kept": "黄仁勋杀回英伟达，董事会全票同意！老黄：迫不及待投入工作",
       "merged": [
-        "黄仁勋复职催化AI硬件链 罗博特科领涨港股光通信和PCB股 - 财联社"
+        "黄仁勋官复原职：英伟达董事会一周内戏剧性逆转，股价应声大涨 31%"
       ],
-      "why": "均为黄仁勋复职及引发AI板块行情报道"
+      "why": "均为黄仁勋重返英伟达董事会"
     },
     {
-      "kept": "一句提示词造一个“灾情”：公安部网安局公布 10 起 AI 造谣典型案",
+      "kept": "OpenAI 在 ChatGPT 上线日常对话版 GPT-6.2 Sol",
       "merged": [
-        "公安部网安局公布使用AI工具编造传播网络谣言10起典型案例 - 新湖南"
+        "ChatGPT 宣布 12 月 23 日下线 GPT-5.6 Sol 与 Terra"
       ],
-      "why": "均为公安部网安局公布10起AI造谣典型案例"
+      "why": "均为OpenAI调整ChatGPT中GPT模型版本"
     },
     {
       "kept": "Huang reinstatement came at Trump’s behest",
       "merged": [
-        "Huang's Return Is the Biggest National Security Scandal in U"
+        "Everything That Led to Nvidia CEO Jensen Huang’s Return",
+        "Investigation of Polymarket Insider Trading on the Reinstate"
       ],
-      "why": "都报道黄仁宇被重新启用/回归的相关争议"
+      "why": "均为黄仁勋复职相关报道"
     },
     {
-      "kept": "俄勒冈州和弗吉尼亚州起诉 SpaceX 指控 Grok 生成色情深伪防护不足",
+      "kept": "ChatGPT 推出面向日常对话优化的 GPT-6.2 Sol",
       "merged": [
-        "美国弗吉尼亚州和俄勒冈州起诉 SpaceX，指控 Grok 生成儿童性虐待图像",
-        "States sue SpaceX to stop Grok from generating child sex ima",
-        "Oregon and Virginia sue SpaceX over Grok’s porn deepfakes"
+        "OpenAI 宣布 GPT-6.2 Sol 登陆 ChatGPT，GPT-5.6 Sol 与 Terra 将于 12 月"
       ],
-      "why": "都报道俄勒冈州和弗吉尼亚州起诉SpaceX关于Grok"
+      "why": "GPT-6.2 Sol 模型发布报道"
     }
   ]
 }
