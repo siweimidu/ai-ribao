@@ -1,0 +1,4083 @@
+{
+ "digest": {
+  "date": "2026-11-25",
+  "kind": "deep",
+  "generated_at": "2026-11-24T21:30:46.468333Z",
+  "window_start": "2026-11-23T09:30:46.468333Z",
+  "window_end": "2026-11-24T21:30:46.468333Z",
+  "headline": "Claude Devs 宣布应用安装功能进入 Beta",
+  "top_events": [
+   {
+    "event_id": "ebf2d02e6bc3b9b",
+    "title": "Claude Desktop 应用安装功能进入 Beta，免打包签名和 API key",
+    "member_item_ids": [
+     "4df56f01c84ef096",
+     "7348c599c18a9db1",
+     "5e3e8b91086c363a",
+     "a36268ec13b7419c"
+    ],
+    "primary_item_id": "7348c599c18a9db1",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/gpkytjfa8nyfoq1kiai9xtvrx",
+     "https://aihot.news/items/gx4pt5wbdawwizpvy43s9tpsz"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T19:47:54Z",
+     "2026-11-24T19:47:54Z"
+    ],
+    "unique_facts": {
+     "merged_titles": [
+      "Claude artifacts 现已支持在 Mac 和 Windows 上安装为桌面应用"
+     ]
+    },
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 30.039383,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.418,
+     "substance_chars": 251.0,
+     "substance_factor": 0.894,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.320233,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.6275,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9649,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 30.039383,
+     "rubric_score": 7.5,
+     "rubric_multiplier": 0.825,
+     "rubric_band": "高价值",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": false,
+     "section": "开发生态"
+    }
+   },
+   {
+    "event_id": "ec79a3fd8689a63",
+    "title": "Higgsfield 独家上线视频模型 MAGI-2，400B 开源权重即将推出",
+    "member_item_ids": [
+     "7ef2781a118d6be2",
+     "918835060227c76c"
+    ],
+    "primary_item_id": "918835060227c76c",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/qbf7nivrsjh9uspivkfr78aco"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T18:09:13Z",
+     "2026-11-24T18:09:13Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 22.327901,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.333,
+     "substance_chars": 200.0,
+     "substance_factor": 0.783,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.310687,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.5,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9333,
+     "significance": 1.0,
+     "application_not_model": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 22.327901,
+     "rubric_score": 7.5,
+     "rubric_multiplier": 0.825,
+     "rubric_band": "高价值",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": false,
+     "section": "模型发布"
+    }
+   },
+   {
+    "event_id": "e774fbd7338f6c9",
+    "title": "众院两委员会调查报告对美企依赖中国AI模型发出警告 - 美国之音",
+    "member_item_ids": [
+     "c4c76a253036c634"
+    ],
+    "primary_item_id": "c4c76a253036c634",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMizgFBVV95cUxQMkJyT3NaSlJMaHFpU2NhNmxyeHlxRDdaa3dmVl9qdXRPRjFKa3dPbjh1OEFCLUpsaVM0Ml9LVVJtM2VYSHh6T1Z6ZTgwOU40MDlIalQwMWVqNnV5bWhfMkFvUHN6V08wMWNDejJaSEpzQ1BfYmtFTFdTV00ta3BRRE5mdEhhbE1GOUF4elBuN1piazFxTXFnTGpqNUVjV2k3WVlNM21Rd1Vlck1XQmUyZVB6eGphdXVYd2xXMDhndUFVTUxVczlnZXpWX05ZUdIB0AFBVV95cUxOTXpaaW5FM2dwSF95aXpUSVlISnloUklLY1JLd1ljS3k4OEl0M184Q0YxaWczb256R3ltWmVNS2VGc21KVTlYbDZBcFBlSnMwbXdwRTNhOXRuQ0pfVXR2UG5jZG9UUHJHWVFZVU8zeEZSSlBtbkc0QVFpd0U0R0dLQXlGS1pHMk1hQ0FjSGROWkZFRnE1M3FTQXE3ZE95RjhkX1c3NUg0V0c2MS1QeEpoNjE0OU5ER0paXzl3VDhwNUpkX1R1REJzaE5xbDdwTW5Y?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T20:21:12Z",
+     "2026-11-24T20:21:12Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 5.094682,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.05,
+     "substance_chars": 30.0,
+     "substance_factor": 0.415,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.250244,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.075,
+     "h_velocity": 1.0,
+     "h_freshness": 0.976,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5938,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.6831,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 5.094682,
+     "rubric_score": 7.5,
+     "rubric_multiplier": 0.825,
+     "rubric_band": "高价值",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": false,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e594e7ff224f32b",
+    "title": "ShellBench 发布：12 个模型 53,100 次评测显示最佳 AI 智能体约四成日常任务失败",
+    "member_item_ids": [
+     "0add34049b47608f",
+     "dc77a5bcb18c6041"
+    ],
+    "primary_item_id": "dc77a5bcb18c6041",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/lschx57ypqyl60yv942cztk2u"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T20:33:31Z",
+     "2026-11-24T20:33:31Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 17.877365,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.44,
+     "substance_chars": 264.0,
+     "substance_factor": 0.922,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.3231,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.66,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9802,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5938,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.6831,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 17.877365,
+     "rubric_score": 7.0,
+     "rubric_multiplier": 0.79,
+     "rubric_band": "高价值",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": false,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "e93f967335b08c7",
+    "title": "SIGNED: New York Gov. Kathy Hochul just outlawed the making, shipping or selling of toys with built-in AI chatbots for five years in the state.",
+    "member_item_ids": [
+     "5e8528c1a45105fb"
+    ],
+    "primary_item_id": "5e8528c1a45105fb",
+    "source_ids": [
+     "x:therundownai"
+    ],
+    "all_urls": [
+     "https://x.com/TheRundownAI/status/2125283931691901167"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T17:42:29Z",
+     "2026-11-24T17:42:29Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 10.206798,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.357,
+     "substance_chars": 214.0,
+     "substance_factor": 0.814,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.274787,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.535,
+     "h_velocity": 1.0,
+     "h_freshness": 0.925,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 10.206798,
+     "rubric_score": 7.0,
+     "rubric_multiplier": 0.79,
+     "rubric_band": "高价值",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": false,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "ee54837450ad9f7",
+    "title": "Anthropic Created a Honeypot to Lure AI Agents Into Misbehaving",
+    "member_item_ids": [
+     "8d1e842a83479db9"
+    ],
+    "primary_item_id": "8d1e842a83479db9",
+    "source_ids": [
+     "rss:wired-ai"
+    ],
+    "all_urls": [
+     "https://www.wired.com/story/ai-agents-can-get-honeypotted-too-aw/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T16:00:00Z",
+     "2026-11-24T16:00:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-25/ee54837450ad9f7-m001-3a5dca7c.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 8.945287,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.143,
+     "substance_chars": 86.0,
+     "substance_factor": 0.536,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.253773,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.215,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8948,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 8.945287,
+     "rubric_score": 6.5,
+     "rubric_multiplier": 0.755,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "e8ea677b7c03738",
+    "title": "OpenRouter 数据显示开源权重模型支出占比升至 35%",
+    "member_item_ids": [
+     "6160284a48efbec9",
+     "819ec218b904a590"
+    ],
+    "primary_item_id": "819ec218b904a590",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/x558s99gewvjdmgu59r8046oe"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T18:36:25Z",
+     "2026-11-24T18:36:25Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 18.635734,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.31,
+     "substance_chars": 186.0,
+     "substance_factor": 0.753,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.309097,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.465,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9418,
+     "significance": 1.0,
+     "application_not_model": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 18.635734,
+     "rubric_score": 6.0,
+     "rubric_multiplier": 0.72,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e740707c753bbea",
+    "title": "Midjourney 发布动漫模型 Niji V8",
+    "member_item_ids": [
+     "5dd4c5b2a3d7f050",
+     "71c21ad86bac8d85"
+    ],
+    "primary_item_id": "71c21ad86bac8d85",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/gv5d5wg7bvguma3fw4husdmq7"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T20:37:46Z",
+     "2026-11-24T20:37:46Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 16.481482,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.248,
+     "substance_chars": 149.0,
+     "substance_factor": 0.673,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.305937,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.3725,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9816,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 16.481482,
+     "rubric_score": 6.0,
+     "rubric_multiplier": 0.72,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "模型发布"
+    }
+   },
+   {
+    "event_id": "e189d92cf23cdeb",
+    "title": "字节跳动 Seed TTS 3.0 上线 fal 平台",
+    "member_item_ids": [
+     "9acde70d6ee7a55d",
+     "ca15261bb518349c",
+     "2c14e68ae85a060e",
+     "ab6caa431c8ae5e0"
+    ],
+    "primary_item_id": "ca15261bb518349c",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/kw5ejd80l9xk7yky84fgvry7f",
+     "https://aihot.news/items/n3fst1ukjnqgxk2fqwmfsz3am"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T18:22:54Z",
+     "2026-11-24T18:22:54Z"
+    ],
+    "unique_facts": {
+     "merged_titles": [
+      "fal 上线字节 Seed-TTS v3"
+     ]
+    },
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 17.299432,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.298,
+     "substance_chars": 179.0,
+     "substance_factor": 0.738,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.307793,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.4475,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9375,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 17.299432,
+     "rubric_score": 5.5,
+     "rubric_multiplier": 0.685,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "e69cfe56472996c",
+    "title": "I gave Gemini access to my Wallet, and it immediately started saving me money",
+    "member_item_ids": [
+     "3f005ee454fa06ec"
+    ],
+    "primary_item_id": "3f005ee454fa06ec",
+    "source_ids": [
+     "rss:zdnet-ai"
+    ],
+    "all_urls": [
+     "https://www.zdnet.com/innovation/gemini-wallet-personal-intelligence/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T20:38:08Z",
+     "2026-11-24T20:38:08Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-25/e69cfe56472996c-m001-8a234501.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 9.247478,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.145,
+     "substance_chars": 87.0,
+     "substance_factor": 0.538,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.259139,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.2175,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9817,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 9.247478,
+     "rubric_score": 5.5,
+     "rubric_multiplier": 0.685,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "ee71d87a312f124",
+    "title": "戴尔上调全年AI优化服务器营收预期 - 华尔街见闻",
+    "member_item_ids": [
+     "38f2ca1cd62018af"
+    ],
+    "primary_item_id": "38f2ca1cd62018af",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiU0FVX3lxTE14cDYwY1VfX3V6NEViRXZQM0Y4YWZhWVNFVVh5dmlMREpGbnktZEZqMzhkVkJMeThGbVBHeWFtZkRQRTJWamVveWhhRVZCSEh4OHV3?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T21:06:23Z",
+     "2026-11-24T21:06:23Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 3.637629,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.038,
+     "substance_chars": 23.0,
+     "substance_factor": 0.4,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.250122,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0575,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9915,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 3.637629,
+     "rubric_score": 5.5,
+     "rubric_multiplier": 0.685,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "ee5e3a8584ca6af",
+    "title": "OceanBase发布AI数据平OceanLake！CEO杨冰：我们赌多模态，就像当年赌分布式一样",
+    "member_item_ids": [
+     "55becc68f7909adc"
+    ],
+    "primary_item_id": "55becc68f7909adc",
+    "source_ids": [
+     "rss:infoq-cn"
+    ],
+    "all_urls": [
+     "https://www.infoq.cn/article/qEXNRNufkiFkiUEU9aae?utm_source=rss&utm_medium=article"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T20:21:09Z",
+     "2026-11-24T20:21:09Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-25/ee5e3a8584ca6af-m001-9ba1b83e.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 3.379767,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.012,
+     "substance_chars": 7.0,
+     "substance_factor": 0.365,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.246793,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0175,
+     "h_velocity": 1.0,
+     "h_freshness": 0.976,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5437,
+     "focus_headline": 0.5,
+     "focus_source": 0.35,
+     "focus_multiplier": 0.6441,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 3.379767,
+     "rubric_score": 5.5,
+     "rubric_multiplier": 0.685,
+     "rubric_band": "有趣",
+     "tier": "T1_5",
+     "tier_threshold": 60.0,
+     "tier_shortfall": true,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "e72433dae252fa0",
+    "title": "Baseten 支持 Hugging Face 只读 Trusted Publishers，部署私有模型无需共享访问令牌",
+    "member_item_ids": [
+     "08d9183c543551c2",
+     "f473fb8740e4926a"
+    ],
+    "primary_item_id": "f473fb8740e4926a",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/kf8u0r4xm8vu2llx4qs3xfk4r"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T19:27:51Z",
+     "2026-11-24T19:27:51Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 21.084095,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.43,
+     "substance_chars": 258.0,
+     "substance_factor": 0.909,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.320888,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.645,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9583,
+     "significance": 1.0,
+     "application_not_model": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 21.084095,
+     "rubric_score": 5.0,
+     "rubric_multiplier": 0.65,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "开发生态"
+    }
+   },
+   {
+    "event_id": "e114c30afcf8414",
+    "title": "Epochal 推出 Time Portal 训练智能体",
+    "member_item_ids": [
+     "1e224c3f9ae6b70a",
+     "b654700316ec0dff"
+    ],
+    "primary_item_id": "b654700316ec0dff",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/zb31qh89lml3l0auybb8hknpl"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T18:34:16Z",
+     "2026-11-24T18:34:16Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 14.698035,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.338,
+     "substance_chars": 203.0,
+     "substance_factor": 0.79,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.311607,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.5075,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9411,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.6913,
+     "focus_headline": 0.62,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.7592,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 14.698035,
+     "rubric_score": 5.0,
+     "rubric_multiplier": 0.65,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "ef25f3df42d97c7",
+    "title": "AI 搜索平台 Exa 洽谈新一轮融资，估值约 70 亿美元",
+    "member_item_ids": [
+     "289684a77ccb6e98",
+     "94a83f951aefc769"
+    ],
+    "primary_item_id": "94a83f951aefc769",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/eb52emgwf9owek6eoiqpskqab"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T19:30:15Z",
+     "2026-11-24T19:30:15Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 8.305021,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.212,
+     "substance_chars": 127.0,
+     "substance_factor": 0.625,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.301285,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.3175,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9591,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 8.305021,
+     "rubric_score": 5.0,
+     "rubric_multiplier": 0.65,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "ec758a8f318aef8",
+    "title": "开源AI数据平台，OceanBase要突破企业AI落地卡点 - 东方财富网",
+    "member_item_ids": [
+     "6e74939494de7321"
+    ],
+    "primary_item_id": "6e74939494de7321",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5ab3RvOG1idEJERnJSRHh6cXZTSm9DcXZTMVp1THR5dmRTTGllX0FDNzFnQldEVldrdVFlZjNiYXB2RjdMbG8zTDBweW90c2VWLUJ3V01TLXpKd25MNjVkWDN0NjR6UQ?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T17:24:19Z",
+     "2026-11-24T17:24:19Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 4.075373,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.058,
+     "substance_chars": 35.0,
+     "substance_factor": 0.426,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.247607,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0875,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9195,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5938,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.6831,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 4.075373,
+     "rubric_score": 5.0,
+     "rubric_multiplier": 0.65,
+     "rubric_band": "有趣",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "e972b6941ca4c83",
+    "title": "NEW: Three of xAI's founding members, Guodong Zhang, Zihang Dai, and Manuel Kroiss, launched Epochal, a startup building AI that predicts the future.",
+    "member_item_ids": [
+     "4ed9cde41e7e205d",
+     "72a3350ff83031cb"
+    ],
+    "primary_item_id": "4ed9cde41e7e205d",
+    "source_ids": [
+     "x:therundownai",
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://x.com/TheRundownAI/status/2125304077341085880",
+     "https://news.google.com/rss/articles/CBMiRkFVX3lxTE1yemtCTlRyOFlzaHdsc0xiSVpSRjRNM25MeGR3Q2NzWEFIN2gwWHltYTdlLUdBOGtkX0szaGdlcFBmSXMyUlE?oc=5"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T19:02:32Z",
+     "2026-11-24T19:02:32Z"
+    ],
+    "unique_facts": {
+     "merged_titles": [
+      "xAI三名元老创办Epochal押注AI预测 称“超人类水平的预测将重塑几乎所有行业” - 财联社电报"
+     ]
+    },
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 25.94333,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.463,
+     "substance_chars": 278.0,
+     "substance_factor": 0.952,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.467597,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.2975,
+     "h_engagement": 0.0,
+     "h_reach": 0.6826,
+     "h_substance": 0.695,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9501,
+     "significance": 2.2,
+     "lab_announcement": 2.2,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.5455,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 25.94333,
+     "rubric_score": 4.5,
+     "rubric_multiplier": 0.615,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "ed9d6ab7e87cda6",
+    "title": "Skillsync 推出 AI Agent 技能发布平台",
+    "member_item_ids": [
+     "624f4d57a3fa36ae",
+     "e683f14809db8706"
+    ],
+    "primary_item_id": "e683f14809db8706",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/zpd8kwlretc6khirtf8tdh5m7"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T20:28:22Z",
+     "2026-11-24T20:28:22Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 17.17198,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.345,
+     "substance_chars": 207.0,
+     "substance_factor": 0.798,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.314446,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.5175,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9784,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 17.17198,
+     "rubric_score": 4.5,
+     "rubric_multiplier": 0.615,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "e98dd68ed2a6676",
+    "title": "Conductor 0.99 新增自动恢复等功能",
+    "member_item_ids": [
+     "503cd3ad40e7ed31",
+     "dae6a26e46daf7a4"
+    ],
+    "primary_item_id": "dae6a26e46daf7a4",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/e6dvx4xr9bmqinzco744gyang"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T18:18:58Z",
+     "2026-11-24T18:18:58Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 11.910006,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.303,
+     "substance_chars": 182.0,
+     "substance_factor": 0.744,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.308169,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.455,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9363,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.6913,
+     "focus_headline": 0.62,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.7592,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 11.910006,
+     "rubric_score": 4.5,
+     "rubric_multiplier": 0.615,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "开发生态"
+    }
+   },
+   {
+    "event_id": "e1e2a62a667073c",
+    "title": "Building AI That Can Reason Under Uncertainty with Thore Graepel - #786",
+    "member_item_ids": [
+     "ff8a9dd3c6218dde"
+    ],
+    "primary_item_id": "ff8a9dd3c6218dde",
+    "source_ids": [
+     "rss:twiml-ai"
+    ],
+    "all_urls": [
+     "https://twimlai.com/podcast/twimlai/building-ai-that-can-reason-under-uncertainty"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T20:15:00Z",
+     "2026-11-24T20:15:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-25/e1e2a62a667073c-m001-901da647.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 9.74547,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 1.0,
+     "substance_chars": 1049.0,
+     "substance_factor": 1.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.305618,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9739,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.0,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 9.74547,
+     "rubric_score": 4.5,
+     "rubric_multiplier": 0.615,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "eecf7832af76897",
+    "title": "mvanhorn/last30days-skill — AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and…",
+    "member_item_ids": [
+     "aba98d102495bf65"
+    ],
+    "primary_item_id": "aba98d102495bf65",
+    "source_ids": [
+     "scrape:github-com-trending"
+    ],
+    "all_urls": [
+     "https://github.com/mvanhorn/last30days-skill"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": null,
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-25/eecf7832af76897-m001-94381471.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 5.298055,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.222,
+     "substance_chars": 133.0,
+     "substance_factor": 0.638,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.140635,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.3325,
+     "h_velocity": 0.0,
+     "h_freshness": 0.225,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.35,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 5.298055,
+     "rubric_score": 4.5,
+     "rubric_multiplier": 0.615,
+     "rubric_band": "低优先",
+     "tier": "T1_5",
+     "tier_threshold": 60.0,
+     "tier_shortfall": true,
+     "section": "开发生态"
+    }
+   },
+   {
+    "event_id": "e38d66148349735",
+    "title": "慧与科技CEO表示：随着时间推移，客户实现AI芯片多元化是“自然而然”的 - 东方财富",
+    "member_item_ids": [
+     "bdc5d751efa52b7d"
+    ],
+    "primary_item_id": "bdc5d751efa52b7d",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiY0FVX3lxTE4yQ1dzeS05TkI0eHdMUWtfRElGVmxINVFGM1llTkw4cENHX29QVUVKc2dnemtveFRLWGU5RXlEeE1BRHNrTjVXbFJ4b0hfWE5VellVTkt1TFpLRzRlNlFnclZCUQ?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T16:30:00Z",
+     "2026-11-24T16:30:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 3.547485,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.068,
+     "substance_chars": 41.0,
+     "substance_factor": 0.439,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.247542,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.1025,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9034,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 3.547485,
+     "rubric_score": 4.5,
+     "rubric_multiplier": 0.615,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e4d6cf1908896ad",
+    "title": "OpenAI 分享两位天文爱好者用 AI 发现系外行星信号",
+    "member_item_ids": [
+     "0229b4202ae47dc3",
+     "25fe1a27b38c6859",
+     "29f04cd16cdf92d2",
+     "9fca61be1fe83871",
+     "e6eb0cccee04b88b",
+     "fbe12447a3a20db8"
+    ],
+    "primary_item_id": "e6eb0cccee04b88b",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/ak7gf2im7ubs2ac39z3y2lqiv",
+     "https://aihot.news/items/kv31irb5beds21rv800f3bwfz",
+     "https://aihot.news/items/zyzlj1f00jgy2vzuyrxanb8lk"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T19:08:37Z",
+     "2026-11-24T19:08:38Z"
+    ],
+    "unique_facts": {},
+    "confidence": 0.9,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 19.221598,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.443,
+     "substance_chars": 266.0,
+     "substance_factor": 0.926,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.321714,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.665,
+     "h_velocity": 1.0,
+     "h_freshness": 0.952,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 19.221598,
+     "rubric_score": 4.0,
+     "rubric_multiplier": 0.58,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "e59b60c7bb1608c",
+    "title": "Hugging Face CEO 称开源在法律领域已达前沿",
+    "member_item_ids": [
+     "2d57a56fb866a158",
+     "ff9a131e2143d637"
+    ],
+    "primary_item_id": "ff9a131e2143d637",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/m81ytg39ppcgpe4tjbkymk63k"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T18:44:06Z",
+     "2026-11-24T18:44:06Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 15.420067,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.14,
+     "substance_chars": 84.0,
+     "substance_factor": 0.532,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.412952,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.2975,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.21,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9442,
+     "significance": 2.2,
+     "lab_announcement": 2.2,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.5455,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 15.420067,
+     "rubric_score": 4.0,
+     "rubric_multiplier": 0.58,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "e33bac5527b4c5f",
+    "title": "How Gemini is changing the game for Golden State's organization and fans.",
+    "member_item_ids": [
+     "0f8ba5d202d6a6e8"
+    ],
+    "primary_item_id": "0f8ba5d202d6a6e8",
+    "source_ids": [
+     "rss:official-googleai"
+    ],
+    "all_urls": [
+     "https://blog.google/products-and-platforms/products/gemini/gemini-golden-state/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T16:00:00Z",
+     "2026-11-24T16:00:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-25/e33bac5527b4c5f-m001-fbd87cce.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 10.779334,
+    "rank_components": {
+     "source_weight": 1.5,
+     "source_damped": 1.1067,
+     "substance": 0.25,
+     "substance_chars": 150.0,
+     "substance_factor": 0.675,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.263373,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.375,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8948,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 1.0,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 10.779334,
+     "rubric_score": 4.0,
+     "rubric_multiplier": 0.58,
+     "rubric_band": "低优先",
+     "tier": "T1",
+     "tier_threshold": 55.0,
+     "tier_shortfall": true,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "e3b28def8648180",
+    "title": "Pragmatic Engineer 征文比赛揭晓：40位工程师讲述AI重塑软件工程的一年",
+    "member_item_ids": [
+     "7de4571e37fff15d",
+     "99cc23007445ade9"
+    ],
+    "primary_item_id": "99cc23007445ade9",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/fw44y4qon4g180bzp67sq8iip"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T19:16:38Z",
+     "2026-11-24T19:16:38Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 8.026085,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.247,
+     "substance_chars": 148.0,
+     "substance_factor": 0.671,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.304169,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.37,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9546,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 8.026085,
+     "rubric_score": 4.0,
+     "rubric_multiplier": 0.58,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "e7887fba9d27239",
+    "title": "Why a Crusoe investor is betting on solar and batteries to power future AI data centers",
+    "member_item_ids": [
+     "1288d4f5c56e0593"
+    ],
+    "primary_item_id": "1288d4f5c56e0593",
+    "source_ids": [
+     "rss:aihot-demo-techcrunch-ai"
+    ],
+    "all_urls": [
+     "https://techcrunch.com/2026/11/24/why-a-crusoe-investor-is-betting-on-solar-and-batteries-to-power-future-ai-data-centers/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T16:10:00Z",
+     "2026-11-24T16:10:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-25/e7887fba9d27239-m001-738d0144.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 5.665927,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.265,
+     "substance_chars": 159.0,
+     "substance_factor": 0.695,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.264895,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.3975,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8977,
+     "significance": 1.0,
+     "minor": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 5.665927,
+     "rubric_score": 4.0,
+     "rubric_multiplier": 0.58,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "efc158c55e4a5aa",
+    "title": "cursor/plugins — Cursor plugin specification and official plugins",
+    "member_item_ids": [
+     "92446a98556cd768"
+    ],
+    "primary_item_id": "92446a98556cd768",
+    "source_ids": [
+     "scrape:github-com-trending"
+    ],
+    "all_urls": [
+     "https://github.com/cursor/plugins"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": null,
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-25/efc158c55e4a5aa-m001-00d9b027.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 3.114908,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.08,
+     "substance_chars": 48.0,
+     "substance_factor": 0.454,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.127885,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.12,
+     "h_velocity": 0.0,
+     "h_freshness": 0.225,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.35,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 3.114908,
+     "rubric_score": 4.0,
+     "rubric_multiplier": 0.58,
+     "rubric_band": "低优先",
+     "tier": "T1_5",
+     "tier_threshold": 60.0,
+     "tier_shortfall": true,
+     "section": "开发生态"
+    }
+   },
+   {
+    "event_id": "e89eb73e8b95077",
+    "title": "OpenAI o1 co-creator Noam Brown urges promising students to drop out as AI enters a \"very steep rate of progress\"",
+    "member_item_ids": [
+     "cc408cea323169b2"
+    ],
+    "primary_item_id": "cc408cea323169b2",
+    "source_ids": [
+     "rss:aihot-demo-the-decoder"
+    ],
+    "all_urls": [
+     "https://the-decoder.com/openai-o1-co-creator-noam-brown-urges-promising-students-to-drop-out-as-ai-enters-a-very-steep-rate-of-progress/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T17:58:44Z",
+     "2026-11-24T17:58:44Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-25/e89eb73e8b95077-m001-217da3d5.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 14.374282,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.908,
+     "substance_chars": 545.0,
+     "substance_factor": 1.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.302986,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.93,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 14.374282,
+     "rubric_score": 3.5,
+     "rubric_multiplier": 0.545,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "eb48af41033c192",
+    "title": "Novartis CEO says AI will shave four years off drug development, not cure all disease",
+    "member_item_ids": [
+     "80aee0234331349f"
+    ],
+    "primary_item_id": "80aee0234331349f",
+    "source_ids": [
+     "rss:aihot-demo-the-decoder"
+    ],
+    "all_urls": [
+     "https://the-decoder.com/novartis-ceo-says-ai-will-shave-four-years-off-drug-development-not-cure-all-disease/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T18:01:55Z",
+     "2026-11-24T18:01:55Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-25/eb48af41033c192-m001-fb3f8a02.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 9.543845,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.702,
+     "substance_chars": 421.0,
+     "substance_factor": 1.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.303045,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.931,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 9.543845,
+     "rubric_score": 3.5,
+     "rubric_multiplier": 0.545,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "ea463087967092a",
+    "title": "The biggest limitations of ChatGPT",
+    "member_item_ids": [
+     "717f84bd39602965"
+    ],
+    "primary_item_id": "717f84bd39602965",
+    "source_ids": [
+     "rss:engadget"
+    ],
+    "all_urls": [
+     "https://www.engadget.com/2321242/chatgpt-biggest-limitations/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T19:00:00Z",
+     "2026-11-24T19:00:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-25/ea463087967092a-m001-760bbd6e.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 9.525275,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.252,
+     "substance_chars": 151.0,
+     "substance_factor": 0.677,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.266791,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.3775,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9493,
+     "significance": 1.0,
+     "not_ai": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 9.525275,
+     "rubric_score": 3.5,
+     "rubric_multiplier": 0.545,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "e8b53490ebae337",
+    "title": "Cloudera launches digital sovereignty platform spanning AI and infrastructure",
+    "member_item_ids": [
+     "f7e22a43ebcccd7f"
+    ],
+    "primary_item_id": "f7e22a43ebcccd7f",
+    "source_ids": [
+     "rss:siliconangle"
+    ],
+    "all_urls": [
+     "https://siliconangle.com/2026/11/24/cloudera-launches-digital-sovereignty-platform-spanning-ai-and-infrastructure/"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T17:19:52Z",
+     "2026-11-24T17:19:52Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 8.747794,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.893,
+     "substance_chars": 536.0,
+     "substance_factor": 1.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.302277,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9182,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 1.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 8.747794,
+     "rubric_score": 3.5,
+     "rubric_multiplier": 0.545,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e5d9f9f8eb7be75",
+    "title": "头部公募调研热情高 AI算力链包揽调研热股前十 - 东方财富网",
+    "member_item_ids": [
+     "8ae8a8c9d29fb9a9"
+    ],
+    "primary_item_id": "8ae8a8c9d29fb9a9",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9WQTRkQWJIQWlHUFBXNVZiX19QMG5ITXlhYVFpOXBDUnhlbzVzeUxmdFhwVU9XU1czOG9ZUzJzSDUxREpBSGtMUGlZYmxpc3FMMDJrSXMtdGtxVnFNdWVtaEdDS3pkdw?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T20:16:24Z",
+     "2026-11-24T20:16:24Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 3.344702,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.048,
+     "substance_chars": 29.0,
+     "substance_factor": 0.413,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.249997,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0725,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9744,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5938,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.6831,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 3.344702,
+     "rubric_score": 3.5,
+     "rubric_multiplier": 0.545,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "e3cbb02e1a108e1",
+    "title": "Grok Bot 帮用户省下酒店费用",
+    "member_item_ids": [
+     "38891b3cc5ec1927",
+     "b2d3e8121f7ff4dc"
+    ],
+    "primary_item_id": "b2d3e8121f7ff4dc",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all"
+    ],
+    "all_urls": [
+     "https://aihot.news/items/wc95qt81683aayxh3fdjl4tvk"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T20:00:15Z",
+     "2026-11-24T20:00:15Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "multi_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 11.001233,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 0.223,
+     "substance_chars": 134.0,
+     "substance_factor": 0.64,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.302929,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.335,
+     "h_velocity": 1.0,
+     "h_freshness": 0.969,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 1.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 1.0,
+     "focus_headline": 1.0,
+     "focus_source": 0.75,
+     "focus_multiplier": 1.0,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 11.001233,
+     "rubric_score": 3.0,
+     "rubric_multiplier": 0.51,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "e4f0abb17a2752f",
+    "title": "顶尖AI学院，用“古法教学” - 新浪财经",
+    "member_item_ids": [
+     "48583505d3b40b13"
+    ],
+    "primary_item_id": "48583505d3b40b13",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMieEFVX3lxTE9aRWhVRW1iVlA0VHpUajFiSXh4Y0Qyc0g5eVJIa25aLUNNYVIzdlpjSzIzMS1VSkVFVmNteWhOX3RMOWVKV3hCWkFJTGZkY2tyenJQazNXRmROdUdyUUtmWGVjejBRR0MwSmVVMVNvdUpzMmpTeUZrQw?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T19:29:52Z",
+     "2026-11-24T19:29:52Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.62258,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.032,
+     "substance_chars": 19.0,
+     "substance_factor": 0.391,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.247571,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0475,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9589,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.62258,
+     "rubric_score": 3.0,
+     "rubric_multiplier": 0.51,
+     "rubric_band": "低优先",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "e6869395de158f3",
+    "title": "AI“调色师”，调出数智化出彩新路 - 新浪财经",
+    "member_item_ids": [
+     "56a197757c4801ac"
+    ],
+    "primary_item_id": "56a197757c4801ac",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMieEFVX3lxTE14ZThGYXdKa1RYN0VMRGx1S3VxZzZvRGpTcVhuUUxrN2VfODJhdFZvcnFWMWFJeUc1OUk4Nm12V0NHZnA5TWZGc1FEM0hJWEVxSzdUYUVVOHJXcmhvY1J3MU80ejQ5SGFWbGJuUll5bnVvZGlfSVlvUQ?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T16:53:01Z",
+     "2026-11-24T16:53:01Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.458372,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.037,
+     "substance_chars": 22.0,
+     "substance_factor": 0.398,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.245097,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.055,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9102,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.458372,
+     "rubric_score": 2.5,
+     "rubric_multiplier": 0.475,
+     "rubric_band": "噪音",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "技术与洞察"
+    }
+   },
+   {
+    "event_id": "ef0f7f0f2c2196c",
+    "title": "The New York Times warns photographers not to update Photoshop over AI features",
+    "member_item_ids": [
+     "3789aa5dc3e4588a"
+    ],
+    "primary_item_id": "3789aa5dc3e4588a",
+    "source_ids": [
+     "rss:theverge-com-ai-artificial-intelligence"
+    ],
+    "all_urls": [
+     "https://www.theverge.com/ai-artificial-intelligence/1041227/the-new-york-times-warns-photographers-not-to-update-photoshop-over-ai-features"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T16:09:23Z",
+     "2026-11-24T16:09:23Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-25/ef0f7f0f2c2196c-m001-a354fb3f.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 7.653991,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 1.0,
+     "substance_chars": 686.0,
+     "substance_factor": 1.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.301034,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.8975,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 7.653991,
+     "rubric_score": 2.0,
+     "rubric_multiplier": 0.44,
+     "rubric_band": "噪音",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "产品应用"
+    }
+   },
+   {
+    "event_id": "e81e70e212f17f7",
+    "title": "Weave (YC W25) is hiring ML, AI, product, & design engineers",
+    "member_item_ids": [
+     "cedad51d39503fd3"
+    ],
+    "primary_item_id": "cedad51d39503fd3",
+    "source_ids": [
+     "rss:hnrss-org-frontpage"
+    ],
+    "all_urls": [
+     "https://jobs.ashbyhq.com/weave-os"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T17:00:55Z",
+     "2026-11-24T17:00:55Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 4.149276,
+    "rank_components": {
+     "source_weight": 1.0,
+     "source_damped": 1.0,
+     "substance": 0.222,
+     "substance_chars": 133.0,
+     "substance_factor": 0.638,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.261887,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.3325,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9125,
+     "significance": 1.0,
+     "minor": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 4.149276,
+     "rubric_score": 2.0,
+     "rubric_multiplier": 0.44,
+     "rubric_band": "噪音",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "e517453c06948a4",
+    "title": "新型AI云服务公司盘前下挫 CoreWeave、NEBIUS跌超4% - 东方财富",
+    "member_item_ids": [
+     "7b06b3a48be98141"
+    ],
+    "primary_item_id": "7b06b3a48be98141",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMiY0FVX3lxTE04ZC1GQ0M2TURHbzNkRTF1RjZqYU5aMFpVeFlyS3htb3hCcm4tVGVKT0hnQlA3Y1o0Yk4zOFRIdjZqak11QjRycGlRLXFSYld1M19MVzR5enlhcjRKRUhZTmV6WQ?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T17:16:25Z",
+     "2026-11-24T17:16:25Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.518285,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.065,
+     "substance_chars": 39.0,
+     "substance_factor": 0.434,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.248065,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0975,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9172,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.518285,
+     "rubric_score": 2.0,
+     "rubric_multiplier": 0.44,
+     "rubric_band": "噪音",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "行业动态"
+    }
+   },
+   {
+    "event_id": "ebeebfed657c3b5",
+    "title": "8个路演专场近半锚定AI - 广州日报",
+    "member_item_ids": [
+     "7783ace13f00f6c2"
+    ],
+    "primary_item_id": "7783ace13f00f6c2",
+    "source_ids": [
+     "api:news-google-com-search"
+    ],
+    "all_urls": [
+     "https://news.google.com/rss/articles/CBMidkFVX3lxTE9HZm43TVRlOVNWOEdyamN0dllhZjdZRjlqT21JUE96N2lrcVktVWNiQlZkc1VZVnBDYW95ZDh2TFk3VnA5QXBjRWRZUGw1WFplTUVYcTRReGNlOGdxdUU1TkItWmRiQWJLZTJhY1FQdDdmMk1fN0E?oc=5"
+    ],
+    "independent_source_count": 1,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T20:08:55Z",
+     "2026-11-24T20:08:55Z"
+    ],
+    "unique_facts": {},
+    "confidence": 1.0,
+    "evidence_level": "single_source",
+    "image_urls": [],
+    "needs_review": false,
+    "rank_score": 2.241846,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 0.028,
+     "substance_chars": 17.0,
+     "substance_factor": 0.387,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.248046,
+     "h_corroboration": 0.3562,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.4307,
+     "h_substance": 0.0425,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9719,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 2.241846,
+     "rubric_score": 2.0,
+     "rubric_multiplier": 0.44,
+     "rubric_band": "噪音",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "eafb03104389a1e",
+    "title": "David Fincher is being dragged for suspected use of AI in his latest film",
+    "member_item_ids": [
+     "02511e04cdc18965",
+     "2ae6980f228d1296",
+     "ac40fbe8eb60f1f9"
+    ],
+    "primary_item_id": "ac40fbe8eb60f1f9",
+    "source_ids": [
+     "rss:aihot-news",
+     "rss:aihot-news-all",
+     "rss:theverge-com-ai-artificial-intelligence"
+    ],
+    "all_urls": [
+     "https://www.theverge.com/entertainment/1041417/david-fincher-netflix-cliff-booth-ai-interpositive",
+     "https://aihot.news/items/sutjyfyt2fxxooyj4x3m4z3hm"
+    ],
+    "independent_source_count": 3,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T18:15:00Z",
+     "2026-11-24T18:15:00Z"
+    ],
+    "unique_facts": {},
+    "confidence": 0.9,
+    "evidence_level": "multi_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-25/eafb03104389a1e-m001-51f1faa0.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 11.60333,
+    "rank_components": {
+     "source_weight": 1.2,
+     "source_damped": 1.0466,
+     "substance": 1.0,
+     "substance_chars": 686.0,
+     "substance_factor": 1.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.25,
+     "heat": 0.422351,
+     "h_corroboration": 0.7124,
+     "h_magnitude": 0.0744,
+     "h_engagement": 0.0,
+     "h_reach": 0.6826,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9351,
+     "significance": 1.6,
+     "widely_reported": 1.6,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.2727,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 11.60333,
+     "rubric_score": 1.5,
+     "rubric_multiplier": 0.405,
+     "rubric_band": "噪音",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "其他"
+    }
+   },
+   {
+    "event_id": "ee6d0d91dcd64d2",
+    "title": "Jensen Huang deepfakes are the hot new AI slop",
+    "member_item_ids": [
+     "c43db7e469c06118",
+     "d3eb8dd8945215a4"
+    ],
+    "primary_item_id": "d3eb8dd8945215a4",
+    "source_ids": [
+     "rss:theverge-com-ai-artificial-intelligence",
+     "rss:wired-ai"
+    ],
+    "all_urls": [
+     "https://www.theverge.com/tech/1041222/jensen-huang-nvidia-scandal-deepfakes",
+     "https://www.wired.com/story/jensen-huang-apologizes-to-nvidia-employees-in-first-all-hands-since-his-return/"
+    ],
+    "independent_source_count": 2,
+    "first_seen_at": "2026-11-24T21:20:58.017370Z",
+    "last_updated_at": "2026-11-24T21:20:58.017370Z",
+    "published_range": [
+     "2026-11-24T16:30:00Z",
+     "2026-11-24T17:44:53Z"
+    ],
+    "unique_facts": {},
+    "confidence": 0.9,
+    "evidence_level": "multi_source",
+    "image_urls": [
+     "https://cdn.jsdelivr.net/gh/siweimidu/ai-daily-media@main/2026-11-25/ee6d0d91dcd64d2-m001-8f1ca593.webp"
+    ],
+    "needs_review": false,
+    "rank_score": 8.520885,
+    "rank_components": {
+     "source_weight": 1.1,
+     "source_damped": 1.0241,
+     "substance": 1.0,
+     "substance_chars": 686.0,
+     "substance_factor": 1.0,
+     "title_quality": 1.0,
+     "source_boost": 1.0,
+     "aihot_boost": 1.0,
+     "heat": 0.364091,
+     "h_corroboration": 0.5646,
+     "h_magnitude": 0.0,
+     "h_engagement": 0.0,
+     "h_reach": 0.6826,
+     "h_substance": 1.0,
+     "h_velocity": 1.0,
+     "h_freshness": 0.9034,
+     "significance": 1.0,
+     "sig_model": 0.0,
+     "sig_release": 0.0,
+     "sig_lab": 0.0,
+     "sig_first_party": 0.0,
+     "magnitude_linear": 0.0,
+     "focus": 0.5,
+     "focus_headline": 0.5,
+     "focus_source": 0.75,
+     "focus_multiplier": 0.61,
+     "vendor_priority": 1.0,
+     "vendor_subject": "",
+     "score": 8.520885,
+     "rubric_score": 1.5,
+     "rubric_multiplier": 0.405,
+     "rubric_band": "噪音",
+     "tier": "T2",
+     "tier_threshold": 68.0,
+     "tier_shortfall": true,
+     "section": "其他"
+    }
+   }
+  ],
+  "trend_notes": [],
+  "source_coverage": {
+   "total": 193,
+   "active": 36,
+   "failed": 0,
+   "degraded": 0,
+   "blocked": 0,
+   "skipped": 0
+  },
+  "llm_usage": {
+   "calls": 129,
+   "prompt_tokens": 126834,
+   "completion_tokens": 20167,
+   "tokens": 147001,
+   "max_calls": 400,
+   "max_tokens": 2000000,
+   "dead_providers": {},
+   "provider_failures": {
+    "relay:api.agnes-ai.cn#1": "rate_limited: relay:api.agnes-ai.cn#1: HTTP 429"
+   },
+   "calls_per_provider": {
+    "relay:apihub.agnes-ai.com#3": 6,
+    "relay:apihub.agnes-ai.com#1": 6,
+    "relay:apihub.agnes-ai.com#2": 6,
+    "relay:api.agnes-ai.cn#2": 10,
+    "relay:api.agnes-ai.cn#3": 6,
+    "relay:api.agnes-ai.cn#0": 6,
+    "relay:apihub.agnes-ai.com#4": 6,
+    "relay:api.agnes-ai.cn#1": 2,
+    "relay:apihub.agnes-ai.com#5": 6,
+    "relay:apihub.agnes-ai.com#6": 6,
+    "relay:apihub.agnes-ai.com#7": 6,
+    "relay:apihub.agnes-ai.com#10": 5,
+    "relay:apihub.agnes-ai.com#13": 5,
+    "relay:apihub.agnes-ai.com#12": 5,
+    "relay:apihub.agnes-ai.com#8": 6,
+    "relay:apihub.agnes-ai.com#9": 6,
+    "relay:apihub.agnes-ai.com#14": 5,
+    "relay:apihub.agnes-ai.com#11": 5,
+    "relay:apihub.agnes-ai.com#15": 5,
+    "relay:apihub.agnes-ai.com#16": 5,
+    "relay:apihub.agnes-ai.com#0": 6,
+    "relay:apihub.agnes-ai.com#18": 5,
+    "relay:apihub.agnes-ai.com#17": 5
+   }
+  },
+  "warnings": [
+   "中转密钥已读取：28 条",
+   "模型供应商 30 个（gemini, groq, relay:api.groq.com#0, relay:api.groq.com#1…）",
+   "配对复核合并 4 条",
+   "LLM 去重 6 组（合并 8 条）",
+   "rubric 评分 46 条已打分 / 10 次调用 / 46 条打了两次（均差 1.07）（标准来源：/home/runner/work/ai-ribao/ai-ribao/config/profiles/ai-daily）",
+   "模型判定与 AI 无关并剔除 2 条：Use this built-in Window（公式 1.00）；从“流量依赖”到“内容回归”：AI给影视行业上了（公式 0.61）",
+   "跨天语义去重剔除 2 条（与 7 天内重复）",
+   "搜索引擎索引时间不可信，剔除 16 条单源搜索命中"
+  ],
+  "counts": {
+   "events": 42,
+   "events_considered": 110,
+   "multi_source_events": 18,
+   "items_after_window": 235,
+   "items_merged_away": 67,
+   "distinct_sources_in_head": 16,
+   "head_max_source_share": 26,
+   "dropped_unknown": 104,
+   "dropped_no_url": 1,
+   "late_or_ignored": 8742
+  }
+ },
+ "sections": {
+  "community": [
+   "e697e4686d91b95"
+  ],
+  "dev": [
+   "eecf7832af76897",
+   "ee5e3a8584ca6af",
+   "efc158c55e4a5aa",
+   "e0ba60bfc7d5c5d",
+   "e1c290159963ea7",
+   "e20dbebb262f51e",
+   "e3bd8cd1a74dc39",
+   "e4cf15a3a8eecde",
+   "e535b8d9d60f79c",
+   "e641acbba4b5cc8",
+   "e726314099a8d83",
+   "e7c5c249ba5135c",
+   "eafa7d756fa4ade",
+   "ec6bd315ea89ad0",
+   "ed9fbb7d40edb67",
+   "edff9d2275ef7ee",
+   "ee2b1707bce550f",
+   "ef46b7982942e05"
+  ],
+  "digest": [
+   "e972b6941ca4c83",
+   "e4d6cf1908896ad",
+   "e189d92cf23cdeb",
+   "ed9d6ab7e87cda6",
+   "e59b60c7bb1608c",
+   "e114c30afcf8414",
+   "e98dd68ed2a6676",
+   "e93f967335b08c7",
+   "ef25f3df42d97c7",
+   "e3b28def8648180",
+   "e7da9a535bdd107",
+   "edf4d41a1aae360",
+   "e047dec10d0a7b6",
+   "e0baec6260f8606",
+   "e1dc10e54c80c29",
+   "e6c653389190788",
+   "e6d651bdd672321",
+   "e94804266b34b9f",
+   "eb1ab4f5e32ef83"
+  ],
+  "lab": [
+   "ee61ec5ac6d1b26"
+  ],
+  "lab-blog": [
+   "ee3358c2881c090"
+  ],
+  "lab-official": [
+   "e33bac5527b4c5f"
+  ],
+  "media": [
+   "e89eb73e8b95077",
+   "eafb03104389a1e",
+   "eb48af41033c192",
+   "ea463087967092a",
+   "e69cfe56472996c",
+   "ee54837450ad9f7",
+   "e8b53490ebae337",
+   "ee6d0d91dcd64d2",
+   "ef0f7f0f2c2196c",
+   "e7887fba9d27239",
+   "e65fda3a07bcefc",
+   "e3172306e2304ec",
+   "e8301e441745b85",
+   "ea1a6dfe09f0788",
+   "e02f5d70fd32255",
+   "e04262d2f435cae",
+   "e209bf082c52f50",
+   "e39336238ab744b",
+   "e448ddaec120777",
+   "e4560c83e973541",
+   "e4f4756f9885b39",
+   "e52b7f9b3f1e3c6",
+   "e55ae4a2f8834d4",
+   "e56818a09930364",
+   "e5bf4ac90693b43",
+   "e5d668a83bbf08a",
+   "e5d6bf0297ec695",
+   "e5fdf093a0d9ced",
+   "e68e43cb3f5cd81",
+   "e7a26854959cd12",
+   "e824d07413e6292",
+   "e83dd0fb0d08c11",
+   "e88c7b10681858d",
+   "e8b530c4badf178",
+   "e901f0a99b42f56",
+   "eb81f2fc8899135",
+   "eb9f6903f875b1b",
+   "ec5c22ef098d695",
+   "ec9456a7e2df96b",
+   "ecc6c3676de8062",
+   "ecc740ac6a2bdd2",
+   "ed0c7149a81f524",
+   "ede14d6c91197b0",
+   "ef9a3cdf430d303"
+  ],
+  "mixed": [
+   "e81e70e212f17f7",
+   "e0da3358a6e20a9",
+   "e11c288d4e2c44f",
+   "e190801e4d3c78b",
+   "ecb58849fbd1ed6",
+   "e683b4789a8a416",
+   "e9393a3718ac980",
+   "ee1b57067b42381"
+  ],
+  "podcast": [
+   "e1e2a62a667073c"
+  ],
+  "zh-media": [
+   "ebf2d02e6bc3b9b",
+   "ec79a3fd8689a63",
+   "e72433dae252fa0",
+   "e8ea677b7c03738",
+   "e594e7ff224f32b",
+   "e740707c753bbea",
+   "e3cbb02e1a108e1",
+   "e4f7d151cb95b33",
+   "e8a7d8eeb5e4d48",
+   "e959df9ab555db4",
+   "ea6a6a6ad756c04",
+   "ef5980082dfb6b7",
+   "efb6c2771b2424e",
+   "e2b153510a0739b",
+   "e30ca91cda783e1",
+   "e32154fb6e483ad"
+  ]
+ },
+ "insights": {
+  "e774fbd7338f6c9": {
+   "event_id": "e774fbd7338f6c9",
+   "title": "美众院两委员会调查美企依赖中国AI模型",
+   "facts": [
+    "美国众议院两个委员会发布了调查报告",
+    "该报告针对美国企业依赖中国AI模型的情况发出了警告"
+   ],
+   "inferences": [
+    "美众院两委员会认为美国企业对中国AI模型的依赖存在风险"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "报告中具体警告的风险内容未在材料中说明",
+    "具体是哪两个委员会未在材料中指明",
+    "涉及的特定中国AI模型名称未在材料中列出"
+   ],
+   "key_points": [
+    "众院两委员会发布调查报告",
+    "警告美企依赖中国AI模型"
+   ],
+   "rule_based": false
+  },
+  "ef25f3df42d97c7": {
+   "event_id": "ef25f3df42d97c7",
+   "title": "Exa 洽谈 D 轮融资，估值约 70 亿美元",
+   "facts": [
+    "AI 智能体搜索平台 Exa 正在洽谈 D 轮融资",
+    "Exa 的估值约为 70 亿美元",
+    "Menlo Ventures 将作为领投方"
+   ],
+   "inferences": [
+    "Exa 可能处于 D 轮融资阶段"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "融资尚未最终达成，目前仅处于洽谈阶段",
+    "具体的融资金额未在材料中说明"
+   ],
+   "key_points": [
+    "Exa 寻求 D 轮融资",
+    "估值约为 70 亿美元",
+    "Menlo Ventures 领投"
+   ],
+   "rule_based": false
+  },
+  "ec758a8f318aef8": {
+   "event_id": "ec758a8f318aef8",
+   "title": "OceanBase发布开源AI数据平台",
+   "facts": [
+    "OceanBase推出开源AI数据平台",
+    "该平台旨在突破企业AI落地卡点"
+   ],
+   "inferences": [
+    "该平台的推出意在解决企业在部署和落地AI技术时遇到的障碍"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未提供该平台的具体功能细节",
+    "材料未说明“企业AI落地卡点”具体指哪些技术或业务难题",
+    "材料未提供该平台的发布时间及详细背景"
+   ],
+   "key_points": [
+    "OceanBase发布开源AI数据平台",
+    "目标解决企业AI落地难题"
+   ],
+   "rule_based": false
+  },
+  "ee5e3a8584ca6af": {
+   "event_id": "ee5e3a8584ca6af",
+   "title": "OceanBase 发布 AI 数据平台 OceanLake",
+   "facts": [
+    "OceanBase 发布了 AI 数据平台 OceanLake",
+    "OceanBase CEO 杨冰表示他们赌多模态，就像当年赌分布式一样"
+   ],
+   "inferences": [
+    "OceanBase 将多模态视为其未来发展的关键战略方向，类似于过去对分布式技术的投入"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "OceanLake 平台的具体功能和技术架构细节在材料中未明确说明",
+    "“赌多模态”的具体业务举措或研发计划未在材料中详细列出"
+   ],
+   "key_points": [
+    "OceanBase 推出新品 OceanLake",
+    "CEO 杨冰强调公司战略转向多模态领域"
+   ],
+   "rule_based": false
+  },
+  "e69cfe56472996c": {
+   "event_id": "e69cfe56472996c",
+   "title": "作者将 Gemini 接入钱包并实现省钱",
+   "facts": [
+    "作者赋予 Gemini 访问其钱包的权限",
+    "Gemini 随后帮助作者节省了开支",
+    "Gemini 针对作者的财务状况提供了直接建议"
+   ],
+   "inferences": [
+    "Gemini 具备分析用户财务数据并提供优化建议的能力"
+   ],
+   "opinions": [
+    "Gemini 的财务建议风格被描述为带有严厉或直率的语气"
+   ],
+   "uncertainties": [
+    "具体的节省金额未明确说明",
+    "Gemini 执行省钱动作的具体机制未详细描述",
+    "钱包账户与 Gemini 之间的数据同步安全细节未知"
+   ],
+   "key_points": [
+    "Gemini 在个人财务管理场景中的应用",
+    "AI 代理通过提供直接财务建议辅助用户节省开支"
+   ],
+   "rule_based": false
+  },
+  "e93f967335b08c7": {
+   "event_id": "e93f967335b08c7",
+   "title": "纽约州长 Kathy Hochul 禁止销售内置 AI chatbot 的玩具",
+   "facts": [
+    "纽约州州长 Kathy Hochul 签署法案，在该州禁止制造、运输或销售内置 AI chatbot 的玩具",
+    "该禁令有效期为五年",
+    "违反该禁令的公司面临每次违规最高 15000 美元的罚款"
+   ],
+   "inferences": [
+    "该法规将对在纽约州销售含 AI chatbot 功能玩具的厂商产生合规影响"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明该禁令的具体生效日期或过渡期安排",
+    "材料未明确界定“toys”在法规中的具体法律范围"
+   ],
+   "key_points": [
+    "纽约州实施为期五年的 AI 玩具禁令",
+    "违规企业面临高额罚款"
+   ],
+   "rule_based": false
+  },
+  "e114c30afcf8414": {
+   "event_id": "e114c30afcf8414",
+   "title": "Epochal 推出 Time Portal 训练智能体",
+   "facts": [
+    "前 xAI 创始团队成员创立了新 AI 实验室 Epochal",
+    "Time Portal 是 Epochal 的首款产品",
+    "Time Portal 允许 AI 智能体浏览过去 30 年中任意历史日期的互联网样貌",
+    "智能体通过浏览历史互联网样貌练习预测“明天”",
+    "智能体根据真实发生的情况获得评分"
+   ],
+   "inferences": [
+    "使用历史数据作为训练材料可能有助于提升 AI 智能体的预测能力"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未明确说明“过去 30 年”的具体起止年份",
+    "材料未描述 Time Portal 的具体技术实现细节",
+    "材料未说明评分机制的具体算法或标准",
+    "两份材料来源相同，未提供独立的第三方验证信息"
+   ],
+   "key_points": [
+    "Epochal 由前 xAI 创始团队成员创立",
+    "Time Portal 利用时间作为通用验证器进行训练",
+    "该工具让智能体基于历史互联网数据进行预测练习"
+   ],
+   "rule_based": false
+  },
+  "ee71d87a312f124": {
+   "event_id": "ee71d87a312f124",
+   "title": "戴尔上调全年 AI 优化服务器营收预期",
+   "facts": [
+    "戴尔公司上调了全年 AI 优化服务器的营收预期"
+   ],
+   "inferences": [
+    "戴尔公司预计其 AI 优化服务器业务在剩余时间内将实现高于此前预期的收入"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "具体的营收上调幅度数值未提及",
+    "AI 优化服务器的具体定义范围未说明",
+    "上调预期的具体驱动因素（如需求增长或产品迭代）未详细列出"
+   ],
+   "key_points": [
+    "戴尔调整了 AI 服务器业务的全年财务目标",
+    "该业务线被视为戴尔重要的营收增长点"
+   ],
+   "rule_based": false
+  },
+  "ec79a3fd8689a63": {
+   "event_id": "ec79a3fd8689a63",
+   "title": "Higgsfield 独家上线 MAGI-2 并预告 400B 开源权重",
+   "facts": [
+    "Higgsfield 宣布独家上线视频模型 MAGI-2。",
+    "MAGI-2 支持生成最长 30 秒、1080p 质量的视频。",
+    "MAGI-2 的生成价格为每秒 $0.08。",
+    "MAGI-2 现可通过 Higgsfield 平台和 Higgsfield API 使用。",
+    "一个 400B 参数的开源权重视频模型即将推出。"
+   ],
+   "inferences": [
+    "400B 参数的开源权重模型大概率与 MAGI-2 技术同源或由同一团队开发。",
+    "Higgsfield 通过独家上线和 API 接入，意在巩固其在视频生成领域的平台地位。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "400B 开源权重模型的具体发布时间和名称未明确。",
+    "MAGI-2 的技术架构（如是否基于 MoE 或其他结构）未在材料中提及。",
+    "“独家上线”的具体合同期限或排他范围未说明。"
+   ],
+   "key_points": [
+    "Higgsfield 独家上线视频模型 MAGI-2，支持 30 秒 1080p 生成。",
+    "MAGI-2 定价为每秒 $0.08，支持 Higgsfield 平台和 API。",
+    "Higgsfield 预告将推出 400B 参数的开源权重视频模型。"
+   ],
+   "rule_based": false
+  },
+  "e740707c753bbea": {
+   "event_id": "e740707c753bbea",
+   "title": "Midjourney 发布最新动漫模型 Niji V8",
+   "facts": [
+    "Midjourney 官宣 Niji V8 上线。",
+    "Niji V8 是 Midjourney 的最新动漫模型。",
+    "Niji V8 支持精准提示词。",
+    "Niji V8 支持一致的角色生成。",
+    "Niji V8 具备一流的画面连贯性。",
+    "Niji V8 配备专门的编辑模型。",
+    "该事件发生于 2026 年 11 月 25 日。"
+   ],
+   "inferences": [
+    "Niji V8 的发布表明 Midjourney 正在持续迭代其动漫模型产品线。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料中未提供 Niji V8 的具体技术参数或 Benchmark 数据。",
+    "材料中未说明「专门的编辑模型」具体指哪个子模型或功能模块。",
+    "材料中未明确该模型是免费开放还是仅限付费用户。"
+   ],
+   "key_points": [
+    "Midjourney 发布 Niji V8。",
+    "该模型主打精准提示词与角色一致性。",
+    "新模型集成了专门的编辑模型。"
+   ],
+   "rule_based": false
+  },
+  "ebf2d02e6bc3b9b": {
+   "event_id": "ebf2d02e6bc3b9b",
+   "title": "Claude Devs 宣布应用安装功能进入 Beta",
+   "facts": [
+    "Claude Devs 宣布在 Claude Desktop 全线计划开放 Beta 版应用安装功能",
+    "Enterprise 计划需要管理员开启才能使用该功能",
+    "应用安装过程无需打包或签名应用",
+    "应用安装过程无需配置 API key",
+    "构建应用及其对 Claude 的调用计入用量限制",
+    "Claude 支持把 artifacts 安装为 Mac 和 Windows 桌面应用",
+    "用户可通过点击 Install as app 将 artifact 像普通应用一样打开",
+    "安装的桌面应用可使用用户的 connectors"
+   ],
+   "inferences": [
+    "该功能使得开发者无需处理传统的桌面应用部署和密钥管理流程",
+    "artifact 安装功能将增强 Claude 在本地工作环境中的互动能力"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "具体的用量限制数值或计费标准未在材料中说明",
+    "管理员开启 Enterprise 功能的具体操作流程未提及",
+    "artifact 安装功能是否独立于 Beta 版应用安装功能，材料未明确区分两者的关系"
+   ],
+   "key_points": [
+    "Claude Desktop 应用安装功能 Beta 版上线，简化部署流程",
+    "支持 Mac 和 Windows 平台将 artifacts 转换为独立桌面应用",
+    "应用运行依赖 Claude 用量限制且支持 connectors 和系统通知"
+   ],
+   "rule_based": false
+  },
+  "e72433dae252fa0": {
+   "event_id": "e72433dae252fa0",
+   "title": "Baseten 支持 Hugging Face 只读 Trusted Publishers",
+   "facts": [
+    "Baseten 与 Hugging Face 合作上线只读 Trusted Publishers。",
+    "Baseten 成为首家在部署时使用短期令牌拉取私有模型权重的推理服务商。",
+    "部署过程中，Baseten 通过 OIDC 签发身份令牌。",
+    "Hugging Face 在校验组织、团队与工作负载类型后，发放一小时内过期的只读令牌。",
+    "该只读令牌无法修改仓库。",
+    "该能力与此前支持从 S3、GCS 拉取权重的 OIDC 机制并列。"
+   ],
+   "inferences": [
+    "使用短期令牌机制意味着部署私有模型时无需共享长期访问令牌。",
+    "Hugging Face 的校验流程将权限限制在特定组织、团队及工作负载类型，增强了安全性。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明「一小时内过期」的具体时间起点是令牌发放时还是部署开始时。",
+    "材料未提供其他推理服务商是否也在开发类似机制的比较数据。"
+   ],
+   "key_points": [
+    "Baseten 成为首家在部署时用短期令牌拉取私有模型权重的推理服务商。",
+    "Hugging Face 发放的只读令牌有效期为一小时，且无法修改仓库。"
+   ],
+   "rule_based": false
+  },
+  "ee54837450ad9f7": {
+   "event_id": "ee54837450ad9f7",
+   "title": "Anthropic 创建蜜罐测试 AI Agent 抗诱惑能力",
+   "facts": [
+    "Anthropic 创建了一个用于诱使 AI Agent 表现出不良行为的测试。",
+    "该测试假设 AI Agent 可能会失控。",
+    "该测试旨在考察 AI Agent 是否能抵制诱惑。"
+   ],
+   "inferences": [
+    "Anthropic 正在通过模拟特定场景来评估 AI Agent 的安全边界和行为约束机制。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未明确该「蜜罐」测试的具体技术实现方式或交互细节。",
+    "材料未说明该测试是否已公开发布或仅处于内部阶段。"
+   ],
+   "key_points": [
+    "测试核心假设 AI Agent 存在「失控」风险。",
+    "测试目的是验证 AI Agent 面对诱惑时的抵抗能力。"
+   ],
+   "rule_based": false
+  },
+  "e189d92cf23cdeb": {
+   "event_id": "e189d92cf23cdeb",
+   "title": "字节跳动 Seed TTS 3.0 上线 fal 平台",
+   "facts": [
+    "字节跳动的 Seed TTS 3.0 语音合成模型在 fal 平台上线。",
+    "该模型支持 100 多种语言及语言变体。",
+    "模型提供可选音色以及语速、音调和音量控制。",
+    "fal 发布的视频用英语展示了 Seed TTS 3.0 从低声悬疑到终点线呐喊的表达范围。",
+    "材料 3 和材料 4 包含标题“fal 上线字节 Seed-TTS v3”及内容“今天就来这里试用！”。"
+   ],
+   "inferences": [
+    "fal 平台提供了 Seed TTS 3.0 的试用或接入服务。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "Seed TTS 3.0 是否支持中文语言及变体未在材料中明确列出，仅提及支持 100 多种语言。",
+    "“100 多种”的确切数字未在材料中给出。",
+    "材料 3 和 4 中的“今天”具体指代日期虽与时间戳一致，但未在正文中详细展开功能说明。"
+   ],
+   "key_points": [
+    "字节跳动 Seed TTS 3.0 上线 fal 平台。",
+    "支持 100 多种语言及变体，具备音色、语速、音调和音量控制功能。"
+   ],
+   "rule_based": false
+  },
+  "e98dd68ed2a6676": {
+   "event_id": "e98dd68ed2a6676",
+   "title": "Conductor 0.99 版本发布并新增自动恢复功能",
+   "facts": [
+    "Conductor 0.99 版本新增了自动恢复功能",
+    "当智能体因用量限制停止时，Conductor 会在限制重置后恢复对话",
+    "Conductor 0.99 引入了 Codex 极速模式",
+    "Conductor 0.99 提供了全新的后台子智能体 UI",
+    "Conductor 0.99 的工作区渲染速度更快",
+    "Conductor 0.99 支持内联产物全宽渲染"
+   ],
+   "inferences": [
+    "自动恢复功能旨在解决智能体因用量限制中断后需要用户手动重启的问题"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未提及 Conductor 0.99 的具体发布日期或版本号变更的详细说明"
+   ],
+   "key_points": [
+    "自动恢复机制",
+    "Codex 极速模式",
+    "后台子智能体 UI 更新"
+   ],
+   "rule_based": false
+  },
+  "e38d66148349735": {
+   "event_id": "e38d66148349735",
+   "title": "慧与科技CEO称客户实现AI芯片多元化是自然趋势",
+   "facts": [
+    "慧与科技CEO表示，随着时间推移，客户实现AI芯片多元化是自然而然的",
+    "该消息来源于东方财富"
+   ],
+   "inferences": [],
+   "opinions": [],
+   "uncertainties": [
+    "材料未提供CEO姓名",
+    "材料未说明具体哪些客户或芯片厂商",
+    "材料未解释多元化背后的具体技术或市场原因"
+   ],
+   "key_points": [
+    "慧与科技CEO对AI芯片多元化趋势发表看法",
+    "CEO认为该多元化过程将随时间自然发生"
+   ],
+   "rule_based": false
+  },
+  "ed9d6ab7e87cda6": {
+   "event_id": "ed9d6ab7e87cda6",
+   "title": "Skillsync 发布 AI Agent 技能公共平台",
+   "facts": [
+    "Skillsync 获得了 Y Combinator 的支持",
+    "Skillsync 发布了一个 AI Agent 技能的公共平台",
+    "该平台上的技能是指教 Claude 或 ChatGPT 完成特定任务指令文件",
+    "作者发布技能一次后，其他人可以一键添加",
+    "后续的修复会同步给所有使用者",
+    "用户无需再在不同项目间复制文件"
+   ],
+   "inferences": [
+    "Skillsync 平台旨在解决 AI Agent 技能在多项目间分发和维护不便的问题",
+    "该平台主要服务于使用 Claude 或 ChatGPT 开发者"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "该平台是否支持除 Claude 和 ChatGPT 之外的其他 AI 模型",
+    "“一键添加”的具体技术实现方式及平台的使用门槛",
+    "平台目前的具体用户规模及商业模式",
+    "Y Combinator 支持的具体形式（如资金金额或资源对接）"
+   ],
+   "key_points": [
+    "Skillsync 推出允许 AI Agent 技能公共分发与同步更新的平台",
+    "核心功能为技能的一次发布即可自动同步给所有使用者",
+    "平台主要面向 Claude 和 ChatGPT 的技能指令文件管理"
+   ],
+   "rule_based": false
+  },
+  "e59b60c7bb1608c": {
+   "event_id": "e59b60c7bb1608c",
+   "title": "Hugging Face CEO 称开源在法律领域已达前沿",
+   "facts": [
+    "Hugging Face CEO 称开源在法律领域已达前沿"
+   ],
+   "inferences": [
+    "该观点暗示法律领域对开源模型的需求或适用性正在增加"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "未说明哪些具体的开源模型或项目在法律领域表现优异",
+    "未明确'前沿'的具体定义或评估标准",
+    "未提供支撑该观点的具体数据或案例"
+   ],
+   "key_points": [
+    "Hugging Face CEO 发表关于开源与法律领域关系的言论",
+    "开源被视为在法律领域达到前沿水平"
+   ],
+   "rule_based": false
+  },
+  "efc158c55e4a5aa": {
+   "event_id": "efc158c55e4a5aa",
+   "title": "Cursor 发布插件规范及官方插件仓库",
+   "facts": [
+    "cursor/plugins 仓库包含 Cursor plugin specification 和 official plugins"
+   ],
+   "inferences": [
+    "该仓库旨在通过规范化和提供官方插件来扩展 Cursor 的功能"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "具体包含哪些 official plugins 未知",
+    "Cursor plugin specification 的具体技术细节未知",
+    "该仓库的发布时间未知"
+   ],
+   "key_points": [
+    "Cursor 建立了插件规范",
+    "Cursor 提供了官方插件"
+   ],
+   "rule_based": false
+  },
+  "e7887fba9d27239": {
+   "event_id": "e7887fba9d27239",
+   "title": "Crusoe 投资人看好太阳能与电池支撑 AI 数据中心",
+   "facts": [
+    "下一代数据中心每年需要数十吉瓦的电力",
+    "Crusoe 的一位投资人认为太阳能和储能是显而易见的选择"
+   ],
+   "inferences": [
+    "太阳能和储能技术可能成为未来 AI 数据中心的主要电力来源之一"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "具体的投资规模或未披露",
+    "太阳能和储能技术实现具体时间表"
+   ],
+   "key_points": [
+    "AI 数据中心电力需求巨大",
+    "投资人看好可再生能源解决方案"
+   ],
+   "rule_based": false
+  },
+  "eecf7832af76897": {
+   "event_id": "eecf7832af76897",
+   "title": "mvanhorn发布跨平台AI agent技能last30days-skill",
+   "facts": [
+    "该项目名为 last30days-skill，由 mvanhorn 开发。",
+    "这是一个 AI agent skill，能够研究任意主题。",
+    "该技能的研究范围涵盖 Reddit、X、YouTube、HN、Polymarket 和 Web。",
+    "该技能最终会生成一份基于证据的摘要（grounded summary）。"
+   ],
+   "inferences": [
+    "该技能旨在整合多个社交平台和数据源的信息，以提供比单一来源更全面的观点。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明该技能是否支持中文输出，或者摘要生成的具体语言。",
+    "材料未提供该技能的开源协议、下载量或具体使用门槛。",
+    "材料未说明 'researches any topic' 中 'any topic' 的具体边界或限制。"
+   ],
+   "key_points": [
+    "last30days-skill 是一个聚合多平台信息的 AI agent 技能。",
+    "其核心功能是从 Reddit 等六个主要渠道提取信息并综合成摘要。"
+   ],
+   "rule_based": false
+  },
+  "e33bac5527b4c5f": {
+   "event_id": "e33bac5527b4c5f",
+   "title": "Google Gemini 与金州勇士达成合作",
+   "facts": [
+    "Google Gemini 与 Golden State 建立合作伙伴关系",
+    "该合作旨在为 Warriors、Valkyries 和 Chase Center 的粉丝体验及业务运营提供支持"
+   ],
+   "inferences": [
+    "此次合作预计将通过 AI 技术提升球队及其相关场馆的数字化服务能力"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未提供具体的合作条款、生效日期或涉及的技术细节",
+    "材料未说明该合作对粉丝体验和业务运营的具体改进幅度"
+   ],
+   "key_points": [
+    "Google Gemini 介入 Golden State 旗下多支队伍的运营",
+    "合作覆盖范围包括 Chase Center 场馆"
+   ],
+   "rule_based": false
+  },
+  "e972b6941ca4c83": {
+   "event_id": "e972b6941ca4c83",
+   "title": "xAI 三位创始成员创立预测未来 AI 公司 Epochal",
+   "facts": [
+    "Guodong Zhang、Zihang Dai 和 Manuel Kroiss 是 xAI 的创始成员。",
+    "Guodong Zhang、Zihang Dai 和 Manuel Kroiss 创立了名为 Epochal 的初创公司。",
+    "Epochal 致力于开发能够预测未来的 AI。",
+    "Epochal 的首款产品 Time Portal 允许 AI agents 访问冻结在特定日期的互联网副本。"
+   ],
+   "inferences": [
+    "Time Portal 提供的互联网副本规模可能超过 1T 页面，因为材料中出现了“1T+ page copy”的表述。",
+    "Epochal 预测未来的 AI 能力可能应用于重塑多个行业，基于其创始人关于“超人类水平的预测将重塑几乎所有行业”的观点。"
+   ],
+   "opinions": [
+    "创始人认为超人类水平的预测将重塑几乎所有行业。"
+   ],
+   "uncertainties": [
+    "材料1中“frozen at any date from the last 30+”语句不完整，无法确认具体的时间跨度或年份范围。",
+    "Epochal 目前的具体融资情况、团队规模及除 Time Portal 外的其他产品研发进展未在材料中明确说明。",
+    "xAI 三名创始成员离开 xAI 的具体时间点和原因材料未提及。"
+   ],
+   "key_points": [
+    "xAI 三位创始成员 Guodong Zhang、Zihang Dai 和 Manuel Kroiss 创立 Epochal。",
+    "Epochal 的核心业务是构建预测未来的 AI。",
+    "其首款产品 Time Portal 提供基于互联网历史冻结副本的服务，供 AI agents 使用。"
+   ],
+   "rule_based": false
+  },
+  "e3b28def8648180": {
+   "event_id": "e3b28def8648180",
+   "title": "Pragmatic Engineer 公布 AI 工程实践征文结果",
+   "facts": [
+    "Pragmatic Engineer 公布了征文比赛三个类别的获胜者与入围作品",
+    "该征文比赛的主题是 Opus 4.5 之后 AI 编码能力跃升带来的工程实践变化",
+    "共有 40 位工程师参与了该主题内容的讲述"
+   ],
+   "inferences": [
+    "由于主题限定在 Opus 4.5 之后，可以推断这些工程师分享的实践主要反映了近期 AI 编码工具升级带来的影响"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明 Opus 4.5 具体发布于何时，无法确认时间跨度",
+    "材料未提供这三个类别的具体名称",
+    "未说明“40位工程师”是全部参与者还是入选作品的作者"
+   ],
+   "key_points": [
+    "Pragmatic Engineer 举办征文比赛并揭晓了三个类别的获奖结果",
+    "比赛聚焦于 Opus 4.5 发布后 AI 编码能力提升对软件工程实践的具体影响"
+   ],
+   "rule_based": false
+  },
+  "e4d6cf1908896ad": {
+   "event_id": "e4d6cf1908896ad",
+   "title": "OpenAI 分享两位业余天文学家发现系外行星信号",
+   "facts": [
+    "两位业余天文学家 Kevin Bond 和 Ethan Byrd 各自独立发现了可能指向遥远恒星周围行星的信号。",
+    "Kevin Bond 使用 Codex 在公开的望远镜数据中搜寻由环绕行星引起的微小、周期性星光变暗。",
+    "Ethan Byrd 使用 Astra 在公开的望远镜数据中搜寻由环绕行星引起的微小、周期性星光变暗。",
+    "Kevin Bond 使用 Codex 构建程序，从 NASA 开普勒望远镜中检索约 10 万颗恒星的观测数据。",
+    "天琴座中有一颗恒星每 13.8 天变暗一次，其遮挡光量表明若为行星造成则直径约为地球的 2.4 倍。",
+    "SETI 研究所的一位天文学家独立发现了 Kevin Bond 标记出的信号，以及另一个信号。",
+    "Ethan Byrd 利用 Astra 搜索 NASA TESS 任务约 1900 万颗恒星的观测数据。",
+    "Ethan Byrd 的首轮筛选得到 49 个候选目标，其中最有希望的一个已提交给 NASA TESS 任务研究人员。"
+   ],
+   "inferences": [
+    "利用 AI 工具分析公开天文数据，使得不具备大型望远镜资源的业余人士能够参与天体发现。",
+    "SETI 研究所天文学家的独立发现，可能增强了对该系外行星信号真实性的验证。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "目前发现的信号仅代表可能存在行星，尚未被最终确认为系外行星。",
+    "材料仅描述 Ethan Byrd 为高中生，但两处材料对其身份的表述不完全一致。"
+   ],
+   "key_points": [
+    "两位天文爱好者分别使用 OpenAI 的 Codex 和 Astra 工具，在公开天文数据中发现了系外行星候选信号。",
+    "相关信号已获得 SETI 研究所及 NASA 科学家的关注，部分数据已提交用于进一步验证。"
+   ],
+   "rule_based": false
+  },
+  "ea463087967092a": {
+   "event_id": "ea463087967092a",
+   "title": "付费无法解决 ChatGPT 主要局限",
+   "facts": [
+    "Engadget 报道称，支付高级 ChatGPT 计划的费用无法保护用户免受该工具主要弱点的负面影响",
+    "该报道讨论了信任聊天机器人处理工作事项的含义"
+   ],
+   "inferences": [
+    "用户在使用 ChatGPT 处理工作时需保持警惕",
+    "付费订阅并未从根本上消除系统层面的缺陷"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "所谓的主要弱点具体是什么",
+    "信任聊天机器人处理工作的具体风险有哪些"
+   ],
+   "key_points": [
+    "付费无法消除 ChatGPT 的核心弱点",
+    "信任 AI 工具处理工作存在局限性",
+    "用户需重新评估对 AI 输出的依赖"
+   ],
+   "rule_based": false
+  },
+  "e5d9f9f8eb7be75": {
+   "event_id": "e5d9f9f8eb7be75",
+   "title": "头部公募调研热情高，AI算力链包揽热股前十",
+   "facts": [
+    "文章标题指出头部公募调研热情高",
+    "文章标题指出AI算力链包揽调研热股前十"
+   ],
+   "inferences": [
+    "基于标题表述，推测近期AI算力相关个股是头部公募基金的重点调研对象",
+    "推测头部公募对AI算力产业链的关注度较高"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料仅包含标题，未列出具体的调研热股名单",
+    "材料未说明“头部公募”具体指代哪些基金公司",
+    "材料未提供调研的具体时间范围或数量数据",
+    "材料未解释为何AI算力链能包揽前十"
+   ],
+   "key_points": [
+    "头部公募调研热度集中在AI算力链",
+    "AI算力链占据调研热股前十大席位"
+   ],
+   "rule_based": false
+  },
+  "e1e2a62a667073c": {
+   "event_id": "e1e2a62a667073c",
+   "title": "Thore Graepel 探讨基于不确定性推理的 AI 方法",
+   "facts": [
+    "Thore Graepel 是 Metis Reasoning 的 CEO 和联合创始人，同时是 UCL 的机器学习主席",
+    "Thore Graepel 在 TWIML AI 播客第 786 集中讨论了受 AlphaGo 启发的 AI 推理方法",
+    "Thore Graepel 认为可靠的推理需要显式的知识和不确定性表示",
+    "该系统中，语言模型用于生成假设和解释证据",
+    "该系统可以分解复杂问题、收集证据，并基于预期解决的不确定性选择下一步",
+    "这种推理策略与 agent harnesses 不同",
+    "在 agent harnesses 中，可能适用较小的模型和决策模型",
+    "知识和推理策略可以独立改进"
+   ],
+   "inferences": [
+    "基于 Thore Graepel 的观点，将推理策略与知识表示分离可能使系统组件能够独立优化和升级",
+    "该方法可能比依赖单一大语言模型端到端处理的方法更擅长处理复杂的多步推理任务，因为它是通过分解和基于不确定性的主动证据收集来实现的"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料中没有提供具体的量化指标或 Benchmark 来证明该方法在可靠性或准确性上优于其他方法",
+    "“较小的模型和决策模型”在 agent harnesses 中的具体架构或如何协同工作未在材料中详细说明",
+    "该方法在现实世界中的实际应用案例和部署效果材料中未提及"
+   ],
+   "key_points": [
+    "提出了由 Thore Graepel 开发的受 AlphaGo 启发的 AI 推理方法",
+    "核心原则是将推理建立在对知识和不确定性的显式表示之上，而非依赖单一的隐式模型",
+    "系统通过分解复杂问题，并根据解决不确定性所需的证据来决定下一步行动",
+    "强调了推理策略与知识表示可以独立改进的模块化设计",
+    "Thore Graepel 在节目中阐述了该方法与 agent harnesses 的差异"
+   ],
+   "rule_based": false
+  },
+  "e8ea677b7c03738": {
+   "event_id": "e8ea677b7c03738",
+   "title": "OpenRouter 开源权重模型支出占比升至 35%",
+   "facts": [
+    "OpenRouter 公布数据显示，开源权重模型占平台总支出的 35%。",
+    "开源权重模型支出占比相较 1 月份的 15% 有所上升。",
+    "当前支出领先的模型包括 DeepSeek（10%）、Moonshot AI（8%）、Zai（7%）、Qwen（2%）和 xAI（2%）。"
+   ],
+   "inferences": [
+    "根据数据变化趋势，推测开源权重模型在 OpenRouter 平台上的使用热度显著增加。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料中未说明 DeepSeek、Moonshot AI 等公司是否全部属于开源权重模型阵营，还是其中部分混合了闭源模型。",
+    "材料中未解释占比从 15% 升至 35% 的具体原因。",
+    "Zai 这一名称在 AI 领域非常罕见，无法确认其具体指代哪一家公司。"
+   ],
+   "key_points": [
+    "OpenRouter 平台开源权重模型支出占比升至 35%，较 1 月大幅上升。",
+    "DeepSeek 以 10% 的占比成为 OpenRouter 平台上最领先的开源权重模型。"
+   ],
+   "rule_based": false
+  },
+  "e81e70e212f17f7": {
+   "event_id": "e81e70e212f17f7",
+   "title": "Weave 正在招聘 ML、AI、产品与设计工程师",
+   "facts": [
+    "Weave 是一家 YC W25 公司。",
+    "Weave 正在招聘 ML、AI、产品与设计工程师。",
+    "该新闻在 Hacker News 上的票数为 0。",
+    "该新闻在 Hacker News 上的评论数为 0。"
+   ],
+   "inferences": [
+    "Weave 可能正在经历业务扩张或团队组建阶段，因此有招聘需求。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "Weave 的具体业务领域或产品类型未在材料中明确说明。",
+    "招聘的具体职位数量和岗位详情未在材料中提供。"
+   ],
+   "key_points": [
+    "YC W25 公司 Weave 启动多类别工程师招聘",
+    "该招聘信息在 Hacker News 上热度较低，无投票和评论"
+   ],
+   "rule_based": false
+  },
+  "ef0f7f0f2c2196c": {
+   "event_id": "ef0f7f0f2c2196c",
+   "title": "纽约时报建议自由摄影师不要更新 Photoshop",
+   "facts": [
+    "The New York Times 要求自由摄影师不要使用 Adobe Photoshop 的最新版本。",
+    "2027 年更新版本中的功能以用户可能无法察觉的方式使用了 AI。",
+    "The Verge 看到了一封邮件，该邮件被发布在 Threads 上。",
+    "The New York Times 的两位摄影主管 Meaghan Looram 和 Josh 参与了此事。"
+   ],
+   "inferences": [
+    "The New York Times 对 AI 在图像编辑软件中的应用持谨慎态度。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "邮件中提到的具体 AI 功能细节未在材料中完全列出。",
+    "Josh 的全名未在材料中提供。",
+    "该建议是否适用于所有使用 Photoshop 的摄影师而非仅限自由摄影师，材料中仅明确提及自由摄影师。"
+   ],
+   "key_points": [
+    "The New York Times 警告自由摄影师不要更新 Photoshop。",
+    "原因是 2027 年更新中的 AI 功能可能在不明显的情况下被使用。"
+   ],
+   "rule_based": false
+  },
+  "e517453c06948a4": {
+   "event_id": "e517453c06948a4",
+   "title": "CoreWeave 与 NEBIUS 盘前股价跌超 4%",
+   "facts": [
+    "CoreWeave 和 NEBIUS 在盘前交易时段下跌超过 4%",
+    "这两家公司被归类为新型 AI 云服务提供商"
+   ],
+   "inferences": [
+    "股价的大幅盘前下跌可能反映了市场对该类公司近期表现的担忧"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明下跌的具体原因",
+    "材料未提供具体的股价点位或成交量数据",
+    "缺乏关于其他同类 AI 云服务公司表现的对比信息"
+   ],
+   "key_points": [
+    "CoreWeave 和 NEBIUS 作为 AI 云赛道代表出现显著波动",
+    "盘前交易数据预示当日开盘可能面临压力"
+   ],
+   "rule_based": false
+  },
+  "ebeebfed657c3b5": {
+   "event_id": "ebeebfed657c3b5",
+   "title": "广州日报报道8个路演专场近半聚焦AI",
+   "facts": [
+    "广州日报发布了关于路演专场的报道。",
+    "报道内容涉及8个路演专场。",
+    "其中近半数路演专场锚定AI。"
+   ],
+   "inferences": [
+    "AI相关话题在该批路演专场中占据较大比重。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未提供这8个路演专场的具体主办方、举办时间或地点。",
+    "材料未说明“近半”的具体数值或比例。",
+    "材料未展示具体的AI路演内容或参与企业。"
+   ],
+   "key_points": [
+    "8个路演专场中约有一半与AI有关。",
+    "信息来源为广州日报。"
+   ],
+   "rule_based": false
+  },
+  "e8b53490ebae337": {
+   "event_id": "e8b53490ebae337",
+   "title": "Cloudera 发布跨 AI 与基础设施的数字主权平台",
+   "facts": [
+    "Cloudera Inc. 宣布推出一款名为 Cloudera for Digital Sovereignty 的数字化主权软件包。",
+    "该软件包旨在让组织无论工作负载在何处运行，都能保持对数据、人工智能模型和计算基础设施的控制。",
+    "该产品集成了公司的 Anywhere Cloud、Open Data Lakehouse 和 Unified Data Fabric 技术。",
+    "该产品还包含 open-weight AI models 和模型定制工具。"
+   ],
+   "inferences": [
+    "Cloudera 试图通过整合云、数据湖和技术与开源权重模型，为不同地区或行业提供符合数据合规性要求的一体化解决方案。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未提供该数字主权平台具体的发布日期，仅显示为当天宣布。",
+    "材料中省略号 [...] 部分包含的具体内容未显示，无法确认是否还有其他技术组件或合作伙伴。",
+    "关于“digital sovereignty”（数字主权）在该项目中具体定义的法律或合规边界未详细说明。"
+   ],
+   "key_points": [
+    "Cloudera 发布 Cloudera for Digital Sovereignty 软件包。",
+    "核心功能是无论工作负载位置如何，均允许组织控制数据、AI 模型及计算基础设施。",
+    "技术架构结合了 Anywhere Cloud、Open Data Lakehouse 和 Unified Data Fabric。",
+    "产品支持 open-weight AI models 及模型定制功能。"
+   ],
+   "rule_based": false
+  },
+  "e89eb73e8b95077": {
+   "event_id": "e89eb73e8b95077",
+   "title": "OpenAI 研究员 Noam Brown 建议优秀学生辍学",
+   "facts": [
+    "OpenAI 研究员 Noam Brown 呼吁有才华的学生辍学。",
+    "Noam Brown 表示当前不是「坐在一旁」的好时机。",
+    "Noam Brown 称 AI 仍处于「centaur period」，在 planning 和 self-correction 方面存在困难。",
+    "Noam Brown 预计 AI 很快会出现「very steep rate of progress」。",
+    "Noam Brown 称语言模型已被用于构建下一代模型。",
+    "Noam Brown 是 o1 的联合创始人。"
+   ],
+   "inferences": [
+    "基于 Noam Brown 对 AI 进展加速的预判，他认为留在学校（旁观者）可能不如直接投身 AI 领域更有利。"
+   ],
+   "opinions": [
+    "Noam Brown 认为辍学投身 AI 是当前对优秀学生更优的选择。"
+   ],
+   "uncertainties": [
+    "材料未提供「centaur period」的具体定义或持续时间。",
+    "材料未说明 Noam Brown 建议的具体辍学去向或后续职业规划。",
+    "材料未解释为何「非常陡峭的进步速率」会在「很快」到来，缺乏时间基准。"
+   ],
+   "key_points": [
+    "o1 联合创始人 Noam Brown 建议优秀学生辍学以应对 AI 的快速发展。",
+    "尽管 AI 在 planning 和 self-correction 上仍有不足，但 Noam Brown 认为进步将加速。",
+    "Noam Brown 指出语言模型正在参与构建下一代模型。"
+   ],
+   "rule_based": false
+  },
+  "e4f0abb17a2752f": {
+   "event_id": "e4f0abb17a2752f",
+   "title": "新浪财经报道顶尖AI学院采用古法教学",
+   "facts": [
+    "新浪财经发布了关于顶尖AI学院使用古法教学的新闻"
+   ],
+   "inferences": [
+    "该报道暗示某些顶尖AI教育机构可能依赖传统或非前沿的教学方法"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "“古法教学”的具体定义不明，材料未说明是指纯文本学习还是排除其他技术",
+    "材料未指明具体的“顶尖AI学院”名称",
+    "材料内容极为简略，未提供关于该教学方法的背景、效果或争议细节"
+   ],
+   "key_points": [
+    "来源仅为新浪财经的一则简短报道",
+    "核心概念为“古法教学”应用于AI学院",
+    "缺乏实质性事实支撑，多为标题党或极短讯"
+   ],
+   "rule_based": false
+  },
+  "eb48af41033c192": {
+   "event_id": "eb48af41033c192",
+   "title": "Novartis CEO称AI将缩短新药研发四年",
+   "facts": [
+    "Novartis CEO Vas Narasimhan 兼任 Anthropic 董事。",
+    "Vas Narasimhan 认为 AI 将加速药物开发，但不会在十年内战胜癌症。",
+    "Vas Narasimhan 认为 AI 的实际价值在于‘中间某个位置’。",
+    "Vas Narasimhan 反驳了 Anthropic CEO Amodei 和 DeepMind 创始人 Hassabis 关于 AI 治愈所有疾病的承诺。"
+   ],
+   "inferences": [
+    "Vas Narasimhan 对当前部分科技领袖宣称 AI 能彻底治愈所有疾病的观点持保留态度，认为其过于乐观。",
+    "结合‘缩短四年’的具体说法，推断 Vas Narasimhan 认为 AI 对新药研发周期的具体贡献是量化的时间缩减而非革命性的全能治愈。"
+   ],
+   "opinions": [
+    "Vas Narasimhan 认为 AI 的价值并非‘治愈所有疾病’，而是处于‘中间某个位置’的评价。",
+    "Vas Narasimhan 对 Anthropic CEO Amodei 和 DeepMind 创始人 Hassabis 的‘治愈所有疾病’承诺进行了反驳。"
+   ],
+   "uncertainties": [
+    "材料未明确说明‘中间某个位置’具体指代药物研发流程中的哪些环节或具体的时间跨度范围（除了标题提及的四年外，正文未重复该数字的具体归属）。",
+    "材料未提供 AI 缩短新药研发时间基于何种具体的临床试验数据或统计模型支撑。"
+   ],
+   "key_points": [
+    "Novartis CEO Vas Narasimhan 指出 AI 将缩短新药研发时间，但否认其能在十年内治愈癌症。",
+    "Vas Narasimhan 作为 Anthropic 董事，公开反驳了同行关于 AI 能治愈所有疾病的过度承诺。",
+    "Vas Narasimhan 主张 AI 在医疗领域的价值在于加速研发而非实现全能治愈的中间定位。"
+   ],
+   "rule_based": false
+  },
+  "eafb03104389a1e": {
+   "event_id": "eafb03104389a1e",
+   "title": "David Fincher 新片 Cliff Booth 因疑似用 AI 遭质疑",
+   "facts": [
+    "David Fincher 执导、Brad Pitt 主演的 Netflix 电影《The Further Mis-Adventures of Cliff Booth》在 11 月 25 日首映前的试映中引发关注。",
+    "观众质疑该片大量使用生成式 AI。",
+    "有观点认为电影中存在令人毛骨悚然且不一致的视觉画面。"
+   ],
+   "inferences": [
+    "基于观众对视觉异常的描述，推断质疑者认为这些画面可能是生成式 AI 的产物。"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "电影是否实际使用了生成式 AI 尚未有官方定论。",
+    "质疑的具体视觉细节未在材料中完整列出。"
+   ],
+   "key_points": [
+    "David Fincher 新片《The Further Mis-Adventures of Cliff Booth》试映后遭遇 AI 使用争议。",
+    "主要争议点在于影片视觉画面存在的不一致性与诡异感。"
+   ],
+   "rule_based": false
+  },
+  "e594e7ff224f32b": {
+   "event_id": "e594e7ff224f32b",
+   "title": "OpenClaw 发布 ShellBench 基准评测结果",
+   "facts": [
+    "OpenClaw 发布了 ShellBench 基准",
+    "ShellBench 包含 100 个真实世界任务",
+    "评测涉及 12 个模型和 5 种 harness",
+    "共进行 53,100 次评分运行",
+    "最强的 AI 智能体在约十分之四的日常任务上失败",
+    "最高得分为 62.5%",
+    "三次尝试全部通过的比例为 48.8%",
+    "开源 harness 的表现与商业 harness 相当"
+   ],
+   "inferences": [
+    "当前最强的 AI 智能体在处理部分日常任务时仍存在较高失败率"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料中未明确列出参与评测的具体模型名称",
+    "材料中未定义 5 种 harness 的具体种类",
+    "“真实世界任务”的具体定义和来源未在材料中说明"
+   ],
+   "key_points": [
+    "OpenClaw 发布 ShellBench 基准，覆盖 100 个真实世界任务",
+    "12 个模型在 53,100 次运行中，最佳成绩为 62.5%",
+    "最强 AI 智能体约四成任务失败，开源 harness 表现不落下风"
+   ],
+   "rule_based": false
+  },
+  "ee6d0d91dcd64d2": {
+   "event_id": "ee6d0d91dcd64d2",
+   "title": "Jensen Huang深伪视频泛滥，Nvidia CEO向员工致歉",
+   "facts": [
+    "一段Jensen Huang在Ibiza俱乐部跳舞的视频在Instagram上获得近600万次浏览",
+    "视频中Jensen Huang手持香槟，身穿标志性的黑色皮夹克",
+    "视频后半段出现名为Alice Huang的中国科技高管",
+    "材料将Jensen Huang称为Nvidia的前CEO",
+    "Jensen Huang在回归后的首次全员会议上向Nvidia员工致歉",
+    "Jensen Huang在会议上谈论了个人生活并为其重新任职进行了辩护",
+    "Jensen Huang承认其严厉的管理风格伤害了员工"
+   ],
+   "inferences": [
+    "材料1称Jensen Huang为“回归”后的会议，暗示他之前曾离开CEO职位或公司核心管理层",
+    "Alice Huang在视频中的出现可能暗示了某种间谍或敌对情节，因材料2称其为“suspected spy”",
+    "“AI slop”一词暗示这些视频可能是由AI生成的虚假内容或低质量合成媒体"
+   ],
+   "opinions": [
+    "The Verge 将此类视频描述为“hot new AI slop”，表达了对当前AI生成内容泛滥现象的负面评价"
+   ],
+   "uncertainties": [
+    "该Ibiza俱乐部视频是否由AI生成（deepfake）尚不明确，材料仅提及deepfake概念及视频存在",
+    "Alice Huang与Jensen Huang视频出现的具体关联及背景故事被截断，无法确认完整情节",
+    "材料1中“return”和“reinstatement”的具体原因及时间线未在材料中详细说明",
+    "Nvidia员工对Jensen Huang致歉的具体反应未提供"
+   ],
+   "key_points": [
+    "社交媒体上出现Jensen Huang在Ibiza俱乐部跳舞的疑似深伪视频，引发关注",
+    "Nvidia CEO Jensen Huang在回归后的首次全员会议上向员工道歉，承认管理方式问题",
+    "两则新闻反映了Jensen Huang近期的高关注度及其引发的AI内容争议"
+   ],
+   "rule_based": false
+  },
+  "e6869395de158f3": {
+   "event_id": "e6869395de158f3",
+   "title": "新浪财经发布关于AI调色师的文章",
+   "facts": [
+    "新浪财经发布了标题为AI“调色师”，调出数智化出彩新路的文章",
+    "该文章发布时间为北京时间2026年11月25日00:53",
+    "文章来源标注为api:news-google-com-search"
+   ],
+   "inferences": [
+    "该文章可能探讨了人工智能在数字智能化领域的应用或创新路径"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "AI“调色师”具体指代哪项技术或产品不明确",
+    "“数智化出彩新路”的具体内涵和案例缺失",
+    "除标题外，文章正文内容未提供，无法获取更多事实细节"
+   ],
+   "key_points": [
+    "文章由新浪财经发布",
+    "主题涉及AI技术与数智化转型"
+   ],
+   "rule_based": false
+  },
+  "e3cbb02e1a108e1": {
+   "event_id": "e3cbb02e1a108e1",
+   "title": "Grok 通过 AAA 会员资格帮用户节省 80 美元",
+   "facts": [
+    "Grok 找到了 AAA 的报价",
+    "Grok 从用户的邮件中确认了其 AAA 会员身份",
+    "Grok 通知用户节省了 80 美元",
+    "该用户通过 Grok 节省了 80 美元的酒店费用"
+   ],
+   "inferences": [
+    "推断：Grok 可能通过比价或识别用户资格，将原本较高的酒店价格调整为 AAA 会员价格"
+   ],
+   "opinions": [],
+   "uncertainties": [
+    "材料未说明具体的酒店名称或地点",
+    "材料未说明 80 美元是折扣金额还是最终支付总额",
+    "材料未说明 AAA 会员资格的验证过程是否完全自动化"
+   ],
+   "key_points": [
+    "Grok 能够执行多步骤任务：搜索价格、读取邮件、验证资格、计算节省金额",
+    "展示了 Grok 在处理个性化会员优惠方面的实用性"
+   ],
+   "rule_based": false
+  }
+ },
+ "factcheck": {
+  "ok": true,
+  "checked_events": 119,
+  "checked_urls": 161,
+  "violations": 0,
+  "by_kind": {}
+ }
+}

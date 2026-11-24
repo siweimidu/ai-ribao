@@ -1,50 +1,49 @@
 {
-  "generated_at": "2026-11-24T12:13:31.679753+00:00",
+  "generated_at": "2026-11-24T21:30:46.468333+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 332,
-  "batches": 10,
-  "calls": 10,
-  "merged_groups": 9,
-  "merged_events": 13,
-  "rejected_groups": 2,
+  "input_events": 136,
+  "batches": 4,
+  "calls": 4,
+  "merged_groups": 6,
+  "merged_events": 8,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "报名从速｜来MEET2027！听AI前沿实践者交出“判断” - 智源社区",
+      "kept": "OpenAI 发布 preprint：湿实验验证 GPT-6 系列模型具备内在蛋白质设计能力",
       "merged": [
-        "报名从速｜来MEET2027！听AI前沿实践者交出“判断”"
+        "OpenAI 与研究伙伴 Onava 实验室验证 GPT-6.2 蛋白设计，322 个蛋白中 35 个显示结合证据"
       ],
-      "why": "都是 MEET2027 活动报名"
+      "why": "都是OpenAI发布GPT-6系列蛋白质设计验证研究"
     },
     {
-      "kept": "黄仁勋杀回英伟达，董事会全票同意！老黄：迫不及待投入工作",
+      "kept": "NEW: Three of xAI's founding members, Guodong Zhang, Zihang Dai, and Manuel Kroi",
       "merged": [
-        "黄仁勋官复原职：英伟达董事会一周内戏剧性逆转，股价应声大涨 31%"
+        "xAI三名元老创办Epochal押注AI预测 称“超人类水平的预测将重塑几乎所有行业” - 财联社电报"
       ],
-      "why": "均为黄仁勋重返英伟达董事会"
+      "why": "都是xAI三名元老创办Epochal公司"
     },
     {
-      "kept": "OpenAI 在 ChatGPT 上线日常对话版 GPT-6.2 Sol",
+      "kept": "Claude Desktop 应用安装功能进入 Beta，免打包签名和 API key",
       "merged": [
-        "ChatGPT 宣布 12 月 23 日下线 GPT-5.6 Sol 与 Terra"
+        "Claude artifacts 现已支持在 Mac 和 Windows 上安装为桌面应用"
       ],
-      "why": "均为OpenAI调整ChatGPT中GPT模型版本"
+      "why": "都是Claude Desktop应用安装功能Beta"
     },
     {
-      "kept": "Huang reinstatement came at Trump’s behest",
+      "kept": "Anthropic 股价跌破 83 美元 IPO 发行价，上市不到一周最低跌至 76 美元",
       "merged": [
-        "Everything That Led to Nvidia CEO Jensen Huang’s Return",
-        "Investigation of Polymarket Insider Trading on the Reinstate"
+        "Anthropic暴跌14%破发！创始人套现逾5.6亿美元，黄仁勋回归加剧AI路线之争 - Sohu"
       ],
-      "why": "均为黄仁勋复职相关报道"
+      "why": "都是Anthropic股价跌破IPO发行价"
     },
     {
-      "kept": "ChatGPT 推出面向日常对话优化的 GPT-6.2 Sol",
+      "kept": "Utah drops criminal charges against Kalshi founders after company suspended oper",
       "merged": [
-        "OpenAI 宣布 GPT-6.2 Sol 登陆 ChatGPT，GPT-5.6 Sol 与 Terra 将于 12 月"
+        "Kalshi daily volume of ‘perps’ trading begins to top its pre"
       ],
-      "why": "GPT-6.2 Sol 模型发布报道"
+      "why": "均涉及 Kalshi 在犹他州的业务状态与交易动态"
     }
   ]
 }
