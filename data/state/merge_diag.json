@@ -1,52 +1,51 @@
 {
-  "generated_at": "2026-11-24T01:49:04.428927+00:00",
+  "generated_at": "2026-11-24T04:13:32.239439+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 232,
-  "batches": 7,
-  "calls": 7,
-  "merged_groups": 9,
-  "merged_events": 12,
-  "rejected_groups": 1,
+  "input_events": 270,
+  "batches": 8,
+  "calls": 8,
+  "merged_groups": 6,
+  "merged_events": 9,
+  "rejected_groups": 4,
   "failed": false,
   "examples": [
     {
-      "kept": "Anthropic Launches Claude Ship for GitHub Pull Request Review and Fixes",
+      "kept": "蚂蚁阿福发布新版App：实时视频看健康，升级AI健康管家",
       "merged": [
-        "Anthropic 推出 Claude Ship beta，自动审查并按策略审批 PR",
-        "Anthropic 发布 Claude Ship，让 AI Agent 审查、修复并审批代码变更",
-        "Anthropic 推出 Claude Ship 测试版：AI 自动完成代码审查、修复与批准"
+        "说不清的症状，拍给 AI 看：蚂蚁阿福升级实时视频问诊"
       ],
-      "why": "均报道 Anthropic 推出 Claude Ship 功能"
+      "why": "都是蚂蚁阿福新版 App 实时视频问诊发布"
+    },
+    {
+      "kept": "AI“大到不能倒”？黄仁勋回归触发史诗级机械买盘，野村提醒风险犹存！ - 财联社",
+      "merged": [
+        "黄仁勋复职催化AI硬件链 罗博特科领涨港股光通信和PCB股 - 财联社"
+      ],
+      "why": "均为黄仁勋复职及引发AI板块行情报道"
+    },
+    {
+      "kept": "一句提示词造一个“灾情”：公安部网安局公布 10 起 AI 造谣典型案",
+      "merged": [
+        "公安部网安局公布使用AI工具编造传播网络谣言10起典型案例 - 新湖南"
+      ],
+      "why": "均为公安部网安局公布10起AI造谣典型案例"
+    },
+    {
+      "kept": "Huang reinstatement came at Trump’s behest",
+      "merged": [
+        "Huang's Return Is the Biggest National Security Scandal in U"
+      ],
+      "why": "都报道黄仁宇被重新启用/回归的相关争议"
     },
     {
       "kept": "俄勒冈州和弗吉尼亚州起诉 SpaceX 指控 Grok 生成色情深伪防护不足",
       "merged": [
-        "多州起诉 SpaceX，要求阻止 Grok 生成儿童性虐待图像和复仇式色情内容",
-        "美国弗吉尼亚州和俄勒冈州起诉 SpaceX，指控 Grok 生成儿童性虐待图像"
+        "美国弗吉尼亚州和俄勒冈州起诉 SpaceX，指控 Grok 生成儿童性虐待图像",
+        "States sue SpaceX to stop Grok from generating child sex ima",
+        "Oregon and Virginia sue SpaceX over Grok’s porn deepfakes"
       ],
-      "why": "均报道俄勒冈州和弗吉尼亚州起诉 SpaceX"
-    },
-    {
-      "kept": "OpenAI 推出 OpenWorks 资助计划",
-      "merged": [
-        "OpenAI 推出 OpenWorks，资助专家免费帮美国小企业用 AI"
-      ],
-      "why": "均报道 OpenAI 推出 OpenWorks 计划"
-    },
-    {
-      "kept": "Anthropic 开放企业安全功能 EFS 公测，数据存企业自有云存储",
-      "merged": [
-        "不再强制留存！Anthropic推出EFS系统，允许企业自主掌控AI数据 - 华尔街见闻"
-      ],
-      "why": "均为 Anthropic 推出 EFS 企业数据安全功能"
-    },
-    {
-      "kept": "Anthropic softens its data retention policy for Mythos and Fable model use",
-      "merged": [
-        "Anthropic 开放企业安全功能 EFS 公测，数据存企业自有云存储"
-      ],
-      "why": "均报道 Anthropic 调整数据留存政策及推出 EFS"
+      "why": "都报道俄勒冈州和弗吉尼亚州起诉SpaceX关于Grok"
     }
   ]
 }
