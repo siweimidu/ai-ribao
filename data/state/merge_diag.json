@@ -1,51 +1,52 @@
 {
-  "generated_at": "2026-11-25T12:27:37.809348+00:00",
+  "generated_at": "2026-11-25T13:02:52.576115+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 366,
-  "batches": 10,
-  "calls": 10,
-  "merged_groups": 10,
-  "merged_events": 12,
-  "rejected_groups": 1,
+  "input_events": 386,
+  "batches": 11,
+  "calls": 11,
+  "merged_groups": 14,
+  "merged_events": 17,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "Meta brings its Muse AI assistant directly into Instagram DMs",
+      "kept": "Tidal will start banning AI-generated music next month",
       "merged": [
-        "Walmart teams up with Meta to bring Black Friday deals to AI",
-        "AI智能体来“买买买”！沃尔玛接入Meta Muse 并为AI代购划定边界 - 财联社"
+        "NEW: Music platform Tidal is pulling all fully AI-made songs",
+        "Tidal announces ban on AI-generated music; 27 million tracks",
+        "Tidal bans AI-generated music",
+        "Tidal to ban and remove millions of AI-generated tracks as A"
       ],
-      "why": "都是 Meta 与 Walmart 合作接入 AI 助手 Muse 的报道"
+      "why": "都是 Tidal 宣布禁止/删除 AI 生成音乐的同一事件"
     },
     {
       "kept": "阿里千问 Go 全面开放免费代打电话服务，支持订餐厅、找快递、寻失物",
       "merged": [
         "千问Go全面开放AI代打电话服务，支持预约、查询及定时外呼"
       ],
-      "why": "都是阿里千问 Go 开放 AI 代打电话服务的消息"
+      "why": "都是阿里千问 Go 开放 AI 代打电话服务"
     },
     {
       "kept": "字节跳动开源异步强化学习后训练框架 Laminar",
       "merged": [
         "ByteDance Researchers Open-Sources Laminar, an Async Reinfor"
       ],
-      "why": "都是字节跳动开源 Laminar 强化学习框架的消息"
+      "why": "都是字节跳动开源异步强化学习后训练框架 Laminar"
     },
     {
-      "kept": "[AINews] Gemini 4 Neon marks GDM's full return as a Frontier Lab",
+      "kept": "GTA 6 cloud streaming comes to PS5 and PlayStation Portal",
       "merged": [
-        "Gemini 4 Neon登顶LiveBench！长流程榜甩开Claude和GPT",
-        "Perplexity 内 Gemini 4 Neon 周二消耗 44.52B tokens，超周一全天 23.5%"
+        "Desperate gamers are trying bring GTA 6 to PCs and break fre"
       ],
-      "why": "均涉及 Gemini 4 Neon 的性能登顶与高消耗热度"
+      "why": "均涉及GTA 6平台与性能讨论"
     },
     {
-      "kept": "Ternary Bonsai 2.5 27B",
+      "kept": "The Riemann Hypothesis Proof as a Mediaeval Fantasy RPG Map",
       "merged": [
-        "PrismML 发布 Ternary Bonsai 2.5 27B：约 1/9 体积保留 93.7% 编程能力，手机电脑"
+        "What's going on with the Riemann hypothesis?"
       ],
-      "why": "都是 PrismML 发布 Ternary Bonsai 2.5 27B 模型"
+      "why": "均讨论黎曼猜想"
     }
   ]
 }
