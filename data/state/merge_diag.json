@@ -1,52 +1,21 @@
 {
-  "generated_at": "2026-11-25T13:02:52.576115+00:00",
+  "generated_at": "2026-11-25T20:14:06.235331+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 386,
-  "batches": 11,
-  "calls": 11,
-  "merged_groups": 14,
-  "merged_events": 17,
+  "input_events": 110,
+  "batches": 3,
+  "calls": 3,
+  "merged_groups": 1,
+  "merged_events": 1,
   "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "Tidal will start banning AI-generated music next month",
+      "kept": "高盛策略师称美股还未到抄底时机 AI投资回报仍是市场焦点 - 新浪财经",
       "merged": [
-        "NEW: Music platform Tidal is pulling all fully AI-made songs",
-        "Tidal announces ban on AI-generated music; 27 million tracks",
-        "Tidal bans AI-generated music",
-        "Tidal to ban and remove millions of AI-generated tracks as A"
+        "03:42:29【高盛称美股还未到抄底时机 AI投资回报仍是市场焦点】 - 财联社"
       ],
-      "why": "都是 Tidal 宣布禁止/删除 AI 生成音乐的同一事件"
-    },
-    {
-      "kept": "阿里千问 Go 全面开放免费代打电话服务，支持订餐厅、找快递、寻失物",
-      "merged": [
-        "千问Go全面开放AI代打电话服务，支持预约、查询及定时外呼"
-      ],
-      "why": "都是阿里千问 Go 开放 AI 代打电话服务"
-    },
-    {
-      "kept": "字节跳动开源异步强化学习后训练框架 Laminar",
-      "merged": [
-        "ByteDance Researchers Open-Sources Laminar, an Async Reinfor"
-      ],
-      "why": "都是字节跳动开源异步强化学习后训练框架 Laminar"
-    },
-    {
-      "kept": "GTA 6 cloud streaming comes to PS5 and PlayStation Portal",
-      "merged": [
-        "Desperate gamers are trying bring GTA 6 to PCs and break fre"
-      ],
-      "why": "均涉及GTA 6平台与性能讨论"
-    },
-    {
-      "kept": "The Riemann Hypothesis Proof as a Mediaeval Fantasy RPG Map",
-      "merged": [
-        "What's going on with the Riemann hypothesis?"
-      ],
-      "why": "均讨论黎曼猜想"
+      "why": "都是高盛称美股未到抄底时机且AI投资回报是焦点"
     }
   ]
 }
