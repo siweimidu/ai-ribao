@@ -1,49 +1,35 @@
 {
-  "generated_at": "2026-11-24T21:30:46.468333+00:00",
+  "generated_at": "2026-11-25T03:12:01.601718+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 136,
-  "batches": 4,
-  "calls": 4,
-  "merged_groups": 6,
-  "merged_events": 8,
-  "rejected_groups": 1,
+  "input_events": 295,
+  "batches": 9,
+  "calls": 9,
+  "merged_groups": 3,
+  "merged_events": 4,
+  "rejected_groups": 3,
   "failed": false,
   "examples": [
     {
-      "kept": "OpenAI 发布 preprint：湿实验验证 GPT-6 系列模型具备内在蛋白质设计能力",
+      "kept": "Maple 融资 530 万美元，打造连自己都无法访问用户数据的 AI 产品",
       "merged": [
-        "OpenAI 与研究伙伴 Onava 实验室验证 GPT-6.2 蛋白设计，322 个蛋白中 35 个显示结合证据"
+        "Maple raises $5.3M to build AI products that protect your da"
       ],
-      "why": "都是OpenAI发布GPT-6系列蛋白质设计验证研究"
+      "why": "同一笔 Maple 融资 530 万美元"
     },
     {
-      "kept": "NEW: Three of xAI's founding members, Guodong Zhang, Zihang Dai, and Manuel Kroi",
+      "kept": "Tidal will start banning AI-generated music next month",
       "merged": [
-        "xAI三名元老创办Epochal押注AI预测 称“超人类水平的预测将重塑几乎所有行业” - 财联社电报"
+        "Tidal 宣布 12 月 9 日起下架纯 AI 生成音乐，年底预计删除超 2900 万首歌曲"
       ],
-      "why": "都是xAI三名元老创办Epochal公司"
+      "why": "同一件事 Tidal 封禁 AI 音乐"
     },
     {
-      "kept": "Claude Desktop 应用安装功能进入 Beta，免打包签名和 API key",
+      "kept": "OpenCode Go 订阅用户可低价用 Kimi",
       "merged": [
-        "Claude artifacts 现已支持在 Mac 和 Windows 上安装为桌面应用"
+        "OpenCode 宣布 HungerG 模型本周向 Go 订阅用户免费开放"
       ],
-      "why": "都是Claude Desktop应用安装功能Beta"
-    },
-    {
-      "kept": "Anthropic 股价跌破 83 美元 IPO 发行价，上市不到一周最低跌至 76 美元",
-      "merged": [
-        "Anthropic暴跌14%破发！创始人套现逾5.6亿美元，黄仁勋回归加剧AI路线之争 - Sohu"
-      ],
-      "why": "都是Anthropic股价跌破IPO发行价"
-    },
-    {
-      "kept": "Utah drops criminal charges against Kalshi founders after company suspended oper",
-      "merged": [
-        "Kalshi daily volume of ‘perps’ trading begins to top its pre"
-      ],
-      "why": "均涉及 Kalshi 在犹他州的业务状态与交易动态"
+      "why": "OpenCode 订阅用户用 Kimi/HungerG"
     }
   ]
 }
