@@ -1,49 +1,51 @@
 {
-  "generated_at": "2026-11-25T04:13:06.193911+00:00",
+  "generated_at": "2026-11-25T12:27:37.809348+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 213,
-  "batches": 7,
-  "calls": 7,
-  "merged_groups": 5,
-  "merged_events": 7,
-  "rejected_groups": 2,
+  "input_events": 366,
+  "batches": 10,
+  "calls": 10,
+  "merged_groups": 10,
+  "merged_events": 12,
+  "rejected_groups": 1,
   "failed": false,
   "examples": [
     {
-      "kept": "百度开源文心 5.5 Flash Preview正式开源，用 MoE 架构重塑“大参数、小激活”的性价比标杆",
+      "kept": "Meta brings its Muse AI assistant directly into Instagram DMs",
       "merged": [
-        "2026-11-25 AI 日报 · GPT-6 展露蛋白质设计能力，文心 5.5 Flash Preview 开源"
+        "Walmart teams up with Meta to bring Black Friday deals to AI",
+        "AI智能体来“买买买”！沃尔玛接入Meta Muse 并为AI代购划定边界 - 财联社"
       ],
-      "why": "均为百度文心 5.5 Flash Preview 开源相关报道"
+      "why": "都是 Meta 与 Walmart 合作接入 AI 助手 Muse 的报道"
     },
     {
-      "kept": "商汤发布并开源 SenseNova U1.6",
+      "kept": "阿里千问 Go 全面开放免费代打电话服务，支持订餐厅、找快递、寻失物",
       "merged": [
-        "AI日报：商汤开源SenseNova U1.6；GPT-6.2 Sol 全量登陆 ChatGPT；Anthropic推出"
+        "千问Go全面开放AI代打电话服务，支持预约、查询及定时外呼"
       ],
-      "why": "均为商汤 SenseNova U1.6 开源相关报道"
+      "why": "都是阿里千问 Go 开放 AI 代打电话服务的消息"
     },
     {
-      "kept": "Tidal will start banning AI-generated music next month",
+      "kept": "字节跳动开源异步强化学习后训练框架 Laminar",
       "merged": [
-        "Tidal 宣布 12 月 9 日起下架纯 AI 生成音乐，年底预计删除超 2900 万首歌曲"
+        "ByteDance Researchers Open-Sources Laminar, an Async Reinfor"
       ],
-      "why": "均报道 Tidal 宣布下架 AI 生成音乐"
+      "why": "都是字节跳动开源 Laminar 强化学习框架的消息"
     },
     {
-      "kept": "腾讯混元发布并开源Hy MT3",
+      "kept": "[AINews] Gemini 4 Neon marks GDM's full return as a Frontier Lab",
       "merged": [
-        "腾讯混元发布并开源第三代翻译模型 Hy MT3"
+        "Gemini 4 Neon登顶LiveBench！长流程榜甩开Claude和GPT",
+        "Perplexity 内 Gemini 4 Neon 周二消耗 44.52B tokens，超周一全天 23.5%"
       ],
-      "why": "均报道腾讯混元发布开源 Hy MT3 翻译模型"
+      "why": "均涉及 Gemini 4 Neon 的性能登顶与高消耗热度"
     },
     {
-      "kept": "GTA 6 cloud streaming comes to PS5 and PlayStation Portal",
+      "kept": "Ternary Bonsai 2.5 27B",
       "merged": [
-        "Desperate gamers are trying bring GTA 6 to PCs and break fre"
+        "PrismML 发布 Ternary Bonsai 2.5 27B：约 1/9 体积保留 93.7% 编程能力，手机电脑"
       ],
-      "why": "均报道GTA 6在PC端的流媒体/运行体验优化"
+      "why": "都是 PrismML 发布 Ternary Bonsai 2.5 27B 模型"
     }
   ]
 }
