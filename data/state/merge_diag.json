@@ -1,35 +1,50 @@
 {
-  "generated_at": "2026-11-25T03:12:01.601718+00:00",
+  "generated_at": "2026-11-25T03:22:06.306115+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 295,
-  "batches": 9,
-  "calls": 9,
-  "merged_groups": 3,
-  "merged_events": 4,
-  "rejected_groups": 3,
+  "input_events": 286,
+  "batches": 8,
+  "calls": 8,
+  "merged_groups": 5,
+  "merged_events": 8,
+  "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "Maple 融资 530 万美元，打造连自己都无法访问用户数据的 AI 产品",
+      "kept": "Ed Zitron 分析 NVIDIA 董事会恢复黄仁勋 CEO 职位背后的行业流动性风险",
       "merged": [
-        "Maple raises $5.3M to build AI products that protect your da"
+        "耶鲁学者Sonnenfeld：Nvidia董事会恢复黄仁勋职务或面临诉讼风险",
+        "Congress scrutinizes Jensen Huang’s return to Nvidia as Mega"
       ],
-      "why": "同一笔 Maple 融资 530 万美元"
+      "why": "都报道Nvidia董事会恢复黄仁勋CEO职位及相关争议"
     },
     {
-      "kept": "Tidal will start banning AI-generated music next month",
+      "kept": "GPT-6.2 Astra 用 22 分钟破解 1808 年素描画作者之谜",
       "merged": [
-        "Tidal 宣布 12 月 9 日起下架纯 AI 生成音乐，年底预计删除超 2900 万首歌曲"
+        "Greg Brockman 称赞 GPT-6.2 Astra 的 3D 表现"
       ],
-      "why": "同一件事 Tidal 封禁 AI 音乐"
+      "why": "都关于GPT-6.2 Astra模型的性能表现展示"
     },
     {
-      "kept": "OpenCode Go 订阅用户可低价用 Kimi",
+      "kept": "戴尔Q3业绩大幅超预期 AI服务器营收同比暴涨291% - 财联社",
       "merged": [
-        "OpenCode 宣布 HungerG 模型本周向 Go 订阅用户免费开放"
+        "戴尔Q3营收549.4亿美元超预期 AI服务器指引上调至780亿美元 - 观点网"
       ],
-      "why": "OpenCode 订阅用户用 Kimi/HungerG"
+      "why": "均为戴尔Q3财报及AI服务器营收暴涨"
+    },
+    {
+      "kept": "Jensen Huang’s Return Shows Nvidia Is Too Big to Police",
+      "merged": [
+        "Jensen Huang's Nvidia return shows the U.S.-China AI race is"
+      ],
+      "why": "均报道黄仁勋复出及Nvidia相关影响"
+    },
+    {
+      "kept": "腾讯混元发布并开源Hy MT3",
+      "merged": [
+        "混元会是腾讯AI的大结果吗 - 21财经"
+      ],
+      "why": "都报道腾讯混元发布开源 Hy MT3 模型"
     }
   ]
 }
