@@ -1,50 +1,49 @@
 {
-  "generated_at": "2026-11-25T03:22:06.306115+00:00",
+  "generated_at": "2026-11-25T04:13:06.193911+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 286,
-  "batches": 8,
-  "calls": 8,
+  "input_events": 213,
+  "batches": 7,
+  "calls": 7,
   "merged_groups": 5,
-  "merged_events": 8,
+  "merged_events": 7,
   "rejected_groups": 2,
   "failed": false,
   "examples": [
     {
-      "kept": "Ed Zitron 分析 NVIDIA 董事会恢复黄仁勋 CEO 职位背后的行业流动性风险",
+      "kept": "百度开源文心 5.5 Flash Preview正式开源，用 MoE 架构重塑“大参数、小激活”的性价比标杆",
       "merged": [
-        "耶鲁学者Sonnenfeld：Nvidia董事会恢复黄仁勋职务或面临诉讼风险",
-        "Congress scrutinizes Jensen Huang’s return to Nvidia as Mega"
+        "2026-11-25 AI 日报 · GPT-6 展露蛋白质设计能力，文心 5.5 Flash Preview 开源"
       ],
-      "why": "都报道Nvidia董事会恢复黄仁勋CEO职位及相关争议"
+      "why": "均为百度文心 5.5 Flash Preview 开源相关报道"
     },
     {
-      "kept": "GPT-6.2 Astra 用 22 分钟破解 1808 年素描画作者之谜",
+      "kept": "商汤发布并开源 SenseNova U1.6",
       "merged": [
-        "Greg Brockman 称赞 GPT-6.2 Astra 的 3D 表现"
+        "AI日报：商汤开源SenseNova U1.6；GPT-6.2 Sol 全量登陆 ChatGPT；Anthropic推出"
       ],
-      "why": "都关于GPT-6.2 Astra模型的性能表现展示"
+      "why": "均为商汤 SenseNova U1.6 开源相关报道"
     },
     {
-      "kept": "戴尔Q3业绩大幅超预期 AI服务器营收同比暴涨291% - 财联社",
+      "kept": "Tidal will start banning AI-generated music next month",
       "merged": [
-        "戴尔Q3营收549.4亿美元超预期 AI服务器指引上调至780亿美元 - 观点网"
+        "Tidal 宣布 12 月 9 日起下架纯 AI 生成音乐，年底预计删除超 2900 万首歌曲"
       ],
-      "why": "均为戴尔Q3财报及AI服务器营收暴涨"
-    },
-    {
-      "kept": "Jensen Huang’s Return Shows Nvidia Is Too Big to Police",
-      "merged": [
-        "Jensen Huang's Nvidia return shows the U.S.-China AI race is"
-      ],
-      "why": "均报道黄仁勋复出及Nvidia相关影响"
+      "why": "均报道 Tidal 宣布下架 AI 生成音乐"
     },
     {
       "kept": "腾讯混元发布并开源Hy MT3",
       "merged": [
-        "混元会是腾讯AI的大结果吗 - 21财经"
+        "腾讯混元发布并开源第三代翻译模型 Hy MT3"
       ],
-      "why": "都报道腾讯混元发布开源 Hy MT3 模型"
+      "why": "均报道腾讯混元发布开源 Hy MT3 翻译模型"
+    },
+    {
+      "kept": "GTA 6 cloud streaming comes to PS5 and PlayStation Portal",
+      "merged": [
+        "Desperate gamers are trying bring GTA 6 to PCs and break fre"
+      ],
+      "why": "均报道GTA 6在PC端的流媒体/运行体验优化"
     }
   ]
 }
