@@ -1,50 +1,51 @@
 {
-  "generated_at": "2026-11-26T13:22:45.568957+00:00",
+  "generated_at": "2026-11-26T14:00:14.590370+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 327,
+  "input_events": 333,
   "batches": 9,
   "calls": 9,
-  "merged_groups": 9,
+  "merged_groups": 8,
   "merged_events": 10,
-  "rejected_groups": 6,
+  "rejected_groups": 15,
   "failed": false,
   "examples": [
+    {
+      "kept": "亚马逊与Meta谈判，考虑开放Muse AI代理购物",
+      "merged": [
+        "Meta Refused to Share Muse for Testing, UK Financial Watchdo",
+        "Amazon and Meta are in talks to end the block on Meta's AI s"
+      ],
+      "why": "均涉及亚马逊与Meta关于Muse购物代理的谈判及监管争议"
+    },
+    {
+      "kept": "AMD联合中科慧灵完成人形机器人端侧AI验证 - 国际科技创新中心",
+      "merged": [
+        "AMD 联合中科慧灵完成人形机器人端侧 AI 验证，探索“大小脑”双处理器架构"
+      ],
+      "why": "都是AMD与中科慧灵完成人形机器人端侧AI验证"
+    },
     {
       "kept": "New York state bans AI chatbot toys for kids",
       "merged": [
         "Want to buy your kid an AI toy this Christmas? Not in New Yo",
         "New York bans AI toys amid concern after stuffed animals goi"
       ],
-      "why": "纽约州均宣布禁止儿童使用AI聊天玩具"
+      "why": "都是纽约州禁止面向儿童的AI聊天玩具"
     },
     {
       "kept": "US chip-access curbs and anti-distillation measures are reportedly already slowi",
       "merged": [
         "Chinese AI Chipmakers Turn to Domestic Suppliers Amid Tighte"
       ],
-      "why": "均报道美国出口管制导致中国AI芯片厂商转向国产供应商"
+      "why": "都是美国出口管制影响中国AI芯片/实验室"
     },
     {
-      "kept": "Antigravity 工程师宣布开发 banked reset 功能",
+      "kept": "Anthropic CEO pushes back on Axios reporting on AI and free will",
       "merged": [
-        "Antigravity 称再度提升 Neon 缓存命中率，额度内任务增 28%"
+        "Anthropic CEO 否认将人类自由意志让渡予 AI，并警示模型递归自我改进风险"
       ],
-      "why": "均为Antigravity工程师发布的同一系列技术更新公告"
-    },
-    {
-      "kept": "震撼：OpenAI破解矩阵乘法指数，答案是9/4！连破8大世纪数学悬案",
-      "merged": [
-        "OpenAI 宣称证明矩阵乘法指数 ω 恰好为 9/4"
-      ],
-      "why": "均为OpenAI宣称证明矩阵乘法指数为9/4"
-    },
-    {
-      "kept": "腾讯混元开源草稿模型 DFly2，让 Hy4 flash 吐字提速 4.2 倍",
-      "merged": [
-        "Hy4 flash 日处理 10T tokens"
-      ],
-      "why": "均为腾讯混元HY4 flash模型的发布与性能表现"
+      "why": "都是 Anthropic CEO 否认AI自由意志并警示风险"
     }
   ]
 }
