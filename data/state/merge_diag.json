@@ -1,35 +1,51 @@
 {
-  "generated_at": "2026-11-26T04:26:47.148033+00:00",
+  "generated_at": "2026-11-26T12:31:24.858635+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 248,
-  "batches": 8,
-  "calls": 8,
-  "merged_groups": 3,
-  "merged_events": 4,
-  "rejected_groups": 1,
+  "input_events": 329,
+  "batches": 9,
+  "calls": 9,
+  "merged_groups": 14,
+  "merged_events": 18,
+  "rejected_groups": 6,
   "failed": false,
   "examples": [
     {
-      "kept": "[AINews] Math Proofs Are Landing Faster Than We Can Read Them",
+      "kept": "New York state bans AI chatbot toys for kids",
       "merged": [
-        "Latent Space AINews：AI 数学证明密集涌现，ω=9/4 与 VP≠VNP 引发关注"
-      ],
-      "why": "均报道 AI 模型证明 VP≠VNP 等数学问题"
-    },
-    {
-      "kept": "FCC signs off on SpaceX’s plan to put up to 1 million data center satellites int",
-      "merged": [
-        "FCC clears SpaceX to put up to 1 million Starmind data cente"
-      ],
-      "why": "都是 FCC 批准 SpaceX 太空数据中心计划"
-    },
-    {
-      "kept": "Want to buy your kid an AI toy this Christmas? Not in New York",
-      "merged": [
+        "Want to buy your kid an AI toy this Christmas? Not in New Yo",
         "New York bans AI toys amid concern after stuffed animals goi"
       ],
-      "why": "都是纽约州针对 AI 玩具的禁令或限制措施"
+      "why": "均报道纽约州禁止儿童AI聊天玩具"
+    },
+    {
+      "kept": "US chip-access curbs and anti-distillation measures are reportedly already slowi",
+      "merged": [
+        "Chinese AI Chipmakers Turn to Domestic Suppliers Amid Tighte"
+      ],
+      "why": "均报道美国芯片管制影响中国AI研发"
+    },
+    {
+      "kept": "Higgsfield 讲解 MAGI-2 视频工作流，30 秒带声音视频成本 2.40 美元",
+      "merged": [
+        "MAGI-2 一镜到底穿越飞蛾镜头",
+        "MAGI-2 用 Blender 控制镜头"
+      ],
+      "why": "均介绍 MAGI-2 视频模型使用案例"
+    },
+    {
+      "kept": "LingSante-Live：蚂蚁百灵提出面向持续健康协作的多模态交互架构",
+      "merged": [
+        "蚂蚁百灵开源 Ling-3.2-air，用 55 亿激活参数击穿复杂工作流落地瓶颈"
+      ],
+      "why": "均为蚂蚁百灵模型相关技术发布"
+    },
+    {
+      "kept": "AMD联合中科慧灵完成人形机器人端侧AI验证 - 国际科技创新中心",
+      "merged": [
+        "AMD 联合中科慧灵完成人形机器人端侧 AI 验证，探索“大小脑”双处理器架构"
+      ],
+      "why": "均报道 AMD 与中科慧灵完成人形机器人端侧 AI 验证"
     }
   ]
 }
