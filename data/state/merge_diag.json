@@ -1,21 +1,50 @@
 {
-  "generated_at": "2026-11-25T20:14:06.235331+00:00",
+  "generated_at": "2026-11-26T02:37:32.600848+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 110,
-  "batches": 3,
-  "calls": 3,
-  "merged_groups": 1,
-  "merged_events": 1,
-  "rejected_groups": 2,
+  "input_events": 221,
+  "batches": 7,
+  "calls": 7,
+  "merged_groups": 10,
+  "merged_events": 12,
+  "rejected_groups": 4,
   "failed": false,
   "examples": [
     {
-      "kept": "高盛策略师称美股还未到抄底时机 AI投资回报仍是市场焦点 - 新浪财经",
+      "kept": "FCC signs off on SpaceX’s plan to put up to 1 million data center satellites int",
       "merged": [
-        "03:42:29【高盛称美股还未到抄底时机 AI投资回报仍是市场焦点】 - 财联社"
+        "FCC clears SpaceX to put up to 1 million Starmind data cente"
       ],
-      "why": "都是高盛称美股未到抄底时机且AI投资回报是焦点"
+      "why": "均报道FCC批准SpaceX部署数据中心卫星计划"
+    },
+    {
+      "kept": "[AINews] Math Proofs Are Landing Faster Than We Can Read Them",
+      "merged": [
+        "Latent Space AINews：AI 数学证明密集涌现，ω=9/4 与 VP≠VNP 引发关注"
+      ],
+      "why": "均报道 AI 证实 VP≠VNP 数学难题"
+    },
+    {
+      "kept": "S&P Discovers Nvidia’s Governance Lapses",
+      "merged": [
+        "S&P considers Nvidia credit downgrade over governance and ‘k",
+        "S&P Global Puts Nvidia on ‘CreditWatch Negative’ Due to Gove"
+      ],
+      "why": "都是S&P因治理风险考虑下调英伟达信用/放入负面观察"
+    },
+    {
+      "kept": "Want to buy your kid an AI toy this Christmas? Not in New York",
+      "merged": [
+        "New York bans AI toys amid concern after stuffed animals goi"
+      ],
+      "why": "都是纽约州立法禁止销售AI玩具"
+    },
+    {
+      "kept": "AI Daily 2026-11-26: How fast can matrices be multiplied? An OpenAI preprint cla",
+      "merged": [
+        "AI 日报 2026-11-26：矩阵乘法到底能多快？OpenAI 预印本称证明指数恰为 9/4，“可以…"
+      ],
+      "why": "均报道 OpenAI 关于矩阵乘法预印本"
     }
   ]
 }
