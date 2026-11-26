@@ -1411,12 +1411,12 @@
   }
  },
  "openai/math": {
-  "fetched_at": "2026-11-25T03:22:06.326926+00:00",
+  "fetched_at": "2026-11-26T04:26:47.175193+00:00",
   "data": {
    "full_name": "openai/math",
    "description": "",
-   "stars": 17809,
-   "forks": 2007,
+   "stars": 18378,
+   "forks": 2036,
    "language": "Lean",
    "license": "Apache-2.0",
    "topics": [],
@@ -7471,6 +7471,37 @@
    "languages": {
     "C": 95.441463255497,
     "Makefile": 4.558536744503005
+   }
+  }
+ },
+ "alesha-pro/llm.asm": {
+  "fetched_at": "2026-11-26T04:26:47.175193+00:00",
+  "data": {
+   "full_name": "alesha-pro/llm.asm",
+   "description": "Qwen3-0.6B inference (12 KB), bare-metal bootable OS (22 KB), and from-scratch Mini-GPT trainer with live Braille TUI (32 KB) in 100% pure x86-64 NASM assembly. Zero C, zero libc, zero dependencies.",
+   "stars": 441,
+   "forks": 64,
+   "language": "Assembly",
+   "license": "MIT",
+   "topics": [
+    "assembly",
+    "avx2",
+    "bare-metal",
+    "llm",
+    "machine-learning",
+    "nasm"
+   ],
+   "created": "2026-11-25",
+   "pushed": "2026-11-25",
+   "contributors": null,
+   "discussions": null,
+   "languages": {
+    "Assembly": 82.30485871168321,
+    "Python": 14.250351403189287,
+    "C++": 1.4104596976893942,
+    "Shell": 0.9813323547129572,
+    "Makefile": 0.8445793894239757,
+    "Linker Script": 0.20841844330118195
    }
   }
  }
