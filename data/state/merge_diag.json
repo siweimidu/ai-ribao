@@ -1,13 +1,51 @@
 {
-  "generated_at": "2026-11-27T04:51:26.857339+00:00",
+  "generated_at": "2026-11-27T12:13:52.673971+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 204,
-  "batches": 7,
-  "calls": 7,
-  "merged_groups": 0,
-  "merged_events": 0,
-  "rejected_groups": 1,
+  "input_events": 280,
+  "batches": 8,
+  "calls": 8,
+  "merged_groups": 5,
+  "merged_events": 7,
+  "rejected_groups": 3,
   "failed": false,
-  "examples": []
+  "examples": [
+    {
+      "kept": "SAP reportedly plans to lay off 10,000+ employees amid AI push",
+      "merged": [
+        "SAP 被曝拟裁至少 1 万人押注“AI 优先”：波及全球 9% 员工，重点砍产品与工程和销售"
+      ],
+      "why": "SAP 裁员 1 万人以推进 AI 的报道"
+    },
+    {
+      "kept": "Nvidia halts chip shipments to Southeast Asian countries",
+      "merged": [
+        "AIHOT 日报 · 2026-11-27 — FT 报道 Nvidia 暂停向东南亚四国发运服务器",
+        "Nvidia 暂停向东南亚四国出货服务器芯片"
+      ],
+      "why": "都是 Nvidia 暂停向东南亚四国出货服务器芯片"
+    },
+    {
+      "kept": "腾讯混元发布 Hy3D 3.6：优化高模与 PBR 材质生成，已上线腾讯云 API",
+      "merged": [
+        "腾讯混元发布 3D 生成大模型 Hy3D 3.6，面向专业 3D 创作",
+        "混元 Hy3D 3.6 发布：专业级 3D 资产生成再进一步"
+      ],
+      "why": "都是腾讯混元发布 Hy3D 3.6 模型"
+    },
+    {
+      "kept": "AI reshapes Black Friday shopping",
+      "merged": [
+        "Black Friday's frenzy gives way to \"Black November\""
+      ],
+      "why": "都报道AI对黑色星期五购物趋势的改造及后续演变"
+    },
+    {
+      "kept": "告别“拓扑地狱”与“贴图废片”！腾讯混元发布 Hy3D 3.6，原生 3D 生成直击专业管线痛点",
+      "merged": [
+        "腾讯混元发布 Hy3D 3.6：高模表面更整洁、结构更清晰、刻画更细腻"
+      ],
+      "why": "同是腾讯混元Hy3D 3.6发布新闻"
+    }
+  ]
 }
