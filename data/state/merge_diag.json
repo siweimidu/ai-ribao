@@ -1,21 +1,36 @@
 {
-  "generated_at": "2026-11-26T21:24:06.727547+00:00",
+  "generated_at": "2026-11-27T02:35:49.067361+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 73,
-  "batches": 2,
-  "calls": 2,
-  "merged_groups": 1,
-  "merged_events": 2,
+  "input_events": 175,
+  "batches": 8,
+  "calls": 8,
+  "merged_groups": 3,
+  "merged_events": 4,
   "rejected_groups": 0,
   "failed": false,
   "examples": [
     {
-      "kept": "Nvidia 暂停向东南亚四国出货服务器芯片",
+      "kept": "Nvidia halts chip shipments to Southeast Asian countries",
       "merged": [
-        "NVIDIA reportedly halts AI chip shipments to Southeast Asia"
+        "Nvidia 暂停向东南亚四国出货服务器芯片",
+        "AIHOT 日报 · 2026-11-27 — FT 报道 Nvidia 暂停向东南亚四国发运服务器"
       ],
-      "why": "均报道英伟达暂停向东南亚出货芯片"
+      "why": "均报道Nvidia暂停向东南亚四国发运服务器芯片"
+    },
+    {
+      "kept": "不换模型也能吐字快 4.2 倍：腾讯混元开源草稿模型 DFly2，专给 Hy4 flash 提速",
+      "merged": [
+        "腾讯混元开源草稿模型 DFly2"
+      ],
+      "why": "均为腾讯混元开源草稿模型DFly2发布"
+    },
+    {
+      "kept": "DeepSeek 网页端显示对话价格和额度消耗 #1 Antigravity 为所有用户重置 Gemini 额度",
+      "merged": [
+        "AI日报：蚂蚁百灵开源Ling-3.2-air；上海AI Lab开源Sage-Interaction；知乎 CEO 周源"
+      ],
+      "why": "均为AI日报包含蚂蚁百灵开源Ling-3.2-air"
     }
   ]
 }
