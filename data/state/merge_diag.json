@@ -1,13 +1,36 @@
 {
-  "generated_at": "2026-11-27T21:07:40.608799+00:00",
+  "generated_at": "2026-11-28T02:11:39.841199+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 78,
-  "batches": 3,
-  "calls": 3,
-  "merged_groups": 0,
-  "merged_events": 0,
+  "input_events": 139,
+  "batches": 4,
+  "calls": 4,
+  "merged_groups": 3,
+  "merged_events": 5,
   "rejected_groups": 0,
   "failed": false,
-  "examples": []
+  "examples": [
+    {
+      "kept": "OpenAI countersues Apple over trade secret theft and alleged coercion of shared ",
+      "merged": [
+        "从被告变原告，OpenAI反诉苹果窃密，AI硬件之争白热化 - Sohu",
+        "OpenAI 反诉苹果窃取商业秘密并施压供应商"
+      ],
+      "why": "均报道OpenAI反诉苹果窃取商业秘密及施压供应商事件"
+    },
+    {
+      "kept": "AI Daily 2026-11-28: SAP admits 'suspicious activity' on its development platfor",
+      "merged": [
+        "AI 日报 2026-11-28：SAP 承认开发平台出现“可疑活动”：据《明镜》报道，内部代号…"
+      ],
+      "why": "均报道SAP承认开发平台出现可疑活动及AI转型裁减岗位"
+    },
+    {
+      "kept": "月之暗面开放 Kimi for Science：入选最高 2 万美元 API 额度",
+      "merged": [
+        "AI日报：豆包独家接入剪映；腾讯混元发布 Hy3D 3.6；月之暗面开放 Kimi 科研支持计划"
+      ],
+      "why": "均报道月之暗面开放Kimi科研支持计划及API额度"
+    }
+  ]
 }
