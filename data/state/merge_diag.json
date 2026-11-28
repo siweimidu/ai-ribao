@@ -1,31 +1,42 @@
 {
-  "generated_at": "2026-11-28T04:13:15.259117+00:00",
+  "generated_at": "2026-11-28T12:13:08.719665+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 183,
-  "batches": 6,
-  "calls": 6,
-  "merged_groups": 2,
-  "merged_events": 5,
+  "input_events": 228,
+  "batches": 7,
+  "calls": 7,
+  "merged_groups": 4,
+  "merged_events": 4,
   "rejected_groups": 0,
   "failed": false,
   "examples": [
     {
-      "kept": "当机器人“遇上”无人机 2026香港AI科普周开幕 - 中国新闻网",
+      "kept": "2026-11-28 AI 日报 · OpenAI反诉苹果窃密，谷歌开源TPU Sync并推新TPU",
       "merged": [
-        "有片｜2026香港AI科普周暨AI未来生活节 - 紫荆网",
-        "“2026香港AI科普周暨AI未来生活节”盛大启幕！让AI走进生活，让科普走进人心 - 中国基金报"
+        "OpenAI countersues Apple over trade secret theft and alleged"
       ],
-      "why": "均为2026香港AI科普周暨AI未来生活节开幕活动报道"
+      "why": "均报道 OpenAI 反诉苹果窃取商业机密事件"
     },
     {
-      "kept": "OpenAI countersues Apple over trade secret theft and alleged coercion of shared ",
+      "kept": "Grok Bot 帮你全网找最优价",
       "merged": [
-        "从被告变原告，OpenAI反诉苹果窃密，AI硬件之争白热化 - Sohu",
-        "OpenAI 反诉苹果窃取商业秘密并施压供应商",
-        "2026-11-28 AI 日报 · OpenAI反诉苹果窃密，谷歌开源TPU Sync并推新TPU"
+        "Grok Bot 按任务择优选用模型"
       ],
-      "why": "均报道 OpenAI 反诉苹果窃取商业秘密"
+      "why": "均报道 Grok Bot 根据任务自动选择最优模型的功能更新"
+    },
+    {
+      "kept": "华映资本董事总经理李岩已确认出席 AICon 北京，分享 AI 落地中值得持续积累的能力 - InfoQ.cn",
+      "merged": [
+        "华映资本董事总经理李岩已确认出席 AICon北京，分享AI 落地中值得持续积累的能力"
+      ],
+      "why": "都是李岩确认出席AICon北京"
+    },
+    {
+      "kept": "十年：谷歌更新 SRE 著作，拥抱 AI 时代 - InfoQ.cn",
+      "merged": [
+        "十年：谷歌更新 SRE 著作，拥抱 AI 时代"
+      ],
+      "why": "都是谷歌更新SRE著作"
     }
   ]
 }
