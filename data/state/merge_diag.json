@@ -1,36 +1,31 @@
 {
-  "generated_at": "2026-11-28T02:11:39.841199+00:00",
+  "generated_at": "2026-11-28T04:13:15.259117+00:00",
   "router_is_none": false,
   "ran": true,
-  "input_events": 139,
-  "batches": 4,
-  "calls": 4,
-  "merged_groups": 3,
+  "input_events": 183,
+  "batches": 6,
+  "calls": 6,
+  "merged_groups": 2,
   "merged_events": 5,
   "rejected_groups": 0,
   "failed": false,
   "examples": [
     {
+      "kept": "当机器人“遇上”无人机 2026香港AI科普周开幕 - 中国新闻网",
+      "merged": [
+        "有片｜2026香港AI科普周暨AI未来生活节 - 紫荆网",
+        "“2026香港AI科普周暨AI未来生活节”盛大启幕！让AI走进生活，让科普走进人心 - 中国基金报"
+      ],
+      "why": "均为2026香港AI科普周暨AI未来生活节开幕活动报道"
+    },
+    {
       "kept": "OpenAI countersues Apple over trade secret theft and alleged coercion of shared ",
       "merged": [
         "从被告变原告，OpenAI反诉苹果窃密，AI硬件之争白热化 - Sohu",
-        "OpenAI 反诉苹果窃取商业秘密并施压供应商"
+        "OpenAI 反诉苹果窃取商业秘密并施压供应商",
+        "2026-11-28 AI 日报 · OpenAI反诉苹果窃密，谷歌开源TPU Sync并推新TPU"
       ],
-      "why": "均报道OpenAI反诉苹果窃取商业秘密及施压供应商事件"
-    },
-    {
-      "kept": "AI Daily 2026-11-28: SAP admits 'suspicious activity' on its development platfor",
-      "merged": [
-        "AI 日报 2026-11-28：SAP 承认开发平台出现“可疑活动”：据《明镜》报道，内部代号…"
-      ],
-      "why": "均报道SAP承认开发平台出现可疑活动及AI转型裁减岗位"
-    },
-    {
-      "kept": "月之暗面开放 Kimi for Science：入选最高 2 万美元 API 额度",
-      "merged": [
-        "AI日报：豆包独家接入剪映；腾讯混元发布 Hy3D 3.6；月之暗面开放 Kimi 科研支持计划"
-      ],
-      "why": "均报道月之暗面开放Kimi科研支持计划及API额度"
+      "why": "均报道 OpenAI 反诉苹果窃取商业秘密"
     }
   ]
 }
